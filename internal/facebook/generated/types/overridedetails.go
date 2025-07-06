@@ -4,7 +4,7 @@ package types
 
 // OverrideDetails represents a Facebook OverrideDetails object
 type OverrideDetails struct {
-	Key    string                 `json:"key"`
-	Type_  string                 `json:"type"`
+	Key string `json:"key"`
+	Type_ string `json:"type"`
 	Values map[string]interface{} `json:"values"`
 }

@@ -15,28 +15,29 @@ import (
 func GetVideoCopyrightTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_videocopyright_get_update_records tool
-	facebook_videocopyright_get_update_recordsTool := mcp.NewTool("facebook_videocopyright_get_update_records",
+
+	// videocopyright_get_update_records tool
+	videocopyright_get_update_recordsTool := mcp.NewTool("videocopyright_get_update_records",
 		mcp.WithDescription("GET update_records for VideoCopyright"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_videocopyright_get_update_recordsTool)
+	tools = append(tools, videocopyright_get_update_recordsTool)
 
-	// facebook_videocopyright_get_ tool
-	facebook_videocopyright_get_Tool := mcp.NewTool("facebook_videocopyright_get_",
+	// videocopyright_get_ tool
+	videocopyright_get_Tool := mcp.NewTool("videocopyright_get_",
 		mcp.WithDescription("GET  for VideoCopyright"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_videocopyright_get_Tool)
+	tools = append(tools, videocopyright_get_Tool)
 
-	// facebook_videocopyright_post_ tool
-	facebook_videocopyright_post_Tool := mcp.NewTool("facebook_videocopyright_post_",
+	// videocopyright_post_ tool
+	videocopyright_post_Tool := mcp.NewTool("videocopyright_post_",
 		mcp.WithDescription("POST  for VideoCopyright"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -78,15 +79,17 @@ func GetVideoCopyrightTools(accessToken string) []mcp.Tool {
 			mcp.Description("whitelisted_ig_user_ids parameter for "),
 		),
 	)
-	tools = append(tools, facebook_videocopyright_post_Tool)
+	tools = append(tools, videocopyright_post_Tool)
+
 
 	return tools
 }
 
 // VideoCopyright handlers
 
-// HandleFacebook_videocopyright_get_update_records handles the facebook_videocopyright_get_update_records tool
-func HandleFacebook_videocopyright_get_update_records(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleVideocopyright_get_update_records handles the videocopyright_get_update_records tool
+func HandleVideocopyright_get_update_records(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -99,10 +102,12 @@ func HandleFacebook_videocopyright_get_update_records(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_videocopyright_get_update_records(args)
+	result, err := client.Videocopyright_get_update_records(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_videocopyright_get_update_records: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute videocopyright_get_update_records: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -114,8 +119,9 @@ func HandleFacebook_videocopyright_get_update_records(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_videocopyright_get_ handles the facebook_videocopyright_get_ tool
-func HandleFacebook_videocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleVideocopyright_get_ handles the videocopyright_get_ tool
+func HandleVideocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -128,10 +134,12 @@ func HandleFacebook_videocopyright_get_(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_videocopyright_get_(args)
+	result, err := client.Videocopyright_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_videocopyright_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute videocopyright_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -143,8 +151,9 @@ func HandleFacebook_videocopyright_get_(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_videocopyright_post_ handles the facebook_videocopyright_post_ tool
-func HandleFacebook_videocopyright_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleVideocopyright_post_ handles the videocopyright_post_ tool
+func HandleVideocopyright_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -217,10 +226,12 @@ func HandleFacebook_videocopyright_post_(ctx context.Context, request mcp.CallTo
 		args["whitelisted_ig_user_ids"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_videocopyright_post_(args)
+	result, err := client.Videocopyright_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_videocopyright_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute videocopyright_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -231,3 +242,4 @@ func HandleFacebook_videocopyright_post_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -15,23 +15,26 @@ import (
 func GetAdDraftTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_addraft_get_ tool
-	facebook_addraft_get_Tool := mcp.NewTool("facebook_addraft_get_",
+
+	// addraft_get_ tool
+	addraft_get_Tool := mcp.NewTool("addraft_get_",
 		mcp.WithDescription("GET  for AdDraft"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_addraft_get_Tool)
+	tools = append(tools, addraft_get_Tool)
+
 
 	return tools
 }
 
 // AdDraft handlers
 
-// HandleFacebook_addraft_get_ handles the facebook_addraft_get_ tool
-func HandleFacebook_addraft_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAddraft_get_ handles the addraft_get_ tool
+func HandleAddraft_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_addraft_get_(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_addraft_get_(args)
+	result, err := client.Addraft_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_addraft_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute addraft_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_addraft_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

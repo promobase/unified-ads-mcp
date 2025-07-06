@@ -4,11 +4,11 @@ package types
 
 // AdCreativeTemplateURLSpec represents a Facebook AdCreativeTemplateURLSpec object
 type AdCreativeTemplateURLSpec struct {
-	Android       map[string]interface{} `json:"android"`
-	Config        map[string]interface{} `json:"config"`
-	Ios           map[string]interface{} `json:"ios"`
-	Ipad          map[string]interface{} `json:"ipad"`
-	Iphone        map[string]interface{} `json:"iphone"`
-	Web           map[string]interface{} `json:"web"`
+	Android map[string]interface{} `json:"android"`
+	Config map[string]interface{} `json:"config"`
+	Ios map[string]interface{} `json:"ios"`
+	Ipad map[string]interface{} `json:"ipad"`
+	Iphone map[string]interface{} `json:"iphone"`
+	Web map[string]interface{} `json:"web"`
 	Windows_phone map[string]interface{} `json:"windows_phone"`
 }

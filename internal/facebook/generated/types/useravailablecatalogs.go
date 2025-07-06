@@ -4,8 +4,8 @@ package types
 
 // UserAvailableCatalogs represents a Facebook UserAvailableCatalogs object
 type UserAvailableCatalogs struct {
-	Catalog_id    string `json:"catalog_id"`
-	Catalog_name  string `json:"catalog_name"`
-	Product_count int    `json:"product_count"`
-	Shop_name     string `json:"shop_name"`
+	Catalog_id string `json:"catalog_id"`
+	Catalog_name string `json:"catalog_name"`
+	Product_count int `json:"product_count"`
+	Shop_name string `json:"shop_name"`
 }

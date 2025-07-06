@@ -21,14 +21,18 @@ func NewProductFeedUploadClient(accessToken string) *ProductFeedUploadClient {
 	}
 }
 
-// facebook_productfeedupload_post_error_report POST error_report for ProductFeedUpload
-func (c *ProductFeedUploadClient) Facebook_productfeedupload_post_error_report(args map[string]interface{}) (interface{}, error) {
+
+// productfeedupload_post_error_report POST error_report for ProductFeedUpload
+func (c *ProductFeedUploadClient) Productfeedupload_post_error_report(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "error_report")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -60,9 +64,11 @@ func (c *ProductFeedUploadClient) Facebook_productfeedupload_post_error_report(a
 	return result, nil
 }
 
-// facebook_productfeedupload_get_errors GET errors for ProductFeedUpload
-func (c *ProductFeedUploadClient) Facebook_productfeedupload_get_errors(args map[string]interface{}) (interface{}, error) {
+
+// productfeedupload_get_errors GET errors for ProductFeedUpload
+func (c *ProductFeedUploadClient) Productfeedupload_get_errors(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "errors")
@@ -73,6 +79,7 @@ func (c *ProductFeedUploadClient) Facebook_productfeedupload_get_errors(args map
 		urlParams.Set("error_priority", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -103,15 +110,19 @@ func (c *ProductFeedUploadClient) Facebook_productfeedupload_get_errors(args map
 	return result, nil
 }
 
-// facebook_productfeedupload_get_ GET  for ProductFeedUpload
-func (c *ProductFeedUploadClient) Facebook_productfeedupload_get_(args map[string]interface{}) (interface{}, error) {
+
+// productfeedupload_get_ GET  for ProductFeedUpload
+func (c *ProductFeedUploadClient) Productfeedupload_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -141,3 +152,4 @@ func (c *ProductFeedUploadClient) Facebook_productfeedupload_get_(args map[strin
 
 	return result, nil
 }
+

@@ -5,5 +5,5 @@ package types
 // AdLightCampaign represents a Facebook AdLightCampaign object
 type AdLightCampaign struct {
 	Campaign_id string `json:"campaign_id"`
-	Id          string `json:"id"`
+	Id string `json:"id"`
 }

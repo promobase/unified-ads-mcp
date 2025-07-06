@@ -15,23 +15,26 @@ import (
 func GetMusicVideoCopyrightTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_musicvideocopyright_get_ tool
-	facebook_musicvideocopyright_get_Tool := mcp.NewTool("facebook_musicvideocopyright_get_",
+
+	// musicvideocopyright_get_ tool
+	musicvideocopyright_get_Tool := mcp.NewTool("musicvideocopyright_get_",
 		mcp.WithDescription("GET  for MusicVideoCopyright"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_musicvideocopyright_get_Tool)
+	tools = append(tools, musicvideocopyright_get_Tool)
+
 
 	return tools
 }
 
 // MusicVideoCopyright handlers
 
-// HandleFacebook_musicvideocopyright_get_ handles the facebook_musicvideocopyright_get_ tool
-func HandleFacebook_musicvideocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleMusicvideocopyright_get_ handles the musicvideocopyright_get_ tool
+func HandleMusicvideocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_musicvideocopyright_get_(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_musicvideocopyright_get_(args)
+	result, err := client.Musicvideocopyright_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_musicvideocopyright_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute musicvideocopyright_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_musicvideocopyright_get_(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

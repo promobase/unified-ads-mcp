@@ -4,6 +4,6 @@ package types
 
 // IDName represents a Facebook IDName object
 type IDName struct {
-	Id   string `json:"id"`
+	Id string `json:"id"`
 	Name string `json:"name"`
 }

@@ -6,26 +6,26 @@ import "time"
 
 // FundraiserPersonToCharity represents a Facebook FundraiserPersonToCharity object
 type FundraiserPersonToCharity struct {
-	Amount_raised             int       `json:"amount_raised"`
-	Charity_id                string    `json:"charity_id"`
-	Currency                  string    `json:"currency"`
-	Description               string    `json:"description"`
-	Donations_count           int       `json:"donations_count"`
-	Donors_count              int       `json:"donors_count"`
-	End_time                  time.Time `json:"end_time"`
-	External_amount_raised    int       `json:"external_amount_raised"`
-	External_donations_count  int       `json:"external_donations_count"`
-	External_donors_count     int       `json:"external_donors_count"`
-	External_event_name       string    `json:"external_event_name"`
+	Amount_raised int `json:"amount_raised"`
+	Charity_id string `json:"charity_id"`
+	Currency string `json:"currency"`
+	Description string `json:"description"`
+	Donations_count int `json:"donations_count"`
+	Donors_count int `json:"donors_count"`
+	End_time time.Time `json:"end_time"`
+	External_amount_raised int `json:"external_amount_raised"`
+	External_donations_count int `json:"external_donations_count"`
+	External_donors_count int `json:"external_donors_count"`
+	External_event_name string `json:"external_event_name"`
 	External_event_start_time time.Time `json:"external_event_start_time"`
-	External_event_uri        string    `json:"external_event_uri"`
-	External_fundraiser_uri   string    `json:"external_fundraiser_uri"`
-	External_id               string    `json:"external_id"`
-	Goal_amount               int       `json:"goal_amount"`
-	Id                        string    `json:"id"`
-	Internal_amount_raised    int       `json:"internal_amount_raised"`
-	Internal_donations_count  int       `json:"internal_donations_count"`
-	Internal_donors_count     int       `json:"internal_donors_count"`
-	Name                      string    `json:"name"`
-	Uri                       string    `json:"uri"`
+	External_event_uri string `json:"external_event_uri"`
+	External_fundraiser_uri string `json:"external_fundraiser_uri"`
+	External_id string `json:"external_id"`
+	Goal_amount int `json:"goal_amount"`
+	Id string `json:"id"`
+	Internal_amount_raised int `json:"internal_amount_raised"`
+	Internal_donations_count int `json:"internal_donations_count"`
+	Internal_donors_count int `json:"internal_donors_count"`
+	Name string `json:"name"`
+	Uri string `json:"uri"`
 }

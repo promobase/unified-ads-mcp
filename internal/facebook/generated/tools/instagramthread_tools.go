@@ -15,23 +15,26 @@ import (
 func GetInstagramThreadTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_instagramthread_get_ tool
-	facebook_instagramthread_get_Tool := mcp.NewTool("facebook_instagramthread_get_",
+
+	// instagramthread_get_ tool
+	instagramthread_get_Tool := mcp.NewTool("instagramthread_get_",
 		mcp.WithDescription("GET  for InstagramThread"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_instagramthread_get_Tool)
+	tools = append(tools, instagramthread_get_Tool)
+
 
 	return tools
 }
 
 // InstagramThread handlers
 
-// HandleFacebook_instagramthread_get_ handles the facebook_instagramthread_get_ tool
-func HandleFacebook_instagramthread_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleInstagramthread_get_ handles the instagramthread_get_ tool
+func HandleInstagramthread_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_instagramthread_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_instagramthread_get_(args)
+	result, err := client.Instagramthread_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_instagramthread_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute instagramthread_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_instagramthread_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

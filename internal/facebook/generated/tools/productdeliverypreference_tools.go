@@ -15,23 +15,26 @@ import (
 func GetProductDeliveryPreferenceTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_productdeliverypreference_get_ tool
-	facebook_productdeliverypreference_get_Tool := mcp.NewTool("facebook_productdeliverypreference_get_",
+
+	// productdeliverypreference_get_ tool
+	productdeliverypreference_get_Tool := mcp.NewTool("productdeliverypreference_get_",
 		mcp.WithDescription("GET  for ProductDeliveryPreference"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productdeliverypreference_get_Tool)
+	tools = append(tools, productdeliverypreference_get_Tool)
+
 
 	return tools
 }
 
 // ProductDeliveryPreference handlers
 
-// HandleFacebook_productdeliverypreference_get_ handles the facebook_productdeliverypreference_get_ tool
-func HandleFacebook_productdeliverypreference_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductdeliverypreference_get_ handles the productdeliverypreference_get_ tool
+func HandleProductdeliverypreference_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_productdeliverypreference_get_(ctx context.Context, request 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productdeliverypreference_get_(args)
+	result, err := client.Productdeliverypreference_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productdeliverypreference_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productdeliverypreference_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_productdeliverypreference_get_(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

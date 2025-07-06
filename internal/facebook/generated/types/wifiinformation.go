@@ -4,7 +4,7 @@ package types
 
 // WifiInformation represents a Facebook WifiInformation object
 type WifiInformation struct {
-	Id                  string `json:"id"`
-	Name                string `json:"name"`
+	Id string `json:"id"`
+	Name string `json:"name"`
 	Network_access_type string `json:"network_access_type"`
 }

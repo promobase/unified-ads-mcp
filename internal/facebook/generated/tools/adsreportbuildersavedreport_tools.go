@@ -15,23 +15,26 @@ import (
 func GetAdsReportBuilderSavedReportTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adsreportbuildersavedreport_get_ tool
-	facebook_adsreportbuildersavedreport_get_Tool := mcp.NewTool("facebook_adsreportbuildersavedreport_get_",
+
+	// adsreportbuildersavedreport_get_ tool
+	adsreportbuildersavedreport_get_Tool := mcp.NewTool("adsreportbuildersavedreport_get_",
 		mcp.WithDescription("GET  for AdsReportBuilderSavedReport"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adsreportbuildersavedreport_get_Tool)
+	tools = append(tools, adsreportbuildersavedreport_get_Tool)
+
 
 	return tools
 }
 
 // AdsReportBuilderSavedReport handlers
 
-// HandleFacebook_adsreportbuildersavedreport_get_ handles the facebook_adsreportbuildersavedreport_get_ tool
-func HandleFacebook_adsreportbuildersavedreport_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdsreportbuildersavedreport_get_ handles the adsreportbuildersavedreport_get_ tool
+func HandleAdsreportbuildersavedreport_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_adsreportbuildersavedreport_get_(ctx context.Context, reques
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adsreportbuildersavedreport_get_(args)
+	result, err := client.Adsreportbuildersavedreport_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adsreportbuildersavedreport_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adsreportbuildersavedreport_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_adsreportbuildersavedreport_get_(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

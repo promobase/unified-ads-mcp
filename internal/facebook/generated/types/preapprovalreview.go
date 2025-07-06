@@ -4,9 +4,9 @@ package types
 
 // PreapprovalReview represents a Facebook PreapprovalReview object
 type PreapprovalReview struct {
-	Comp_type         string        `json:"comp_type"`
-	Crow_component_id int           `json:"crow_component_id"`
-	Is_human_reviewed bool          `json:"is_human_reviewed"`
-	Is_reviewed       bool          `json:"is_reviewed"`
-	Policy_info       []interface{} `json:"policy_info"`
+	Comp_type string `json:"comp_type"`
+	Crow_component_id int `json:"crow_component_id"`
+	Is_human_reviewed bool `json:"is_human_reviewed"`
+	Is_reviewed bool `json:"is_reviewed"`
+	Policy_info []interface{} `json:"policy_info"`
 }

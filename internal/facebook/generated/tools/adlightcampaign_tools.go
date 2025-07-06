@@ -15,23 +15,26 @@ import (
 func GetAdLightCampaignTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adlightcampaign_get_ tool
-	facebook_adlightcampaign_get_Tool := mcp.NewTool("facebook_adlightcampaign_get_",
+
+	// adlightcampaign_get_ tool
+	adlightcampaign_get_Tool := mcp.NewTool("adlightcampaign_get_",
 		mcp.WithDescription("GET  for AdLightCampaign"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adlightcampaign_get_Tool)
+	tools = append(tools, adlightcampaign_get_Tool)
+
 
 	return tools
 }
 
 // AdLightCampaign handlers
 
-// HandleFacebook_adlightcampaign_get_ handles the facebook_adlightcampaign_get_ tool
-func HandleFacebook_adlightcampaign_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdlightcampaign_get_ handles the adlightcampaign_get_ tool
+func HandleAdlightcampaign_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_adlightcampaign_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adlightcampaign_get_(args)
+	result, err := client.Adlightcampaign_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adlightcampaign_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adlightcampaign_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_adlightcampaign_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

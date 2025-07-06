@@ -15,28 +15,29 @@ import (
 func GetProductFeedRuleTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_productfeedrule_delete_ tool
-	facebook_productfeedrule_delete_Tool := mcp.NewTool("facebook_productfeedrule_delete_",
+
+	// productfeedrule_delete_ tool
+	productfeedrule_delete_Tool := mcp.NewTool("productfeedrule_delete_",
 		mcp.WithDescription("DELETE  for ProductFeedRule"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productfeedrule_delete_Tool)
+	tools = append(tools, productfeedrule_delete_Tool)
 
-	// facebook_productfeedrule_get_ tool
-	facebook_productfeedrule_get_Tool := mcp.NewTool("facebook_productfeedrule_get_",
+	// productfeedrule_get_ tool
+	productfeedrule_get_Tool := mcp.NewTool("productfeedrule_get_",
 		mcp.WithDescription("GET  for ProductFeedRule"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productfeedrule_get_Tool)
+	tools = append(tools, productfeedrule_get_Tool)
 
-	// facebook_productfeedrule_post_ tool
-	facebook_productfeedrule_post_Tool := mcp.NewTool("facebook_productfeedrule_post_",
+	// productfeedrule_post_ tool
+	productfeedrule_post_Tool := mcp.NewTool("productfeedrule_post_",
 		mcp.WithDescription("POST  for ProductFeedRule"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -47,15 +48,17 @@ func GetProductFeedRuleTools(accessToken string) []mcp.Tool {
 			mcp.Description("params parameter for "),
 		),
 	)
-	tools = append(tools, facebook_productfeedrule_post_Tool)
+	tools = append(tools, productfeedrule_post_Tool)
+
 
 	return tools
 }
 
 // ProductFeedRule handlers
 
-// HandleFacebook_productfeedrule_delete_ handles the facebook_productfeedrule_delete_ tool
-func HandleFacebook_productfeedrule_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductfeedrule_delete_ handles the productfeedrule_delete_ tool
+func HandleProductfeedrule_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -68,10 +71,12 @@ func HandleFacebook_productfeedrule_delete_(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productfeedrule_delete_(args)
+	result, err := client.Productfeedrule_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productfeedrule_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productfeedrule_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -83,8 +88,9 @@ func HandleFacebook_productfeedrule_delete_(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productfeedrule_get_ handles the facebook_productfeedrule_get_ tool
-func HandleFacebook_productfeedrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductfeedrule_get_ handles the productfeedrule_get_ tool
+func HandleProductfeedrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -97,10 +103,12 @@ func HandleFacebook_productfeedrule_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productfeedrule_get_(args)
+	result, err := client.Productfeedrule_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productfeedrule_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productfeedrule_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -112,8 +120,9 @@ func HandleFacebook_productfeedrule_get_(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productfeedrule_post_ handles the facebook_productfeedrule_post_ tool
-func HandleFacebook_productfeedrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductfeedrule_post_ handles the productfeedrule_post_ tool
+func HandleProductfeedrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -133,10 +142,12 @@ func HandleFacebook_productfeedrule_post_(ctx context.Context, request mcp.CallT
 	}
 	args["params"] = params
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productfeedrule_post_(args)
+	result, err := client.Productfeedrule_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productfeedrule_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productfeedrule_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -147,3 +158,4 @@ func HandleFacebook_productfeedrule_post_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

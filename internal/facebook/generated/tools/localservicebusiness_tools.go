@@ -15,18 +15,19 @@ import (
 func GetLocalServiceBusinessTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_localservicebusiness_get_channels_to_integrity_status tool
-	facebook_localservicebusiness_get_channels_to_integrity_statusTool := mcp.NewTool("facebook_localservicebusiness_get_channels_to_integrity_status",
+
+	// localservicebusiness_get_channels_to_integrity_status tool
+	localservicebusiness_get_channels_to_integrity_statusTool := mcp.NewTool("localservicebusiness_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for LocalServiceBusiness"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_localservicebusiness_get_channels_to_integrity_statusTool)
+	tools = append(tools, localservicebusiness_get_channels_to_integrity_statusTool)
 
-	// facebook_localservicebusiness_get_override_details tool
-	facebook_localservicebusiness_get_override_detailsTool := mcp.NewTool("facebook_localservicebusiness_get_override_details",
+	// localservicebusiness_get_override_details tool
+	localservicebusiness_get_override_detailsTool := mcp.NewTool("localservicebusiness_get_override_details",
 		mcp.WithDescription("GET override_details for LocalServiceBusiness"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -40,25 +41,27 @@ func GetLocalServiceBusinessTools(accessToken string) []mcp.Tool {
 			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
 		),
 	)
-	tools = append(tools, facebook_localservicebusiness_get_override_detailsTool)
+	tools = append(tools, localservicebusiness_get_override_detailsTool)
 
-	// facebook_localservicebusiness_get_ tool
-	facebook_localservicebusiness_get_Tool := mcp.NewTool("facebook_localservicebusiness_get_",
+	// localservicebusiness_get_ tool
+	localservicebusiness_get_Tool := mcp.NewTool("localservicebusiness_get_",
 		mcp.WithDescription("GET  for LocalServiceBusiness"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_localservicebusiness_get_Tool)
+	tools = append(tools, localservicebusiness_get_Tool)
+
 
 	return tools
 }
 
 // LocalServiceBusiness handlers
 
-// HandleFacebook_localservicebusiness_get_channels_to_integrity_status handles the facebook_localservicebusiness_get_channels_to_integrity_status tool
-func HandleFacebook_localservicebusiness_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLocalservicebusiness_get_channels_to_integrity_status handles the localservicebusiness_get_channels_to_integrity_status tool
+func HandleLocalservicebusiness_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -71,10 +74,12 @@ func HandleFacebook_localservicebusiness_get_channels_to_integrity_status(ctx co
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_localservicebusiness_get_channels_to_integrity_status(args)
+	result, err := client.Localservicebusiness_get_channels_to_integrity_status(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_localservicebusiness_get_channels_to_integrity_status: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute localservicebusiness_get_channels_to_integrity_status: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -86,8 +91,9 @@ func HandleFacebook_localservicebusiness_get_channels_to_integrity_status(ctx co
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_localservicebusiness_get_override_details handles the facebook_localservicebusiness_get_override_details tool
-func HandleFacebook_localservicebusiness_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLocalservicebusiness_get_override_details handles the localservicebusiness_get_override_details tool
+func HandleLocalservicebusiness_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -111,10 +117,12 @@ func HandleFacebook_localservicebusiness_get_override_details(ctx context.Contex
 		args["type"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_localservicebusiness_get_override_details(args)
+	result, err := client.Localservicebusiness_get_override_details(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_localservicebusiness_get_override_details: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute localservicebusiness_get_override_details: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -126,8 +134,9 @@ func HandleFacebook_localservicebusiness_get_override_details(ctx context.Contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_localservicebusiness_get_ handles the facebook_localservicebusiness_get_ tool
-func HandleFacebook_localservicebusiness_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLocalservicebusiness_get_ handles the localservicebusiness_get_ tool
+func HandleLocalservicebusiness_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -140,10 +149,12 @@ func HandleFacebook_localservicebusiness_get_(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_localservicebusiness_get_(args)
+	result, err := client.Localservicebusiness_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_localservicebusiness_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute localservicebusiness_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -154,3 +165,4 @@ func HandleFacebook_localservicebusiness_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

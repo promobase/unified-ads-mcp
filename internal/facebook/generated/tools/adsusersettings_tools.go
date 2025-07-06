@@ -15,23 +15,26 @@ import (
 func GetAdsUserSettingsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adsusersettings_get_ tool
-	facebook_adsusersettings_get_Tool := mcp.NewTool("facebook_adsusersettings_get_",
+
+	// adsusersettings_get_ tool
+	adsusersettings_get_Tool := mcp.NewTool("adsusersettings_get_",
 		mcp.WithDescription("GET  for AdsUserSettings"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adsusersettings_get_Tool)
+	tools = append(tools, adsusersettings_get_Tool)
+
 
 	return tools
 }
 
 // AdsUserSettings handlers
 
-// HandleFacebook_adsusersettings_get_ handles the facebook_adsusersettings_get_ tool
-func HandleFacebook_adsusersettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdsusersettings_get_ handles the adsusersettings_get_ tool
+func HandleAdsusersettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_adsusersettings_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adsusersettings_get_(args)
+	result, err := client.Adsusersettings_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adsusersettings_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adsusersettings_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_adsusersettings_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

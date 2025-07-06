@@ -4,8 +4,8 @@ package types
 
 // ProductCatalogProductSetsBatch represents a Facebook ProductCatalogProductSetsBatch object
 type ProductCatalogProductSetsBatch struct {
-	Errors             []map[string]interface{} `json:"errors"`
-	Errors_total_count int                      `json:"errors_total_count"`
-	Handle             string                   `json:"handle"`
-	Status             string                   `json:"status"`
+	Errors []map[string]interface{} `json:"errors"`
+	Errors_total_count int `json:"errors_total_count"`
+	Handle string `json:"handle"`
+	Status string `json:"status"`
 }

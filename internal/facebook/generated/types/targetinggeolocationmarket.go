@@ -4,8 +4,8 @@ package types
 
 // TargetingGeoLocationMarket represents a Facebook TargetingGeoLocationMarket object
 type TargetingGeoLocationMarket struct {
-	Country     string `json:"country"`
-	Key         string `json:"key"`
+	Country string `json:"country"`
+	Key string `json:"key"`
 	Market_type string `json:"market_type"`
-	Name        string `json:"name"`
+	Name string `json:"name"`
 }

@@ -21,14 +21,18 @@ func NewFAMEKumoClient(accessToken string) *FAMEKumoClient {
 	}
 }
 
-// facebook_famekumo_get_ GET  for FAMEKumo
-func (c *FAMEKumoClient) Facebook_famekumo_get_(args map[string]interface{}) (interface{}, error) {
+
+// famekumo_get_ GET  for FAMEKumo
+func (c *FAMEKumoClient) Famekumo_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *FAMEKumoClient) Facebook_famekumo_get_(args map[string]interface{}) (in
 
 	return result, nil
 }
+

@@ -4,6 +4,6 @@ package types
 
 // IGUserMessengerProfile represents a Facebook IGUserMessengerProfile object
 type IGUserMessengerProfile struct {
-	Ice_breakers    []map[string]interface{} `json:"ice_breakers"`
+	Ice_breakers []map[string]interface{} `json:"ice_breakers"`
 	Persistent_menu []map[string]interface{} `json:"persistent_menu"`
 }

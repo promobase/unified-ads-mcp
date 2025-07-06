@@ -4,11 +4,11 @@ package types
 
 // InsightsResult represents a Facebook InsightsResult object
 type InsightsResult struct {
-	Description              string          `json:"description"`
-	Description_from_api_doc string          `json:"description_from_api_doc"`
-	Id                       string          `json:"id"`
-	Name                     string          `json:"name"`
-	Period                   string          `json:"period"`
-	Title                    string          `json:"title"`
-	Values                   []InsightsValue `json:"values"`
+	Description string `json:"description"`
+	Description_from_api_doc string `json:"description_from_api_doc"`
+	Id string `json:"id"`
+	Name string `json:"name"`
+	Period string `json:"period"`
+	Title string `json:"title"`
+	Values []InsightsValue `json:"values"`
 }

@@ -15,33 +15,36 @@ import (
 func GetAudioCopyrightTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_audiocopyright_get_update_records tool
-	facebook_audiocopyright_get_update_recordsTool := mcp.NewTool("facebook_audiocopyright_get_update_records",
+
+	// audiocopyright_get_update_records tool
+	audiocopyright_get_update_recordsTool := mcp.NewTool("audiocopyright_get_update_records",
 		mcp.WithDescription("GET update_records for AudioCopyright"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_audiocopyright_get_update_recordsTool)
+	tools = append(tools, audiocopyright_get_update_recordsTool)
 
-	// facebook_audiocopyright_get_ tool
-	facebook_audiocopyright_get_Tool := mcp.NewTool("facebook_audiocopyright_get_",
+	// audiocopyright_get_ tool
+	audiocopyright_get_Tool := mcp.NewTool("audiocopyright_get_",
 		mcp.WithDescription("GET  for AudioCopyright"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_audiocopyright_get_Tool)
+	tools = append(tools, audiocopyright_get_Tool)
+
 
 	return tools
 }
 
 // AudioCopyright handlers
 
-// HandleFacebook_audiocopyright_get_update_records handles the facebook_audiocopyright_get_update_records tool
-func HandleFacebook_audiocopyright_get_update_records(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAudiocopyright_get_update_records handles the audiocopyright_get_update_records tool
+func HandleAudiocopyright_get_update_records(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -54,10 +57,12 @@ func HandleFacebook_audiocopyright_get_update_records(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_audiocopyright_get_update_records(args)
+	result, err := client.Audiocopyright_get_update_records(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_audiocopyright_get_update_records: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute audiocopyright_get_update_records: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -69,8 +74,9 @@ func HandleFacebook_audiocopyright_get_update_records(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_audiocopyright_get_ handles the facebook_audiocopyright_get_ tool
-func HandleFacebook_audiocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAudiocopyright_get_ handles the audiocopyright_get_ tool
+func HandleAudiocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -83,10 +89,12 @@ func HandleFacebook_audiocopyright_get_(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_audiocopyright_get_(args)
+	result, err := client.Audiocopyright_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_audiocopyright_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute audiocopyright_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -97,3 +105,4 @@ func HandleFacebook_audiocopyright_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

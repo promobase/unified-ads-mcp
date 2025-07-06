@@ -6,17 +6,17 @@ import "time"
 
 // CopyrightReferenceContainer represents a Facebook CopyrightReferenceContainer object
 type CopyrightReferenceContainer struct {
-	Content_type            string                 `json:"content_type"`
-	Copyright_creation_time time.Time              `json:"copyright_creation_time"`
-	Download_hd_url         string                 `json:"download_hd_url"`
-	Duration_in_sec         float64                `json:"duration_in_sec"`
-	Id                      string                 `json:"id"`
-	Iswc                    string                 `json:"iswc"`
-	Metadata                map[string]interface{} `json:"metadata"`
-	Playable_video_uri      string                 `json:"playable_video_uri"`
-	Published_time          time.Time              `json:"published_time"`
-	Thumbnail_url           string                 `json:"thumbnail_url"`
-	Title                   string                 `json:"title"`
-	Universal_content_id    string                 `json:"universal_content_id"`
-	Writer_names            []string               `json:"writer_names"`
+	Content_type string `json:"content_type"`
+	Copyright_creation_time time.Time `json:"copyright_creation_time"`
+	Download_hd_url string `json:"download_hd_url"`
+	Duration_in_sec float64 `json:"duration_in_sec"`
+	Id string `json:"id"`
+	Iswc string `json:"iswc"`
+	Metadata map[string]interface{} `json:"metadata"`
+	Playable_video_uri string `json:"playable_video_uri"`
+	Published_time time.Time `json:"published_time"`
+	Thumbnail_url string `json:"thumbnail_url"`
+	Title string `json:"title"`
+	Universal_content_id string `json:"universal_content_id"`
+	Writer_names []string `json:"writer_names"`
 }

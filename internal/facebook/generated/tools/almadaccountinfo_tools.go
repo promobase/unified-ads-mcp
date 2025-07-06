@@ -15,23 +15,26 @@ import (
 func GetALMAdAccountInfoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_almadaccountinfo_get_ tool
-	facebook_almadaccountinfo_get_Tool := mcp.NewTool("facebook_almadaccountinfo_get_",
+
+	// almadaccountinfo_get_ tool
+	almadaccountinfo_get_Tool := mcp.NewTool("almadaccountinfo_get_",
 		mcp.WithDescription("GET  for ALMAdAccountInfo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_almadaccountinfo_get_Tool)
+	tools = append(tools, almadaccountinfo_get_Tool)
+
 
 	return tools
 }
 
 // ALMAdAccountInfo handlers
 
-// HandleFacebook_almadaccountinfo_get_ handles the facebook_almadaccountinfo_get_ tool
-func HandleFacebook_almadaccountinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAlmadaccountinfo_get_ handles the almadaccountinfo_get_ tool
+func HandleAlmadaccountinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_almadaccountinfo_get_(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_almadaccountinfo_get_(args)
+	result, err := client.Almadaccountinfo_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_almadaccountinfo_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute almadaccountinfo_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_almadaccountinfo_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

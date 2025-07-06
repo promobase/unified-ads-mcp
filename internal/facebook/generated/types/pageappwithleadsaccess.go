@@ -4,6 +4,6 @@ package types
 
 // PageAppWithLeadsAccess represents a Facebook PageAppWithLeadsAccess object
 type PageAppWithLeadsAccess struct {
-	Can_access_leads bool   `json:"can_access_leads"`
-	Type_            string `json:"type"`
+	Can_access_leads bool `json:"can_access_leads"`
+	Type_ string `json:"type"`
 }

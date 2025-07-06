@@ -15,23 +15,26 @@ import (
 func GetBidScheduleTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_bidschedule_get_ tool
-	facebook_bidschedule_get_Tool := mcp.NewTool("facebook_bidschedule_get_",
+
+	// bidschedule_get_ tool
+	bidschedule_get_Tool := mcp.NewTool("bidschedule_get_",
 		mcp.WithDescription("GET  for BidSchedule"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_bidschedule_get_Tool)
+	tools = append(tools, bidschedule_get_Tool)
+
 
 	return tools
 }
 
 // BidSchedule handlers
 
-// HandleFacebook_bidschedule_get_ handles the facebook_bidschedule_get_ tool
-func HandleFacebook_bidschedule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBidschedule_get_ handles the bidschedule_get_ tool
+func HandleBidschedule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_bidschedule_get_(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_bidschedule_get_(args)
+	result, err := client.Bidschedule_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_bidschedule_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute bidschedule_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_bidschedule_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

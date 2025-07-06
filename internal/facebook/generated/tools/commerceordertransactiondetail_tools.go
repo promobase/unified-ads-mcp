@@ -15,33 +15,36 @@ import (
 func GetCommerceOrderTransactionDetailTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_commerceordertransactiondetail_get_items tool
-	facebook_commerceordertransactiondetail_get_itemsTool := mcp.NewTool("facebook_commerceordertransactiondetail_get_items",
+
+	// commerceordertransactiondetail_get_items tool
+	commerceordertransactiondetail_get_itemsTool := mcp.NewTool("commerceordertransactiondetail_get_items",
 		mcp.WithDescription("GET items for CommerceOrderTransactionDetail"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_commerceordertransactiondetail_get_itemsTool)
+	tools = append(tools, commerceordertransactiondetail_get_itemsTool)
 
-	// facebook_commerceordertransactiondetail_get_tax_details tool
-	facebook_commerceordertransactiondetail_get_tax_detailsTool := mcp.NewTool("facebook_commerceordertransactiondetail_get_tax_details",
+	// commerceordertransactiondetail_get_tax_details tool
+	commerceordertransactiondetail_get_tax_detailsTool := mcp.NewTool("commerceordertransactiondetail_get_tax_details",
 		mcp.WithDescription("GET tax_details for CommerceOrderTransactionDetail"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_commerceordertransactiondetail_get_tax_detailsTool)
+	tools = append(tools, commerceordertransactiondetail_get_tax_detailsTool)
+
 
 	return tools
 }
 
 // CommerceOrderTransactionDetail handlers
 
-// HandleFacebook_commerceordertransactiondetail_get_items handles the facebook_commerceordertransactiondetail_get_items tool
-func HandleFacebook_commerceordertransactiondetail_get_items(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCommerceordertransactiondetail_get_items handles the commerceordertransactiondetail_get_items tool
+func HandleCommerceordertransactiondetail_get_items(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -54,10 +57,12 @@ func HandleFacebook_commerceordertransactiondetail_get_items(ctx context.Context
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_commerceordertransactiondetail_get_items(args)
+	result, err := client.Commerceordertransactiondetail_get_items(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_commerceordertransactiondetail_get_items: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceordertransactiondetail_get_items: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -69,8 +74,9 @@ func HandleFacebook_commerceordertransactiondetail_get_items(ctx context.Context
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_commerceordertransactiondetail_get_tax_details handles the facebook_commerceordertransactiondetail_get_tax_details tool
-func HandleFacebook_commerceordertransactiondetail_get_tax_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCommerceordertransactiondetail_get_tax_details handles the commerceordertransactiondetail_get_tax_details tool
+func HandleCommerceordertransactiondetail_get_tax_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -83,10 +89,12 @@ func HandleFacebook_commerceordertransactiondetail_get_tax_details(ctx context.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_commerceordertransactiondetail_get_tax_details(args)
+	result, err := client.Commerceordertransactiondetail_get_tax_details(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_commerceordertransactiondetail_get_tax_details: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceordertransactiondetail_get_tax_details: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -97,3 +105,4 @@ func HandleFacebook_commerceordertransactiondetail_get_tax_details(ctx context.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

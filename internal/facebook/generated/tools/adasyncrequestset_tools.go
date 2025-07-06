@@ -15,8 +15,9 @@ import (
 func GetAdAsyncRequestSetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adasyncrequestset_get_requests tool
-	facebook_adasyncrequestset_get_requestsTool := mcp.NewTool("facebook_adasyncrequestset_get_requests",
+
+	// adasyncrequestset_get_requests tool
+	adasyncrequestset_get_requestsTool := mcp.NewTool("adasyncrequestset_get_requests",
 		mcp.WithDescription("GET requests for AdAsyncRequestSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -27,30 +28,30 @@ func GetAdAsyncRequestSetTools(accessToken string) []mcp.Tool {
 			mcp.Enum("CANCELED", "CANCELED_DEPENDENCY", "ERROR", "ERROR_CONFLICTS", "ERROR_DEPENDENCY", "INITIAL", "IN_PROGRESS", "PENDING_DEPENDENCY", "PROCESS_BY_AD_ASYNC_ENGINE", "PROCESS_BY_EVENT_PROCESSOR", "SUCCESS", "USER_CANCELED", "USER_CANCELED_DEPENDENCY"),
 		),
 	)
-	tools = append(tools, facebook_adasyncrequestset_get_requestsTool)
+	tools = append(tools, adasyncrequestset_get_requestsTool)
 
-	// facebook_adasyncrequestset_delete_ tool
-	facebook_adasyncrequestset_delete_Tool := mcp.NewTool("facebook_adasyncrequestset_delete_",
+	// adasyncrequestset_delete_ tool
+	adasyncrequestset_delete_Tool := mcp.NewTool("adasyncrequestset_delete_",
 		mcp.WithDescription("DELETE  for AdAsyncRequestSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adasyncrequestset_delete_Tool)
+	tools = append(tools, adasyncrequestset_delete_Tool)
 
-	// facebook_adasyncrequestset_get_ tool
-	facebook_adasyncrequestset_get_Tool := mcp.NewTool("facebook_adasyncrequestset_get_",
+	// adasyncrequestset_get_ tool
+	adasyncrequestset_get_Tool := mcp.NewTool("adasyncrequestset_get_",
 		mcp.WithDescription("GET  for AdAsyncRequestSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adasyncrequestset_get_Tool)
+	tools = append(tools, adasyncrequestset_get_Tool)
 
-	// facebook_adasyncrequestset_post_ tool
-	facebook_adasyncrequestset_post_Tool := mcp.NewTool("facebook_adasyncrequestset_post_",
+	// adasyncrequestset_post_ tool
+	adasyncrequestset_post_Tool := mcp.NewTool("adasyncrequestset_post_",
 		mcp.WithDescription("POST  for AdAsyncRequestSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -67,15 +68,17 @@ func GetAdAsyncRequestSetTools(accessToken string) []mcp.Tool {
 			mcp.Description("notification_uri parameter for "),
 		),
 	)
-	tools = append(tools, facebook_adasyncrequestset_post_Tool)
+	tools = append(tools, adasyncrequestset_post_Tool)
+
 
 	return tools
 }
 
 // AdAsyncRequestSet handlers
 
-// HandleFacebook_adasyncrequestset_get_requests handles the facebook_adasyncrequestset_get_requests tool
-func HandleFacebook_adasyncrequestset_get_requests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdasyncrequestset_get_requests handles the adasyncrequestset_get_requests tool
+func HandleAdasyncrequestset_get_requests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -94,10 +97,12 @@ func HandleFacebook_adasyncrequestset_get_requests(ctx context.Context, request 
 		args["statuses"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adasyncrequestset_get_requests(args)
+	result, err := client.Adasyncrequestset_get_requests(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adasyncrequestset_get_requests: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adasyncrequestset_get_requests: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -109,8 +114,9 @@ func HandleFacebook_adasyncrequestset_get_requests(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adasyncrequestset_delete_ handles the facebook_adasyncrequestset_delete_ tool
-func HandleFacebook_adasyncrequestset_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdasyncrequestset_delete_ handles the adasyncrequestset_delete_ tool
+func HandleAdasyncrequestset_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -123,10 +129,12 @@ func HandleFacebook_adasyncrequestset_delete_(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adasyncrequestset_delete_(args)
+	result, err := client.Adasyncrequestset_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adasyncrequestset_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adasyncrequestset_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -138,8 +146,9 @@ func HandleFacebook_adasyncrequestset_delete_(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adasyncrequestset_get_ handles the facebook_adasyncrequestset_get_ tool
-func HandleFacebook_adasyncrequestset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdasyncrequestset_get_ handles the adasyncrequestset_get_ tool
+func HandleAdasyncrequestset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -152,10 +161,12 @@ func HandleFacebook_adasyncrequestset_get_(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adasyncrequestset_get_(args)
+	result, err := client.Adasyncrequestset_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adasyncrequestset_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adasyncrequestset_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -167,8 +178,9 @@ func HandleFacebook_adasyncrequestset_get_(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adasyncrequestset_post_ handles the facebook_adasyncrequestset_post_ tool
-func HandleFacebook_adasyncrequestset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdasyncrequestset_post_ handles the adasyncrequestset_post_ tool
+func HandleAdasyncrequestset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -196,10 +208,12 @@ func HandleFacebook_adasyncrequestset_post_(ctx context.Context, request mcp.Cal
 		args["notification_uri"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adasyncrequestset_post_(args)
+	result, err := client.Adasyncrequestset_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adasyncrequestset_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adasyncrequestset_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -210,3 +224,4 @@ func HandleFacebook_adasyncrequestset_post_(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

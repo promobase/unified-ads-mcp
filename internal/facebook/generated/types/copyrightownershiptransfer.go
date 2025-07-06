@@ -6,10 +6,10 @@ import "time"
 
 // CopyrightOwnershipTransfer represents a Facebook CopyrightOwnershipTransfer object
 type CopyrightOwnershipTransfer struct {
-	Id                      string    `json:"id"`
-	Receiving_rights_holder *Profile  `json:"receiving_rights_holder"`
-	Sending_rights_holder   *Profile  `json:"sending_rights_holder"`
-	Status                  string    `json:"status"`
-	Transfer_territories    []string  `json:"transfer_territories"`
-	Transfer_time           time.Time `json:"transfer_time"`
+	Id string `json:"id"`
+	Receiving_rights_holder *Profile `json:"receiving_rights_holder"`
+	Sending_rights_holder *Profile `json:"sending_rights_holder"`
+	Status string `json:"status"`
+	Transfer_territories []string `json:"transfer_territories"`
+	Transfer_time time.Time `json:"transfer_time"`
 }

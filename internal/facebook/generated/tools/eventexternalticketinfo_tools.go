@@ -15,23 +15,26 @@ import (
 func GetEventExternalTicketInfoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_eventexternalticketinfo_get_ tool
-	facebook_eventexternalticketinfo_get_Tool := mcp.NewTool("facebook_eventexternalticketinfo_get_",
+
+	// eventexternalticketinfo_get_ tool
+	eventexternalticketinfo_get_Tool := mcp.NewTool("eventexternalticketinfo_get_",
 		mcp.WithDescription("GET  for EventExternalTicketInfo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_eventexternalticketinfo_get_Tool)
+	tools = append(tools, eventexternalticketinfo_get_Tool)
+
 
 	return tools
 }
 
 // EventExternalTicketInfo handlers
 
-// HandleFacebook_eventexternalticketinfo_get_ handles the facebook_eventexternalticketinfo_get_ tool
-func HandleFacebook_eventexternalticketinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleEventexternalticketinfo_get_ handles the eventexternalticketinfo_get_ tool
+func HandleEventexternalticketinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_eventexternalticketinfo_get_(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_eventexternalticketinfo_get_(args)
+	result, err := client.Eventexternalticketinfo_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_eventexternalticketinfo_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute eventexternalticketinfo_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_eventexternalticketinfo_get_(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

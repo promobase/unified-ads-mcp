@@ -21,14 +21,18 @@ func NewBusinessRoleRequestClient(accessToken string) *BusinessRoleRequestClient
 	}
 }
 
-// facebook_businessrolerequest_delete_ DELETE  for BusinessRoleRequest
-func (c *BusinessRoleRequestClient) Facebook_businessrolerequest_delete_(args map[string]interface{}) (interface{}, error) {
+
+// businessrolerequest_delete_ DELETE  for BusinessRoleRequest
+func (c *BusinessRoleRequestClient) Businessrolerequest_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -60,14 +64,18 @@ func (c *BusinessRoleRequestClient) Facebook_businessrolerequest_delete_(args ma
 	return result, nil
 }
 
-// facebook_businessrolerequest_get_ GET  for BusinessRoleRequest
-func (c *BusinessRoleRequestClient) Facebook_businessrolerequest_get_(args map[string]interface{}) (interface{}, error) {
+
+// businessrolerequest_get_ GET  for BusinessRoleRequest
+func (c *BusinessRoleRequestClient) Businessrolerequest_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -99,9 +107,11 @@ func (c *BusinessRoleRequestClient) Facebook_businessrolerequest_get_(args map[s
 	return result, nil
 }
 
-// facebook_businessrolerequest_post_ POST  for BusinessRoleRequest
-func (c *BusinessRoleRequestClient) Facebook_businessrolerequest_post_(args map[string]interface{}) (interface{}, error) {
+
+// businessrolerequest_post_ POST  for BusinessRoleRequest
+func (c *BusinessRoleRequestClient) Businessrolerequest_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -114,6 +124,7 @@ func (c *BusinessRoleRequestClient) Facebook_businessrolerequest_post_(args map[
 	if val, ok := args["tasks"]; ok {
 		urlParams.Set("tasks", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -144,3 +155,4 @@ func (c *BusinessRoleRequestClient) Facebook_businessrolerequest_post_(args map[
 
 	return result, nil
 }
+

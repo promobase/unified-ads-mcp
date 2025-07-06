@@ -4,7 +4,7 @@ package types
 
 // PartnershipAdsIdentity represents a Facebook PartnershipAdsIdentity object
 type PartnershipAdsIdentity struct {
-	Is_saved             bool                     `json:"is_saved"`
-	Post_types           []string                 `json:"post_types"`
+	Is_saved bool `json:"is_saved"`
+	Post_types []string `json:"post_types"`
 	Secondary_identities []map[string]interface{} `json:"secondary_identities"`
 }

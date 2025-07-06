@@ -15,28 +15,29 @@ import (
 func GetBusinessRoleRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_businessrolerequest_delete_ tool
-	facebook_businessrolerequest_delete_Tool := mcp.NewTool("facebook_businessrolerequest_delete_",
+
+	// businessrolerequest_delete_ tool
+	businessrolerequest_delete_Tool := mcp.NewTool("businessrolerequest_delete_",
 		mcp.WithDescription("DELETE  for BusinessRoleRequest"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_businessrolerequest_delete_Tool)
+	tools = append(tools, businessrolerequest_delete_Tool)
 
-	// facebook_businessrolerequest_get_ tool
-	facebook_businessrolerequest_get_Tool := mcp.NewTool("facebook_businessrolerequest_get_",
+	// businessrolerequest_get_ tool
+	businessrolerequest_get_Tool := mcp.NewTool("businessrolerequest_get_",
 		mcp.WithDescription("GET  for BusinessRoleRequest"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_businessrolerequest_get_Tool)
+	tools = append(tools, businessrolerequest_get_Tool)
 
-	// facebook_businessrolerequest_post_ tool
-	facebook_businessrolerequest_post_Tool := mcp.NewTool("facebook_businessrolerequest_post_",
+	// businessrolerequest_post_ tool
+	businessrolerequest_post_Tool := mcp.NewTool("businessrolerequest_post_",
 		mcp.WithDescription("POST  for BusinessRoleRequest"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -51,15 +52,17 @@ func GetBusinessRoleRequestTools(accessToken string) []mcp.Tool {
 			mcp.Enum("ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"),
 		),
 	)
-	tools = append(tools, facebook_businessrolerequest_post_Tool)
+	tools = append(tools, businessrolerequest_post_Tool)
+
 
 	return tools
 }
 
 // BusinessRoleRequest handlers
 
-// HandleFacebook_businessrolerequest_delete_ handles the facebook_businessrolerequest_delete_ tool
-func HandleFacebook_businessrolerequest_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBusinessrolerequest_delete_ handles the businessrolerequest_delete_ tool
+func HandleBusinessrolerequest_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -72,10 +75,12 @@ func HandleFacebook_businessrolerequest_delete_(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessrolerequest_delete_(args)
+	result, err := client.Businessrolerequest_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessrolerequest_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessrolerequest_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -87,8 +92,9 @@ func HandleFacebook_businessrolerequest_delete_(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessrolerequest_get_ handles the facebook_businessrolerequest_get_ tool
-func HandleFacebook_businessrolerequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBusinessrolerequest_get_ handles the businessrolerequest_get_ tool
+func HandleBusinessrolerequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -101,10 +107,12 @@ func HandleFacebook_businessrolerequest_get_(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessrolerequest_get_(args)
+	result, err := client.Businessrolerequest_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessrolerequest_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessrolerequest_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -116,8 +124,9 @@ func HandleFacebook_businessrolerequest_get_(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessrolerequest_post_ handles the facebook_businessrolerequest_post_ tool
-func HandleFacebook_businessrolerequest_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBusinessrolerequest_post_ handles the businessrolerequest_post_ tool
+func HandleBusinessrolerequest_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -141,10 +150,12 @@ func HandleFacebook_businessrolerequest_post_(ctx context.Context, request mcp.C
 		args["tasks"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessrolerequest_post_(args)
+	result, err := client.Businessrolerequest_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessrolerequest_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessrolerequest_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -155,3 +166,4 @@ func HandleFacebook_businessrolerequest_post_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

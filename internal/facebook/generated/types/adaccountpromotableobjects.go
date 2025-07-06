@@ -4,7 +4,7 @@ package types
 
 // AdAccountPromotableObjects represents a Facebook AdAccountPromotableObjects object
 type AdAccountPromotableObjects struct {
-	Promotable_app_ids  []string `json:"promotable_app_ids"`
+	Promotable_app_ids []string `json:"promotable_app_ids"`
 	Promotable_page_ids []string `json:"promotable_page_ids"`
-	Promotable_urls     []string `json:"promotable_urls"`
+	Promotable_urls []string `json:"promotable_urls"`
 }

@@ -5,8 +5,8 @@ package types
 // AdsPixelSignalsIWLNux represents a Facebook AdsPixelSignalsIWLNux object
 type AdsPixelSignalsIWLNux struct {
 	Background_color string `json:"background_color"`
-	Content          string `json:"content"`
-	Content_color    string `json:"content_color"`
-	Content_size     string `json:"content_size"`
-	Img_url          string `json:"img_url"`
+	Content string `json:"content"`
+	Content_color string `json:"content_color"`
+	Content_size string `json:"content_size"`
+	Img_url string `json:"img_url"`
 }

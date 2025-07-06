@@ -4,8 +4,8 @@ package types
 
 // TargetingGeoLocationPoliticalDistrict represents a Facebook TargetingGeoLocationPoliticalDistrict object
 type TargetingGeoLocationPoliticalDistrict struct {
-	Country            string `json:"country"`
-	Key                string `json:"key"`
-	Name               string `json:"name"`
+	Country string `json:"country"`
+	Key string `json:"key"`
+	Name string `json:"name"`
 	Political_district string `json:"political_district"`
 }

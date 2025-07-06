@@ -15,33 +15,36 @@ import (
 func GetWorkSkillTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_workskill_get_users tool
-	facebook_workskill_get_usersTool := mcp.NewTool("facebook_workskill_get_users",
+
+	// workskill_get_users tool
+	workskill_get_usersTool := mcp.NewTool("workskill_get_users",
 		mcp.WithDescription("GET users for WorkSkill"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_workskill_get_usersTool)
+	tools = append(tools, workskill_get_usersTool)
 
-	// facebook_workskill_get_ tool
-	facebook_workskill_get_Tool := mcp.NewTool("facebook_workskill_get_",
+	// workskill_get_ tool
+	workskill_get_Tool := mcp.NewTool("workskill_get_",
 		mcp.WithDescription("GET  for WorkSkill"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_workskill_get_Tool)
+	tools = append(tools, workskill_get_Tool)
+
 
 	return tools
 }
 
 // WorkSkill handlers
 
-// HandleFacebook_workskill_get_users handles the facebook_workskill_get_users tool
-func HandleFacebook_workskill_get_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleWorkskill_get_users handles the workskill_get_users tool
+func HandleWorkskill_get_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -54,10 +57,12 @@ func HandleFacebook_workskill_get_users(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_workskill_get_users(args)
+	result, err := client.Workskill_get_users(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_workskill_get_users: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute workskill_get_users: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -69,8 +74,9 @@ func HandleFacebook_workskill_get_users(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_workskill_get_ handles the facebook_workskill_get_ tool
-func HandleFacebook_workskill_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleWorkskill_get_ handles the workskill_get_ tool
+func HandleWorkskill_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -83,10 +89,12 @@ func HandleFacebook_workskill_get_(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_workskill_get_(args)
+	result, err := client.Workskill_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_workskill_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute workskill_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -97,3 +105,4 @@ func HandleFacebook_workskill_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

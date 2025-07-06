@@ -6,19 +6,19 @@ import "time"
 
 // LeadGenDataDraft represents a Facebook LeadGenDataDraft object
 type LeadGenDataDraft struct {
-	Block_display_for_non_targeted_viewer bool                   `json:"block_display_for_non_targeted_viewer"`
-	Created_time                          time.Time              `json:"created_time"`
-	Disqualified_end_component            map[string]interface{} `json:"disqualified_end_component"`
-	Follow_up_action_url                  string                 `json:"follow_up_action_url"`
-	Id                                    string                 `json:"id"`
-	Is_optimized_for_quality              bool                   `json:"is_optimized_for_quality"`
-	Legal_content                         map[string]interface{} `json:"legal_content"`
-	Locale                                string                 `json:"locale"`
-	Name                                  string                 `json:"name"`
-	Page                                  *Page                  `json:"page"`
-	Question_page_custom_headline         string                 `json:"question_page_custom_headline"`
-	Questions                             []LeadGenDraftQuestion `json:"questions"`
-	Status                                string                 `json:"status"`
-	Thank_you_page                        map[string]interface{} `json:"thank_you_page"`
-	Tracking_parameters                   []interface{}          `json:"tracking_parameters"`
+	Block_display_for_non_targeted_viewer bool `json:"block_display_for_non_targeted_viewer"`
+	Created_time time.Time `json:"created_time"`
+	Disqualified_end_component map[string]interface{} `json:"disqualified_end_component"`
+	Follow_up_action_url string `json:"follow_up_action_url"`
+	Id string `json:"id"`
+	Is_optimized_for_quality bool `json:"is_optimized_for_quality"`
+	Legal_content map[string]interface{} `json:"legal_content"`
+	Locale string `json:"locale"`
+	Name string `json:"name"`
+	Page *Page `json:"page"`
+	Question_page_custom_headline string `json:"question_page_custom_headline"`
+	Questions []LeadGenDraftQuestion `json:"questions"`
+	Status string `json:"status"`
+	Thank_you_page map[string]interface{} `json:"thank_you_page"`
+	Tracking_parameters []interface{} `json:"tracking_parameters"`
 }

@@ -6,13 +6,13 @@ import "time"
 
 // VideoList represents a Facebook VideoList object
 type VideoList struct {
-	Creation_time time.Time              `json:"creation_time"`
-	Description   string                 `json:"description"`
-	Id            string                 `json:"id"`
-	Last_modified time.Time              `json:"last_modified"`
-	Owner         map[string]interface{} `json:"owner"`
-	Season_number int                    `json:"season_number"`
-	Thumbnail     string                 `json:"thumbnail"`
-	Title         string                 `json:"title"`
-	Videos_count  int                    `json:"videos_count"`
+	Creation_time time.Time `json:"creation_time"`
+	Description string `json:"description"`
+	Id string `json:"id"`
+	Last_modified time.Time `json:"last_modified"`
+	Owner map[string]interface{} `json:"owner"`
+	Season_number int `json:"season_number"`
+	Thumbnail string `json:"thumbnail"`
+	Title string `json:"title"`
+	Videos_count int `json:"videos_count"`
 }

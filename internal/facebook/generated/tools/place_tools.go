@@ -15,23 +15,26 @@ import (
 func GetPlaceTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_place_get_ tool
-	facebook_place_get_Tool := mcp.NewTool("facebook_place_get_",
+
+	// place_get_ tool
+	place_get_Tool := mcp.NewTool("place_get_",
 		mcp.WithDescription("GET  for Place"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_place_get_Tool)
+	tools = append(tools, place_get_Tool)
+
 
 	return tools
 }
 
 // Place handlers
 
-// HandleFacebook_place_get_ handles the facebook_place_get_ tool
-func HandleFacebook_place_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePlace_get_ handles the place_get_ tool
+func HandlePlace_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_place_get_(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_place_get_(args)
+	result, err := client.Place_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_place_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute place_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_place_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

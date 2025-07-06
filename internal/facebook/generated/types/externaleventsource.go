@@ -4,7 +4,7 @@ package types
 
 // ExternalEventSource represents a Facebook ExternalEventSource object
 type ExternalEventSource struct {
-	Id          string `json:"id"`
-	Name        string `json:"name"`
+	Id string `json:"id"`
+	Name string `json:"name"`
 	Source_type string `json:"source_type"`
 }

@@ -21,14 +21,18 @@ func NewCanvasTemplateClient(accessToken string) *CanvasTemplateClient {
 	}
 }
 
-// facebook_canvastemplate_get_ GET  for CanvasTemplate
-func (c *CanvasTemplateClient) Facebook_canvastemplate_get_(args map[string]interface{}) (interface{}, error) {
+
+// canvastemplate_get_ GET  for CanvasTemplate
+func (c *CanvasTemplateClient) Canvastemplate_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *CanvasTemplateClient) Facebook_canvastemplate_get_(args map[string]inte
 
 	return result, nil
 }
+

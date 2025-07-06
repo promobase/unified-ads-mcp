@@ -4,6 +4,6 @@ package types
 
 // CustomAudienceStatus represents a Facebook CustomAudienceStatus object
 type CustomAudienceStatus struct {
-	Code        int    `json:"code"`
+	Code int `json:"code"`
 	Description string `json:"description"`
 }

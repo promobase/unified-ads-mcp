@@ -15,33 +15,36 @@ import (
 func GetStoreCatalogSettingsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_storecatalogsettings_delete_ tool
-	facebook_storecatalogsettings_delete_Tool := mcp.NewTool("facebook_storecatalogsettings_delete_",
+
+	// storecatalogsettings_delete_ tool
+	storecatalogsettings_delete_Tool := mcp.NewTool("storecatalogsettings_delete_",
 		mcp.WithDescription("DELETE  for StoreCatalogSettings"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_storecatalogsettings_delete_Tool)
+	tools = append(tools, storecatalogsettings_delete_Tool)
 
-	// facebook_storecatalogsettings_get_ tool
-	facebook_storecatalogsettings_get_Tool := mcp.NewTool("facebook_storecatalogsettings_get_",
+	// storecatalogsettings_get_ tool
+	storecatalogsettings_get_Tool := mcp.NewTool("storecatalogsettings_get_",
 		mcp.WithDescription("GET  for StoreCatalogSettings"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_storecatalogsettings_get_Tool)
+	tools = append(tools, storecatalogsettings_get_Tool)
+
 
 	return tools
 }
 
 // StoreCatalogSettings handlers
 
-// HandleFacebook_storecatalogsettings_delete_ handles the facebook_storecatalogsettings_delete_ tool
-func HandleFacebook_storecatalogsettings_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleStorecatalogsettings_delete_ handles the storecatalogsettings_delete_ tool
+func HandleStorecatalogsettings_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -54,10 +57,12 @@ func HandleFacebook_storecatalogsettings_delete_(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_storecatalogsettings_delete_(args)
+	result, err := client.Storecatalogsettings_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_storecatalogsettings_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute storecatalogsettings_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -69,8 +74,9 @@ func HandleFacebook_storecatalogsettings_delete_(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_storecatalogsettings_get_ handles the facebook_storecatalogsettings_get_ tool
-func HandleFacebook_storecatalogsettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleStorecatalogsettings_get_ handles the storecatalogsettings_get_ tool
+func HandleStorecatalogsettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -83,10 +89,12 @@ func HandleFacebook_storecatalogsettings_get_(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_storecatalogsettings_get_(args)
+	result, err := client.Storecatalogsettings_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_storecatalogsettings_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute storecatalogsettings_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -97,3 +105,4 @@ func HandleFacebook_storecatalogsettings_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -15,23 +15,26 @@ import (
 func GetWoodhengePurchasedPAYGReceiptTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_woodhengepurchasedpaygreceipt_get_ tool
-	facebook_woodhengepurchasedpaygreceipt_get_Tool := mcp.NewTool("facebook_woodhengepurchasedpaygreceipt_get_",
+
+	// woodhengepurchasedpaygreceipt_get_ tool
+	woodhengepurchasedpaygreceipt_get_Tool := mcp.NewTool("woodhengepurchasedpaygreceipt_get_",
 		mcp.WithDescription("GET  for WoodhengePurchasedPAYGReceipt"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_woodhengepurchasedpaygreceipt_get_Tool)
+	tools = append(tools, woodhengepurchasedpaygreceipt_get_Tool)
+
 
 	return tools
 }
 
 // WoodhengePurchasedPAYGReceipt handlers
 
-// HandleFacebook_woodhengepurchasedpaygreceipt_get_ handles the facebook_woodhengepurchasedpaygreceipt_get_ tool
-func HandleFacebook_woodhengepurchasedpaygreceipt_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleWoodhengepurchasedpaygreceipt_get_ handles the woodhengepurchasedpaygreceipt_get_ tool
+func HandleWoodhengepurchasedpaygreceipt_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_woodhengepurchasedpaygreceipt_get_(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_woodhengepurchasedpaygreceipt_get_(args)
+	result, err := client.Woodhengepurchasedpaygreceipt_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_woodhengepurchasedpaygreceipt_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute woodhengepurchasedpaygreceipt_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_woodhengepurchasedpaygreceipt_get_(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

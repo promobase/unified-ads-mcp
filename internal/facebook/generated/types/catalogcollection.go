@@ -5,6 +5,6 @@ package types
 // CatalogCollection represents a Facebook CatalogCollection object
 type CatalogCollection struct {
 	Description string `json:"description"`
-	Title       string `json:"title"`
-	Url         string `json:"url"`
+	Title string `json:"title"`
+	Url string `json:"url"`
 }

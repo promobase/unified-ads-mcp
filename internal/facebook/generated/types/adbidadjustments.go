@@ -4,7 +4,7 @@ package types
 
 // AdBidAdjustments represents a Facebook AdBidAdjustments object
 type AdBidAdjustments struct {
-	Age_range   interface{}            `json:"age_range"`
-	Page_types  map[string]interface{} `json:"page_types"`
-	User_groups string                 `json:"user_groups"`
+	Age_range interface{} `json:"age_range"`
+	Page_types map[string]interface{} `json:"page_types"`
+	User_groups string `json:"user_groups"`
 }

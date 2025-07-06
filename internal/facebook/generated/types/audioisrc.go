@@ -4,13 +4,13 @@ package types
 
 // AudioIsrc represents a Facebook AudioIsrc object
 type AudioIsrc struct {
-	All_kg_featured_artists               string                 `json:"all_kg_featured_artists"`
-	All_kg_main_artists                   string                 `json:"all_kg_main_artists"`
-	Artist_profile_picture_url            string                 `json:"artist_profile_picture_url"`
-	Id                                    string                 `json:"id"`
-	Isrc                                  string                 `json:"isrc"`
-	Publishing_rights_data                map[string]interface{} `json:"publishing_rights_data"`
-	Top_searchable_artist_id              string                 `json:"top_searchable_artist_id"`
-	Top_searchable_artist_name            string                 `json:"top_searchable_artist_name"`
-	Top_searchable_artist_profile_pic_url string                 `json:"top_searchable_artist_profile_pic_url"`
+	All_kg_featured_artists string `json:"all_kg_featured_artists"`
+	All_kg_main_artists string `json:"all_kg_main_artists"`
+	Artist_profile_picture_url string `json:"artist_profile_picture_url"`
+	Id string `json:"id"`
+	Isrc string `json:"isrc"`
+	Publishing_rights_data map[string]interface{} `json:"publishing_rights_data"`
+	Top_searchable_artist_id string `json:"top_searchable_artist_id"`
+	Top_searchable_artist_name string `json:"top_searchable_artist_name"`
+	Top_searchable_artist_profile_pic_url string `json:"top_searchable_artist_profile_pic_url"`
 }

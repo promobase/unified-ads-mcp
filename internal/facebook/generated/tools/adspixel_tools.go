@@ -15,8 +15,9 @@ import (
 func GetAdsPixelTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adspixel_get_adaccounts tool
-	facebook_adspixel_get_adaccountsTool := mcp.NewTool("facebook_adspixel_get_adaccounts",
+
+	// adspixel_get_adaccounts tool
+	adspixel_get_adaccountsTool := mcp.NewTool("adspixel_get_adaccounts",
 		mcp.WithDescription("GET adaccounts for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -27,10 +28,10 @@ func GetAdsPixelTools(accessToken string) []mcp.Tool {
 			mcp.Description("business parameter for adaccounts"),
 		),
 	)
-	tools = append(tools, facebook_adspixel_get_adaccountsTool)
+	tools = append(tools, adspixel_get_adaccountsTool)
 
-	// facebook_adspixel_delete_agencies tool
-	facebook_adspixel_delete_agenciesTool := mcp.NewTool("facebook_adspixel_delete_agencies",
+	// adspixel_delete_agencies tool
+	adspixel_delete_agenciesTool := mcp.NewTool("adspixel_delete_agencies",
 		mcp.WithDescription("DELETE agencies for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -41,20 +42,20 @@ func GetAdsPixelTools(accessToken string) []mcp.Tool {
 			mcp.Description("business parameter for agencies"),
 		),
 	)
-	tools = append(tools, facebook_adspixel_delete_agenciesTool)
+	tools = append(tools, adspixel_delete_agenciesTool)
 
-	// facebook_adspixel_get_agencies tool
-	facebook_adspixel_get_agenciesTool := mcp.NewTool("facebook_adspixel_get_agencies",
+	// adspixel_get_agencies tool
+	adspixel_get_agenciesTool := mcp.NewTool("adspixel_get_agencies",
 		mcp.WithDescription("GET agencies for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adspixel_get_agenciesTool)
+	tools = append(tools, adspixel_get_agenciesTool)
 
-	// facebook_adspixel_post_agencies tool
-	facebook_adspixel_post_agenciesTool := mcp.NewTool("facebook_adspixel_post_agencies",
+	// adspixel_post_agencies tool
+	adspixel_post_agenciesTool := mcp.NewTool("adspixel_post_agencies",
 		mcp.WithDescription("POST agencies for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -70,10 +71,10 @@ func GetAdsPixelTools(accessToken string) []mcp.Tool {
 			mcp.Enum("ADVERTISE", "ANALYZE", "EDIT", "UPLOAD"),
 		),
 	)
-	tools = append(tools, facebook_adspixel_post_agenciesTool)
+	tools = append(tools, adspixel_post_agenciesTool)
 
-	// facebook_adspixel_post_ahp_configs tool
-	facebook_adspixel_post_ahp_configsTool := mcp.NewTool("facebook_adspixel_post_ahp_configs",
+	// adspixel_post_ahp_configs tool
+	adspixel_post_ahp_configsTool := mcp.NewTool("adspixel_post_ahp_configs",
 		mcp.WithDescription("POST ahp_configs for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -84,10 +85,10 @@ func GetAdsPixelTools(accessToken string) []mcp.Tool {
 			mcp.Description("applink_autosetup parameter for ahp_configs"),
 		),
 	)
-	tools = append(tools, facebook_adspixel_post_ahp_configsTool)
+	tools = append(tools, adspixel_post_ahp_configsTool)
 
-	// facebook_adspixel_get_assigned_users tool
-	facebook_adspixel_get_assigned_usersTool := mcp.NewTool("facebook_adspixel_get_assigned_users",
+	// adspixel_get_assigned_users tool
+	adspixel_get_assigned_usersTool := mcp.NewTool("adspixel_get_assigned_users",
 		mcp.WithDescription("GET assigned_users for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -98,10 +99,10 @@ func GetAdsPixelTools(accessToken string) []mcp.Tool {
 			mcp.Description("business parameter for assigned_users"),
 		),
 	)
-	tools = append(tools, facebook_adspixel_get_assigned_usersTool)
+	tools = append(tools, adspixel_get_assigned_usersTool)
 
-	// facebook_adspixel_post_assigned_users tool
-	facebook_adspixel_post_assigned_usersTool := mcp.NewTool("facebook_adspixel_post_assigned_users",
+	// adspixel_post_assigned_users tool
+	adspixel_post_assigned_usersTool := mcp.NewTool("adspixel_post_assigned_users",
 		mcp.WithDescription("POST assigned_users for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -117,10 +118,10 @@ func GetAdsPixelTools(accessToken string) []mcp.Tool {
 			mcp.Description("user parameter for assigned_users"),
 		),
 	)
-	tools = append(tools, facebook_adspixel_post_assigned_usersTool)
+	tools = append(tools, adspixel_post_assigned_usersTool)
 
-	// facebook_adspixel_get_da_checks tool
-	facebook_adspixel_get_da_checksTool := mcp.NewTool("facebook_adspixel_get_da_checks",
+	// adspixel_get_da_checks tool
+	adspixel_get_da_checksTool := mcp.NewTool("adspixel_get_da_checks",
 		mcp.WithDescription("GET da_checks for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -134,10 +135,10 @@ func GetAdsPixelTools(accessToken string) []mcp.Tool {
 			mcp.Enum("ALL", "APP", "BROWSER", "SERVER"),
 		),
 	)
-	tools = append(tools, facebook_adspixel_get_da_checksTool)
+	tools = append(tools, adspixel_get_da_checksTool)
 
-	// facebook_adspixel_post_events tool
-	facebook_adspixel_post_eventsTool := mcp.NewTool("facebook_adspixel_post_events",
+	// adspixel_post_events tool
+	adspixel_post_eventsTool := mcp.NewTool("adspixel_post_events",
 		mcp.WithDescription("POST events for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -175,10 +176,10 @@ func GetAdsPixelTools(accessToken string) []mcp.Tool {
 			mcp.Description("upload_tag parameter for events"),
 		),
 	)
-	tools = append(tools, facebook_adspixel_post_eventsTool)
+	tools = append(tools, adspixel_post_eventsTool)
 
-	// facebook_adspixel_get_offline_event_uploads tool
-	facebook_adspixel_get_offline_event_uploadsTool := mcp.NewTool("facebook_adspixel_get_offline_event_uploads",
+	// adspixel_get_offline_event_uploads tool
+	adspixel_get_offline_event_uploadsTool := mcp.NewTool("adspixel_get_offline_event_uploads",
 		mcp.WithDescription("GET offline_event_uploads for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -202,30 +203,30 @@ func GetAdsPixelTools(accessToken string) []mcp.Tool {
 			mcp.Description("upload_tag parameter for offline_event_uploads"),
 		),
 	)
-	tools = append(tools, facebook_adspixel_get_offline_event_uploadsTool)
+	tools = append(tools, adspixel_get_offline_event_uploadsTool)
 
-	// facebook_adspixel_get_openbridge_configurations tool
-	facebook_adspixel_get_openbridge_configurationsTool := mcp.NewTool("facebook_adspixel_get_openbridge_configurations",
+	// adspixel_get_openbridge_configurations tool
+	adspixel_get_openbridge_configurationsTool := mcp.NewTool("adspixel_get_openbridge_configurations",
 		mcp.WithDescription("GET openbridge_configurations for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adspixel_get_openbridge_configurationsTool)
+	tools = append(tools, adspixel_get_openbridge_configurationsTool)
 
-	// facebook_adspixel_post_shadowtraffichelper tool
-	facebook_adspixel_post_shadowtraffichelperTool := mcp.NewTool("facebook_adspixel_post_shadowtraffichelper",
+	// adspixel_post_shadowtraffichelper tool
+	adspixel_post_shadowtraffichelperTool := mcp.NewTool("adspixel_post_shadowtraffichelper",
 		mcp.WithDescription("POST shadowtraffichelper for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adspixel_post_shadowtraffichelperTool)
+	tools = append(tools, adspixel_post_shadowtraffichelperTool)
 
-	// facebook_adspixel_delete_shared_accounts tool
-	facebook_adspixel_delete_shared_accountsTool := mcp.NewTool("facebook_adspixel_delete_shared_accounts",
+	// adspixel_delete_shared_accounts tool
+	adspixel_delete_shared_accountsTool := mcp.NewTool("adspixel_delete_shared_accounts",
 		mcp.WithDescription("DELETE shared_accounts for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -240,10 +241,10 @@ func GetAdsPixelTools(accessToken string) []mcp.Tool {
 			mcp.Description("business parameter for shared_accounts"),
 		),
 	)
-	tools = append(tools, facebook_adspixel_delete_shared_accountsTool)
+	tools = append(tools, adspixel_delete_shared_accountsTool)
 
-	// facebook_adspixel_get_shared_accounts tool
-	facebook_adspixel_get_shared_accountsTool := mcp.NewTool("facebook_adspixel_get_shared_accounts",
+	// adspixel_get_shared_accounts tool
+	adspixel_get_shared_accountsTool := mcp.NewTool("adspixel_get_shared_accounts",
 		mcp.WithDescription("GET shared_accounts for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -254,10 +255,10 @@ func GetAdsPixelTools(accessToken string) []mcp.Tool {
 			mcp.Description("business parameter for shared_accounts"),
 		),
 	)
-	tools = append(tools, facebook_adspixel_get_shared_accountsTool)
+	tools = append(tools, adspixel_get_shared_accountsTool)
 
-	// facebook_adspixel_post_shared_accounts tool
-	facebook_adspixel_post_shared_accountsTool := mcp.NewTool("facebook_adspixel_post_shared_accounts",
+	// adspixel_post_shared_accounts tool
+	adspixel_post_shared_accountsTool := mcp.NewTool("adspixel_post_shared_accounts",
 		mcp.WithDescription("POST shared_accounts for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -272,20 +273,20 @@ func GetAdsPixelTools(accessToken string) []mcp.Tool {
 			mcp.Description("business parameter for shared_accounts"),
 		),
 	)
-	tools = append(tools, facebook_adspixel_post_shared_accountsTool)
+	tools = append(tools, adspixel_post_shared_accountsTool)
 
-	// facebook_adspixel_get_shared_agencies tool
-	facebook_adspixel_get_shared_agenciesTool := mcp.NewTool("facebook_adspixel_get_shared_agencies",
+	// adspixel_get_shared_agencies tool
+	adspixel_get_shared_agenciesTool := mcp.NewTool("adspixel_get_shared_agencies",
 		mcp.WithDescription("GET shared_agencies for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adspixel_get_shared_agenciesTool)
+	tools = append(tools, adspixel_get_shared_agenciesTool)
 
-	// facebook_adspixel_get_stats tool
-	facebook_adspixel_get_statsTool := mcp.NewTool("facebook_adspixel_get_stats",
+	// adspixel_get_stats tool
+	adspixel_get_statsTool := mcp.NewTool("adspixel_get_stats",
 		mcp.WithDescription("GET stats for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -308,20 +309,20 @@ func GetAdsPixelTools(accessToken string) []mcp.Tool {
 			mcp.Description("start_time parameter for stats"),
 		),
 	)
-	tools = append(tools, facebook_adspixel_get_statsTool)
+	tools = append(tools, adspixel_get_statsTool)
 
-	// facebook_adspixel_get_ tool
-	facebook_adspixel_get_Tool := mcp.NewTool("facebook_adspixel_get_",
+	// adspixel_get_ tool
+	adspixel_get_Tool := mcp.NewTool("adspixel_get_",
 		mcp.WithDescription("GET  for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adspixel_get_Tool)
+	tools = append(tools, adspixel_get_Tool)
 
-	// facebook_adspixel_post_ tool
-	facebook_adspixel_post_Tool := mcp.NewTool("facebook_adspixel_post_",
+	// adspixel_post_ tool
+	adspixel_post_Tool := mcp.NewTool("adspixel_post_",
 		mcp.WithDescription("POST  for AdsPixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -349,15 +350,17 @@ func GetAdsPixelTools(accessToken string) []mcp.Tool {
 			mcp.Description("server_events_business_ids parameter for "),
 		),
 	)
-	tools = append(tools, facebook_adspixel_post_Tool)
+	tools = append(tools, adspixel_post_Tool)
+
 
 	return tools
 }
 
 // AdsPixel handlers
 
-// HandleFacebook_adspixel_get_adaccounts handles the facebook_adspixel_get_adaccounts tool
-func HandleFacebook_adspixel_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdspixel_get_adaccounts handles the adspixel_get_adaccounts tool
+func HandleAdspixel_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -377,10 +380,12 @@ func HandleFacebook_adspixel_get_adaccounts(ctx context.Context, request mcp.Cal
 	}
 	args["business"] = business
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adspixel_get_adaccounts(args)
+	result, err := client.Adspixel_get_adaccounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_get_adaccounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_get_adaccounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -392,8 +397,9 @@ func HandleFacebook_adspixel_get_adaccounts(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adspixel_delete_agencies handles the facebook_adspixel_delete_agencies tool
-func HandleFacebook_adspixel_delete_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdspixel_delete_agencies handles the adspixel_delete_agencies tool
+func HandleAdspixel_delete_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -413,10 +419,12 @@ func HandleFacebook_adspixel_delete_agencies(ctx context.Context, request mcp.Ca
 	}
 	args["business"] = business
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adspixel_delete_agencies(args)
+	result, err := client.Adspixel_delete_agencies(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_delete_agencies: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_delete_agencies: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -428,8 +436,9 @@ func HandleFacebook_adspixel_delete_agencies(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adspixel_get_agencies handles the facebook_adspixel_get_agencies tool
-func HandleFacebook_adspixel_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdspixel_get_agencies handles the adspixel_get_agencies tool
+func HandleAdspixel_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -442,10 +451,12 @@ func HandleFacebook_adspixel_get_agencies(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adspixel_get_agencies(args)
+	result, err := client.Adspixel_get_agencies(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_get_agencies: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_get_agencies: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -457,8 +468,9 @@ func HandleFacebook_adspixel_get_agencies(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adspixel_post_agencies handles the facebook_adspixel_post_agencies tool
-func HandleFacebook_adspixel_post_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdspixel_post_agencies handles the adspixel_post_agencies tool
+func HandleAdspixel_post_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -485,10 +497,12 @@ func HandleFacebook_adspixel_post_agencies(ctx context.Context, request mcp.Call
 	}
 	args["permitted_tasks"] = permitted_tasks
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adspixel_post_agencies(args)
+	result, err := client.Adspixel_post_agencies(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_post_agencies: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_post_agencies: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -500,8 +514,9 @@ func HandleFacebook_adspixel_post_agencies(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adspixel_post_ahp_configs handles the facebook_adspixel_post_ahp_configs tool
-func HandleFacebook_adspixel_post_ahp_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdspixel_post_ahp_configs handles the adspixel_post_ahp_configs tool
+func HandleAdspixel_post_ahp_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -521,10 +536,12 @@ func HandleFacebook_adspixel_post_ahp_configs(ctx context.Context, request mcp.C
 	}
 	args["applink_autosetup"] = applink_autosetup
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adspixel_post_ahp_configs(args)
+	result, err := client.Adspixel_post_ahp_configs(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_post_ahp_configs: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_post_ahp_configs: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -536,8 +553,9 @@ func HandleFacebook_adspixel_post_ahp_configs(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adspixel_get_assigned_users handles the facebook_adspixel_get_assigned_users tool
-func HandleFacebook_adspixel_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdspixel_get_assigned_users handles the adspixel_get_assigned_users tool
+func HandleAdspixel_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -557,10 +575,12 @@ func HandleFacebook_adspixel_get_assigned_users(ctx context.Context, request mcp
 	}
 	args["business"] = business
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adspixel_get_assigned_users(args)
+	result, err := client.Adspixel_get_assigned_users(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_get_assigned_users: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_get_assigned_users: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -572,8 +592,9 @@ func HandleFacebook_adspixel_get_assigned_users(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adspixel_post_assigned_users handles the facebook_adspixel_post_assigned_users tool
-func HandleFacebook_adspixel_post_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdspixel_post_assigned_users handles the adspixel_post_assigned_users tool
+func HandleAdspixel_post_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -600,10 +621,12 @@ func HandleFacebook_adspixel_post_assigned_users(ctx context.Context, request mc
 	}
 	args["user"] = user
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adspixel_post_assigned_users(args)
+	result, err := client.Adspixel_post_assigned_users(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_post_assigned_users: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_post_assigned_users: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -615,8 +638,9 @@ func HandleFacebook_adspixel_post_assigned_users(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adspixel_get_da_checks handles the facebook_adspixel_get_da_checks tool
-func HandleFacebook_adspixel_get_da_checks(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdspixel_get_da_checks handles the adspixel_get_da_checks tool
+func HandleAdspixel_get_da_checks(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -640,10 +664,12 @@ func HandleFacebook_adspixel_get_da_checks(ctx context.Context, request mcp.Call
 		args["connection_method"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adspixel_get_da_checks(args)
+	result, err := client.Adspixel_get_da_checks(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_get_da_checks: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_get_da_checks: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -655,8 +681,9 @@ func HandleFacebook_adspixel_get_da_checks(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adspixel_post_events handles the facebook_adspixel_post_events tool
-func HandleFacebook_adspixel_post_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdspixel_post_events handles the adspixel_post_events tool
+func HandleAdspixel_post_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -723,10 +750,12 @@ func HandleFacebook_adspixel_post_events(ctx context.Context, request mcp.CallTo
 		args["upload_tag"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adspixel_post_events(args)
+	result, err := client.Adspixel_post_events(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_post_events: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_post_events: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -738,8 +767,9 @@ func HandleFacebook_adspixel_post_events(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adspixel_get_offline_event_uploads handles the facebook_adspixel_get_offline_event_uploads tool
-func HandleFacebook_adspixel_get_offline_event_uploads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdspixel_get_offline_event_uploads handles the adspixel_get_offline_event_uploads tool
+func HandleAdspixel_get_offline_event_uploads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -777,10 +807,12 @@ func HandleFacebook_adspixel_get_offline_event_uploads(ctx context.Context, requ
 		args["upload_tag"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adspixel_get_offline_event_uploads(args)
+	result, err := client.Adspixel_get_offline_event_uploads(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_get_offline_event_uploads: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_get_offline_event_uploads: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -792,8 +824,9 @@ func HandleFacebook_adspixel_get_offline_event_uploads(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adspixel_get_openbridge_configurations handles the facebook_adspixel_get_openbridge_configurations tool
-func HandleFacebook_adspixel_get_openbridge_configurations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdspixel_get_openbridge_configurations handles the adspixel_get_openbridge_configurations tool
+func HandleAdspixel_get_openbridge_configurations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -806,10 +839,12 @@ func HandleFacebook_adspixel_get_openbridge_configurations(ctx context.Context, 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adspixel_get_openbridge_configurations(args)
+	result, err := client.Adspixel_get_openbridge_configurations(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_get_openbridge_configurations: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_get_openbridge_configurations: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -821,8 +856,9 @@ func HandleFacebook_adspixel_get_openbridge_configurations(ctx context.Context, 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adspixel_post_shadowtraffichelper handles the facebook_adspixel_post_shadowtraffichelper tool
-func HandleFacebook_adspixel_post_shadowtraffichelper(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdspixel_post_shadowtraffichelper handles the adspixel_post_shadowtraffichelper tool
+func HandleAdspixel_post_shadowtraffichelper(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -835,10 +871,12 @@ func HandleFacebook_adspixel_post_shadowtraffichelper(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adspixel_post_shadowtraffichelper(args)
+	result, err := client.Adspixel_post_shadowtraffichelper(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_post_shadowtraffichelper: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_post_shadowtraffichelper: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -850,87 +888,9 @@ func HandleFacebook_adspixel_post_shadowtraffichelper(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adspixel_delete_shared_accounts handles the facebook_adspixel_delete_shared_accounts tool
-func HandleFacebook_adspixel_delete_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
 
-	// Create client
-	client := client.NewAdsPixelClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: account_id
-	account_id, err := request.RequireString("account_id")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
-	}
-	args["account_id"] = account_id
-
-	// Required: business
-	business, err := request.RequireString("business")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
-	}
-	args["business"] = business
-
-	// Call the client method
-	result, err := client.Facebook_adspixel_delete_shared_accounts(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_delete_shared_accounts: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleFacebook_adspixel_get_shared_accounts handles the facebook_adspixel_get_shared_accounts tool
-func HandleFacebook_adspixel_get_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdsPixelClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: business
-	business, err := request.RequireString("business")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
-	}
-	args["business"] = business
-
-	// Call the client method
-	result, err := client.Facebook_adspixel_get_shared_accounts(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_get_shared_accounts: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleFacebook_adspixel_post_shared_accounts handles the facebook_adspixel_post_shared_accounts tool
-func HandleFacebook_adspixel_post_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleAdspixel_delete_shared_accounts handles the adspixel_delete_shared_accounts tool
+func HandleAdspixel_delete_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -957,10 +917,12 @@ func HandleFacebook_adspixel_post_shared_accounts(ctx context.Context, request m
 	}
 	args["business"] = business
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adspixel_post_shared_accounts(args)
+	result, err := client.Adspixel_delete_shared_accounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_post_shared_accounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_delete_shared_accounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -972,8 +934,9 @@ func HandleFacebook_adspixel_post_shared_accounts(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adspixel_get_shared_agencies handles the facebook_adspixel_get_shared_agencies tool
-func HandleFacebook_adspixel_get_shared_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdspixel_get_shared_accounts handles the adspixel_get_shared_accounts tool
+func HandleAdspixel_get_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -986,10 +949,19 @@ func HandleFacebook_adspixel_get_shared_agencies(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
-	// Call the client method
-	result, err := client.Facebook_adspixel_get_shared_agencies(args)
+	// Required: business
+	business, err := request.RequireString("business")
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_get_shared_agencies: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+	}
+	args["business"] = business
+
+
+
+	// Call the client method
+	result, err := client.Adspixel_get_shared_accounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_get_shared_accounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1001,8 +973,87 @@ func HandleFacebook_adspixel_get_shared_agencies(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adspixel_get_stats handles the facebook_adspixel_get_stats tool
-func HandleFacebook_adspixel_get_stats(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdspixel_post_shared_accounts handles the adspixel_post_shared_accounts tool
+func HandleAdspixel_post_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token
+	accessToken, err := request.RequireString("access_token")
+	if err != nil {
+		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewAdsPixelClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: account_id
+	account_id, err := request.RequireString("account_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
+	}
+	args["account_id"] = account_id
+
+	// Required: business
+	business, err := request.RequireString("business")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+	}
+	args["business"] = business
+
+
+
+	// Call the client method
+	result, err := client.Adspixel_post_shared_accounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_post_shared_accounts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+
+// HandleAdspixel_get_shared_agencies handles the adspixel_get_shared_agencies tool
+func HandleAdspixel_get_shared_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token
+	accessToken, err := request.RequireString("access_token")
+	if err != nil {
+		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewAdsPixelClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+
+
+	// Call the client method
+	result, err := client.Adspixel_get_shared_agencies(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_get_shared_agencies: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+
+// HandleAdspixel_get_stats handles the adspixel_get_stats tool
+func HandleAdspixel_get_stats(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1040,10 +1091,12 @@ func HandleFacebook_adspixel_get_stats(ctx context.Context, request mcp.CallTool
 		args["start_time"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adspixel_get_stats(args)
+	result, err := client.Adspixel_get_stats(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_get_stats: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_get_stats: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1055,8 +1108,9 @@ func HandleFacebook_adspixel_get_stats(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adspixel_get_ handles the facebook_adspixel_get_ tool
-func HandleFacebook_adspixel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdspixel_get_ handles the adspixel_get_ tool
+func HandleAdspixel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1069,10 +1123,12 @@ func HandleFacebook_adspixel_get_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adspixel_get_(args)
+	result, err := client.Adspixel_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1084,8 +1140,9 @@ func HandleFacebook_adspixel_get_(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adspixel_post_ handles the facebook_adspixel_post_ tool
-func HandleFacebook_adspixel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdspixel_post_ handles the adspixel_post_ tool
+func HandleAdspixel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1130,10 +1187,12 @@ func HandleFacebook_adspixel_post_(ctx context.Context, request mcp.CallToolRequ
 		args["server_events_business_ids"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adspixel_post_(args)
+	result, err := client.Adspixel_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixel_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixel_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1144,3 +1203,4 @@ func HandleFacebook_adspixel_post_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

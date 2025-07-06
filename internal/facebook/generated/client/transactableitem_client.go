@@ -21,14 +21,18 @@ func NewTransactableItemClient(accessToken string) *TransactableItemClient {
 	}
 }
 
-// facebook_transactableitem_get_channels_to_integrity_status GET channels_to_integrity_status for TransactableItem
-func (c *TransactableItemClient) Facebook_transactableitem_get_channels_to_integrity_status(args map[string]interface{}) (interface{}, error) {
+
+// transactableitem_get_channels_to_integrity_status GET channels_to_integrity_status for TransactableItem
+func (c *TransactableItemClient) Transactableitem_get_channels_to_integrity_status(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "channels_to_integrity_status")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -60,9 +64,11 @@ func (c *TransactableItemClient) Facebook_transactableitem_get_channels_to_integ
 	return result, nil
 }
 
-// facebook_transactableitem_get_override_details GET override_details for TransactableItem
-func (c *TransactableItemClient) Facebook_transactableitem_get_override_details(args map[string]interface{}) (interface{}, error) {
+
+// transactableitem_get_override_details GET override_details for TransactableItem
+func (c *TransactableItemClient) Transactableitem_get_override_details(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "override_details")
@@ -76,6 +82,7 @@ func (c *TransactableItemClient) Facebook_transactableitem_get_override_details(
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -106,15 +113,19 @@ func (c *TransactableItemClient) Facebook_transactableitem_get_override_details(
 	return result, nil
 }
 
-// facebook_transactableitem_get_ GET  for TransactableItem
-func (c *TransactableItemClient) Facebook_transactableitem_get_(args map[string]interface{}) (interface{}, error) {
+
+// transactableitem_get_ GET  for TransactableItem
+func (c *TransactableItemClient) Transactableitem_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -144,3 +155,4 @@ func (c *TransactableItemClient) Facebook_transactableitem_get_(args map[string]
 
 	return result, nil
 }
+

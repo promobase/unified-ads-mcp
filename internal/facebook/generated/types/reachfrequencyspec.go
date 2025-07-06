@@ -4,12 +4,12 @@ package types
 
 // ReachFrequencySpec represents a Facebook ReachFrequencySpec object
 type ReachFrequencySpec struct {
-	Countries                          []string               `json:"countries"`
-	Default_creation_data              map[string]interface{} `json:"default_creation_data"`
-	Global_io_max_campaign_duration    int                    `json:"global_io_max_campaign_duration"`
-	Max_campaign_duration              map[string]interface{} `json:"max_campaign_duration"`
-	Max_days_to_finish                 map[string]interface{} `json:"max_days_to_finish"`
+	Countries []string `json:"countries"`
+	Default_creation_data map[string]interface{} `json:"default_creation_data"`
+	Global_io_max_campaign_duration int `json:"global_io_max_campaign_duration"`
+	Max_campaign_duration map[string]interface{} `json:"max_campaign_duration"`
+	Max_days_to_finish map[string]interface{} `json:"max_days_to_finish"`
 	Max_pause_without_prediction_rerun map[string]interface{} `json:"max_pause_without_prediction_rerun"`
-	Min_campaign_duration              map[string]interface{} `json:"min_campaign_duration"`
-	Min_reach_limits                   map[string]interface{} `json:"min_reach_limits"`
+	Min_campaign_duration map[string]interface{} `json:"min_campaign_duration"`
+	Min_reach_limits map[string]interface{} `json:"min_reach_limits"`
 }

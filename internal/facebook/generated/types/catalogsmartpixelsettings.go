@@ -4,20 +4,20 @@ package types
 
 // CatalogSmartPixelSettings represents a Facebook CatalogSmartPixelSettings object
 type CatalogSmartPixelSettings struct {
-	Allowed_domains             []string                 `json:"allowed_domains"`
-	Available_property_filters  []string                 `json:"available_property_filters"`
-	Catalog                     *ProductCatalog          `json:"catalog"`
+	Allowed_domains []string `json:"allowed_domains"`
+	Available_property_filters []string `json:"available_property_filters"`
+	Catalog *ProductCatalog `json:"catalog"`
 	Cbb_custom_override_filters []map[string]interface{} `json:"cbb_custom_override_filters"`
-	Cbb_default_filter          []interface{}            `json:"cbb_default_filter"`
-	Defaults                    []interface{}            `json:"defaults"`
-	Filters                     []interface{}            `json:"filters"`
-	Id                          string                   `json:"id"`
-	Is_cbb_enabled              bool                     `json:"is_cbb_enabled"`
-	Is_create_enabled           bool                     `json:"is_create_enabled"`
-	Is_delete_enabled           bool                     `json:"is_delete_enabled"`
-	Is_update_enabled           bool                     `json:"is_update_enabled"`
-	Microdata_format_precedence []string                 `json:"microdata_format_precedence"`
-	Pixel                       *AdsPixel                `json:"pixel"`
-	Property_filter             []string                 `json:"property_filter"`
-	Trusted_domains             []string                 `json:"trusted_domains"`
+	Cbb_default_filter []interface{} `json:"cbb_default_filter"`
+	Defaults []interface{} `json:"defaults"`
+	Filters []interface{} `json:"filters"`
+	Id string `json:"id"`
+	Is_cbb_enabled bool `json:"is_cbb_enabled"`
+	Is_create_enabled bool `json:"is_create_enabled"`
+	Is_delete_enabled bool `json:"is_delete_enabled"`
+	Is_update_enabled bool `json:"is_update_enabled"`
+	Microdata_format_precedence []string `json:"microdata_format_precedence"`
+	Pixel *AdsPixel `json:"pixel"`
+	Property_filter []string `json:"property_filter"`
+	Trusted_domains []string `json:"trusted_domains"`
 }

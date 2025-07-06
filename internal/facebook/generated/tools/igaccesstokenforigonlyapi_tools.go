@@ -15,8 +15,9 @@ import (
 func GetIGAccessTokenForIGOnlyAPITools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_igaccesstokenforigonlyapi_get_ tool
-	facebook_igaccesstokenforigonlyapi_get_Tool := mcp.NewTool("facebook_igaccesstokenforigonlyapi_get_",
+
+	// igaccesstokenforigonlyapi_get_ tool
+	igaccesstokenforigonlyapi_get_Tool := mcp.NewTool("igaccesstokenforigonlyapi_get_",
 		mcp.WithDescription("GET  for IGAccessTokenForIGOnlyAPI"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -35,15 +36,17 @@ func GetIGAccessTokenForIGOnlyAPITools(accessToken string) []mcp.Tool {
 			mcp.Description("grant_type parameter for "),
 		),
 	)
-	tools = append(tools, facebook_igaccesstokenforigonlyapi_get_Tool)
+	tools = append(tools, igaccesstokenforigonlyapi_get_Tool)
+
 
 	return tools
 }
 
 // IGAccessTokenForIGOnlyAPI handlers
 
-// HandleFacebook_igaccesstokenforigonlyapi_get_ handles the facebook_igaccesstokenforigonlyapi_get_ tool
-func HandleFacebook_igaccesstokenforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIgaccesstokenforigonlyapi_get_ handles the igaccesstokenforigonlyapi_get_ tool
+func HandleIgaccesstokenforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -77,10 +80,12 @@ func HandleFacebook_igaccesstokenforigonlyapi_get_(ctx context.Context, request 
 	}
 	args["grant_type"] = grant_type
 
+
+
 	// Call the client method
-	result, err := client.Facebook_igaccesstokenforigonlyapi_get_(args)
+	result, err := client.Igaccesstokenforigonlyapi_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_igaccesstokenforigonlyapi_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igaccesstokenforigonlyapi_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -91,3 +96,4 @@ func HandleFacebook_igaccesstokenforigonlyapi_get_(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

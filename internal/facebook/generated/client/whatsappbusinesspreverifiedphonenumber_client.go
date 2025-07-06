@@ -21,14 +21,18 @@ func NewWhatsAppBusinessPreVerifiedPhoneNumberClient(accessToken string) *WhatsA
 	}
 }
 
-// facebook_whatsappbusinesspreverifiedphonenumber_get_partners GET partners for WhatsAppBusinessPreVerifiedPhoneNumber
-func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Facebook_whatsappbusinesspreverifiedphonenumber_get_partners(args map[string]interface{}) (interface{}, error) {
+
+// whatsappbusinesspreverifiedphonenumber_get_partners GET partners for WhatsAppBusinessPreVerifiedPhoneNumber
+func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Whatsappbusinesspreverifiedphonenumber_get_partners(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "partners")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -60,8 +64,9 @@ func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Facebook_whatsappbusiness
 	return result, nil
 }
 
-// facebook_whatsappbusinesspreverifiedphonenumber_post_request_code POST request_code for WhatsAppBusinessPreVerifiedPhoneNumber
-func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Facebook_whatsappbusinesspreverifiedphonenumber_post_request_code(args map[string]interface{}) (interface{}, error) {
+
+// whatsappbusinesspreverifiedphonenumber_post_request_code POST request_code for WhatsAppBusinessPreVerifiedPhoneNumber
+func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Whatsappbusinesspreverifiedphonenumber_post_request_code(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	code_method, ok := args["code_method"]
 	if !ok {
@@ -73,6 +78,7 @@ func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Facebook_whatsappbusiness
 		return nil, fmt.Errorf("missing required parameter: language")
 	}
 	_ = language // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "request_code")
@@ -86,6 +92,7 @@ func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Facebook_whatsappbusiness
 		urlParams.Set("language", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -116,14 +123,16 @@ func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Facebook_whatsappbusiness
 	return result, nil
 }
 
-// facebook_whatsappbusinesspreverifiedphonenumber_post_verify_code POST verify_code for WhatsAppBusinessPreVerifiedPhoneNumber
-func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Facebook_whatsappbusinesspreverifiedphonenumber_post_verify_code(args map[string]interface{}) (interface{}, error) {
+
+// whatsappbusinesspreverifiedphonenumber_post_verify_code POST verify_code for WhatsAppBusinessPreVerifiedPhoneNumber
+func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Whatsappbusinesspreverifiedphonenumber_post_verify_code(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	code, ok := args["code"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: code")
 	}
 	_ = code // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "verify_code")
@@ -134,6 +143,7 @@ func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Facebook_whatsappbusiness
 		urlParams.Set("code", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -164,14 +174,18 @@ func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Facebook_whatsappbusiness
 	return result, nil
 }
 
-// facebook_whatsappbusinesspreverifiedphonenumber_delete_ DELETE  for WhatsAppBusinessPreVerifiedPhoneNumber
-func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Facebook_whatsappbusinesspreverifiedphonenumber_delete_(args map[string]interface{}) (interface{}, error) {
+
+// whatsappbusinesspreverifiedphonenumber_delete_ DELETE  for WhatsAppBusinessPreVerifiedPhoneNumber
+func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Whatsappbusinesspreverifiedphonenumber_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -203,14 +217,18 @@ func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Facebook_whatsappbusiness
 	return result, nil
 }
 
-// facebook_whatsappbusinesspreverifiedphonenumber_get_ GET  for WhatsAppBusinessPreVerifiedPhoneNumber
-func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Facebook_whatsappbusinesspreverifiedphonenumber_get_(args map[string]interface{}) (interface{}, error) {
+
+// whatsappbusinesspreverifiedphonenumber_get_ GET  for WhatsAppBusinessPreVerifiedPhoneNumber
+func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Whatsappbusinesspreverifiedphonenumber_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -241,3 +259,4 @@ func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Facebook_whatsappbusiness
 
 	return result, nil
 }
+

@@ -4,6 +4,6 @@ package types
 
 // LeadGenCustomDisclaimerBody represents a Facebook LeadGenCustomDisclaimerBody object
 type LeadGenCustomDisclaimerBody struct {
-	Text         string                     `json:"text"`
+	Text string `json:"text"`
 	Url_entities []LeadGenURLEntityAtRanges `json:"url_entities"`
 }

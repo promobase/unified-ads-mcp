@@ -4,6 +4,6 @@ package types
 
 // ProductVisualVariant represents a Facebook ProductVisualVariant object
 type ProductVisualVariant struct {
-	Items      []ProductItem `json:"items"`
-	Unique_key string        `json:"unique_key"`
+	Items []ProductItem `json:"items"`
+	Unique_key string `json:"unique_key"`
 }

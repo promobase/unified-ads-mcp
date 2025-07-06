@@ -15,43 +15,46 @@ import (
 func GetPagePostExperimentTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_pagepostexperiment_get_video_insights tool
-	facebook_pagepostexperiment_get_video_insightsTool := mcp.NewTool("facebook_pagepostexperiment_get_video_insights",
+
+	// pagepostexperiment_get_video_insights tool
+	pagepostexperiment_get_video_insightsTool := mcp.NewTool("pagepostexperiment_get_video_insights",
 		mcp.WithDescription("GET video_insights for PagePostExperiment"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_pagepostexperiment_get_video_insightsTool)
+	tools = append(tools, pagepostexperiment_get_video_insightsTool)
 
-	// facebook_pagepostexperiment_delete_ tool
-	facebook_pagepostexperiment_delete_Tool := mcp.NewTool("facebook_pagepostexperiment_delete_",
+	// pagepostexperiment_delete_ tool
+	pagepostexperiment_delete_Tool := mcp.NewTool("pagepostexperiment_delete_",
 		mcp.WithDescription("DELETE  for PagePostExperiment"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_pagepostexperiment_delete_Tool)
+	tools = append(tools, pagepostexperiment_delete_Tool)
 
-	// facebook_pagepostexperiment_get_ tool
-	facebook_pagepostexperiment_get_Tool := mcp.NewTool("facebook_pagepostexperiment_get_",
+	// pagepostexperiment_get_ tool
+	pagepostexperiment_get_Tool := mcp.NewTool("pagepostexperiment_get_",
 		mcp.WithDescription("GET  for PagePostExperiment"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_pagepostexperiment_get_Tool)
+	tools = append(tools, pagepostexperiment_get_Tool)
+
 
 	return tools
 }
 
 // PagePostExperiment handlers
 
-// HandleFacebook_pagepostexperiment_get_video_insights handles the facebook_pagepostexperiment_get_video_insights tool
-func HandleFacebook_pagepostexperiment_get_video_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePagepostexperiment_get_video_insights handles the pagepostexperiment_get_video_insights tool
+func HandlePagepostexperiment_get_video_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -64,10 +67,12 @@ func HandleFacebook_pagepostexperiment_get_video_insights(ctx context.Context, r
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_pagepostexperiment_get_video_insights(args)
+	result, err := client.Pagepostexperiment_get_video_insights(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_pagepostexperiment_get_video_insights: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pagepostexperiment_get_video_insights: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -79,8 +84,9 @@ func HandleFacebook_pagepostexperiment_get_video_insights(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_pagepostexperiment_delete_ handles the facebook_pagepostexperiment_delete_ tool
-func HandleFacebook_pagepostexperiment_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePagepostexperiment_delete_ handles the pagepostexperiment_delete_ tool
+func HandlePagepostexperiment_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -93,10 +99,12 @@ func HandleFacebook_pagepostexperiment_delete_(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_pagepostexperiment_delete_(args)
+	result, err := client.Pagepostexperiment_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_pagepostexperiment_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pagepostexperiment_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -108,8 +116,9 @@ func HandleFacebook_pagepostexperiment_delete_(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_pagepostexperiment_get_ handles the facebook_pagepostexperiment_get_ tool
-func HandleFacebook_pagepostexperiment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePagepostexperiment_get_ handles the pagepostexperiment_get_ tool
+func HandlePagepostexperiment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -122,10 +131,12 @@ func HandleFacebook_pagepostexperiment_get_(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_pagepostexperiment_get_(args)
+	result, err := client.Pagepostexperiment_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_pagepostexperiment_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pagepostexperiment_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -136,3 +147,4 @@ func HandleFacebook_pagepostexperiment_get_(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

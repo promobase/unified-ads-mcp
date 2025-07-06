@@ -15,33 +15,36 @@ import (
 func GetAdAccountCreationRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adaccountcreationrequest_get_adaccounts tool
-	facebook_adaccountcreationrequest_get_adaccountsTool := mcp.NewTool("facebook_adaccountcreationrequest_get_adaccounts",
+
+	// adaccountcreationrequest_get_adaccounts tool
+	adaccountcreationrequest_get_adaccountsTool := mcp.NewTool("adaccountcreationrequest_get_adaccounts",
 		mcp.WithDescription("GET adaccounts for AdAccountCreationRequest"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adaccountcreationrequest_get_adaccountsTool)
+	tools = append(tools, adaccountcreationrequest_get_adaccountsTool)
 
-	// facebook_adaccountcreationrequest_get_ tool
-	facebook_adaccountcreationrequest_get_Tool := mcp.NewTool("facebook_adaccountcreationrequest_get_",
+	// adaccountcreationrequest_get_ tool
+	adaccountcreationrequest_get_Tool := mcp.NewTool("adaccountcreationrequest_get_",
 		mcp.WithDescription("GET  for AdAccountCreationRequest"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adaccountcreationrequest_get_Tool)
+	tools = append(tools, adaccountcreationrequest_get_Tool)
+
 
 	return tools
 }
 
 // AdAccountCreationRequest handlers
 
-// HandleFacebook_adaccountcreationrequest_get_adaccounts handles the facebook_adaccountcreationrequest_get_adaccounts tool
-func HandleFacebook_adaccountcreationrequest_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdaccountcreationrequest_get_adaccounts handles the adaccountcreationrequest_get_adaccounts tool
+func HandleAdaccountcreationrequest_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -54,10 +57,12 @@ func HandleFacebook_adaccountcreationrequest_get_adaccounts(ctx context.Context,
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adaccountcreationrequest_get_adaccounts(args)
+	result, err := client.Adaccountcreationrequest_get_adaccounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adaccountcreationrequest_get_adaccounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adaccountcreationrequest_get_adaccounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -69,8 +74,9 @@ func HandleFacebook_adaccountcreationrequest_get_adaccounts(ctx context.Context,
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adaccountcreationrequest_get_ handles the facebook_adaccountcreationrequest_get_ tool
-func HandleFacebook_adaccountcreationrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdaccountcreationrequest_get_ handles the adaccountcreationrequest_get_ tool
+func HandleAdaccountcreationrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -83,10 +89,12 @@ func HandleFacebook_adaccountcreationrequest_get_(ctx context.Context, request m
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adaccountcreationrequest_get_(args)
+	result, err := client.Adaccountcreationrequest_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adaccountcreationrequest_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adaccountcreationrequest_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -97,3 +105,4 @@ func HandleFacebook_adaccountcreationrequest_get_(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -4,8 +4,8 @@ package types
 
 // SignalsIWLExtractor represents a Facebook SignalsIWLExtractor object
 type SignalsIWLExtractor struct {
-	Domain_uri     string `json:"domain_uri"`
-	Event_type     string `json:"event_type"`
+	Domain_uri string `json:"domain_uri"`
+	Event_type string `json:"event_type"`
 	Extractor_type string `json:"extractor_type"`
-	Id             string `json:"id"`
+	Id string `json:"id"`
 }

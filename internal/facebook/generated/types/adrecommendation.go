@@ -4,12 +4,12 @@ package types
 
 // AdRecommendation represents a Facebook AdRecommendation object
 type AdRecommendation struct {
-	Blame_field         string                `json:"blame_field"`
-	Code                int                   `json:"code"`
-	Confidence          string                `json:"confidence"`
-	Importance          string                `json:"importance"`
-	Message             string                `json:"message"`
+	Blame_field string `json:"blame_field"`
+	Code int `json:"code"`
+	Confidence string `json:"confidence"`
+	Importance string `json:"importance"`
+	Message string `json:"message"`
 	Recommendation_data *AdRecommendationData `json:"recommendation_data"`
-	Title               string                `json:"title"`
-	Value               string                `json:"value"`
+	Title string `json:"title"`
+	Value string `json:"value"`
 }

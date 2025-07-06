@@ -15,23 +15,26 @@ import (
 func GetProductImageTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_productimage_get_ tool
-	facebook_productimage_get_Tool := mcp.NewTool("facebook_productimage_get_",
+
+	// productimage_get_ tool
+	productimage_get_Tool := mcp.NewTool("productimage_get_",
 		mcp.WithDescription("GET  for ProductImage"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productimage_get_Tool)
+	tools = append(tools, productimage_get_Tool)
+
 
 	return tools
 }
 
 // ProductImage handlers
 
-// HandleFacebook_productimage_get_ handles the facebook_productimage_get_ tool
-func HandleFacebook_productimage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductimage_get_ handles the productimage_get_ tool
+func HandleProductimage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_productimage_get_(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productimage_get_(args)
+	result, err := client.Productimage_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productimage_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productimage_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_productimage_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

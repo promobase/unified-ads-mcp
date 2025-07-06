@@ -15,28 +15,29 @@ import (
 func GetHotelTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_hotel_get_channels_to_integrity_status tool
-	facebook_hotel_get_channels_to_integrity_statusTool := mcp.NewTool("facebook_hotel_get_channels_to_integrity_status",
+
+	// hotel_get_channels_to_integrity_status tool
+	hotel_get_channels_to_integrity_statusTool := mcp.NewTool("hotel_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for Hotel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_hotel_get_channels_to_integrity_statusTool)
+	tools = append(tools, hotel_get_channels_to_integrity_statusTool)
 
-	// facebook_hotel_get_hotel_rooms tool
-	facebook_hotel_get_hotel_roomsTool := mcp.NewTool("facebook_hotel_get_hotel_rooms",
+	// hotel_get_hotel_rooms tool
+	hotel_get_hotel_roomsTool := mcp.NewTool("hotel_get_hotel_rooms",
 		mcp.WithDescription("GET hotel_rooms for Hotel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_hotel_get_hotel_roomsTool)
+	tools = append(tools, hotel_get_hotel_roomsTool)
 
-	// facebook_hotel_get_override_details tool
-	facebook_hotel_get_override_detailsTool := mcp.NewTool("facebook_hotel_get_override_details",
+	// hotel_get_override_details tool
+	hotel_get_override_detailsTool := mcp.NewTool("hotel_get_override_details",
 		mcp.WithDescription("GET override_details for Hotel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -50,40 +51,40 @@ func GetHotelTools(accessToken string) []mcp.Tool {
 			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
 		),
 	)
-	tools = append(tools, facebook_hotel_get_override_detailsTool)
+	tools = append(tools, hotel_get_override_detailsTool)
 
-	// facebook_hotel_get_videos_metadata tool
-	facebook_hotel_get_videos_metadataTool := mcp.NewTool("facebook_hotel_get_videos_metadata",
+	// hotel_get_videos_metadata tool
+	hotel_get_videos_metadataTool := mcp.NewTool("hotel_get_videos_metadata",
 		mcp.WithDescription("GET videos_metadata for Hotel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_hotel_get_videos_metadataTool)
+	tools = append(tools, hotel_get_videos_metadataTool)
 
-	// facebook_hotel_delete_ tool
-	facebook_hotel_delete_Tool := mcp.NewTool("facebook_hotel_delete_",
+	// hotel_delete_ tool
+	hotel_delete_Tool := mcp.NewTool("hotel_delete_",
 		mcp.WithDescription("DELETE  for Hotel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_hotel_delete_Tool)
+	tools = append(tools, hotel_delete_Tool)
 
-	// facebook_hotel_get_ tool
-	facebook_hotel_get_Tool := mcp.NewTool("facebook_hotel_get_",
+	// hotel_get_ tool
+	hotel_get_Tool := mcp.NewTool("hotel_get_",
 		mcp.WithDescription("GET  for Hotel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_hotel_get_Tool)
+	tools = append(tools, hotel_get_Tool)
 
-	// facebook_hotel_post_ tool
-	facebook_hotel_post_Tool := mcp.NewTool("facebook_hotel_post_",
+	// hotel_post_ tool
+	hotel_post_Tool := mcp.NewTool("hotel_post_",
 		mcp.WithDescription("POST  for Hotel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -126,15 +127,17 @@ func GetHotelTools(accessToken string) []mcp.Tool {
 			mcp.Description("url parameter for "),
 		),
 	)
-	tools = append(tools, facebook_hotel_post_Tool)
+	tools = append(tools, hotel_post_Tool)
+
 
 	return tools
 }
 
 // Hotel handlers
 
-// HandleFacebook_hotel_get_channels_to_integrity_status handles the facebook_hotel_get_channels_to_integrity_status tool
-func HandleFacebook_hotel_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleHotel_get_channels_to_integrity_status handles the hotel_get_channels_to_integrity_status tool
+func HandleHotel_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -147,10 +150,12 @@ func HandleFacebook_hotel_get_channels_to_integrity_status(ctx context.Context, 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_hotel_get_channels_to_integrity_status(args)
+	result, err := client.Hotel_get_channels_to_integrity_status(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_hotel_get_channels_to_integrity_status: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute hotel_get_channels_to_integrity_status: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -162,8 +167,9 @@ func HandleFacebook_hotel_get_channels_to_integrity_status(ctx context.Context, 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_hotel_get_hotel_rooms handles the facebook_hotel_get_hotel_rooms tool
-func HandleFacebook_hotel_get_hotel_rooms(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleHotel_get_hotel_rooms handles the hotel_get_hotel_rooms tool
+func HandleHotel_get_hotel_rooms(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -176,10 +182,12 @@ func HandleFacebook_hotel_get_hotel_rooms(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_hotel_get_hotel_rooms(args)
+	result, err := client.Hotel_get_hotel_rooms(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_hotel_get_hotel_rooms: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute hotel_get_hotel_rooms: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -191,8 +199,9 @@ func HandleFacebook_hotel_get_hotel_rooms(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_hotel_get_override_details handles the facebook_hotel_get_override_details tool
-func HandleFacebook_hotel_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleHotel_get_override_details handles the hotel_get_override_details tool
+func HandleHotel_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -216,10 +225,12 @@ func HandleFacebook_hotel_get_override_details(ctx context.Context, request mcp.
 		args["type"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_hotel_get_override_details(args)
+	result, err := client.Hotel_get_override_details(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_hotel_get_override_details: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute hotel_get_override_details: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -231,8 +242,9 @@ func HandleFacebook_hotel_get_override_details(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_hotel_get_videos_metadata handles the facebook_hotel_get_videos_metadata tool
-func HandleFacebook_hotel_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleHotel_get_videos_metadata handles the hotel_get_videos_metadata tool
+func HandleHotel_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -245,10 +257,12 @@ func HandleFacebook_hotel_get_videos_metadata(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_hotel_get_videos_metadata(args)
+	result, err := client.Hotel_get_videos_metadata(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_hotel_get_videos_metadata: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute hotel_get_videos_metadata: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -260,8 +274,9 @@ func HandleFacebook_hotel_get_videos_metadata(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_hotel_delete_ handles the facebook_hotel_delete_ tool
-func HandleFacebook_hotel_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleHotel_delete_ handles the hotel_delete_ tool
+func HandleHotel_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -274,10 +289,12 @@ func HandleFacebook_hotel_delete_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_hotel_delete_(args)
+	result, err := client.Hotel_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_hotel_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute hotel_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -289,8 +306,9 @@ func HandleFacebook_hotel_delete_(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_hotel_get_ handles the facebook_hotel_get_ tool
-func HandleFacebook_hotel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleHotel_get_ handles the hotel_get_ tool
+func HandleHotel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -303,10 +321,12 @@ func HandleFacebook_hotel_get_(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_hotel_get_(args)
+	result, err := client.Hotel_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_hotel_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute hotel_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -318,8 +338,9 @@ func HandleFacebook_hotel_get_(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_hotel_post_ handles the facebook_hotel_post_ tool
-func HandleFacebook_hotel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleHotel_post_ handles the hotel_post_ tool
+func HandleHotel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -396,10 +417,12 @@ func HandleFacebook_hotel_post_(ctx context.Context, request mcp.CallToolRequest
 		args["url"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_hotel_post_(args)
+	result, err := client.Hotel_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_hotel_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute hotel_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -410,3 +433,4 @@ func HandleFacebook_hotel_post_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

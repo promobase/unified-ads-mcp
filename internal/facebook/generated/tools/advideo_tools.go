@@ -15,28 +15,29 @@ import (
 func GetAdVideoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_advideo_get_boost_ads_list tool
-	facebook_advideo_get_boost_ads_listTool := mcp.NewTool("facebook_advideo_get_boost_ads_list",
+
+	// advideo_get_boost_ads_list tool
+	advideo_get_boost_ads_listTool := mcp.NewTool("advideo_get_boost_ads_list",
 		mcp.WithDescription("GET boost_ads_list for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_advideo_get_boost_ads_listTool)
+	tools = append(tools, advideo_get_boost_ads_listTool)
 
-	// facebook_advideo_get_captions tool
-	facebook_advideo_get_captionsTool := mcp.NewTool("facebook_advideo_get_captions",
+	// advideo_get_captions tool
+	advideo_get_captionsTool := mcp.NewTool("advideo_get_captions",
 		mcp.WithDescription("GET captions for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_advideo_get_captionsTool)
+	tools = append(tools, advideo_get_captionsTool)
 
-	// facebook_advideo_post_captions tool
-	facebook_advideo_post_captionsTool := mcp.NewTool("facebook_advideo_post_captions",
+	// advideo_post_captions tool
+	advideo_post_captionsTool := mcp.NewTool("advideo_post_captions",
 		mcp.WithDescription("POST captions for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -52,20 +53,20 @@ func GetAdVideoTools(accessToken string) []mcp.Tool {
 			mcp.Description("locales_to_delete parameter for captions"),
 		),
 	)
-	tools = append(tools, facebook_advideo_post_captionsTool)
+	tools = append(tools, advideo_post_captionsTool)
 
-	// facebook_advideo_get_collaborators tool
-	facebook_advideo_get_collaboratorsTool := mcp.NewTool("facebook_advideo_get_collaborators",
+	// advideo_get_collaborators tool
+	advideo_get_collaboratorsTool := mcp.NewTool("advideo_get_collaborators",
 		mcp.WithDescription("GET collaborators for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_advideo_get_collaboratorsTool)
+	tools = append(tools, advideo_get_collaboratorsTool)
 
-	// facebook_advideo_post_collaborators tool
-	facebook_advideo_post_collaboratorsTool := mcp.NewTool("facebook_advideo_post_collaborators",
+	// advideo_post_collaborators tool
+	advideo_post_collaboratorsTool := mcp.NewTool("advideo_post_collaborators",
 		mcp.WithDescription("POST collaborators for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -76,10 +77,10 @@ func GetAdVideoTools(accessToken string) []mcp.Tool {
 			mcp.Description("target_id parameter for collaborators"),
 		),
 	)
-	tools = append(tools, facebook_advideo_post_collaboratorsTool)
+	tools = append(tools, advideo_post_collaboratorsTool)
 
-	// facebook_advideo_get_comments tool
-	facebook_advideo_get_commentsTool := mcp.NewTool("facebook_advideo_get_comments",
+	// advideo_get_comments tool
+	advideo_get_commentsTool := mcp.NewTool("advideo_get_comments",
 		mcp.WithDescription("GET comments for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -101,10 +102,10 @@ func GetAdVideoTools(accessToken string) []mcp.Tool {
 			mcp.Description("since parameter for comments"),
 		),
 	)
-	tools = append(tools, facebook_advideo_get_commentsTool)
+	tools = append(tools, advideo_get_commentsTool)
 
-	// facebook_advideo_post_comments tool
-	facebook_advideo_post_commentsTool := mcp.NewTool("facebook_advideo_post_comments",
+	// advideo_post_comments tool
+	advideo_post_commentsTool := mcp.NewTool("advideo_post_comments",
 		mcp.WithDescription("POST comments for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -151,20 +152,20 @@ func GetAdVideoTools(accessToken string) []mcp.Tool {
 			mcp.Description("tracking parameter for comments"),
 		),
 	)
-	tools = append(tools, facebook_advideo_post_commentsTool)
+	tools = append(tools, advideo_post_commentsTool)
 
-	// facebook_advideo_get_crosspost_shared_pages tool
-	facebook_advideo_get_crosspost_shared_pagesTool := mcp.NewTool("facebook_advideo_get_crosspost_shared_pages",
+	// advideo_get_crosspost_shared_pages tool
+	advideo_get_crosspost_shared_pagesTool := mcp.NewTool("advideo_get_crosspost_shared_pages",
 		mcp.WithDescription("GET crosspost_shared_pages for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_advideo_get_crosspost_shared_pagesTool)
+	tools = append(tools, advideo_get_crosspost_shared_pagesTool)
 
-	// facebook_advideo_post_gaming_clip_create tool
-	facebook_advideo_post_gaming_clip_createTool := mcp.NewTool("facebook_advideo_post_gaming_clip_create",
+	// advideo_post_gaming_clip_create tool
+	advideo_post_gaming_clip_createTool := mcp.NewTool("advideo_post_gaming_clip_create",
 		mcp.WithDescription("POST gaming_clip_create for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -174,20 +175,20 @@ func GetAdVideoTools(accessToken string) []mcp.Tool {
 			mcp.Description("duration_seconds parameter for gaming_clip_create"),
 		),
 	)
-	tools = append(tools, facebook_advideo_post_gaming_clip_createTool)
+	tools = append(tools, advideo_post_gaming_clip_createTool)
 
-	// facebook_advideo_get_likes tool
-	facebook_advideo_get_likesTool := mcp.NewTool("facebook_advideo_get_likes",
+	// advideo_get_likes tool
+	advideo_get_likesTool := mcp.NewTool("advideo_get_likes",
 		mcp.WithDescription("GET likes for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_advideo_get_likesTool)
+	tools = append(tools, advideo_get_likesTool)
 
-	// facebook_advideo_post_likes tool
-	facebook_advideo_post_likesTool := mcp.NewTool("facebook_advideo_post_likes",
+	// advideo_post_likes tool
+	advideo_post_likesTool := mcp.NewTool("advideo_post_likes",
 		mcp.WithDescription("POST likes for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -206,30 +207,30 @@ func GetAdVideoTools(accessToken string) []mcp.Tool {
 			mcp.Description("tracking parameter for likes"),
 		),
 	)
-	tools = append(tools, facebook_advideo_post_likesTool)
+	tools = append(tools, advideo_post_likesTool)
 
-	// facebook_advideo_get_poll_settings tool
-	facebook_advideo_get_poll_settingsTool := mcp.NewTool("facebook_advideo_get_poll_settings",
+	// advideo_get_poll_settings tool
+	advideo_get_poll_settingsTool := mcp.NewTool("advideo_get_poll_settings",
 		mcp.WithDescription("GET poll_settings for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_advideo_get_poll_settingsTool)
+	tools = append(tools, advideo_get_poll_settingsTool)
 
-	// facebook_advideo_get_polls tool
-	facebook_advideo_get_pollsTool := mcp.NewTool("facebook_advideo_get_polls",
+	// advideo_get_polls tool
+	advideo_get_pollsTool := mcp.NewTool("advideo_get_polls",
 		mcp.WithDescription("GET polls for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_advideo_get_pollsTool)
+	tools = append(tools, advideo_get_pollsTool)
 
-	// facebook_advideo_post_polls tool
-	facebook_advideo_post_pollsTool := mcp.NewTool("facebook_advideo_post_polls",
+	// advideo_post_polls tool
+	advideo_post_pollsTool := mcp.NewTool("advideo_post_polls",
 		mcp.WithDescription("POST polls for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -259,40 +260,40 @@ func GetAdVideoTools(accessToken string) []mcp.Tool {
 			mcp.Description("show_results parameter for polls"),
 		),
 	)
-	tools = append(tools, facebook_advideo_post_pollsTool)
+	tools = append(tools, advideo_post_pollsTool)
 
-	// facebook_advideo_get_sponsor_tags tool
-	facebook_advideo_get_sponsor_tagsTool := mcp.NewTool("facebook_advideo_get_sponsor_tags",
+	// advideo_get_sponsor_tags tool
+	advideo_get_sponsor_tagsTool := mcp.NewTool("advideo_get_sponsor_tags",
 		mcp.WithDescription("GET sponsor_tags for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_advideo_get_sponsor_tagsTool)
+	tools = append(tools, advideo_get_sponsor_tagsTool)
 
-	// facebook_advideo_get_tags tool
-	facebook_advideo_get_tagsTool := mcp.NewTool("facebook_advideo_get_tags",
+	// advideo_get_tags tool
+	advideo_get_tagsTool := mcp.NewTool("advideo_get_tags",
 		mcp.WithDescription("GET tags for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_advideo_get_tagsTool)
+	tools = append(tools, advideo_get_tagsTool)
 
-	// facebook_advideo_get_thumbnails tool
-	facebook_advideo_get_thumbnailsTool := mcp.NewTool("facebook_advideo_get_thumbnails",
+	// advideo_get_thumbnails tool
+	advideo_get_thumbnailsTool := mcp.NewTool("advideo_get_thumbnails",
 		mcp.WithDescription("GET thumbnails for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_advideo_get_thumbnailsTool)
+	tools = append(tools, advideo_get_thumbnailsTool)
 
-	// facebook_advideo_post_thumbnails tool
-	facebook_advideo_post_thumbnailsTool := mcp.NewTool("facebook_advideo_post_thumbnails",
+	// advideo_post_thumbnails tool
+	advideo_post_thumbnailsTool := mcp.NewTool("advideo_post_thumbnails",
 		mcp.WithDescription("POST thumbnails for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -306,10 +307,10 @@ func GetAdVideoTools(accessToken string) []mcp.Tool {
 			mcp.Description("source parameter for thumbnails"),
 		),
 	)
-	tools = append(tools, facebook_advideo_post_thumbnailsTool)
+	tools = append(tools, advideo_post_thumbnailsTool)
 
-	// facebook_advideo_get_video_insights tool
-	facebook_advideo_get_video_insightsTool := mcp.NewTool("facebook_advideo_get_video_insights",
+	// advideo_get_video_insights tool
+	advideo_get_video_insightsTool := mcp.NewTool("advideo_get_video_insights",
 		mcp.WithDescription("GET video_insights for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -329,30 +330,30 @@ func GetAdVideoTools(accessToken string) []mcp.Tool {
 			mcp.Description("until parameter for video_insights"),
 		),
 	)
-	tools = append(tools, facebook_advideo_get_video_insightsTool)
+	tools = append(tools, advideo_get_video_insightsTool)
 
-	// facebook_advideo_delete_ tool
-	facebook_advideo_delete_Tool := mcp.NewTool("facebook_advideo_delete_",
+	// advideo_delete_ tool
+	advideo_delete_Tool := mcp.NewTool("advideo_delete_",
 		mcp.WithDescription("DELETE  for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_advideo_delete_Tool)
+	tools = append(tools, advideo_delete_Tool)
 
-	// facebook_advideo_get_ tool
-	facebook_advideo_get_Tool := mcp.NewTool("facebook_advideo_get_",
+	// advideo_get_ tool
+	advideo_get_Tool := mcp.NewTool("advideo_get_",
 		mcp.WithDescription("GET  for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_advideo_get_Tool)
+	tools = append(tools, advideo_get_Tool)
 
-	// facebook_advideo_post_ tool
-	facebook_advideo_post_Tool := mcp.NewTool("facebook_advideo_post_",
+	// advideo_post_ tool
+	advideo_post_Tool := mcp.NewTool("advideo_post_",
 		mcp.WithDescription("POST  for AdVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -445,15 +446,17 @@ func GetAdVideoTools(accessToken string) []mcp.Tool {
 			mcp.Description("universal_video_id parameter for "),
 		),
 	)
-	tools = append(tools, facebook_advideo_post_Tool)
+	tools = append(tools, advideo_post_Tool)
+
 
 	return tools
 }
 
 // AdVideo handlers
 
-// HandleFacebook_advideo_get_boost_ads_list handles the facebook_advideo_get_boost_ads_list tool
-func HandleFacebook_advideo_get_boost_ads_list(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_get_boost_ads_list handles the advideo_get_boost_ads_list tool
+func HandleAdvideo_get_boost_ads_list(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -466,10 +469,12 @@ func HandleFacebook_advideo_get_boost_ads_list(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_get_boost_ads_list(args)
+	result, err := client.Advideo_get_boost_ads_list(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_get_boost_ads_list: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_boost_ads_list: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -481,8 +486,9 @@ func HandleFacebook_advideo_get_boost_ads_list(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_get_captions handles the facebook_advideo_get_captions tool
-func HandleFacebook_advideo_get_captions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_get_captions handles the advideo_get_captions tool
+func HandleAdvideo_get_captions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -495,10 +501,12 @@ func HandleFacebook_advideo_get_captions(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_get_captions(args)
+	result, err := client.Advideo_get_captions(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_get_captions: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_captions: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -510,8 +518,9 @@ func HandleFacebook_advideo_get_captions(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_post_captions handles the facebook_advideo_post_captions tool
-func HandleFacebook_advideo_post_captions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_post_captions handles the advideo_post_captions tool
+func HandleAdvideo_post_captions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -540,10 +549,12 @@ func HandleFacebook_advideo_post_captions(ctx context.Context, request mcp.CallT
 		args["locales_to_delete"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_post_captions(args)
+	result, err := client.Advideo_post_captions(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_post_captions: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_post_captions: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -555,8 +566,9 @@ func HandleFacebook_advideo_post_captions(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_get_collaborators handles the facebook_advideo_get_collaborators tool
-func HandleFacebook_advideo_get_collaborators(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_get_collaborators handles the advideo_get_collaborators tool
+func HandleAdvideo_get_collaborators(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -569,10 +581,12 @@ func HandleFacebook_advideo_get_collaborators(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_get_collaborators(args)
+	result, err := client.Advideo_get_collaborators(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_get_collaborators: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_collaborators: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -584,8 +598,9 @@ func HandleFacebook_advideo_get_collaborators(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_post_collaborators handles the facebook_advideo_post_collaborators tool
-func HandleFacebook_advideo_post_collaborators(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_post_collaborators handles the advideo_post_collaborators tool
+func HandleAdvideo_post_collaborators(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -605,10 +620,12 @@ func HandleFacebook_advideo_post_collaborators(ctx context.Context, request mcp.
 	}
 	args["target_id"] = target_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_post_collaborators(args)
+	result, err := client.Advideo_post_collaborators(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_post_collaborators: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_post_collaborators: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -620,8 +637,9 @@ func HandleFacebook_advideo_post_collaborators(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_get_comments handles the facebook_advideo_get_comments tool
-func HandleFacebook_advideo_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_get_comments handles the advideo_get_comments tool
+func HandleAdvideo_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -654,10 +672,12 @@ func HandleFacebook_advideo_get_comments(ctx context.Context, request mcp.CallTo
 		args["since"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_get_comments(args)
+	result, err := client.Advideo_get_comments(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_get_comments: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_comments: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -669,8 +689,9 @@ func HandleFacebook_advideo_get_comments(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_post_comments handles the facebook_advideo_post_comments tool
-func HandleFacebook_advideo_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_post_comments handles the advideo_post_comments tool
+func HandleAdvideo_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -750,10 +771,12 @@ func HandleFacebook_advideo_post_comments(ctx context.Context, request mcp.CallT
 		args["tracking"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_post_comments(args)
+	result, err := client.Advideo_post_comments(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_post_comments: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_post_comments: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -765,8 +788,9 @@ func HandleFacebook_advideo_post_comments(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_get_crosspost_shared_pages handles the facebook_advideo_get_crosspost_shared_pages tool
-func HandleFacebook_advideo_get_crosspost_shared_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_get_crosspost_shared_pages handles the advideo_get_crosspost_shared_pages tool
+func HandleAdvideo_get_crosspost_shared_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -779,10 +803,12 @@ func HandleFacebook_advideo_get_crosspost_shared_pages(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_get_crosspost_shared_pages(args)
+	result, err := client.Advideo_get_crosspost_shared_pages(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_get_crosspost_shared_pages: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_crosspost_shared_pages: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -794,8 +820,9 @@ func HandleFacebook_advideo_get_crosspost_shared_pages(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_post_gaming_clip_create handles the facebook_advideo_post_gaming_clip_create tool
-func HandleFacebook_advideo_post_gaming_clip_create(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_post_gaming_clip_create handles the advideo_post_gaming_clip_create tool
+func HandleAdvideo_post_gaming_clip_create(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -813,10 +840,12 @@ func HandleFacebook_advideo_post_gaming_clip_create(ctx context.Context, request
 		args["duration_seconds"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_post_gaming_clip_create(args)
+	result, err := client.Advideo_post_gaming_clip_create(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_post_gaming_clip_create: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_post_gaming_clip_create: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -828,8 +857,9 @@ func HandleFacebook_advideo_post_gaming_clip_create(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_get_likes handles the facebook_advideo_get_likes tool
-func HandleFacebook_advideo_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_get_likes handles the advideo_get_likes tool
+func HandleAdvideo_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -842,10 +872,12 @@ func HandleFacebook_advideo_get_likes(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_get_likes(args)
+	result, err := client.Advideo_get_likes(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_get_likes: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_likes: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -857,8 +889,9 @@ func HandleFacebook_advideo_get_likes(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_post_likes handles the facebook_advideo_post_likes tool
-func HandleFacebook_advideo_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_post_likes handles the advideo_post_likes tool
+func HandleAdvideo_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -891,10 +924,12 @@ func HandleFacebook_advideo_post_likes(ctx context.Context, request mcp.CallTool
 		args["tracking"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_post_likes(args)
+	result, err := client.Advideo_post_likes(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_post_likes: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_post_likes: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -906,8 +941,9 @@ func HandleFacebook_advideo_post_likes(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_get_poll_settings handles the facebook_advideo_get_poll_settings tool
-func HandleFacebook_advideo_get_poll_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_get_poll_settings handles the advideo_get_poll_settings tool
+func HandleAdvideo_get_poll_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -920,10 +956,12 @@ func HandleFacebook_advideo_get_poll_settings(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_get_poll_settings(args)
+	result, err := client.Advideo_get_poll_settings(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_get_poll_settings: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_poll_settings: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -935,8 +973,9 @@ func HandleFacebook_advideo_get_poll_settings(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_get_polls handles the facebook_advideo_get_polls tool
-func HandleFacebook_advideo_get_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_get_polls handles the advideo_get_polls tool
+func HandleAdvideo_get_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -949,10 +988,12 @@ func HandleFacebook_advideo_get_polls(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_get_polls(args)
+	result, err := client.Advideo_get_polls(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_get_polls: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_polls: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -964,8 +1005,9 @@ func HandleFacebook_advideo_get_polls(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_post_polls handles the facebook_advideo_post_polls tool
-func HandleFacebook_advideo_post_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_post_polls handles the advideo_post_polls tool
+func HandleAdvideo_post_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1017,10 +1059,12 @@ func HandleFacebook_advideo_post_polls(ctx context.Context, request mcp.CallTool
 		args["show_results"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_post_polls(args)
+	result, err := client.Advideo_post_polls(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_post_polls: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_post_polls: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1032,8 +1076,9 @@ func HandleFacebook_advideo_post_polls(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_get_sponsor_tags handles the facebook_advideo_get_sponsor_tags tool
-func HandleFacebook_advideo_get_sponsor_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_get_sponsor_tags handles the advideo_get_sponsor_tags tool
+func HandleAdvideo_get_sponsor_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1046,10 +1091,12 @@ func HandleFacebook_advideo_get_sponsor_tags(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_get_sponsor_tags(args)
+	result, err := client.Advideo_get_sponsor_tags(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_get_sponsor_tags: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_sponsor_tags: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1061,8 +1108,9 @@ func HandleFacebook_advideo_get_sponsor_tags(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_get_tags handles the facebook_advideo_get_tags tool
-func HandleFacebook_advideo_get_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_get_tags handles the advideo_get_tags tool
+func HandleAdvideo_get_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1075,10 +1123,12 @@ func HandleFacebook_advideo_get_tags(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_get_tags(args)
+	result, err := client.Advideo_get_tags(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_get_tags: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_tags: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1090,8 +1140,9 @@ func HandleFacebook_advideo_get_tags(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_get_thumbnails handles the facebook_advideo_get_thumbnails tool
-func HandleFacebook_advideo_get_thumbnails(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_get_thumbnails handles the advideo_get_thumbnails tool
+func HandleAdvideo_get_thumbnails(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1104,10 +1155,12 @@ func HandleFacebook_advideo_get_thumbnails(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_get_thumbnails(args)
+	result, err := client.Advideo_get_thumbnails(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_get_thumbnails: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_thumbnails: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1119,8 +1172,9 @@ func HandleFacebook_advideo_get_thumbnails(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_post_thumbnails handles the facebook_advideo_post_thumbnails tool
-func HandleFacebook_advideo_post_thumbnails(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_post_thumbnails handles the advideo_post_thumbnails tool
+func HandleAdvideo_post_thumbnails(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1145,10 +1199,12 @@ func HandleFacebook_advideo_post_thumbnails(ctx context.Context, request mcp.Cal
 	}
 	args["source"] = source
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_post_thumbnails(args)
+	result, err := client.Advideo_post_thumbnails(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_post_thumbnails: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_post_thumbnails: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1160,8 +1216,9 @@ func HandleFacebook_advideo_post_thumbnails(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_get_video_insights handles the facebook_advideo_get_video_insights tool
-func HandleFacebook_advideo_get_video_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_get_video_insights handles the advideo_get_video_insights tool
+func HandleAdvideo_get_video_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1195,10 +1252,12 @@ func HandleFacebook_advideo_get_video_insights(ctx context.Context, request mcp.
 		args["until"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_get_video_insights(args)
+	result, err := client.Advideo_get_video_insights(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_get_video_insights: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_video_insights: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1210,8 +1269,9 @@ func HandleFacebook_advideo_get_video_insights(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_delete_ handles the facebook_advideo_delete_ tool
-func HandleFacebook_advideo_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_delete_ handles the advideo_delete_ tool
+func HandleAdvideo_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1224,10 +1284,12 @@ func HandleFacebook_advideo_delete_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_delete_(args)
+	result, err := client.Advideo_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1239,8 +1301,9 @@ func HandleFacebook_advideo_delete_(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_get_ handles the facebook_advideo_get_ tool
-func HandleFacebook_advideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_get_ handles the advideo_get_ tool
+func HandleAdvideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1253,10 +1316,12 @@ func HandleFacebook_advideo_get_(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_get_(args)
+	result, err := client.Advideo_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1268,8 +1333,9 @@ func HandleFacebook_advideo_get_(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_advideo_post_ handles the facebook_advideo_post_ tool
-func HandleFacebook_advideo_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdvideo_post_ handles the advideo_post_ tool
+func HandleAdvideo_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1428,10 +1494,12 @@ func HandleFacebook_advideo_post_(ctx context.Context, request mcp.CallToolReque
 		args["universal_video_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_advideo_post_(args)
+	result, err := client.Advideo_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_advideo_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1442,3 +1510,4 @@ func HandleFacebook_advideo_post_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

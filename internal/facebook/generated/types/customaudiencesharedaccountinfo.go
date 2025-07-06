@@ -4,9 +4,9 @@ package types
 
 // CustomAudiencesharedAccountInfo represents a Facebook CustomAudiencesharedAccountInfo object
 type CustomAudiencesharedAccountInfo struct {
-	Account_id     string `json:"account_id"`
-	Account_name   string `json:"account_name"`
-	Business_id    string `json:"business_id"`
-	Business_name  string `json:"business_name"`
+	Account_id string `json:"account_id"`
+	Account_name string `json:"account_name"`
+	Business_id string `json:"business_id"`
+	Business_name string `json:"business_name"`
 	Sharing_status string `json:"sharing_status"`
 }

@@ -184,7 +184,7 @@ func generateTools(ctx *CodegenContext) {
 	for nodeName, spec := range ctx.Specs {
 		for _, api := range spec.APIs {
 			tool := MCPTool{
-				Name:        fmt.Sprintf("facebook_%s_%s_%s", strings.ToLower(nodeName), strings.ToLower(api.Method), normalizeEndpoint(api.Endpoint)),
+				Name:        fmt.Sprintf("%s_%s_%s", strings.ToLower(nodeName), strings.ToLower(api.Method), normalizeEndpoint(api.Endpoint)),
 				Description: fmt.Sprintf("%s %s for %s", api.Method, api.Endpoint, nodeName),
 				Method:      api.Method,
 				Endpoint:    api.Endpoint,
@@ -965,10 +965,10 @@ func GetAllTools(accessToken string) []mcp.Tool {
 func RegisterTools(s *server.MCPServer, accessToken string) error {
 	// Get all tools
 	tools := GetAllTools(accessToken)
-	
+
 	// Create a map of handlers
 	handlers := GetAllHandlers()
-	
+
 	// Register each tool with its handler
 	for i := range tools {
 		handler, ok := handlers[tools[i].Name]
@@ -977,17 +977,17 @@ func RegisterTools(s *server.MCPServer, accessToken string) error {
 		}
 		s.AddTool(tools[i], handler)
 	}
-	
+
 	return nil
 }
 
 // GetAllHandlers returns a map of tool name to handler function
 func GetAllHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
-	
+
 {{range .Tools}}	handlers["{{.Name}}"] = Handle{{capitalizeFirst .Name}}
 {{end}}
-	
+
 	return handlers
 }
 `

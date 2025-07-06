@@ -4,7 +4,7 @@ package types
 
 // ProductFeedUploadErrorSample represents a Facebook ProductFeedUploadErrorSample object
 type ProductFeedUploadErrorSample struct {
-	Id          string `json:"id"`
+	Id string `json:"id"`
 	Retailer_id string `json:"retailer_id"`
-	Row_number  int    `json:"row_number"`
+	Row_number int `json:"row_number"`
 }

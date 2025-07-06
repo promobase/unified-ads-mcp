@@ -4,7 +4,7 @@ package types
 
 // PageAboutStoryComposedBlockInlineStyle represents a Facebook PageAboutStoryComposedBlockInlineStyle object
 type PageAboutStoryComposedBlockInlineStyle struct {
-	Length int    `json:"length"`
-	Offset int    `json:"offset"`
-	Style  string `json:"style"`
+	Length int `json:"length"`
+	Offset int `json:"offset"`
+	Style string `json:"style"`
 }

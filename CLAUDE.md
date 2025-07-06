@@ -1,7 +1,7 @@
 This is repo for unified-ads-mcp server. It's a monorepo of golang MCP server implementations of Google Ads, Facebook Business API, TikTok Business API.
 It exposes api for LLMs to CRUD on ads, campaigns, manage, and optimze them. On high level, we incorporate the specs from the source of truth, for FB it's JSON api specs, wrapping the underlying graph api. For tiktok, they have openapi yaml schemas, for google ads, it's protocol buffer definitions. We implement custom codegen scripts that transforms these endpoints to MCP tools, at the same time handles auth.
 
-We'll start with facebook business api, then expand to tiktok business api & google ads as complexity scales. 
+We'll start with facebook business api, then expand to tiktok business api & google ads as complexity scales.
 
 ## Resources
 1. [mcp-go](https://raw.githubusercontent.com/mark3labs/mcp-go/refs/heads/main/README.md) this includes the readme for how to create Model Context Protocal Servers in golang.

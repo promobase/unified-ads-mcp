@@ -15,23 +15,26 @@ import (
 func GetFantasyGameTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_fantasygame_get_ tool
-	facebook_fantasygame_get_Tool := mcp.NewTool("facebook_fantasygame_get_",
+
+	// fantasygame_get_ tool
+	fantasygame_get_Tool := mcp.NewTool("fantasygame_get_",
 		mcp.WithDescription("GET  for FantasyGame"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_fantasygame_get_Tool)
+	tools = append(tools, fantasygame_get_Tool)
+
 
 	return tools
 }
 
 // FantasyGame handlers
 
-// HandleFacebook_fantasygame_get_ handles the facebook_fantasygame_get_ tool
-func HandleFacebook_fantasygame_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleFantasygame_get_ handles the fantasygame_get_ tool
+func HandleFantasygame_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_fantasygame_get_(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_fantasygame_get_(args)
+	result, err := client.Fantasygame_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_fantasygame_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute fantasygame_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_fantasygame_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

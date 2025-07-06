@@ -4,8 +4,8 @@ package types
 
 // PageCategory represents a Facebook PageCategory object
 type PageCategory struct {
-	Api_enum           string         `json:"api_enum"`
+	Api_enum string `json:"api_enum"`
 	Fb_page_categories []PageCategory `json:"fb_page_categories"`
-	Id                 string         `json:"id"`
-	Name               string         `json:"name"`
+	Id string `json:"id"`
+	Name string `json:"name"`
 }

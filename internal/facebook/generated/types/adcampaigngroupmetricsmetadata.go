@@ -4,6 +4,6 @@ package types
 
 // AdCampaignGroupMetricsMetadata represents a Facebook AdCampaignGroupMetricsMetadata object
 type AdCampaignGroupMetricsMetadata struct {
-	Budget_optimization   []string `json:"budget_optimization"`
+	Budget_optimization []string `json:"budget_optimization"`
 	Duplication_flow_tips []string `json:"duplication_flow_tips"`
 }

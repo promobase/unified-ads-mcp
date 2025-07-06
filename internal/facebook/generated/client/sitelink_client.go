@@ -21,14 +21,18 @@ func NewSiteLinkClient(accessToken string) *SiteLinkClient {
 	}
 }
 
-// facebook_sitelink_get_ GET  for SiteLink
-func (c *SiteLinkClient) Facebook_sitelink_get_(args map[string]interface{}) (interface{}, error) {
+
+// sitelink_get_ GET  for SiteLink
+func (c *SiteLinkClient) Sitelink_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *SiteLinkClient) Facebook_sitelink_get_(args map[string]interface{}) (in
 
 	return result, nil
 }
+

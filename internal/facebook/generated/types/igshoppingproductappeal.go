@@ -4,9 +4,9 @@ package types
 
 // IGShoppingProductAppeal represents a Facebook IGShoppingProductAppeal object
 type IGShoppingProductAppeal struct {
-	Eligible_for_appeal   bool     `json:"eligible_for_appeal"`
-	Product_appeal_status string   `json:"product_appeal_status"`
-	Product_id            int      `json:"product_id"`
-	Rejection_reasons     []string `json:"rejection_reasons"`
-	Review_status         string   `json:"review_status"`
+	Eligible_for_appeal bool `json:"eligible_for_appeal"`
+	Product_appeal_status string `json:"product_appeal_status"`
+	Product_id int `json:"product_id"`
+	Rejection_reasons []string `json:"rejection_reasons"`
+	Review_status string `json:"review_status"`
 }

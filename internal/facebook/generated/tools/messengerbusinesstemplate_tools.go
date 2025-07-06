@@ -15,18 +15,19 @@ import (
 func GetMessengerBusinessTemplateTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_messengerbusinesstemplate_get_ tool
-	facebook_messengerbusinesstemplate_get_Tool := mcp.NewTool("facebook_messengerbusinesstemplate_get_",
+
+	// messengerbusinesstemplate_get_ tool
+	messengerbusinesstemplate_get_Tool := mcp.NewTool("messengerbusinesstemplate_get_",
 		mcp.WithDescription("GET  for MessengerBusinessTemplate"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_messengerbusinesstemplate_get_Tool)
+	tools = append(tools, messengerbusinesstemplate_get_Tool)
 
-	// facebook_messengerbusinesstemplate_post_ tool
-	facebook_messengerbusinesstemplate_post_Tool := mcp.NewTool("facebook_messengerbusinesstemplate_post_",
+	// messengerbusinesstemplate_post_ tool
+	messengerbusinesstemplate_post_Tool := mcp.NewTool("messengerbusinesstemplate_post_",
 		mcp.WithDescription("POST  for MessengerBusinessTemplate"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -36,15 +37,17 @@ func GetMessengerBusinessTemplateTools(accessToken string) []mcp.Tool {
 			mcp.Description("components parameter for "),
 		),
 	)
-	tools = append(tools, facebook_messengerbusinesstemplate_post_Tool)
+	tools = append(tools, messengerbusinesstemplate_post_Tool)
+
 
 	return tools
 }
 
 // MessengerBusinessTemplate handlers
 
-// HandleFacebook_messengerbusinesstemplate_get_ handles the facebook_messengerbusinesstemplate_get_ tool
-func HandleFacebook_messengerbusinesstemplate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleMessengerbusinesstemplate_get_ handles the messengerbusinesstemplate_get_ tool
+func HandleMessengerbusinesstemplate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -57,10 +60,12 @@ func HandleFacebook_messengerbusinesstemplate_get_(ctx context.Context, request 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_messengerbusinesstemplate_get_(args)
+	result, err := client.Messengerbusinesstemplate_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_messengerbusinesstemplate_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute messengerbusinesstemplate_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -72,8 +77,9 @@ func HandleFacebook_messengerbusinesstemplate_get_(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_messengerbusinesstemplate_post_ handles the facebook_messengerbusinesstemplate_post_ tool
-func HandleFacebook_messengerbusinesstemplate_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleMessengerbusinesstemplate_post_ handles the messengerbusinesstemplate_post_ tool
+func HandleMessengerbusinesstemplate_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -92,10 +98,12 @@ func HandleFacebook_messengerbusinesstemplate_post_(ctx context.Context, request
 		args["components"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_messengerbusinesstemplate_post_(args)
+	result, err := client.Messengerbusinesstemplate_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_messengerbusinesstemplate_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute messengerbusinesstemplate_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -106,3 +114,4 @@ func HandleFacebook_messengerbusinesstemplate_post_(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

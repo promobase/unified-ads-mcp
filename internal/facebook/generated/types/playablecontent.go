@@ -4,7 +4,7 @@ package types
 
 // PlayableContent represents a Facebook PlayableContent object
 type PlayableContent struct {
-	Id    string   `json:"id"`
-	Name  string   `json:"name"`
+	Id string `json:"id"`
+	Name string `json:"name"`
 	Owner *Profile `json:"owner"`
 }

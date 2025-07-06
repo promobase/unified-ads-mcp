@@ -15,23 +15,26 @@ import (
 func GetLeadGenDataDraftTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_leadgendatadraft_get_ tool
-	facebook_leadgendatadraft_get_Tool := mcp.NewTool("facebook_leadgendatadraft_get_",
+
+	// leadgendatadraft_get_ tool
+	leadgendatadraft_get_Tool := mcp.NewTool("leadgendatadraft_get_",
 		mcp.WithDescription("GET  for LeadGenDataDraft"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_leadgendatadraft_get_Tool)
+	tools = append(tools, leadgendatadraft_get_Tool)
+
 
 	return tools
 }
 
 // LeadGenDataDraft handlers
 
-// HandleFacebook_leadgendatadraft_get_ handles the facebook_leadgendatadraft_get_ tool
-func HandleFacebook_leadgendatadraft_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLeadgendatadraft_get_ handles the leadgendatadraft_get_ tool
+func HandleLeadgendatadraft_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_leadgendatadraft_get_(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_leadgendatadraft_get_(args)
+	result, err := client.Leadgendatadraft_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_leadgendatadraft_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute leadgendatadraft_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_leadgendatadraft_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

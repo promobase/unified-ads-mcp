@@ -4,10 +4,10 @@ package types
 
 // AdPlacePageSet represents a Facebook AdPlacePageSet object
 type AdPlacePageSet struct {
-	Account_id     string   `json:"account_id"`
-	Id             string   `json:"id"`
+	Account_id string `json:"account_id"`
+	Id string `json:"id"`
 	Location_types []string `json:"location_types"`
-	Name           string   `json:"name"`
-	Pages_count    int      `json:"pages_count"`
-	Parent_page    *Page    `json:"parent_page"`
+	Name string `json:"name"`
+	Pages_count int `json:"pages_count"`
+	Parent_page *Page `json:"parent_page"`
 }

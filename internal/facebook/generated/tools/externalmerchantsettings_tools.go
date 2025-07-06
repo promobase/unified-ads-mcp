@@ -15,23 +15,26 @@ import (
 func GetExternalMerchantSettingsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_externalmerchantsettings_get_ tool
-	facebook_externalmerchantsettings_get_Tool := mcp.NewTool("facebook_externalmerchantsettings_get_",
+
+	// externalmerchantsettings_get_ tool
+	externalmerchantsettings_get_Tool := mcp.NewTool("externalmerchantsettings_get_",
 		mcp.WithDescription("GET  for ExternalMerchantSettings"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_externalmerchantsettings_get_Tool)
+	tools = append(tools, externalmerchantsettings_get_Tool)
+
 
 	return tools
 }
 
 // ExternalMerchantSettings handlers
 
-// HandleFacebook_externalmerchantsettings_get_ handles the facebook_externalmerchantsettings_get_ tool
-func HandleFacebook_externalmerchantsettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleExternalmerchantsettings_get_ handles the externalmerchantsettings_get_ tool
+func HandleExternalmerchantsettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_externalmerchantsettings_get_(ctx context.Context, request m
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_externalmerchantsettings_get_(args)
+	result, err := client.Externalmerchantsettings_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_externalmerchantsettings_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute externalmerchantsettings_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_externalmerchantsettings_get_(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

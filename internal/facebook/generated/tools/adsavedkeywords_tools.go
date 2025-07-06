@@ -15,23 +15,26 @@ import (
 func GetAdSavedKeywordsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adsavedkeywords_get_ tool
-	facebook_adsavedkeywords_get_Tool := mcp.NewTool("facebook_adsavedkeywords_get_",
+
+	// adsavedkeywords_get_ tool
+	adsavedkeywords_get_Tool := mcp.NewTool("adsavedkeywords_get_",
 		mcp.WithDescription("GET  for AdSavedKeywords"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adsavedkeywords_get_Tool)
+	tools = append(tools, adsavedkeywords_get_Tool)
+
 
 	return tools
 }
 
 // AdSavedKeywords handlers
 
-// HandleFacebook_adsavedkeywords_get_ handles the facebook_adsavedkeywords_get_ tool
-func HandleFacebook_adsavedkeywords_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdsavedkeywords_get_ handles the adsavedkeywords_get_ tool
+func HandleAdsavedkeywords_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_adsavedkeywords_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adsavedkeywords_get_(args)
+	result, err := client.Adsavedkeywords_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adsavedkeywords_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adsavedkeywords_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_adsavedkeywords_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

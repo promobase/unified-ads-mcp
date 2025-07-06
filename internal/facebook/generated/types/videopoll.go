@@ -4,11 +4,11 @@ package types
 
 // VideoPoll represents a Facebook VideoPoll object
 type VideoPoll struct {
-	Close_after_voting bool   `json:"close_after_voting"`
-	Default_open       bool   `json:"default_open"`
-	Id                 string `json:"id"`
-	Question           string `json:"question"`
-	Show_gradient      bool   `json:"show_gradient"`
-	Show_results       bool   `json:"show_results"`
-	Status             string `json:"status"`
+	Close_after_voting bool `json:"close_after_voting"`
+	Default_open bool `json:"default_open"`
+	Id string `json:"id"`
+	Question string `json:"question"`
+	Show_gradient bool `json:"show_gradient"`
+	Show_results bool `json:"show_results"`
+	Status string `json:"status"`
 }

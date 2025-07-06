@@ -5,5 +5,5 @@ package types
 // Permission represents a Facebook Permission object
 type Permission struct {
 	Permission string `json:"permission"`
-	Status     string `json:"status"`
+	Status string `json:"status"`
 }

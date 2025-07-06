@@ -15,23 +15,26 @@ import (
 func GetWorkExperienceTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_workexperience_get_ tool
-	facebook_workexperience_get_Tool := mcp.NewTool("facebook_workexperience_get_",
+
+	// workexperience_get_ tool
+	workexperience_get_Tool := mcp.NewTool("workexperience_get_",
 		mcp.WithDescription("GET  for WorkExperience"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_workexperience_get_Tool)
+	tools = append(tools, workexperience_get_Tool)
+
 
 	return tools
 }
 
 // WorkExperience handlers
 
-// HandleFacebook_workexperience_get_ handles the facebook_workexperience_get_ tool
-func HandleFacebook_workexperience_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleWorkexperience_get_ handles the workexperience_get_ tool
+func HandleWorkexperience_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_workexperience_get_(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_workexperience_get_(args)
+	result, err := client.Workexperience_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_workexperience_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute workexperience_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_workexperience_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

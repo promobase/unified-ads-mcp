@@ -21,14 +21,18 @@ func NewHoursClient(accessToken string) *HoursClient {
 	}
 }
 
-// facebook_hours_get_ GET  for Hours
-func (c *HoursClient) Facebook_hours_get_(args map[string]interface{}) (interface{}, error) {
+
+// hours_get_ GET  for Hours
+func (c *HoursClient) Hours_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *HoursClient) Facebook_hours_get_(args map[string]interface{}) (interfac
 
 	return result, nil
 }
+

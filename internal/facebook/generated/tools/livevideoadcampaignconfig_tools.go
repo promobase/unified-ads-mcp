@@ -15,23 +15,26 @@ import (
 func GetLiveVideoAdCampaignConfigTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_livevideoadcampaignconfig_get_ tool
-	facebook_livevideoadcampaignconfig_get_Tool := mcp.NewTool("facebook_livevideoadcampaignconfig_get_",
+
+	// livevideoadcampaignconfig_get_ tool
+	livevideoadcampaignconfig_get_Tool := mcp.NewTool("livevideoadcampaignconfig_get_",
 		mcp.WithDescription("GET  for LiveVideoAdCampaignConfig"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_livevideoadcampaignconfig_get_Tool)
+	tools = append(tools, livevideoadcampaignconfig_get_Tool)
+
 
 	return tools
 }
 
 // LiveVideoAdCampaignConfig handlers
 
-// HandleFacebook_livevideoadcampaignconfig_get_ handles the facebook_livevideoadcampaignconfig_get_ tool
-func HandleFacebook_livevideoadcampaignconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLivevideoadcampaignconfig_get_ handles the livevideoadcampaignconfig_get_ tool
+func HandleLivevideoadcampaignconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_livevideoadcampaignconfig_get_(ctx context.Context, request 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_livevideoadcampaignconfig_get_(args)
+	result, err := client.Livevideoadcampaignconfig_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_livevideoadcampaignconfig_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideoadcampaignconfig_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_livevideoadcampaignconfig_get_(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -6,21 +6,21 @@ import "time"
 
 // CopyrightMediaMisuse represents a Facebook CopyrightMediaMisuse object
 type CopyrightMediaMisuse struct {
-	Audio_segments            []map[string]interface{} `json:"audio_segments"`
-	Creation_time             time.Time                `json:"creation_time"`
-	Disabled_audio_segments   []map[string]interface{} `json:"disabled_audio_segments"`
-	Disabled_video_segments   []map[string]interface{} `json:"disabled_video_segments"`
-	Entire_file_issue         bool                     `json:"entire_file_issue"`
-	Entire_file_issue_reasons []string                 `json:"entire_file_issue_reasons"`
-	Expiration_time           time.Time                `json:"expiration_time"`
-	Id                        string                   `json:"id"`
-	Media_asset_id            string                   `json:"media_asset_id"`
-	Reasons                   []string                 `json:"reasons"`
-	Requested_audio_segments  []map[string]interface{} `json:"requested_audio_segments"`
-	Requested_video_segments  []map[string]interface{} `json:"requested_video_segments"`
-	Resolution_type           string                   `json:"resolution_type"`
-	Status                    string                   `json:"status"`
-	Update_time               time.Time                `json:"update_time"`
-	Video_copyright           *VideoCopyright          `json:"video_copyright"`
-	Video_segments            []map[string]interface{} `json:"video_segments"`
+	Audio_segments []map[string]interface{} `json:"audio_segments"`
+	Creation_time time.Time `json:"creation_time"`
+	Disabled_audio_segments []map[string]interface{} `json:"disabled_audio_segments"`
+	Disabled_video_segments []map[string]interface{} `json:"disabled_video_segments"`
+	Entire_file_issue bool `json:"entire_file_issue"`
+	Entire_file_issue_reasons []string `json:"entire_file_issue_reasons"`
+	Expiration_time time.Time `json:"expiration_time"`
+	Id string `json:"id"`
+	Media_asset_id string `json:"media_asset_id"`
+	Reasons []string `json:"reasons"`
+	Requested_audio_segments []map[string]interface{} `json:"requested_audio_segments"`
+	Requested_video_segments []map[string]interface{} `json:"requested_video_segments"`
+	Resolution_type string `json:"resolution_type"`
+	Status string `json:"status"`
+	Update_time time.Time `json:"update_time"`
+	Video_copyright *VideoCopyright `json:"video_copyright"`
+	Video_segments []map[string]interface{} `json:"video_segments"`
 }

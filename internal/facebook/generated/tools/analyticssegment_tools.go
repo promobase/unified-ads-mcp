@@ -15,8 +15,9 @@ import (
 func GetAnalyticsSegmentTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_analyticssegment_get_ tool
-	facebook_analyticssegment_get_Tool := mcp.NewTool("facebook_analyticssegment_get_",
+
+	// analyticssegment_get_ tool
+	analyticssegment_get_Tool := mcp.NewTool("analyticssegment_get_",
 		mcp.WithDescription("GET  for AnalyticsSegment"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -32,15 +33,17 @@ func GetAnalyticsSegmentTools(accessToken string) []mcp.Tool {
 			mcp.Description("start_date parameter for "),
 		),
 	)
-	tools = append(tools, facebook_analyticssegment_get_Tool)
+	tools = append(tools, analyticssegment_get_Tool)
+
 
 	return tools
 }
 
 // AnalyticsSegment handlers
 
-// HandleFacebook_analyticssegment_get_ handles the facebook_analyticssegment_get_ tool
-func HandleFacebook_analyticssegment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAnalyticssegment_get_ handles the analyticssegment_get_ tool
+func HandleAnalyticssegment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -68,10 +71,12 @@ func HandleFacebook_analyticssegment_get_(ctx context.Context, request mcp.CallT
 		args["start_date"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_analyticssegment_get_(args)
+	result, err := client.Analyticssegment_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_analyticssegment_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute analyticssegment_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -82,3 +87,4 @@ func HandleFacebook_analyticssegment_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

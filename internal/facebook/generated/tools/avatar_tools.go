@@ -15,8 +15,9 @@ import (
 func GetAvatarTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_avatar_get_models tool
-	facebook_avatar_get_modelsTool := mcp.NewTool("facebook_avatar_get_models",
+
+	// avatar_get_models tool
+	avatar_get_modelsTool := mcp.NewTool("avatar_get_models",
 		mcp.WithDescription("GET models for Avatar"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -45,25 +46,27 @@ func GetAvatarTools(accessToken string) []mcp.Tool {
 			mcp.Description("sdk_version parameter for models"),
 		),
 	)
-	tools = append(tools, facebook_avatar_get_modelsTool)
+	tools = append(tools, avatar_get_modelsTool)
 
-	// facebook_avatar_get_ tool
-	facebook_avatar_get_Tool := mcp.NewTool("facebook_avatar_get_",
+	// avatar_get_ tool
+	avatar_get_Tool := mcp.NewTool("avatar_get_",
 		mcp.WithDescription("GET  for Avatar"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_avatar_get_Tool)
+	tools = append(tools, avatar_get_Tool)
+
 
 	return tools
 }
 
 // Avatar handlers
 
-// HandleFacebook_avatar_get_models handles the facebook_avatar_get_models tool
-func HandleFacebook_avatar_get_models(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAvatar_get_models handles the avatar_get_models tool
+func HandleAvatar_get_models(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -113,10 +116,12 @@ func HandleFacebook_avatar_get_models(ctx context.Context, request mcp.CallToolR
 		args["sdk_version"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_avatar_get_models(args)
+	result, err := client.Avatar_get_models(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_avatar_get_models: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute avatar_get_models: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -128,8 +133,9 @@ func HandleFacebook_avatar_get_models(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_avatar_get_ handles the facebook_avatar_get_ tool
-func HandleFacebook_avatar_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAvatar_get_ handles the avatar_get_ tool
+func HandleAvatar_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -142,10 +148,12 @@ func HandleFacebook_avatar_get_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_avatar_get_(args)
+	result, err := client.Avatar_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_avatar_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute avatar_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -156,3 +164,4 @@ func HandleFacebook_avatar_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -4,15 +4,15 @@ package types
 
 // ProductCatalogDiagnosticGroup represents a Facebook ProductCatalogDiagnosticGroup object
 type ProductCatalogDiagnosticGroup struct {
-	Affected_channels           []string                 `json:"affected_channels"`
-	Affected_entity             string                   `json:"affected_entity"`
-	Affected_features           []string                 `json:"affected_features"`
-	Diagnostics                 []map[string]interface{} `json:"diagnostics"`
-	Error_code                  int                      `json:"error_code"`
-	Number_of_affected_entities int                      `json:"number_of_affected_entities"`
-	Number_of_affected_items    int                      `json:"number_of_affected_items"`
-	Severity                    string                   `json:"severity"`
-	Subtitle                    string                   `json:"subtitle"`
-	Title                       string                   `json:"title"`
-	Type_                       string                   `json:"type"`
+	Affected_channels []string `json:"affected_channels"`
+	Affected_entity string `json:"affected_entity"`
+	Affected_features []string `json:"affected_features"`
+	Diagnostics []map[string]interface{} `json:"diagnostics"`
+	Error_code int `json:"error_code"`
+	Number_of_affected_entities int `json:"number_of_affected_entities"`
+	Number_of_affected_items int `json:"number_of_affected_items"`
+	Severity string `json:"severity"`
+	Subtitle string `json:"subtitle"`
+	Title string `json:"title"`
+	Type_ string `json:"type"`
 }

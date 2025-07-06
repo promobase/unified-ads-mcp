@@ -15,23 +15,26 @@ import (
 func GetIGBCAdsPermissionTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_igbcadspermission_get_ tool
-	facebook_igbcadspermission_get_Tool := mcp.NewTool("facebook_igbcadspermission_get_",
+
+	// igbcadspermission_get_ tool
+	igbcadspermission_get_Tool := mcp.NewTool("igbcadspermission_get_",
 		mcp.WithDescription("GET  for IGBCAdsPermission"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_igbcadspermission_get_Tool)
+	tools = append(tools, igbcadspermission_get_Tool)
+
 
 	return tools
 }
 
 // IGBCAdsPermission handlers
 
-// HandleFacebook_igbcadspermission_get_ handles the facebook_igbcadspermission_get_ tool
-func HandleFacebook_igbcadspermission_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIgbcadspermission_get_ handles the igbcadspermission_get_ tool
+func HandleIgbcadspermission_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_igbcadspermission_get_(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_igbcadspermission_get_(args)
+	result, err := client.Igbcadspermission_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_igbcadspermission_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igbcadspermission_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_igbcadspermission_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -5,5 +5,5 @@ package types
 // ExtendedCreditEmail represents a Facebook ExtendedCreditEmail object
 type ExtendedCreditEmail struct {
 	Email string `json:"email"`
-	Id    string `json:"id"`
+	Id string `json:"id"`
 }

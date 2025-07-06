@@ -6,12 +6,12 @@ import "time"
 
 // WearableDevicePublicKey represents a Facebook WearableDevicePublicKey object
 type WearableDevicePublicKey struct {
-	Base64_encoded_public_key string    `json:"base64_encoded_public_key"`
-	Creation_time_on_device   time.Time `json:"creation_time_on_device"`
-	Device_uuid               string    `json:"device_uuid"`
-	Id                        string    `json:"id"`
-	Key_type                  string    `json:"key_type"`
-	Owner_id                  string    `json:"owner_id"`
-	Product_use_case          string    `json:"product_use_case"`
-	Version                   string    `json:"version"`
+	Base64_encoded_public_key string `json:"base64_encoded_public_key"`
+	Creation_time_on_device time.Time `json:"creation_time_on_device"`
+	Device_uuid string `json:"device_uuid"`
+	Id string `json:"id"`
+	Key_type string `json:"key_type"`
+	Owner_id string `json:"owner_id"`
+	Product_use_case string `json:"product_use_case"`
+	Version string `json:"version"`
 }

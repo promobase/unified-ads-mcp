@@ -15,53 +15,56 @@ import (
 func GetContentBlockListTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_contentblocklist_get_applied_ad_accounts tool
-	facebook_contentblocklist_get_applied_ad_accountsTool := mcp.NewTool("facebook_contentblocklist_get_applied_ad_accounts",
+
+	// contentblocklist_get_applied_ad_accounts tool
+	contentblocklist_get_applied_ad_accountsTool := mcp.NewTool("contentblocklist_get_applied_ad_accounts",
 		mcp.WithDescription("GET applied_ad_accounts for ContentBlockList"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_contentblocklist_get_applied_ad_accountsTool)
+	tools = append(tools, contentblocklist_get_applied_ad_accountsTool)
 
-	// facebook_contentblocklist_get_facebook_content tool
-	facebook_contentblocklist_get_facebook_contentTool := mcp.NewTool("facebook_contentblocklist_get_facebook_content",
+	// contentblocklist_get_facebook_content tool
+	contentblocklist_get_facebook_contentTool := mcp.NewTool("contentblocklist_get_facebook_content",
 		mcp.WithDescription("GET facebook_content for ContentBlockList"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_contentblocklist_get_facebook_contentTool)
+	tools = append(tools, contentblocklist_get_facebook_contentTool)
 
-	// facebook_contentblocklist_get_instagram_content tool
-	facebook_contentblocklist_get_instagram_contentTool := mcp.NewTool("facebook_contentblocklist_get_instagram_content",
+	// contentblocklist_get_instagram_content tool
+	contentblocklist_get_instagram_contentTool := mcp.NewTool("contentblocklist_get_instagram_content",
 		mcp.WithDescription("GET instagram_content for ContentBlockList"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_contentblocklist_get_instagram_contentTool)
+	tools = append(tools, contentblocklist_get_instagram_contentTool)
 
-	// facebook_contentblocklist_get_ tool
-	facebook_contentblocklist_get_Tool := mcp.NewTool("facebook_contentblocklist_get_",
+	// contentblocklist_get_ tool
+	contentblocklist_get_Tool := mcp.NewTool("contentblocklist_get_",
 		mcp.WithDescription("GET  for ContentBlockList"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_contentblocklist_get_Tool)
+	tools = append(tools, contentblocklist_get_Tool)
+
 
 	return tools
 }
 
 // ContentBlockList handlers
 
-// HandleFacebook_contentblocklist_get_applied_ad_accounts handles the facebook_contentblocklist_get_applied_ad_accounts tool
-func HandleFacebook_contentblocklist_get_applied_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleContentblocklist_get_applied_ad_accounts handles the contentblocklist_get_applied_ad_accounts tool
+func HandleContentblocklist_get_applied_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -74,10 +77,12 @@ func HandleFacebook_contentblocklist_get_applied_ad_accounts(ctx context.Context
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_contentblocklist_get_applied_ad_accounts(args)
+	result, err := client.Contentblocklist_get_applied_ad_accounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_contentblocklist_get_applied_ad_accounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute contentblocklist_get_applied_ad_accounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -89,8 +94,9 @@ func HandleFacebook_contentblocklist_get_applied_ad_accounts(ctx context.Context
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_contentblocklist_get_facebook_content handles the facebook_contentblocklist_get_facebook_content tool
-func HandleFacebook_contentblocklist_get_facebook_content(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleContentblocklist_get_facebook_content handles the contentblocklist_get_facebook_content tool
+func HandleContentblocklist_get_facebook_content(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -103,10 +109,12 @@ func HandleFacebook_contentblocklist_get_facebook_content(ctx context.Context, r
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_contentblocklist_get_facebook_content(args)
+	result, err := client.Contentblocklist_get_facebook_content(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_contentblocklist_get_facebook_content: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute contentblocklist_get_facebook_content: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -118,8 +126,9 @@ func HandleFacebook_contentblocklist_get_facebook_content(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_contentblocklist_get_instagram_content handles the facebook_contentblocklist_get_instagram_content tool
-func HandleFacebook_contentblocklist_get_instagram_content(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleContentblocklist_get_instagram_content handles the contentblocklist_get_instagram_content tool
+func HandleContentblocklist_get_instagram_content(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -132,10 +141,12 @@ func HandleFacebook_contentblocklist_get_instagram_content(ctx context.Context, 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_contentblocklist_get_instagram_content(args)
+	result, err := client.Contentblocklist_get_instagram_content(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_contentblocklist_get_instagram_content: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute contentblocklist_get_instagram_content: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -147,8 +158,9 @@ func HandleFacebook_contentblocklist_get_instagram_content(ctx context.Context, 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_contentblocklist_get_ handles the facebook_contentblocklist_get_ tool
-func HandleFacebook_contentblocklist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleContentblocklist_get_ handles the contentblocklist_get_ tool
+func HandleContentblocklist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -161,10 +173,12 @@ func HandleFacebook_contentblocklist_get_(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_contentblocklist_get_(args)
+	result, err := client.Contentblocklist_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_contentblocklist_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute contentblocklist_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -175,3 +189,4 @@ func HandleFacebook_contentblocklist_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -15,23 +15,26 @@ import (
 func GetThirdPartyMeasurementReportDatasetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_thirdpartymeasurementreportdataset_get_ tool
-	facebook_thirdpartymeasurementreportdataset_get_Tool := mcp.NewTool("facebook_thirdpartymeasurementreportdataset_get_",
+
+	// thirdpartymeasurementreportdataset_get_ tool
+	thirdpartymeasurementreportdataset_get_Tool := mcp.NewTool("thirdpartymeasurementreportdataset_get_",
 		mcp.WithDescription("GET  for ThirdPartyMeasurementReportDataset"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_thirdpartymeasurementreportdataset_get_Tool)
+	tools = append(tools, thirdpartymeasurementreportdataset_get_Tool)
+
 
 	return tools
 }
 
 // ThirdPartyMeasurementReportDataset handlers
 
-// HandleFacebook_thirdpartymeasurementreportdataset_get_ handles the facebook_thirdpartymeasurementreportdataset_get_ tool
-func HandleFacebook_thirdpartymeasurementreportdataset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleThirdpartymeasurementreportdataset_get_ handles the thirdpartymeasurementreportdataset_get_ tool
+func HandleThirdpartymeasurementreportdataset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_thirdpartymeasurementreportdataset_get_(ctx context.Context,
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_thirdpartymeasurementreportdataset_get_(args)
+	result, err := client.Thirdpartymeasurementreportdataset_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_thirdpartymeasurementreportdataset_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute thirdpartymeasurementreportdataset_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_thirdpartymeasurementreportdataset_get_(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

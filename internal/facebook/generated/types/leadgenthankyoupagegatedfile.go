@@ -4,8 +4,8 @@ package types
 
 // LeadGenThankYouPageGatedFile represents a Facebook LeadGenThankYouPageGatedFile object
 type LeadGenThankYouPageGatedFile struct {
-	File_cdn_url    string `json:"file_cdn_url"`
-	File_name       string `json:"file_name"`
-	File_size_bytes int    `json:"file_size_bytes"`
-	Id              string `json:"id"`
+	File_cdn_url string `json:"file_cdn_url"`
+	File_name string `json:"file_name"`
+	File_size_bytes int `json:"file_size_bytes"`
+	Id string `json:"id"`
 }

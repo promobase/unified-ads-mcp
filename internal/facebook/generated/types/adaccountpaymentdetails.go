@@ -4,10 +4,10 @@ package types
 
 // AdAccountPaymentDetails represents a Facebook AdAccountPaymentDetails object
 type AdAccountPaymentDetails struct {
-	Amount             *CurrencyAmount        `json:"amount"`
-	Create_date        int                    `json:"create_date"`
-	Id                 string                 `json:"id"`
-	Last_action_status string                 `json:"last_action_status"`
-	Metadata           map[string]interface{} `json:"metadata"`
-	Payment_details_id string                 `json:"payment_details_id"`
+	Amount *CurrencyAmount `json:"amount"`
+	Create_date int `json:"create_date"`
+	Id string `json:"id"`
+	Last_action_status string `json:"last_action_status"`
+	Metadata map[string]interface{} `json:"metadata"`
+	Payment_details_id string `json:"payment_details_id"`
 }

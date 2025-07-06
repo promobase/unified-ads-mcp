@@ -15,28 +15,29 @@ import (
 func GetPageCallToActionTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_pagecalltoaction_delete_ tool
-	facebook_pagecalltoaction_delete_Tool := mcp.NewTool("facebook_pagecalltoaction_delete_",
+
+	// pagecalltoaction_delete_ tool
+	pagecalltoaction_delete_Tool := mcp.NewTool("pagecalltoaction_delete_",
 		mcp.WithDescription("DELETE  for PageCallToAction"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_pagecalltoaction_delete_Tool)
+	tools = append(tools, pagecalltoaction_delete_Tool)
 
-	// facebook_pagecalltoaction_get_ tool
-	facebook_pagecalltoaction_get_Tool := mcp.NewTool("facebook_pagecalltoaction_get_",
+	// pagecalltoaction_get_ tool
+	pagecalltoaction_get_Tool := mcp.NewTool("pagecalltoaction_get_",
 		mcp.WithDescription("GET  for PageCallToAction"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_pagecalltoaction_get_Tool)
+	tools = append(tools, pagecalltoaction_get_Tool)
 
-	// facebook_pagecalltoaction_post_ tool
-	facebook_pagecalltoaction_post_Tool := mcp.NewTool("facebook_pagecalltoaction_post_",
+	// pagecalltoaction_post_ tool
+	pagecalltoaction_post_Tool := mcp.NewTool("pagecalltoaction_post_",
 		mcp.WithDescription("POST  for PageCallToAction"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -83,15 +84,17 @@ func GetPageCallToActionTools(accessToken string) []mcp.Tool {
 			mcp.Description("web_url parameter for "),
 		),
 	)
-	tools = append(tools, facebook_pagecalltoaction_post_Tool)
+	tools = append(tools, pagecalltoaction_post_Tool)
+
 
 	return tools
 }
 
 // PageCallToAction handlers
 
-// HandleFacebook_pagecalltoaction_delete_ handles the facebook_pagecalltoaction_delete_ tool
-func HandleFacebook_pagecalltoaction_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePagecalltoaction_delete_ handles the pagecalltoaction_delete_ tool
+func HandlePagecalltoaction_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -104,10 +107,12 @@ func HandleFacebook_pagecalltoaction_delete_(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_pagecalltoaction_delete_(args)
+	result, err := client.Pagecalltoaction_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_pagecalltoaction_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pagecalltoaction_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -119,8 +124,9 @@ func HandleFacebook_pagecalltoaction_delete_(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_pagecalltoaction_get_ handles the facebook_pagecalltoaction_get_ tool
-func HandleFacebook_pagecalltoaction_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePagecalltoaction_get_ handles the pagecalltoaction_get_ tool
+func HandlePagecalltoaction_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -133,10 +139,12 @@ func HandleFacebook_pagecalltoaction_get_(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_pagecalltoaction_get_(args)
+	result, err := client.Pagecalltoaction_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_pagecalltoaction_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pagecalltoaction_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -148,8 +156,9 @@ func HandleFacebook_pagecalltoaction_get_(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_pagecalltoaction_post_ handles the facebook_pagecalltoaction_post_ tool
-func HandleFacebook_pagecalltoaction_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePagecalltoaction_post_ handles the pagecalltoaction_post_ tool
+func HandlePagecalltoaction_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -222,10 +231,12 @@ func HandleFacebook_pagecalltoaction_post_(ctx context.Context, request mcp.Call
 		args["web_url"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_pagecalltoaction_post_(args)
+	result, err := client.Pagecalltoaction_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_pagecalltoaction_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pagecalltoaction_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -236,3 +247,4 @@ func HandleFacebook_pagecalltoaction_post_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -21,14 +21,18 @@ func NewVehicleClient(accessToken string) *VehicleClient {
 	}
 }
 
-// facebook_vehicle_get_channels_to_integrity_status GET channels_to_integrity_status for Vehicle
-func (c *VehicleClient) Facebook_vehicle_get_channels_to_integrity_status(args map[string]interface{}) (interface{}, error) {
+
+// vehicle_get_channels_to_integrity_status GET channels_to_integrity_status for Vehicle
+func (c *VehicleClient) Vehicle_get_channels_to_integrity_status(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "channels_to_integrity_status")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -60,9 +64,11 @@ func (c *VehicleClient) Facebook_vehicle_get_channels_to_integrity_status(args m
 	return result, nil
 }
 
-// facebook_vehicle_get_override_details GET override_details for Vehicle
-func (c *VehicleClient) Facebook_vehicle_get_override_details(args map[string]interface{}) (interface{}, error) {
+
+// vehicle_get_override_details GET override_details for Vehicle
+func (c *VehicleClient) Vehicle_get_override_details(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "override_details")
@@ -76,6 +82,7 @@ func (c *VehicleClient) Facebook_vehicle_get_override_details(args map[string]in
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -106,15 +113,19 @@ func (c *VehicleClient) Facebook_vehicle_get_override_details(args map[string]in
 	return result, nil
 }
 
-// facebook_vehicle_get_videos_metadata GET videos_metadata for Vehicle
-func (c *VehicleClient) Facebook_vehicle_get_videos_metadata(args map[string]interface{}) (interface{}, error) {
+
+// vehicle_get_videos_metadata GET videos_metadata for Vehicle
+func (c *VehicleClient) Vehicle_get_videos_metadata(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos_metadata")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -145,15 +156,19 @@ func (c *VehicleClient) Facebook_vehicle_get_videos_metadata(args map[string]int
 	return result, nil
 }
 
-// facebook_vehicle_get_ GET  for Vehicle
-func (c *VehicleClient) Facebook_vehicle_get_(args map[string]interface{}) (interface{}, error) {
+
+// vehicle_get_ GET  for Vehicle
+func (c *VehicleClient) Vehicle_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -184,9 +199,11 @@ func (c *VehicleClient) Facebook_vehicle_get_(args map[string]interface{}) (inte
 	return result, nil
 }
 
-// facebook_vehicle_post_ POST  for Vehicle
-func (c *VehicleClient) Facebook_vehicle_post_(args map[string]interface{}) (interface{}, error) {
+
+// vehicle_post_ POST  for Vehicle
+func (c *VehicleClient) Vehicle_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -281,6 +298,7 @@ func (c *VehicleClient) Facebook_vehicle_post_(args map[string]interface{}) (int
 		urlParams.Set("year", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -310,3 +328,4 @@ func (c *VehicleClient) Facebook_vehicle_post_(args map[string]interface{}) (int
 
 	return result, nil
 }
+

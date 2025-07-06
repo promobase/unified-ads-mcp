@@ -15,23 +15,26 @@ import (
 func GetAdRuleEvaluationSpecTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adruleevaluationspec_get_ tool
-	facebook_adruleevaluationspec_get_Tool := mcp.NewTool("facebook_adruleevaluationspec_get_",
+
+	// adruleevaluationspec_get_ tool
+	adruleevaluationspec_get_Tool := mcp.NewTool("adruleevaluationspec_get_",
 		mcp.WithDescription("GET  for AdRuleEvaluationSpec"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adruleevaluationspec_get_Tool)
+	tools = append(tools, adruleevaluationspec_get_Tool)
+
 
 	return tools
 }
 
 // AdRuleEvaluationSpec handlers
 
-// HandleFacebook_adruleevaluationspec_get_ handles the facebook_adruleevaluationspec_get_ tool
-func HandleFacebook_adruleevaluationspec_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdruleevaluationspec_get_ handles the adruleevaluationspec_get_ tool
+func HandleAdruleevaluationspec_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_adruleevaluationspec_get_(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adruleevaluationspec_get_(args)
+	result, err := client.Adruleevaluationspec_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adruleevaluationspec_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adruleevaluationspec_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_adruleevaluationspec_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

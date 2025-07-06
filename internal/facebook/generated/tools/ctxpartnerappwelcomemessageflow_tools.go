@@ -15,23 +15,26 @@ import (
 func GetCTXPartnerAppWelcomeMessageFlowTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_ctxpartnerappwelcomemessageflow_get_ tool
-	facebook_ctxpartnerappwelcomemessageflow_get_Tool := mcp.NewTool("facebook_ctxpartnerappwelcomemessageflow_get_",
+
+	// ctxpartnerappwelcomemessageflow_get_ tool
+	ctxpartnerappwelcomemessageflow_get_Tool := mcp.NewTool("ctxpartnerappwelcomemessageflow_get_",
 		mcp.WithDescription("GET  for CTXPartnerAppWelcomeMessageFlow"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_ctxpartnerappwelcomemessageflow_get_Tool)
+	tools = append(tools, ctxpartnerappwelcomemessageflow_get_Tool)
+
 
 	return tools
 }
 
 // CTXPartnerAppWelcomeMessageFlow handlers
 
-// HandleFacebook_ctxpartnerappwelcomemessageflow_get_ handles the facebook_ctxpartnerappwelcomemessageflow_get_ tool
-func HandleFacebook_ctxpartnerappwelcomemessageflow_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCtxpartnerappwelcomemessageflow_get_ handles the ctxpartnerappwelcomemessageflow_get_ tool
+func HandleCtxpartnerappwelcomemessageflow_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_ctxpartnerappwelcomemessageflow_get_(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_ctxpartnerappwelcomemessageflow_get_(args)
+	result, err := client.Ctxpartnerappwelcomemessageflow_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_ctxpartnerappwelcomemessageflow_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute ctxpartnerappwelcomemessageflow_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_ctxpartnerappwelcomemessageflow_get_(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

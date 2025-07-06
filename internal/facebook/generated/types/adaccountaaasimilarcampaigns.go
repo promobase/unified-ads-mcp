@@ -4,7 +4,7 @@ package types
 
 // AdAccountAAASimilarCampaigns represents a Facebook AdAccountAAASimilarCampaigns object
 type AdAccountAAASimilarCampaigns struct {
-	Similar_campaign_limit int           `json:"similar_campaign_limit"`
+	Similar_campaign_limit int `json:"similar_campaign_limit"`
 	Similar_campaigns_info []interface{} `json:"similar_campaigns_info"`
-	Used_campaign_slots    int           `json:"used_campaign_slots"`
+	Used_campaign_slots int `json:"used_campaign_slots"`
 }

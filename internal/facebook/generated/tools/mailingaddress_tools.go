@@ -15,23 +15,26 @@ import (
 func GetMailingAddressTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_mailingaddress_get_ tool
-	facebook_mailingaddress_get_Tool := mcp.NewTool("facebook_mailingaddress_get_",
+
+	// mailingaddress_get_ tool
+	mailingaddress_get_Tool := mcp.NewTool("mailingaddress_get_",
 		mcp.WithDescription("GET  for MailingAddress"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_mailingaddress_get_Tool)
+	tools = append(tools, mailingaddress_get_Tool)
+
 
 	return tools
 }
 
 // MailingAddress handlers
 
-// HandleFacebook_mailingaddress_get_ handles the facebook_mailingaddress_get_ tool
-func HandleFacebook_mailingaddress_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleMailingaddress_get_ handles the mailingaddress_get_ tool
+func HandleMailingaddress_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_mailingaddress_get_(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_mailingaddress_get_(args)
+	result, err := client.Mailingaddress_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_mailingaddress_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute mailingaddress_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_mailingaddress_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

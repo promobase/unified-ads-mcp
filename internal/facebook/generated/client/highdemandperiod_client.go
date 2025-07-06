@@ -21,14 +21,18 @@ func NewHighDemandPeriodClient(accessToken string) *HighDemandPeriodClient {
 	}
 }
 
-// facebook_highdemandperiod_delete_ DELETE  for HighDemandPeriod
-func (c *HighDemandPeriodClient) Facebook_highdemandperiod_delete_(args map[string]interface{}) (interface{}, error) {
+
+// highdemandperiod_delete_ DELETE  for HighDemandPeriod
+func (c *HighDemandPeriodClient) Highdemandperiod_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -60,14 +64,18 @@ func (c *HighDemandPeriodClient) Facebook_highdemandperiod_delete_(args map[stri
 	return result, nil
 }
 
-// facebook_highdemandperiod_get_ GET  for HighDemandPeriod
-func (c *HighDemandPeriodClient) Facebook_highdemandperiod_get_(args map[string]interface{}) (interface{}, error) {
+
+// highdemandperiod_get_ GET  for HighDemandPeriod
+func (c *HighDemandPeriodClient) Highdemandperiod_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -99,9 +107,11 @@ func (c *HighDemandPeriodClient) Facebook_highdemandperiod_get_(args map[string]
 	return result, nil
 }
 
-// facebook_highdemandperiod_post_ POST  for HighDemandPeriod
-func (c *HighDemandPeriodClient) Facebook_highdemandperiod_post_(args map[string]interface{}) (interface{}, error) {
+
+// highdemandperiod_post_ POST  for HighDemandPeriod
+func (c *HighDemandPeriodClient) Highdemandperiod_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -120,6 +130,7 @@ func (c *HighDemandPeriodClient) Facebook_highdemandperiod_post_(args map[string
 	if val, ok := args["time_start"]; ok {
 		urlParams.Set("time_start", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -150,3 +161,4 @@ func (c *HighDemandPeriodClient) Facebook_highdemandperiod_post_(args map[string
 
 	return result, nil
 }
+

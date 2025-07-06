@@ -15,23 +15,26 @@ import (
 func GetSavedMessageResponseTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_savedmessageresponse_get_ tool
-	facebook_savedmessageresponse_get_Tool := mcp.NewTool("facebook_savedmessageresponse_get_",
+
+	// savedmessageresponse_get_ tool
+	savedmessageresponse_get_Tool := mcp.NewTool("savedmessageresponse_get_",
 		mcp.WithDescription("GET  for SavedMessageResponse"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_savedmessageresponse_get_Tool)
+	tools = append(tools, savedmessageresponse_get_Tool)
+
 
 	return tools
 }
 
 // SavedMessageResponse handlers
 
-// HandleFacebook_savedmessageresponse_get_ handles the facebook_savedmessageresponse_get_ tool
-func HandleFacebook_savedmessageresponse_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleSavedmessageresponse_get_ handles the savedmessageresponse_get_ tool
+func HandleSavedmessageresponse_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_savedmessageresponse_get_(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_savedmessageresponse_get_(args)
+	result, err := client.Savedmessageresponse_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_savedmessageresponse_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute savedmessageresponse_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_savedmessageresponse_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

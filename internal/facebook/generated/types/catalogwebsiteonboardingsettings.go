@@ -4,7 +4,7 @@ package types
 
 // CatalogWebsiteOnboardingSettings represents a Facebook CatalogWebsiteOnboardingSettings object
 type CatalogWebsiteOnboardingSettings struct {
-	Id           string `json:"id"`
+	Id string `json:"id"`
 	Quality_band string `json:"quality_band"`
-	Status       string `json:"status"`
+	Status string `json:"status"`
 }

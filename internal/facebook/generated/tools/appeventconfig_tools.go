@@ -15,8 +15,9 @@ import (
 func GetAppEventConfigTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_appeventconfig_get_ tool
-	facebook_appeventconfig_get_Tool := mcp.NewTool("facebook_appeventconfig_get_",
+
+	// appeventconfig_get_ tool
+	appeventconfig_get_Tool := mcp.NewTool("appeventconfig_get_",
 		mcp.WithDescription("GET  for AppEventConfig"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -26,15 +27,17 @@ func GetAppEventConfigTools(accessToken string) []mcp.Tool {
 			mcp.Description("event_name parameter for "),
 		),
 	)
-	tools = append(tools, facebook_appeventconfig_get_Tool)
+	tools = append(tools, appeventconfig_get_Tool)
+
 
 	return tools
 }
 
 // AppEventConfig handlers
 
-// HandleFacebook_appeventconfig_get_ handles the facebook_appeventconfig_get_ tool
-func HandleFacebook_appeventconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAppeventconfig_get_ handles the appeventconfig_get_ tool
+func HandleAppeventconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -52,10 +55,12 @@ func HandleFacebook_appeventconfig_get_(ctx context.Context, request mcp.CallToo
 		args["event_name"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_appeventconfig_get_(args)
+	result, err := client.Appeventconfig_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_appeventconfig_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute appeventconfig_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -66,3 +71,4 @@ func HandleFacebook_appeventconfig_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

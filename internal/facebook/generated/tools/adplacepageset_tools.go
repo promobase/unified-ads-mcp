@@ -15,23 +15,26 @@ import (
 func GetAdPlacePageSetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adplacepageset_get_ tool
-	facebook_adplacepageset_get_Tool := mcp.NewTool("facebook_adplacepageset_get_",
+
+	// adplacepageset_get_ tool
+	adplacepageset_get_Tool := mcp.NewTool("adplacepageset_get_",
 		mcp.WithDescription("GET  for AdPlacePageSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adplacepageset_get_Tool)
+	tools = append(tools, adplacepageset_get_Tool)
+
 
 	return tools
 }
 
 // AdPlacePageSet handlers
 
-// HandleFacebook_adplacepageset_get_ handles the facebook_adplacepageset_get_ tool
-func HandleFacebook_adplacepageset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdplacepageset_get_ handles the adplacepageset_get_ tool
+func HandleAdplacepageset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_adplacepageset_get_(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adplacepageset_get_(args)
+	result, err := client.Adplacepageset_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adplacepageset_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adplacepageset_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_adplacepageset_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

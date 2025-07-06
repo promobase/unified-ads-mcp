@@ -6,10 +6,10 @@ import "time"
 
 // WhatsAppBusinessPreVerifiedPhoneNumber represents a Facebook WhatsAppBusinessPreVerifiedPhoneNumber object
 type WhatsAppBusinessPreVerifiedPhoneNumber struct {
-	Code_verification_status string    `json:"code_verification_status"`
-	Code_verification_time   time.Time `json:"code_verification_time"`
-	Id                       string    `json:"id"`
-	Owner_business           *Business `json:"owner_business"`
-	Phone_number             string    `json:"phone_number"`
+	Code_verification_status string `json:"code_verification_status"`
+	Code_verification_time time.Time `json:"code_verification_time"`
+	Id string `json:"id"`
+	Owner_business *Business `json:"owner_business"`
+	Phone_number string `json:"phone_number"`
 	Verification_expiry_time time.Time `json:"verification_expiry_time"`
 }

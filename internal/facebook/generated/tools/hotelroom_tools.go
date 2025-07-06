@@ -15,33 +15,36 @@ import (
 func GetHotelRoomTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_hotelroom_get_pricing_variables tool
-	facebook_hotelroom_get_pricing_variablesTool := mcp.NewTool("facebook_hotelroom_get_pricing_variables",
+
+	// hotelroom_get_pricing_variables tool
+	hotelroom_get_pricing_variablesTool := mcp.NewTool("hotelroom_get_pricing_variables",
 		mcp.WithDescription("GET pricing_variables for HotelRoom"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_hotelroom_get_pricing_variablesTool)
+	tools = append(tools, hotelroom_get_pricing_variablesTool)
 
-	// facebook_hotelroom_get_ tool
-	facebook_hotelroom_get_Tool := mcp.NewTool("facebook_hotelroom_get_",
+	// hotelroom_get_ tool
+	hotelroom_get_Tool := mcp.NewTool("hotelroom_get_",
 		mcp.WithDescription("GET  for HotelRoom"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_hotelroom_get_Tool)
+	tools = append(tools, hotelroom_get_Tool)
+
 
 	return tools
 }
 
 // HotelRoom handlers
 
-// HandleFacebook_hotelroom_get_pricing_variables handles the facebook_hotelroom_get_pricing_variables tool
-func HandleFacebook_hotelroom_get_pricing_variables(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleHotelroom_get_pricing_variables handles the hotelroom_get_pricing_variables tool
+func HandleHotelroom_get_pricing_variables(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -54,10 +57,12 @@ func HandleFacebook_hotelroom_get_pricing_variables(ctx context.Context, request
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_hotelroom_get_pricing_variables(args)
+	result, err := client.Hotelroom_get_pricing_variables(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_hotelroom_get_pricing_variables: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute hotelroom_get_pricing_variables: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -69,8 +74,9 @@ func HandleFacebook_hotelroom_get_pricing_variables(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_hotelroom_get_ handles the facebook_hotelroom_get_ tool
-func HandleFacebook_hotelroom_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleHotelroom_get_ handles the hotelroom_get_ tool
+func HandleHotelroom_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -83,10 +89,12 @@ func HandleFacebook_hotelroom_get_(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_hotelroom_get_(args)
+	result, err := client.Hotelroom_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_hotelroom_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute hotelroom_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -97,3 +105,4 @@ func HandleFacebook_hotelroom_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

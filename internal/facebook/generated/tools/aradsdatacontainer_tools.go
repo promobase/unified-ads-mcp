@@ -15,23 +15,26 @@ import (
 func GetArAdsDataContainerTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_aradsdatacontainer_get_ tool
-	facebook_aradsdatacontainer_get_Tool := mcp.NewTool("facebook_aradsdatacontainer_get_",
+
+	// aradsdatacontainer_get_ tool
+	aradsdatacontainer_get_Tool := mcp.NewTool("aradsdatacontainer_get_",
 		mcp.WithDescription("GET  for ArAdsDataContainer"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_aradsdatacontainer_get_Tool)
+	tools = append(tools, aradsdatacontainer_get_Tool)
+
 
 	return tools
 }
 
 // ArAdsDataContainer handlers
 
-// HandleFacebook_aradsdatacontainer_get_ handles the facebook_aradsdatacontainer_get_ tool
-func HandleFacebook_aradsdatacontainer_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAradsdatacontainer_get_ handles the aradsdatacontainer_get_ tool
+func HandleAradsdatacontainer_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_aradsdatacontainer_get_(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_aradsdatacontainer_get_(args)
+	result, err := client.Aradsdatacontainer_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_aradsdatacontainer_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute aradsdatacontainer_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_aradsdatacontainer_get_(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

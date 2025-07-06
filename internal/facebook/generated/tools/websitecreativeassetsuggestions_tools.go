@@ -15,23 +15,26 @@ import (
 func GetWebsiteCreativeAssetSuggestionsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_websitecreativeassetsuggestions_get_ tool
-	facebook_websitecreativeassetsuggestions_get_Tool := mcp.NewTool("facebook_websitecreativeassetsuggestions_get_",
+
+	// websitecreativeassetsuggestions_get_ tool
+	websitecreativeassetsuggestions_get_Tool := mcp.NewTool("websitecreativeassetsuggestions_get_",
 		mcp.WithDescription("GET  for WebsiteCreativeAssetSuggestions"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_websitecreativeassetsuggestions_get_Tool)
+	tools = append(tools, websitecreativeassetsuggestions_get_Tool)
+
 
 	return tools
 }
 
 // WebsiteCreativeAssetSuggestions handlers
 
-// HandleFacebook_websitecreativeassetsuggestions_get_ handles the facebook_websitecreativeassetsuggestions_get_ tool
-func HandleFacebook_websitecreativeassetsuggestions_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleWebsitecreativeassetsuggestions_get_ handles the websitecreativeassetsuggestions_get_ tool
+func HandleWebsitecreativeassetsuggestions_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_websitecreativeassetsuggestions_get_(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_websitecreativeassetsuggestions_get_(args)
+	result, err := client.Websitecreativeassetsuggestions_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_websitecreativeassetsuggestions_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute websitecreativeassetsuggestions_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_websitecreativeassetsuggestions_get_(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

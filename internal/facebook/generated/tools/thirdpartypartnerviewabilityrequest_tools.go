@@ -15,23 +15,26 @@ import (
 func GetThirdPartyPartnerViewabilityRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_thirdpartypartnerviewabilityrequest_get_ tool
-	facebook_thirdpartypartnerviewabilityrequest_get_Tool := mcp.NewTool("facebook_thirdpartypartnerviewabilityrequest_get_",
+
+	// thirdpartypartnerviewabilityrequest_get_ tool
+	thirdpartypartnerviewabilityrequest_get_Tool := mcp.NewTool("thirdpartypartnerviewabilityrequest_get_",
 		mcp.WithDescription("GET  for ThirdPartyPartnerViewabilityRequest"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_thirdpartypartnerviewabilityrequest_get_Tool)
+	tools = append(tools, thirdpartypartnerviewabilityrequest_get_Tool)
+
 
 	return tools
 }
 
 // ThirdPartyPartnerViewabilityRequest handlers
 
-// HandleFacebook_thirdpartypartnerviewabilityrequest_get_ handles the facebook_thirdpartypartnerviewabilityrequest_get_ tool
-func HandleFacebook_thirdpartypartnerviewabilityrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleThirdpartypartnerviewabilityrequest_get_ handles the thirdpartypartnerviewabilityrequest_get_ tool
+func HandleThirdpartypartnerviewabilityrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_thirdpartypartnerviewabilityrequest_get_(ctx context.Context
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_thirdpartypartnerviewabilityrequest_get_(args)
+	result, err := client.Thirdpartypartnerviewabilityrequest_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_thirdpartypartnerviewabilityrequest_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute thirdpartypartnerviewabilityrequest_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_thirdpartypartnerviewabilityrequest_get_(ctx context.Context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

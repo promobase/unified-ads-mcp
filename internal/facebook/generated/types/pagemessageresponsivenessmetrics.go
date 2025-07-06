@@ -4,7 +4,7 @@ package types
 
 // PageMessageResponsivenessMetrics represents a Facebook PageMessageResponsivenessMetrics object
 type PageMessageResponsivenessMetrics struct {
-	Is_very_responsive bool    `json:"is_very_responsive"`
-	Response_rate      float64 `json:"response_rate"`
-	Response_time      float64 `json:"response_time"`
+	Is_very_responsive bool `json:"is_very_responsive"`
+	Response_rate float64 `json:"response_rate"`
+	Response_time float64 `json:"response_time"`
 }

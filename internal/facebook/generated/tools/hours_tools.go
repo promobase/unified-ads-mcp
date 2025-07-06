@@ -15,23 +15,26 @@ import (
 func GetHoursTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_hours_get_ tool
-	facebook_hours_get_Tool := mcp.NewTool("facebook_hours_get_",
+
+	// hours_get_ tool
+	hours_get_Tool := mcp.NewTool("hours_get_",
 		mcp.WithDescription("GET  for Hours"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_hours_get_Tool)
+	tools = append(tools, hours_get_Tool)
+
 
 	return tools
 }
 
 // Hours handlers
 
-// HandleFacebook_hours_get_ handles the facebook_hours_get_ tool
-func HandleFacebook_hours_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleHours_get_ handles the hours_get_ tool
+func HandleHours_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_hours_get_(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_hours_get_(args)
+	result, err := client.Hours_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_hours_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute hours_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_hours_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

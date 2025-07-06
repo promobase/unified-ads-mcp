@@ -4,10 +4,10 @@ package types
 
 // DACheck represents a Facebook DACheck object
 type DACheck struct {
-	Action_uri   string `json:"action_uri"`
-	Description  string `json:"description"`
-	Key          string `json:"key"`
-	Result       string `json:"result"`
-	Title        string `json:"title"`
+	Action_uri string `json:"action_uri"`
+	Description string `json:"description"`
+	Key string `json:"key"`
+	Result string `json:"result"`
+	Title string `json:"title"`
 	User_message string `json:"user_message"`
 }

@@ -15,23 +15,26 @@ import (
 func GetAdsReportBuilderMMMReportTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adsreportbuildermmmreport_get_ tool
-	facebook_adsreportbuildermmmreport_get_Tool := mcp.NewTool("facebook_adsreportbuildermmmreport_get_",
+
+	// adsreportbuildermmmreport_get_ tool
+	adsreportbuildermmmreport_get_Tool := mcp.NewTool("adsreportbuildermmmreport_get_",
 		mcp.WithDescription("GET  for AdsReportBuilderMMMReport"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adsreportbuildermmmreport_get_Tool)
+	tools = append(tools, adsreportbuildermmmreport_get_Tool)
+
 
 	return tools
 }
 
 // AdsReportBuilderMMMReport handlers
 
-// HandleFacebook_adsreportbuildermmmreport_get_ handles the facebook_adsreportbuildermmmreport_get_ tool
-func HandleFacebook_adsreportbuildermmmreport_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdsreportbuildermmmreport_get_ handles the adsreportbuildermmmreport_get_ tool
+func HandleAdsreportbuildermmmreport_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_adsreportbuildermmmreport_get_(ctx context.Context, request 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adsreportbuildermmmreport_get_(args)
+	result, err := client.Adsreportbuildermmmreport_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adsreportbuildermmmreport_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adsreportbuildermmmreport_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_adsreportbuildermmmreport_get_(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

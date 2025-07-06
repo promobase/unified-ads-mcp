@@ -15,28 +15,29 @@ import (
 func GetExtendedCreditAllocationConfigTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_extendedcreditallocationconfig_delete_ tool
-	facebook_extendedcreditallocationconfig_delete_Tool := mcp.NewTool("facebook_extendedcreditallocationconfig_delete_",
+
+	// extendedcreditallocationconfig_delete_ tool
+	extendedcreditallocationconfig_delete_Tool := mcp.NewTool("extendedcreditallocationconfig_delete_",
 		mcp.WithDescription("DELETE  for ExtendedCreditAllocationConfig"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_extendedcreditallocationconfig_delete_Tool)
+	tools = append(tools, extendedcreditallocationconfig_delete_Tool)
 
-	// facebook_extendedcreditallocationconfig_get_ tool
-	facebook_extendedcreditallocationconfig_get_Tool := mcp.NewTool("facebook_extendedcreditallocationconfig_get_",
+	// extendedcreditallocationconfig_get_ tool
+	extendedcreditallocationconfig_get_Tool := mcp.NewTool("extendedcreditallocationconfig_get_",
 		mcp.WithDescription("GET  for ExtendedCreditAllocationConfig"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_extendedcreditallocationconfig_get_Tool)
+	tools = append(tools, extendedcreditallocationconfig_get_Tool)
 
-	// facebook_extendedcreditallocationconfig_post_ tool
-	facebook_extendedcreditallocationconfig_post_Tool := mcp.NewTool("facebook_extendedcreditallocationconfig_post_",
+	// extendedcreditallocationconfig_post_ tool
+	extendedcreditallocationconfig_post_Tool := mcp.NewTool("extendedcreditallocationconfig_post_",
 		mcp.WithDescription("POST  for ExtendedCreditAllocationConfig"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -46,15 +47,17 @@ func GetExtendedCreditAllocationConfigTools(accessToken string) []mcp.Tool {
 			mcp.Description("amount parameter for "),
 		),
 	)
-	tools = append(tools, facebook_extendedcreditallocationconfig_post_Tool)
+	tools = append(tools, extendedcreditallocationconfig_post_Tool)
+
 
 	return tools
 }
 
 // ExtendedCreditAllocationConfig handlers
 
-// HandleFacebook_extendedcreditallocationconfig_delete_ handles the facebook_extendedcreditallocationconfig_delete_ tool
-func HandleFacebook_extendedcreditallocationconfig_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleExtendedcreditallocationconfig_delete_ handles the extendedcreditallocationconfig_delete_ tool
+func HandleExtendedcreditallocationconfig_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -67,10 +70,12 @@ func HandleFacebook_extendedcreditallocationconfig_delete_(ctx context.Context, 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_extendedcreditallocationconfig_delete_(args)
+	result, err := client.Extendedcreditallocationconfig_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_extendedcreditallocationconfig_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcreditallocationconfig_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -82,8 +87,9 @@ func HandleFacebook_extendedcreditallocationconfig_delete_(ctx context.Context, 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_extendedcreditallocationconfig_get_ handles the facebook_extendedcreditallocationconfig_get_ tool
-func HandleFacebook_extendedcreditallocationconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleExtendedcreditallocationconfig_get_ handles the extendedcreditallocationconfig_get_ tool
+func HandleExtendedcreditallocationconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -96,10 +102,12 @@ func HandleFacebook_extendedcreditallocationconfig_get_(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_extendedcreditallocationconfig_get_(args)
+	result, err := client.Extendedcreditallocationconfig_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_extendedcreditallocationconfig_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcreditallocationconfig_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -111,8 +119,9 @@ func HandleFacebook_extendedcreditallocationconfig_get_(ctx context.Context, req
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_extendedcreditallocationconfig_post_ handles the facebook_extendedcreditallocationconfig_post_ tool
-func HandleFacebook_extendedcreditallocationconfig_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleExtendedcreditallocationconfig_post_ handles the extendedcreditallocationconfig_post_ tool
+func HandleExtendedcreditallocationconfig_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -131,10 +140,12 @@ func HandleFacebook_extendedcreditallocationconfig_post_(ctx context.Context, re
 		args["amount"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_extendedcreditallocationconfig_post_(args)
+	result, err := client.Extendedcreditallocationconfig_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_extendedcreditallocationconfig_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcreditallocationconfig_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -145,3 +156,4 @@ func HandleFacebook_extendedcreditallocationconfig_post_(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

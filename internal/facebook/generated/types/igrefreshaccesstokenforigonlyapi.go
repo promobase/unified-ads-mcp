@@ -5,7 +5,7 @@ package types
 // IGRefreshAccessTokenForIGOnlyAPI represents a Facebook IGRefreshAccessTokenForIGOnlyAPI object
 type IGRefreshAccessTokenForIGOnlyAPI struct {
 	Access_token string `json:"access_token"`
-	Expires_in   int    `json:"expires_in"`
-	Permissions  string `json:"permissions"`
-	Token_type   string `json:"token_type"`
+	Expires_in int `json:"expires_in"`
+	Permissions string `json:"permissions"`
+	Token_type string `json:"token_type"`
 }

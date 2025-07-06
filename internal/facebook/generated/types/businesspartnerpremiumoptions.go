@@ -4,7 +4,7 @@ package types
 
 // BusinessPartnerPremiumOptions represents a Facebook BusinessPartnerPremiumOptions object
 type BusinessPartnerPremiumOptions struct {
-	Enable_basket_insight                bool                   `json:"enable_basket_insight"`
-	Enable_extended_audience_retargeting bool                   `json:"enable_extended_audience_retargeting"`
-	Retailer_custom_audience_config      map[string]interface{} `json:"retailer_custom_audience_config"`
+	Enable_basket_insight bool `json:"enable_basket_insight"`
+	Enable_extended_audience_retargeting bool `json:"enable_extended_audience_retargeting"`
+	Retailer_custom_audience_config map[string]interface{} `json:"retailer_custom_audience_config"`
 }

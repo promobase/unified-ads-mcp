@@ -15,8 +15,9 @@ import (
 func GetGroupTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_group_delete_admins tool
-	facebook_group_delete_adminsTool := mcp.NewTool("facebook_group_delete_admins",
+
+	// group_delete_admins tool
+	group_delete_adminsTool := mcp.NewTool("group_delete_admins",
 		mcp.WithDescription("DELETE admins for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -27,10 +28,10 @@ func GetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("uid parameter for admins"),
 		),
 	)
-	tools = append(tools, facebook_group_delete_adminsTool)
+	tools = append(tools, group_delete_adminsTool)
 
-	// facebook_group_post_admins tool
-	facebook_group_post_adminsTool := mcp.NewTool("facebook_group_post_admins",
+	// group_post_admins tool
+	group_post_adminsTool := mcp.NewTool("group_post_admins",
 		mcp.WithDescription("POST admins for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -41,40 +42,40 @@ func GetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("uid parameter for admins"),
 		),
 	)
-	tools = append(tools, facebook_group_post_adminsTool)
+	tools = append(tools, group_post_adminsTool)
 
-	// facebook_group_get_albums tool
-	facebook_group_get_albumsTool := mcp.NewTool("facebook_group_get_albums",
+	// group_get_albums tool
+	group_get_albumsTool := mcp.NewTool("group_get_albums",
 		mcp.WithDescription("GET albums for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_group_get_albumsTool)
+	tools = append(tools, group_get_albumsTool)
 
-	// facebook_group_get_docs tool
-	facebook_group_get_docsTool := mcp.NewTool("facebook_group_get_docs",
+	// group_get_docs tool
+	group_get_docsTool := mcp.NewTool("group_get_docs",
 		mcp.WithDescription("GET docs for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_group_get_docsTool)
+	tools = append(tools, group_get_docsTool)
 
-	// facebook_group_get_events tool
-	facebook_group_get_eventsTool := mcp.NewTool("facebook_group_get_events",
+	// group_get_events tool
+	group_get_eventsTool := mcp.NewTool("group_get_events",
 		mcp.WithDescription("GET events for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_group_get_eventsTool)
+	tools = append(tools, group_get_eventsTool)
 
-	// facebook_group_get_feed tool
-	facebook_group_get_feedTool := mcp.NewTool("facebook_group_get_feed",
+	// group_get_feed tool
+	group_get_feedTool := mcp.NewTool("group_get_feed",
 		mcp.WithDescription("GET feed for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -99,10 +100,10 @@ func GetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("with parameter for feed"),
 		),
 	)
-	tools = append(tools, facebook_group_get_feedTool)
+	tools = append(tools, group_get_feedTool)
 
-	// facebook_group_post_feed tool
-	facebook_group_post_feedTool := mcp.NewTool("facebook_group_post_feed",
+	// group_post_feed tool
+	group_post_feedTool := mcp.NewTool("group_post_feed",
 		mcp.WithDescription("POST feed for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -431,30 +432,30 @@ func GetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("width parameter for feed"),
 		),
 	)
-	tools = append(tools, facebook_group_post_feedTool)
+	tools = append(tools, group_post_feedTool)
 
-	// facebook_group_get_files tool
-	facebook_group_get_filesTool := mcp.NewTool("facebook_group_get_files",
+	// group_get_files tool
+	group_get_filesTool := mcp.NewTool("group_get_files",
 		mcp.WithDescription("GET files for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_group_get_filesTool)
+	tools = append(tools, group_get_filesTool)
 
-	// facebook_group_get_groups tool
-	facebook_group_get_groupsTool := mcp.NewTool("facebook_group_get_groups",
+	// group_get_groups tool
+	group_get_groupsTool := mcp.NewTool("group_get_groups",
 		mcp.WithDescription("GET groups for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_group_get_groupsTool)
+	tools = append(tools, group_get_groupsTool)
 
-	// facebook_group_post_groups tool
-	facebook_group_post_groupsTool := mcp.NewTool("facebook_group_post_groups",
+	// group_post_groups tool
+	group_post_groupsTool := mcp.NewTool("group_post_groups",
 		mcp.WithDescription("POST groups for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -498,10 +499,10 @@ func GetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("ref parameter for groups"),
 		),
 	)
-	tools = append(tools, facebook_group_post_groupsTool)
+	tools = append(tools, group_post_groupsTool)
 
-	// facebook_group_get_live_videos tool
-	facebook_group_get_live_videosTool := mcp.NewTool("facebook_group_get_live_videos",
+	// group_get_live_videos tool
+	group_get_live_videosTool := mcp.NewTool("group_get_live_videos",
 		mcp.WithDescription("GET live_videos for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -516,10 +517,10 @@ func GetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Enum("owner", "target"),
 		),
 	)
-	tools = append(tools, facebook_group_get_live_videosTool)
+	tools = append(tools, group_get_live_videosTool)
 
-	// facebook_group_post_live_videos tool
-	facebook_group_post_live_videosTool := mcp.NewTool("facebook_group_post_live_videos",
+	// group_post_live_videos tool
+	group_post_live_videosTool := mcp.NewTool("group_post_live_videos",
 		mcp.WithDescription("POST live_videos for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -591,10 +592,10 @@ func GetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("title parameter for live_videos"),
 		),
 	)
-	tools = append(tools, facebook_group_post_live_videosTool)
+	tools = append(tools, group_post_live_videosTool)
 
-	// facebook_group_delete_members tool
-	facebook_group_delete_membersTool := mcp.NewTool("facebook_group_delete_members",
+	// group_delete_members tool
+	group_delete_membersTool := mcp.NewTool("group_delete_members",
 		mcp.WithDescription("DELETE members for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -607,10 +608,10 @@ func GetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("member parameter for members"),
 		),
 	)
-	tools = append(tools, facebook_group_delete_membersTool)
+	tools = append(tools, group_delete_membersTool)
 
-	// facebook_group_post_members tool
-	facebook_group_post_membersTool := mcp.NewTool("facebook_group_post_members",
+	// group_post_members tool
+	group_post_membersTool := mcp.NewTool("group_post_members",
 		mcp.WithDescription("POST members for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -632,20 +633,20 @@ func GetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("source parameter for members"),
 		),
 	)
-	tools = append(tools, facebook_group_post_membersTool)
+	tools = append(tools, group_post_membersTool)
 
-	// facebook_group_get_opted_in_members tool
-	facebook_group_get_opted_in_membersTool := mcp.NewTool("facebook_group_get_opted_in_members",
+	// group_get_opted_in_members tool
+	group_get_opted_in_membersTool := mcp.NewTool("group_get_opted_in_members",
 		mcp.WithDescription("GET opted_in_members for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_group_get_opted_in_membersTool)
+	tools = append(tools, group_get_opted_in_membersTool)
 
-	// facebook_group_post_photos tool
-	facebook_group_post_photosTool := mcp.NewTool("facebook_group_post_photos",
+	// group_post_photos tool
+	group_post_photosTool := mcp.NewTool("group_post_photos",
 		mcp.WithDescription("POST photos for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -807,10 +808,10 @@ func GetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("vault_image_id parameter for photos"),
 		),
 	)
-	tools = append(tools, facebook_group_post_photosTool)
+	tools = append(tools, group_post_photosTool)
 
-	// facebook_group_get_picture tool
-	facebook_group_get_pictureTool := mcp.NewTool("facebook_group_get_picture",
+	// group_get_picture tool
+	group_get_pictureTool := mcp.NewTool("group_get_picture",
 		mcp.WithDescription("GET picture for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -830,10 +831,10 @@ func GetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("width parameter for picture"),
 		),
 	)
-	tools = append(tools, facebook_group_get_pictureTool)
+	tools = append(tools, group_get_pictureTool)
 
-	// facebook_group_get_videos tool
-	facebook_group_get_videosTool := mcp.NewTool("facebook_group_get_videos",
+	// group_get_videos tool
+	group_get_videosTool := mcp.NewTool("group_get_videos",
 		mcp.WithDescription("GET videos for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -844,10 +845,10 @@ func GetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Enum("tagged", "uploaded"),
 		),
 	)
-	tools = append(tools, facebook_group_get_videosTool)
+	tools = append(tools, group_get_videosTool)
 
-	// facebook_group_post_videos tool
-	facebook_group_post_videosTool := mcp.NewTool("facebook_group_post_videos",
+	// group_post_videos tool
+	group_post_videosTool := mcp.NewTool("group_post_videos",
 		mcp.WithDescription("POST videos for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1068,10 +1069,10 @@ func GetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("waterfall_id parameter for videos"),
 		),
 	)
-	tools = append(tools, facebook_group_post_videosTool)
+	tools = append(tools, group_post_videosTool)
 
-	// facebook_group_get_ tool
-	facebook_group_get_Tool := mcp.NewTool("facebook_group_get_",
+	// group_get_ tool
+	group_get_Tool := mcp.NewTool("group_get_",
 		mcp.WithDescription("GET  for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1082,10 +1083,10 @@ func GetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Enum("16", "34", "50", "68"),
 		),
 	)
-	tools = append(tools, facebook_group_get_Tool)
+	tools = append(tools, group_get_Tool)
 
-	// facebook_group_post_ tool
-	facebook_group_post_Tool := mcp.NewTool("facebook_group_post_",
+	// group_post_ tool
+	group_post_Tool := mcp.NewTool("group_post_",
 		mcp.WithDescription("POST  for Group"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1143,15 +1144,17 @@ func GetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("update_view_time parameter for "),
 		),
 	)
-	tools = append(tools, facebook_group_post_Tool)
+	tools = append(tools, group_post_Tool)
+
 
 	return tools
 }
 
 // Group handlers
 
-// HandleFacebook_group_delete_admins handles the facebook_group_delete_admins tool
-func HandleFacebook_group_delete_admins(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_delete_admins handles the group_delete_admins tool
+func HandleGroup_delete_admins(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1171,10 +1174,12 @@ func HandleFacebook_group_delete_admins(ctx context.Context, request mcp.CallToo
 	}
 	args["uid"] = uid
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_delete_admins(args)
+	result, err := client.Group_delete_admins(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_delete_admins: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_delete_admins: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1186,8 +1191,9 @@ func HandleFacebook_group_delete_admins(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_post_admins handles the facebook_group_post_admins tool
-func HandleFacebook_group_post_admins(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_post_admins handles the group_post_admins tool
+func HandleGroup_post_admins(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1207,10 +1213,12 @@ func HandleFacebook_group_post_admins(ctx context.Context, request mcp.CallToolR
 	}
 	args["uid"] = uid
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_post_admins(args)
+	result, err := client.Group_post_admins(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_post_admins: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_post_admins: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1222,8 +1230,9 @@ func HandleFacebook_group_post_admins(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_get_albums handles the facebook_group_get_albums tool
-func HandleFacebook_group_get_albums(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_get_albums handles the group_get_albums tool
+func HandleGroup_get_albums(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1236,10 +1245,12 @@ func HandleFacebook_group_get_albums(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_get_albums(args)
+	result, err := client.Group_get_albums(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_get_albums: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_get_albums: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1251,8 +1262,9 @@ func HandleFacebook_group_get_albums(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_get_docs handles the facebook_group_get_docs tool
-func HandleFacebook_group_get_docs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_get_docs handles the group_get_docs tool
+func HandleGroup_get_docs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1265,10 +1277,12 @@ func HandleFacebook_group_get_docs(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_get_docs(args)
+	result, err := client.Group_get_docs(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_get_docs: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_get_docs: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1280,8 +1294,9 @@ func HandleFacebook_group_get_docs(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_get_events handles the facebook_group_get_events tool
-func HandleFacebook_group_get_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_get_events handles the group_get_events tool
+func HandleGroup_get_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1294,10 +1309,12 @@ func HandleFacebook_group_get_events(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_get_events(args)
+	result, err := client.Group_get_events(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_get_events: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_get_events: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1309,8 +1326,9 @@ func HandleFacebook_group_get_events(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_get_feed handles the facebook_group_get_feed tool
-func HandleFacebook_group_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_get_feed handles the group_get_feed tool
+func HandleGroup_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1353,10 +1371,12 @@ func HandleFacebook_group_get_feed(ctx context.Context, request mcp.CallToolRequ
 		args["with"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_get_feed(args)
+	result, err := client.Group_get_feed(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_get_feed: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_get_feed: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1368,8 +1388,9 @@ func HandleFacebook_group_get_feed(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_post_feed handles the facebook_group_post_feed tool
-func HandleFacebook_group_post_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_post_feed handles the group_post_feed tool
+func HandleGroup_post_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1924,10 +1945,12 @@ func HandleFacebook_group_post_feed(ctx context.Context, request mcp.CallToolReq
 		args["width"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_post_feed(args)
+	result, err := client.Group_post_feed(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_post_feed: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_post_feed: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1939,8 +1962,9 @@ func HandleFacebook_group_post_feed(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_get_files handles the facebook_group_get_files tool
-func HandleFacebook_group_get_files(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_get_files handles the group_get_files tool
+func HandleGroup_get_files(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1953,10 +1977,12 @@ func HandleFacebook_group_get_files(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_get_files(args)
+	result, err := client.Group_get_files(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_get_files: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_get_files: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1968,8 +1994,9 @@ func HandleFacebook_group_get_files(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_get_groups handles the facebook_group_get_groups tool
-func HandleFacebook_group_get_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_get_groups handles the group_get_groups tool
+func HandleGroup_get_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1982,10 +2009,12 @@ func HandleFacebook_group_get_groups(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_get_groups(args)
+	result, err := client.Group_get_groups(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_get_groups: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_get_groups: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1997,8 +2026,9 @@ func HandleFacebook_group_get_groups(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_post_groups handles the facebook_group_post_groups tool
-func HandleFacebook_group_post_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_post_groups handles the group_post_groups tool
+func HandleGroup_post_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2068,10 +2098,12 @@ func HandleFacebook_group_post_groups(ctx context.Context, request mcp.CallToolR
 		args["ref"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_post_groups(args)
+	result, err := client.Group_post_groups(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_post_groups: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_post_groups: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2083,8 +2115,9 @@ func HandleFacebook_group_post_groups(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_get_live_videos handles the facebook_group_get_live_videos tool
-func HandleFacebook_group_get_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_get_live_videos handles the group_get_live_videos tool
+func HandleGroup_get_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2108,10 +2141,12 @@ func HandleFacebook_group_get_live_videos(ctx context.Context, request mcp.CallT
 		args["source"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_get_live_videos(args)
+	result, err := client.Group_get_live_videos(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_get_live_videos: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_get_live_videos: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2123,8 +2158,9 @@ func HandleFacebook_group_get_live_videos(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_post_live_videos handles the facebook_group_post_live_videos tool
-func HandleFacebook_group_post_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_post_live_videos handles the group_post_live_videos tool
+func HandleGroup_post_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2239,10 +2275,12 @@ func HandleFacebook_group_post_live_videos(ctx context.Context, request mcp.Call
 		args["title"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_post_live_videos(args)
+	result, err := client.Group_post_live_videos(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_post_live_videos: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_post_live_videos: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2254,8 +2292,9 @@ func HandleFacebook_group_post_live_videos(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_delete_members handles the facebook_group_delete_members tool
-func HandleFacebook_group_delete_members(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_delete_members handles the group_delete_members tool
+func HandleGroup_delete_members(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2278,10 +2317,12 @@ func HandleFacebook_group_delete_members(ctx context.Context, request mcp.CallTo
 		args["member"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_delete_members(args)
+	result, err := client.Group_delete_members(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_delete_members: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_delete_members: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2293,8 +2334,9 @@ func HandleFacebook_group_delete_members(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_post_members handles the facebook_group_post_members tool
-func HandleFacebook_group_post_members(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_post_members handles the group_post_members tool
+func HandleGroup_post_members(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2332,10 +2374,12 @@ func HandleFacebook_group_post_members(ctx context.Context, request mcp.CallTool
 		args["source"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_post_members(args)
+	result, err := client.Group_post_members(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_post_members: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_post_members: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2347,8 +2391,9 @@ func HandleFacebook_group_post_members(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_get_opted_in_members handles the facebook_group_get_opted_in_members tool
-func HandleFacebook_group_get_opted_in_members(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_get_opted_in_members handles the group_get_opted_in_members tool
+func HandleGroup_get_opted_in_members(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2361,10 +2406,12 @@ func HandleFacebook_group_get_opted_in_members(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_get_opted_in_members(args)
+	result, err := client.Group_get_opted_in_members(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_get_opted_in_members: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_get_opted_in_members: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2376,8 +2423,9 @@ func HandleFacebook_group_get_opted_in_members(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_post_photos handles the facebook_group_post_photos tool
-func HandleFacebook_group_post_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_post_photos handles the group_post_photos tool
+func HandleGroup_post_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2649,10 +2697,12 @@ func HandleFacebook_group_post_photos(ctx context.Context, request mcp.CallToolR
 		args["vault_image_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_post_photos(args)
+	result, err := client.Group_post_photos(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_post_photos: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_post_photos: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2664,8 +2714,9 @@ func HandleFacebook_group_post_photos(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_get_picture handles the facebook_group_get_picture tool
-func HandleFacebook_group_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_get_picture handles the group_get_picture tool
+func HandleGroup_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2698,10 +2749,12 @@ func HandleFacebook_group_get_picture(ctx context.Context, request mcp.CallToolR
 		args["width"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_get_picture(args)
+	result, err := client.Group_get_picture(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_get_picture: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_get_picture: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2713,8 +2766,9 @@ func HandleFacebook_group_get_picture(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_get_videos handles the facebook_group_get_videos tool
-func HandleFacebook_group_get_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_get_videos handles the group_get_videos tool
+func HandleGroup_get_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2732,10 +2786,12 @@ func HandleFacebook_group_get_videos(ctx context.Context, request mcp.CallToolRe
 		args["type"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_get_videos(args)
+	result, err := client.Group_get_videos(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_get_videos: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_get_videos: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2747,8 +2803,9 @@ func HandleFacebook_group_get_videos(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_post_videos handles the facebook_group_post_videos tool
-func HandleFacebook_group_post_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_post_videos handles the group_post_videos tool
+func HandleGroup_post_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3107,10 +3164,12 @@ func HandleFacebook_group_post_videos(ctx context.Context, request mcp.CallToolR
 		args["waterfall_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_post_videos(args)
+	result, err := client.Group_post_videos(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_post_videos: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_post_videos: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3122,8 +3181,9 @@ func HandleFacebook_group_post_videos(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_get_ handles the facebook_group_get_ tool
-func HandleFacebook_group_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_get_ handles the group_get_ tool
+func HandleGroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3141,10 +3201,12 @@ func HandleFacebook_group_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["icon_size"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_get_(args)
+	result, err := client.Group_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3156,8 +3218,9 @@ func HandleFacebook_group_get_(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_group_post_ handles the facebook_group_post_ tool
-func HandleFacebook_group_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGroup_post_ handles the group_post_ tool
+func HandleGroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3250,10 +3313,12 @@ func HandleFacebook_group_post_(ctx context.Context, request mcp.CallToolRequest
 		args["update_view_time"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_group_post_(args)
+	result, err := client.Group_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_group_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute group_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3264,3 +3329,4 @@ func HandleFacebook_group_post_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

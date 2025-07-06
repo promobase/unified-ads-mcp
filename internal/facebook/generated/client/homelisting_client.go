@@ -21,14 +21,18 @@ func NewHomeListingClient(accessToken string) *HomeListingClient {
 	}
 }
 
-// facebook_homelisting_get_channels_to_integrity_status GET channels_to_integrity_status for HomeListing
-func (c *HomeListingClient) Facebook_homelisting_get_channels_to_integrity_status(args map[string]interface{}) (interface{}, error) {
+
+// homelisting_get_channels_to_integrity_status GET channels_to_integrity_status for HomeListing
+func (c *HomeListingClient) Homelisting_get_channels_to_integrity_status(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "channels_to_integrity_status")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -60,9 +64,11 @@ func (c *HomeListingClient) Facebook_homelisting_get_channels_to_integrity_statu
 	return result, nil
 }
 
-// facebook_homelisting_get_override_details GET override_details for HomeListing
-func (c *HomeListingClient) Facebook_homelisting_get_override_details(args map[string]interface{}) (interface{}, error) {
+
+// homelisting_get_override_details GET override_details for HomeListing
+func (c *HomeListingClient) Homelisting_get_override_details(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "override_details")
@@ -76,6 +82,7 @@ func (c *HomeListingClient) Facebook_homelisting_get_override_details(args map[s
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -106,15 +113,19 @@ func (c *HomeListingClient) Facebook_homelisting_get_override_details(args map[s
 	return result, nil
 }
 
-// facebook_homelisting_get_videos_metadata GET videos_metadata for HomeListing
-func (c *HomeListingClient) Facebook_homelisting_get_videos_metadata(args map[string]interface{}) (interface{}, error) {
+
+// homelisting_get_videos_metadata GET videos_metadata for HomeListing
+func (c *HomeListingClient) Homelisting_get_videos_metadata(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos_metadata")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -145,14 +156,18 @@ func (c *HomeListingClient) Facebook_homelisting_get_videos_metadata(args map[st
 	return result, nil
 }
 
-// facebook_homelisting_delete_ DELETE  for HomeListing
-func (c *HomeListingClient) Facebook_homelisting_delete_(args map[string]interface{}) (interface{}, error) {
+
+// homelisting_delete_ DELETE  for HomeListing
+func (c *HomeListingClient) Homelisting_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -184,14 +199,18 @@ func (c *HomeListingClient) Facebook_homelisting_delete_(args map[string]interfa
 	return result, nil
 }
 
-// facebook_homelisting_get_ GET  for HomeListing
-func (c *HomeListingClient) Facebook_homelisting_get_(args map[string]interface{}) (interface{}, error) {
+
+// homelisting_get_ GET  for HomeListing
+func (c *HomeListingClient) Homelisting_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -223,9 +242,11 @@ func (c *HomeListingClient) Facebook_homelisting_get_(args map[string]interface{
 	return result, nil
 }
 
-// facebook_homelisting_post_ POST  for HomeListing
-func (c *HomeListingClient) Facebook_homelisting_post_(args map[string]interface{}) (interface{}, error) {
+
+// homelisting_post_ POST  for HomeListing
+func (c *HomeListingClient) Homelisting_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -275,6 +296,7 @@ func (c *HomeListingClient) Facebook_homelisting_post_(args map[string]interface
 		urlParams.Set("year_built", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -304,3 +326,4 @@ func (c *HomeListingClient) Facebook_homelisting_post_(args map[string]interface
 
 	return result, nil
 }
+

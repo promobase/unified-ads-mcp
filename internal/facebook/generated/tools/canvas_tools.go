@@ -15,18 +15,19 @@ import (
 func GetCanvasTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_canvas_get_preview tool
-	facebook_canvas_get_previewTool := mcp.NewTool("facebook_canvas_get_preview",
+
+	// canvas_get_preview tool
+	canvas_get_previewTool := mcp.NewTool("canvas_get_preview",
 		mcp.WithDescription("GET preview for Canvas"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_canvas_get_previewTool)
+	tools = append(tools, canvas_get_previewTool)
 
-	// facebook_canvas_get_previews tool
-	facebook_canvas_get_previewsTool := mcp.NewTool("facebook_canvas_get_previews",
+	// canvas_get_previews tool
+	canvas_get_previewsTool := mcp.NewTool("canvas_get_previews",
 		mcp.WithDescription("GET previews for Canvas"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -36,20 +37,20 @@ func GetCanvasTools(accessToken string) []mcp.Tool {
 			mcp.Description("user_ids parameter for previews"),
 		),
 	)
-	tools = append(tools, facebook_canvas_get_previewsTool)
+	tools = append(tools, canvas_get_previewsTool)
 
-	// facebook_canvas_get_ tool
-	facebook_canvas_get_Tool := mcp.NewTool("facebook_canvas_get_",
+	// canvas_get_ tool
+	canvas_get_Tool := mcp.NewTool("canvas_get_",
 		mcp.WithDescription("GET  for Canvas"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_canvas_get_Tool)
+	tools = append(tools, canvas_get_Tool)
 
-	// facebook_canvas_post_ tool
-	facebook_canvas_post_Tool := mcp.NewTool("facebook_canvas_post_",
+	// canvas_post_ tool
+	canvas_post_Tool := mcp.NewTool("canvas_post_",
 		mcp.WithDescription("POST  for Canvas"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -77,15 +78,17 @@ func GetCanvasTools(accessToken string) []mcp.Tool {
 			mcp.Description("source_template_id parameter for "),
 		),
 	)
-	tools = append(tools, facebook_canvas_post_Tool)
+	tools = append(tools, canvas_post_Tool)
+
 
 	return tools
 }
 
 // Canvas handlers
 
-// HandleFacebook_canvas_get_preview handles the facebook_canvas_get_preview tool
-func HandleFacebook_canvas_get_preview(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCanvas_get_preview handles the canvas_get_preview tool
+func HandleCanvas_get_preview(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -98,10 +101,12 @@ func HandleFacebook_canvas_get_preview(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_canvas_get_preview(args)
+	result, err := client.Canvas_get_preview(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_canvas_get_preview: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute canvas_get_preview: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -113,8 +118,9 @@ func HandleFacebook_canvas_get_preview(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_canvas_get_previews handles the facebook_canvas_get_previews tool
-func HandleFacebook_canvas_get_previews(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCanvas_get_previews handles the canvas_get_previews tool
+func HandleCanvas_get_previews(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -133,10 +139,12 @@ func HandleFacebook_canvas_get_previews(ctx context.Context, request mcp.CallToo
 		args["user_ids"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_canvas_get_previews(args)
+	result, err := client.Canvas_get_previews(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_canvas_get_previews: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute canvas_get_previews: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -148,8 +156,9 @@ func HandleFacebook_canvas_get_previews(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_canvas_get_ handles the facebook_canvas_get_ tool
-func HandleFacebook_canvas_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCanvas_get_ handles the canvas_get_ tool
+func HandleCanvas_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -162,10 +171,12 @@ func HandleFacebook_canvas_get_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_canvas_get_(args)
+	result, err := client.Canvas_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_canvas_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute canvas_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -177,8 +188,9 @@ func HandleFacebook_canvas_get_(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_canvas_post_ handles the facebook_canvas_post_ tool
-func HandleFacebook_canvas_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCanvas_post_ handles the canvas_post_ tool
+func HandleCanvas_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -227,10 +239,12 @@ func HandleFacebook_canvas_post_(ctx context.Context, request mcp.CallToolReques
 		args["source_template_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_canvas_post_(args)
+	result, err := client.Canvas_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_canvas_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute canvas_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -241,3 +255,4 @@ func HandleFacebook_canvas_post_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

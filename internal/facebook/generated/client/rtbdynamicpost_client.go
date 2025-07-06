@@ -21,9 +21,11 @@ func NewRTBDynamicPostClient(accessToken string) *RTBDynamicPostClient {
 	}
 }
 
-// facebook_rtbdynamicpost_get_comments GET comments for RTBDynamicPost
-func (c *RTBDynamicPostClient) Facebook_rtbdynamicpost_get_comments(args map[string]interface{}) (interface{}, error) {
+
+// rtbdynamicpost_get_comments GET comments for RTBDynamicPost
+func (c *RTBDynamicPostClient) Rtbdynamicpost_get_comments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
@@ -43,6 +45,7 @@ func (c *RTBDynamicPostClient) Facebook_rtbdynamicpost_get_comments(args map[str
 		urlParams.Set("since", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -73,15 +76,19 @@ func (c *RTBDynamicPostClient) Facebook_rtbdynamicpost_get_comments(args map[str
 	return result, nil
 }
 
-// facebook_rtbdynamicpost_get_likes GET likes for RTBDynamicPost
-func (c *RTBDynamicPostClient) Facebook_rtbdynamicpost_get_likes(args map[string]interface{}) (interface{}, error) {
+
+// rtbdynamicpost_get_likes GET likes for RTBDynamicPost
+func (c *RTBDynamicPostClient) Rtbdynamicpost_get_likes(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -112,15 +119,19 @@ func (c *RTBDynamicPostClient) Facebook_rtbdynamicpost_get_likes(args map[string
 	return result, nil
 }
 
-// facebook_rtbdynamicpost_get_ GET  for RTBDynamicPost
-func (c *RTBDynamicPostClient) Facebook_rtbdynamicpost_get_(args map[string]interface{}) (interface{}, error) {
+
+// rtbdynamicpost_get_ GET  for RTBDynamicPost
+func (c *RTBDynamicPostClient) Rtbdynamicpost_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -150,3 +161,4 @@ func (c *RTBDynamicPostClient) Facebook_rtbdynamicpost_get_(args map[string]inte
 
 	return result, nil
 }
+

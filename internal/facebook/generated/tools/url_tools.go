@@ -15,18 +15,19 @@ import (
 func GetURLTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_url_get_ tool
-	facebook_url_get_Tool := mcp.NewTool("facebook_url_get_",
+
+	// url_get_ tool
+	url_get_Tool := mcp.NewTool("url_get_",
 		mcp.WithDescription("GET  for URL"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_url_get_Tool)
+	tools = append(tools, url_get_Tool)
 
-	// facebook_url_post_ tool
-	facebook_url_post_Tool := mcp.NewTool("facebook_url_post_",
+	// url_post_ tool
+	url_post_Tool := mcp.NewTool("url_post_",
 		mcp.WithDescription("POST  for URL"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -52,15 +53,17 @@ func GetURLTools(accessToken string) []mcp.Tool {
 			mcp.Description("ts parameter for "),
 		),
 	)
-	tools = append(tools, facebook_url_post_Tool)
+	tools = append(tools, url_post_Tool)
+
 
 	return tools
 }
 
 // URL handlers
 
-// HandleFacebook_url_get_ handles the facebook_url_get_ tool
-func HandleFacebook_url_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleUrl_get_ handles the url_get_ tool
+func HandleUrl_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -73,10 +76,12 @@ func HandleFacebook_url_get_(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_url_get_(args)
+	result, err := client.Url_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_url_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute url_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -88,8 +93,9 @@ func HandleFacebook_url_get_(ctx context.Context, request mcp.CallToolRequest) (
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_url_post_ handles the facebook_url_post_ tool
-func HandleFacebook_url_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleUrl_post_ handles the url_post_ tool
+func HandleUrl_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -134,10 +140,12 @@ func HandleFacebook_url_post_(ctx context.Context, request mcp.CallToolRequest) 
 		args["ts"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_url_post_(args)
+	result, err := client.Url_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_url_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute url_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -148,3 +156,4 @@ func HandleFacebook_url_post_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

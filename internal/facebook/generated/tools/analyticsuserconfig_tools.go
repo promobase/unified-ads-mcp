@@ -15,23 +15,26 @@ import (
 func GetAnalyticsUserConfigTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_analyticsuserconfig_get_ tool
-	facebook_analyticsuserconfig_get_Tool := mcp.NewTool("facebook_analyticsuserconfig_get_",
+
+	// analyticsuserconfig_get_ tool
+	analyticsuserconfig_get_Tool := mcp.NewTool("analyticsuserconfig_get_",
 		mcp.WithDescription("GET  for AnalyticsUserConfig"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_analyticsuserconfig_get_Tool)
+	tools = append(tools, analyticsuserconfig_get_Tool)
+
 
 	return tools
 }
 
 // AnalyticsUserConfig handlers
 
-// HandleFacebook_analyticsuserconfig_get_ handles the facebook_analyticsuserconfig_get_ tool
-func HandleFacebook_analyticsuserconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAnalyticsuserconfig_get_ handles the analyticsuserconfig_get_ tool
+func HandleAnalyticsuserconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_analyticsuserconfig_get_(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_analyticsuserconfig_get_(args)
+	result, err := client.Analyticsuserconfig_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_analyticsuserconfig_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute analyticsuserconfig_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_analyticsuserconfig_get_(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

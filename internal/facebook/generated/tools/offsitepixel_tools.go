@@ -15,8 +15,9 @@ import (
 func GetOffsitePixelTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_offsitepixel_get_ tool
-	facebook_offsitepixel_get_Tool := mcp.NewTool("facebook_offsitepixel_get_",
+
+	// offsitepixel_get_ tool
+	offsitepixel_get_Tool := mcp.NewTool("offsitepixel_get_",
 		mcp.WithDescription("GET  for OffsitePixel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -26,15 +27,17 @@ func GetOffsitePixelTools(accessToken string) []mcp.Tool {
 			mcp.Description("value parameter for "),
 		),
 	)
-	tools = append(tools, facebook_offsitepixel_get_Tool)
+	tools = append(tools, offsitepixel_get_Tool)
+
 
 	return tools
 }
 
 // OffsitePixel handlers
 
-// HandleFacebook_offsitepixel_get_ handles the facebook_offsitepixel_get_ tool
-func HandleFacebook_offsitepixel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleOffsitepixel_get_ handles the offsitepixel_get_ tool
+func HandleOffsitepixel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -52,10 +55,12 @@ func HandleFacebook_offsitepixel_get_(ctx context.Context, request mcp.CallToolR
 		args["value"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_offsitepixel_get_(args)
+	result, err := client.Offsitepixel_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_offsitepixel_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute offsitepixel_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -66,3 +71,4 @@ func HandleFacebook_offsitepixel_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

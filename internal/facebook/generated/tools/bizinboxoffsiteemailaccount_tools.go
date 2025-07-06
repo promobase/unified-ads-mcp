@@ -15,33 +15,36 @@ import (
 func GetBizInboxOffsiteEmailAccountTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_bizinboxoffsiteemailaccount_get_assigned_users tool
-	facebook_bizinboxoffsiteemailaccount_get_assigned_usersTool := mcp.NewTool("facebook_bizinboxoffsiteemailaccount_get_assigned_users",
+
+	// bizinboxoffsiteemailaccount_get_assigned_users tool
+	bizinboxoffsiteemailaccount_get_assigned_usersTool := mcp.NewTool("bizinboxoffsiteemailaccount_get_assigned_users",
 		mcp.WithDescription("GET assigned_users for BizInboxOffsiteEmailAccount"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_bizinboxoffsiteemailaccount_get_assigned_usersTool)
+	tools = append(tools, bizinboxoffsiteemailaccount_get_assigned_usersTool)
 
-	// facebook_bizinboxoffsiteemailaccount_get_ tool
-	facebook_bizinboxoffsiteemailaccount_get_Tool := mcp.NewTool("facebook_bizinboxoffsiteemailaccount_get_",
+	// bizinboxoffsiteemailaccount_get_ tool
+	bizinboxoffsiteemailaccount_get_Tool := mcp.NewTool("bizinboxoffsiteemailaccount_get_",
 		mcp.WithDescription("GET  for BizInboxOffsiteEmailAccount"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_bizinboxoffsiteemailaccount_get_Tool)
+	tools = append(tools, bizinboxoffsiteemailaccount_get_Tool)
+
 
 	return tools
 }
 
 // BizInboxOffsiteEmailAccount handlers
 
-// HandleFacebook_bizinboxoffsiteemailaccount_get_assigned_users handles the facebook_bizinboxoffsiteemailaccount_get_assigned_users tool
-func HandleFacebook_bizinboxoffsiteemailaccount_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBizinboxoffsiteemailaccount_get_assigned_users handles the bizinboxoffsiteemailaccount_get_assigned_users tool
+func HandleBizinboxoffsiteemailaccount_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -54,10 +57,12 @@ func HandleFacebook_bizinboxoffsiteemailaccount_get_assigned_users(ctx context.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_bizinboxoffsiteemailaccount_get_assigned_users(args)
+	result, err := client.Bizinboxoffsiteemailaccount_get_assigned_users(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_bizinboxoffsiteemailaccount_get_assigned_users: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute bizinboxoffsiteemailaccount_get_assigned_users: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -69,8 +74,9 @@ func HandleFacebook_bizinboxoffsiteemailaccount_get_assigned_users(ctx context.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_bizinboxoffsiteemailaccount_get_ handles the facebook_bizinboxoffsiteemailaccount_get_ tool
-func HandleFacebook_bizinboxoffsiteemailaccount_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBizinboxoffsiteemailaccount_get_ handles the bizinboxoffsiteemailaccount_get_ tool
+func HandleBizinboxoffsiteemailaccount_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -83,10 +89,12 @@ func HandleFacebook_bizinboxoffsiteemailaccount_get_(ctx context.Context, reques
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_bizinboxoffsiteemailaccount_get_(args)
+	result, err := client.Bizinboxoffsiteemailaccount_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_bizinboxoffsiteemailaccount_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute bizinboxoffsiteemailaccount_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -97,3 +105,4 @@ func HandleFacebook_bizinboxoffsiteemailaccount_get_(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

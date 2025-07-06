@@ -15,18 +15,19 @@ import (
 func GetProductFeedUploadTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_productfeedupload_post_error_report tool
-	facebook_productfeedupload_post_error_reportTool := mcp.NewTool("facebook_productfeedupload_post_error_report",
+
+	// productfeedupload_post_error_report tool
+	productfeedupload_post_error_reportTool := mcp.NewTool("productfeedupload_post_error_report",
 		mcp.WithDescription("POST error_report for ProductFeedUpload"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productfeedupload_post_error_reportTool)
+	tools = append(tools, productfeedupload_post_error_reportTool)
 
-	// facebook_productfeedupload_get_errors tool
-	facebook_productfeedupload_get_errorsTool := mcp.NewTool("facebook_productfeedupload_get_errors",
+	// productfeedupload_get_errors tool
+	productfeedupload_get_errorsTool := mcp.NewTool("productfeedupload_get_errors",
 		mcp.WithDescription("GET errors for ProductFeedUpload"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -37,25 +38,27 @@ func GetProductFeedUploadTools(accessToken string) []mcp.Tool {
 			mcp.Enum("HIGH", "LOW", "MEDIUM"),
 		),
 	)
-	tools = append(tools, facebook_productfeedupload_get_errorsTool)
+	tools = append(tools, productfeedupload_get_errorsTool)
 
-	// facebook_productfeedupload_get_ tool
-	facebook_productfeedupload_get_Tool := mcp.NewTool("facebook_productfeedupload_get_",
+	// productfeedupload_get_ tool
+	productfeedupload_get_Tool := mcp.NewTool("productfeedupload_get_",
 		mcp.WithDescription("GET  for ProductFeedUpload"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productfeedupload_get_Tool)
+	tools = append(tools, productfeedupload_get_Tool)
+
 
 	return tools
 }
 
 // ProductFeedUpload handlers
 
-// HandleFacebook_productfeedupload_post_error_report handles the facebook_productfeedupload_post_error_report tool
-func HandleFacebook_productfeedupload_post_error_report(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductfeedupload_post_error_report handles the productfeedupload_post_error_report tool
+func HandleProductfeedupload_post_error_report(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -68,10 +71,12 @@ func HandleFacebook_productfeedupload_post_error_report(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productfeedupload_post_error_report(args)
+	result, err := client.Productfeedupload_post_error_report(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productfeedupload_post_error_report: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productfeedupload_post_error_report: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -83,8 +88,9 @@ func HandleFacebook_productfeedupload_post_error_report(ctx context.Context, req
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productfeedupload_get_errors handles the facebook_productfeedupload_get_errors tool
-func HandleFacebook_productfeedupload_get_errors(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductfeedupload_get_errors handles the productfeedupload_get_errors tool
+func HandleProductfeedupload_get_errors(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -102,10 +108,12 @@ func HandleFacebook_productfeedupload_get_errors(ctx context.Context, request mc
 		args["error_priority"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productfeedupload_get_errors(args)
+	result, err := client.Productfeedupload_get_errors(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productfeedupload_get_errors: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productfeedupload_get_errors: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -117,8 +125,9 @@ func HandleFacebook_productfeedupload_get_errors(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productfeedupload_get_ handles the facebook_productfeedupload_get_ tool
-func HandleFacebook_productfeedupload_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductfeedupload_get_ handles the productfeedupload_get_ tool
+func HandleProductfeedupload_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -131,10 +140,12 @@ func HandleFacebook_productfeedupload_get_(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productfeedupload_get_(args)
+	result, err := client.Productfeedupload_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productfeedupload_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productfeedupload_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -145,3 +156,4 @@ func HandleFacebook_productfeedupload_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

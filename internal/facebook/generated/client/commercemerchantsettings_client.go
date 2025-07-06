@@ -21,8 +21,9 @@ func NewCommerceMerchantSettingsClient(accessToken string) *CommerceMerchantSett
 	}
 }
 
-// facebook_commercemerchantsettings_post_acknowledge_orders POST acknowledge_orders for CommerceMerchantSettings
-func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_post_acknowledge_orders(args map[string]interface{}) (interface{}, error) {
+
+// commercemerchantsettings_post_acknowledge_orders POST acknowledge_orders for CommerceMerchantSettings
+func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_post_acknowledge_orders(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	idempotency_key, ok := args["idempotency_key"]
 	if !ok {
@@ -35,6 +36,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_post_
 	}
 	_ = orders // Suppress unused variable warning
 
+
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "acknowledge_orders")
 	urlParams := url.Values{}
@@ -46,6 +48,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_post_
 	if val, ok := args["orders"]; ok {
 		urlParams.Set("orders", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -77,9 +80,11 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_post_
 	return result, nil
 }
 
-// facebook_commercemerchantsettings_get_commerce_orders GET commerce_orders for CommerceMerchantSettings
-func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_commerce_orders(args map[string]interface{}) (interface{}, error) {
+
+// commercemerchantsettings_get_commerce_orders GET commerce_orders for CommerceMerchantSettings
+func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_commerce_orders(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "commerce_orders")
@@ -99,6 +104,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_c
 		urlParams.Set("updated_before", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -129,9 +135,11 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_c
 	return result, nil
 }
 
-// facebook_commercemerchantsettings_get_commerce_payouts GET commerce_payouts for CommerceMerchantSettings
-func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_commerce_payouts(args map[string]interface{}) (interface{}, error) {
+
+// commercemerchantsettings_get_commerce_payouts GET commerce_payouts for CommerceMerchantSettings
+func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_commerce_payouts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "commerce_payouts")
@@ -145,6 +153,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_c
 		urlParams.Set("start_time", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -175,9 +184,11 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_c
 	return result, nil
 }
 
-// facebook_commercemerchantsettings_get_commerce_transactions GET commerce_transactions for CommerceMerchantSettings
-func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_commerce_transactions(args map[string]interface{}) (interface{}, error) {
+
+// commercemerchantsettings_get_commerce_transactions GET commerce_transactions for CommerceMerchantSettings
+func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_commerce_transactions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "commerce_transactions")
@@ -194,44 +205,6 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_c
 		urlParams.Set("start_time", fmt.Sprintf("%v", val))
 	}
 
-	// Make HTTP request
-	var resp *http.Response
-	var err error
-
-	switch "GET" {
-	case "GET":
-		resp, err = http.Get(baseURL + "?" + urlParams.Encode())
-	case "POST":
-		resp, err = http.PostForm(baseURL, urlParams)
-	default:
-		return nil, fmt.Errorf("unsupported HTTP method: GET")
-	}
-
-	if err != nil {
-		return nil, fmt.Errorf("HTTP request failed: %w", err)
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("API request failed with status: %d", resp.StatusCode)
-	}
-
-	var result interface{}
-	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		return nil, fmt.Errorf("failed to decode response: %w", err)
-	}
-
-	return result, nil
-}
-
-// facebook_commercemerchantsettings_get_order_management_apps GET order_management_apps for CommerceMerchantSettings
-func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_order_management_apps(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "order_management_apps")
-	urlParams := url.Values{}
-	urlParams.Set("access_token", c.accessToken)
 
 	// Make HTTP request
 	var resp *http.Response
@@ -263,14 +236,61 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_o
 	return result, nil
 }
 
-// facebook_commercemerchantsettings_post_order_management_apps POST order_management_apps for CommerceMerchantSettings
-func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_post_order_management_apps(args map[string]interface{}) (interface{}, error) {
+
+// commercemerchantsettings_get_order_management_apps GET order_management_apps for CommerceMerchantSettings
+func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_order_management_apps(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "order_management_apps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
+
+	// Make HTTP request
+	var resp *http.Response
+	var err error
+
+	switch "GET" {
+	case "GET":
+		resp, err = http.Get(baseURL + "?" + urlParams.Encode())
+	case "POST":
+		resp, err = http.PostForm(baseURL, urlParams)
+	default:
+		return nil, fmt.Errorf("unsupported HTTP method: GET")
+	}
+
+	if err != nil {
+		return nil, fmt.Errorf("HTTP request failed: %w", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("API request failed with status: %d", resp.StatusCode)
+	}
+
+	var result interface{}
+	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
+		return nil, fmt.Errorf("failed to decode response: %w", err)
+	}
+
+	return result, nil
+}
+
+
+// commercemerchantsettings_post_order_management_apps POST order_management_apps for CommerceMerchantSettings
+func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_post_order_management_apps(args map[string]interface{}) (interface{}, error) {
+	// Extract parameters
+
+
+	// Build request URL and parameters
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "order_management_apps")
+	urlParams := url.Values{}
+	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -302,14 +322,18 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_post_
 	return result, nil
 }
 
-// facebook_commercemerchantsettings_get_product_catalogs GET product_catalogs for CommerceMerchantSettings
-func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_product_catalogs(args map[string]interface{}) (interface{}, error) {
+
+// commercemerchantsettings_get_product_catalogs GET product_catalogs for CommerceMerchantSettings
+func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_product_catalogs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_catalogs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -341,9 +365,11 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_p
 	return result, nil
 }
 
-// facebook_commercemerchantsettings_get_returns GET returns for CommerceMerchantSettings
-func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_returns(args map[string]interface{}) (interface{}, error) {
+
+// commercemerchantsettings_get_returns GET returns for CommerceMerchantSettings
+func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_returns(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "returns")
@@ -363,6 +389,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_r
 		urlParams.Set("statuses", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -393,15 +420,19 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_r
 	return result, nil
 }
 
-// facebook_commercemerchantsettings_get_setup_status GET setup_status for CommerceMerchantSettings
-func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_setup_status(args map[string]interface{}) (interface{}, error) {
+
+// commercemerchantsettings_get_setup_status GET setup_status for CommerceMerchantSettings
+func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_setup_status(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "setup_status")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -432,9 +463,11 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_s
 	return result, nil
 }
 
-// facebook_commercemerchantsettings_get_shipping_profiles GET shipping_profiles for CommerceMerchantSettings
-func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_shipping_profiles(args map[string]interface{}) (interface{}, error) {
+
+// commercemerchantsettings_get_shipping_profiles GET shipping_profiles for CommerceMerchantSettings
+func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_shipping_profiles(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shipping_profiles")
@@ -445,6 +478,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_s
 		urlParams.Set("reference_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -475,8 +509,9 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_s
 	return result, nil
 }
 
-// facebook_commercemerchantsettings_post_shipping_profiles POST shipping_profiles for CommerceMerchantSettings
-func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_post_shipping_profiles(args map[string]interface{}) (interface{}, error) {
+
+// commercemerchantsettings_post_shipping_profiles POST shipping_profiles for CommerceMerchantSettings
+func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_post_shipping_profiles(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	name, ok := args["name"]
 	if !ok {
@@ -488,6 +523,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_post_
 		return nil, fmt.Errorf("missing required parameter: shipping_destinations")
 	}
 	_ = shipping_destinations // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shipping_profiles")
@@ -513,6 +549,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_post_
 		urlParams.Set("shipping_destinations", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -543,15 +580,19 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_post_
 	return result, nil
 }
 
-// facebook_commercemerchantsettings_get_shops GET shops for CommerceMerchantSettings
-func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_shops(args map[string]interface{}) (interface{}, error) {
+
+// commercemerchantsettings_get_shops GET shops for CommerceMerchantSettings
+func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_shops(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shops")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -582,15 +623,19 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_s
 	return result, nil
 }
 
-// facebook_commercemerchantsettings_get_tax_settings GET tax_settings for CommerceMerchantSettings
-func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_tax_settings(args map[string]interface{}) (interface{}, error) {
+
+// commercemerchantsettings_get_tax_settings GET tax_settings for CommerceMerchantSettings
+func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_tax_settings(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "tax_settings")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -621,15 +666,19 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_t
 	return result, nil
 }
 
-// facebook_commercemerchantsettings_get_ GET  for CommerceMerchantSettings
-func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_(args map[string]interface{}) (interface{}, error) {
+
+// commercemerchantsettings_get_ GET  for CommerceMerchantSettings
+func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -659,3 +708,4 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_(
 
 	return result, nil
 }
+

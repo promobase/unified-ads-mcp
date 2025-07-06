@@ -21,14 +21,16 @@ func NewCommerceOrderClient(accessToken string) *CommerceOrderClient {
 	}
 }
 
-// facebook_commerceorder_post_acknowledge_order POST acknowledge_order for CommerceOrder
-func (c *CommerceOrderClient) Facebook_commerceorder_post_acknowledge_order(args map[string]interface{}) (interface{}, error) {
+
+// commerceorder_post_acknowledge_order POST acknowledge_order for CommerceOrder
+func (c *CommerceOrderClient) Commerceorder_post_acknowledge_order(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	idempotency_key, ok := args["idempotency_key"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: idempotency_key")
 	}
 	_ = idempotency_key // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "acknowledge_order")
@@ -41,6 +43,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_acknowledge_order(args
 	if val, ok := args["merchant_order_reference"]; ok {
 		urlParams.Set("merchant_order_reference", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -72,14 +75,18 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_acknowledge_order(args
 	return result, nil
 }
 
-// facebook_commerceorder_get_cancellations GET cancellations for CommerceOrder
-func (c *CommerceOrderClient) Facebook_commerceorder_get_cancellations(args map[string]interface{}) (interface{}, error) {
+
+// commerceorder_get_cancellations GET cancellations for CommerceOrder
+func (c *CommerceOrderClient) Commerceorder_get_cancellations(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "cancellations")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -111,14 +118,16 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_cancellations(args map[
 	return result, nil
 }
 
-// facebook_commerceorder_post_cancellations POST cancellations for CommerceOrder
-func (c *CommerceOrderClient) Facebook_commerceorder_post_cancellations(args map[string]interface{}) (interface{}, error) {
+
+// commerceorder_post_cancellations POST cancellations for CommerceOrder
+func (c *CommerceOrderClient) Commerceorder_post_cancellations(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	idempotency_key, ok := args["idempotency_key"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: idempotency_key")
 	}
 	_ = idempotency_key // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "cancellations")
@@ -138,6 +147,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_cancellations(args map
 		urlParams.Set("restock_items", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -168,8 +178,9 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_cancellations(args map
 	return result, nil
 }
 
-// facebook_commerceorder_post_item_updates POST item_updates for CommerceOrder
-func (c *CommerceOrderClient) Facebook_commerceorder_post_item_updates(args map[string]interface{}) (interface{}, error) {
+
+// commerceorder_post_item_updates POST item_updates for CommerceOrder
+func (c *CommerceOrderClient) Commerceorder_post_item_updates(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	items, ok := args["items"]
 	if !ok {
@@ -181,6 +192,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_item_updates(args map[
 		return nil, fmt.Errorf("missing required parameter: merchant_order_reference")
 	}
 	_ = merchant_order_reference // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "item_updates")
@@ -194,6 +206,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_item_updates(args map[
 		urlParams.Set("merchant_order_reference", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -224,15 +237,19 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_item_updates(args map[
 	return result, nil
 }
 
-// facebook_commerceorder_get_items GET items for CommerceOrder
-func (c *CommerceOrderClient) Facebook_commerceorder_get_items(args map[string]interface{}) (interface{}, error) {
+
+// commerceorder_get_items GET items for CommerceOrder
+func (c *CommerceOrderClient) Commerceorder_get_items(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "items")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -263,15 +280,19 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_items(args map[string]i
 	return result, nil
 }
 
-// facebook_commerceorder_get_payments GET payments for CommerceOrder
-func (c *CommerceOrderClient) Facebook_commerceorder_get_payments(args map[string]interface{}) (interface{}, error) {
+
+// commerceorder_get_payments GET payments for CommerceOrder
+func (c *CommerceOrderClient) Commerceorder_get_payments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "payments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -302,15 +323,19 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_payments(args map[strin
 	return result, nil
 }
 
-// facebook_commerceorder_get_promotion_details GET promotion_details for CommerceOrder
-func (c *CommerceOrderClient) Facebook_commerceorder_get_promotion_details(args map[string]interface{}) (interface{}, error) {
+
+// commerceorder_get_promotion_details GET promotion_details for CommerceOrder
+func (c *CommerceOrderClient) Commerceorder_get_promotion_details(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "promotion_details")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -341,15 +366,19 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_promotion_details(args 
 	return result, nil
 }
 
-// facebook_commerceorder_get_promotions GET promotions for CommerceOrder
-func (c *CommerceOrderClient) Facebook_commerceorder_get_promotions(args map[string]interface{}) (interface{}, error) {
+
+// commerceorder_get_promotions GET promotions for CommerceOrder
+func (c *CommerceOrderClient) Commerceorder_get_promotions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "promotions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -380,15 +409,19 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_promotions(args map[str
 	return result, nil
 }
 
-// facebook_commerceorder_get_refunds GET refunds for CommerceOrder
-func (c *CommerceOrderClient) Facebook_commerceorder_get_refunds(args map[string]interface{}) (interface{}, error) {
+
+// commerceorder_get_refunds GET refunds for CommerceOrder
+func (c *CommerceOrderClient) Commerceorder_get_refunds(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "refunds")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -419,8 +452,9 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_refunds(args map[string
 	return result, nil
 }
 
-// facebook_commerceorder_post_refunds POST refunds for CommerceOrder
-func (c *CommerceOrderClient) Facebook_commerceorder_post_refunds(args map[string]interface{}) (interface{}, error) {
+
+// commerceorder_post_refunds POST refunds for CommerceOrder
+func (c *CommerceOrderClient) Commerceorder_post_refunds(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	idempotency_key, ok := args["idempotency_key"]
 	if !ok {
@@ -432,6 +466,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_refunds(args map[strin
 		return nil, fmt.Errorf("missing required parameter: reason_code")
 	}
 	_ = reason_code // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "refunds")
@@ -463,6 +498,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_refunds(args map[strin
 		urlParams.Set("shipping", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -493,9 +529,11 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_refunds(args map[strin
 	return result, nil
 }
 
-// facebook_commerceorder_get_returns GET returns for CommerceOrder
-func (c *CommerceOrderClient) Facebook_commerceorder_get_returns(args map[string]interface{}) (interface{}, error) {
+
+// commerceorder_get_returns GET returns for CommerceOrder
+func (c *CommerceOrderClient) Commerceorder_get_returns(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "returns")
@@ -508,6 +546,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_returns(args map[string
 	if val, ok := args["statuses"]; ok {
 		urlParams.Set("statuses", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -539,14 +578,16 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_returns(args map[string
 	return result, nil
 }
 
-// facebook_commerceorder_post_returns POST returns for CommerceOrder
-func (c *CommerceOrderClient) Facebook_commerceorder_post_returns(args map[string]interface{}) (interface{}, error) {
+
+// commerceorder_post_returns POST returns for CommerceOrder
+func (c *CommerceOrderClient) Commerceorder_post_returns(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	items, ok := args["items"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: items")
 	}
 	_ = items // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "returns")
@@ -566,6 +607,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_returns(args map[strin
 		urlParams.Set("update", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -596,14 +638,18 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_returns(args map[strin
 	return result, nil
 }
 
-// facebook_commerceorder_get_shipments GET shipments for CommerceOrder
-func (c *CommerceOrderClient) Facebook_commerceorder_get_shipments(args map[string]interface{}) (interface{}, error) {
+
+// commerceorder_get_shipments GET shipments for CommerceOrder
+func (c *CommerceOrderClient) Commerceorder_get_shipments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shipments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -635,14 +681,16 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_shipments(args map[stri
 	return result, nil
 }
 
-// facebook_commerceorder_post_shipments POST shipments for CommerceOrder
-func (c *CommerceOrderClient) Facebook_commerceorder_post_shipments(args map[string]interface{}) (interface{}, error) {
+
+// commerceorder_post_shipments POST shipments for CommerceOrder
+func (c *CommerceOrderClient) Commerceorder_post_shipments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	idempotency_key, ok := args["idempotency_key"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: idempotency_key")
 	}
 	_ = idempotency_key // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shipments")
@@ -680,6 +728,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_shipments(args map[str
 		urlParams.Set("tracking_info", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -710,8 +759,9 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_shipments(args map[str
 	return result, nil
 }
 
-// facebook_commerceorder_post_update_shipment POST update_shipment for CommerceOrder
-func (c *CommerceOrderClient) Facebook_commerceorder_post_update_shipment(args map[string]interface{}) (interface{}, error) {
+
+// commerceorder_post_update_shipment POST update_shipment for CommerceOrder
+func (c *CommerceOrderClient) Commerceorder_post_update_shipment(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	idempotency_key, ok := args["idempotency_key"]
 	if !ok {
@@ -723,6 +773,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_update_shipment(args m
 		return nil, fmt.Errorf("missing required parameter: tracking_info")
 	}
 	_ = tracking_info // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "update_shipment")
@@ -745,6 +796,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_update_shipment(args m
 		urlParams.Set("tracking_info", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -775,14 +827,18 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_update_shipment(args m
 	return result, nil
 }
 
-// facebook_commerceorder_get_ GET  for CommerceOrder
-func (c *CommerceOrderClient) Facebook_commerceorder_get_(args map[string]interface{}) (interface{}, error) {
+
+// commerceorder_get_ GET  for CommerceOrder
+func (c *CommerceOrderClient) Commerceorder_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -813,3 +869,4 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_(args map[string]interf
 
 	return result, nil
 }
+

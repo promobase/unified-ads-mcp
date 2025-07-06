@@ -15,18 +15,19 @@ import (
 func GetIGUpcomingEventTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_igupcomingevent_get_ tool
-	facebook_igupcomingevent_get_Tool := mcp.NewTool("facebook_igupcomingevent_get_",
+
+	// igupcomingevent_get_ tool
+	igupcomingevent_get_Tool := mcp.NewTool("igupcomingevent_get_",
 		mcp.WithDescription("GET  for IGUpcomingEvent"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_igupcomingevent_get_Tool)
+	tools = append(tools, igupcomingevent_get_Tool)
 
-	// facebook_igupcomingevent_post_ tool
-	facebook_igupcomingevent_post_Tool := mcp.NewTool("facebook_igupcomingevent_post_",
+	// igupcomingevent_post_ tool
+	igupcomingevent_post_Tool := mcp.NewTool("igupcomingevent_post_",
 		mcp.WithDescription("POST  for IGUpcomingEvent"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -52,15 +53,17 @@ func GetIGUpcomingEventTools(accessToken string) []mcp.Tool {
 			mcp.Description("title parameter for "),
 		),
 	)
-	tools = append(tools, facebook_igupcomingevent_post_Tool)
+	tools = append(tools, igupcomingevent_post_Tool)
+
 
 	return tools
 }
 
 // IGUpcomingEvent handlers
 
-// HandleFacebook_igupcomingevent_get_ handles the facebook_igupcomingevent_get_ tool
-func HandleFacebook_igupcomingevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIgupcomingevent_get_ handles the igupcomingevent_get_ tool
+func HandleIgupcomingevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -73,10 +76,12 @@ func HandleFacebook_igupcomingevent_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_igupcomingevent_get_(args)
+	result, err := client.Igupcomingevent_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_igupcomingevent_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igupcomingevent_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -88,8 +93,9 @@ func HandleFacebook_igupcomingevent_get_(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_igupcomingevent_post_ handles the facebook_igupcomingevent_post_ tool
-func HandleFacebook_igupcomingevent_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIgupcomingevent_post_ handles the igupcomingevent_post_ tool
+func HandleIgupcomingevent_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -132,10 +138,12 @@ func HandleFacebook_igupcomingevent_post_(ctx context.Context, request mcp.CallT
 	}
 	args["title"] = title
 
+
+
 	// Call the client method
-	result, err := client.Facebook_igupcomingevent_post_(args)
+	result, err := client.Igupcomingevent_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_igupcomingevent_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igupcomingevent_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -146,3 +154,4 @@ func HandleFacebook_igupcomingevent_post_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -6,12 +6,12 @@ import "time"
 
 // WhitehatFBDLRun represents a Facebook WhitehatFBDLRun object
 type WhitehatFBDLRun struct {
-	Creation_time time.Time     `json:"creation_time"`
-	Id            string        `json:"id"`
-	Is_pinned     bool          `json:"is_pinned"`
-	Note          string        `json:"note"`
-	Result        []interface{} `json:"result"`
-	Run_code      string        `json:"run_code"`
-	Status        string        `json:"status"`
-	User_type     string        `json:"user_type"`
+	Creation_time time.Time `json:"creation_time"`
+	Id string `json:"id"`
+	Is_pinned bool `json:"is_pinned"`
+	Note string `json:"note"`
+	Result []interface{} `json:"result"`
+	Run_code string `json:"run_code"`
+	Status string `json:"status"`
+	User_type string `json:"user_type"`
 }

@@ -15,33 +15,36 @@ import (
 func GetCPASBusinessSetupConfigTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_cpasbusinesssetupconfig_get_ad_accounts tool
-	facebook_cpasbusinesssetupconfig_get_ad_accountsTool := mcp.NewTool("facebook_cpasbusinesssetupconfig_get_ad_accounts",
+
+	// cpasbusinesssetupconfig_get_ad_accounts tool
+	cpasbusinesssetupconfig_get_ad_accountsTool := mcp.NewTool("cpasbusinesssetupconfig_get_ad_accounts",
 		mcp.WithDescription("GET ad_accounts for CPASBusinessSetupConfig"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_cpasbusinesssetupconfig_get_ad_accountsTool)
+	tools = append(tools, cpasbusinesssetupconfig_get_ad_accountsTool)
 
-	// facebook_cpasbusinesssetupconfig_get_ tool
-	facebook_cpasbusinesssetupconfig_get_Tool := mcp.NewTool("facebook_cpasbusinesssetupconfig_get_",
+	// cpasbusinesssetupconfig_get_ tool
+	cpasbusinesssetupconfig_get_Tool := mcp.NewTool("cpasbusinesssetupconfig_get_",
 		mcp.WithDescription("GET  for CPASBusinessSetupConfig"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_cpasbusinesssetupconfig_get_Tool)
+	tools = append(tools, cpasbusinesssetupconfig_get_Tool)
+
 
 	return tools
 }
 
 // CPASBusinessSetupConfig handlers
 
-// HandleFacebook_cpasbusinesssetupconfig_get_ad_accounts handles the facebook_cpasbusinesssetupconfig_get_ad_accounts tool
-func HandleFacebook_cpasbusinesssetupconfig_get_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCpasbusinesssetupconfig_get_ad_accounts handles the cpasbusinesssetupconfig_get_ad_accounts tool
+func HandleCpasbusinesssetupconfig_get_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -54,10 +57,12 @@ func HandleFacebook_cpasbusinesssetupconfig_get_ad_accounts(ctx context.Context,
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_cpasbusinesssetupconfig_get_ad_accounts(args)
+	result, err := client.Cpasbusinesssetupconfig_get_ad_accounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_cpasbusinesssetupconfig_get_ad_accounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute cpasbusinesssetupconfig_get_ad_accounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -69,8 +74,9 @@ func HandleFacebook_cpasbusinesssetupconfig_get_ad_accounts(ctx context.Context,
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_cpasbusinesssetupconfig_get_ handles the facebook_cpasbusinesssetupconfig_get_ tool
-func HandleFacebook_cpasbusinesssetupconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCpasbusinesssetupconfig_get_ handles the cpasbusinesssetupconfig_get_ tool
+func HandleCpasbusinesssetupconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -83,10 +89,12 @@ func HandleFacebook_cpasbusinesssetupconfig_get_(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_cpasbusinesssetupconfig_get_(args)
+	result, err := client.Cpasbusinesssetupconfig_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_cpasbusinesssetupconfig_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute cpasbusinesssetupconfig_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -97,3 +105,4 @@ func HandleFacebook_cpasbusinesssetupconfig_get_(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

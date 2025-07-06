@@ -15,23 +15,26 @@ import (
 func GetImageCopyrightDisputeTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_imagecopyrightdispute_get_ tool
-	facebook_imagecopyrightdispute_get_Tool := mcp.NewTool("facebook_imagecopyrightdispute_get_",
+
+	// imagecopyrightdispute_get_ tool
+	imagecopyrightdispute_get_Tool := mcp.NewTool("imagecopyrightdispute_get_",
 		mcp.WithDescription("GET  for ImageCopyrightDispute"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_imagecopyrightdispute_get_Tool)
+	tools = append(tools, imagecopyrightdispute_get_Tool)
+
 
 	return tools
 }
 
 // ImageCopyrightDispute handlers
 
-// HandleFacebook_imagecopyrightdispute_get_ handles the facebook_imagecopyrightdispute_get_ tool
-func HandleFacebook_imagecopyrightdispute_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleImagecopyrightdispute_get_ handles the imagecopyrightdispute_get_ tool
+func HandleImagecopyrightdispute_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_imagecopyrightdispute_get_(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_imagecopyrightdispute_get_(args)
+	result, err := client.Imagecopyrightdispute_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_imagecopyrightdispute_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute imagecopyrightdispute_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_imagecopyrightdispute_get_(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

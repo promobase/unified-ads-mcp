@@ -15,23 +15,26 @@ import (
 func GetAdToplineTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adtopline_get_ tool
-	facebook_adtopline_get_Tool := mcp.NewTool("facebook_adtopline_get_",
+
+	// adtopline_get_ tool
+	adtopline_get_Tool := mcp.NewTool("adtopline_get_",
 		mcp.WithDescription("GET  for AdTopline"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adtopline_get_Tool)
+	tools = append(tools, adtopline_get_Tool)
+
 
 	return tools
 }
 
 // AdTopline handlers
 
-// HandleFacebook_adtopline_get_ handles the facebook_adtopline_get_ tool
-func HandleFacebook_adtopline_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdtopline_get_ handles the adtopline_get_ tool
+func HandleAdtopline_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_adtopline_get_(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adtopline_get_(args)
+	result, err := client.Adtopline_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adtopline_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adtopline_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_adtopline_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

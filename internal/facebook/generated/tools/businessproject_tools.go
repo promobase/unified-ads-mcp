@@ -15,23 +15,26 @@ import (
 func GetBusinessProjectTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_businessproject_get_ tool
-	facebook_businessproject_get_Tool := mcp.NewTool("facebook_businessproject_get_",
+
+	// businessproject_get_ tool
+	businessproject_get_Tool := mcp.NewTool("businessproject_get_",
 		mcp.WithDescription("GET  for BusinessProject"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_businessproject_get_Tool)
+	tools = append(tools, businessproject_get_Tool)
+
 
 	return tools
 }
 
 // BusinessProject handlers
 
-// HandleFacebook_businessproject_get_ handles the facebook_businessproject_get_ tool
-func HandleFacebook_businessproject_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBusinessproject_get_ handles the businessproject_get_ tool
+func HandleBusinessproject_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_businessproject_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessproject_get_(args)
+	result, err := client.Businessproject_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessproject_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessproject_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_businessproject_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

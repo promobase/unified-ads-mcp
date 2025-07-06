@@ -21,14 +21,18 @@ func NewBusinessVideoClient(accessToken string) *BusinessVideoClient {
 	}
 }
 
-// facebook_businessvideo_get_ GET  for BusinessVideo
-func (c *BusinessVideoClient) Facebook_businessvideo_get_(args map[string]interface{}) (interface{}, error) {
+
+// businessvideo_get_ GET  for BusinessVideo
+func (c *BusinessVideoClient) Businessvideo_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *BusinessVideoClient) Facebook_businessvideo_get_(args map[string]interf
 
 	return result, nil
 }
+

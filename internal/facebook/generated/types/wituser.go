@@ -5,6 +5,6 @@ package types
 // WITUser represents a Facebook WITUser object
 type WITUser struct {
 	Access_token string `json:"access_token"`
-	Id           string `json:"id"`
-	Name         string `json:"name"`
+	Id string `json:"id"`
+	Name string `json:"name"`
 }

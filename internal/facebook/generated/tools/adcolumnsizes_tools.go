@@ -15,23 +15,26 @@ import (
 func GetAdColumnSizesTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adcolumnsizes_get_ tool
-	facebook_adcolumnsizes_get_Tool := mcp.NewTool("facebook_adcolumnsizes_get_",
+
+	// adcolumnsizes_get_ tool
+	adcolumnsizes_get_Tool := mcp.NewTool("adcolumnsizes_get_",
 		mcp.WithDescription("GET  for AdColumnSizes"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adcolumnsizes_get_Tool)
+	tools = append(tools, adcolumnsizes_get_Tool)
+
 
 	return tools
 }
 
 // AdColumnSizes handlers
 
-// HandleFacebook_adcolumnsizes_get_ handles the facebook_adcolumnsizes_get_ tool
-func HandleFacebook_adcolumnsizes_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdcolumnsizes_get_ handles the adcolumnsizes_get_ tool
+func HandleAdcolumnsizes_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_adcolumnsizes_get_(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adcolumnsizes_get_(args)
+	result, err := client.Adcolumnsizes_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adcolumnsizes_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adcolumnsizes_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_adcolumnsizes_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

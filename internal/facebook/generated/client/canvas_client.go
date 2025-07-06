@@ -21,14 +21,18 @@ func NewCanvasClient(accessToken string) *CanvasClient {
 	}
 }
 
-// facebook_canvas_get_preview GET preview for Canvas
-func (c *CanvasClient) Facebook_canvas_get_preview(args map[string]interface{}) (interface{}, error) {
+
+// canvas_get_preview GET preview for Canvas
+func (c *CanvasClient) Canvas_get_preview(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "preview")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -60,9 +64,11 @@ func (c *CanvasClient) Facebook_canvas_get_preview(args map[string]interface{}) 
 	return result, nil
 }
 
-// facebook_canvas_get_previews GET previews for Canvas
-func (c *CanvasClient) Facebook_canvas_get_previews(args map[string]interface{}) (interface{}, error) {
+
+// canvas_get_previews GET previews for Canvas
+func (c *CanvasClient) Canvas_get_previews(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "previews")
@@ -73,6 +79,7 @@ func (c *CanvasClient) Facebook_canvas_get_previews(args map[string]interface{})
 		urlParams.Set("user_ids", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -103,15 +110,19 @@ func (c *CanvasClient) Facebook_canvas_get_previews(args map[string]interface{})
 	return result, nil
 }
 
-// facebook_canvas_get_ GET  for Canvas
-func (c *CanvasClient) Facebook_canvas_get_(args map[string]interface{}) (interface{}, error) {
+
+// canvas_get_ GET  for Canvas
+func (c *CanvasClient) Canvas_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -142,9 +153,11 @@ func (c *CanvasClient) Facebook_canvas_get_(args map[string]interface{}) (interf
 	return result, nil
 }
 
-// facebook_canvas_post_ POST  for Canvas
-func (c *CanvasClient) Facebook_canvas_post_(args map[string]interface{}) (interface{}, error) {
+
+// canvas_post_ POST  for Canvas
+func (c *CanvasClient) Canvas_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -172,6 +185,7 @@ func (c *CanvasClient) Facebook_canvas_post_(args map[string]interface{}) (inter
 	if val, ok := args["source_template_id"]; ok {
 		urlParams.Set("source_template_id", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -202,3 +216,4 @@ func (c *CanvasClient) Facebook_canvas_post_(args map[string]interface{}) (inter
 
 	return result, nil
 }
+

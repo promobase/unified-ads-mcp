@@ -15,23 +15,26 @@ import (
 func GetWebsiteCreativeInfoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_websitecreativeinfo_get_ tool
-	facebook_websitecreativeinfo_get_Tool := mcp.NewTool("facebook_websitecreativeinfo_get_",
+
+	// websitecreativeinfo_get_ tool
+	websitecreativeinfo_get_Tool := mcp.NewTool("websitecreativeinfo_get_",
 		mcp.WithDescription("GET  for WebsiteCreativeInfo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_websitecreativeinfo_get_Tool)
+	tools = append(tools, websitecreativeinfo_get_Tool)
+
 
 	return tools
 }
 
 // WebsiteCreativeInfo handlers
 
-// HandleFacebook_websitecreativeinfo_get_ handles the facebook_websitecreativeinfo_get_ tool
-func HandleFacebook_websitecreativeinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleWebsitecreativeinfo_get_ handles the websitecreativeinfo_get_ tool
+func HandleWebsitecreativeinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_websitecreativeinfo_get_(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_websitecreativeinfo_get_(args)
+	result, err := client.Websitecreativeinfo_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_websitecreativeinfo_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute websitecreativeinfo_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_websitecreativeinfo_get_(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

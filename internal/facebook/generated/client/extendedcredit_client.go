@@ -21,14 +21,18 @@ func NewExtendedCreditClient(accessToken string) *ExtendedCreditClient {
 	}
 }
 
-// facebook_extendedcredit_get_extended_credit_invoice_groups GET extended_credit_invoice_groups for ExtendedCredit
-func (c *ExtendedCreditClient) Facebook_extendedcredit_get_extended_credit_invoice_groups(args map[string]interface{}) (interface{}, error) {
+
+// extendedcredit_get_extended_credit_invoice_groups GET extended_credit_invoice_groups for ExtendedCredit
+func (c *ExtendedCreditClient) Extendedcredit_get_extended_credit_invoice_groups(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "extended_credit_invoice_groups")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -60,8 +64,9 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_get_extended_credit_invoi
 	return result, nil
 }
 
-// facebook_extendedcredit_post_extended_credit_invoice_groups POST extended_credit_invoice_groups for ExtendedCredit
-func (c *ExtendedCreditClient) Facebook_extendedcredit_post_extended_credit_invoice_groups(args map[string]interface{}) (interface{}, error) {
+
+// extendedcredit_post_extended_credit_invoice_groups POST extended_credit_invoice_groups for ExtendedCredit
+func (c *ExtendedCreditClient) Extendedcredit_post_extended_credit_invoice_groups(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	emails, ok := args["emails"]
 	if !ok {
@@ -74,6 +79,7 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_post_extended_credit_invo
 	}
 	_ = name // Suppress unused variable warning
 
+
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "extended_credit_invoice_groups")
 	urlParams := url.Values{}
@@ -85,6 +91,7 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_post_extended_credit_invo
 	if val, ok := args["name"]; ok {
 		urlParams.Set("name", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -116,9 +123,11 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_post_extended_credit_invo
 	return result, nil
 }
 
-// facebook_extendedcredit_get_owning_credit_allocation_configs GET owning_credit_allocation_configs for ExtendedCredit
-func (c *ExtendedCreditClient) Facebook_extendedcredit_get_owning_credit_allocation_configs(args map[string]interface{}) (interface{}, error) {
+
+// extendedcredit_get_owning_credit_allocation_configs GET owning_credit_allocation_configs for ExtendedCredit
+func (c *ExtendedCreditClient) Extendedcredit_get_owning_credit_allocation_configs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owning_credit_allocation_configs")
@@ -128,6 +137,7 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_get_owning_credit_allocat
 	if val, ok := args["receiving_business_id"]; ok {
 		urlParams.Set("receiving_business_id", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -159,14 +169,16 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_get_owning_credit_allocat
 	return result, nil
 }
 
-// facebook_extendedcredit_post_owning_credit_allocation_configs POST owning_credit_allocation_configs for ExtendedCredit
-func (c *ExtendedCreditClient) Facebook_extendedcredit_post_owning_credit_allocation_configs(args map[string]interface{}) (interface{}, error) {
+
+// extendedcredit_post_owning_credit_allocation_configs POST owning_credit_allocation_configs for ExtendedCredit
+func (c *ExtendedCreditClient) Extendedcredit_post_owning_credit_allocation_configs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	receiving_business_id, ok := args["receiving_business_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: receiving_business_id")
 	}
 	_ = receiving_business_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owning_credit_allocation_configs")
@@ -189,6 +201,7 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_post_owning_credit_alloca
 		urlParams.Set("send_bill_to", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -219,8 +232,9 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_post_owning_credit_alloca
 	return result, nil
 }
 
-// facebook_extendedcredit_post_whatsapp_credit_attach POST whatsapp_credit_attach for ExtendedCredit
-func (c *ExtendedCreditClient) Facebook_extendedcredit_post_whatsapp_credit_attach(args map[string]interface{}) (interface{}, error) {
+
+// extendedcredit_post_whatsapp_credit_attach POST whatsapp_credit_attach for ExtendedCredit
+func (c *ExtendedCreditClient) Extendedcredit_post_whatsapp_credit_attach(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	waba_currency, ok := args["waba_currency"]
 	if !ok {
@@ -232,6 +246,7 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_post_whatsapp_credit_atta
 		return nil, fmt.Errorf("missing required parameter: waba_id")
 	}
 	_ = waba_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "whatsapp_credit_attach")
@@ -245,6 +260,7 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_post_whatsapp_credit_atta
 		urlParams.Set("waba_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -275,14 +291,16 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_post_whatsapp_credit_atta
 	return result, nil
 }
 
-// facebook_extendedcredit_post_whatsapp_credit_sharing POST whatsapp_credit_sharing for ExtendedCredit
-func (c *ExtendedCreditClient) Facebook_extendedcredit_post_whatsapp_credit_sharing(args map[string]interface{}) (interface{}, error) {
+
+// extendedcredit_post_whatsapp_credit_sharing POST whatsapp_credit_sharing for ExtendedCredit
+func (c *ExtendedCreditClient) Extendedcredit_post_whatsapp_credit_sharing(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	receiving_business_id, ok := args["receiving_business_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: receiving_business_id")
 	}
 	_ = receiving_business_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "whatsapp_credit_sharing")
@@ -293,6 +311,7 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_post_whatsapp_credit_shar
 		urlParams.Set("receiving_business_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -323,8 +342,9 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_post_whatsapp_credit_shar
 	return result, nil
 }
 
-// facebook_extendedcredit_post_whatsapp_credit_sharing_and_attach POST whatsapp_credit_sharing_and_attach for ExtendedCredit
-func (c *ExtendedCreditClient) Facebook_extendedcredit_post_whatsapp_credit_sharing_and_attach(args map[string]interface{}) (interface{}, error) {
+
+// extendedcredit_post_whatsapp_credit_sharing_and_attach POST whatsapp_credit_sharing_and_attach for ExtendedCredit
+func (c *ExtendedCreditClient) Extendedcredit_post_whatsapp_credit_sharing_and_attach(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	waba_currency, ok := args["waba_currency"]
 	if !ok {
@@ -336,6 +356,7 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_post_whatsapp_credit_shar
 		return nil, fmt.Errorf("missing required parameter: waba_id")
 	}
 	_ = waba_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "whatsapp_credit_sharing_and_attach")
@@ -349,6 +370,7 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_post_whatsapp_credit_shar
 		urlParams.Set("waba_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -379,14 +401,18 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_post_whatsapp_credit_shar
 	return result, nil
 }
 
-// facebook_extendedcredit_get_ GET  for ExtendedCredit
-func (c *ExtendedCreditClient) Facebook_extendedcredit_get_(args map[string]interface{}) (interface{}, error) {
+
+// extendedcredit_get_ GET  for ExtendedCredit
+func (c *ExtendedCreditClient) Extendedcredit_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -417,3 +443,4 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_get_(args map[string]inte
 
 	return result, nil
 }
+

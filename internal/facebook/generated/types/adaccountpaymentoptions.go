@@ -4,8 +4,8 @@ package types
 
 // AdAccountPaymentOptions represents a Facebook AdAccountPaymentOptions object
 type AdAccountPaymentOptions struct {
-	Available_altpay_options  []map[string]interface{} `json:"available_altpay_options"`
-	Available_card_types      []string                 `json:"available_card_types"`
-	Available_payment_options []string                 `json:"available_payment_options"`
-	Existing_payment_methods  []map[string]interface{} `json:"existing_payment_methods"`
+	Available_altpay_options []map[string]interface{} `json:"available_altpay_options"`
+	Available_card_types []string `json:"available_card_types"`
+	Available_payment_options []string `json:"available_payment_options"`
+	Existing_payment_methods []map[string]interface{} `json:"existing_payment_methods"`
 }

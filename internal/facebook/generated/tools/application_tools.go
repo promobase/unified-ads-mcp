@@ -15,8 +15,9 @@ import (
 func GetApplicationTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_application_delete_accounts tool
-	facebook_application_delete_accountsTool := mcp.NewTool("facebook_application_delete_accounts",
+
+	// application_delete_accounts tool
+	application_delete_accountsTool := mcp.NewTool("application_delete_accounts",
 		mcp.WithDescription("DELETE accounts for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -31,10 +32,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("uid parameter for accounts"),
 		),
 	)
-	tools = append(tools, facebook_application_delete_accountsTool)
+	tools = append(tools, application_delete_accountsTool)
 
-	// facebook_application_get_accounts tool
-	facebook_application_get_accountsTool := mcp.NewTool("facebook_application_get_accounts",
+	// application_get_accounts tool
+	application_get_accountsTool := mcp.NewTool("application_get_accounts",
 		mcp.WithDescription("GET accounts for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -45,10 +46,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Enum("test-users"),
 		),
 	)
-	tools = append(tools, facebook_application_get_accountsTool)
+	tools = append(tools, application_get_accountsTool)
 
-	// facebook_application_post_accounts tool
-	facebook_application_post_accountsTool := mcp.NewTool("facebook_application_post_accounts",
+	// application_post_accounts tool
+	application_post_accountsTool := mcp.NewTool("application_post_accounts",
 		mcp.WithDescription("POST accounts for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -77,10 +78,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("uid parameter for accounts"),
 		),
 	)
-	tools = append(tools, facebook_application_post_accountsTool)
+	tools = append(tools, application_post_accountsTool)
 
-	// facebook_application_post_activities tool
-	facebook_application_post_activitiesTool := mcp.NewTool("facebook_application_post_activities",
+	// application_post_activities tool
+	application_post_activitiesTool := mcp.NewTool("application_post_activities",
 		mcp.WithDescription("POST activities for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -228,20 +229,20 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("windows_attribution_id parameter for activities"),
 		),
 	)
-	tools = append(tools, facebook_application_post_activitiesTool)
+	tools = append(tools, application_post_activitiesTool)
 
-	// facebook_application_get_ad_placement_groups tool
-	facebook_application_get_ad_placement_groupsTool := mcp.NewTool("facebook_application_get_ad_placement_groups",
+	// application_get_ad_placement_groups tool
+	application_get_ad_placement_groupsTool := mcp.NewTool("application_get_ad_placement_groups",
 		mcp.WithDescription("GET ad_placement_groups for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_ad_placement_groupsTool)
+	tools = append(tools, application_get_ad_placement_groupsTool)
 
-	// facebook_application_get_adnetwork_placements tool
-	facebook_application_get_adnetwork_placementsTool := mcp.NewTool("facebook_application_get_adnetwork_placements",
+	// application_get_adnetwork_placements tool
+	application_get_adnetwork_placementsTool := mcp.NewTool("application_get_adnetwork_placements",
 		mcp.WithDescription("GET adnetwork_placements for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -251,10 +252,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("request_id parameter for adnetwork_placements"),
 		),
 	)
-	tools = append(tools, facebook_application_get_adnetwork_placementsTool)
+	tools = append(tools, application_get_adnetwork_placementsTool)
 
-	// facebook_application_get_adnetworkanalytics tool
-	facebook_application_get_adnetworkanalyticsTool := mcp.NewTool("facebook_application_get_adnetworkanalytics",
+	// application_get_adnetworkanalytics tool
+	application_get_adnetworkanalyticsTool := mcp.NewTool("application_get_adnetworkanalytics",
 		mcp.WithDescription("GET adnetworkanalytics for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -297,10 +298,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("until parameter for adnetworkanalytics"),
 		),
 	)
-	tools = append(tools, facebook_application_get_adnetworkanalyticsTool)
+	tools = append(tools, application_get_adnetworkanalyticsTool)
 
-	// facebook_application_post_adnetworkanalytics tool
-	facebook_application_post_adnetworkanalyticsTool := mcp.NewTool("facebook_application_post_adnetworkanalytics",
+	// application_post_adnetworkanalytics tool
+	application_post_adnetworkanalyticsTool := mcp.NewTool("application_post_adnetworkanalytics",
 		mcp.WithDescription("POST adnetworkanalytics for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -340,10 +341,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("until parameter for adnetworkanalytics"),
 		),
 	)
-	tools = append(tools, facebook_application_post_adnetworkanalyticsTool)
+	tools = append(tools, application_post_adnetworkanalyticsTool)
 
-	// facebook_application_get_adnetworkanalytics_results tool
-	facebook_application_get_adnetworkanalytics_resultsTool := mcp.NewTool("facebook_application_get_adnetworkanalytics_results",
+	// application_get_adnetworkanalytics_results tool
+	application_get_adnetworkanalytics_resultsTool := mcp.NewTool("application_get_adnetworkanalytics_results",
 		mcp.WithDescription("GET adnetworkanalytics_results for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -353,10 +354,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("query_ids parameter for adnetworkanalytics_results"),
 		),
 	)
-	tools = append(tools, facebook_application_get_adnetworkanalytics_resultsTool)
+	tools = append(tools, application_get_adnetworkanalytics_resultsTool)
 
-	// facebook_application_get_aem_attribution tool
-	facebook_application_get_aem_attributionTool := mcp.NewTool("facebook_application_get_aem_attribution",
+	// application_get_aem_attribution tool
+	application_get_aem_attributionTool := mcp.NewTool("application_get_aem_attribution",
 		mcp.WithDescription("GET aem_attribution for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -369,10 +370,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("fb_content_data parameter for aem_attribution"),
 		),
 	)
-	tools = append(tools, facebook_application_get_aem_attributionTool)
+	tools = append(tools, application_get_aem_attributionTool)
 
-	// facebook_application_get_aem_conversion_configs tool
-	facebook_application_get_aem_conversion_configsTool := mcp.NewTool("facebook_application_get_aem_conversion_configs",
+	// application_get_aem_conversion_configs tool
+	application_get_aem_conversion_configsTool := mcp.NewTool("application_get_aem_conversion_configs",
 		mcp.WithDescription("GET aem_conversion_configs for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -382,10 +383,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("advertiser_ids parameter for aem_conversion_configs"),
 		),
 	)
-	tools = append(tools, facebook_application_get_aem_conversion_configsTool)
+	tools = append(tools, application_get_aem_conversion_configsTool)
 
-	// facebook_application_get_aem_conversion_filter tool
-	facebook_application_get_aem_conversion_filterTool := mcp.NewTool("facebook_application_get_aem_conversion_filter",
+	// application_get_aem_conversion_filter tool
+	application_get_aem_conversion_filterTool := mcp.NewTool("application_get_aem_conversion_filter",
 		mcp.WithDescription("GET aem_conversion_filter for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -398,10 +399,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("fb_content_ids parameter for aem_conversion_filter"),
 		),
 	)
-	tools = append(tools, facebook_application_get_aem_conversion_filterTool)
+	tools = append(tools, application_get_aem_conversion_filterTool)
 
-	// facebook_application_post_aem_conversions tool
-	facebook_application_post_aem_conversionsTool := mcp.NewTool("facebook_application_post_aem_conversions",
+	// application_post_aem_conversions tool
+	application_post_aem_conversionsTool := mcp.NewTool("application_post_aem_conversions",
 		mcp.WithDescription("POST aem_conversions for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -412,10 +413,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("aem_conversions parameter for aem_conversions"),
 		),
 	)
-	tools = append(tools, facebook_application_post_aem_conversionsTool)
+	tools = append(tools, application_post_aem_conversionsTool)
 
-	// facebook_application_post_aem_skan_readiness tool
-	facebook_application_post_aem_skan_readinessTool := mcp.NewTool("facebook_application_post_aem_skan_readiness",
+	// application_post_aem_skan_readiness tool
+	application_post_aem_skan_readinessTool := mcp.NewTool("application_post_aem_skan_readiness",
 		mcp.WithDescription("POST aem_skan_readiness for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -441,20 +442,20 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("message parameter for aem_skan_readiness"),
 		),
 	)
-	tools = append(tools, facebook_application_post_aem_skan_readinessTool)
+	tools = append(tools, application_post_aem_skan_readinessTool)
 
-	// facebook_application_get_agencies tool
-	facebook_application_get_agenciesTool := mcp.NewTool("facebook_application_get_agencies",
+	// application_get_agencies tool
+	application_get_agenciesTool := mcp.NewTool("application_get_agencies",
 		mcp.WithDescription("GET agencies for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_agenciesTool)
+	tools = append(tools, application_get_agenciesTool)
 
-	// facebook_application_post_aggregate_revenue tool
-	facebook_application_post_aggregate_revenueTool := mcp.NewTool("facebook_application_post_aggregate_revenue",
+	// application_post_aggregate_revenue tool
+	application_post_aggregate_revenueTool := mcp.NewTool("application_post_aggregate_revenue",
 		mcp.WithDescription("POST aggregate_revenue for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -473,40 +474,40 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("sync_api parameter for aggregate_revenue"),
 		),
 	)
-	tools = append(tools, facebook_application_post_aggregate_revenueTool)
+	tools = append(tools, application_post_aggregate_revenueTool)
 
-	// facebook_application_get_android_dialog_configs tool
-	facebook_application_get_android_dialog_configsTool := mcp.NewTool("facebook_application_get_android_dialog_configs",
+	// application_get_android_dialog_configs tool
+	application_get_android_dialog_configsTool := mcp.NewTool("application_get_android_dialog_configs",
 		mcp.WithDescription("GET android_dialog_configs for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_android_dialog_configsTool)
+	tools = append(tools, application_get_android_dialog_configsTool)
 
-	// facebook_application_get_app_capi_settings tool
-	facebook_application_get_app_capi_settingsTool := mcp.NewTool("facebook_application_get_app_capi_settings",
+	// application_get_app_capi_settings tool
+	application_get_app_capi_settingsTool := mcp.NewTool("application_get_app_capi_settings",
 		mcp.WithDescription("GET app_capi_settings for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_app_capi_settingsTool)
+	tools = append(tools, application_get_app_capi_settingsTool)
 
-	// facebook_application_get_app_event_types tool
-	facebook_application_get_app_event_typesTool := mcp.NewTool("facebook_application_get_app_event_types",
+	// application_get_app_event_types tool
+	application_get_app_event_typesTool := mcp.NewTool("application_get_app_event_types",
 		mcp.WithDescription("GET app_event_types for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_app_event_typesTool)
+	tools = append(tools, application_get_app_event_typesTool)
 
-	// facebook_application_post_app_indexing tool
-	facebook_application_post_app_indexingTool := mcp.NewTool("facebook_application_post_app_indexing",
+	// application_post_app_indexing tool
+	application_post_app_indexingTool := mcp.NewTool("application_post_app_indexing",
 		mcp.WithDescription("POST app_indexing for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -536,10 +537,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("tree parameter for app_indexing"),
 		),
 	)
-	tools = append(tools, facebook_application_post_app_indexingTool)
+	tools = append(tools, application_post_app_indexingTool)
 
-	// facebook_application_post_app_indexing_session tool
-	facebook_application_post_app_indexing_sessionTool := mcp.NewTool("facebook_application_post_app_indexing_session",
+	// application_post_app_indexing_session tool
+	application_post_app_indexing_sessionTool := mcp.NewTool("application_post_app_indexing_session",
 		mcp.WithDescription("POST app_indexing_session for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -553,10 +554,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("extinfo parameter for app_indexing_session"),
 		),
 	)
-	tools = append(tools, facebook_application_post_app_indexing_sessionTool)
+	tools = append(tools, application_post_app_indexing_sessionTool)
 
-	// facebook_application_get_app_installed_groups tool
-	facebook_application_get_app_installed_groupsTool := mcp.NewTool("facebook_application_get_app_installed_groups",
+	// application_get_app_installed_groups tool
+	application_get_app_installed_groupsTool := mcp.NewTool("application_get_app_installed_groups",
 		mcp.WithDescription("GET app_installed_groups for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -566,10 +567,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("group_id parameter for app_installed_groups"),
 		),
 	)
-	tools = append(tools, facebook_application_get_app_installed_groupsTool)
+	tools = append(tools, application_get_app_installed_groupsTool)
 
-	// facebook_application_post_app_push_device_token tool
-	facebook_application_post_app_push_device_tokenTool := mcp.NewTool("facebook_application_post_app_push_device_token",
+	// application_post_app_push_device_token tool
+	application_post_app_push_device_tokenTool := mcp.NewTool("application_post_app_push_device_token",
 		mcp.WithDescription("POST app_push_device_token for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -588,20 +589,20 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Enum("ANDROID", "IOS", "UNKNOWN"),
 		),
 	)
-	tools = append(tools, facebook_application_post_app_push_device_tokenTool)
+	tools = append(tools, application_post_app_push_device_tokenTool)
 
-	// facebook_application_get_appassets tool
-	facebook_application_get_appassetsTool := mcp.NewTool("facebook_application_get_appassets",
+	// application_get_appassets tool
+	application_get_appassetsTool := mcp.NewTool("application_get_appassets",
 		mcp.WithDescription("GET appassets for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_appassetsTool)
+	tools = append(tools, application_get_appassetsTool)
 
-	// facebook_application_post_assets tool
-	facebook_application_post_assetsTool := mcp.NewTool("facebook_application_post_assets",
+	// application_post_assets tool
+	application_post_assetsTool := mcp.NewTool("application_post_assets",
 		mcp.WithDescription("POST assets for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -619,10 +620,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("type parameter for assets"),
 		),
 	)
-	tools = append(tools, facebook_application_post_assetsTool)
+	tools = append(tools, application_post_assetsTool)
 
-	// facebook_application_get_authorized_adaccounts tool
-	facebook_application_get_authorized_adaccountsTool := mcp.NewTool("facebook_application_get_authorized_adaccounts",
+	// application_get_authorized_adaccounts tool
+	application_get_authorized_adaccountsTool := mcp.NewTool("application_get_authorized_adaccounts",
 		mcp.WithDescription("GET authorized_adaccounts for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -632,10 +633,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("business parameter for authorized_adaccounts"),
 		),
 	)
-	tools = append(tools, facebook_application_get_authorized_adaccountsTool)
+	tools = append(tools, application_get_authorized_adaccountsTool)
 
-	// facebook_application_get_button_auto_detection_device_selection tool
-	facebook_application_get_button_auto_detection_device_selectionTool := mcp.NewTool("facebook_application_get_button_auto_detection_device_selection",
+	// application_get_button_auto_detection_device_selection tool
+	application_get_button_auto_detection_device_selectionTool := mcp.NewTool("application_get_button_auto_detection_device_selection",
 		mcp.WithDescription("GET button_auto_detection_device_selection for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -645,20 +646,20 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("device_id parameter for button_auto_detection_device_selection"),
 		),
 	)
-	tools = append(tools, facebook_application_get_button_auto_detection_device_selectionTool)
+	tools = append(tools, application_get_button_auto_detection_device_selectionTool)
 
-	// facebook_application_get_cloudbridge_settings tool
-	facebook_application_get_cloudbridge_settingsTool := mcp.NewTool("facebook_application_get_cloudbridge_settings",
+	// application_get_cloudbridge_settings tool
+	application_get_cloudbridge_settingsTool := mcp.NewTool("application_get_cloudbridge_settings",
 		mcp.WithDescription("GET cloudbridge_settings for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_cloudbridge_settingsTool)
+	tools = append(tools, application_get_cloudbridge_settingsTool)
 
-	// facebook_application_post_codeless_event_mappings tool
-	facebook_application_post_codeless_event_mappingsTool := mcp.NewTool("facebook_application_post_codeless_event_mappings",
+	// application_post_codeless_event_mappings tool
+	application_post_codeless_event_mappingsTool := mcp.NewTool("application_post_codeless_event_mappings",
 		mcp.WithDescription("POST codeless_event_mappings for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -683,20 +684,20 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Enum("CODELESS", "EYMT"),
 		),
 	)
-	tools = append(tools, facebook_application_post_codeless_event_mappingsTool)
+	tools = append(tools, application_post_codeless_event_mappingsTool)
 
-	// facebook_application_get_connected_client_businesses tool
-	facebook_application_get_connected_client_businessesTool := mcp.NewTool("facebook_application_get_connected_client_businesses",
+	// application_get_connected_client_businesses tool
+	application_get_connected_client_businessesTool := mcp.NewTool("application_get_connected_client_businesses",
 		mcp.WithDescription("GET connected_client_businesses for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_connected_client_businessesTool)
+	tools = append(tools, application_get_connected_client_businessesTool)
 
-	// facebook_application_get_da_checks tool
-	facebook_application_get_da_checksTool := mcp.NewTool("facebook_application_get_da_checks",
+	// application_get_da_checks tool
+	application_get_da_checksTool := mcp.NewTool("application_get_da_checks",
 		mcp.WithDescription("GET da_checks for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -710,10 +711,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Enum("ALL", "APP", "BROWSER", "SERVER"),
 		),
 	)
-	tools = append(tools, facebook_application_get_da_checksTool)
+	tools = append(tools, application_get_da_checksTool)
 
-	// facebook_application_post_domain_reports tool
-	facebook_application_post_domain_reportsTool := mcp.NewTool("facebook_application_post_domain_reports",
+	// application_post_domain_reports tool
+	application_post_domain_reportsTool := mcp.NewTool("application_post_domain_reports",
 		mcp.WithDescription("POST domain_reports for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -724,10 +725,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("tracking_domains parameter for domain_reports"),
 		),
 	)
-	tools = append(tools, facebook_application_post_domain_reportsTool)
+	tools = append(tools, application_post_domain_reportsTool)
 
-	// facebook_application_get_iap_purchases tool
-	facebook_application_get_iap_purchasesTool := mcp.NewTool("facebook_application_get_iap_purchases",
+	// application_get_iap_purchases tool
+	application_get_iap_purchasesTool := mcp.NewTool("application_get_iap_purchases",
 		mcp.WithDescription("GET iap_purchases for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -738,30 +739,30 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("order_id parameter for iap_purchases"),
 		),
 	)
-	tools = append(tools, facebook_application_get_iap_purchasesTool)
+	tools = append(tools, application_get_iap_purchasesTool)
 
-	// facebook_application_get_ios_dialog_configs tool
-	facebook_application_get_ios_dialog_configsTool := mcp.NewTool("facebook_application_get_ios_dialog_configs",
+	// application_get_ios_dialog_configs tool
+	application_get_ios_dialog_configsTool := mcp.NewTool("application_get_ios_dialog_configs",
 		mcp.WithDescription("GET ios_dialog_configs for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_ios_dialog_configsTool)
+	tools = append(tools, application_get_ios_dialog_configsTool)
 
-	// facebook_application_get_linked_dataset tool
-	facebook_application_get_linked_datasetTool := mcp.NewTool("facebook_application_get_linked_dataset",
+	// application_get_linked_dataset tool
+	application_get_linked_datasetTool := mcp.NewTool("application_get_linked_dataset",
 		mcp.WithDescription("GET linked_dataset for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_linked_datasetTool)
+	tools = append(tools, application_get_linked_datasetTool)
 
-	// facebook_application_get_message_templates tool
-	facebook_application_get_message_templatesTool := mcp.NewTool("facebook_application_get_message_templates",
+	// application_get_message_templates tool
+	application_get_message_templatesTool := mcp.NewTool("application_get_message_templates",
 		mcp.WithDescription("GET message_templates for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -771,10 +772,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("template_id parameter for message_templates"),
 		),
 	)
-	tools = append(tools, facebook_application_get_message_templatesTool)
+	tools = append(tools, application_get_message_templatesTool)
 
-	// facebook_application_post_mmp_auditing tool
-	facebook_application_post_mmp_auditingTool := mcp.NewTool("facebook_application_post_mmp_auditing",
+	// application_post_mmp_auditing tool
+	application_post_mmp_auditingTool := mcp.NewTool("application_post_mmp_auditing",
 		mcp.WithDescription("POST mmp_auditing for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -858,10 +859,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("view_attr_window parameter for mmp_auditing"),
 		),
 	)
-	tools = append(tools, facebook_application_post_mmp_auditingTool)
+	tools = append(tools, application_post_mmp_auditingTool)
 
-	// facebook_application_get_mobile_sdk_gk tool
-	facebook_application_get_mobile_sdk_gkTool := mcp.NewTool("facebook_application_get_mobile_sdk_gk",
+	// application_get_mobile_sdk_gk tool
+	application_get_mobile_sdk_gkTool := mcp.NewTool("application_get_mobile_sdk_gk",
 		mcp.WithDescription("GET mobile_sdk_gk for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -886,20 +887,20 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("sdk_version parameter for mobile_sdk_gk"),
 		),
 	)
-	tools = append(tools, facebook_application_get_mobile_sdk_gkTool)
+	tools = append(tools, application_get_mobile_sdk_gkTool)
 
-	// facebook_application_get_monetized_digital_store_objects tool
-	facebook_application_get_monetized_digital_store_objectsTool := mcp.NewTool("facebook_application_get_monetized_digital_store_objects",
+	// application_get_monetized_digital_store_objects tool
+	application_get_monetized_digital_store_objectsTool := mcp.NewTool("application_get_monetized_digital_store_objects",
 		mcp.WithDescription("GET monetized_digital_store_objects for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_monetized_digital_store_objectsTool)
+	tools = append(tools, application_get_monetized_digital_store_objectsTool)
 
-	// facebook_application_post_monetized_digital_store_objects tool
-	facebook_application_post_monetized_digital_store_objectsTool := mcp.NewTool("facebook_application_post_monetized_digital_store_objects",
+	// application_post_monetized_digital_store_objects tool
+	application_post_monetized_digital_store_objectsTool := mcp.NewTool("application_post_monetized_digital_store_objects",
 		mcp.WithDescription("POST monetized_digital_store_objects for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -914,30 +915,30 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("store parameter for monetized_digital_store_objects"),
 		),
 	)
-	tools = append(tools, facebook_application_post_monetized_digital_store_objectsTool)
+	tools = append(tools, application_post_monetized_digital_store_objectsTool)
 
-	// facebook_application_get_object_types tool
-	facebook_application_get_object_typesTool := mcp.NewTool("facebook_application_get_object_types",
+	// application_get_object_types tool
+	application_get_object_typesTool := mcp.NewTool("application_get_object_types",
 		mcp.WithDescription("GET object_types for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_object_typesTool)
+	tools = append(tools, application_get_object_typesTool)
 
-	// facebook_application_get_objects tool
-	facebook_application_get_objectsTool := mcp.NewTool("facebook_application_get_objects",
+	// application_get_objects tool
+	application_get_objectsTool := mcp.NewTool("application_get_objects",
 		mcp.WithDescription("GET objects for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_objectsTool)
+	tools = append(tools, application_get_objectsTool)
 
-	// facebook_application_post_occludespopups tool
-	facebook_application_post_occludespopupsTool := mcp.NewTool("facebook_application_post_occludespopups",
+	// application_post_occludespopups tool
+	application_post_occludespopupsTool := mcp.NewTool("application_post_occludespopups",
 		mcp.WithDescription("POST occludespopups for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -950,10 +951,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("unity parameter for occludespopups"),
 		),
 	)
-	tools = append(tools, facebook_application_post_occludespopupsTool)
+	tools = append(tools, application_post_occludespopupsTool)
 
-	// facebook_application_get_permissions tool
-	facebook_application_get_permissionsTool := mcp.NewTool("facebook_application_get_permissions",
+	// application_get_permissions tool
+	application_get_permissionsTool := mcp.NewTool("application_get_permissions",
 		mcp.WithDescription("GET permissions for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -976,10 +977,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Enum("live", "unapproved"),
 		),
 	)
-	tools = append(tools, facebook_application_get_permissionsTool)
+	tools = append(tools, application_get_permissionsTool)
 
-	// facebook_application_get_products tool
-	facebook_application_get_productsTool := mcp.NewTool("facebook_application_get_products",
+	// application_get_products tool
+	application_get_productsTool := mcp.NewTool("application_get_products",
 		mcp.WithDescription("GET products for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -989,40 +990,40 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("product_ids parameter for products"),
 		),
 	)
-	tools = append(tools, facebook_application_get_productsTool)
+	tools = append(tools, application_get_productsTool)
 
-	// facebook_application_get_purchases tool
-	facebook_application_get_purchasesTool := mcp.NewTool("facebook_application_get_purchases",
+	// application_get_purchases tool
+	application_get_purchasesTool := mcp.NewTool("application_get_purchases",
 		mcp.WithDescription("GET purchases for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_purchasesTool)
+	tools = append(tools, application_get_purchasesTool)
 
-	// facebook_application_get_roles tool
-	facebook_application_get_rolesTool := mcp.NewTool("facebook_application_get_roles",
+	// application_get_roles tool
+	application_get_rolesTool := mcp.NewTool("application_get_roles",
 		mcp.WithDescription("GET roles for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_rolesTool)
+	tools = append(tools, application_get_rolesTool)
 
-	// facebook_application_get_server_domain_infos tool
-	facebook_application_get_server_domain_infosTool := mcp.NewTool("facebook_application_get_server_domain_infos",
+	// application_get_server_domain_infos tool
+	application_get_server_domain_infosTool := mcp.NewTool("application_get_server_domain_infos",
 		mcp.WithDescription("GET server_domain_infos for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_server_domain_infosTool)
+	tools = append(tools, application_get_server_domain_infosTool)
 
-	// facebook_application_get_sgw_dataset_status tool
-	facebook_application_get_sgw_dataset_statusTool := mcp.NewTool("facebook_application_get_sgw_dataset_status",
+	// application_get_sgw_dataset_status tool
+	application_get_sgw_dataset_statusTool := mcp.NewTool("application_get_sgw_dataset_status",
 		mcp.WithDescription("GET sgw_dataset_status for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1033,10 +1034,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("dataset_id parameter for sgw_dataset_status"),
 		),
 	)
-	tools = append(tools, facebook_application_get_sgw_dataset_statusTool)
+	tools = append(tools, application_get_sgw_dataset_statusTool)
 
-	// facebook_application_get_sgw_install_deferral_link tool
-	facebook_application_get_sgw_install_deferral_linkTool := mcp.NewTool("facebook_application_get_sgw_install_deferral_link",
+	// application_get_sgw_install_deferral_link tool
+	application_get_sgw_install_deferral_linkTool := mcp.NewTool("application_get_sgw_install_deferral_link",
 		mcp.WithDescription("GET sgw_install_deferral_link for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1050,20 +1051,20 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("dataset_id parameter for sgw_install_deferral_link"),
 		),
 	)
-	tools = append(tools, facebook_application_get_sgw_install_deferral_linkTool)
+	tools = append(tools, application_get_sgw_install_deferral_linkTool)
 
-	// facebook_application_get_subscribed_domains tool
-	facebook_application_get_subscribed_domainsTool := mcp.NewTool("facebook_application_get_subscribed_domains",
+	// application_get_subscribed_domains tool
+	application_get_subscribed_domainsTool := mcp.NewTool("application_get_subscribed_domains",
 		mcp.WithDescription("GET subscribed_domains for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_subscribed_domainsTool)
+	tools = append(tools, application_get_subscribed_domainsTool)
 
-	// facebook_application_post_subscribed_domains tool
-	facebook_application_post_subscribed_domainsTool := mcp.NewTool("facebook_application_post_subscribed_domains",
+	// application_post_subscribed_domains tool
+	application_post_subscribed_domainsTool := mcp.NewTool("application_post_subscribed_domains",
 		mcp.WithDescription("POST subscribed_domains for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1076,20 +1077,20 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("unsubscribe parameter for subscribed_domains"),
 		),
 	)
-	tools = append(tools, facebook_application_post_subscribed_domainsTool)
+	tools = append(tools, application_post_subscribed_domainsTool)
 
-	// facebook_application_get_subscribed_domains_phishing tool
-	facebook_application_get_subscribed_domains_phishingTool := mcp.NewTool("facebook_application_get_subscribed_domains_phishing",
+	// application_get_subscribed_domains_phishing tool
+	application_get_subscribed_domains_phishingTool := mcp.NewTool("application_get_subscribed_domains_phishing",
 		mcp.WithDescription("GET subscribed_domains_phishing for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_subscribed_domains_phishingTool)
+	tools = append(tools, application_get_subscribed_domains_phishingTool)
 
-	// facebook_application_post_subscribed_domains_phishing tool
-	facebook_application_post_subscribed_domains_phishingTool := mcp.NewTool("facebook_application_post_subscribed_domains_phishing",
+	// application_post_subscribed_domains_phishing tool
+	application_post_subscribed_domains_phishingTool := mcp.NewTool("application_post_subscribed_domains_phishing",
 		mcp.WithDescription("POST subscribed_domains_phishing for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1102,10 +1103,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("unsubscribe parameter for subscribed_domains_phishing"),
 		),
 	)
-	tools = append(tools, facebook_application_post_subscribed_domains_phishingTool)
+	tools = append(tools, application_post_subscribed_domains_phishingTool)
 
-	// facebook_application_delete_subscriptions tool
-	facebook_application_delete_subscriptionsTool := mcp.NewTool("facebook_application_delete_subscriptions",
+	// application_delete_subscriptions tool
+	application_delete_subscriptionsTool := mcp.NewTool("application_delete_subscriptions",
 		mcp.WithDescription("DELETE subscriptions for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1118,20 +1119,20 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("object parameter for subscriptions"),
 		),
 	)
-	tools = append(tools, facebook_application_delete_subscriptionsTool)
+	tools = append(tools, application_delete_subscriptionsTool)
 
-	// facebook_application_get_subscriptions tool
-	facebook_application_get_subscriptionsTool := mcp.NewTool("facebook_application_get_subscriptions",
+	// application_get_subscriptions tool
+	application_get_subscriptionsTool := mcp.NewTool("application_get_subscriptions",
 		mcp.WithDescription("GET subscriptions for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_application_get_subscriptionsTool)
+	tools = append(tools, application_get_subscriptionsTool)
 
-	// facebook_application_post_subscriptions tool
-	facebook_application_post_subscriptionsTool := mcp.NewTool("facebook_application_post_subscriptions",
+	// application_post_subscriptions tool
+	application_post_subscriptionsTool := mcp.NewTool("application_post_subscriptions",
 		mcp.WithDescription("POST subscriptions for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1154,10 +1155,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("verify_token parameter for subscriptions"),
 		),
 	)
-	tools = append(tools, facebook_application_post_subscriptionsTool)
+	tools = append(tools, application_post_subscriptionsTool)
 
-	// facebook_application_post_uploads tool
-	facebook_application_post_uploadsTool := mcp.NewTool("facebook_application_post_uploads",
+	// application_post_uploads tool
+	application_post_uploadsTool := mcp.NewTool("application_post_uploads",
 		mcp.WithDescription("POST uploads for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1177,10 +1178,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Enum("attachment"),
 		),
 	)
-	tools = append(tools, facebook_application_post_uploadsTool)
+	tools = append(tools, application_post_uploadsTool)
 
-	// facebook_application_post_whatsapp_business_solution tool
-	facebook_application_post_whatsapp_business_solutionTool := mcp.NewTool("facebook_application_post_whatsapp_business_solution",
+	// application_post_whatsapp_business_solution tool
+	application_post_whatsapp_business_solutionTool := mcp.NewTool("application_post_whatsapp_business_solution",
 		mcp.WithDescription("POST whatsapp_business_solution for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1205,10 +1206,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("solution_name parameter for whatsapp_business_solution"),
 		),
 	)
-	tools = append(tools, facebook_application_post_whatsapp_business_solutionTool)
+	tools = append(tools, application_post_whatsapp_business_solutionTool)
 
-	// facebook_application_get_whatsapp_business_solutions tool
-	facebook_application_get_whatsapp_business_solutionsTool := mcp.NewTool("facebook_application_get_whatsapp_business_solutions",
+	// application_get_whatsapp_business_solutions tool
+	application_get_whatsapp_business_solutionsTool := mcp.NewTool("application_get_whatsapp_business_solutions",
 		mcp.WithDescription("GET whatsapp_business_solutions for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1219,10 +1220,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Enum("OWNER", "PARTNER"),
 		),
 	)
-	tools = append(tools, facebook_application_get_whatsapp_business_solutionsTool)
+	tools = append(tools, application_get_whatsapp_business_solutionsTool)
 
-	// facebook_application_get_ tool
-	facebook_application_get_Tool := mcp.NewTool("facebook_application_get_",
+	// application_get_ tool
+	application_get_Tool := mcp.NewTool("application_get_",
 		mcp.WithDescription("GET  for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1232,10 +1233,10 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("advertiser_id parameter for "),
 		),
 	)
-	tools = append(tools, facebook_application_get_Tool)
+	tools = append(tools, application_get_Tool)
 
-	// facebook_application_post_ tool
-	facebook_application_post_Tool := mcp.NewTool("facebook_application_post_",
+	// application_post_ tool
+	application_post_Tool := mcp.NewTool("application_post_",
 		mcp.WithDescription("POST  for Application"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1333,15 +1334,17 @@ func GetApplicationTools(accessToken string) []mcp.Tool {
 			mcp.Description("website_url parameter for "),
 		),
 	)
-	tools = append(tools, facebook_application_post_Tool)
+	tools = append(tools, application_post_Tool)
+
 
 	return tools
 }
 
 // Application handlers
 
-// HandleFacebook_application_delete_accounts handles the facebook_application_delete_accounts tool
-func HandleFacebook_application_delete_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_delete_accounts handles the application_delete_accounts tool
+func HandleApplication_delete_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1366,10 +1369,12 @@ func HandleFacebook_application_delete_accounts(ctx context.Context, request mcp
 	}
 	args["uid"] = uid
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_delete_accounts(args)
+	result, err := client.Application_delete_accounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_delete_accounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_delete_accounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1381,8 +1386,9 @@ func HandleFacebook_application_delete_accounts(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_accounts handles the facebook_application_get_accounts tool
-func HandleFacebook_application_get_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_accounts handles the application_get_accounts tool
+func HandleApplication_get_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1400,10 +1406,12 @@ func HandleFacebook_application_get_accounts(ctx context.Context, request mcp.Ca
 		args["type"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_accounts(args)
+	result, err := client.Application_get_accounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_accounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_accounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1415,8 +1423,9 @@ func HandleFacebook_application_get_accounts(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_accounts handles the facebook_application_post_accounts tool
-func HandleFacebook_application_post_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_accounts handles the application_post_accounts tool
+func HandleApplication_post_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1465,10 +1474,12 @@ func HandleFacebook_application_post_accounts(ctx context.Context, request mcp.C
 		args["uid"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_accounts(args)
+	result, err := client.Application_post_accounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_accounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_accounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1480,8 +1491,9 @@ func HandleFacebook_application_post_accounts(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_activities handles the facebook_application_post_activities tool
-func HandleFacebook_application_post_activities(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_activities handles the application_post_activities tool
+func HandleApplication_post_activities(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1732,10 +1744,12 @@ func HandleFacebook_application_post_activities(ctx context.Context, request mcp
 		args["windows_attribution_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_activities(args)
+	result, err := client.Application_post_activities(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_activities: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_activities: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1747,8 +1761,9 @@ func HandleFacebook_application_post_activities(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_ad_placement_groups handles the facebook_application_get_ad_placement_groups tool
-func HandleFacebook_application_get_ad_placement_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_ad_placement_groups handles the application_get_ad_placement_groups tool
+func HandleApplication_get_ad_placement_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1761,10 +1776,12 @@ func HandleFacebook_application_get_ad_placement_groups(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_ad_placement_groups(args)
+	result, err := client.Application_get_ad_placement_groups(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_ad_placement_groups: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_ad_placement_groups: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1776,8 +1793,9 @@ func HandleFacebook_application_get_ad_placement_groups(ctx context.Context, req
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_adnetwork_placements handles the facebook_application_get_adnetwork_placements tool
-func HandleFacebook_application_get_adnetwork_placements(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_adnetwork_placements handles the application_get_adnetwork_placements tool
+func HandleApplication_get_adnetwork_placements(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1795,10 +1813,12 @@ func HandleFacebook_application_get_adnetwork_placements(ctx context.Context, re
 		args["request_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_adnetwork_placements(args)
+	result, err := client.Application_get_adnetwork_placements(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_adnetwork_placements: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_adnetwork_placements: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1810,8 +1830,9 @@ func HandleFacebook_application_get_adnetwork_placements(ctx context.Context, re
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_adnetworkanalytics handles the facebook_application_get_adnetworkanalytics tool
-func HandleFacebook_application_get_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_adnetworkanalytics handles the application_get_adnetworkanalytics tool
+func HandleApplication_get_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1878,10 +1899,12 @@ func HandleFacebook_application_get_adnetworkanalytics(ctx context.Context, requ
 		args["until"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_adnetworkanalytics(args)
+	result, err := client.Application_get_adnetworkanalytics(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_adnetworkanalytics: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_adnetworkanalytics: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1893,8 +1916,9 @@ func HandleFacebook_application_get_adnetworkanalytics(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_adnetworkanalytics handles the facebook_application_post_adnetworkanalytics tool
-func HandleFacebook_application_post_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_adnetworkanalytics handles the application_post_adnetworkanalytics tool
+func HandleApplication_post_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1956,10 +1980,12 @@ func HandleFacebook_application_post_adnetworkanalytics(ctx context.Context, req
 		args["until"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_adnetworkanalytics(args)
+	result, err := client.Application_post_adnetworkanalytics(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_adnetworkanalytics: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_adnetworkanalytics: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1971,8 +1997,9 @@ func HandleFacebook_application_post_adnetworkanalytics(ctx context.Context, req
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_adnetworkanalytics_results handles the facebook_application_get_adnetworkanalytics_results tool
-func HandleFacebook_application_get_adnetworkanalytics_results(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_adnetworkanalytics_results handles the application_get_adnetworkanalytics_results tool
+func HandleApplication_get_adnetworkanalytics_results(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1991,10 +2018,12 @@ func HandleFacebook_application_get_adnetworkanalytics_results(ctx context.Conte
 		args["query_ids"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_adnetworkanalytics_results(args)
+	result, err := client.Application_get_adnetworkanalytics_results(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_adnetworkanalytics_results: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_adnetworkanalytics_results: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2006,8 +2035,9 @@ func HandleFacebook_application_get_adnetworkanalytics_results(ctx context.Conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_aem_attribution handles the facebook_application_get_aem_attribution tool
-func HandleFacebook_application_get_aem_attribution(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_aem_attribution handles the application_get_aem_attribution tool
+func HandleApplication_get_aem_attribution(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2031,10 +2061,12 @@ func HandleFacebook_application_get_aem_attribution(ctx context.Context, request
 		args["fb_content_data"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_aem_attribution(args)
+	result, err := client.Application_get_aem_attribution(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_aem_attribution: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_aem_attribution: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2046,8 +2078,9 @@ func HandleFacebook_application_get_aem_attribution(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_aem_conversion_configs handles the facebook_application_get_aem_conversion_configs tool
-func HandleFacebook_application_get_aem_conversion_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_aem_conversion_configs handles the application_get_aem_conversion_configs tool
+func HandleApplication_get_aem_conversion_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2066,10 +2099,12 @@ func HandleFacebook_application_get_aem_conversion_configs(ctx context.Context, 
 		args["advertiser_ids"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_aem_conversion_configs(args)
+	result, err := client.Application_get_aem_conversion_configs(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_aem_conversion_configs: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_aem_conversion_configs: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2081,8 +2116,9 @@ func HandleFacebook_application_get_aem_conversion_configs(ctx context.Context, 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_aem_conversion_filter handles the facebook_application_get_aem_conversion_filter tool
-func HandleFacebook_application_get_aem_conversion_filter(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_aem_conversion_filter handles the application_get_aem_conversion_filter tool
+func HandleApplication_get_aem_conversion_filter(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2105,10 +2141,12 @@ func HandleFacebook_application_get_aem_conversion_filter(ctx context.Context, r
 		args["fb_content_ids"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_aem_conversion_filter(args)
+	result, err := client.Application_get_aem_conversion_filter(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_aem_conversion_filter: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_aem_conversion_filter: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2120,8 +2158,9 @@ func HandleFacebook_application_get_aem_conversion_filter(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_aem_conversions handles the facebook_application_post_aem_conversions tool
-func HandleFacebook_application_post_aem_conversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_aem_conversions handles the application_post_aem_conversions tool
+func HandleApplication_post_aem_conversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2141,10 +2180,12 @@ func HandleFacebook_application_post_aem_conversions(ctx context.Context, reques
 	}
 	args["aem_conversions"] = aem_conversions
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_aem_conversions(args)
+	result, err := client.Application_post_aem_conversions(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_aem_conversions: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_aem_conversions: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2156,8 +2197,9 @@ func HandleFacebook_application_post_aem_conversions(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_aem_skan_readiness handles the facebook_application_post_aem_skan_readiness tool
-func HandleFacebook_application_post_aem_skan_readiness(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_aem_skan_readiness handles the application_post_aem_skan_readiness tool
+func HandleApplication_post_aem_skan_readiness(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2202,10 +2244,12 @@ func HandleFacebook_application_post_aem_skan_readiness(ctx context.Context, req
 		args["message"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_aem_skan_readiness(args)
+	result, err := client.Application_post_aem_skan_readiness(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_aem_skan_readiness: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_aem_skan_readiness: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2217,8 +2261,9 @@ func HandleFacebook_application_post_aem_skan_readiness(ctx context.Context, req
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_agencies handles the facebook_application_get_agencies tool
-func HandleFacebook_application_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_agencies handles the application_get_agencies tool
+func HandleApplication_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2231,10 +2276,12 @@ func HandleFacebook_application_get_agencies(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_agencies(args)
+	result, err := client.Application_get_agencies(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_agencies: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_agencies: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2246,8 +2293,9 @@ func HandleFacebook_application_get_agencies(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_aggregate_revenue handles the facebook_application_post_aggregate_revenue tool
-func HandleFacebook_application_post_aggregate_revenue(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_aggregate_revenue handles the application_post_aggregate_revenue tool
+func HandleApplication_post_aggregate_revenue(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2282,10 +2330,12 @@ func HandleFacebook_application_post_aggregate_revenue(ctx context.Context, requ
 		args["sync_api"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_aggregate_revenue(args)
+	result, err := client.Application_post_aggregate_revenue(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_aggregate_revenue: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_aggregate_revenue: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2297,8 +2347,9 @@ func HandleFacebook_application_post_aggregate_revenue(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_android_dialog_configs handles the facebook_application_get_android_dialog_configs tool
-func HandleFacebook_application_get_android_dialog_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_android_dialog_configs handles the application_get_android_dialog_configs tool
+func HandleApplication_get_android_dialog_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2311,10 +2362,12 @@ func HandleFacebook_application_get_android_dialog_configs(ctx context.Context, 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_android_dialog_configs(args)
+	result, err := client.Application_get_android_dialog_configs(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_android_dialog_configs: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_android_dialog_configs: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2326,8 +2379,9 @@ func HandleFacebook_application_get_android_dialog_configs(ctx context.Context, 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_app_capi_settings handles the facebook_application_get_app_capi_settings tool
-func HandleFacebook_application_get_app_capi_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_app_capi_settings handles the application_get_app_capi_settings tool
+func HandleApplication_get_app_capi_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2340,10 +2394,12 @@ func HandleFacebook_application_get_app_capi_settings(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_app_capi_settings(args)
+	result, err := client.Application_get_app_capi_settings(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_app_capi_settings: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_app_capi_settings: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2355,8 +2411,9 @@ func HandleFacebook_application_get_app_capi_settings(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_app_event_types handles the facebook_application_get_app_event_types tool
-func HandleFacebook_application_get_app_event_types(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_app_event_types handles the application_get_app_event_types tool
+func HandleApplication_get_app_event_types(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2369,10 +2426,12 @@ func HandleFacebook_application_get_app_event_types(ctx context.Context, request
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_app_event_types(args)
+	result, err := client.Application_get_app_event_types(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_app_event_types: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_app_event_types: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2384,8 +2443,9 @@ func HandleFacebook_application_get_app_event_types(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_app_indexing handles the facebook_application_post_app_indexing tool
-func HandleFacebook_application_post_app_indexing(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_app_indexing handles the application_post_app_indexing tool
+func HandleApplication_post_app_indexing(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2434,10 +2494,12 @@ func HandleFacebook_application_post_app_indexing(ctx context.Context, request m
 	}
 	args["tree"] = tree
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_app_indexing(args)
+	result, err := client.Application_post_app_indexing(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_app_indexing: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_app_indexing: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2449,8 +2511,9 @@ func HandleFacebook_application_post_app_indexing(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_app_indexing_session handles the facebook_application_post_app_indexing_session tool
-func HandleFacebook_application_post_app_indexing_session(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_app_indexing_session handles the application_post_app_indexing_session tool
+func HandleApplication_post_app_indexing_session(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2475,10 +2538,12 @@ func HandleFacebook_application_post_app_indexing_session(ctx context.Context, r
 		args["extinfo"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_app_indexing_session(args)
+	result, err := client.Application_post_app_indexing_session(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_app_indexing_session: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_app_indexing_session: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2490,8 +2555,9 @@ func HandleFacebook_application_post_app_indexing_session(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_app_installed_groups handles the facebook_application_get_app_installed_groups tool
-func HandleFacebook_application_get_app_installed_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_app_installed_groups handles the application_get_app_installed_groups tool
+func HandleApplication_get_app_installed_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2509,10 +2575,12 @@ func HandleFacebook_application_get_app_installed_groups(ctx context.Context, re
 		args["group_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_app_installed_groups(args)
+	result, err := client.Application_get_app_installed_groups(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_app_installed_groups: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_app_installed_groups: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2524,8 +2592,9 @@ func HandleFacebook_application_get_app_installed_groups(ctx context.Context, re
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_app_push_device_token handles the facebook_application_post_app_push_device_token tool
-func HandleFacebook_application_post_app_push_device_token(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_app_push_device_token handles the application_post_app_push_device_token tool
+func HandleApplication_post_app_push_device_token(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2557,10 +2626,12 @@ func HandleFacebook_application_post_app_push_device_token(ctx context.Context, 
 		args["platform"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_app_push_device_token(args)
+	result, err := client.Application_post_app_push_device_token(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_app_push_device_token: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_app_push_device_token: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2572,8 +2643,9 @@ func HandleFacebook_application_post_app_push_device_token(ctx context.Context, 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_appassets handles the facebook_application_get_appassets tool
-func HandleFacebook_application_get_appassets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_appassets handles the application_get_appassets tool
+func HandleApplication_get_appassets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2586,10 +2658,12 @@ func HandleFacebook_application_get_appassets(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_appassets(args)
+	result, err := client.Application_get_appassets(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_appassets: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_appassets: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2601,8 +2675,9 @@ func HandleFacebook_application_get_appassets(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_assets handles the facebook_application_post_assets tool
-func HandleFacebook_application_post_assets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_assets handles the application_post_assets tool
+func HandleApplication_post_assets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2634,10 +2709,12 @@ func HandleFacebook_application_post_assets(ctx context.Context, request mcp.Cal
 	}
 	args["type"] = type_
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_assets(args)
+	result, err := client.Application_post_assets(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_assets: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_assets: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2649,8 +2726,9 @@ func HandleFacebook_application_post_assets(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_authorized_adaccounts handles the facebook_application_get_authorized_adaccounts tool
-func HandleFacebook_application_get_authorized_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_authorized_adaccounts handles the application_get_authorized_adaccounts tool
+func HandleApplication_get_authorized_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2668,10 +2746,12 @@ func HandleFacebook_application_get_authorized_adaccounts(ctx context.Context, r
 		args["business"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_authorized_adaccounts(args)
+	result, err := client.Application_get_authorized_adaccounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_authorized_adaccounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_authorized_adaccounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2683,8 +2763,9 @@ func HandleFacebook_application_get_authorized_adaccounts(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_button_auto_detection_device_selection handles the facebook_application_get_button_auto_detection_device_selection tool
-func HandleFacebook_application_get_button_auto_detection_device_selection(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_button_auto_detection_device_selection handles the application_get_button_auto_detection_device_selection tool
+func HandleApplication_get_button_auto_detection_device_selection(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2702,10 +2783,12 @@ func HandleFacebook_application_get_button_auto_detection_device_selection(ctx c
 		args["device_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_button_auto_detection_device_selection(args)
+	result, err := client.Application_get_button_auto_detection_device_selection(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_button_auto_detection_device_selection: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_button_auto_detection_device_selection: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2717,8 +2800,9 @@ func HandleFacebook_application_get_button_auto_detection_device_selection(ctx c
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_cloudbridge_settings handles the facebook_application_get_cloudbridge_settings tool
-func HandleFacebook_application_get_cloudbridge_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_cloudbridge_settings handles the application_get_cloudbridge_settings tool
+func HandleApplication_get_cloudbridge_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2731,10 +2815,12 @@ func HandleFacebook_application_get_cloudbridge_settings(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_cloudbridge_settings(args)
+	result, err := client.Application_get_cloudbridge_settings(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_cloudbridge_settings: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_cloudbridge_settings: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2746,8 +2832,9 @@ func HandleFacebook_application_get_cloudbridge_settings(ctx context.Context, re
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_codeless_event_mappings handles the facebook_application_post_codeless_event_mappings tool
-func HandleFacebook_application_post_codeless_event_mappings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_codeless_event_mappings handles the application_post_codeless_event_mappings tool
+func HandleApplication_post_codeless_event_mappings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2786,10 +2873,12 @@ func HandleFacebook_application_post_codeless_event_mappings(ctx context.Context
 		args["post_method"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_codeless_event_mappings(args)
+	result, err := client.Application_post_codeless_event_mappings(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_codeless_event_mappings: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_codeless_event_mappings: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2801,8 +2890,9 @@ func HandleFacebook_application_post_codeless_event_mappings(ctx context.Context
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_connected_client_businesses handles the facebook_application_get_connected_client_businesses tool
-func HandleFacebook_application_get_connected_client_businesses(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_connected_client_businesses handles the application_get_connected_client_businesses tool
+func HandleApplication_get_connected_client_businesses(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2815,10 +2905,12 @@ func HandleFacebook_application_get_connected_client_businesses(ctx context.Cont
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_connected_client_businesses(args)
+	result, err := client.Application_get_connected_client_businesses(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_connected_client_businesses: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_connected_client_businesses: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2830,8 +2922,9 @@ func HandleFacebook_application_get_connected_client_businesses(ctx context.Cont
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_da_checks handles the facebook_application_get_da_checks tool
-func HandleFacebook_application_get_da_checks(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_da_checks handles the application_get_da_checks tool
+func HandleApplication_get_da_checks(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2855,10 +2948,12 @@ func HandleFacebook_application_get_da_checks(ctx context.Context, request mcp.C
 		args["connection_method"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_da_checks(args)
+	result, err := client.Application_get_da_checks(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_da_checks: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_da_checks: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2870,8 +2965,9 @@ func HandleFacebook_application_get_da_checks(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_domain_reports handles the facebook_application_post_domain_reports tool
-func HandleFacebook_application_post_domain_reports(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_domain_reports handles the application_post_domain_reports tool
+func HandleApplication_post_domain_reports(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2891,10 +2987,12 @@ func HandleFacebook_application_post_domain_reports(ctx context.Context, request
 	}
 	args["tracking_domains"] = tracking_domains
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_domain_reports(args)
+	result, err := client.Application_post_domain_reports(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_domain_reports: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_domain_reports: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2906,8 +3004,9 @@ func HandleFacebook_application_post_domain_reports(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_iap_purchases handles the facebook_application_get_iap_purchases tool
-func HandleFacebook_application_get_iap_purchases(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_iap_purchases handles the application_get_iap_purchases tool
+func HandleApplication_get_iap_purchases(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2927,10 +3026,12 @@ func HandleFacebook_application_get_iap_purchases(ctx context.Context, request m
 	}
 	args["order_id"] = order_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_iap_purchases(args)
+	result, err := client.Application_get_iap_purchases(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_iap_purchases: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_iap_purchases: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2942,8 +3043,9 @@ func HandleFacebook_application_get_iap_purchases(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_ios_dialog_configs handles the facebook_application_get_ios_dialog_configs tool
-func HandleFacebook_application_get_ios_dialog_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_ios_dialog_configs handles the application_get_ios_dialog_configs tool
+func HandleApplication_get_ios_dialog_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2956,10 +3058,12 @@ func HandleFacebook_application_get_ios_dialog_configs(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_ios_dialog_configs(args)
+	result, err := client.Application_get_ios_dialog_configs(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_ios_dialog_configs: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_ios_dialog_configs: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2971,8 +3075,9 @@ func HandleFacebook_application_get_ios_dialog_configs(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_linked_dataset handles the facebook_application_get_linked_dataset tool
-func HandleFacebook_application_get_linked_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_linked_dataset handles the application_get_linked_dataset tool
+func HandleApplication_get_linked_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2985,10 +3090,12 @@ func HandleFacebook_application_get_linked_dataset(ctx context.Context, request 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_linked_dataset(args)
+	result, err := client.Application_get_linked_dataset(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_linked_dataset: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_linked_dataset: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3000,8 +3107,9 @@ func HandleFacebook_application_get_linked_dataset(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_message_templates handles the facebook_application_get_message_templates tool
-func HandleFacebook_application_get_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_message_templates handles the application_get_message_templates tool
+func HandleApplication_get_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3019,10 +3127,12 @@ func HandleFacebook_application_get_message_templates(ctx context.Context, reque
 		args["template_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_message_templates(args)
+	result, err := client.Application_get_message_templates(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_message_templates: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_message_templates: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3034,8 +3144,9 @@ func HandleFacebook_application_get_message_templates(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_mmp_auditing handles the facebook_application_post_mmp_auditing tool
-func HandleFacebook_application_post_mmp_auditing(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_mmp_auditing handles the application_post_mmp_auditing tool
+func HandleApplication_post_mmp_auditing(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3178,10 +3289,12 @@ func HandleFacebook_application_post_mmp_auditing(ctx context.Context, request m
 		args["view_attr_window"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_mmp_auditing(args)
+	result, err := client.Application_post_mmp_auditing(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_mmp_auditing: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_mmp_auditing: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3193,8 +3306,9 @@ func HandleFacebook_application_post_mmp_auditing(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_mobile_sdk_gk handles the facebook_application_get_mobile_sdk_gk tool
-func HandleFacebook_application_get_mobile_sdk_gk(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_mobile_sdk_gk handles the application_get_mobile_sdk_gk tool
+func HandleApplication_get_mobile_sdk_gk(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3237,10 +3351,12 @@ func HandleFacebook_application_get_mobile_sdk_gk(ctx context.Context, request m
 	}
 	args["sdk_version"] = sdk_version
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_mobile_sdk_gk(args)
+	result, err := client.Application_get_mobile_sdk_gk(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_mobile_sdk_gk: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_mobile_sdk_gk: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3252,8 +3368,9 @@ func HandleFacebook_application_get_mobile_sdk_gk(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_monetized_digital_store_objects handles the facebook_application_get_monetized_digital_store_objects tool
-func HandleFacebook_application_get_monetized_digital_store_objects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_monetized_digital_store_objects handles the application_get_monetized_digital_store_objects tool
+func HandleApplication_get_monetized_digital_store_objects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3266,10 +3383,12 @@ func HandleFacebook_application_get_monetized_digital_store_objects(ctx context.
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_monetized_digital_store_objects(args)
+	result, err := client.Application_get_monetized_digital_store_objects(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_monetized_digital_store_objects: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_monetized_digital_store_objects: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3281,8 +3400,9 @@ func HandleFacebook_application_get_monetized_digital_store_objects(ctx context.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_monetized_digital_store_objects handles the facebook_application_post_monetized_digital_store_objects tool
-func HandleFacebook_application_post_monetized_digital_store_objects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_monetized_digital_store_objects handles the application_post_monetized_digital_store_objects tool
+func HandleApplication_post_monetized_digital_store_objects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3309,10 +3429,12 @@ func HandleFacebook_application_post_monetized_digital_store_objects(ctx context
 	}
 	args["store"] = store
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_monetized_digital_store_objects(args)
+	result, err := client.Application_post_monetized_digital_store_objects(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_monetized_digital_store_objects: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_monetized_digital_store_objects: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3324,8 +3446,9 @@ func HandleFacebook_application_post_monetized_digital_store_objects(ctx context
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_object_types handles the facebook_application_get_object_types tool
-func HandleFacebook_application_get_object_types(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_object_types handles the application_get_object_types tool
+func HandleApplication_get_object_types(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3338,10 +3461,12 @@ func HandleFacebook_application_get_object_types(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_object_types(args)
+	result, err := client.Application_get_object_types(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_object_types: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_object_types: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3353,8 +3478,9 @@ func HandleFacebook_application_get_object_types(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_objects handles the facebook_application_get_objects tool
-func HandleFacebook_application_get_objects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_objects handles the application_get_objects tool
+func HandleApplication_get_objects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3367,10 +3493,12 @@ func HandleFacebook_application_get_objects(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_objects(args)
+	result, err := client.Application_get_objects(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_objects: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_objects: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3382,8 +3510,9 @@ func HandleFacebook_application_get_objects(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_occludespopups handles the facebook_application_post_occludespopups tool
-func HandleFacebook_application_post_occludespopups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_occludespopups handles the application_post_occludespopups tool
+func HandleApplication_post_occludespopups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3406,10 +3535,12 @@ func HandleFacebook_application_post_occludespopups(ctx context.Context, request
 		args["unity"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_occludespopups(args)
+	result, err := client.Application_post_occludespopups(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_occludespopups: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_occludespopups: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3421,8 +3552,9 @@ func HandleFacebook_application_post_occludespopups(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_permissions handles the facebook_application_get_permissions tool
-func HandleFacebook_application_get_permissions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_permissions handles the application_get_permissions tool
+func HandleApplication_get_permissions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3462,10 +3594,12 @@ func HandleFacebook_application_get_permissions(ctx context.Context, request mcp
 		args["status"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_permissions(args)
+	result, err := client.Application_get_permissions(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_permissions: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_permissions: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3477,8 +3611,9 @@ func HandleFacebook_application_get_permissions(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_products handles the facebook_application_get_products tool
-func HandleFacebook_application_get_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_products handles the application_get_products tool
+func HandleApplication_get_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3497,10 +3632,12 @@ func HandleFacebook_application_get_products(ctx context.Context, request mcp.Ca
 		args["product_ids"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_products(args)
+	result, err := client.Application_get_products(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_products: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_products: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3512,8 +3649,9 @@ func HandleFacebook_application_get_products(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_purchases handles the facebook_application_get_purchases tool
-func HandleFacebook_application_get_purchases(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_purchases handles the application_get_purchases tool
+func HandleApplication_get_purchases(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3526,10 +3664,12 @@ func HandleFacebook_application_get_purchases(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_purchases(args)
+	result, err := client.Application_get_purchases(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_purchases: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_purchases: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3541,8 +3681,9 @@ func HandleFacebook_application_get_purchases(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_roles handles the facebook_application_get_roles tool
-func HandleFacebook_application_get_roles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_roles handles the application_get_roles tool
+func HandleApplication_get_roles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3555,10 +3696,12 @@ func HandleFacebook_application_get_roles(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_roles(args)
+	result, err := client.Application_get_roles(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_roles: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_roles: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3570,8 +3713,9 @@ func HandleFacebook_application_get_roles(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_server_domain_infos handles the facebook_application_get_server_domain_infos tool
-func HandleFacebook_application_get_server_domain_infos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_server_domain_infos handles the application_get_server_domain_infos tool
+func HandleApplication_get_server_domain_infos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3584,10 +3728,12 @@ func HandleFacebook_application_get_server_domain_infos(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_server_domain_infos(args)
+	result, err := client.Application_get_server_domain_infos(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_server_domain_infos: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_server_domain_infos: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3599,8 +3745,9 @@ func HandleFacebook_application_get_server_domain_infos(ctx context.Context, req
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_sgw_dataset_status handles the facebook_application_get_sgw_dataset_status tool
-func HandleFacebook_application_get_sgw_dataset_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_sgw_dataset_status handles the application_get_sgw_dataset_status tool
+func HandleApplication_get_sgw_dataset_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3620,10 +3767,12 @@ func HandleFacebook_application_get_sgw_dataset_status(ctx context.Context, requ
 	}
 	args["dataset_id"] = dataset_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_sgw_dataset_status(args)
+	result, err := client.Application_get_sgw_dataset_status(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_sgw_dataset_status: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_sgw_dataset_status: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3635,8 +3784,9 @@ func HandleFacebook_application_get_sgw_dataset_status(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_sgw_install_deferral_link handles the facebook_application_get_sgw_install_deferral_link tool
-func HandleFacebook_application_get_sgw_install_deferral_link(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_sgw_install_deferral_link handles the application_get_sgw_install_deferral_link tool
+func HandleApplication_get_sgw_install_deferral_link(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3661,10 +3811,12 @@ func HandleFacebook_application_get_sgw_install_deferral_link(ctx context.Contex
 	}
 	args["dataset_id"] = dataset_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_sgw_install_deferral_link(args)
+	result, err := client.Application_get_sgw_install_deferral_link(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_sgw_install_deferral_link: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_sgw_install_deferral_link: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3676,8 +3828,9 @@ func HandleFacebook_application_get_sgw_install_deferral_link(ctx context.Contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_subscribed_domains handles the facebook_application_get_subscribed_domains tool
-func HandleFacebook_application_get_subscribed_domains(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_subscribed_domains handles the application_get_subscribed_domains tool
+func HandleApplication_get_subscribed_domains(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3690,10 +3843,12 @@ func HandleFacebook_application_get_subscribed_domains(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_subscribed_domains(args)
+	result, err := client.Application_get_subscribed_domains(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_subscribed_domains: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_subscribed_domains: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3705,78 +3860,9 @@ func HandleFacebook_application_get_subscribed_domains(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_subscribed_domains handles the facebook_application_post_subscribed_domains tool
-func HandleFacebook_application_post_subscribed_domains(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
 
-	// Create client
-	client := client.NewApplicationClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: subscribe
-	// array type - using string
-	if val := request.GetString("subscribe", ""); val != "" {
-		args["subscribe"] = val
-	}
-
-	// Optional: unsubscribe
-	// array type - using string
-	if val := request.GetString("unsubscribe", ""); val != "" {
-		args["unsubscribe"] = val
-	}
-
-	// Call the client method
-	result, err := client.Facebook_application_post_subscribed_domains(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_subscribed_domains: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleFacebook_application_get_subscribed_domains_phishing handles the facebook_application_get_subscribed_domains_phishing tool
-func HandleFacebook_application_get_subscribed_domains_phishing(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewApplicationClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Facebook_application_get_subscribed_domains_phishing(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_subscribed_domains_phishing: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleFacebook_application_post_subscribed_domains_phishing handles the facebook_application_post_subscribed_domains_phishing tool
-func HandleFacebook_application_post_subscribed_domains_phishing(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleApplication_post_subscribed_domains handles the application_post_subscribed_domains tool
+func HandleApplication_post_subscribed_domains(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3801,10 +3887,12 @@ func HandleFacebook_application_post_subscribed_domains_phishing(ctx context.Con
 		args["unsubscribe"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_subscribed_domains_phishing(args)
+	result, err := client.Application_post_subscribed_domains(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_subscribed_domains_phishing: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_subscribed_domains: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3816,8 +3904,85 @@ func HandleFacebook_application_post_subscribed_domains_phishing(ctx context.Con
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_delete_subscriptions handles the facebook_application_delete_subscriptions tool
-func HandleFacebook_application_delete_subscriptions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_subscribed_domains_phishing handles the application_get_subscribed_domains_phishing tool
+func HandleApplication_get_subscribed_domains_phishing(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token
+	accessToken, err := request.RequireString("access_token")
+	if err != nil {
+		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewApplicationClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+
+
+	// Call the client method
+	result, err := client.Application_get_subscribed_domains_phishing(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_subscribed_domains_phishing: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+
+// HandleApplication_post_subscribed_domains_phishing handles the application_post_subscribed_domains_phishing tool
+func HandleApplication_post_subscribed_domains_phishing(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token
+	accessToken, err := request.RequireString("access_token")
+	if err != nil {
+		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewApplicationClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: subscribe
+	// array type - using string
+	if val := request.GetString("subscribe", ""); val != "" {
+		args["subscribe"] = val
+	}
+
+	// Optional: unsubscribe
+	// array type - using string
+	if val := request.GetString("unsubscribe", ""); val != "" {
+		args["unsubscribe"] = val
+	}
+
+
+
+	// Call the client method
+	result, err := client.Application_post_subscribed_domains_phishing(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_subscribed_domains_phishing: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+
+// HandleApplication_delete_subscriptions handles the application_delete_subscriptions tool
+func HandleApplication_delete_subscriptions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3841,10 +4006,12 @@ func HandleFacebook_application_delete_subscriptions(ctx context.Context, reques
 		args["object"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_delete_subscriptions(args)
+	result, err := client.Application_delete_subscriptions(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_delete_subscriptions: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_delete_subscriptions: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3856,8 +4023,9 @@ func HandleFacebook_application_delete_subscriptions(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_subscriptions handles the facebook_application_get_subscriptions tool
-func HandleFacebook_application_get_subscriptions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_subscriptions handles the application_get_subscriptions tool
+func HandleApplication_get_subscriptions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3870,10 +4038,12 @@ func HandleFacebook_application_get_subscriptions(ctx context.Context, request m
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_subscriptions(args)
+	result, err := client.Application_get_subscriptions(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_subscriptions: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_subscriptions: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3885,8 +4055,9 @@ func HandleFacebook_application_get_subscriptions(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_subscriptions handles the facebook_application_post_subscriptions tool
-func HandleFacebook_application_post_subscriptions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_subscriptions handles the application_post_subscriptions tool
+func HandleApplication_post_subscriptions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3927,10 +4098,12 @@ func HandleFacebook_application_post_subscriptions(ctx context.Context, request 
 		args["verify_token"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_subscriptions(args)
+	result, err := client.Application_post_subscriptions(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_subscriptions: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_subscriptions: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3942,8 +4115,9 @@ func HandleFacebook_application_post_subscriptions(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_uploads handles the facebook_application_post_uploads tool
-func HandleFacebook_application_post_uploads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_uploads handles the application_post_uploads tool
+func HandleApplication_post_uploads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3978,10 +4152,12 @@ func HandleFacebook_application_post_uploads(ctx context.Context, request mcp.Ca
 		args["session_type"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_uploads(args)
+	result, err := client.Application_post_uploads(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_uploads: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_uploads: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3993,8 +4169,9 @@ func HandleFacebook_application_post_uploads(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_whatsapp_business_solution handles the facebook_application_post_whatsapp_business_solution tool
-func HandleFacebook_application_post_whatsapp_business_solution(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_whatsapp_business_solution handles the application_post_whatsapp_business_solution tool
+func HandleApplication_post_whatsapp_business_solution(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -4035,10 +4212,12 @@ func HandleFacebook_application_post_whatsapp_business_solution(ctx context.Cont
 	}
 	args["solution_name"] = solution_name
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_whatsapp_business_solution(args)
+	result, err := client.Application_post_whatsapp_business_solution(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_whatsapp_business_solution: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_whatsapp_business_solution: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -4050,8 +4229,9 @@ func HandleFacebook_application_post_whatsapp_business_solution(ctx context.Cont
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_whatsapp_business_solutions handles the facebook_application_get_whatsapp_business_solutions tool
-func HandleFacebook_application_get_whatsapp_business_solutions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_whatsapp_business_solutions handles the application_get_whatsapp_business_solutions tool
+func HandleApplication_get_whatsapp_business_solutions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -4069,10 +4249,12 @@ func HandleFacebook_application_get_whatsapp_business_solutions(ctx context.Cont
 		args["role"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_whatsapp_business_solutions(args)
+	result, err := client.Application_get_whatsapp_business_solutions(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_whatsapp_business_solutions: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_whatsapp_business_solutions: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -4084,8 +4266,9 @@ func HandleFacebook_application_get_whatsapp_business_solutions(ctx context.Cont
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_get_ handles the facebook_application_get_ tool
-func HandleFacebook_application_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_get_ handles the application_get_ tool
+func HandleApplication_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -4103,10 +4286,12 @@ func HandleFacebook_application_get_(ctx context.Context, request mcp.CallToolRe
 		args["advertiser_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_get_(args)
+	result, err := client.Application_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -4118,8 +4303,9 @@ func HandleFacebook_application_get_(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_application_post_ handles the facebook_application_post_ tool
-func HandleFacebook_application_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApplication_post_ handles the application_post_ tool
+func HandleApplication_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -4288,10 +4474,12 @@ func HandleFacebook_application_post_(ctx context.Context, request mcp.CallToolR
 		args["website_url"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_application_post_(args)
+	result, err := client.Application_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_application_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute application_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -4302,3 +4490,4 @@ func HandleFacebook_application_post_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

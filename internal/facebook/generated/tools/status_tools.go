@@ -15,8 +15,9 @@ import (
 func GetStatusTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_status_post_likes tool
-	facebook_status_post_likesTool := mcp.NewTool("facebook_status_post_likes",
+
+	// status_post_likes tool
+	status_post_likesTool := mcp.NewTool("status_post_likes",
 		mcp.WithDescription("POST likes for Status"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -35,25 +36,27 @@ func GetStatusTools(accessToken string) []mcp.Tool {
 			mcp.Description("tracking parameter for likes"),
 		),
 	)
-	tools = append(tools, facebook_status_post_likesTool)
+	tools = append(tools, status_post_likesTool)
 
-	// facebook_status_get_ tool
-	facebook_status_get_Tool := mcp.NewTool("facebook_status_get_",
+	// status_get_ tool
+	status_get_Tool := mcp.NewTool("status_get_",
 		mcp.WithDescription("GET  for Status"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_status_get_Tool)
+	tools = append(tools, status_get_Tool)
+
 
 	return tools
 }
 
 // Status handlers
 
-// HandleFacebook_status_post_likes handles the facebook_status_post_likes tool
-func HandleFacebook_status_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleStatus_post_likes handles the status_post_likes tool
+func HandleStatus_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -86,10 +89,12 @@ func HandleFacebook_status_post_likes(ctx context.Context, request mcp.CallToolR
 		args["tracking"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_status_post_likes(args)
+	result, err := client.Status_post_likes(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_status_post_likes: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute status_post_likes: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -101,8 +106,9 @@ func HandleFacebook_status_post_likes(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_status_get_ handles the facebook_status_get_ tool
-func HandleFacebook_status_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleStatus_get_ handles the status_get_ tool
+func HandleStatus_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -115,10 +121,12 @@ func HandleFacebook_status_get_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_status_get_(args)
+	result, err := client.Status_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_status_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute status_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -129,3 +137,4 @@ func HandleFacebook_status_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

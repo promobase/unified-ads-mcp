@@ -15,23 +15,26 @@ import (
 func GetCPASAdvertiserPartnershipRecommendationTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_cpasadvertiserpartnershiprecommendation_get_ tool
-	facebook_cpasadvertiserpartnershiprecommendation_get_Tool := mcp.NewTool("facebook_cpasadvertiserpartnershiprecommendation_get_",
+
+	// cpasadvertiserpartnershiprecommendation_get_ tool
+	cpasadvertiserpartnershiprecommendation_get_Tool := mcp.NewTool("cpasadvertiserpartnershiprecommendation_get_",
 		mcp.WithDescription("GET  for CPASAdvertiserPartnershipRecommendation"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_cpasadvertiserpartnershiprecommendation_get_Tool)
+	tools = append(tools, cpasadvertiserpartnershiprecommendation_get_Tool)
+
 
 	return tools
 }
 
 // CPASAdvertiserPartnershipRecommendation handlers
 
-// HandleFacebook_cpasadvertiserpartnershiprecommendation_get_ handles the facebook_cpasadvertiserpartnershiprecommendation_get_ tool
-func HandleFacebook_cpasadvertiserpartnershiprecommendation_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCpasadvertiserpartnershiprecommendation_get_ handles the cpasadvertiserpartnershiprecommendation_get_ tool
+func HandleCpasadvertiserpartnershiprecommendation_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_cpasadvertiserpartnershiprecommendation_get_(ctx context.Con
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_cpasadvertiserpartnershiprecommendation_get_(args)
+	result, err := client.Cpasadvertiserpartnershiprecommendation_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_cpasadvertiserpartnershiprecommendation_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute cpasadvertiserpartnershiprecommendation_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_cpasadvertiserpartnershiprecommendation_get_(ctx context.Con
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

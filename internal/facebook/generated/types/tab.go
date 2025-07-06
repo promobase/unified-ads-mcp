@@ -4,14 +4,14 @@ package types
 
 // Tab represents a Facebook Tab object
 type Tab struct {
-	Application                   *Application `json:"application"`
-	Custom_image_url              string       `json:"custom_image_url"`
-	Custom_name                   string       `json:"custom_name"`
-	Id                            string       `json:"id"`
-	Image_url                     string       `json:"image_url"`
-	Is_non_connection_landing_tab bool         `json:"is_non_connection_landing_tab"`
-	Is_permanent                  bool         `json:"is_permanent"`
-	Link                          string       `json:"link"`
-	Name                          string       `json:"name"`
-	Position                      int          `json:"position"`
+	Application *Application `json:"application"`
+	Custom_image_url string `json:"custom_image_url"`
+	Custom_name string `json:"custom_name"`
+	Id string `json:"id"`
+	Image_url string `json:"image_url"`
+	Is_non_connection_landing_tab bool `json:"is_non_connection_landing_tab"`
+	Is_permanent bool `json:"is_permanent"`
+	Link string `json:"link"`
+	Name string `json:"name"`
+	Position int `json:"position"`
 }

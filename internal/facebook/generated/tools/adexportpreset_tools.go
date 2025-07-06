@@ -15,23 +15,26 @@ import (
 func GetAdExportPresetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adexportpreset_get_ tool
-	facebook_adexportpreset_get_Tool := mcp.NewTool("facebook_adexportpreset_get_",
+
+	// adexportpreset_get_ tool
+	adexportpreset_get_Tool := mcp.NewTool("adexportpreset_get_",
 		mcp.WithDescription("GET  for AdExportPreset"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adexportpreset_get_Tool)
+	tools = append(tools, adexportpreset_get_Tool)
+
 
 	return tools
 }
 
 // AdExportPreset handlers
 
-// HandleFacebook_adexportpreset_get_ handles the facebook_adexportpreset_get_ tool
-func HandleFacebook_adexportpreset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdexportpreset_get_ handles the adexportpreset_get_ tool
+func HandleAdexportpreset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_adexportpreset_get_(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adexportpreset_get_(args)
+	result, err := client.Adexportpreset_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adexportpreset_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adexportpreset_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_adexportpreset_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

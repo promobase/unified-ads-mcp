@@ -4,12 +4,12 @@ package types
 
 // EducationExperience represents a Facebook EducationExperience object
 type EducationExperience struct {
-	Classes       []Experience `json:"classes"`
-	Concentration []Page       `json:"concentration"`
-	Degree        *Page        `json:"degree"`
-	Id            string       `json:"id"`
-	School        *Page        `json:"school"`
-	Type_         string       `json:"type"`
-	With          []User       `json:"with"`
-	Year          *Page        `json:"year"`
+	Classes []Experience `json:"classes"`
+	Concentration []Page `json:"concentration"`
+	Degree *Page `json:"degree"`
+	Id string `json:"id"`
+	School *Page `json:"school"`
+	Type_ string `json:"type"`
+	With []User `json:"with"`
+	Year *Page `json:"year"`
 }

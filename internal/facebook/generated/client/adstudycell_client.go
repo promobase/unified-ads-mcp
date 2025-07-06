@@ -21,15 +21,19 @@ func NewAdStudyCellClient(accessToken string) *AdStudyCellClient {
 	}
 }
 
-// facebook_adstudycell_get_adaccounts GET adaccounts for AdStudyCell
-func (c *AdStudyCellClient) Facebook_adstudycell_get_adaccounts(args map[string]interface{}) (interface{}, error) {
+
+// adstudycell_get_adaccounts GET adaccounts for AdStudyCell
+func (c *AdStudyCellClient) Adstudycell_get_adaccounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -60,15 +64,19 @@ func (c *AdStudyCellClient) Facebook_adstudycell_get_adaccounts(args map[string]
 	return result, nil
 }
 
-// facebook_adstudycell_get_adsets GET adsets for AdStudyCell
-func (c *AdStudyCellClient) Facebook_adstudycell_get_adsets(args map[string]interface{}) (interface{}, error) {
+
+// adstudycell_get_adsets GET adsets for AdStudyCell
+func (c *AdStudyCellClient) Adstudycell_get_adsets(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adsets")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -99,15 +107,19 @@ func (c *AdStudyCellClient) Facebook_adstudycell_get_adsets(args map[string]inte
 	return result, nil
 }
 
-// facebook_adstudycell_get_campaigns GET campaigns for AdStudyCell
-func (c *AdStudyCellClient) Facebook_adstudycell_get_campaigns(args map[string]interface{}) (interface{}, error) {
+
+// adstudycell_get_campaigns GET campaigns for AdStudyCell
+func (c *AdStudyCellClient) Adstudycell_get_campaigns(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "campaigns")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -138,15 +150,19 @@ func (c *AdStudyCellClient) Facebook_adstudycell_get_campaigns(args map[string]i
 	return result, nil
 }
 
-// facebook_adstudycell_get_ GET  for AdStudyCell
-func (c *AdStudyCellClient) Facebook_adstudycell_get_(args map[string]interface{}) (interface{}, error) {
+
+// adstudycell_get_ GET  for AdStudyCell
+func (c *AdStudyCellClient) Adstudycell_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -177,9 +193,11 @@ func (c *AdStudyCellClient) Facebook_adstudycell_get_(args map[string]interface{
 	return result, nil
 }
 
-// facebook_adstudycell_post_ POST  for AdStudyCell
-func (c *AdStudyCellClient) Facebook_adstudycell_post_(args map[string]interface{}) (interface{}, error) {
+
+// adstudycell_post_ POST  for AdStudyCell
+func (c *AdStudyCellClient) Adstudycell_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -204,6 +222,7 @@ func (c *AdStudyCellClient) Facebook_adstudycell_post_(args map[string]interface
 	if val, ok := args["name"]; ok {
 		urlParams.Set("name", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -234,3 +253,4 @@ func (c *AdStudyCellClient) Facebook_adstudycell_post_(args map[string]interface
 
 	return result, nil
 }
+

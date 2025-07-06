@@ -15,8 +15,9 @@ import (
 func GetAdMonetizationPropertyTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_admonetizationproperty_get_adnetworkanalytics tool
-	facebook_admonetizationproperty_get_adnetworkanalyticsTool := mcp.NewTool("facebook_admonetizationproperty_get_adnetworkanalytics",
+
+	// admonetizationproperty_get_adnetworkanalytics tool
+	admonetizationproperty_get_adnetworkanalyticsTool := mcp.NewTool("admonetizationproperty_get_adnetworkanalytics",
 		mcp.WithDescription("GET adnetworkanalytics for AdMonetizationProperty"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -59,10 +60,10 @@ func GetAdMonetizationPropertyTools(accessToken string) []mcp.Tool {
 			mcp.Description("until parameter for adnetworkanalytics"),
 		),
 	)
-	tools = append(tools, facebook_admonetizationproperty_get_adnetworkanalyticsTool)
+	tools = append(tools, admonetizationproperty_get_adnetworkanalyticsTool)
 
-	// facebook_admonetizationproperty_post_adnetworkanalytics tool
-	facebook_admonetizationproperty_post_adnetworkanalyticsTool := mcp.NewTool("facebook_admonetizationproperty_post_adnetworkanalytics",
+	// admonetizationproperty_post_adnetworkanalytics tool
+	admonetizationproperty_post_adnetworkanalyticsTool := mcp.NewTool("admonetizationproperty_post_adnetworkanalytics",
 		mcp.WithDescription("POST adnetworkanalytics for AdMonetizationProperty"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -102,10 +103,10 @@ func GetAdMonetizationPropertyTools(accessToken string) []mcp.Tool {
 			mcp.Description("until parameter for adnetworkanalytics"),
 		),
 	)
-	tools = append(tools, facebook_admonetizationproperty_post_adnetworkanalyticsTool)
+	tools = append(tools, admonetizationproperty_post_adnetworkanalyticsTool)
 
-	// facebook_admonetizationproperty_get_adnetworkanalytics_results tool
-	facebook_admonetizationproperty_get_adnetworkanalytics_resultsTool := mcp.NewTool("facebook_admonetizationproperty_get_adnetworkanalytics_results",
+	// admonetizationproperty_get_adnetworkanalytics_results tool
+	admonetizationproperty_get_adnetworkanalytics_resultsTool := mcp.NewTool("admonetizationproperty_get_adnetworkanalytics_results",
 		mcp.WithDescription("GET adnetworkanalytics_results for AdMonetizationProperty"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -115,25 +116,27 @@ func GetAdMonetizationPropertyTools(accessToken string) []mcp.Tool {
 			mcp.Description("query_ids parameter for adnetworkanalytics_results"),
 		),
 	)
-	tools = append(tools, facebook_admonetizationproperty_get_adnetworkanalytics_resultsTool)
+	tools = append(tools, admonetizationproperty_get_adnetworkanalytics_resultsTool)
 
-	// facebook_admonetizationproperty_get_ tool
-	facebook_admonetizationproperty_get_Tool := mcp.NewTool("facebook_admonetizationproperty_get_",
+	// admonetizationproperty_get_ tool
+	admonetizationproperty_get_Tool := mcp.NewTool("admonetizationproperty_get_",
 		mcp.WithDescription("GET  for AdMonetizationProperty"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_admonetizationproperty_get_Tool)
+	tools = append(tools, admonetizationproperty_get_Tool)
+
 
 	return tools
 }
 
 // AdMonetizationProperty handlers
 
-// HandleFacebook_admonetizationproperty_get_adnetworkanalytics handles the facebook_admonetizationproperty_get_adnetworkanalytics tool
-func HandleFacebook_admonetizationproperty_get_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdmonetizationproperty_get_adnetworkanalytics handles the admonetizationproperty_get_adnetworkanalytics tool
+func HandleAdmonetizationproperty_get_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -200,10 +203,12 @@ func HandleFacebook_admonetizationproperty_get_adnetworkanalytics(ctx context.Co
 		args["until"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_admonetizationproperty_get_adnetworkanalytics(args)
+	result, err := client.Admonetizationproperty_get_adnetworkanalytics(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_admonetizationproperty_get_adnetworkanalytics: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute admonetizationproperty_get_adnetworkanalytics: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -215,8 +220,9 @@ func HandleFacebook_admonetizationproperty_get_adnetworkanalytics(ctx context.Co
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_admonetizationproperty_post_adnetworkanalytics handles the facebook_admonetizationproperty_post_adnetworkanalytics tool
-func HandleFacebook_admonetizationproperty_post_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdmonetizationproperty_post_adnetworkanalytics handles the admonetizationproperty_post_adnetworkanalytics tool
+func HandleAdmonetizationproperty_post_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -278,10 +284,12 @@ func HandleFacebook_admonetizationproperty_post_adnetworkanalytics(ctx context.C
 		args["until"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_admonetizationproperty_post_adnetworkanalytics(args)
+	result, err := client.Admonetizationproperty_post_adnetworkanalytics(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_admonetizationproperty_post_adnetworkanalytics: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute admonetizationproperty_post_adnetworkanalytics: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -293,8 +301,9 @@ func HandleFacebook_admonetizationproperty_post_adnetworkanalytics(ctx context.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_admonetizationproperty_get_adnetworkanalytics_results handles the facebook_admonetizationproperty_get_adnetworkanalytics_results tool
-func HandleFacebook_admonetizationproperty_get_adnetworkanalytics_results(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdmonetizationproperty_get_adnetworkanalytics_results handles the admonetizationproperty_get_adnetworkanalytics_results tool
+func HandleAdmonetizationproperty_get_adnetworkanalytics_results(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -313,10 +322,12 @@ func HandleFacebook_admonetizationproperty_get_adnetworkanalytics_results(ctx co
 		args["query_ids"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_admonetizationproperty_get_adnetworkanalytics_results(args)
+	result, err := client.Admonetizationproperty_get_adnetworkanalytics_results(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_admonetizationproperty_get_adnetworkanalytics_results: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute admonetizationproperty_get_adnetworkanalytics_results: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -328,8 +339,9 @@ func HandleFacebook_admonetizationproperty_get_adnetworkanalytics_results(ctx co
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_admonetizationproperty_get_ handles the facebook_admonetizationproperty_get_ tool
-func HandleFacebook_admonetizationproperty_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdmonetizationproperty_get_ handles the admonetizationproperty_get_ tool
+func HandleAdmonetizationproperty_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -342,10 +354,12 @@ func HandleFacebook_admonetizationproperty_get_(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_admonetizationproperty_get_(args)
+	result, err := client.Admonetizationproperty_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_admonetizationproperty_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute admonetizationproperty_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -356,3 +370,4 @@ func HandleFacebook_admonetizationproperty_get_(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

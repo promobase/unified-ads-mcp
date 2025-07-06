@@ -21,14 +21,18 @@ func NewMeasurementReportClient(accessToken string) *MeasurementReportClient {
 	}
 }
 
-// facebook_measurementreport_get_ GET  for MeasurementReport
-func (c *MeasurementReportClient) Facebook_measurementreport_get_(args map[string]interface{}) (interface{}, error) {
+
+// measurementreport_get_ GET  for MeasurementReport
+func (c *MeasurementReportClient) Measurementreport_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *MeasurementReportClient) Facebook_measurementreport_get_(args map[strin
 
 	return result, nil
 }
+

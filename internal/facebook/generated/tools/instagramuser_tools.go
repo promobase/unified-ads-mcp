@@ -15,28 +15,29 @@ import (
 func GetInstagramUserTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_instagramuser_get_agencies tool
-	facebook_instagramuser_get_agenciesTool := mcp.NewTool("facebook_instagramuser_get_agencies",
+
+	// instagramuser_get_agencies tool
+	instagramuser_get_agenciesTool := mcp.NewTool("instagramuser_get_agencies",
 		mcp.WithDescription("GET agencies for InstagramUser"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_instagramuser_get_agenciesTool)
+	tools = append(tools, instagramuser_get_agenciesTool)
 
-	// facebook_instagramuser_get_ar_effects tool
-	facebook_instagramuser_get_ar_effectsTool := mcp.NewTool("facebook_instagramuser_get_ar_effects",
+	// instagramuser_get_ar_effects tool
+	instagramuser_get_ar_effectsTool := mcp.NewTool("instagramuser_get_ar_effects",
 		mcp.WithDescription("GET ar_effects for InstagramUser"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_instagramuser_get_ar_effectsTool)
+	tools = append(tools, instagramuser_get_ar_effectsTool)
 
-	// facebook_instagramuser_get_authorized_adaccounts tool
-	facebook_instagramuser_get_authorized_adaccountsTool := mcp.NewTool("facebook_instagramuser_get_authorized_adaccounts",
+	// instagramuser_get_authorized_adaccounts tool
+	instagramuser_get_authorized_adaccountsTool := mcp.NewTool("instagramuser_get_authorized_adaccounts",
 		mcp.WithDescription("GET authorized_adaccounts for InstagramUser"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -47,20 +48,20 @@ func GetInstagramUserTools(accessToken string) []mcp.Tool {
 			mcp.Description("business parameter for authorized_adaccounts"),
 		),
 	)
-	tools = append(tools, facebook_instagramuser_get_authorized_adaccountsTool)
+	tools = append(tools, instagramuser_get_authorized_adaccountsTool)
 
-	// facebook_instagramuser_get_upcoming_events tool
-	facebook_instagramuser_get_upcoming_eventsTool := mcp.NewTool("facebook_instagramuser_get_upcoming_events",
+	// instagramuser_get_upcoming_events tool
+	instagramuser_get_upcoming_eventsTool := mcp.NewTool("instagramuser_get_upcoming_events",
 		mcp.WithDescription("GET upcoming_events for InstagramUser"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_instagramuser_get_upcoming_eventsTool)
+	tools = append(tools, instagramuser_get_upcoming_eventsTool)
 
-	// facebook_instagramuser_get_ tool
-	facebook_instagramuser_get_Tool := mcp.NewTool("facebook_instagramuser_get_",
+	// instagramuser_get_ tool
+	instagramuser_get_Tool := mcp.NewTool("instagramuser_get_",
 		mcp.WithDescription("GET  for InstagramUser"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -70,15 +71,17 @@ func GetInstagramUserTools(accessToken string) []mcp.Tool {
 			mcp.Description("adgroup_id parameter for "),
 		),
 	)
-	tools = append(tools, facebook_instagramuser_get_Tool)
+	tools = append(tools, instagramuser_get_Tool)
+
 
 	return tools
 }
 
 // InstagramUser handlers
 
-// HandleFacebook_instagramuser_get_agencies handles the facebook_instagramuser_get_agencies tool
-func HandleFacebook_instagramuser_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleInstagramuser_get_agencies handles the instagramuser_get_agencies tool
+func HandleInstagramuser_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -91,10 +94,12 @@ func HandleFacebook_instagramuser_get_agencies(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_instagramuser_get_agencies(args)
+	result, err := client.Instagramuser_get_agencies(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_instagramuser_get_agencies: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute instagramuser_get_agencies: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -106,8 +111,9 @@ func HandleFacebook_instagramuser_get_agencies(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_instagramuser_get_ar_effects handles the facebook_instagramuser_get_ar_effects tool
-func HandleFacebook_instagramuser_get_ar_effects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleInstagramuser_get_ar_effects handles the instagramuser_get_ar_effects tool
+func HandleInstagramuser_get_ar_effects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -120,10 +126,12 @@ func HandleFacebook_instagramuser_get_ar_effects(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_instagramuser_get_ar_effects(args)
+	result, err := client.Instagramuser_get_ar_effects(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_instagramuser_get_ar_effects: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute instagramuser_get_ar_effects: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -135,8 +143,9 @@ func HandleFacebook_instagramuser_get_ar_effects(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_instagramuser_get_authorized_adaccounts handles the facebook_instagramuser_get_authorized_adaccounts tool
-func HandleFacebook_instagramuser_get_authorized_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleInstagramuser_get_authorized_adaccounts handles the instagramuser_get_authorized_adaccounts tool
+func HandleInstagramuser_get_authorized_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -156,10 +165,12 @@ func HandleFacebook_instagramuser_get_authorized_adaccounts(ctx context.Context,
 	}
 	args["business"] = business
 
+
+
 	// Call the client method
-	result, err := client.Facebook_instagramuser_get_authorized_adaccounts(args)
+	result, err := client.Instagramuser_get_authorized_adaccounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_instagramuser_get_authorized_adaccounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute instagramuser_get_authorized_adaccounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -171,8 +182,9 @@ func HandleFacebook_instagramuser_get_authorized_adaccounts(ctx context.Context,
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_instagramuser_get_upcoming_events handles the facebook_instagramuser_get_upcoming_events tool
-func HandleFacebook_instagramuser_get_upcoming_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleInstagramuser_get_upcoming_events handles the instagramuser_get_upcoming_events tool
+func HandleInstagramuser_get_upcoming_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -185,10 +197,12 @@ func HandleFacebook_instagramuser_get_upcoming_events(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_instagramuser_get_upcoming_events(args)
+	result, err := client.Instagramuser_get_upcoming_events(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_instagramuser_get_upcoming_events: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute instagramuser_get_upcoming_events: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -200,8 +214,9 @@ func HandleFacebook_instagramuser_get_upcoming_events(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_instagramuser_get_ handles the facebook_instagramuser_get_ tool
-func HandleFacebook_instagramuser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleInstagramuser_get_ handles the instagramuser_get_ tool
+func HandleInstagramuser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -219,10 +234,12 @@ func HandleFacebook_instagramuser_get_(ctx context.Context, request mcp.CallTool
 		args["adgroup_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_instagramuser_get_(args)
+	result, err := client.Instagramuser_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_instagramuser_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute instagramuser_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -233,3 +250,4 @@ func HandleFacebook_instagramuser_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

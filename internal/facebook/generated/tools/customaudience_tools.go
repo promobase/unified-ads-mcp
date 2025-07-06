@@ -15,8 +15,9 @@ import (
 func GetCustomAudienceTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_customaudience_delete_adaccounts tool
-	facebook_customaudience_delete_adaccountsTool := mcp.NewTool("facebook_customaudience_delete_adaccounts",
+
+	// customaudience_delete_adaccounts tool
+	customaudience_delete_adaccountsTool := mcp.NewTool("customaudience_delete_adaccounts",
 		mcp.WithDescription("DELETE adaccounts for CustomAudience"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -26,10 +27,10 @@ func GetCustomAudienceTools(accessToken string) []mcp.Tool {
 			mcp.Description("adaccounts parameter for adaccounts"),
 		),
 	)
-	tools = append(tools, facebook_customaudience_delete_adaccountsTool)
+	tools = append(tools, customaudience_delete_adaccountsTool)
 
-	// facebook_customaudience_get_adaccounts tool
-	facebook_customaudience_get_adaccountsTool := mcp.NewTool("facebook_customaudience_get_adaccounts",
+	// customaudience_get_adaccounts tool
+	customaudience_get_adaccountsTool := mcp.NewTool("customaudience_get_adaccounts",
 		mcp.WithDescription("GET adaccounts for CustomAudience"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -39,10 +40,10 @@ func GetCustomAudienceTools(accessToken string) []mcp.Tool {
 			mcp.Description("permissions parameter for adaccounts"),
 		),
 	)
-	tools = append(tools, facebook_customaudience_get_adaccountsTool)
+	tools = append(tools, customaudience_get_adaccountsTool)
 
-	// facebook_customaudience_post_adaccounts tool
-	facebook_customaudience_post_adaccountsTool := mcp.NewTool("facebook_customaudience_post_adaccounts",
+	// customaudience_post_adaccounts tool
+	customaudience_post_adaccountsTool := mcp.NewTool("customaudience_post_adaccounts",
 		mcp.WithDescription("POST adaccounts for CustomAudience"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -61,10 +62,10 @@ func GetCustomAudienceTools(accessToken string) []mcp.Tool {
 			mcp.Description("replace parameter for adaccounts"),
 		),
 	)
-	tools = append(tools, facebook_customaudience_post_adaccountsTool)
+	tools = append(tools, customaudience_post_adaccountsTool)
 
-	// facebook_customaudience_get_ads tool
-	facebook_customaudience_get_adsTool := mcp.NewTool("facebook_customaudience_get_ads",
+	// customaudience_get_ads tool
+	customaudience_get_adsTool := mcp.NewTool("customaudience_get_ads",
 		mcp.WithDescription("GET ads for CustomAudience"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -77,10 +78,10 @@ func GetCustomAudienceTools(accessToken string) []mcp.Tool {
 			mcp.Description("status parameter for ads"),
 		),
 	)
-	tools = append(tools, facebook_customaudience_get_adsTool)
+	tools = append(tools, customaudience_get_adsTool)
 
-	// facebook_customaudience_get_health tool
-	facebook_customaudience_get_healthTool := mcp.NewTool("facebook_customaudience_get_health",
+	// customaudience_get_health tool
+	customaudience_get_healthTool := mcp.NewTool("customaudience_get_health",
 		mcp.WithDescription("GET health for CustomAudience"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -105,10 +106,10 @@ func GetCustomAudienceTools(accessToken string) []mcp.Tool {
 			mcp.Description("value_version parameter for health"),
 		),
 	)
-	tools = append(tools, facebook_customaudience_get_healthTool)
+	tools = append(tools, customaudience_get_healthTool)
 
-	// facebook_customaudience_get_salts tool
-	facebook_customaudience_get_saltsTool := mcp.NewTool("facebook_customaudience_get_salts",
+	// customaudience_get_salts tool
+	customaudience_get_saltsTool := mcp.NewTool("customaudience_get_salts",
 		mcp.WithDescription("GET salts for CustomAudience"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -118,10 +119,10 @@ func GetCustomAudienceTools(accessToken string) []mcp.Tool {
 			mcp.Description("params parameter for salts"),
 		),
 	)
-	tools = append(tools, facebook_customaudience_get_saltsTool)
+	tools = append(tools, customaudience_get_saltsTool)
 
-	// facebook_customaudience_post_salts tool
-	facebook_customaudience_post_saltsTool := mcp.NewTool("facebook_customaudience_post_salts",
+	// customaudience_post_salts tool
+	customaudience_post_saltsTool := mcp.NewTool("customaudience_post_salts",
 		mcp.WithDescription("POST salts for CustomAudience"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -140,10 +141,10 @@ func GetCustomAudienceTools(accessToken string) []mcp.Tool {
 			mcp.Description("valid_to parameter for salts"),
 		),
 	)
-	tools = append(tools, facebook_customaudience_post_saltsTool)
+	tools = append(tools, customaudience_post_saltsTool)
 
-	// facebook_customaudience_get_sessions tool
-	facebook_customaudience_get_sessionsTool := mcp.NewTool("facebook_customaudience_get_sessions",
+	// customaudience_get_sessions tool
+	customaudience_get_sessionsTool := mcp.NewTool("customaudience_get_sessions",
 		mcp.WithDescription("GET sessions for CustomAudience"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -153,20 +154,20 @@ func GetCustomAudienceTools(accessToken string) []mcp.Tool {
 			mcp.Description("session_id parameter for sessions"),
 		),
 	)
-	tools = append(tools, facebook_customaudience_get_sessionsTool)
+	tools = append(tools, customaudience_get_sessionsTool)
 
-	// facebook_customaudience_get_shared_account_info tool
-	facebook_customaudience_get_shared_account_infoTool := mcp.NewTool("facebook_customaudience_get_shared_account_info",
+	// customaudience_get_shared_account_info tool
+	customaudience_get_shared_account_infoTool := mcp.NewTool("customaudience_get_shared_account_info",
 		mcp.WithDescription("GET shared_account_info for CustomAudience"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_customaudience_get_shared_account_infoTool)
+	tools = append(tools, customaudience_get_shared_account_infoTool)
 
-	// facebook_customaudience_delete_users tool
-	facebook_customaudience_delete_usersTool := mcp.NewTool("facebook_customaudience_delete_users",
+	// customaudience_delete_users tool
+	customaudience_delete_usersTool := mcp.NewTool("customaudience_delete_users",
 		mcp.WithDescription("DELETE users for CustomAudience"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -182,10 +183,10 @@ func GetCustomAudienceTools(accessToken string) []mcp.Tool {
 			mcp.Description("session parameter for users"),
 		),
 	)
-	tools = append(tools, facebook_customaudience_delete_usersTool)
+	tools = append(tools, customaudience_delete_usersTool)
 
-	// facebook_customaudience_post_users tool
-	facebook_customaudience_post_usersTool := mcp.NewTool("facebook_customaudience_post_users",
+	// customaudience_post_users tool
+	customaudience_post_usersTool := mcp.NewTool("customaudience_post_users",
 		mcp.WithDescription("POST users for CustomAudience"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -201,10 +202,10 @@ func GetCustomAudienceTools(accessToken string) []mcp.Tool {
 			mcp.Description("session parameter for users"),
 		),
 	)
-	tools = append(tools, facebook_customaudience_post_usersTool)
+	tools = append(tools, customaudience_post_usersTool)
 
-	// facebook_customaudience_post_usersreplace tool
-	facebook_customaudience_post_usersreplaceTool := mcp.NewTool("facebook_customaudience_post_usersreplace",
+	// customaudience_post_usersreplace tool
+	customaudience_post_usersreplaceTool := mcp.NewTool("customaudience_post_usersreplace",
 		mcp.WithDescription("POST usersreplace for CustomAudience"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -222,20 +223,20 @@ func GetCustomAudienceTools(accessToken string) []mcp.Tool {
 			mcp.Description("session parameter for usersreplace"),
 		),
 	)
-	tools = append(tools, facebook_customaudience_post_usersreplaceTool)
+	tools = append(tools, customaudience_post_usersreplaceTool)
 
-	// facebook_customaudience_delete_ tool
-	facebook_customaudience_delete_Tool := mcp.NewTool("facebook_customaudience_delete_",
+	// customaudience_delete_ tool
+	customaudience_delete_Tool := mcp.NewTool("customaudience_delete_",
 		mcp.WithDescription("DELETE  for CustomAudience"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_customaudience_delete_Tool)
+	tools = append(tools, customaudience_delete_Tool)
 
-	// facebook_customaudience_get_ tool
-	facebook_customaudience_get_Tool := mcp.NewTool("facebook_customaudience_get_",
+	// customaudience_get_ tool
+	customaudience_get_Tool := mcp.NewTool("customaudience_get_",
 		mcp.WithDescription("GET  for CustomAudience"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -254,10 +255,10 @@ func GetCustomAudienceTools(accessToken string) []mcp.Tool {
 			mcp.Description("target_countries parameter for "),
 		),
 	)
-	tools = append(tools, facebook_customaudience_get_Tool)
+	tools = append(tools, customaudience_get_Tool)
 
-	// facebook_customaudience_post_ tool
-	facebook_customaudience_post_Tool := mcp.NewTool("facebook_customaudience_post_",
+	// customaudience_post_ tool
+	customaudience_post_Tool := mcp.NewTool("customaudience_post_",
 		mcp.WithDescription("POST  for CustomAudience"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -333,15 +334,17 @@ func GetCustomAudienceTools(accessToken string) []mcp.Tool {
 			mcp.Description("use_in_campaigns parameter for "),
 		),
 	)
-	tools = append(tools, facebook_customaudience_post_Tool)
+	tools = append(tools, customaudience_post_Tool)
+
 
 	return tools
 }
 
 // CustomAudience handlers
 
-// HandleFacebook_customaudience_delete_adaccounts handles the facebook_customaudience_delete_adaccounts tool
-func HandleFacebook_customaudience_delete_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCustomaudience_delete_adaccounts handles the customaudience_delete_adaccounts tool
+func HandleCustomaudience_delete_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -360,10 +363,12 @@ func HandleFacebook_customaudience_delete_adaccounts(ctx context.Context, reques
 		args["adaccounts"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_customaudience_delete_adaccounts(args)
+	result, err := client.Customaudience_delete_adaccounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_customaudience_delete_adaccounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customaudience_delete_adaccounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -375,8 +380,9 @@ func HandleFacebook_customaudience_delete_adaccounts(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_customaudience_get_adaccounts handles the facebook_customaudience_get_adaccounts tool
-func HandleFacebook_customaudience_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCustomaudience_get_adaccounts handles the customaudience_get_adaccounts tool
+func HandleCustomaudience_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -394,10 +400,12 @@ func HandleFacebook_customaudience_get_adaccounts(ctx context.Context, request m
 		args["permissions"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_customaudience_get_adaccounts(args)
+	result, err := client.Customaudience_get_adaccounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_customaudience_get_adaccounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customaudience_get_adaccounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -409,8 +417,9 @@ func HandleFacebook_customaudience_get_adaccounts(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_customaudience_post_adaccounts handles the facebook_customaudience_post_adaccounts tool
-func HandleFacebook_customaudience_post_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCustomaudience_post_adaccounts handles the customaudience_post_adaccounts tool
+func HandleCustomaudience_post_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -445,10 +454,12 @@ func HandleFacebook_customaudience_post_adaccounts(ctx context.Context, request 
 		args["replace"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_customaudience_post_adaccounts(args)
+	result, err := client.Customaudience_post_adaccounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_customaudience_post_adaccounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customaudience_post_adaccounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -460,8 +471,9 @@ func HandleFacebook_customaudience_post_adaccounts(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_customaudience_get_ads handles the facebook_customaudience_get_ads tool
-func HandleFacebook_customaudience_get_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCustomaudience_get_ads handles the customaudience_get_ads tool
+func HandleCustomaudience_get_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -486,10 +498,12 @@ func HandleFacebook_customaudience_get_ads(ctx context.Context, request mcp.Call
 		args["status"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_customaudience_get_ads(args)
+	result, err := client.Customaudience_get_ads(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_customaudience_get_ads: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customaudience_get_ads: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -501,8 +515,9 @@ func HandleFacebook_customaudience_get_ads(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_customaudience_get_health handles the facebook_customaudience_get_health tool
-func HandleFacebook_customaudience_get_health(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCustomaudience_get_health handles the customaudience_get_health tool
+func HandleCustomaudience_get_health(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -545,10 +560,12 @@ func HandleFacebook_customaudience_get_health(ctx context.Context, request mcp.C
 		args["value_version"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_customaudience_get_health(args)
+	result, err := client.Customaudience_get_health(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_customaudience_get_health: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customaudience_get_health: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -560,8 +577,9 @@ func HandleFacebook_customaudience_get_health(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_customaudience_get_salts handles the facebook_customaudience_get_salts tool
-func HandleFacebook_customaudience_get_salts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCustomaudience_get_salts handles the customaudience_get_salts tool
+func HandleCustomaudience_get_salts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -580,10 +598,12 @@ func HandleFacebook_customaudience_get_salts(ctx context.Context, request mcp.Ca
 		args["params"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_customaudience_get_salts(args)
+	result, err := client.Customaudience_get_salts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_customaudience_get_salts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customaudience_get_salts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -595,8 +615,9 @@ func HandleFacebook_customaudience_get_salts(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_customaudience_post_salts handles the facebook_customaudience_post_salts tool
-func HandleFacebook_customaudience_post_salts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCustomaudience_post_salts handles the customaudience_post_salts tool
+func HandleCustomaudience_post_salts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -630,10 +651,12 @@ func HandleFacebook_customaudience_post_salts(ctx context.Context, request mcp.C
 	}
 	args["valid_to"] = valid_to
 
+
+
 	// Call the client method
-	result, err := client.Facebook_customaudience_post_salts(args)
+	result, err := client.Customaudience_post_salts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_customaudience_post_salts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customaudience_post_salts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -645,8 +668,9 @@ func HandleFacebook_customaudience_post_salts(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_customaudience_get_sessions handles the facebook_customaudience_get_sessions tool
-func HandleFacebook_customaudience_get_sessions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCustomaudience_get_sessions handles the customaudience_get_sessions tool
+func HandleCustomaudience_get_sessions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -664,10 +688,12 @@ func HandleFacebook_customaudience_get_sessions(ctx context.Context, request mcp
 		args["session_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_customaudience_get_sessions(args)
+	result, err := client.Customaudience_get_sessions(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_customaudience_get_sessions: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customaudience_get_sessions: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -679,8 +705,9 @@ func HandleFacebook_customaudience_get_sessions(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_customaudience_get_shared_account_info handles the facebook_customaudience_get_shared_account_info tool
-func HandleFacebook_customaudience_get_shared_account_info(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCustomaudience_get_shared_account_info handles the customaudience_get_shared_account_info tool
+func HandleCustomaudience_get_shared_account_info(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -693,10 +720,12 @@ func HandleFacebook_customaudience_get_shared_account_info(ctx context.Context, 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_customaudience_get_shared_account_info(args)
+	result, err := client.Customaudience_get_shared_account_info(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_customaudience_get_shared_account_info: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customaudience_get_shared_account_info: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -708,54 +737,9 @@ func HandleFacebook_customaudience_get_shared_account_info(ctx context.Context, 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_customaudience_delete_users handles the facebook_customaudience_delete_users tool
-func HandleFacebook_customaudience_delete_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
 
-	// Create client
-	client := client.NewCustomAudienceClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: namespace
-	if val := request.GetString("namespace", ""); val != "" {
-		args["namespace"] = val
-	}
-
-	// Optional: payload
-	// object type - using string
-	if val := request.GetString("payload", ""); val != "" {
-		args["payload"] = val
-	}
-
-	// Optional: session
-	// object type - using string
-	if val := request.GetString("session", ""); val != "" {
-		args["session"] = val
-	}
-
-	// Call the client method
-	result, err := client.Facebook_customaudience_delete_users(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_customaudience_delete_users: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleFacebook_customaudience_post_users handles the facebook_customaudience_post_users tool
-func HandleFacebook_customaudience_post_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleCustomaudience_delete_users handles the customaudience_delete_users tool
+func HandleCustomaudience_delete_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -785,10 +769,12 @@ func HandleFacebook_customaudience_post_users(ctx context.Context, request mcp.C
 		args["session"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_customaudience_post_users(args)
+	result, err := client.Customaudience_delete_users(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_customaudience_post_users: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customaudience_delete_users: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -800,8 +786,58 @@ func HandleFacebook_customaudience_post_users(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_customaudience_post_usersreplace handles the facebook_customaudience_post_usersreplace tool
-func HandleFacebook_customaudience_post_usersreplace(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCustomaudience_post_users handles the customaudience_post_users tool
+func HandleCustomaudience_post_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token
+	accessToken, err := request.RequireString("access_token")
+	if err != nil {
+		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewCustomAudienceClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: namespace
+	if val := request.GetString("namespace", ""); val != "" {
+		args["namespace"] = val
+	}
+
+	// Optional: payload
+	// object type - using string
+	if val := request.GetString("payload", ""); val != "" {
+		args["payload"] = val
+	}
+
+	// Optional: session
+	// object type - using string
+	if val := request.GetString("session", ""); val != "" {
+		args["session"] = val
+	}
+
+
+
+	// Call the client method
+	result, err := client.Customaudience_post_users(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customaudience_post_users: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+
+// HandleCustomaudience_post_usersreplace handles the customaudience_post_usersreplace tool
+func HandleCustomaudience_post_usersreplace(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -833,10 +869,12 @@ func HandleFacebook_customaudience_post_usersreplace(ctx context.Context, reques
 	}
 	args["session"] = session
 
+
+
 	// Call the client method
-	result, err := client.Facebook_customaudience_post_usersreplace(args)
+	result, err := client.Customaudience_post_usersreplace(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_customaudience_post_usersreplace: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customaudience_post_usersreplace: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -848,8 +886,9 @@ func HandleFacebook_customaudience_post_usersreplace(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_customaudience_delete_ handles the facebook_customaudience_delete_ tool
-func HandleFacebook_customaudience_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCustomaudience_delete_ handles the customaudience_delete_ tool
+func HandleCustomaudience_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -862,10 +901,12 @@ func HandleFacebook_customaudience_delete_(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_customaudience_delete_(args)
+	result, err := client.Customaudience_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_customaudience_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customaudience_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -877,8 +918,9 @@ func HandleFacebook_customaudience_delete_(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_customaudience_get_ handles the facebook_customaudience_get_ tool
-func HandleFacebook_customaudience_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCustomaudience_get_ handles the customaudience_get_ tool
+func HandleCustomaudience_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -914,10 +956,12 @@ func HandleFacebook_customaudience_get_(ctx context.Context, request mcp.CallToo
 		args["target_countries"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_customaudience_get_(args)
+	result, err := client.Customaudience_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_customaudience_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customaudience_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -929,8 +973,9 @@ func HandleFacebook_customaudience_get_(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_customaudience_post_ handles the facebook_customaudience_post_ tool
-func HandleFacebook_customaudience_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCustomaudience_post_ handles the customaudience_post_ tool
+func HandleCustomaudience_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1058,10 +1103,12 @@ func HandleFacebook_customaudience_post_(ctx context.Context, request mcp.CallTo
 		args["use_in_campaigns"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_customaudience_post_(args)
+	result, err := client.Customaudience_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_customaudience_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customaudience_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1072,3 +1119,4 @@ func HandleFacebook_customaudience_post_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

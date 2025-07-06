@@ -21,9 +21,11 @@ func NewStoriesClient(accessToken string) *StoriesClient {
 	}
 }
 
-// facebook_stories_get_insights GET insights for Stories
-func (c *StoriesClient) Facebook_stories_get_insights(args map[string]interface{}) (interface{}, error) {
+
+// stories_get_insights GET insights for Stories
+func (c *StoriesClient) Stories_get_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
@@ -34,6 +36,7 @@ func (c *StoriesClient) Facebook_stories_get_insights(args map[string]interface{
 		urlParams.Set("metric", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,15 +67,19 @@ func (c *StoriesClient) Facebook_stories_get_insights(args map[string]interface{
 	return result, nil
 }
 
-// facebook_stories_get_ GET  for Stories
-func (c *StoriesClient) Facebook_stories_get_(args map[string]interface{}) (interface{}, error) {
+
+// stories_get_ GET  for Stories
+func (c *StoriesClient) Stories_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -102,3 +109,4 @@ func (c *StoriesClient) Facebook_stories_get_(args map[string]interface{}) (inte
 
 	return result, nil
 }
+

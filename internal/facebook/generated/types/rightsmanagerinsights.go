@@ -4,9 +4,9 @@ package types
 
 // RightsManagerInsights represents a Facebook RightsManagerInsights object
 type RightsManagerInsights struct {
-	Error            string          `json:"error"`
-	Error_message    string          `json:"error_message"`
-	Metadata         []interface{}   `json:"metadata"`
-	Totals           []interface{}   `json:"totals"`
+	Error string `json:"error"`
+	Error_message string `json:"error_message"`
+	Metadata []interface{} `json:"metadata"`
+	Totals []interface{} `json:"totals"`
 	X_axis_breakdown [][]interface{} `json:"x_axis_breakdown"`
 }

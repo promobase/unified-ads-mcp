@@ -4,9 +4,9 @@ package types
 
 // CPASBusinessSetupConfig represents a Facebook CPASBusinessSetupConfig object
 type CPASBusinessSetupConfig struct {
-	Accepted_collab_ads_tos        bool          `json:"accepted_collab_ads_tos"`
-	Business                       *Business     `json:"business"`
-	Business_capabilities_status   []interface{} `json:"business_capabilities_status"`
+	Accepted_collab_ads_tos bool `json:"accepted_collab_ads_tos"`
+	Business *Business `json:"business"`
+	Business_capabilities_status []interface{} `json:"business_capabilities_status"`
 	Capabilities_compliance_status []interface{} `json:"capabilities_compliance_status"`
-	Id                             string        `json:"id"`
+	Id string `json:"id"`
 }

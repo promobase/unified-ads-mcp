@@ -15,8 +15,9 @@ import (
 func GetProductCatalogTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_productcatalog_delete_agencies tool
-	facebook_productcatalog_delete_agenciesTool := mcp.NewTool("facebook_productcatalog_delete_agencies",
+
+	// productcatalog_delete_agencies tool
+	productcatalog_delete_agenciesTool := mcp.NewTool("productcatalog_delete_agencies",
 		mcp.WithDescription("DELETE agencies for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -27,20 +28,20 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("business parameter for agencies"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_delete_agenciesTool)
+	tools = append(tools, productcatalog_delete_agenciesTool)
 
-	// facebook_productcatalog_get_agencies tool
-	facebook_productcatalog_get_agenciesTool := mcp.NewTool("facebook_productcatalog_get_agencies",
+	// productcatalog_get_agencies tool
+	productcatalog_get_agenciesTool := mcp.NewTool("productcatalog_get_agencies",
 		mcp.WithDescription("GET agencies for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_agenciesTool)
+	tools = append(tools, productcatalog_get_agenciesTool)
 
-	// facebook_productcatalog_post_agencies tool
-	facebook_productcatalog_post_agenciesTool := mcp.NewTool("facebook_productcatalog_post_agencies",
+	// productcatalog_post_agencies tool
+	productcatalog_post_agenciesTool := mcp.NewTool("productcatalog_post_agencies",
 		mcp.WithDescription("POST agencies for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -65,10 +66,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("utm_settings parameter for agencies"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_agenciesTool)
+	tools = append(tools, productcatalog_post_agenciesTool)
 
-	// facebook_productcatalog_delete_assigned_users tool
-	facebook_productcatalog_delete_assigned_usersTool := mcp.NewTool("facebook_productcatalog_delete_assigned_users",
+	// productcatalog_delete_assigned_users tool
+	productcatalog_delete_assigned_usersTool := mcp.NewTool("productcatalog_delete_assigned_users",
 		mcp.WithDescription("DELETE assigned_users for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -79,10 +80,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("user parameter for assigned_users"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_delete_assigned_usersTool)
+	tools = append(tools, productcatalog_delete_assigned_usersTool)
 
-	// facebook_productcatalog_get_assigned_users tool
-	facebook_productcatalog_get_assigned_usersTool := mcp.NewTool("facebook_productcatalog_get_assigned_users",
+	// productcatalog_get_assigned_users tool
+	productcatalog_get_assigned_usersTool := mcp.NewTool("productcatalog_get_assigned_users",
 		mcp.WithDescription("GET assigned_users for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -93,10 +94,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("business parameter for assigned_users"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_assigned_usersTool)
+	tools = append(tools, productcatalog_get_assigned_usersTool)
 
-	// facebook_productcatalog_post_assigned_users tool
-	facebook_productcatalog_post_assigned_usersTool := mcp.NewTool("facebook_productcatalog_post_assigned_users",
+	// productcatalog_post_assigned_users tool
+	productcatalog_post_assigned_usersTool := mcp.NewTool("productcatalog_post_assigned_users",
 		mcp.WithDescription("POST assigned_users for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -112,10 +113,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("user parameter for assigned_users"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_assigned_usersTool)
+	tools = append(tools, productcatalog_post_assigned_usersTool)
 
-	// facebook_productcatalog_get_automotive_models tool
-	facebook_productcatalog_get_automotive_modelsTool := mcp.NewTool("facebook_productcatalog_get_automotive_models",
+	// productcatalog_get_automotive_models tool
+	productcatalog_get_automotive_modelsTool := mcp.NewTool("productcatalog_get_automotive_models",
 		mcp.WithDescription("GET automotive_models for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -128,10 +129,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("filter parameter for automotive_models"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_automotive_modelsTool)
+	tools = append(tools, productcatalog_get_automotive_modelsTool)
 
-	// facebook_productcatalog_post_batch tool
-	facebook_productcatalog_post_batchTool := mcp.NewTool("facebook_productcatalog_post_batch",
+	// productcatalog_post_batch tool
+	productcatalog_post_batchTool := mcp.NewTool("productcatalog_post_batch",
 		mcp.WithDescription("POST batch for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -151,10 +152,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("version parameter for batch"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_batchTool)
+	tools = append(tools, productcatalog_post_batchTool)
 
-	// facebook_productcatalog_post_catalog_store tool
-	facebook_productcatalog_post_catalog_storeTool := mcp.NewTool("facebook_productcatalog_post_catalog_store",
+	// productcatalog_post_catalog_store tool
+	productcatalog_post_catalog_storeTool := mcp.NewTool("productcatalog_post_catalog_store",
 		mcp.WithDescription("POST catalog_store for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -165,10 +166,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("page parameter for catalog_store"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_catalog_storeTool)
+	tools = append(tools, productcatalog_post_catalog_storeTool)
 
-	// facebook_productcatalog_get_categories tool
-	facebook_productcatalog_get_categoriesTool := mcp.NewTool("facebook_productcatalog_get_categories",
+	// productcatalog_get_categories tool
+	productcatalog_get_categoriesTool := mcp.NewTool("productcatalog_get_categories",
 		mcp.WithDescription("GET categories for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -183,10 +184,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("filter parameter for categories"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_categoriesTool)
+	tools = append(tools, productcatalog_get_categoriesTool)
 
-	// facebook_productcatalog_post_categories tool
-	facebook_productcatalog_post_categoriesTool := mcp.NewTool("facebook_productcatalog_post_categories",
+	// productcatalog_post_categories tool
+	productcatalog_post_categoriesTool := mcp.NewTool("productcatalog_post_categories",
 		mcp.WithDescription("POST categories for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -197,10 +198,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("data parameter for categories"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_categoriesTool)
+	tools = append(tools, productcatalog_post_categoriesTool)
 
-	// facebook_productcatalog_get_check_batch_request_status tool
-	facebook_productcatalog_get_check_batch_request_statusTool := mcp.NewTool("facebook_productcatalog_get_check_batch_request_status",
+	// productcatalog_get_check_batch_request_status tool
+	productcatalog_get_check_batch_request_statusTool := mcp.NewTool("productcatalog_get_check_batch_request_status",
 		mcp.WithDescription("GET check_batch_request_status for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -218,10 +219,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("load_ids_of_invalid_requests parameter for check_batch_request_status"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_check_batch_request_statusTool)
+	tools = append(tools, productcatalog_get_check_batch_request_statusTool)
 
-	// facebook_productcatalog_get_check_marketplace_partner_sellers_status tool
-	facebook_productcatalog_get_check_marketplace_partner_sellers_statusTool := mcp.NewTool("facebook_productcatalog_get_check_marketplace_partner_sellers_status",
+	// productcatalog_get_check_marketplace_partner_sellers_status tool
+	productcatalog_get_check_marketplace_partner_sellers_statusTool := mcp.NewTool("productcatalog_get_check_marketplace_partner_sellers_status",
 		mcp.WithDescription("GET check_marketplace_partner_sellers_status for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -232,30 +233,30 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("session_id parameter for check_marketplace_partner_sellers_status"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_check_marketplace_partner_sellers_statusTool)
+	tools = append(tools, productcatalog_get_check_marketplace_partner_sellers_statusTool)
 
-	// facebook_productcatalog_get_collaborative_ads_lsb_image_bank tool
-	facebook_productcatalog_get_collaborative_ads_lsb_image_bankTool := mcp.NewTool("facebook_productcatalog_get_collaborative_ads_lsb_image_bank",
+	// productcatalog_get_collaborative_ads_lsb_image_bank tool
+	productcatalog_get_collaborative_ads_lsb_image_bankTool := mcp.NewTool("productcatalog_get_collaborative_ads_lsb_image_bank",
 		mcp.WithDescription("GET collaborative_ads_lsb_image_bank for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_collaborative_ads_lsb_image_bankTool)
+	tools = append(tools, productcatalog_get_collaborative_ads_lsb_image_bankTool)
 
-	// facebook_productcatalog_get_collaborative_ads_share_settings tool
-	facebook_productcatalog_get_collaborative_ads_share_settingsTool := mcp.NewTool("facebook_productcatalog_get_collaborative_ads_share_settings",
+	// productcatalog_get_collaborative_ads_share_settings tool
+	productcatalog_get_collaborative_ads_share_settingsTool := mcp.NewTool("productcatalog_get_collaborative_ads_share_settings",
 		mcp.WithDescription("GET collaborative_ads_share_settings for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_collaborative_ads_share_settingsTool)
+	tools = append(tools, productcatalog_get_collaborative_ads_share_settingsTool)
 
-	// facebook_productcatalog_post_cpas_lsb_image_bank tool
-	facebook_productcatalog_post_cpas_lsb_image_bankTool := mcp.NewTool("facebook_productcatalog_post_cpas_lsb_image_bank",
+	// productcatalog_post_cpas_lsb_image_bank tool
+	productcatalog_post_cpas_lsb_image_bankTool := mcp.NewTool("productcatalog_post_cpas_lsb_image_bank",
 		mcp.WithDescription("POST cpas_lsb_image_bank for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -272,10 +273,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("backup_image_urls parameter for cpas_lsb_image_bank"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_cpas_lsb_image_bankTool)
+	tools = append(tools, productcatalog_post_cpas_lsb_image_bankTool)
 
-	// facebook_productcatalog_get_creator_asset_creatives tool
-	facebook_productcatalog_get_creator_asset_creativesTool := mcp.NewTool("facebook_productcatalog_get_creator_asset_creatives",
+	// productcatalog_get_creator_asset_creatives tool
+	productcatalog_get_creator_asset_creativesTool := mcp.NewTool("productcatalog_get_creator_asset_creatives",
 		mcp.WithDescription("GET creator_asset_creatives for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -286,10 +287,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Enum("ARCHIVED", "ELIGIBLE", "EXPIRED", "INELIGIBLE", "IN_REVIEW", "PAUSED", "UNKNOWN"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_creator_asset_creativesTool)
+	tools = append(tools, productcatalog_get_creator_asset_creativesTool)
 
-	// facebook_productcatalog_get_data_sources tool
-	facebook_productcatalog_get_data_sourcesTool := mcp.NewTool("facebook_productcatalog_get_data_sources",
+	// productcatalog_get_data_sources tool
+	productcatalog_get_data_sourcesTool := mcp.NewTool("productcatalog_get_data_sources",
 		mcp.WithDescription("GET data_sources for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -300,10 +301,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Enum("ALL", "PRIMARY", "SUPPLEMENTARY"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_data_sourcesTool)
+	tools = append(tools, productcatalog_get_data_sourcesTool)
 
-	// facebook_productcatalog_get_destinations tool
-	facebook_productcatalog_get_destinationsTool := mcp.NewTool("facebook_productcatalog_get_destinations",
+	// productcatalog_get_destinations tool
+	productcatalog_get_destinationsTool := mcp.NewTool("productcatalog_get_destinations",
 		mcp.WithDescription("GET destinations for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -316,10 +317,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("filter parameter for destinations"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_destinationsTool)
+	tools = append(tools, productcatalog_get_destinationsTool)
 
-	// facebook_productcatalog_get_diagnostics tool
-	facebook_productcatalog_get_diagnosticsTool := mcp.NewTool("facebook_productcatalog_get_diagnostics",
+	// productcatalog_get_diagnostics tool
+	productcatalog_get_diagnosticsTool := mcp.NewTool("productcatalog_get_diagnostics",
 		mcp.WithDescription("GET diagnostics for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -346,10 +347,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Enum("AR_VISIBILITY_ISSUES", "ATTRIBUTES_INVALID", "ATTRIBUTES_MISSING", "CATEGORY", "CHECKOUT", "DA_VISIBILITY_ISSUES", "EVENT_SOURCE_ISSUES", "IMAGE_QUALITY", "LOW_QUALITY_TITLE_AND_DESCRIPTION", "POLICY_VIOLATION", "SHOPS_VISIBILITY_ISSUES"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_diagnosticsTool)
+	tools = append(tools, productcatalog_get_diagnosticsTool)
 
-	// facebook_productcatalog_get_event_stats tool
-	facebook_productcatalog_get_event_statsTool := mcp.NewTool("facebook_productcatalog_get_event_stats",
+	// productcatalog_get_event_stats tool
+	productcatalog_get_event_statsTool := mcp.NewTool("productcatalog_get_event_stats",
 		mcp.WithDescription("GET event_stats for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -360,10 +361,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Enum("DEVICE_TYPE"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_event_statsTool)
+	tools = append(tools, productcatalog_get_event_statsTool)
 
-	// facebook_productcatalog_delete_external_event_sources tool
-	facebook_productcatalog_delete_external_event_sourcesTool := mcp.NewTool("facebook_productcatalog_delete_external_event_sources",
+	// productcatalog_delete_external_event_sources tool
+	productcatalog_delete_external_event_sourcesTool := mcp.NewTool("productcatalog_delete_external_event_sources",
 		mcp.WithDescription("DELETE external_event_sources for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -373,20 +374,20 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("external_event_sources parameter for external_event_sources"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_delete_external_event_sourcesTool)
+	tools = append(tools, productcatalog_delete_external_event_sourcesTool)
 
-	// facebook_productcatalog_get_external_event_sources tool
-	facebook_productcatalog_get_external_event_sourcesTool := mcp.NewTool("facebook_productcatalog_get_external_event_sources",
+	// productcatalog_get_external_event_sources tool
+	productcatalog_get_external_event_sourcesTool := mcp.NewTool("productcatalog_get_external_event_sources",
 		mcp.WithDescription("GET external_event_sources for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_external_event_sourcesTool)
+	tools = append(tools, productcatalog_get_external_event_sourcesTool)
 
-	// facebook_productcatalog_post_external_event_sources tool
-	facebook_productcatalog_post_external_event_sourcesTool := mcp.NewTool("facebook_productcatalog_post_external_event_sources",
+	// productcatalog_post_external_event_sources tool
+	productcatalog_post_external_event_sourcesTool := mcp.NewTool("productcatalog_post_external_event_sources",
 		mcp.WithDescription("POST external_event_sources for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -396,10 +397,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("external_event_sources parameter for external_event_sources"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_external_event_sourcesTool)
+	tools = append(tools, productcatalog_post_external_event_sourcesTool)
 
-	// facebook_productcatalog_get_flights tool
-	facebook_productcatalog_get_flightsTool := mcp.NewTool("facebook_productcatalog_get_flights",
+	// productcatalog_get_flights tool
+	productcatalog_get_flightsTool := mcp.NewTool("productcatalog_get_flights",
 		mcp.WithDescription("GET flights for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -412,10 +413,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("filter parameter for flights"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_flightsTool)
+	tools = append(tools, productcatalog_get_flightsTool)
 
-	// facebook_productcatalog_post_geolocated_items_batch tool
-	facebook_productcatalog_post_geolocated_items_batchTool := mcp.NewTool("facebook_productcatalog_post_geolocated_items_batch",
+	// productcatalog_post_geolocated_items_batch tool
+	productcatalog_post_geolocated_items_batchTool := mcp.NewTool("productcatalog_post_geolocated_items_batch",
 		mcp.WithDescription("POST geolocated_items_batch for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -433,10 +434,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("requests parameter for geolocated_items_batch"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_geolocated_items_batchTool)
+	tools = append(tools, productcatalog_post_geolocated_items_batchTool)
 
-	// facebook_productcatalog_get_home_listings tool
-	facebook_productcatalog_get_home_listingsTool := mcp.NewTool("facebook_productcatalog_get_home_listings",
+	// productcatalog_get_home_listings tool
+	productcatalog_get_home_listingsTool := mcp.NewTool("productcatalog_get_home_listings",
 		mcp.WithDescription("GET home_listings for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -449,10 +450,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("filter parameter for home_listings"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_home_listingsTool)
+	tools = append(tools, productcatalog_get_home_listingsTool)
 
-	// facebook_productcatalog_post_home_listings tool
-	facebook_productcatalog_post_home_listingsTool := mcp.NewTool("facebook_productcatalog_post_home_listings",
+	// productcatalog_post_home_listings tool
+	productcatalog_post_home_listingsTool := mcp.NewTool("productcatalog_post_home_listings",
 		mcp.WithDescription("POST home_listings for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -513,10 +514,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("year_built parameter for home_listings"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_home_listingsTool)
+	tools = append(tools, productcatalog_post_home_listingsTool)
 
-	// facebook_productcatalog_get_hotel_rooms_batch tool
-	facebook_productcatalog_get_hotel_rooms_batchTool := mcp.NewTool("facebook_productcatalog_get_hotel_rooms_batch",
+	// productcatalog_get_hotel_rooms_batch tool
+	productcatalog_get_hotel_rooms_batchTool := mcp.NewTool("productcatalog_get_hotel_rooms_batch",
 		mcp.WithDescription("GET hotel_rooms_batch for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -527,10 +528,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("handle parameter for hotel_rooms_batch"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_hotel_rooms_batchTool)
+	tools = append(tools, productcatalog_get_hotel_rooms_batchTool)
 
-	// facebook_productcatalog_post_hotel_rooms_batch tool
-	facebook_productcatalog_post_hotel_rooms_batchTool := mcp.NewTool("facebook_productcatalog_post_hotel_rooms_batch",
+	// productcatalog_post_hotel_rooms_batch tool
+	productcatalog_post_hotel_rooms_batchTool := mcp.NewTool("productcatalog_post_hotel_rooms_batch",
 		mcp.WithDescription("POST hotel_rooms_batch for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -557,10 +558,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("username parameter for hotel_rooms_batch"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_hotel_rooms_batchTool)
+	tools = append(tools, productcatalog_post_hotel_rooms_batchTool)
 
-	// facebook_productcatalog_get_hotels tool
-	facebook_productcatalog_get_hotelsTool := mcp.NewTool("facebook_productcatalog_get_hotels",
+	// productcatalog_get_hotels tool
+	productcatalog_get_hotelsTool := mcp.NewTool("productcatalog_get_hotels",
 		mcp.WithDescription("GET hotels for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -573,10 +574,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("filter parameter for hotels"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_hotelsTool)
+	tools = append(tools, productcatalog_get_hotelsTool)
 
-	// facebook_productcatalog_post_hotels tool
-	facebook_productcatalog_post_hotelsTool := mcp.NewTool("facebook_productcatalog_post_hotels",
+	// productcatalog_post_hotels tool
+	productcatalog_post_hotelsTool := mcp.NewTool("productcatalog_post_hotels",
 		mcp.WithDescription("POST hotels for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -627,10 +628,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("url parameter for hotels"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_hotelsTool)
+	tools = append(tools, productcatalog_post_hotelsTool)
 
-	// facebook_productcatalog_post_items_batch tool
-	facebook_productcatalog_post_items_batchTool := mcp.NewTool("facebook_productcatalog_post_items_batch",
+	// productcatalog_post_items_batch tool
+	productcatalog_post_items_batchTool := mcp.NewTool("productcatalog_post_items_batch",
 		mcp.WithDescription("POST items_batch for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -655,10 +656,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("version parameter for items_batch"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_items_batchTool)
+	tools = append(tools, productcatalog_post_items_batchTool)
 
-	// facebook_productcatalog_post_localized_items_batch tool
-	facebook_productcatalog_post_localized_items_batchTool := mcp.NewTool("facebook_productcatalog_post_localized_items_batch",
+	// productcatalog_post_localized_items_batch tool
+	productcatalog_post_localized_items_batchTool := mcp.NewTool("productcatalog_post_localized_items_batch",
 		mcp.WithDescription("POST localized_items_batch for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -679,10 +680,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("version parameter for localized_items_batch"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_localized_items_batchTool)
+	tools = append(tools, productcatalog_post_localized_items_batchTool)
 
-	// facebook_productcatalog_post_marketplace_partner_sellers_details tool
-	facebook_productcatalog_post_marketplace_partner_sellers_detailsTool := mcp.NewTool("facebook_productcatalog_post_marketplace_partner_sellers_details",
+	// productcatalog_post_marketplace_partner_sellers_details tool
+	productcatalog_post_marketplace_partner_sellers_detailsTool := mcp.NewTool("productcatalog_post_marketplace_partner_sellers_details",
 		mcp.WithDescription("POST marketplace_partner_sellers_details for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -693,10 +694,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("requests parameter for marketplace_partner_sellers_details"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_marketplace_partner_sellers_detailsTool)
+	tools = append(tools, productcatalog_post_marketplace_partner_sellers_detailsTool)
 
-	// facebook_productcatalog_post_marketplace_partner_signals tool
-	facebook_productcatalog_post_marketplace_partner_signalsTool := mcp.NewTool("facebook_productcatalog_post_marketplace_partner_signals",
+	// productcatalog_post_marketplace_partner_signals tool
+	productcatalog_post_marketplace_partner_signalsTool := mcp.NewTool("productcatalog_post_marketplace_partner_signals",
 		mcp.WithDescription("POST marketplace_partner_signals for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -722,10 +723,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("user_data parameter for marketplace_partner_signals"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_marketplace_partner_signalsTool)
+	tools = append(tools, productcatalog_post_marketplace_partner_signalsTool)
 
-	// facebook_productcatalog_get_pricing_variables_batch tool
-	facebook_productcatalog_get_pricing_variables_batchTool := mcp.NewTool("facebook_productcatalog_get_pricing_variables_batch",
+	// productcatalog_get_pricing_variables_batch tool
+	productcatalog_get_pricing_variables_batchTool := mcp.NewTool("productcatalog_get_pricing_variables_batch",
 		mcp.WithDescription("GET pricing_variables_batch for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -736,10 +737,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("handle parameter for pricing_variables_batch"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_pricing_variables_batchTool)
+	tools = append(tools, productcatalog_get_pricing_variables_batchTool)
 
-	// facebook_productcatalog_post_pricing_variables_batch tool
-	facebook_productcatalog_post_pricing_variables_batchTool := mcp.NewTool("facebook_productcatalog_post_pricing_variables_batch",
+	// productcatalog_post_pricing_variables_batch tool
+	productcatalog_post_pricing_variables_batchTool := mcp.NewTool("productcatalog_post_pricing_variables_batch",
 		mcp.WithDescription("POST pricing_variables_batch for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -766,20 +767,20 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("username parameter for pricing_variables_batch"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_pricing_variables_batchTool)
+	tools = append(tools, productcatalog_post_pricing_variables_batchTool)
 
-	// facebook_productcatalog_get_product_feeds tool
-	facebook_productcatalog_get_product_feedsTool := mcp.NewTool("facebook_productcatalog_get_product_feeds",
+	// productcatalog_get_product_feeds tool
+	productcatalog_get_product_feedsTool := mcp.NewTool("productcatalog_get_product_feeds",
 		mcp.WithDescription("GET product_feeds for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_product_feedsTool)
+	tools = append(tools, productcatalog_get_product_feedsTool)
 
-	// facebook_productcatalog_post_product_feeds tool
-	facebook_productcatalog_post_product_feedsTool := mcp.NewTool("facebook_productcatalog_post_product_feeds",
+	// productcatalog_post_product_feeds tool
+	productcatalog_post_product_feedsTool := mcp.NewTool("productcatalog_post_product_feeds",
 		mcp.WithDescription("POST product_feeds for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -850,20 +851,20 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("update_schedule parameter for product_feeds"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_product_feedsTool)
+	tools = append(tools, productcatalog_post_product_feedsTool)
 
-	// facebook_productcatalog_get_product_groups tool
-	facebook_productcatalog_get_product_groupsTool := mcp.NewTool("facebook_productcatalog_get_product_groups",
+	// productcatalog_get_product_groups tool
+	productcatalog_get_product_groupsTool := mcp.NewTool("productcatalog_get_product_groups",
 		mcp.WithDescription("GET product_groups for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_product_groupsTool)
+	tools = append(tools, productcatalog_get_product_groupsTool)
 
-	// facebook_productcatalog_post_product_groups tool
-	facebook_productcatalog_post_product_groupsTool := mcp.NewTool("facebook_productcatalog_post_product_groups",
+	// productcatalog_post_product_groups tool
+	productcatalog_post_product_groupsTool := mcp.NewTool("productcatalog_post_product_groups",
 		mcp.WithDescription("POST product_groups for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -876,10 +877,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("variants parameter for product_groups"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_product_groupsTool)
+	tools = append(tools, productcatalog_post_product_groupsTool)
 
-	// facebook_productcatalog_get_product_sets tool
-	facebook_productcatalog_get_product_setsTool := mcp.NewTool("facebook_productcatalog_get_product_sets",
+	// productcatalog_get_product_sets tool
+	productcatalog_get_product_setsTool := mcp.NewTool("productcatalog_get_product_sets",
 		mcp.WithDescription("GET product_sets for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -898,10 +899,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("retailer_id parameter for product_sets"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_product_setsTool)
+	tools = append(tools, productcatalog_get_product_setsTool)
 
-	// facebook_productcatalog_post_product_sets tool
-	facebook_productcatalog_post_product_setsTool := mcp.NewTool("facebook_productcatalog_post_product_sets",
+	// productcatalog_post_product_sets tool
+	productcatalog_post_product_setsTool := mcp.NewTool("productcatalog_post_product_sets",
 		mcp.WithDescription("POST product_sets for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -927,10 +928,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("retailer_id parameter for product_sets"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_product_setsTool)
+	tools = append(tools, productcatalog_post_product_setsTool)
 
-	// facebook_productcatalog_get_product_sets_batch tool
-	facebook_productcatalog_get_product_sets_batchTool := mcp.NewTool("facebook_productcatalog_get_product_sets_batch",
+	// productcatalog_get_product_sets_batch tool
+	productcatalog_get_product_sets_batchTool := mcp.NewTool("productcatalog_get_product_sets_batch",
 		mcp.WithDescription("GET product_sets_batch for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -941,10 +942,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("handle parameter for product_sets_batch"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_product_sets_batchTool)
+	tools = append(tools, productcatalog_get_product_sets_batchTool)
 
-	// facebook_productcatalog_get_products tool
-	facebook_productcatalog_get_productsTool := mcp.NewTool("facebook_productcatalog_get_products",
+	// productcatalog_get_products tool
+	productcatalog_get_productsTool := mcp.NewTool("productcatalog_get_products",
 		mcp.WithDescription("GET products for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -968,10 +969,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("return_only_approved_products parameter for products"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_productsTool)
+	tools = append(tools, productcatalog_get_productsTool)
 
-	// facebook_productcatalog_post_products tool
-	facebook_productcatalog_post_productsTool := mcp.NewTool("facebook_productcatalog_post_products",
+	// productcatalog_post_products tool
+	productcatalog_post_productsTool := mcp.NewTool("productcatalog_post_products",
 		mcp.WithDescription("POST products for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1224,10 +1225,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("windows_phone_url parameter for products"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_productsTool)
+	tools = append(tools, productcatalog_post_productsTool)
 
-	// facebook_productcatalog_post_update_generated_image_config tool
-	facebook_productcatalog_post_update_generated_image_configTool := mcp.NewTool("facebook_productcatalog_post_update_generated_image_config",
+	// productcatalog_post_update_generated_image_config tool
+	productcatalog_post_update_generated_image_configTool := mcp.NewTool("productcatalog_post_update_generated_image_config",
 		mcp.WithDescription("POST update_generated_image_config for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1238,10 +1239,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("data parameter for update_generated_image_config"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_update_generated_image_configTool)
+	tools = append(tools, productcatalog_post_update_generated_image_configTool)
 
-	// facebook_productcatalog_get_vehicle_offers tool
-	facebook_productcatalog_get_vehicle_offersTool := mcp.NewTool("facebook_productcatalog_get_vehicle_offers",
+	// productcatalog_get_vehicle_offers tool
+	productcatalog_get_vehicle_offersTool := mcp.NewTool("productcatalog_get_vehicle_offers",
 		mcp.WithDescription("GET vehicle_offers for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1254,10 +1255,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("filter parameter for vehicle_offers"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_vehicle_offersTool)
+	tools = append(tools, productcatalog_get_vehicle_offersTool)
 
-	// facebook_productcatalog_get_vehicles tool
-	facebook_productcatalog_get_vehiclesTool := mcp.NewTool("facebook_productcatalog_get_vehicles",
+	// productcatalog_get_vehicles tool
+	productcatalog_get_vehiclesTool := mcp.NewTool("productcatalog_get_vehicles",
 		mcp.WithDescription("GET vehicles for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1270,10 +1271,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("filter parameter for vehicles"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_vehiclesTool)
+	tools = append(tools, productcatalog_get_vehiclesTool)
 
-	// facebook_productcatalog_post_vehicles tool
-	facebook_productcatalog_post_vehiclesTool := mcp.NewTool("facebook_productcatalog_post_vehicles",
+	// productcatalog_post_vehicles tool
+	productcatalog_post_vehiclesTool := mcp.NewTool("productcatalog_post_vehicles",
 		mcp.WithDescription("POST vehicles for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1394,20 +1395,20 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("year parameter for vehicles"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_vehiclesTool)
+	tools = append(tools, productcatalog_post_vehiclesTool)
 
-	// facebook_productcatalog_get_version_configs tool
-	facebook_productcatalog_get_version_configsTool := mcp.NewTool("facebook_productcatalog_get_version_configs",
+	// productcatalog_get_version_configs tool
+	productcatalog_get_version_configsTool := mcp.NewTool("productcatalog_get_version_configs",
 		mcp.WithDescription("GET version_configs for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_version_configsTool)
+	tools = append(tools, productcatalog_get_version_configsTool)
 
-	// facebook_productcatalog_post_version_items_batch tool
-	facebook_productcatalog_post_version_items_batchTool := mcp.NewTool("facebook_productcatalog_post_version_items_batch",
+	// productcatalog_post_version_items_batch tool
+	productcatalog_post_version_items_batchTool := mcp.NewTool("productcatalog_post_version_items_batch",
 		mcp.WithDescription("POST version_items_batch for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1432,10 +1433,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("version parameter for version_items_batch"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_version_items_batchTool)
+	tools = append(tools, productcatalog_post_version_items_batchTool)
 
-	// facebook_productcatalog_delete_ tool
-	facebook_productcatalog_delete_Tool := mcp.NewTool("facebook_productcatalog_delete_",
+	// productcatalog_delete_ tool
+	productcatalog_delete_Tool := mcp.NewTool("productcatalog_delete_",
 		mcp.WithDescription("DELETE  for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1445,10 +1446,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("allow_delete_catalog_with_live_product_set parameter for "),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_delete_Tool)
+	tools = append(tools, productcatalog_delete_Tool)
 
-	// facebook_productcatalog_get_ tool
-	facebook_productcatalog_get_Tool := mcp.NewTool("facebook_productcatalog_get_",
+	// productcatalog_get_ tool
+	productcatalog_get_Tool := mcp.NewTool("productcatalog_get_",
 		mcp.WithDescription("GET  for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1459,10 +1460,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Enum("AFFILIATE_SELLER_STOREFRONT", "AFFILIATE_TAGGED_ONLY_DEPRECATED", "COLLAB_ADS", "COLLAB_ADS_FOR_MARKETPLACE_PARTNER", "COLLAB_ADS_SEGMENT_WITHOUT_SEGMENT_SYNCING", "DIGITAL_CIRCULARS", "FB_LIVE_SHOPPING", "IG_SHOPPING", "IG_SHOPPING_SUGGESTED_PRODUCTS", "MARKETPLACE_SHOPS", "TEST"),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_get_Tool)
+	tools = append(tools, productcatalog_get_Tool)
 
-	// facebook_productcatalog_post_ tool
-	facebook_productcatalog_post_Tool := mcp.NewTool("facebook_productcatalog_post_",
+	// productcatalog_post_ tool
+	productcatalog_post_Tool := mcp.NewTool("productcatalog_post_",
 		mcp.WithDescription("POST  for ProductCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -1497,15 +1498,17 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 			mcp.Description("store_catalog_settings parameter for "),
 		),
 	)
-	tools = append(tools, facebook_productcatalog_post_Tool)
+	tools = append(tools, productcatalog_post_Tool)
+
 
 	return tools
 }
 
 // ProductCatalog handlers
 
-// HandleFacebook_productcatalog_delete_agencies handles the facebook_productcatalog_delete_agencies tool
-func HandleFacebook_productcatalog_delete_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_delete_agencies handles the productcatalog_delete_agencies tool
+func HandleProductcatalog_delete_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1525,10 +1528,12 @@ func HandleFacebook_productcatalog_delete_agencies(ctx context.Context, request 
 	}
 	args["business"] = business
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_delete_agencies(args)
+	result, err := client.Productcatalog_delete_agencies(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_delete_agencies: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_delete_agencies: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1540,8 +1545,9 @@ func HandleFacebook_productcatalog_delete_agencies(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_agencies handles the facebook_productcatalog_get_agencies tool
-func HandleFacebook_productcatalog_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_agencies handles the productcatalog_get_agencies tool
+func HandleProductcatalog_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1554,10 +1560,12 @@ func HandleFacebook_productcatalog_get_agencies(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_agencies(args)
+	result, err := client.Productcatalog_get_agencies(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_agencies: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_agencies: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1569,8 +1577,9 @@ func HandleFacebook_productcatalog_get_agencies(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_agencies handles the facebook_productcatalog_post_agencies tool
-func HandleFacebook_productcatalog_post_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_agencies handles the productcatalog_post_agencies tool
+func HandleProductcatalog_post_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1612,10 +1621,12 @@ func HandleFacebook_productcatalog_post_agencies(ctx context.Context, request mc
 		args["utm_settings"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_agencies(args)
+	result, err := client.Productcatalog_post_agencies(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_agencies: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_agencies: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1627,8 +1638,9 @@ func HandleFacebook_productcatalog_post_agencies(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_delete_assigned_users handles the facebook_productcatalog_delete_assigned_users tool
-func HandleFacebook_productcatalog_delete_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_delete_assigned_users handles the productcatalog_delete_assigned_users tool
+func HandleProductcatalog_delete_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1648,10 +1660,12 @@ func HandleFacebook_productcatalog_delete_assigned_users(ctx context.Context, re
 	}
 	args["user"] = user
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_delete_assigned_users(args)
+	result, err := client.Productcatalog_delete_assigned_users(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_delete_assigned_users: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_delete_assigned_users: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1663,8 +1677,9 @@ func HandleFacebook_productcatalog_delete_assigned_users(ctx context.Context, re
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_assigned_users handles the facebook_productcatalog_get_assigned_users tool
-func HandleFacebook_productcatalog_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_assigned_users handles the productcatalog_get_assigned_users tool
+func HandleProductcatalog_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1684,10 +1699,12 @@ func HandleFacebook_productcatalog_get_assigned_users(ctx context.Context, reque
 	}
 	args["business"] = business
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_assigned_users(args)
+	result, err := client.Productcatalog_get_assigned_users(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_assigned_users: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_assigned_users: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1699,8 +1716,9 @@ func HandleFacebook_productcatalog_get_assigned_users(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_assigned_users handles the facebook_productcatalog_post_assigned_users tool
-func HandleFacebook_productcatalog_post_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_assigned_users handles the productcatalog_post_assigned_users tool
+func HandleProductcatalog_post_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1727,10 +1745,12 @@ func HandleFacebook_productcatalog_post_assigned_users(ctx context.Context, requ
 	}
 	args["user"] = user
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_assigned_users(args)
+	result, err := client.Productcatalog_post_assigned_users(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_assigned_users: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_assigned_users: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1742,8 +1762,9 @@ func HandleFacebook_productcatalog_post_assigned_users(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_automotive_models handles the facebook_productcatalog_get_automotive_models tool
-func HandleFacebook_productcatalog_get_automotive_models(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_automotive_models handles the productcatalog_get_automotive_models tool
+func HandleProductcatalog_get_automotive_models(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1767,10 +1788,12 @@ func HandleFacebook_productcatalog_get_automotive_models(ctx context.Context, re
 		args["filter"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_automotive_models(args)
+	result, err := client.Productcatalog_get_automotive_models(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_automotive_models: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_automotive_models: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1782,8 +1805,9 @@ func HandleFacebook_productcatalog_get_automotive_models(ctx context.Context, re
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_batch handles the facebook_productcatalog_post_batch tool
-func HandleFacebook_productcatalog_post_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_batch handles the productcatalog_post_batch tool
+func HandleProductcatalog_post_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1818,10 +1842,12 @@ func HandleFacebook_productcatalog_post_batch(ctx context.Context, request mcp.C
 		args["version"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_batch(args)
+	result, err := client.Productcatalog_post_batch(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_batch: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_batch: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1833,8 +1859,9 @@ func HandleFacebook_productcatalog_post_batch(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_catalog_store handles the facebook_productcatalog_post_catalog_store tool
-func HandleFacebook_productcatalog_post_catalog_store(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_catalog_store handles the productcatalog_post_catalog_store tool
+func HandleProductcatalog_post_catalog_store(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1854,10 +1881,12 @@ func HandleFacebook_productcatalog_post_catalog_store(ctx context.Context, reque
 	}
 	args["page"] = page
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_catalog_store(args)
+	result, err := client.Productcatalog_post_catalog_store(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_catalog_store: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_catalog_store: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1869,8 +1898,9 @@ func HandleFacebook_productcatalog_post_catalog_store(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_categories handles the facebook_productcatalog_get_categories tool
-func HandleFacebook_productcatalog_get_categories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_categories handles the productcatalog_get_categories tool
+func HandleProductcatalog_get_categories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1896,10 +1926,12 @@ func HandleFacebook_productcatalog_get_categories(ctx context.Context, request m
 		args["filter"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_categories(args)
+	result, err := client.Productcatalog_get_categories(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_categories: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_categories: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1911,8 +1943,9 @@ func HandleFacebook_productcatalog_get_categories(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_categories handles the facebook_productcatalog_post_categories tool
-func HandleFacebook_productcatalog_post_categories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_categories handles the productcatalog_post_categories tool
+func HandleProductcatalog_post_categories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1932,10 +1965,12 @@ func HandleFacebook_productcatalog_post_categories(ctx context.Context, request 
 	}
 	args["data"] = data
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_categories(args)
+	result, err := client.Productcatalog_post_categories(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_categories: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_categories: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1947,8 +1982,9 @@ func HandleFacebook_productcatalog_post_categories(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_check_batch_request_status handles the facebook_productcatalog_get_check_batch_request_status tool
-func HandleFacebook_productcatalog_get_check_batch_request_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_check_batch_request_status handles the productcatalog_get_check_batch_request_status tool
+func HandleProductcatalog_get_check_batch_request_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1978,10 +2014,12 @@ func HandleFacebook_productcatalog_get_check_batch_request_status(ctx context.Co
 		args["load_ids_of_invalid_requests"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_check_batch_request_status(args)
+	result, err := client.Productcatalog_get_check_batch_request_status(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_check_batch_request_status: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_check_batch_request_status: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1993,8 +2031,9 @@ func HandleFacebook_productcatalog_get_check_batch_request_status(ctx context.Co
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_check_marketplace_partner_sellers_status handles the facebook_productcatalog_get_check_marketplace_partner_sellers_status tool
-func HandleFacebook_productcatalog_get_check_marketplace_partner_sellers_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_check_marketplace_partner_sellers_status handles the productcatalog_get_check_marketplace_partner_sellers_status tool
+func HandleProductcatalog_get_check_marketplace_partner_sellers_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2014,10 +2053,12 @@ func HandleFacebook_productcatalog_get_check_marketplace_partner_sellers_status(
 	}
 	args["session_id"] = session_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_check_marketplace_partner_sellers_status(args)
+	result, err := client.Productcatalog_get_check_marketplace_partner_sellers_status(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_check_marketplace_partner_sellers_status: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_check_marketplace_partner_sellers_status: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2029,8 +2070,9 @@ func HandleFacebook_productcatalog_get_check_marketplace_partner_sellers_status(
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_collaborative_ads_lsb_image_bank handles the facebook_productcatalog_get_collaborative_ads_lsb_image_bank tool
-func HandleFacebook_productcatalog_get_collaborative_ads_lsb_image_bank(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_collaborative_ads_lsb_image_bank handles the productcatalog_get_collaborative_ads_lsb_image_bank tool
+func HandleProductcatalog_get_collaborative_ads_lsb_image_bank(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2043,10 +2085,12 @@ func HandleFacebook_productcatalog_get_collaborative_ads_lsb_image_bank(ctx cont
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_collaborative_ads_lsb_image_bank(args)
+	result, err := client.Productcatalog_get_collaborative_ads_lsb_image_bank(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_collaborative_ads_lsb_image_bank: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_collaborative_ads_lsb_image_bank: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2058,8 +2102,9 @@ func HandleFacebook_productcatalog_get_collaborative_ads_lsb_image_bank(ctx cont
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_collaborative_ads_share_settings handles the facebook_productcatalog_get_collaborative_ads_share_settings tool
-func HandleFacebook_productcatalog_get_collaborative_ads_share_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_collaborative_ads_share_settings handles the productcatalog_get_collaborative_ads_share_settings tool
+func HandleProductcatalog_get_collaborative_ads_share_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2072,10 +2117,12 @@ func HandleFacebook_productcatalog_get_collaborative_ads_share_settings(ctx cont
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_collaborative_ads_share_settings(args)
+	result, err := client.Productcatalog_get_collaborative_ads_share_settings(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_collaborative_ads_share_settings: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_collaborative_ads_share_settings: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2087,8 +2134,9 @@ func HandleFacebook_productcatalog_get_collaborative_ads_share_settings(ctx cont
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_cpas_lsb_image_bank handles the facebook_productcatalog_post_cpas_lsb_image_bank tool
-func HandleFacebook_productcatalog_post_cpas_lsb_image_bank(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_cpas_lsb_image_bank handles the productcatalog_post_cpas_lsb_image_bank tool
+func HandleProductcatalog_post_cpas_lsb_image_bank(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2118,10 +2166,12 @@ func HandleFacebook_productcatalog_post_cpas_lsb_image_bank(ctx context.Context,
 	}
 	args["backup_image_urls"] = backup_image_urls
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_cpas_lsb_image_bank(args)
+	result, err := client.Productcatalog_post_cpas_lsb_image_bank(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_cpas_lsb_image_bank: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_cpas_lsb_image_bank: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2133,8 +2183,9 @@ func HandleFacebook_productcatalog_post_cpas_lsb_image_bank(ctx context.Context,
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_creator_asset_creatives handles the facebook_productcatalog_get_creator_asset_creatives tool
-func HandleFacebook_productcatalog_get_creator_asset_creatives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_creator_asset_creatives handles the productcatalog_get_creator_asset_creatives tool
+func HandleProductcatalog_get_creator_asset_creatives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2152,10 +2203,12 @@ func HandleFacebook_productcatalog_get_creator_asset_creatives(ctx context.Conte
 		args["moderation_status"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_creator_asset_creatives(args)
+	result, err := client.Productcatalog_get_creator_asset_creatives(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_creator_asset_creatives: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_creator_asset_creatives: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2167,8 +2220,9 @@ func HandleFacebook_productcatalog_get_creator_asset_creatives(ctx context.Conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_data_sources handles the facebook_productcatalog_get_data_sources tool
-func HandleFacebook_productcatalog_get_data_sources(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_data_sources handles the productcatalog_get_data_sources tool
+func HandleProductcatalog_get_data_sources(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2186,10 +2240,12 @@ func HandleFacebook_productcatalog_get_data_sources(ctx context.Context, request
 		args["ingestion_source_type"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_data_sources(args)
+	result, err := client.Productcatalog_get_data_sources(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_data_sources: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_data_sources: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2201,8 +2257,9 @@ func HandleFacebook_productcatalog_get_data_sources(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_destinations handles the facebook_productcatalog_get_destinations tool
-func HandleFacebook_productcatalog_get_destinations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_destinations handles the productcatalog_get_destinations tool
+func HandleProductcatalog_get_destinations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2226,10 +2283,12 @@ func HandleFacebook_productcatalog_get_destinations(ctx context.Context, request
 		args["filter"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_destinations(args)
+	result, err := client.Productcatalog_get_destinations(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_destinations: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_destinations: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2241,8 +2300,9 @@ func HandleFacebook_productcatalog_get_destinations(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_diagnostics handles the facebook_productcatalog_get_diagnostics tool
-func HandleFacebook_productcatalog_get_diagnostics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_diagnostics handles the productcatalog_get_diagnostics tool
+func HandleProductcatalog_get_diagnostics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2285,10 +2345,12 @@ func HandleFacebook_productcatalog_get_diagnostics(ctx context.Context, request 
 		args["types"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_diagnostics(args)
+	result, err := client.Productcatalog_get_diagnostics(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_diagnostics: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_diagnostics: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2300,8 +2362,9 @@ func HandleFacebook_productcatalog_get_diagnostics(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_event_stats handles the facebook_productcatalog_get_event_stats tool
-func HandleFacebook_productcatalog_get_event_stats(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_event_stats handles the productcatalog_get_event_stats tool
+func HandleProductcatalog_get_event_stats(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2320,10 +2383,12 @@ func HandleFacebook_productcatalog_get_event_stats(ctx context.Context, request 
 		args["breakdowns"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_event_stats(args)
+	result, err := client.Productcatalog_get_event_stats(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_event_stats: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_event_stats: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2335,8 +2400,9 @@ func HandleFacebook_productcatalog_get_event_stats(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_delete_external_event_sources handles the facebook_productcatalog_delete_external_event_sources tool
-func HandleFacebook_productcatalog_delete_external_event_sources(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_delete_external_event_sources handles the productcatalog_delete_external_event_sources tool
+func HandleProductcatalog_delete_external_event_sources(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2355,10 +2421,12 @@ func HandleFacebook_productcatalog_delete_external_event_sources(ctx context.Con
 		args["external_event_sources"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_delete_external_event_sources(args)
+	result, err := client.Productcatalog_delete_external_event_sources(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_delete_external_event_sources: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_delete_external_event_sources: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2370,8 +2438,9 @@ func HandleFacebook_productcatalog_delete_external_event_sources(ctx context.Con
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_external_event_sources handles the facebook_productcatalog_get_external_event_sources tool
-func HandleFacebook_productcatalog_get_external_event_sources(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_external_event_sources handles the productcatalog_get_external_event_sources tool
+func HandleProductcatalog_get_external_event_sources(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2384,10 +2453,12 @@ func HandleFacebook_productcatalog_get_external_event_sources(ctx context.Contex
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_external_event_sources(args)
+	result, err := client.Productcatalog_get_external_event_sources(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_external_event_sources: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_external_event_sources: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2399,8 +2470,9 @@ func HandleFacebook_productcatalog_get_external_event_sources(ctx context.Contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_external_event_sources handles the facebook_productcatalog_post_external_event_sources tool
-func HandleFacebook_productcatalog_post_external_event_sources(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_external_event_sources handles the productcatalog_post_external_event_sources tool
+func HandleProductcatalog_post_external_event_sources(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2419,10 +2491,12 @@ func HandleFacebook_productcatalog_post_external_event_sources(ctx context.Conte
 		args["external_event_sources"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_external_event_sources(args)
+	result, err := client.Productcatalog_post_external_event_sources(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_external_event_sources: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_external_event_sources: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2434,8 +2508,9 @@ func HandleFacebook_productcatalog_post_external_event_sources(ctx context.Conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_flights handles the facebook_productcatalog_get_flights tool
-func HandleFacebook_productcatalog_get_flights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_flights handles the productcatalog_get_flights tool
+func HandleProductcatalog_get_flights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2459,10 +2534,12 @@ func HandleFacebook_productcatalog_get_flights(ctx context.Context, request mcp.
 		args["filter"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_flights(args)
+	result, err := client.Productcatalog_get_flights(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_flights: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_flights: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2474,8 +2551,9 @@ func HandleFacebook_productcatalog_get_flights(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_geolocated_items_batch handles the facebook_productcatalog_post_geolocated_items_batch tool
-func HandleFacebook_productcatalog_post_geolocated_items_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_geolocated_items_batch handles the productcatalog_post_geolocated_items_batch tool
+func HandleProductcatalog_post_geolocated_items_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2507,10 +2585,12 @@ func HandleFacebook_productcatalog_post_geolocated_items_batch(ctx context.Conte
 	}
 	args["requests"] = requests
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_geolocated_items_batch(args)
+	result, err := client.Productcatalog_post_geolocated_items_batch(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_geolocated_items_batch: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_geolocated_items_batch: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2522,8 +2602,9 @@ func HandleFacebook_productcatalog_post_geolocated_items_batch(ctx context.Conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_home_listings handles the facebook_productcatalog_get_home_listings tool
-func HandleFacebook_productcatalog_get_home_listings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_home_listings handles the productcatalog_get_home_listings tool
+func HandleProductcatalog_get_home_listings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2547,10 +2628,12 @@ func HandleFacebook_productcatalog_get_home_listings(ctx context.Context, reques
 		args["filter"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_home_listings(args)
+	result, err := client.Productcatalog_get_home_listings(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_home_listings: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_home_listings: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2562,8 +2645,9 @@ func HandleFacebook_productcatalog_get_home_listings(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_home_listings handles the facebook_productcatalog_post_home_listings tool
-func HandleFacebook_productcatalog_post_home_listings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_home_listings handles the productcatalog_post_home_listings tool
+func HandleProductcatalog_post_home_listings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2669,10 +2753,12 @@ func HandleFacebook_productcatalog_post_home_listings(ctx context.Context, reque
 	}
 	args["year_built"] = year_built
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_home_listings(args)
+	result, err := client.Productcatalog_post_home_listings(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_home_listings: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_home_listings: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2684,8 +2770,9 @@ func HandleFacebook_productcatalog_post_home_listings(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_hotel_rooms_batch handles the facebook_productcatalog_get_hotel_rooms_batch tool
-func HandleFacebook_productcatalog_get_hotel_rooms_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_hotel_rooms_batch handles the productcatalog_get_hotel_rooms_batch tool
+func HandleProductcatalog_get_hotel_rooms_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2705,10 +2792,12 @@ func HandleFacebook_productcatalog_get_hotel_rooms_batch(ctx context.Context, re
 	}
 	args["handle"] = handle
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_hotel_rooms_batch(args)
+	result, err := client.Productcatalog_get_hotel_rooms_batch(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_hotel_rooms_batch: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_hotel_rooms_batch: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2720,8 +2809,9 @@ func HandleFacebook_productcatalog_get_hotel_rooms_batch(ctx context.Context, re
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_hotel_rooms_batch handles the facebook_productcatalog_post_hotel_rooms_batch tool
-func HandleFacebook_productcatalog_post_hotel_rooms_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_hotel_rooms_batch handles the productcatalog_post_hotel_rooms_batch tool
+func HandleProductcatalog_post_hotel_rooms_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2766,10 +2856,12 @@ func HandleFacebook_productcatalog_post_hotel_rooms_batch(ctx context.Context, r
 		args["username"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_hotel_rooms_batch(args)
+	result, err := client.Productcatalog_post_hotel_rooms_batch(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_hotel_rooms_batch: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_hotel_rooms_batch: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2781,8 +2873,9 @@ func HandleFacebook_productcatalog_post_hotel_rooms_batch(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_hotels handles the facebook_productcatalog_get_hotels tool
-func HandleFacebook_productcatalog_get_hotels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_hotels handles the productcatalog_get_hotels tool
+func HandleProductcatalog_get_hotels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2806,10 +2899,12 @@ func HandleFacebook_productcatalog_get_hotels(ctx context.Context, request mcp.C
 		args["filter"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_hotels(args)
+	result, err := client.Productcatalog_get_hotels(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_hotels: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_hotels: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2821,8 +2916,9 @@ func HandleFacebook_productcatalog_get_hotels(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_hotels handles the facebook_productcatalog_post_hotels tool
-func HandleFacebook_productcatalog_post_hotels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_hotels handles the productcatalog_post_hotels tool
+func HandleProductcatalog_post_hotels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2912,10 +3008,12 @@ func HandleFacebook_productcatalog_post_hotels(ctx context.Context, request mcp.
 	}
 	args["url"] = url_
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_hotels(args)
+	result, err := client.Productcatalog_post_hotels(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_hotels: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_hotels: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2927,8 +3025,9 @@ func HandleFacebook_productcatalog_post_hotels(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_items_batch handles the facebook_productcatalog_post_items_batch tool
-func HandleFacebook_productcatalog_post_items_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_items_batch handles the productcatalog_post_items_batch tool
+func HandleProductcatalog_post_items_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -2970,10 +3069,12 @@ func HandleFacebook_productcatalog_post_items_batch(ctx context.Context, request
 		args["version"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_items_batch(args)
+	result, err := client.Productcatalog_post_items_batch(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_items_batch: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_items_batch: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2985,8 +3086,9 @@ func HandleFacebook_productcatalog_post_items_batch(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_localized_items_batch handles the facebook_productcatalog_post_localized_items_batch tool
-func HandleFacebook_productcatalog_post_localized_items_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_localized_items_batch handles the productcatalog_post_localized_items_batch tool
+func HandleProductcatalog_post_localized_items_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3023,10 +3125,12 @@ func HandleFacebook_productcatalog_post_localized_items_batch(ctx context.Contex
 		args["version"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_localized_items_batch(args)
+	result, err := client.Productcatalog_post_localized_items_batch(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_localized_items_batch: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_localized_items_batch: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3038,8 +3142,9 @@ func HandleFacebook_productcatalog_post_localized_items_batch(ctx context.Contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_marketplace_partner_sellers_details handles the facebook_productcatalog_post_marketplace_partner_sellers_details tool
-func HandleFacebook_productcatalog_post_marketplace_partner_sellers_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_marketplace_partner_sellers_details handles the productcatalog_post_marketplace_partner_sellers_details tool
+func HandleProductcatalog_post_marketplace_partner_sellers_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3059,10 +3164,12 @@ func HandleFacebook_productcatalog_post_marketplace_partner_sellers_details(ctx 
 	}
 	args["requests"] = requests
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_marketplace_partner_sellers_details(args)
+	result, err := client.Productcatalog_post_marketplace_partner_sellers_details(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_marketplace_partner_sellers_details: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_marketplace_partner_sellers_details: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3074,8 +3181,9 @@ func HandleFacebook_productcatalog_post_marketplace_partner_sellers_details(ctx 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_marketplace_partner_signals handles the facebook_productcatalog_post_marketplace_partner_signals tool
-func HandleFacebook_productcatalog_post_marketplace_partner_signals(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_marketplace_partner_signals handles the productcatalog_post_marketplace_partner_signals tool
+func HandleProductcatalog_post_marketplace_partner_signals(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3119,10 +3227,12 @@ func HandleFacebook_productcatalog_post_marketplace_partner_signals(ctx context.
 	}
 	args["user_data"] = user_data
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_marketplace_partner_signals(args)
+	result, err := client.Productcatalog_post_marketplace_partner_signals(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_marketplace_partner_signals: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_marketplace_partner_signals: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3134,8 +3244,9 @@ func HandleFacebook_productcatalog_post_marketplace_partner_signals(ctx context.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_pricing_variables_batch handles the facebook_productcatalog_get_pricing_variables_batch tool
-func HandleFacebook_productcatalog_get_pricing_variables_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_pricing_variables_batch handles the productcatalog_get_pricing_variables_batch tool
+func HandleProductcatalog_get_pricing_variables_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3155,10 +3266,12 @@ func HandleFacebook_productcatalog_get_pricing_variables_batch(ctx context.Conte
 	}
 	args["handle"] = handle
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_pricing_variables_batch(args)
+	result, err := client.Productcatalog_get_pricing_variables_batch(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_pricing_variables_batch: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_pricing_variables_batch: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3170,8 +3283,9 @@ func HandleFacebook_productcatalog_get_pricing_variables_batch(ctx context.Conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_pricing_variables_batch handles the facebook_productcatalog_post_pricing_variables_batch tool
-func HandleFacebook_productcatalog_post_pricing_variables_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_pricing_variables_batch handles the productcatalog_post_pricing_variables_batch tool
+func HandleProductcatalog_post_pricing_variables_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3216,10 +3330,12 @@ func HandleFacebook_productcatalog_post_pricing_variables_batch(ctx context.Cont
 		args["username"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_pricing_variables_batch(args)
+	result, err := client.Productcatalog_post_pricing_variables_batch(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_pricing_variables_batch: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_pricing_variables_batch: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3231,8 +3347,9 @@ func HandleFacebook_productcatalog_post_pricing_variables_batch(ctx context.Cont
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_product_feeds handles the facebook_productcatalog_get_product_feeds tool
-func HandleFacebook_productcatalog_get_product_feeds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_product_feeds handles the productcatalog_get_product_feeds tool
+func HandleProductcatalog_get_product_feeds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3245,10 +3362,12 @@ func HandleFacebook_productcatalog_get_product_feeds(ctx context.Context, reques
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_product_feeds(args)
+	result, err := client.Productcatalog_get_product_feeds(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_product_feeds: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_product_feeds: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3260,8 +3379,9 @@ func HandleFacebook_productcatalog_get_product_feeds(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_product_feeds handles the facebook_productcatalog_post_product_feeds tool
-func HandleFacebook_productcatalog_post_product_feeds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_product_feeds handles the productcatalog_post_product_feeds tool
+func HandleProductcatalog_post_product_feeds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3372,10 +3492,12 @@ func HandleFacebook_productcatalog_post_product_feeds(ctx context.Context, reque
 		args["update_schedule"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_product_feeds(args)
+	result, err := client.Productcatalog_post_product_feeds(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_product_feeds: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_product_feeds: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3387,8 +3509,9 @@ func HandleFacebook_productcatalog_post_product_feeds(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_product_groups handles the facebook_productcatalog_get_product_groups tool
-func HandleFacebook_productcatalog_get_product_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_product_groups handles the productcatalog_get_product_groups tool
+func HandleProductcatalog_get_product_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3401,10 +3524,12 @@ func HandleFacebook_productcatalog_get_product_groups(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_product_groups(args)
+	result, err := client.Productcatalog_get_product_groups(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_product_groups: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_product_groups: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3416,8 +3541,9 @@ func HandleFacebook_productcatalog_get_product_groups(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_product_groups handles the facebook_productcatalog_post_product_groups tool
-func HandleFacebook_productcatalog_post_product_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_product_groups handles the productcatalog_post_product_groups tool
+func HandleProductcatalog_post_product_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3441,10 +3567,12 @@ func HandleFacebook_productcatalog_post_product_groups(ctx context.Context, requ
 		args["variants"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_product_groups(args)
+	result, err := client.Productcatalog_post_product_groups(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_product_groups: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_product_groups: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3456,8 +3584,9 @@ func HandleFacebook_productcatalog_post_product_groups(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_product_sets handles the facebook_productcatalog_get_product_sets tool
-func HandleFacebook_productcatalog_get_product_sets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_product_sets handles the productcatalog_get_product_sets tool
+func HandleProductcatalog_get_product_sets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3490,10 +3619,12 @@ func HandleFacebook_productcatalog_get_product_sets(ctx context.Context, request
 		args["retailer_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_product_sets(args)
+	result, err := client.Productcatalog_get_product_sets(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_product_sets: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_product_sets: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3505,8 +3636,9 @@ func HandleFacebook_productcatalog_get_product_sets(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_product_sets handles the facebook_productcatalog_post_product_sets tool
-func HandleFacebook_productcatalog_post_product_sets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_product_sets handles the productcatalog_post_product_sets tool
+func HandleProductcatalog_post_product_sets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3554,10 +3686,12 @@ func HandleFacebook_productcatalog_post_product_sets(ctx context.Context, reques
 		args["retailer_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_product_sets(args)
+	result, err := client.Productcatalog_post_product_sets(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_product_sets: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_product_sets: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3569,8 +3703,9 @@ func HandleFacebook_productcatalog_post_product_sets(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_product_sets_batch handles the facebook_productcatalog_get_product_sets_batch tool
-func HandleFacebook_productcatalog_get_product_sets_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_product_sets_batch handles the productcatalog_get_product_sets_batch tool
+func HandleProductcatalog_get_product_sets_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3590,10 +3725,12 @@ func HandleFacebook_productcatalog_get_product_sets_batch(ctx context.Context, r
 	}
 	args["handle"] = handle
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_product_sets_batch(args)
+	result, err := client.Productcatalog_get_product_sets_batch(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_product_sets_batch: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_product_sets_batch: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3605,8 +3742,9 @@ func HandleFacebook_productcatalog_get_product_sets_batch(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_products handles the facebook_productcatalog_get_products tool
-func HandleFacebook_productcatalog_get_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_products handles the productcatalog_get_products tool
+func HandleProductcatalog_get_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -3645,10 +3783,12 @@ func HandleFacebook_productcatalog_get_products(ctx context.Context, request mcp
 		args["return_only_approved_products"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_products(args)
+	result, err := client.Productcatalog_get_products(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_products: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_products: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -3660,8 +3800,9 @@ func HandleFacebook_productcatalog_get_products(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_products handles the facebook_productcatalog_post_products tool
-func HandleFacebook_productcatalog_post_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_products handles the productcatalog_post_products tool
+func HandleProductcatalog_post_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -4071,10 +4212,12 @@ func HandleFacebook_productcatalog_post_products(ctx context.Context, request mc
 		args["windows_phone_url"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_products(args)
+	result, err := client.Productcatalog_post_products(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_products: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_products: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -4086,8 +4229,9 @@ func HandleFacebook_productcatalog_post_products(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_update_generated_image_config handles the facebook_productcatalog_post_update_generated_image_config tool
-func HandleFacebook_productcatalog_post_update_generated_image_config(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_update_generated_image_config handles the productcatalog_post_update_generated_image_config tool
+func HandleProductcatalog_post_update_generated_image_config(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -4107,10 +4251,12 @@ func HandleFacebook_productcatalog_post_update_generated_image_config(ctx contex
 	}
 	args["data"] = data
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_update_generated_image_config(args)
+	result, err := client.Productcatalog_post_update_generated_image_config(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_update_generated_image_config: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_update_generated_image_config: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -4122,8 +4268,9 @@ func HandleFacebook_productcatalog_post_update_generated_image_config(ctx contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_vehicle_offers handles the facebook_productcatalog_get_vehicle_offers tool
-func HandleFacebook_productcatalog_get_vehicle_offers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_vehicle_offers handles the productcatalog_get_vehicle_offers tool
+func HandleProductcatalog_get_vehicle_offers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -4147,10 +4294,12 @@ func HandleFacebook_productcatalog_get_vehicle_offers(ctx context.Context, reque
 		args["filter"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_vehicle_offers(args)
+	result, err := client.Productcatalog_get_vehicle_offers(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_vehicle_offers: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_vehicle_offers: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -4162,8 +4311,9 @@ func HandleFacebook_productcatalog_get_vehicle_offers(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_vehicles handles the facebook_productcatalog_get_vehicles tool
-func HandleFacebook_productcatalog_get_vehicles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_vehicles handles the productcatalog_get_vehicles tool
+func HandleProductcatalog_get_vehicles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -4187,10 +4337,12 @@ func HandleFacebook_productcatalog_get_vehicles(ctx context.Context, request mcp
 		args["filter"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_vehicles(args)
+	result, err := client.Productcatalog_get_vehicles(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_vehicles: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_vehicles: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -4202,8 +4354,9 @@ func HandleFacebook_productcatalog_get_vehicles(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_vehicles handles the facebook_productcatalog_post_vehicles tool
-func HandleFacebook_productcatalog_post_vehicles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_vehicles handles the productcatalog_post_vehicles tool
+func HandleProductcatalog_post_vehicles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -4399,10 +4552,12 @@ func HandleFacebook_productcatalog_post_vehicles(ctx context.Context, request mc
 	}
 	args["year"] = year
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_vehicles(args)
+	result, err := client.Productcatalog_post_vehicles(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_vehicles: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_vehicles: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -4414,8 +4569,9 @@ func HandleFacebook_productcatalog_post_vehicles(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_version_configs handles the facebook_productcatalog_get_version_configs tool
-func HandleFacebook_productcatalog_get_version_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_version_configs handles the productcatalog_get_version_configs tool
+func HandleProductcatalog_get_version_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -4428,10 +4584,12 @@ func HandleFacebook_productcatalog_get_version_configs(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_version_configs(args)
+	result, err := client.Productcatalog_get_version_configs(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_version_configs: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_version_configs: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -4443,8 +4601,9 @@ func HandleFacebook_productcatalog_get_version_configs(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_version_items_batch handles the facebook_productcatalog_post_version_items_batch tool
-func HandleFacebook_productcatalog_post_version_items_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_version_items_batch handles the productcatalog_post_version_items_batch tool
+func HandleProductcatalog_post_version_items_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -4488,10 +4647,12 @@ func HandleFacebook_productcatalog_post_version_items_batch(ctx context.Context,
 		args["version"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_version_items_batch(args)
+	result, err := client.Productcatalog_post_version_items_batch(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_version_items_batch: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_version_items_batch: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -4503,8 +4664,9 @@ func HandleFacebook_productcatalog_post_version_items_batch(ctx context.Context,
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_delete_ handles the facebook_productcatalog_delete_ tool
-func HandleFacebook_productcatalog_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_delete_ handles the productcatalog_delete_ tool
+func HandleProductcatalog_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -4522,10 +4684,12 @@ func HandleFacebook_productcatalog_delete_(ctx context.Context, request mcp.Call
 		args["allow_delete_catalog_with_live_product_set"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_delete_(args)
+	result, err := client.Productcatalog_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -4537,8 +4701,9 @@ func HandleFacebook_productcatalog_delete_(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_get_ handles the facebook_productcatalog_get_ tool
-func HandleFacebook_productcatalog_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_get_ handles the productcatalog_get_ tool
+func HandleProductcatalog_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -4557,10 +4722,12 @@ func HandleFacebook_productcatalog_get_(ctx context.Context, request mcp.CallToo
 		args["segment_use_cases"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_get_(args)
+	result, err := client.Productcatalog_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -4572,8 +4739,9 @@ func HandleFacebook_productcatalog_get_(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productcatalog_post_ handles the facebook_productcatalog_post_ tool
-func HandleFacebook_productcatalog_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductcatalog_post_ handles the productcatalog_post_ tool
+func HandleProductcatalog_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -4632,10 +4800,12 @@ func HandleFacebook_productcatalog_post_(ctx context.Context, request mcp.CallTo
 		args["store_catalog_settings"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productcatalog_post_(args)
+	result, err := client.Productcatalog_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productcatalog_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productcatalog_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -4646,3 +4816,4 @@ func HandleFacebook_productcatalog_post_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

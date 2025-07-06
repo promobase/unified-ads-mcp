@@ -5,5 +5,5 @@ package types
 // TargetingProductAudienceSubSpec represents a Facebook TargetingProductAudienceSubSpec object
 type TargetingProductAudienceSubSpec struct {
 	Retention_seconds string `json:"retention_seconds"`
-	Rule              string `json:"rule"`
+	Rule string `json:"rule"`
 }

@@ -21,14 +21,18 @@ func NewAvatarProfilePictureClient(accessToken string) *AvatarProfilePictureClie
 	}
 }
 
-// facebook_avatarprofilepicture_get_ GET  for AvatarProfilePicture
-func (c *AvatarProfilePictureClient) Facebook_avatarprofilepicture_get_(args map[string]interface{}) (interface{}, error) {
+
+// avatarprofilepicture_get_ GET  for AvatarProfilePicture
+func (c *AvatarProfilePictureClient) Avatarprofilepicture_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *AvatarProfilePictureClient) Facebook_avatarprofilepicture_get_(args map
 
 	return result, nil
 }
+

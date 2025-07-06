@@ -15,8 +15,9 @@ import (
 func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_businessassetgroup_delete_assigned_users tool
-	facebook_businessassetgroup_delete_assigned_usersTool := mcp.NewTool("facebook_businessassetgroup_delete_assigned_users",
+
+	// businessassetgroup_delete_assigned_users tool
+	businessassetgroup_delete_assigned_usersTool := mcp.NewTool("businessassetgroup_delete_assigned_users",
 		mcp.WithDescription("DELETE assigned_users for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -27,10 +28,10 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("user parameter for assigned_users"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_delete_assigned_usersTool)
+	tools = append(tools, businessassetgroup_delete_assigned_usersTool)
 
-	// facebook_businessassetgroup_get_assigned_users tool
-	facebook_businessassetgroup_get_assigned_usersTool := mcp.NewTool("facebook_businessassetgroup_get_assigned_users",
+	// businessassetgroup_get_assigned_users tool
+	businessassetgroup_get_assigned_usersTool := mcp.NewTool("businessassetgroup_get_assigned_users",
 		mcp.WithDescription("GET assigned_users for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -41,10 +42,10 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("business parameter for assigned_users"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_get_assigned_usersTool)
+	tools = append(tools, businessassetgroup_get_assigned_usersTool)
 
-	// facebook_businessassetgroup_post_assigned_users tool
-	facebook_businessassetgroup_post_assigned_usersTool := mcp.NewTool("facebook_businessassetgroup_post_assigned_users",
+	// businessassetgroup_post_assigned_users tool
+	businessassetgroup_post_assigned_usersTool := mcp.NewTool("businessassetgroup_post_assigned_users",
 		mcp.WithDescription("POST assigned_users for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -71,10 +72,10 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("user parameter for assigned_users"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_post_assigned_usersTool)
+	tools = append(tools, businessassetgroup_post_assigned_usersTool)
 
-	// facebook_businessassetgroup_delete_contained_adaccounts tool
-	facebook_businessassetgroup_delete_contained_adaccountsTool := mcp.NewTool("facebook_businessassetgroup_delete_contained_adaccounts",
+	// businessassetgroup_delete_contained_adaccounts tool
+	businessassetgroup_delete_contained_adaccountsTool := mcp.NewTool("businessassetgroup_delete_contained_adaccounts",
 		mcp.WithDescription("DELETE contained_adaccounts for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -85,20 +86,20 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("asset_id parameter for contained_adaccounts"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_delete_contained_adaccountsTool)
+	tools = append(tools, businessassetgroup_delete_contained_adaccountsTool)
 
-	// facebook_businessassetgroup_get_contained_adaccounts tool
-	facebook_businessassetgroup_get_contained_adaccountsTool := mcp.NewTool("facebook_businessassetgroup_get_contained_adaccounts",
+	// businessassetgroup_get_contained_adaccounts tool
+	businessassetgroup_get_contained_adaccountsTool := mcp.NewTool("businessassetgroup_get_contained_adaccounts",
 		mcp.WithDescription("GET contained_adaccounts for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_get_contained_adaccountsTool)
+	tools = append(tools, businessassetgroup_get_contained_adaccountsTool)
 
-	// facebook_businessassetgroup_post_contained_adaccounts tool
-	facebook_businessassetgroup_post_contained_adaccountsTool := mcp.NewTool("facebook_businessassetgroup_post_contained_adaccounts",
+	// businessassetgroup_post_contained_adaccounts tool
+	businessassetgroup_post_contained_adaccountsTool := mcp.NewTool("businessassetgroup_post_contained_adaccounts",
 		mcp.WithDescription("POST contained_adaccounts for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -109,10 +110,10 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("asset_id parameter for contained_adaccounts"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_post_contained_adaccountsTool)
+	tools = append(tools, businessassetgroup_post_contained_adaccountsTool)
 
-	// facebook_businessassetgroup_delete_contained_applications tool
-	facebook_businessassetgroup_delete_contained_applicationsTool := mcp.NewTool("facebook_businessassetgroup_delete_contained_applications",
+	// businessassetgroup_delete_contained_applications tool
+	businessassetgroup_delete_contained_applicationsTool := mcp.NewTool("businessassetgroup_delete_contained_applications",
 		mcp.WithDescription("DELETE contained_applications for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -123,20 +124,20 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("asset_id parameter for contained_applications"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_delete_contained_applicationsTool)
+	tools = append(tools, businessassetgroup_delete_contained_applicationsTool)
 
-	// facebook_businessassetgroup_get_contained_applications tool
-	facebook_businessassetgroup_get_contained_applicationsTool := mcp.NewTool("facebook_businessassetgroup_get_contained_applications",
+	// businessassetgroup_get_contained_applications tool
+	businessassetgroup_get_contained_applicationsTool := mcp.NewTool("businessassetgroup_get_contained_applications",
 		mcp.WithDescription("GET contained_applications for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_get_contained_applicationsTool)
+	tools = append(tools, businessassetgroup_get_contained_applicationsTool)
 
-	// facebook_businessassetgroup_post_contained_applications tool
-	facebook_businessassetgroup_post_contained_applicationsTool := mcp.NewTool("facebook_businessassetgroup_post_contained_applications",
+	// businessassetgroup_post_contained_applications tool
+	businessassetgroup_post_contained_applicationsTool := mcp.NewTool("businessassetgroup_post_contained_applications",
 		mcp.WithDescription("POST contained_applications for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -147,10 +148,10 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("asset_id parameter for contained_applications"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_post_contained_applicationsTool)
+	tools = append(tools, businessassetgroup_post_contained_applicationsTool)
 
-	// facebook_businessassetgroup_delete_contained_custom_conversions tool
-	facebook_businessassetgroup_delete_contained_custom_conversionsTool := mcp.NewTool("facebook_businessassetgroup_delete_contained_custom_conversions",
+	// businessassetgroup_delete_contained_custom_conversions tool
+	businessassetgroup_delete_contained_custom_conversionsTool := mcp.NewTool("businessassetgroup_delete_contained_custom_conversions",
 		mcp.WithDescription("DELETE contained_custom_conversions for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -161,20 +162,20 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("asset_id parameter for contained_custom_conversions"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_delete_contained_custom_conversionsTool)
+	tools = append(tools, businessassetgroup_delete_contained_custom_conversionsTool)
 
-	// facebook_businessassetgroup_get_contained_custom_conversions tool
-	facebook_businessassetgroup_get_contained_custom_conversionsTool := mcp.NewTool("facebook_businessassetgroup_get_contained_custom_conversions",
+	// businessassetgroup_get_contained_custom_conversions tool
+	businessassetgroup_get_contained_custom_conversionsTool := mcp.NewTool("businessassetgroup_get_contained_custom_conversions",
 		mcp.WithDescription("GET contained_custom_conversions for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_get_contained_custom_conversionsTool)
+	tools = append(tools, businessassetgroup_get_contained_custom_conversionsTool)
 
-	// facebook_businessassetgroup_post_contained_custom_conversions tool
-	facebook_businessassetgroup_post_contained_custom_conversionsTool := mcp.NewTool("facebook_businessassetgroup_post_contained_custom_conversions",
+	// businessassetgroup_post_contained_custom_conversions tool
+	businessassetgroup_post_contained_custom_conversionsTool := mcp.NewTool("businessassetgroup_post_contained_custom_conversions",
 		mcp.WithDescription("POST contained_custom_conversions for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -185,10 +186,10 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("asset_id parameter for contained_custom_conversions"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_post_contained_custom_conversionsTool)
+	tools = append(tools, businessassetgroup_post_contained_custom_conversionsTool)
 
-	// facebook_businessassetgroup_delete_contained_instagram_accounts tool
-	facebook_businessassetgroup_delete_contained_instagram_accountsTool := mcp.NewTool("facebook_businessassetgroup_delete_contained_instagram_accounts",
+	// businessassetgroup_delete_contained_instagram_accounts tool
+	businessassetgroup_delete_contained_instagram_accountsTool := mcp.NewTool("businessassetgroup_delete_contained_instagram_accounts",
 		mcp.WithDescription("DELETE contained_instagram_accounts for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -199,20 +200,20 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("asset_id parameter for contained_instagram_accounts"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_delete_contained_instagram_accountsTool)
+	tools = append(tools, businessassetgroup_delete_contained_instagram_accountsTool)
 
-	// facebook_businessassetgroup_get_contained_instagram_accounts tool
-	facebook_businessassetgroup_get_contained_instagram_accountsTool := mcp.NewTool("facebook_businessassetgroup_get_contained_instagram_accounts",
+	// businessassetgroup_get_contained_instagram_accounts tool
+	businessassetgroup_get_contained_instagram_accountsTool := mcp.NewTool("businessassetgroup_get_contained_instagram_accounts",
 		mcp.WithDescription("GET contained_instagram_accounts for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_get_contained_instagram_accountsTool)
+	tools = append(tools, businessassetgroup_get_contained_instagram_accountsTool)
 
-	// facebook_businessassetgroup_post_contained_instagram_accounts tool
-	facebook_businessassetgroup_post_contained_instagram_accountsTool := mcp.NewTool("facebook_businessassetgroup_post_contained_instagram_accounts",
+	// businessassetgroup_post_contained_instagram_accounts tool
+	businessassetgroup_post_contained_instagram_accountsTool := mcp.NewTool("businessassetgroup_post_contained_instagram_accounts",
 		mcp.WithDescription("POST contained_instagram_accounts for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -223,10 +224,10 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("asset_id parameter for contained_instagram_accounts"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_post_contained_instagram_accountsTool)
+	tools = append(tools, businessassetgroup_post_contained_instagram_accountsTool)
 
-	// facebook_businessassetgroup_delete_contained_pages tool
-	facebook_businessassetgroup_delete_contained_pagesTool := mcp.NewTool("facebook_businessassetgroup_delete_contained_pages",
+	// businessassetgroup_delete_contained_pages tool
+	businessassetgroup_delete_contained_pagesTool := mcp.NewTool("businessassetgroup_delete_contained_pages",
 		mcp.WithDescription("DELETE contained_pages for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -237,20 +238,20 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("asset_id parameter for contained_pages"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_delete_contained_pagesTool)
+	tools = append(tools, businessassetgroup_delete_contained_pagesTool)
 
-	// facebook_businessassetgroup_get_contained_pages tool
-	facebook_businessassetgroup_get_contained_pagesTool := mcp.NewTool("facebook_businessassetgroup_get_contained_pages",
+	// businessassetgroup_get_contained_pages tool
+	businessassetgroup_get_contained_pagesTool := mcp.NewTool("businessassetgroup_get_contained_pages",
 		mcp.WithDescription("GET contained_pages for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_get_contained_pagesTool)
+	tools = append(tools, businessassetgroup_get_contained_pagesTool)
 
-	// facebook_businessassetgroup_post_contained_pages tool
-	facebook_businessassetgroup_post_contained_pagesTool := mcp.NewTool("facebook_businessassetgroup_post_contained_pages",
+	// businessassetgroup_post_contained_pages tool
+	businessassetgroup_post_contained_pagesTool := mcp.NewTool("businessassetgroup_post_contained_pages",
 		mcp.WithDescription("POST contained_pages for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -261,10 +262,10 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("asset_id parameter for contained_pages"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_post_contained_pagesTool)
+	tools = append(tools, businessassetgroup_post_contained_pagesTool)
 
-	// facebook_businessassetgroup_delete_contained_pixels tool
-	facebook_businessassetgroup_delete_contained_pixelsTool := mcp.NewTool("facebook_businessassetgroup_delete_contained_pixels",
+	// businessassetgroup_delete_contained_pixels tool
+	businessassetgroup_delete_contained_pixelsTool := mcp.NewTool("businessassetgroup_delete_contained_pixels",
 		mcp.WithDescription("DELETE contained_pixels for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -275,20 +276,20 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("asset_id parameter for contained_pixels"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_delete_contained_pixelsTool)
+	tools = append(tools, businessassetgroup_delete_contained_pixelsTool)
 
-	// facebook_businessassetgroup_get_contained_pixels tool
-	facebook_businessassetgroup_get_contained_pixelsTool := mcp.NewTool("facebook_businessassetgroup_get_contained_pixels",
+	// businessassetgroup_get_contained_pixels tool
+	businessassetgroup_get_contained_pixelsTool := mcp.NewTool("businessassetgroup_get_contained_pixels",
 		mcp.WithDescription("GET contained_pixels for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_get_contained_pixelsTool)
+	tools = append(tools, businessassetgroup_get_contained_pixelsTool)
 
-	// facebook_businessassetgroup_post_contained_pixels tool
-	facebook_businessassetgroup_post_contained_pixelsTool := mcp.NewTool("facebook_businessassetgroup_post_contained_pixels",
+	// businessassetgroup_post_contained_pixels tool
+	businessassetgroup_post_contained_pixelsTool := mcp.NewTool("businessassetgroup_post_contained_pixels",
 		mcp.WithDescription("POST contained_pixels for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -299,10 +300,10 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("asset_id parameter for contained_pixels"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_post_contained_pixelsTool)
+	tools = append(tools, businessassetgroup_post_contained_pixelsTool)
 
-	// facebook_businessassetgroup_delete_contained_product_catalogs tool
-	facebook_businessassetgroup_delete_contained_product_catalogsTool := mcp.NewTool("facebook_businessassetgroup_delete_contained_product_catalogs",
+	// businessassetgroup_delete_contained_product_catalogs tool
+	businessassetgroup_delete_contained_product_catalogsTool := mcp.NewTool("businessassetgroup_delete_contained_product_catalogs",
 		mcp.WithDescription("DELETE contained_product_catalogs for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -313,20 +314,20 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("asset_id parameter for contained_product_catalogs"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_delete_contained_product_catalogsTool)
+	tools = append(tools, businessassetgroup_delete_contained_product_catalogsTool)
 
-	// facebook_businessassetgroup_get_contained_product_catalogs tool
-	facebook_businessassetgroup_get_contained_product_catalogsTool := mcp.NewTool("facebook_businessassetgroup_get_contained_product_catalogs",
+	// businessassetgroup_get_contained_product_catalogs tool
+	businessassetgroup_get_contained_product_catalogsTool := mcp.NewTool("businessassetgroup_get_contained_product_catalogs",
 		mcp.WithDescription("GET contained_product_catalogs for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_get_contained_product_catalogsTool)
+	tools = append(tools, businessassetgroup_get_contained_product_catalogsTool)
 
-	// facebook_businessassetgroup_post_contained_product_catalogs tool
-	facebook_businessassetgroup_post_contained_product_catalogsTool := mcp.NewTool("facebook_businessassetgroup_post_contained_product_catalogs",
+	// businessassetgroup_post_contained_product_catalogs tool
+	businessassetgroup_post_contained_product_catalogsTool := mcp.NewTool("businessassetgroup_post_contained_product_catalogs",
 		mcp.WithDescription("POST contained_product_catalogs for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -337,20 +338,20 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("asset_id parameter for contained_product_catalogs"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_post_contained_product_catalogsTool)
+	tools = append(tools, businessassetgroup_post_contained_product_catalogsTool)
 
-	// facebook_businessassetgroup_get_ tool
-	facebook_businessassetgroup_get_Tool := mcp.NewTool("facebook_businessassetgroup_get_",
+	// businessassetgroup_get_ tool
+	businessassetgroup_get_Tool := mcp.NewTool("businessassetgroup_get_",
 		mcp.WithDescription("GET  for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_get_Tool)
+	tools = append(tools, businessassetgroup_get_Tool)
 
-	// facebook_businessassetgroup_post_ tool
-	facebook_businessassetgroup_post_Tool := mcp.NewTool("facebook_businessassetgroup_post_",
+	// businessassetgroup_post_ tool
+	businessassetgroup_post_Tool := mcp.NewTool("businessassetgroup_post_",
 		mcp.WithDescription("POST  for BusinessAssetGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -360,15 +361,17 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("name parameter for "),
 		),
 	)
-	tools = append(tools, facebook_businessassetgroup_post_Tool)
+	tools = append(tools, businessassetgroup_post_Tool)
+
 
 	return tools
 }
 
 // BusinessAssetGroup handlers
 
-// HandleFacebook_businessassetgroup_delete_assigned_users handles the facebook_businessassetgroup_delete_assigned_users tool
-func HandleFacebook_businessassetgroup_delete_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBusinessassetgroup_delete_assigned_users handles the businessassetgroup_delete_assigned_users tool
+func HandleBusinessassetgroup_delete_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -388,10 +391,12 @@ func HandleFacebook_businessassetgroup_delete_assigned_users(ctx context.Context
 	}
 	args["user"] = user
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_delete_assigned_users(args)
+	result, err := client.Businessassetgroup_delete_assigned_users(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_delete_assigned_users: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_delete_assigned_users: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -403,8 +408,9 @@ func HandleFacebook_businessassetgroup_delete_assigned_users(ctx context.Context
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessassetgroup_get_assigned_users handles the facebook_businessassetgroup_get_assigned_users tool
-func HandleFacebook_businessassetgroup_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBusinessassetgroup_get_assigned_users handles the businessassetgroup_get_assigned_users tool
+func HandleBusinessassetgroup_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -424,10 +430,12 @@ func HandleFacebook_businessassetgroup_get_assigned_users(ctx context.Context, r
 	}
 	args["business"] = business
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_get_assigned_users(args)
+	result, err := client.Businessassetgroup_get_assigned_users(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_get_assigned_users: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_get_assigned_users: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -439,8 +447,9 @@ func HandleFacebook_businessassetgroup_get_assigned_users(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessassetgroup_post_assigned_users handles the facebook_businessassetgroup_post_assigned_users tool
-func HandleFacebook_businessassetgroup_post_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBusinessassetgroup_post_assigned_users handles the businessassetgroup_post_assigned_users tool
+func HandleBusinessassetgroup_post_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -484,10 +493,12 @@ func HandleFacebook_businessassetgroup_post_assigned_users(ctx context.Context, 
 	}
 	args["user"] = user
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_post_assigned_users(args)
+	result, err := client.Businessassetgroup_post_assigned_users(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_post_assigned_users: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_post_assigned_users: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -499,8 +510,9 @@ func HandleFacebook_businessassetgroup_post_assigned_users(ctx context.Context, 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessassetgroup_delete_contained_adaccounts handles the facebook_businessassetgroup_delete_contained_adaccounts tool
-func HandleFacebook_businessassetgroup_delete_contained_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBusinessassetgroup_delete_contained_adaccounts handles the businessassetgroup_delete_contained_adaccounts tool
+func HandleBusinessassetgroup_delete_contained_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -520,10 +532,12 @@ func HandleFacebook_businessassetgroup_delete_contained_adaccounts(ctx context.C
 	}
 	args["asset_id"] = asset_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_delete_contained_adaccounts(args)
+	result, err := client.Businessassetgroup_delete_contained_adaccounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_delete_contained_adaccounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_delete_contained_adaccounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -535,8 +549,9 @@ func HandleFacebook_businessassetgroup_delete_contained_adaccounts(ctx context.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessassetgroup_get_contained_adaccounts handles the facebook_businessassetgroup_get_contained_adaccounts tool
-func HandleFacebook_businessassetgroup_get_contained_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBusinessassetgroup_get_contained_adaccounts handles the businessassetgroup_get_contained_adaccounts tool
+func HandleBusinessassetgroup_get_contained_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -549,10 +564,12 @@ func HandleFacebook_businessassetgroup_get_contained_adaccounts(ctx context.Cont
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_get_contained_adaccounts(args)
+	result, err := client.Businessassetgroup_get_contained_adaccounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_get_contained_adaccounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_get_contained_adaccounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -564,44 +581,9 @@ func HandleFacebook_businessassetgroup_get_contained_adaccounts(ctx context.Cont
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessassetgroup_post_contained_adaccounts handles the facebook_businessassetgroup_post_contained_adaccounts tool
-func HandleFacebook_businessassetgroup_post_contained_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
 
-	// Create client
-	client := client.NewBusinessAssetGroupClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: asset_id
-	asset_id, err := request.RequireString("asset_id")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
-	}
-	args["asset_id"] = asset_id
-
-	// Call the client method
-	result, err := client.Facebook_businessassetgroup_post_contained_adaccounts(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_post_contained_adaccounts: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleFacebook_businessassetgroup_delete_contained_applications handles the facebook_businessassetgroup_delete_contained_applications tool
-func HandleFacebook_businessassetgroup_delete_contained_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleBusinessassetgroup_post_contained_adaccounts handles the businessassetgroup_post_contained_adaccounts tool
+func HandleBusinessassetgroup_post_contained_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -621,10 +603,12 @@ func HandleFacebook_businessassetgroup_delete_contained_applications(ctx context
 	}
 	args["asset_id"] = asset_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_delete_contained_applications(args)
+	result, err := client.Businessassetgroup_post_contained_adaccounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_delete_contained_applications: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_post_contained_adaccounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -636,37 +620,9 @@ func HandleFacebook_businessassetgroup_delete_contained_applications(ctx context
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessassetgroup_get_contained_applications handles the facebook_businessassetgroup_get_contained_applications tool
-func HandleFacebook_businessassetgroup_get_contained_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
 
-	// Create client
-	client := client.NewBusinessAssetGroupClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Facebook_businessassetgroup_get_contained_applications(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_get_contained_applications: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleFacebook_businessassetgroup_post_contained_applications handles the facebook_businessassetgroup_post_contained_applications tool
-func HandleFacebook_businessassetgroup_post_contained_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleBusinessassetgroup_delete_contained_applications handles the businessassetgroup_delete_contained_applications tool
+func HandleBusinessassetgroup_delete_contained_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -686,10 +642,12 @@ func HandleFacebook_businessassetgroup_post_contained_applications(ctx context.C
 	}
 	args["asset_id"] = asset_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_post_contained_applications(args)
+	result, err := client.Businessassetgroup_delete_contained_applications(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_post_contained_applications: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_delete_contained_applications: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -701,8 +659,41 @@ func HandleFacebook_businessassetgroup_post_contained_applications(ctx context.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessassetgroup_delete_contained_custom_conversions handles the facebook_businessassetgroup_delete_contained_custom_conversions tool
-func HandleFacebook_businessassetgroup_delete_contained_custom_conversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBusinessassetgroup_get_contained_applications handles the businessassetgroup_get_contained_applications tool
+func HandleBusinessassetgroup_get_contained_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token
+	accessToken, err := request.RequireString("access_token")
+	if err != nil {
+		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+
+
+	// Call the client method
+	result, err := client.Businessassetgroup_get_contained_applications(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_get_contained_applications: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+
+// HandleBusinessassetgroup_post_contained_applications handles the businessassetgroup_post_contained_applications tool
+func HandleBusinessassetgroup_post_contained_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -722,10 +713,12 @@ func HandleFacebook_businessassetgroup_delete_contained_custom_conversions(ctx c
 	}
 	args["asset_id"] = asset_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_delete_contained_custom_conversions(args)
+	result, err := client.Businessassetgroup_post_contained_applications(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_delete_contained_custom_conversions: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_post_contained_applications: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -737,37 +730,9 @@ func HandleFacebook_businessassetgroup_delete_contained_custom_conversions(ctx c
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessassetgroup_get_contained_custom_conversions handles the facebook_businessassetgroup_get_contained_custom_conversions tool
-func HandleFacebook_businessassetgroup_get_contained_custom_conversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
 
-	// Create client
-	client := client.NewBusinessAssetGroupClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Facebook_businessassetgroup_get_contained_custom_conversions(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_get_contained_custom_conversions: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleFacebook_businessassetgroup_post_contained_custom_conversions handles the facebook_businessassetgroup_post_contained_custom_conversions tool
-func HandleFacebook_businessassetgroup_post_contained_custom_conversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleBusinessassetgroup_delete_contained_custom_conversions handles the businessassetgroup_delete_contained_custom_conversions tool
+func HandleBusinessassetgroup_delete_contained_custom_conversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -787,10 +752,12 @@ func HandleFacebook_businessassetgroup_post_contained_custom_conversions(ctx con
 	}
 	args["asset_id"] = asset_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_post_contained_custom_conversions(args)
+	result, err := client.Businessassetgroup_delete_contained_custom_conversions(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_post_contained_custom_conversions: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_delete_contained_custom_conversions: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -802,8 +769,41 @@ func HandleFacebook_businessassetgroup_post_contained_custom_conversions(ctx con
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessassetgroup_delete_contained_instagram_accounts handles the facebook_businessassetgroup_delete_contained_instagram_accounts tool
-func HandleFacebook_businessassetgroup_delete_contained_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBusinessassetgroup_get_contained_custom_conversions handles the businessassetgroup_get_contained_custom_conversions tool
+func HandleBusinessassetgroup_get_contained_custom_conversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token
+	accessToken, err := request.RequireString("access_token")
+	if err != nil {
+		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+
+
+	// Call the client method
+	result, err := client.Businessassetgroup_get_contained_custom_conversions(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_get_contained_custom_conversions: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+
+// HandleBusinessassetgroup_post_contained_custom_conversions handles the businessassetgroup_post_contained_custom_conversions tool
+func HandleBusinessassetgroup_post_contained_custom_conversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -823,10 +823,12 @@ func HandleFacebook_businessassetgroup_delete_contained_instagram_accounts(ctx c
 	}
 	args["asset_id"] = asset_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_delete_contained_instagram_accounts(args)
+	result, err := client.Businessassetgroup_post_contained_custom_conversions(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_delete_contained_instagram_accounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_post_contained_custom_conversions: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -838,37 +840,9 @@ func HandleFacebook_businessassetgroup_delete_contained_instagram_accounts(ctx c
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessassetgroup_get_contained_instagram_accounts handles the facebook_businessassetgroup_get_contained_instagram_accounts tool
-func HandleFacebook_businessassetgroup_get_contained_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
 
-	// Create client
-	client := client.NewBusinessAssetGroupClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Facebook_businessassetgroup_get_contained_instagram_accounts(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_get_contained_instagram_accounts: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleFacebook_businessassetgroup_post_contained_instagram_accounts handles the facebook_businessassetgroup_post_contained_instagram_accounts tool
-func HandleFacebook_businessassetgroup_post_contained_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleBusinessassetgroup_delete_contained_instagram_accounts handles the businessassetgroup_delete_contained_instagram_accounts tool
+func HandleBusinessassetgroup_delete_contained_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -888,10 +862,12 @@ func HandleFacebook_businessassetgroup_post_contained_instagram_accounts(ctx con
 	}
 	args["asset_id"] = asset_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_post_contained_instagram_accounts(args)
+	result, err := client.Businessassetgroup_delete_contained_instagram_accounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_post_contained_instagram_accounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_delete_contained_instagram_accounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -903,8 +879,41 @@ func HandleFacebook_businessassetgroup_post_contained_instagram_accounts(ctx con
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessassetgroup_delete_contained_pages handles the facebook_businessassetgroup_delete_contained_pages tool
-func HandleFacebook_businessassetgroup_delete_contained_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBusinessassetgroup_get_contained_instagram_accounts handles the businessassetgroup_get_contained_instagram_accounts tool
+func HandleBusinessassetgroup_get_contained_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token
+	accessToken, err := request.RequireString("access_token")
+	if err != nil {
+		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+
+
+	// Call the client method
+	result, err := client.Businessassetgroup_get_contained_instagram_accounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_get_contained_instagram_accounts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+
+// HandleBusinessassetgroup_post_contained_instagram_accounts handles the businessassetgroup_post_contained_instagram_accounts tool
+func HandleBusinessassetgroup_post_contained_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -924,10 +933,12 @@ func HandleFacebook_businessassetgroup_delete_contained_pages(ctx context.Contex
 	}
 	args["asset_id"] = asset_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_delete_contained_pages(args)
+	result, err := client.Businessassetgroup_post_contained_instagram_accounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_delete_contained_pages: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_post_contained_instagram_accounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -939,37 +950,9 @@ func HandleFacebook_businessassetgroup_delete_contained_pages(ctx context.Contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessassetgroup_get_contained_pages handles the facebook_businessassetgroup_get_contained_pages tool
-func HandleFacebook_businessassetgroup_get_contained_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
 
-	// Create client
-	client := client.NewBusinessAssetGroupClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Facebook_businessassetgroup_get_contained_pages(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_get_contained_pages: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleFacebook_businessassetgroup_post_contained_pages handles the facebook_businessassetgroup_post_contained_pages tool
-func HandleFacebook_businessassetgroup_post_contained_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleBusinessassetgroup_delete_contained_pages handles the businessassetgroup_delete_contained_pages tool
+func HandleBusinessassetgroup_delete_contained_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -989,10 +972,12 @@ func HandleFacebook_businessassetgroup_post_contained_pages(ctx context.Context,
 	}
 	args["asset_id"] = asset_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_post_contained_pages(args)
+	result, err := client.Businessassetgroup_delete_contained_pages(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_post_contained_pages: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_delete_contained_pages: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1004,8 +989,41 @@ func HandleFacebook_businessassetgroup_post_contained_pages(ctx context.Context,
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessassetgroup_delete_contained_pixels handles the facebook_businessassetgroup_delete_contained_pixels tool
-func HandleFacebook_businessassetgroup_delete_contained_pixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBusinessassetgroup_get_contained_pages handles the businessassetgroup_get_contained_pages tool
+func HandleBusinessassetgroup_get_contained_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token
+	accessToken, err := request.RequireString("access_token")
+	if err != nil {
+		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+
+
+	// Call the client method
+	result, err := client.Businessassetgroup_get_contained_pages(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_get_contained_pages: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+
+// HandleBusinessassetgroup_post_contained_pages handles the businessassetgroup_post_contained_pages tool
+func HandleBusinessassetgroup_post_contained_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1025,10 +1043,12 @@ func HandleFacebook_businessassetgroup_delete_contained_pixels(ctx context.Conte
 	}
 	args["asset_id"] = asset_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_delete_contained_pixels(args)
+	result, err := client.Businessassetgroup_post_contained_pages(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_delete_contained_pixels: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_post_contained_pages: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1040,37 +1060,9 @@ func HandleFacebook_businessassetgroup_delete_contained_pixels(ctx context.Conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessassetgroup_get_contained_pixels handles the facebook_businessassetgroup_get_contained_pixels tool
-func HandleFacebook_businessassetgroup_get_contained_pixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
 
-	// Create client
-	client := client.NewBusinessAssetGroupClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Facebook_businessassetgroup_get_contained_pixels(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_get_contained_pixels: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleFacebook_businessassetgroup_post_contained_pixels handles the facebook_businessassetgroup_post_contained_pixels tool
-func HandleFacebook_businessassetgroup_post_contained_pixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleBusinessassetgroup_delete_contained_pixels handles the businessassetgroup_delete_contained_pixels tool
+func HandleBusinessassetgroup_delete_contained_pixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1090,10 +1082,12 @@ func HandleFacebook_businessassetgroup_post_contained_pixels(ctx context.Context
 	}
 	args["asset_id"] = asset_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_post_contained_pixels(args)
+	result, err := client.Businessassetgroup_delete_contained_pixels(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_post_contained_pixels: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_delete_contained_pixels: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1105,8 +1099,41 @@ func HandleFacebook_businessassetgroup_post_contained_pixels(ctx context.Context
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessassetgroup_delete_contained_product_catalogs handles the facebook_businessassetgroup_delete_contained_product_catalogs tool
-func HandleFacebook_businessassetgroup_delete_contained_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBusinessassetgroup_get_contained_pixels handles the businessassetgroup_get_contained_pixels tool
+func HandleBusinessassetgroup_get_contained_pixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token
+	accessToken, err := request.RequireString("access_token")
+	if err != nil {
+		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+
+
+	// Call the client method
+	result, err := client.Businessassetgroup_get_contained_pixels(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_get_contained_pixels: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+
+// HandleBusinessassetgroup_post_contained_pixels handles the businessassetgroup_post_contained_pixels tool
+func HandleBusinessassetgroup_post_contained_pixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1126,10 +1153,12 @@ func HandleFacebook_businessassetgroup_delete_contained_product_catalogs(ctx con
 	}
 	args["asset_id"] = asset_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_delete_contained_product_catalogs(args)
+	result, err := client.Businessassetgroup_post_contained_pixels(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_delete_contained_product_catalogs: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_post_contained_pixels: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1141,37 +1170,9 @@ func HandleFacebook_businessassetgroup_delete_contained_product_catalogs(ctx con
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessassetgroup_get_contained_product_catalogs handles the facebook_businessassetgroup_get_contained_product_catalogs tool
-func HandleFacebook_businessassetgroup_get_contained_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
 
-	// Create client
-	client := client.NewBusinessAssetGroupClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Facebook_businessassetgroup_get_contained_product_catalogs(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_get_contained_product_catalogs: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleFacebook_businessassetgroup_post_contained_product_catalogs handles the facebook_businessassetgroup_post_contained_product_catalogs tool
-func HandleFacebook_businessassetgroup_post_contained_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleBusinessassetgroup_delete_contained_product_catalogs handles the businessassetgroup_delete_contained_product_catalogs tool
+func HandleBusinessassetgroup_delete_contained_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1191,10 +1192,12 @@ func HandleFacebook_businessassetgroup_post_contained_product_catalogs(ctx conte
 	}
 	args["asset_id"] = asset_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_post_contained_product_catalogs(args)
+	result, err := client.Businessassetgroup_delete_contained_product_catalogs(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_post_contained_product_catalogs: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_delete_contained_product_catalogs: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1206,8 +1209,9 @@ func HandleFacebook_businessassetgroup_post_contained_product_catalogs(ctx conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessassetgroup_get_ handles the facebook_businessassetgroup_get_ tool
-func HandleFacebook_businessassetgroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBusinessassetgroup_get_contained_product_catalogs handles the businessassetgroup_get_contained_product_catalogs tool
+func HandleBusinessassetgroup_get_contained_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1220,10 +1224,12 @@ func HandleFacebook_businessassetgroup_get_(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_get_(args)
+	result, err := client.Businessassetgroup_get_contained_product_catalogs(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_get_contained_product_catalogs: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1235,8 +1241,80 @@ func HandleFacebook_businessassetgroup_get_(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_businessassetgroup_post_ handles the facebook_businessassetgroup_post_ tool
-func HandleFacebook_businessassetgroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBusinessassetgroup_post_contained_product_catalogs handles the businessassetgroup_post_contained_product_catalogs tool
+func HandleBusinessassetgroup_post_contained_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token
+	accessToken, err := request.RequireString("access_token")
+	if err != nil {
+		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: asset_id
+	asset_id, err := request.RequireString("asset_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+	}
+	args["asset_id"] = asset_id
+
+
+
+	// Call the client method
+	result, err := client.Businessassetgroup_post_contained_product_catalogs(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_post_contained_product_catalogs: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+
+// HandleBusinessassetgroup_get_ handles the businessassetgroup_get_ tool
+func HandleBusinessassetgroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token
+	accessToken, err := request.RequireString("access_token")
+	if err != nil {
+		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+
+
+	// Call the client method
+	result, err := client.Businessassetgroup_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+
+// HandleBusinessassetgroup_post_ handles the businessassetgroup_post_ tool
+func HandleBusinessassetgroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1254,10 +1332,12 @@ func HandleFacebook_businessassetgroup_post_(ctx context.Context, request mcp.Ca
 		args["name"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessassetgroup_post_(args)
+	result, err := client.Businessassetgroup_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessassetgroup_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1268,3 +1348,4 @@ func HandleFacebook_businessassetgroup_post_(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

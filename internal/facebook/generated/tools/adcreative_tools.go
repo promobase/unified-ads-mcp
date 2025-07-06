@@ -15,8 +15,9 @@ import (
 func GetAdCreativeTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adcreative_post_adlabels tool
-	facebook_adcreative_post_adlabelsTool := mcp.NewTool("facebook_adcreative_post_adlabels",
+
+	// adcreative_post_adlabels tool
+	adcreative_post_adlabelsTool := mcp.NewTool("adcreative_post_adlabels",
 		mcp.WithDescription("POST adlabels for AdCreative"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -27,20 +28,20 @@ func GetAdCreativeTools(accessToken string) []mcp.Tool {
 			mcp.Description("adlabels parameter for adlabels"),
 		),
 	)
-	tools = append(tools, facebook_adcreative_post_adlabelsTool)
+	tools = append(tools, adcreative_post_adlabelsTool)
 
-	// facebook_adcreative_get_creative_insights tool
-	facebook_adcreative_get_creative_insightsTool := mcp.NewTool("facebook_adcreative_get_creative_insights",
+	// adcreative_get_creative_insights tool
+	adcreative_get_creative_insightsTool := mcp.NewTool("adcreative_get_creative_insights",
 		mcp.WithDescription("GET creative_insights for AdCreative"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adcreative_get_creative_insightsTool)
+	tools = append(tools, adcreative_get_creative_insightsTool)
 
-	// facebook_adcreative_get_previews tool
-	facebook_adcreative_get_previewsTool := mcp.NewTool("facebook_adcreative_get_previews",
+	// adcreative_get_previews tool
+	adcreative_get_previewsTool := mcp.NewTool("adcreative_get_previews",
 		mcp.WithDescription("GET previews for AdCreative"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -93,10 +94,10 @@ func GetAdCreativeTools(accessToken string) []mcp.Tool {
 			mcp.Description("width parameter for previews"),
 		),
 	)
-	tools = append(tools, facebook_adcreative_get_previewsTool)
+	tools = append(tools, adcreative_get_previewsTool)
 
-	// facebook_adcreative_delete_ tool
-	facebook_adcreative_delete_Tool := mcp.NewTool("facebook_adcreative_delete_",
+	// adcreative_delete_ tool
+	adcreative_delete_Tool := mcp.NewTool("adcreative_delete_",
 		mcp.WithDescription("DELETE  for AdCreative"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -116,10 +117,10 @@ func GetAdCreativeTools(accessToken string) []mcp.Tool {
 			mcp.Enum("ACTIVE", "DELETED", "IN_PROCESS", "WITH_ISSUES"),
 		),
 	)
-	tools = append(tools, facebook_adcreative_delete_Tool)
+	tools = append(tools, adcreative_delete_Tool)
 
-	// facebook_adcreative_get_ tool
-	facebook_adcreative_get_Tool := mcp.NewTool("facebook_adcreative_get_",
+	// adcreative_get_ tool
+	adcreative_get_Tool := mcp.NewTool("adcreative_get_",
 		mcp.WithDescription("GET  for AdCreative"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -132,10 +133,10 @@ func GetAdCreativeTools(accessToken string) []mcp.Tool {
 			mcp.Description("thumbnail_width parameter for "),
 		),
 	)
-	tools = append(tools, facebook_adcreative_get_Tool)
+	tools = append(tools, adcreative_get_Tool)
 
-	// facebook_adcreative_post_ tool
-	facebook_adcreative_post_Tool := mcp.NewTool("facebook_adcreative_post_",
+	// adcreative_post_ tool
+	adcreative_post_Tool := mcp.NewTool("adcreative_post_",
 		mcp.WithDescription("POST  for AdCreative"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -155,15 +156,17 @@ func GetAdCreativeTools(accessToken string) []mcp.Tool {
 			mcp.Enum("ACTIVE", "DELETED", "IN_PROCESS", "WITH_ISSUES"),
 		),
 	)
-	tools = append(tools, facebook_adcreative_post_Tool)
+	tools = append(tools, adcreative_post_Tool)
+
 
 	return tools
 }
 
 // AdCreative handlers
 
-// HandleFacebook_adcreative_post_adlabels handles the facebook_adcreative_post_adlabels tool
-func HandleFacebook_adcreative_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdcreative_post_adlabels handles the adcreative_post_adlabels tool
+func HandleAdcreative_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -183,10 +186,12 @@ func HandleFacebook_adcreative_post_adlabels(ctx context.Context, request mcp.Ca
 	}
 	args["adlabels"] = adlabels
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adcreative_post_adlabels(args)
+	result, err := client.Adcreative_post_adlabels(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adcreative_post_adlabels: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adcreative_post_adlabels: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -198,8 +203,9 @@ func HandleFacebook_adcreative_post_adlabels(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adcreative_get_creative_insights handles the facebook_adcreative_get_creative_insights tool
-func HandleFacebook_adcreative_get_creative_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdcreative_get_creative_insights handles the adcreative_get_creative_insights tool
+func HandleAdcreative_get_creative_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -212,10 +218,12 @@ func HandleFacebook_adcreative_get_creative_insights(ctx context.Context, reques
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adcreative_get_creative_insights(args)
+	result, err := client.Adcreative_get_creative_insights(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adcreative_get_creative_insights: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adcreative_get_creative_insights: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -227,8 +235,9 @@ func HandleFacebook_adcreative_get_creative_insights(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adcreative_get_previews handles the facebook_adcreative_get_previews tool
-func HandleFacebook_adcreative_get_previews(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdcreative_get_previews handles the adcreative_get_previews tool
+func HandleAdcreative_get_previews(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -317,10 +326,12 @@ func HandleFacebook_adcreative_get_previews(ctx context.Context, request mcp.Cal
 		args["width"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adcreative_get_previews(args)
+	result, err := client.Adcreative_get_previews(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adcreative_get_previews: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adcreative_get_previews: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -332,8 +343,9 @@ func HandleFacebook_adcreative_get_previews(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adcreative_delete_ handles the facebook_adcreative_delete_ tool
-func HandleFacebook_adcreative_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdcreative_delete_ handles the adcreative_delete_ tool
+func HandleAdcreative_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -367,10 +379,12 @@ func HandleFacebook_adcreative_delete_(ctx context.Context, request mcp.CallTool
 		args["status"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adcreative_delete_(args)
+	result, err := client.Adcreative_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adcreative_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adcreative_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -382,8 +396,9 @@ func HandleFacebook_adcreative_delete_(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adcreative_get_ handles the facebook_adcreative_get_ tool
-func HandleFacebook_adcreative_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdcreative_get_ handles the adcreative_get_ tool
+func HandleAdcreative_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -406,10 +421,12 @@ func HandleFacebook_adcreative_get_(ctx context.Context, request mcp.CallToolReq
 		args["thumbnail_width"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adcreative_get_(args)
+	result, err := client.Adcreative_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adcreative_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adcreative_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -421,8 +438,9 @@ func HandleFacebook_adcreative_get_(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adcreative_post_ handles the facebook_adcreative_post_ tool
-func HandleFacebook_adcreative_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdcreative_post_ handles the adcreative_post_ tool
+func HandleAdcreative_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -456,10 +474,12 @@ func HandleFacebook_adcreative_post_(ctx context.Context, request mcp.CallToolRe
 		args["status"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adcreative_post_(args)
+	result, err := client.Adcreative_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adcreative_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adcreative_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -470,3 +490,4 @@ func HandleFacebook_adcreative_post_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

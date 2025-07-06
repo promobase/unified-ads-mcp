@@ -15,23 +15,26 @@ import (
 func GetWoodhengeSupporterTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_woodhengesupporter_get_ tool
-	facebook_woodhengesupporter_get_Tool := mcp.NewTool("facebook_woodhengesupporter_get_",
+
+	// woodhengesupporter_get_ tool
+	woodhengesupporter_get_Tool := mcp.NewTool("woodhengesupporter_get_",
 		mcp.WithDescription("GET  for WoodhengeSupporter"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_woodhengesupporter_get_Tool)
+	tools = append(tools, woodhengesupporter_get_Tool)
+
 
 	return tools
 }
 
 // WoodhengeSupporter handlers
 
-// HandleFacebook_woodhengesupporter_get_ handles the facebook_woodhengesupporter_get_ tool
-func HandleFacebook_woodhengesupporter_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleWoodhengesupporter_get_ handles the woodhengesupporter_get_ tool
+func HandleWoodhengesupporter_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_woodhengesupporter_get_(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_woodhengesupporter_get_(args)
+	result, err := client.Woodhengesupporter_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_woodhengesupporter_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute woodhengesupporter_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_woodhengesupporter_get_(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

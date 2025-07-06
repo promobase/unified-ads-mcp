@@ -4,20 +4,20 @@ package types
 
 // VideoCopyright represents a Facebook VideoCopyright object
 type VideoCopyright struct {
-	Content_category               string                       `json:"content_category"`
-	Copyright_content_id           string                       `json:"copyright_content_id"`
-	Creator                        *User                        `json:"creator"`
-	Excluded_ownership_segments    []VideoCopyrightSegment      `json:"excluded_ownership_segments"`
-	Id                             string                       `json:"id"`
-	In_conflict                    bool                         `json:"in_conflict"`
-	Monitoring_status              string                       `json:"monitoring_status"`
-	Monitoring_type                string                       `json:"monitoring_type"`
-	Ownership_countries            *VideoCopyrightGeoGate       `json:"ownership_countries"`
-	Reference_file                 *CopyrightReferenceContainer `json:"reference_file"`
-	Reference_file_disabled        bool                         `json:"reference_file_disabled"`
-	Reference_file_disabled_by_ops bool                         `json:"reference_file_disabled_by_ops"`
-	Reference_owner_id             string                       `json:"reference_owner_id"`
-	Rule_ids                       []VideoCopyrightRule         `json:"rule_ids"`
-	Tags                           []string                     `json:"tags"`
-	Whitelisted_ids                []string                     `json:"whitelisted_ids"`
+	Content_category string `json:"content_category"`
+	Copyright_content_id string `json:"copyright_content_id"`
+	Creator *User `json:"creator"`
+	Excluded_ownership_segments []VideoCopyrightSegment `json:"excluded_ownership_segments"`
+	Id string `json:"id"`
+	In_conflict bool `json:"in_conflict"`
+	Monitoring_status string `json:"monitoring_status"`
+	Monitoring_type string `json:"monitoring_type"`
+	Ownership_countries *VideoCopyrightGeoGate `json:"ownership_countries"`
+	Reference_file *CopyrightReferenceContainer `json:"reference_file"`
+	Reference_file_disabled bool `json:"reference_file_disabled"`
+	Reference_file_disabled_by_ops bool `json:"reference_file_disabled_by_ops"`
+	Reference_owner_id string `json:"reference_owner_id"`
+	Rule_ids []VideoCopyrightRule `json:"rule_ids"`
+	Tags []string `json:"tags"`
+	Whitelisted_ids []string `json:"whitelisted_ids"`
 }

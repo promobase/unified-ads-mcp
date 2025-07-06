@@ -5,6 +5,6 @@ package types
 // StreamFilter represents a Facebook StreamFilter object
 type StreamFilter struct {
 	Filter_key string `json:"filter_key"`
-	Name       string `json:"name"`
-	Type_      string `json:"type"`
+	Name string `json:"name"`
+	Type_ string `json:"type"`
 }

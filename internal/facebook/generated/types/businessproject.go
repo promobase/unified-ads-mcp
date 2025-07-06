@@ -6,9 +6,9 @@ import "time"
 
 // BusinessProject represents a Facebook BusinessProject object
 type BusinessProject struct {
-	Business     *Business              `json:"business"`
-	Created_time time.Time              `json:"created_time"`
-	Creator      map[string]interface{} `json:"creator"`
-	Id           string                 `json:"id"`
-	Name         string                 `json:"name"`
+	Business *Business `json:"business"`
+	Created_time time.Time `json:"created_time"`
+	Creator map[string]interface{} `json:"creator"`
+	Id string `json:"id"`
+	Name string `json:"name"`
 }

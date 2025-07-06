@@ -15,23 +15,26 @@ import (
 func GetWithAsset3DTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_withasset3d_get_ tool
-	facebook_withasset3d_get_Tool := mcp.NewTool("facebook_withasset3d_get_",
+
+	// withasset3d_get_ tool
+	withasset3d_get_Tool := mcp.NewTool("withasset3d_get_",
 		mcp.WithDescription("GET  for WithAsset3D"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_withasset3d_get_Tool)
+	tools = append(tools, withasset3d_get_Tool)
+
 
 	return tools
 }
 
 // WithAsset3D handlers
 
-// HandleFacebook_withasset3d_get_ handles the facebook_withasset3d_get_ tool
-func HandleFacebook_withasset3d_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleWithasset3d_get_ handles the withasset3d_get_ tool
+func HandleWithasset3d_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_withasset3d_get_(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_withasset3d_get_(args)
+	result, err := client.Withasset3d_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_withasset3d_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute withasset3d_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_withasset3d_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

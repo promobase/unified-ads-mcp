@@ -15,18 +15,19 @@ import (
 func GetFlightTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_flight_get_channels_to_integrity_status tool
-	facebook_flight_get_channels_to_integrity_statusTool := mcp.NewTool("facebook_flight_get_channels_to_integrity_status",
+
+	// flight_get_channels_to_integrity_status tool
+	flight_get_channels_to_integrity_statusTool := mcp.NewTool("flight_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for Flight"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_flight_get_channels_to_integrity_statusTool)
+	tools = append(tools, flight_get_channels_to_integrity_statusTool)
 
-	// facebook_flight_get_override_details tool
-	facebook_flight_get_override_detailsTool := mcp.NewTool("facebook_flight_get_override_details",
+	// flight_get_override_details tool
+	flight_get_override_detailsTool := mcp.NewTool("flight_get_override_details",
 		mcp.WithDescription("GET override_details for Flight"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -40,30 +41,30 @@ func GetFlightTools(accessToken string) []mcp.Tool {
 			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
 		),
 	)
-	tools = append(tools, facebook_flight_get_override_detailsTool)
+	tools = append(tools, flight_get_override_detailsTool)
 
-	// facebook_flight_get_videos_metadata tool
-	facebook_flight_get_videos_metadataTool := mcp.NewTool("facebook_flight_get_videos_metadata",
+	// flight_get_videos_metadata tool
+	flight_get_videos_metadataTool := mcp.NewTool("flight_get_videos_metadata",
 		mcp.WithDescription("GET videos_metadata for Flight"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_flight_get_videos_metadataTool)
+	tools = append(tools, flight_get_videos_metadataTool)
 
-	// facebook_flight_get_ tool
-	facebook_flight_get_Tool := mcp.NewTool("facebook_flight_get_",
+	// flight_get_ tool
+	flight_get_Tool := mcp.NewTool("flight_get_",
 		mcp.WithDescription("GET  for Flight"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_flight_get_Tool)
+	tools = append(tools, flight_get_Tool)
 
-	// facebook_flight_post_ tool
-	facebook_flight_post_Tool := mcp.NewTool("facebook_flight_post_",
+	// flight_post_ tool
+	flight_post_Tool := mcp.NewTool("flight_post_",
 		mcp.WithDescription("POST  for Flight"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -97,15 +98,17 @@ func GetFlightTools(accessToken string) []mcp.Tool {
 			mcp.Description("url parameter for "),
 		),
 	)
-	tools = append(tools, facebook_flight_post_Tool)
+	tools = append(tools, flight_post_Tool)
+
 
 	return tools
 }
 
 // Flight handlers
 
-// HandleFacebook_flight_get_channels_to_integrity_status handles the facebook_flight_get_channels_to_integrity_status tool
-func HandleFacebook_flight_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleFlight_get_channels_to_integrity_status handles the flight_get_channels_to_integrity_status tool
+func HandleFlight_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -118,10 +121,12 @@ func HandleFacebook_flight_get_channels_to_integrity_status(ctx context.Context,
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_flight_get_channels_to_integrity_status(args)
+	result, err := client.Flight_get_channels_to_integrity_status(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_flight_get_channels_to_integrity_status: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute flight_get_channels_to_integrity_status: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -133,8 +138,9 @@ func HandleFacebook_flight_get_channels_to_integrity_status(ctx context.Context,
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_flight_get_override_details handles the facebook_flight_get_override_details tool
-func HandleFacebook_flight_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleFlight_get_override_details handles the flight_get_override_details tool
+func HandleFlight_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -158,10 +164,12 @@ func HandleFacebook_flight_get_override_details(ctx context.Context, request mcp
 		args["type"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_flight_get_override_details(args)
+	result, err := client.Flight_get_override_details(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_flight_get_override_details: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute flight_get_override_details: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -173,8 +181,9 @@ func HandleFacebook_flight_get_override_details(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_flight_get_videos_metadata handles the facebook_flight_get_videos_metadata tool
-func HandleFacebook_flight_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleFlight_get_videos_metadata handles the flight_get_videos_metadata tool
+func HandleFlight_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -187,10 +196,12 @@ func HandleFacebook_flight_get_videos_metadata(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_flight_get_videos_metadata(args)
+	result, err := client.Flight_get_videos_metadata(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_flight_get_videos_metadata: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute flight_get_videos_metadata: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -202,8 +213,9 @@ func HandleFacebook_flight_get_videos_metadata(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_flight_get_ handles the facebook_flight_get_ tool
-func HandleFacebook_flight_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleFlight_get_ handles the flight_get_ tool
+func HandleFlight_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -216,10 +228,12 @@ func HandleFacebook_flight_get_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_flight_get_(args)
+	result, err := client.Flight_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_flight_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute flight_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -231,8 +245,9 @@ func HandleFacebook_flight_get_(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_flight_post_ handles the facebook_flight_post_ tool
-func HandleFacebook_flight_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleFlight_post_ handles the flight_post_ tool
+func HandleFlight_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -291,10 +306,12 @@ func HandleFacebook_flight_post_(ctx context.Context, request mcp.CallToolReques
 		args["url"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_flight_post_(args)
+	result, err := client.Flight_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_flight_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute flight_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -305,3 +322,4 @@ func HandleFacebook_flight_post_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

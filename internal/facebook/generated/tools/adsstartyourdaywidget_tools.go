@@ -15,23 +15,26 @@ import (
 func GetAdsStartYourDayWidgetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adsstartyourdaywidget_get_ tool
-	facebook_adsstartyourdaywidget_get_Tool := mcp.NewTool("facebook_adsstartyourdaywidget_get_",
+
+	// adsstartyourdaywidget_get_ tool
+	adsstartyourdaywidget_get_Tool := mcp.NewTool("adsstartyourdaywidget_get_",
 		mcp.WithDescription("GET  for AdsStartYourDayWidget"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adsstartyourdaywidget_get_Tool)
+	tools = append(tools, adsstartyourdaywidget_get_Tool)
+
 
 	return tools
 }
 
 // AdsStartYourDayWidget handlers
 
-// HandleFacebook_adsstartyourdaywidget_get_ handles the facebook_adsstartyourdaywidget_get_ tool
-func HandleFacebook_adsstartyourdaywidget_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdsstartyourdaywidget_get_ handles the adsstartyourdaywidget_get_ tool
+func HandleAdsstartyourdaywidget_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_adsstartyourdaywidget_get_(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adsstartyourdaywidget_get_(args)
+	result, err := client.Adsstartyourdaywidget_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adsstartyourdaywidget_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adsstartyourdaywidget_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_adsstartyourdaywidget_get_(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

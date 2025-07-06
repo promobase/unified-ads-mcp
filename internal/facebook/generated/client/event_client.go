@@ -21,15 +21,19 @@ func NewEventClient(accessToken string) *EventClient {
 	}
 }
 
-// facebook_event_get_comments GET comments for Event
-func (c *EventClient) Facebook_event_get_comments(args map[string]interface{}) (interface{}, error) {
+
+// event_get_comments GET comments for Event
+func (c *EventClient) Event_get_comments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -60,15 +64,19 @@ func (c *EventClient) Facebook_event_get_comments(args map[string]interface{}) (
 	return result, nil
 }
 
-// facebook_event_get_feed GET feed for Event
-func (c *EventClient) Facebook_event_get_feed(args map[string]interface{}) (interface{}, error) {
+
+// event_get_feed GET feed for Event
+func (c *EventClient) Event_get_feed(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "feed")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -99,15 +107,19 @@ func (c *EventClient) Facebook_event_get_feed(args map[string]interface{}) (inte
 	return result, nil
 }
 
-// facebook_event_get_live_videos GET live_videos for Event
-func (c *EventClient) Facebook_event_get_live_videos(args map[string]interface{}) (interface{}, error) {
+
+// event_get_live_videos GET live_videos for Event
+func (c *EventClient) Event_get_live_videos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "live_videos")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -138,9 +150,11 @@ func (c *EventClient) Facebook_event_get_live_videos(args map[string]interface{}
 	return result, nil
 }
 
-// facebook_event_post_live_videos POST live_videos for Event
-func (c *EventClient) Facebook_event_post_live_videos(args map[string]interface{}) (interface{}, error) {
+
+// event_post_live_videos POST live_videos for Event
+func (c *EventClient) Event_post_live_videos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "live_videos")
@@ -208,6 +222,7 @@ func (c *EventClient) Facebook_event_post_live_videos(args map[string]interface{
 		urlParams.Set("title", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -238,15 +253,19 @@ func (c *EventClient) Facebook_event_post_live_videos(args map[string]interface{
 	return result, nil
 }
 
-// facebook_event_get_photos GET photos for Event
-func (c *EventClient) Facebook_event_get_photos(args map[string]interface{}) (interface{}, error) {
+
+// event_get_photos GET photos for Event
+func (c *EventClient) Event_get_photos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "photos")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -277,15 +296,19 @@ func (c *EventClient) Facebook_event_get_photos(args map[string]interface{}) (in
 	return result, nil
 }
 
-// facebook_event_get_picture GET picture for Event
-func (c *EventClient) Facebook_event_get_picture(args map[string]interface{}) (interface{}, error) {
+
+// event_get_picture GET picture for Event
+func (c *EventClient) Event_get_picture(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "picture")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -316,15 +339,19 @@ func (c *EventClient) Facebook_event_get_picture(args map[string]interface{}) (i
 	return result, nil
 }
 
-// facebook_event_get_posts GET posts for Event
-func (c *EventClient) Facebook_event_get_posts(args map[string]interface{}) (interface{}, error) {
+
+// event_get_posts GET posts for Event
+func (c *EventClient) Event_get_posts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "posts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -355,15 +382,19 @@ func (c *EventClient) Facebook_event_get_posts(args map[string]interface{}) (int
 	return result, nil
 }
 
-// facebook_event_get_roles GET roles for Event
-func (c *EventClient) Facebook_event_get_roles(args map[string]interface{}) (interface{}, error) {
+
+// event_get_roles GET roles for Event
+func (c *EventClient) Event_get_roles(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "roles")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -394,15 +425,19 @@ func (c *EventClient) Facebook_event_get_roles(args map[string]interface{}) (int
 	return result, nil
 }
 
-// facebook_event_get_ticket_tiers GET ticket_tiers for Event
-func (c *EventClient) Facebook_event_get_ticket_tiers(args map[string]interface{}) (interface{}, error) {
+
+// event_get_ticket_tiers GET ticket_tiers for Event
+func (c *EventClient) Event_get_ticket_tiers(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ticket_tiers")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -433,15 +468,19 @@ func (c *EventClient) Facebook_event_get_ticket_tiers(args map[string]interface{
 	return result, nil
 }
 
-// facebook_event_get_videos GET videos for Event
-func (c *EventClient) Facebook_event_get_videos(args map[string]interface{}) (interface{}, error) {
+
+// event_get_videos GET videos for Event
+func (c *EventClient) Event_get_videos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -472,15 +511,19 @@ func (c *EventClient) Facebook_event_get_videos(args map[string]interface{}) (in
 	return result, nil
 }
 
-// facebook_event_get_ GET  for Event
-func (c *EventClient) Facebook_event_get_(args map[string]interface{}) (interface{}, error) {
+
+// event_get_ GET  for Event
+func (c *EventClient) Event_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -510,3 +553,4 @@ func (c *EventClient) Facebook_event_get_(args map[string]interface{}) (interfac
 
 	return result, nil
 }
+

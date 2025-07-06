@@ -4,9 +4,9 @@ package types
 
 // URL represents a Facebook URL object
 type URL struct {
-	Engagement            map[string]interface{} `json:"engagement"`
-	Id                    string                 `json:"id"`
-	Og_object             map[string]interface{} `json:"og_object"`
+	Engagement map[string]interface{} `json:"engagement"`
+	Id string `json:"id"`
+	Og_object map[string]interface{} `json:"og_object"`
 	Ownership_permissions map[string]interface{} `json:"ownership_permissions"`
-	Scopes                map[string]interface{} `json:"scopes"`
+	Scopes map[string]interface{} `json:"scopes"`
 }

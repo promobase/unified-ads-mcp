@@ -15,18 +15,19 @@ import (
 func GetDestinationTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_destination_get_channels_to_integrity_status tool
-	facebook_destination_get_channels_to_integrity_statusTool := mcp.NewTool("facebook_destination_get_channels_to_integrity_status",
+
+	// destination_get_channels_to_integrity_status tool
+	destination_get_channels_to_integrity_statusTool := mcp.NewTool("destination_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for Destination"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_destination_get_channels_to_integrity_statusTool)
+	tools = append(tools, destination_get_channels_to_integrity_statusTool)
 
-	// facebook_destination_get_override_details tool
-	facebook_destination_get_override_detailsTool := mcp.NewTool("facebook_destination_get_override_details",
+	// destination_get_override_details tool
+	destination_get_override_detailsTool := mcp.NewTool("destination_get_override_details",
 		mcp.WithDescription("GET override_details for Destination"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -40,35 +41,37 @@ func GetDestinationTools(accessToken string) []mcp.Tool {
 			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
 		),
 	)
-	tools = append(tools, facebook_destination_get_override_detailsTool)
+	tools = append(tools, destination_get_override_detailsTool)
 
-	// facebook_destination_get_videos_metadata tool
-	facebook_destination_get_videos_metadataTool := mcp.NewTool("facebook_destination_get_videos_metadata",
+	// destination_get_videos_metadata tool
+	destination_get_videos_metadataTool := mcp.NewTool("destination_get_videos_metadata",
 		mcp.WithDescription("GET videos_metadata for Destination"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_destination_get_videos_metadataTool)
+	tools = append(tools, destination_get_videos_metadataTool)
 
-	// facebook_destination_get_ tool
-	facebook_destination_get_Tool := mcp.NewTool("facebook_destination_get_",
+	// destination_get_ tool
+	destination_get_Tool := mcp.NewTool("destination_get_",
 		mcp.WithDescription("GET  for Destination"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_destination_get_Tool)
+	tools = append(tools, destination_get_Tool)
+
 
 	return tools
 }
 
 // Destination handlers
 
-// HandleFacebook_destination_get_channels_to_integrity_status handles the facebook_destination_get_channels_to_integrity_status tool
-func HandleFacebook_destination_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleDestination_get_channels_to_integrity_status handles the destination_get_channels_to_integrity_status tool
+func HandleDestination_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -81,10 +84,12 @@ func HandleFacebook_destination_get_channels_to_integrity_status(ctx context.Con
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_destination_get_channels_to_integrity_status(args)
+	result, err := client.Destination_get_channels_to_integrity_status(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_destination_get_channels_to_integrity_status: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute destination_get_channels_to_integrity_status: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -96,8 +101,9 @@ func HandleFacebook_destination_get_channels_to_integrity_status(ctx context.Con
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_destination_get_override_details handles the facebook_destination_get_override_details tool
-func HandleFacebook_destination_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleDestination_get_override_details handles the destination_get_override_details tool
+func HandleDestination_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -121,10 +127,12 @@ func HandleFacebook_destination_get_override_details(ctx context.Context, reques
 		args["type"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_destination_get_override_details(args)
+	result, err := client.Destination_get_override_details(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_destination_get_override_details: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute destination_get_override_details: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -136,8 +144,9 @@ func HandleFacebook_destination_get_override_details(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_destination_get_videos_metadata handles the facebook_destination_get_videos_metadata tool
-func HandleFacebook_destination_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleDestination_get_videos_metadata handles the destination_get_videos_metadata tool
+func HandleDestination_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -150,10 +159,12 @@ func HandleFacebook_destination_get_videos_metadata(ctx context.Context, request
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_destination_get_videos_metadata(args)
+	result, err := client.Destination_get_videos_metadata(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_destination_get_videos_metadata: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute destination_get_videos_metadata: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -165,8 +176,9 @@ func HandleFacebook_destination_get_videos_metadata(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_destination_get_ handles the facebook_destination_get_ tool
-func HandleFacebook_destination_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleDestination_get_ handles the destination_get_ tool
+func HandleDestination_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -179,10 +191,12 @@ func HandleFacebook_destination_get_(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_destination_get_(args)
+	result, err := client.Destination_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_destination_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute destination_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -193,3 +207,4 @@ func HandleFacebook_destination_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -7,10 +7,10 @@ import "time"
 // VideoCopyrightRule represents a Facebook VideoCopyrightRule object
 type VideoCopyrightRule struct {
 	Condition_groups []VideoCopyrightConditionGroup `json:"condition_groups"`
-	Copyrights       []string                       `json:"copyrights"`
-	Created_date     time.Time                      `json:"created_date"`
-	Creator          *User                          `json:"creator"`
-	Id               string                         `json:"id"`
-	Is_in_migration  bool                           `json:"is_in_migration"`
-	Name             string                         `json:"name"`
+	Copyrights []string `json:"copyrights"`
+	Created_date time.Time `json:"created_date"`
+	Creator *User `json:"creator"`
+	Id string `json:"id"`
+	Is_in_migration bool `json:"is_in_migration"`
+	Name string `json:"name"`
 }

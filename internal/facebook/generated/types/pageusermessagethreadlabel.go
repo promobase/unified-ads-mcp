@@ -4,6 +4,6 @@ package types
 
 // PageUserMessageThreadLabel represents a Facebook PageUserMessageThreadLabel object
 type PageUserMessageThreadLabel struct {
-	Id              string `json:"id"`
+	Id string `json:"id"`
 	Page_label_name string `json:"page_label_name"`
 }

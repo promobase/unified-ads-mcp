@@ -15,23 +15,26 @@ import (
 func GetWebsiteCreativeAssetSourceTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_websitecreativeassetsource_get_ tool
-	facebook_websitecreativeassetsource_get_Tool := mcp.NewTool("facebook_websitecreativeassetsource_get_",
+
+	// websitecreativeassetsource_get_ tool
+	websitecreativeassetsource_get_Tool := mcp.NewTool("websitecreativeassetsource_get_",
 		mcp.WithDescription("GET  for WebsiteCreativeAssetSource"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_websitecreativeassetsource_get_Tool)
+	tools = append(tools, websitecreativeassetsource_get_Tool)
+
 
 	return tools
 }
 
 // WebsiteCreativeAssetSource handlers
 
-// HandleFacebook_websitecreativeassetsource_get_ handles the facebook_websitecreativeassetsource_get_ tool
-func HandleFacebook_websitecreativeassetsource_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleWebsitecreativeassetsource_get_ handles the websitecreativeassetsource_get_ tool
+func HandleWebsitecreativeassetsource_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_websitecreativeassetsource_get_(ctx context.Context, request
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_websitecreativeassetsource_get_(args)
+	result, err := client.Websitecreativeassetsource_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_websitecreativeassetsource_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute websitecreativeassetsource_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_websitecreativeassetsource_get_(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

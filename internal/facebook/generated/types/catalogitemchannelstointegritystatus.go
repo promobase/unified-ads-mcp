@@ -4,6 +4,6 @@ package types
 
 // CatalogItemChannelsToIntegrityStatus represents a Facebook CatalogItemChannelsToIntegrityStatus object
 type CatalogItemChannelsToIntegrityStatus struct {
-	Channels              []string               `json:"channels"`
+	Channels []string `json:"channels"`
 	Rejection_information map[string]interface{} `json:"rejection_information"`
 }

@@ -4,8 +4,8 @@ package types
 
 // EventRegistrationSetting represents a Facebook EventRegistrationSetting object
 type EventRegistrationSetting struct {
-	Id              string   `json:"id"`
-	Questions       string   `json:"questions"`
-	Target_type     string   `json:"target_type"`
+	Id string `json:"id"`
+	Questions string `json:"questions"`
+	Target_type string `json:"target_type"`
 	Ticket_tier_ids []string `json:"ticket_tier_ids"`
 }

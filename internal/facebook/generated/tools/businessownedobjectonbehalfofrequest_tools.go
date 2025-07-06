@@ -15,23 +15,26 @@ import (
 func GetBusinessOwnedObjectOnBehalfOfRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_businessownedobjectonbehalfofrequest_get_ tool
-	facebook_businessownedobjectonbehalfofrequest_get_Tool := mcp.NewTool("facebook_businessownedobjectonbehalfofrequest_get_",
+
+	// businessownedobjectonbehalfofrequest_get_ tool
+	businessownedobjectonbehalfofrequest_get_Tool := mcp.NewTool("businessownedobjectonbehalfofrequest_get_",
 		mcp.WithDescription("GET  for BusinessOwnedObjectOnBehalfOfRequest"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_businessownedobjectonbehalfofrequest_get_Tool)
+	tools = append(tools, businessownedobjectonbehalfofrequest_get_Tool)
+
 
 	return tools
 }
 
 // BusinessOwnedObjectOnBehalfOfRequest handlers
 
-// HandleFacebook_businessownedobjectonbehalfofrequest_get_ handles the facebook_businessownedobjectonbehalfofrequest_get_ tool
-func HandleFacebook_businessownedobjectonbehalfofrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBusinessownedobjectonbehalfofrequest_get_ handles the businessownedobjectonbehalfofrequest_get_ tool
+func HandleBusinessownedobjectonbehalfofrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_businessownedobjectonbehalfofrequest_get_(ctx context.Contex
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessownedobjectonbehalfofrequest_get_(args)
+	result, err := client.Businessownedobjectonbehalfofrequest_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessownedobjectonbehalfofrequest_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessownedobjectonbehalfofrequest_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_businessownedobjectonbehalfofrequest_get_(ctx context.Contex
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

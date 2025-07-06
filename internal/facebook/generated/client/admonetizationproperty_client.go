@@ -21,14 +21,16 @@ func NewAdMonetizationPropertyClient(accessToken string) *AdMonetizationProperty
 	}
 }
 
-// facebook_admonetizationproperty_get_adnetworkanalytics GET adnetworkanalytics for AdMonetizationProperty
-func (c *AdMonetizationPropertyClient) Facebook_admonetizationproperty_get_adnetworkanalytics(args map[string]interface{}) (interface{}, error) {
+
+// admonetizationproperty_get_adnetworkanalytics GET adnetworkanalytics for AdMonetizationProperty
+func (c *AdMonetizationPropertyClient) Admonetizationproperty_get_adnetworkanalytics(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	metrics, ok := args["metrics"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: metrics")
 	}
 	_ = metrics // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adnetworkanalytics")
@@ -66,6 +68,7 @@ func (c *AdMonetizationPropertyClient) Facebook_admonetizationproperty_get_adnet
 		urlParams.Set("until", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -96,14 +99,16 @@ func (c *AdMonetizationPropertyClient) Facebook_admonetizationproperty_get_adnet
 	return result, nil
 }
 
-// facebook_admonetizationproperty_post_adnetworkanalytics POST adnetworkanalytics for AdMonetizationProperty
-func (c *AdMonetizationPropertyClient) Facebook_admonetizationproperty_post_adnetworkanalytics(args map[string]interface{}) (interface{}, error) {
+
+// admonetizationproperty_post_adnetworkanalytics POST adnetworkanalytics for AdMonetizationProperty
+func (c *AdMonetizationPropertyClient) Admonetizationproperty_post_adnetworkanalytics(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	metrics, ok := args["metrics"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: metrics")
 	}
 	_ = metrics // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adnetworkanalytics")
@@ -138,6 +143,7 @@ func (c *AdMonetizationPropertyClient) Facebook_admonetizationproperty_post_adne
 		urlParams.Set("until", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -168,9 +174,11 @@ func (c *AdMonetizationPropertyClient) Facebook_admonetizationproperty_post_adne
 	return result, nil
 }
 
-// facebook_admonetizationproperty_get_adnetworkanalytics_results GET adnetworkanalytics_results for AdMonetizationProperty
-func (c *AdMonetizationPropertyClient) Facebook_admonetizationproperty_get_adnetworkanalytics_results(args map[string]interface{}) (interface{}, error) {
+
+// admonetizationproperty_get_adnetworkanalytics_results GET adnetworkanalytics_results for AdMonetizationProperty
+func (c *AdMonetizationPropertyClient) Admonetizationproperty_get_adnetworkanalytics_results(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adnetworkanalytics_results")
@@ -181,6 +189,7 @@ func (c *AdMonetizationPropertyClient) Facebook_admonetizationproperty_get_adnet
 		urlParams.Set("query_ids", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -211,15 +220,19 @@ func (c *AdMonetizationPropertyClient) Facebook_admonetizationproperty_get_adnet
 	return result, nil
 }
 
-// facebook_admonetizationproperty_get_ GET  for AdMonetizationProperty
-func (c *AdMonetizationPropertyClient) Facebook_admonetizationproperty_get_(args map[string]interface{}) (interface{}, error) {
+
+// admonetizationproperty_get_ GET  for AdMonetizationProperty
+func (c *AdMonetizationPropertyClient) Admonetizationproperty_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -249,3 +262,4 @@ func (c *AdMonetizationPropertyClient) Facebook_admonetizationproperty_get_(args
 
 	return result, nil
 }
+

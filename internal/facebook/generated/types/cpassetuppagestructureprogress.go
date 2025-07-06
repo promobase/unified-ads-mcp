@@ -4,7 +4,7 @@ package types
 
 // CPASSetupPageStructureProgress represents a Facebook CPASSetupPageStructureProgress object
 type CPASSetupPageStructureProgress struct {
-	Id     string                   `json:"id"`
+	Id string `json:"id"`
 	Issues []map[string]interface{} `json:"issues"`
-	Name   string                   `json:"name"`
+	Name string `json:"name"`
 }

@@ -4,8 +4,8 @@ package types
 
 // AdCampaignGroupStructureTree represents a Facebook AdCampaignGroupStructureTree object
 type AdCampaignGroupStructureTree struct {
-	Children     []AdCampaignGroupStructureTree `json:"children"`
-	Id           string                         `json:"id"`
-	Name         string                         `json:"name"`
-	Time_updated int                            `json:"time_updated"`
+	Children []AdCampaignGroupStructureTree `json:"children"`
+	Id string `json:"id"`
+	Name string `json:"name"`
+	Time_updated int `json:"time_updated"`
 }

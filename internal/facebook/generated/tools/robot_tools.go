@@ -15,23 +15,26 @@ import (
 func GetRobotTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_robot_get_ tool
-	facebook_robot_get_Tool := mcp.NewTool("facebook_robot_get_",
+
+	// robot_get_ tool
+	robot_get_Tool := mcp.NewTool("robot_get_",
 		mcp.WithDescription("GET  for Robot"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_robot_get_Tool)
+	tools = append(tools, robot_get_Tool)
+
 
 	return tools
 }
 
 // Robot handlers
 
-// HandleFacebook_robot_get_ handles the facebook_robot_get_ tool
-func HandleFacebook_robot_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleRobot_get_ handles the robot_get_ tool
+func HandleRobot_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_robot_get_(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_robot_get_(args)
+	result, err := client.Robot_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_robot_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute robot_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_robot_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

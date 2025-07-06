@@ -15,23 +15,26 @@ import (
 func GetImageReferenceMatchTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_imagereferencematch_get_ tool
-	facebook_imagereferencematch_get_Tool := mcp.NewTool("facebook_imagereferencematch_get_",
+
+	// imagereferencematch_get_ tool
+	imagereferencematch_get_Tool := mcp.NewTool("imagereferencematch_get_",
 		mcp.WithDescription("GET  for ImageReferenceMatch"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_imagereferencematch_get_Tool)
+	tools = append(tools, imagereferencematch_get_Tool)
+
 
 	return tools
 }
 
 // ImageReferenceMatch handlers
 
-// HandleFacebook_imagereferencematch_get_ handles the facebook_imagereferencematch_get_ tool
-func HandleFacebook_imagereferencematch_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleImagereferencematch_get_ handles the imagereferencematch_get_ tool
+func HandleImagereferencematch_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_imagereferencematch_get_(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_imagereferencematch_get_(args)
+	result, err := client.Imagereferencematch_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_imagereferencematch_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute imagereferencematch_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_imagereferencematch_get_(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

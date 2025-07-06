@@ -15,8 +15,9 @@ import (
 func GetPlaceTopicTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_placetopic_get_ tool
-	facebook_placetopic_get_Tool := mcp.NewTool("facebook_placetopic_get_",
+
+	// placetopic_get_ tool
+	placetopic_get_Tool := mcp.NewTool("placetopic_get_",
 		mcp.WithDescription("GET  for PlaceTopic"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -27,15 +28,17 @@ func GetPlaceTopicTools(accessToken string) []mcp.Tool {
 			mcp.Enum("24", "36", "48", "72"),
 		),
 	)
-	tools = append(tools, facebook_placetopic_get_Tool)
+	tools = append(tools, placetopic_get_Tool)
+
 
 	return tools
 }
 
 // PlaceTopic handlers
 
-// HandleFacebook_placetopic_get_ handles the facebook_placetopic_get_ tool
-func HandleFacebook_placetopic_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePlacetopic_get_ handles the placetopic_get_ tool
+func HandlePlacetopic_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -53,10 +56,12 @@ func HandleFacebook_placetopic_get_(ctx context.Context, request mcp.CallToolReq
 		args["icon_size"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_placetopic_get_(args)
+	result, err := client.Placetopic_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_placetopic_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute placetopic_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -67,3 +72,4 @@ func HandleFacebook_placetopic_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

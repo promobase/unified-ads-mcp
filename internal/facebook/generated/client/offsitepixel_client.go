@@ -21,9 +21,11 @@ func NewOffsitePixelClient(accessToken string) *OffsitePixelClient {
 	}
 }
 
-// facebook_offsitepixel_get_ GET  for OffsitePixel
-func (c *OffsitePixelClient) Facebook_offsitepixel_get_(args map[string]interface{}) (interface{}, error) {
+
+// offsitepixel_get_ GET  for OffsitePixel
+func (c *OffsitePixelClient) Offsitepixel_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -33,6 +35,7 @@ func (c *OffsitePixelClient) Facebook_offsitepixel_get_(args map[string]interfac
 	if val, ok := args["value"]; ok {
 		urlParams.Set("value", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -63,3 +66,4 @@ func (c *OffsitePixelClient) Facebook_offsitepixel_get_(args map[string]interfac
 
 	return result, nil
 }
+

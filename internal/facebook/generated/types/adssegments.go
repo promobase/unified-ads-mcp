@@ -4,13 +4,13 @@ package types
 
 // AdsSegments represents a Facebook AdsSegments object
 type AdsSegments struct {
-	Daily_audience_size     int      `json:"daily_audience_size"`
-	Daily_impressions       int      `json:"daily_impressions"`
-	Description             string   `json:"description"`
-	Id                      string   `json:"id"`
-	Name                    string   `json:"name"`
-	Path                    []string `json:"path"`
-	Popularity              float64  `json:"popularity"`
-	Projected_cpm           int      `json:"projected_cpm"`
-	Projected_daily_revenue int      `json:"projected_daily_revenue"`
+	Daily_audience_size int `json:"daily_audience_size"`
+	Daily_impressions int `json:"daily_impressions"`
+	Description string `json:"description"`
+	Id string `json:"id"`
+	Name string `json:"name"`
+	Path []string `json:"path"`
+	Popularity float64 `json:"popularity"`
+	Projected_cpm int `json:"projected_cpm"`
+	Projected_daily_revenue int `json:"projected_daily_revenue"`
 }

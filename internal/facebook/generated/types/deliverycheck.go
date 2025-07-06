@@ -4,8 +4,8 @@ package types
 
 // DeliveryCheck represents a Facebook DeliveryCheck object
 type DeliveryCheck struct {
-	Check_name  string                  `json:"check_name"`
-	Description string                  `json:"description"`
-	Extra_info  *DeliveryCheckExtraInfo `json:"extra_info"`
-	Summary     string                  `json:"summary"`
+	Check_name string `json:"check_name"`
+	Description string `json:"description"`
+	Extra_info *DeliveryCheckExtraInfo `json:"extra_info"`
+	Summary string `json:"summary"`
 }

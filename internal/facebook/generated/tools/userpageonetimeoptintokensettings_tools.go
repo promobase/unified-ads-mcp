@@ -15,23 +15,26 @@ import (
 func GetUserPageOneTimeOptInTokenSettingsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_userpageonetimeoptintokensettings_get_ tool
-	facebook_userpageonetimeoptintokensettings_get_Tool := mcp.NewTool("facebook_userpageonetimeoptintokensettings_get_",
+
+	// userpageonetimeoptintokensettings_get_ tool
+	userpageonetimeoptintokensettings_get_Tool := mcp.NewTool("userpageonetimeoptintokensettings_get_",
 		mcp.WithDescription("GET  for UserPageOneTimeOptInTokenSettings"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_userpageonetimeoptintokensettings_get_Tool)
+	tools = append(tools, userpageonetimeoptintokensettings_get_Tool)
+
 
 	return tools
 }
 
 // UserPageOneTimeOptInTokenSettings handlers
 
-// HandleFacebook_userpageonetimeoptintokensettings_get_ handles the facebook_userpageonetimeoptintokensettings_get_ tool
-func HandleFacebook_userpageonetimeoptintokensettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleUserpageonetimeoptintokensettings_get_ handles the userpageonetimeoptintokensettings_get_ tool
+func HandleUserpageonetimeoptintokensettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_userpageonetimeoptintokensettings_get_(ctx context.Context, 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_userpageonetimeoptintokensettings_get_(args)
+	result, err := client.Userpageonetimeoptintokensettings_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_userpageonetimeoptintokensettings_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute userpageonetimeoptintokensettings_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_userpageonetimeoptintokensettings_get_(ctx context.Context, 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

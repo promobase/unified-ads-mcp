@@ -4,18 +4,18 @@ package types
 
 // AdCreativeLinkDataImageLayerSpec represents a Facebook AdCreativeLinkDataImageLayerSpec object
 type AdCreativeLinkDataImageLayerSpec struct {
-	Blending_mode                 string                 `json:"blending_mode"`
-	Content                       map[string]interface{} `json:"content"`
-	Frame_auto_show_enroll_status string                 `json:"frame_auto_show_enroll_status"`
-	Frame_image_hash              string                 `json:"frame_image_hash"`
-	Frame_source                  string                 `json:"frame_source"`
-	Image_source                  string                 `json:"image_source"`
-	Layer_type                    string                 `json:"layer_type"`
-	Opacity                       int                    `json:"opacity"`
-	Overlay_position              string                 `json:"overlay_position"`
-	Overlay_shape                 string                 `json:"overlay_shape"`
-	Scale                         int                    `json:"scale"`
-	Shape_color                   string                 `json:"shape_color"`
-	Text_color                    string                 `json:"text_color"`
-	Text_font                     string                 `json:"text_font"`
+	Blending_mode string `json:"blending_mode"`
+	Content map[string]interface{} `json:"content"`
+	Frame_auto_show_enroll_status string `json:"frame_auto_show_enroll_status"`
+	Frame_image_hash string `json:"frame_image_hash"`
+	Frame_source string `json:"frame_source"`
+	Image_source string `json:"image_source"`
+	Layer_type string `json:"layer_type"`
+	Opacity int `json:"opacity"`
+	Overlay_position string `json:"overlay_position"`
+	Overlay_shape string `json:"overlay_shape"`
+	Scale int `json:"scale"`
+	Shape_color string `json:"shape_color"`
+	Text_color string `json:"text_color"`
+	Text_font string `json:"text_font"`
 }

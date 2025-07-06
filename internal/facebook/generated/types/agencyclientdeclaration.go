@@ -4,16 +4,16 @@ package types
 
 // AgencyClientDeclaration represents a Facebook AgencyClientDeclaration object
 type AgencyClientDeclaration struct {
-	Agency_representing_client          int    `json:"agency_representing_client"`
-	Client_based_in_france              int    `json:"client_based_in_france"`
-	Client_city                         string `json:"client_city"`
-	Client_country_code                 string `json:"client_country_code"`
-	Client_email_address                string `json:"client_email_address"`
-	Client_name                         string `json:"client_name"`
-	Client_postal_code                  string `json:"client_postal_code"`
-	Client_province                     string `json:"client_province"`
-	Client_street                       string `json:"client_street"`
-	Client_street2                      string `json:"client_street2"`
-	Has_written_mandate_from_advertiser int    `json:"has_written_mandate_from_advertiser"`
-	Is_client_paying_invoices           int    `json:"is_client_paying_invoices"`
+	Agency_representing_client int `json:"agency_representing_client"`
+	Client_based_in_france int `json:"client_based_in_france"`
+	Client_city string `json:"client_city"`
+	Client_country_code string `json:"client_country_code"`
+	Client_email_address string `json:"client_email_address"`
+	Client_name string `json:"client_name"`
+	Client_postal_code string `json:"client_postal_code"`
+	Client_province string `json:"client_province"`
+	Client_street string `json:"client_street"`
+	Client_street2 string `json:"client_street2"`
+	Has_written_mandate_from_advertiser int `json:"has_written_mandate_from_advertiser"`
+	Is_client_paying_invoices int `json:"is_client_paying_invoices"`
 }

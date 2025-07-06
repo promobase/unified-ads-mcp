@@ -4,11 +4,11 @@ package types
 
 // AudienceSharingRecipientAccounts represents a Facebook AudienceSharingRecipientAccounts object
 type AudienceSharingRecipientAccounts struct {
-	Account_id                             string `json:"account_id"`
-	Account_name                           string `json:"account_name"`
-	Account_type                           string `json:"account_type"`
-	Business_id                            string `json:"business_id"`
-	Business_name                          string `json:"business_name"`
-	Can_ad_account_use_lookalike_container bool   `json:"can_ad_account_use_lookalike_container"`
-	Sharing_agreement_status               int    `json:"sharing_agreement_status"`
+	Account_id string `json:"account_id"`
+	Account_name string `json:"account_name"`
+	Account_type string `json:"account_type"`
+	Business_id string `json:"business_id"`
+	Business_name string `json:"business_name"`
+	Can_ad_account_use_lookalike_container bool `json:"can_ad_account_use_lookalike_container"`
+	Sharing_agreement_status int `json:"sharing_agreement_status"`
 }

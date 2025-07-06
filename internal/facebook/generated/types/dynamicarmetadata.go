@@ -4,16 +4,16 @@ package types
 
 // DynamicARMetadata represents a Facebook DynamicARMetadata object
 type DynamicARMetadata struct {
-	Anchor_point          []float64 `json:"anchor_point"`
-	Container_effect_enum int       `json:"container_effect_enum"`
-	Effect_icon_url       string    `json:"effect_icon_url"`
-	Effect_id             string    `json:"effect_id"`
-	Id                    string    `json:"id"`
-	Platforms             []string  `json:"platforms"`
-	Scale_factor          []float64 `json:"scale_factor"`
-	Shadow_texture_url    string    `json:"shadow_texture_url"`
-	Source_url            string    `json:"source_url"`
-	State                 string    `json:"state"`
-	Tags                  []string  `json:"tags"`
-	Variant_picker_url    string    `json:"variant_picker_url"`
+	Anchor_point []float64 `json:"anchor_point"`
+	Container_effect_enum int `json:"container_effect_enum"`
+	Effect_icon_url string `json:"effect_icon_url"`
+	Effect_id string `json:"effect_id"`
+	Id string `json:"id"`
+	Platforms []string `json:"platforms"`
+	Scale_factor []float64 `json:"scale_factor"`
+	Shadow_texture_url string `json:"shadow_texture_url"`
+	Source_url string `json:"source_url"`
+	State string `json:"state"`
+	Tags []string `json:"tags"`
+	Variant_picker_url string `json:"variant_picker_url"`
 }

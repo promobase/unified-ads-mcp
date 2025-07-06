@@ -4,10 +4,10 @@ package types
 
 // CollaborativeAdsShareSettings represents a Facebook CollaborativeAdsShareSettings object
 type CollaborativeAdsShareSettings struct {
-	Agency_business          *Business `json:"agency_business"`
-	Id                       string    `json:"id"`
-	Product_catalog_proxy_id string    `json:"product_catalog_proxy_id"`
-	Utm_campaign             string    `json:"utm_campaign"`
-	Utm_medium               string    `json:"utm_medium"`
-	Utm_source               string    `json:"utm_source"`
+	Agency_business *Business `json:"agency_business"`
+	Id string `json:"id"`
+	Product_catalog_proxy_id string `json:"product_catalog_proxy_id"`
+	Utm_campaign string `json:"utm_campaign"`
+	Utm_medium string `json:"utm_medium"`
+	Utm_source string `json:"utm_source"`
 }

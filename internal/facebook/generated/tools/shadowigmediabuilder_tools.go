@@ -15,23 +15,26 @@ import (
 func GetShadowIGMediaBuilderTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_shadowigmediabuilder_get_ tool
-	facebook_shadowigmediabuilder_get_Tool := mcp.NewTool("facebook_shadowigmediabuilder_get_",
+
+	// shadowigmediabuilder_get_ tool
+	shadowigmediabuilder_get_Tool := mcp.NewTool("shadowigmediabuilder_get_",
 		mcp.WithDescription("GET  for ShadowIGMediaBuilder"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_shadowigmediabuilder_get_Tool)
+	tools = append(tools, shadowigmediabuilder_get_Tool)
+
 
 	return tools
 }
 
 // ShadowIGMediaBuilder handlers
 
-// HandleFacebook_shadowigmediabuilder_get_ handles the facebook_shadowigmediabuilder_get_ tool
-func HandleFacebook_shadowigmediabuilder_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleShadowigmediabuilder_get_ handles the shadowigmediabuilder_get_ tool
+func HandleShadowigmediabuilder_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_shadowigmediabuilder_get_(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_shadowigmediabuilder_get_(args)
+	result, err := client.Shadowigmediabuilder_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_shadowigmediabuilder_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute shadowigmediabuilder_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_shadowigmediabuilder_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -15,8 +15,9 @@ import (
 func GetAdgroupFacebookFeedbackTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adgroupfacebookfeedback_get_comments tool
-	facebook_adgroupfacebookfeedback_get_commentsTool := mcp.NewTool("facebook_adgroupfacebookfeedback_get_comments",
+
+	// adgroupfacebookfeedback_get_comments tool
+	adgroupfacebookfeedback_get_commentsTool := mcp.NewTool("adgroupfacebookfeedback_get_comments",
 		mcp.WithDescription("GET comments for AdgroupFacebookFeedback"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -27,15 +28,17 @@ func GetAdgroupFacebookFeedbackTools(accessToken string) []mcp.Tool {
 			mcp.Enum("chronological", "reverse_chronological"),
 		),
 	)
-	tools = append(tools, facebook_adgroupfacebookfeedback_get_commentsTool)
+	tools = append(tools, adgroupfacebookfeedback_get_commentsTool)
+
 
 	return tools
 }
 
 // AdgroupFacebookFeedback handlers
 
-// HandleFacebook_adgroupfacebookfeedback_get_comments handles the facebook_adgroupfacebookfeedback_get_comments tool
-func HandleFacebook_adgroupfacebookfeedback_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdgroupfacebookfeedback_get_comments handles the adgroupfacebookfeedback_get_comments tool
+func HandleAdgroupfacebookfeedback_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -53,10 +56,12 @@ func HandleFacebook_adgroupfacebookfeedback_get_comments(ctx context.Context, re
 		args["order"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adgroupfacebookfeedback_get_comments(args)
+	result, err := client.Adgroupfacebookfeedback_get_comments(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adgroupfacebookfeedback_get_comments: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adgroupfacebookfeedback_get_comments: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -67,3 +72,4 @@ func HandleFacebook_adgroupfacebookfeedback_get_comments(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

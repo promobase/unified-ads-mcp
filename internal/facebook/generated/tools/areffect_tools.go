@@ -15,23 +15,26 @@ import (
 func GetAREffectTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_areffect_get_ tool
-	facebook_areffect_get_Tool := mcp.NewTool("facebook_areffect_get_",
+
+	// areffect_get_ tool
+	areffect_get_Tool := mcp.NewTool("areffect_get_",
 		mcp.WithDescription("GET  for AREffect"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_areffect_get_Tool)
+	tools = append(tools, areffect_get_Tool)
+
 
 	return tools
 }
 
 // AREffect handlers
 
-// HandleFacebook_areffect_get_ handles the facebook_areffect_get_ tool
-func HandleFacebook_areffect_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAreffect_get_ handles the areffect_get_ tool
+func HandleAreffect_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_areffect_get_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_areffect_get_(args)
+	result, err := client.Areffect_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_areffect_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute areffect_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_areffect_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

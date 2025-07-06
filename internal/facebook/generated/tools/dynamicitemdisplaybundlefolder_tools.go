@@ -15,23 +15,26 @@ import (
 func GetDynamicItemDisplayBundleFolderTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_dynamicitemdisplaybundlefolder_get_ tool
-	facebook_dynamicitemdisplaybundlefolder_get_Tool := mcp.NewTool("facebook_dynamicitemdisplaybundlefolder_get_",
+
+	// dynamicitemdisplaybundlefolder_get_ tool
+	dynamicitemdisplaybundlefolder_get_Tool := mcp.NewTool("dynamicitemdisplaybundlefolder_get_",
 		mcp.WithDescription("GET  for DynamicItemDisplayBundleFolder"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_dynamicitemdisplaybundlefolder_get_Tool)
+	tools = append(tools, dynamicitemdisplaybundlefolder_get_Tool)
+
 
 	return tools
 }
 
 // DynamicItemDisplayBundleFolder handlers
 
-// HandleFacebook_dynamicitemdisplaybundlefolder_get_ handles the facebook_dynamicitemdisplaybundlefolder_get_ tool
-func HandleFacebook_dynamicitemdisplaybundlefolder_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleDynamicitemdisplaybundlefolder_get_ handles the dynamicitemdisplaybundlefolder_get_ tool
+func HandleDynamicitemdisplaybundlefolder_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_dynamicitemdisplaybundlefolder_get_(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_dynamicitemdisplaybundlefolder_get_(args)
+	result, err := client.Dynamicitemdisplaybundlefolder_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_dynamicitemdisplaybundlefolder_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute dynamicitemdisplaybundlefolder_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_dynamicitemdisplaybundlefolder_get_(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

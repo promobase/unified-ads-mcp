@@ -15,18 +15,19 @@ import (
 func GetTransactableItemTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_transactableitem_get_channels_to_integrity_status tool
-	facebook_transactableitem_get_channels_to_integrity_statusTool := mcp.NewTool("facebook_transactableitem_get_channels_to_integrity_status",
+
+	// transactableitem_get_channels_to_integrity_status tool
+	transactableitem_get_channels_to_integrity_statusTool := mcp.NewTool("transactableitem_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for TransactableItem"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_transactableitem_get_channels_to_integrity_statusTool)
+	tools = append(tools, transactableitem_get_channels_to_integrity_statusTool)
 
-	// facebook_transactableitem_get_override_details tool
-	facebook_transactableitem_get_override_detailsTool := mcp.NewTool("facebook_transactableitem_get_override_details",
+	// transactableitem_get_override_details tool
+	transactableitem_get_override_detailsTool := mcp.NewTool("transactableitem_get_override_details",
 		mcp.WithDescription("GET override_details for TransactableItem"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -40,25 +41,27 @@ func GetTransactableItemTools(accessToken string) []mcp.Tool {
 			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
 		),
 	)
-	tools = append(tools, facebook_transactableitem_get_override_detailsTool)
+	tools = append(tools, transactableitem_get_override_detailsTool)
 
-	// facebook_transactableitem_get_ tool
-	facebook_transactableitem_get_Tool := mcp.NewTool("facebook_transactableitem_get_",
+	// transactableitem_get_ tool
+	transactableitem_get_Tool := mcp.NewTool("transactableitem_get_",
 		mcp.WithDescription("GET  for TransactableItem"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_transactableitem_get_Tool)
+	tools = append(tools, transactableitem_get_Tool)
+
 
 	return tools
 }
 
 // TransactableItem handlers
 
-// HandleFacebook_transactableitem_get_channels_to_integrity_status handles the facebook_transactableitem_get_channels_to_integrity_status tool
-func HandleFacebook_transactableitem_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleTransactableitem_get_channels_to_integrity_status handles the transactableitem_get_channels_to_integrity_status tool
+func HandleTransactableitem_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -71,10 +74,12 @@ func HandleFacebook_transactableitem_get_channels_to_integrity_status(ctx contex
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_transactableitem_get_channels_to_integrity_status(args)
+	result, err := client.Transactableitem_get_channels_to_integrity_status(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_transactableitem_get_channels_to_integrity_status: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute transactableitem_get_channels_to_integrity_status: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -86,8 +91,9 @@ func HandleFacebook_transactableitem_get_channels_to_integrity_status(ctx contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_transactableitem_get_override_details handles the facebook_transactableitem_get_override_details tool
-func HandleFacebook_transactableitem_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleTransactableitem_get_override_details handles the transactableitem_get_override_details tool
+func HandleTransactableitem_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -111,10 +117,12 @@ func HandleFacebook_transactableitem_get_override_details(ctx context.Context, r
 		args["type"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_transactableitem_get_override_details(args)
+	result, err := client.Transactableitem_get_override_details(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_transactableitem_get_override_details: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute transactableitem_get_override_details: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -126,8 +134,9 @@ func HandleFacebook_transactableitem_get_override_details(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_transactableitem_get_ handles the facebook_transactableitem_get_ tool
-func HandleFacebook_transactableitem_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleTransactableitem_get_ handles the transactableitem_get_ tool
+func HandleTransactableitem_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -140,10 +149,12 @@ func HandleFacebook_transactableitem_get_(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_transactableitem_get_(args)
+	result, err := client.Transactableitem_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_transactableitem_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute transactableitem_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -154,3 +165,4 @@ func HandleFacebook_transactableitem_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

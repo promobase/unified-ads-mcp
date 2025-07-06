@@ -4,18 +4,18 @@ package types
 
 // OfflineConversionDataSetUpload represents a Facebook OfflineConversionDataSetUpload object
 type OfflineConversionDataSetUpload struct {
-	Api_calls            int    `json:"api_calls"`
-	Creation_time        int    `json:"creation_time"`
-	Duplicate_entries    int    `json:"duplicate_entries"`
-	Event_stats          string `json:"event_stats"`
-	Event_time_max       int    `json:"event_time_max"`
-	Event_time_min       int    `json:"event_time_min"`
-	First_upload_time    int    `json:"first_upload_time"`
-	Id                   string `json:"id"`
-	Is_excluded_for_lift bool   `json:"is_excluded_for_lift"`
-	Last_upload_time     int    `json:"last_upload_time"`
-	Match_rate_approx    int    `json:"match_rate_approx"`
-	Matched_entries      int    `json:"matched_entries"`
-	Upload_tag           string `json:"upload_tag"`
-	Valid_entries        int    `json:"valid_entries"`
+	Api_calls int `json:"api_calls"`
+	Creation_time int `json:"creation_time"`
+	Duplicate_entries int `json:"duplicate_entries"`
+	Event_stats string `json:"event_stats"`
+	Event_time_max int `json:"event_time_max"`
+	Event_time_min int `json:"event_time_min"`
+	First_upload_time int `json:"first_upload_time"`
+	Id string `json:"id"`
+	Is_excluded_for_lift bool `json:"is_excluded_for_lift"`
+	Last_upload_time int `json:"last_upload_time"`
+	Match_rate_approx int `json:"match_rate_approx"`
+	Matched_entries int `json:"matched_entries"`
+	Upload_tag string `json:"upload_tag"`
+	Valid_entries int `json:"valid_entries"`
 }

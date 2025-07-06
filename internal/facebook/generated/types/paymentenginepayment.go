@@ -6,24 +6,24 @@ import "time"
 
 // PaymentEnginePayment represents a Facebook PaymentEnginePayment object
 type PaymentEnginePayment struct {
-	Actions                      []map[string]interface{} `json:"actions"`
-	Application                  *Application             `json:"application"`
-	Country                      string                   `json:"country"`
-	Created_time                 time.Time                `json:"created_time"`
-	Disputes                     []map[string]interface{} `json:"disputes"`
-	Fraud_status                 string                   `json:"fraud_status"`
-	Fulfillment_status           string                   `json:"fulfillment_status"`
-	Id                           string                   `json:"id"`
-	Is_from_ad                   bool                     `json:"is_from_ad"`
-	Is_from_page_post            bool                     `json:"is_from_page_post"`
-	Items                        []map[string]interface{} `json:"items"`
-	Payout_foreign_exchange_rate float64                  `json:"payout_foreign_exchange_rate"`
-	Phone_support_eligible       bool                     `json:"phone_support_eligible"`
-	Platform                     string                   `json:"platform"`
-	Refundable_amount            *CurrencyAmount          `json:"refundable_amount"`
-	Request_id                   string                   `json:"request_id"`
-	Tax                          string                   `json:"tax"`
-	Tax_country                  string                   `json:"tax_country"`
-	Test                         int                      `json:"test"`
-	User                         *User                    `json:"user"`
+	Actions []map[string]interface{} `json:"actions"`
+	Application *Application `json:"application"`
+	Country string `json:"country"`
+	Created_time time.Time `json:"created_time"`
+	Disputes []map[string]interface{} `json:"disputes"`
+	Fraud_status string `json:"fraud_status"`
+	Fulfillment_status string `json:"fulfillment_status"`
+	Id string `json:"id"`
+	Is_from_ad bool `json:"is_from_ad"`
+	Is_from_page_post bool `json:"is_from_page_post"`
+	Items []map[string]interface{} `json:"items"`
+	Payout_foreign_exchange_rate float64 `json:"payout_foreign_exchange_rate"`
+	Phone_support_eligible bool `json:"phone_support_eligible"`
+	Platform string `json:"platform"`
+	Refundable_amount *CurrencyAmount `json:"refundable_amount"`
+	Request_id string `json:"request_id"`
+	Tax string `json:"tax"`
+	Tax_country string `json:"tax_country"`
+	Test int `json:"test"`
+	User *User `json:"user"`
 }

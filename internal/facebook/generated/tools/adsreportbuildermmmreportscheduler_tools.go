@@ -15,23 +15,26 @@ import (
 func GetAdsReportBuilderMMMReportSchedulerTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adsreportbuildermmmreportscheduler_get_ tool
-	facebook_adsreportbuildermmmreportscheduler_get_Tool := mcp.NewTool("facebook_adsreportbuildermmmreportscheduler_get_",
+
+	// adsreportbuildermmmreportscheduler_get_ tool
+	adsreportbuildermmmreportscheduler_get_Tool := mcp.NewTool("adsreportbuildermmmreportscheduler_get_",
 		mcp.WithDescription("GET  for AdsReportBuilderMMMReportScheduler"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adsreportbuildermmmreportscheduler_get_Tool)
+	tools = append(tools, adsreportbuildermmmreportscheduler_get_Tool)
+
 
 	return tools
 }
 
 // AdsReportBuilderMMMReportScheduler handlers
 
-// HandleFacebook_adsreportbuildermmmreportscheduler_get_ handles the facebook_adsreportbuildermmmreportscheduler_get_ tool
-func HandleFacebook_adsreportbuildermmmreportscheduler_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdsreportbuildermmmreportscheduler_get_ handles the adsreportbuildermmmreportscheduler_get_ tool
+func HandleAdsreportbuildermmmreportscheduler_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_adsreportbuildermmmreportscheduler_get_(ctx context.Context,
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adsreportbuildermmmreportscheduler_get_(args)
+	result, err := client.Adsreportbuildermmmreportscheduler_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adsreportbuildermmmreportscheduler_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adsreportbuildermmmreportscheduler_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_adsreportbuildermmmreportscheduler_get_(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

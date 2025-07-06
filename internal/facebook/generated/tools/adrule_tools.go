@@ -15,18 +15,19 @@ import (
 func GetAdRuleTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adrule_post_execute tool
-	facebook_adrule_post_executeTool := mcp.NewTool("facebook_adrule_post_execute",
+
+	// adrule_post_execute tool
+	adrule_post_executeTool := mcp.NewTool("adrule_post_execute",
 		mcp.WithDescription("POST execute for AdRule"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adrule_post_executeTool)
+	tools = append(tools, adrule_post_executeTool)
 
-	// facebook_adrule_get_history tool
-	facebook_adrule_get_historyTool := mcp.NewTool("facebook_adrule_get_history",
+	// adrule_get_history tool
+	adrule_get_historyTool := mcp.NewTool("adrule_get_history",
 		mcp.WithDescription("GET history for AdRule"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -43,40 +44,40 @@ func GetAdRuleTools(accessToken string) []mcp.Tool {
 			mcp.Description("object_id parameter for history"),
 		),
 	)
-	tools = append(tools, facebook_adrule_get_historyTool)
+	tools = append(tools, adrule_get_historyTool)
 
-	// facebook_adrule_post_preview tool
-	facebook_adrule_post_previewTool := mcp.NewTool("facebook_adrule_post_preview",
+	// adrule_post_preview tool
+	adrule_post_previewTool := mcp.NewTool("adrule_post_preview",
 		mcp.WithDescription("POST preview for AdRule"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adrule_post_previewTool)
+	tools = append(tools, adrule_post_previewTool)
 
-	// facebook_adrule_delete_ tool
-	facebook_adrule_delete_Tool := mcp.NewTool("facebook_adrule_delete_",
+	// adrule_delete_ tool
+	adrule_delete_Tool := mcp.NewTool("adrule_delete_",
 		mcp.WithDescription("DELETE  for AdRule"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adrule_delete_Tool)
+	tools = append(tools, adrule_delete_Tool)
 
-	// facebook_adrule_get_ tool
-	facebook_adrule_get_Tool := mcp.NewTool("facebook_adrule_get_",
+	// adrule_get_ tool
+	adrule_get_Tool := mcp.NewTool("adrule_get_",
 		mcp.WithDescription("GET  for AdRule"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adrule_get_Tool)
+	tools = append(tools, adrule_get_Tool)
 
-	// facebook_adrule_post_ tool
-	facebook_adrule_post_Tool := mcp.NewTool("facebook_adrule_post_",
+	// adrule_post_ tool
+	adrule_post_Tool := mcp.NewTool("adrule_post_",
 		mcp.WithDescription("POST  for AdRule"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -99,15 +100,17 @@ func GetAdRuleTools(accessToken string) []mcp.Tool {
 			mcp.Enum("DELETED", "DISABLED", "ENABLED", "HAS_ISSUES"),
 		),
 	)
-	tools = append(tools, facebook_adrule_post_Tool)
+	tools = append(tools, adrule_post_Tool)
+
 
 	return tools
 }
 
 // AdRule handlers
 
-// HandleFacebook_adrule_post_execute handles the facebook_adrule_post_execute tool
-func HandleFacebook_adrule_post_execute(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdrule_post_execute handles the adrule_post_execute tool
+func HandleAdrule_post_execute(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -120,10 +123,12 @@ func HandleFacebook_adrule_post_execute(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adrule_post_execute(args)
+	result, err := client.Adrule_post_execute(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adrule_post_execute: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adrule_post_execute: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -135,8 +140,9 @@ func HandleFacebook_adrule_post_execute(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adrule_get_history handles the facebook_adrule_get_history tool
-func HandleFacebook_adrule_get_history(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdrule_get_history handles the adrule_get_history tool
+func HandleAdrule_get_history(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -164,10 +170,12 @@ func HandleFacebook_adrule_get_history(ctx context.Context, request mcp.CallTool
 		args["object_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adrule_get_history(args)
+	result, err := client.Adrule_get_history(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adrule_get_history: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adrule_get_history: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -179,8 +187,9 @@ func HandleFacebook_adrule_get_history(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adrule_post_preview handles the facebook_adrule_post_preview tool
-func HandleFacebook_adrule_post_preview(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdrule_post_preview handles the adrule_post_preview tool
+func HandleAdrule_post_preview(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -193,10 +202,12 @@ func HandleFacebook_adrule_post_preview(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adrule_post_preview(args)
+	result, err := client.Adrule_post_preview(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adrule_post_preview: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adrule_post_preview: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -208,8 +219,9 @@ func HandleFacebook_adrule_post_preview(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adrule_delete_ handles the facebook_adrule_delete_ tool
-func HandleFacebook_adrule_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdrule_delete_ handles the adrule_delete_ tool
+func HandleAdrule_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -222,10 +234,12 @@ func HandleFacebook_adrule_delete_(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adrule_delete_(args)
+	result, err := client.Adrule_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adrule_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adrule_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -237,8 +251,9 @@ func HandleFacebook_adrule_delete_(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adrule_get_ handles the facebook_adrule_get_ tool
-func HandleFacebook_adrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdrule_get_ handles the adrule_get_ tool
+func HandleAdrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -251,10 +266,12 @@ func HandleFacebook_adrule_get_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adrule_get_(args)
+	result, err := client.Adrule_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adrule_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adrule_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -266,8 +283,9 @@ func HandleFacebook_adrule_get_(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adrule_post_ handles the facebook_adrule_post_ tool
-func HandleFacebook_adrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdrule_post_ handles the adrule_post_ tool
+func HandleAdrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -308,10 +326,12 @@ func HandleFacebook_adrule_post_(ctx context.Context, request mcp.CallToolReques
 		args["status"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adrule_post_(args)
+	result, err := client.Adrule_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adrule_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adrule_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -322,3 +342,4 @@ func HandleFacebook_adrule_post_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

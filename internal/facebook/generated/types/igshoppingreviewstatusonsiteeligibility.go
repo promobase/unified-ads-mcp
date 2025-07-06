@@ -4,6 +4,6 @@ package types
 
 // IGShoppingReviewStatusOnsiteEligibility represents a Facebook IGShoppingReviewStatusOnsiteEligibility object
 type IGShoppingReviewStatusOnsiteEligibility struct {
-	Is_eligible bool                                          `json:"is_eligible"`
-	Reasons     []IGShoppingReviewStatusReasonWithHelpMessage `json:"reasons"`
+	Is_eligible bool `json:"is_eligible"`
+	Reasons []IGShoppingReviewStatusReasonWithHelpMessage `json:"reasons"`
 }

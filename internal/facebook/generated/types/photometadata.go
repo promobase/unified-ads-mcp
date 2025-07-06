@@ -6,16 +6,16 @@ import "time"
 
 // PhotoMetadata represents a Facebook PhotoMetadata object
 type PhotoMetadata struct {
-	Camera_make       string    `json:"camera_make"`
-	Camera_model      string    `json:"camera_model"`
+	Camera_make string `json:"camera_make"`
+	Camera_model string `json:"camera_model"`
 	Datetime_modified time.Time `json:"datetime_modified"`
-	Datetime_taken    time.Time `json:"datetime_taken"`
-	Exposure          string    `json:"exposure"`
-	Focal_length      string    `json:"focal_length"`
-	Fstop             string    `json:"fstop"`
-	Iso_speed         int       `json:"iso_speed"`
-	Offline_id        string    `json:"offline_id"`
-	Orientation       string    `json:"orientation"`
-	Original_height   string    `json:"original_height"`
-	Original_width    string    `json:"original_width"`
+	Datetime_taken time.Time `json:"datetime_taken"`
+	Exposure string `json:"exposure"`
+	Focal_length string `json:"focal_length"`
+	Fstop string `json:"fstop"`
+	Iso_speed int `json:"iso_speed"`
+	Offline_id string `json:"offline_id"`
+	Orientation string `json:"orientation"`
+	Original_height string `json:"original_height"`
+	Original_width string `json:"original_width"`
 }

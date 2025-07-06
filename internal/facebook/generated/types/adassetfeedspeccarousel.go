@@ -4,8 +4,8 @@ package types
 
 // AdAssetFeedSpecCarousel represents a Facebook AdAssetFeedSpecCarousel object
 type AdAssetFeedSpecCarousel struct {
-	Adlabels              []AdAssetFeedSpecAssetLabel              `json:"adlabels"`
-	Child_attachments     []AdAssetFeedSpecCarouselChildAttachment `json:"child_attachments"`
-	Multi_share_end_card  bool                                     `json:"multi_share_end_card"`
-	Multi_share_optimized bool                                     `json:"multi_share_optimized"`
+	Adlabels []AdAssetFeedSpecAssetLabel `json:"adlabels"`
+	Child_attachments []AdAssetFeedSpecCarouselChildAttachment `json:"child_attachments"`
+	Multi_share_end_card bool `json:"multi_share_end_card"`
+	Multi_share_optimized bool `json:"multi_share_optimized"`
 }

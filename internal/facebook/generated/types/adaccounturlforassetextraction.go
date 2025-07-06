@@ -5,5 +5,5 @@ package types
 // AdAccountURLForAssetExtraction represents a Facebook AdAccountURLForAssetExtraction object
 type AdAccountURLForAssetExtraction struct {
 	Source_type string `json:"source_type"`
-	Source_url  string `json:"source_url"`
+	Source_url string `json:"source_url"`
 }

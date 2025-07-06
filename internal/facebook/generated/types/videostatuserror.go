@@ -4,6 +4,6 @@ package types
 
 // VideoStatusError represents a Facebook VideoStatusError object
 type VideoStatusError struct {
-	Code    int    `json:"code"`
+	Code int `json:"code"`
 	Message string `json:"message"`
 }

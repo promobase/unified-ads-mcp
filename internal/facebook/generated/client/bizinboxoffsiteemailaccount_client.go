@@ -21,15 +21,19 @@ func NewBizInboxOffsiteEmailAccountClient(accessToken string) *BizInboxOffsiteEm
 	}
 }
 
-// facebook_bizinboxoffsiteemailaccount_get_assigned_users GET assigned_users for BizInboxOffsiteEmailAccount
-func (c *BizInboxOffsiteEmailAccountClient) Facebook_bizinboxoffsiteemailaccount_get_assigned_users(args map[string]interface{}) (interface{}, error) {
+
+// bizinboxoffsiteemailaccount_get_assigned_users GET assigned_users for BizInboxOffsiteEmailAccount
+func (c *BizInboxOffsiteEmailAccountClient) Bizinboxoffsiteemailaccount_get_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -60,15 +64,19 @@ func (c *BizInboxOffsiteEmailAccountClient) Facebook_bizinboxoffsiteemailaccount
 	return result, nil
 }
 
-// facebook_bizinboxoffsiteemailaccount_get_ GET  for BizInboxOffsiteEmailAccount
-func (c *BizInboxOffsiteEmailAccountClient) Facebook_bizinboxoffsiteemailaccount_get_(args map[string]interface{}) (interface{}, error) {
+
+// bizinboxoffsiteemailaccount_get_ GET  for BizInboxOffsiteEmailAccount
+func (c *BizInboxOffsiteEmailAccountClient) Bizinboxoffsiteemailaccount_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -98,3 +106,4 @@ func (c *BizInboxOffsiteEmailAccountClient) Facebook_bizinboxoffsiteemailaccount
 
 	return result, nil
 }
+

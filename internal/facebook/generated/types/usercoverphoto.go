@@ -6,5 +6,5 @@ package types
 type UserCoverPhoto struct {
 	Offset_x float64 `json:"offset_x"`
 	Offset_y float64 `json:"offset_y"`
-	Source   string  `json:"source"`
+	Source string `json:"source"`
 }

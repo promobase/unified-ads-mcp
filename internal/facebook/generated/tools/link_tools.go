@@ -15,8 +15,9 @@ import (
 func GetLinkTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_link_post_comments tool
-	facebook_link_post_commentsTool := mcp.NewTool("facebook_link_post_comments",
+
+	// link_post_comments tool
+	link_post_commentsTool := mcp.NewTool("link_post_comments",
 		mcp.WithDescription("POST comments for Link"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -63,35 +64,37 @@ func GetLinkTools(accessToken string) []mcp.Tool {
 			mcp.Description("tracking parameter for comments"),
 		),
 	)
-	tools = append(tools, facebook_link_post_commentsTool)
+	tools = append(tools, link_post_commentsTool)
 
-	// facebook_link_get_likes tool
-	facebook_link_get_likesTool := mcp.NewTool("facebook_link_get_likes",
+	// link_get_likes tool
+	link_get_likesTool := mcp.NewTool("link_get_likes",
 		mcp.WithDescription("GET likes for Link"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_link_get_likesTool)
+	tools = append(tools, link_get_likesTool)
 
-	// facebook_link_get_ tool
-	facebook_link_get_Tool := mcp.NewTool("facebook_link_get_",
+	// link_get_ tool
+	link_get_Tool := mcp.NewTool("link_get_",
 		mcp.WithDescription("GET  for Link"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_link_get_Tool)
+	tools = append(tools, link_get_Tool)
+
 
 	return tools
 }
 
 // Link handlers
 
-// HandleFacebook_link_post_comments handles the facebook_link_post_comments tool
-func HandleFacebook_link_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLink_post_comments handles the link_post_comments tool
+func HandleLink_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -171,10 +174,12 @@ func HandleFacebook_link_post_comments(ctx context.Context, request mcp.CallTool
 		args["tracking"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_link_post_comments(args)
+	result, err := client.Link_post_comments(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_link_post_comments: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute link_post_comments: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -186,8 +191,9 @@ func HandleFacebook_link_post_comments(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_link_get_likes handles the facebook_link_get_likes tool
-func HandleFacebook_link_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLink_get_likes handles the link_get_likes tool
+func HandleLink_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -200,10 +206,12 @@ func HandleFacebook_link_get_likes(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_link_get_likes(args)
+	result, err := client.Link_get_likes(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_link_get_likes: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute link_get_likes: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -215,8 +223,9 @@ func HandleFacebook_link_get_likes(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_link_get_ handles the facebook_link_get_ tool
-func HandleFacebook_link_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLink_get_ handles the link_get_ tool
+func HandleLink_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -229,10 +238,12 @@ func HandleFacebook_link_get_(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_link_get_(args)
+	result, err := client.Link_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_link_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute link_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -243,3 +254,4 @@ func HandleFacebook_link_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

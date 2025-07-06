@@ -15,23 +15,26 @@ import (
 func GetCollaborativeAdsShareSettingsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_collaborativeadssharesettings_get_ tool
-	facebook_collaborativeadssharesettings_get_Tool := mcp.NewTool("facebook_collaborativeadssharesettings_get_",
+
+	// collaborativeadssharesettings_get_ tool
+	collaborativeadssharesettings_get_Tool := mcp.NewTool("collaborativeadssharesettings_get_",
 		mcp.WithDescription("GET  for CollaborativeAdsShareSettings"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_collaborativeadssharesettings_get_Tool)
+	tools = append(tools, collaborativeadssharesettings_get_Tool)
+
 
 	return tools
 }
 
 // CollaborativeAdsShareSettings handlers
 
-// HandleFacebook_collaborativeadssharesettings_get_ handles the facebook_collaborativeadssharesettings_get_ tool
-func HandleFacebook_collaborativeadssharesettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCollaborativeadssharesettings_get_ handles the collaborativeadssharesettings_get_ tool
+func HandleCollaborativeadssharesettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_collaborativeadssharesettings_get_(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_collaborativeadssharesettings_get_(args)
+	result, err := client.Collaborativeadssharesettings_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_collaborativeadssharesettings_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute collaborativeadssharesettings_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_collaborativeadssharesettings_get_(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

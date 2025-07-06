@@ -15,33 +15,36 @@ import (
 func GetMessengerAdsPartialAutomatedStepListTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_messengeradspartialautomatedsteplist_get_steps tool
-	facebook_messengeradspartialautomatedsteplist_get_stepsTool := mcp.NewTool("facebook_messengeradspartialautomatedsteplist_get_steps",
+
+	// messengeradspartialautomatedsteplist_get_steps tool
+	messengeradspartialautomatedsteplist_get_stepsTool := mcp.NewTool("messengeradspartialautomatedsteplist_get_steps",
 		mcp.WithDescription("GET steps for MessengerAdsPartialAutomatedStepList"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_messengeradspartialautomatedsteplist_get_stepsTool)
+	tools = append(tools, messengeradspartialautomatedsteplist_get_stepsTool)
 
-	// facebook_messengeradspartialautomatedsteplist_get_ tool
-	facebook_messengeradspartialautomatedsteplist_get_Tool := mcp.NewTool("facebook_messengeradspartialautomatedsteplist_get_",
+	// messengeradspartialautomatedsteplist_get_ tool
+	messengeradspartialautomatedsteplist_get_Tool := mcp.NewTool("messengeradspartialautomatedsteplist_get_",
 		mcp.WithDescription("GET  for MessengerAdsPartialAutomatedStepList"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_messengeradspartialautomatedsteplist_get_Tool)
+	tools = append(tools, messengeradspartialautomatedsteplist_get_Tool)
+
 
 	return tools
 }
 
 // MessengerAdsPartialAutomatedStepList handlers
 
-// HandleFacebook_messengeradspartialautomatedsteplist_get_steps handles the facebook_messengeradspartialautomatedsteplist_get_steps tool
-func HandleFacebook_messengeradspartialautomatedsteplist_get_steps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleMessengeradspartialautomatedsteplist_get_steps handles the messengeradspartialautomatedsteplist_get_steps tool
+func HandleMessengeradspartialautomatedsteplist_get_steps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -54,10 +57,12 @@ func HandleFacebook_messengeradspartialautomatedsteplist_get_steps(ctx context.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_messengeradspartialautomatedsteplist_get_steps(args)
+	result, err := client.Messengeradspartialautomatedsteplist_get_steps(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_messengeradspartialautomatedsteplist_get_steps: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute messengeradspartialautomatedsteplist_get_steps: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -69,8 +74,9 @@ func HandleFacebook_messengeradspartialautomatedsteplist_get_steps(ctx context.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_messengeradspartialautomatedsteplist_get_ handles the facebook_messengeradspartialautomatedsteplist_get_ tool
-func HandleFacebook_messengeradspartialautomatedsteplist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleMessengeradspartialautomatedsteplist_get_ handles the messengeradspartialautomatedsteplist_get_ tool
+func HandleMessengeradspartialautomatedsteplist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -83,10 +89,12 @@ func HandleFacebook_messengeradspartialautomatedsteplist_get_(ctx context.Contex
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_messengeradspartialautomatedsteplist_get_(args)
+	result, err := client.Messengeradspartialautomatedsteplist_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_messengeradspartialautomatedsteplist_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute messengeradspartialautomatedsteplist_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -97,3 +105,4 @@ func HandleFacebook_messengeradspartialautomatedsteplist_get_(ctx context.Contex
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

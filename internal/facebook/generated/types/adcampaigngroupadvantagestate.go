@@ -4,8 +4,8 @@ package types
 
 // AdCampaignGroupAdvantageState represents a Facebook AdCampaignGroupAdvantageState object
 type AdCampaignGroupAdvantageState struct {
-	Advantage_audience_state  string `json:"advantage_audience_state"`
-	Advantage_budget_state    string `json:"advantage_budget_state"`
+	Advantage_audience_state string `json:"advantage_audience_state"`
+	Advantage_budget_state string `json:"advantage_budget_state"`
 	Advantage_placement_state string `json:"advantage_placement_state"`
-	Advantage_state           string `json:"advantage_state"`
+	Advantage_state string `json:"advantage_state"`
 }

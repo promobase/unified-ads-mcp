@@ -4,7 +4,7 @@ package types
 
 // AdAccountRecommendedCamapaignBudget represents a Facebook AdAccountRecommendedCamapaignBudget object
 type AdAccountRecommendedCamapaignBudget struct {
-	Daily     string `json:"daily"`
-	Lifetime  string `json:"lifetime"`
+	Daily string `json:"daily"`
+	Lifetime string `json:"lifetime"`
 	Objective string `json:"objective"`
 }

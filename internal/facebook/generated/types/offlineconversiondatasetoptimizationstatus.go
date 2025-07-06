@@ -4,8 +4,8 @@ package types
 
 // OfflineConversionDataSetOptimizationStatus represents a Facebook OfflineConversionDataSetOptimizationStatus object
 type OfflineConversionDataSetOptimizationStatus struct {
-	Event              string `json:"event"`
-	Last_changed_time  int    `json:"last_changed_time"`
-	Last_detected_time int    `json:"last_detected_time"`
-	Status             string `json:"status"`
+	Event string `json:"event"`
+	Last_changed_time int `json:"last_changed_time"`
+	Last_detected_time int `json:"last_detected_time"`
+	Status string `json:"status"`
 }

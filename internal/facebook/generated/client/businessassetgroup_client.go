@@ -21,14 +21,16 @@ func NewBusinessAssetGroupClient(accessToken string) *BusinessAssetGroupClient {
 	}
 }
 
-// facebook_businessassetgroup_delete_assigned_users DELETE assigned_users for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_assigned_users(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_delete_assigned_users DELETE assigned_users for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_delete_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	user, ok := args["user"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: user")
 	}
 	_ = user // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
@@ -38,6 +40,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_assigned_u
 	if val, ok := args["user"]; ok {
 		urlParams.Set("user", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -69,14 +72,16 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_assigned_u
 	return result, nil
 }
 
-// facebook_businessassetgroup_get_assigned_users GET assigned_users for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_assigned_users(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_get_assigned_users GET assigned_users for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_get_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	business, ok := args["business"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: business")
 	}
 	_ = business // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
@@ -86,6 +91,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_assigned_user
 	if val, ok := args["business"]; ok {
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -117,14 +123,16 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_assigned_user
 	return result, nil
 }
 
-// facebook_businessassetgroup_post_assigned_users POST assigned_users for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_assigned_users(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_post_assigned_users POST assigned_users for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_post_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	user, ok := args["user"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: user")
 	}
 	_ = user // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
@@ -147,6 +155,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_assigned_use
 		urlParams.Set("user", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -177,14 +186,16 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_assigned_use
 	return result, nil
 }
 
-// facebook_businessassetgroup_delete_contained_adaccounts DELETE contained_adaccounts for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_adaccounts(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_delete_contained_adaccounts DELETE contained_adaccounts for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_adaccounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	asset_id, ok := args["asset_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: asset_id")
 	}
 	_ = asset_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_adaccounts")
@@ -195,6 +206,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -225,15 +237,19 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 	return result, nil
 }
 
-// facebook_businessassetgroup_get_contained_adaccounts GET contained_adaccounts for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_adaccounts(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_get_contained_adaccounts GET contained_adaccounts for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_adaccounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_adaccounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -264,14 +280,16 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_ada
 	return result, nil
 }
 
-// facebook_businessassetgroup_post_contained_adaccounts POST contained_adaccounts for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_adaccounts(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_post_contained_adaccounts POST contained_adaccounts for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_adaccounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	asset_id, ok := args["asset_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: asset_id")
 	}
 	_ = asset_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_adaccounts")
@@ -282,6 +300,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_ad
 		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -312,14 +331,16 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_ad
 	return result, nil
 }
 
-// facebook_businessassetgroup_delete_contained_applications DELETE contained_applications for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_applications(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_delete_contained_applications DELETE contained_applications for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_applications(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	asset_id, ok := args["asset_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: asset_id")
 	}
 	_ = asset_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_applications")
@@ -330,6 +351,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -360,15 +382,19 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 	return result, nil
 }
 
-// facebook_businessassetgroup_get_contained_applications GET contained_applications for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_applications(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_get_contained_applications GET contained_applications for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_applications(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_applications")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -399,14 +425,16 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_app
 	return result, nil
 }
 
-// facebook_businessassetgroup_post_contained_applications POST contained_applications for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_applications(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_post_contained_applications POST contained_applications for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_applications(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	asset_id, ok := args["asset_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: asset_id")
 	}
 	_ = asset_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_applications")
@@ -417,6 +445,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_ap
 		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -447,14 +476,16 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_ap
 	return result, nil
 }
 
-// facebook_businessassetgroup_delete_contained_custom_conversions DELETE contained_custom_conversions for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_custom_conversions(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_delete_contained_custom_conversions DELETE contained_custom_conversions for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_custom_conversions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	asset_id, ok := args["asset_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: asset_id")
 	}
 	_ = asset_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_custom_conversions")
@@ -465,6 +496,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -495,15 +527,19 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 	return result, nil
 }
 
-// facebook_businessassetgroup_get_contained_custom_conversions GET contained_custom_conversions for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_custom_conversions(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_get_contained_custom_conversions GET contained_custom_conversions for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_custom_conversions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_custom_conversions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -534,14 +570,16 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_cus
 	return result, nil
 }
 
-// facebook_businessassetgroup_post_contained_custom_conversions POST contained_custom_conversions for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_custom_conversions(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_post_contained_custom_conversions POST contained_custom_conversions for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_custom_conversions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	asset_id, ok := args["asset_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: asset_id")
 	}
 	_ = asset_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_custom_conversions")
@@ -552,6 +590,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_cu
 		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -582,14 +621,16 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_cu
 	return result, nil
 }
 
-// facebook_businessassetgroup_delete_contained_instagram_accounts DELETE contained_instagram_accounts for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_instagram_accounts(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_delete_contained_instagram_accounts DELETE contained_instagram_accounts for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_instagram_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	asset_id, ok := args["asset_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: asset_id")
 	}
 	_ = asset_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_instagram_accounts")
@@ -600,6 +641,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -630,15 +672,19 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 	return result, nil
 }
 
-// facebook_businessassetgroup_get_contained_instagram_accounts GET contained_instagram_accounts for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_instagram_accounts(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_get_contained_instagram_accounts GET contained_instagram_accounts for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_instagram_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_instagram_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -669,14 +715,16 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_ins
 	return result, nil
 }
 
-// facebook_businessassetgroup_post_contained_instagram_accounts POST contained_instagram_accounts for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_instagram_accounts(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_post_contained_instagram_accounts POST contained_instagram_accounts for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_instagram_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	asset_id, ok := args["asset_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: asset_id")
 	}
 	_ = asset_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_instagram_accounts")
@@ -687,6 +735,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_in
 		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -717,14 +766,16 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_in
 	return result, nil
 }
 
-// facebook_businessassetgroup_delete_contained_pages DELETE contained_pages for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_pages(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_delete_contained_pages DELETE contained_pages for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_pages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	asset_id, ok := args["asset_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: asset_id")
 	}
 	_ = asset_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_pages")
@@ -734,6 +785,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 	if val, ok := args["asset_id"]; ok {
 		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -765,14 +817,18 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 	return result, nil
 }
 
-// facebook_businessassetgroup_get_contained_pages GET contained_pages for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_pages(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_get_contained_pages GET contained_pages for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_pages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_pages")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -804,14 +860,16 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_pag
 	return result, nil
 }
 
-// facebook_businessassetgroup_post_contained_pages POST contained_pages for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_pages(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_post_contained_pages POST contained_pages for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_pages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	asset_id, ok := args["asset_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: asset_id")
 	}
 	_ = asset_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_pages")
@@ -821,6 +879,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_pa
 	if val, ok := args["asset_id"]; ok {
 		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -852,14 +911,16 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_pa
 	return result, nil
 }
 
-// facebook_businessassetgroup_delete_contained_pixels DELETE contained_pixels for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_pixels(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_delete_contained_pixels DELETE contained_pixels for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_pixels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	asset_id, ok := args["asset_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: asset_id")
 	}
 	_ = asset_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_pixels")
@@ -869,6 +930,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 	if val, ok := args["asset_id"]; ok {
 		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -900,14 +962,18 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 	return result, nil
 }
 
-// facebook_businessassetgroup_get_contained_pixels GET contained_pixels for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_pixels(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_get_contained_pixels GET contained_pixels for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_pixels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_pixels")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -939,14 +1005,16 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_pix
 	return result, nil
 }
 
-// facebook_businessassetgroup_post_contained_pixels POST contained_pixels for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_pixels(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_post_contained_pixels POST contained_pixels for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_pixels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	asset_id, ok := args["asset_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: asset_id")
 	}
 	_ = asset_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_pixels")
@@ -956,6 +1024,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_pi
 	if val, ok := args["asset_id"]; ok {
 		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -987,14 +1056,16 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_pi
 	return result, nil
 }
 
-// facebook_businessassetgroup_delete_contained_product_catalogs DELETE contained_product_catalogs for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_product_catalogs(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_delete_contained_product_catalogs DELETE contained_product_catalogs for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_delete_contained_product_catalogs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	asset_id, ok := args["asset_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: asset_id")
 	}
 	_ = asset_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_product_catalogs")
@@ -1004,6 +1075,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 	if val, ok := args["asset_id"]; ok {
 		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1035,14 +1107,18 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 	return result, nil
 }
 
-// facebook_businessassetgroup_get_contained_product_catalogs GET contained_product_catalogs for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_product_catalogs(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_get_contained_product_catalogs GET contained_product_catalogs for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_get_contained_product_catalogs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_product_catalogs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1074,14 +1150,16 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_pro
 	return result, nil
 }
 
-// facebook_businessassetgroup_post_contained_product_catalogs POST contained_product_catalogs for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_product_catalogs(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_post_contained_product_catalogs POST contained_product_catalogs for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_post_contained_product_catalogs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	asset_id, ok := args["asset_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: asset_id")
 	}
 	_ = asset_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_product_catalogs")
@@ -1091,6 +1169,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_pr
 	if val, ok := args["asset_id"]; ok {
 		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1122,15 +1201,19 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_pr
 	return result, nil
 }
 
-// facebook_businessassetgroup_get_ GET  for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_get_ GET  for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1161,9 +1244,11 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_(args map[str
 	return result, nil
 }
 
-// facebook_businessassetgroup_post_ POST  for BusinessAssetGroup
-func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_(args map[string]interface{}) (interface{}, error) {
+
+// businessassetgroup_post_ POST  for BusinessAssetGroup
+func (c *BusinessAssetGroupClient) Businessassetgroup_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -1174,6 +1259,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_(args map[st
 		urlParams.Set("name", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1203,3 +1289,4 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_(args map[st
 
 	return result, nil
 }
+

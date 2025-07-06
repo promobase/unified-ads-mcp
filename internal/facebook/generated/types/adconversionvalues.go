@@ -4,7 +4,7 @@ package types
 
 // AdConversionValues represents a Facebook AdConversionValues object
 type AdConversionValues struct {
-	Adgroup_id  string        `json:"adgroup_id"`
-	Campaign_id string        `json:"campaign_id"`
-	Values      []interface{} `json:"values"`
+	Adgroup_id string `json:"adgroup_id"`
+	Campaign_id string `json:"campaign_id"`
+	Values []interface{} `json:"values"`
 }

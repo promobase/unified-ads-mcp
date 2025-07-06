@@ -4,9 +4,9 @@ package types
 
 // AdsValueAdjustmentRuleCollection represents a Facebook AdsValueAdjustmentRuleCollection object
 type AdsValueAdjustmentRuleCollection struct {
-	Id                 string `json:"id"`
-	Is_default_setting bool   `json:"is_default_setting"`
-	Name               string `json:"name"`
-	Product_type       string `json:"product_type"`
-	Status             string `json:"status"`
+	Id string `json:"id"`
+	Is_default_setting bool `json:"is_default_setting"`
+	Name string `json:"name"`
+	Product_type string `json:"product_type"`
+	Status string `json:"status"`
 }

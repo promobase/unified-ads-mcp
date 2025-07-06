@@ -21,14 +21,18 @@ func NewStoreLocationClient(accessToken string) *StoreLocationClient {
 	}
 }
 
-// facebook_storelocation_get_ GET  for StoreLocation
-func (c *StoreLocationClient) Facebook_storelocation_get_(args map[string]interface{}) (interface{}, error) {
+
+// storelocation_get_ GET  for StoreLocation
+func (c *StoreLocationClient) Storelocation_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *StoreLocationClient) Facebook_storelocation_get_(args map[string]interf
 
 	return result, nil
 }
+

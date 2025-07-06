@@ -21,15 +21,19 @@ func NewAdVideoClient(accessToken string) *AdVideoClient {
 	}
 }
 
-// facebook_advideo_get_boost_ads_list GET boost_ads_list for AdVideo
-func (c *AdVideoClient) Facebook_advideo_get_boost_ads_list(args map[string]interface{}) (interface{}, error) {
+
+// advideo_get_boost_ads_list GET boost_ads_list for AdVideo
+func (c *AdVideoClient) Advideo_get_boost_ads_list(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "boost_ads_list")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -60,15 +64,19 @@ func (c *AdVideoClient) Facebook_advideo_get_boost_ads_list(args map[string]inte
 	return result, nil
 }
 
-// facebook_advideo_get_captions GET captions for AdVideo
-func (c *AdVideoClient) Facebook_advideo_get_captions(args map[string]interface{}) (interface{}, error) {
+
+// advideo_get_captions GET captions for AdVideo
+func (c *AdVideoClient) Advideo_get_captions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "captions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -99,9 +107,11 @@ func (c *AdVideoClient) Facebook_advideo_get_captions(args map[string]interface{
 	return result, nil
 }
 
-// facebook_advideo_post_captions POST captions for AdVideo
-func (c *AdVideoClient) Facebook_advideo_post_captions(args map[string]interface{}) (interface{}, error) {
+
+// advideo_post_captions POST captions for AdVideo
+func (c *AdVideoClient) Advideo_post_captions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "captions")
@@ -118,6 +128,7 @@ func (c *AdVideoClient) Facebook_advideo_post_captions(args map[string]interface
 		urlParams.Set("locales_to_delete", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -148,14 +159,18 @@ func (c *AdVideoClient) Facebook_advideo_post_captions(args map[string]interface
 	return result, nil
 }
 
-// facebook_advideo_get_collaborators GET collaborators for AdVideo
-func (c *AdVideoClient) Facebook_advideo_get_collaborators(args map[string]interface{}) (interface{}, error) {
+
+// advideo_get_collaborators GET collaborators for AdVideo
+func (c *AdVideoClient) Advideo_get_collaborators(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "collaborators")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -187,14 +202,16 @@ func (c *AdVideoClient) Facebook_advideo_get_collaborators(args map[string]inter
 	return result, nil
 }
 
-// facebook_advideo_post_collaborators POST collaborators for AdVideo
-func (c *AdVideoClient) Facebook_advideo_post_collaborators(args map[string]interface{}) (interface{}, error) {
+
+// advideo_post_collaborators POST collaborators for AdVideo
+func (c *AdVideoClient) Advideo_post_collaborators(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	target_id, ok := args["target_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: target_id")
 	}
 	_ = target_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "collaborators")
@@ -204,6 +221,7 @@ func (c *AdVideoClient) Facebook_advideo_post_collaborators(args map[string]inte
 	if val, ok := args["target_id"]; ok {
 		urlParams.Set("target_id", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -235,9 +253,11 @@ func (c *AdVideoClient) Facebook_advideo_post_collaborators(args map[string]inte
 	return result, nil
 }
 
-// facebook_advideo_get_comments GET comments for AdVideo
-func (c *AdVideoClient) Facebook_advideo_get_comments(args map[string]interface{}) (interface{}, error) {
+
+// advideo_get_comments GET comments for AdVideo
+func (c *AdVideoClient) Advideo_get_comments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
@@ -257,6 +277,7 @@ func (c *AdVideoClient) Facebook_advideo_get_comments(args map[string]interface{
 		urlParams.Set("since", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -287,9 +308,11 @@ func (c *AdVideoClient) Facebook_advideo_get_comments(args map[string]interface{
 	return result, nil
 }
 
-// facebook_advideo_post_comments POST comments for AdVideo
-func (c *AdVideoClient) Facebook_advideo_post_comments(args map[string]interface{}) (interface{}, error) {
+
+// advideo_post_comments POST comments for AdVideo
+func (c *AdVideoClient) Advideo_post_comments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
@@ -336,6 +359,7 @@ func (c *AdVideoClient) Facebook_advideo_post_comments(args map[string]interface
 		urlParams.Set("tracking", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -366,14 +390,18 @@ func (c *AdVideoClient) Facebook_advideo_post_comments(args map[string]interface
 	return result, nil
 }
 
-// facebook_advideo_get_crosspost_shared_pages GET crosspost_shared_pages for AdVideo
-func (c *AdVideoClient) Facebook_advideo_get_crosspost_shared_pages(args map[string]interface{}) (interface{}, error) {
+
+// advideo_get_crosspost_shared_pages GET crosspost_shared_pages for AdVideo
+func (c *AdVideoClient) Advideo_get_crosspost_shared_pages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "crosspost_shared_pages")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -405,9 +433,11 @@ func (c *AdVideoClient) Facebook_advideo_get_crosspost_shared_pages(args map[str
 	return result, nil
 }
 
-// facebook_advideo_post_gaming_clip_create POST gaming_clip_create for AdVideo
-func (c *AdVideoClient) Facebook_advideo_post_gaming_clip_create(args map[string]interface{}) (interface{}, error) {
+
+// advideo_post_gaming_clip_create POST gaming_clip_create for AdVideo
+func (c *AdVideoClient) Advideo_post_gaming_clip_create(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "gaming_clip_create")
@@ -418,6 +448,7 @@ func (c *AdVideoClient) Facebook_advideo_post_gaming_clip_create(args map[string
 		urlParams.Set("duration_seconds", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -448,14 +479,18 @@ func (c *AdVideoClient) Facebook_advideo_post_gaming_clip_create(args map[string
 	return result, nil
 }
 
-// facebook_advideo_get_likes GET likes for AdVideo
-func (c *AdVideoClient) Facebook_advideo_get_likes(args map[string]interface{}) (interface{}, error) {
+
+// advideo_get_likes GET likes for AdVideo
+func (c *AdVideoClient) Advideo_get_likes(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -487,9 +522,11 @@ func (c *AdVideoClient) Facebook_advideo_get_likes(args map[string]interface{}) 
 	return result, nil
 }
 
-// facebook_advideo_post_likes POST likes for AdVideo
-func (c *AdVideoClient) Facebook_advideo_post_likes(args map[string]interface{}) (interface{}, error) {
+
+// advideo_post_likes POST likes for AdVideo
+func (c *AdVideoClient) Advideo_post_likes(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
@@ -509,6 +546,7 @@ func (c *AdVideoClient) Facebook_advideo_post_likes(args map[string]interface{})
 		urlParams.Set("tracking", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -539,15 +577,19 @@ func (c *AdVideoClient) Facebook_advideo_post_likes(args map[string]interface{})
 	return result, nil
 }
 
-// facebook_advideo_get_poll_settings GET poll_settings for AdVideo
-func (c *AdVideoClient) Facebook_advideo_get_poll_settings(args map[string]interface{}) (interface{}, error) {
+
+// advideo_get_poll_settings GET poll_settings for AdVideo
+func (c *AdVideoClient) Advideo_get_poll_settings(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "poll_settings")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -578,15 +620,19 @@ func (c *AdVideoClient) Facebook_advideo_get_poll_settings(args map[string]inter
 	return result, nil
 }
 
-// facebook_advideo_get_polls GET polls for AdVideo
-func (c *AdVideoClient) Facebook_advideo_get_polls(args map[string]interface{}) (interface{}, error) {
+
+// advideo_get_polls GET polls for AdVideo
+func (c *AdVideoClient) Advideo_get_polls(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "polls")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -617,8 +663,9 @@ func (c *AdVideoClient) Facebook_advideo_get_polls(args map[string]interface{}) 
 	return result, nil
 }
 
-// facebook_advideo_post_polls POST polls for AdVideo
-func (c *AdVideoClient) Facebook_advideo_post_polls(args map[string]interface{}) (interface{}, error) {
+
+// advideo_post_polls POST polls for AdVideo
+func (c *AdVideoClient) Advideo_post_polls(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	options, ok := args["options"]
 	if !ok {
@@ -630,6 +677,7 @@ func (c *AdVideoClient) Facebook_advideo_post_polls(args map[string]interface{})
 		return nil, fmt.Errorf("missing required parameter: question")
 	}
 	_ = question // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "polls")
@@ -658,6 +706,7 @@ func (c *AdVideoClient) Facebook_advideo_post_polls(args map[string]interface{})
 		urlParams.Set("show_results", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -688,15 +737,19 @@ func (c *AdVideoClient) Facebook_advideo_post_polls(args map[string]interface{})
 	return result, nil
 }
 
-// facebook_advideo_get_sponsor_tags GET sponsor_tags for AdVideo
-func (c *AdVideoClient) Facebook_advideo_get_sponsor_tags(args map[string]interface{}) (interface{}, error) {
+
+// advideo_get_sponsor_tags GET sponsor_tags for AdVideo
+func (c *AdVideoClient) Advideo_get_sponsor_tags(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "sponsor_tags")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -727,15 +780,19 @@ func (c *AdVideoClient) Facebook_advideo_get_sponsor_tags(args map[string]interf
 	return result, nil
 }
 
-// facebook_advideo_get_tags GET tags for AdVideo
-func (c *AdVideoClient) Facebook_advideo_get_tags(args map[string]interface{}) (interface{}, error) {
+
+// advideo_get_tags GET tags for AdVideo
+func (c *AdVideoClient) Advideo_get_tags(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "tags")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -766,15 +823,19 @@ func (c *AdVideoClient) Facebook_advideo_get_tags(args map[string]interface{}) (
 	return result, nil
 }
 
-// facebook_advideo_get_thumbnails GET thumbnails for AdVideo
-func (c *AdVideoClient) Facebook_advideo_get_thumbnails(args map[string]interface{}) (interface{}, error) {
+
+// advideo_get_thumbnails GET thumbnails for AdVideo
+func (c *AdVideoClient) Advideo_get_thumbnails(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "thumbnails")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -805,14 +866,16 @@ func (c *AdVideoClient) Facebook_advideo_get_thumbnails(args map[string]interfac
 	return result, nil
 }
 
-// facebook_advideo_post_thumbnails POST thumbnails for AdVideo
-func (c *AdVideoClient) Facebook_advideo_post_thumbnails(args map[string]interface{}) (interface{}, error) {
+
+// advideo_post_thumbnails POST thumbnails for AdVideo
+func (c *AdVideoClient) Advideo_post_thumbnails(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	source, ok := args["source"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: source")
 	}
 	_ = source // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "thumbnails")
@@ -826,6 +889,7 @@ func (c *AdVideoClient) Facebook_advideo_post_thumbnails(args map[string]interfa
 		urlParams.Set("source", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -856,9 +920,11 @@ func (c *AdVideoClient) Facebook_advideo_post_thumbnails(args map[string]interfa
 	return result, nil
 }
 
-// facebook_advideo_get_video_insights GET video_insights for AdVideo
-func (c *AdVideoClient) Facebook_advideo_get_video_insights(args map[string]interface{}) (interface{}, error) {
+
+// advideo_get_video_insights GET video_insights for AdVideo
+func (c *AdVideoClient) Advideo_get_video_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "video_insights")
@@ -878,6 +944,7 @@ func (c *AdVideoClient) Facebook_advideo_get_video_insights(args map[string]inte
 		urlParams.Set("until", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -908,14 +975,18 @@ func (c *AdVideoClient) Facebook_advideo_get_video_insights(args map[string]inte
 	return result, nil
 }
 
-// facebook_advideo_delete_ DELETE  for AdVideo
-func (c *AdVideoClient) Facebook_advideo_delete_(args map[string]interface{}) (interface{}, error) {
+
+// advideo_delete_ DELETE  for AdVideo
+func (c *AdVideoClient) Advideo_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -947,14 +1018,18 @@ func (c *AdVideoClient) Facebook_advideo_delete_(args map[string]interface{}) (i
 	return result, nil
 }
 
-// facebook_advideo_get_ GET  for AdVideo
-func (c *AdVideoClient) Facebook_advideo_get_(args map[string]interface{}) (interface{}, error) {
+
+// advideo_get_ GET  for AdVideo
+func (c *AdVideoClient) Advideo_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -986,9 +1061,11 @@ func (c *AdVideoClient) Facebook_advideo_get_(args map[string]interface{}) (inte
 	return result, nil
 }
 
-// facebook_advideo_post_ POST  for AdVideo
-func (c *AdVideoClient) Facebook_advideo_post_(args map[string]interface{}) (interface{}, error) {
+
+// advideo_post_ POST  for AdVideo
+func (c *AdVideoClient) Advideo_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -1080,6 +1157,7 @@ func (c *AdVideoClient) Facebook_advideo_post_(args map[string]interface{}) (int
 		urlParams.Set("universal_video_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1109,3 +1187,4 @@ func (c *AdVideoClient) Facebook_advideo_post_(args map[string]interface{}) (int
 
 	return result, nil
 }
+

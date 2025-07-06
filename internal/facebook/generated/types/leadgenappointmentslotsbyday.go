@@ -5,5 +5,5 @@ package types
 // LeadGenAppointmentSlotsByDay represents a Facebook LeadGenAppointmentSlotsByDay object
 type LeadGenAppointmentSlotsByDay struct {
 	Appointment_slots []LeadGenAppointmentTimeSlot `json:"appointment_slots"`
-	Day               string                       `json:"day"`
+	Day string `json:"day"`
 }

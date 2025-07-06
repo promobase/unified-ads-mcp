@@ -21,14 +21,18 @@ func NewSystemUserClient(accessToken string) *SystemUserClient {
 	}
 }
 
-// facebook_systemuser_get_assigned_ad_accounts GET assigned_ad_accounts for SystemUser
-func (c *SystemUserClient) Facebook_systemuser_get_assigned_ad_accounts(args map[string]interface{}) (interface{}, error) {
+
+// systemuser_get_assigned_ad_accounts GET assigned_ad_accounts for SystemUser
+func (c *SystemUserClient) Systemuser_get_assigned_ad_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_ad_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -60,9 +64,11 @@ func (c *SystemUserClient) Facebook_systemuser_get_assigned_ad_accounts(args map
 	return result, nil
 }
 
-// facebook_systemuser_get_assigned_business_asset_groups GET assigned_business_asset_groups for SystemUser
-func (c *SystemUserClient) Facebook_systemuser_get_assigned_business_asset_groups(args map[string]interface{}) (interface{}, error) {
+
+// systemuser_get_assigned_business_asset_groups GET assigned_business_asset_groups for SystemUser
+func (c *SystemUserClient) Systemuser_get_assigned_business_asset_groups(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_business_asset_groups")
@@ -73,6 +79,7 @@ func (c *SystemUserClient) Facebook_systemuser_get_assigned_business_asset_group
 		urlParams.Set("contained_asset_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -103,9 +110,11 @@ func (c *SystemUserClient) Facebook_systemuser_get_assigned_business_asset_group
 	return result, nil
 }
 
-// facebook_systemuser_get_assigned_pages GET assigned_pages for SystemUser
-func (c *SystemUserClient) Facebook_systemuser_get_assigned_pages(args map[string]interface{}) (interface{}, error) {
+
+// systemuser_get_assigned_pages GET assigned_pages for SystemUser
+func (c *SystemUserClient) Systemuser_get_assigned_pages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_pages")
@@ -116,6 +125,7 @@ func (c *SystemUserClient) Facebook_systemuser_get_assigned_pages(args map[strin
 		urlParams.Set("pages", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -146,15 +156,19 @@ func (c *SystemUserClient) Facebook_systemuser_get_assigned_pages(args map[strin
 	return result, nil
 }
 
-// facebook_systemuser_get_assigned_product_catalogs GET assigned_product_catalogs for SystemUser
-func (c *SystemUserClient) Facebook_systemuser_get_assigned_product_catalogs(args map[string]interface{}) (interface{}, error) {
+
+// systemuser_get_assigned_product_catalogs GET assigned_product_catalogs for SystemUser
+func (c *SystemUserClient) Systemuser_get_assigned_product_catalogs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_product_catalogs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -185,15 +199,19 @@ func (c *SystemUserClient) Facebook_systemuser_get_assigned_product_catalogs(arg
 	return result, nil
 }
 
-// facebook_systemuser_get_ GET  for SystemUser
-func (c *SystemUserClient) Facebook_systemuser_get_(args map[string]interface{}) (interface{}, error) {
+
+// systemuser_get_ GET  for SystemUser
+func (c *SystemUserClient) Systemuser_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -223,3 +241,4 @@ func (c *SystemUserClient) Facebook_systemuser_get_(args map[string]interface{})
 
 	return result, nil
 }
+

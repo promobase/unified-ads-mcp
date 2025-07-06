@@ -4,9 +4,9 @@ package types
 
 // AdAccountCustomAudienceLimits represents a Facebook AdAccountCustomAudienceLimits object
 type AdAccountCustomAudienceLimits struct {
-	Audience_update_quota_in_total      int     `json:"audience_update_quota_in_total"`
-	Audience_update_quota_left          float64 `json:"audience_update_quota_left"`
-	Has_hit_audience_update_limit       bool    `json:"has_hit_audience_update_limit"`
-	Next_audience_update_available_time string  `json:"next_audience_update_available_time"`
-	Rate_limit_reset_time               string  `json:"rate_limit_reset_time"`
+	Audience_update_quota_in_total int `json:"audience_update_quota_in_total"`
+	Audience_update_quota_left float64 `json:"audience_update_quota_left"`
+	Has_hit_audience_update_limit bool `json:"has_hit_audience_update_limit"`
+	Next_audience_update_available_time string `json:"next_audience_update_available_time"`
+	Rate_limit_reset_time string `json:"rate_limit_reset_time"`
 }

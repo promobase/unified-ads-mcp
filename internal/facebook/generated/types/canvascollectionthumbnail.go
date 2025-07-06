@@ -4,7 +4,7 @@ package types
 
 // CanvasCollectionThumbnail represents a Facebook CanvasCollectionThumbnail object
 type CanvasCollectionThumbnail struct {
-	Element_child_index int    `json:"element_child_index"`
-	Element_id          string `json:"element_id"`
-	Photo               *Photo `json:"photo"`
+	Element_child_index int `json:"element_child_index"`
+	Element_id string `json:"element_id"`
+	Photo *Photo `json:"photo"`
 }

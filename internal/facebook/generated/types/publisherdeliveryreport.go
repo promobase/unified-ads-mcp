@@ -4,9 +4,9 @@ package types
 
 // PublisherDeliveryReport represents a Facebook PublisherDeliveryReport object
 type PublisherDeliveryReport struct {
-	Content_types         []string `json:"content_types"`
-	Estimated_impressions int      `json:"estimated_impressions"`
-	Name                  string   `json:"name"`
-	Status                string   `json:"status"`
-	Url                   string   `json:"url"`
+	Content_types []string `json:"content_types"`
+	Estimated_impressions int `json:"estimated_impressions"`
+	Name string `json:"name"`
+	Status string `json:"status"`
+	Url string `json:"url"`
 }

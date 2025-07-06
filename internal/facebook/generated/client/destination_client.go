@@ -21,14 +21,18 @@ func NewDestinationClient(accessToken string) *DestinationClient {
 	}
 }
 
-// facebook_destination_get_channels_to_integrity_status GET channels_to_integrity_status for Destination
-func (c *DestinationClient) Facebook_destination_get_channels_to_integrity_status(args map[string]interface{}) (interface{}, error) {
+
+// destination_get_channels_to_integrity_status GET channels_to_integrity_status for Destination
+func (c *DestinationClient) Destination_get_channels_to_integrity_status(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "channels_to_integrity_status")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -60,9 +64,11 @@ func (c *DestinationClient) Facebook_destination_get_channels_to_integrity_statu
 	return result, nil
 }
 
-// facebook_destination_get_override_details GET override_details for Destination
-func (c *DestinationClient) Facebook_destination_get_override_details(args map[string]interface{}) (interface{}, error) {
+
+// destination_get_override_details GET override_details for Destination
+func (c *DestinationClient) Destination_get_override_details(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "override_details")
@@ -76,6 +82,7 @@ func (c *DestinationClient) Facebook_destination_get_override_details(args map[s
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -106,15 +113,19 @@ func (c *DestinationClient) Facebook_destination_get_override_details(args map[s
 	return result, nil
 }
 
-// facebook_destination_get_videos_metadata GET videos_metadata for Destination
-func (c *DestinationClient) Facebook_destination_get_videos_metadata(args map[string]interface{}) (interface{}, error) {
+
+// destination_get_videos_metadata GET videos_metadata for Destination
+func (c *DestinationClient) Destination_get_videos_metadata(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos_metadata")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -145,15 +156,19 @@ func (c *DestinationClient) Facebook_destination_get_videos_metadata(args map[st
 	return result, nil
 }
 
-// facebook_destination_get_ GET  for Destination
-func (c *DestinationClient) Facebook_destination_get_(args map[string]interface{}) (interface{}, error) {
+
+// destination_get_ GET  for Destination
+func (c *DestinationClient) Destination_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -183,3 +198,4 @@ func (c *DestinationClient) Facebook_destination_get_(args map[string]interface{
 
 	return result, nil
 }
+

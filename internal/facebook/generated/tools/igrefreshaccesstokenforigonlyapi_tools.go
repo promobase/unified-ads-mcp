@@ -15,8 +15,9 @@ import (
 func GetIGRefreshAccessTokenForIGOnlyAPITools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_igrefreshaccesstokenforigonlyapi_get_ tool
-	facebook_igrefreshaccesstokenforigonlyapi_get_Tool := mcp.NewTool("facebook_igrefreshaccesstokenforigonlyapi_get_",
+
+	// igrefreshaccesstokenforigonlyapi_get_ tool
+	igrefreshaccesstokenforigonlyapi_get_Tool := mcp.NewTool("igrefreshaccesstokenforigonlyapi_get_",
 		mcp.WithDescription("GET  for IGRefreshAccessTokenForIGOnlyAPI"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -31,15 +32,17 @@ func GetIGRefreshAccessTokenForIGOnlyAPITools(accessToken string) []mcp.Tool {
 			mcp.Description("grant_type parameter for "),
 		),
 	)
-	tools = append(tools, facebook_igrefreshaccesstokenforigonlyapi_get_Tool)
+	tools = append(tools, igrefreshaccesstokenforigonlyapi_get_Tool)
+
 
 	return tools
 }
 
 // IGRefreshAccessTokenForIGOnlyAPI handlers
 
-// HandleFacebook_igrefreshaccesstokenforigonlyapi_get_ handles the facebook_igrefreshaccesstokenforigonlyapi_get_ tool
-func HandleFacebook_igrefreshaccesstokenforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIgrefreshaccesstokenforigonlyapi_get_ handles the igrefreshaccesstokenforigonlyapi_get_ tool
+func HandleIgrefreshaccesstokenforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -66,10 +69,12 @@ func HandleFacebook_igrefreshaccesstokenforigonlyapi_get_(ctx context.Context, r
 	}
 	args["grant_type"] = grant_type
 
+
+
 	// Call the client method
-	result, err := client.Facebook_igrefreshaccesstokenforigonlyapi_get_(args)
+	result, err := client.Igrefreshaccesstokenforigonlyapi_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_igrefreshaccesstokenforigonlyapi_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igrefreshaccesstokenforigonlyapi_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -80,3 +85,4 @@ func HandleFacebook_igrefreshaccesstokenforigonlyapi_get_(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

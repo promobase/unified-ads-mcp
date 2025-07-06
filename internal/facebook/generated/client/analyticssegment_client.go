@@ -21,9 +21,11 @@ func NewAnalyticsSegmentClient(accessToken string) *AnalyticsSegmentClient {
 	}
 }
 
-// facebook_analyticssegment_get_ GET  for AnalyticsSegment
-func (c *AnalyticsSegmentClient) Facebook_analyticssegment_get_(args map[string]interface{}) (interface{}, error) {
+
+// analyticssegment_get_ GET  for AnalyticsSegment
+func (c *AnalyticsSegmentClient) Analyticssegment_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -39,6 +41,7 @@ func (c *AnalyticsSegmentClient) Facebook_analyticssegment_get_(args map[string]
 	if val, ok := args["start_date"]; ok {
 		urlParams.Set("start_date", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -69,3 +72,4 @@ func (c *AnalyticsSegmentClient) Facebook_analyticssegment_get_(args map[string]
 
 	return result, nil
 }
+

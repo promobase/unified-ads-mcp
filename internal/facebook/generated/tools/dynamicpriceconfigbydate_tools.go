@@ -15,23 +15,26 @@ import (
 func GetDynamicPriceConfigByDateTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_dynamicpriceconfigbydate_get_ tool
-	facebook_dynamicpriceconfigbydate_get_Tool := mcp.NewTool("facebook_dynamicpriceconfigbydate_get_",
+
+	// dynamicpriceconfigbydate_get_ tool
+	dynamicpriceconfigbydate_get_Tool := mcp.NewTool("dynamicpriceconfigbydate_get_",
 		mcp.WithDescription("GET  for DynamicPriceConfigByDate"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_dynamicpriceconfigbydate_get_Tool)
+	tools = append(tools, dynamicpriceconfigbydate_get_Tool)
+
 
 	return tools
 }
 
 // DynamicPriceConfigByDate handlers
 
-// HandleFacebook_dynamicpriceconfigbydate_get_ handles the facebook_dynamicpriceconfigbydate_get_ tool
-func HandleFacebook_dynamicpriceconfigbydate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleDynamicpriceconfigbydate_get_ handles the dynamicpriceconfigbydate_get_ tool
+func HandleDynamicpriceconfigbydate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_dynamicpriceconfigbydate_get_(ctx context.Context, request m
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_dynamicpriceconfigbydate_get_(args)
+	result, err := client.Dynamicpriceconfigbydate_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_dynamicpriceconfigbydate_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute dynamicpriceconfigbydate_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_dynamicpriceconfigbydate_get_(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

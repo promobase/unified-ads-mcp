@@ -21,14 +21,18 @@ func NewCatalogSmartPixelSettingsClient(accessToken string) *CatalogSmartPixelSe
 	}
 }
 
-// facebook_catalogsmartpixelsettings_get_ GET  for CatalogSmartPixelSettings
-func (c *CatalogSmartPixelSettingsClient) Facebook_catalogsmartpixelsettings_get_(args map[string]interface{}) (interface{}, error) {
+
+// catalogsmartpixelsettings_get_ GET  for CatalogSmartPixelSettings
+func (c *CatalogSmartPixelSettingsClient) Catalogsmartpixelsettings_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *CatalogSmartPixelSettingsClient) Facebook_catalogsmartpixelsettings_get
 
 	return result, nil
 }
+

@@ -4,9 +4,9 @@ package types
 
 // OwnedDomain represents a Facebook OwnedDomain object
 type OwnedDomain struct {
-	Domain_name       string    `json:"domain_name"`
-	Id                string    `json:"id"`
-	Owner_business    *Business `json:"owner_business"`
-	Status            string    `json:"status"`
-	Verification_code string    `json:"verification_code"`
+	Domain_name string `json:"domain_name"`
+	Id string `json:"id"`
+	Owner_business *Business `json:"owner_business"`
+	Status string `json:"status"`
+	Verification_code string `json:"verification_code"`
 }

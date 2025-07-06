@@ -15,18 +15,19 @@ import (
 func GetIGUserExportForCAMTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_iguserexportforcam_get_branded_content_media tool
-	facebook_iguserexportforcam_get_branded_content_mediaTool := mcp.NewTool("facebook_iguserexportforcam_get_branded_content_media",
+
+	// iguserexportforcam_get_branded_content_media tool
+	iguserexportforcam_get_branded_content_mediaTool := mcp.NewTool("iguserexportforcam_get_branded_content_media",
 		mcp.WithDescription("GET branded_content_media for IGUserExportForCAM"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_iguserexportforcam_get_branded_content_mediaTool)
+	tools = append(tools, iguserexportforcam_get_branded_content_mediaTool)
 
-	// facebook_iguserexportforcam_get_insights tool
-	facebook_iguserexportforcam_get_insightsTool := mcp.NewTool("facebook_iguserexportforcam_get_insights",
+	// iguserexportforcam_get_insights tool
+	iguserexportforcam_get_insightsTool := mcp.NewTool("iguserexportforcam_get_insights",
 		mcp.WithDescription("GET insights for IGUserExportForCAM"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -49,35 +50,37 @@ func GetIGUserExportForCAMTools(accessToken string) []mcp.Tool {
 			mcp.Enum("LAST_14_DAYS", "LAST_90_DAYS", "LIFETIME", "THIS_MONTH", "THIS_WEEK"),
 		),
 	)
-	tools = append(tools, facebook_iguserexportforcam_get_insightsTool)
+	tools = append(tools, iguserexportforcam_get_insightsTool)
 
-	// facebook_iguserexportforcam_get_recent_media tool
-	facebook_iguserexportforcam_get_recent_mediaTool := mcp.NewTool("facebook_iguserexportforcam_get_recent_media",
+	// iguserexportforcam_get_recent_media tool
+	iguserexportforcam_get_recent_mediaTool := mcp.NewTool("iguserexportforcam_get_recent_media",
 		mcp.WithDescription("GET recent_media for IGUserExportForCAM"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_iguserexportforcam_get_recent_mediaTool)
+	tools = append(tools, iguserexportforcam_get_recent_mediaTool)
 
-	// facebook_iguserexportforcam_get_ tool
-	facebook_iguserexportforcam_get_Tool := mcp.NewTool("facebook_iguserexportforcam_get_",
+	// iguserexportforcam_get_ tool
+	iguserexportforcam_get_Tool := mcp.NewTool("iguserexportforcam_get_",
 		mcp.WithDescription("GET  for IGUserExportForCAM"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_iguserexportforcam_get_Tool)
+	tools = append(tools, iguserexportforcam_get_Tool)
+
 
 	return tools
 }
 
 // IGUserExportForCAM handlers
 
-// HandleFacebook_iguserexportforcam_get_branded_content_media handles the facebook_iguserexportforcam_get_branded_content_media tool
-func HandleFacebook_iguserexportforcam_get_branded_content_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIguserexportforcam_get_branded_content_media handles the iguserexportforcam_get_branded_content_media tool
+func HandleIguserexportforcam_get_branded_content_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -90,10 +93,12 @@ func HandleFacebook_iguserexportforcam_get_branded_content_media(ctx context.Con
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_iguserexportforcam_get_branded_content_media(args)
+	result, err := client.Iguserexportforcam_get_branded_content_media(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_iguserexportforcam_get_branded_content_media: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguserexportforcam_get_branded_content_media: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -105,8 +110,9 @@ func HandleFacebook_iguserexportforcam_get_branded_content_media(ctx context.Con
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_iguserexportforcam_get_insights handles the facebook_iguserexportforcam_get_insights tool
-func HandleFacebook_iguserexportforcam_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIguserexportforcam_get_insights handles the iguserexportforcam_get_insights tool
+func HandleIguserexportforcam_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -140,10 +146,12 @@ func HandleFacebook_iguserexportforcam_get_insights(ctx context.Context, request
 		args["time_range"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_iguserexportforcam_get_insights(args)
+	result, err := client.Iguserexportforcam_get_insights(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_iguserexportforcam_get_insights: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguserexportforcam_get_insights: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -155,8 +163,9 @@ func HandleFacebook_iguserexportforcam_get_insights(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_iguserexportforcam_get_recent_media handles the facebook_iguserexportforcam_get_recent_media tool
-func HandleFacebook_iguserexportforcam_get_recent_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIguserexportforcam_get_recent_media handles the iguserexportforcam_get_recent_media tool
+func HandleIguserexportforcam_get_recent_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -169,10 +178,12 @@ func HandleFacebook_iguserexportforcam_get_recent_media(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_iguserexportforcam_get_recent_media(args)
+	result, err := client.Iguserexportforcam_get_recent_media(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_iguserexportforcam_get_recent_media: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguserexportforcam_get_recent_media: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -184,8 +195,9 @@ func HandleFacebook_iguserexportforcam_get_recent_media(ctx context.Context, req
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_iguserexportforcam_get_ handles the facebook_iguserexportforcam_get_ tool
-func HandleFacebook_iguserexportforcam_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIguserexportforcam_get_ handles the iguserexportforcam_get_ tool
+func HandleIguserexportforcam_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -198,10 +210,12 @@ func HandleFacebook_iguserexportforcam_get_(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_iguserexportforcam_get_(args)
+	result, err := client.Iguserexportforcam_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_iguserexportforcam_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguserexportforcam_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -212,3 +226,4 @@ func HandleFacebook_iguserexportforcam_get_(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

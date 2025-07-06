@@ -21,14 +21,18 @@ func NewAdCreationPackageConfigClient(accessToken string) *AdCreationPackageConf
 	}
 }
 
-// facebook_adcreationpackageconfig_get_ GET  for AdCreationPackageConfig
-func (c *AdCreationPackageConfigClient) Facebook_adcreationpackageconfig_get_(args map[string]interface{}) (interface{}, error) {
+
+// adcreationpackageconfig_get_ GET  for AdCreationPackageConfig
+func (c *AdCreationPackageConfigClient) Adcreationpackageconfig_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *AdCreationPackageConfigClient) Facebook_adcreationpackageconfig_get_(ar
 
 	return result, nil
 }
+

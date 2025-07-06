@@ -21,14 +21,18 @@ func NewIGUserClient(accessToken string) *IGUserClient {
 	}
 }
 
-// facebook_iguser_get_agencies GET agencies for IGUser
-func (c *IGUserClient) Facebook_iguser_get_agencies(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_agencies GET agencies for IGUser
+func (c *IGUserClient) Iguser_get_agencies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -60,14 +64,16 @@ func (c *IGUserClient) Facebook_iguser_get_agencies(args map[string]interface{})
 	return result, nil
 }
 
-// facebook_iguser_get_authorized_adaccounts GET authorized_adaccounts for IGUser
-func (c *IGUserClient) Facebook_iguser_get_authorized_adaccounts(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_authorized_adaccounts GET authorized_adaccounts for IGUser
+func (c *IGUserClient) Iguser_get_authorized_adaccounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	business, ok := args["business"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: business")
 	}
 	_ = business // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "authorized_adaccounts")
@@ -78,6 +84,7 @@ func (c *IGUserClient) Facebook_iguser_get_authorized_adaccounts(args map[string
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -108,8 +115,9 @@ func (c *IGUserClient) Facebook_iguser_get_authorized_adaccounts(args map[string
 	return result, nil
 }
 
-// facebook_iguser_post_authorized_adaccounts POST authorized_adaccounts for IGUser
-func (c *IGUserClient) Facebook_iguser_post_authorized_adaccounts(args map[string]interface{}) (interface{}, error) {
+
+// iguser_post_authorized_adaccounts POST authorized_adaccounts for IGUser
+func (c *IGUserClient) Iguser_post_authorized_adaccounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	account_id, ok := args["account_id"]
 	if !ok {
@@ -122,6 +130,7 @@ func (c *IGUserClient) Facebook_iguser_post_authorized_adaccounts(args map[strin
 	}
 	_ = business // Suppress unused variable warning
 
+
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "authorized_adaccounts")
 	urlParams := url.Values{}
@@ -133,6 +142,7 @@ func (c *IGUserClient) Facebook_iguser_post_authorized_adaccounts(args map[strin
 	if val, ok := args["business"]; ok {
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -164,15 +174,19 @@ func (c *IGUserClient) Facebook_iguser_post_authorized_adaccounts(args map[strin
 	return result, nil
 }
 
-// facebook_iguser_get_available_catalogs GET available_catalogs for IGUser
-func (c *IGUserClient) Facebook_iguser_get_available_catalogs(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_available_catalogs GET available_catalogs for IGUser
+func (c *IGUserClient) Iguser_get_available_catalogs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "available_catalogs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -203,15 +217,19 @@ func (c *IGUserClient) Facebook_iguser_get_available_catalogs(args map[string]in
 	return result, nil
 }
 
-// facebook_iguser_get_branded_content_ad_permissions GET branded_content_ad_permissions for IGUser
-func (c *IGUserClient) Facebook_iguser_get_branded_content_ad_permissions(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_branded_content_ad_permissions GET branded_content_ad_permissions for IGUser
+func (c *IGUserClient) Iguser_get_branded_content_ad_permissions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_ad_permissions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -242,9 +260,11 @@ func (c *IGUserClient) Facebook_iguser_get_branded_content_ad_permissions(args m
 	return result, nil
 }
 
-// facebook_iguser_post_branded_content_ad_permissions POST branded_content_ad_permissions for IGUser
-func (c *IGUserClient) Facebook_iguser_post_branded_content_ad_permissions(args map[string]interface{}) (interface{}, error) {
+
+// iguser_post_branded_content_ad_permissions POST branded_content_ad_permissions for IGUser
+func (c *IGUserClient) Iguser_post_branded_content_ad_permissions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_ad_permissions")
@@ -261,6 +281,7 @@ func (c *IGUserClient) Facebook_iguser_post_branded_content_ad_permissions(args 
 		urlParams.Set("revoke", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -291,9 +312,11 @@ func (c *IGUserClient) Facebook_iguser_post_branded_content_ad_permissions(args 
 	return result, nil
 }
 
-// facebook_iguser_get_branded_content_advertisable_medias GET branded_content_advertisable_medias for IGUser
-func (c *IGUserClient) Facebook_iguser_get_branded_content_advertisable_medias(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_branded_content_advertisable_medias GET branded_content_advertisable_medias for IGUser
+func (c *IGUserClient) Iguser_get_branded_content_advertisable_medias(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_advertisable_medias")
@@ -316,6 +339,7 @@ func (c *IGUserClient) Facebook_iguser_get_branded_content_advertisable_medias(a
 		urlParams.Set("permalinks", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -346,14 +370,16 @@ func (c *IGUserClient) Facebook_iguser_get_branded_content_advertisable_medias(a
 	return result, nil
 }
 
-// facebook_iguser_delete_branded_content_tag_approval DELETE branded_content_tag_approval for IGUser
-func (c *IGUserClient) Facebook_iguser_delete_branded_content_tag_approval(args map[string]interface{}) (interface{}, error) {
+
+// iguser_delete_branded_content_tag_approval DELETE branded_content_tag_approval for IGUser
+func (c *IGUserClient) Iguser_delete_branded_content_tag_approval(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	user_ids, ok := args["user_ids"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: user_ids")
 	}
 	_ = user_ids // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_tag_approval")
@@ -363,6 +389,7 @@ func (c *IGUserClient) Facebook_iguser_delete_branded_content_tag_approval(args 
 	if val, ok := args["user_ids"]; ok {
 		urlParams.Set("user_ids", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -394,14 +421,16 @@ func (c *IGUserClient) Facebook_iguser_delete_branded_content_tag_approval(args 
 	return result, nil
 }
 
-// facebook_iguser_get_branded_content_tag_approval GET branded_content_tag_approval for IGUser
-func (c *IGUserClient) Facebook_iguser_get_branded_content_tag_approval(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_branded_content_tag_approval GET branded_content_tag_approval for IGUser
+func (c *IGUserClient) Iguser_get_branded_content_tag_approval(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	user_ids, ok := args["user_ids"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: user_ids")
 	}
 	_ = user_ids // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_tag_approval")
@@ -411,6 +440,7 @@ func (c *IGUserClient) Facebook_iguser_get_branded_content_tag_approval(args map
 	if val, ok := args["user_ids"]; ok {
 		urlParams.Set("user_ids", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -442,14 +472,16 @@ func (c *IGUserClient) Facebook_iguser_get_branded_content_tag_approval(args map
 	return result, nil
 }
 
-// facebook_iguser_post_branded_content_tag_approval POST branded_content_tag_approval for IGUser
-func (c *IGUserClient) Facebook_iguser_post_branded_content_tag_approval(args map[string]interface{}) (interface{}, error) {
+
+// iguser_post_branded_content_tag_approval POST branded_content_tag_approval for IGUser
+func (c *IGUserClient) Iguser_post_branded_content_tag_approval(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	user_ids, ok := args["user_ids"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: user_ids")
 	}
 	_ = user_ids // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_tag_approval")
@@ -459,6 +491,7 @@ func (c *IGUserClient) Facebook_iguser_post_branded_content_tag_approval(args ma
 	if val, ok := args["user_ids"]; ok {
 		urlParams.Set("user_ids", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -490,14 +523,16 @@ func (c *IGUserClient) Facebook_iguser_post_branded_content_tag_approval(args ma
 	return result, nil
 }
 
-// facebook_iguser_get_catalog_product_search GET catalog_product_search for IGUser
-func (c *IGUserClient) Facebook_iguser_get_catalog_product_search(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_catalog_product_search GET catalog_product_search for IGUser
+func (c *IGUserClient) Iguser_get_catalog_product_search(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	catalog_id, ok := args["catalog_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: catalog_id")
 	}
 	_ = catalog_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "catalog_product_search")
@@ -511,6 +546,7 @@ func (c *IGUserClient) Facebook_iguser_get_catalog_product_search(args map[strin
 		urlParams.Set("q", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -541,15 +577,19 @@ func (c *IGUserClient) Facebook_iguser_get_catalog_product_search(args map[strin
 	return result, nil
 }
 
-// facebook_iguser_get_connected_threads_user GET connected_threads_user for IGUser
-func (c *IGUserClient) Facebook_iguser_get_connected_threads_user(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_connected_threads_user GET connected_threads_user for IGUser
+func (c *IGUserClient) Iguser_get_connected_threads_user(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "connected_threads_user")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -580,9 +620,11 @@ func (c *IGUserClient) Facebook_iguser_get_connected_threads_user(args map[strin
 	return result, nil
 }
 
-// facebook_iguser_get_content_publishing_limit GET content_publishing_limit for IGUser
-func (c *IGUserClient) Facebook_iguser_get_content_publishing_limit(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_content_publishing_limit GET content_publishing_limit for IGUser
+func (c *IGUserClient) Iguser_get_content_publishing_limit(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "content_publishing_limit")
@@ -593,6 +635,7 @@ func (c *IGUserClient) Facebook_iguser_get_content_publishing_limit(args map[str
 		urlParams.Set("since", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -623,15 +666,19 @@ func (c *IGUserClient) Facebook_iguser_get_content_publishing_limit(args map[str
 	return result, nil
 }
 
-// facebook_iguser_get_dataset GET dataset for IGUser
-func (c *IGUserClient) Facebook_iguser_get_dataset(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_dataset GET dataset for IGUser
+func (c *IGUserClient) Iguser_get_dataset(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "dataset")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -662,9 +709,11 @@ func (c *IGUserClient) Facebook_iguser_get_dataset(args map[string]interface{}) 
 	return result, nil
 }
 
-// facebook_iguser_post_dataset POST dataset for IGUser
-func (c *IGUserClient) Facebook_iguser_post_dataset(args map[string]interface{}) (interface{}, error) {
+
+// iguser_post_dataset POST dataset for IGUser
+func (c *IGUserClient) Iguser_post_dataset(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "dataset")
@@ -674,6 +723,7 @@ func (c *IGUserClient) Facebook_iguser_post_dataset(args map[string]interface{})
 	if val, ok := args["dataset_name"]; ok {
 		urlParams.Set("dataset_name", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -705,8 +755,9 @@ func (c *IGUserClient) Facebook_iguser_post_dataset(args map[string]interface{})
 	return result, nil
 }
 
-// facebook_iguser_get_insights GET insights for IGUser
-func (c *IGUserClient) Facebook_iguser_get_insights(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_insights GET insights for IGUser
+func (c *IGUserClient) Iguser_get_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	metric, ok := args["metric"]
 	if !ok {
@@ -718,6 +769,7 @@ func (c *IGUserClient) Facebook_iguser_get_insights(args map[string]interface{})
 		return nil, fmt.Errorf("missing required parameter: period")
 	}
 	_ = period // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
@@ -746,6 +798,7 @@ func (c *IGUserClient) Facebook_iguser_get_insights(args map[string]interface{})
 		urlParams.Set("until", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -776,15 +829,19 @@ func (c *IGUserClient) Facebook_iguser_get_insights(args map[string]interface{})
 	return result, nil
 }
 
-// facebook_iguser_get_instagram_backed_threads_user GET instagram_backed_threads_user for IGUser
-func (c *IGUserClient) Facebook_iguser_get_instagram_backed_threads_user(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_instagram_backed_threads_user GET instagram_backed_threads_user for IGUser
+func (c *IGUserClient) Iguser_get_instagram_backed_threads_user(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "instagram_backed_threads_user")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -815,9 +872,11 @@ func (c *IGUserClient) Facebook_iguser_get_instagram_backed_threads_user(args ma
 	return result, nil
 }
 
-// facebook_iguser_get_live_media GET live_media for IGUser
-func (c *IGUserClient) Facebook_iguser_get_live_media(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_live_media GET live_media for IGUser
+func (c *IGUserClient) Iguser_get_live_media(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "live_media")
@@ -831,6 +890,7 @@ func (c *IGUserClient) Facebook_iguser_get_live_media(args map[string]interface{
 		urlParams.Set("until", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -861,9 +921,11 @@ func (c *IGUserClient) Facebook_iguser_get_live_media(args map[string]interface{
 	return result, nil
 }
 
-// facebook_iguser_get_media GET media for IGUser
-func (c *IGUserClient) Facebook_iguser_get_media(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_media GET media for IGUser
+func (c *IGUserClient) Iguser_get_media(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "media")
@@ -877,6 +939,7 @@ func (c *IGUserClient) Facebook_iguser_get_media(args map[string]interface{}) (i
 		urlParams.Set("until", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -907,9 +970,11 @@ func (c *IGUserClient) Facebook_iguser_get_media(args map[string]interface{}) (i
 	return result, nil
 }
 
-// facebook_iguser_post_media POST media for IGUser
-func (c *IGUserClient) Facebook_iguser_post_media(args map[string]interface{}) (interface{}, error) {
+
+// iguser_post_media POST media for IGUser
+func (c *IGUserClient) Iguser_post_media(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "media")
@@ -965,6 +1030,7 @@ func (c *IGUserClient) Facebook_iguser_post_media(args map[string]interface{}) (
 		urlParams.Set("video_url", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -995,14 +1061,16 @@ func (c *IGUserClient) Facebook_iguser_post_media(args map[string]interface{}) (
 	return result, nil
 }
 
-// facebook_iguser_post_media_publish POST media_publish for IGUser
-func (c *IGUserClient) Facebook_iguser_post_media_publish(args map[string]interface{}) (interface{}, error) {
+
+// iguser_post_media_publish POST media_publish for IGUser
+func (c *IGUserClient) Iguser_post_media_publish(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	creation_id, ok := args["creation_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: creation_id")
 	}
 	_ = creation_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "media_publish")
@@ -1013,6 +1081,7 @@ func (c *IGUserClient) Facebook_iguser_post_media_publish(args map[string]interf
 		urlParams.Set("creation_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1043,8 +1112,9 @@ func (c *IGUserClient) Facebook_iguser_post_media_publish(args map[string]interf
 	return result, nil
 }
 
-// facebook_iguser_post_mentions POST mentions for IGUser
-func (c *IGUserClient) Facebook_iguser_post_mentions(args map[string]interface{}) (interface{}, error) {
+
+// iguser_post_mentions POST mentions for IGUser
+func (c *IGUserClient) Iguser_post_mentions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	media_id, ok := args["media_id"]
 	if !ok {
@@ -1056,6 +1126,7 @@ func (c *IGUserClient) Facebook_iguser_post_mentions(args map[string]interface{}
 		return nil, fmt.Errorf("missing required parameter: message")
 	}
 	_ = message // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "mentions")
@@ -1072,6 +1143,7 @@ func (c *IGUserClient) Facebook_iguser_post_mentions(args map[string]interface{}
 		urlParams.Set("message", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1102,14 +1174,18 @@ func (c *IGUserClient) Facebook_iguser_post_mentions(args map[string]interface{}
 	return result, nil
 }
 
-// facebook_iguser_get_notification_message_tokens GET notification_message_tokens for IGUser
-func (c *IGUserClient) Facebook_iguser_get_notification_message_tokens(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_notification_message_tokens GET notification_message_tokens for IGUser
+func (c *IGUserClient) Iguser_get_notification_message_tokens(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "notification_message_tokens")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1141,14 +1217,16 @@ func (c *IGUserClient) Facebook_iguser_get_notification_message_tokens(args map[
 	return result, nil
 }
 
-// facebook_iguser_get_product_appeal GET product_appeal for IGUser
-func (c *IGUserClient) Facebook_iguser_get_product_appeal(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_product_appeal GET product_appeal for IGUser
+func (c *IGUserClient) Iguser_get_product_appeal(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	product_id, ok := args["product_id"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: product_id")
 	}
 	_ = product_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_appeal")
@@ -1159,6 +1237,7 @@ func (c *IGUserClient) Facebook_iguser_get_product_appeal(args map[string]interf
 		urlParams.Set("product_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1189,8 +1268,9 @@ func (c *IGUserClient) Facebook_iguser_get_product_appeal(args map[string]interf
 	return result, nil
 }
 
-// facebook_iguser_post_product_appeal POST product_appeal for IGUser
-func (c *IGUserClient) Facebook_iguser_post_product_appeal(args map[string]interface{}) (interface{}, error) {
+
+// iguser_post_product_appeal POST product_appeal for IGUser
+func (c *IGUserClient) Iguser_post_product_appeal(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	appeal_reason, ok := args["appeal_reason"]
 	if !ok {
@@ -1202,6 +1282,7 @@ func (c *IGUserClient) Facebook_iguser_post_product_appeal(args map[string]inter
 		return nil, fmt.Errorf("missing required parameter: product_id")
 	}
 	_ = product_id // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_appeal")
@@ -1215,6 +1296,7 @@ func (c *IGUserClient) Facebook_iguser_post_product_appeal(args map[string]inter
 		urlParams.Set("product_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1245,15 +1327,19 @@ func (c *IGUserClient) Facebook_iguser_post_product_appeal(args map[string]inter
 	return result, nil
 }
 
-// facebook_iguser_get_recently_searched_hashtags GET recently_searched_hashtags for IGUser
-func (c *IGUserClient) Facebook_iguser_get_recently_searched_hashtags(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_recently_searched_hashtags GET recently_searched_hashtags for IGUser
+func (c *IGUserClient) Iguser_get_recently_searched_hashtags(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "recently_searched_hashtags")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1284,15 +1370,19 @@ func (c *IGUserClient) Facebook_iguser_get_recently_searched_hashtags(args map[s
 	return result, nil
 }
 
-// facebook_iguser_get_stories GET stories for IGUser
-func (c *IGUserClient) Facebook_iguser_get_stories(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_stories GET stories for IGUser
+func (c *IGUserClient) Iguser_get_stories(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "stories")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1323,15 +1413,19 @@ func (c *IGUserClient) Facebook_iguser_get_stories(args map[string]interface{}) 
 	return result, nil
 }
 
-// facebook_iguser_get_tags GET tags for IGUser
-func (c *IGUserClient) Facebook_iguser_get_tags(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_tags GET tags for IGUser
+func (c *IGUserClient) Iguser_get_tags(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "tags")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1362,15 +1456,19 @@ func (c *IGUserClient) Facebook_iguser_get_tags(args map[string]interface{}) (in
 	return result, nil
 }
 
-// facebook_iguser_get_upcoming_events GET upcoming_events for IGUser
-func (c *IGUserClient) Facebook_iguser_get_upcoming_events(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_upcoming_events GET upcoming_events for IGUser
+func (c *IGUserClient) Iguser_get_upcoming_events(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "upcoming_events")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1401,8 +1499,9 @@ func (c *IGUserClient) Facebook_iguser_get_upcoming_events(args map[string]inter
 	return result, nil
 }
 
-// facebook_iguser_post_upcoming_events POST upcoming_events for IGUser
-func (c *IGUserClient) Facebook_iguser_post_upcoming_events(args map[string]interface{}) (interface{}, error) {
+
+// iguser_post_upcoming_events POST upcoming_events for IGUser
+func (c *IGUserClient) Iguser_post_upcoming_events(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	start_time, ok := args["start_time"]
 	if !ok {
@@ -1414,6 +1513,7 @@ func (c *IGUserClient) Facebook_iguser_post_upcoming_events(args map[string]inte
 		return nil, fmt.Errorf("missing required parameter: title")
 	}
 	_ = title // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "upcoming_events")
@@ -1433,6 +1533,7 @@ func (c *IGUserClient) Facebook_iguser_post_upcoming_events(args map[string]inte
 		urlParams.Set("title", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1463,9 +1564,11 @@ func (c *IGUserClient) Facebook_iguser_post_upcoming_events(args map[string]inte
 	return result, nil
 }
 
-// facebook_iguser_get_welcome_message_flows GET welcome_message_flows for IGUser
-func (c *IGUserClient) Facebook_iguser_get_welcome_message_flows(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_welcome_message_flows GET welcome_message_flows for IGUser
+func (c *IGUserClient) Iguser_get_welcome_message_flows(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "welcome_message_flows")
@@ -1479,6 +1582,7 @@ func (c *IGUserClient) Facebook_iguser_get_welcome_message_flows(args map[string
 		urlParams.Set("flow_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1509,9 +1613,11 @@ func (c *IGUserClient) Facebook_iguser_get_welcome_message_flows(args map[string
 	return result, nil
 }
 
-// facebook_iguser_get_ GET  for IGUser
-func (c *IGUserClient) Facebook_iguser_get_(args map[string]interface{}) (interface{}, error) {
+
+// iguser_get_ GET  for IGUser
+func (c *IGUserClient) Iguser_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -1522,6 +1628,7 @@ func (c *IGUserClient) Facebook_iguser_get_(args map[string]interface{}) (interf
 		urlParams.Set("adgroup_id", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1551,3 +1658,4 @@ func (c *IGUserClient) Facebook_iguser_get_(args map[string]interface{}) (interf
 
 	return result, nil
 }
+

@@ -21,15 +21,19 @@ func NewOffsiteSignalContainerBusinessObjectClient(accessToken string) *OffsiteS
 	}
 }
 
-// facebook_offsitesignalcontainerbusinessobject_get_linked_application GET linked_application for OffsiteSignalContainerBusinessObject
-func (c *OffsiteSignalContainerBusinessObjectClient) Facebook_offsitesignalcontainerbusinessobject_get_linked_application(args map[string]interface{}) (interface{}, error) {
+
+// offsitesignalcontainerbusinessobject_get_linked_application GET linked_application for OffsiteSignalContainerBusinessObject
+func (c *OffsiteSignalContainerBusinessObjectClient) Offsitesignalcontainerbusinessobject_get_linked_application(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "linked_application")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -60,15 +64,19 @@ func (c *OffsiteSignalContainerBusinessObjectClient) Facebook_offsitesignalconta
 	return result, nil
 }
 
-// facebook_offsitesignalcontainerbusinessobject_get_linked_page GET linked_page for OffsiteSignalContainerBusinessObject
-func (c *OffsiteSignalContainerBusinessObjectClient) Facebook_offsitesignalcontainerbusinessobject_get_linked_page(args map[string]interface{}) (interface{}, error) {
+
+// offsitesignalcontainerbusinessobject_get_linked_page GET linked_page for OffsiteSignalContainerBusinessObject
+func (c *OffsiteSignalContainerBusinessObjectClient) Offsitesignalcontainerbusinessobject_get_linked_page(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "linked_page")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -99,15 +107,19 @@ func (c *OffsiteSignalContainerBusinessObjectClient) Facebook_offsitesignalconta
 	return result, nil
 }
 
-// facebook_offsitesignalcontainerbusinessobject_get_ GET  for OffsiteSignalContainerBusinessObject
-func (c *OffsiteSignalContainerBusinessObjectClient) Facebook_offsitesignalcontainerbusinessobject_get_(args map[string]interface{}) (interface{}, error) {
+
+// offsitesignalcontainerbusinessobject_get_ GET  for OffsiteSignalContainerBusinessObject
+func (c *OffsiteSignalContainerBusinessObjectClient) Offsitesignalcontainerbusinessobject_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -137,3 +149,4 @@ func (c *OffsiteSignalContainerBusinessObjectClient) Facebook_offsitesignalconta
 
 	return result, nil
 }
+

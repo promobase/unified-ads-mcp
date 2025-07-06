@@ -21,14 +21,18 @@ func NewEventExternalTicketInfoClient(accessToken string) *EventExternalTicketIn
 	}
 }
 
-// facebook_eventexternalticketinfo_get_ GET  for EventExternalTicketInfo
-func (c *EventExternalTicketInfoClient) Facebook_eventexternalticketinfo_get_(args map[string]interface{}) (interface{}, error) {
+
+// eventexternalticketinfo_get_ GET  for EventExternalTicketInfo
+func (c *EventExternalTicketInfoClient) Eventexternalticketinfo_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *EventExternalTicketInfoClient) Facebook_eventexternalticketinfo_get_(ar
 
 	return result, nil
 }
+

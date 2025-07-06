@@ -4,6 +4,6 @@ package types
 
 // TargetingGeoLocationLocationExpansion represents a Facebook TargetingGeoLocationLocationExpansion object
 type TargetingGeoLocationLocationExpansion struct {
-	Allowed bool   `json:"allowed"`
-	Intent  string `json:"intent"`
+	Allowed bool `json:"allowed"`
+	Intent string `json:"intent"`
 }

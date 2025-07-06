@@ -4,8 +4,8 @@ package types
 
 // ProductDeliveryPreference represents a Facebook ProductDeliveryPreference object
 type ProductDeliveryPreference struct {
-	Ad_object_id              string   `json:"ad_object_id"`
-	Id                        string   `json:"id"`
-	Product_priority          string   `json:"product_priority"`
+	Ad_object_id string `json:"ad_object_id"`
+	Id string `json:"id"`
+	Product_priority string `json:"product_priority"`
 	Product_priority_category []string `json:"product_priority_category"`
 }

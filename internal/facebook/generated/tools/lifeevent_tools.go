@@ -15,33 +15,36 @@ import (
 func GetLifeEventTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_lifeevent_get_likes tool
-	facebook_lifeevent_get_likesTool := mcp.NewTool("facebook_lifeevent_get_likes",
+
+	// lifeevent_get_likes tool
+	lifeevent_get_likesTool := mcp.NewTool("lifeevent_get_likes",
 		mcp.WithDescription("GET likes for LifeEvent"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_lifeevent_get_likesTool)
+	tools = append(tools, lifeevent_get_likesTool)
 
-	// facebook_lifeevent_get_ tool
-	facebook_lifeevent_get_Tool := mcp.NewTool("facebook_lifeevent_get_",
+	// lifeevent_get_ tool
+	lifeevent_get_Tool := mcp.NewTool("lifeevent_get_",
 		mcp.WithDescription("GET  for LifeEvent"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_lifeevent_get_Tool)
+	tools = append(tools, lifeevent_get_Tool)
+
 
 	return tools
 }
 
 // LifeEvent handlers
 
-// HandleFacebook_lifeevent_get_likes handles the facebook_lifeevent_get_likes tool
-func HandleFacebook_lifeevent_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLifeevent_get_likes handles the lifeevent_get_likes tool
+func HandleLifeevent_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -54,10 +57,12 @@ func HandleFacebook_lifeevent_get_likes(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_lifeevent_get_likes(args)
+	result, err := client.Lifeevent_get_likes(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_lifeevent_get_likes: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute lifeevent_get_likes: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -69,8 +74,9 @@ func HandleFacebook_lifeevent_get_likes(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_lifeevent_get_ handles the facebook_lifeevent_get_ tool
-func HandleFacebook_lifeevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLifeevent_get_ handles the lifeevent_get_ tool
+func HandleLifeevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -83,10 +89,12 @@ func HandleFacebook_lifeevent_get_(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_lifeevent_get_(args)
+	result, err := client.Lifeevent_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_lifeevent_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute lifeevent_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -97,3 +105,4 @@ func HandleFacebook_lifeevent_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

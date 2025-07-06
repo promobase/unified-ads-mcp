@@ -4,10 +4,10 @@ package types
 
 // VideoStats represents a Facebook VideoStats object
 type VideoStats struct {
-	Aggregate        []interface{}   `json:"aggregate"`
-	Error            string          `json:"error"`
-	Metadata         []interface{}   `json:"metadata"`
-	Time_series      []interface{}   `json:"time_series"`
-	Totals           []interface{}   `json:"totals"`
+	Aggregate []interface{} `json:"aggregate"`
+	Error string `json:"error"`
+	Metadata []interface{} `json:"metadata"`
+	Time_series []interface{} `json:"time_series"`
+	Totals []interface{} `json:"totals"`
 	X_axis_breakdown [][]interface{} `json:"x_axis_breakdown"`
 }

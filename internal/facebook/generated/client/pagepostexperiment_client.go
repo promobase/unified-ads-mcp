@@ -21,14 +21,18 @@ func NewPagePostExperimentClient(accessToken string) *PagePostExperimentClient {
 	}
 }
 
-// facebook_pagepostexperiment_get_video_insights GET video_insights for PagePostExperiment
-func (c *PagePostExperimentClient) Facebook_pagepostexperiment_get_video_insights(args map[string]interface{}) (interface{}, error) {
+
+// pagepostexperiment_get_video_insights GET video_insights for PagePostExperiment
+func (c *PagePostExperimentClient) Pagepostexperiment_get_video_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "video_insights")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -60,14 +64,18 @@ func (c *PagePostExperimentClient) Facebook_pagepostexperiment_get_video_insight
 	return result, nil
 }
 
-// facebook_pagepostexperiment_delete_ DELETE  for PagePostExperiment
-func (c *PagePostExperimentClient) Facebook_pagepostexperiment_delete_(args map[string]interface{}) (interface{}, error) {
+
+// pagepostexperiment_delete_ DELETE  for PagePostExperiment
+func (c *PagePostExperimentClient) Pagepostexperiment_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -99,14 +107,18 @@ func (c *PagePostExperimentClient) Facebook_pagepostexperiment_delete_(args map[
 	return result, nil
 }
 
-// facebook_pagepostexperiment_get_ GET  for PagePostExperiment
-func (c *PagePostExperimentClient) Facebook_pagepostexperiment_get_(args map[string]interface{}) (interface{}, error) {
+
+// pagepostexperiment_get_ GET  for PagePostExperiment
+func (c *PagePostExperimentClient) Pagepostexperiment_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -137,3 +149,4 @@ func (c *PagePostExperimentClient) Facebook_pagepostexperiment_get_(args map[str
 
 	return result, nil
 }
+

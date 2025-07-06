@@ -15,23 +15,26 @@ import (
 func GetResearchPollStudyTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_researchpollstudy_get_ tool
-	facebook_researchpollstudy_get_Tool := mcp.NewTool("facebook_researchpollstudy_get_",
+
+	// researchpollstudy_get_ tool
+	researchpollstudy_get_Tool := mcp.NewTool("researchpollstudy_get_",
 		mcp.WithDescription("GET  for ResearchPollStudy"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_researchpollstudy_get_Tool)
+	tools = append(tools, researchpollstudy_get_Tool)
+
 
 	return tools
 }
 
 // ResearchPollStudy handlers
 
-// HandleFacebook_researchpollstudy_get_ handles the facebook_researchpollstudy_get_ tool
-func HandleFacebook_researchpollstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleResearchpollstudy_get_ handles the researchpollstudy_get_ tool
+func HandleResearchpollstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_researchpollstudy_get_(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_researchpollstudy_get_(args)
+	result, err := client.Researchpollstudy_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_researchpollstudy_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute researchpollstudy_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_researchpollstudy_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -6,10 +6,10 @@ import "time"
 
 // MessengerDestinationPageWelcomeMessage represents a Facebook MessengerDestinationPageWelcomeMessage object
 type MessengerDestinationPageWelcomeMessage struct {
-	Id                        string    `json:"id"`
-	Page_welcome_message_body string    `json:"page_welcome_message_body"`
-	Page_welcome_message_type string    `json:"page_welcome_message_type"`
-	Template_name             string    `json:"template_name"`
-	Time_created              time.Time `json:"time_created"`
-	Time_last_used            time.Time `json:"time_last_used"`
+	Id string `json:"id"`
+	Page_welcome_message_body string `json:"page_welcome_message_body"`
+	Page_welcome_message_type string `json:"page_welcome_message_type"`
+	Template_name string `json:"template_name"`
+	Time_created time.Time `json:"time_created"`
+	Time_last_used time.Time `json:"time_last_used"`
 }

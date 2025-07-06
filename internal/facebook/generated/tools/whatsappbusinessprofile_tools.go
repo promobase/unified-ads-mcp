@@ -15,33 +15,36 @@ import (
 func GetWhatsAppBusinessProfileTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_whatsappbusinessprofile_get_ tool
-	facebook_whatsappbusinessprofile_get_Tool := mcp.NewTool("facebook_whatsappbusinessprofile_get_",
+
+	// whatsappbusinessprofile_get_ tool
+	whatsappbusinessprofile_get_Tool := mcp.NewTool("whatsappbusinessprofile_get_",
 		mcp.WithDescription("GET  for WhatsAppBusinessProfile"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_whatsappbusinessprofile_get_Tool)
+	tools = append(tools, whatsappbusinessprofile_get_Tool)
 
-	// facebook_whatsappbusinessprofile_post_ tool
-	facebook_whatsappbusinessprofile_post_Tool := mcp.NewTool("facebook_whatsappbusinessprofile_post_",
+	// whatsappbusinessprofile_post_ tool
+	whatsappbusinessprofile_post_Tool := mcp.NewTool("whatsappbusinessprofile_post_",
 		mcp.WithDescription("POST  for WhatsAppBusinessProfile"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_whatsappbusinessprofile_post_Tool)
+	tools = append(tools, whatsappbusinessprofile_post_Tool)
+
 
 	return tools
 }
 
 // WhatsAppBusinessProfile handlers
 
-// HandleFacebook_whatsappbusinessprofile_get_ handles the facebook_whatsappbusinessprofile_get_ tool
-func HandleFacebook_whatsappbusinessprofile_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleWhatsappbusinessprofile_get_ handles the whatsappbusinessprofile_get_ tool
+func HandleWhatsappbusinessprofile_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -54,10 +57,12 @@ func HandleFacebook_whatsappbusinessprofile_get_(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_whatsappbusinessprofile_get_(args)
+	result, err := client.Whatsappbusinessprofile_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_whatsappbusinessprofile_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute whatsappbusinessprofile_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -69,8 +74,9 @@ func HandleFacebook_whatsappbusinessprofile_get_(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_whatsappbusinessprofile_post_ handles the facebook_whatsappbusinessprofile_post_ tool
-func HandleFacebook_whatsappbusinessprofile_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleWhatsappbusinessprofile_post_ handles the whatsappbusinessprofile_post_ tool
+func HandleWhatsappbusinessprofile_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -83,10 +89,12 @@ func HandleFacebook_whatsappbusinessprofile_post_(ctx context.Context, request m
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_whatsappbusinessprofile_post_(args)
+	result, err := client.Whatsappbusinessprofile_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_whatsappbusinessprofile_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute whatsappbusinessprofile_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -97,3 +105,4 @@ func HandleFacebook_whatsappbusinessprofile_post_(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

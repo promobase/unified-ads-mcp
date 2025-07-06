@@ -15,23 +15,26 @@ import (
 func GetLiveVideoErrorTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_livevideoerror_get_ tool
-	facebook_livevideoerror_get_Tool := mcp.NewTool("facebook_livevideoerror_get_",
+
+	// livevideoerror_get_ tool
+	livevideoerror_get_Tool := mcp.NewTool("livevideoerror_get_",
 		mcp.WithDescription("GET  for LiveVideoError"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_livevideoerror_get_Tool)
+	tools = append(tools, livevideoerror_get_Tool)
+
 
 	return tools
 }
 
 // LiveVideoError handlers
 
-// HandleFacebook_livevideoerror_get_ handles the facebook_livevideoerror_get_ tool
-func HandleFacebook_livevideoerror_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLivevideoerror_get_ handles the livevideoerror_get_ tool
+func HandleLivevideoerror_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_livevideoerror_get_(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_livevideoerror_get_(args)
+	result, err := client.Livevideoerror_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_livevideoerror_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideoerror_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_livevideoerror_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -15,18 +15,19 @@ import (
 func GetExtendedCreditTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_extendedcredit_get_extended_credit_invoice_groups tool
-	facebook_extendedcredit_get_extended_credit_invoice_groupsTool := mcp.NewTool("facebook_extendedcredit_get_extended_credit_invoice_groups",
+
+	// extendedcredit_get_extended_credit_invoice_groups tool
+	extendedcredit_get_extended_credit_invoice_groupsTool := mcp.NewTool("extendedcredit_get_extended_credit_invoice_groups",
 		mcp.WithDescription("GET extended_credit_invoice_groups for ExtendedCredit"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_extendedcredit_get_extended_credit_invoice_groupsTool)
+	tools = append(tools, extendedcredit_get_extended_credit_invoice_groupsTool)
 
-	// facebook_extendedcredit_post_extended_credit_invoice_groups tool
-	facebook_extendedcredit_post_extended_credit_invoice_groupsTool := mcp.NewTool("facebook_extendedcredit_post_extended_credit_invoice_groups",
+	// extendedcredit_post_extended_credit_invoice_groups tool
+	extendedcredit_post_extended_credit_invoice_groupsTool := mcp.NewTool("extendedcredit_post_extended_credit_invoice_groups",
 		mcp.WithDescription("POST extended_credit_invoice_groups for ExtendedCredit"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -41,10 +42,10 @@ func GetExtendedCreditTools(accessToken string) []mcp.Tool {
 			mcp.Description("name parameter for extended_credit_invoice_groups"),
 		),
 	)
-	tools = append(tools, facebook_extendedcredit_post_extended_credit_invoice_groupsTool)
+	tools = append(tools, extendedcredit_post_extended_credit_invoice_groupsTool)
 
-	// facebook_extendedcredit_get_owning_credit_allocation_configs tool
-	facebook_extendedcredit_get_owning_credit_allocation_configsTool := mcp.NewTool("facebook_extendedcredit_get_owning_credit_allocation_configs",
+	// extendedcredit_get_owning_credit_allocation_configs tool
+	extendedcredit_get_owning_credit_allocation_configsTool := mcp.NewTool("extendedcredit_get_owning_credit_allocation_configs",
 		mcp.WithDescription("GET owning_credit_allocation_configs for ExtendedCredit"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -54,10 +55,10 @@ func GetExtendedCreditTools(accessToken string) []mcp.Tool {
 			mcp.Description("receiving_business_id parameter for owning_credit_allocation_configs"),
 		),
 	)
-	tools = append(tools, facebook_extendedcredit_get_owning_credit_allocation_configsTool)
+	tools = append(tools, extendedcredit_get_owning_credit_allocation_configsTool)
 
-	// facebook_extendedcredit_post_owning_credit_allocation_configs tool
-	facebook_extendedcredit_post_owning_credit_allocation_configsTool := mcp.NewTool("facebook_extendedcredit_post_owning_credit_allocation_configs",
+	// extendedcredit_post_owning_credit_allocation_configs tool
+	extendedcredit_post_owning_credit_allocation_configsTool := mcp.NewTool("extendedcredit_post_owning_credit_allocation_configs",
 		mcp.WithDescription("POST owning_credit_allocation_configs for ExtendedCredit"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -83,10 +84,10 @@ func GetExtendedCreditTools(accessToken string) []mcp.Tool {
 			mcp.Enum("", "Advertiser", "Agency"),
 		),
 	)
-	tools = append(tools, facebook_extendedcredit_post_owning_credit_allocation_configsTool)
+	tools = append(tools, extendedcredit_post_owning_credit_allocation_configsTool)
 
-	// facebook_extendedcredit_post_whatsapp_credit_attach tool
-	facebook_extendedcredit_post_whatsapp_credit_attachTool := mcp.NewTool("facebook_extendedcredit_post_whatsapp_credit_attach",
+	// extendedcredit_post_whatsapp_credit_attach tool
+	extendedcredit_post_whatsapp_credit_attachTool := mcp.NewTool("extendedcredit_post_whatsapp_credit_attach",
 		mcp.WithDescription("POST whatsapp_credit_attach for ExtendedCredit"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -101,10 +102,10 @@ func GetExtendedCreditTools(accessToken string) []mcp.Tool {
 			mcp.Description("waba_id parameter for whatsapp_credit_attach"),
 		),
 	)
-	tools = append(tools, facebook_extendedcredit_post_whatsapp_credit_attachTool)
+	tools = append(tools, extendedcredit_post_whatsapp_credit_attachTool)
 
-	// facebook_extendedcredit_post_whatsapp_credit_sharing tool
-	facebook_extendedcredit_post_whatsapp_credit_sharingTool := mcp.NewTool("facebook_extendedcredit_post_whatsapp_credit_sharing",
+	// extendedcredit_post_whatsapp_credit_sharing tool
+	extendedcredit_post_whatsapp_credit_sharingTool := mcp.NewTool("extendedcredit_post_whatsapp_credit_sharing",
 		mcp.WithDescription("POST whatsapp_credit_sharing for ExtendedCredit"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -115,10 +116,10 @@ func GetExtendedCreditTools(accessToken string) []mcp.Tool {
 			mcp.Description("receiving_business_id parameter for whatsapp_credit_sharing"),
 		),
 	)
-	tools = append(tools, facebook_extendedcredit_post_whatsapp_credit_sharingTool)
+	tools = append(tools, extendedcredit_post_whatsapp_credit_sharingTool)
 
-	// facebook_extendedcredit_post_whatsapp_credit_sharing_and_attach tool
-	facebook_extendedcredit_post_whatsapp_credit_sharing_and_attachTool := mcp.NewTool("facebook_extendedcredit_post_whatsapp_credit_sharing_and_attach",
+	// extendedcredit_post_whatsapp_credit_sharing_and_attach tool
+	extendedcredit_post_whatsapp_credit_sharing_and_attachTool := mcp.NewTool("extendedcredit_post_whatsapp_credit_sharing_and_attach",
 		mcp.WithDescription("POST whatsapp_credit_sharing_and_attach for ExtendedCredit"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -133,25 +134,27 @@ func GetExtendedCreditTools(accessToken string) []mcp.Tool {
 			mcp.Description("waba_id parameter for whatsapp_credit_sharing_and_attach"),
 		),
 	)
-	tools = append(tools, facebook_extendedcredit_post_whatsapp_credit_sharing_and_attachTool)
+	tools = append(tools, extendedcredit_post_whatsapp_credit_sharing_and_attachTool)
 
-	// facebook_extendedcredit_get_ tool
-	facebook_extendedcredit_get_Tool := mcp.NewTool("facebook_extendedcredit_get_",
+	// extendedcredit_get_ tool
+	extendedcredit_get_Tool := mcp.NewTool("extendedcredit_get_",
 		mcp.WithDescription("GET  for ExtendedCredit"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_extendedcredit_get_Tool)
+	tools = append(tools, extendedcredit_get_Tool)
+
 
 	return tools
 }
 
 // ExtendedCredit handlers
 
-// HandleFacebook_extendedcredit_get_extended_credit_invoice_groups handles the facebook_extendedcredit_get_extended_credit_invoice_groups tool
-func HandleFacebook_extendedcredit_get_extended_credit_invoice_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleExtendedcredit_get_extended_credit_invoice_groups handles the extendedcredit_get_extended_credit_invoice_groups tool
+func HandleExtendedcredit_get_extended_credit_invoice_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -164,10 +167,12 @@ func HandleFacebook_extendedcredit_get_extended_credit_invoice_groups(ctx contex
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_extendedcredit_get_extended_credit_invoice_groups(args)
+	result, err := client.Extendedcredit_get_extended_credit_invoice_groups(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_extendedcredit_get_extended_credit_invoice_groups: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcredit_get_extended_credit_invoice_groups: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -179,8 +184,9 @@ func HandleFacebook_extendedcredit_get_extended_credit_invoice_groups(ctx contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_extendedcredit_post_extended_credit_invoice_groups handles the facebook_extendedcredit_post_extended_credit_invoice_groups tool
-func HandleFacebook_extendedcredit_post_extended_credit_invoice_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleExtendedcredit_post_extended_credit_invoice_groups handles the extendedcredit_post_extended_credit_invoice_groups tool
+func HandleExtendedcredit_post_extended_credit_invoice_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -207,10 +213,12 @@ func HandleFacebook_extendedcredit_post_extended_credit_invoice_groups(ctx conte
 	}
 	args["name"] = name
 
+
+
 	// Call the client method
-	result, err := client.Facebook_extendedcredit_post_extended_credit_invoice_groups(args)
+	result, err := client.Extendedcredit_post_extended_credit_invoice_groups(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_extendedcredit_post_extended_credit_invoice_groups: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcredit_post_extended_credit_invoice_groups: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -222,8 +230,9 @@ func HandleFacebook_extendedcredit_post_extended_credit_invoice_groups(ctx conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_extendedcredit_get_owning_credit_allocation_configs handles the facebook_extendedcredit_get_owning_credit_allocation_configs tool
-func HandleFacebook_extendedcredit_get_owning_credit_allocation_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleExtendedcredit_get_owning_credit_allocation_configs handles the extendedcredit_get_owning_credit_allocation_configs tool
+func HandleExtendedcredit_get_owning_credit_allocation_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -241,10 +250,12 @@ func HandleFacebook_extendedcredit_get_owning_credit_allocation_configs(ctx cont
 		args["receiving_business_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_extendedcredit_get_owning_credit_allocation_configs(args)
+	result, err := client.Extendedcredit_get_owning_credit_allocation_configs(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_extendedcredit_get_owning_credit_allocation_configs: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcredit_get_owning_credit_allocation_configs: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -256,8 +267,9 @@ func HandleFacebook_extendedcredit_get_owning_credit_allocation_configs(ctx cont
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_extendedcredit_post_owning_credit_allocation_configs handles the facebook_extendedcredit_post_owning_credit_allocation_configs tool
-func HandleFacebook_extendedcredit_post_owning_credit_allocation_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleExtendedcredit_post_owning_credit_allocation_configs handles the extendedcredit_post_owning_credit_allocation_configs tool
+func HandleExtendedcredit_post_owning_credit_allocation_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -298,10 +310,12 @@ func HandleFacebook_extendedcredit_post_owning_credit_allocation_configs(ctx con
 		args["send_bill_to"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_extendedcredit_post_owning_credit_allocation_configs(args)
+	result, err := client.Extendedcredit_post_owning_credit_allocation_configs(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_extendedcredit_post_owning_credit_allocation_configs: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcredit_post_owning_credit_allocation_configs: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -313,8 +327,9 @@ func HandleFacebook_extendedcredit_post_owning_credit_allocation_configs(ctx con
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_extendedcredit_post_whatsapp_credit_attach handles the facebook_extendedcredit_post_whatsapp_credit_attach tool
-func HandleFacebook_extendedcredit_post_whatsapp_credit_attach(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleExtendedcredit_post_whatsapp_credit_attach handles the extendedcredit_post_whatsapp_credit_attach tool
+func HandleExtendedcredit_post_whatsapp_credit_attach(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -341,10 +356,12 @@ func HandleFacebook_extendedcredit_post_whatsapp_credit_attach(ctx context.Conte
 	}
 	args["waba_id"] = waba_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_extendedcredit_post_whatsapp_credit_attach(args)
+	result, err := client.Extendedcredit_post_whatsapp_credit_attach(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_extendedcredit_post_whatsapp_credit_attach: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcredit_post_whatsapp_credit_attach: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -356,8 +373,9 @@ func HandleFacebook_extendedcredit_post_whatsapp_credit_attach(ctx context.Conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_extendedcredit_post_whatsapp_credit_sharing handles the facebook_extendedcredit_post_whatsapp_credit_sharing tool
-func HandleFacebook_extendedcredit_post_whatsapp_credit_sharing(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleExtendedcredit_post_whatsapp_credit_sharing handles the extendedcredit_post_whatsapp_credit_sharing tool
+func HandleExtendedcredit_post_whatsapp_credit_sharing(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -377,10 +395,12 @@ func HandleFacebook_extendedcredit_post_whatsapp_credit_sharing(ctx context.Cont
 	}
 	args["receiving_business_id"] = receiving_business_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_extendedcredit_post_whatsapp_credit_sharing(args)
+	result, err := client.Extendedcredit_post_whatsapp_credit_sharing(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_extendedcredit_post_whatsapp_credit_sharing: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcredit_post_whatsapp_credit_sharing: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -392,8 +412,9 @@ func HandleFacebook_extendedcredit_post_whatsapp_credit_sharing(ctx context.Cont
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_extendedcredit_post_whatsapp_credit_sharing_and_attach handles the facebook_extendedcredit_post_whatsapp_credit_sharing_and_attach tool
-func HandleFacebook_extendedcredit_post_whatsapp_credit_sharing_and_attach(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleExtendedcredit_post_whatsapp_credit_sharing_and_attach handles the extendedcredit_post_whatsapp_credit_sharing_and_attach tool
+func HandleExtendedcredit_post_whatsapp_credit_sharing_and_attach(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -420,10 +441,12 @@ func HandleFacebook_extendedcredit_post_whatsapp_credit_sharing_and_attach(ctx c
 	}
 	args["waba_id"] = waba_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_extendedcredit_post_whatsapp_credit_sharing_and_attach(args)
+	result, err := client.Extendedcredit_post_whatsapp_credit_sharing_and_attach(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_extendedcredit_post_whatsapp_credit_sharing_and_attach: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcredit_post_whatsapp_credit_sharing_and_attach: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -435,8 +458,9 @@ func HandleFacebook_extendedcredit_post_whatsapp_credit_sharing_and_attach(ctx c
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_extendedcredit_get_ handles the facebook_extendedcredit_get_ tool
-func HandleFacebook_extendedcredit_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleExtendedcredit_get_ handles the extendedcredit_get_ tool
+func HandleExtendedcredit_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -449,10 +473,12 @@ func HandleFacebook_extendedcredit_get_(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_extendedcredit_get_(args)
+	result, err := client.Extendedcredit_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_extendedcredit_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcredit_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -463,3 +489,4 @@ func HandleFacebook_extendedcredit_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

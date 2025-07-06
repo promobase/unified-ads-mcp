@@ -15,23 +15,26 @@ import (
 func GetRightsManagerDataExportTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_rightsmanagerdataexport_get_ tool
-	facebook_rightsmanagerdataexport_get_Tool := mcp.NewTool("facebook_rightsmanagerdataexport_get_",
+
+	// rightsmanagerdataexport_get_ tool
+	rightsmanagerdataexport_get_Tool := mcp.NewTool("rightsmanagerdataexport_get_",
 		mcp.WithDescription("GET  for RightsManagerDataExport"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_rightsmanagerdataexport_get_Tool)
+	tools = append(tools, rightsmanagerdataexport_get_Tool)
+
 
 	return tools
 }
 
 // RightsManagerDataExport handlers
 
-// HandleFacebook_rightsmanagerdataexport_get_ handles the facebook_rightsmanagerdataexport_get_ tool
-func HandleFacebook_rightsmanagerdataexport_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleRightsmanagerdataexport_get_ handles the rightsmanagerdataexport_get_ tool
+func HandleRightsmanagerdataexport_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_rightsmanagerdataexport_get_(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_rightsmanagerdataexport_get_(args)
+	result, err := client.Rightsmanagerdataexport_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_rightsmanagerdataexport_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute rightsmanagerdataexport_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_rightsmanagerdataexport_get_(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

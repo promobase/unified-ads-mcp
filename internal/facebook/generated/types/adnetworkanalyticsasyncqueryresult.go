@@ -4,9 +4,9 @@ package types
 
 // AdNetworkAnalyticsAsyncQueryResult represents a Facebook AdNetworkAnalyticsAsyncQueryResult object
 type AdNetworkAnalyticsAsyncQueryResult struct {
-	Data            map[string]interface{}   `json:"data"`
+	Data map[string]interface{} `json:"data"`
 	Omitted_results []map[string]interface{} `json:"omitted_results"`
-	Query_id        string                   `json:"query_id"`
-	Results         []map[string]interface{} `json:"results"`
-	Status          string                   `json:"status"`
+	Query_id string `json:"query_id"`
+	Results []map[string]interface{} `json:"results"`
+	Status string `json:"status"`
 }

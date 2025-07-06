@@ -4,13 +4,13 @@ package types
 
 // ManagementSiteLink represents a Facebook ManagementSiteLink object
 type ManagementSiteLink struct {
-	Ad_account_id   string `json:"ad_account_id"`
-	Id              string `json:"id"`
-	Link_domain     string `json:"link_domain"`
-	Link_hash       string `json:"link_hash"`
+	Ad_account_id string `json:"ad_account_id"`
+	Id string `json:"id"`
+	Link_domain string `json:"link_domain"`
+	Link_hash string `json:"link_hash"`
 	Link_image_hash string `json:"link_image_hash"`
-	Link_image_url  string `json:"link_image_url"`
-	Link_title      string `json:"link_title"`
-	Link_type       string `json:"link_type"`
-	Link_url        string `json:"link_url"`
+	Link_image_url string `json:"link_image_url"`
+	Link_title string `json:"link_title"`
+	Link_type string `json:"link_type"`
+	Link_url string `json:"link_url"`
 }

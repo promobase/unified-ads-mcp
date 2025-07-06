@@ -4,6 +4,6 @@ package types
 
 // AdsPixelDomainLastFiredTime represents a Facebook AdsPixelDomainLastFiredTime object
 type AdsPixelDomainLastFiredTime struct {
-	Domain_name     string `json:"domain_name"`
-	Last_fired_time int    `json:"last_fired_time"`
+	Domain_name string `json:"domain_name"`
+	Last_fired_time int `json:"last_fired_time"`
 }

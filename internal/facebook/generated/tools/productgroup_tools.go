@@ -15,18 +15,19 @@ import (
 func GetProductGroupTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_productgroup_get_products tool
-	facebook_productgroup_get_productsTool := mcp.NewTool("facebook_productgroup_get_products",
+
+	// productgroup_get_products tool
+	productgroup_get_productsTool := mcp.NewTool("productgroup_get_products",
 		mcp.WithDescription("GET products for ProductGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productgroup_get_productsTool)
+	tools = append(tools, productgroup_get_productsTool)
 
-	// facebook_productgroup_post_products tool
-	facebook_productgroup_post_productsTool := mcp.NewTool("facebook_productgroup_post_products",
+	// productgroup_post_products tool
+	productgroup_post_productsTool := mcp.NewTool("productgroup_post_products",
 		mcp.WithDescription("POST products for ProductGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -258,10 +259,10 @@ func GetProductGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("windows_phone_url parameter for products"),
 		),
 	)
-	tools = append(tools, facebook_productgroup_post_productsTool)
+	tools = append(tools, productgroup_post_productsTool)
 
-	// facebook_productgroup_delete_ tool
-	facebook_productgroup_delete_Tool := mcp.NewTool("facebook_productgroup_delete_",
+	// productgroup_delete_ tool
+	productgroup_delete_Tool := mcp.NewTool("productgroup_delete_",
 		mcp.WithDescription("DELETE  for ProductGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -272,20 +273,20 @@ func GetProductGroupTools(accessToken string) []mcp.Tool {
 			mcp.Enum("DELETE_ITEMS", "ONLY_IF_EMPTY"),
 		),
 	)
-	tools = append(tools, facebook_productgroup_delete_Tool)
+	tools = append(tools, productgroup_delete_Tool)
 
-	// facebook_productgroup_get_ tool
-	facebook_productgroup_get_Tool := mcp.NewTool("facebook_productgroup_get_",
+	// productgroup_get_ tool
+	productgroup_get_Tool := mcp.NewTool("productgroup_get_",
 		mcp.WithDescription("GET  for ProductGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productgroup_get_Tool)
+	tools = append(tools, productgroup_get_Tool)
 
-	// facebook_productgroup_post_ tool
-	facebook_productgroup_post_Tool := mcp.NewTool("facebook_productgroup_post_",
+	// productgroup_post_ tool
+	productgroup_post_Tool := mcp.NewTool("productgroup_post_",
 		mcp.WithDescription("POST  for ProductGroup"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -298,15 +299,17 @@ func GetProductGroupTools(accessToken string) []mcp.Tool {
 			mcp.Description("variants parameter for "),
 		),
 	)
-	tools = append(tools, facebook_productgroup_post_Tool)
+	tools = append(tools, productgroup_post_Tool)
+
 
 	return tools
 }
 
 // ProductGroup handlers
 
-// HandleFacebook_productgroup_get_products handles the facebook_productgroup_get_products tool
-func HandleFacebook_productgroup_get_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductgroup_get_products handles the productgroup_get_products tool
+func HandleProductgroup_get_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -319,10 +322,12 @@ func HandleFacebook_productgroup_get_products(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productgroup_get_products(args)
+	result, err := client.Productgroup_get_products(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productgroup_get_products: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productgroup_get_products: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -334,8 +339,9 @@ func HandleFacebook_productgroup_get_products(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productgroup_post_products handles the facebook_productgroup_post_products tool
-func HandleFacebook_productgroup_post_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductgroup_post_products handles the productgroup_post_products tool
+func HandleProductgroup_post_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -714,10 +720,12 @@ func HandleFacebook_productgroup_post_products(ctx context.Context, request mcp.
 		args["windows_phone_url"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productgroup_post_products(args)
+	result, err := client.Productgroup_post_products(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productgroup_post_products: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productgroup_post_products: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -729,8 +737,9 @@ func HandleFacebook_productgroup_post_products(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productgroup_delete_ handles the facebook_productgroup_delete_ tool
-func HandleFacebook_productgroup_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductgroup_delete_ handles the productgroup_delete_ tool
+func HandleProductgroup_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -748,10 +757,12 @@ func HandleFacebook_productgroup_delete_(ctx context.Context, request mcp.CallTo
 		args["deletion_method"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productgroup_delete_(args)
+	result, err := client.Productgroup_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productgroup_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productgroup_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -763,8 +774,9 @@ func HandleFacebook_productgroup_delete_(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productgroup_get_ handles the facebook_productgroup_get_ tool
-func HandleFacebook_productgroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductgroup_get_ handles the productgroup_get_ tool
+func HandleProductgroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -777,10 +789,12 @@ func HandleFacebook_productgroup_get_(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productgroup_get_(args)
+	result, err := client.Productgroup_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productgroup_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productgroup_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -792,8 +806,9 @@ func HandleFacebook_productgroup_get_(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productgroup_post_ handles the facebook_productgroup_post_ tool
-func HandleFacebook_productgroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductgroup_post_ handles the productgroup_post_ tool
+func HandleProductgroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -817,10 +832,12 @@ func HandleFacebook_productgroup_post_(ctx context.Context, request mcp.CallTool
 		args["variants"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productgroup_post_(args)
+	result, err := client.Productgroup_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productgroup_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productgroup_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -831,3 +848,4 @@ func HandleFacebook_productgroup_post_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

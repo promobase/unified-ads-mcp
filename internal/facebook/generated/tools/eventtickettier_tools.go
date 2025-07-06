@@ -15,23 +15,26 @@ import (
 func GetEventTicketTierTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_eventtickettier_get_ tool
-	facebook_eventtickettier_get_Tool := mcp.NewTool("facebook_eventtickettier_get_",
+
+	// eventtickettier_get_ tool
+	eventtickettier_get_Tool := mcp.NewTool("eventtickettier_get_",
 		mcp.WithDescription("GET  for EventTicketTier"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_eventtickettier_get_Tool)
+	tools = append(tools, eventtickettier_get_Tool)
+
 
 	return tools
 }
 
 // EventTicketTier handlers
 
-// HandleFacebook_eventtickettier_get_ handles the facebook_eventtickettier_get_ tool
-func HandleFacebook_eventtickettier_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleEventtickettier_get_ handles the eventtickettier_get_ tool
+func HandleEventtickettier_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_eventtickettier_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_eventtickettier_get_(args)
+	result, err := client.Eventtickettier_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_eventtickettier_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute eventtickettier_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_eventtickettier_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

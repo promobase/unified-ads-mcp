@@ -4,12 +4,12 @@ package types
 
 // AdsConversionGoal represents a Facebook AdsConversionGoal object
 type AdsConversionGoal struct {
-	Ad_account_id                 string `json:"ad_account_id"`
+	Ad_account_id string `json:"ad_account_id"`
 	Conversion_event_value_source string `json:"conversion_event_value_source"`
-	Description                   string `json:"description"`
-	Goal_creation_method          string `json:"goal_creation_method"`
-	Id                            string `json:"id"`
-	Name                          string `json:"name"`
-	Performance_goal              string `json:"performance_goal"`
-	Update_status                 string `json:"update_status"`
+	Description string `json:"description"`
+	Goal_creation_method string `json:"goal_creation_method"`
+	Id string `json:"id"`
+	Name string `json:"name"`
+	Performance_goal string `json:"performance_goal"`
+	Update_status string `json:"update_status"`
 }

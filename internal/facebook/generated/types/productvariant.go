@@ -4,7 +4,7 @@ package types
 
 // ProductVariant represents a Facebook ProductVariant object
 type ProductVariant struct {
-	Label         string   `json:"label"`
-	Options       []string `json:"options"`
-	Product_field string   `json:"product_field"`
+	Label string `json:"label"`
+	Options []string `json:"options"`
+	Product_field string `json:"product_field"`
 }

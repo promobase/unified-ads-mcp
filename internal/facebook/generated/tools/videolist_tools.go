@@ -15,33 +15,36 @@ import (
 func GetVideoListTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_videolist_get_videos tool
-	facebook_videolist_get_videosTool := mcp.NewTool("facebook_videolist_get_videos",
+
+	// videolist_get_videos tool
+	videolist_get_videosTool := mcp.NewTool("videolist_get_videos",
 		mcp.WithDescription("GET videos for VideoList"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_videolist_get_videosTool)
+	tools = append(tools, videolist_get_videosTool)
 
-	// facebook_videolist_get_ tool
-	facebook_videolist_get_Tool := mcp.NewTool("facebook_videolist_get_",
+	// videolist_get_ tool
+	videolist_get_Tool := mcp.NewTool("videolist_get_",
 		mcp.WithDescription("GET  for VideoList"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_videolist_get_Tool)
+	tools = append(tools, videolist_get_Tool)
+
 
 	return tools
 }
 
 // VideoList handlers
 
-// HandleFacebook_videolist_get_videos handles the facebook_videolist_get_videos tool
-func HandleFacebook_videolist_get_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleVideolist_get_videos handles the videolist_get_videos tool
+func HandleVideolist_get_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -54,10 +57,12 @@ func HandleFacebook_videolist_get_videos(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_videolist_get_videos(args)
+	result, err := client.Videolist_get_videos(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_videolist_get_videos: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute videolist_get_videos: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -69,8 +74,9 @@ func HandleFacebook_videolist_get_videos(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_videolist_get_ handles the facebook_videolist_get_ tool
-func HandleFacebook_videolist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleVideolist_get_ handles the videolist_get_ tool
+func HandleVideolist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -83,10 +89,12 @@ func HandleFacebook_videolist_get_(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_videolist_get_(args)
+	result, err := client.Videolist_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_videolist_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute videolist_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -97,3 +105,4 @@ func HandleFacebook_videolist_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

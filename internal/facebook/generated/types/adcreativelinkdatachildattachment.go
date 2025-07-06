@@ -5,14 +5,14 @@ package types
 // AdCreativeLinkDataChildAttachment represents a Facebook AdCreativeLinkDataChildAttachment object
 type AdCreativeLinkDataChildAttachment struct {
 	Call_to_action *AdCreativeLinkDataCallToAction `json:"call_to_action"`
-	Caption        string                          `json:"caption"`
-	Description    string                          `json:"description"`
-	Image_crops    *AdsImageCrops                  `json:"image_crops"`
-	Image_hash     string                          `json:"image_hash"`
-	Link           string                          `json:"link"`
-	Name           string                          `json:"name"`
-	Picture        string                          `json:"picture"`
-	Place_data     *AdCreativePlaceData            `json:"place_data"`
-	Static_card    bool                            `json:"static_card"`
-	Video_id       string                          `json:"video_id"`
+	Caption string `json:"caption"`
+	Description string `json:"description"`
+	Image_crops *AdsImageCrops `json:"image_crops"`
+	Image_hash string `json:"image_hash"`
+	Link string `json:"link"`
+	Name string `json:"name"`
+	Picture string `json:"picture"`
+	Place_data *AdCreativePlaceData `json:"place_data"`
+	Static_card bool `json:"static_card"`
+	Video_id string `json:"video_id"`
 }

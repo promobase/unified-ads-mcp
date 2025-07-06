@@ -21,14 +21,18 @@ func NewPageUpcomingChangeClient(accessToken string) *PageUpcomingChangeClient {
 	}
 }
 
-// facebook_pageupcomingchange_get_ GET  for PageUpcomingChange
-func (c *PageUpcomingChangeClient) Facebook_pageupcomingchange_get_(args map[string]interface{}) (interface{}, error) {
+
+// pageupcomingchange_get_ GET  for PageUpcomingChange
+func (c *PageUpcomingChangeClient) Pageupcomingchange_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *PageUpcomingChangeClient) Facebook_pageupcomingchange_get_(args map[str
 
 	return result, nil
 }
+

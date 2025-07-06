@@ -15,23 +15,26 @@ import (
 func GetLeadGenDirectCRMIntegrationConfigTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_leadgendirectcrmintegrationconfig_get_ tool
-	facebook_leadgendirectcrmintegrationconfig_get_Tool := mcp.NewTool("facebook_leadgendirectcrmintegrationconfig_get_",
+
+	// leadgendirectcrmintegrationconfig_get_ tool
+	leadgendirectcrmintegrationconfig_get_Tool := mcp.NewTool("leadgendirectcrmintegrationconfig_get_",
 		mcp.WithDescription("GET  for LeadGenDirectCRMIntegrationConfig"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_leadgendirectcrmintegrationconfig_get_Tool)
+	tools = append(tools, leadgendirectcrmintegrationconfig_get_Tool)
+
 
 	return tools
 }
 
 // LeadGenDirectCRMIntegrationConfig handlers
 
-// HandleFacebook_leadgendirectcrmintegrationconfig_get_ handles the facebook_leadgendirectcrmintegrationconfig_get_ tool
-func HandleFacebook_leadgendirectcrmintegrationconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLeadgendirectcrmintegrationconfig_get_ handles the leadgendirectcrmintegrationconfig_get_ tool
+func HandleLeadgendirectcrmintegrationconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_leadgendirectcrmintegrationconfig_get_(ctx context.Context, 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_leadgendirectcrmintegrationconfig_get_(args)
+	result, err := client.Leadgendirectcrmintegrationconfig_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_leadgendirectcrmintegrationconfig_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute leadgendirectcrmintegrationconfig_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_leadgendirectcrmintegrationconfig_get_(ctx context.Context, 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

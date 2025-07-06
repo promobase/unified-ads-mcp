@@ -15,8 +15,9 @@ import (
 func GetCommerceOrderTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_commerceorder_post_acknowledge_order tool
-	facebook_commerceorder_post_acknowledge_orderTool := mcp.NewTool("facebook_commerceorder_post_acknowledge_order",
+
+	// commerceorder_post_acknowledge_order tool
+	commerceorder_post_acknowledge_orderTool := mcp.NewTool("commerceorder_post_acknowledge_order",
 		mcp.WithDescription("POST acknowledge_order for CommerceOrder"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -30,20 +31,20 @@ func GetCommerceOrderTools(accessToken string) []mcp.Tool {
 			mcp.Description("merchant_order_reference parameter for acknowledge_order"),
 		),
 	)
-	tools = append(tools, facebook_commerceorder_post_acknowledge_orderTool)
+	tools = append(tools, commerceorder_post_acknowledge_orderTool)
 
-	// facebook_commerceorder_get_cancellations tool
-	facebook_commerceorder_get_cancellationsTool := mcp.NewTool("facebook_commerceorder_get_cancellations",
+	// commerceorder_get_cancellations tool
+	commerceorder_get_cancellationsTool := mcp.NewTool("commerceorder_get_cancellations",
 		mcp.WithDescription("GET cancellations for CommerceOrder"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_commerceorder_get_cancellationsTool)
+	tools = append(tools, commerceorder_get_cancellationsTool)
 
-	// facebook_commerceorder_post_cancellations tool
-	facebook_commerceorder_post_cancellationsTool := mcp.NewTool("facebook_commerceorder_post_cancellations",
+	// commerceorder_post_cancellations tool
+	commerceorder_post_cancellationsTool := mcp.NewTool("commerceorder_post_cancellations",
 		mcp.WithDescription("POST cancellations for CommerceOrder"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -63,10 +64,10 @@ func GetCommerceOrderTools(accessToken string) []mcp.Tool {
 			mcp.Description("restock_items parameter for cancellations"),
 		),
 	)
-	tools = append(tools, facebook_commerceorder_post_cancellationsTool)
+	tools = append(tools, commerceorder_post_cancellationsTool)
 
-	// facebook_commerceorder_post_item_updates tool
-	facebook_commerceorder_post_item_updatesTool := mcp.NewTool("facebook_commerceorder_post_item_updates",
+	// commerceorder_post_item_updates tool
+	commerceorder_post_item_updatesTool := mcp.NewTool("commerceorder_post_item_updates",
 		mcp.WithDescription("POST item_updates for CommerceOrder"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -81,60 +82,60 @@ func GetCommerceOrderTools(accessToken string) []mcp.Tool {
 			mcp.Description("merchant_order_reference parameter for item_updates"),
 		),
 	)
-	tools = append(tools, facebook_commerceorder_post_item_updatesTool)
+	tools = append(tools, commerceorder_post_item_updatesTool)
 
-	// facebook_commerceorder_get_items tool
-	facebook_commerceorder_get_itemsTool := mcp.NewTool("facebook_commerceorder_get_items",
+	// commerceorder_get_items tool
+	commerceorder_get_itemsTool := mcp.NewTool("commerceorder_get_items",
 		mcp.WithDescription("GET items for CommerceOrder"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_commerceorder_get_itemsTool)
+	tools = append(tools, commerceorder_get_itemsTool)
 
-	// facebook_commerceorder_get_payments tool
-	facebook_commerceorder_get_paymentsTool := mcp.NewTool("facebook_commerceorder_get_payments",
+	// commerceorder_get_payments tool
+	commerceorder_get_paymentsTool := mcp.NewTool("commerceorder_get_payments",
 		mcp.WithDescription("GET payments for CommerceOrder"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_commerceorder_get_paymentsTool)
+	tools = append(tools, commerceorder_get_paymentsTool)
 
-	// facebook_commerceorder_get_promotion_details tool
-	facebook_commerceorder_get_promotion_detailsTool := mcp.NewTool("facebook_commerceorder_get_promotion_details",
+	// commerceorder_get_promotion_details tool
+	commerceorder_get_promotion_detailsTool := mcp.NewTool("commerceorder_get_promotion_details",
 		mcp.WithDescription("GET promotion_details for CommerceOrder"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_commerceorder_get_promotion_detailsTool)
+	tools = append(tools, commerceorder_get_promotion_detailsTool)
 
-	// facebook_commerceorder_get_promotions tool
-	facebook_commerceorder_get_promotionsTool := mcp.NewTool("facebook_commerceorder_get_promotions",
+	// commerceorder_get_promotions tool
+	commerceorder_get_promotionsTool := mcp.NewTool("commerceorder_get_promotions",
 		mcp.WithDescription("GET promotions for CommerceOrder"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_commerceorder_get_promotionsTool)
+	tools = append(tools, commerceorder_get_promotionsTool)
 
-	// facebook_commerceorder_get_refunds tool
-	facebook_commerceorder_get_refundsTool := mcp.NewTool("facebook_commerceorder_get_refunds",
+	// commerceorder_get_refunds tool
+	commerceorder_get_refundsTool := mcp.NewTool("commerceorder_get_refunds",
 		mcp.WithDescription("GET refunds for CommerceOrder"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_commerceorder_get_refundsTool)
+	tools = append(tools, commerceorder_get_refundsTool)
 
-	// facebook_commerceorder_post_refunds tool
-	facebook_commerceorder_post_refundsTool := mcp.NewTool("facebook_commerceorder_post_refunds",
+	// commerceorder_post_refunds tool
+	commerceorder_post_refundsTool := mcp.NewTool("commerceorder_post_refunds",
 		mcp.WithDescription("POST refunds for CommerceOrder"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -168,10 +169,10 @@ func GetCommerceOrderTools(accessToken string) []mcp.Tool {
 			mcp.Description("shipping parameter for refunds"),
 		),
 	)
-	tools = append(tools, facebook_commerceorder_post_refundsTool)
+	tools = append(tools, commerceorder_post_refundsTool)
 
-	// facebook_commerceorder_get_returns tool
-	facebook_commerceorder_get_returnsTool := mcp.NewTool("facebook_commerceorder_get_returns",
+	// commerceorder_get_returns tool
+	commerceorder_get_returnsTool := mcp.NewTool("commerceorder_get_returns",
 		mcp.WithDescription("GET returns for CommerceOrder"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -185,10 +186,10 @@ func GetCommerceOrderTools(accessToken string) []mcp.Tool {
 			mcp.Enum("APPROVED", "DISAPPROVED", "MERCHANT_MARKED_COMPLETED", "REFUNDED", "REQUESTED"),
 		),
 	)
-	tools = append(tools, facebook_commerceorder_get_returnsTool)
+	tools = append(tools, commerceorder_get_returnsTool)
 
-	// facebook_commerceorder_post_returns tool
-	facebook_commerceorder_post_returnsTool := mcp.NewTool("facebook_commerceorder_post_returns",
+	// commerceorder_post_returns tool
+	commerceorder_post_returnsTool := mcp.NewTool("commerceorder_post_returns",
 		mcp.WithDescription("POST returns for CommerceOrder"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -208,20 +209,20 @@ func GetCommerceOrderTools(accessToken string) []mcp.Tool {
 			mcp.Description("update parameter for returns"),
 		),
 	)
-	tools = append(tools, facebook_commerceorder_post_returnsTool)
+	tools = append(tools, commerceorder_post_returnsTool)
 
-	// facebook_commerceorder_get_shipments tool
-	facebook_commerceorder_get_shipmentsTool := mcp.NewTool("facebook_commerceorder_get_shipments",
+	// commerceorder_get_shipments tool
+	commerceorder_get_shipmentsTool := mcp.NewTool("commerceorder_get_shipments",
 		mcp.WithDescription("GET shipments for CommerceOrder"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_commerceorder_get_shipmentsTool)
+	tools = append(tools, commerceorder_get_shipmentsTool)
 
-	// facebook_commerceorder_post_shipments tool
-	facebook_commerceorder_post_shipmentsTool := mcp.NewTool("facebook_commerceorder_post_shipments",
+	// commerceorder_post_shipments tool
+	commerceorder_post_shipmentsTool := mcp.NewTool("commerceorder_post_shipments",
 		mcp.WithDescription("POST shipments for CommerceOrder"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -259,10 +260,10 @@ func GetCommerceOrderTools(accessToken string) []mcp.Tool {
 			mcp.Description("tracking_info parameter for shipments"),
 		),
 	)
-	tools = append(tools, facebook_commerceorder_post_shipmentsTool)
+	tools = append(tools, commerceorder_post_shipmentsTool)
 
-	// facebook_commerceorder_post_update_shipment tool
-	facebook_commerceorder_post_update_shipmentTool := mcp.NewTool("facebook_commerceorder_post_update_shipment",
+	// commerceorder_post_update_shipment tool
+	commerceorder_post_update_shipmentTool := mcp.NewTool("commerceorder_post_update_shipment",
 		mcp.WithDescription("POST update_shipment for CommerceOrder"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -286,25 +287,27 @@ func GetCommerceOrderTools(accessToken string) []mcp.Tool {
 			mcp.Description("tracking_info parameter for update_shipment"),
 		),
 	)
-	tools = append(tools, facebook_commerceorder_post_update_shipmentTool)
+	tools = append(tools, commerceorder_post_update_shipmentTool)
 
-	// facebook_commerceorder_get_ tool
-	facebook_commerceorder_get_Tool := mcp.NewTool("facebook_commerceorder_get_",
+	// commerceorder_get_ tool
+	commerceorder_get_Tool := mcp.NewTool("commerceorder_get_",
 		mcp.WithDescription("GET  for CommerceOrder"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_commerceorder_get_Tool)
+	tools = append(tools, commerceorder_get_Tool)
+
 
 	return tools
 }
 
 // CommerceOrder handlers
 
-// HandleFacebook_commerceorder_post_acknowledge_order handles the facebook_commerceorder_post_acknowledge_order tool
-func HandleFacebook_commerceorder_post_acknowledge_order(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCommerceorder_post_acknowledge_order handles the commerceorder_post_acknowledge_order tool
+func HandleCommerceorder_post_acknowledge_order(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -329,10 +332,12 @@ func HandleFacebook_commerceorder_post_acknowledge_order(ctx context.Context, re
 		args["merchant_order_reference"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_commerceorder_post_acknowledge_order(args)
+	result, err := client.Commerceorder_post_acknowledge_order(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_commerceorder_post_acknowledge_order: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_post_acknowledge_order: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -344,8 +349,9 @@ func HandleFacebook_commerceorder_post_acknowledge_order(ctx context.Context, re
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_commerceorder_get_cancellations handles the facebook_commerceorder_get_cancellations tool
-func HandleFacebook_commerceorder_get_cancellations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCommerceorder_get_cancellations handles the commerceorder_get_cancellations tool
+func HandleCommerceorder_get_cancellations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -358,10 +364,12 @@ func HandleFacebook_commerceorder_get_cancellations(ctx context.Context, request
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_commerceorder_get_cancellations(args)
+	result, err := client.Commerceorder_get_cancellations(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_commerceorder_get_cancellations: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_get_cancellations: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -373,8 +381,9 @@ func HandleFacebook_commerceorder_get_cancellations(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_commerceorder_post_cancellations handles the facebook_commerceorder_post_cancellations tool
-func HandleFacebook_commerceorder_post_cancellations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCommerceorder_post_cancellations handles the commerceorder_post_cancellations tool
+func HandleCommerceorder_post_cancellations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -410,10 +419,12 @@ func HandleFacebook_commerceorder_post_cancellations(ctx context.Context, reques
 		args["restock_items"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_commerceorder_post_cancellations(args)
+	result, err := client.Commerceorder_post_cancellations(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_commerceorder_post_cancellations: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_post_cancellations: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -425,8 +436,9 @@ func HandleFacebook_commerceorder_post_cancellations(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_commerceorder_post_item_updates handles the facebook_commerceorder_post_item_updates tool
-func HandleFacebook_commerceorder_post_item_updates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCommerceorder_post_item_updates handles the commerceorder_post_item_updates tool
+func HandleCommerceorder_post_item_updates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -453,10 +465,12 @@ func HandleFacebook_commerceorder_post_item_updates(ctx context.Context, request
 	}
 	args["merchant_order_reference"] = merchant_order_reference
 
+
+
 	// Call the client method
-	result, err := client.Facebook_commerceorder_post_item_updates(args)
+	result, err := client.Commerceorder_post_item_updates(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_commerceorder_post_item_updates: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_post_item_updates: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -468,8 +482,9 @@ func HandleFacebook_commerceorder_post_item_updates(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_commerceorder_get_items handles the facebook_commerceorder_get_items tool
-func HandleFacebook_commerceorder_get_items(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCommerceorder_get_items handles the commerceorder_get_items tool
+func HandleCommerceorder_get_items(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -482,10 +497,12 @@ func HandleFacebook_commerceorder_get_items(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_commerceorder_get_items(args)
+	result, err := client.Commerceorder_get_items(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_commerceorder_get_items: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_get_items: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -497,8 +514,9 @@ func HandleFacebook_commerceorder_get_items(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_commerceorder_get_payments handles the facebook_commerceorder_get_payments tool
-func HandleFacebook_commerceorder_get_payments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCommerceorder_get_payments handles the commerceorder_get_payments tool
+func HandleCommerceorder_get_payments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -511,10 +529,12 @@ func HandleFacebook_commerceorder_get_payments(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_commerceorder_get_payments(args)
+	result, err := client.Commerceorder_get_payments(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_commerceorder_get_payments: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_get_payments: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -526,8 +546,9 @@ func HandleFacebook_commerceorder_get_payments(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_commerceorder_get_promotion_details handles the facebook_commerceorder_get_promotion_details tool
-func HandleFacebook_commerceorder_get_promotion_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCommerceorder_get_promotion_details handles the commerceorder_get_promotion_details tool
+func HandleCommerceorder_get_promotion_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -540,10 +561,12 @@ func HandleFacebook_commerceorder_get_promotion_details(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_commerceorder_get_promotion_details(args)
+	result, err := client.Commerceorder_get_promotion_details(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_commerceorder_get_promotion_details: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_get_promotion_details: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -555,8 +578,9 @@ func HandleFacebook_commerceorder_get_promotion_details(ctx context.Context, req
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_commerceorder_get_promotions handles the facebook_commerceorder_get_promotions tool
-func HandleFacebook_commerceorder_get_promotions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCommerceorder_get_promotions handles the commerceorder_get_promotions tool
+func HandleCommerceorder_get_promotions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -569,10 +593,12 @@ func HandleFacebook_commerceorder_get_promotions(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_commerceorder_get_promotions(args)
+	result, err := client.Commerceorder_get_promotions(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_commerceorder_get_promotions: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_get_promotions: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -584,8 +610,9 @@ func HandleFacebook_commerceorder_get_promotions(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_commerceorder_get_refunds handles the facebook_commerceorder_get_refunds tool
-func HandleFacebook_commerceorder_get_refunds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCommerceorder_get_refunds handles the commerceorder_get_refunds tool
+func HandleCommerceorder_get_refunds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -598,10 +625,12 @@ func HandleFacebook_commerceorder_get_refunds(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_commerceorder_get_refunds(args)
+	result, err := client.Commerceorder_get_refunds(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_commerceorder_get_refunds: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_get_refunds: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -613,8 +642,9 @@ func HandleFacebook_commerceorder_get_refunds(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_commerceorder_post_refunds handles the facebook_commerceorder_post_refunds tool
-func HandleFacebook_commerceorder_post_refunds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCommerceorder_post_refunds handles the commerceorder_post_refunds tool
+func HandleCommerceorder_post_refunds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -673,10 +703,12 @@ func HandleFacebook_commerceorder_post_refunds(ctx context.Context, request mcp.
 		args["shipping"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_commerceorder_post_refunds(args)
+	result, err := client.Commerceorder_post_refunds(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_commerceorder_post_refunds: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_post_refunds: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -688,8 +720,9 @@ func HandleFacebook_commerceorder_post_refunds(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_commerceorder_get_returns handles the facebook_commerceorder_get_returns tool
-func HandleFacebook_commerceorder_get_returns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCommerceorder_get_returns handles the commerceorder_get_returns tool
+func HandleCommerceorder_get_returns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -713,10 +746,12 @@ func HandleFacebook_commerceorder_get_returns(ctx context.Context, request mcp.C
 		args["statuses"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_commerceorder_get_returns(args)
+	result, err := client.Commerceorder_get_returns(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_commerceorder_get_returns: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_get_returns: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -728,8 +763,9 @@ func HandleFacebook_commerceorder_get_returns(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_commerceorder_post_returns handles the facebook_commerceorder_post_returns tool
-func HandleFacebook_commerceorder_post_returns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCommerceorder_post_returns handles the commerceorder_post_returns tool
+func HandleCommerceorder_post_returns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -764,10 +800,12 @@ func HandleFacebook_commerceorder_post_returns(ctx context.Context, request mcp.
 		args["update"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_commerceorder_post_returns(args)
+	result, err := client.Commerceorder_post_returns(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_commerceorder_post_returns: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_post_returns: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -779,8 +817,9 @@ func HandleFacebook_commerceorder_post_returns(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_commerceorder_get_shipments handles the facebook_commerceorder_get_shipments tool
-func HandleFacebook_commerceorder_get_shipments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCommerceorder_get_shipments handles the commerceorder_get_shipments tool
+func HandleCommerceorder_get_shipments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -793,10 +832,12 @@ func HandleFacebook_commerceorder_get_shipments(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_commerceorder_get_shipments(args)
+	result, err := client.Commerceorder_get_shipments(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_commerceorder_get_shipments: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_get_shipments: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -808,8 +849,9 @@ func HandleFacebook_commerceorder_get_shipments(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_commerceorder_post_shipments handles the facebook_commerceorder_post_shipments tool
-func HandleFacebook_commerceorder_post_shipments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCommerceorder_post_shipments handles the commerceorder_post_shipments tool
+func HandleCommerceorder_post_shipments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -875,10 +917,12 @@ func HandleFacebook_commerceorder_post_shipments(ctx context.Context, request mc
 		args["tracking_info"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_commerceorder_post_shipments(args)
+	result, err := client.Commerceorder_post_shipments(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_commerceorder_post_shipments: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_post_shipments: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -890,8 +934,9 @@ func HandleFacebook_commerceorder_post_shipments(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_commerceorder_post_update_shipment handles the facebook_commerceorder_post_update_shipment tool
-func HandleFacebook_commerceorder_post_update_shipment(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCommerceorder_post_update_shipment handles the commerceorder_post_update_shipment tool
+func HandleCommerceorder_post_update_shipment(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -933,10 +978,12 @@ func HandleFacebook_commerceorder_post_update_shipment(ctx context.Context, requ
 	}
 	args["tracking_info"] = tracking_info
 
+
+
 	// Call the client method
-	result, err := client.Facebook_commerceorder_post_update_shipment(args)
+	result, err := client.Commerceorder_post_update_shipment(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_commerceorder_post_update_shipment: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_post_update_shipment: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -948,8 +995,9 @@ func HandleFacebook_commerceorder_post_update_shipment(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_commerceorder_get_ handles the facebook_commerceorder_get_ tool
-func HandleFacebook_commerceorder_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCommerceorder_get_ handles the commerceorder_get_ tool
+func HandleCommerceorder_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -962,10 +1010,12 @@ func HandleFacebook_commerceorder_get_(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_commerceorder_get_(args)
+	result, err := client.Commerceorder_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_commerceorder_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -976,3 +1026,4 @@ func HandleFacebook_commerceorder_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

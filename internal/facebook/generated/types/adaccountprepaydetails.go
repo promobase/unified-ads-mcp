@@ -4,8 +4,8 @@ package types
 
 // AdAccountPrepayDetails represents a Facebook AdAccountPrepayDetails object
 type AdAccountPrepayDetails struct {
-	Default_funding_amount          *CurrencyAmount `json:"default_funding_amount"`
-	Max_acceptable_amount           *CurrencyAmount `json:"max_acceptable_amount"`
-	Min_acceptable_amount           *CurrencyAmount `json:"min_acceptable_amount"`
-	Should_collect_business_details bool            `json:"should_collect_business_details"`
+	Default_funding_amount *CurrencyAmount `json:"default_funding_amount"`
+	Max_acceptable_amount *CurrencyAmount `json:"max_acceptable_amount"`
+	Min_acceptable_amount *CurrencyAmount `json:"min_acceptable_amount"`
+	Should_collect_business_details bool `json:"should_collect_business_details"`
 }

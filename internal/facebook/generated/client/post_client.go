@@ -21,14 +21,18 @@ func NewPostClient(accessToken string) *PostClient {
 	}
 }
 
-// facebook_post_get_attachments GET attachments for Post
-func (c *PostClient) Facebook_post_get_attachments(args map[string]interface{}) (interface{}, error) {
+
+// post_get_attachments GET attachments for Post
+func (c *PostClient) Post_get_attachments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "attachments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -60,9 +64,11 @@ func (c *PostClient) Facebook_post_get_attachments(args map[string]interface{}) 
 	return result, nil
 }
 
-// facebook_post_get_comments GET comments for Post
-func (c *PostClient) Facebook_post_get_comments(args map[string]interface{}) (interface{}, error) {
+
+// post_get_comments GET comments for Post
+func (c *PostClient) Post_get_comments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
@@ -82,6 +88,7 @@ func (c *PostClient) Facebook_post_get_comments(args map[string]interface{}) (in
 		urlParams.Set("since", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -112,9 +119,11 @@ func (c *PostClient) Facebook_post_get_comments(args map[string]interface{}) (in
 	return result, nil
 }
 
-// facebook_post_post_comments POST comments for Post
-func (c *PostClient) Facebook_post_post_comments(args map[string]interface{}) (interface{}, error) {
+
+// post_post_comments POST comments for Post
+func (c *PostClient) Post_post_comments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
@@ -155,6 +164,7 @@ func (c *PostClient) Facebook_post_post_comments(args map[string]interface{}) (i
 		urlParams.Set("tracking", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -185,14 +195,18 @@ func (c *PostClient) Facebook_post_post_comments(args map[string]interface{}) (i
 	return result, nil
 }
 
-// facebook_post_get_dynamic_posts GET dynamic_posts for Post
-func (c *PostClient) Facebook_post_get_dynamic_posts(args map[string]interface{}) (interface{}, error) {
+
+// post_get_dynamic_posts GET dynamic_posts for Post
+func (c *PostClient) Post_get_dynamic_posts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "dynamic_posts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -224,9 +238,11 @@ func (c *PostClient) Facebook_post_get_dynamic_posts(args map[string]interface{}
 	return result, nil
 }
 
-// facebook_post_get_insights GET insights for Post
-func (c *PostClient) Facebook_post_get_insights(args map[string]interface{}) (interface{}, error) {
+
+// post_get_insights GET insights for Post
+func (c *PostClient) Post_get_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
@@ -249,6 +265,7 @@ func (c *PostClient) Facebook_post_get_insights(args map[string]interface{}) (in
 		urlParams.Set("until", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -279,9 +296,11 @@ func (c *PostClient) Facebook_post_get_insights(args map[string]interface{}) (in
 	return result, nil
 }
 
-// facebook_post_delete_likes DELETE likes for Post
-func (c *PostClient) Facebook_post_delete_likes(args map[string]interface{}) (interface{}, error) {
+
+// post_delete_likes DELETE likes for Post
+func (c *PostClient) Post_delete_likes(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
@@ -294,6 +313,7 @@ func (c *PostClient) Facebook_post_delete_likes(args map[string]interface{}) (in
 	if val, ok := args["tracking"]; ok {
 		urlParams.Set("tracking", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -325,9 +345,11 @@ func (c *PostClient) Facebook_post_delete_likes(args map[string]interface{}) (in
 	return result, nil
 }
 
-// facebook_post_post_likes POST likes for Post
-func (c *PostClient) Facebook_post_post_likes(args map[string]interface{}) (interface{}, error) {
+
+// post_post_likes POST likes for Post
+func (c *PostClient) Post_post_likes(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
@@ -343,6 +365,7 @@ func (c *PostClient) Facebook_post_post_likes(args map[string]interface{}) (inte
 	if val, ok := args["tracking"]; ok {
 		urlParams.Set("tracking", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -374,9 +397,11 @@ func (c *PostClient) Facebook_post_post_likes(args map[string]interface{}) (inte
 	return result, nil
 }
 
-// facebook_post_get_reactions GET reactions for Post
-func (c *PostClient) Facebook_post_get_reactions(args map[string]interface{}) (interface{}, error) {
+
+// post_get_reactions GET reactions for Post
+func (c *PostClient) Post_get_reactions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "reactions")
@@ -387,6 +412,7 @@ func (c *PostClient) Facebook_post_get_reactions(args map[string]interface{}) (i
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -417,15 +443,19 @@ func (c *PostClient) Facebook_post_get_reactions(args map[string]interface{}) (i
 	return result, nil
 }
 
-// facebook_post_get_sharedposts GET sharedposts for Post
-func (c *PostClient) Facebook_post_get_sharedposts(args map[string]interface{}) (interface{}, error) {
+
+// post_get_sharedposts GET sharedposts for Post
+func (c *PostClient) Post_get_sharedposts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "sharedposts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -456,15 +486,19 @@ func (c *PostClient) Facebook_post_get_sharedposts(args map[string]interface{}) 
 	return result, nil
 }
 
-// facebook_post_get_sponsor_tags GET sponsor_tags for Post
-func (c *PostClient) Facebook_post_get_sponsor_tags(args map[string]interface{}) (interface{}, error) {
+
+// post_get_sponsor_tags GET sponsor_tags for Post
+func (c *PostClient) Post_get_sponsor_tags(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "sponsor_tags")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -495,15 +529,19 @@ func (c *PostClient) Facebook_post_get_sponsor_tags(args map[string]interface{})
 	return result, nil
 }
 
-// facebook_post_get_to GET to for Post
-func (c *PostClient) Facebook_post_get_to(args map[string]interface{}) (interface{}, error) {
+
+// post_get_to GET to for Post
+func (c *PostClient) Post_get_to(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "to")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -534,14 +572,18 @@ func (c *PostClient) Facebook_post_get_to(args map[string]interface{}) (interfac
 	return result, nil
 }
 
-// facebook_post_delete_ DELETE  for Post
-func (c *PostClient) Facebook_post_delete_(args map[string]interface{}) (interface{}, error) {
+
+// post_delete_ DELETE  for Post
+func (c *PostClient) Post_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -573,9 +615,11 @@ func (c *PostClient) Facebook_post_delete_(args map[string]interface{}) (interfa
 	return result, nil
 }
 
-// facebook_post_get_ GET  for Post
-func (c *PostClient) Facebook_post_get_(args map[string]interface{}) (interface{}, error) {
+
+// post_get_ GET  for Post
+func (c *PostClient) Post_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -588,6 +632,7 @@ func (c *PostClient) Facebook_post_get_(args map[string]interface{}) (interface{
 	if val, ok := args["primary_ig_user_id"]; ok {
 		urlParams.Set("primary_ig_user_id", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -619,9 +664,11 @@ func (c *PostClient) Facebook_post_get_(args map[string]interface{}) (interface{
 	return result, nil
 }
 
-// facebook_post_post_ POST  for Post
-func (c *PostClient) Facebook_post_post_(args map[string]interface{}) (interface{}, error) {
+
+// post_post_ POST  for Post
+func (c *PostClient) Post_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -722,6 +769,7 @@ func (c *PostClient) Facebook_post_post_(args map[string]interface{}) (interface
 		urlParams.Set("tracking", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -751,3 +799,4 @@ func (c *PostClient) Facebook_post_post_(args map[string]interface{}) (interface
 
 	return result, nil
 }
+

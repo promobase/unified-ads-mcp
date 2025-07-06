@@ -15,33 +15,36 @@ import (
 func GetLeadTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_lead_delete_ tool
-	facebook_lead_delete_Tool := mcp.NewTool("facebook_lead_delete_",
+
+	// lead_delete_ tool
+	lead_delete_Tool := mcp.NewTool("lead_delete_",
 		mcp.WithDescription("DELETE  for Lead"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_lead_delete_Tool)
+	tools = append(tools, lead_delete_Tool)
 
-	// facebook_lead_get_ tool
-	facebook_lead_get_Tool := mcp.NewTool("facebook_lead_get_",
+	// lead_get_ tool
+	lead_get_Tool := mcp.NewTool("lead_get_",
 		mcp.WithDescription("GET  for Lead"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_lead_get_Tool)
+	tools = append(tools, lead_get_Tool)
+
 
 	return tools
 }
 
 // Lead handlers
 
-// HandleFacebook_lead_delete_ handles the facebook_lead_delete_ tool
-func HandleFacebook_lead_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLead_delete_ handles the lead_delete_ tool
+func HandleLead_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -54,10 +57,12 @@ func HandleFacebook_lead_delete_(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_lead_delete_(args)
+	result, err := client.Lead_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_lead_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute lead_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -69,8 +74,9 @@ func HandleFacebook_lead_delete_(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_lead_get_ handles the facebook_lead_get_ tool
-func HandleFacebook_lead_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLead_get_ handles the lead_get_ tool
+func HandleLead_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -83,10 +89,12 @@ func HandleFacebook_lead_get_(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_lead_get_(args)
+	result, err := client.Lead_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_lead_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute lead_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -97,3 +105,4 @@ func HandleFacebook_lead_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

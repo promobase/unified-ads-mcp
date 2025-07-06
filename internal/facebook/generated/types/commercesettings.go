@@ -4,6 +4,6 @@ package types
 
 // CommerceSettings represents a Facebook CommerceSettings object
 type CommerceSettings struct {
-	Inventory       int `json:"inventory"`
+	Inventory int `json:"inventory"`
 	Total_inventory int `json:"total_inventory"`
 }

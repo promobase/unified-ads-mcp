@@ -15,23 +15,26 @@ import (
 func GetMeasurementReportTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_measurementreport_get_ tool
-	facebook_measurementreport_get_Tool := mcp.NewTool("facebook_measurementreport_get_",
+
+	// measurementreport_get_ tool
+	measurementreport_get_Tool := mcp.NewTool("measurementreport_get_",
 		mcp.WithDescription("GET  for MeasurementReport"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_measurementreport_get_Tool)
+	tools = append(tools, measurementreport_get_Tool)
+
 
 	return tools
 }
 
 // MeasurementReport handlers
 
-// HandleFacebook_measurementreport_get_ handles the facebook_measurementreport_get_ tool
-func HandleFacebook_measurementreport_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleMeasurementreport_get_ handles the measurementreport_get_ tool
+func HandleMeasurementreport_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_measurementreport_get_(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_measurementreport_get_(args)
+	result, err := client.Measurementreport_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_measurementreport_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute measurementreport_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_measurementreport_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

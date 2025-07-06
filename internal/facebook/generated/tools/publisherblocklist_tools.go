@@ -15,8 +15,9 @@ import (
 func GetPublisherBlockListTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_publisherblocklist_post_append_publisher_urls tool
-	facebook_publisherblocklist_post_append_publisher_urlsTool := mcp.NewTool("facebook_publisherblocklist_post_append_publisher_urls",
+
+	// publisherblocklist_post_append_publisher_urls tool
+	publisherblocklist_post_append_publisher_urlsTool := mcp.NewTool("publisherblocklist_post_append_publisher_urls",
 		mcp.WithDescription("POST append_publisher_urls for PublisherBlockList"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -27,10 +28,10 @@ func GetPublisherBlockListTools(accessToken string) []mcp.Tool {
 			mcp.Description("publisher_urls parameter for append_publisher_urls"),
 		),
 	)
-	tools = append(tools, facebook_publisherblocklist_post_append_publisher_urlsTool)
+	tools = append(tools, publisherblocklist_post_append_publisher_urlsTool)
 
-	// facebook_publisherblocklist_get_paged_web_publishers tool
-	facebook_publisherblocklist_get_paged_web_publishersTool := mcp.NewTool("facebook_publisherblocklist_get_paged_web_publishers",
+	// publisherblocklist_get_paged_web_publishers tool
+	publisherblocklist_get_paged_web_publishersTool := mcp.NewTool("publisherblocklist_get_paged_web_publishers",
 		mcp.WithDescription("GET paged_web_publishers for PublisherBlockList"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -40,20 +41,20 @@ func GetPublisherBlockListTools(accessToken string) []mcp.Tool {
 			mcp.Description("draft_id parameter for paged_web_publishers"),
 		),
 	)
-	tools = append(tools, facebook_publisherblocklist_get_paged_web_publishersTool)
+	tools = append(tools, publisherblocklist_get_paged_web_publishersTool)
 
-	// facebook_publisherblocklist_delete_ tool
-	facebook_publisherblocklist_delete_Tool := mcp.NewTool("facebook_publisherblocklist_delete_",
+	// publisherblocklist_delete_ tool
+	publisherblocklist_delete_Tool := mcp.NewTool("publisherblocklist_delete_",
 		mcp.WithDescription("DELETE  for PublisherBlockList"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_publisherblocklist_delete_Tool)
+	tools = append(tools, publisherblocklist_delete_Tool)
 
-	// facebook_publisherblocklist_get_ tool
-	facebook_publisherblocklist_get_Tool := mcp.NewTool("facebook_publisherblocklist_get_",
+	// publisherblocklist_get_ tool
+	publisherblocklist_get_Tool := mcp.NewTool("publisherblocklist_get_",
 		mcp.WithDescription("GET  for PublisherBlockList"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -69,10 +70,10 @@ func GetPublisherBlockListTools(accessToken string) []mcp.Tool {
 			mcp.Description("draft_id parameter for "),
 		),
 	)
-	tools = append(tools, facebook_publisherblocklist_get_Tool)
+	tools = append(tools, publisherblocklist_get_Tool)
 
-	// facebook_publisherblocklist_post_ tool
-	facebook_publisherblocklist_post_Tool := mcp.NewTool("facebook_publisherblocklist_post_",
+	// publisherblocklist_post_ tool
+	publisherblocklist_post_Tool := mcp.NewTool("publisherblocklist_post_",
 		mcp.WithDescription("POST  for PublisherBlockList"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -83,15 +84,17 @@ func GetPublisherBlockListTools(accessToken string) []mcp.Tool {
 			mcp.Description("spec parameter for "),
 		),
 	)
-	tools = append(tools, facebook_publisherblocklist_post_Tool)
+	tools = append(tools, publisherblocklist_post_Tool)
+
 
 	return tools
 }
 
 // PublisherBlockList handlers
 
-// HandleFacebook_publisherblocklist_post_append_publisher_urls handles the facebook_publisherblocklist_post_append_publisher_urls tool
-func HandleFacebook_publisherblocklist_post_append_publisher_urls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePublisherblocklist_post_append_publisher_urls handles the publisherblocklist_post_append_publisher_urls tool
+func HandlePublisherblocklist_post_append_publisher_urls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -111,10 +114,12 @@ func HandleFacebook_publisherblocklist_post_append_publisher_urls(ctx context.Co
 	}
 	args["publisher_urls"] = publisher_urls
 
+
+
 	// Call the client method
-	result, err := client.Facebook_publisherblocklist_post_append_publisher_urls(args)
+	result, err := client.Publisherblocklist_post_append_publisher_urls(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_publisherblocklist_post_append_publisher_urls: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute publisherblocklist_post_append_publisher_urls: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -126,8 +131,9 @@ func HandleFacebook_publisherblocklist_post_append_publisher_urls(ctx context.Co
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_publisherblocklist_get_paged_web_publishers handles the facebook_publisherblocklist_get_paged_web_publishers tool
-func HandleFacebook_publisherblocklist_get_paged_web_publishers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePublisherblocklist_get_paged_web_publishers handles the publisherblocklist_get_paged_web_publishers tool
+func HandlePublisherblocklist_get_paged_web_publishers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -145,10 +151,12 @@ func HandleFacebook_publisherblocklist_get_paged_web_publishers(ctx context.Cont
 		args["draft_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_publisherblocklist_get_paged_web_publishers(args)
+	result, err := client.Publisherblocklist_get_paged_web_publishers(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_publisherblocklist_get_paged_web_publishers: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute publisherblocklist_get_paged_web_publishers: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -160,8 +168,9 @@ func HandleFacebook_publisherblocklist_get_paged_web_publishers(ctx context.Cont
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_publisherblocklist_delete_ handles the facebook_publisherblocklist_delete_ tool
-func HandleFacebook_publisherblocklist_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePublisherblocklist_delete_ handles the publisherblocklist_delete_ tool
+func HandlePublisherblocklist_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -174,10 +183,12 @@ func HandleFacebook_publisherblocklist_delete_(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_publisherblocklist_delete_(args)
+	result, err := client.Publisherblocklist_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_publisherblocklist_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute publisherblocklist_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -189,8 +200,9 @@ func HandleFacebook_publisherblocklist_delete_(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_publisherblocklist_get_ handles the facebook_publisherblocklist_get_ tool
-func HandleFacebook_publisherblocklist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePublisherblocklist_get_ handles the publisherblocklist_get_ tool
+func HandlePublisherblocklist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -218,10 +230,12 @@ func HandleFacebook_publisherblocklist_get_(ctx context.Context, request mcp.Cal
 		args["draft_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_publisherblocklist_get_(args)
+	result, err := client.Publisherblocklist_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_publisherblocklist_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute publisherblocklist_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -233,8 +247,9 @@ func HandleFacebook_publisherblocklist_get_(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_publisherblocklist_post_ handles the facebook_publisherblocklist_post_ tool
-func HandleFacebook_publisherblocklist_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePublisherblocklist_post_ handles the publisherblocklist_post_ tool
+func HandlePublisherblocklist_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -254,10 +269,12 @@ func HandleFacebook_publisherblocklist_post_(ctx context.Context, request mcp.Ca
 	}
 	args["spec"] = spec
 
+
+
 	// Call the client method
-	result, err := client.Facebook_publisherblocklist_post_(args)
+	result, err := client.Publisherblocklist_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_publisherblocklist_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute publisherblocklist_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -268,3 +285,4 @@ func HandleFacebook_publisherblocklist_post_(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

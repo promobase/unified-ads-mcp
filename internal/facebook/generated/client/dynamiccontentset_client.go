@@ -21,14 +21,18 @@ func NewDynamicContentSetClient(accessToken string) *DynamicContentSetClient {
 	}
 }
 
-// facebook_dynamiccontentset_get_ GET  for DynamicContentSet
-func (c *DynamicContentSetClient) Facebook_dynamiccontentset_get_(args map[string]interface{}) (interface{}, error) {
+
+// dynamiccontentset_get_ GET  for DynamicContentSet
+func (c *DynamicContentSetClient) Dynamiccontentset_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *DynamicContentSetClient) Facebook_dynamiccontentset_get_(args map[strin
 
 	return result, nil
 }
+

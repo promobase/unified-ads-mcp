@@ -4,8 +4,8 @@ package types
 
 // AdsPixelCapabilityOverride represents a Facebook AdsPixelCapabilityOverride object
 type AdsPixelCapabilityOverride struct {
-	Capability     string `json:"capability"`
-	Id             string `json:"id"`
+	Capability string `json:"capability"`
+	Id string `json:"id"`
 	Override_value string `json:"override_value"`
-	Reason         string `json:"reason"`
+	Reason string `json:"reason"`
 }

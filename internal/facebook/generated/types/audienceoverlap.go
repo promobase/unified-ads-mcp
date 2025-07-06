@@ -4,8 +4,8 @@ package types
 
 // AudienceOverlap represents a Facebook AudienceOverlap object
 type AudienceOverlap struct {
-	Estimated_reach int    `json:"estimated_reach"`
-	Id              string `json:"id"`
-	Name            string `json:"name"`
-	Overlap         int    `json:"overlap"`
+	Estimated_reach int `json:"estimated_reach"`
+	Id string `json:"id"`
+	Name string `json:"name"`
+	Overlap int `json:"overlap"`
 }

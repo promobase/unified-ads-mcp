@@ -21,14 +21,18 @@ func NewWoodhengePurchasedPAYGReceiptClient(accessToken string) *WoodhengePurcha
 	}
 }
 
-// facebook_woodhengepurchasedpaygreceipt_get_ GET  for WoodhengePurchasedPAYGReceipt
-func (c *WoodhengePurchasedPAYGReceiptClient) Facebook_woodhengepurchasedpaygreceipt_get_(args map[string]interface{}) (interface{}, error) {
+
+// woodhengepurchasedpaygreceipt_get_ GET  for WoodhengePurchasedPAYGReceipt
+func (c *WoodhengePurchasedPAYGReceiptClient) Woodhengepurchasedpaygreceipt_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *WoodhengePurchasedPAYGReceiptClient) Facebook_woodhengepurchasedpaygrec
 
 	return result, nil
 }
+

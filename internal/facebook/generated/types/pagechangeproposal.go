@@ -4,8 +4,8 @@ package types
 
 // PageChangeProposal represents a Facebook PageChangeProposal object
 type PageChangeProposal struct {
-	Acceptance_status    string              `json:"acceptance_status"`
-	Category             string              `json:"category"`
-	Id                   string              `json:"id"`
+	Acceptance_status string `json:"acceptance_status"`
+	Category string `json:"category"`
+	Id string `json:"id"`
 	Upcoming_change_info *PageUpcomingChange `json:"upcoming_change_info"`
 }

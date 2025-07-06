@@ -5,5 +5,5 @@ package types
 // BusinessAdAccountRequest represents a Facebook BusinessAdAccountRequest object
 type BusinessAdAccountRequest struct {
 	Ad_account *AdAccount `json:"ad_account"`
-	Id         string     `json:"id"`
+	Id string `json:"id"`
 }

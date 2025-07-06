@@ -21,14 +21,18 @@ func NewFBImageCopyrightMatchClient(accessToken string) *FBImageCopyrightMatchCl
 	}
 }
 
-// facebook_fbimagecopyrightmatch_get_ GET  for FBImageCopyrightMatch
-func (c *FBImageCopyrightMatchClient) Facebook_fbimagecopyrightmatch_get_(args map[string]interface{}) (interface{}, error) {
+
+// fbimagecopyrightmatch_get_ GET  for FBImageCopyrightMatch
+func (c *FBImageCopyrightMatchClient) Fbimagecopyrightmatch_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *FBImageCopyrightMatchClient) Facebook_fbimagecopyrightmatch_get_(args m
 
 	return result, nil
 }
+

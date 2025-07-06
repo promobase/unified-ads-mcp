@@ -21,14 +21,18 @@ func NewCPASParentCatalogSettingsClient(accessToken string) *CPASParentCatalogSe
 	}
 }
 
-// facebook_cpasparentcatalogsettings_get_ GET  for CPASParentCatalogSettings
-func (c *CPASParentCatalogSettingsClient) Facebook_cpasparentcatalogsettings_get_(args map[string]interface{}) (interface{}, error) {
+
+// cpasparentcatalogsettings_get_ GET  for CPASParentCatalogSettings
+func (c *CPASParentCatalogSettingsClient) Cpasparentcatalogsettings_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *CPASParentCatalogSettingsClient) Facebook_cpasparentcatalogsettings_get
 
 	return result, nil
 }
+

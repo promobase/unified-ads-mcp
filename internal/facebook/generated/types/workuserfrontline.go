@@ -4,6 +4,6 @@ package types
 
 // WorkUserFrontline represents a Facebook WorkUserFrontline object
 type WorkUserFrontline struct {
-	Has_access   bool `json:"has_access"`
+	Has_access bool `json:"has_access"`
 	Is_frontline bool `json:"is_frontline"`
 }

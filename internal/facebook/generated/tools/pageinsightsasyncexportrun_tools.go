@@ -15,23 +15,26 @@ import (
 func GetPageInsightsAsyncExportRunTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_pageinsightsasyncexportrun_get_ tool
-	facebook_pageinsightsasyncexportrun_get_Tool := mcp.NewTool("facebook_pageinsightsasyncexportrun_get_",
+
+	// pageinsightsasyncexportrun_get_ tool
+	pageinsightsasyncexportrun_get_Tool := mcp.NewTool("pageinsightsasyncexportrun_get_",
 		mcp.WithDescription("GET  for PageInsightsAsyncExportRun"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_pageinsightsasyncexportrun_get_Tool)
+	tools = append(tools, pageinsightsasyncexportrun_get_Tool)
+
 
 	return tools
 }
 
 // PageInsightsAsyncExportRun handlers
 
-// HandleFacebook_pageinsightsasyncexportrun_get_ handles the facebook_pageinsightsasyncexportrun_get_ tool
-func HandleFacebook_pageinsightsasyncexportrun_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePageinsightsasyncexportrun_get_ handles the pageinsightsasyncexportrun_get_ tool
+func HandlePageinsightsasyncexportrun_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_pageinsightsasyncexportrun_get_(ctx context.Context, request
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_pageinsightsasyncexportrun_get_(args)
+	result, err := client.Pageinsightsasyncexportrun_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_pageinsightsasyncexportrun_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pageinsightsasyncexportrun_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_pageinsightsasyncexportrun_get_(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

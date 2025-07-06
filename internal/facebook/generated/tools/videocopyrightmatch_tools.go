@@ -15,23 +15,26 @@ import (
 func GetVideoCopyrightMatchTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_videocopyrightmatch_get_ tool
-	facebook_videocopyrightmatch_get_Tool := mcp.NewTool("facebook_videocopyrightmatch_get_",
+
+	// videocopyrightmatch_get_ tool
+	videocopyrightmatch_get_Tool := mcp.NewTool("videocopyrightmatch_get_",
 		mcp.WithDescription("GET  for VideoCopyrightMatch"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_videocopyrightmatch_get_Tool)
+	tools = append(tools, videocopyrightmatch_get_Tool)
+
 
 	return tools
 }
 
 // VideoCopyrightMatch handlers
 
-// HandleFacebook_videocopyrightmatch_get_ handles the facebook_videocopyrightmatch_get_ tool
-func HandleFacebook_videocopyrightmatch_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleVideocopyrightmatch_get_ handles the videocopyrightmatch_get_ tool
+func HandleVideocopyrightmatch_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_videocopyrightmatch_get_(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_videocopyrightmatch_get_(args)
+	result, err := client.Videocopyrightmatch_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_videocopyrightmatch_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute videocopyrightmatch_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_videocopyrightmatch_get_(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

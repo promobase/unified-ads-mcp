@@ -15,23 +15,26 @@ import (
 func GetFranchiseProgramTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_franchiseprogram_get_ tool
-	facebook_franchiseprogram_get_Tool := mcp.NewTool("facebook_franchiseprogram_get_",
+
+	// franchiseprogram_get_ tool
+	franchiseprogram_get_Tool := mcp.NewTool("franchiseprogram_get_",
 		mcp.WithDescription("GET  for FranchiseProgram"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_franchiseprogram_get_Tool)
+	tools = append(tools, franchiseprogram_get_Tool)
+
 
 	return tools
 }
 
 // FranchiseProgram handlers
 
-// HandleFacebook_franchiseprogram_get_ handles the facebook_franchiseprogram_get_ tool
-func HandleFacebook_franchiseprogram_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleFranchiseprogram_get_ handles the franchiseprogram_get_ tool
+func HandleFranchiseprogram_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_franchiseprogram_get_(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_franchiseprogram_get_(args)
+	result, err := client.Franchiseprogram_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_franchiseprogram_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute franchiseprogram_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_franchiseprogram_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

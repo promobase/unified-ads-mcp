@@ -15,23 +15,26 @@ import (
 func GetAdsQuickViewsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adsquickviews_get_ tool
-	facebook_adsquickviews_get_Tool := mcp.NewTool("facebook_adsquickviews_get_",
+
+	// adsquickviews_get_ tool
+	adsquickviews_get_Tool := mcp.NewTool("adsquickviews_get_",
 		mcp.WithDescription("GET  for AdsQuickViews"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adsquickviews_get_Tool)
+	tools = append(tools, adsquickviews_get_Tool)
+
 
 	return tools
 }
 
 // AdsQuickViews handlers
 
-// HandleFacebook_adsquickviews_get_ handles the facebook_adsquickviews_get_ tool
-func HandleFacebook_adsquickviews_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdsquickviews_get_ handles the adsquickviews_get_ tool
+func HandleAdsquickviews_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_adsquickviews_get_(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adsquickviews_get_(args)
+	result, err := client.Adsquickviews_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adsquickviews_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adsquickviews_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_adsquickviews_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

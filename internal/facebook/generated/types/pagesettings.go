@@ -4,6 +4,6 @@ package types
 
 // PageSettings represents a Facebook PageSettings object
 type PageSettings struct {
-	Setting string                 `json:"setting"`
-	Value   map[string]interface{} `json:"value"`
+	Setting string `json:"setting"`
+	Value map[string]interface{} `json:"value"`
 }

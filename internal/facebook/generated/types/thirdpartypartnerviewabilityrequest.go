@@ -6,15 +6,15 @@ import "time"
 
 // ThirdPartyPartnerViewabilityRequest represents a Facebook ThirdPartyPartnerViewabilityRequest object
 type ThirdPartyPartnerViewabilityRequest struct {
-	Created_time      time.Time `json:"created_time"`
-	Description       string    `json:"description"`
-	Ds                string    `json:"ds"`
-	Hour              time.Time `json:"hour"`
-	Id                string    `json:"id"`
-	Metric            string    `json:"metric"`
-	Modified_time     time.Time `json:"modified_time"`
-	Owner_instance_id string    `json:"owner_instance_id"`
-	Platform          string    `json:"platform"`
-	Status            string    `json:"status"`
-	Total_file_count  int       `json:"total_file_count"`
+	Created_time time.Time `json:"created_time"`
+	Description string `json:"description"`
+	Ds string `json:"ds"`
+	Hour time.Time `json:"hour"`
+	Id string `json:"id"`
+	Metric string `json:"metric"`
+	Modified_time time.Time `json:"modified_time"`
+	Owner_instance_id string `json:"owner_instance_id"`
+	Platform string `json:"platform"`
+	Status string `json:"status"`
+	Total_file_count int `json:"total_file_count"`
 }

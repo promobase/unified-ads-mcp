@@ -15,28 +15,29 @@ import (
 func GetVideoPollTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_videopoll_get_poll_options tool
-	facebook_videopoll_get_poll_optionsTool := mcp.NewTool("facebook_videopoll_get_poll_options",
+
+	// videopoll_get_poll_options tool
+	videopoll_get_poll_optionsTool := mcp.NewTool("videopoll_get_poll_options",
 		mcp.WithDescription("GET poll_options for VideoPoll"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_videopoll_get_poll_optionsTool)
+	tools = append(tools, videopoll_get_poll_optionsTool)
 
-	// facebook_videopoll_get_ tool
-	facebook_videopoll_get_Tool := mcp.NewTool("facebook_videopoll_get_",
+	// videopoll_get_ tool
+	videopoll_get_Tool := mcp.NewTool("videopoll_get_",
 		mcp.WithDescription("GET  for VideoPoll"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_videopoll_get_Tool)
+	tools = append(tools, videopoll_get_Tool)
 
-	// facebook_videopoll_post_ tool
-	facebook_videopoll_post_Tool := mcp.NewTool("facebook_videopoll_post_",
+	// videopoll_post_ tool
+	videopoll_post_Tool := mcp.NewTool("videopoll_post_",
 		mcp.WithDescription("POST  for VideoPoll"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -60,15 +61,17 @@ func GetVideoPollTools(accessToken string) []mcp.Tool {
 			mcp.Description("show_results parameter for "),
 		),
 	)
-	tools = append(tools, facebook_videopoll_post_Tool)
+	tools = append(tools, videopoll_post_Tool)
+
 
 	return tools
 }
 
 // VideoPoll handlers
 
-// HandleFacebook_videopoll_get_poll_options handles the facebook_videopoll_get_poll_options tool
-func HandleFacebook_videopoll_get_poll_options(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleVideopoll_get_poll_options handles the videopoll_get_poll_options tool
+func HandleVideopoll_get_poll_options(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -81,10 +84,12 @@ func HandleFacebook_videopoll_get_poll_options(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_videopoll_get_poll_options(args)
+	result, err := client.Videopoll_get_poll_options(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_videopoll_get_poll_options: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute videopoll_get_poll_options: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -96,8 +101,9 @@ func HandleFacebook_videopoll_get_poll_options(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_videopoll_get_ handles the facebook_videopoll_get_ tool
-func HandleFacebook_videopoll_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleVideopoll_get_ handles the videopoll_get_ tool
+func HandleVideopoll_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -110,10 +116,12 @@ func HandleFacebook_videopoll_get_(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_videopoll_get_(args)
+	result, err := client.Videopoll_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_videopoll_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute videopoll_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -125,8 +133,9 @@ func HandleFacebook_videopoll_get_(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_videopoll_post_ handles the facebook_videopoll_post_ tool
-func HandleFacebook_videopoll_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleVideopoll_post_ handles the videopoll_post_ tool
+func HandleVideopoll_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -166,10 +175,12 @@ func HandleFacebook_videopoll_post_(ctx context.Context, request mcp.CallToolReq
 		args["show_results"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_videopoll_post_(args)
+	result, err := client.Videopoll_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_videopoll_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute videopoll_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -180,3 +191,4 @@ func HandleFacebook_videopoll_post_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

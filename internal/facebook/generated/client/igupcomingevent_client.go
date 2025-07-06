@@ -21,14 +21,18 @@ func NewIGUpcomingEventClient(accessToken string) *IGUpcomingEventClient {
 	}
 }
 
-// facebook_igupcomingevent_get_ GET  for IGUpcomingEvent
-func (c *IGUpcomingEventClient) Facebook_igupcomingevent_get_(args map[string]interface{}) (interface{}, error) {
+
+// igupcomingevent_get_ GET  for IGUpcomingEvent
+func (c *IGUpcomingEventClient) Igupcomingevent_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -60,8 +64,9 @@ func (c *IGUpcomingEventClient) Facebook_igupcomingevent_get_(args map[string]in
 	return result, nil
 }
 
-// facebook_igupcomingevent_post_ POST  for IGUpcomingEvent
-func (c *IGUpcomingEventClient) Facebook_igupcomingevent_post_(args map[string]interface{}) (interface{}, error) {
+
+// igupcomingevent_post_ POST  for IGUpcomingEvent
+func (c *IGUpcomingEventClient) Igupcomingevent_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	start_time, ok := args["start_time"]
 	if !ok {
@@ -73,6 +78,7 @@ func (c *IGUpcomingEventClient) Facebook_igupcomingevent_post_(args map[string]i
 		return nil, fmt.Errorf("missing required parameter: title")
 	}
 	_ = title // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -94,6 +100,7 @@ func (c *IGUpcomingEventClient) Facebook_igupcomingevent_post_(args map[string]i
 	if val, ok := args["title"]; ok {
 		urlParams.Set("title", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -124,3 +131,4 @@ func (c *IGUpcomingEventClient) Facebook_igupcomingevent_post_(args map[string]i
 
 	return result, nil
 }
+

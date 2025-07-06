@@ -4,9 +4,9 @@ package types
 
 // BusinessVideo represents a Facebook BusinessVideo object
 type BusinessVideo struct {
-	Business          *Business `json:"business"`
-	Id                string    `json:"id"`
-	Media_library_url string    `json:"media_library_url"`
-	Name              string    `json:"name"`
-	Video             *AdVideo  `json:"video"`
+	Business *Business `json:"business"`
+	Id string `json:"id"`
+	Media_library_url string `json:"media_library_url"`
+	Name string `json:"name"`
+	Video *AdVideo `json:"video"`
 }

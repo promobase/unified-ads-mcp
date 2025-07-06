@@ -15,8 +15,9 @@ import (
 func GetAlbumTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_album_get_comments tool
-	facebook_album_get_commentsTool := mcp.NewTool("facebook_album_get_comments",
+
+	// album_get_comments tool
+	album_get_commentsTool := mcp.NewTool("album_get_comments",
 		mcp.WithDescription("GET comments for Album"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -38,10 +39,10 @@ func GetAlbumTools(accessToken string) []mcp.Tool {
 			mcp.Description("since parameter for comments"),
 		),
 	)
-	tools = append(tools, facebook_album_get_commentsTool)
+	tools = append(tools, album_get_commentsTool)
 
-	// facebook_album_post_comments tool
-	facebook_album_post_commentsTool := mcp.NewTool("facebook_album_post_comments",
+	// album_post_comments tool
+	album_post_commentsTool := mcp.NewTool("album_post_comments",
 		mcp.WithDescription("POST comments for Album"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -88,20 +89,20 @@ func GetAlbumTools(accessToken string) []mcp.Tool {
 			mcp.Description("tracking parameter for comments"),
 		),
 	)
-	tools = append(tools, facebook_album_post_commentsTool)
+	tools = append(tools, album_post_commentsTool)
 
-	// facebook_album_get_likes tool
-	facebook_album_get_likesTool := mcp.NewTool("facebook_album_get_likes",
+	// album_get_likes tool
+	album_get_likesTool := mcp.NewTool("album_get_likes",
 		mcp.WithDescription("GET likes for Album"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_album_get_likesTool)
+	tools = append(tools, album_get_likesTool)
 
-	// facebook_album_post_likes tool
-	facebook_album_post_likesTool := mcp.NewTool("facebook_album_post_likes",
+	// album_post_likes tool
+	album_post_likesTool := mcp.NewTool("album_post_likes",
 		mcp.WithDescription("POST likes for Album"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -120,20 +121,20 @@ func GetAlbumTools(accessToken string) []mcp.Tool {
 			mcp.Description("tracking parameter for likes"),
 		),
 	)
-	tools = append(tools, facebook_album_post_likesTool)
+	tools = append(tools, album_post_likesTool)
 
-	// facebook_album_get_photos tool
-	facebook_album_get_photosTool := mcp.NewTool("facebook_album_get_photos",
+	// album_get_photos tool
+	album_get_photosTool := mcp.NewTool("album_get_photos",
 		mcp.WithDescription("GET photos for Album"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_album_get_photosTool)
+	tools = append(tools, album_get_photosTool)
 
-	// facebook_album_post_photos tool
-	facebook_album_post_photosTool := mcp.NewTool("facebook_album_post_photos",
+	// album_post_photos tool
+	album_post_photosTool := mcp.NewTool("album_post_photos",
 		mcp.WithDescription("POST photos for Album"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -295,10 +296,10 @@ func GetAlbumTools(accessToken string) []mcp.Tool {
 			mcp.Description("vault_image_id parameter for photos"),
 		),
 	)
-	tools = append(tools, facebook_album_post_photosTool)
+	tools = append(tools, album_post_photosTool)
 
-	// facebook_album_get_picture tool
-	facebook_album_get_pictureTool := mcp.NewTool("facebook_album_get_picture",
+	// album_get_picture tool
+	album_get_pictureTool := mcp.NewTool("album_get_picture",
 		mcp.WithDescription("GET picture for Album"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -312,25 +313,27 @@ func GetAlbumTools(accessToken string) []mcp.Tool {
 			mcp.Enum("album", "small", "thumbnail"),
 		),
 	)
-	tools = append(tools, facebook_album_get_pictureTool)
+	tools = append(tools, album_get_pictureTool)
 
-	// facebook_album_get_ tool
-	facebook_album_get_Tool := mcp.NewTool("facebook_album_get_",
+	// album_get_ tool
+	album_get_Tool := mcp.NewTool("album_get_",
 		mcp.WithDescription("GET  for Album"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_album_get_Tool)
+	tools = append(tools, album_get_Tool)
+
 
 	return tools
 }
 
 // Album handlers
 
-// HandleFacebook_album_get_comments handles the facebook_album_get_comments tool
-func HandleFacebook_album_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAlbum_get_comments handles the album_get_comments tool
+func HandleAlbum_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -363,10 +366,12 @@ func HandleFacebook_album_get_comments(ctx context.Context, request mcp.CallTool
 		args["since"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_album_get_comments(args)
+	result, err := client.Album_get_comments(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_album_get_comments: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute album_get_comments: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -378,8 +383,9 @@ func HandleFacebook_album_get_comments(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_album_post_comments handles the facebook_album_post_comments tool
-func HandleFacebook_album_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAlbum_post_comments handles the album_post_comments tool
+func HandleAlbum_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -459,10 +465,12 @@ func HandleFacebook_album_post_comments(ctx context.Context, request mcp.CallToo
 		args["tracking"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_album_post_comments(args)
+	result, err := client.Album_post_comments(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_album_post_comments: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute album_post_comments: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -474,8 +482,9 @@ func HandleFacebook_album_post_comments(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_album_get_likes handles the facebook_album_get_likes tool
-func HandleFacebook_album_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAlbum_get_likes handles the album_get_likes tool
+func HandleAlbum_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -488,10 +497,12 @@ func HandleFacebook_album_get_likes(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_album_get_likes(args)
+	result, err := client.Album_get_likes(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_album_get_likes: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute album_get_likes: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -503,8 +514,9 @@ func HandleFacebook_album_get_likes(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_album_post_likes handles the facebook_album_post_likes tool
-func HandleFacebook_album_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAlbum_post_likes handles the album_post_likes tool
+func HandleAlbum_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -537,10 +549,12 @@ func HandleFacebook_album_post_likes(ctx context.Context, request mcp.CallToolRe
 		args["tracking"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_album_post_likes(args)
+	result, err := client.Album_post_likes(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_album_post_likes: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute album_post_likes: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -552,8 +566,9 @@ func HandleFacebook_album_post_likes(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_album_get_photos handles the facebook_album_get_photos tool
-func HandleFacebook_album_get_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAlbum_get_photos handles the album_get_photos tool
+func HandleAlbum_get_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -566,10 +581,12 @@ func HandleFacebook_album_get_photos(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_album_get_photos(args)
+	result, err := client.Album_get_photos(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_album_get_photos: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute album_get_photos: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -581,8 +598,9 @@ func HandleFacebook_album_get_photos(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_album_post_photos handles the facebook_album_post_photos tool
-func HandleFacebook_album_post_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAlbum_post_photos handles the album_post_photos tool
+func HandleAlbum_post_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -854,10 +872,12 @@ func HandleFacebook_album_post_photos(ctx context.Context, request mcp.CallToolR
 		args["vault_image_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_album_post_photos(args)
+	result, err := client.Album_post_photos(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_album_post_photos: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute album_post_photos: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -869,8 +889,9 @@ func HandleFacebook_album_post_photos(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_album_get_picture handles the facebook_album_get_picture tool
-func HandleFacebook_album_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAlbum_get_picture handles the album_get_picture tool
+func HandleAlbum_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -893,10 +914,12 @@ func HandleFacebook_album_get_picture(ctx context.Context, request mcp.CallToolR
 		args["type"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_album_get_picture(args)
+	result, err := client.Album_get_picture(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_album_get_picture: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute album_get_picture: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -908,8 +931,9 @@ func HandleFacebook_album_get_picture(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_album_get_ handles the facebook_album_get_ tool
-func HandleFacebook_album_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAlbum_get_ handles the album_get_ tool
+func HandleAlbum_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -922,10 +946,12 @@ func HandleFacebook_album_get_(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_album_get_(args)
+	result, err := client.Album_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_album_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute album_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -936,3 +962,4 @@ func HandleFacebook_album_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

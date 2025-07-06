@@ -4,7 +4,7 @@ package types
 
 // ProductSetUsage represents a Facebook ProductSetUsage object
 type ProductSetUsage struct {
-	Id          string      `json:"id"`
+	Id string `json:"id"`
 	Product_set *ProductSet `json:"product_set"`
-	Usage_type  string      `json:"usage_type"`
+	Usage_type string `json:"usage_type"`
 }

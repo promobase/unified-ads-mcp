@@ -4,8 +4,8 @@ package types
 
 // BusinessObjectTransferOwnershipAgreement represents a Facebook BusinessObjectTransferOwnershipAgreement object
 type BusinessObjectTransferOwnershipAgreement struct {
-	Id                  string    `json:"id"`
-	Receiving_business  *Business `json:"receiving_business"`
+	Id string `json:"id"`
+	Receiving_business *Business `json:"receiving_business"`
 	Requesting_business *Business `json:"requesting_business"`
-	Status              string    `json:"status"`
+	Status string `json:"status"`
 }

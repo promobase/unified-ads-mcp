@@ -21,14 +21,18 @@ func NewBlindPigClient(accessToken string) *BlindPigClient {
 	}
 }
 
-// facebook_blindpig_get_ GET  for BlindPig
-func (c *BlindPigClient) Facebook_blindpig_get_(args map[string]interface{}) (interface{}, error) {
+
+// blindpig_get_ GET  for BlindPig
+func (c *BlindPigClient) Blindpig_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *BlindPigClient) Facebook_blindpig_get_(args map[string]interface{}) (in
 
 	return result, nil
 }
+

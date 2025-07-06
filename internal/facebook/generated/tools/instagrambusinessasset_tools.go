@@ -15,23 +15,26 @@ import (
 func GetInstagramBusinessAssetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_instagrambusinessasset_get_ tool
-	facebook_instagrambusinessasset_get_Tool := mcp.NewTool("facebook_instagrambusinessasset_get_",
+
+	// instagrambusinessasset_get_ tool
+	instagrambusinessasset_get_Tool := mcp.NewTool("instagrambusinessasset_get_",
 		mcp.WithDescription("GET  for InstagramBusinessAsset"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_instagrambusinessasset_get_Tool)
+	tools = append(tools, instagrambusinessasset_get_Tool)
+
 
 	return tools
 }
 
 // InstagramBusinessAsset handlers
 
-// HandleFacebook_instagrambusinessasset_get_ handles the facebook_instagrambusinessasset_get_ tool
-func HandleFacebook_instagrambusinessasset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleInstagrambusinessasset_get_ handles the instagrambusinessasset_get_ tool
+func HandleInstagrambusinessasset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_instagrambusinessasset_get_(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_instagrambusinessasset_get_(args)
+	result, err := client.Instagrambusinessasset_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_instagrambusinessasset_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute instagrambusinessasset_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_instagrambusinessasset_get_(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

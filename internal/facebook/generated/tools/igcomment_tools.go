@@ -15,18 +15,19 @@ import (
 func GetIGCommentTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_igcomment_get_replies tool
-	facebook_igcomment_get_repliesTool := mcp.NewTool("facebook_igcomment_get_replies",
+
+	// igcomment_get_replies tool
+	igcomment_get_repliesTool := mcp.NewTool("igcomment_get_replies",
 		mcp.WithDescription("GET replies for IGComment"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_igcomment_get_repliesTool)
+	tools = append(tools, igcomment_get_repliesTool)
 
-	// facebook_igcomment_post_replies tool
-	facebook_igcomment_post_repliesTool := mcp.NewTool("facebook_igcomment_post_replies",
+	// igcomment_post_replies tool
+	igcomment_post_repliesTool := mcp.NewTool("igcomment_post_replies",
 		mcp.WithDescription("POST replies for IGComment"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -36,10 +37,10 @@ func GetIGCommentTools(accessToken string) []mcp.Tool {
 			mcp.Description("message parameter for replies"),
 		),
 	)
-	tools = append(tools, facebook_igcomment_post_repliesTool)
+	tools = append(tools, igcomment_post_repliesTool)
 
-	// facebook_igcomment_delete_ tool
-	facebook_igcomment_delete_Tool := mcp.NewTool("facebook_igcomment_delete_",
+	// igcomment_delete_ tool
+	igcomment_delete_Tool := mcp.NewTool("igcomment_delete_",
 		mcp.WithDescription("DELETE  for IGComment"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -49,20 +50,20 @@ func GetIGCommentTools(accessToken string) []mcp.Tool {
 			mcp.Description("ad_id parameter for "),
 		),
 	)
-	tools = append(tools, facebook_igcomment_delete_Tool)
+	tools = append(tools, igcomment_delete_Tool)
 
-	// facebook_igcomment_get_ tool
-	facebook_igcomment_get_Tool := mcp.NewTool("facebook_igcomment_get_",
+	// igcomment_get_ tool
+	igcomment_get_Tool := mcp.NewTool("igcomment_get_",
 		mcp.WithDescription("GET  for IGComment"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_igcomment_get_Tool)
+	tools = append(tools, igcomment_get_Tool)
 
-	// facebook_igcomment_post_ tool
-	facebook_igcomment_post_Tool := mcp.NewTool("facebook_igcomment_post_",
+	// igcomment_post_ tool
+	igcomment_post_Tool := mcp.NewTool("igcomment_post_",
 		mcp.WithDescription("POST  for IGComment"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -76,15 +77,17 @@ func GetIGCommentTools(accessToken string) []mcp.Tool {
 			mcp.Description("hide parameter for "),
 		),
 	)
-	tools = append(tools, facebook_igcomment_post_Tool)
+	tools = append(tools, igcomment_post_Tool)
+
 
 	return tools
 }
 
 // IGComment handlers
 
-// HandleFacebook_igcomment_get_replies handles the facebook_igcomment_get_replies tool
-func HandleFacebook_igcomment_get_replies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIgcomment_get_replies handles the igcomment_get_replies tool
+func HandleIgcomment_get_replies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -97,10 +100,12 @@ func HandleFacebook_igcomment_get_replies(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_igcomment_get_replies(args)
+	result, err := client.Igcomment_get_replies(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_igcomment_get_replies: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igcomment_get_replies: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -112,8 +117,9 @@ func HandleFacebook_igcomment_get_replies(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_igcomment_post_replies handles the facebook_igcomment_post_replies tool
-func HandleFacebook_igcomment_post_replies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIgcomment_post_replies handles the igcomment_post_replies tool
+func HandleIgcomment_post_replies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -131,10 +137,12 @@ func HandleFacebook_igcomment_post_replies(ctx context.Context, request mcp.Call
 		args["message"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_igcomment_post_replies(args)
+	result, err := client.Igcomment_post_replies(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_igcomment_post_replies: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igcomment_post_replies: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -146,8 +154,9 @@ func HandleFacebook_igcomment_post_replies(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_igcomment_delete_ handles the facebook_igcomment_delete_ tool
-func HandleFacebook_igcomment_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIgcomment_delete_ handles the igcomment_delete_ tool
+func HandleIgcomment_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -165,10 +174,12 @@ func HandleFacebook_igcomment_delete_(ctx context.Context, request mcp.CallToolR
 		args["ad_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_igcomment_delete_(args)
+	result, err := client.Igcomment_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_igcomment_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igcomment_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -180,8 +191,9 @@ func HandleFacebook_igcomment_delete_(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_igcomment_get_ handles the facebook_igcomment_get_ tool
-func HandleFacebook_igcomment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIgcomment_get_ handles the igcomment_get_ tool
+func HandleIgcomment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -194,10 +206,12 @@ func HandleFacebook_igcomment_get_(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_igcomment_get_(args)
+	result, err := client.Igcomment_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_igcomment_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igcomment_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -209,8 +223,9 @@ func HandleFacebook_igcomment_get_(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_igcomment_post_ handles the facebook_igcomment_post_ tool
-func HandleFacebook_igcomment_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIgcomment_post_ handles the igcomment_post_ tool
+func HandleIgcomment_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -235,10 +250,12 @@ func HandleFacebook_igcomment_post_(ctx context.Context, request mcp.CallToolReq
 	}
 	args["hide"] = hide
 
+
+
 	// Call the client method
-	result, err := client.Facebook_igcomment_post_(args)
+	result, err := client.Igcomment_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_igcomment_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igcomment_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -249,3 +266,4 @@ func HandleFacebook_igcomment_post_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

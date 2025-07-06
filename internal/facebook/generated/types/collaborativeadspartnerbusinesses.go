@@ -5,5 +5,5 @@ package types
 // CollaborativeAdsPartnerBusinesses represents a Facebook CollaborativeAdsPartnerBusinesses object
 type CollaborativeAdsPartnerBusinesses struct {
 	Collaborative_ads_partner_businesses_info []Business `json:"collaborative_ads_partner_businesses_info"`
-	Dedicated_partner_business_info           *Business  `json:"dedicated_partner_business_info"`
+	Dedicated_partner_business_info *Business `json:"dedicated_partner_business_info"`
 }

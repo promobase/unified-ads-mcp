@@ -21,14 +21,18 @@ func NewPagePostClient(accessToken string) *PagePostClient {
 	}
 }
 
-// facebook_pagepost_get_attachments GET attachments for PagePost
-func (c *PagePostClient) Facebook_pagepost_get_attachments(args map[string]interface{}) (interface{}, error) {
+
+// pagepost_get_attachments GET attachments for PagePost
+func (c *PagePostClient) Pagepost_get_attachments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "attachments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -60,9 +64,11 @@ func (c *PagePostClient) Facebook_pagepost_get_attachments(args map[string]inter
 	return result, nil
 }
 
-// facebook_pagepost_get_comments GET comments for PagePost
-func (c *PagePostClient) Facebook_pagepost_get_comments(args map[string]interface{}) (interface{}, error) {
+
+// pagepost_get_comments GET comments for PagePost
+func (c *PagePostClient) Pagepost_get_comments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
@@ -82,6 +88,7 @@ func (c *PagePostClient) Facebook_pagepost_get_comments(args map[string]interfac
 		urlParams.Set("since", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -112,9 +119,11 @@ func (c *PagePostClient) Facebook_pagepost_get_comments(args map[string]interfac
 	return result, nil
 }
 
-// facebook_pagepost_post_comments POST comments for PagePost
-func (c *PagePostClient) Facebook_pagepost_post_comments(args map[string]interface{}) (interface{}, error) {
+
+// pagepost_post_comments POST comments for PagePost
+func (c *PagePostClient) Pagepost_post_comments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
@@ -155,6 +164,7 @@ func (c *PagePostClient) Facebook_pagepost_post_comments(args map[string]interfa
 		urlParams.Set("tracking", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -185,14 +195,18 @@ func (c *PagePostClient) Facebook_pagepost_post_comments(args map[string]interfa
 	return result, nil
 }
 
-// facebook_pagepost_get_dynamic_posts GET dynamic_posts for PagePost
-func (c *PagePostClient) Facebook_pagepost_get_dynamic_posts(args map[string]interface{}) (interface{}, error) {
+
+// pagepost_get_dynamic_posts GET dynamic_posts for PagePost
+func (c *PagePostClient) Pagepost_get_dynamic_posts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "dynamic_posts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -224,9 +238,11 @@ func (c *PagePostClient) Facebook_pagepost_get_dynamic_posts(args map[string]int
 	return result, nil
 }
 
-// facebook_pagepost_get_insights GET insights for PagePost
-func (c *PagePostClient) Facebook_pagepost_get_insights(args map[string]interface{}) (interface{}, error) {
+
+// pagepost_get_insights GET insights for PagePost
+func (c *PagePostClient) Pagepost_get_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
@@ -249,6 +265,7 @@ func (c *PagePostClient) Facebook_pagepost_get_insights(args map[string]interfac
 		urlParams.Set("until", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -279,9 +296,11 @@ func (c *PagePostClient) Facebook_pagepost_get_insights(args map[string]interfac
 	return result, nil
 }
 
-// facebook_pagepost_delete_likes DELETE likes for PagePost
-func (c *PagePostClient) Facebook_pagepost_delete_likes(args map[string]interface{}) (interface{}, error) {
+
+// pagepost_delete_likes DELETE likes for PagePost
+func (c *PagePostClient) Pagepost_delete_likes(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
@@ -294,6 +313,7 @@ func (c *PagePostClient) Facebook_pagepost_delete_likes(args map[string]interfac
 	if val, ok := args["tracking"]; ok {
 		urlParams.Set("tracking", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -325,14 +345,18 @@ func (c *PagePostClient) Facebook_pagepost_delete_likes(args map[string]interfac
 	return result, nil
 }
 
-// facebook_pagepost_get_likes GET likes for PagePost
-func (c *PagePostClient) Facebook_pagepost_get_likes(args map[string]interface{}) (interface{}, error) {
+
+// pagepost_get_likes GET likes for PagePost
+func (c *PagePostClient) Pagepost_get_likes(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -364,9 +388,11 @@ func (c *PagePostClient) Facebook_pagepost_get_likes(args map[string]interface{}
 	return result, nil
 }
 
-// facebook_pagepost_post_likes POST likes for PagePost
-func (c *PagePostClient) Facebook_pagepost_post_likes(args map[string]interface{}) (interface{}, error) {
+
+// pagepost_post_likes POST likes for PagePost
+func (c *PagePostClient) Pagepost_post_likes(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
@@ -382,6 +408,7 @@ func (c *PagePostClient) Facebook_pagepost_post_likes(args map[string]interface{
 	if val, ok := args["tracking"]; ok {
 		urlParams.Set("tracking", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -413,9 +440,11 @@ func (c *PagePostClient) Facebook_pagepost_post_likes(args map[string]interface{
 	return result, nil
 }
 
-// facebook_pagepost_get_reactions GET reactions for PagePost
-func (c *PagePostClient) Facebook_pagepost_get_reactions(args map[string]interface{}) (interface{}, error) {
+
+// pagepost_get_reactions GET reactions for PagePost
+func (c *PagePostClient) Pagepost_get_reactions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "reactions")
@@ -426,6 +455,7 @@ func (c *PagePostClient) Facebook_pagepost_get_reactions(args map[string]interfa
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -456,15 +486,19 @@ func (c *PagePostClient) Facebook_pagepost_get_reactions(args map[string]interfa
 	return result, nil
 }
 
-// facebook_pagepost_get_sharedposts GET sharedposts for PagePost
-func (c *PagePostClient) Facebook_pagepost_get_sharedposts(args map[string]interface{}) (interface{}, error) {
+
+// pagepost_get_sharedposts GET sharedposts for PagePost
+func (c *PagePostClient) Pagepost_get_sharedposts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "sharedposts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -495,15 +529,19 @@ func (c *PagePostClient) Facebook_pagepost_get_sharedposts(args map[string]inter
 	return result, nil
 }
 
-// facebook_pagepost_get_sponsor_tags GET sponsor_tags for PagePost
-func (c *PagePostClient) Facebook_pagepost_get_sponsor_tags(args map[string]interface{}) (interface{}, error) {
+
+// pagepost_get_sponsor_tags GET sponsor_tags for PagePost
+func (c *PagePostClient) Pagepost_get_sponsor_tags(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "sponsor_tags")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -534,15 +572,19 @@ func (c *PagePostClient) Facebook_pagepost_get_sponsor_tags(args map[string]inte
 	return result, nil
 }
 
-// facebook_pagepost_get_to GET to for PagePost
-func (c *PagePostClient) Facebook_pagepost_get_to(args map[string]interface{}) (interface{}, error) {
+
+// pagepost_get_to GET to for PagePost
+func (c *PagePostClient) Pagepost_get_to(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "to")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -573,14 +615,18 @@ func (c *PagePostClient) Facebook_pagepost_get_to(args map[string]interface{}) (
 	return result, nil
 }
 
-// facebook_pagepost_delete_ DELETE  for PagePost
-func (c *PagePostClient) Facebook_pagepost_delete_(args map[string]interface{}) (interface{}, error) {
+
+// pagepost_delete_ DELETE  for PagePost
+func (c *PagePostClient) Pagepost_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -612,9 +658,11 @@ func (c *PagePostClient) Facebook_pagepost_delete_(args map[string]interface{}) 
 	return result, nil
 }
 
-// facebook_pagepost_get_ GET  for PagePost
-func (c *PagePostClient) Facebook_pagepost_get_(args map[string]interface{}) (interface{}, error) {
+
+// pagepost_get_ GET  for PagePost
+func (c *PagePostClient) Pagepost_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -627,6 +675,7 @@ func (c *PagePostClient) Facebook_pagepost_get_(args map[string]interface{}) (in
 	if val, ok := args["primary_ig_user_id"]; ok {
 		urlParams.Set("primary_ig_user_id", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -658,9 +707,11 @@ func (c *PagePostClient) Facebook_pagepost_get_(args map[string]interface{}) (in
 	return result, nil
 }
 
-// facebook_pagepost_post_ POST  for PagePost
-func (c *PagePostClient) Facebook_pagepost_post_(args map[string]interface{}) (interface{}, error) {
+
+// pagepost_post_ POST  for PagePost
+func (c *PagePostClient) Pagepost_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -761,6 +812,7 @@ func (c *PagePostClient) Facebook_pagepost_post_(args map[string]interface{}) (i
 		urlParams.Set("tracking", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -790,3 +842,4 @@ func (c *PagePostClient) Facebook_pagepost_post_(args map[string]interface{}) (i
 
 	return result, nil
 }
+

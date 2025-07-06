@@ -4,7 +4,7 @@ package types
 
 // DeliveryCheckExtraInfo represents a Facebook DeliveryCheckExtraInfo object
 type DeliveryCheckExtraInfo struct {
-	Adgroup_ids  []string `json:"adgroup_ids"`
+	Adgroup_ids []string `json:"adgroup_ids"`
 	Campaign_ids []string `json:"campaign_ids"`
-	Countries    []string `json:"countries"`
+	Countries []string `json:"countries"`
 }

@@ -15,23 +15,26 @@ import (
 func GetGeoGatingPolicyTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_geogatingpolicy_get_ tool
-	facebook_geogatingpolicy_get_Tool := mcp.NewTool("facebook_geogatingpolicy_get_",
+
+	// geogatingpolicy_get_ tool
+	geogatingpolicy_get_Tool := mcp.NewTool("geogatingpolicy_get_",
 		mcp.WithDescription("GET  for GeoGatingPolicy"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_geogatingpolicy_get_Tool)
+	tools = append(tools, geogatingpolicy_get_Tool)
+
 
 	return tools
 }
 
 // GeoGatingPolicy handlers
 
-// HandleFacebook_geogatingpolicy_get_ handles the facebook_geogatingpolicy_get_ tool
-func HandleFacebook_geogatingpolicy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleGeogatingpolicy_get_ handles the geogatingpolicy_get_ tool
+func HandleGeogatingpolicy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_geogatingpolicy_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_geogatingpolicy_get_(args)
+	result, err := client.Geogatingpolicy_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_geogatingpolicy_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute geogatingpolicy_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_geogatingpolicy_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

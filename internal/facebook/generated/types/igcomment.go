@@ -6,15 +6,15 @@ import "time"
 
 // IGComment represents a Facebook IGComment object
 type IGComment struct {
-	From                        *IGCommentFromUser `json:"from"`
-	Hidden                      bool               `json:"hidden"`
-	Id                          string             `json:"id"`
-	Legacy_instagram_comment_id string             `json:"legacy_instagram_comment_id"`
-	Like_count                  int                `json:"like_count"`
-	Media                       *IGMedia           `json:"media"`
-	Parent_id                   string             `json:"parent_id"`
-	Text                        string             `json:"text"`
-	Timestamp                   time.Time          `json:"timestamp"`
-	User                        *IGUser            `json:"user"`
-	Username                    string             `json:"username"`
+	From *IGCommentFromUser `json:"from"`
+	Hidden bool `json:"hidden"`
+	Id string `json:"id"`
+	Legacy_instagram_comment_id string `json:"legacy_instagram_comment_id"`
+	Like_count int `json:"like_count"`
+	Media *IGMedia `json:"media"`
+	Parent_id string `json:"parent_id"`
+	Text string `json:"text"`
+	Timestamp time.Time `json:"timestamp"`
+	User *IGUser `json:"user"`
+	Username string `json:"username"`
 }

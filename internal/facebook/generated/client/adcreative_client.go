@@ -21,14 +21,16 @@ func NewAdCreativeClient(accessToken string) *AdCreativeClient {
 	}
 }
 
-// facebook_adcreative_post_adlabels POST adlabels for AdCreative
-func (c *AdCreativeClient) Facebook_adcreative_post_adlabels(args map[string]interface{}) (interface{}, error) {
+
+// adcreative_post_adlabels POST adlabels for AdCreative
+func (c *AdCreativeClient) Adcreative_post_adlabels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	adlabels, ok := args["adlabels"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: adlabels")
 	}
 	_ = adlabels // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adlabels")
@@ -38,6 +40,7 @@ func (c *AdCreativeClient) Facebook_adcreative_post_adlabels(args map[string]int
 	if val, ok := args["adlabels"]; ok {
 		urlParams.Set("adlabels", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -69,14 +72,18 @@ func (c *AdCreativeClient) Facebook_adcreative_post_adlabels(args map[string]int
 	return result, nil
 }
 
-// facebook_adcreative_get_creative_insights GET creative_insights for AdCreative
-func (c *AdCreativeClient) Facebook_adcreative_get_creative_insights(args map[string]interface{}) (interface{}, error) {
+
+// adcreative_get_creative_insights GET creative_insights for AdCreative
+func (c *AdCreativeClient) Adcreative_get_creative_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "creative_insights")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -108,14 +115,16 @@ func (c *AdCreativeClient) Facebook_adcreative_get_creative_insights(args map[st
 	return result, nil
 }
 
-// facebook_adcreative_get_previews GET previews for AdCreative
-func (c *AdCreativeClient) Facebook_adcreative_get_previews(args map[string]interface{}) (interface{}, error) {
+
+// adcreative_get_previews GET previews for AdCreative
+func (c *AdCreativeClient) Adcreative_get_previews(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	ad_format, ok := args["ad_format"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: ad_format")
 	}
 	_ = ad_format // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "previews")
@@ -165,6 +174,7 @@ func (c *AdCreativeClient) Facebook_adcreative_get_previews(args map[string]inte
 		urlParams.Set("width", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -195,9 +205,11 @@ func (c *AdCreativeClient) Facebook_adcreative_get_previews(args map[string]inte
 	return result, nil
 }
 
-// facebook_adcreative_delete_ DELETE  for AdCreative
-func (c *AdCreativeClient) Facebook_adcreative_delete_(args map[string]interface{}) (interface{}, error) {
+
+// adcreative_delete_ DELETE  for AdCreative
+func (c *AdCreativeClient) Adcreative_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -216,6 +228,7 @@ func (c *AdCreativeClient) Facebook_adcreative_delete_(args map[string]interface
 	if val, ok := args["status"]; ok {
 		urlParams.Set("status", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -247,9 +260,11 @@ func (c *AdCreativeClient) Facebook_adcreative_delete_(args map[string]interface
 	return result, nil
 }
 
-// facebook_adcreative_get_ GET  for AdCreative
-func (c *AdCreativeClient) Facebook_adcreative_get_(args map[string]interface{}) (interface{}, error) {
+
+// adcreative_get_ GET  for AdCreative
+func (c *AdCreativeClient) Adcreative_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -262,6 +277,7 @@ func (c *AdCreativeClient) Facebook_adcreative_get_(args map[string]interface{})
 	if val, ok := args["thumbnail_width"]; ok {
 		urlParams.Set("thumbnail_width", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -293,9 +309,11 @@ func (c *AdCreativeClient) Facebook_adcreative_get_(args map[string]interface{})
 	return result, nil
 }
 
-// facebook_adcreative_post_ POST  for AdCreative
-func (c *AdCreativeClient) Facebook_adcreative_post_(args map[string]interface{}) (interface{}, error) {
+
+// adcreative_post_ POST  for AdCreative
+func (c *AdCreativeClient) Adcreative_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -314,6 +332,7 @@ func (c *AdCreativeClient) Facebook_adcreative_post_(args map[string]interface{}
 	if val, ok := args["status"]; ok {
 		urlParams.Set("status", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -344,3 +363,4 @@ func (c *AdCreativeClient) Facebook_adcreative_post_(args map[string]interface{}
 
 	return result, nil
 }
+

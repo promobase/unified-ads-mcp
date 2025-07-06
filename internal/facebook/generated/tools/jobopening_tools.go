@@ -15,23 +15,26 @@ import (
 func GetJobOpeningTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_jobopening_get_ tool
-	facebook_jobopening_get_Tool := mcp.NewTool("facebook_jobopening_get_",
+
+	// jobopening_get_ tool
+	jobopening_get_Tool := mcp.NewTool("jobopening_get_",
 		mcp.WithDescription("GET  for JobOpening"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_jobopening_get_Tool)
+	tools = append(tools, jobopening_get_Tool)
+
 
 	return tools
 }
 
 // JobOpening handlers
 
-// HandleFacebook_jobopening_get_ handles the facebook_jobopening_get_ tool
-func HandleFacebook_jobopening_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleJobopening_get_ handles the jobopening_get_ tool
+func HandleJobopening_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_jobopening_get_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_jobopening_get_(args)
+	result, err := client.Jobopening_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_jobopening_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute jobopening_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_jobopening_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

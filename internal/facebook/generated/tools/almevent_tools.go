@@ -15,23 +15,26 @@ import (
 func GetALMEventTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_almevent_get_ tool
-	facebook_almevent_get_Tool := mcp.NewTool("facebook_almevent_get_",
+
+	// almevent_get_ tool
+	almevent_get_Tool := mcp.NewTool("almevent_get_",
 		mcp.WithDescription("GET  for ALMEvent"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_almevent_get_Tool)
+	tools = append(tools, almevent_get_Tool)
+
 
 	return tools
 }
 
 // ALMEvent handlers
 
-// HandleFacebook_almevent_get_ handles the facebook_almevent_get_ tool
-func HandleFacebook_almevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAlmevent_get_ handles the almevent_get_ tool
+func HandleAlmevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_almevent_get_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_almevent_get_(args)
+	result, err := client.Almevent_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_almevent_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute almevent_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_almevent_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

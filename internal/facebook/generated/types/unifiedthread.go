@@ -6,21 +6,21 @@ import "time"
 
 // UnifiedThread represents a Facebook UnifiedThread object
 type UnifiedThread struct {
-	Can_reply           bool                   `json:"can_reply"`
-	Folder              string                 `json:"folder"`
+	Can_reply bool `json:"can_reply"`
+	Folder string `json:"folder"`
 	Former_participants map[string]interface{} `json:"former_participants"`
-	Id                  string                 `json:"id"`
-	Is_subscribed       bool                   `json:"is_subscribed"`
-	Link                string                 `json:"link"`
-	Linked_group        *Group                 `json:"linked_group"`
-	Message_count       int                    `json:"message_count"`
-	Name                string                 `json:"name"`
-	Participants        map[string]interface{} `json:"participants"`
-	Scoped_thread_key   string                 `json:"scoped_thread_key"`
-	Senders             map[string]interface{} `json:"senders"`
-	Snippet             string                 `json:"snippet"`
-	Subject             string                 `json:"subject"`
-	Unread_count        int                    `json:"unread_count"`
-	Updated_time        time.Time              `json:"updated_time"`
-	Wallpaper           string                 `json:"wallpaper"`
+	Id string `json:"id"`
+	Is_subscribed bool `json:"is_subscribed"`
+	Link string `json:"link"`
+	Linked_group *Group `json:"linked_group"`
+	Message_count int `json:"message_count"`
+	Name string `json:"name"`
+	Participants map[string]interface{} `json:"participants"`
+	Scoped_thread_key string `json:"scoped_thread_key"`
+	Senders map[string]interface{} `json:"senders"`
+	Snippet string `json:"snippet"`
+	Subject string `json:"subject"`
+	Unread_count int `json:"unread_count"`
+	Updated_time time.Time `json:"updated_time"`
+	Wallpaper string `json:"wallpaper"`
 }

@@ -21,14 +21,18 @@ func NewVideoTextQuestionClient(accessToken string) *VideoTextQuestionClient {
 	}
 }
 
-// facebook_videotextquestion_get_ GET  for VideoTextQuestion
-func (c *VideoTextQuestionClient) Facebook_videotextquestion_get_(args map[string]interface{}) (interface{}, error) {
+
+// videotextquestion_get_ GET  for VideoTextQuestion
+func (c *VideoTextQuestionClient) Videotextquestion_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *VideoTextQuestionClient) Facebook_videotextquestion_get_(args map[strin
 
 	return result, nil
 }
+

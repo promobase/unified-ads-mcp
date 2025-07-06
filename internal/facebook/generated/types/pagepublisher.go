@@ -5,8 +5,8 @@ package types
 // PagePublisher represents a Facebook PagePublisher object
 type PagePublisher struct {
 	Global_parent_id string `json:"global_parent_id"`
-	Icon             string `json:"icon"`
-	Id               string `json:"id"`
-	Name             string `json:"name"`
-	Url              string `json:"url"`
+	Icon string `json:"icon"`
+	Id string `json:"id"`
+	Name string `json:"name"`
+	Url string `json:"url"`
 }

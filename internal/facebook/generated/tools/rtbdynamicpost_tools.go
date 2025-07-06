@@ -15,8 +15,9 @@ import (
 func GetRTBDynamicPostTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_rtbdynamicpost_get_comments tool
-	facebook_rtbdynamicpost_get_commentsTool := mcp.NewTool("facebook_rtbdynamicpost_get_comments",
+
+	// rtbdynamicpost_get_comments tool
+	rtbdynamicpost_get_commentsTool := mcp.NewTool("rtbdynamicpost_get_comments",
 		mcp.WithDescription("GET comments for RTBDynamicPost"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -38,35 +39,37 @@ func GetRTBDynamicPostTools(accessToken string) []mcp.Tool {
 			mcp.Description("since parameter for comments"),
 		),
 	)
-	tools = append(tools, facebook_rtbdynamicpost_get_commentsTool)
+	tools = append(tools, rtbdynamicpost_get_commentsTool)
 
-	// facebook_rtbdynamicpost_get_likes tool
-	facebook_rtbdynamicpost_get_likesTool := mcp.NewTool("facebook_rtbdynamicpost_get_likes",
+	// rtbdynamicpost_get_likes tool
+	rtbdynamicpost_get_likesTool := mcp.NewTool("rtbdynamicpost_get_likes",
 		mcp.WithDescription("GET likes for RTBDynamicPost"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_rtbdynamicpost_get_likesTool)
+	tools = append(tools, rtbdynamicpost_get_likesTool)
 
-	// facebook_rtbdynamicpost_get_ tool
-	facebook_rtbdynamicpost_get_Tool := mcp.NewTool("facebook_rtbdynamicpost_get_",
+	// rtbdynamicpost_get_ tool
+	rtbdynamicpost_get_Tool := mcp.NewTool("rtbdynamicpost_get_",
 		mcp.WithDescription("GET  for RTBDynamicPost"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_rtbdynamicpost_get_Tool)
+	tools = append(tools, rtbdynamicpost_get_Tool)
+
 
 	return tools
 }
 
 // RTBDynamicPost handlers
 
-// HandleFacebook_rtbdynamicpost_get_comments handles the facebook_rtbdynamicpost_get_comments tool
-func HandleFacebook_rtbdynamicpost_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleRtbdynamicpost_get_comments handles the rtbdynamicpost_get_comments tool
+func HandleRtbdynamicpost_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -99,10 +102,12 @@ func HandleFacebook_rtbdynamicpost_get_comments(ctx context.Context, request mcp
 		args["since"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_rtbdynamicpost_get_comments(args)
+	result, err := client.Rtbdynamicpost_get_comments(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_rtbdynamicpost_get_comments: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute rtbdynamicpost_get_comments: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -114,8 +119,9 @@ func HandleFacebook_rtbdynamicpost_get_comments(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_rtbdynamicpost_get_likes handles the facebook_rtbdynamicpost_get_likes tool
-func HandleFacebook_rtbdynamicpost_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleRtbdynamicpost_get_likes handles the rtbdynamicpost_get_likes tool
+func HandleRtbdynamicpost_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -128,10 +134,12 @@ func HandleFacebook_rtbdynamicpost_get_likes(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_rtbdynamicpost_get_likes(args)
+	result, err := client.Rtbdynamicpost_get_likes(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_rtbdynamicpost_get_likes: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute rtbdynamicpost_get_likes: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -143,8 +151,9 @@ func HandleFacebook_rtbdynamicpost_get_likes(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_rtbdynamicpost_get_ handles the facebook_rtbdynamicpost_get_ tool
-func HandleFacebook_rtbdynamicpost_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleRtbdynamicpost_get_ handles the rtbdynamicpost_get_ tool
+func HandleRtbdynamicpost_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -157,10 +166,12 @@ func HandleFacebook_rtbdynamicpost_get_(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_rtbdynamicpost_get_(args)
+	result, err := client.Rtbdynamicpost_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_rtbdynamicpost_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute rtbdynamicpost_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -171,3 +182,4 @@ func HandleFacebook_rtbdynamicpost_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

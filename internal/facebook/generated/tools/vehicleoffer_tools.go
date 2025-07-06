@@ -15,18 +15,19 @@ import (
 func GetVehicleOfferTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_vehicleoffer_get_channels_to_integrity_status tool
-	facebook_vehicleoffer_get_channels_to_integrity_statusTool := mcp.NewTool("facebook_vehicleoffer_get_channels_to_integrity_status",
+
+	// vehicleoffer_get_channels_to_integrity_status tool
+	vehicleoffer_get_channels_to_integrity_statusTool := mcp.NewTool("vehicleoffer_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for VehicleOffer"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_vehicleoffer_get_channels_to_integrity_statusTool)
+	tools = append(tools, vehicleoffer_get_channels_to_integrity_statusTool)
 
-	// facebook_vehicleoffer_get_override_details tool
-	facebook_vehicleoffer_get_override_detailsTool := mcp.NewTool("facebook_vehicleoffer_get_override_details",
+	// vehicleoffer_get_override_details tool
+	vehicleoffer_get_override_detailsTool := mcp.NewTool("vehicleoffer_get_override_details",
 		mcp.WithDescription("GET override_details for VehicleOffer"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -40,35 +41,37 @@ func GetVehicleOfferTools(accessToken string) []mcp.Tool {
 			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
 		),
 	)
-	tools = append(tools, facebook_vehicleoffer_get_override_detailsTool)
+	tools = append(tools, vehicleoffer_get_override_detailsTool)
 
-	// facebook_vehicleoffer_get_videos_metadata tool
-	facebook_vehicleoffer_get_videos_metadataTool := mcp.NewTool("facebook_vehicleoffer_get_videos_metadata",
+	// vehicleoffer_get_videos_metadata tool
+	vehicleoffer_get_videos_metadataTool := mcp.NewTool("vehicleoffer_get_videos_metadata",
 		mcp.WithDescription("GET videos_metadata for VehicleOffer"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_vehicleoffer_get_videos_metadataTool)
+	tools = append(tools, vehicleoffer_get_videos_metadataTool)
 
-	// facebook_vehicleoffer_get_ tool
-	facebook_vehicleoffer_get_Tool := mcp.NewTool("facebook_vehicleoffer_get_",
+	// vehicleoffer_get_ tool
+	vehicleoffer_get_Tool := mcp.NewTool("vehicleoffer_get_",
 		mcp.WithDescription("GET  for VehicleOffer"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_vehicleoffer_get_Tool)
+	tools = append(tools, vehicleoffer_get_Tool)
+
 
 	return tools
 }
 
 // VehicleOffer handlers
 
-// HandleFacebook_vehicleoffer_get_channels_to_integrity_status handles the facebook_vehicleoffer_get_channels_to_integrity_status tool
-func HandleFacebook_vehicleoffer_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleVehicleoffer_get_channels_to_integrity_status handles the vehicleoffer_get_channels_to_integrity_status tool
+func HandleVehicleoffer_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -81,10 +84,12 @@ func HandleFacebook_vehicleoffer_get_channels_to_integrity_status(ctx context.Co
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_vehicleoffer_get_channels_to_integrity_status(args)
+	result, err := client.Vehicleoffer_get_channels_to_integrity_status(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_vehicleoffer_get_channels_to_integrity_status: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute vehicleoffer_get_channels_to_integrity_status: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -96,8 +101,9 @@ func HandleFacebook_vehicleoffer_get_channels_to_integrity_status(ctx context.Co
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_vehicleoffer_get_override_details handles the facebook_vehicleoffer_get_override_details tool
-func HandleFacebook_vehicleoffer_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleVehicleoffer_get_override_details handles the vehicleoffer_get_override_details tool
+func HandleVehicleoffer_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -121,10 +127,12 @@ func HandleFacebook_vehicleoffer_get_override_details(ctx context.Context, reque
 		args["type"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_vehicleoffer_get_override_details(args)
+	result, err := client.Vehicleoffer_get_override_details(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_vehicleoffer_get_override_details: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute vehicleoffer_get_override_details: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -136,8 +144,9 @@ func HandleFacebook_vehicleoffer_get_override_details(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_vehicleoffer_get_videos_metadata handles the facebook_vehicleoffer_get_videos_metadata tool
-func HandleFacebook_vehicleoffer_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleVehicleoffer_get_videos_metadata handles the vehicleoffer_get_videos_metadata tool
+func HandleVehicleoffer_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -150,10 +159,12 @@ func HandleFacebook_vehicleoffer_get_videos_metadata(ctx context.Context, reques
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_vehicleoffer_get_videos_metadata(args)
+	result, err := client.Vehicleoffer_get_videos_metadata(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_vehicleoffer_get_videos_metadata: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute vehicleoffer_get_videos_metadata: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -165,8 +176,9 @@ func HandleFacebook_vehicleoffer_get_videos_metadata(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_vehicleoffer_get_ handles the facebook_vehicleoffer_get_ tool
-func HandleFacebook_vehicleoffer_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleVehicleoffer_get_ handles the vehicleoffer_get_ tool
+func HandleVehicleoffer_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -179,10 +191,12 @@ func HandleFacebook_vehicleoffer_get_(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_vehicleoffer_get_(args)
+	result, err := client.Vehicleoffer_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_vehicleoffer_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute vehicleoffer_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -193,3 +207,4 @@ func HandleFacebook_vehicleoffer_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

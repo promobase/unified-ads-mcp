@@ -4,16 +4,16 @@ package types
 
 // Robot represents a Facebook Robot object
 type Robot struct {
-	Bringup_vars         []interface{} `json:"bringup_vars"`
-	Configurations       []interface{} `json:"configurations"`
-	Data_center          string        `json:"data_center"`
-	Id                   string        `json:"id"`
-	Init_pos             []interface{} `json:"init_pos"`
-	Last_pos             []interface{} `json:"last_pos"`
-	Meetup_link_hash     string        `json:"meetup_link_hash"`
-	Suite                string        `json:"suite"`
-	Target_map_image_uri string        `json:"target_map_image_uri"`
-	Target_os_image_uri  string        `json:"target_os_image_uri"`
-	Target_sw_image_uri  string        `json:"target_sw_image_uri"`
-	User                 *User         `json:"user"`
+	Bringup_vars []interface{} `json:"bringup_vars"`
+	Configurations []interface{} `json:"configurations"`
+	Data_center string `json:"data_center"`
+	Id string `json:"id"`
+	Init_pos []interface{} `json:"init_pos"`
+	Last_pos []interface{} `json:"last_pos"`
+	Meetup_link_hash string `json:"meetup_link_hash"`
+	Suite string `json:"suite"`
+	Target_map_image_uri string `json:"target_map_image_uri"`
+	Target_os_image_uri string `json:"target_os_image_uri"`
+	Target_sw_image_uri string `json:"target_sw_image_uri"`
+	User *User `json:"user"`
 }

@@ -4,6 +4,6 @@ package types
 
 // TaggableSubject represents a Facebook TaggableSubject object
 type TaggableSubject struct {
-	Id   string `json:"id"`
+	Id string `json:"id"`
 	Name string `json:"name"`
 }

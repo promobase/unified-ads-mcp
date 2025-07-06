@@ -4,8 +4,8 @@ package types
 
 // AdAccountAmountSpentHistory represents a Facebook AdAccountAmountSpentHistory object
 type AdAccountAmountSpentHistory struct {
-	Amount_spent int    `json:"amount_spent"`
-	Spend_cap    int    `json:"spend_cap"`
-	Time_start   string `json:"time_start"`
-	Time_stop    string `json:"time_stop"`
+	Amount_spent int `json:"amount_spent"`
+	Spend_cap int `json:"spend_cap"`
+	Time_start string `json:"time_start"`
+	Time_stop string `json:"time_stop"`
 }

@@ -21,14 +21,18 @@ func NewOpenGraphContextClient(accessToken string) *OpenGraphContextClient {
 	}
 }
 
-// facebook_opengraphcontext_get_ GET  for OpenGraphContext
-func (c *OpenGraphContextClient) Facebook_opengraphcontext_get_(args map[string]interface{}) (interface{}, error) {
+
+// opengraphcontext_get_ GET  for OpenGraphContext
+func (c *OpenGraphContextClient) Opengraphcontext_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *OpenGraphContextClient) Facebook_opengraphcontext_get_(args map[string]
 
 	return result, nil
 }
+

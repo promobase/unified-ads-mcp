@@ -15,23 +15,26 @@ import (
 func GetAudioAssetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_audioasset_get_ tool
-	facebook_audioasset_get_Tool := mcp.NewTool("facebook_audioasset_get_",
+
+	// audioasset_get_ tool
+	audioasset_get_Tool := mcp.NewTool("audioasset_get_",
 		mcp.WithDescription("GET  for AudioAsset"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_audioasset_get_Tool)
+	tools = append(tools, audioasset_get_Tool)
+
 
 	return tools
 }
 
 // AudioAsset handlers
 
-// HandleFacebook_audioasset_get_ handles the facebook_audioasset_get_ tool
-func HandleFacebook_audioasset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAudioasset_get_ handles the audioasset_get_ tool
+func HandleAudioasset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_audioasset_get_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_audioasset_get_(args)
+	result, err := client.Audioasset_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_audioasset_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute audioasset_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_audioasset_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

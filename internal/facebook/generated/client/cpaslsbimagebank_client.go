@@ -21,15 +21,19 @@ func NewCPASLsbImageBankClient(accessToken string) *CPASLsbImageBankClient {
 	}
 }
 
-// facebook_cpaslsbimagebank_get_backup_images GET backup_images for CPASLsbImageBank
-func (c *CPASLsbImageBankClient) Facebook_cpaslsbimagebank_get_backup_images(args map[string]interface{}) (interface{}, error) {
+
+// cpaslsbimagebank_get_backup_images GET backup_images for CPASLsbImageBank
+func (c *CPASLsbImageBankClient) Cpaslsbimagebank_get_backup_images(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "backup_images")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -60,15 +64,19 @@ func (c *CPASLsbImageBankClient) Facebook_cpaslsbimagebank_get_backup_images(arg
 	return result, nil
 }
 
-// facebook_cpaslsbimagebank_get_ GET  for CPASLsbImageBank
-func (c *CPASLsbImageBankClient) Facebook_cpaslsbimagebank_get_(args map[string]interface{}) (interface{}, error) {
+
+// cpaslsbimagebank_get_ GET  for CPASLsbImageBank
+func (c *CPASLsbImageBankClient) Cpaslsbimagebank_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -99,14 +107,16 @@ func (c *CPASLsbImageBankClient) Facebook_cpaslsbimagebank_get_(args map[string]
 	return result, nil
 }
 
-// facebook_cpaslsbimagebank_post_ POST  for CPASLsbImageBank
-func (c *CPASLsbImageBankClient) Facebook_cpaslsbimagebank_post_(args map[string]interface{}) (interface{}, error) {
+
+// cpaslsbimagebank_post_ POST  for CPASLsbImageBank
+func (c *CPASLsbImageBankClient) Cpaslsbimagebank_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	backup_image_urls, ok := args["backup_image_urls"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: backup_image_urls")
 	}
 	_ = backup_image_urls // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -116,6 +126,7 @@ func (c *CPASLsbImageBankClient) Facebook_cpaslsbimagebank_post_(args map[string
 	if val, ok := args["backup_image_urls"]; ok {
 		urlParams.Set("backup_image_urls", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -146,3 +157,4 @@ func (c *CPASLsbImageBankClient) Facebook_cpaslsbimagebank_post_(args map[string
 
 	return result, nil
 }
+

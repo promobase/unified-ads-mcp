@@ -4,13 +4,13 @@ package types
 
 // PageLocationsBreakdown represents a Facebook PageLocationsBreakdown object
 type PageLocationsBreakdown struct {
-	Location_id                                  string `json:"location_id"`
-	Location_name                                string `json:"location_name"`
-	Location_type                                string `json:"location_type"`
-	Num_pages                                    int    `json:"num_pages"`
-	Num_pages_eligible_for_store_visit_reporting int    `json:"num_pages_eligible_for_store_visit_reporting"`
-	Num_unpublished_or_closed_pages              int    `json:"num_unpublished_or_closed_pages"`
-	Parent_country_code                          string `json:"parent_country_code"`
-	Parent_region_id                             int    `json:"parent_region_id"`
-	Parent_region_name                           string `json:"parent_region_name"`
+	Location_id string `json:"location_id"`
+	Location_name string `json:"location_name"`
+	Location_type string `json:"location_type"`
+	Num_pages int `json:"num_pages"`
+	Num_pages_eligible_for_store_visit_reporting int `json:"num_pages_eligible_for_store_visit_reporting"`
+	Num_unpublished_or_closed_pages int `json:"num_unpublished_or_closed_pages"`
+	Parent_country_code string `json:"parent_country_code"`
+	Parent_region_id int `json:"parent_region_id"`
+	Parent_region_name string `json:"parent_region_name"`
 }

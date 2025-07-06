@@ -15,28 +15,29 @@ import (
 func GetCPASLsbImageBankTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_cpaslsbimagebank_get_backup_images tool
-	facebook_cpaslsbimagebank_get_backup_imagesTool := mcp.NewTool("facebook_cpaslsbimagebank_get_backup_images",
+
+	// cpaslsbimagebank_get_backup_images tool
+	cpaslsbimagebank_get_backup_imagesTool := mcp.NewTool("cpaslsbimagebank_get_backup_images",
 		mcp.WithDescription("GET backup_images for CPASLsbImageBank"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_cpaslsbimagebank_get_backup_imagesTool)
+	tools = append(tools, cpaslsbimagebank_get_backup_imagesTool)
 
-	// facebook_cpaslsbimagebank_get_ tool
-	facebook_cpaslsbimagebank_get_Tool := mcp.NewTool("facebook_cpaslsbimagebank_get_",
+	// cpaslsbimagebank_get_ tool
+	cpaslsbimagebank_get_Tool := mcp.NewTool("cpaslsbimagebank_get_",
 		mcp.WithDescription("GET  for CPASLsbImageBank"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_cpaslsbimagebank_get_Tool)
+	tools = append(tools, cpaslsbimagebank_get_Tool)
 
-	// facebook_cpaslsbimagebank_post_ tool
-	facebook_cpaslsbimagebank_post_Tool := mcp.NewTool("facebook_cpaslsbimagebank_post_",
+	// cpaslsbimagebank_post_ tool
+	cpaslsbimagebank_post_Tool := mcp.NewTool("cpaslsbimagebank_post_",
 		mcp.WithDescription("POST  for CPASLsbImageBank"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -47,15 +48,17 @@ func GetCPASLsbImageBankTools(accessToken string) []mcp.Tool {
 			mcp.Description("backup_image_urls parameter for "),
 		),
 	)
-	tools = append(tools, facebook_cpaslsbimagebank_post_Tool)
+	tools = append(tools, cpaslsbimagebank_post_Tool)
+
 
 	return tools
 }
 
 // CPASLsbImageBank handlers
 
-// HandleFacebook_cpaslsbimagebank_get_backup_images handles the facebook_cpaslsbimagebank_get_backup_images tool
-func HandleFacebook_cpaslsbimagebank_get_backup_images(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCpaslsbimagebank_get_backup_images handles the cpaslsbimagebank_get_backup_images tool
+func HandleCpaslsbimagebank_get_backup_images(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -68,10 +71,12 @@ func HandleFacebook_cpaslsbimagebank_get_backup_images(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_cpaslsbimagebank_get_backup_images(args)
+	result, err := client.Cpaslsbimagebank_get_backup_images(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_cpaslsbimagebank_get_backup_images: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute cpaslsbimagebank_get_backup_images: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -83,8 +88,9 @@ func HandleFacebook_cpaslsbimagebank_get_backup_images(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_cpaslsbimagebank_get_ handles the facebook_cpaslsbimagebank_get_ tool
-func HandleFacebook_cpaslsbimagebank_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCpaslsbimagebank_get_ handles the cpaslsbimagebank_get_ tool
+func HandleCpaslsbimagebank_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -97,10 +103,12 @@ func HandleFacebook_cpaslsbimagebank_get_(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_cpaslsbimagebank_get_(args)
+	result, err := client.Cpaslsbimagebank_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_cpaslsbimagebank_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute cpaslsbimagebank_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -112,8 +120,9 @@ func HandleFacebook_cpaslsbimagebank_get_(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_cpaslsbimagebank_post_ handles the facebook_cpaslsbimagebank_post_ tool
-func HandleFacebook_cpaslsbimagebank_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCpaslsbimagebank_post_ handles the cpaslsbimagebank_post_ tool
+func HandleCpaslsbimagebank_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -133,10 +142,12 @@ func HandleFacebook_cpaslsbimagebank_post_(ctx context.Context, request mcp.Call
 	}
 	args["backup_image_urls"] = backup_image_urls
 
+
+
 	// Call the client method
-	result, err := client.Facebook_cpaslsbimagebank_post_(args)
+	result, err := client.Cpaslsbimagebank_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_cpaslsbimagebank_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute cpaslsbimagebank_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -147,3 +158,4 @@ func HandleFacebook_cpaslsbimagebank_post_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -4,9 +4,9 @@ package types
 
 // TimezoneOffset represents a Facebook TimezoneOffset object
 type TimezoneOffset struct {
-	Abbr   string `json:"abbr"`
-	Isdst  bool   `json:"isdst"`
-	Offset int    `json:"offset"`
-	Time   string `json:"time"`
-	Ts     int    `json:"ts"`
+	Abbr string `json:"abbr"`
+	Isdst bool `json:"isdst"`
+	Offset int `json:"offset"`
+	Time string `json:"time"`
+	Ts int `json:"ts"`
 }

@@ -15,23 +15,26 @@ import (
 func GetBusinessObjectTransferOwnershipAgreementTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_businessobjecttransferownershipagreement_get_ tool
-	facebook_businessobjecttransferownershipagreement_get_Tool := mcp.NewTool("facebook_businessobjecttransferownershipagreement_get_",
+
+	// businessobjecttransferownershipagreement_get_ tool
+	businessobjecttransferownershipagreement_get_Tool := mcp.NewTool("businessobjecttransferownershipagreement_get_",
 		mcp.WithDescription("GET  for BusinessObjectTransferOwnershipAgreement"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_businessobjecttransferownershipagreement_get_Tool)
+	tools = append(tools, businessobjecttransferownershipagreement_get_Tool)
+
 
 	return tools
 }
 
 // BusinessObjectTransferOwnershipAgreement handlers
 
-// HandleFacebook_businessobjecttransferownershipagreement_get_ handles the facebook_businessobjecttransferownershipagreement_get_ tool
-func HandleFacebook_businessobjecttransferownershipagreement_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleBusinessobjecttransferownershipagreement_get_ handles the businessobjecttransferownershipagreement_get_ tool
+func HandleBusinessobjecttransferownershipagreement_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_businessobjecttransferownershipagreement_get_(ctx context.Co
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_businessobjecttransferownershipagreement_get_(args)
+	result, err := client.Businessobjecttransferownershipagreement_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_businessobjecttransferownershipagreement_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessobjecttransferownershipagreement_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_businessobjecttransferownershipagreement_get_(ctx context.Co
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

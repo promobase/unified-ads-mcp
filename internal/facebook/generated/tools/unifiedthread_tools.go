@@ -15,8 +15,9 @@ import (
 func GetUnifiedThreadTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_unifiedthread_get_messages tool
-	facebook_unifiedthread_get_messagesTool := mcp.NewTool("facebook_unifiedthread_get_messages",
+
+	// unifiedthread_get_messages tool
+	unifiedthread_get_messagesTool := mcp.NewTool("unifiedthread_get_messages",
 		mcp.WithDescription("GET messages for UnifiedThread"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -27,25 +28,27 @@ func GetUnifiedThreadTools(accessToken string) []mcp.Tool {
 			mcp.Enum("ALL", "PARTICIPANTS"),
 		),
 	)
-	tools = append(tools, facebook_unifiedthread_get_messagesTool)
+	tools = append(tools, unifiedthread_get_messagesTool)
 
-	// facebook_unifiedthread_get_ tool
-	facebook_unifiedthread_get_Tool := mcp.NewTool("facebook_unifiedthread_get_",
+	// unifiedthread_get_ tool
+	unifiedthread_get_Tool := mcp.NewTool("unifiedthread_get_",
 		mcp.WithDescription("GET  for UnifiedThread"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_unifiedthread_get_Tool)
+	tools = append(tools, unifiedthread_get_Tool)
+
 
 	return tools
 }
 
 // UnifiedThread handlers
 
-// HandleFacebook_unifiedthread_get_messages handles the facebook_unifiedthread_get_messages tool
-func HandleFacebook_unifiedthread_get_messages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleUnifiedthread_get_messages handles the unifiedthread_get_messages tool
+func HandleUnifiedthread_get_messages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -63,10 +66,12 @@ func HandleFacebook_unifiedthread_get_messages(ctx context.Context, request mcp.
 		args["source"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_unifiedthread_get_messages(args)
+	result, err := client.Unifiedthread_get_messages(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_unifiedthread_get_messages: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute unifiedthread_get_messages: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -78,8 +83,9 @@ func HandleFacebook_unifiedthread_get_messages(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_unifiedthread_get_ handles the facebook_unifiedthread_get_ tool
-func HandleFacebook_unifiedthread_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleUnifiedthread_get_ handles the unifiedthread_get_ tool
+func HandleUnifiedthread_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -92,10 +98,12 @@ func HandleFacebook_unifiedthread_get_(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_unifiedthread_get_(args)
+	result, err := client.Unifiedthread_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_unifiedthread_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute unifiedthread_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -106,3 +114,4 @@ func HandleFacebook_unifiedthread_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

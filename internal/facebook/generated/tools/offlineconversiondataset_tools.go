@@ -15,8 +15,9 @@ import (
 func GetOfflineConversionDataSetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_offlineconversiondataset_get_adaccounts tool
-	facebook_offlineconversiondataset_get_adaccountsTool := mcp.NewTool("facebook_offlineconversiondataset_get_adaccounts",
+
+	// offlineconversiondataset_get_adaccounts tool
+	offlineconversiondataset_get_adaccountsTool := mcp.NewTool("offlineconversiondataset_get_adaccounts",
 		mcp.WithDescription("GET adaccounts for OfflineConversionDataSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -27,20 +28,20 @@ func GetOfflineConversionDataSetTools(accessToken string) []mcp.Tool {
 			mcp.Description("business parameter for adaccounts"),
 		),
 	)
-	tools = append(tools, facebook_offlineconversiondataset_get_adaccountsTool)
+	tools = append(tools, offlineconversiondataset_get_adaccountsTool)
 
-	// facebook_offlineconversiondataset_get_agencies tool
-	facebook_offlineconversiondataset_get_agenciesTool := mcp.NewTool("facebook_offlineconversiondataset_get_agencies",
+	// offlineconversiondataset_get_agencies tool
+	offlineconversiondataset_get_agenciesTool := mcp.NewTool("offlineconversiondataset_get_agencies",
 		mcp.WithDescription("GET agencies for OfflineConversionDataSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_offlineconversiondataset_get_agenciesTool)
+	tools = append(tools, offlineconversiondataset_get_agenciesTool)
 
-	// facebook_offlineconversiondataset_get_audiences tool
-	facebook_offlineconversiondataset_get_audiencesTool := mcp.NewTool("facebook_offlineconversiondataset_get_audiences",
+	// offlineconversiondataset_get_audiences tool
+	offlineconversiondataset_get_audiencesTool := mcp.NewTool("offlineconversiondataset_get_audiences",
 		mcp.WithDescription("GET audiences for OfflineConversionDataSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -54,10 +55,10 @@ func GetOfflineConversionDataSetTools(accessToken string) []mcp.Tool {
 			mcp.Description("ad_account parameter for audiences"),
 		),
 	)
-	tools = append(tools, facebook_offlineconversiondataset_get_audiencesTool)
+	tools = append(tools, offlineconversiondataset_get_audiencesTool)
 
-	// facebook_offlineconversiondataset_get_customconversions tool
-	facebook_offlineconversiondataset_get_customconversionsTool := mcp.NewTool("facebook_offlineconversiondataset_get_customconversions",
+	// offlineconversiondataset_get_customconversions tool
+	offlineconversiondataset_get_customconversionsTool := mcp.NewTool("offlineconversiondataset_get_customconversions",
 		mcp.WithDescription("GET customconversions for OfflineConversionDataSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -67,20 +68,20 @@ func GetOfflineConversionDataSetTools(accessToken string) []mcp.Tool {
 			mcp.Description("ad_account parameter for customconversions"),
 		),
 	)
-	tools = append(tools, facebook_offlineconversiondataset_get_customconversionsTool)
+	tools = append(tools, offlineconversiondataset_get_customconversionsTool)
 
-	// facebook_offlineconversiondataset_get_server_events_permitted_business tool
-	facebook_offlineconversiondataset_get_server_events_permitted_businessTool := mcp.NewTool("facebook_offlineconversiondataset_get_server_events_permitted_business",
+	// offlineconversiondataset_get_server_events_permitted_business tool
+	offlineconversiondataset_get_server_events_permitted_businessTool := mcp.NewTool("offlineconversiondataset_get_server_events_permitted_business",
 		mcp.WithDescription("GET server_events_permitted_business for OfflineConversionDataSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_offlineconversiondataset_get_server_events_permitted_businessTool)
+	tools = append(tools, offlineconversiondataset_get_server_events_permitted_businessTool)
 
-	// facebook_offlineconversiondataset_get_shared_accounts tool
-	facebook_offlineconversiondataset_get_shared_accountsTool := mcp.NewTool("facebook_offlineconversiondataset_get_shared_accounts",
+	// offlineconversiondataset_get_shared_accounts tool
+	offlineconversiondataset_get_shared_accountsTool := mcp.NewTool("offlineconversiondataset_get_shared_accounts",
 		mcp.WithDescription("GET shared_accounts for OfflineConversionDataSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -96,10 +97,10 @@ func GetOfflineConversionDataSetTools(accessToken string) []mcp.Tool {
 			mcp.Description("business parameter for shared_accounts"),
 		),
 	)
-	tools = append(tools, facebook_offlineconversiondataset_get_shared_accountsTool)
+	tools = append(tools, offlineconversiondataset_get_shared_accountsTool)
 
-	// facebook_offlineconversiondataset_get_shared_agencies tool
-	facebook_offlineconversiondataset_get_shared_agenciesTool := mcp.NewTool("facebook_offlineconversiondataset_get_shared_agencies",
+	// offlineconversiondataset_get_shared_agencies tool
+	offlineconversiondataset_get_shared_agenciesTool := mcp.NewTool("offlineconversiondataset_get_shared_agencies",
 		mcp.WithDescription("GET shared_agencies for OfflineConversionDataSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -111,10 +112,10 @@ func GetOfflineConversionDataSetTools(accessToken string) []mcp.Tool {
 			mcp.Enum("PHYSICAL_STORE", "WEBSITE"),
 		),
 	)
-	tools = append(tools, facebook_offlineconversiondataset_get_shared_agenciesTool)
+	tools = append(tools, offlineconversiondataset_get_shared_agenciesTool)
 
-	// facebook_offlineconversiondataset_get_stats tool
-	facebook_offlineconversiondataset_get_statsTool := mcp.NewTool("facebook_offlineconversiondataset_get_stats",
+	// offlineconversiondataset_get_stats tool
+	offlineconversiondataset_get_statsTool := mcp.NewTool("offlineconversiondataset_get_stats",
 		mcp.WithDescription("GET stats for OfflineConversionDataSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -141,10 +142,10 @@ func GetOfflineConversionDataSetTools(accessToken string) []mcp.Tool {
 			mcp.Description("user_timezone_id parameter for stats"),
 		),
 	)
-	tools = append(tools, facebook_offlineconversiondataset_get_statsTool)
+	tools = append(tools, offlineconversiondataset_get_statsTool)
 
-	// facebook_offlineconversiondataset_get_uploads tool
-	facebook_offlineconversiondataset_get_uploadsTool := mcp.NewTool("facebook_offlineconversiondataset_get_uploads",
+	// offlineconversiondataset_get_uploads tool
+	offlineconversiondataset_get_uploadsTool := mcp.NewTool("offlineconversiondataset_get_uploads",
 		mcp.WithDescription("GET uploads for OfflineConversionDataSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -168,25 +169,27 @@ func GetOfflineConversionDataSetTools(accessToken string) []mcp.Tool {
 			mcp.Description("upload_tag parameter for uploads"),
 		),
 	)
-	tools = append(tools, facebook_offlineconversiondataset_get_uploadsTool)
+	tools = append(tools, offlineconversiondataset_get_uploadsTool)
 
-	// facebook_offlineconversiondataset_get_ tool
-	facebook_offlineconversiondataset_get_Tool := mcp.NewTool("facebook_offlineconversiondataset_get_",
+	// offlineconversiondataset_get_ tool
+	offlineconversiondataset_get_Tool := mcp.NewTool("offlineconversiondataset_get_",
 		mcp.WithDescription("GET  for OfflineConversionDataSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_offlineconversiondataset_get_Tool)
+	tools = append(tools, offlineconversiondataset_get_Tool)
+
 
 	return tools
 }
 
 // OfflineConversionDataSet handlers
 
-// HandleFacebook_offlineconversiondataset_get_adaccounts handles the facebook_offlineconversiondataset_get_adaccounts tool
-func HandleFacebook_offlineconversiondataset_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleOfflineconversiondataset_get_adaccounts handles the offlineconversiondataset_get_adaccounts tool
+func HandleOfflineconversiondataset_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -206,10 +209,12 @@ func HandleFacebook_offlineconversiondataset_get_adaccounts(ctx context.Context,
 	}
 	args["business"] = business
 
+
+
 	// Call the client method
-	result, err := client.Facebook_offlineconversiondataset_get_adaccounts(args)
+	result, err := client.Offlineconversiondataset_get_adaccounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_offlineconversiondataset_get_adaccounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute offlineconversiondataset_get_adaccounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -221,8 +226,9 @@ func HandleFacebook_offlineconversiondataset_get_adaccounts(ctx context.Context,
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_offlineconversiondataset_get_agencies handles the facebook_offlineconversiondataset_get_agencies tool
-func HandleFacebook_offlineconversiondataset_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleOfflineconversiondataset_get_agencies handles the offlineconversiondataset_get_agencies tool
+func HandleOfflineconversiondataset_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -235,10 +241,12 @@ func HandleFacebook_offlineconversiondataset_get_agencies(ctx context.Context, r
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_offlineconversiondataset_get_agencies(args)
+	result, err := client.Offlineconversiondataset_get_agencies(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_offlineconversiondataset_get_agencies: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute offlineconversiondataset_get_agencies: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -250,8 +258,9 @@ func HandleFacebook_offlineconversiondataset_get_agencies(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_offlineconversiondataset_get_audiences handles the facebook_offlineconversiondataset_get_audiences tool
-func HandleFacebook_offlineconversiondataset_get_audiences(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleOfflineconversiondataset_get_audiences handles the offlineconversiondataset_get_audiences tool
+func HandleOfflineconversiondataset_get_audiences(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -274,10 +283,12 @@ func HandleFacebook_offlineconversiondataset_get_audiences(ctx context.Context, 
 		args["ad_account"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_offlineconversiondataset_get_audiences(args)
+	result, err := client.Offlineconversiondataset_get_audiences(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_offlineconversiondataset_get_audiences: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute offlineconversiondataset_get_audiences: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -289,8 +300,9 @@ func HandleFacebook_offlineconversiondataset_get_audiences(ctx context.Context, 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_offlineconversiondataset_get_customconversions handles the facebook_offlineconversiondataset_get_customconversions tool
-func HandleFacebook_offlineconversiondataset_get_customconversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleOfflineconversiondataset_get_customconversions handles the offlineconversiondataset_get_customconversions tool
+func HandleOfflineconversiondataset_get_customconversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -308,10 +320,12 @@ func HandleFacebook_offlineconversiondataset_get_customconversions(ctx context.C
 		args["ad_account"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_offlineconversiondataset_get_customconversions(args)
+	result, err := client.Offlineconversiondataset_get_customconversions(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_offlineconversiondataset_get_customconversions: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute offlineconversiondataset_get_customconversions: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -323,8 +337,9 @@ func HandleFacebook_offlineconversiondataset_get_customconversions(ctx context.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_offlineconversiondataset_get_server_events_permitted_business handles the facebook_offlineconversiondataset_get_server_events_permitted_business tool
-func HandleFacebook_offlineconversiondataset_get_server_events_permitted_business(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleOfflineconversiondataset_get_server_events_permitted_business handles the offlineconversiondataset_get_server_events_permitted_business tool
+func HandleOfflineconversiondataset_get_server_events_permitted_business(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -337,10 +352,12 @@ func HandleFacebook_offlineconversiondataset_get_server_events_permitted_busines
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_offlineconversiondataset_get_server_events_permitted_business(args)
+	result, err := client.Offlineconversiondataset_get_server_events_permitted_business(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_offlineconversiondataset_get_server_events_permitted_business: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute offlineconversiondataset_get_server_events_permitted_business: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -352,8 +369,9 @@ func HandleFacebook_offlineconversiondataset_get_server_events_permitted_busines
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_offlineconversiondataset_get_shared_accounts handles the facebook_offlineconversiondataset_get_shared_accounts tool
-func HandleFacebook_offlineconversiondataset_get_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleOfflineconversiondataset_get_shared_accounts handles the offlineconversiondataset_get_shared_accounts tool
+func HandleOfflineconversiondataset_get_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -380,10 +398,12 @@ func HandleFacebook_offlineconversiondataset_get_shared_accounts(ctx context.Con
 	}
 	args["business"] = business
 
+
+
 	// Call the client method
-	result, err := client.Facebook_offlineconversiondataset_get_shared_accounts(args)
+	result, err := client.Offlineconversiondataset_get_shared_accounts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_offlineconversiondataset_get_shared_accounts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute offlineconversiondataset_get_shared_accounts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -395,8 +415,9 @@ func HandleFacebook_offlineconversiondataset_get_shared_accounts(ctx context.Con
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_offlineconversiondataset_get_shared_agencies handles the facebook_offlineconversiondataset_get_shared_agencies tool
-func HandleFacebook_offlineconversiondataset_get_shared_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleOfflineconversiondataset_get_shared_agencies handles the offlineconversiondataset_get_shared_agencies tool
+func HandleOfflineconversiondataset_get_shared_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -416,10 +437,12 @@ func HandleFacebook_offlineconversiondataset_get_shared_agencies(ctx context.Con
 	}
 	args["action_source"] = action_source
 
+
+
 	// Call the client method
-	result, err := client.Facebook_offlineconversiondataset_get_shared_agencies(args)
+	result, err := client.Offlineconversiondataset_get_shared_agencies(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_offlineconversiondataset_get_shared_agencies: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute offlineconversiondataset_get_shared_agencies: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -431,8 +454,9 @@ func HandleFacebook_offlineconversiondataset_get_shared_agencies(ctx context.Con
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_offlineconversiondataset_get_stats handles the facebook_offlineconversiondataset_get_stats tool
-func HandleFacebook_offlineconversiondataset_get_stats(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleOfflineconversiondataset_get_stats handles the offlineconversiondataset_get_stats tool
+func HandleOfflineconversiondataset_get_stats(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -475,10 +499,12 @@ func HandleFacebook_offlineconversiondataset_get_stats(ctx context.Context, requ
 		args["user_timezone_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_offlineconversiondataset_get_stats(args)
+	result, err := client.Offlineconversiondataset_get_stats(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_offlineconversiondataset_get_stats: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute offlineconversiondataset_get_stats: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -490,8 +516,9 @@ func HandleFacebook_offlineconversiondataset_get_stats(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_offlineconversiondataset_get_uploads handles the facebook_offlineconversiondataset_get_uploads tool
-func HandleFacebook_offlineconversiondataset_get_uploads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleOfflineconversiondataset_get_uploads handles the offlineconversiondataset_get_uploads tool
+func HandleOfflineconversiondataset_get_uploads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -529,10 +556,12 @@ func HandleFacebook_offlineconversiondataset_get_uploads(ctx context.Context, re
 		args["upload_tag"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_offlineconversiondataset_get_uploads(args)
+	result, err := client.Offlineconversiondataset_get_uploads(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_offlineconversiondataset_get_uploads: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute offlineconversiondataset_get_uploads: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -544,8 +573,9 @@ func HandleFacebook_offlineconversiondataset_get_uploads(ctx context.Context, re
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_offlineconversiondataset_get_ handles the facebook_offlineconversiondataset_get_ tool
-func HandleFacebook_offlineconversiondataset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleOfflineconversiondataset_get_ handles the offlineconversiondataset_get_ tool
+func HandleOfflineconversiondataset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -558,10 +588,12 @@ func HandleFacebook_offlineconversiondataset_get_(ctx context.Context, request m
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_offlineconversiondataset_get_(args)
+	result, err := client.Offlineconversiondataset_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_offlineconversiondataset_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute offlineconversiondataset_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -572,3 +604,4 @@ func HandleFacebook_offlineconversiondataset_get_(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

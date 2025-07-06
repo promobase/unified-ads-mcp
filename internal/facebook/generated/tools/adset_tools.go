@@ -15,8 +15,9 @@ import (
 func GetAdSetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adset_get_activities tool
-	facebook_adset_get_activitiesTool := mcp.NewTool("facebook_adset_get_activities",
+
+	// adset_get_activities tool
+	adset_get_activitiesTool := mcp.NewTool("adset_get_activities",
 		mcp.WithDescription("GET activities for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -45,30 +46,30 @@ func GetAdSetTools(accessToken string) []mcp.Tool {
 			mcp.Description("until parameter for activities"),
 		),
 	)
-	tools = append(tools, facebook_adset_get_activitiesTool)
+	tools = append(tools, adset_get_activitiesTool)
 
-	// facebook_adset_get_ad_studies tool
-	facebook_adset_get_ad_studiesTool := mcp.NewTool("facebook_adset_get_ad_studies",
+	// adset_get_ad_studies tool
+	adset_get_ad_studiesTool := mcp.NewTool("adset_get_ad_studies",
 		mcp.WithDescription("GET ad_studies for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adset_get_ad_studiesTool)
+	tools = append(tools, adset_get_ad_studiesTool)
 
-	// facebook_adset_get_adcreatives tool
-	facebook_adset_get_adcreativesTool := mcp.NewTool("facebook_adset_get_adcreatives",
+	// adset_get_adcreatives tool
+	adset_get_adcreativesTool := mcp.NewTool("adset_get_adcreatives",
 		mcp.WithDescription("GET adcreatives for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adset_get_adcreativesTool)
+	tools = append(tools, adset_get_adcreativesTool)
 
-	// facebook_adset_delete_adlabels tool
-	facebook_adset_delete_adlabelsTool := mcp.NewTool("facebook_adset_delete_adlabels",
+	// adset_delete_adlabels tool
+	adset_delete_adlabelsTool := mcp.NewTool("adset_delete_adlabels",
 		mcp.WithDescription("DELETE adlabels for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -83,10 +84,10 @@ func GetAdSetTools(accessToken string) []mcp.Tool {
 			mcp.Enum("validate_only"),
 		),
 	)
-	tools = append(tools, facebook_adset_delete_adlabelsTool)
+	tools = append(tools, adset_delete_adlabelsTool)
 
-	// facebook_adset_post_adlabels tool
-	facebook_adset_post_adlabelsTool := mcp.NewTool("facebook_adset_post_adlabels",
+	// adset_post_adlabels tool
+	adset_post_adlabelsTool := mcp.NewTool("adset_post_adlabels",
 		mcp.WithDescription("POST adlabels for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -101,10 +102,10 @@ func GetAdSetTools(accessToken string) []mcp.Tool {
 			mcp.Enum("validate_only"),
 		),
 	)
-	tools = append(tools, facebook_adset_post_adlabelsTool)
+	tools = append(tools, adset_post_adlabelsTool)
 
-	// facebook_adset_get_adrules_governed tool
-	facebook_adset_get_adrules_governedTool := mcp.NewTool("facebook_adset_get_adrules_governed",
+	// adset_get_adrules_governed tool
+	adset_get_adrules_governedTool := mcp.NewTool("adset_get_adrules_governed",
 		mcp.WithDescription("GET adrules_governed for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -114,10 +115,10 @@ func GetAdSetTools(accessToken string) []mcp.Tool {
 			mcp.Description("pass_evaluation parameter for adrules_governed"),
 		),
 	)
-	tools = append(tools, facebook_adset_get_adrules_governedTool)
+	tools = append(tools, adset_get_adrules_governedTool)
 
-	// facebook_adset_get_ads tool
-	facebook_adset_get_adsTool := mcp.NewTool("facebook_adset_get_ads",
+	// adset_get_ads tool
+	adset_get_adsTool := mcp.NewTool("adset_get_ads",
 		mcp.WithDescription("GET ads for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -137,10 +138,10 @@ func GetAdSetTools(accessToken string) []mcp.Tool {
 			mcp.Description("updated_since parameter for ads"),
 		),
 	)
-	tools = append(tools, facebook_adset_get_adsTool)
+	tools = append(tools, adset_get_adsTool)
 
-	// facebook_adset_get_asyncadrequests tool
-	facebook_adset_get_asyncadrequestsTool := mcp.NewTool("facebook_adset_get_asyncadrequests",
+	// adset_get_asyncadrequests tool
+	adset_get_asyncadrequestsTool := mcp.NewTool("adset_get_asyncadrequests",
 		mcp.WithDescription("GET asyncadrequests for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -151,10 +152,10 @@ func GetAdSetTools(accessToken string) []mcp.Tool {
 			mcp.Enum("CANCELED", "CANCELED_DEPENDENCY", "ERROR", "ERROR_CONFLICTS", "ERROR_DEPENDENCY", "INITIAL", "IN_PROGRESS", "PENDING_DEPENDENCY", "PROCESS_BY_AD_ASYNC_ENGINE", "PROCESS_BY_EVENT_PROCESSOR", "SUCCESS", "USER_CANCELED", "USER_CANCELED_DEPENDENCY"),
 		),
 	)
-	tools = append(tools, facebook_adset_get_asyncadrequestsTool)
+	tools = append(tools, adset_get_asyncadrequestsTool)
 
-	// facebook_adset_post_budget_schedules tool
-	facebook_adset_post_budget_schedulesTool := mcp.NewTool("facebook_adset_post_budget_schedules",
+	// adset_post_budget_schedules tool
+	adset_post_budget_schedulesTool := mcp.NewTool("adset_post_budget_schedules",
 		mcp.WithDescription("POST budget_schedules for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -178,10 +179,10 @@ func GetAdSetTools(accessToken string) []mcp.Tool {
 			mcp.Description("time_start parameter for budget_schedules"),
 		),
 	)
-	tools = append(tools, facebook_adset_post_budget_schedulesTool)
+	tools = append(tools, adset_post_budget_schedulesTool)
 
-	// facebook_adset_get_copies tool
-	facebook_adset_get_copiesTool := mcp.NewTool("facebook_adset_get_copies",
+	// adset_get_copies tool
+	adset_get_copiesTool := mcp.NewTool("adset_get_copies",
 		mcp.WithDescription("GET copies for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -202,10 +203,10 @@ func GetAdSetTools(accessToken string) []mcp.Tool {
 			mcp.Description("time_range parameter for copies"),
 		),
 	)
-	tools = append(tools, facebook_adset_get_copiesTool)
+	tools = append(tools, adset_get_copiesTool)
 
-	// facebook_adset_post_copies tool
-	facebook_adset_post_copiesTool := mcp.NewTool("facebook_adset_post_copies",
+	// adset_post_copies tool
+	adset_post_copiesTool := mcp.NewTool("adset_post_copies",
 		mcp.WithDescription("POST copies for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -234,10 +235,10 @@ func GetAdSetTools(accessToken string) []mcp.Tool {
 			mcp.Enum("ACTIVE", "INHERITED_FROM_SOURCE", "PAUSED"),
 		),
 	)
-	tools = append(tools, facebook_adset_post_copiesTool)
+	tools = append(tools, adset_post_copiesTool)
 
-	// facebook_adset_get_delivery_estimate tool
-	facebook_adset_get_delivery_estimateTool := mcp.NewTool("facebook_adset_get_delivery_estimate",
+	// adset_get_delivery_estimate tool
+	adset_get_delivery_estimateTool := mcp.NewTool("adset_get_delivery_estimate",
 		mcp.WithDescription("GET delivery_estimate for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -254,10 +255,10 @@ func GetAdSetTools(accessToken string) []mcp.Tool {
 			mcp.Description("targeting_spec parameter for delivery_estimate"),
 		),
 	)
-	tools = append(tools, facebook_adset_get_delivery_estimateTool)
+	tools = append(tools, adset_get_delivery_estimateTool)
 
-	// facebook_adset_get_insights tool
-	facebook_adset_get_insightsTool := mcp.NewTool("facebook_adset_get_insights",
+	// adset_get_insights tool
+	adset_get_insightsTool := mcp.NewTool("adset_get_insights",
 		mcp.WithDescription("GET insights for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -337,10 +338,10 @@ func GetAdSetTools(accessToken string) []mcp.Tool {
 			mcp.Description("use_unified_attribution_setting parameter for insights"),
 		),
 	)
-	tools = append(tools, facebook_adset_get_insightsTool)
+	tools = append(tools, adset_get_insightsTool)
 
-	// facebook_adset_post_insights tool
-	facebook_adset_post_insightsTool := mcp.NewTool("facebook_adset_post_insights",
+	// adset_post_insights tool
+	adset_post_insightsTool := mcp.NewTool("adset_post_insights",
 		mcp.WithDescription("POST insights for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -420,10 +421,10 @@ func GetAdSetTools(accessToken string) []mcp.Tool {
 			mcp.Description("use_unified_attribution_setting parameter for insights"),
 		),
 	)
-	tools = append(tools, facebook_adset_post_insightsTool)
+	tools = append(tools, adset_post_insightsTool)
 
-	// facebook_adset_get_message_delivery_estimate tool
-	facebook_adset_get_message_delivery_estimateTool := mcp.NewTool("facebook_adset_get_message_delivery_estimate",
+	// adset_get_message_delivery_estimate tool
+	adset_get_message_delivery_estimateTool := mcp.NewTool("adset_get_message_delivery_estimate",
 		mcp.WithDescription("GET message_delivery_estimate for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -459,30 +460,30 @@ func GetAdSetTools(accessToken string) []mcp.Tool {
 			mcp.Description("targeting_spec parameter for message_delivery_estimate"),
 		),
 	)
-	tools = append(tools, facebook_adset_get_message_delivery_estimateTool)
+	tools = append(tools, adset_get_message_delivery_estimateTool)
 
-	// facebook_adset_get_targetingsentencelines tool
-	facebook_adset_get_targetingsentencelinesTool := mcp.NewTool("facebook_adset_get_targetingsentencelines",
+	// adset_get_targetingsentencelines tool
+	adset_get_targetingsentencelinesTool := mcp.NewTool("adset_get_targetingsentencelines",
 		mcp.WithDescription("GET targetingsentencelines for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adset_get_targetingsentencelinesTool)
+	tools = append(tools, adset_get_targetingsentencelinesTool)
 
-	// facebook_adset_delete_ tool
-	facebook_adset_delete_Tool := mcp.NewTool("facebook_adset_delete_",
+	// adset_delete_ tool
+	adset_delete_Tool := mcp.NewTool("adset_delete_",
 		mcp.WithDescription("DELETE  for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adset_delete_Tool)
+	tools = append(tools, adset_delete_Tool)
 
-	// facebook_adset_get_ tool
-	facebook_adset_get_Tool := mcp.NewTool("facebook_adset_get_",
+	// adset_get_ tool
+	adset_get_Tool := mcp.NewTool("adset_get_",
 		mcp.WithDescription("GET  for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -502,10 +503,10 @@ func GetAdSetTools(accessToken string) []mcp.Tool {
 			mcp.Description("time_range parameter for "),
 		),
 	)
-	tools = append(tools, facebook_adset_get_Tool)
+	tools = append(tools, adset_get_Tool)
 
-	// facebook_adset_post_ tool
-	facebook_adset_post_Tool := mcp.NewTool("facebook_adset_post_",
+	// adset_post_ tool
+	adset_post_Tool := mcp.NewTool("adset_post_",
 		mcp.WithDescription("POST  for AdSet"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -680,15 +681,17 @@ func GetAdSetTools(accessToken string) []mcp.Tool {
 			mcp.Enum("CREDIT", "EMPLOYMENT", "FINANCIAL_PRODUCTS_SERVICES", "HOUSING", "ISSUES_ELECTIONS_POLITICS", "NONE", "ONLINE_GAMBLING_AND_GAMING"),
 		),
 	)
-	tools = append(tools, facebook_adset_post_Tool)
+	tools = append(tools, adset_post_Tool)
+
 
 	return tools
 }
 
 // AdSet handlers
 
-// HandleFacebook_adset_get_activities handles the facebook_adset_get_activities tool
-func HandleFacebook_adset_get_activities(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdset_get_activities handles the adset_get_activities tool
+func HandleAdset_get_activities(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -736,10 +739,12 @@ func HandleFacebook_adset_get_activities(ctx context.Context, request mcp.CallTo
 		args["until"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adset_get_activities(args)
+	result, err := client.Adset_get_activities(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_get_activities: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_activities: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -751,8 +756,9 @@ func HandleFacebook_adset_get_activities(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adset_get_ad_studies handles the facebook_adset_get_ad_studies tool
-func HandleFacebook_adset_get_ad_studies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdset_get_ad_studies handles the adset_get_ad_studies tool
+func HandleAdset_get_ad_studies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -765,10 +771,12 @@ func HandleFacebook_adset_get_ad_studies(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adset_get_ad_studies(args)
+	result, err := client.Adset_get_ad_studies(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_get_ad_studies: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_ad_studies: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -780,8 +788,9 @@ func HandleFacebook_adset_get_ad_studies(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adset_get_adcreatives handles the facebook_adset_get_adcreatives tool
-func HandleFacebook_adset_get_adcreatives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdset_get_adcreatives handles the adset_get_adcreatives tool
+func HandleAdset_get_adcreatives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -794,10 +803,12 @@ func HandleFacebook_adset_get_adcreatives(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adset_get_adcreatives(args)
+	result, err := client.Adset_get_adcreatives(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_get_adcreatives: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_adcreatives: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -809,50 +820,9 @@ func HandleFacebook_adset_get_adcreatives(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adset_delete_adlabels handles the facebook_adset_delete_adlabels tool
-func HandleFacebook_adset_delete_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
 
-	// Create client
-	client := client.NewAdSetClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: adlabels
-	adlabels, err := request.RequireString("adlabels")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter adlabels: %v", err)), nil
-	}
-	args["adlabels"] = adlabels
-
-	// Optional: execution_options
-	// array type - using string
-	if val := request.GetString("execution_options", ""); val != "" {
-		args["execution_options"] = val
-	}
-
-	// Call the client method
-	result, err := client.Facebook_adset_delete_adlabels(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_delete_adlabels: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleFacebook_adset_post_adlabels handles the facebook_adset_post_adlabels tool
-func HandleFacebook_adset_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleAdset_delete_adlabels handles the adset_delete_adlabels tool
+func HandleAdset_delete_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -878,10 +848,12 @@ func HandleFacebook_adset_post_adlabels(ctx context.Context, request mcp.CallToo
 		args["execution_options"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adset_post_adlabels(args)
+	result, err := client.Adset_delete_adlabels(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_post_adlabels: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_delete_adlabels: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -893,8 +865,54 @@ func HandleFacebook_adset_post_adlabels(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adset_get_adrules_governed handles the facebook_adset_get_adrules_governed tool
-func HandleFacebook_adset_get_adrules_governed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdset_post_adlabels handles the adset_post_adlabels tool
+func HandleAdset_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token
+	accessToken, err := request.RequireString("access_token")
+	if err != nil {
+		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: adlabels
+	adlabels, err := request.RequireString("adlabels")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter adlabels: %v", err)), nil
+	}
+	args["adlabels"] = adlabels
+
+	// Optional: execution_options
+	// array type - using string
+	if val := request.GetString("execution_options", ""); val != "" {
+		args["execution_options"] = val
+	}
+
+
+
+	// Call the client method
+	result, err := client.Adset_post_adlabels(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_post_adlabels: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+
+// HandleAdset_get_adrules_governed handles the adset_get_adrules_governed tool
+func HandleAdset_get_adrules_governed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -912,10 +930,12 @@ func HandleFacebook_adset_get_adrules_governed(ctx context.Context, request mcp.
 		args["pass_evaluation"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adset_get_adrules_governed(args)
+	result, err := client.Adset_get_adrules_governed(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_get_adrules_governed: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_adrules_governed: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -927,8 +947,9 @@ func HandleFacebook_adset_get_adrules_governed(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adset_get_ads handles the facebook_adset_get_ads tool
-func HandleFacebook_adset_get_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdset_get_ads handles the adset_get_ads tool
+func HandleAdset_get_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -962,10 +983,12 @@ func HandleFacebook_adset_get_ads(ctx context.Context, request mcp.CallToolReque
 		args["updated_since"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adset_get_ads(args)
+	result, err := client.Adset_get_ads(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_get_ads: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_ads: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -977,8 +1000,9 @@ func HandleFacebook_adset_get_ads(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adset_get_asyncadrequests handles the facebook_adset_get_asyncadrequests tool
-func HandleFacebook_adset_get_asyncadrequests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdset_get_asyncadrequests handles the adset_get_asyncadrequests tool
+func HandleAdset_get_asyncadrequests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -997,10 +1021,12 @@ func HandleFacebook_adset_get_asyncadrequests(ctx context.Context, request mcp.C
 		args["statuses"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adset_get_asyncadrequests(args)
+	result, err := client.Adset_get_asyncadrequests(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_get_asyncadrequests: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_asyncadrequests: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1012,8 +1038,9 @@ func HandleFacebook_adset_get_asyncadrequests(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adset_post_budget_schedules handles the facebook_adset_post_budget_schedules tool
-func HandleFacebook_adset_post_budget_schedules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdset_post_budget_schedules handles the adset_post_budget_schedules tool
+func HandleAdset_post_budget_schedules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1054,10 +1081,12 @@ func HandleFacebook_adset_post_budget_schedules(ctx context.Context, request mcp
 	}
 	args["time_start"] = time_start
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adset_post_budget_schedules(args)
+	result, err := client.Adset_post_budget_schedules(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_post_budget_schedules: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_post_budget_schedules: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1069,8 +1098,9 @@ func HandleFacebook_adset_post_budget_schedules(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adset_get_copies handles the facebook_adset_get_copies tool
-func HandleFacebook_adset_get_copies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdset_get_copies handles the adset_get_copies tool
+func HandleAdset_get_copies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1104,10 +1134,12 @@ func HandleFacebook_adset_get_copies(ctx context.Context, request mcp.CallToolRe
 		args["time_range"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adset_get_copies(args)
+	result, err := client.Adset_get_copies(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_get_copies: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_copies: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1119,8 +1151,9 @@ func HandleFacebook_adset_get_copies(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adset_post_copies handles the facebook_adset_post_copies tool
-func HandleFacebook_adset_post_copies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdset_post_copies handles the adset_post_copies tool
+func HandleAdset_post_copies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1169,10 +1202,12 @@ func HandleFacebook_adset_post_copies(ctx context.Context, request mcp.CallToolR
 		args["status_option"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adset_post_copies(args)
+	result, err := client.Adset_post_copies(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_post_copies: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_post_copies: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1184,8 +1219,9 @@ func HandleFacebook_adset_post_copies(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adset_get_delivery_estimate handles the facebook_adset_get_delivery_estimate tool
-func HandleFacebook_adset_get_delivery_estimate(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdset_get_delivery_estimate handles the adset_get_delivery_estimate tool
+func HandleAdset_get_delivery_estimate(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1214,10 +1250,12 @@ func HandleFacebook_adset_get_delivery_estimate(ctx context.Context, request mcp
 		args["targeting_spec"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adset_get_delivery_estimate(args)
+	result, err := client.Adset_get_delivery_estimate(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_get_delivery_estimate: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_delivery_estimate: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1229,8 +1267,9 @@ func HandleFacebook_adset_get_delivery_estimate(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adset_get_insights handles the facebook_adset_get_insights tool
-func HandleFacebook_adset_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdset_get_insights handles the adset_get_insights tool
+func HandleAdset_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1363,10 +1402,12 @@ func HandleFacebook_adset_get_insights(ctx context.Context, request mcp.CallTool
 		args["use_unified_attribution_setting"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adset_get_insights(args)
+	result, err := client.Adset_get_insights(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_get_insights: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_insights: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1378,8 +1419,9 @@ func HandleFacebook_adset_get_insights(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adset_post_insights handles the facebook_adset_post_insights tool
-func HandleFacebook_adset_post_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdset_post_insights handles the adset_post_insights tool
+func HandleAdset_post_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1512,10 +1554,12 @@ func HandleFacebook_adset_post_insights(ctx context.Context, request mcp.CallToo
 		args["use_unified_attribution_setting"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adset_post_insights(args)
+	result, err := client.Adset_post_insights(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_post_insights: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_post_insights: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1527,8 +1571,9 @@ func HandleFacebook_adset_post_insights(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adset_get_message_delivery_estimate handles the facebook_adset_get_message_delivery_estimate tool
-func HandleFacebook_adset_get_message_delivery_estimate(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdset_get_message_delivery_estimate handles the adset_get_message_delivery_estimate tool
+func HandleAdset_get_message_delivery_estimate(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1587,10 +1632,12 @@ func HandleFacebook_adset_get_message_delivery_estimate(ctx context.Context, req
 		args["targeting_spec"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adset_get_message_delivery_estimate(args)
+	result, err := client.Adset_get_message_delivery_estimate(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_get_message_delivery_estimate: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_message_delivery_estimate: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1602,8 +1649,9 @@ func HandleFacebook_adset_get_message_delivery_estimate(ctx context.Context, req
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adset_get_targetingsentencelines handles the facebook_adset_get_targetingsentencelines tool
-func HandleFacebook_adset_get_targetingsentencelines(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdset_get_targetingsentencelines handles the adset_get_targetingsentencelines tool
+func HandleAdset_get_targetingsentencelines(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1616,10 +1664,12 @@ func HandleFacebook_adset_get_targetingsentencelines(ctx context.Context, reques
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adset_get_targetingsentencelines(args)
+	result, err := client.Adset_get_targetingsentencelines(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_get_targetingsentencelines: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_targetingsentencelines: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1631,8 +1681,9 @@ func HandleFacebook_adset_get_targetingsentencelines(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adset_delete_ handles the facebook_adset_delete_ tool
-func HandleFacebook_adset_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdset_delete_ handles the adset_delete_ tool
+func HandleAdset_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1645,10 +1696,12 @@ func HandleFacebook_adset_delete_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adset_delete_(args)
+	result, err := client.Adset_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1660,8 +1713,9 @@ func HandleFacebook_adset_delete_(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adset_get_ handles the facebook_adset_get_ tool
-func HandleFacebook_adset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdset_get_ handles the adset_get_ tool
+func HandleAdset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1694,10 +1748,12 @@ func HandleFacebook_adset_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["time_range"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adset_get_(args)
+	result, err := client.Adset_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1709,8 +1765,9 @@ func HandleFacebook_adset_get_(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adset_post_ handles the facebook_adset_post_ tool
-func HandleFacebook_adset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdset_post_ handles the adset_post_ tool
+func HandleAdset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1996,10 +2053,12 @@ func HandleFacebook_adset_post_(ctx context.Context, request mcp.CallToolRequest
 		args["tune_for_category"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adset_post_(args)
+	result, err := client.Adset_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adset_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -2010,3 +2069,4 @@ func HandleFacebook_adset_post_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

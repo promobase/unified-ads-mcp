@@ -15,23 +15,26 @@ import (
 func GetFBImageCopyrightMatchTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_fbimagecopyrightmatch_get_ tool
-	facebook_fbimagecopyrightmatch_get_Tool := mcp.NewTool("facebook_fbimagecopyrightmatch_get_",
+
+	// fbimagecopyrightmatch_get_ tool
+	fbimagecopyrightmatch_get_Tool := mcp.NewTool("fbimagecopyrightmatch_get_",
 		mcp.WithDescription("GET  for FBImageCopyrightMatch"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_fbimagecopyrightmatch_get_Tool)
+	tools = append(tools, fbimagecopyrightmatch_get_Tool)
+
 
 	return tools
 }
 
 // FBImageCopyrightMatch handlers
 
-// HandleFacebook_fbimagecopyrightmatch_get_ handles the facebook_fbimagecopyrightmatch_get_ tool
-func HandleFacebook_fbimagecopyrightmatch_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleFbimagecopyrightmatch_get_ handles the fbimagecopyrightmatch_get_ tool
+func HandleFbimagecopyrightmatch_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_fbimagecopyrightmatch_get_(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_fbimagecopyrightmatch_get_(args)
+	result, err := client.Fbimagecopyrightmatch_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_fbimagecopyrightmatch_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute fbimagecopyrightmatch_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_fbimagecopyrightmatch_get_(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

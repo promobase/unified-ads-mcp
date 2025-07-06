@@ -15,23 +15,26 @@ import (
 func GetProductFeedUploadErrorSampleTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_productfeeduploaderrorsample_get_ tool
-	facebook_productfeeduploaderrorsample_get_Tool := mcp.NewTool("facebook_productfeeduploaderrorsample_get_",
+
+	// productfeeduploaderrorsample_get_ tool
+	productfeeduploaderrorsample_get_Tool := mcp.NewTool("productfeeduploaderrorsample_get_",
 		mcp.WithDescription("GET  for ProductFeedUploadErrorSample"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productfeeduploaderrorsample_get_Tool)
+	tools = append(tools, productfeeduploaderrorsample_get_Tool)
+
 
 	return tools
 }
 
 // ProductFeedUploadErrorSample handlers
 
-// HandleFacebook_productfeeduploaderrorsample_get_ handles the facebook_productfeeduploaderrorsample_get_ tool
-func HandleFacebook_productfeeduploaderrorsample_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductfeeduploaderrorsample_get_ handles the productfeeduploaderrorsample_get_ tool
+func HandleProductfeeduploaderrorsample_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_productfeeduploaderrorsample_get_(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productfeeduploaderrorsample_get_(args)
+	result, err := client.Productfeeduploaderrorsample_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productfeeduploaderrorsample_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productfeeduploaderrorsample_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_productfeeduploaderrorsample_get_(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

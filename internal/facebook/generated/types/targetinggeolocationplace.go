@@ -4,13 +4,13 @@ package types
 
 // TargetingGeoLocationPlace represents a Facebook TargetingGeoLocationPlace object
 type TargetingGeoLocationPlace struct {
-	Country         string  `json:"country"`
-	Distance_unit   string  `json:"distance_unit"`
-	Key             string  `json:"key"`
-	Latitude        float64 `json:"latitude"`
-	Longitude       float64 `json:"longitude"`
-	Name            string  `json:"name"`
-	Primary_city_id int     `json:"primary_city_id"`
-	Radius          float64 `json:"radius"`
-	Region_id       int     `json:"region_id"`
+	Country string `json:"country"`
+	Distance_unit string `json:"distance_unit"`
+	Key string `json:"key"`
+	Latitude float64 `json:"latitude"`
+	Longitude float64 `json:"longitude"`
+	Name string `json:"name"`
+	Primary_city_id int `json:"primary_city_id"`
+	Radius float64 `json:"radius"`
+	Region_id int `json:"region_id"`
 }

@@ -4,9 +4,9 @@ package types
 
 // ShadowIGMediaBuilder represents a Facebook ShadowIGMediaBuilder object
 type ShadowIGMediaBuilder struct {
-	Copyright_check_status *IGVideoCopyrightCheckStatus  `json:"copyright_check_status"`
-	Id                     string                        `json:"id"`
-	Status                 string                        `json:"status"`
-	Status_code            string                        `json:"status_code"`
-	Video_status           *IGResumableVideoUploadStatus `json:"video_status"`
+	Copyright_check_status *IGVideoCopyrightCheckStatus `json:"copyright_check_status"`
+	Id string `json:"id"`
+	Status string `json:"status"`
+	Status_code string `json:"status_code"`
+	Video_status *IGResumableVideoUploadStatus `json:"video_status"`
 }

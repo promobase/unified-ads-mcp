@@ -4,7 +4,7 @@ package types
 
 // RichMediaElement represents a Facebook RichMediaElement object
 type RichMediaElement struct {
-	Element      map[string]interface{} `json:"element"`
-	Element_type string                 `json:"element_type"`
-	Name         string                 `json:"name"`
+	Element map[string]interface{} `json:"element"`
+	Element_type string `json:"element_type"`
+	Name string `json:"name"`
 }

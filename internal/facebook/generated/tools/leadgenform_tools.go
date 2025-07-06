@@ -15,28 +15,29 @@ import (
 func GetLeadgenFormTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_leadgenform_get_leads tool
-	facebook_leadgenform_get_leadsTool := mcp.NewTool("facebook_leadgenform_get_leads",
+
+	// leadgenform_get_leads tool
+	leadgenform_get_leadsTool := mcp.NewTool("leadgenform_get_leads",
 		mcp.WithDescription("GET leads for LeadgenForm"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_leadgenform_get_leadsTool)
+	tools = append(tools, leadgenform_get_leadsTool)
 
-	// facebook_leadgenform_get_test_leads tool
-	facebook_leadgenform_get_test_leadsTool := mcp.NewTool("facebook_leadgenform_get_test_leads",
+	// leadgenform_get_test_leads tool
+	leadgenform_get_test_leadsTool := mcp.NewTool("leadgenform_get_test_leads",
 		mcp.WithDescription("GET test_leads for LeadgenForm"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_leadgenform_get_test_leadsTool)
+	tools = append(tools, leadgenform_get_test_leadsTool)
 
-	// facebook_leadgenform_post_test_leads tool
-	facebook_leadgenform_post_test_leadsTool := mcp.NewTool("facebook_leadgenform_post_test_leads",
+	// leadgenform_post_test_leads tool
+	leadgenform_post_test_leadsTool := mcp.NewTool("leadgenform_post_test_leads",
 		mcp.WithDescription("POST test_leads for LeadgenForm"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -49,20 +50,20 @@ func GetLeadgenFormTools(accessToken string) []mcp.Tool {
 			mcp.Description("field_data parameter for test_leads"),
 		),
 	)
-	tools = append(tools, facebook_leadgenform_post_test_leadsTool)
+	tools = append(tools, leadgenform_post_test_leadsTool)
 
-	// facebook_leadgenform_get_ tool
-	facebook_leadgenform_get_Tool := mcp.NewTool("facebook_leadgenform_get_",
+	// leadgenform_get_ tool
+	leadgenform_get_Tool := mcp.NewTool("leadgenform_get_",
 		mcp.WithDescription("GET  for LeadgenForm"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_leadgenform_get_Tool)
+	tools = append(tools, leadgenform_get_Tool)
 
-	// facebook_leadgenform_post_ tool
-	facebook_leadgenform_post_Tool := mcp.NewTool("facebook_leadgenform_post_",
+	// leadgenform_post_ tool
+	leadgenform_post_Tool := mcp.NewTool("leadgenform_post_",
 		mcp.WithDescription("POST  for LeadgenForm"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -73,15 +74,17 @@ func GetLeadgenFormTools(accessToken string) []mcp.Tool {
 			mcp.Enum("ACTIVE", "ARCHIVED", "DELETED", "DRAFT"),
 		),
 	)
-	tools = append(tools, facebook_leadgenform_post_Tool)
+	tools = append(tools, leadgenform_post_Tool)
+
 
 	return tools
 }
 
 // LeadgenForm handlers
 
-// HandleFacebook_leadgenform_get_leads handles the facebook_leadgenform_get_leads tool
-func HandleFacebook_leadgenform_get_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLeadgenform_get_leads handles the leadgenform_get_leads tool
+func HandleLeadgenform_get_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -94,10 +97,12 @@ func HandleFacebook_leadgenform_get_leads(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_leadgenform_get_leads(args)
+	result, err := client.Leadgenform_get_leads(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_leadgenform_get_leads: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute leadgenform_get_leads: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -109,8 +114,9 @@ func HandleFacebook_leadgenform_get_leads(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_leadgenform_get_test_leads handles the facebook_leadgenform_get_test_leads tool
-func HandleFacebook_leadgenform_get_test_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLeadgenform_get_test_leads handles the leadgenform_get_test_leads tool
+func HandleLeadgenform_get_test_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -123,10 +129,12 @@ func HandleFacebook_leadgenform_get_test_leads(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_leadgenform_get_test_leads(args)
+	result, err := client.Leadgenform_get_test_leads(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_leadgenform_get_test_leads: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute leadgenform_get_test_leads: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -138,8 +146,9 @@ func HandleFacebook_leadgenform_get_test_leads(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_leadgenform_post_test_leads handles the facebook_leadgenform_post_test_leads tool
-func HandleFacebook_leadgenform_post_test_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLeadgenform_post_test_leads handles the leadgenform_post_test_leads tool
+func HandleLeadgenform_post_test_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -164,10 +173,12 @@ func HandleFacebook_leadgenform_post_test_leads(ctx context.Context, request mcp
 		args["field_data"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_leadgenform_post_test_leads(args)
+	result, err := client.Leadgenform_post_test_leads(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_leadgenform_post_test_leads: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute leadgenform_post_test_leads: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -179,8 +190,9 @@ func HandleFacebook_leadgenform_post_test_leads(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_leadgenform_get_ handles the facebook_leadgenform_get_ tool
-func HandleFacebook_leadgenform_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLeadgenform_get_ handles the leadgenform_get_ tool
+func HandleLeadgenform_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -193,10 +205,12 @@ func HandleFacebook_leadgenform_get_(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_leadgenform_get_(args)
+	result, err := client.Leadgenform_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_leadgenform_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute leadgenform_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -208,8 +222,9 @@ func HandleFacebook_leadgenform_get_(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_leadgenform_post_ handles the facebook_leadgenform_post_ tool
-func HandleFacebook_leadgenform_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLeadgenform_post_ handles the leadgenform_post_ tool
+func HandleLeadgenform_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -227,10 +242,12 @@ func HandleFacebook_leadgenform_post_(ctx context.Context, request mcp.CallToolR
 		args["status"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_leadgenform_post_(args)
+	result, err := client.Leadgenform_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_leadgenform_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute leadgenform_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -241,3 +258,4 @@ func HandleFacebook_leadgenform_post_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

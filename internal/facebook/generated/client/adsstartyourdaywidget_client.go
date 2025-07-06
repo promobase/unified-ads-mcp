@@ -21,14 +21,18 @@ func NewAdsStartYourDayWidgetClient(accessToken string) *AdsStartYourDayWidgetCl
 	}
 }
 
-// facebook_adsstartyourdaywidget_get_ GET  for AdsStartYourDayWidget
-func (c *AdsStartYourDayWidgetClient) Facebook_adsstartyourdaywidget_get_(args map[string]interface{}) (interface{}, error) {
+
+// adsstartyourdaywidget_get_ GET  for AdsStartYourDayWidget
+func (c *AdsStartYourDayWidgetClient) Adsstartyourdaywidget_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *AdsStartYourDayWidgetClient) Facebook_adsstartyourdaywidget_get_(args m
 
 	return result, nil
 }
+

@@ -15,8 +15,9 @@ import (
 func GetStoriesTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_stories_get_insights tool
-	facebook_stories_get_insightsTool := mcp.NewTool("facebook_stories_get_insights",
+
+	// stories_get_insights tool
+	stories_get_insightsTool := mcp.NewTool("stories_get_insights",
 		mcp.WithDescription("GET insights for Stories"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -27,25 +28,27 @@ func GetStoriesTools(accessToken string) []mcp.Tool {
 			mcp.Enum("PAGES_FB_STORY_REPLIES", "PAGES_FB_STORY_SHARES", "PAGES_FB_STORY_STICKER_INTERACTIONS", "PAGES_FB_STORY_THREAD_LIGHTWEIGHT_REACTIONS", "PAGE_STORY_IMPRESSIONS_BY_STORY_ID", "PAGE_STORY_IMPRESSIONS_BY_STORY_ID_UNIQUE", "STORY_INTERACTION"),
 		),
 	)
-	tools = append(tools, facebook_stories_get_insightsTool)
+	tools = append(tools, stories_get_insightsTool)
 
-	// facebook_stories_get_ tool
-	facebook_stories_get_Tool := mcp.NewTool("facebook_stories_get_",
+	// stories_get_ tool
+	stories_get_Tool := mcp.NewTool("stories_get_",
 		mcp.WithDescription("GET  for Stories"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_stories_get_Tool)
+	tools = append(tools, stories_get_Tool)
+
 
 	return tools
 }
 
 // Stories handlers
 
-// HandleFacebook_stories_get_insights handles the facebook_stories_get_insights tool
-func HandleFacebook_stories_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleStories_get_insights handles the stories_get_insights tool
+func HandleStories_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -64,10 +67,12 @@ func HandleFacebook_stories_get_insights(ctx context.Context, request mcp.CallTo
 		args["metric"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_stories_get_insights(args)
+	result, err := client.Stories_get_insights(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_stories_get_insights: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute stories_get_insights: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -79,8 +84,9 @@ func HandleFacebook_stories_get_insights(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_stories_get_ handles the facebook_stories_get_ tool
-func HandleFacebook_stories_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleStories_get_ handles the stories_get_ tool
+func HandleStories_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -93,10 +99,12 @@ func HandleFacebook_stories_get_(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_stories_get_(args)
+	result, err := client.Stories_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_stories_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute stories_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -107,3 +115,4 @@ func HandleFacebook_stories_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

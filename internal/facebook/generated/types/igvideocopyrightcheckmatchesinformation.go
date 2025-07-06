@@ -4,6 +4,6 @@ package types
 
 // IGVideoCopyrightCheckMatchesInformation represents a Facebook IGVideoCopyrightCheckMatchesInformation object
 type IGVideoCopyrightCheckMatchesInformation struct {
-	Copyright_matches []map[string]interface{}     `json:"copyright_matches"`
-	Status            *IGVideoCopyrightCheckStatus `json:"status"`
+	Copyright_matches []map[string]interface{} `json:"copyright_matches"`
+	Status *IGVideoCopyrightCheckStatus `json:"status"`
 }

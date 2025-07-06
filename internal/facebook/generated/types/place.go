@@ -4,8 +4,8 @@ package types
 
 // Place represents a Facebook Place object
 type Place struct {
-	Id             string    `json:"id"`
-	Location       *Location `json:"location"`
-	Name           string    `json:"name"`
-	Overall_rating float64   `json:"overall_rating"`
+	Id string `json:"id"`
+	Location *Location `json:"location"`
+	Name string `json:"name"`
+	Overall_rating float64 `json:"overall_rating"`
 }

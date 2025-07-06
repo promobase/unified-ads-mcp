@@ -4,6 +4,6 @@ package types
 
 // BusinessAgreement represents a Facebook BusinessAgreement object
 type BusinessAgreement struct {
-	Id             string `json:"id"`
+	Id string `json:"id"`
 	Request_status string `json:"request_status"`
 }

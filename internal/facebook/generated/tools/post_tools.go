@@ -15,18 +15,19 @@ import (
 func GetPostTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_post_get_attachments tool
-	facebook_post_get_attachmentsTool := mcp.NewTool("facebook_post_get_attachments",
+
+	// post_get_attachments tool
+	post_get_attachmentsTool := mcp.NewTool("post_get_attachments",
 		mcp.WithDescription("GET attachments for Post"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_post_get_attachmentsTool)
+	tools = append(tools, post_get_attachmentsTool)
 
-	// facebook_post_get_comments tool
-	facebook_post_get_commentsTool := mcp.NewTool("facebook_post_get_comments",
+	// post_get_comments tool
+	post_get_commentsTool := mcp.NewTool("post_get_comments",
 		mcp.WithDescription("GET comments for Post"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -48,10 +49,10 @@ func GetPostTools(accessToken string) []mcp.Tool {
 			mcp.Description("since parameter for comments"),
 		),
 	)
-	tools = append(tools, facebook_post_get_commentsTool)
+	tools = append(tools, post_get_commentsTool)
 
-	// facebook_post_post_comments tool
-	facebook_post_post_commentsTool := mcp.NewTool("facebook_post_post_comments",
+	// post_post_comments tool
+	post_post_commentsTool := mcp.NewTool("post_post_comments",
 		mcp.WithDescription("POST comments for Post"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -92,20 +93,20 @@ func GetPostTools(accessToken string) []mcp.Tool {
 			mcp.Description("tracking parameter for comments"),
 		),
 	)
-	tools = append(tools, facebook_post_post_commentsTool)
+	tools = append(tools, post_post_commentsTool)
 
-	// facebook_post_get_dynamic_posts tool
-	facebook_post_get_dynamic_postsTool := mcp.NewTool("facebook_post_get_dynamic_posts",
+	// post_get_dynamic_posts tool
+	post_get_dynamic_postsTool := mcp.NewTool("post_get_dynamic_posts",
 		mcp.WithDescription("GET dynamic_posts for Post"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_post_get_dynamic_postsTool)
+	tools = append(tools, post_get_dynamic_postsTool)
 
-	// facebook_post_get_insights tool
-	facebook_post_get_insightsTool := mcp.NewTool("facebook_post_get_insights",
+	// post_get_insights tool
+	post_get_insightsTool := mcp.NewTool("post_get_insights",
 		mcp.WithDescription("GET insights for Post"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -129,10 +130,10 @@ func GetPostTools(accessToken string) []mcp.Tool {
 			mcp.Description("until parameter for insights"),
 		),
 	)
-	tools = append(tools, facebook_post_get_insightsTool)
+	tools = append(tools, post_get_insightsTool)
 
-	// facebook_post_delete_likes tool
-	facebook_post_delete_likesTool := mcp.NewTool("facebook_post_delete_likes",
+	// post_delete_likes tool
+	post_delete_likesTool := mcp.NewTool("post_delete_likes",
 		mcp.WithDescription("DELETE likes for Post"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -145,10 +146,10 @@ func GetPostTools(accessToken string) []mcp.Tool {
 			mcp.Description("tracking parameter for likes"),
 		),
 	)
-	tools = append(tools, facebook_post_delete_likesTool)
+	tools = append(tools, post_delete_likesTool)
 
-	// facebook_post_post_likes tool
-	facebook_post_post_likesTool := mcp.NewTool("facebook_post_post_likes",
+	// post_post_likes tool
+	post_post_likesTool := mcp.NewTool("post_post_likes",
 		mcp.WithDescription("POST likes for Post"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -164,10 +165,10 @@ func GetPostTools(accessToken string) []mcp.Tool {
 			mcp.Description("tracking parameter for likes"),
 		),
 	)
-	tools = append(tools, facebook_post_post_likesTool)
+	tools = append(tools, post_post_likesTool)
 
-	// facebook_post_get_reactions tool
-	facebook_post_get_reactionsTool := mcp.NewTool("facebook_post_get_reactions",
+	// post_get_reactions tool
+	post_get_reactionsTool := mcp.NewTool("post_get_reactions",
 		mcp.WithDescription("GET reactions for Post"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -178,50 +179,50 @@ func GetPostTools(accessToken string) []mcp.Tool {
 			mcp.Enum("ANGRY", "CARE", "FIRE", "HAHA", "HUNDRED", "LIKE", "LOVE", "NONE", "PRIDE", "SAD", "THANKFUL", "WOW"),
 		),
 	)
-	tools = append(tools, facebook_post_get_reactionsTool)
+	tools = append(tools, post_get_reactionsTool)
 
-	// facebook_post_get_sharedposts tool
-	facebook_post_get_sharedpostsTool := mcp.NewTool("facebook_post_get_sharedposts",
+	// post_get_sharedposts tool
+	post_get_sharedpostsTool := mcp.NewTool("post_get_sharedposts",
 		mcp.WithDescription("GET sharedposts for Post"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_post_get_sharedpostsTool)
+	tools = append(tools, post_get_sharedpostsTool)
 
-	// facebook_post_get_sponsor_tags tool
-	facebook_post_get_sponsor_tagsTool := mcp.NewTool("facebook_post_get_sponsor_tags",
+	// post_get_sponsor_tags tool
+	post_get_sponsor_tagsTool := mcp.NewTool("post_get_sponsor_tags",
 		mcp.WithDescription("GET sponsor_tags for Post"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_post_get_sponsor_tagsTool)
+	tools = append(tools, post_get_sponsor_tagsTool)
 
-	// facebook_post_get_to tool
-	facebook_post_get_toTool := mcp.NewTool("facebook_post_get_to",
+	// post_get_to tool
+	post_get_toTool := mcp.NewTool("post_get_to",
 		mcp.WithDescription("GET to for Post"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_post_get_toTool)
+	tools = append(tools, post_get_toTool)
 
-	// facebook_post_delete_ tool
-	facebook_post_delete_Tool := mcp.NewTool("facebook_post_delete_",
+	// post_delete_ tool
+	post_delete_Tool := mcp.NewTool("post_delete_",
 		mcp.WithDescription("DELETE  for Post"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_post_delete_Tool)
+	tools = append(tools, post_delete_Tool)
 
-	// facebook_post_get_ tool
-	facebook_post_get_Tool := mcp.NewTool("facebook_post_get_",
+	// post_get_ tool
+	post_get_Tool := mcp.NewTool("post_get_",
 		mcp.WithDescription("GET  for Post"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -234,10 +235,10 @@ func GetPostTools(accessToken string) []mcp.Tool {
 			mcp.Description("primary_ig_user_id parameter for "),
 		),
 	)
-	tools = append(tools, facebook_post_get_Tool)
+	tools = append(tools, post_get_Tool)
 
-	// facebook_post_post_ tool
-	facebook_post_post_Tool := mcp.NewTool("facebook_post_post_",
+	// post_post_ tool
+	post_post_Tool := mcp.NewTool("post_post_",
 		mcp.WithDescription("POST  for Post"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -340,15 +341,17 @@ func GetPostTools(accessToken string) []mcp.Tool {
 			mcp.Description("tracking parameter for "),
 		),
 	)
-	tools = append(tools, facebook_post_post_Tool)
+	tools = append(tools, post_post_Tool)
+
 
 	return tools
 }
 
 // Post handlers
 
-// HandleFacebook_post_get_attachments handles the facebook_post_get_attachments tool
-func HandleFacebook_post_get_attachments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePost_get_attachments handles the post_get_attachments tool
+func HandlePost_get_attachments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -361,10 +364,12 @@ func HandleFacebook_post_get_attachments(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_post_get_attachments(args)
+	result, err := client.Post_get_attachments(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_post_get_attachments: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute post_get_attachments: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -376,8 +381,9 @@ func HandleFacebook_post_get_attachments(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_post_get_comments handles the facebook_post_get_comments tool
-func HandleFacebook_post_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePost_get_comments handles the post_get_comments tool
+func HandlePost_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -410,10 +416,12 @@ func HandleFacebook_post_get_comments(ctx context.Context, request mcp.CallToolR
 		args["since"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_post_get_comments(args)
+	result, err := client.Post_get_comments(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_post_get_comments: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute post_get_comments: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -425,8 +433,9 @@ func HandleFacebook_post_get_comments(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_post_post_comments handles the facebook_post_post_comments tool
-func HandleFacebook_post_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePost_post_comments handles the post_post_comments tool
+func HandlePost_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -495,10 +504,12 @@ func HandleFacebook_post_post_comments(ctx context.Context, request mcp.CallTool
 		args["tracking"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_post_post_comments(args)
+	result, err := client.Post_post_comments(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_post_post_comments: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute post_post_comments: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -510,8 +521,9 @@ func HandleFacebook_post_post_comments(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_post_get_dynamic_posts handles the facebook_post_get_dynamic_posts tool
-func HandleFacebook_post_get_dynamic_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePost_get_dynamic_posts handles the post_get_dynamic_posts tool
+func HandlePost_get_dynamic_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -524,10 +536,12 @@ func HandleFacebook_post_get_dynamic_posts(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_post_get_dynamic_posts(args)
+	result, err := client.Post_get_dynamic_posts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_post_get_dynamic_posts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute post_get_dynamic_posts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -539,8 +553,9 @@ func HandleFacebook_post_get_dynamic_posts(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_post_get_insights handles the facebook_post_get_insights tool
-func HandleFacebook_post_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePost_get_insights handles the post_get_insights tool
+func HandlePost_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -579,10 +594,12 @@ func HandleFacebook_post_get_insights(ctx context.Context, request mcp.CallToolR
 		args["until"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_post_get_insights(args)
+	result, err := client.Post_get_insights(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_post_get_insights: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute post_get_insights: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -594,8 +611,9 @@ func HandleFacebook_post_get_insights(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_post_delete_likes handles the facebook_post_delete_likes tool
-func HandleFacebook_post_delete_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePost_delete_likes handles the post_delete_likes tool
+func HandlePost_delete_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -618,10 +636,12 @@ func HandleFacebook_post_delete_likes(ctx context.Context, request mcp.CallToolR
 		args["tracking"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_post_delete_likes(args)
+	result, err := client.Post_delete_likes(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_post_delete_likes: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute post_delete_likes: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -633,8 +653,9 @@ func HandleFacebook_post_delete_likes(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_post_post_likes handles the facebook_post_post_likes tool
-func HandleFacebook_post_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePost_post_likes handles the post_post_likes tool
+func HandlePost_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -662,10 +683,12 @@ func HandleFacebook_post_post_likes(ctx context.Context, request mcp.CallToolReq
 		args["tracking"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_post_post_likes(args)
+	result, err := client.Post_post_likes(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_post_post_likes: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute post_post_likes: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -677,8 +700,9 @@ func HandleFacebook_post_post_likes(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_post_get_reactions handles the facebook_post_get_reactions tool
-func HandleFacebook_post_get_reactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePost_get_reactions handles the post_get_reactions tool
+func HandlePost_get_reactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -696,10 +720,12 @@ func HandleFacebook_post_get_reactions(ctx context.Context, request mcp.CallTool
 		args["type"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_post_get_reactions(args)
+	result, err := client.Post_get_reactions(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_post_get_reactions: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute post_get_reactions: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -711,8 +737,9 @@ func HandleFacebook_post_get_reactions(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_post_get_sharedposts handles the facebook_post_get_sharedposts tool
-func HandleFacebook_post_get_sharedposts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePost_get_sharedposts handles the post_get_sharedposts tool
+func HandlePost_get_sharedposts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -725,10 +752,12 @@ func HandleFacebook_post_get_sharedposts(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_post_get_sharedposts(args)
+	result, err := client.Post_get_sharedposts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_post_get_sharedposts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute post_get_sharedposts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -740,8 +769,9 @@ func HandleFacebook_post_get_sharedposts(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_post_get_sponsor_tags handles the facebook_post_get_sponsor_tags tool
-func HandleFacebook_post_get_sponsor_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePost_get_sponsor_tags handles the post_get_sponsor_tags tool
+func HandlePost_get_sponsor_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -754,10 +784,12 @@ func HandleFacebook_post_get_sponsor_tags(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_post_get_sponsor_tags(args)
+	result, err := client.Post_get_sponsor_tags(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_post_get_sponsor_tags: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute post_get_sponsor_tags: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -769,8 +801,9 @@ func HandleFacebook_post_get_sponsor_tags(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_post_get_to handles the facebook_post_get_to tool
-func HandleFacebook_post_get_to(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePost_get_to handles the post_get_to tool
+func HandlePost_get_to(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -783,10 +816,12 @@ func HandleFacebook_post_get_to(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_post_get_to(args)
+	result, err := client.Post_get_to(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_post_get_to: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute post_get_to: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -798,8 +833,9 @@ func HandleFacebook_post_get_to(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_post_delete_ handles the facebook_post_delete_ tool
-func HandleFacebook_post_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePost_delete_ handles the post_delete_ tool
+func HandlePost_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -812,10 +848,12 @@ func HandleFacebook_post_delete_(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_post_delete_(args)
+	result, err := client.Post_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_post_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute post_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -827,8 +865,9 @@ func HandleFacebook_post_delete_(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_post_get_ handles the facebook_post_get_ tool
-func HandleFacebook_post_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePost_get_ handles the post_get_ tool
+func HandlePost_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -851,10 +890,12 @@ func HandleFacebook_post_get_(ctx context.Context, request mcp.CallToolRequest) 
 		args["primary_ig_user_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_post_get_(args)
+	result, err := client.Post_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_post_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute post_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -866,8 +907,9 @@ func HandleFacebook_post_get_(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_post_post_ handles the facebook_post_post_ tool
-func HandleFacebook_post_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePost_post_ handles the post_post_ tool
+func HandlePost_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -1040,10 +1082,12 @@ func HandleFacebook_post_post_(ctx context.Context, request mcp.CallToolRequest)
 		args["tracking"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_post_post_(args)
+	result, err := client.Post_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_post_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute post_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -1054,3 +1098,4 @@ func HandleFacebook_post_post_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

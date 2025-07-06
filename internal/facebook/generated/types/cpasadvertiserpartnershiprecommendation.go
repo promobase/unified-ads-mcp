@@ -4,13 +4,13 @@ package types
 
 // CPASAdvertiserPartnershipRecommendation represents a Facebook CPASAdvertiserPartnershipRecommendation object
 type CPASAdvertiserPartnershipRecommendation struct {
-	Advertiser_business_id string   `json:"advertiser_business_id"`
-	Brand_business_id      string   `json:"brand_business_id"`
-	Brands                 []string `json:"brands"`
-	Countries              []string `json:"countries"`
-	Id                     string   `json:"id"`
-	Merchant_business_id   string   `json:"merchant_business_id"`
-	Merchant_categories    []string `json:"merchant_categories"`
-	Status                 string   `json:"status"`
-	Status_reason          string   `json:"status_reason"`
+	Advertiser_business_id string `json:"advertiser_business_id"`
+	Brand_business_id string `json:"brand_business_id"`
+	Brands []string `json:"brands"`
+	Countries []string `json:"countries"`
+	Id string `json:"id"`
+	Merchant_business_id string `json:"merchant_business_id"`
+	Merchant_categories []string `json:"merchant_categories"`
+	Status string `json:"status"`
+	Status_reason string `json:"status_reason"`
 }

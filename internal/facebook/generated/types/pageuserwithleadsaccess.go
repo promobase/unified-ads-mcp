@@ -4,8 +4,8 @@ package types
 
 // PageUserWithLeadsAccess represents a Facebook PageUserWithLeadsAccess object
 type PageUserWithLeadsAccess struct {
-	Active_on_business bool   `json:"active_on_business"`
-	Business_role      string `json:"business_role"`
-	Can_access_leads   bool   `json:"can_access_leads"`
-	Page_role          string `json:"page_role"`
+	Active_on_business bool `json:"active_on_business"`
+	Business_role string `json:"business_role"`
+	Can_access_leads bool `json:"can_access_leads"`
+	Page_role string `json:"page_role"`
 }

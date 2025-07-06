@@ -15,23 +15,26 @@ import (
 func GetCopyrightMediaMisuseTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_copyrightmediamisuse_get_ tool
-	facebook_copyrightmediamisuse_get_Tool := mcp.NewTool("facebook_copyrightmediamisuse_get_",
+
+	// copyrightmediamisuse_get_ tool
+	copyrightmediamisuse_get_Tool := mcp.NewTool("copyrightmediamisuse_get_",
 		mcp.WithDescription("GET  for CopyrightMediaMisuse"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_copyrightmediamisuse_get_Tool)
+	tools = append(tools, copyrightmediamisuse_get_Tool)
+
 
 	return tools
 }
 
 // CopyrightMediaMisuse handlers
 
-// HandleFacebook_copyrightmediamisuse_get_ handles the facebook_copyrightmediamisuse_get_ tool
-func HandleFacebook_copyrightmediamisuse_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCopyrightmediamisuse_get_ handles the copyrightmediamisuse_get_ tool
+func HandleCopyrightmediamisuse_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_copyrightmediamisuse_get_(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_copyrightmediamisuse_get_(args)
+	result, err := client.Copyrightmediamisuse_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_copyrightmediamisuse_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute copyrightmediamisuse_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_copyrightmediamisuse_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

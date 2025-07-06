@@ -21,14 +21,18 @@ func NewPageInsightsAsyncExportRunClient(accessToken string) *PageInsightsAsyncE
 	}
 }
 
-// facebook_pageinsightsasyncexportrun_get_ GET  for PageInsightsAsyncExportRun
-func (c *PageInsightsAsyncExportRunClient) Facebook_pageinsightsasyncexportrun_get_(args map[string]interface{}) (interface{}, error) {
+
+// pageinsightsasyncexportrun_get_ GET  for PageInsightsAsyncExportRun
+func (c *PageInsightsAsyncExportRunClient) Pageinsightsasyncexportrun_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *PageInsightsAsyncExportRunClient) Facebook_pageinsightsasyncexportrun_g
 
 	return result, nil
 }
+

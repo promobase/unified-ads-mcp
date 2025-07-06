@@ -6,13 +6,13 @@ import "time"
 
 // OfflineConversionDataSetActivities represents a Facebook OfflineConversionDataSetActivities object
 type OfflineConversionDataSetActivities struct {
-	Actor_id       int       `json:"actor_id"`
-	Actor_name     string    `json:"actor_name"`
-	Adaccount_id   int       `json:"adaccount_id"`
-	Adaccount_name string    `json:"adaccount_name"`
-	Event_time     time.Time `json:"event_time"`
-	Event_type     string    `json:"event_type"`
-	Extra_data     string    `json:"extra_data"`
-	Object_id      int       `json:"object_id"`
-	Object_name    string    `json:"object_name"`
+	Actor_id int `json:"actor_id"`
+	Actor_name string `json:"actor_name"`
+	Adaccount_id int `json:"adaccount_id"`
+	Adaccount_name string `json:"adaccount_name"`
+	Event_time time.Time `json:"event_time"`
+	Event_type string `json:"event_type"`
+	Extra_data string `json:"extra_data"`
+	Object_id int `json:"object_id"`
+	Object_name string `json:"object_name"`
 }

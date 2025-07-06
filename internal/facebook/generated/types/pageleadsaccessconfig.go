@@ -4,6 +4,6 @@ package types
 
 // PageLeadsAccessConfig represents a Facebook PageLeadsAccessConfig object
 type PageLeadsAccessConfig struct {
-	Id   string `json:"id"`
-	Page *Page  `json:"page"`
+	Id string `json:"id"`
+	Page *Page `json:"page"`
 }

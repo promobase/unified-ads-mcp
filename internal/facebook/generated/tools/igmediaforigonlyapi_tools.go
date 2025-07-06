@@ -15,28 +15,29 @@ import (
 func GetIGMediaForIGOnlyAPITools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_igmediaforigonlyapi_get_children tool
-	facebook_igmediaforigonlyapi_get_childrenTool := mcp.NewTool("facebook_igmediaforigonlyapi_get_children",
+
+	// igmediaforigonlyapi_get_children tool
+	igmediaforigonlyapi_get_childrenTool := mcp.NewTool("igmediaforigonlyapi_get_children",
 		mcp.WithDescription("GET children for IGMediaForIGOnlyAPI"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_igmediaforigonlyapi_get_childrenTool)
+	tools = append(tools, igmediaforigonlyapi_get_childrenTool)
 
-	// facebook_igmediaforigonlyapi_get_comments tool
-	facebook_igmediaforigonlyapi_get_commentsTool := mcp.NewTool("facebook_igmediaforigonlyapi_get_comments",
+	// igmediaforigonlyapi_get_comments tool
+	igmediaforigonlyapi_get_commentsTool := mcp.NewTool("igmediaforigonlyapi_get_comments",
 		mcp.WithDescription("GET comments for IGMediaForIGOnlyAPI"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_igmediaforigonlyapi_get_commentsTool)
+	tools = append(tools, igmediaforigonlyapi_get_commentsTool)
 
-	// facebook_igmediaforigonlyapi_post_comments tool
-	facebook_igmediaforigonlyapi_post_commentsTool := mcp.NewTool("facebook_igmediaforigonlyapi_post_comments",
+	// igmediaforigonlyapi_post_comments tool
+	igmediaforigonlyapi_post_commentsTool := mcp.NewTool("igmediaforigonlyapi_post_comments",
 		mcp.WithDescription("POST comments for IGMediaForIGOnlyAPI"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -46,10 +47,10 @@ func GetIGMediaForIGOnlyAPITools(accessToken string) []mcp.Tool {
 			mcp.Description("message parameter for comments"),
 		),
 	)
-	tools = append(tools, facebook_igmediaforigonlyapi_post_commentsTool)
+	tools = append(tools, igmediaforigonlyapi_post_commentsTool)
 
-	// facebook_igmediaforigonlyapi_get_insights tool
-	facebook_igmediaforigonlyapi_get_insightsTool := mcp.NewTool("facebook_igmediaforigonlyapi_get_insights",
+	// igmediaforigonlyapi_get_insights tool
+	igmediaforigonlyapi_get_insightsTool := mcp.NewTool("igmediaforigonlyapi_get_insights",
 		mcp.WithDescription("GET insights for IGMediaForIGOnlyAPI"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -69,20 +70,20 @@ func GetIGMediaForIGOnlyAPITools(accessToken string) []mcp.Tool {
 			mcp.Enum("day", "days_28", "lifetime", "month", "total_over_range", "week"),
 		),
 	)
-	tools = append(tools, facebook_igmediaforigonlyapi_get_insightsTool)
+	tools = append(tools, igmediaforigonlyapi_get_insightsTool)
 
-	// facebook_igmediaforigonlyapi_get_ tool
-	facebook_igmediaforigonlyapi_get_Tool := mcp.NewTool("facebook_igmediaforigonlyapi_get_",
+	// igmediaforigonlyapi_get_ tool
+	igmediaforigonlyapi_get_Tool := mcp.NewTool("igmediaforigonlyapi_get_",
 		mcp.WithDescription("GET  for IGMediaForIGOnlyAPI"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_igmediaforigonlyapi_get_Tool)
+	tools = append(tools, igmediaforigonlyapi_get_Tool)
 
-	// facebook_igmediaforigonlyapi_post_ tool
-	facebook_igmediaforigonlyapi_post_Tool := mcp.NewTool("facebook_igmediaforigonlyapi_post_",
+	// igmediaforigonlyapi_post_ tool
+	igmediaforigonlyapi_post_Tool := mcp.NewTool("igmediaforigonlyapi_post_",
 		mcp.WithDescription("POST  for IGMediaForIGOnlyAPI"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -93,15 +94,17 @@ func GetIGMediaForIGOnlyAPITools(accessToken string) []mcp.Tool {
 			mcp.Description("comment_enabled parameter for "),
 		),
 	)
-	tools = append(tools, facebook_igmediaforigonlyapi_post_Tool)
+	tools = append(tools, igmediaforigonlyapi_post_Tool)
+
 
 	return tools
 }
 
 // IGMediaForIGOnlyAPI handlers
 
-// HandleFacebook_igmediaforigonlyapi_get_children handles the facebook_igmediaforigonlyapi_get_children tool
-func HandleFacebook_igmediaforigonlyapi_get_children(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIgmediaforigonlyapi_get_children handles the igmediaforigonlyapi_get_children tool
+func HandleIgmediaforigonlyapi_get_children(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -114,10 +117,12 @@ func HandleFacebook_igmediaforigonlyapi_get_children(ctx context.Context, reques
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_igmediaforigonlyapi_get_children(args)
+	result, err := client.Igmediaforigonlyapi_get_children(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_igmediaforigonlyapi_get_children: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmediaforigonlyapi_get_children: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -129,8 +134,9 @@ func HandleFacebook_igmediaforigonlyapi_get_children(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_igmediaforigonlyapi_get_comments handles the facebook_igmediaforigonlyapi_get_comments tool
-func HandleFacebook_igmediaforigonlyapi_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIgmediaforigonlyapi_get_comments handles the igmediaforigonlyapi_get_comments tool
+func HandleIgmediaforigonlyapi_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -143,10 +149,12 @@ func HandleFacebook_igmediaforigonlyapi_get_comments(ctx context.Context, reques
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_igmediaforigonlyapi_get_comments(args)
+	result, err := client.Igmediaforigonlyapi_get_comments(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_igmediaforigonlyapi_get_comments: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmediaforigonlyapi_get_comments: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -158,8 +166,9 @@ func HandleFacebook_igmediaforigonlyapi_get_comments(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_igmediaforigonlyapi_post_comments handles the facebook_igmediaforigonlyapi_post_comments tool
-func HandleFacebook_igmediaforigonlyapi_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIgmediaforigonlyapi_post_comments handles the igmediaforigonlyapi_post_comments tool
+func HandleIgmediaforigonlyapi_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -177,10 +186,12 @@ func HandleFacebook_igmediaforigonlyapi_post_comments(ctx context.Context, reque
 		args["message"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_igmediaforigonlyapi_post_comments(args)
+	result, err := client.Igmediaforigonlyapi_post_comments(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_igmediaforigonlyapi_post_comments: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmediaforigonlyapi_post_comments: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -192,8 +203,9 @@ func HandleFacebook_igmediaforigonlyapi_post_comments(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_igmediaforigonlyapi_get_insights handles the facebook_igmediaforigonlyapi_get_insights tool
-func HandleFacebook_igmediaforigonlyapi_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIgmediaforigonlyapi_get_insights handles the igmediaforigonlyapi_get_insights tool
+func HandleIgmediaforigonlyapi_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -225,10 +237,12 @@ func HandleFacebook_igmediaforigonlyapi_get_insights(ctx context.Context, reques
 		args["period"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_igmediaforigonlyapi_get_insights(args)
+	result, err := client.Igmediaforigonlyapi_get_insights(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_igmediaforigonlyapi_get_insights: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmediaforigonlyapi_get_insights: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -240,8 +254,9 @@ func HandleFacebook_igmediaforigonlyapi_get_insights(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_igmediaforigonlyapi_get_ handles the facebook_igmediaforigonlyapi_get_ tool
-func HandleFacebook_igmediaforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIgmediaforigonlyapi_get_ handles the igmediaforigonlyapi_get_ tool
+func HandleIgmediaforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -254,10 +269,12 @@ func HandleFacebook_igmediaforigonlyapi_get_(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_igmediaforigonlyapi_get_(args)
+	result, err := client.Igmediaforigonlyapi_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_igmediaforigonlyapi_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmediaforigonlyapi_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -269,8 +286,9 @@ func HandleFacebook_igmediaforigonlyapi_get_(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_igmediaforigonlyapi_post_ handles the facebook_igmediaforigonlyapi_post_ tool
-func HandleFacebook_igmediaforigonlyapi_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleIgmediaforigonlyapi_post_ handles the igmediaforigonlyapi_post_ tool
+func HandleIgmediaforigonlyapi_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -290,10 +308,12 @@ func HandleFacebook_igmediaforigonlyapi_post_(ctx context.Context, request mcp.C
 	}
 	args["comment_enabled"] = comment_enabled
 
+
+
 	// Call the client method
-	result, err := client.Facebook_igmediaforigonlyapi_post_(args)
+	result, err := client.Igmediaforigonlyapi_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_igmediaforigonlyapi_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmediaforigonlyapi_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -304,3 +324,4 @@ func HandleFacebook_igmediaforigonlyapi_post_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

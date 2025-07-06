@@ -15,23 +15,26 @@ import (
 func GetProductItemLocalInfoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_productitemlocalinfo_get_ tool
-	facebook_productitemlocalinfo_get_Tool := mcp.NewTool("facebook_productitemlocalinfo_get_",
+
+	// productitemlocalinfo_get_ tool
+	productitemlocalinfo_get_Tool := mcp.NewTool("productitemlocalinfo_get_",
 		mcp.WithDescription("GET  for ProductItemLocalInfo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productitemlocalinfo_get_Tool)
+	tools = append(tools, productitemlocalinfo_get_Tool)
+
 
 	return tools
 }
 
 // ProductItemLocalInfo handlers
 
-// HandleFacebook_productitemlocalinfo_get_ handles the facebook_productitemlocalinfo_get_ tool
-func HandleFacebook_productitemlocalinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductitemlocalinfo_get_ handles the productitemlocalinfo_get_ tool
+func HandleProductitemlocalinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_productitemlocalinfo_get_(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productitemlocalinfo_get_(args)
+	result, err := client.Productitemlocalinfo_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productitemlocalinfo_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productitemlocalinfo_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_productitemlocalinfo_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

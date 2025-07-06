@@ -4,7 +4,7 @@ package types
 
 // LeadGenConditionalQuestionsGroupQuestions represents a Facebook LeadGenConditionalQuestionsGroupQuestions object
 type LeadGenConditionalQuestionsGroupQuestions struct {
-	Field_key  string `json:"field_key"`
+	Field_key string `json:"field_key"`
 	Input_type string `json:"input_type"`
-	Name       string `json:"name"`
+	Name string `json:"name"`
 }

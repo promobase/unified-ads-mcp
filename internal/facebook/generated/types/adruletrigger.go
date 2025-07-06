@@ -4,8 +4,8 @@ package types
 
 // AdRuleTrigger represents a Facebook AdRuleTrigger object
 type AdRuleTrigger struct {
-	Field    string                 `json:"field"`
-	Operator string                 `json:"operator"`
-	Type_    string                 `json:"type"`
-	Value    map[string]interface{} `json:"value"`
+	Field string `json:"field"`
+	Operator string `json:"operator"`
+	Type_ string `json:"type"`
+	Value map[string]interface{} `json:"value"`
 }

@@ -4,7 +4,7 @@ package types
 
 // MessagingFeatureStatus represents a Facebook MessagingFeatureStatus object
 type MessagingFeatureStatus struct {
-	Hop_v2         bool `json:"hop_v2"`
-	Ig_multi_app   bool `json:"ig_multi_app"`
+	Hop_v2 bool `json:"hop_v2"`
+	Ig_multi_app bool `json:"ig_multi_app"`
 	Msgr_multi_app bool `json:"msgr_multi_app"`
 }

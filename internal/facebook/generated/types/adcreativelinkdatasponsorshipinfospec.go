@@ -5,5 +5,5 @@ package types
 // AdCreativeLinkDataSponsorshipInfoSpec represents a Facebook AdCreativeLinkDataSponsorshipInfoSpec object
 type AdCreativeLinkDataSponsorshipInfoSpec struct {
 	Sponsor_image_url string `json:"sponsor_image_url"`
-	Sponsor_name      string `json:"sponsor_name"`
+	Sponsor_name string `json:"sponsor_name"`
 }

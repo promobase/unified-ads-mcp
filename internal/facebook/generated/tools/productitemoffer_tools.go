@@ -15,23 +15,26 @@ import (
 func GetProductItemOfferTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_productitemoffer_get_ tool
-	facebook_productitemoffer_get_Tool := mcp.NewTool("facebook_productitemoffer_get_",
+
+	// productitemoffer_get_ tool
+	productitemoffer_get_Tool := mcp.NewTool("productitemoffer_get_",
 		mcp.WithDescription("GET  for ProductItemOffer"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productitemoffer_get_Tool)
+	tools = append(tools, productitemoffer_get_Tool)
+
 
 	return tools
 }
 
 // ProductItemOffer handlers
 
-// HandleFacebook_productitemoffer_get_ handles the facebook_productitemoffer_get_ tool
-func HandleFacebook_productitemoffer_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductitemoffer_get_ handles the productitemoffer_get_ tool
+func HandleProductitemoffer_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_productitemoffer_get_(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productitemoffer_get_(args)
+	result, err := client.Productitemoffer_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productitemoffer_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productitemoffer_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_productitemoffer_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

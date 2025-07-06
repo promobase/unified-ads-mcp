@@ -15,18 +15,19 @@ import (
 func GetProductItemTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_productitem_get_channels_to_integrity_status tool
-	facebook_productitem_get_channels_to_integrity_statusTool := mcp.NewTool("facebook_productitem_get_channels_to_integrity_status",
+
+	// productitem_get_channels_to_integrity_status tool
+	productitem_get_channels_to_integrity_statusTool := mcp.NewTool("productitem_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for ProductItem"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productitem_get_channels_to_integrity_statusTool)
+	tools = append(tools, productitem_get_channels_to_integrity_statusTool)
 
-	// facebook_productitem_get_override_details tool
-	facebook_productitem_get_override_detailsTool := mcp.NewTool("facebook_productitem_get_override_details",
+	// productitem_get_override_details tool
+	productitem_get_override_detailsTool := mcp.NewTool("productitem_get_override_details",
 		mcp.WithDescription("GET override_details for ProductItem"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -40,40 +41,40 @@ func GetProductItemTools(accessToken string) []mcp.Tool {
 			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
 		),
 	)
-	tools = append(tools, facebook_productitem_get_override_detailsTool)
+	tools = append(tools, productitem_get_override_detailsTool)
 
-	// facebook_productitem_get_product_sets tool
-	facebook_productitem_get_product_setsTool := mcp.NewTool("facebook_productitem_get_product_sets",
+	// productitem_get_product_sets tool
+	productitem_get_product_setsTool := mcp.NewTool("productitem_get_product_sets",
 		mcp.WithDescription("GET product_sets for ProductItem"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productitem_get_product_setsTool)
+	tools = append(tools, productitem_get_product_setsTool)
 
-	// facebook_productitem_get_videos_metadata tool
-	facebook_productitem_get_videos_metadataTool := mcp.NewTool("facebook_productitem_get_videos_metadata",
+	// productitem_get_videos_metadata tool
+	productitem_get_videos_metadataTool := mcp.NewTool("productitem_get_videos_metadata",
 		mcp.WithDescription("GET videos_metadata for ProductItem"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productitem_get_videos_metadataTool)
+	tools = append(tools, productitem_get_videos_metadataTool)
 
-	// facebook_productitem_delete_ tool
-	facebook_productitem_delete_Tool := mcp.NewTool("facebook_productitem_delete_",
+	// productitem_delete_ tool
+	productitem_delete_Tool := mcp.NewTool("productitem_delete_",
 		mcp.WithDescription("DELETE  for ProductItem"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_productitem_delete_Tool)
+	tools = append(tools, productitem_delete_Tool)
 
-	// facebook_productitem_get_ tool
-	facebook_productitem_get_Tool := mcp.NewTool("facebook_productitem_get_",
+	// productitem_get_ tool
+	productitem_get_Tool := mcp.NewTool("productitem_get_",
 		mcp.WithDescription("GET  for ProductItem"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -95,10 +96,10 @@ func GetProductItemTools(accessToken string) []mcp.Tool {
 			mcp.Description("override_language parameter for "),
 		),
 	)
-	tools = append(tools, facebook_productitem_get_Tool)
+	tools = append(tools, productitem_get_Tool)
 
-	// facebook_productitem_post_ tool
-	facebook_productitem_post_Tool := mcp.NewTool("facebook_productitem_post_",
+	// productitem_post_ tool
+	productitem_post_Tool := mcp.NewTool("productitem_post_",
 		mcp.WithDescription("POST  for ProductItem"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -345,15 +346,17 @@ func GetProductItemTools(accessToken string) []mcp.Tool {
 			mcp.Description("windows_phone_url parameter for "),
 		),
 	)
-	tools = append(tools, facebook_productitem_post_Tool)
+	tools = append(tools, productitem_post_Tool)
+
 
 	return tools
 }
 
 // ProductItem handlers
 
-// HandleFacebook_productitem_get_channels_to_integrity_status handles the facebook_productitem_get_channels_to_integrity_status tool
-func HandleFacebook_productitem_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductitem_get_channels_to_integrity_status handles the productitem_get_channels_to_integrity_status tool
+func HandleProductitem_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -366,10 +369,12 @@ func HandleFacebook_productitem_get_channels_to_integrity_status(ctx context.Con
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productitem_get_channels_to_integrity_status(args)
+	result, err := client.Productitem_get_channels_to_integrity_status(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productitem_get_channels_to_integrity_status: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productitem_get_channels_to_integrity_status: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -381,8 +386,9 @@ func HandleFacebook_productitem_get_channels_to_integrity_status(ctx context.Con
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productitem_get_override_details handles the facebook_productitem_get_override_details tool
-func HandleFacebook_productitem_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductitem_get_override_details handles the productitem_get_override_details tool
+func HandleProductitem_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -406,10 +412,12 @@ func HandleFacebook_productitem_get_override_details(ctx context.Context, reques
 		args["type"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productitem_get_override_details(args)
+	result, err := client.Productitem_get_override_details(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productitem_get_override_details: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productitem_get_override_details: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -421,8 +429,9 @@ func HandleFacebook_productitem_get_override_details(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productitem_get_product_sets handles the facebook_productitem_get_product_sets tool
-func HandleFacebook_productitem_get_product_sets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductitem_get_product_sets handles the productitem_get_product_sets tool
+func HandleProductitem_get_product_sets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -435,10 +444,12 @@ func HandleFacebook_productitem_get_product_sets(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productitem_get_product_sets(args)
+	result, err := client.Productitem_get_product_sets(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productitem_get_product_sets: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productitem_get_product_sets: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -450,8 +461,9 @@ func HandleFacebook_productitem_get_product_sets(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productitem_get_videos_metadata handles the facebook_productitem_get_videos_metadata tool
-func HandleFacebook_productitem_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductitem_get_videos_metadata handles the productitem_get_videos_metadata tool
+func HandleProductitem_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -464,10 +476,12 @@ func HandleFacebook_productitem_get_videos_metadata(ctx context.Context, request
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productitem_get_videos_metadata(args)
+	result, err := client.Productitem_get_videos_metadata(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productitem_get_videos_metadata: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productitem_get_videos_metadata: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -479,8 +493,9 @@ func HandleFacebook_productitem_get_videos_metadata(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productitem_delete_ handles the facebook_productitem_delete_ tool
-func HandleFacebook_productitem_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductitem_delete_ handles the productitem_delete_ tool
+func HandleProductitem_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -493,10 +508,12 @@ func HandleFacebook_productitem_delete_(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productitem_delete_(args)
+	result, err := client.Productitem_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productitem_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productitem_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -508,8 +525,9 @@ func HandleFacebook_productitem_delete_(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productitem_get_ handles the facebook_productitem_get_ tool
-func HandleFacebook_productitem_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductitem_get_ handles the productitem_get_ tool
+func HandleProductitem_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -547,10 +565,12 @@ func HandleFacebook_productitem_get_(ctx context.Context, request mcp.CallToolRe
 		args["override_language"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productitem_get_(args)
+	result, err := client.Productitem_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productitem_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productitem_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -562,8 +582,9 @@ func HandleFacebook_productitem_get_(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_productitem_post_ handles the facebook_productitem_post_ tool
-func HandleFacebook_productitem_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleProductitem_post_ handles the productitem_post_ tool
+func HandleProductitem_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -962,10 +983,12 @@ func HandleFacebook_productitem_post_(ctx context.Context, request mcp.CallToolR
 		args["windows_phone_url"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_productitem_post_(args)
+	result, err := client.Productitem_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_productitem_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productitem_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -976,3 +999,4 @@ func HandleFacebook_productitem_post_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

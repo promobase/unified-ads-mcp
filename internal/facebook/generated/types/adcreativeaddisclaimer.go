@@ -4,7 +4,7 @@ package types
 
 // AdCreativeAdDisclaimer represents a Facebook AdCreativeAdDisclaimer object
 type AdCreativeAdDisclaimer struct {
-	Text  string `json:"text"`
+	Text string `json:"text"`
 	Title string `json:"title"`
-	Url   string `json:"url"`
+	Url string `json:"url"`
 }

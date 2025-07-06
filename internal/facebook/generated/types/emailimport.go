@@ -5,5 +5,5 @@ package types
 // EmailImport represents a Facebook EmailImport object
 type EmailImport struct {
 	Lists []map[string]interface{} `json:"lists"`
-	Total int                      `json:"total"`
+	Total int `json:"total"`
 }

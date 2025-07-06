@@ -4,6 +4,6 @@ package types
 
 // ConnectionsTargeting represents a Facebook ConnectionsTargeting object
 type ConnectionsTargeting struct {
-	Id   string `json:"id"`
+	Id string `json:"id"`
 	Name string `json:"name"`
 }

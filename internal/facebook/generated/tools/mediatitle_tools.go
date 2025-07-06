@@ -15,18 +15,19 @@ import (
 func GetMediaTitleTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_mediatitle_get_channels_to_integrity_status tool
-	facebook_mediatitle_get_channels_to_integrity_statusTool := mcp.NewTool("facebook_mediatitle_get_channels_to_integrity_status",
+
+	// mediatitle_get_channels_to_integrity_status tool
+	mediatitle_get_channels_to_integrity_statusTool := mcp.NewTool("mediatitle_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for MediaTitle"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_mediatitle_get_channels_to_integrity_statusTool)
+	tools = append(tools, mediatitle_get_channels_to_integrity_statusTool)
 
-	// facebook_mediatitle_get_override_details tool
-	facebook_mediatitle_get_override_detailsTool := mcp.NewTool("facebook_mediatitle_get_override_details",
+	// mediatitle_get_override_details tool
+	mediatitle_get_override_detailsTool := mcp.NewTool("mediatitle_get_override_details",
 		mcp.WithDescription("GET override_details for MediaTitle"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -40,40 +41,40 @@ func GetMediaTitleTools(accessToken string) []mcp.Tool {
 			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
 		),
 	)
-	tools = append(tools, facebook_mediatitle_get_override_detailsTool)
+	tools = append(tools, mediatitle_get_override_detailsTool)
 
-	// facebook_mediatitle_get_videos_metadata tool
-	facebook_mediatitle_get_videos_metadataTool := mcp.NewTool("facebook_mediatitle_get_videos_metadata",
+	// mediatitle_get_videos_metadata tool
+	mediatitle_get_videos_metadataTool := mcp.NewTool("mediatitle_get_videos_metadata",
 		mcp.WithDescription("GET videos_metadata for MediaTitle"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_mediatitle_get_videos_metadataTool)
+	tools = append(tools, mediatitle_get_videos_metadataTool)
 
-	// facebook_mediatitle_delete_ tool
-	facebook_mediatitle_delete_Tool := mcp.NewTool("facebook_mediatitle_delete_",
+	// mediatitle_delete_ tool
+	mediatitle_delete_Tool := mcp.NewTool("mediatitle_delete_",
 		mcp.WithDescription("DELETE  for MediaTitle"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_mediatitle_delete_Tool)
+	tools = append(tools, mediatitle_delete_Tool)
 
-	// facebook_mediatitle_get_ tool
-	facebook_mediatitle_get_Tool := mcp.NewTool("facebook_mediatitle_get_",
+	// mediatitle_get_ tool
+	mediatitle_get_Tool := mcp.NewTool("mediatitle_get_",
 		mcp.WithDescription("GET  for MediaTitle"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_mediatitle_get_Tool)
+	tools = append(tools, mediatitle_get_Tool)
 
-	// facebook_mediatitle_post_ tool
-	facebook_mediatitle_post_Tool := mcp.NewTool("facebook_mediatitle_post_",
+	// mediatitle_post_ tool
+	mediatitle_post_Tool := mcp.NewTool("mediatitle_post_",
 		mcp.WithDescription("POST  for MediaTitle"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -117,15 +118,17 @@ func GetMediaTitleTools(accessToken string) []mcp.Tool {
 			mcp.Description("url parameter for "),
 		),
 	)
-	tools = append(tools, facebook_mediatitle_post_Tool)
+	tools = append(tools, mediatitle_post_Tool)
+
 
 	return tools
 }
 
 // MediaTitle handlers
 
-// HandleFacebook_mediatitle_get_channels_to_integrity_status handles the facebook_mediatitle_get_channels_to_integrity_status tool
-func HandleFacebook_mediatitle_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleMediatitle_get_channels_to_integrity_status handles the mediatitle_get_channels_to_integrity_status tool
+func HandleMediatitle_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -138,10 +141,12 @@ func HandleFacebook_mediatitle_get_channels_to_integrity_status(ctx context.Cont
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_mediatitle_get_channels_to_integrity_status(args)
+	result, err := client.Mediatitle_get_channels_to_integrity_status(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_mediatitle_get_channels_to_integrity_status: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute mediatitle_get_channels_to_integrity_status: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -153,8 +158,9 @@ func HandleFacebook_mediatitle_get_channels_to_integrity_status(ctx context.Cont
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_mediatitle_get_override_details handles the facebook_mediatitle_get_override_details tool
-func HandleFacebook_mediatitle_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleMediatitle_get_override_details handles the mediatitle_get_override_details tool
+func HandleMediatitle_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -178,10 +184,12 @@ func HandleFacebook_mediatitle_get_override_details(ctx context.Context, request
 		args["type"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_mediatitle_get_override_details(args)
+	result, err := client.Mediatitle_get_override_details(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_mediatitle_get_override_details: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute mediatitle_get_override_details: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -193,8 +201,9 @@ func HandleFacebook_mediatitle_get_override_details(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_mediatitle_get_videos_metadata handles the facebook_mediatitle_get_videos_metadata tool
-func HandleFacebook_mediatitle_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleMediatitle_get_videos_metadata handles the mediatitle_get_videos_metadata tool
+func HandleMediatitle_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -207,10 +216,12 @@ func HandleFacebook_mediatitle_get_videos_metadata(ctx context.Context, request 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_mediatitle_get_videos_metadata(args)
+	result, err := client.Mediatitle_get_videos_metadata(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_mediatitle_get_videos_metadata: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute mediatitle_get_videos_metadata: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -222,8 +233,9 @@ func HandleFacebook_mediatitle_get_videos_metadata(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_mediatitle_delete_ handles the facebook_mediatitle_delete_ tool
-func HandleFacebook_mediatitle_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleMediatitle_delete_ handles the mediatitle_delete_ tool
+func HandleMediatitle_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -236,10 +248,12 @@ func HandleFacebook_mediatitle_delete_(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_mediatitle_delete_(args)
+	result, err := client.Mediatitle_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_mediatitle_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute mediatitle_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -251,8 +265,9 @@ func HandleFacebook_mediatitle_delete_(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_mediatitle_get_ handles the facebook_mediatitle_get_ tool
-func HandleFacebook_mediatitle_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleMediatitle_get_ handles the mediatitle_get_ tool
+func HandleMediatitle_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -265,10 +280,12 @@ func HandleFacebook_mediatitle_get_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_mediatitle_get_(args)
+	result, err := client.Mediatitle_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_mediatitle_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute mediatitle_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -280,8 +297,9 @@ func HandleFacebook_mediatitle_get_(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_mediatitle_post_ handles the facebook_mediatitle_post_ tool
-func HandleFacebook_mediatitle_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleMediatitle_post_ handles the mediatitle_post_ tool
+func HandleMediatitle_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -357,10 +375,12 @@ func HandleFacebook_mediatitle_post_(ctx context.Context, request mcp.CallToolRe
 		args["url"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_mediatitle_post_(args)
+	result, err := client.Mediatitle_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_mediatitle_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute mediatitle_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -371,3 +391,4 @@ func HandleFacebook_mediatitle_post_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

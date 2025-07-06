@@ -6,20 +6,20 @@ import "time"
 
 // AdAsyncRequestSet represents a Facebook AdAsyncRequestSet object
 type AdAsyncRequestSet struct {
-	Canceled_count      int                                  `json:"canceled_count"`
-	Created_time        time.Time                            `json:"created_time"`
-	Error_count         int                                  `json:"error_count"`
-	Id                  string                               `json:"id"`
-	In_progress_count   int                                  `json:"in_progress_count"`
-	Initial_count       int                                  `json:"initial_count"`
-	Is_completed        bool                                 `json:"is_completed"`
-	Name                string                               `json:"name"`
-	Notification_mode   string                               `json:"notification_mode"`
+	Canceled_count int `json:"canceled_count"`
+	Created_time time.Time `json:"created_time"`
+	Error_count int `json:"error_count"`
+	Id string `json:"id"`
+	In_progress_count int `json:"in_progress_count"`
+	Initial_count int `json:"initial_count"`
+	Is_completed bool `json:"is_completed"`
+	Name string `json:"name"`
+	Notification_mode string `json:"notification_mode"`
 	Notification_result *AdAsyncRequestSetNotificationResult `json:"notification_result"`
-	Notification_status string                               `json:"notification_status"`
-	Notification_uri    string                               `json:"notification_uri"`
-	Owner_id            string                               `json:"owner_id"`
-	Success_count       int                                  `json:"success_count"`
-	Total_count         int                                  `json:"total_count"`
-	Updated_time        time.Time                            `json:"updated_time"`
+	Notification_status string `json:"notification_status"`
+	Notification_uri string `json:"notification_uri"`
+	Owner_id string `json:"owner_id"`
+	Success_count int `json:"success_count"`
+	Total_count int `json:"total_count"`
+	Updated_time time.Time `json:"updated_time"`
 }

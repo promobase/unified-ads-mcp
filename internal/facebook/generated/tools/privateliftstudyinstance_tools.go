@@ -15,18 +15,19 @@ import (
 func GetPrivateLiftStudyInstanceTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_privateliftstudyinstance_get_ tool
-	facebook_privateliftstudyinstance_get_Tool := mcp.NewTool("facebook_privateliftstudyinstance_get_",
+
+	// privateliftstudyinstance_get_ tool
+	privateliftstudyinstance_get_Tool := mcp.NewTool("privateliftstudyinstance_get_",
 		mcp.WithDescription("GET  for PrivateLiftStudyInstance"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_privateliftstudyinstance_get_Tool)
+	tools = append(tools, privateliftstudyinstance_get_Tool)
 
-	// facebook_privateliftstudyinstance_post_ tool
-	facebook_privateliftstudyinstance_post_Tool := mcp.NewTool("facebook_privateliftstudyinstance_post_",
+	// privateliftstudyinstance_post_ tool
+	privateliftstudyinstance_post_Tool := mcp.NewTool("privateliftstudyinstance_post_",
 		mcp.WithDescription("POST  for PrivateLiftStudyInstance"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -40,15 +41,17 @@ func GetPrivateLiftStudyInstanceTools(accessToken string) []mcp.Tool {
 			mcp.Description("run_id parameter for "),
 		),
 	)
-	tools = append(tools, facebook_privateliftstudyinstance_post_Tool)
+	tools = append(tools, privateliftstudyinstance_post_Tool)
+
 
 	return tools
 }
 
 // PrivateLiftStudyInstance handlers
 
-// HandleFacebook_privateliftstudyinstance_get_ handles the facebook_privateliftstudyinstance_get_ tool
-func HandleFacebook_privateliftstudyinstance_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePrivateliftstudyinstance_get_ handles the privateliftstudyinstance_get_ tool
+func HandlePrivateliftstudyinstance_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -61,10 +64,12 @@ func HandleFacebook_privateliftstudyinstance_get_(ctx context.Context, request m
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_privateliftstudyinstance_get_(args)
+	result, err := client.Privateliftstudyinstance_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_privateliftstudyinstance_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute privateliftstudyinstance_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -76,8 +81,9 @@ func HandleFacebook_privateliftstudyinstance_get_(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_privateliftstudyinstance_post_ handles the facebook_privateliftstudyinstance_post_ tool
-func HandleFacebook_privateliftstudyinstance_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePrivateliftstudyinstance_post_ handles the privateliftstudyinstance_post_ tool
+func HandlePrivateliftstudyinstance_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -100,10 +106,12 @@ func HandleFacebook_privateliftstudyinstance_post_(ctx context.Context, request 
 		args["run_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_privateliftstudyinstance_post_(args)
+	result, err := client.Privateliftstudyinstance_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_privateliftstudyinstance_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute privateliftstudyinstance_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -114,3 +122,4 @@ func HandleFacebook_privateliftstudyinstance_post_(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

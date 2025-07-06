@@ -5,5 +5,5 @@ package types
 // AdCreativeFormatTransformationSpec represents a Facebook AdCreativeFormatTransformationSpec object
 type AdCreativeFormatTransformationSpec struct {
 	Data_source []string `json:"data_source"`
-	Format      string   `json:"format"`
+	Format string `json:"format"`
 }

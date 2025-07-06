@@ -4,10 +4,10 @@ package types
 
 // ReachFrequencyCurveLowerConfidenceRange represents a Facebook ReachFrequencyCurveLowerConfidenceRange object
 type ReachFrequencyCurveLowerConfidenceRange struct {
-	Impression_lower          []int `json:"impression_lower"`
-	Num_points                int   `json:"num_points"`
-	Reach                     []int `json:"reach"`
-	Reach_lower               []int `json:"reach_lower"`
+	Impression_lower []int `json:"impression_lower"`
+	Num_points int `json:"num_points"`
+	Reach []int `json:"reach"`
+	Reach_lower []int `json:"reach_lower"`
 	Uniq_video_views_2s_lower []int `json:"uniq_video_views_2s_lower"`
-	Video_views_2s_lower      []int `json:"video_views_2s_lower"`
+	Video_views_2s_lower []int `json:"video_views_2s_lower"`
 }

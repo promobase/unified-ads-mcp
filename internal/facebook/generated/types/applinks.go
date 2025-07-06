@@ -4,13 +4,13 @@ package types
 
 // AppLinks represents a Facebook AppLinks object
 type AppLinks struct {
-	Android           []AndroidAppLink      `json:"android"`
-	Id                string                `json:"id"`
-	Ios               []IosAppLink          `json:"ios"`
-	Ipad              []IosAppLink          `json:"ipad"`
-	Iphone            []IosAppLink          `json:"iphone"`
-	Web               *WebAppLink           `json:"web"`
-	Windows           []WindowsAppLink      `json:"windows"`
-	Windows_phone     []WindowsPhoneAppLink `json:"windows_phone"`
-	Windows_universal []WindowsAppLink      `json:"windows_universal"`
+	Android []AndroidAppLink `json:"android"`
+	Id string `json:"id"`
+	Ios []IosAppLink `json:"ios"`
+	Ipad []IosAppLink `json:"ipad"`
+	Iphone []IosAppLink `json:"iphone"`
+	Web *WebAppLink `json:"web"`
+	Windows []WindowsAppLink `json:"windows"`
+	Windows_phone []WindowsPhoneAppLink `json:"windows_phone"`
+	Windows_universal []WindowsAppLink `json:"windows_universal"`
 }

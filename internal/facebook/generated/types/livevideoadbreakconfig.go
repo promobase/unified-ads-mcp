@@ -4,14 +4,14 @@ package types
 
 // LiveVideoAdBreakConfig represents a Facebook LiveVideoAdBreakConfig object
 type LiveVideoAdBreakConfig struct {
-	Default_ad_break_duration       int    `json:"default_ad_break_duration"`
-	Failure_reason_polling_interval int    `json:"failure_reason_polling_interval"`
-	First_break_eligible_secs       int    `json:"first_break_eligible_secs"`
-	Guide_url                       string `json:"guide_url"`
-	Is_eligible_to_onboard          bool   `json:"is_eligible_to_onboard"`
-	Is_enabled                      bool   `json:"is_enabled"`
-	Onboarding_url                  string `json:"onboarding_url"`
-	Preparing_duration              int    `json:"preparing_duration"`
-	Time_between_ad_breaks_secs     int    `json:"time_between_ad_breaks_secs"`
-	Viewer_count_threshold          int    `json:"viewer_count_threshold"`
+	Default_ad_break_duration int `json:"default_ad_break_duration"`
+	Failure_reason_polling_interval int `json:"failure_reason_polling_interval"`
+	First_break_eligible_secs int `json:"first_break_eligible_secs"`
+	Guide_url string `json:"guide_url"`
+	Is_eligible_to_onboard bool `json:"is_eligible_to_onboard"`
+	Is_enabled bool `json:"is_enabled"`
+	Onboarding_url string `json:"onboarding_url"`
+	Preparing_duration int `json:"preparing_duration"`
+	Time_between_ad_breaks_secs int `json:"time_between_ad_breaks_secs"`
+	Viewer_count_threshold int `json:"viewer_count_threshold"`
 }

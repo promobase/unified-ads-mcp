@@ -15,23 +15,26 @@ import (
 func GetAdCustomDerivedMetricsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adcustomderivedmetrics_get_ tool
-	facebook_adcustomderivedmetrics_get_Tool := mcp.NewTool("facebook_adcustomderivedmetrics_get_",
+
+	// adcustomderivedmetrics_get_ tool
+	adcustomderivedmetrics_get_Tool := mcp.NewTool("adcustomderivedmetrics_get_",
 		mcp.WithDescription("GET  for AdCustomDerivedMetrics"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adcustomderivedmetrics_get_Tool)
+	tools = append(tools, adcustomderivedmetrics_get_Tool)
+
 
 	return tools
 }
 
 // AdCustomDerivedMetrics handlers
 
-// HandleFacebook_adcustomderivedmetrics_get_ handles the facebook_adcustomderivedmetrics_get_ tool
-func HandleFacebook_adcustomderivedmetrics_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdcustomderivedmetrics_get_ handles the adcustomderivedmetrics_get_ tool
+func HandleAdcustomderivedmetrics_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_adcustomderivedmetrics_get_(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adcustomderivedmetrics_get_(args)
+	result, err := client.Adcustomderivedmetrics_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adcustomderivedmetrics_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adcustomderivedmetrics_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_adcustomderivedmetrics_get_(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

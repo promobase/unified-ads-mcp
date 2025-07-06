@@ -4,7 +4,7 @@ package types
 
 // PageDirectIntegrationCrmWithLeadsAccess represents a Facebook PageDirectIntegrationCrmWithLeadsAccess object
 type PageDirectIntegrationCrmWithLeadsAccess struct {
-	Can_access_leads bool   `json:"can_access_leads"`
-	Id               string `json:"id"`
-	Name             string `json:"name"`
+	Can_access_leads bool `json:"can_access_leads"`
+	Id string `json:"id"`
+	Name string `json:"name"`
 }

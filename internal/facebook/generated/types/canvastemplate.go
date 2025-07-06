@@ -4,18 +4,18 @@ package types
 
 // CanvasTemplate represents a Facebook CanvasTemplate object
 type CanvasTemplate struct {
-	Channels                 []interface{} `json:"channels"`
-	Description              string        `json:"description"`
-	Document                 *Canvas       `json:"document"`
-	Id                       string        `json:"id"`
-	Is_multi_tab_supportable bool          `json:"is_multi_tab_supportable"`
-	Is_new                   bool          `json:"is_new"`
-	Name                     string        `json:"name"`
-	Objectives               []interface{} `json:"objectives"`
-	Owner_id                 *User         `json:"owner_id"`
-	Required_capabilities    []string      `json:"required_capabilities"`
-	Snapshot_photo           *Photo        `json:"snapshot_photo"`
-	Status                   string        `json:"status"`
-	Sub_verticals            []string      `json:"sub_verticals"`
-	Verticals                []interface{} `json:"verticals"`
+	Channels []interface{} `json:"channels"`
+	Description string `json:"description"`
+	Document *Canvas `json:"document"`
+	Id string `json:"id"`
+	Is_multi_tab_supportable bool `json:"is_multi_tab_supportable"`
+	Is_new bool `json:"is_new"`
+	Name string `json:"name"`
+	Objectives []interface{} `json:"objectives"`
+	Owner_id *User `json:"owner_id"`
+	Required_capabilities []string `json:"required_capabilities"`
+	Snapshot_photo *Photo `json:"snapshot_photo"`
+	Status string `json:"status"`
+	Sub_verticals []string `json:"sub_verticals"`
+	Verticals []interface{} `json:"verticals"`
 }

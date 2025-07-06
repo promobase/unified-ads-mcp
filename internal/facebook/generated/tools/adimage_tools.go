@@ -15,23 +15,26 @@ import (
 func GetAdImageTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adimage_get_ tool
-	facebook_adimage_get_Tool := mcp.NewTool("facebook_adimage_get_",
+
+	// adimage_get_ tool
+	adimage_get_Tool := mcp.NewTool("adimage_get_",
 		mcp.WithDescription("GET  for AdImage"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adimage_get_Tool)
+	tools = append(tools, adimage_get_Tool)
+
 
 	return tools
 }
 
 // AdImage handlers
 
-// HandleFacebook_adimage_get_ handles the facebook_adimage_get_ tool
-func HandleFacebook_adimage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdimage_get_ handles the adimage_get_ tool
+func HandleAdimage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_adimage_get_(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adimage_get_(args)
+	result, err := client.Adimage_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adimage_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adimage_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_adimage_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -15,28 +15,29 @@ import (
 func GetOpenBridgeConfigurationTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_openbridgeconfiguration_delete_ tool
-	facebook_openbridgeconfiguration_delete_Tool := mcp.NewTool("facebook_openbridgeconfiguration_delete_",
+
+	// openbridgeconfiguration_delete_ tool
+	openbridgeconfiguration_delete_Tool := mcp.NewTool("openbridgeconfiguration_delete_",
 		mcp.WithDescription("DELETE  for OpenBridgeConfiguration"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_openbridgeconfiguration_delete_Tool)
+	tools = append(tools, openbridgeconfiguration_delete_Tool)
 
-	// facebook_openbridgeconfiguration_get_ tool
-	facebook_openbridgeconfiguration_get_Tool := mcp.NewTool("facebook_openbridgeconfiguration_get_",
+	// openbridgeconfiguration_get_ tool
+	openbridgeconfiguration_get_Tool := mcp.NewTool("openbridgeconfiguration_get_",
 		mcp.WithDescription("GET  for OpenBridgeConfiguration"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_openbridgeconfiguration_get_Tool)
+	tools = append(tools, openbridgeconfiguration_get_Tool)
 
-	// facebook_openbridgeconfiguration_post_ tool
-	facebook_openbridgeconfiguration_post_Tool := mcp.NewTool("facebook_openbridgeconfiguration_post_",
+	// openbridgeconfiguration_post_ tool
+	openbridgeconfiguration_post_Tool := mcp.NewTool("openbridgeconfiguration_post_",
 		mcp.WithDescription("POST  for OpenBridgeConfiguration"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -91,15 +92,17 @@ func GetOpenBridgeConfigurationTools(accessToken string) []mcp.Tool {
 			mcp.Description("sgw_pixel_id parameter for "),
 		),
 	)
-	tools = append(tools, facebook_openbridgeconfiguration_post_Tool)
+	tools = append(tools, openbridgeconfiguration_post_Tool)
+
 
 	return tools
 }
 
 // OpenBridgeConfiguration handlers
 
-// HandleFacebook_openbridgeconfiguration_delete_ handles the facebook_openbridgeconfiguration_delete_ tool
-func HandleFacebook_openbridgeconfiguration_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleOpenbridgeconfiguration_delete_ handles the openbridgeconfiguration_delete_ tool
+func HandleOpenbridgeconfiguration_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -112,10 +115,12 @@ func HandleFacebook_openbridgeconfiguration_delete_(ctx context.Context, request
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_openbridgeconfiguration_delete_(args)
+	result, err := client.Openbridgeconfiguration_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_openbridgeconfiguration_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute openbridgeconfiguration_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -127,8 +132,9 @@ func HandleFacebook_openbridgeconfiguration_delete_(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_openbridgeconfiguration_get_ handles the facebook_openbridgeconfiguration_get_ tool
-func HandleFacebook_openbridgeconfiguration_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleOpenbridgeconfiguration_get_ handles the openbridgeconfiguration_get_ tool
+func HandleOpenbridgeconfiguration_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -141,10 +147,12 @@ func HandleFacebook_openbridgeconfiguration_get_(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_openbridgeconfiguration_get_(args)
+	result, err := client.Openbridgeconfiguration_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_openbridgeconfiguration_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute openbridgeconfiguration_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -156,8 +164,9 @@ func HandleFacebook_openbridgeconfiguration_get_(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_openbridgeconfiguration_post_ handles the facebook_openbridgeconfiguration_post_ tool
-func HandleFacebook_openbridgeconfiguration_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleOpenbridgeconfiguration_post_ handles the openbridgeconfiguration_post_ tool
+func HandleOpenbridgeconfiguration_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -250,10 +259,12 @@ func HandleFacebook_openbridgeconfiguration_post_(ctx context.Context, request m
 		args["sgw_pixel_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_openbridgeconfiguration_post_(args)
+	result, err := client.Openbridgeconfiguration_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_openbridgeconfiguration_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute openbridgeconfiguration_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -264,3 +275,4 @@ func HandleFacebook_openbridgeconfiguration_post_(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

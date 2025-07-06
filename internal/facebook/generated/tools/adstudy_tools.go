@@ -15,18 +15,19 @@ import (
 func GetAdStudyTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adstudy_get_cells tool
-	facebook_adstudy_get_cellsTool := mcp.NewTool("facebook_adstudy_get_cells",
+
+	// adstudy_get_cells tool
+	adstudy_get_cellsTool := mcp.NewTool("adstudy_get_cells",
 		mcp.WithDescription("GET cells for AdStudy"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adstudy_get_cellsTool)
+	tools = append(tools, adstudy_get_cellsTool)
 
-	// facebook_adstudy_post_checkpoint tool
-	facebook_adstudy_post_checkpointTool := mcp.NewTool("facebook_adstudy_post_checkpoint",
+	// adstudy_post_checkpoint tool
+	adstudy_post_checkpointTool := mcp.NewTool("adstudy_post_checkpoint",
 		mcp.WithDescription("POST checkpoint for AdStudy"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -51,20 +52,20 @@ func GetAdStudyTools(accessToken string) []mcp.Tool {
 			mcp.Description("run_id parameter for checkpoint"),
 		),
 	)
-	tools = append(tools, facebook_adstudy_post_checkpointTool)
+	tools = append(tools, adstudy_post_checkpointTool)
 
-	// facebook_adstudy_get_instances tool
-	facebook_adstudy_get_instancesTool := mcp.NewTool("facebook_adstudy_get_instances",
+	// adstudy_get_instances tool
+	adstudy_get_instancesTool := mcp.NewTool("adstudy_get_instances",
 		mcp.WithDescription("GET instances for AdStudy"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adstudy_get_instancesTool)
+	tools = append(tools, adstudy_get_instancesTool)
 
-	// facebook_adstudy_post_instances tool
-	facebook_adstudy_post_instancesTool := mcp.NewTool("facebook_adstudy_post_instances",
+	// adstudy_post_instances tool
+	adstudy_post_instancesTool := mcp.NewTool("adstudy_post_instances",
 		mcp.WithDescription("POST instances for AdStudy"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -78,40 +79,40 @@ func GetAdStudyTools(accessToken string) []mcp.Tool {
 			mcp.Description("run_id parameter for instances"),
 		),
 	)
-	tools = append(tools, facebook_adstudy_post_instancesTool)
+	tools = append(tools, adstudy_post_instancesTool)
 
-	// facebook_adstudy_get_objectives tool
-	facebook_adstudy_get_objectivesTool := mcp.NewTool("facebook_adstudy_get_objectives",
+	// adstudy_get_objectives tool
+	adstudy_get_objectivesTool := mcp.NewTool("adstudy_get_objectives",
 		mcp.WithDescription("GET objectives for AdStudy"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adstudy_get_objectivesTool)
+	tools = append(tools, adstudy_get_objectivesTool)
 
-	// facebook_adstudy_delete_ tool
-	facebook_adstudy_delete_Tool := mcp.NewTool("facebook_adstudy_delete_",
+	// adstudy_delete_ tool
+	adstudy_delete_Tool := mcp.NewTool("adstudy_delete_",
 		mcp.WithDescription("DELETE  for AdStudy"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adstudy_delete_Tool)
+	tools = append(tools, adstudy_delete_Tool)
 
-	// facebook_adstudy_get_ tool
-	facebook_adstudy_get_Tool := mcp.NewTool("facebook_adstudy_get_",
+	// adstudy_get_ tool
+	adstudy_get_Tool := mcp.NewTool("adstudy_get_",
 		mcp.WithDescription("GET  for AdStudy"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adstudy_get_Tool)
+	tools = append(tools, adstudy_get_Tool)
 
-	// facebook_adstudy_post_ tool
-	facebook_adstudy_post_Tool := mcp.NewTool("facebook_adstudy_post_",
+	// adstudy_post_ tool
+	adstudy_post_Tool := mcp.NewTool("adstudy_post_",
 		mcp.WithDescription("POST  for AdStudy"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -155,15 +156,17 @@ func GetAdStudyTools(accessToken string) []mcp.Tool {
 			mcp.Description("viewers parameter for "),
 		),
 	)
-	tools = append(tools, facebook_adstudy_post_Tool)
+	tools = append(tools, adstudy_post_Tool)
+
 
 	return tools
 }
 
 // AdStudy handlers
 
-// HandleFacebook_adstudy_get_cells handles the facebook_adstudy_get_cells tool
-func HandleFacebook_adstudy_get_cells(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdstudy_get_cells handles the adstudy_get_cells tool
+func HandleAdstudy_get_cells(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -176,10 +179,12 @@ func HandleFacebook_adstudy_get_cells(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adstudy_get_cells(args)
+	result, err := client.Adstudy_get_cells(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adstudy_get_cells: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudy_get_cells: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -191,8 +196,9 @@ func HandleFacebook_adstudy_get_cells(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adstudy_post_checkpoint handles the facebook_adstudy_post_checkpoint tool
-func HandleFacebook_adstudy_post_checkpoint(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdstudy_post_checkpoint handles the adstudy_post_checkpoint tool
+func HandleAdstudy_post_checkpoint(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -236,10 +242,12 @@ func HandleFacebook_adstudy_post_checkpoint(ctx context.Context, request mcp.Cal
 		args["run_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adstudy_post_checkpoint(args)
+	result, err := client.Adstudy_post_checkpoint(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adstudy_post_checkpoint: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudy_post_checkpoint: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -251,8 +259,9 @@ func HandleFacebook_adstudy_post_checkpoint(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adstudy_get_instances handles the facebook_adstudy_get_instances tool
-func HandleFacebook_adstudy_get_instances(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdstudy_get_instances handles the adstudy_get_instances tool
+func HandleAdstudy_get_instances(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -265,10 +274,12 @@ func HandleFacebook_adstudy_get_instances(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adstudy_get_instances(args)
+	result, err := client.Adstudy_get_instances(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adstudy_get_instances: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudy_get_instances: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -280,8 +291,9 @@ func HandleFacebook_adstudy_get_instances(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adstudy_post_instances handles the facebook_adstudy_post_instances tool
-func HandleFacebook_adstudy_post_instances(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdstudy_post_instances handles the adstudy_post_instances tool
+func HandleAdstudy_post_instances(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -306,10 +318,12 @@ func HandleFacebook_adstudy_post_instances(ctx context.Context, request mcp.Call
 		args["run_id"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adstudy_post_instances(args)
+	result, err := client.Adstudy_post_instances(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adstudy_post_instances: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudy_post_instances: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -321,8 +335,9 @@ func HandleFacebook_adstudy_post_instances(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adstudy_get_objectives handles the facebook_adstudy_get_objectives tool
-func HandleFacebook_adstudy_get_objectives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdstudy_get_objectives handles the adstudy_get_objectives tool
+func HandleAdstudy_get_objectives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -335,10 +350,12 @@ func HandleFacebook_adstudy_get_objectives(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adstudy_get_objectives(args)
+	result, err := client.Adstudy_get_objectives(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adstudy_get_objectives: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudy_get_objectives: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -350,8 +367,9 @@ func HandleFacebook_adstudy_get_objectives(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adstudy_delete_ handles the facebook_adstudy_delete_ tool
-func HandleFacebook_adstudy_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdstudy_delete_ handles the adstudy_delete_ tool
+func HandleAdstudy_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -364,10 +382,12 @@ func HandleFacebook_adstudy_delete_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adstudy_delete_(args)
+	result, err := client.Adstudy_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adstudy_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudy_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -379,8 +399,9 @@ func HandleFacebook_adstudy_delete_(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adstudy_get_ handles the facebook_adstudy_get_ tool
-func HandleFacebook_adstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdstudy_get_ handles the adstudy_get_ tool
+func HandleAdstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -393,10 +414,12 @@ func HandleFacebook_adstudy_get_(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adstudy_get_(args)
+	result, err := client.Adstudy_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adstudy_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudy_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -408,8 +431,9 @@ func HandleFacebook_adstudy_get_(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_adstudy_post_ handles the facebook_adstudy_post_ tool
-func HandleFacebook_adstudy_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdstudy_post_ handles the adstudy_post_ tool
+func HandleAdstudy_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -485,10 +509,12 @@ func HandleFacebook_adstudy_post_(ctx context.Context, request mcp.CallToolReque
 		args["viewers"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adstudy_post_(args)
+	result, err := client.Adstudy_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adstudy_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudy_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -499,3 +525,4 @@ func HandleFacebook_adstudy_post_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

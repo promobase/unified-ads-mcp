@@ -15,23 +15,26 @@ import (
 func GetAdsPixelCapabilityOverrideTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_adspixelcapabilityoverride_get_ tool
-	facebook_adspixelcapabilityoverride_get_Tool := mcp.NewTool("facebook_adspixelcapabilityoverride_get_",
+
+	// adspixelcapabilityoverride_get_ tool
+	adspixelcapabilityoverride_get_Tool := mcp.NewTool("adspixelcapabilityoverride_get_",
 		mcp.WithDescription("GET  for AdsPixelCapabilityOverride"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_adspixelcapabilityoverride_get_Tool)
+	tools = append(tools, adspixelcapabilityoverride_get_Tool)
+
 
 	return tools
 }
 
 // AdsPixelCapabilityOverride handlers
 
-// HandleFacebook_adspixelcapabilityoverride_get_ handles the facebook_adspixelcapabilityoverride_get_ tool
-func HandleFacebook_adspixelcapabilityoverride_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAdspixelcapabilityoverride_get_ handles the adspixelcapabilityoverride_get_ tool
+func HandleAdspixelcapabilityoverride_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_adspixelcapabilityoverride_get_(ctx context.Context, request
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_adspixelcapabilityoverride_get_(args)
+	result, err := client.Adspixelcapabilityoverride_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_adspixelcapabilityoverride_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspixelcapabilityoverride_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_adspixelcapabilityoverride_get_(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

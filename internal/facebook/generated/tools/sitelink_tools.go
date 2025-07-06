@@ -15,23 +15,26 @@ import (
 func GetSiteLinkTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_sitelink_get_ tool
-	facebook_sitelink_get_Tool := mcp.NewTool("facebook_sitelink_get_",
+
+	// sitelink_get_ tool
+	sitelink_get_Tool := mcp.NewTool("sitelink_get_",
 		mcp.WithDescription("GET  for SiteLink"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_sitelink_get_Tool)
+	tools = append(tools, sitelink_get_Tool)
+
 
 	return tools
 }
 
 // SiteLink handlers
 
-// HandleFacebook_sitelink_get_ handles the facebook_sitelink_get_ tool
-func HandleFacebook_sitelink_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleSitelink_get_ handles the sitelink_get_ tool
+func HandleSitelink_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_sitelink_get_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_sitelink_get_(args)
+	result, err := client.Sitelink_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_sitelink_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute sitelink_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_sitelink_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

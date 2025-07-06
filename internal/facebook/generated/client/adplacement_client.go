@@ -21,14 +21,18 @@ func NewAdPlacementClient(accessToken string) *AdPlacementClient {
 	}
 }
 
-// facebook_adplacement_get_ GET  for AdPlacement
-func (c *AdPlacementClient) Facebook_adplacement_get_(args map[string]interface{}) (interface{}, error) {
+
+// adplacement_get_ GET  for AdPlacement
+func (c *AdPlacementClient) Adplacement_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *AdPlacementClient) Facebook_adplacement_get_(args map[string]interface{
 
 	return result, nil
 }
+

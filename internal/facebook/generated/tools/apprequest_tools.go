@@ -15,8 +15,9 @@ import (
 func GetAppRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_apprequest_delete_ tool
-	facebook_apprequest_delete_Tool := mcp.NewTool("facebook_apprequest_delete_",
+
+	// apprequest_delete_ tool
+	apprequest_delete_Tool := mcp.NewTool("apprequest_delete_",
 		mcp.WithDescription("DELETE  for AppRequest"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -27,25 +28,27 @@ func GetAppRequestTools(accessToken string) []mcp.Tool {
 			mcp.Description("ids parameter for "),
 		),
 	)
-	tools = append(tools, facebook_apprequest_delete_Tool)
+	tools = append(tools, apprequest_delete_Tool)
 
-	// facebook_apprequest_get_ tool
-	facebook_apprequest_get_Tool := mcp.NewTool("facebook_apprequest_get_",
+	// apprequest_get_ tool
+	apprequest_get_Tool := mcp.NewTool("apprequest_get_",
 		mcp.WithDescription("GET  for AppRequest"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_apprequest_get_Tool)
+	tools = append(tools, apprequest_get_Tool)
+
 
 	return tools
 }
 
 // AppRequest handlers
 
-// HandleFacebook_apprequest_delete_ handles the facebook_apprequest_delete_ tool
-func HandleFacebook_apprequest_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApprequest_delete_ handles the apprequest_delete_ tool
+func HandleApprequest_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -65,10 +68,12 @@ func HandleFacebook_apprequest_delete_(ctx context.Context, request mcp.CallTool
 	}
 	args["ids"] = ids
 
+
+
 	// Call the client method
-	result, err := client.Facebook_apprequest_delete_(args)
+	result, err := client.Apprequest_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_apprequest_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute apprequest_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -80,8 +85,9 @@ func HandleFacebook_apprequest_delete_(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_apprequest_get_ handles the facebook_apprequest_get_ tool
-func HandleFacebook_apprequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleApprequest_get_ handles the apprequest_get_ tool
+func HandleApprequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -94,10 +100,12 @@ func HandleFacebook_apprequest_get_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_apprequest_get_(args)
+	result, err := client.Apprequest_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_apprequest_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute apprequest_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -108,3 +116,4 @@ func HandleFacebook_apprequest_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -15,23 +15,26 @@ import (
 func GetAsyncSessionTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_asyncsession_get_ tool
-	facebook_asyncsession_get_Tool := mcp.NewTool("facebook_asyncsession_get_",
+
+	// asyncsession_get_ tool
+	asyncsession_get_Tool := mcp.NewTool("asyncsession_get_",
 		mcp.WithDescription("GET  for AsyncSession"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_asyncsession_get_Tool)
+	tools = append(tools, asyncsession_get_Tool)
+
 
 	return tools
 }
 
 // AsyncSession handlers
 
-// HandleFacebook_asyncsession_get_ handles the facebook_asyncsession_get_ tool
-func HandleFacebook_asyncsession_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAsyncsession_get_ handles the asyncsession_get_ tool
+func HandleAsyncsession_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_asyncsession_get_(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_asyncsession_get_(args)
+	result, err := client.Asyncsession_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_asyncsession_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute asyncsession_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_asyncsession_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

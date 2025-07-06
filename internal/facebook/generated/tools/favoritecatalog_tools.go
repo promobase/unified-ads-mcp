@@ -15,23 +15,26 @@ import (
 func GetFavoriteCatalogTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_favoritecatalog_get_ tool
-	facebook_favoritecatalog_get_Tool := mcp.NewTool("facebook_favoritecatalog_get_",
+
+	// favoritecatalog_get_ tool
+	favoritecatalog_get_Tool := mcp.NewTool("favoritecatalog_get_",
 		mcp.WithDescription("GET  for FavoriteCatalog"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_favoritecatalog_get_Tool)
+	tools = append(tools, favoritecatalog_get_Tool)
+
 
 	return tools
 }
 
 // FavoriteCatalog handlers
 
-// HandleFacebook_favoritecatalog_get_ handles the facebook_favoritecatalog_get_ tool
-func HandleFacebook_favoritecatalog_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleFavoritecatalog_get_ handles the favoritecatalog_get_ tool
+func HandleFavoritecatalog_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_favoritecatalog_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_favoritecatalog_get_(args)
+	result, err := client.Favoritecatalog_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_favoritecatalog_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute favoritecatalog_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_favoritecatalog_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

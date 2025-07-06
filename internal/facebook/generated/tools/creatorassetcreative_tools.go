@@ -15,23 +15,26 @@ import (
 func GetCreatorAssetCreativeTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_creatorassetcreative_get_ tool
-	facebook_creatorassetcreative_get_Tool := mcp.NewTool("facebook_creatorassetcreative_get_",
+
+	// creatorassetcreative_get_ tool
+	creatorassetcreative_get_Tool := mcp.NewTool("creatorassetcreative_get_",
 		mcp.WithDescription("GET  for CreatorAssetCreative"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_creatorassetcreative_get_Tool)
+	tools = append(tools, creatorassetcreative_get_Tool)
+
 
 	return tools
 }
 
 // CreatorAssetCreative handlers
 
-// HandleFacebook_creatorassetcreative_get_ handles the facebook_creatorassetcreative_get_ tool
-func HandleFacebook_creatorassetcreative_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCreatorassetcreative_get_ handles the creatorassetcreative_get_ tool
+func HandleCreatorassetcreative_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_creatorassetcreative_get_(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_creatorassetcreative_get_(args)
+	result, err := client.Creatorassetcreative_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_creatorassetcreative_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute creatorassetcreative_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_creatorassetcreative_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

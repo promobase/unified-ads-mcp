@@ -4,7 +4,7 @@ package types
 
 // AdsOptimalDeliveryGrowthOpportunity represents a Facebook AdsOptimalDeliveryGrowthOpportunity object
 type AdsOptimalDeliveryGrowthOpportunity struct {
-	Child_metadata    []interface{}          `json:"child_metadata"`
-	Metadata          map[string]interface{} `json:"metadata"`
-	Optimization_type string                 `json:"optimization_type"`
+	Child_metadata []interface{} `json:"child_metadata"`
+	Metadata map[string]interface{} `json:"metadata"`
+	Optimization_type string `json:"optimization_type"`
 }

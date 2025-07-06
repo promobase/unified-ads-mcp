@@ -15,23 +15,26 @@ import (
 func GetCPASMerchantConfigTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_cpasmerchantconfig_get_ tool
-	facebook_cpasmerchantconfig_get_Tool := mcp.NewTool("facebook_cpasmerchantconfig_get_",
+
+	// cpasmerchantconfig_get_ tool
+	cpasmerchantconfig_get_Tool := mcp.NewTool("cpasmerchantconfig_get_",
 		mcp.WithDescription("GET  for CPASMerchantConfig"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_cpasmerchantconfig_get_Tool)
+	tools = append(tools, cpasmerchantconfig_get_Tool)
+
 
 	return tools
 }
 
 // CPASMerchantConfig handlers
 
-// HandleFacebook_cpasmerchantconfig_get_ handles the facebook_cpasmerchantconfig_get_ tool
-func HandleFacebook_cpasmerchantconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleCpasmerchantconfig_get_ handles the cpasmerchantconfig_get_ tool
+func HandleCpasmerchantconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_cpasmerchantconfig_get_(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_cpasmerchantconfig_get_(args)
+	result, err := client.Cpasmerchantconfig_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_cpasmerchantconfig_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute cpasmerchantconfig_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_cpasmerchantconfig_get_(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -4,8 +4,8 @@ package types
 
 // AdAccountBusinessConstraints represents a Facebook AdAccountBusinessConstraints object
 type AdAccountBusinessConstraints struct {
-	Audience_controls    map[string]interface{} `json:"audience_controls"`
-	Campaigns_with_error []string               `json:"campaigns_with_error"`
-	Placement_controls   map[string]interface{} `json:"placement_controls"`
-	Status               string                 `json:"status"`
+	Audience_controls map[string]interface{} `json:"audience_controls"`
+	Campaigns_with_error []string `json:"campaigns_with_error"`
+	Placement_controls map[string]interface{} `json:"placement_controls"`
+	Status string `json:"status"`
 }

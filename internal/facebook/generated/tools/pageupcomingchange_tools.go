@@ -15,23 +15,26 @@ import (
 func GetPageUpcomingChangeTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_pageupcomingchange_get_ tool
-	facebook_pageupcomingchange_get_Tool := mcp.NewTool("facebook_pageupcomingchange_get_",
+
+	// pageupcomingchange_get_ tool
+	pageupcomingchange_get_Tool := mcp.NewTool("pageupcomingchange_get_",
 		mcp.WithDescription("GET  for PageUpcomingChange"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_pageupcomingchange_get_Tool)
+	tools = append(tools, pageupcomingchange_get_Tool)
+
 
 	return tools
 }
 
 // PageUpcomingChange handlers
 
-// HandleFacebook_pageupcomingchange_get_ handles the facebook_pageupcomingchange_get_ tool
-func HandleFacebook_pageupcomingchange_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandlePageupcomingchange_get_ handles the pageupcomingchange_get_ tool
+func HandlePageupcomingchange_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_pageupcomingchange_get_(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_pageupcomingchange_get_(args)
+	result, err := client.Pageupcomingchange_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_pageupcomingchange_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pageupcomingchange_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_pageupcomingchange_get_(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -4,9 +4,9 @@ package types
 
 // ThirdPartyMeasurementReportDataset represents a Facebook ThirdPartyMeasurementReportDataset object
 type ThirdPartyMeasurementReportDataset struct {
-	Category string                   `json:"category"`
-	Id       string                   `json:"id"`
-	Partner  *Business                `json:"partner"`
-	Product  string                   `json:"product"`
-	Schema   []map[string]interface{} `json:"schema"`
+	Category string `json:"category"`
+	Id string `json:"id"`
+	Partner *Business `json:"partner"`
+	Product string `json:"product"`
+	Schema []map[string]interface{} `json:"schema"`
 }

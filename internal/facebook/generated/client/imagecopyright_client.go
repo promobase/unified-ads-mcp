@@ -21,14 +21,18 @@ func NewImageCopyrightClient(accessToken string) *ImageCopyrightClient {
 	}
 }
 
-// facebook_imagecopyright_get_ GET  for ImageCopyright
-func (c *ImageCopyrightClient) Facebook_imagecopyright_get_(args map[string]interface{}) (interface{}, error) {
+
+// imagecopyright_get_ GET  for ImageCopyright
+func (c *ImageCopyrightClient) Imagecopyright_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -60,9 +64,11 @@ func (c *ImageCopyrightClient) Facebook_imagecopyright_get_(args map[string]inte
 	return result, nil
 }
 
-// facebook_imagecopyright_post_ POST  for ImageCopyright
-func (c *ImageCopyrightClient) Facebook_imagecopyright_post_(args map[string]interface{}) (interface{}, error) {
+
+// imagecopyright_post_ POST  for ImageCopyright
+func (c *ImageCopyrightClient) Imagecopyright_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -90,6 +96,7 @@ func (c *ImageCopyrightClient) Facebook_imagecopyright_post_(args map[string]int
 	if val, ok := args["title"]; ok {
 		urlParams.Set("title", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -120,3 +127,4 @@ func (c *ImageCopyrightClient) Facebook_imagecopyright_post_(args map[string]int
 
 	return result, nil
 }
+

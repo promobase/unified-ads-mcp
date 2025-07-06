@@ -4,14 +4,14 @@ package types
 
 // AdCreativeVideoDataCustomOverlaySpec represents a Facebook AdCreativeVideoDataCustomOverlaySpec object
 type AdCreativeVideoDataCustomOverlaySpec struct {
-	Background_color   string `json:"background_color"`
+	Background_color string `json:"background_color"`
 	Background_opacity string `json:"background_opacity"`
-	Duration           int    `json:"duration"`
-	Float_with_margin  bool   `json:"float_with_margin"`
-	Full_width         bool   `json:"full_width"`
-	Option             string `json:"option"`
-	Position           string `json:"position"`
-	Start              int    `json:"start"`
-	Template           string `json:"template"`
-	Text_color         string `json:"text_color"`
+	Duration int `json:"duration"`
+	Float_with_margin bool `json:"float_with_margin"`
+	Full_width bool `json:"full_width"`
+	Option string `json:"option"`
+	Position string `json:"position"`
+	Start int `json:"start"`
+	Template string `json:"template"`
+	Text_color string `json:"text_color"`
 }

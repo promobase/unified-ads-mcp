@@ -21,9 +21,11 @@ func NewCommentClient(accessToken string) *CommentClient {
 	}
 }
 
-// facebook_comment_get_comments GET comments for Comment
-func (c *CommentClient) Facebook_comment_get_comments(args map[string]interface{}) (interface{}, error) {
+
+// comment_get_comments GET comments for Comment
+func (c *CommentClient) Comment_get_comments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
@@ -42,6 +44,7 @@ func (c *CommentClient) Facebook_comment_get_comments(args map[string]interface{
 	if val, ok := args["since"]; ok {
 		urlParams.Set("since", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -73,9 +76,11 @@ func (c *CommentClient) Facebook_comment_get_comments(args map[string]interface{
 	return result, nil
 }
 
-// facebook_comment_post_comments POST comments for Comment
-func (c *CommentClient) Facebook_comment_post_comments(args map[string]interface{}) (interface{}, error) {
+
+// comment_post_comments POST comments for Comment
+func (c *CommentClient) Comment_post_comments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
@@ -122,6 +127,7 @@ func (c *CommentClient) Facebook_comment_post_comments(args map[string]interface
 		urlParams.Set("tracking", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -152,9 +158,11 @@ func (c *CommentClient) Facebook_comment_post_comments(args map[string]interface
 	return result, nil
 }
 
-// facebook_comment_delete_likes DELETE likes for Comment
-func (c *CommentClient) Facebook_comment_delete_likes(args map[string]interface{}) (interface{}, error) {
+
+// comment_delete_likes DELETE likes for Comment
+func (c *CommentClient) Comment_delete_likes(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
@@ -170,6 +178,7 @@ func (c *CommentClient) Facebook_comment_delete_likes(args map[string]interface{
 	if val, ok := args["tracking"]; ok {
 		urlParams.Set("tracking", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -201,14 +210,18 @@ func (c *CommentClient) Facebook_comment_delete_likes(args map[string]interface{
 	return result, nil
 }
 
-// facebook_comment_get_likes GET likes for Comment
-func (c *CommentClient) Facebook_comment_get_likes(args map[string]interface{}) (interface{}, error) {
+
+// comment_get_likes GET likes for Comment
+func (c *CommentClient) Comment_get_likes(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -240,9 +253,11 @@ func (c *CommentClient) Facebook_comment_get_likes(args map[string]interface{}) 
 	return result, nil
 }
 
-// facebook_comment_post_likes POST likes for Comment
-func (c *CommentClient) Facebook_comment_post_likes(args map[string]interface{}) (interface{}, error) {
+
+// comment_post_likes POST likes for Comment
+func (c *CommentClient) Comment_post_likes(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
@@ -258,6 +273,7 @@ func (c *CommentClient) Facebook_comment_post_likes(args map[string]interface{})
 	if val, ok := args["tracking"]; ok {
 		urlParams.Set("tracking", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -289,9 +305,11 @@ func (c *CommentClient) Facebook_comment_post_likes(args map[string]interface{})
 	return result, nil
 }
 
-// facebook_comment_get_reactions GET reactions for Comment
-func (c *CommentClient) Facebook_comment_get_reactions(args map[string]interface{}) (interface{}, error) {
+
+// comment_get_reactions GET reactions for Comment
+func (c *CommentClient) Comment_get_reactions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "reactions")
@@ -302,6 +320,7 @@ func (c *CommentClient) Facebook_comment_get_reactions(args map[string]interface
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -332,14 +351,18 @@ func (c *CommentClient) Facebook_comment_get_reactions(args map[string]interface
 	return result, nil
 }
 
-// facebook_comment_delete_ DELETE  for Comment
-func (c *CommentClient) Facebook_comment_delete_(args map[string]interface{}) (interface{}, error) {
+
+// comment_delete_ DELETE  for Comment
+func (c *CommentClient) Comment_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -371,14 +394,18 @@ func (c *CommentClient) Facebook_comment_delete_(args map[string]interface{}) (i
 	return result, nil
 }
 
-// facebook_comment_get_ GET  for Comment
-func (c *CommentClient) Facebook_comment_get_(args map[string]interface{}) (interface{}, error) {
+
+// comment_get_ GET  for Comment
+func (c *CommentClient) Comment_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -410,9 +437,11 @@ func (c *CommentClient) Facebook_comment_get_(args map[string]interface{}) (inte
 	return result, nil
 }
 
-// facebook_comment_post_ POST  for Comment
-func (c *CommentClient) Facebook_comment_post_(args map[string]interface{}) (interface{}, error) {
+
+// comment_post_ POST  for Comment
+func (c *CommentClient) Comment_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -435,6 +464,7 @@ func (c *CommentClient) Facebook_comment_post_(args map[string]interface{}) (int
 		urlParams.Set("message", fmt.Sprintf("%v", val))
 	}
 
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -464,3 +494,4 @@ func (c *CommentClient) Facebook_comment_post_(args map[string]interface{}) (int
 
 	return result, nil
 }
+

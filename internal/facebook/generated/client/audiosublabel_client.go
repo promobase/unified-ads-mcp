@@ -21,14 +21,18 @@ func NewAudioSubLabelClient(accessToken string) *AudioSubLabelClient {
 	}
 }
 
-// facebook_audiosublabel_get_ GET  for AudioSubLabel
-func (c *AudioSubLabelClient) Facebook_audiosublabel_get_(args map[string]interface{}) (interface{}, error) {
+
+// audiosublabel_get_ GET  for AudioSubLabel
+func (c *AudioSubLabelClient) Audiosublabel_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *AudioSubLabelClient) Facebook_audiosublabel_get_(args map[string]interf
 
 	return result, nil
 }
+

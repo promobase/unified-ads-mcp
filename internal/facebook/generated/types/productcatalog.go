@@ -7,22 +7,22 @@ import "time"
 // ProductCatalog represents a Facebook ProductCatalog object
 type ProductCatalog struct {
 	Ad_account_to_collaborative_ads_share_settings *CollaborativeAdsShareSettings `json:"ad_account_to_collaborative_ads_share_settings"`
-	Agency_collaborative_ads_share_settings        *CollaborativeAdsShareSettings `json:"agency_collaborative_ads_share_settings"`
-	Business                                       *Business                      `json:"business"`
-	Catalog_store                                  *StoreCatalogSettings          `json:"catalog_store"`
-	Commerce_merchant_settings                     *CommerceMerchantSettings      `json:"commerce_merchant_settings"`
-	Creator_user                                   *User                          `json:"creator_user"`
-	Da_display_settings                            *ProductCatalogImageSettings   `json:"da_display_settings"`
-	Default_image_url                              string                         `json:"default_image_url"`
-	Fallback_image_url                             []string                       `json:"fallback_image_url"`
-	Feed_count                                     int                            `json:"feed_count"`
-	Id                                             string                         `json:"id"`
-	Is_catalog_segment                             bool                           `json:"is_catalog_segment"`
-	Is_local_catalog                               bool                           `json:"is_local_catalog"`
-	Name                                           string                         `json:"name"`
-	Owner_business                                 *Business                      `json:"owner_business"`
-	Product_count                                  int                            `json:"product_count"`
-	Store_catalog_settings                         *StoreCatalogSettings          `json:"store_catalog_settings"`
-	User_access_expire_time                        time.Time                      `json:"user_access_expire_time"`
-	Vertical                                       string                         `json:"vertical"`
+	Agency_collaborative_ads_share_settings *CollaborativeAdsShareSettings `json:"agency_collaborative_ads_share_settings"`
+	Business *Business `json:"business"`
+	Catalog_store *StoreCatalogSettings `json:"catalog_store"`
+	Commerce_merchant_settings *CommerceMerchantSettings `json:"commerce_merchant_settings"`
+	Creator_user *User `json:"creator_user"`
+	Da_display_settings *ProductCatalogImageSettings `json:"da_display_settings"`
+	Default_image_url string `json:"default_image_url"`
+	Fallback_image_url []string `json:"fallback_image_url"`
+	Feed_count int `json:"feed_count"`
+	Id string `json:"id"`
+	Is_catalog_segment bool `json:"is_catalog_segment"`
+	Is_local_catalog bool `json:"is_local_catalog"`
+	Name string `json:"name"`
+	Owner_business *Business `json:"owner_business"`
+	Product_count int `json:"product_count"`
+	Store_catalog_settings *StoreCatalogSettings `json:"store_catalog_settings"`
+	User_access_expire_time time.Time `json:"user_access_expire_time"`
+	Vertical string `json:"vertical"`
 }

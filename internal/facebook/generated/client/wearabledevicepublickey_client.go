@@ -21,14 +21,18 @@ func NewWearableDevicePublicKeyClient(accessToken string) *WearableDevicePublicK
 	}
 }
 
-// facebook_wearabledevicepublickey_get_ GET  for WearableDevicePublicKey
-func (c *WearableDevicePublicKeyClient) Facebook_wearabledevicepublickey_get_(args map[string]interface{}) (interface{}, error) {
+
+// wearabledevicepublickey_get_ GET  for WearableDevicePublicKey
+func (c *WearableDevicePublicKeyClient) Wearabledevicepublickey_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *WearableDevicePublicKeyClient) Facebook_wearabledevicepublickey_get_(ar
 
 	return result, nil
 }
+

@@ -15,8 +15,9 @@ import (
 func GetLiveVideoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_livevideo_get_blocked_users tool
-	facebook_livevideo_get_blocked_usersTool := mcp.NewTool("facebook_livevideo_get_blocked_users",
+
+	// livevideo_get_blocked_users tool
+	livevideo_get_blocked_usersTool := mcp.NewTool("livevideo_get_blocked_users",
 		mcp.WithDescription("GET blocked_users for LiveVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -26,10 +27,10 @@ func GetLiveVideoTools(accessToken string) []mcp.Tool {
 			mcp.Description("uid parameter for blocked_users"),
 		),
 	)
-	tools = append(tools, facebook_livevideo_get_blocked_usersTool)
+	tools = append(tools, livevideo_get_blocked_usersTool)
 
-	// facebook_livevideo_get_comments tool
-	facebook_livevideo_get_commentsTool := mcp.NewTool("facebook_livevideo_get_comments",
+	// livevideo_get_comments tool
+	livevideo_get_commentsTool := mcp.NewTool("livevideo_get_comments",
 		mcp.WithDescription("GET comments for LiveVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -51,60 +52,60 @@ func GetLiveVideoTools(accessToken string) []mcp.Tool {
 			mcp.Description("since parameter for comments"),
 		),
 	)
-	tools = append(tools, facebook_livevideo_get_commentsTool)
+	tools = append(tools, livevideo_get_commentsTool)
 
-	// facebook_livevideo_get_crosspost_shared_pages tool
-	facebook_livevideo_get_crosspost_shared_pagesTool := mcp.NewTool("facebook_livevideo_get_crosspost_shared_pages",
+	// livevideo_get_crosspost_shared_pages tool
+	livevideo_get_crosspost_shared_pagesTool := mcp.NewTool("livevideo_get_crosspost_shared_pages",
 		mcp.WithDescription("GET crosspost_shared_pages for LiveVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_livevideo_get_crosspost_shared_pagesTool)
+	tools = append(tools, livevideo_get_crosspost_shared_pagesTool)
 
-	// facebook_livevideo_get_crossposted_broadcasts tool
-	facebook_livevideo_get_crossposted_broadcastsTool := mcp.NewTool("facebook_livevideo_get_crossposted_broadcasts",
+	// livevideo_get_crossposted_broadcasts tool
+	livevideo_get_crossposted_broadcastsTool := mcp.NewTool("livevideo_get_crossposted_broadcasts",
 		mcp.WithDescription("GET crossposted_broadcasts for LiveVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_livevideo_get_crossposted_broadcastsTool)
+	tools = append(tools, livevideo_get_crossposted_broadcastsTool)
 
-	// facebook_livevideo_get_errors tool
-	facebook_livevideo_get_errorsTool := mcp.NewTool("facebook_livevideo_get_errors",
+	// livevideo_get_errors tool
+	livevideo_get_errorsTool := mcp.NewTool("livevideo_get_errors",
 		mcp.WithDescription("GET errors for LiveVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_livevideo_get_errorsTool)
+	tools = append(tools, livevideo_get_errorsTool)
 
-	// facebook_livevideo_post_input_streams tool
-	facebook_livevideo_post_input_streamsTool := mcp.NewTool("facebook_livevideo_post_input_streams",
+	// livevideo_post_input_streams tool
+	livevideo_post_input_streamsTool := mcp.NewTool("livevideo_post_input_streams",
 		mcp.WithDescription("POST input_streams for LiveVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_livevideo_post_input_streamsTool)
+	tools = append(tools, livevideo_post_input_streamsTool)
 
-	// facebook_livevideo_get_polls tool
-	facebook_livevideo_get_pollsTool := mcp.NewTool("facebook_livevideo_get_polls",
+	// livevideo_get_polls tool
+	livevideo_get_pollsTool := mcp.NewTool("livevideo_get_polls",
 		mcp.WithDescription("GET polls for LiveVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_livevideo_get_pollsTool)
+	tools = append(tools, livevideo_get_pollsTool)
 
-	// facebook_livevideo_post_polls tool
-	facebook_livevideo_post_pollsTool := mcp.NewTool("facebook_livevideo_post_polls",
+	// livevideo_post_polls tool
+	livevideo_post_pollsTool := mcp.NewTool("livevideo_post_polls",
 		mcp.WithDescription("POST polls for LiveVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -134,10 +135,10 @@ func GetLiveVideoTools(accessToken string) []mcp.Tool {
 			mcp.Description("show_results parameter for polls"),
 		),
 	)
-	tools = append(tools, facebook_livevideo_post_pollsTool)
+	tools = append(tools, livevideo_post_pollsTool)
 
-	// facebook_livevideo_get_reactions tool
-	facebook_livevideo_get_reactionsTool := mcp.NewTool("facebook_livevideo_get_reactions",
+	// livevideo_get_reactions tool
+	livevideo_get_reactionsTool := mcp.NewTool("livevideo_get_reactions",
 		mcp.WithDescription("GET reactions for LiveVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -148,20 +149,20 @@ func GetLiveVideoTools(accessToken string) []mcp.Tool {
 			mcp.Enum("ANGRY", "CARE", "FIRE", "HAHA", "HUNDRED", "LIKE", "LOVE", "NONE", "PRIDE", "SAD", "THANKFUL", "WOW"),
 		),
 	)
-	tools = append(tools, facebook_livevideo_get_reactionsTool)
+	tools = append(tools, livevideo_get_reactionsTool)
 
-	// facebook_livevideo_delete_ tool
-	facebook_livevideo_delete_Tool := mcp.NewTool("facebook_livevideo_delete_",
+	// livevideo_delete_ tool
+	livevideo_delete_Tool := mcp.NewTool("livevideo_delete_",
 		mcp.WithDescription("DELETE  for LiveVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_livevideo_delete_Tool)
+	tools = append(tools, livevideo_delete_Tool)
 
-	// facebook_livevideo_get_ tool
-	facebook_livevideo_get_Tool := mcp.NewTool("facebook_livevideo_get_",
+	// livevideo_get_ tool
+	livevideo_get_Tool := mcp.NewTool("livevideo_get_",
 		mcp.WithDescription("GET  for LiveVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -171,10 +172,10 @@ func GetLiveVideoTools(accessToken string) []mcp.Tool {
 			mcp.Description("target_token parameter for "),
 		),
 	)
-	tools = append(tools, facebook_livevideo_get_Tool)
+	tools = append(tools, livevideo_get_Tool)
 
-	// facebook_livevideo_post_ tool
-	facebook_livevideo_post_Tool := mcp.NewTool("facebook_livevideo_post_",
+	// livevideo_post_ tool
+	livevideo_post_Tool := mcp.NewTool("livevideo_post_",
 		mcp.WithDescription("POST  for LiveVideo"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -275,15 +276,17 @@ func GetLiveVideoTools(accessToken string) []mcp.Tool {
 			mcp.Description("title parameter for "),
 		),
 	)
-	tools = append(tools, facebook_livevideo_post_Tool)
+	tools = append(tools, livevideo_post_Tool)
+
 
 	return tools
 }
 
 // LiveVideo handlers
 
-// HandleFacebook_livevideo_get_blocked_users handles the facebook_livevideo_get_blocked_users tool
-func HandleFacebook_livevideo_get_blocked_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLivevideo_get_blocked_users handles the livevideo_get_blocked_users tool
+func HandleLivevideo_get_blocked_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -301,10 +304,12 @@ func HandleFacebook_livevideo_get_blocked_users(ctx context.Context, request mcp
 		args["uid"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_livevideo_get_blocked_users(args)
+	result, err := client.Livevideo_get_blocked_users(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_livevideo_get_blocked_users: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_get_blocked_users: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -316,8 +321,9 @@ func HandleFacebook_livevideo_get_blocked_users(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_livevideo_get_comments handles the facebook_livevideo_get_comments tool
-func HandleFacebook_livevideo_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLivevideo_get_comments handles the livevideo_get_comments tool
+func HandleLivevideo_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -350,10 +356,12 @@ func HandleFacebook_livevideo_get_comments(ctx context.Context, request mcp.Call
 		args["since"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_livevideo_get_comments(args)
+	result, err := client.Livevideo_get_comments(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_livevideo_get_comments: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_get_comments: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -365,8 +373,9 @@ func HandleFacebook_livevideo_get_comments(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_livevideo_get_crosspost_shared_pages handles the facebook_livevideo_get_crosspost_shared_pages tool
-func HandleFacebook_livevideo_get_crosspost_shared_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLivevideo_get_crosspost_shared_pages handles the livevideo_get_crosspost_shared_pages tool
+func HandleLivevideo_get_crosspost_shared_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -379,10 +388,12 @@ func HandleFacebook_livevideo_get_crosspost_shared_pages(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_livevideo_get_crosspost_shared_pages(args)
+	result, err := client.Livevideo_get_crosspost_shared_pages(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_livevideo_get_crosspost_shared_pages: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_get_crosspost_shared_pages: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -394,8 +405,9 @@ func HandleFacebook_livevideo_get_crosspost_shared_pages(ctx context.Context, re
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_livevideo_get_crossposted_broadcasts handles the facebook_livevideo_get_crossposted_broadcasts tool
-func HandleFacebook_livevideo_get_crossposted_broadcasts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLivevideo_get_crossposted_broadcasts handles the livevideo_get_crossposted_broadcasts tool
+func HandleLivevideo_get_crossposted_broadcasts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -408,10 +420,12 @@ func HandleFacebook_livevideo_get_crossposted_broadcasts(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_livevideo_get_crossposted_broadcasts(args)
+	result, err := client.Livevideo_get_crossposted_broadcasts(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_livevideo_get_crossposted_broadcasts: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_get_crossposted_broadcasts: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -423,8 +437,9 @@ func HandleFacebook_livevideo_get_crossposted_broadcasts(ctx context.Context, re
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_livevideo_get_errors handles the facebook_livevideo_get_errors tool
-func HandleFacebook_livevideo_get_errors(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLivevideo_get_errors handles the livevideo_get_errors tool
+func HandleLivevideo_get_errors(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -437,10 +452,12 @@ func HandleFacebook_livevideo_get_errors(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_livevideo_get_errors(args)
+	result, err := client.Livevideo_get_errors(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_livevideo_get_errors: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_get_errors: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -452,8 +469,9 @@ func HandleFacebook_livevideo_get_errors(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_livevideo_post_input_streams handles the facebook_livevideo_post_input_streams tool
-func HandleFacebook_livevideo_post_input_streams(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLivevideo_post_input_streams handles the livevideo_post_input_streams tool
+func HandleLivevideo_post_input_streams(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -466,10 +484,12 @@ func HandleFacebook_livevideo_post_input_streams(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_livevideo_post_input_streams(args)
+	result, err := client.Livevideo_post_input_streams(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_livevideo_post_input_streams: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_post_input_streams: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -481,8 +501,9 @@ func HandleFacebook_livevideo_post_input_streams(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_livevideo_get_polls handles the facebook_livevideo_get_polls tool
-func HandleFacebook_livevideo_get_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLivevideo_get_polls handles the livevideo_get_polls tool
+func HandleLivevideo_get_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -495,10 +516,12 @@ func HandleFacebook_livevideo_get_polls(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_livevideo_get_polls(args)
+	result, err := client.Livevideo_get_polls(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_livevideo_get_polls: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_get_polls: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -510,8 +533,9 @@ func HandleFacebook_livevideo_get_polls(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_livevideo_post_polls handles the facebook_livevideo_post_polls tool
-func HandleFacebook_livevideo_post_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLivevideo_post_polls handles the livevideo_post_polls tool
+func HandleLivevideo_post_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -563,10 +587,12 @@ func HandleFacebook_livevideo_post_polls(ctx context.Context, request mcp.CallTo
 		args["show_results"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_livevideo_post_polls(args)
+	result, err := client.Livevideo_post_polls(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_livevideo_post_polls: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_post_polls: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -578,8 +604,9 @@ func HandleFacebook_livevideo_post_polls(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_livevideo_get_reactions handles the facebook_livevideo_get_reactions tool
-func HandleFacebook_livevideo_get_reactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLivevideo_get_reactions handles the livevideo_get_reactions tool
+func HandleLivevideo_get_reactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -597,10 +624,12 @@ func HandleFacebook_livevideo_get_reactions(ctx context.Context, request mcp.Cal
 		args["type"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_livevideo_get_reactions(args)
+	result, err := client.Livevideo_get_reactions(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_livevideo_get_reactions: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_get_reactions: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -612,8 +641,9 @@ func HandleFacebook_livevideo_get_reactions(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_livevideo_delete_ handles the facebook_livevideo_delete_ tool
-func HandleFacebook_livevideo_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLivevideo_delete_ handles the livevideo_delete_ tool
+func HandleLivevideo_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -626,10 +656,12 @@ func HandleFacebook_livevideo_delete_(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_livevideo_delete_(args)
+	result, err := client.Livevideo_delete_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_livevideo_delete_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_delete_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -641,8 +673,9 @@ func HandleFacebook_livevideo_delete_(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_livevideo_get_ handles the facebook_livevideo_get_ tool
-func HandleFacebook_livevideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLivevideo_get_ handles the livevideo_get_ tool
+func HandleLivevideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -660,10 +693,12 @@ func HandleFacebook_livevideo_get_(ctx context.Context, request mcp.CallToolRequ
 		args["target_token"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_livevideo_get_(args)
+	result, err := client.Livevideo_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_livevideo_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -675,8 +710,9 @@ func HandleFacebook_livevideo_get_(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_livevideo_post_ handles the facebook_livevideo_post_ tool
-func HandleFacebook_livevideo_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleLivevideo_post_ handles the livevideo_post_ tool
+func HandleLivevideo_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -848,10 +884,12 @@ func HandleFacebook_livevideo_post_(ctx context.Context, request mcp.CallToolReq
 		args["title"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_livevideo_post_(args)
+	result, err := client.Livevideo_post_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_livevideo_post_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_post_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -862,3 +900,4 @@ func HandleFacebook_livevideo_post_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

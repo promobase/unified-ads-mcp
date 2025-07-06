@@ -21,15 +21,19 @@ func NewOfflineConversionDataSetUploadClient(accessToken string) *OfflineConvers
 	}
 }
 
-// facebook_offlineconversiondatasetupload_get_progress GET progress for OfflineConversionDataSetUpload
-func (c *OfflineConversionDataSetUploadClient) Facebook_offlineconversiondatasetupload_get_progress(args map[string]interface{}) (interface{}, error) {
+
+// offlineconversiondatasetupload_get_progress GET progress for OfflineConversionDataSetUpload
+func (c *OfflineConversionDataSetUploadClient) Offlineconversiondatasetupload_get_progress(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "progress")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -60,15 +64,19 @@ func (c *OfflineConversionDataSetUploadClient) Facebook_offlineconversiondataset
 	return result, nil
 }
 
-// facebook_offlineconversiondatasetupload_get_pull_sessions GET pull_sessions for OfflineConversionDataSetUpload
-func (c *OfflineConversionDataSetUploadClient) Facebook_offlineconversiondatasetupload_get_pull_sessions(args map[string]interface{}) (interface{}, error) {
+
+// offlineconversiondatasetupload_get_pull_sessions GET pull_sessions for OfflineConversionDataSetUpload
+func (c *OfflineConversionDataSetUploadClient) Offlineconversiondatasetupload_get_pull_sessions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "pull_sessions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -99,15 +107,19 @@ func (c *OfflineConversionDataSetUploadClient) Facebook_offlineconversiondataset
 	return result, nil
 }
 
-// facebook_offlineconversiondatasetupload_get_ GET  for OfflineConversionDataSetUpload
-func (c *OfflineConversionDataSetUploadClient) Facebook_offlineconversiondatasetupload_get_(args map[string]interface{}) (interface{}, error) {
+
+// offlineconversiondatasetupload_get_ GET  for OfflineConversionDataSetUpload
+func (c *OfflineConversionDataSetUploadClient) Offlineconversiondatasetupload_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -137,3 +149,4 @@ func (c *OfflineConversionDataSetUploadClient) Facebook_offlineconversiondataset
 
 	return result, nil
 }
+

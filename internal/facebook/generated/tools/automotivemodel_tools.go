@@ -15,18 +15,19 @@ import (
 func GetAutomotiveModelTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_automotivemodel_get_channels_to_integrity_status tool
-	facebook_automotivemodel_get_channels_to_integrity_statusTool := mcp.NewTool("facebook_automotivemodel_get_channels_to_integrity_status",
+
+	// automotivemodel_get_channels_to_integrity_status tool
+	automotivemodel_get_channels_to_integrity_statusTool := mcp.NewTool("automotivemodel_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for AutomotiveModel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_automotivemodel_get_channels_to_integrity_statusTool)
+	tools = append(tools, automotivemodel_get_channels_to_integrity_statusTool)
 
-	// facebook_automotivemodel_get_override_details tool
-	facebook_automotivemodel_get_override_detailsTool := mcp.NewTool("facebook_automotivemodel_get_override_details",
+	// automotivemodel_get_override_details tool
+	automotivemodel_get_override_detailsTool := mcp.NewTool("automotivemodel_get_override_details",
 		mcp.WithDescription("GET override_details for AutomotiveModel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -40,35 +41,37 @@ func GetAutomotiveModelTools(accessToken string) []mcp.Tool {
 			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
 		),
 	)
-	tools = append(tools, facebook_automotivemodel_get_override_detailsTool)
+	tools = append(tools, automotivemodel_get_override_detailsTool)
 
-	// facebook_automotivemodel_get_videos_metadata tool
-	facebook_automotivemodel_get_videos_metadataTool := mcp.NewTool("facebook_automotivemodel_get_videos_metadata",
+	// automotivemodel_get_videos_metadata tool
+	automotivemodel_get_videos_metadataTool := mcp.NewTool("automotivemodel_get_videos_metadata",
 		mcp.WithDescription("GET videos_metadata for AutomotiveModel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_automotivemodel_get_videos_metadataTool)
+	tools = append(tools, automotivemodel_get_videos_metadataTool)
 
-	// facebook_automotivemodel_get_ tool
-	facebook_automotivemodel_get_Tool := mcp.NewTool("facebook_automotivemodel_get_",
+	// automotivemodel_get_ tool
+	automotivemodel_get_Tool := mcp.NewTool("automotivemodel_get_",
 		mcp.WithDescription("GET  for AutomotiveModel"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_automotivemodel_get_Tool)
+	tools = append(tools, automotivemodel_get_Tool)
+
 
 	return tools
 }
 
 // AutomotiveModel handlers
 
-// HandleFacebook_automotivemodel_get_channels_to_integrity_status handles the facebook_automotivemodel_get_channels_to_integrity_status tool
-func HandleFacebook_automotivemodel_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAutomotivemodel_get_channels_to_integrity_status handles the automotivemodel_get_channels_to_integrity_status tool
+func HandleAutomotivemodel_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -81,10 +84,12 @@ func HandleFacebook_automotivemodel_get_channels_to_integrity_status(ctx context
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_automotivemodel_get_channels_to_integrity_status(args)
+	result, err := client.Automotivemodel_get_channels_to_integrity_status(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_automotivemodel_get_channels_to_integrity_status: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute automotivemodel_get_channels_to_integrity_status: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -96,8 +101,9 @@ func HandleFacebook_automotivemodel_get_channels_to_integrity_status(ctx context
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_automotivemodel_get_override_details handles the facebook_automotivemodel_get_override_details tool
-func HandleFacebook_automotivemodel_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAutomotivemodel_get_override_details handles the automotivemodel_get_override_details tool
+func HandleAutomotivemodel_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -121,10 +127,12 @@ func HandleFacebook_automotivemodel_get_override_details(ctx context.Context, re
 		args["type"] = val
 	}
 
+
+
 	// Call the client method
-	result, err := client.Facebook_automotivemodel_get_override_details(args)
+	result, err := client.Automotivemodel_get_override_details(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_automotivemodel_get_override_details: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute automotivemodel_get_override_details: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -136,8 +144,9 @@ func HandleFacebook_automotivemodel_get_override_details(ctx context.Context, re
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_automotivemodel_get_videos_metadata handles the facebook_automotivemodel_get_videos_metadata tool
-func HandleFacebook_automotivemodel_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAutomotivemodel_get_videos_metadata handles the automotivemodel_get_videos_metadata tool
+func HandleAutomotivemodel_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -150,10 +159,12 @@ func HandleFacebook_automotivemodel_get_videos_metadata(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_automotivemodel_get_videos_metadata(args)
+	result, err := client.Automotivemodel_get_videos_metadata(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_automotivemodel_get_videos_metadata: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute automotivemodel_get_videos_metadata: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -165,8 +176,9 @@ func HandleFacebook_automotivemodel_get_videos_metadata(ctx context.Context, req
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_automotivemodel_get_ handles the facebook_automotivemodel_get_ tool
-func HandleFacebook_automotivemodel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAutomotivemodel_get_ handles the automotivemodel_get_ tool
+func HandleAutomotivemodel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -179,10 +191,12 @@ func HandleFacebook_automotivemodel_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_automotivemodel_get_(args)
+	result, err := client.Automotivemodel_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_automotivemodel_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute automotivemodel_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -193,3 +207,4 @@ func HandleFacebook_automotivemodel_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -15,23 +15,26 @@ import (
 func GetShopTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_shop_get_ tool
-	facebook_shop_get_Tool := mcp.NewTool("facebook_shop_get_",
+
+	// shop_get_ tool
+	shop_get_Tool := mcp.NewTool("shop_get_",
 		mcp.WithDescription("GET  for Shop"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_shop_get_Tool)
+	tools = append(tools, shop_get_Tool)
+
 
 	return tools
 }
 
 // Shop handlers
 
-// HandleFacebook_shop_get_ handles the facebook_shop_get_ tool
-func HandleFacebook_shop_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleShop_get_ handles the shop_get_ tool
+func HandleShop_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_shop_get_(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_shop_get_(args)
+	result, err := client.Shop_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_shop_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute shop_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_shop_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

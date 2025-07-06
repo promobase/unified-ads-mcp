@@ -21,14 +21,16 @@ func NewAppRequestClient(accessToken string) *AppRequestClient {
 	}
 }
 
-// facebook_apprequest_delete_ DELETE  for AppRequest
-func (c *AppRequestClient) Facebook_apprequest_delete_(args map[string]interface{}) (interface{}, error) {
+
+// apprequest_delete_ DELETE  for AppRequest
+func (c *AppRequestClient) Apprequest_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 	ids, ok := args["ids"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: ids")
 	}
 	_ = ids // Suppress unused variable warning
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -38,6 +40,7 @@ func (c *AppRequestClient) Facebook_apprequest_delete_(args map[string]interface
 	if val, ok := args["ids"]; ok {
 		urlParams.Set("ids", fmt.Sprintf("%v", val))
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -69,14 +72,18 @@ func (c *AppRequestClient) Facebook_apprequest_delete_(args map[string]interface
 	return result, nil
 }
 
-// facebook_apprequest_get_ GET  for AppRequest
-func (c *AppRequestClient) Facebook_apprequest_get_(args map[string]interface{}) (interface{}, error) {
+
+// apprequest_get_ GET  for AppRequest
+func (c *AppRequestClient) Apprequest_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -107,3 +114,4 @@ func (c *AppRequestClient) Facebook_apprequest_get_(args map[string]interface{})
 
 	return result, nil
 }
+

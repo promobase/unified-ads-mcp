@@ -15,23 +15,26 @@ import (
 func GetAvatarProfilePictureTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_avatarprofilepicture_get_ tool
-	facebook_avatarprofilepicture_get_Tool := mcp.NewTool("facebook_avatarprofilepicture_get_",
+
+	// avatarprofilepicture_get_ tool
+	avatarprofilepicture_get_Tool := mcp.NewTool("avatarprofilepicture_get_",
 		mcp.WithDescription("GET  for AvatarProfilePicture"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_avatarprofilepicture_get_Tool)
+	tools = append(tools, avatarprofilepicture_get_Tool)
+
 
 	return tools
 }
 
 // AvatarProfilePicture handlers
 
-// HandleFacebook_avatarprofilepicture_get_ handles the facebook_avatarprofilepicture_get_ tool
-func HandleFacebook_avatarprofilepicture_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleAvatarprofilepicture_get_ handles the avatarprofilepicture_get_ tool
+func HandleAvatarprofilepicture_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_avatarprofilepicture_get_(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_avatarprofilepicture_get_(args)
+	result, err := client.Avatarprofilepicture_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_avatarprofilepicture_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute avatarprofilepicture_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_avatarprofilepicture_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

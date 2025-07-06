@@ -5,5 +5,5 @@ package types
 // UserDevice represents a Facebook UserDevice object
 type UserDevice struct {
 	Hardware string `json:"hardware"`
-	Os       string `json:"os"`
+	Os string `json:"os"`
 }

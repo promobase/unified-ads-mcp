@@ -21,14 +21,18 @@ func NewAdsMcmeConversionClient(accessToken string) *AdsMcmeConversionClient {
 	}
 }
 
-// facebook_adsmcmeconversion_get_ GET  for AdsMcmeConversion
-func (c *AdsMcmeConversionClient) Facebook_adsmcmeconversion_get_(args map[string]interface{}) (interface{}, error) {
+
+// adsmcmeconversion_get_ GET  for AdsMcmeConversion
+func (c *AdsMcmeConversionClient) Adsmcmeconversion_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -59,3 +63,4 @@ func (c *AdsMcmeConversionClient) Facebook_adsmcmeconversion_get_(args map[strin
 
 	return result, nil
 }
+

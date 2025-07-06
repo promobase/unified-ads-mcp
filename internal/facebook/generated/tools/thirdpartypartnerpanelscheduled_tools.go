@@ -15,23 +15,26 @@ import (
 func GetThirdPartyPartnerPanelScheduledTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_thirdpartypartnerpanelscheduled_get_ tool
-	facebook_thirdpartypartnerpanelscheduled_get_Tool := mcp.NewTool("facebook_thirdpartypartnerpanelscheduled_get_",
+
+	// thirdpartypartnerpanelscheduled_get_ tool
+	thirdpartypartnerpanelscheduled_get_Tool := mcp.NewTool("thirdpartypartnerpanelscheduled_get_",
 		mcp.WithDescription("GET  for ThirdPartyPartnerPanelScheduled"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_thirdpartypartnerpanelscheduled_get_Tool)
+	tools = append(tools, thirdpartypartnerpanelscheduled_get_Tool)
+
 
 	return tools
 }
 
 // ThirdPartyPartnerPanelScheduled handlers
 
-// HandleFacebook_thirdpartypartnerpanelscheduled_get_ handles the facebook_thirdpartypartnerpanelscheduled_get_ tool
-func HandleFacebook_thirdpartypartnerpanelscheduled_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleThirdpartypartnerpanelscheduled_get_ handles the thirdpartypartnerpanelscheduled_get_ tool
+func HandleThirdpartypartnerpanelscheduled_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -44,10 +47,12 @@ func HandleFacebook_thirdpartypartnerpanelscheduled_get_(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_thirdpartypartnerpanelscheduled_get_(args)
+	result, err := client.Thirdpartypartnerpanelscheduled_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_thirdpartypartnerpanelscheduled_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute thirdpartypartnerpanelscheduled_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -58,3 +63,4 @@ func HandleFacebook_thirdpartypartnerpanelscheduled_get_(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

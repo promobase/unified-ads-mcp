@@ -15,8 +15,9 @@ import (
 func GetShadowIGHashtagTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-	// facebook_shadowighashtag_get_recent_media tool
-	facebook_shadowighashtag_get_recent_mediaTool := mcp.NewTool("facebook_shadowighashtag_get_recent_media",
+
+	// shadowighashtag_get_recent_media tool
+	shadowighashtag_get_recent_mediaTool := mcp.NewTool("shadowighashtag_get_recent_media",
 		mcp.WithDescription("GET recent_media for ShadowIGHashtag"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -27,10 +28,10 @@ func GetShadowIGHashtagTools(accessToken string) []mcp.Tool {
 			mcp.Description("user_id parameter for recent_media"),
 		),
 	)
-	tools = append(tools, facebook_shadowighashtag_get_recent_mediaTool)
+	tools = append(tools, shadowighashtag_get_recent_mediaTool)
 
-	// facebook_shadowighashtag_get_top_media tool
-	facebook_shadowighashtag_get_top_mediaTool := mcp.NewTool("facebook_shadowighashtag_get_top_media",
+	// shadowighashtag_get_top_media tool
+	shadowighashtag_get_top_mediaTool := mcp.NewTool("shadowighashtag_get_top_media",
 		mcp.WithDescription("GET top_media for ShadowIGHashtag"),
 		mcp.WithString("access_token",
 			mcp.Required(),
@@ -41,25 +42,27 @@ func GetShadowIGHashtagTools(accessToken string) []mcp.Tool {
 			mcp.Description("user_id parameter for top_media"),
 		),
 	)
-	tools = append(tools, facebook_shadowighashtag_get_top_mediaTool)
+	tools = append(tools, shadowighashtag_get_top_mediaTool)
 
-	// facebook_shadowighashtag_get_ tool
-	facebook_shadowighashtag_get_Tool := mcp.NewTool("facebook_shadowighashtag_get_",
+	// shadowighashtag_get_ tool
+	shadowighashtag_get_Tool := mcp.NewTool("shadowighashtag_get_",
 		mcp.WithDescription("GET  for ShadowIGHashtag"),
 		mcp.WithString("access_token",
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
 	)
-	tools = append(tools, facebook_shadowighashtag_get_Tool)
+	tools = append(tools, shadowighashtag_get_Tool)
+
 
 	return tools
 }
 
 // ShadowIGHashtag handlers
 
-// HandleFacebook_shadowighashtag_get_recent_media handles the facebook_shadowighashtag_get_recent_media tool
-func HandleFacebook_shadowighashtag_get_recent_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleShadowighashtag_get_recent_media handles the shadowighashtag_get_recent_media tool
+func HandleShadowighashtag_get_recent_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -79,10 +82,12 @@ func HandleFacebook_shadowighashtag_get_recent_media(ctx context.Context, reques
 	}
 	args["user_id"] = user_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_shadowighashtag_get_recent_media(args)
+	result, err := client.Shadowighashtag_get_recent_media(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_shadowighashtag_get_recent_media: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute shadowighashtag_get_recent_media: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -94,8 +99,9 @@ func HandleFacebook_shadowighashtag_get_recent_media(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_shadowighashtag_get_top_media handles the facebook_shadowighashtag_get_top_media tool
-func HandleFacebook_shadowighashtag_get_top_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleShadowighashtag_get_top_media handles the shadowighashtag_get_top_media tool
+func HandleShadowighashtag_get_top_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -115,10 +121,12 @@ func HandleFacebook_shadowighashtag_get_top_media(ctx context.Context, request m
 	}
 	args["user_id"] = user_id
 
+
+
 	// Call the client method
-	result, err := client.Facebook_shadowighashtag_get_top_media(args)
+	result, err := client.Shadowighashtag_get_top_media(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_shadowighashtag_get_top_media: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute shadowighashtag_get_top_media: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -130,8 +138,9 @@ func HandleFacebook_shadowighashtag_get_top_media(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFacebook_shadowighashtag_get_ handles the facebook_shadowighashtag_get_ tool
-func HandleFacebook_shadowighashtag_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+
+// HandleShadowighashtag_get_ handles the shadowighashtag_get_ tool
+func HandleShadowighashtag_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
@@ -144,10 +153,12 @@ func HandleFacebook_shadowighashtag_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
-	result, err := client.Facebook_shadowighashtag_get_(args)
+	result, err := client.Shadowighashtag_get_(args)
 	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute facebook_shadowighashtag_get_: %v", err)), nil
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute shadowighashtag_get_: %v", err)), nil
 	}
 
 	// Return the result as JSON
@@ -158,3 +169,4 @@ func HandleFacebook_shadowighashtag_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

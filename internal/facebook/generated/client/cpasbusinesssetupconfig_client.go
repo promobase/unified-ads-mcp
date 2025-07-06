@@ -21,15 +21,19 @@ func NewCPASBusinessSetupConfigClient(accessToken string) *CPASBusinessSetupConf
 	}
 }
 
-// facebook_cpasbusinesssetupconfig_get_ad_accounts GET ad_accounts for CPASBusinessSetupConfig
-func (c *CPASBusinessSetupConfigClient) Facebook_cpasbusinesssetupconfig_get_ad_accounts(args map[string]interface{}) (interface{}, error) {
+
+// cpasbusinesssetupconfig_get_ad_accounts GET ad_accounts for CPASBusinessSetupConfig
+func (c *CPASBusinessSetupConfigClient) Cpasbusinesssetupconfig_get_ad_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ad_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -60,15 +64,19 @@ func (c *CPASBusinessSetupConfigClient) Facebook_cpasbusinesssetupconfig_get_ad_
 	return result, nil
 }
 
-// facebook_cpasbusinesssetupconfig_get_ GET  for CPASBusinessSetupConfig
-func (c *CPASBusinessSetupConfigClient) Facebook_cpasbusinesssetupconfig_get_(args map[string]interface{}) (interface{}, error) {
+
+// cpasbusinesssetupconfig_get_ GET  for CPASBusinessSetupConfig
+func (c *CPASBusinessSetupConfigClient) Cpasbusinesssetupconfig_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -98,3 +106,4 @@ func (c *CPASBusinessSetupConfigClient) Facebook_cpasbusinesssetupconfig_get_(ar
 
 	return result, nil
 }
+
