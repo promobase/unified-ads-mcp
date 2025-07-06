@@ -26,7 +26,10 @@ func (c *BusinessAgreementClient) Businessagreement_get_(args map[string]interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,15 +68,24 @@ func (c *BusinessAgreementClient) Businessagreement_post_(args map[string]interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["asset_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("asset_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["request_status"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("request_status", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

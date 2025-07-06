@@ -26,21 +26,36 @@ func (c *ProfileClient) Profile_get_picture(args map[string]interface{}) (interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "picture")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/picture")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["height"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("height", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["redirect"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("redirect", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["width"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("width", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -78,7 +93,10 @@ func (c *ProfileClient) Profile_get_(args map[string]interface{}) (interface{}, 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

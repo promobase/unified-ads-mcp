@@ -31,12 +31,18 @@ func (c *ShadowIGHashtagClient) Shadowighashtag_get_recent_media(args map[string
 	_ = user_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "recent_media")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/recent_media")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["user_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -79,12 +85,18 @@ func (c *ShadowIGHashtagClient) Shadowighashtag_get_top_media(args map[string]in
 	_ = user_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "top_media")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/top_media")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["user_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -122,7 +134,10 @@ func (c *ShadowIGHashtagClient) Shadowighashtag_get_(args map[string]interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

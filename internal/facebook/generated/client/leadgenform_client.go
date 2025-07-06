@@ -26,7 +26,10 @@ func (c *LeadgenFormClient) Leadgenform_get_leads(args map[string]interface{}) (
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "leads")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/leads")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +68,10 @@ func (c *LeadgenFormClient) Leadgenform_get_test_leads(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "test_leads")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/test_leads")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,15 +110,24 @@ func (c *LeadgenFormClient) Leadgenform_post_test_leads(args map[string]interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "test_leads")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/test_leads")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["custom_disclaimer_responses"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_disclaimer_responses", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["field_data"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("field_data", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -150,7 +165,10 @@ func (c *LeadgenFormClient) Leadgenform_get_(args map[string]interface{}) (inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -189,12 +207,18 @@ func (c *LeadgenFormClient) Leadgenform_post_(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["status"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("status", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

@@ -26,7 +26,10 @@ func (c *ImageCopyrightClient) Imagecopyright_get_(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,30 +68,54 @@ func (c *ImageCopyrightClient) Imagecopyright_post_(args map[string]interface{})
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["artist"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("artist", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["creator"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("creator", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["geo_ownership"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("geo_ownership", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["original_content_creation_date"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("original_content_creation_date", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["title"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("title", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

@@ -26,7 +26,10 @@ func (c *VideoPollClient) Videopoll_get_poll_options(args map[string]interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "poll_options")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/poll_options")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +68,10 @@ func (c *VideoPollClient) Videopoll_get_(args map[string]interface{}) (interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -109,24 +115,42 @@ func (c *VideoPollClient) Videopoll_post_(args map[string]interface{}) (interfac
 	_ = action // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["action"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("action", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["close_after_voting"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("close_after_voting", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["default_open"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("default_open", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["show_gradient"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("show_gradient", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["show_results"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("show_results", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

@@ -31,12 +31,18 @@ func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_delete_lab
 	_ = user // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "label")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/label")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["user"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -79,12 +85,18 @@ func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_post_label
 	_ = user // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "label")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/label")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["user"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -122,7 +134,10 @@ func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_delete_(ar
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -161,7 +176,10 @@ func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_get_(args 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

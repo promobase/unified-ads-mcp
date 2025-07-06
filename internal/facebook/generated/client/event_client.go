@@ -26,7 +26,10 @@ func (c *EventClient) Event_get_comments(args map[string]interface{}) (interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/comments")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +68,10 @@ func (c *EventClient) Event_get_feed(args map[string]interface{}) (interface{}, 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "feed")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/feed")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,7 +110,10 @@ func (c *EventClient) Event_get_live_videos(args map[string]interface{}) (interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "live_videos")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/live_videos")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -143,69 +152,132 @@ func (c *EventClient) Event_post_live_videos(args map[string]interface{}) (inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "live_videos")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/live_videos")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["content_tags"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("content_tags", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["enable_backup_ingest"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("enable_backup_ingest", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["encoding_settings"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("encoding_settings", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["event_params"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("event_params", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fisheye_video_cropped"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fisheye_video_cropped", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["front_z_rotation"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("front_z_rotation", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_audio_only"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_audio_only", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_spherical"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_spherical", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["original_fov"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("original_fov", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["privacy"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("privacy", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["projection"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("projection", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["published"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("published", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["schedule_custom_profile_image"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("schedule_custom_profile_image", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["spatial_audio_format"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("spatial_audio_format", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["status"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("status", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["stereoscopic_mode"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("stereoscopic_mode", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["stop_on_delete_stream"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("stop_on_delete_stream", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["stream_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("stream_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["title"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("title", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -243,7 +315,10 @@ func (c *EventClient) Event_get_photos(args map[string]interface{}) (interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "photos")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/photos")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -282,7 +357,10 @@ func (c *EventClient) Event_get_picture(args map[string]interface{}) (interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "picture")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/picture")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -321,7 +399,10 @@ func (c *EventClient) Event_get_posts(args map[string]interface{}) (interface{},
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "posts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/posts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -360,7 +441,10 @@ func (c *EventClient) Event_get_roles(args map[string]interface{}) (interface{},
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "roles")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/roles")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -399,7 +483,10 @@ func (c *EventClient) Event_get_ticket_tiers(args map[string]interface{}) (inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ticket_tiers")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ticket_tiers")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -438,7 +525,10 @@ func (c *EventClient) Event_get_videos(args map[string]interface{}) (interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/videos")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -477,7 +567,10 @@ func (c *EventClient) Event_get_(args map[string]interface{}) (interface{}, erro
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

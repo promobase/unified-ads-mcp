@@ -31,30 +31,54 @@ func (c *AvatarClient) Avatar_get_models(args map[string]interface{}) (interface
 	_ = profile // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "models")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/models")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["client_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("client_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["client_version"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("client_version", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["config_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("config_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["force_generate"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("force_generate", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["platform"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("platform", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["profile"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("profile", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sdk_version"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sdk_version", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -92,7 +116,10 @@ func (c *AvatarClient) Avatar_get_(args map[string]interface{}) (interface{}, er
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

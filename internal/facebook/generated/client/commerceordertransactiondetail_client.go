@@ -26,7 +26,10 @@ func (c *CommerceOrderTransactionDetailClient) Commerceordertransactiondetail_ge
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "items")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/items")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +68,10 @@ func (c *CommerceOrderTransactionDetailClient) Commerceordertransactiondetail_ge
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "tax_details")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/tax_details")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

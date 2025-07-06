@@ -26,7 +26,10 @@ func (c *AdStudyCellClient) Adstudycell_get_adaccounts(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adaccounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +68,10 @@ func (c *AdStudyCellClient) Adstudycell_get_adsets(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adsets")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adsets")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,7 +110,10 @@ func (c *AdStudyCellClient) Adstudycell_get_campaigns(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "campaigns")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/campaigns")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -143,7 +152,10 @@ func (c *AdStudyCellClient) Adstudycell_get_(args map[string]interface{}) (inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -182,27 +194,48 @@ func (c *AdStudyCellClient) Adstudycell_post_(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["adaccounts"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("adaccounts", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["adsets"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("adsets", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["campaigns"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("campaigns", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["creation_template"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("creation_template", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

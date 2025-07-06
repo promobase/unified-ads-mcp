@@ -26,12 +26,18 @@ func (c *CustomAudienceClient) Customaudience_delete_adaccounts(args map[string]
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adaccounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["adaccounts"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("adaccounts", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -69,12 +75,18 @@ func (c *CustomAudienceClient) Customaudience_get_adaccounts(args map[string]int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adaccounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["permissions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("permissions", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -112,21 +124,36 @@ func (c *CustomAudienceClient) Customaudience_post_adaccounts(args map[string]in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adaccounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["adaccounts"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("adaccounts", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["permissions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("permissions", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["relationship_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("relationship_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["replace"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("replace", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -164,15 +191,24 @@ func (c *CustomAudienceClient) Customaudience_get_ads(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ads")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ads")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["effective_status"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("effective_status", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["status"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("status", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -210,27 +246,48 @@ func (c *CustomAudienceClient) Customaudience_get_health(args map[string]interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "health")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/health")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["calculated_date"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("calculated_date", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["processed_date"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("processed_date", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["value_aggregation_duration"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("value_aggregation_duration", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["value_country"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("value_country", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["value_currency"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("value_currency", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["value_version"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("value_version", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -268,12 +325,18 @@ func (c *CustomAudienceClient) Customaudience_get_salts(args map[string]interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "salts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/salts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -326,18 +389,30 @@ func (c *CustomAudienceClient) Customaudience_post_salts(args map[string]interfa
 	_ = valid_to // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "salts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/salts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["salt"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("salt", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["valid_from"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("valid_from", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["valid_to"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("valid_to", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -375,12 +450,18 @@ func (c *CustomAudienceClient) Customaudience_get_sessions(args map[string]inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "sessions")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/sessions")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["session_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("session_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -418,7 +499,10 @@ func (c *CustomAudienceClient) Customaudience_get_shared_account_info(args map[s
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_account_info")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shared_account_info")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -457,18 +541,30 @@ func (c *CustomAudienceClient) Customaudience_delete_users(args map[string]inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "users")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/users")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["namespace"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("namespace", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["payload"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("payload", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["session"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("session", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -506,18 +602,30 @@ func (c *CustomAudienceClient) Customaudience_post_users(args map[string]interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "users")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/users")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["namespace"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("namespace", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["payload"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("payload", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["session"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("session", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -565,18 +673,30 @@ func (c *CustomAudienceClient) Customaudience_post_usersreplace(args map[string]
 	_ = session // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "usersreplace")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/usersreplace")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["namespace"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("namespace", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["payload"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("payload", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["session"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("session", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -614,7 +734,10 @@ func (c *CustomAudienceClient) Customaudience_delete_(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -653,21 +776,36 @@ func (c *CustomAudienceClient) Customaudience_get_(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["ad_account_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ad_account_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["special_ad_categories"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("special_ad_categories", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["special_ad_category_countries"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("special_ad_category_countries", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["target_countries"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("target_countries", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -705,75 +843,144 @@ func (c *CustomAudienceClient) Customaudience_post_(args map[string]interface{})
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["allowed_domains"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("allowed_domains", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["claim_objective"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("claim_objective", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["content_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("content_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["countries"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("countries", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["customer_file_source"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("customer_file_source", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["enable_fetch_or_create"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("enable_fetch_or_create", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["event_source_group"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("event_source_group", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["event_sources"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("event_sources", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["exclusions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("exclusions", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["inclusions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("inclusions", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["lookalike_spec"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("lookalike_spec", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["opt_out_link"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("opt_out_link", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["parent_audience_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("parent_audience_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["product_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("product_set_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["retention_days"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("retention_days", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["rev_share_policy_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("rev_share_policy_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["rule"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("rule", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["rule_aggregation"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("rule_aggregation", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["tags"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("tags", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["use_in_campaigns"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("use_in_campaigns", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

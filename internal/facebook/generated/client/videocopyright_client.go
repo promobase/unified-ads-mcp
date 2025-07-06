@@ -26,7 +26,10 @@ func (c *VideoCopyrightClient) Videocopyright_get_update_records(args map[string
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "update_records")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/update_records")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +68,10 @@ func (c *VideoCopyrightClient) Videocopyright_get_(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,42 +110,78 @@ func (c *VideoCopyrightClient) Videocopyright_post_(args map[string]interface{})
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["append_excluded_ownership_segments"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("append_excluded_ownership_segments", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["attribution_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("attribution_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["content_category"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("content_category", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["excluded_ownership_countries"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("excluded_ownership_countries", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["excluded_ownership_segments"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("excluded_ownership_segments", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_reference_disabled"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_reference_disabled", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["monitoring_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("monitoring_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ownership_countries"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ownership_countries", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["rule_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("rule_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["whitelisted_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("whitelisted_ids", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["whitelisted_ig_user_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("whitelisted_ig_user_ids", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

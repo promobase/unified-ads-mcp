@@ -26,7 +26,10 @@ func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_get_donation
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "donations")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/donations")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +68,10 @@ func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_post_end_fun
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "end_fundraiser")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/end_fundraiser")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,7 +110,10 @@ func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_get_external
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "external_donations")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/external_donations")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -168,24 +177,42 @@ func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_post_externa
 	_ = donor_id_hash // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "external_donations")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/external_donations")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["amount_received"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("amount_received", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["currency"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("currency", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["donation_id_hash"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("donation_id_hash", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["donation_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("donation_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["donor_id_hash"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("donor_id_hash", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -223,7 +250,10 @@ func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_get_(args ma
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -262,36 +292,66 @@ func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_post_(args m
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["end_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("end_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["external_event_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("external_event_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["external_event_start_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("external_event_start_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["external_event_uri"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("external_event_uri", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["external_fundraiser_uri"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("external_fundraiser_uri", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["external_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("external_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["goal_amount"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("goal_amount", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

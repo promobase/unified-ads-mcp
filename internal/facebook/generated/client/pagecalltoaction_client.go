@@ -26,7 +26,10 @@ func (c *PageCallToActionClient) Pagecalltoaction_delete_(args map[string]interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +68,10 @@ func (c *PageCallToActionClient) Pagecalltoaction_get_(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,45 +110,84 @@ func (c *PageCallToActionClient) Pagecalltoaction_post_(args map[string]interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["android_app_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("android_app_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["android_destination_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("android_destination_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["android_package_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("android_package_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["android_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("android_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["email_address"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("email_address", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["intl_number_with_plus"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("intl_number_with_plus", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["iphone_app_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("iphone_app_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["iphone_destination_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("iphone_destination_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["iphone_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("iphone_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["web_destination_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("web_destination_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["web_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("web_url", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

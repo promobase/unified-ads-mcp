@@ -26,7 +26,10 @@ func (c *URLClient) Url_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,27 +68,48 @@ func (c *URLClient) Url_post_(args map[string]interface{}) (interface{}, error) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["blacklist"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("blacklist", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["denylist"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("denylist", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["hmac"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("hmac", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["locale"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("locale", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["scopes"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("scopes", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ts"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ts", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

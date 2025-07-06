@@ -26,7 +26,10 @@ func (c *IGMediaForIGOnlyAPIClient) Igmediaforigonlyapi_get_children(args map[st
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "children")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/children")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +68,10 @@ func (c *IGMediaForIGOnlyAPIClient) Igmediaforigonlyapi_get_comments(args map[st
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/comments")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,12 +110,18 @@ func (c *IGMediaForIGOnlyAPIClient) Igmediaforigonlyapi_post_comments(args map[s
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/comments")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["message"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("message", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -152,18 +164,30 @@ func (c *IGMediaForIGOnlyAPIClient) Igmediaforigonlyapi_get_insights(args map[st
 	_ = metric // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/insights")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["breakdown"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("breakdown", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["metric"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("metric", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["period"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("period", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -201,7 +225,10 @@ func (c *IGMediaForIGOnlyAPIClient) Igmediaforigonlyapi_get_(args map[string]int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -245,12 +272,18 @@ func (c *IGMediaForIGOnlyAPIClient) Igmediaforigonlyapi_post_(args map[string]in
 	_ = comment_enabled // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["comment_enabled"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("comment_enabled", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

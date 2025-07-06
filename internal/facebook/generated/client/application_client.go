@@ -31,15 +31,24 @@ func (c *ApplicationClient) Application_delete_accounts(args map[string]interfac
 	_ = uid // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "accounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/accounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["uid"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("uid", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -77,12 +86,18 @@ func (c *ApplicationClient) Application_get_accounts(args map[string]interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "accounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/accounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("type", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -120,30 +135,54 @@ func (c *ApplicationClient) Application_post_accounts(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "accounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/accounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["installed"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("installed", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["minor"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("minor", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["owner_access_token"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("owner_access_token", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["permissions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("permissions", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["uid"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("uid", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -186,147 +225,288 @@ func (c *ApplicationClient) Application_post_activities(args map[string]interfac
 	_ = event // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "activities")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/activities")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["advertiser_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("advertiser_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["advertiser_tracking_enabled"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("advertiser_tracking_enabled", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["anon_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("anon_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["app_user_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("app_user_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["application_tracking_enabled"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("application_tracking_enabled", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["attribution"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("attribution", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["attribution_referrer"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("attribution_referrer", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["attribution_sources"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("attribution_sources", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["auto_publish"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("auto_publish", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["bundle_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("bundle_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["bundle_short_version"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("bundle_short_version", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["bundle_version"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("bundle_version", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["campaign_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("campaign_ids", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["click_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("click_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["consider_views"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("consider_views", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_events"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_events", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_events_file"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_events_file", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["data_processing_options"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("data_processing_options", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["data_processing_options_country"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("data_processing_options_country", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["data_processing_options_state"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("data_processing_options_state", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["device_token"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("device_token", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["event"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("event", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["event_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("event_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["extinfo"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("extinfo", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["google_install_referrer"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("google_install_referrer", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["include_dwell_data"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("include_dwell_data", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["include_video_data"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("include_video_data", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["install_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("install_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["install_referrer"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("install_referrer", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["install_timestamp"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("install_timestamp", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["installer_package"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("installer_package", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_fb"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_fb", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["limited_data_use"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("limited_data_use", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["meta_install_referrer"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("meta_install_referrer", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["migration_bundle"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("migration_bundle", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["operational_parameters"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("operational_parameters", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["page_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("page_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["page_scoped_user_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("page_scoped_user_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["receipt_data"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("receipt_data", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sdk_version"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sdk_version", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ud"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ud", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["url_schemes"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("url_schemes", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["user_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["user_id_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user_id_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["vendor_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("vendor_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["windows_attribution_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("windows_attribution_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -364,7 +544,10 @@ func (c *ApplicationClient) Application_get_ad_placement_groups(args map[string]
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ad_placement_groups")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ad_placement_groups")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -403,12 +586,18 @@ func (c *ApplicationClient) Application_get_adnetwork_placements(args map[string
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adnetwork_placements")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adnetwork_placements")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["request_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("request_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -451,39 +640,72 @@ func (c *ApplicationClient) Application_get_adnetworkanalytics(args map[string]i
 	_ = metrics // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adnetworkanalytics")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adnetworkanalytics")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["aggregation_period"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("aggregation_period", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["breakdowns"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("breakdowns", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["filters"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("filters", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["metrics"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("metrics", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ordering_column"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ordering_column", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ordering_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ordering_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["should_include_until"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("should_include_until", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["since"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("since", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["until"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("until", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -526,36 +748,66 @@ func (c *ApplicationClient) Application_post_adnetworkanalytics(args map[string]
 	_ = metrics // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adnetworkanalytics")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adnetworkanalytics")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["aggregation_period"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("aggregation_period", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["breakdowns"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("breakdowns", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["filters"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("filters", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["metrics"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("metrics", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ordering_column"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ordering_column", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ordering_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ordering_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["since"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("since", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["until"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("until", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -593,12 +845,18 @@ func (c *ApplicationClient) Application_get_adnetworkanalytics_results(args map[
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adnetworkanalytics_results")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adnetworkanalytics_results")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["query_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("query_ids", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -636,15 +894,24 @@ func (c *ApplicationClient) Application_get_aem_attribution(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "aem_attribution")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/aem_attribution")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["advertiser_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("advertiser_ids", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fb_content_data"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fb_content_data", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -682,12 +949,18 @@ func (c *ApplicationClient) Application_get_aem_conversion_configs(args map[stri
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "aem_conversion_configs")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/aem_conversion_configs")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["advertiser_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("advertiser_ids", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -725,15 +998,24 @@ func (c *ApplicationClient) Application_get_aem_conversion_filter(args map[strin
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "aem_conversion_filter")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/aem_conversion_filter")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["catalog_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("catalog_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fb_content_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fb_content_ids", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -776,12 +1058,18 @@ func (c *ApplicationClient) Application_post_aem_conversions(args map[string]int
 	_ = aem_conversions // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "aem_conversions")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/aem_conversions")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["aem_conversions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("aem_conversions", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -824,27 +1112,48 @@ func (c *ApplicationClient) Application_post_aem_skan_readiness(args map[string]
 	_ = app_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "aem_skan_readiness")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/aem_skan_readiness")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["app_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("app_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_aem_ready"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_aem_ready", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_app_aem_install_ready"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_app_aem_install_ready", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_app_aem_ready"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_app_aem_ready", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_skan_ready"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_skan_ready", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["message"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("message", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -882,7 +1191,10 @@ func (c *ApplicationClient) Application_get_agencies(args map[string]interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/agencies")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -921,21 +1233,36 @@ func (c *ApplicationClient) Application_post_aggregate_revenue(args map[string]i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "aggregate_revenue")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/aggregate_revenue")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["ecpms"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ecpms", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["query_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("query_ids", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["request_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("request_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sync_api"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sync_api", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -973,7 +1300,10 @@ func (c *ApplicationClient) Application_get_android_dialog_configs(args map[stri
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "android_dialog_configs")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/android_dialog_configs")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1012,7 +1342,10 @@ func (c *ApplicationClient) Application_get_app_capi_settings(args map[string]in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "app_capi_settings")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/app_capi_settings")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1051,7 +1384,10 @@ func (c *ApplicationClient) Application_get_app_event_types(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "app_event_types")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/app_event_types")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1105,27 +1441,48 @@ func (c *ApplicationClient) Application_post_app_indexing(args map[string]interf
 	_ = tree // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "app_indexing")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/app_indexing")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["app_version"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("app_version", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["device_session_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("device_session_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["extra_info"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("extra_info", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["platform"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("platform", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["request_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("request_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["tree"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("tree", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1168,15 +1525,24 @@ func (c *ApplicationClient) Application_post_app_indexing_session(args map[strin
 	_ = device_session_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "app_indexing_session")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/app_indexing_session")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["device_session_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("device_session_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["extinfo"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("extinfo", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1214,12 +1580,18 @@ func (c *ApplicationClient) Application_get_app_installed_groups(args map[string
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "app_installed_groups")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/app_installed_groups")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["group_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("group_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1267,18 +1639,30 @@ func (c *ApplicationClient) Application_post_app_push_device_token(args map[stri
 	_ = device_token // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "app_push_device_token")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/app_push_device_token")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["device_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("device_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["device_token"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("device_token", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["platform"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("platform", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1316,7 +1700,10 @@ func (c *ApplicationClient) Application_get_appassets(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "appassets")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/appassets")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1365,18 +1752,30 @@ func (c *ApplicationClient) Application_post_assets(args map[string]interface{})
 	_ = type_ // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assets")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assets")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["asset"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("asset", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["comment"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("comment", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("type", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1414,12 +1813,18 @@ func (c *ApplicationClient) Application_get_authorized_adaccounts(args map[strin
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "authorized_adaccounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/authorized_adaccounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["business"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("business", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1457,12 +1862,18 @@ func (c *ApplicationClient) Application_get_button_auto_detection_device_selecti
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "button_auto_detection_device_selection")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/button_auto_detection_device_selection")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["device_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("device_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1500,7 +1911,10 @@ func (c *ApplicationClient) Application_get_cloudbridge_settings(args map[string
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "cloudbridge_settings")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/cloudbridge_settings")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1554,21 +1968,36 @@ func (c *ApplicationClient) Application_post_codeless_event_mappings(args map[st
 	_ = platform // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "codeless_event_mappings")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/codeless_event_mappings")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["mappings"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("mappings", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["mutation_method"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("mutation_method", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["platform"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("platform", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["post_method"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("post_method", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1606,7 +2035,10 @@ func (c *ApplicationClient) Application_get_connected_client_businesses(args map
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "connected_client_businesses")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/connected_client_businesses")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1645,15 +2077,24 @@ func (c *ApplicationClient) Application_get_da_checks(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "da_checks")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/da_checks")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["checks"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("checks", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["connection_method"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("connection_method", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1696,12 +2137,18 @@ func (c *ApplicationClient) Application_post_domain_reports(args map[string]inte
 	_ = tracking_domains // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "domain_reports")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/domain_reports")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["tracking_domains"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("tracking_domains", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1744,12 +2191,18 @@ func (c *ApplicationClient) Application_get_iap_purchases(args map[string]interf
 	_ = order_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "iap_purchases")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/iap_purchases")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["order_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("order_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1787,7 +2240,10 @@ func (c *ApplicationClient) Application_get_ios_dialog_configs(args map[string]i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ios_dialog_configs")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ios_dialog_configs")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1826,7 +2282,10 @@ func (c *ApplicationClient) Application_get_linked_dataset(args map[string]inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "linked_dataset")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/linked_dataset")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1865,12 +2324,18 @@ func (c *ApplicationClient) Application_get_message_templates(args map[string]in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_templates")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/message_templates")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["template_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("template_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1918,84 +2383,162 @@ func (c *ApplicationClient) Application_post_mmp_auditing(args map[string]interf
 	_ = is_fb // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "mmp_auditing")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/mmp_auditing")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["advertiser_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("advertiser_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["attribution"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("attribution", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["attribution_method"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("attribution_method", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["attribution_model"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("attribution_model", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["attribution_referrer"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("attribution_referrer", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["auditing_token"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("auditing_token", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["click_attr_window"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("click_attr_window", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_events"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_events", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["decline_reason"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("decline_reason", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["device_os"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("device_os", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["engagement_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("engagement_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["event"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("event", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["event_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("event_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["event_reported_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("event_reported_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fb_ad_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fb_ad_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fb_adgroup_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fb_adgroup_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fb_click_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fb_click_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fb_view_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fb_view_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["google_install_referrer"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("google_install_referrer", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["inactivity_window_hours"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("inactivity_window_hours", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["install_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("install_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_fb"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_fb", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["meta_install_referrer"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("meta_install_referrer", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["used_install_referrer"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("used_install_referrer", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["view_attr_window"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("view_attr_window", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2043,24 +2586,42 @@ func (c *ApplicationClient) Application_get_mobile_sdk_gk(args map[string]interf
 	_ = sdk_version // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "mobile_sdk_gk")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/mobile_sdk_gk")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["device_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("device_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["extinfo"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("extinfo", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["os_version"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("os_version", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["platform"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("platform", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sdk_version"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sdk_version", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2098,7 +2659,10 @@ func (c *ApplicationClient) Application_get_monetized_digital_store_objects(args
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "monetized_digital_store_objects")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/monetized_digital_store_objects")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2147,15 +2711,24 @@ func (c *ApplicationClient) Application_post_monetized_digital_store_objects(arg
 	_ = store // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "monetized_digital_store_objects")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/monetized_digital_store_objects")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["content_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("content_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["store"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("store", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2193,7 +2766,10 @@ func (c *ApplicationClient) Application_get_object_types(args map[string]interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "object_types")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/object_types")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2232,7 +2808,10 @@ func (c *ApplicationClient) Application_get_objects(args map[string]interface{})
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "objects")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/objects")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2271,15 +2850,24 @@ func (c *ApplicationClient) Application_post_occludespopups(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "occludespopups")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/occludespopups")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["flash"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("flash", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["unity"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("unity", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2317,24 +2905,42 @@ func (c *ApplicationClient) Application_get_permissions(args map[string]interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "permissions")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/permissions")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["android_key_hash"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("android_key_hash", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ios_bundle_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ios_bundle_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["permission"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("permission", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["proxied_app_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("proxied_app_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["status"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("status", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2372,12 +2978,18 @@ func (c *ApplicationClient) Application_get_products(args map[string]interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "products")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/products")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["product_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("product_ids", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2415,7 +3027,10 @@ func (c *ApplicationClient) Application_get_purchases(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "purchases")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/purchases")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2454,7 +3069,10 @@ func (c *ApplicationClient) Application_get_roles(args map[string]interface{}) (
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "roles")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/roles")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2493,7 +3111,10 @@ func (c *ApplicationClient) Application_get_server_domain_infos(args map[string]
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "server_domain_infos")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/server_domain_infos")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2537,12 +3158,18 @@ func (c *ApplicationClient) Application_get_sgw_dataset_status(args map[string]i
 	_ = dataset_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "sgw_dataset_status")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/sgw_dataset_status")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["dataset_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("dataset_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2585,15 +3212,24 @@ func (c *ApplicationClient) Application_get_sgw_install_deferral_link(args map[s
 	_ = dataset_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "sgw_install_deferral_link")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/sgw_install_deferral_link")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["client_ip"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("client_ip", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["dataset_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("dataset_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2631,7 +3267,10 @@ func (c *ApplicationClient) Application_get_subscribed_domains(args map[string]i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_domains")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscribed_domains")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2670,15 +3309,24 @@ func (c *ApplicationClient) Application_post_subscribed_domains(args map[string]
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_domains")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscribed_domains")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["subscribe"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("subscribe", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["unsubscribe"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("unsubscribe", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2716,7 +3364,10 @@ func (c *ApplicationClient) Application_get_subscribed_domains_phishing(args map
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_domains_phishing")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscribed_domains_phishing")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2755,15 +3406,24 @@ func (c *ApplicationClient) Application_post_subscribed_domains_phishing(args ma
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_domains_phishing")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscribed_domains_phishing")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["subscribe"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("subscribe", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["unsubscribe"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("unsubscribe", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2801,15 +3461,24 @@ func (c *ApplicationClient) Application_delete_subscriptions(args map[string]int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscriptions")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscriptions")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["object"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("object", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2847,7 +3516,10 @@ func (c *ApplicationClient) Application_get_subscriptions(args map[string]interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscriptions")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscriptions")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2891,24 +3563,42 @@ func (c *ApplicationClient) Application_post_subscriptions(args map[string]inter
 	_ = object // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscriptions")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscriptions")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["callback_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("callback_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["include_values"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("include_values", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["object"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("object", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["verify_token"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("verify_token", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2946,21 +3636,36 @@ func (c *ApplicationClient) Application_post_uploads(args map[string]interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "uploads")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/uploads")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["file_length"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("file_length", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["file_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("file_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["file_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("file_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["session_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("session_type", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -3018,21 +3723,36 @@ func (c *ApplicationClient) Application_post_whatsapp_business_solution(args map
 	_ = solution_name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "whatsapp_business_solution")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/whatsapp_business_solution")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["owner_permissions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("owner_permissions", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["partner_app_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("partner_app_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["partner_permissions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("partner_permissions", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["solution_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("solution_name", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -3070,12 +3790,18 @@ func (c *ApplicationClient) Application_get_whatsapp_business_solutions(args map
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "whatsapp_business_solutions")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/whatsapp_business_solutions")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["role"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("role", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -3113,12 +3839,18 @@ func (c *ApplicationClient) Application_get_(args map[string]interface{}) (inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["advertiser_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("advertiser_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -3156,99 +3888,192 @@ func (c *ApplicationClient) Application_post_(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["allow_cycle_app_secret"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("allow_cycle_app_secret", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["an_platforms"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("an_platforms", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["app_domains"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("app_domains", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["app_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("app_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["app_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("app_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["auth_dialog_headline"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("auth_dialog_headline", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["auth_dialog_perms_explanation"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("auth_dialog_perms_explanation", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["auth_referral_enabled"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("auth_referral_enabled", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["auth_referral_extended_perms"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("auth_referral_extended_perms", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["auth_referral_friend_perms"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("auth_referral_friend_perms", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["auth_referral_response_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("auth_referral_response_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["auth_referral_user_perms"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("auth_referral_user_perms", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["canvas_fluid_height"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("canvas_fluid_height", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["canvas_fluid_width"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("canvas_fluid_width", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["canvas_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("canvas_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["contact_email"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("contact_email", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["deauth_callback_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("deauth_callback_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["mobile_web_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("mobile_web_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["namespace"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("namespace", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["page_tab_default_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("page_tab_default_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["privacy_policy_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("privacy_policy_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["restrictions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("restrictions", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["secure_canvas_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("secure_canvas_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["secure_page_tab_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("secure_page_tab_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["server_ip_whitelist"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("server_ip_whitelist", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["terms_of_service_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("terms_of_service_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["url_scheme_suffix"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("url_scheme_suffix", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["user_support_email"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user_support_email", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["user_support_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user_support_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["website_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("website_url", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

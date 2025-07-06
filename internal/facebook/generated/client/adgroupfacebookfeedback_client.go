@@ -26,12 +26,18 @@ func (c *AdgroupFacebookFeedbackClient) Adgroupfacebookfeedback_get_comments(arg
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/comments")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["order"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("order", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

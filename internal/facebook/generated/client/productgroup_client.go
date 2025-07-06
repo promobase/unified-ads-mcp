@@ -26,7 +26,10 @@ func (c *ProductGroupClient) Productgroup_get_products(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "products")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/products")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -90,222 +93,438 @@ func (c *ProductGroupClient) Productgroup_post_products(args map[string]interfac
 	_ = retailer_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "products")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/products")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["additional_image_urls"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("additional_image_urls", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["additional_variant_attributes"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("additional_variant_attributes", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["age_group"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("age_group", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["android_app_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("android_app_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["android_class"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("android_class", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["android_package"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("android_package", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["android_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("android_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["availability"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("availability", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["brand"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("brand", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["category"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("category", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["checkout_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("checkout_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["color"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("color", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["commerce_tax_category"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("commerce_tax_category", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["condition"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("condition", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["currency"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("currency", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_data"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_data", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_label_0"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_label_0", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_label_1"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_label_1", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_label_2"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_label_2", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_label_3"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_label_3", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_label_4"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_label_4", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_number_0"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_number_0", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_number_1"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_number_1", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_number_2"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_number_2", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_number_3"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_number_3", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_number_4"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_number_4", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["expiration_date"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("expiration_date", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fb_product_category"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fb_product_category", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["gender"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("gender", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["gtin"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("gtin", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["image_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("image_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["inventory"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("inventory", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ios_app_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ios_app_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ios_app_store_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ios_app_store_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ios_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ios_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ipad_app_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ipad_app_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ipad_app_store_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ipad_app_store_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ipad_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ipad_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["iphone_app_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("iphone_app_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["iphone_app_store_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("iphone_app_store_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["iphone_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("iphone_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["launch_date"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("launch_date", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["manufacturer_part_number"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("manufacturer_part_number", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["marked_for_product_launch"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("marked_for_product_launch", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["material"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("material", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["mobile_link"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("mobile_link", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ordering_index"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ordering_index", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["pattern"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("pattern", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["price"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("price", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["product_priority_0"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("product_priority_0", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["product_priority_1"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("product_priority_1", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["product_priority_2"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("product_priority_2", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["product_priority_3"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("product_priority_3", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["product_priority_4"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("product_priority_4", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["product_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("product_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["quantity_to_sell_on_facebook"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("quantity_to_sell_on_facebook", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["retailer_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("retailer_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["return_policy_days"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("return_policy_days", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sale_price"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sale_price", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sale_price_end_date"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sale_price_end_date", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sale_price_start_date"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sale_price_start_date", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["short_description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("short_description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["size"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("size", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start_date"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start_date", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["visibility"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("visibility", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["windows_phone_app_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("windows_phone_app_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["windows_phone_app_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("windows_phone_app_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["windows_phone_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("windows_phone_url", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -343,12 +562,18 @@ func (c *ProductGroupClient) Productgroup_delete_(args map[string]interface{}) (
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["deletion_method"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("deletion_method", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -386,7 +611,10 @@ func (c *ProductGroupClient) Productgroup_get_(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -425,15 +653,24 @@ func (c *ProductGroupClient) Productgroup_post_(args map[string]interface{}) (in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["default_product_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("default_product_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["variants"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("variants", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

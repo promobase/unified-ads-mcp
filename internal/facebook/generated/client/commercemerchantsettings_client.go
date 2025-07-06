@@ -36,15 +36,24 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_post_acknowled
 	_ = orders // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "acknowledge_orders")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/acknowledge_orders")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["idempotency_key"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("idempotency_key", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["orders"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("orders", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -82,21 +91,36 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_commerce_o
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "commerce_orders")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/commerce_orders")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["filters"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("filters", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["state"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("state", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["updated_after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("updated_after", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["updated_before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("updated_before", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -134,15 +158,24 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_commerce_p
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "commerce_payouts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/commerce_payouts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["end_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("end_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start_time", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -180,18 +213,30 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_commerce_t
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "commerce_transactions")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/commerce_transactions")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["end_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("end_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["payout_reference_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("payout_reference_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start_time", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -229,7 +274,10 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_order_mana
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "order_management_apps")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/order_management_apps")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -268,7 +316,10 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_post_order_man
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "order_management_apps")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/order_management_apps")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -307,7 +358,10 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_product_ca
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_catalogs")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/product_catalogs")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -346,21 +400,36 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_returns(ar
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "returns")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/returns")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["end_time_created"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("end_time_created", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["merchant_return_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("merchant_return_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start_time_created"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start_time_created", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["statuses"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("statuses", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -398,7 +467,10 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_setup_stat
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "setup_status")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/setup_status")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -437,12 +509,18 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_shipping_p
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shipping_profiles")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shipping_profiles")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["reference_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("reference_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -490,27 +568,48 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_post_shipping_
 	_ = shipping_destinations // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shipping_profiles")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shipping_profiles")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["handling_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("handling_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_default"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_default", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_default_shipping_profile"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_default_shipping_profile", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["reference_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("reference_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["shipping_destinations"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("shipping_destinations", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -548,7 +647,10 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_shops(args
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shops")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shops")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -587,7 +689,10 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_tax_settin
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "tax_settings")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/tax_settings")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -626,7 +731,10 @@ func (c *CommerceMerchantSettingsClient) Commercemerchantsettings_get_(args map[
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

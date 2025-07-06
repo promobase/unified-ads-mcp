@@ -19,12 +19,20 @@ func GetCampaignTools() []mcp.Tool {
 	// campaign_get_ad_studies tool
 	campaign_get_ad_studiesTool := mcp.NewTool("campaign_get_ad_studies",
 		mcp.WithDescription("GET ad_studies for Campaign"),
+		mcp.WithString("campaign_id",
+			mcp.Required(),
+			mcp.Description("Facebook Campaign ID"),
+		),
 	)
 	tools = append(tools, campaign_get_ad_studiesTool)
 
 	// campaign_post_adlabels tool
 	campaign_post_adlabelsTool := mcp.NewTool("campaign_post_adlabels",
 		mcp.WithDescription("POST adlabels for Campaign"),
+		mcp.WithString("campaign_id",
+			mcp.Required(),
+			mcp.Description("Facebook Campaign ID"),
+		),
 		mcp.WithString("adlabels",
 			mcp.Required(),
 			mcp.Description("adlabels parameter for adlabels"),
@@ -39,6 +47,10 @@ func GetCampaignTools() []mcp.Tool {
 	// campaign_get_adrules_governed tool
 	campaign_get_adrules_governedTool := mcp.NewTool("campaign_get_adrules_governed",
 		mcp.WithDescription("GET adrules_governed for Campaign"),
+		mcp.WithString("campaign_id",
+			mcp.Required(),
+			mcp.Description("Facebook Campaign ID"),
+		),
 		mcp.WithBoolean("pass_evaluation",
 			mcp.Description("pass_evaluation parameter for adrules_governed"),
 		),
@@ -48,6 +60,10 @@ func GetCampaignTools() []mcp.Tool {
 	// campaign_get_ads tool
 	campaign_get_adsTool := mcp.NewTool("campaign_get_ads",
 		mcp.WithDescription("GET ads for Campaign"),
+		mcp.WithString("campaign_id",
+			mcp.Required(),
+			mcp.Description("Facebook Campaign ID"),
+		),
 		mcp.WithString("date_preset",
 			mcp.Description("date_preset parameter for ads"),
 			mcp.Enum("data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"),
@@ -67,6 +83,10 @@ func GetCampaignTools() []mcp.Tool {
 	// campaign_get_adsets tool
 	campaign_get_adsetsTool := mcp.NewTool("campaign_get_adsets",
 		mcp.WithDescription("GET adsets for Campaign"),
+		mcp.WithString("campaign_id",
+			mcp.Required(),
+			mcp.Description("Facebook Campaign ID"),
+		),
 		mcp.WithString("date_preset",
 			mcp.Description("date_preset parameter for adsets"),
 			mcp.Enum("data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"),
@@ -87,6 +107,10 @@ func GetCampaignTools() []mcp.Tool {
 	// campaign_post_budget_schedules tool
 	campaign_post_budget_schedulesTool := mcp.NewTool("campaign_post_budget_schedules",
 		mcp.WithDescription("POST budget_schedules for Campaign"),
+		mcp.WithString("campaign_id",
+			mcp.Required(),
+			mcp.Description("Facebook Campaign ID"),
+		),
 		mcp.WithNumber("budget_value",
 			mcp.Required(),
 			mcp.Description("budget_value parameter for budget_schedules"),
@@ -110,6 +134,10 @@ func GetCampaignTools() []mcp.Tool {
 	// campaign_get_copies tool
 	campaign_get_copiesTool := mcp.NewTool("campaign_get_copies",
 		mcp.WithDescription("GET copies for Campaign"),
+		mcp.WithString("campaign_id",
+			mcp.Required(),
+			mcp.Description("Facebook Campaign ID"),
+		),
 		mcp.WithString("date_preset",
 			mcp.Description("date_preset parameter for copies"),
 			mcp.Enum("data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"),
@@ -130,6 +158,10 @@ func GetCampaignTools() []mcp.Tool {
 	// campaign_post_copies tool
 	campaign_post_copiesTool := mcp.NewTool("campaign_post_copies",
 		mcp.WithDescription("POST copies for Campaign"),
+		mcp.WithString("campaign_id",
+			mcp.Required(),
+			mcp.Description("Facebook Campaign ID"),
+		),
 		mcp.WithBoolean("deep_copy",
 			mcp.Description("deep_copy parameter for copies"),
 		),
@@ -152,6 +184,10 @@ func GetCampaignTools() []mcp.Tool {
 	// campaign_get_insights tool
 	campaign_get_insightsTool := mcp.NewTool("campaign_get_insights",
 		mcp.WithDescription("GET insights for Campaign"),
+		mcp.WithString("campaign_id",
+			mcp.Required(),
+			mcp.Description("Facebook Campaign ID"),
+		),
 		mcp.WithString("action_attribution_windows",
 			mcp.Description("action_attribution_windows parameter for insights"),
 			mcp.Enum("1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback"),
@@ -231,6 +267,10 @@ func GetCampaignTools() []mcp.Tool {
 	// campaign_post_insights tool
 	campaign_post_insightsTool := mcp.NewTool("campaign_post_insights",
 		mcp.WithDescription("POST insights for Campaign"),
+		mcp.WithString("campaign_id",
+			mcp.Required(),
+			mcp.Description("Facebook Campaign ID"),
+		),
 		mcp.WithString("action_attribution_windows",
 			mcp.Description("action_attribution_windows parameter for insights"),
 			mcp.Enum("1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback"),
@@ -310,12 +350,20 @@ func GetCampaignTools() []mcp.Tool {
 	// campaign_delete_ tool
 	campaign_delete_Tool := mcp.NewTool("campaign_delete_",
 		mcp.WithDescription("DELETE  for Campaign"),
+		mcp.WithString("campaign_id",
+			mcp.Required(),
+			mcp.Description("Facebook Campaign ID"),
+		),
 	)
 	tools = append(tools, campaign_delete_Tool)
 
 	// campaign_get_ tool
 	campaign_get_Tool := mcp.NewTool("campaign_get_",
 		mcp.WithDescription("GET  for Campaign"),
+		mcp.WithString("campaign_id",
+			mcp.Required(),
+			mcp.Description("Facebook Campaign ID"),
+		),
 		mcp.WithString("am_call_tags",
 			mcp.Description("am_call_tags parameter for "),
 		),
@@ -335,6 +383,10 @@ func GetCampaignTools() []mcp.Tool {
 	// campaign_post_ tool
 	campaign_post_Tool := mcp.NewTool("campaign_post_",
 		mcp.WithDescription("POST  for Campaign"),
+		mcp.WithString("campaign_id",
+			mcp.Required(),
+			mcp.Description("Facebook Campaign ID"),
+		),
 		mcp.WithString("adlabels",
 			mcp.Description("adlabels parameter for "),
 		),
@@ -431,6 +483,13 @@ func HandleCampaign_get_ad_studies(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Required: campaign_id
+	campaign_id, err := request.RequireString("campaign_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter campaign_id: %v", err)), nil
+	}
+	args["campaign_id"] = campaign_id
+
 	// Call the client method
 	result, err := client.Campaign_get_ad_studies(args)
 	if err != nil {
@@ -459,6 +518,13 @@ func HandleCampaign_post_adlabels(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Required: campaign_id
+	campaign_id, err := request.RequireString("campaign_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter campaign_id: %v", err)), nil
+	}
+	args["campaign_id"] = campaign_id
 
 	// Required: adlabels
 	adlabels, err := request.RequireString("adlabels")
@@ -502,6 +568,13 @@ func HandleCampaign_get_adrules_governed(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Required: campaign_id
+	campaign_id, err := request.RequireString("campaign_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter campaign_id: %v", err)), nil
+	}
+	args["campaign_id"] = campaign_id
+
 	// Optional: pass_evaluation
 	if val := request.GetBool("pass_evaluation", false); val {
 		args["pass_evaluation"] = val
@@ -535,6 +608,13 @@ func HandleCampaign_get_ads(ctx context.Context, request mcp.CallToolRequest) (*
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Required: campaign_id
+	campaign_id, err := request.RequireString("campaign_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter campaign_id: %v", err)), nil
+	}
+	args["campaign_id"] = campaign_id
 
 	// Optional: date_preset
 	if val := request.GetString("date_preset", ""); val != "" {
@@ -586,6 +666,13 @@ func HandleCampaign_get_adsets(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Required: campaign_id
+	campaign_id, err := request.RequireString("campaign_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter campaign_id: %v", err)), nil
+	}
+	args["campaign_id"] = campaign_id
+
 	// Optional: date_preset
 	if val := request.GetString("date_preset", ""); val != "" {
 		args["date_preset"] = val
@@ -635,6 +722,13 @@ func HandleCampaign_post_budget_schedules(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Required: campaign_id
+	campaign_id, err := request.RequireString("campaign_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter campaign_id: %v", err)), nil
+	}
+	args["campaign_id"] = campaign_id
 
 	// Required: budget_value
 	budget_value, err := request.RequireInt("budget_value")
@@ -693,6 +787,13 @@ func HandleCampaign_get_copies(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Required: campaign_id
+	campaign_id, err := request.RequireString("campaign_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter campaign_id: %v", err)), nil
+	}
+	args["campaign_id"] = campaign_id
+
 	// Optional: date_preset
 	if val := request.GetString("date_preset", ""); val != "" {
 		args["date_preset"] = val
@@ -742,6 +843,13 @@ func HandleCampaign_post_copies(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Required: campaign_id
+	campaign_id, err := request.RequireString("campaign_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter campaign_id: %v", err)), nil
+	}
+	args["campaign_id"] = campaign_id
 
 	// Optional: deep_copy
 	if val := request.GetBool("deep_copy", false); val {
@@ -797,6 +905,13 @@ func HandleCampaign_get_insights(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Required: campaign_id
+	campaign_id, err := request.RequireString("campaign_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter campaign_id: %v", err)), nil
+	}
+	args["campaign_id"] = campaign_id
 
 	// Optional: action_attribution_windows
 	// array type - using string
@@ -947,6 +1062,13 @@ func HandleCampaign_post_insights(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Required: campaign_id
+	campaign_id, err := request.RequireString("campaign_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter campaign_id: %v", err)), nil
+	}
+	args["campaign_id"] = campaign_id
+
 	// Optional: action_attribution_windows
 	// array type - using string
 	if val := request.GetString("action_attribution_windows", ""); val != "" {
@@ -1096,6 +1218,13 @@ func HandleCampaign_delete_(ctx context.Context, request mcp.CallToolRequest) (*
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Required: campaign_id
+	campaign_id, err := request.RequireString("campaign_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter campaign_id: %v", err)), nil
+	}
+	args["campaign_id"] = campaign_id
+
 	// Call the client method
 	result, err := client.Campaign_delete_(args)
 	if err != nil {
@@ -1124,6 +1253,13 @@ func HandleCampaign_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Required: campaign_id
+	campaign_id, err := request.RequireString("campaign_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter campaign_id: %v", err)), nil
+	}
+	args["campaign_id"] = campaign_id
 
 	// Optional: am_call_tags
 	if val := request.GetString("am_call_tags", ""); val != "" {
@@ -1173,6 +1309,13 @@ func HandleCampaign_post_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Required: campaign_id
+	campaign_id, err := request.RequireString("campaign_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter campaign_id: %v", err)), nil
+	}
+	args["campaign_id"] = campaign_id
 
 	// Optional: adlabels
 	// array type - using string

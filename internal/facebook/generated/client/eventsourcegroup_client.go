@@ -26,7 +26,10 @@ func (c *EventSourceGroupClient) Eventsourcegroup_get_shared_accounts(args map[s
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_accounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shared_accounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -70,12 +73,18 @@ func (c *EventSourceGroupClient) Eventsourcegroup_post_shared_accounts(args map[
 	_ = accounts // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_accounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shared_accounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["accounts"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("accounts", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -113,7 +122,10 @@ func (c *EventSourceGroupClient) Eventsourcegroup_get_(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -162,15 +174,24 @@ func (c *EventSourceGroupClient) Eventsourcegroup_post_(args map[string]interfac
 	_ = name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["event_sources"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("event_sources", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

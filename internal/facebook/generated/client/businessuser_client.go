@@ -26,7 +26,10 @@ func (c *BusinessUserClient) Businessuser_get_assigned_ad_accounts(args map[stri
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_ad_accounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_ad_accounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,12 +68,18 @@ func (c *BusinessUserClient) Businessuser_get_assigned_business_asset_groups(arg
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_business_asset_groups")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_business_asset_groups")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["contained_asset_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("contained_asset_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -108,12 +117,18 @@ func (c *BusinessUserClient) Businessuser_get_assigned_pages(args map[string]int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_pages")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_pages")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["pages"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("pages", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -151,7 +166,10 @@ func (c *BusinessUserClient) Businessuser_get_assigned_product_catalogs(args map
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_product_catalogs")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_product_catalogs")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -190,7 +208,10 @@ func (c *BusinessUserClient) Businessuser_delete_(args map[string]interface{}) (
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -229,7 +250,10 @@ func (c *BusinessUserClient) Businessuser_get_(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -268,36 +292,66 @@ func (c *BusinessUserClient) Businessuser_post_(args map[string]interface{}) (in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["clear_pending_email"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("clear_pending_email", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["email"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("email", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["first_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("first_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["last_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("last_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["pending_email"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("pending_email", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["role"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("role", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["skip_verification_email"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("skip_verification_email", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["tasks"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("tasks", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["title"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("title", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

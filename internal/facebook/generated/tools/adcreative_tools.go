@@ -19,6 +19,10 @@ func GetAdCreativeTools() []mcp.Tool {
 	// adcreative_post_adlabels tool
 	adcreative_post_adlabelsTool := mcp.NewTool("adcreative_post_adlabels",
 		mcp.WithDescription("POST adlabels for AdCreative"),
+		mcp.WithString("ad_creative_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad Creative ID"),
+		),
 		mcp.WithString("adlabels",
 			mcp.Required(),
 			mcp.Description("adlabels parameter for adlabels"),
@@ -29,12 +33,20 @@ func GetAdCreativeTools() []mcp.Tool {
 	// adcreative_get_creative_insights tool
 	adcreative_get_creative_insightsTool := mcp.NewTool("adcreative_get_creative_insights",
 		mcp.WithDescription("GET creative_insights for AdCreative"),
+		mcp.WithString("ad_creative_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad Creative ID"),
+		),
 	)
 	tools = append(tools, adcreative_get_creative_insightsTool)
 
 	// adcreative_get_previews tool
 	adcreative_get_previewsTool := mcp.NewTool("adcreative_get_previews",
 		mcp.WithDescription("GET previews for AdCreative"),
+		mcp.WithString("ad_creative_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad Creative ID"),
+		),
 		mcp.WithString("ad_format",
 			mcp.Required(),
 			mcp.Description("ad_format parameter for previews"),
@@ -87,6 +99,10 @@ func GetAdCreativeTools() []mcp.Tool {
 	// adcreative_delete_ tool
 	adcreative_delete_Tool := mcp.NewTool("adcreative_delete_",
 		mcp.WithDescription("DELETE  for AdCreative"),
+		mcp.WithString("ad_creative_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad Creative ID"),
+		),
 		mcp.WithString("account_id",
 			mcp.Description("account_id parameter for "),
 		),
@@ -106,6 +122,10 @@ func GetAdCreativeTools() []mcp.Tool {
 	// adcreative_get_ tool
 	adcreative_get_Tool := mcp.NewTool("adcreative_get_",
 		mcp.WithDescription("GET  for AdCreative"),
+		mcp.WithString("ad_creative_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad Creative ID"),
+		),
 		mcp.WithNumber("thumbnail_height",
 			mcp.Description("thumbnail_height parameter for "),
 		),
@@ -118,6 +138,10 @@ func GetAdCreativeTools() []mcp.Tool {
 	// adcreative_post_ tool
 	adcreative_post_Tool := mcp.NewTool("adcreative_post_",
 		mcp.WithDescription("POST  for AdCreative"),
+		mcp.WithString("ad_creative_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad Creative ID"),
+		),
 		mcp.WithString("account_id",
 			mcp.Description("account_id parameter for "),
 		),
@@ -152,6 +176,13 @@ func HandleAdcreative_post_adlabels(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Required: ad_creative_id
+	ad_creative_id, err := request.RequireString("ad_creative_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_creative_id: %v", err)), nil
+	}
+	args["ad_creative_id"] = ad_creative_id
 
 	// Required: adlabels
 	adlabels, err := request.RequireString("adlabels")
@@ -189,6 +220,13 @@ func HandleAdcreative_get_creative_insights(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Required: ad_creative_id
+	ad_creative_id, err := request.RequireString("ad_creative_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_creative_id: %v", err)), nil
+	}
+	args["ad_creative_id"] = ad_creative_id
+
 	// Call the client method
 	result, err := client.Adcreative_get_creative_insights(args)
 	if err != nil {
@@ -217,6 +255,13 @@ func HandleAdcreative_get_previews(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Required: ad_creative_id
+	ad_creative_id, err := request.RequireString("ad_creative_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_creative_id: %v", err)), nil
+	}
+	args["ad_creative_id"] = ad_creative_id
 
 	// Required: ad_format
 	ad_format, err := request.RequireString("ad_format")
@@ -323,6 +368,13 @@ func HandleAdcreative_delete_(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Required: ad_creative_id
+	ad_creative_id, err := request.RequireString("ad_creative_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_creative_id: %v", err)), nil
+	}
+	args["ad_creative_id"] = ad_creative_id
+
 	// Optional: account_id
 	if val := request.GetString("account_id", ""); val != "" {
 		args["account_id"] = val
@@ -373,6 +425,13 @@ func HandleAdcreative_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Required: ad_creative_id
+	ad_creative_id, err := request.RequireString("ad_creative_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_creative_id: %v", err)), nil
+	}
+	args["ad_creative_id"] = ad_creative_id
+
 	// Optional: thumbnail_height
 	if val := request.GetInt("thumbnail_height", 0); val != 0 {
 		args["thumbnail_height"] = val
@@ -411,6 +470,13 @@ func HandleAdcreative_post_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Required: ad_creative_id
+	ad_creative_id, err := request.RequireString("ad_creative_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_creative_id: %v", err)), nil
+	}
+	args["ad_creative_id"] = ad_creative_id
 
 	// Optional: account_id
 	if val := request.GetString("account_id", ""); val != "" {

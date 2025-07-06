@@ -26,7 +26,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_activities(a
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "activities")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/activities")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -70,12 +73,18 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_assigned_
 	_ = user // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_users")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["user"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -118,12 +127,18 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_assigned_use
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_users")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["business"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("business", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -171,15 +186,24 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_assigned_us
 	_ = user // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_users")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["tasks"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("tasks", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["user"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -217,7 +241,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_audiences(ar
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "audiences")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/audiences")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -271,33 +298,60 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_call_analyti
 	_ = start // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "call_analytics")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/call_analytics")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["country_codes"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("country_codes", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["dimensions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("dimensions", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["directions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("directions", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["end"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("end", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["granularity"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("granularity", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["metric_types"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("metric_types", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["phone_numbers"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("phone_numbers", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -350,39 +404,72 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_conversation
 	_ = start // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "conversation_analytics")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/conversation_analytics")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["conversation_categories"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("conversation_categories", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["conversation_directions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("conversation_directions", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["conversation_types"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("conversation_types", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["country_codes"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("country_codes", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["dimensions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("dimensions", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["end"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("end", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["granularity"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("granularity", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["metric_types"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("metric_types", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["phone_numbers"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("phone_numbers", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -420,7 +507,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_dataset(args
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "dataset")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/dataset")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -459,12 +549,18 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_dataset(arg
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "dataset")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/dataset")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["dataset_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("dataset_name", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -502,7 +598,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_flows(args m
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "flows")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/flows")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -551,27 +650,48 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_flows(args 
 	_ = name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "flows")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/flows")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["categories"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("categories", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["clone_flow_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("clone_flow_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["endpoint_uri"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("endpoint_uri", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["flow_json"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("flow_json", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["publish"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("publish", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -614,15 +734,24 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_generate_pa
 	_ = configuration_name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "generate_payment_configuration_oauth_link")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/generate_payment_configuration_oauth_link")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["configuration_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("configuration_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["redirect_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("redirect_url", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -660,7 +789,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_message_camp
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_campaigns")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/message_campaigns")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -704,24 +836,42 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_message_temp
 	_ = category // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_template_previews")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/message_template_previews")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["add_security_recommendation"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("add_security_recommendation", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["button_types"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("button_types", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["category"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("category", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["code_expiration_minutes"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("code_expiration_minutes", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["languages"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("languages", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -764,15 +914,24 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_message_t
 	_ = name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_templates")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/message_templates")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["hsm_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("hsm_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -810,30 +969,54 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_message_temp
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_templates")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/message_templates")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["category"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("category", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["content"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("content", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["language"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("language", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name_or_content"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name_or_content", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["quality_score"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("quality_score", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["status"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("status", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -886,51 +1069,96 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_message_tem
 	_ = name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_templates")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/message_templates")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["allow_category_change"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("allow_category_change", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["category"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("category", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["components"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("components", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["cta_url_link_tracking_opted_out"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("cta_url_link_tracking_opted_out", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["degrees_of_freedom_spec"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("degrees_of_freedom_spec", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["display_format"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("display_format", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["language"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("language", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["library_template_body_inputs"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("library_template_body_inputs", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["library_template_button_inputs"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("library_template_button_inputs", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["library_template_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("library_template_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["message_send_ttl_seconds"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("message_send_ttl_seconds", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["parameter_format"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("parameter_format", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sub_category"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sub_category", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -973,15 +1201,24 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_migrate_flo
 	_ = source_waba_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "migrate_flows")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/migrate_flows")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["source_flow_names"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("source_flow_names", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["source_waba_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("source_waba_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1024,15 +1261,24 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_migrate_mes
 	_ = source_waba_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "migrate_message_templates")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/migrate_message_templates")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["page_number"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("page_number", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["source_waba_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("source_waba_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1075,12 +1321,18 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_payment_c
 	_ = configuration_name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "payment_configuration")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/payment_configuration")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["configuration_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("configuration_name", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1123,12 +1375,18 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_payment_conf
 	_ = configuration_name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "payment_configuration")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/payment_configuration")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["configuration_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("configuration_name", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1171,30 +1429,54 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_payment_con
 	_ = configuration_name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "payment_configuration")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/payment_configuration")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["configuration_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("configuration_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["data_endpoint_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("data_endpoint_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["merchant_category_code"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("merchant_category_code", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["merchant_vpa"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("merchant_vpa", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["provider_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("provider_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["purpose_code"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("purpose_code", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["redirect_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("redirect_url", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1232,7 +1514,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_payment_conf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "payment_configurations")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/payment_configurations")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1271,7 +1556,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_phone_number
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "phone_numbers")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/phone_numbers")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1310,24 +1598,42 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_phone_numbe
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "phone_numbers")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/phone_numbers")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["cc"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("cc", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["migrate_phone_number"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("migrate_phone_number", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["phone_number"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("phone_number", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["preverified_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("preverified_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["verified_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("verified_name", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1380,39 +1686,72 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_pricing_anal
 	_ = start // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "pricing_analytics")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/pricing_analytics")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["country_codes"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("country_codes", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["dimensions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("dimensions", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["end"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("end", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["granularity"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("granularity", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["metric_types"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("metric_types", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["phone_numbers"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("phone_numbers", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["pricing_categories"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("pricing_categories", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["pricing_types"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("pricing_types", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["tiers"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("tiers", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1455,12 +1794,18 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_product_c
 	_ = catalog_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_catalogs")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/product_catalogs")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["catalog_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("catalog_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1498,7 +1843,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_product_cata
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_catalogs")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/product_catalogs")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1542,12 +1890,18 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_product_cat
 	_ = catalog_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_catalogs")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/product_catalogs")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["catalog_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("catalog_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1585,7 +1939,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_schedules(ar
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "schedules")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/schedules")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1624,12 +1981,18 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_set_obo_mob
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "set_obo_mobility_intent")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/set_obo_mobility_intent")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["solution_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("solution_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1667,15 +2030,24 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_set_solutio
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "set_solution_migration_intent")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/set_solution_migration_intent")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["app_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("app_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["solution_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("solution_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1713,7 +2085,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_solutions(ar
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "solutions")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/solutions")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1752,7 +2127,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_subscribe
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_apps")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscribed_apps")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1791,7 +2169,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_subscribed_a
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_apps")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscribed_apps")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1830,15 +2211,24 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_subscribed_
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_apps")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscribed_apps")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["override_callback_uri"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("override_callback_uri", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["verify_token"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("verify_token", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1896,27 +2286,48 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_ana
 	_ = template_ids // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "template_analytics")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/template_analytics")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["end"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("end", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["granularity"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("granularity", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["metric_types"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("metric_types", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["product_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("product_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["template_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("template_ids", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1974,24 +2385,42 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_gro
 	_ = template_group_ids // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "template_group_analytics")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/template_group_analytics")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["end"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("end", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["granularity"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("granularity", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["metric_types"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("metric_types", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["template_group_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("template_group_ids", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2029,7 +2458,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_gro
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "template_groups")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/template_groups")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2083,18 +2515,30 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_template_gr
 	_ = whatsapp_business_templates // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "template_groups")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/template_groups")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["whatsapp_business_templates"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("whatsapp_business_templates", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2132,15 +2576,24 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_per
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "template_performance_metrics")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/template_performance_metrics")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["template_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("template_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2198,24 +2651,42 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_upsert_mess
 	_ = name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "upsert_message_templates")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/upsert_message_templates")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["category"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("category", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["components"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("components", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["languages"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("languages", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["message_send_ttl_seconds"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("message_send_ttl_seconds", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2253,15 +2724,24 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_welcome_mess
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "welcome_message_sequences")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/welcome_message_sequences")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["app_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("app_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sequence_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sequence_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2299,7 +2779,10 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_(args map[st
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2338,12 +2821,18 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_(args map[s
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["is_enabled_for_insights"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_enabled_for_insights", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

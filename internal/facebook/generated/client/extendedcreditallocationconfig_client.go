@@ -26,7 +26,10 @@ func (c *ExtendedCreditAllocationConfigClient) Extendedcreditallocationconfig_de
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +68,10 @@ func (c *ExtendedCreditAllocationConfigClient) Extendedcreditallocationconfig_ge
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,12 +110,18 @@ func (c *ExtendedCreditAllocationConfigClient) Extendedcreditallocationconfig_po
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["amount"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("amount", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

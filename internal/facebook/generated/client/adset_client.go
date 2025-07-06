@@ -24,32 +24,88 @@ func NewAdSetClient(accessToken string) *AdSetClient {
 // adset_get_activities GET activities for AdSet
 func (c *AdSetClient) Adset_get_activities(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "activities")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/activities", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 	if val, ok := args["after"]; ok {
-		urlParams.Set("after", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "ad_set_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["business_id"]; ok {
-		urlParams.Set("business_id", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "business_id" != "ad_set_id" {
+			urlParams.Set("business_id", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["category"]; ok {
-		urlParams.Set("category", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "category" != "ad_set_id" {
+			urlParams.Set("category", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["limit"]; ok {
-		urlParams.Set("limit", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "ad_set_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["since"]; ok {
-		urlParams.Set("since", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "since" != "ad_set_id" {
+			urlParams.Set("since", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["uid"]; ok {
-		urlParams.Set("uid", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "uid" != "ad_set_id" {
+			urlParams.Set("uid", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["until"]; ok {
-		urlParams.Set("until", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "until" != "ad_set_id" {
+			urlParams.Set("until", fmt.Sprintf("%v", val))
+		}
+
 	}
 
 	// Make HTTP request
@@ -85,11 +141,33 @@ func (c *AdSetClient) Adset_get_activities(args map[string]interface{}) (interfa
 // adset_get_ad_studies GET ad_studies for AdSet
 func (c *AdSetClient) Adset_get_ad_studies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ad_studies")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/ad_studies", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -124,11 +202,33 @@ func (c *AdSetClient) Adset_get_ad_studies(args map[string]interface{}) (interfa
 // adset_get_adcreatives GET adcreatives for AdSet
 func (c *AdSetClient) Adset_get_adcreatives(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adcreatives")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/adcreatives", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -163,6 +263,11 @@ func (c *AdSetClient) Adset_get_adcreatives(args map[string]interface{}) (interf
 // adset_delete_adlabels DELETE adlabels for AdSet
 func (c *AdSetClient) Adset_delete_adlabels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 	adlabels, ok := args["adlabels"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: adlabels")
@@ -170,15 +275,41 @@ func (c *AdSetClient) Adset_delete_adlabels(args map[string]interface{}) (interf
 	_ = adlabels // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adlabels")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/adlabels", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 	if val, ok := args["adlabels"]; ok {
-		urlParams.Set("adlabels", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "adlabels" != "ad_set_id" {
+			urlParams.Set("adlabels", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["execution_options"]; ok {
-		urlParams.Set("execution_options", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "execution_options" != "ad_set_id" {
+			urlParams.Set("execution_options", fmt.Sprintf("%v", val))
+		}
+
 	}
 
 	// Make HTTP request
@@ -214,6 +345,11 @@ func (c *AdSetClient) Adset_delete_adlabels(args map[string]interface{}) (interf
 // adset_post_adlabels POST adlabels for AdSet
 func (c *AdSetClient) Adset_post_adlabels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 	adlabels, ok := args["adlabels"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: adlabels")
@@ -221,15 +357,41 @@ func (c *AdSetClient) Adset_post_adlabels(args map[string]interface{}) (interfac
 	_ = adlabels // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adlabels")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/adlabels", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 	if val, ok := args["adlabels"]; ok {
-		urlParams.Set("adlabels", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "adlabels" != "ad_set_id" {
+			urlParams.Set("adlabels", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["execution_options"]; ok {
-		urlParams.Set("execution_options", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "execution_options" != "ad_set_id" {
+			urlParams.Set("execution_options", fmt.Sprintf("%v", val))
+		}
+
 	}
 
 	// Make HTTP request
@@ -265,14 +427,40 @@ func (c *AdSetClient) Adset_post_adlabels(args map[string]interface{}) (interfac
 // adset_get_adrules_governed GET adrules_governed for AdSet
 func (c *AdSetClient) Adset_get_adrules_governed(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adrules_governed")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/adrules_governed", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 	if val, ok := args["pass_evaluation"]; ok {
-		urlParams.Set("pass_evaluation", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "pass_evaluation" != "ad_set_id" {
+			urlParams.Set("pass_evaluation", fmt.Sprintf("%v", val))
+		}
+
 	}
 
 	// Make HTTP request
@@ -308,23 +496,64 @@ func (c *AdSetClient) Adset_get_adrules_governed(args map[string]interface{}) (i
 // adset_get_ads GET ads for AdSet
 func (c *AdSetClient) Adset_get_ads(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ads")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/ads", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 	if val, ok := args["date_preset"]; ok {
-		urlParams.Set("date_preset", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "date_preset" != "ad_set_id" {
+			urlParams.Set("date_preset", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["effective_status"]; ok {
-		urlParams.Set("effective_status", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "effective_status" != "ad_set_id" {
+			urlParams.Set("effective_status", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["time_range"]; ok {
-		urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "time_range" != "ad_set_id" {
+			urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["updated_since"]; ok {
-		urlParams.Set("updated_since", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "updated_since" != "ad_set_id" {
+			urlParams.Set("updated_since", fmt.Sprintf("%v", val))
+		}
+
 	}
 
 	// Make HTTP request
@@ -360,14 +589,40 @@ func (c *AdSetClient) Adset_get_ads(args map[string]interface{}) (interface{}, e
 // adset_get_asyncadrequests GET asyncadrequests for AdSet
 func (c *AdSetClient) Adset_get_asyncadrequests(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "asyncadrequests")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/asyncadrequests", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 	if val, ok := args["statuses"]; ok {
-		urlParams.Set("statuses", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "statuses" != "ad_set_id" {
+			urlParams.Set("statuses", fmt.Sprintf("%v", val))
+		}
+
 	}
 
 	// Make HTTP request
@@ -403,6 +658,11 @@ func (c *AdSetClient) Adset_get_asyncadrequests(args map[string]interface{}) (in
 // adset_post_budget_schedules POST budget_schedules for AdSet
 func (c *AdSetClient) Adset_post_budget_schedules(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 	budget_value, ok := args["budget_value"]
 	if !ok {
 		return nil, fmt.Errorf("missing required parameter: budget_value")
@@ -425,21 +685,57 @@ func (c *AdSetClient) Adset_post_budget_schedules(args map[string]interface{}) (
 	_ = time_start // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "budget_schedules")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/budget_schedules", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 	if val, ok := args["budget_value"]; ok {
-		urlParams.Set("budget_value", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "budget_value" != "ad_set_id" {
+			urlParams.Set("budget_value", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["budget_value_type"]; ok {
-		urlParams.Set("budget_value_type", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "budget_value_type" != "ad_set_id" {
+			urlParams.Set("budget_value_type", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["time_end"]; ok {
-		urlParams.Set("time_end", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "time_end" != "ad_set_id" {
+			urlParams.Set("time_end", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["time_start"]; ok {
-		urlParams.Set("time_start", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "time_start" != "ad_set_id" {
+			urlParams.Set("time_start", fmt.Sprintf("%v", val))
+		}
+
 	}
 
 	// Make HTTP request
@@ -475,23 +771,64 @@ func (c *AdSetClient) Adset_post_budget_schedules(args map[string]interface{}) (
 // adset_get_copies GET copies for AdSet
 func (c *AdSetClient) Adset_get_copies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "copies")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/copies", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 	if val, ok := args["date_preset"]; ok {
-		urlParams.Set("date_preset", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "date_preset" != "ad_set_id" {
+			urlParams.Set("date_preset", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["effective_status"]; ok {
-		urlParams.Set("effective_status", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "effective_status" != "ad_set_id" {
+			urlParams.Set("effective_status", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["is_completed"]; ok {
-		urlParams.Set("is_completed", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "is_completed" != "ad_set_id" {
+			urlParams.Set("is_completed", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["time_range"]; ok {
-		urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "time_range" != "ad_set_id" {
+			urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		}
+
 	}
 
 	// Make HTTP request
@@ -527,32 +864,88 @@ func (c *AdSetClient) Adset_get_copies(args map[string]interface{}) (interface{}
 // adset_post_copies POST copies for AdSet
 func (c *AdSetClient) Adset_post_copies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "copies")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/copies", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 	if val, ok := args["campaign_id"]; ok {
-		urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "campaign_id" != "ad_set_id" {
+			urlParams.Set("campaign_id", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["create_dco_adset"]; ok {
-		urlParams.Set("create_dco_adset", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "create_dco_adset" != "ad_set_id" {
+			urlParams.Set("create_dco_adset", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["deep_copy"]; ok {
-		urlParams.Set("deep_copy", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "deep_copy" != "ad_set_id" {
+			urlParams.Set("deep_copy", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["end_time"]; ok {
-		urlParams.Set("end_time", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "end_time" != "ad_set_id" {
+			urlParams.Set("end_time", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["rename_options"]; ok {
-		urlParams.Set("rename_options", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "rename_options" != "ad_set_id" {
+			urlParams.Set("rename_options", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["start_time"]; ok {
-		urlParams.Set("start_time", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "start_time" != "ad_set_id" {
+			urlParams.Set("start_time", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["status_option"]; ok {
-		urlParams.Set("status_option", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "status_option" != "ad_set_id" {
+			urlParams.Set("status_option", fmt.Sprintf("%v", val))
+		}
+
 	}
 
 	// Make HTTP request
@@ -588,20 +981,56 @@ func (c *AdSetClient) Adset_post_copies(args map[string]interface{}) (interface{
 // adset_get_delivery_estimate GET delivery_estimate for AdSet
 func (c *AdSetClient) Adset_get_delivery_estimate(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "delivery_estimate")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/delivery_estimate", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 	if val, ok := args["optimization_goal"]; ok {
-		urlParams.Set("optimization_goal", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "optimization_goal" != "ad_set_id" {
+			urlParams.Set("optimization_goal", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["promoted_object"]; ok {
-		urlParams.Set("promoted_object", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "promoted_object" != "ad_set_id" {
+			urlParams.Set("promoted_object", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["targeting_spec"]; ok {
-		urlParams.Set("targeting_spec", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "targeting_spec" != "ad_set_id" {
+			urlParams.Set("targeting_spec", fmt.Sprintf("%v", val))
+		}
+
 	}
 
 	// Make HTTP request
@@ -637,77 +1066,208 @@ func (c *AdSetClient) Adset_get_delivery_estimate(args map[string]interface{}) (
 // adset_get_insights GET insights for AdSet
 func (c *AdSetClient) Adset_get_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/insights", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 	if val, ok := args["action_attribution_windows"]; ok {
-		urlParams.Set("action_attribution_windows", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "action_attribution_windows" != "ad_set_id" {
+			urlParams.Set("action_attribution_windows", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["action_breakdowns"]; ok {
-		urlParams.Set("action_breakdowns", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "action_breakdowns" != "ad_set_id" {
+			urlParams.Set("action_breakdowns", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["action_report_time"]; ok {
-		urlParams.Set("action_report_time", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "action_report_time" != "ad_set_id" {
+			urlParams.Set("action_report_time", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["breakdowns"]; ok {
-		urlParams.Set("breakdowns", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "breakdowns" != "ad_set_id" {
+			urlParams.Set("breakdowns", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["date_preset"]; ok {
-		urlParams.Set("date_preset", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "date_preset" != "ad_set_id" {
+			urlParams.Set("date_preset", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["default_summary"]; ok {
-		urlParams.Set("default_summary", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "default_summary" != "ad_set_id" {
+			urlParams.Set("default_summary", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["export_columns"]; ok {
-		urlParams.Set("export_columns", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "export_columns" != "ad_set_id" {
+			urlParams.Set("export_columns", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["export_format"]; ok {
-		urlParams.Set("export_format", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "export_format" != "ad_set_id" {
+			urlParams.Set("export_format", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["export_name"]; ok {
-		urlParams.Set("export_name", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "export_name" != "ad_set_id" {
+			urlParams.Set("export_name", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["fields"]; ok {
-		urlParams.Set("fields", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "ad_set_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["filtering"]; ok {
-		urlParams.Set("filtering", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "filtering" != "ad_set_id" {
+			urlParams.Set("filtering", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["level"]; ok {
-		urlParams.Set("level", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "level" != "ad_set_id" {
+			urlParams.Set("level", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["limit"]; ok {
-		urlParams.Set("limit", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "ad_set_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["product_id_limit"]; ok {
-		urlParams.Set("product_id_limit", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "product_id_limit" != "ad_set_id" {
+			urlParams.Set("product_id_limit", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["sort"]; ok {
-		urlParams.Set("sort", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "sort" != "ad_set_id" {
+			urlParams.Set("sort", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["summary"]; ok {
-		urlParams.Set("summary", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "summary" != "ad_set_id" {
+			urlParams.Set("summary", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["summary_action_breakdowns"]; ok {
-		urlParams.Set("summary_action_breakdowns", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "summary_action_breakdowns" != "ad_set_id" {
+			urlParams.Set("summary_action_breakdowns", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["time_increment"]; ok {
-		urlParams.Set("time_increment", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "time_increment" != "ad_set_id" {
+			urlParams.Set("time_increment", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["time_range"]; ok {
-		urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "time_range" != "ad_set_id" {
+			urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["time_ranges"]; ok {
-		urlParams.Set("time_ranges", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "time_ranges" != "ad_set_id" {
+			urlParams.Set("time_ranges", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["use_account_attribution_setting"]; ok {
-		urlParams.Set("use_account_attribution_setting", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "use_account_attribution_setting" != "ad_set_id" {
+			urlParams.Set("use_account_attribution_setting", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["use_unified_attribution_setting"]; ok {
-		urlParams.Set("use_unified_attribution_setting", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "use_unified_attribution_setting" != "ad_set_id" {
+			urlParams.Set("use_unified_attribution_setting", fmt.Sprintf("%v", val))
+		}
+
 	}
 
 	// Make HTTP request
@@ -743,77 +1303,208 @@ func (c *AdSetClient) Adset_get_insights(args map[string]interface{}) (interface
 // adset_post_insights POST insights for AdSet
 func (c *AdSetClient) Adset_post_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/insights", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 	if val, ok := args["action_attribution_windows"]; ok {
-		urlParams.Set("action_attribution_windows", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "action_attribution_windows" != "ad_set_id" {
+			urlParams.Set("action_attribution_windows", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["action_breakdowns"]; ok {
-		urlParams.Set("action_breakdowns", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "action_breakdowns" != "ad_set_id" {
+			urlParams.Set("action_breakdowns", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["action_report_time"]; ok {
-		urlParams.Set("action_report_time", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "action_report_time" != "ad_set_id" {
+			urlParams.Set("action_report_time", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["breakdowns"]; ok {
-		urlParams.Set("breakdowns", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "breakdowns" != "ad_set_id" {
+			urlParams.Set("breakdowns", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["date_preset"]; ok {
-		urlParams.Set("date_preset", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "date_preset" != "ad_set_id" {
+			urlParams.Set("date_preset", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["default_summary"]; ok {
-		urlParams.Set("default_summary", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "default_summary" != "ad_set_id" {
+			urlParams.Set("default_summary", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["export_columns"]; ok {
-		urlParams.Set("export_columns", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "export_columns" != "ad_set_id" {
+			urlParams.Set("export_columns", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["export_format"]; ok {
-		urlParams.Set("export_format", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "export_format" != "ad_set_id" {
+			urlParams.Set("export_format", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["export_name"]; ok {
-		urlParams.Set("export_name", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "export_name" != "ad_set_id" {
+			urlParams.Set("export_name", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["fields"]; ok {
-		urlParams.Set("fields", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "ad_set_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["filtering"]; ok {
-		urlParams.Set("filtering", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "filtering" != "ad_set_id" {
+			urlParams.Set("filtering", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["level"]; ok {
-		urlParams.Set("level", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "level" != "ad_set_id" {
+			urlParams.Set("level", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["limit"]; ok {
-		urlParams.Set("limit", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "ad_set_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["product_id_limit"]; ok {
-		urlParams.Set("product_id_limit", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "product_id_limit" != "ad_set_id" {
+			urlParams.Set("product_id_limit", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["sort"]; ok {
-		urlParams.Set("sort", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "sort" != "ad_set_id" {
+			urlParams.Set("sort", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["summary"]; ok {
-		urlParams.Set("summary", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "summary" != "ad_set_id" {
+			urlParams.Set("summary", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["summary_action_breakdowns"]; ok {
-		urlParams.Set("summary_action_breakdowns", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "summary_action_breakdowns" != "ad_set_id" {
+			urlParams.Set("summary_action_breakdowns", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["time_increment"]; ok {
-		urlParams.Set("time_increment", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "time_increment" != "ad_set_id" {
+			urlParams.Set("time_increment", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["time_range"]; ok {
-		urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "time_range" != "ad_set_id" {
+			urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["time_ranges"]; ok {
-		urlParams.Set("time_ranges", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "time_ranges" != "ad_set_id" {
+			urlParams.Set("time_ranges", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["use_account_attribution_setting"]; ok {
-		urlParams.Set("use_account_attribution_setting", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "use_account_attribution_setting" != "ad_set_id" {
+			urlParams.Set("use_account_attribution_setting", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["use_unified_attribution_setting"]; ok {
-		urlParams.Set("use_unified_attribution_setting", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "use_unified_attribution_setting" != "ad_set_id" {
+			urlParams.Set("use_unified_attribution_setting", fmt.Sprintf("%v", val))
+		}
+
 	}
 
 	// Make HTTP request
@@ -849,38 +1540,104 @@ func (c *AdSetClient) Adset_post_insights(args map[string]interface{}) (interfac
 // adset_get_message_delivery_estimate GET message_delivery_estimate for AdSet
 func (c *AdSetClient) Adset_get_message_delivery_estimate(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_delivery_estimate")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/message_delivery_estimate", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 	if val, ok := args["bid_amount"]; ok {
-		urlParams.Set("bid_amount", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "bid_amount" != "ad_set_id" {
+			urlParams.Set("bid_amount", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["daily_budget"]; ok {
-		urlParams.Set("daily_budget", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "daily_budget" != "ad_set_id" {
+			urlParams.Set("daily_budget", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["is_direct_send_campaign"]; ok {
-		urlParams.Set("is_direct_send_campaign", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "is_direct_send_campaign" != "ad_set_id" {
+			urlParams.Set("is_direct_send_campaign", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["lifetime_budget"]; ok {
-		urlParams.Set("lifetime_budget", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "lifetime_budget" != "ad_set_id" {
+			urlParams.Set("lifetime_budget", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["lifetime_in_days"]; ok {
-		urlParams.Set("lifetime_in_days", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "lifetime_in_days" != "ad_set_id" {
+			urlParams.Set("lifetime_in_days", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["optimization_goal"]; ok {
-		urlParams.Set("optimization_goal", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "optimization_goal" != "ad_set_id" {
+			urlParams.Set("optimization_goal", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["pacing_type"]; ok {
-		urlParams.Set("pacing_type", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "pacing_type" != "ad_set_id" {
+			urlParams.Set("pacing_type", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["promoted_object"]; ok {
-		urlParams.Set("promoted_object", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "promoted_object" != "ad_set_id" {
+			urlParams.Set("promoted_object", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["targeting_spec"]; ok {
-		urlParams.Set("targeting_spec", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "targeting_spec" != "ad_set_id" {
+			urlParams.Set("targeting_spec", fmt.Sprintf("%v", val))
+		}
+
 	}
 
 	// Make HTTP request
@@ -916,11 +1673,33 @@ func (c *AdSetClient) Adset_get_message_delivery_estimate(args map[string]interf
 // adset_get_targetingsentencelines GET targetingsentencelines for AdSet
 func (c *AdSetClient) Adset_get_targetingsentencelines(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "targetingsentencelines")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/targetingsentencelines", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -955,11 +1734,33 @@ func (c *AdSetClient) Adset_get_targetingsentencelines(args map[string]interface
 // adset_delete_ DELETE  for AdSet
 func (c *AdSetClient) Adset_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -994,23 +1795,64 @@ func (c *AdSetClient) Adset_delete_(args map[string]interface{}) (interface{}, e
 // adset_get_ GET  for AdSet
 func (c *AdSetClient) Adset_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 	if val, ok := args["am_call_tags"]; ok {
-		urlParams.Set("am_call_tags", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "am_call_tags" != "ad_set_id" {
+			urlParams.Set("am_call_tags", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["date_preset"]; ok {
-		urlParams.Set("date_preset", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "date_preset" != "ad_set_id" {
+			urlParams.Set("date_preset", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["from_adtable"]; ok {
-		urlParams.Set("from_adtable", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "from_adtable" != "ad_set_id" {
+			urlParams.Set("from_adtable", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["time_range"]; ok {
-		urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "time_range" != "ad_set_id" {
+			urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		}
+
 	}
 
 	// Make HTTP request
@@ -1046,167 +1888,448 @@ func (c *AdSetClient) Adset_get_(args map[string]interface{}) (interface{}, erro
 // adset_post_ POST  for AdSet
 func (c *AdSetClient) Adset_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
+	ad_set_id, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	_ = ad_set_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/", adSetId)
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["ad_set_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "ad_set_id" != "ad_set_id" {
+			urlParams.Set("ad_set_id", fmt.Sprintf("%v", val))
+		}
+
+	}
 	if val, ok := args["account_id"]; ok {
-		urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "account_id" != "ad_set_id" {
+			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["adlabels"]; ok {
-		urlParams.Set("adlabels", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "adlabels" != "ad_set_id" {
+			urlParams.Set("adlabels", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["adset_schedule"]; ok {
-		urlParams.Set("adset_schedule", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "adset_schedule" != "ad_set_id" {
+			urlParams.Set("adset_schedule", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["attribution_spec"]; ok {
-		urlParams.Set("attribution_spec", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "attribution_spec" != "ad_set_id" {
+			urlParams.Set("attribution_spec", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["bid_adjustments"]; ok {
-		urlParams.Set("bid_adjustments", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "bid_adjustments" != "ad_set_id" {
+			urlParams.Set("bid_adjustments", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["bid_amount"]; ok {
-		urlParams.Set("bid_amount", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "bid_amount" != "ad_set_id" {
+			urlParams.Set("bid_amount", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["bid_constraints"]; ok {
-		urlParams.Set("bid_constraints", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "bid_constraints" != "ad_set_id" {
+			urlParams.Set("bid_constraints", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["bid_strategy"]; ok {
-		urlParams.Set("bid_strategy", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "bid_strategy" != "ad_set_id" {
+			urlParams.Set("bid_strategy", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["billing_event"]; ok {
-		urlParams.Set("billing_event", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "billing_event" != "ad_set_id" {
+			urlParams.Set("billing_event", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["campaign_attribution"]; ok {
-		urlParams.Set("campaign_attribution", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "campaign_attribution" != "ad_set_id" {
+			urlParams.Set("campaign_attribution", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["campaign_spec"]; ok {
-		urlParams.Set("campaign_spec", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "campaign_spec" != "ad_set_id" {
+			urlParams.Set("campaign_spec", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["creative_sequence"]; ok {
-		urlParams.Set("creative_sequence", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "creative_sequence" != "ad_set_id" {
+			urlParams.Set("creative_sequence", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["creative_sequence_repetition_pattern"]; ok {
-		urlParams.Set("creative_sequence_repetition_pattern", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "creative_sequence_repetition_pattern" != "ad_set_id" {
+			urlParams.Set("creative_sequence_repetition_pattern", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["daily_budget"]; ok {
-		urlParams.Set("daily_budget", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "daily_budget" != "ad_set_id" {
+			urlParams.Set("daily_budget", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["daily_imps"]; ok {
-		urlParams.Set("daily_imps", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "daily_imps" != "ad_set_id" {
+			urlParams.Set("daily_imps", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["daily_min_spend_target"]; ok {
-		urlParams.Set("daily_min_spend_target", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "daily_min_spend_target" != "ad_set_id" {
+			urlParams.Set("daily_min_spend_target", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["daily_spend_cap"]; ok {
-		urlParams.Set("daily_spend_cap", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "daily_spend_cap" != "ad_set_id" {
+			urlParams.Set("daily_spend_cap", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["date_format"]; ok {
-		urlParams.Set("date_format", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "date_format" != "ad_set_id" {
+			urlParams.Set("date_format", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["destination_type"]; ok {
-		urlParams.Set("destination_type", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "destination_type" != "ad_set_id" {
+			urlParams.Set("destination_type", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["dsa_beneficiary"]; ok {
-		urlParams.Set("dsa_beneficiary", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "dsa_beneficiary" != "ad_set_id" {
+			urlParams.Set("dsa_beneficiary", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["dsa_payor"]; ok {
-		urlParams.Set("dsa_payor", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "dsa_payor" != "ad_set_id" {
+			urlParams.Set("dsa_payor", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["end_time"]; ok {
-		urlParams.Set("end_time", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "end_time" != "ad_set_id" {
+			urlParams.Set("end_time", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["execution_options"]; ok {
-		urlParams.Set("execution_options", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "execution_options" != "ad_set_id" {
+			urlParams.Set("execution_options", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["existing_customer_budget_percentage"]; ok {
-		urlParams.Set("existing_customer_budget_percentage", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "existing_customer_budget_percentage" != "ad_set_id" {
+			urlParams.Set("existing_customer_budget_percentage", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["full_funnel_exploration_mode"]; ok {
-		urlParams.Set("full_funnel_exploration_mode", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "full_funnel_exploration_mode" != "ad_set_id" {
+			urlParams.Set("full_funnel_exploration_mode", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["is_ba_skip_delayed_eligible"]; ok {
-		urlParams.Set("is_ba_skip_delayed_eligible", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "is_ba_skip_delayed_eligible" != "ad_set_id" {
+			urlParams.Set("is_ba_skip_delayed_eligible", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["is_incremental_attribution_enabled"]; ok {
-		urlParams.Set("is_incremental_attribution_enabled", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "is_incremental_attribution_enabled" != "ad_set_id" {
+			urlParams.Set("is_incremental_attribution_enabled", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["is_sac_cfca_terms_certified"]; ok {
-		urlParams.Set("is_sac_cfca_terms_certified", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "is_sac_cfca_terms_certified" != "ad_set_id" {
+			urlParams.Set("is_sac_cfca_terms_certified", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["lifetime_budget"]; ok {
-		urlParams.Set("lifetime_budget", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "lifetime_budget" != "ad_set_id" {
+			urlParams.Set("lifetime_budget", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["lifetime_imps"]; ok {
-		urlParams.Set("lifetime_imps", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "lifetime_imps" != "ad_set_id" {
+			urlParams.Set("lifetime_imps", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["lifetime_min_spend_target"]; ok {
-		urlParams.Set("lifetime_min_spend_target", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "lifetime_min_spend_target" != "ad_set_id" {
+			urlParams.Set("lifetime_min_spend_target", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["lifetime_spend_cap"]; ok {
-		urlParams.Set("lifetime_spend_cap", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "lifetime_spend_cap" != "ad_set_id" {
+			urlParams.Set("lifetime_spend_cap", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["max_budget_spend_percentage"]; ok {
-		urlParams.Set("max_budget_spend_percentage", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "max_budget_spend_percentage" != "ad_set_id" {
+			urlParams.Set("max_budget_spend_percentage", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["min_budget_spend_percentage"]; ok {
-		urlParams.Set("min_budget_spend_percentage", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "min_budget_spend_percentage" != "ad_set_id" {
+			urlParams.Set("min_budget_spend_percentage", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["multi_optimization_goal_weight"]; ok {
-		urlParams.Set("multi_optimization_goal_weight", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "multi_optimization_goal_weight" != "ad_set_id" {
+			urlParams.Set("multi_optimization_goal_weight", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["name"]; ok {
-		urlParams.Set("name", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "name" != "ad_set_id" {
+			urlParams.Set("name", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["optimization_goal"]; ok {
-		urlParams.Set("optimization_goal", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "optimization_goal" != "ad_set_id" {
+			urlParams.Set("optimization_goal", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["optimization_sub_event"]; ok {
-		urlParams.Set("optimization_sub_event", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "optimization_sub_event" != "ad_set_id" {
+			urlParams.Set("optimization_sub_event", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["pacing_type"]; ok {
-		urlParams.Set("pacing_type", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "pacing_type" != "ad_set_id" {
+			urlParams.Set("pacing_type", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["promoted_object"]; ok {
-		urlParams.Set("promoted_object", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "promoted_object" != "ad_set_id" {
+			urlParams.Set("promoted_object", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["rb_prediction_id"]; ok {
-		urlParams.Set("rb_prediction_id", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "rb_prediction_id" != "ad_set_id" {
+			urlParams.Set("rb_prediction_id", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["regional_regulated_categories"]; ok {
-		urlParams.Set("regional_regulated_categories", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "regional_regulated_categories" != "ad_set_id" {
+			urlParams.Set("regional_regulated_categories", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["regional_regulation_identities"]; ok {
-		urlParams.Set("regional_regulation_identities", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "regional_regulation_identities" != "ad_set_id" {
+			urlParams.Set("regional_regulation_identities", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["rf_prediction_id"]; ok {
-		urlParams.Set("rf_prediction_id", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "rf_prediction_id" != "ad_set_id" {
+			urlParams.Set("rf_prediction_id", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["start_time"]; ok {
-		urlParams.Set("start_time", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "start_time" != "ad_set_id" {
+			urlParams.Set("start_time", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["status"]; ok {
-		urlParams.Set("status", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "status" != "ad_set_id" {
+			urlParams.Set("status", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["targeting"]; ok {
-		urlParams.Set("targeting", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "targeting" != "ad_set_id" {
+			urlParams.Set("targeting", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["time_based_ad_rotation_id_blocks"]; ok {
-		urlParams.Set("time_based_ad_rotation_id_blocks", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "time_based_ad_rotation_id_blocks" != "ad_set_id" {
+			urlParams.Set("time_based_ad_rotation_id_blocks", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["time_based_ad_rotation_intervals"]; ok {
-		urlParams.Set("time_based_ad_rotation_intervals", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "time_based_ad_rotation_intervals" != "ad_set_id" {
+			urlParams.Set("time_based_ad_rotation_intervals", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["time_start"]; ok {
-		urlParams.Set("time_start", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "time_start" != "ad_set_id" {
+			urlParams.Set("time_start", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["time_stop"]; ok {
-		urlParams.Set("time_stop", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "time_stop" != "ad_set_id" {
+			urlParams.Set("time_stop", fmt.Sprintf("%v", val))
+		}
+
 	}
 	if val, ok := args["tune_for_category"]; ok {
-		urlParams.Set("tune_for_category", fmt.Sprintf("%v", val))
+		// Skip ID parameters as they're already in the URL path
+
+		if "tune_for_category" != "ad_set_id" {
+			urlParams.Set("tune_for_category", fmt.Sprintf("%v", val))
+		}
+
 	}
 
 	// Make HTTP request

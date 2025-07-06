@@ -26,7 +26,10 @@ func (c *AdStudyObjectiveClient) Adstudyobjective_get_adspixels(args map[string]
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adspixels")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adspixels")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +68,10 @@ func (c *AdStudyObjectiveClient) Adstudyobjective_get_applications(args map[stri
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "applications")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/applications")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,7 +110,10 @@ func (c *AdStudyObjectiveClient) Adstudyobjective_get_brand_requests(args map[st
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "brand_requests")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/brand_requests")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -143,7 +152,10 @@ func (c *AdStudyObjectiveClient) Adstudyobjective_get_customconversions(args map
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "customconversions")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/customconversions")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -182,7 +194,10 @@ func (c *AdStudyObjectiveClient) Adstudyobjective_get_offline_conversion_data_se
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "offline_conversion_data_sets")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/offline_conversion_data_sets")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -221,7 +236,10 @@ func (c *AdStudyObjectiveClient) Adstudyobjective_get_partner_private_studies(ar
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "partner_private_studies")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/partner_private_studies")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -260,7 +278,10 @@ func (c *AdStudyObjectiveClient) Adstudyobjective_get_partnerstudies(args map[st
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "partnerstudies")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/partnerstudies")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -299,15 +320,24 @@ func (c *AdStudyObjectiveClient) Adstudyobjective_get_(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["breakdowns"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("breakdowns", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ds"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ds", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -345,39 +375,72 @@ func (c *AdStudyObjectiveClient) Adstudyobjective_post_(args map[string]interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["adspixels"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("adspixels", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["applications"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("applications", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["customconversions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("customconversions", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_primary"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_primary", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["offline_conversion_data_sets"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("offline_conversion_data_sets", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["offsite_datasets"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("offsite_datasets", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["product_catalogs"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("product_catalogs", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["product_sets"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("product_sets", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("type", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

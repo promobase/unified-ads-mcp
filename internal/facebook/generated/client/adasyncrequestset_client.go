@@ -26,12 +26,18 @@ func (c *AdAsyncRequestSetClient) Adasyncrequestset_get_requests(args map[string
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "requests")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/requests")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["statuses"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("statuses", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -69,7 +75,10 @@ func (c *AdAsyncRequestSetClient) Adasyncrequestset_delete_(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -108,7 +117,10 @@ func (c *AdAsyncRequestSetClient) Adasyncrequestset_get_(args map[string]interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -147,18 +159,30 @@ func (c *AdAsyncRequestSetClient) Adasyncrequestset_post_(args map[string]interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["notification_mode"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("notification_mode", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["notification_uri"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("notification_uri", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

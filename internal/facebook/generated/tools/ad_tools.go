@@ -19,12 +19,20 @@ func GetAdTools() []mcp.Tool {
 	// ad_get_adcreatives tool
 	ad_get_adcreativesTool := mcp.NewTool("ad_get_adcreatives",
 		mcp.WithDescription("GET adcreatives for Ad"),
+		mcp.WithString("ad_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad ID"),
+		),
 	)
 	tools = append(tools, ad_get_adcreativesTool)
 
 	// ad_post_adlabels tool
 	ad_post_adlabelsTool := mcp.NewTool("ad_post_adlabels",
 		mcp.WithDescription("POST adlabels for Ad"),
+		mcp.WithString("ad_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad ID"),
+		),
 		mcp.WithString("adlabels",
 			mcp.Required(),
 			mcp.Description("adlabels parameter for adlabels"),
@@ -39,6 +47,10 @@ func GetAdTools() []mcp.Tool {
 	// ad_get_adrules_governed tool
 	ad_get_adrules_governedTool := mcp.NewTool("ad_get_adrules_governed",
 		mcp.WithDescription("GET adrules_governed for Ad"),
+		mcp.WithString("ad_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad ID"),
+		),
 		mcp.WithBoolean("pass_evaluation",
 			mcp.Description("pass_evaluation parameter for adrules_governed"),
 		),
@@ -48,6 +60,10 @@ func GetAdTools() []mcp.Tool {
 	// ad_get_copies tool
 	ad_get_copiesTool := mcp.NewTool("ad_get_copies",
 		mcp.WithDescription("GET copies for Ad"),
+		mcp.WithString("ad_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad ID"),
+		),
 		mcp.WithString("date_preset",
 			mcp.Description("date_preset parameter for copies"),
 			mcp.Enum("data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"),
@@ -67,6 +83,10 @@ func GetAdTools() []mcp.Tool {
 	// ad_post_copies tool
 	ad_post_copiesTool := mcp.NewTool("ad_post_copies",
 		mcp.WithDescription("POST copies for Ad"),
+		mcp.WithString("ad_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad ID"),
+		),
 		mcp.WithString("adset_id",
 			mcp.Description("adset_id parameter for copies"),
 		),
@@ -86,6 +106,10 @@ func GetAdTools() []mcp.Tool {
 	// ad_get_insights tool
 	ad_get_insightsTool := mcp.NewTool("ad_get_insights",
 		mcp.WithDescription("GET insights for Ad"),
+		mcp.WithString("ad_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad ID"),
+		),
 		mcp.WithString("action_attribution_windows",
 			mcp.Description("action_attribution_windows parameter for insights"),
 			mcp.Enum("1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback"),
@@ -165,6 +189,10 @@ func GetAdTools() []mcp.Tool {
 	// ad_post_insights tool
 	ad_post_insightsTool := mcp.NewTool("ad_post_insights",
 		mcp.WithDescription("POST insights for Ad"),
+		mcp.WithString("ad_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad ID"),
+		),
 		mcp.WithString("action_attribution_windows",
 			mcp.Description("action_attribution_windows parameter for insights"),
 			mcp.Enum("1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback"),
@@ -244,12 +272,20 @@ func GetAdTools() []mcp.Tool {
 	// ad_get_leads tool
 	ad_get_leadsTool := mcp.NewTool("ad_get_leads",
 		mcp.WithDescription("GET leads for Ad"),
+		mcp.WithString("ad_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad ID"),
+		),
 	)
 	tools = append(tools, ad_get_leadsTool)
 
 	// ad_get_previews tool
 	ad_get_previewsTool := mcp.NewTool("ad_get_previews",
 		mcp.WithDescription("GET previews for Ad"),
+		mcp.WithString("ad_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad ID"),
+		),
 		mcp.WithString("ad_format",
 			mcp.Required(),
 			mcp.Description("ad_format parameter for previews"),
@@ -302,18 +338,30 @@ func GetAdTools() []mcp.Tool {
 	// ad_get_targetingsentencelines tool
 	ad_get_targetingsentencelinesTool := mcp.NewTool("ad_get_targetingsentencelines",
 		mcp.WithDescription("GET targetingsentencelines for Ad"),
+		mcp.WithString("ad_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad ID"),
+		),
 	)
 	tools = append(tools, ad_get_targetingsentencelinesTool)
 
 	// ad_delete_ tool
 	ad_delete_Tool := mcp.NewTool("ad_delete_",
 		mcp.WithDescription("DELETE  for Ad"),
+		mcp.WithString("ad_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad ID"),
+		),
 	)
 	tools = append(tools, ad_delete_Tool)
 
 	// ad_get_ tool
 	ad_get_Tool := mcp.NewTool("ad_get_",
 		mcp.WithDescription("GET  for Ad"),
+		mcp.WithString("ad_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad ID"),
+		),
 		mcp.WithString("am_call_tags",
 			mcp.Description("am_call_tags parameter for "),
 		),
@@ -336,6 +384,10 @@ func GetAdTools() []mcp.Tool {
 	// ad_post_ tool
 	ad_post_Tool := mcp.NewTool("ad_post_",
 		mcp.WithDescription("POST  for Ad"),
+		mcp.WithString("ad_id",
+			mcp.Required(),
+			mcp.Description("Facebook Ad ID"),
+		),
 		mcp.WithString("ad_schedule_end_time",
 			mcp.Description("ad_schedule_end_time parameter for "),
 		),
@@ -414,6 +466,13 @@ func HandleAd_get_adcreatives(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Required: ad_id
+	ad_id, err := request.RequireString("ad_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_id: %v", err)), nil
+	}
+	args["ad_id"] = ad_id
+
 	// Call the client method
 	result, err := client.Ad_get_adcreatives(args)
 	if err != nil {
@@ -442,6 +501,13 @@ func HandleAd_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Required: ad_id
+	ad_id, err := request.RequireString("ad_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_id: %v", err)), nil
+	}
+	args["ad_id"] = ad_id
 
 	// Required: adlabels
 	adlabels, err := request.RequireString("adlabels")
@@ -485,6 +551,13 @@ func HandleAd_get_adrules_governed(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Required: ad_id
+	ad_id, err := request.RequireString("ad_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_id: %v", err)), nil
+	}
+	args["ad_id"] = ad_id
+
 	// Optional: pass_evaluation
 	if val := request.GetBool("pass_evaluation", false); val {
 		args["pass_evaluation"] = val
@@ -518,6 +591,13 @@ func HandleAd_get_copies(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Required: ad_id
+	ad_id, err := request.RequireString("ad_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_id: %v", err)), nil
+	}
+	args["ad_id"] = ad_id
 
 	// Optional: date_preset
 	if val := request.GetString("date_preset", ""); val != "" {
@@ -569,6 +649,13 @@ func HandleAd_post_copies(ctx context.Context, request mcp.CallToolRequest) (*mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Required: ad_id
+	ad_id, err := request.RequireString("ad_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_id: %v", err)), nil
+	}
+	args["ad_id"] = ad_id
+
 	// Optional: adset_id
 	if val := request.GetString("adset_id", ""); val != "" {
 		args["adset_id"] = val
@@ -618,6 +705,13 @@ func HandleAd_get_insights(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Required: ad_id
+	ad_id, err := request.RequireString("ad_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_id: %v", err)), nil
+	}
+	args["ad_id"] = ad_id
 
 	// Optional: action_attribution_windows
 	// array type - using string
@@ -768,6 +862,13 @@ func HandleAd_post_insights(ctx context.Context, request mcp.CallToolRequest) (*
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Required: ad_id
+	ad_id, err := request.RequireString("ad_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_id: %v", err)), nil
+	}
+	args["ad_id"] = ad_id
+
 	// Optional: action_attribution_windows
 	// array type - using string
 	if val := request.GetString("action_attribution_windows", ""); val != "" {
@@ -917,6 +1018,13 @@ func HandleAd_get_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Required: ad_id
+	ad_id, err := request.RequireString("ad_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_id: %v", err)), nil
+	}
+	args["ad_id"] = ad_id
+
 	// Call the client method
 	result, err := client.Ad_get_leads(args)
 	if err != nil {
@@ -945,6 +1053,13 @@ func HandleAd_get_previews(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Required: ad_id
+	ad_id, err := request.RequireString("ad_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_id: %v", err)), nil
+	}
+	args["ad_id"] = ad_id
 
 	// Required: ad_format
 	ad_format, err := request.RequireString("ad_format")
@@ -1051,6 +1166,13 @@ func HandleAd_get_targetingsentencelines(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Required: ad_id
+	ad_id, err := request.RequireString("ad_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_id: %v", err)), nil
+	}
+	args["ad_id"] = ad_id
+
 	// Call the client method
 	result, err := client.Ad_get_targetingsentencelines(args)
 	if err != nil {
@@ -1080,6 +1202,13 @@ func HandleAd_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Required: ad_id
+	ad_id, err := request.RequireString("ad_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_id: %v", err)), nil
+	}
+	args["ad_id"] = ad_id
+
 	// Call the client method
 	result, err := client.Ad_delete_(args)
 	if err != nil {
@@ -1108,6 +1237,13 @@ func HandleAd_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Required: ad_id
+	ad_id, err := request.RequireString("ad_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_id: %v", err)), nil
+	}
+	args["ad_id"] = ad_id
 
 	// Optional: am_call_tags
 	if val := request.GetString("am_call_tags", ""); val != "" {
@@ -1162,6 +1298,13 @@ func HandleAd_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Required: ad_id
+	ad_id, err := request.RequireString("ad_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_id: %v", err)), nil
+	}
+	args["ad_id"] = ad_id
 
 	// Optional: ad_schedule_end_time
 	if val := request.GetString("ad_schedule_end_time", ""); val != "" {

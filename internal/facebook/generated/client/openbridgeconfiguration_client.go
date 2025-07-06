@@ -26,7 +26,10 @@ func (c *OpenBridgeConfigurationClient) Openbridgeconfiguration_delete_(args map
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +68,10 @@ func (c *OpenBridgeConfigurationClient) Openbridgeconfiguration_get_(args map[st
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,57 +110,108 @@ func (c *OpenBridgeConfigurationClient) Openbridgeconfiguration_post_(args map[s
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["active"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("active", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["cloud_provider"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("cloud_provider", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["cloud_region"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("cloud_region", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["destination_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("destination_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["endpoint"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("endpoint", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fallback_domain"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fallback_domain", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["first_party_domain"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("first_party_domain", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["host_business_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("host_business_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["instance_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("instance_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["instance_version"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("instance_version", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_sgw_instance"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_sgw_instance", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_sgw_pixel_from_meta_pixel"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_sgw_pixel_from_meta_pixel", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["partner_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("partner_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sgw_account_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sgw_account_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sgw_instance_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sgw_instance_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sgw_pixel_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sgw_pixel_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

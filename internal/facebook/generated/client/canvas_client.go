@@ -26,7 +26,10 @@ func (c *CanvasClient) Canvas_get_preview(args map[string]interface{}) (interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "preview")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/preview")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,12 +68,18 @@ func (c *CanvasClient) Canvas_get_previews(args map[string]interface{}) (interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "previews")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/previews")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["user_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user_ids", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -108,7 +117,10 @@ func (c *CanvasClient) Canvas_get_(args map[string]interface{}) (interface{}, er
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -147,30 +159,54 @@ func (c *CanvasClient) Canvas_post_(args map[string]interface{}) (interface{}, e
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["background_color"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("background_color", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["body_element_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("body_element_ids", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["enable_swipe_to_open"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("enable_swipe_to_open", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_hidden"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_hidden", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_published"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_published", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["source_template_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("source_template_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

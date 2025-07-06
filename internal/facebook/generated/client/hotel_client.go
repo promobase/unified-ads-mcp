@@ -26,7 +26,10 @@ func (c *HotelClient) Hotel_get_channels_to_integrity_status(args map[string]int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "channels_to_integrity_status")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/channels_to_integrity_status")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +68,10 @@ func (c *HotelClient) Hotel_get_hotel_rooms(args map[string]interface{}) (interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "hotel_rooms")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/hotel_rooms")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,15 +110,24 @@ func (c *HotelClient) Hotel_get_override_details(args map[string]interface{}) (i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "override_details")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/override_details")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["keys"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("keys", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("type", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -150,7 +165,10 @@ func (c *HotelClient) Hotel_get_videos_metadata(args map[string]interface{}) (in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos_metadata")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/videos_metadata")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -189,7 +207,10 @@ func (c *HotelClient) Hotel_delete_(args map[string]interface{}) (interface{}, e
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -228,7 +249,10 @@ func (c *HotelClient) Hotel_get_(args map[string]interface{}) (interface{}, erro
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -267,45 +291,84 @@ func (c *HotelClient) Hotel_post_(args map[string]interface{}) (interface{}, err
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["address"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("address", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["applinks"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("applinks", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["base_price"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("base_price", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["brand"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("brand", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["currency"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("currency", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["guest_ratings"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("guest_ratings", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["images"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("images", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["phone"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("phone", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["star_rating"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("star_rating", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("url", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

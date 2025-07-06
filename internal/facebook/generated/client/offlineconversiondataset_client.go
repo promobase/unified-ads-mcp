@@ -31,12 +31,18 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_adaccounts
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adaccounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["business"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("business", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -74,7 +80,10 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_agencies(a
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/agencies")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -113,15 +122,24 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_audiences(
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "audiences")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/audiences")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["action_source"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("action_source", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ad_account"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ad_account", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -159,12 +177,18 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_customconv
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "customconversions")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/customconversions")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["ad_account"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ad_account", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -202,7 +226,10 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_server_eve
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "server_events_permitted_business")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/server_events_permitted_business")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -251,15 +278,24 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_shared_acc
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_accounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shared_accounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["action_source"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("action_source", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["business"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("business", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -302,12 +338,18 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_shared_age
 	_ = action_source // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_agencies")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shared_agencies")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["action_source"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("action_source", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -345,27 +387,48 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_stats(args
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "stats")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/stats")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["aggr_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("aggr_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["end"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("end", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["granularity"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("granularity", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["skip_empty_values"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("skip_empty_values", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["user_timezone_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user_timezone_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -403,24 +466,42 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_uploads(ar
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "uploads")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/uploads")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["end_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("end_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["order"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("order", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sort_by"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sort_by", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["upload_tag"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("upload_tag", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -458,7 +539,10 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_(args map[
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

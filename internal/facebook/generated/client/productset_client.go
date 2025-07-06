@@ -26,15 +26,24 @@ func (c *ProductSetClient) Productset_get_automotive_models(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "automotive_models")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/automotive_models")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["bulk_pagination"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["filter"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -72,15 +81,24 @@ func (c *ProductSetClient) Productset_get_destinations(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "destinations")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/destinations")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["bulk_pagination"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["filter"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -118,15 +136,24 @@ func (c *ProductSetClient) Productset_get_flights(args map[string]interface{}) (
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "flights")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/flights")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["bulk_pagination"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["filter"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -164,15 +191,24 @@ func (c *ProductSetClient) Productset_get_home_listings(args map[string]interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "home_listings")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/home_listings")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["bulk_pagination"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["filter"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -210,15 +246,24 @@ func (c *ProductSetClient) Productset_get_hotels(args map[string]interface{}) (i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "hotels")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/hotels")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["bulk_pagination"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["filter"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -256,15 +301,24 @@ func (c *ProductSetClient) Productset_get_media_titles(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "media_titles")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/media_titles")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["bulk_pagination"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["filter"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -302,21 +356,36 @@ func (c *ProductSetClient) Productset_get_products(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "products")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/products")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["bulk_pagination"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["error_priority"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("error_priority", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["error_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("error_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["filter"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -354,15 +423,24 @@ func (c *ProductSetClient) Productset_get_vehicle_offers(args map[string]interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "vehicle_offers")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/vehicle_offers")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["bulk_pagination"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["filter"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -400,15 +478,24 @@ func (c *ProductSetClient) Productset_get_vehicles(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "vehicles")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/vehicles")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["bulk_pagination"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("bulk_pagination", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["filter"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -446,12 +533,18 @@ func (c *ProductSetClient) Productset_delete_(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["allow_live_product_set_deletion"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("allow_live_product_set_deletion", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -489,7 +582,10 @@ func (c *ProductSetClient) Productset_get_(args map[string]interface{}) (interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -528,27 +624,48 @@ func (c *ProductSetClient) Productset_post_(args map[string]interface{}) (interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["filter"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["metadata"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("metadata", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ordering_info"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ordering_info", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["publish_to_shops"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("publish_to_shops", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["retailer_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("retailer_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

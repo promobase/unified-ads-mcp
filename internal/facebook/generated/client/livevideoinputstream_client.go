@@ -26,12 +26,18 @@ func (c *LiveVideoInputStreamClient) Livevideoinputstream_get_(args map[string]i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["target_token"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("target_token", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

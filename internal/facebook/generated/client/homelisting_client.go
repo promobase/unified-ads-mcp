@@ -26,7 +26,10 @@ func (c *HomeListingClient) Homelisting_get_channels_to_integrity_status(args ma
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "channels_to_integrity_status")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/channels_to_integrity_status")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,15 +68,24 @@ func (c *HomeListingClient) Homelisting_get_override_details(args map[string]int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "override_details")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/override_details")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["keys"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("keys", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("type", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -111,7 +123,10 @@ func (c *HomeListingClient) Homelisting_get_videos_metadata(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos_metadata")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/videos_metadata")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -150,7 +165,10 @@ func (c *HomeListingClient) Homelisting_delete_(args map[string]interface{}) (in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -189,7 +207,10 @@ func (c *HomeListingClient) Homelisting_get_(args map[string]interface{}) (inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -228,51 +249,96 @@ func (c *HomeListingClient) Homelisting_post_(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["address"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("address", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["availability"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("availability", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["currency"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("currency", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["images"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("images", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["listing_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("listing_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["num_baths"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("num_baths", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["num_beds"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("num_beds", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["num_units"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("num_units", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["price"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("price", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["property_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("property_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["year_built"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("year_built", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

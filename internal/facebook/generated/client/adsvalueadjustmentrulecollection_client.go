@@ -26,7 +26,10 @@ func (c *AdsValueAdjustmentRuleCollectionClient) Adsvalueadjustmentrulecollectio
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "delete_rule_set")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/delete_rule_set")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +68,10 @@ func (c *AdsValueAdjustmentRuleCollectionClient) Adsvalueadjustmentrulecollectio
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "rules")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/rules")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,7 +110,10 @@ func (c *AdsValueAdjustmentRuleCollectionClient) Adsvalueadjustmentrulecollectio
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -153,18 +162,30 @@ func (c *AdsValueAdjustmentRuleCollectionClient) Adsvalueadjustmentrulecollectio
 	_ = rules // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["is_default_setting"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_default_setting", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["rules"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("rules", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

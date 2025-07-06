@@ -31,12 +31,18 @@ func (c *PaymentEnginePaymentClient) Paymentenginepayment_post_dispute(args map[
 	_ = reason // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "dispute")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/dispute")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["reason"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("reason", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -84,18 +90,30 @@ func (c *PaymentEnginePaymentClient) Paymentenginepayment_post_refunds(args map[
 	_ = currency // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "refunds")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/refunds")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["amount"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("amount", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["currency"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("currency", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["reason"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("reason", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -133,7 +151,10 @@ func (c *PaymentEnginePaymentClient) Paymentenginepayment_get_(args map[string]i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

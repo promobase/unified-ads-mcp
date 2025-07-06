@@ -31,12 +31,18 @@ func (c *AdsPixelClient) Adspixel_get_adaccounts(args map[string]interface{}) (i
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adaccounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["business"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("business", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -79,12 +85,18 @@ func (c *AdsPixelClient) Adspixel_delete_agencies(args map[string]interface{}) (
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/agencies")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["business"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("business", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -122,7 +134,10 @@ func (c *AdsPixelClient) Adspixel_get_agencies(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/agencies")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -171,15 +186,24 @@ func (c *AdsPixelClient) Adspixel_post_agencies(args map[string]interface{}) (in
 	_ = permitted_tasks // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/agencies")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["business"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("business", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["permitted_tasks"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("permitted_tasks", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -222,12 +246,18 @@ func (c *AdsPixelClient) Adspixel_post_ahp_configs(args map[string]interface{}) 
 	_ = applink_autosetup // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ahp_configs")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ahp_configs")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["applink_autosetup"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("applink_autosetup", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -270,12 +300,18 @@ func (c *AdsPixelClient) Adspixel_get_assigned_users(args map[string]interface{}
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_users")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["business"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("business", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -323,15 +359,24 @@ func (c *AdsPixelClient) Adspixel_post_assigned_users(args map[string]interface{
 	_ = user // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_users")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["tasks"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("tasks", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["user"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -369,15 +414,24 @@ func (c *AdsPixelClient) Adspixel_get_da_checks(args map[string]interface{}) (in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "da_checks")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/da_checks")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["checks"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("checks", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["connection_method"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("connection_method", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -420,39 +474,72 @@ func (c *AdsPixelClient) Adspixel_post_events(args map[string]interface{}) (inte
 	_ = data // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "events")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/events")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["data"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("data", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["namespace_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("namespace_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["partner_agent"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("partner_agent", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["platforms"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("platforms", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["progress"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("progress", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["test_event_code"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("test_event_code", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["trace"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("trace", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["upload_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("upload_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["upload_source"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("upload_source", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["upload_tag"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("upload_tag", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -490,24 +577,42 @@ func (c *AdsPixelClient) Adspixel_get_offline_event_uploads(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "offline_event_uploads")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/offline_event_uploads")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["end_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("end_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["order"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("order", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sort_by"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sort_by", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["upload_tag"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("upload_tag", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -545,7 +650,10 @@ func (c *AdsPixelClient) Adspixel_get_openbridge_configurations(args map[string]
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "openbridge_configurations")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/openbridge_configurations")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -584,7 +692,10 @@ func (c *AdsPixelClient) Adspixel_post_shadowtraffichelper(args map[string]inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shadowtraffichelper")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shadowtraffichelper")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -633,15 +744,24 @@ func (c *AdsPixelClient) Adspixel_delete_shared_accounts(args map[string]interfa
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_accounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shared_accounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("account_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["business"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("business", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -684,12 +804,18 @@ func (c *AdsPixelClient) Adspixel_get_shared_accounts(args map[string]interface{
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_accounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shared_accounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["business"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("business", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -737,15 +863,24 @@ func (c *AdsPixelClient) Adspixel_post_shared_accounts(args map[string]interface
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_accounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shared_accounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("account_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["business"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("business", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -783,7 +918,10 @@ func (c *AdsPixelClient) Adspixel_get_shared_agencies(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_agencies")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shared_agencies")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -822,24 +960,42 @@ func (c *AdsPixelClient) Adspixel_get_stats(args map[string]interface{}) (interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "stats")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/stats")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["aggregation"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("aggregation", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["end_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("end_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["event"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("event", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["event_source"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("event_source", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start_time", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -877,7 +1033,10 @@ func (c *AdsPixelClient) Adspixel_get_(args map[string]interface{}) (interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -916,27 +1075,48 @@ func (c *AdsPixelClient) Adspixel_post_(args map[string]interface{}) (interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["automatic_matching_fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("automatic_matching_fields", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["data_use_setting"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("data_use_setting", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["enable_automatic_matching"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("enable_automatic_matching", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["first_party_cookie_status"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("first_party_cookie_status", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["server_events_business_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("server_events_business_ids", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

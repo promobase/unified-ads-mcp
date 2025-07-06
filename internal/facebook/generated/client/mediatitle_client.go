@@ -26,7 +26,10 @@ func (c *MediaTitleClient) Mediatitle_get_channels_to_integrity_status(args map[
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "channels_to_integrity_status")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/channels_to_integrity_status")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,15 +68,24 @@ func (c *MediaTitleClient) Mediatitle_get_override_details(args map[string]inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "override_details")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/override_details")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["keys"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("keys", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("type", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -111,7 +123,10 @@ func (c *MediaTitleClient) Mediatitle_get_videos_metadata(args map[string]interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos_metadata")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/videos_metadata")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -150,7 +165,10 @@ func (c *MediaTitleClient) Mediatitle_delete_(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -189,7 +207,10 @@ func (c *MediaTitleClient) Mediatitle_get_(args map[string]interface{}) (interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -228,45 +249,84 @@ func (c *MediaTitleClient) Mediatitle_post_(args map[string]interface{}) (interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["applinks"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("applinks", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["content_category"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("content_category", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["currency"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("currency", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fb_page_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fb_page_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["genres"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("genres", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["images"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("images", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["kg_fb_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("kg_fb_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["price"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("price", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["title"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("title", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["title_display_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("title_display_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("url", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

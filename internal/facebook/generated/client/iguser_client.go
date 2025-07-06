@@ -26,7 +26,10 @@ func (c *IGUserClient) Iguser_get_agencies(args map[string]interface{}) (interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/agencies")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -70,12 +73,18 @@ func (c *IGUserClient) Iguser_get_authorized_adaccounts(args map[string]interfac
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "authorized_adaccounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/authorized_adaccounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["business"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("business", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -123,15 +132,24 @@ func (c *IGUserClient) Iguser_post_authorized_adaccounts(args map[string]interfa
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "authorized_adaccounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/authorized_adaccounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("account_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["business"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("business", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -169,7 +187,10 @@ func (c *IGUserClient) Iguser_get_available_catalogs(args map[string]interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "available_catalogs")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/available_catalogs")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -208,7 +229,10 @@ func (c *IGUserClient) Iguser_get_branded_content_ad_permissions(args map[string
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_ad_permissions")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/branded_content_ad_permissions")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -247,18 +271,30 @@ func (c *IGUserClient) Iguser_post_branded_content_ad_permissions(args map[strin
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_ad_permissions")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/branded_content_ad_permissions")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["creator_instagram_account"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("creator_instagram_account", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["creator_instagram_username"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("creator_instagram_username", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["revoke"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("revoke", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -296,24 +332,42 @@ func (c *IGUserClient) Iguser_get_branded_content_advertisable_medias(args map[s
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_advertisable_medias")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/branded_content_advertisable_medias")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["ad_code"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ad_code", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["creator_username"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("creator_username", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["only_fetch_allowlisted"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("only_fetch_allowlisted", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["only_fetch_recommended_content"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("only_fetch_recommended_content", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["permalinks"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("permalinks", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -356,12 +410,18 @@ func (c *IGUserClient) Iguser_delete_branded_content_tag_approval(args map[strin
 	_ = user_ids // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_tag_approval")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/branded_content_tag_approval")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["user_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user_ids", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -404,12 +464,18 @@ func (c *IGUserClient) Iguser_get_branded_content_tag_approval(args map[string]i
 	_ = user_ids // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_tag_approval")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/branded_content_tag_approval")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["user_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user_ids", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -452,12 +518,18 @@ func (c *IGUserClient) Iguser_post_branded_content_tag_approval(args map[string]
 	_ = user_ids // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_tag_approval")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/branded_content_tag_approval")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["user_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user_ids", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -500,15 +572,24 @@ func (c *IGUserClient) Iguser_get_catalog_product_search(args map[string]interfa
 	_ = catalog_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "catalog_product_search")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/catalog_product_search")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["catalog_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("catalog_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["q"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("q", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -546,7 +627,10 @@ func (c *IGUserClient) Iguser_get_connected_threads_user(args map[string]interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "connected_threads_user")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/connected_threads_user")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -585,12 +669,18 @@ func (c *IGUserClient) Iguser_get_content_publishing_limit(args map[string]inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "content_publishing_limit")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/content_publishing_limit")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["since"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("since", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -628,7 +718,10 @@ func (c *IGUserClient) Iguser_get_dataset(args map[string]interface{}) (interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "dataset")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/dataset")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -667,12 +760,18 @@ func (c *IGUserClient) Iguser_post_dataset(args map[string]interface{}) (interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "dataset")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/dataset")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["dataset_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("dataset_name", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -720,30 +819,54 @@ func (c *IGUserClient) Iguser_get_insights(args map[string]interface{}) (interfa
 	_ = period // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/insights")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["breakdown"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("breakdown", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["metric"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("metric", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["metric_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("metric_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["period"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("period", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["since"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("since", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["timeframe"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("timeframe", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["until"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("until", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -781,7 +904,10 @@ func (c *IGUserClient) Iguser_get_instagram_backed_threads_user(args map[string]
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "instagram_backed_threads_user")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/instagram_backed_threads_user")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -820,15 +946,24 @@ func (c *IGUserClient) Iguser_get_live_media(args map[string]interface{}) (inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "live_media")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/live_media")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["since"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("since", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["until"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("until", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -866,15 +1001,24 @@ func (c *IGUserClient) Iguser_get_media(args map[string]interface{}) (interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "media")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/media")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["since"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("since", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["until"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("until", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -912,57 +1056,108 @@ func (c *IGUserClient) Iguser_post_media(args map[string]interface{}) (interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "media")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/media")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["alt_text"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("alt_text", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["audio_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("audio_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["caption"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("caption", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["children"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("children", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["collaborators"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("collaborators", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["cover_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("cover_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["image_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("image_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_carousel_item"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_carousel_item", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["location_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("location_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["media_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("media_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["product_tags"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("product_tags", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["share_to_feed"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("share_to_feed", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["thumb_offset"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("thumb_offset", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["upload_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("upload_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["user_tags"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user_tags", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["video_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("video_url", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1005,12 +1200,18 @@ func (c *IGUserClient) Iguser_post_media_publish(args map[string]interface{}) (i
 	_ = creation_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "media_publish")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/media_publish")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["creation_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("creation_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1058,18 +1259,30 @@ func (c *IGUserClient) Iguser_post_mentions(args map[string]interface{}) (interf
 	_ = message // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "mentions")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/mentions")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["comment_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("comment_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["media_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("media_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["message"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("message", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1107,7 +1320,10 @@ func (c *IGUserClient) Iguser_get_notification_message_tokens(args map[string]in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "notification_message_tokens")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/notification_message_tokens")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1151,12 +1367,18 @@ func (c *IGUserClient) Iguser_get_product_appeal(args map[string]interface{}) (i
 	_ = product_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_appeal")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/product_appeal")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["product_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("product_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1204,15 +1426,24 @@ func (c *IGUserClient) Iguser_post_product_appeal(args map[string]interface{}) (
 	_ = product_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_appeal")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/product_appeal")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["appeal_reason"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("appeal_reason", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["product_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("product_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1250,7 +1481,10 @@ func (c *IGUserClient) Iguser_get_recently_searched_hashtags(args map[string]int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "recently_searched_hashtags")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/recently_searched_hashtags")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1289,7 +1523,10 @@ func (c *IGUserClient) Iguser_get_stories(args map[string]interface{}) (interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "stories")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/stories")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1328,7 +1565,10 @@ func (c *IGUserClient) Iguser_get_tags(args map[string]interface{}) (interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "tags")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/tags")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1367,7 +1607,10 @@ func (c *IGUserClient) Iguser_get_upcoming_events(args map[string]interface{}) (
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "upcoming_events")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/upcoming_events")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1416,21 +1659,36 @@ func (c *IGUserClient) Iguser_post_upcoming_events(args map[string]interface{}) 
 	_ = title // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "upcoming_events")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/upcoming_events")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["end_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("end_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["notification_subtypes"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("notification_subtypes", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["title"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("title", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1468,15 +1726,24 @@ func (c *IGUserClient) Iguser_get_welcome_message_flows(args map[string]interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "welcome_message_flows")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/welcome_message_flows")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["app_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("app_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["flow_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("flow_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1514,12 +1781,18 @@ func (c *IGUserClient) Iguser_get_(args map[string]interface{}) (interface{}, er
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["adgroup_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("adgroup_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

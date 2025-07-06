@@ -26,7 +26,10 @@ func (c *FlightClient) Flight_get_channels_to_integrity_status(args map[string]i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "channels_to_integrity_status")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/channels_to_integrity_status")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,15 +68,24 @@ func (c *FlightClient) Flight_get_override_details(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "override_details")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/override_details")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["keys"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("keys", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("type", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -111,7 +123,10 @@ func (c *FlightClient) Flight_get_videos_metadata(args map[string]interface{}) (
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos_metadata")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/videos_metadata")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -150,7 +165,10 @@ func (c *FlightClient) Flight_get_(args map[string]interface{}) (interface{}, er
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -189,36 +207,66 @@ func (c *FlightClient) Flight_post_(args map[string]interface{}) (interface{}, e
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["currency"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("currency", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["destination_airport"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("destination_airport", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["destination_city"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("destination_city", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["images"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("images", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["origin_airport"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("origin_airport", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["origin_city"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("origin_city", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["price"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("price", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("url", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

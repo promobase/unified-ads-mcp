@@ -26,7 +26,10 @@ func (c *IGUserExportForCAMClient) Iguserexportforcam_get_branded_content_media(
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_media")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/branded_content_media")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,21 +68,36 @@ func (c *IGUserExportForCAMClient) Iguserexportforcam_get_insights(args map[stri
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/insights")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["breakdown"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("breakdown", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["metrics"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("metrics", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["period"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("period", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["time_range"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("time_range", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -117,7 +135,10 @@ func (c *IGUserExportForCAMClient) Iguserexportforcam_get_recent_media(args map[
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "recent_media")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/recent_media")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -156,7 +177,10 @@ func (c *IGUserExportForCAMClient) Iguserexportforcam_get_(args map[string]inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

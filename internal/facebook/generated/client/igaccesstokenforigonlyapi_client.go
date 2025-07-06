@@ -41,18 +41,30 @@ func (c *IGAccessTokenForIGOnlyAPIClient) Igaccesstokenforigonlyapi_get_(args ma
 	_ = grant_type // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["access_token"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("access_token", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["client_secret"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("client_secret", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["grant_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("grant_type", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

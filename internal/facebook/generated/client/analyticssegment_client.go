@@ -26,18 +26,30 @@ func (c *AnalyticsSegmentClient) Analyticssegment_get_(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["async_task_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("async_task_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["end_date"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("end_date", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start_date"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start_date", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

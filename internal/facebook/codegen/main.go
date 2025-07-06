@@ -192,6 +192,50 @@ func generateTools(ctx *CodegenContext) {
 				NodeType:    nodeName,
 			}
 
+			// Add required ID parameters based on node type
+			switch nodeName {
+			case "AdAccount":
+				accountIdParam := MCPParameter{
+					Name:        "account_id",
+					Type:        "string",
+					Required:    true,
+					Description: "Facebook Ad Account ID (without 'act_' prefix)",
+				}
+				tool.Parameters = append(tool.Parameters, accountIdParam)
+			case "Ad":
+				adIdParam := MCPParameter{
+					Name:        "ad_id",
+					Type:        "string",
+					Required:    true,
+					Description: "Facebook Ad ID",
+				}
+				tool.Parameters = append(tool.Parameters, adIdParam)
+			case "AdCreative":
+				adCreativeIdParam := MCPParameter{
+					Name:        "ad_creative_id",
+					Type:        "string",
+					Required:    true,
+					Description: "Facebook Ad Creative ID",
+				}
+				tool.Parameters = append(tool.Parameters, adCreativeIdParam)
+			case "AdSet":
+				adSetIdParam := MCPParameter{
+					Name:        "ad_set_id",
+					Type:        "string",
+					Required:    true,
+					Description: "Facebook Ad Set ID",
+				}
+				tool.Parameters = append(tool.Parameters, adSetIdParam)
+			case "Campaign":
+				campaignIdParam := MCPParameter{
+					Name:        "campaign_id",
+					Type:        "string",
+					Required:    true,
+					Description: "Facebook Campaign ID",
+				}
+				tool.Parameters = append(tool.Parameters, campaignIdParam)
+			}
+
 			// Convert parameters
 			for _, param := range api.Params {
 				mcpParam := MCPParameter{
@@ -722,12 +766,73 @@ func (c *{{$.NodeName}}Client) {{capitalizeFirst .Name}}(args map[string]interfa
 {{end}}{{end}}
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "{{$.APIVersion}}", "{{.Endpoint}}")
+	var baseURL string
+	{{if eq $.NodeName "AdAccount"}}
+	// For AdAccount endpoints, include account_id in the URL path
+	accountId, ok := args["account_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: account_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/{{$.APIVersion}}/act_%v/{{.Endpoint}}", accountId)
+	{{else if eq $.NodeName "Ad"}}
+	// For Ad endpoints, include ad_id in the URL path
+	adId, ok := args["ad_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/{{$.APIVersion}}/%v/{{.Endpoint}}", adId)
+	{{else if eq $.NodeName "AdCreative"}}
+	// For AdCreative endpoints, include ad_creative_id in the URL path
+	adCreativeId, ok := args["ad_creative_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_creative_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/{{$.APIVersion}}/%v/{{.Endpoint}}", adCreativeId)
+	{{else if eq $.NodeName "AdSet"}}
+	// For AdSet endpoints, include ad_set_id in the URL path
+	adSetId, ok := args["ad_set_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: ad_set_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/{{$.APIVersion}}/%v/{{.Endpoint}}", adSetId)
+	{{else if eq $.NodeName "Campaign"}}
+	// For Campaign endpoints, include campaign_id in the URL path
+	campaignId, ok := args["campaign_id"]
+	if !ok {
+		return nil, fmt.Errorf("missing required parameter: campaign_id")
+	}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/{{$.APIVersion}}/%v/{{.Endpoint}}", campaignId)
+	{{else}}
+	baseURL = fmt.Sprintf("https://graph.facebook.com/{{$.APIVersion}}/{{.Endpoint}}")
+	{{end}}
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 {{range .Parameters}}	if val, ok := args["{{.Name}}"]; ok {
+		// Skip ID parameters as they're already in the URL path
+		{{if eq $.NodeName "AdAccount"}}
+		if "{{.Name}}" != "account_id" {
+			urlParams.Set("{{.Name}}", fmt.Sprintf("%v", val))
+		}
+		{{else if eq $.NodeName "Ad"}}
+		if "{{.Name}}" != "ad_id" {
+			urlParams.Set("{{.Name}}", fmt.Sprintf("%v", val))
+		}
+		{{else if eq $.NodeName "AdCreative"}}
+		if "{{.Name}}" != "ad_creative_id" {
+			urlParams.Set("{{.Name}}", fmt.Sprintf("%v", val))
+		}
+		{{else if eq $.NodeName "AdSet"}}
+		if "{{.Name}}" != "ad_set_id" {
+			urlParams.Set("{{.Name}}", fmt.Sprintf("%v", val))
+		}
+		{{else if eq $.NodeName "Campaign"}}
+		if "{{.Name}}" != "campaign_id" {
+			urlParams.Set("{{.Name}}", fmt.Sprintf("%v", val))
+		}
+		{{else}}
 		urlParams.Set("{{.Name}}", fmt.Sprintf("%v", val))
+		{{end}}
 	}
 {{end}}
 

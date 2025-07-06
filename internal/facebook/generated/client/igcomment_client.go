@@ -26,7 +26,10 @@ func (c *IGCommentClient) Igcomment_get_replies(args map[string]interface{}) (in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "replies")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/replies")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,12 +68,18 @@ func (c *IGCommentClient) Igcomment_post_replies(args map[string]interface{}) (i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "replies")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/replies")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["message"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("message", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -108,12 +117,18 @@ func (c *IGCommentClient) Igcomment_delete_(args map[string]interface{}) (interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["ad_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ad_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -151,7 +166,10 @@ func (c *IGCommentClient) Igcomment_get_(args map[string]interface{}) (interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -195,15 +213,24 @@ func (c *IGCommentClient) Igcomment_post_(args map[string]interface{}) (interfac
 	_ = hide // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["ad_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ad_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["hide"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("hide", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request

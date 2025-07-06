@@ -26,7 +26,10 @@ func (c *PageClient) Page_get_ab_tests(args map[string]interface{}) (interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ab_tests")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ab_tests")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -95,30 +98,54 @@ func (c *PageClient) Page_post_ab_tests(args map[string]interface{}) (interface{
 	_ = optimization_goal // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ab_tests")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ab_tests")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["control_video_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("control_video_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["duration"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("duration", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["experiment_video_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("experiment_video_ids", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["optimization_goal"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("optimization_goal", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["scheduled_experiment_timestamp"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("scheduled_experiment_timestamp", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -166,15 +193,24 @@ func (c *PageClient) Page_post_acknowledge_orders(args map[string]interface{}) (
 	_ = orders // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "acknowledge_orders")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/acknowledge_orders")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["idempotency_key"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("idempotency_key", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["orders"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("orders", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -212,21 +248,36 @@ func (c *PageClient) Page_get_ads_posts(args map[string]interface{}) (interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ads_posts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ads_posts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["exclude_dynamic_ads"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("exclude_dynamic_ads", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["include_inline_create"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("include_inline_create", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["since"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("since", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["until"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("until", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -269,12 +320,18 @@ func (c *PageClient) Page_delete_agencies(args map[string]interface{}) (interfac
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/agencies")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["business"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("business", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -312,7 +369,10 @@ func (c *PageClient) Page_get_agencies(args map[string]interface{}) (interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/agencies")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -356,15 +416,24 @@ func (c *PageClient) Page_post_agencies(args map[string]interface{}) (interface{
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/agencies")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["business"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("business", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["permitted_tasks"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("permitted_tasks", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -402,7 +471,10 @@ func (c *PageClient) Page_get_albums(args map[string]interface{}) (interface{}, 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "albums")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/albums")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -441,7 +513,10 @@ func (c *PageClient) Page_get_ar_experience(args map[string]interface{}) (interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ar_experience")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ar_experience")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -485,12 +560,18 @@ func (c *PageClient) Page_delete_assigned_users(args map[string]interface{}) (in
 	_ = user // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_users")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["user"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -533,12 +614,18 @@ func (c *PageClient) Page_get_assigned_users(args map[string]interface{}) (inter
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_users")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["business"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("business", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -581,15 +668,24 @@ func (c *PageClient) Page_post_assigned_users(args map[string]interface{}) (inte
 	_ = user // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_users")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["tasks"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("tasks", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["user"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -627,21 +723,36 @@ func (c *PageClient) Page_delete_blocked(args map[string]interface{}) (interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "blocked")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/blocked")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["asid"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("asid", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["psid"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("psid", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["uid"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("uid", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["user"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -679,15 +790,24 @@ func (c *PageClient) Page_get_blocked(args map[string]interface{}) (interface{},
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "blocked")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/blocked")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["uid"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("uid", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["user"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -725,21 +845,36 @@ func (c *PageClient) Page_post_blocked(args map[string]interface{}) (interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "blocked")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/blocked")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["asid"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("asid", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["psid"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("psid", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["uid"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("uid", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["user"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -787,18 +922,30 @@ func (c *PageClient) Page_post_business_data(args map[string]interface{}) (inter
 	_ = partner_agent // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "business_data")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/business_data")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["data"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("data", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["partner_agent"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("partner_agent", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["processing_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("processing_type", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -836,12 +983,18 @@ func (c *PageClient) Page_get_businessprojects(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "businessprojects")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/businessprojects")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["business"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("business", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -879,7 +1032,10 @@ func (c *PageClient) Page_get_call_to_actions(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "call_to_actions")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/call_to_actions")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -923,24 +1079,42 @@ func (c *PageClient) Page_post_calls(args map[string]interface{}) (interface{}, 
 	_ = action // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "calls")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/calls")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["action"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("action", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["call_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("call_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["platform"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("platform", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["session"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("session", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["to"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("to", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -978,7 +1152,10 @@ func (c *PageClient) Page_get_canvas_elements(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "canvas_elements")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/canvas_elements")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1017,45 +1194,84 @@ func (c *PageClient) Page_post_canvas_elements(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "canvas_elements")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/canvas_elements")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["canvas_button"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("canvas_button", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["canvas_carousel"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("canvas_carousel", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["canvas_footer"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("canvas_footer", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["canvas_header"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("canvas_header", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["canvas_lead_form"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("canvas_lead_form", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["canvas_photo"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("canvas_photo", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["canvas_product_list"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("canvas_product_list", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["canvas_product_set"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("canvas_product_set", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["canvas_store_locator"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("canvas_store_locator", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["canvas_template_video"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("canvas_template_video", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["canvas_text"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("canvas_text", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["canvas_video"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("canvas_video", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1093,15 +1309,24 @@ func (c *PageClient) Page_get_canvases(args map[string]interface{}) (interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "canvases")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/canvases")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["is_hidden"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_hidden", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_published"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_published", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1139,30 +1364,54 @@ func (c *PageClient) Page_post_canvases(args map[string]interface{}) (interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "canvases")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/canvases")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["background_color"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("background_color", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["body_element_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("body_element_ids", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["enable_swipe_to_open"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("enable_swipe_to_open", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_hidden"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_hidden", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_published"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_published", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["source_template_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("source_template_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1200,7 +1449,10 @@ func (c *PageClient) Page_get_chat_plugin(args map[string]interface{}) (interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "chat_plugin")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/chat_plugin")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1239,7 +1491,10 @@ func (c *PageClient) Page_get_commerce_merchant_settings(args map[string]interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "commerce_merchant_settings")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/commerce_merchant_settings")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1278,21 +1533,36 @@ func (c *PageClient) Page_get_commerce_orders(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "commerce_orders")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/commerce_orders")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["filters"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("filters", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["state"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("state", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["updated_after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("updated_after", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["updated_before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("updated_before", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1330,15 +1600,24 @@ func (c *PageClient) Page_get_commerce_payouts(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "commerce_payouts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/commerce_payouts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["end_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("end_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start_time", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1376,18 +1655,30 @@ func (c *PageClient) Page_get_commerce_transactions(args map[string]interface{})
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "commerce_transactions")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/commerce_transactions")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["end_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("end_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["payout_reference_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("payout_reference_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start_time", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1425,21 +1716,36 @@ func (c *PageClient) Page_get_conversations(args map[string]interface{}) (interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "conversations")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/conversations")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["folder"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("folder", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["platform"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("platform", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["tags"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("tags", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["user_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1492,30 +1798,54 @@ func (c *PageClient) Page_post_copyright_manual_claims(args map[string]interface
 	_ = reference_asset_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "copyright_manual_claims")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/copyright_manual_claims")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["action"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("action", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["action_reason"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("action_reason", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["countries"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("countries", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["match_content_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("match_content_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["matched_asset_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("matched_asset_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["reference_asset_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("reference_asset_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["selected_segments"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("selected_segments", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1553,7 +1883,10 @@ func (c *PageClient) Page_get_crosspost_whitelisted_pages(args map[string]interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "crosspost_whitelisted_pages")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/crosspost_whitelisted_pages")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1592,7 +1925,10 @@ func (c *PageClient) Page_get_ctx_optimization_eligibility(args map[string]inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ctx_optimization_eligibility")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ctx_optimization_eligibility")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1631,7 +1967,10 @@ func (c *PageClient) Page_get_custom_labels(args map[string]interface{}) (interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "custom_labels")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/custom_labels")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1675,15 +2014,24 @@ func (c *PageClient) Page_post_custom_labels(args map[string]interface{}) (inter
 	_ = page_label_name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "custom_labels")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/custom_labels")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["page_label_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("page_label_name", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1731,15 +2079,24 @@ func (c *PageClient) Page_delete_custom_user_settings(args map[string]interface{
 	_ = psid // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "custom_user_settings")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/custom_user_settings")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("params", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["psid"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("psid", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1782,12 +2139,18 @@ func (c *PageClient) Page_get_custom_user_settings(args map[string]interface{}) 
 	_ = psid // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "custom_user_settings")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/custom_user_settings")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["psid"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("psid", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1830,15 +2193,24 @@ func (c *PageClient) Page_post_custom_user_settings(args map[string]interface{})
 	_ = psid // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "custom_user_settings")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/custom_user_settings")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["persistent_menu"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("persistent_menu", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["psid"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("psid", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1876,7 +2248,10 @@ func (c *PageClient) Page_get_dataset(args map[string]interface{}) (interface{},
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "dataset")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/dataset")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1915,12 +2290,18 @@ func (c *PageClient) Page_post_dataset(args map[string]interface{}) (interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "dataset")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/dataset")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["dataset_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("dataset_name", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -1958,21 +2339,36 @@ func (c *PageClient) Page_get_events(args map[string]interface{}) (interface{}, 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "events")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/events")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["event_state_filter"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("event_state_filter", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["include_canceled"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("include_canceled", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["time_filter"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("time_filter", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("type", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2015,15 +2411,24 @@ func (c *PageClient) Page_post_extend_thread_control(args map[string]interface{}
 	_ = recipient // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "extend_thread_control")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/extend_thread_control")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["duration"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("duration", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["recipient"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("recipient", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2061,7 +2466,10 @@ func (c *PageClient) Page_get_fantasy_games(args map[string]interface{}) (interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "fantasy_games")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/fantasy_games")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2100,21 +2508,36 @@ func (c *PageClient) Page_get_feed(args map[string]interface{}) (interface{}, er
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "feed")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/feed")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["include_hidden"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("include_hidden", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["show_expired"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("show_expired", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["with"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("with", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2152,327 +2575,648 @@ func (c *PageClient) Page_post_feed(args map[string]interface{}) (interface{}, e
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "feed")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/feed")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["actions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("actions", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["album_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("album_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["android_key_hash"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("android_key_hash", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["application_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("application_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["asked_fun_fact_prompt_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("asked_fun_fact_prompt_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["asset3d_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("asset3d_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["associated_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("associated_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["attach_place_suggestion"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("attach_place_suggestion", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["attached_media"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("attached_media", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["audience_exp"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("audience_exp", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["backdated_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("backdated_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["backdated_time_granularity"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("backdated_time_granularity", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["breaking_news"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("breaking_news", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["breaking_news_expiration"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("breaking_news_expiration", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["call_to_action"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("call_to_action", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["caption"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("caption", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["child_attachments"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("child_attachments", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["client_mutation_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("client_mutation_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["composer_entry_picker"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("composer_entry_picker", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["composer_entry_point"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("composer_entry_point", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["composer_entry_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("composer_entry_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["composer_session_events_log"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("composer_session_events_log", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["composer_session_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("composer_session_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["composer_source_surface"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("composer_source_surface", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["composer_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("composer_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["connection_class"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("connection_class", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["content_attachment"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("content_attachment", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["coordinates"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("coordinates", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["cta_link"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("cta_link", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["cta_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("cta_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["direct_share_status"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("direct_share_status", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["enforce_link_ownership"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("enforce_link_ownership", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["expanded_height"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("expanded_height", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["expanded_width"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("expanded_width", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["feed_targeting"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("feed_targeting", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["formatting"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("formatting", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fun_fact_prompt_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fun_fact_prompt_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fun_fact_toastee_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fun_fact_toastee_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["height"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("height", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["home_checkin_city_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("home_checkin_city_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["image_crops"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("image_crops", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["implicit_with_tags"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("implicit_with_tags", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["instant_game_entry_point_data"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("instant_game_entry_point_data", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ios_bundle_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ios_bundle_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_backout_draft"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_backout_draft", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_boost_intended"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_boost_intended", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_explicit_location"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_explicit_location", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_explicit_share"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_explicit_share", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_group_linking_post"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_group_linking_post", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_photo_container"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_photo_container", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["link"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("link", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["location_source_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("location_source_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["manual_privacy"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("manual_privacy", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["message"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("message", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["multi_share_end_card"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("multi_share_end_card", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["multi_share_optimized"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("multi_share_optimized", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["nectar_module"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("nectar_module", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["object_attachment"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("object_attachment", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["og_action_type_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("og_action_type_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["og_hide_object_attachment"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("og_hide_object_attachment", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["og_icon_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("og_icon_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["og_object_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("og_object_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["og_phrase"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("og_phrase", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["og_set_profile_badge"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("og_set_profile_badge", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["og_suggestion_mechanism"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("og_suggestion_mechanism", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["page_recommendation"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("page_recommendation", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["picture"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("picture", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["place"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("place", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["place_attachment_setting"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("place_attachment_setting", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["place_list"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("place_list", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["place_list_data"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("place_list_data", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["post_surfaces_blacklist"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("post_surfaces_blacklist", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["posting_to_redspace"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("posting_to_redspace", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["privacy"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("privacy", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["prompt_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("prompt_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["prompt_tracking_string"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("prompt_tracking_string", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["properties"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("properties", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["proxied_app_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("proxied_app_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["publish_event_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("publish_event_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["published"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("published", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["quote"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("quote", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ref"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ref", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["referenceable_image_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("referenceable_image_ids", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["referral_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("referral_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["scheduled_publish_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("scheduled_publish_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["source"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("source", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sponsor_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sponsor_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sponsor_relationship"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sponsor_relationship", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["suggested_place_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("suggested_place_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["tags"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("tags", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["target_surface"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("target_surface", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["targeting"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("targeting", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["text_format_metadata"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("text_format_metadata", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["text_format_preset_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("text_format_preset_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["text_only_place"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("text_only_place", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["thumbnail"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("thumbnail", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["time_since_original_post"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("time_since_original_post", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["title"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("title", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["tracking_info"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("tracking_info", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["unpublished_content_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("unpublished_content_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["user_selected_tags"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user_selected_tags", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["video_start_time_ms"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("video_start_time_ms", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["viewer_coordinates"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("viewer_coordinates", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["width"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("width", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2510,7 +3254,10 @@ func (c *PageClient) Page_get_global_brand_children(args map[string]interface{})
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "global_brand_children")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/global_brand_children")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2549,7 +3296,10 @@ func (c *PageClient) Page_get_image_copyrights(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "image_copyrights")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/image_copyrights")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2603,39 +3353,72 @@ func (c *PageClient) Page_post_image_copyrights(args map[string]interface{}) (in
 	_ = reference_photo // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "image_copyrights")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/image_copyrights")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["artist"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("artist", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["attribution_link"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("attribution_link", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["creator"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("creator", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["filename"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("filename", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["geo_ownership"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("geo_ownership", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["original_content_creation_date"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("original_content_creation_date", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["reference_photo"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("reference_photo", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["title"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("title", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2673,7 +3456,10 @@ func (c *PageClient) Page_get_indexed_videos(args map[string]interface{}) (inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "indexed_videos")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/indexed_videos")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2712,30 +3498,54 @@ func (c *PageClient) Page_get_insights(args map[string]interface{}) (interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/insights")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["breakdown"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("breakdown", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["date_preset"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("date_preset", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["metric"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("metric", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["period"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("period", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["show_description_from_api_doc"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("show_description_from_api_doc", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["since"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("since", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["until"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("until", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2773,7 +3583,10 @@ func (c *PageClient) Page_get_instagram_accounts(args map[string]interface{}) (i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "instagram_accounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/instagram_accounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2812,7 +3625,10 @@ func (c *PageClient) Page_get_leadgen_forms(args map[string]interface{}) (interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "leadgen_forms")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/leadgen_forms")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2861,57 +3677,108 @@ func (c *PageClient) Page_post_leadgen_forms(args map[string]interface{}) (inter
 	_ = questions // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "leadgen_forms")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/leadgen_forms")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["allow_organic_lead_retrieval"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("allow_organic_lead_retrieval", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["block_display_for_non_targeted_viewer"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("block_display_for_non_targeted_viewer", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["context_card"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("context_card", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["cover_photo"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("cover_photo", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_disclaimer"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_disclaimer", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["follow_up_action_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("follow_up_action_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_for_canvas"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_for_canvas", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_optimized_for_quality"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_optimized_for_quality", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["locale"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("locale", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["privacy_policy"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("privacy_policy", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["question_page_custom_headline"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("question_page_custom_headline", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["questions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("questions", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["thank_you_page"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("thank_you_page", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["tracking_parameters"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("tracking_parameters", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["upload_gated_file"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("upload_gated_file", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2949,12 +3816,18 @@ func (c *PageClient) Page_get_likes(args map[string]interface{}) (interface{}, e
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/likes")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["target_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("target_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -2992,15 +3865,24 @@ func (c *PageClient) Page_get_live_videos(args map[string]interface{}) (interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "live_videos")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/live_videos")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["broadcast_status"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("broadcast_status", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["source"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("source", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -3038,81 +3920,156 @@ func (c *PageClient) Page_post_live_videos(args map[string]interface{}) (interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "live_videos")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/live_videos")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["content_tags"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("content_tags", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["crossposting_actions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("crossposting_actions", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_labels"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_labels", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["enable_backup_ingest"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("enable_backup_ingest", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["encoding_settings"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("encoding_settings", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["event_params"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("event_params", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fisheye_video_cropped"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fisheye_video_cropped", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["front_z_rotation"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("front_z_rotation", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["game_show"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("game_show", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_audio_only"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_audio_only", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_spherical"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_spherical", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["original_fov"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("original_fov", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["privacy"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("privacy", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["projection"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("projection", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["published"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("published", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["schedule_custom_profile_image"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("schedule_custom_profile_image", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["spatial_audio_format"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("spatial_audio_format", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["status"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("status", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["stereoscopic_mode"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("stereoscopic_mode", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["stop_on_delete_stream"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("stop_on_delete_stream", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["stream_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("stream_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["targeting"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("targeting", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["title"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("title", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -3160,15 +4117,24 @@ func (c *PageClient) Page_delete_locations(args map[string]interface{}) (interfa
 	_ = store_numbers // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "locations")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/locations")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["location_page_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("location_page_ids", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["store_numbers"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("store_numbers", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -3206,7 +4172,10 @@ func (c *PageClient) Page_get_locations(args map[string]interface{}) (interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "locations")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/locations")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -3250,69 +4219,132 @@ func (c *PageClient) Page_post_locations(args map[string]interface{}) (interface
 	_ = store_number // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "locations")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/locations")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["always_open"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("always_open", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["delivery_and_pickup_option_info"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("delivery_and_pickup_option_info", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["differently_open_offerings"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("differently_open_offerings", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["hours"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("hours", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ignore_warnings"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ignore_warnings", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["location"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("location", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["location_page_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("location_page_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["old_store_number"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("old_store_number", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["page_username"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("page_username", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["permanently_closed"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("permanently_closed", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["phone"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("phone", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["pickup_options"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("pickup_options", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["place_topics"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("place_topics", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["price_range"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("price_range", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["store_code"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("store_code", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["store_location_descriptor"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("store_location_descriptor", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["store_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("store_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["store_number"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("store_number", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["temporary_status"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("temporary_status", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["website"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("website", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -3350,12 +4382,18 @@ func (c *PageClient) Page_get_media_fingerprints(args map[string]interface{}) (i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "media_fingerprints")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/media_fingerprints")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["universal_content_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("universal_content_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -3413,24 +4451,42 @@ func (c *PageClient) Page_post_media_fingerprints(args map[string]interface{}) (
 	_ = title // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "media_fingerprints")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/media_fingerprints")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fingerprint_content_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fingerprint_content_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["metadata"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("metadata", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["source"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("source", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["title"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("title", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["universal_content_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("universal_content_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -3473,15 +4529,24 @@ func (c *PageClient) Page_post_message_attachments(args map[string]interface{}) 
 	_ = message // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_attachments")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/message_attachments")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["message"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("message", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["platform"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("platform", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -3524,15 +4589,24 @@ func (c *PageClient) Page_delete_message_templates(args map[string]interface{}) 
 	_ = name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_templates")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/message_templates")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["template_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("template_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -3570,27 +4644,48 @@ func (c *PageClient) Page_get_message_templates(args map[string]interface{}) (in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_templates")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/message_templates")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["category"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("category", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["content"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("content", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["language"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("language", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name_or_content"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name_or_content", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["status"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("status", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -3643,27 +4738,48 @@ func (c *PageClient) Page_post_message_templates(args map[string]interface{}) (i
 	_ = name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_templates")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/message_templates")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["category"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("category", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["components"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("components", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["language"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("language", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["library_template_button_inputs"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("library_template_button_inputs", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["library_template_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("library_template_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -3706,42 +4822,78 @@ func (c *PageClient) Page_post_messages(args map[string]interface{}) (interface{
 	_ = recipient // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messages")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messages")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["message"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("message", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["messaging_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("messaging_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["notification_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("notification_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["payload"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("payload", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["persona_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("persona_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["recipient"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("recipient", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["reply_to"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("reply_to", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sender_action"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sender_action", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["suggestion_action"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("suggestion_action", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["tag"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("tag", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["thread_control"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("thread_control", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -3779,7 +4931,10 @@ func (c *PageClient) Page_get_messaging_feature_review(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messaging_feature_review")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messaging_feature_review")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -3818,7 +4973,10 @@ func (c *PageClient) Page_get_messenger_call_settings(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messenger_call_settings")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messenger_call_settings")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -3857,21 +5015,36 @@ func (c *PageClient) Page_post_messenger_call_settings(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messenger_call_settings")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messenger_call_settings")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["audio_enabled"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("audio_enabled", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["call_hours"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("call_hours", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["call_routing"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("call_routing", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["icon_enabled"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("icon_enabled", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -3909,7 +5082,10 @@ func (c *PageClient) Page_get_messenger_lead_forms(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messenger_lead_forms")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messenger_lead_forms")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -3953,42 +5129,78 @@ func (c *PageClient) Page_post_messenger_lead_forms(args map[string]interface{})
 	_ = step_list // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messenger_lead_forms")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messenger_lead_forms")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("account_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["block_send_api"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("block_send_api", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["exit_keyphrases"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("exit_keyphrases", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["handover_app_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("handover_app_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["handover_summary"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("handover_summary", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["privacy_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("privacy_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["reminder_text"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("reminder_text", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["step_list"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("step_list", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["stop_question_message"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("stop_question_message", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["template_name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("template_name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["tracking_parameters"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("tracking_parameters", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -4031,15 +5243,24 @@ func (c *PageClient) Page_delete_messenger_profile(args map[string]interface{}) 
 	_ = fields // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messenger_profile")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messenger_profile")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["platform"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("platform", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -4077,12 +5298,18 @@ func (c *PageClient) Page_get_messenger_profile(args map[string]interface{}) (in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messenger_profile")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messenger_profile")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["platform"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("platform", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -4120,39 +5347,72 @@ func (c *PageClient) Page_post_messenger_profile(args map[string]interface{}) (i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messenger_profile")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/messenger_profile")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_linking_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("account_linking_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["commands"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("commands", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["get_started"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("get_started", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["greeting"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("greeting", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ice_breakers"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ice_breakers", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["persistent_menu"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("persistent_menu", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["platform"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("platform", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["title"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("title", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["whitelisted_domains"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("whitelisted_domains", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -4200,15 +5460,24 @@ func (c *PageClient) Page_post_moderate_conversations(args map[string]interface{
 	_ = user_ids // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "moderate_conversations")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/moderate_conversations")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["actions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("actions", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["user_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user_ids", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -4246,30 +5515,54 @@ func (c *PageClient) Page_post_nlp_configs(args map[string]interface{}) (interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "nlp_configs")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/nlp_configs")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["api_version"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("api_version", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_token"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_token", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["model"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("model", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["n_best"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("n_best", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["nlp_enabled"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("nlp_enabled", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["other_language_support"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("other_language_support", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["verbose"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("verbose", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -4307,7 +5600,10 @@ func (c *PageClient) Page_get_notification_message_tokens(args map[string]interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "notification_message_tokens")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/notification_message_tokens")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -4356,15 +5652,24 @@ func (c *PageClient) Page_post_notification_messages_dev_support(args map[string
 	_ = recipient // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "notification_messages_dev_support")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/notification_messages_dev_support")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["developer_action"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("developer_action", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["recipient"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("recipient", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -4402,7 +5707,10 @@ func (c *PageClient) Page_get_page_backed_instagram_accounts(args map[string]int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "page_backed_instagram_accounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/page_backed_instagram_accounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -4441,7 +5749,10 @@ func (c *PageClient) Page_post_page_backed_instagram_accounts(args map[string]in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "page_backed_instagram_accounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/page_backed_instagram_accounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -4485,15 +5796,24 @@ func (c *PageClient) Page_post_page_whatsapp_number_verification(args map[string
 	_ = whatsapp_number // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "page_whatsapp_number_verification")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/page_whatsapp_number_verification")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["verification_code"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("verification_code", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["whatsapp_number"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("whatsapp_number", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -4536,18 +5856,30 @@ func (c *PageClient) Page_post_pass_thread_control(args map[string]interface{}) 
 	_ = recipient // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "pass_thread_control")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/pass_thread_control")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["metadata"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("metadata", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["recipient"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("recipient", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["target_app_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("target_app_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -4585,7 +5917,10 @@ func (c *PageClient) Page_get_personas(args map[string]interface{}) (interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "personas")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/personas")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -4634,15 +5969,24 @@ func (c *PageClient) Page_post_personas(args map[string]interface{}) (interface{
 	_ = profile_picture_url // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "personas")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/personas")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["profile_picture_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("profile_picture_url", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -4680,12 +6024,18 @@ func (c *PageClient) Page_post_photo_stories(args map[string]interface{}) (inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "photo_stories")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/photo_stories")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["photo_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("photo_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -4723,18 +6073,30 @@ func (c *PageClient) Page_get_photos(args map[string]interface{}) (interface{}, 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "photos")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/photos")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["biz_tag_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("biz_tag_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["business_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("business_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("type", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -4772,177 +6134,348 @@ func (c *PageClient) Page_post_photos(args map[string]interface{}) (interface{},
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "photos")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/photos")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["aid"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("aid", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["allow_spherical_photo"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("allow_spherical_photo", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["alt_text_custom"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("alt_text_custom", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["android_key_hash"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("android_key_hash", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["application_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("application_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["attempt"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("attempt", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["audience_exp"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("audience_exp", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["backdated_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("backdated_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["backdated_time_granularity"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("backdated_time_granularity", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["caption"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("caption", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["composer_session_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("composer_session_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["direct_share_status"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("direct_share_status", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["feed_targeting"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("feed_targeting", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["filter_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("filter_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["full_res_is_coming_later"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("full_res_is_coming_later", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["initial_view_heading_override_degrees"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("initial_view_heading_override_degrees", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["initial_view_pitch_override_degrees"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("initial_view_pitch_override_degrees", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["initial_view_vertical_fov_override_degrees"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("initial_view_vertical_fov_override_degrees", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ios_bundle_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ios_bundle_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_explicit_location"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_explicit_location", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_explicit_place"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_explicit_place", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["location_source_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("location_source_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["manual_privacy"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("manual_privacy", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["message"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("message", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["nectar_module"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("nectar_module", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["no_story"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("no_story", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["offline_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("offline_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["og_action_type_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("og_action_type_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["og_icon_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("og_icon_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["og_object_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("og_object_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["og_phrase"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("og_phrase", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["og_set_profile_badge"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("og_set_profile_badge", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["og_suggestion_mechanism"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("og_suggestion_mechanism", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["parent_media_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("parent_media_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["place"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("place", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["privacy"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("privacy", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["profile_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("profile_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["provenance_info"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("provenance_info", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["proxied_app_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("proxied_app_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["published"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("published", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["qn"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("qn", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["scheduled_publish_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("scheduled_publish_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["spherical_metadata"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("spherical_metadata", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sponsor_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sponsor_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sponsor_relationship"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sponsor_relationship", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["tags"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("tags", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["target_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("target_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["targeting"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("targeting", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["temporary"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("temporary", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["time_since_original_post"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("time_since_original_post", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["uid"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("uid", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["unpublished_content_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("unpublished_content_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["user_selected_tags"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user_selected_tags", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["vault_image_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("vault_image_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -4980,21 +6513,36 @@ func (c *PageClient) Page_get_picture(args map[string]interface{}) (interface{},
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "picture")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/picture")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["height"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("height", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["redirect"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("redirect", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["width"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("width", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -5032,87 +6580,168 @@ func (c *PageClient) Page_post_picture(args map[string]interface{}) (interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "picture")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/picture")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["android_key_hash"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("android_key_hash", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["burn_media_effect"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("burn_media_effect", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["caption"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("caption", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["composer_session_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("composer_session_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["frame_entrypoint"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("frame_entrypoint", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["has_umg"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("has_umg", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["height"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("height", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ios_bundle_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ios_bundle_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["media_effect_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("media_effect_ids", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["media_effect_source_object_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("media_effect_source_object_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["msqrd_mask_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("msqrd_mask_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["photo"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("photo", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["picture"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("picture", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["profile_pic_method"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("profile_pic_method", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["profile_pic_source"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("profile_pic_source", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["proxied_app_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("proxied_app_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["qn"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("qn", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["reuse"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("reuse", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["scaled_crop_rect"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("scaled_crop_rect", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["set_profile_photo_shield"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("set_profile_photo_shield", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sticker_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sticker_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sticker_source_object_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sticker_source_object_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["suppress_stories"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("suppress_stories", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["width"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("width", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["x"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("x", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["y"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("y", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -5150,24 +6779,42 @@ func (c *PageClient) Page_get_posts(args map[string]interface{}) (interface{}, e
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "posts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/posts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["include_hidden"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("include_hidden", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["q"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("q", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["show_expired"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("show_expired", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["with"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("with", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -5205,7 +6852,10 @@ func (c *PageClient) Page_get_product_catalogs(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_catalogs")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/product_catalogs")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -5244,21 +6894,36 @@ func (c *PageClient) Page_get_published_posts(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "published_posts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/published_posts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["include_hidden"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("include_hidden", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["show_expired"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("show_expired", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["with"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("with", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -5301,12 +6966,18 @@ func (c *PageClient) Page_post_release_thread_control(args map[string]interface{
 	_ = recipient // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "release_thread_control")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/release_thread_control")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["recipient"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("recipient", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -5349,15 +7020,24 @@ func (c *PageClient) Page_post_request_thread_control(args map[string]interface{
 	_ = recipient // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "request_thread_control")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/request_thread_control")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["metadata"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("metadata", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["recipient"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("recipient", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -5395,15 +7075,24 @@ func (c *PageClient) Page_get_roles(args map[string]interface{}) (interface{}, e
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "roles")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/roles")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["include_deactivated"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("include_deactivated", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["uid"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("uid", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -5441,7 +7130,10 @@ func (c *PageClient) Page_get_rtb_dynamic_posts(args map[string]interface{}) (in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "rtb_dynamic_posts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/rtb_dynamic_posts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -5480,7 +7172,10 @@ func (c *PageClient) Page_get_scheduled_posts(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "scheduled_posts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/scheduled_posts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -5519,12 +7214,18 @@ func (c *PageClient) Page_get_secondary_receivers(args map[string]interface{}) (
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "secondary_receivers")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/secondary_receivers")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["platform"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("platform", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -5562,7 +7263,10 @@ func (c *PageClient) Page_get_settings(args map[string]interface{}) (interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "settings")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/settings")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -5601,12 +7305,18 @@ func (c *PageClient) Page_post_settings(args map[string]interface{}) (interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "settings")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/settings")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["option"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("option", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -5644,7 +7354,10 @@ func (c *PageClient) Page_get_shop_setup_status(args map[string]interface{}) (in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shop_setup_status")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/shop_setup_status")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -5683,7 +7396,10 @@ func (c *PageClient) Page_get_store_locations(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "store_locations")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/store_locations")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -5722,18 +7438,30 @@ func (c *PageClient) Page_get_stories(args map[string]interface{}) (interface{},
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "stories")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/stories")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["since"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("since", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["status"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("status", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["until"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("until", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -5771,7 +7499,10 @@ func (c *PageClient) Page_delete_subscribed_apps(args map[string]interface{}) (i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_apps")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscribed_apps")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -5810,7 +7541,10 @@ func (c *PageClient) Page_get_subscribed_apps(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_apps")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscribed_apps")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -5854,12 +7588,18 @@ func (c *PageClient) Page_post_subscribed_apps(args map[string]interface{}) (int
 	_ = subscribed_fields // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_apps")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/subscribed_apps")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["subscribed_fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("subscribed_fields", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -5897,12 +7637,18 @@ func (c *PageClient) Page_get_tabs(args map[string]interface{}) (interface{}, er
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "tabs")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/tabs")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["tab"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("tab", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -5940,7 +7686,10 @@ func (c *PageClient) Page_get_tagged(args map[string]interface{}) (interface{}, 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "tagged")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/tagged")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -5984,15 +7733,24 @@ func (c *PageClient) Page_post_take_thread_control(args map[string]interface{}) 
 	_ = recipient // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "take_thread_control")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/take_thread_control")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["metadata"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("metadata", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["recipient"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("recipient", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -6035,12 +7793,18 @@ func (c *PageClient) Page_get_thread_owner(args map[string]interface{}) (interfa
 	_ = recipient // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "thread_owner")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/thread_owner")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["recipient"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("recipient", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -6078,21 +7842,36 @@ func (c *PageClient) Page_get_threads(args map[string]interface{}) (interface{},
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "threads")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/threads")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["folder"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("folder", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["platform"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("platform", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["tags"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("tags", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["user_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("user_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -6135,12 +7914,18 @@ func (c *PageClient) Page_post_unlink_accounts(args map[string]interface{}) (int
 	_ = psid // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "unlink_accounts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/unlink_accounts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["psid"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("psid", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -6178,15 +7963,24 @@ func (c *PageClient) Page_get_video_copyright_rules(args map[string]interface{})
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "video_copyright_rules")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/video_copyright_rules")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["selected_rule_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("selected_rule_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["source"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("source", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -6234,15 +8028,24 @@ func (c *PageClient) Page_post_video_copyright_rules(args map[string]interface{}
 	_ = name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "video_copyright_rules")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/video_copyright_rules")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["condition_groups"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("condition_groups", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -6285,48 +8088,90 @@ func (c *PageClient) Page_post_video_copyrights(args map[string]interface{}) (in
 	_ = copyright_content_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "video_copyrights")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/video_copyrights")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["attribution_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("attribution_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["content_category"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("content_category", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["copyright_content_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("copyright_content_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["excluded_ownership_countries"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("excluded_ownership_countries", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["excluded_ownership_segments"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("excluded_ownership_segments", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_reference_disabled"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_reference_disabled", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_reference_video"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_reference_video", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["monitoring_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("monitoring_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ownership_countries"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ownership_countries", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["rule_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("rule_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["tags"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("tags", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["whitelisted_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("whitelisted_ids", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["whitelisted_ig_user_ids"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("whitelisted_ig_user_ids", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -6364,7 +8209,10 @@ func (c *PageClient) Page_get_video_lists(args map[string]interface{}) (interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "video_lists")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/video_lists")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -6403,15 +8251,24 @@ func (c *PageClient) Page_get_video_reels(args map[string]interface{}) (interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "video_reels")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/video_reels")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["since"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("since", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["until"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("until", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -6454,36 +8311,66 @@ func (c *PageClient) Page_post_video_reels(args map[string]interface{}) (interfa
 	_ = upload_phase // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "video_reels")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/video_reels")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["feed_targeting"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("feed_targeting", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["place"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("place", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["scheduled_publish_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("scheduled_publish_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["targeting"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("targeting", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["title"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("title", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["upload_phase"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("upload_phase", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["video_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("video_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["video_state"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("video_state", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -6526,36 +8413,66 @@ func (c *PageClient) Page_post_video_stories(args map[string]interface{}) (inter
 	_ = upload_phase // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "video_stories")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/video_stories")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["feed_targeting"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("feed_targeting", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["place"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("place", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["scheduled_publish_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("scheduled_publish_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["targeting"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("targeting", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["title"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("title", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["upload_phase"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("upload_phase", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["video_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("video_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["video_state"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("video_state", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -6593,12 +8510,18 @@ func (c *PageClient) Page_get_videos(args map[string]interface{}) (interface{}, 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/videos")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("type", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -6636,276 +8559,546 @@ func (c *PageClient) Page_post_videos(args map[string]interface{}) (interface{},
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/videos")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["ad_breaks"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ad_breaks", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["application_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("application_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["asked_fun_fact_prompt_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("asked_fun_fact_prompt_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["audio_story_wave_animation_handle"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("audio_story_wave_animation_handle", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["backdated_post"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("backdated_post", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["call_to_action"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("call_to_action", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["composer_entry_picker"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("composer_entry_picker", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["composer_entry_point"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("composer_entry_point", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["composer_entry_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("composer_entry_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["composer_session_events_log"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("composer_session_events_log", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["composer_session_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("composer_session_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["composer_source_surface"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("composer_source_surface", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["composer_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("composer_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["container_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("container_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["content_category"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("content_category", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["content_tags"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("content_tags", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["creative_tools"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("creative_tools", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["crossposted_video_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("crossposted_video_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["custom_labels"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("custom_labels", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["direct_share_status"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("direct_share_status", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["embeddable"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("embeddable", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["end_offset"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("end_offset", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["expiration"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("expiration", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fbuploader_video_file_chunk"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fbuploader_video_file_chunk", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["feed_targeting"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("feed_targeting", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["file_size"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("file_size", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["file_url"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("file_url", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fisheye_video_cropped"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fisheye_video_cropped", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["formatting"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("formatting", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fov"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fov", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["front_z_rotation"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("front_z_rotation", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fun_fact_prompt_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fun_fact_prompt_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["fun_fact_toastee_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("fun_fact_toastee_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["guide"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("guide", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["guide_enabled"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("guide_enabled", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["initial_heading"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("initial_heading", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["initial_pitch"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("initial_pitch", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["instant_game_entry_point_data"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("instant_game_entry_point_data", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_boost_intended"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_boost_intended", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_explicit_share"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_explicit_share", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_group_linking_post"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_group_linking_post", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_partnership_ad"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_partnership_ad", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_voice_clip"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_voice_clip", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["location_source_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("location_source_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["manual_privacy"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("manual_privacy", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["multilingual_data"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("multilingual_data", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["no_story"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("no_story", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["og_action_type_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("og_action_type_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["og_icon_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("og_icon_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["og_object_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("og_object_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["og_phrase"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("og_phrase", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["og_suggestion_mechanism"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("og_suggestion_mechanism", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["original_fov"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("original_fov", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["original_projection_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("original_projection_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["partnership_ad_ad_code"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("partnership_ad_ad_code", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["publish_event_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("publish_event_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["published"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("published", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["reference_only"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("reference_only", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["referenced_sticker_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("referenced_sticker_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["replace_video_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("replace_video_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["scheduled_publish_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("scheduled_publish_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["secret"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("secret", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["slideshow_spec"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("slideshow_spec", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["social_actions"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("social_actions", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["source"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("source", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["source_instagram_media_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("source_instagram_media_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["specified_dialect"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("specified_dialect", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["spherical"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("spherical", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sponsor_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sponsor_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["sponsor_relationship"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("sponsor_relationship", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start_offset"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start_offset", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["swap_mode"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("swap_mode", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["targeting"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("targeting", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["text_format_metadata"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("text_format_metadata", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["thumb"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("thumb", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["time_since_original_post"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("time_since_original_post", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["title"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("title", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["transcode_setting_properties"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("transcode_setting_properties", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["universal_video_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("universal_video_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["unpublished_content_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("unpublished_content_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["upload_phase"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("upload_phase", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["upload_session_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("upload_session_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["upload_setting_properties"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("upload_setting_properties", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["video_asset_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("video_asset_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["video_file_chunk"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("video_file_chunk", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["video_id_original"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("video_id_original", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["video_start_time_ms"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("video_start_time_ms", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["waterfall_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("waterfall_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -6943,21 +9136,36 @@ func (c *PageClient) Page_get_visitor_posts(args map[string]interface{}) (interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "visitor_posts")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/visitor_posts")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["include_hidden"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("include_hidden", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["show_expired"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("show_expired", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["with"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("with", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -7000,12 +9208,18 @@ func (c *PageClient) Page_delete_welcome_message_flows(args map[string]interface
 	_ = flow_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "welcome_message_flows")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/welcome_message_flows")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["flow_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("flow_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -7043,15 +9257,24 @@ func (c *PageClient) Page_get_welcome_message_flows(args map[string]interface{})
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "welcome_message_flows")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/welcome_message_flows")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["app_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("app_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["flow_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("flow_id", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -7089,21 +9312,36 @@ func (c *PageClient) Page_post_welcome_message_flows(args map[string]interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "welcome_message_flows")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/welcome_message_flows")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["eligible_platforms"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("eligible_platforms", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["flow_id"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("flow_id", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["name"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("name", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["welcome_message_flow"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("welcome_message_flow", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -7141,12 +9379,18 @@ func (c *PageClient) Page_get_(args map[string]interface{}) (interface{}, error)
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_linking_token"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("account_linking_token", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
@@ -7184,177 +9428,348 @@ func (c *PageClient) Page_post_(args map[string]interface{}) (interface{}, error
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
+	var baseURL string
+
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
+
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["about"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("about", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["accept_crossposting_handshake"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("accept_crossposting_handshake", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["allow_spherical_photo"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("allow_spherical_photo", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["attire"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("attire", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["begin_crossposting_handshake"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("begin_crossposting_handshake", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["bio"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("bio", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["category_list"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("category_list", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["company_overview"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("company_overview", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["contact_address"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("contact_address", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["cover"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("cover", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["culinary_team"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("culinary_team", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["delivery_and_pickup_option_info"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("delivery_and_pickup_option_info", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["description"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("description", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["differently_open_offerings"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("differently_open_offerings", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["directed_by"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("directed_by", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["displayed_message_response_time"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("displayed_message_response_time", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["emails"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("emails", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["focus_x"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("focus_x", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["focus_y"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("focus_y", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["food_styles"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("food_styles", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["gen_ai_provenance_type"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("gen_ai_provenance_type", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["general_info"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("general_info", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["general_manager"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("general_manager", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["genre"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("genre", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["hours"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("hours", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["ignore_coordinate_warnings"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("ignore_coordinate_warnings", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["impressum"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("impressum", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_always_open"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_always_open", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_permanently_closed"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_permanently_closed", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_published"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_published", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["is_webhooks_subscribed"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("is_webhooks_subscribed", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["location"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("location", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["menu"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("menu", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["mission"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("mission", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["no_feed_story"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("no_feed_story", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["no_notification"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("no_notification", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["offset_x"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("offset_x", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["offset_y"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("offset_y", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["parking"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("parking", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["payment_options"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("payment_options", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["phone"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("phone", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["pickup_options"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("pickup_options", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["plot_outline"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("plot_outline", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["price_range"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("price_range", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["public_transit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("public_transit", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["restaurant_services"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("restaurant_services", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["restaurant_specialties"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("restaurant_specialties", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["scrape"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("scrape", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["service_details"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("service_details", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["spherical_metadata"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("spherical_metadata", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["start_info"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("start_info", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["store_location_descriptor"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("store_location_descriptor", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["temporary_status"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("temporary_status", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["website"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("website", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["zoom_scale_x"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("zoom_scale_x", fmt.Sprintf("%v", val))
+
 	}
 	if val, ok := args["zoom_scale_y"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
 		urlParams.Set("zoom_scale_y", fmt.Sprintf("%v", val))
+
 	}
 
 	// Make HTTP request
