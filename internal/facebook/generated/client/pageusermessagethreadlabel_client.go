@@ -31,7 +31,7 @@ func (c *PageUserMessageThreadLabelClient) Facebook_pageusermessagethreadlabel_d
 	_ = user // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "label")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "label")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -79,7 +79,7 @@ func (c *PageUserMessageThreadLabelClient) Facebook_pageusermessagethreadlabel_p
 	_ = user // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "label")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "label")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -122,7 +122,7 @@ func (c *PageUserMessageThreadLabelClient) Facebook_pageusermessagethreadlabel_d
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -161,7 +161,7 @@ func (c *PageUserMessageThreadLabelClient) Facebook_pageusermessagethreadlabel_g
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

@@ -31,7 +31,7 @@ func (c *AdCreativeClient) Facebook_adcreative_post_adlabels(args map[string]int
 	_ = adlabels // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adlabels")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adlabels")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -74,7 +74,7 @@ func (c *AdCreativeClient) Facebook_adcreative_get_creative_insights(args map[st
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "creative_insights")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "creative_insights")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -118,7 +118,7 @@ func (c *AdCreativeClient) Facebook_adcreative_get_previews(args map[string]inte
 	_ = ad_format // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "previews")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "previews")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -200,7 +200,7 @@ func (c *AdCreativeClient) Facebook_adcreative_delete_(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -252,7 +252,7 @@ func (c *AdCreativeClient) Facebook_adcreative_get_(args map[string]interface{})
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -298,7 +298,7 @@ func (c *AdCreativeClient) Facebook_adcreative_post_(args map[string]interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

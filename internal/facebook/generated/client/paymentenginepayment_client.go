@@ -31,7 +31,7 @@ func (c *PaymentEnginePaymentClient) Facebook_paymentenginepayment_post_dispute(
 	_ = reason // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "dispute")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "dispute")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -84,7 +84,7 @@ func (c *PaymentEnginePaymentClient) Facebook_paymentenginepayment_post_refunds(
 	_ = currency // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "refunds")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "refunds")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -133,7 +133,7 @@ func (c *PaymentEnginePaymentClient) Facebook_paymentenginepayment_get_(args map
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

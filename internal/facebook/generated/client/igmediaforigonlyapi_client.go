@@ -26,7 +26,7 @@ func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_get_children(ar
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "children")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "children")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +65,7 @@ func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_get_comments(ar
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "comments")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,7 +104,7 @@ func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_post_comments(a
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "comments")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -152,7 +152,7 @@ func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_get_insights(ar
 	_ = metric // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "insights")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -201,7 +201,7 @@ func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_get_(args map[s
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -245,7 +245,7 @@ func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_post_(args map[
 	_ = comment_enabled // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

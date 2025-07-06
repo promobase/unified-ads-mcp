@@ -26,7 +26,7 @@ func (c *FundraiserPersonToCharityClient) Facebook_fundraiserpersontocharity_get
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "donations")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "donations")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +65,7 @@ func (c *FundraiserPersonToCharityClient) Facebook_fundraiserpersontocharity_pos
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "end_fundraiser")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "end_fundraiser")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,7 +104,7 @@ func (c *FundraiserPersonToCharityClient) Facebook_fundraiserpersontocharity_get
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "external_donations")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "external_donations")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -168,7 +168,7 @@ func (c *FundraiserPersonToCharityClient) Facebook_fundraiserpersontocharity_pos
 	_ = donor_id_hash // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "external_donations")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "external_donations")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -223,7 +223,7 @@ func (c *FundraiserPersonToCharityClient) Facebook_fundraiserpersontocharity_get
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -262,7 +262,7 @@ func (c *FundraiserPersonToCharityClient) Facebook_fundraiserpersontocharity_pos
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

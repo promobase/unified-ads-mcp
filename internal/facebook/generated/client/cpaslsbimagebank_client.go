@@ -26,7 +26,7 @@ func (c *CPASLsbImageBankClient) Facebook_cpaslsbimagebank_get_backup_images(arg
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "backup_images")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "backup_images")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +65,7 @@ func (c *CPASLsbImageBankClient) Facebook_cpaslsbimagebank_get_(args map[string]
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -109,7 +109,7 @@ func (c *CPASLsbImageBankClient) Facebook_cpaslsbimagebank_post_(args map[string
 	_ = backup_image_urls // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

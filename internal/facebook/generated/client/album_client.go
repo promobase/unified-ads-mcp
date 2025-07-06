@@ -26,7 +26,7 @@ func (c *AlbumClient) Facebook_album_get_comments(args map[string]interface{}) (
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "comments")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -78,7 +78,7 @@ func (c *AlbumClient) Facebook_album_post_comments(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "comments")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -157,7 +157,7 @@ func (c *AlbumClient) Facebook_album_get_likes(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "likes")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -196,7 +196,7 @@ func (c *AlbumClient) Facebook_album_post_likes(args map[string]interface{}) (in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "likes")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -248,7 +248,7 @@ func (c *AlbumClient) Facebook_album_get_photos(args map[string]interface{}) (in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "photos")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "photos")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -287,7 +287,7 @@ func (c *AlbumClient) Facebook_album_post_photos(args map[string]interface{}) (i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "photos")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "photos")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -480,7 +480,7 @@ func (c *AlbumClient) Facebook_album_get_picture(args map[string]interface{}) (i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "picture")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "picture")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -526,7 +526,7 @@ func (c *AlbumClient) Facebook_album_get_(args map[string]interface{}) (interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

@@ -26,7 +26,7 @@ func (c *VehicleOfferClient) Facebook_vehicleoffer_get_channels_to_integrity_sta
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "channels_to_integrity_status")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "channels_to_integrity_status")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +65,7 @@ func (c *VehicleOfferClient) Facebook_vehicleoffer_get_override_details(args map
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "override_details")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "override_details")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -111,7 +111,7 @@ func (c *VehicleOfferClient) Facebook_vehicleoffer_get_videos_metadata(args map[
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "videos_metadata")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos_metadata")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -150,7 +150,7 @@ func (c *VehicleOfferClient) Facebook_vehicleoffer_get_(args map[string]interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

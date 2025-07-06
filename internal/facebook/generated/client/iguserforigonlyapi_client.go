@@ -31,7 +31,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_business_mess
 	_ = feature // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "business_messaging_feature_status")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "business_messaging_feature_status")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -74,7 +74,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_content_publi
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "content_publishing_limit")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "content_publishing_limit")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -117,7 +117,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_conversations
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "conversations")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "conversations")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -179,7 +179,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_insights(args
 	_ = period // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "insights")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -240,7 +240,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_live_media(ar
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "live_media")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "live_media")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -279,7 +279,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_media(args ma
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "media")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "media")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -325,7 +325,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_media(args m
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "media")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "media")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -418,7 +418,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_mediapublish
 	_ = creation_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "mediapublish")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "mediapublish")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -471,7 +471,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_mentions(arg
 	_ = message // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "mentions")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "mentions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -525,7 +525,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_messageattac
 	_ = message // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "messageattachments")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messageattachments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -568,7 +568,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_messages(arg
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "messages")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messages")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -634,7 +634,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_delete_messenger_
 	_ = fields // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "messenger_profile")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messenger_profile")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -677,7 +677,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_messenger_pro
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "messenger_profile")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messenger_profile")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -716,7 +716,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_messenger_pr
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "messenger_profile")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messenger_profile")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -762,7 +762,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_stories(args 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "stories")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "stories")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -801,7 +801,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_delete_subscribed
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "subscribed_apps")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_apps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -840,7 +840,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_subscribed_ap
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "subscribed_apps")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_apps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -884,7 +884,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_subscribed_a
 	_ = subscribed_fields // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "subscribed_apps")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_apps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -927,7 +927,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_tags(args map
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "tags")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "tags")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -966,7 +966,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_delete_welcome_me
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "welcome_message_flows")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "welcome_message_flows")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1009,7 +1009,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_welcome_messa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "welcome_message_flows")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "welcome_message_flows")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1055,7 +1055,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_welcome_mess
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "welcome_message_flows")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "welcome_message_flows")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1107,7 +1107,7 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_(args map[str
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

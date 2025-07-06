@@ -31,7 +31,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_assigned_u
 	_ = user // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_users")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -79,7 +79,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_assigned_user
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_users")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -127,7 +127,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_assigned_use
 	_ = user // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_users")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -187,7 +187,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 	_ = asset_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_adaccounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_adaccounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -230,7 +230,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_ada
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_adaccounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_adaccounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -274,7 +274,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_ad
 	_ = asset_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_adaccounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_adaccounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -322,7 +322,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 	_ = asset_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_applications")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_applications")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -365,7 +365,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_app
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_applications")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_applications")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -409,7 +409,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_ap
 	_ = asset_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_applications")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_applications")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -457,7 +457,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 	_ = asset_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_custom_conversions")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_custom_conversions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -500,7 +500,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_cus
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_custom_conversions")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_custom_conversions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -544,7 +544,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_cu
 	_ = asset_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_custom_conversions")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_custom_conversions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -592,7 +592,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 	_ = asset_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_instagram_accounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_instagram_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -635,7 +635,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_ins
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_instagram_accounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_instagram_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -679,7 +679,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_in
 	_ = asset_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_instagram_accounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_instagram_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -727,7 +727,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 	_ = asset_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_pages")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_pages")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -770,7 +770,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_pag
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_pages")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_pages")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -814,7 +814,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_pa
 	_ = asset_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_pages")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_pages")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -862,7 +862,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 	_ = asset_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_pixels")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_pixels")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -905,7 +905,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_pix
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_pixels")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_pixels")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -949,7 +949,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_pi
 	_ = asset_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_pixels")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_pixels")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -997,7 +997,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_delete_contained_
 	_ = asset_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_product_catalogs")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_product_catalogs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1040,7 +1040,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_contained_pro
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_product_catalogs")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_product_catalogs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1084,7 +1084,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_contained_pr
 	_ = asset_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "contained_product_catalogs")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "contained_product_catalogs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1127,7 +1127,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_get_(args map[str
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1166,7 +1166,7 @@ func (c *BusinessAssetGroupClient) Facebook_businessassetgroup_post_(args map[st
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

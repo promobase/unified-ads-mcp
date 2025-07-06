@@ -26,7 +26,7 @@ func (c *UserClient) Facebook_user_delete_access_tokens(args map[string]interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "access_tokens")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "access_tokens")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -70,7 +70,7 @@ func (c *UserClient) Facebook_user_post_access_tokens(args map[string]interface{
 	_ = business_app // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "access_tokens")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "access_tokens")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -122,7 +122,7 @@ func (c *UserClient) Facebook_user_get_accounts(args map[string]interface{}) (in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "accounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -176,7 +176,7 @@ func (c *UserClient) Facebook_user_post_accounts(args map[string]interface{}) (i
 	_ = name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "accounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -264,7 +264,7 @@ func (c *UserClient) Facebook_user_get_ad_studies(args map[string]interface{}) (
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "ad_studies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ad_studies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -303,7 +303,7 @@ func (c *UserClient) Facebook_user_post_ad_studies(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "ad_studies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ad_studies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -379,7 +379,7 @@ func (c *UserClient) Facebook_user_get_adaccounts(args map[string]interface{}) (
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adaccounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -418,7 +418,7 @@ func (c *UserClient) Facebook_user_get_albums(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "albums")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "albums")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -462,7 +462,7 @@ func (c *UserClient) Facebook_user_post_applications(args map[string]interface{}
 	_ = business_app // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "applications")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "applications")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -505,7 +505,7 @@ func (c *UserClient) Facebook_user_get_apprequestformerrecipients(args map[strin
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "apprequestformerrecipients")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "apprequestformerrecipients")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -544,7 +544,7 @@ func (c *UserClient) Facebook_user_get_apprequests(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "apprequests")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "apprequests")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -583,7 +583,7 @@ func (c *UserClient) Facebook_user_get_assigned_ad_accounts(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_ad_accounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_ad_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -622,7 +622,7 @@ func (c *UserClient) Facebook_user_get_assigned_applications(args map[string]int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_applications")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_applications")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -661,7 +661,7 @@ func (c *UserClient) Facebook_user_get_assigned_business_asset_groups(args map[s
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_business_asset_groups")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_business_asset_groups")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -704,7 +704,7 @@ func (c *UserClient) Facebook_user_get_assigned_pages(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_pages")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_pages")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -747,7 +747,7 @@ func (c *UserClient) Facebook_user_get_assigned_product_catalogs(args map[string
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_product_catalogs")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_product_catalogs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -786,7 +786,7 @@ func (c *UserClient) Facebook_user_get_avatars(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "avatars")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "avatars")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -825,7 +825,7 @@ func (c *UserClient) Facebook_user_get_business_users(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "business_users")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "business_users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -864,7 +864,7 @@ func (c *UserClient) Facebook_user_delete_businesses(args map[string]interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "businesses")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "businesses")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -907,7 +907,7 @@ func (c *UserClient) Facebook_user_get_businesses(args map[string]interface{}) (
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "businesses")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "businesses")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -956,7 +956,7 @@ func (c *UserClient) Facebook_user_post_businesses(args map[string]interface{}) 
 	_ = vertical // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "businesses")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "businesses")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1026,7 +1026,7 @@ func (c *UserClient) Facebook_user_get_conversations(args map[string]interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "conversations")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "conversations")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1078,7 +1078,7 @@ func (c *UserClient) Facebook_user_get_custom_labels(args map[string]interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "custom_labels")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "custom_labels")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1117,7 +1117,7 @@ func (c *UserClient) Facebook_user_get_events(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "events")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "events")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1163,7 +1163,7 @@ func (c *UserClient) Facebook_user_get_feed(args map[string]interface{}) (interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "feed")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "feed")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1221,7 +1221,7 @@ func (c *UserClient) Facebook_user_post_feed(args map[string]interface{}) (inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "feed")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "feed")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1576,7 +1576,7 @@ func (c *UserClient) Facebook_user_get_friends(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "friends")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "friends")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1619,7 +1619,7 @@ func (c *UserClient) Facebook_user_get_fundraisers(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "fundraisers")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "fundraisers")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1693,7 +1693,7 @@ func (c *UserClient) Facebook_user_post_fundraisers(args map[string]interface{})
 	_ = name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "fundraisers")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "fundraisers")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1775,7 +1775,7 @@ func (c *UserClient) Facebook_user_get_groups(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "groups")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "groups")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1821,7 +1821,7 @@ func (c *UserClient) Facebook_user_get_ids_for_apps(args map[string]interface{})
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "ids_for_apps")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ids_for_apps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1864,7 +1864,7 @@ func (c *UserClient) Facebook_user_get_ids_for_business(args map[string]interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "ids_for_business")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ids_for_business")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1907,7 +1907,7 @@ func (c *UserClient) Facebook_user_get_ids_for_pages(args map[string]interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "ids_for_pages")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ids_for_pages")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1950,7 +1950,7 @@ func (c *UserClient) Facebook_user_get_likes(args map[string]interface{}) (inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "likes")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1993,7 +1993,7 @@ func (c *UserClient) Facebook_user_get_live_videos(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "live_videos")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "live_videos")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2039,7 +2039,7 @@ func (c *UserClient) Facebook_user_post_live_videos(args map[string]interface{})
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "live_videos")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "live_videos")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2139,7 +2139,7 @@ func (c *UserClient) Facebook_user_post_messenger_desktop_performance_traces(arg
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "messenger_desktop_performance_traces")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messenger_desktop_performance_traces")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2183,7 +2183,7 @@ func (c *UserClient) Facebook_user_post_messenger_kids_accounts_unread_badge(arg
 	_ = proxied_app_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "messenger_kids_accounts_unread_badge")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messenger_kids_accounts_unread_badge")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2226,7 +2226,7 @@ func (c *UserClient) Facebook_user_get_music(args map[string]interface{}) (inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "music")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "music")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2269,7 +2269,7 @@ func (c *UserClient) Facebook_user_post_notifications(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "notifications")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "notifications")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2348,7 +2348,7 @@ func (c *UserClient) Facebook_user_get_payment_transactions(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "payment_transactions")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "payment_transactions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2387,7 +2387,7 @@ func (c *UserClient) Facebook_user_delete_permissions(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "permissions")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "permissions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2430,7 +2430,7 @@ func (c *UserClient) Facebook_user_get_permissions(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "permissions")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "permissions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2476,7 +2476,7 @@ func (c *UserClient) Facebook_user_get_personal_ad_accounts(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "personal_ad_accounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "personal_ad_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2515,7 +2515,7 @@ func (c *UserClient) Facebook_user_get_photos(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "photos")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "photos")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2558,7 +2558,7 @@ func (c *UserClient) Facebook_user_post_photos(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "photos")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "photos")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2754,7 +2754,7 @@ func (c *UserClient) Facebook_user_get_picture(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "picture")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "picture")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2806,7 +2806,7 @@ func (c *UserClient) Facebook_user_get_posts(args map[string]interface{}) (inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "posts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "posts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2864,7 +2864,7 @@ func (c *UserClient) Facebook_user_get_rich_media_documents(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "rich_media_documents")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "rich_media_documents")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2907,7 +2907,7 @@ func (c *UserClient) Facebook_user_post_staging_resources(args map[string]interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "staging_resources")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "staging_resources")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2950,7 +2950,7 @@ func (c *UserClient) Facebook_user_get_videos(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "videos")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2993,7 +2993,7 @@ func (c *UserClient) Facebook_user_post_videos(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "videos")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -3246,7 +3246,7 @@ func (c *UserClient) Facebook_user_delete_(args map[string]interface{}) (interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -3285,7 +3285,7 @@ func (c *UserClient) Facebook_user_get_(args map[string]interface{}) (interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -3324,7 +3324,7 @@ func (c *UserClient) Facebook_user_post_(args map[string]interface{}) (interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

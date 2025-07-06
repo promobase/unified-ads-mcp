@@ -26,7 +26,7 @@ func (c *ProductFeedClient) Facebook_productfeed_get_automotive_models(args map[
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "automotive_models")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "automotive_models")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -72,7 +72,7 @@ func (c *ProductFeedClient) Facebook_productfeed_get_destinations(args map[strin
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "destinations")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "destinations")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -118,7 +118,7 @@ func (c *ProductFeedClient) Facebook_productfeed_get_flights(args map[string]int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "flights")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "flights")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -164,7 +164,7 @@ func (c *ProductFeedClient) Facebook_productfeed_get_home_listings(args map[stri
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "home_listings")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "home_listings")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -210,7 +210,7 @@ func (c *ProductFeedClient) Facebook_productfeed_get_hotels(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "hotels")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "hotels")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -256,7 +256,7 @@ func (c *ProductFeedClient) Facebook_productfeed_get_media_titles(args map[strin
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "media_titles")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "media_titles")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -302,7 +302,7 @@ func (c *ProductFeedClient) Facebook_productfeed_get_products(args map[string]in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "products")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "products")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -354,7 +354,7 @@ func (c *ProductFeedClient) Facebook_productfeed_get_rules(args map[string]inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "rules")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "rules")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -403,7 +403,7 @@ func (c *ProductFeedClient) Facebook_productfeed_post_rules(args map[string]inte
 	_ = rule_type // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "rules")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "rules")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -457,7 +457,7 @@ func (c *ProductFeedClient) Facebook_productfeed_post_supplementary_feed_assocs(
 	_ = assoc_data // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "supplementary_feed_assocs")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "supplementary_feed_assocs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -500,7 +500,7 @@ func (c *ProductFeedClient) Facebook_productfeed_get_upload_schedules(args map[s
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "upload_schedules")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "upload_schedules")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -539,7 +539,7 @@ func (c *ProductFeedClient) Facebook_productfeed_post_upload_schedules(args map[
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "upload_schedules")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "upload_schedules")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -582,7 +582,7 @@ func (c *ProductFeedClient) Facebook_productfeed_get_uploads(args map[string]int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "uploads")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "uploads")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -621,7 +621,7 @@ func (c *ProductFeedClient) Facebook_productfeed_post_uploads(args map[string]in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "uploads")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "uploads")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -679,7 +679,7 @@ func (c *ProductFeedClient) Facebook_productfeed_get_vehicle_offers(args map[str
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "vehicle_offers")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "vehicle_offers")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -725,7 +725,7 @@ func (c *ProductFeedClient) Facebook_productfeed_get_vehicles(args map[string]in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "vehicles")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "vehicles")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -771,7 +771,7 @@ func (c *ProductFeedClient) Facebook_productfeed_delete_(args map[string]interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -810,7 +810,7 @@ func (c *ProductFeedClient) Facebook_productfeed_get_(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -849,7 +849,7 @@ func (c *ProductFeedClient) Facebook_productfeed_post_(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

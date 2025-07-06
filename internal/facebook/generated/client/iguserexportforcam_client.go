@@ -26,7 +26,7 @@ func (c *IGUserExportForCAMClient) Facebook_iguserexportforcam_get_branded_conte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "branded_content_media")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_media")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +65,7 @@ func (c *IGUserExportForCAMClient) Facebook_iguserexportforcam_get_insights(args
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "insights")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -117,7 +117,7 @@ func (c *IGUserExportForCAMClient) Facebook_iguserexportforcam_get_recent_media(
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "recent_media")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "recent_media")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -156,7 +156,7 @@ func (c *IGUserExportForCAMClient) Facebook_iguserexportforcam_get_(args map[str
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

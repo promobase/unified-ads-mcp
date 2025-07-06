@@ -26,7 +26,7 @@ func (c *AdClient) Facebook_ad_get_adcreatives(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adcreatives")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adcreatives")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -70,7 +70,7 @@ func (c *AdClient) Facebook_ad_post_adlabels(args map[string]interface{}) (inter
 	_ = adlabels // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adlabels")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adlabels")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -116,7 +116,7 @@ func (c *AdClient) Facebook_ad_get_adrules_governed(args map[string]interface{})
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adrules_governed")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adrules_governed")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -159,7 +159,7 @@ func (c *AdClient) Facebook_ad_get_copies(args map[string]interface{}) (interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "copies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "copies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -211,7 +211,7 @@ func (c *AdClient) Facebook_ad_post_copies(args map[string]interface{}) (interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "copies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "copies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -263,7 +263,7 @@ func (c *AdClient) Facebook_ad_get_insights(args map[string]interface{}) (interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "insights")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -369,7 +369,7 @@ func (c *AdClient) Facebook_ad_post_insights(args map[string]interface{}) (inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "insights")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -475,7 +475,7 @@ func (c *AdClient) Facebook_ad_get_leads(args map[string]interface{}) (interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "leads")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "leads")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -519,7 +519,7 @@ func (c *AdClient) Facebook_ad_get_previews(args map[string]interface{}) (interf
 	_ = ad_format // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "previews")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "previews")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -601,7 +601,7 @@ func (c *AdClient) Facebook_ad_get_targetingsentencelines(args map[string]interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "targetingsentencelines")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "targetingsentencelines")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -640,7 +640,7 @@ func (c *AdClient) Facebook_ad_delete_(args map[string]interface{}) (interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -679,7 +679,7 @@ func (c *AdClient) Facebook_ad_get_(args map[string]interface{}) (interface{}, e
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -734,7 +734,7 @@ func (c *AdClient) Facebook_ad_post_(args map[string]interface{}) (interface{}, 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

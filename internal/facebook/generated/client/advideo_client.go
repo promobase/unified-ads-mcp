@@ -26,7 +26,7 @@ func (c *AdVideoClient) Facebook_advideo_get_boost_ads_list(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "boost_ads_list")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "boost_ads_list")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +65,7 @@ func (c *AdVideoClient) Facebook_advideo_get_captions(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "captions")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "captions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,7 +104,7 @@ func (c *AdVideoClient) Facebook_advideo_post_captions(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "captions")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "captions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -153,7 +153,7 @@ func (c *AdVideoClient) Facebook_advideo_get_collaborators(args map[string]inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "collaborators")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "collaborators")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -197,7 +197,7 @@ func (c *AdVideoClient) Facebook_advideo_post_collaborators(args map[string]inte
 	_ = target_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "collaborators")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "collaborators")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -240,7 +240,7 @@ func (c *AdVideoClient) Facebook_advideo_get_comments(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "comments")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -292,7 +292,7 @@ func (c *AdVideoClient) Facebook_advideo_post_comments(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "comments")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -371,7 +371,7 @@ func (c *AdVideoClient) Facebook_advideo_get_crosspost_shared_pages(args map[str
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "crosspost_shared_pages")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "crosspost_shared_pages")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -410,7 +410,7 @@ func (c *AdVideoClient) Facebook_advideo_post_gaming_clip_create(args map[string
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "gaming_clip_create")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "gaming_clip_create")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -453,7 +453,7 @@ func (c *AdVideoClient) Facebook_advideo_get_likes(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "likes")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -492,7 +492,7 @@ func (c *AdVideoClient) Facebook_advideo_post_likes(args map[string]interface{})
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "likes")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -544,7 +544,7 @@ func (c *AdVideoClient) Facebook_advideo_get_poll_settings(args map[string]inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "poll_settings")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "poll_settings")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -583,7 +583,7 @@ func (c *AdVideoClient) Facebook_advideo_get_polls(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "polls")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "polls")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -632,7 +632,7 @@ func (c *AdVideoClient) Facebook_advideo_post_polls(args map[string]interface{})
 	_ = question // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "polls")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "polls")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -693,7 +693,7 @@ func (c *AdVideoClient) Facebook_advideo_get_sponsor_tags(args map[string]interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "sponsor_tags")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "sponsor_tags")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -732,7 +732,7 @@ func (c *AdVideoClient) Facebook_advideo_get_tags(args map[string]interface{}) (
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "tags")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "tags")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -771,7 +771,7 @@ func (c *AdVideoClient) Facebook_advideo_get_thumbnails(args map[string]interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "thumbnails")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "thumbnails")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -815,7 +815,7 @@ func (c *AdVideoClient) Facebook_advideo_post_thumbnails(args map[string]interfa
 	_ = source // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "thumbnails")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "thumbnails")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -861,7 +861,7 @@ func (c *AdVideoClient) Facebook_advideo_get_video_insights(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "video_insights")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "video_insights")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -913,7 +913,7 @@ func (c *AdVideoClient) Facebook_advideo_delete_(args map[string]interface{}) (i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -952,7 +952,7 @@ func (c *AdVideoClient) Facebook_advideo_get_(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -991,7 +991,7 @@ func (c *AdVideoClient) Facebook_advideo_post_(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

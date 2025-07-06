@@ -26,7 +26,7 @@ func (c *CampaignClient) Facebook_campaign_get_ad_studies(args map[string]interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "ad_studies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ad_studies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -70,7 +70,7 @@ func (c *CampaignClient) Facebook_campaign_post_adlabels(args map[string]interfa
 	_ = adlabels // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adlabels")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adlabels")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -116,7 +116,7 @@ func (c *CampaignClient) Facebook_campaign_get_adrules_governed(args map[string]
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adrules_governed")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adrules_governed")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -159,7 +159,7 @@ func (c *CampaignClient) Facebook_campaign_get_ads(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "ads")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ads")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -211,7 +211,7 @@ func (c *CampaignClient) Facebook_campaign_get_adsets(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adsets")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adsets")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -283,7 +283,7 @@ func (c *CampaignClient) Facebook_campaign_post_budget_schedules(args map[string
 	_ = time_start // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "budget_schedules")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "budget_schedules")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -335,7 +335,7 @@ func (c *CampaignClient) Facebook_campaign_get_copies(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "copies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "copies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -387,7 +387,7 @@ func (c *CampaignClient) Facebook_campaign_post_copies(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "copies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "copies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -442,7 +442,7 @@ func (c *CampaignClient) Facebook_campaign_get_insights(args map[string]interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "insights")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -548,7 +548,7 @@ func (c *CampaignClient) Facebook_campaign_post_insights(args map[string]interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "insights")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -654,7 +654,7 @@ func (c *CampaignClient) Facebook_campaign_delete_(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -693,7 +693,7 @@ func (c *CampaignClient) Facebook_campaign_get_(args map[string]interface{}) (in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -745,7 +745,7 @@ func (c *CampaignClient) Facebook_campaign_post_(args map[string]interface{}) (i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

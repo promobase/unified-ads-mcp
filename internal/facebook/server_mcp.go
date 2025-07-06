@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/mark3labs/mcp-go/server"
 	"unified-ads-mcp/internal/facebook/generated/tools"
+
+	"github.com/mark3labs/mcp-go/server"
 )
 
 // CreateMCPServer creates a new MCP server with all Facebook Business API tools registered

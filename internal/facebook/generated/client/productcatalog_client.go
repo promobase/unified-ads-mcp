@@ -31,7 +31,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_delete_agencies(args map[
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "agencies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -74,7 +74,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_agencies(args map[str
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "agencies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -118,7 +118,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_agencies(args map[st
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "agencies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -178,7 +178,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_delete_assigned_users(arg
 	_ = user // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_users")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -226,7 +226,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_assigned_users(args m
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_users")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -279,7 +279,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_assigned_users(args 
 	_ = user // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_users")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -325,7 +325,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_automotive_models(arg
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "automotive_models")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "automotive_models")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -376,7 +376,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_batch(args map[strin
 	_ = requests // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "batch")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "batch")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -433,7 +433,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_catalog_store(args m
 	_ = page // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "catalog_store")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "catalog_store")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -481,7 +481,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_categories(args map[s
 	_ = categorization_criteria // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "categories")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "categories")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -532,7 +532,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_categories(args map[
 	_ = data // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "categories")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "categories")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -580,7 +580,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_check_batch_request_s
 	_ = handle // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "check_batch_request_status")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "check_batch_request_status")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -634,7 +634,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_check_marketplace_par
 	_ = session_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "check_marketplace_partner_sellers_status")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "check_marketplace_partner_sellers_status")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -677,7 +677,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_collaborative_ads_lsb
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "collaborative_ads_lsb_image_bank")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "collaborative_ads_lsb_image_bank")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -716,7 +716,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_collaborative_ads_sha
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "collaborative_ads_share_settings")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "collaborative_ads_share_settings")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -760,7 +760,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_cpas_lsb_image_bank(
 	_ = backup_image_urls // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "cpas_lsb_image_bank")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "cpas_lsb_image_bank")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -809,7 +809,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_creator_asset_creativ
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "creator_asset_creatives")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "creator_asset_creatives")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -852,7 +852,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_data_sources(args map
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "data_sources")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "data_sources")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -895,7 +895,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_destinations(args map
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "destinations")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "destinations")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -941,7 +941,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_diagnostics(args map[
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "diagnostics")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "diagnostics")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -996,7 +996,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_event_stats(args map[
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "event_stats")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "event_stats")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1039,7 +1039,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_delete_external_event_sou
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "external_event_sources")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "external_event_sources")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1082,7 +1082,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_external_event_source
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "external_event_sources")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "external_event_sources")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1121,7 +1121,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_external_event_sourc
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "external_event_sources")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "external_event_sources")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1164,7 +1164,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_flights(args map[stri
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "flights")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "flights")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1220,7 +1220,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_geolocated_items_bat
 	_ = requests // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "geolocated_items_batch")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "geolocated_items_batch")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1269,7 +1269,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_home_listings(args ma
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "home_listings")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "home_listings")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1360,7 +1360,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_home_listings(args m
 	_ = year_built // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "home_listings")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "home_listings")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1450,7 +1450,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_hotel_rooms_batch(arg
 	_ = handle // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "hotel_rooms_batch")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "hotel_rooms_batch")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1498,7 +1498,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_hotel_rooms_batch(ar
 	_ = standard // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "hotel_rooms_batch")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "hotel_rooms_batch")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1556,7 +1556,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_hotels(args map[strin
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "hotels")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "hotels")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1627,7 +1627,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_hotels(args map[stri
 	_ = url_ // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "hotels")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "hotels")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1716,7 +1716,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_items_batch(args map
 	_ = requests // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "items_batch")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "items_batch")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1781,7 +1781,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_localized_items_batc
 	_ = requests // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "localized_items_batch")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "localized_items_batch")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1838,7 +1838,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_marketplace_partner_
 	_ = requests // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "marketplace_partner_sellers_details")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "marketplace_partner_sellers_details")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1896,7 +1896,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_marketplace_partner_
 	_ = user_data // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "marketplace_partner_signals")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "marketplace_partner_signals")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1956,7 +1956,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_pricing_variables_bat
 	_ = handle // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "pricing_variables_batch")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "pricing_variables_batch")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2004,7 +2004,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_pricing_variables_ba
 	_ = standard // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "pricing_variables_batch")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "pricing_variables_batch")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2062,7 +2062,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_product_feeds(args ma
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_feeds")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_feeds")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2101,7 +2101,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_product_feeds(args m
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_feeds")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_feeds")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2198,7 +2198,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_product_groups(args m
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_groups")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_groups")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2237,7 +2237,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_product_groups(args 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_groups")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_groups")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2283,7 +2283,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_product_sets(args map
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_sets")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_sets")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2340,7 +2340,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_product_sets(args ma
 	_ = name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_sets")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_sets")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2403,7 +2403,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_product_sets_batch(ar
 	_ = handle // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_sets_batch")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_sets_batch")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2446,7 +2446,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_products(args map[str
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "products")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "products")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2516,7 +2516,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_products(args map[st
 	_ = price // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "products")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "products")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2795,7 +2795,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_update_generated_ima
 	_ = data // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "update_generated_image_config")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "update_generated_image_config")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2838,7 +2838,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_vehicle_offers(args m
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "vehicle_offers")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "vehicle_offers")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2884,7 +2884,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_vehicles(args map[str
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "vehicles")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "vehicles")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -3010,7 +3010,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_vehicles(args map[st
 	_ = year // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "vehicles")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "vehicles")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -3140,7 +3140,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_version_configs(args 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "version_configs")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "version_configs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -3194,7 +3194,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_version_items_batch(
 	_ = requests // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "version_items_batch")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "version_items_batch")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -3249,7 +3249,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_delete_(args map[string]i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -3292,7 +3292,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -3335,7 +3335,7 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_(args map[string]int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

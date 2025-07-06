@@ -26,7 +26,7 @@ func (c *AdStudyCellClient) Facebook_adstudycell_get_adaccounts(args map[string]
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adaccounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +65,7 @@ func (c *AdStudyCellClient) Facebook_adstudycell_get_adsets(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adsets")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adsets")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,7 +104,7 @@ func (c *AdStudyCellClient) Facebook_adstudycell_get_campaigns(args map[string]i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "campaigns")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "campaigns")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -143,7 +143,7 @@ func (c *AdStudyCellClient) Facebook_adstudycell_get_(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -182,7 +182,7 @@ func (c *AdStudyCellClient) Facebook_adstudycell_post_(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

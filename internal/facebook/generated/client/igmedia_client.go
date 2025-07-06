@@ -26,7 +26,7 @@ func (c *IGMediaClient) Facebook_igmedia_get_boost_ads_list(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "boost_ads_list")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "boost_ads_list")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +65,7 @@ func (c *IGMediaClient) Facebook_igmedia_get_branded_content_partner_promote(arg
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "branded_content_partner_promote")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_partner_promote")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -114,7 +114,7 @@ func (c *IGMediaClient) Facebook_igmedia_post_branded_content_partner_promote(ar
 	_ = sponsor_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "branded_content_partner_promote")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_partner_promote")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -160,7 +160,7 @@ func (c *IGMediaClient) Facebook_igmedia_get_children(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "children")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "children")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -199,7 +199,7 @@ func (c *IGMediaClient) Facebook_igmedia_get_collaborators(args map[string]inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "collaborators")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "collaborators")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -238,7 +238,7 @@ func (c *IGMediaClient) Facebook_igmedia_get_comments(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "comments")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -277,7 +277,7 @@ func (c *IGMediaClient) Facebook_igmedia_post_comments(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "comments")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -328,7 +328,7 @@ func (c *IGMediaClient) Facebook_igmedia_get_insights(args map[string]interface{
 	_ = metric // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "insights")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -377,7 +377,7 @@ func (c *IGMediaClient) Facebook_igmedia_delete_partnership_ad_code(args map[str
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "partnership_ad_code")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "partnership_ad_code")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -416,7 +416,7 @@ func (c *IGMediaClient) Facebook_igmedia_post_partnership_ad_code(args map[strin
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "partnership_ad_code")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "partnership_ad_code")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -455,7 +455,7 @@ func (c *IGMediaClient) Facebook_igmedia_get_product_tags(args map[string]interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_tags")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_tags")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -499,7 +499,7 @@ func (c *IGMediaClient) Facebook_igmedia_post_product_tags(args map[string]inter
 	_ = updated_tags // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_tags")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_tags")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -545,7 +545,7 @@ func (c *IGMediaClient) Facebook_igmedia_get_(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -611,7 +611,7 @@ func (c *IGMediaClient) Facebook_igmedia_post_(args map[string]interface{}) (int
 	_ = comment_enabled // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

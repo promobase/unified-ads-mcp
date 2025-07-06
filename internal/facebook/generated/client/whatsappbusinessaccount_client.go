@@ -26,7 +26,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_act
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "activities")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "activities")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -70,7 +70,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_delete_
 	_ = user // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_users")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -118,7 +118,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_ass
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_users")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -171,7 +171,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_post_as
 	_ = user // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_users")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -217,7 +217,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_aud
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "audiences")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "audiences")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -271,7 +271,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_cal
 	_ = start // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "call_analytics")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "call_analytics")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -350,7 +350,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_con
 	_ = start // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "conversation_analytics")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "conversation_analytics")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -420,7 +420,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_dat
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "dataset")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "dataset")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -459,7 +459,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_post_da
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "dataset")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "dataset")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -502,7 +502,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_flo
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "flows")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "flows")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -551,7 +551,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_post_fl
 	_ = name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "flows")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "flows")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -614,7 +614,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_post_ge
 	_ = configuration_name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "generate_payment_configuration_oauth_link")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "generate_payment_configuration_oauth_link")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -660,7 +660,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_mes
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "message_campaigns")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_campaigns")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -704,7 +704,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_mes
 	_ = category // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "message_template_previews")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_template_previews")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -764,7 +764,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_delete_
 	_ = name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "message_templates")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_templates")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -810,7 +810,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_mes
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "message_templates")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_templates")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -886,7 +886,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_post_me
 	_ = name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "message_templates")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_templates")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -973,7 +973,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_post_mi
 	_ = source_waba_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "migrate_flows")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "migrate_flows")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1024,7 +1024,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_post_mi
 	_ = source_waba_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "migrate_message_templates")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "migrate_message_templates")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1075,7 +1075,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_delete_
 	_ = configuration_name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "payment_configuration")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "payment_configuration")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1123,7 +1123,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_pay
 	_ = configuration_name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "payment_configuration")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "payment_configuration")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1171,7 +1171,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_post_pa
 	_ = configuration_name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "payment_configuration")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "payment_configuration")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1232,7 +1232,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_pay
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "payment_configurations")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "payment_configurations")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1271,7 +1271,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_pho
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "phone_numbers")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "phone_numbers")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1310,7 +1310,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_post_ph
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "phone_numbers")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "phone_numbers")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1380,7 +1380,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_pri
 	_ = start // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "pricing_analytics")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "pricing_analytics")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1455,7 +1455,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_delete_
 	_ = catalog_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_catalogs")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_catalogs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1498,7 +1498,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_pro
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_catalogs")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_catalogs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1542,7 +1542,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_post_pr
 	_ = catalog_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_catalogs")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_catalogs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1585,7 +1585,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_sch
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "schedules")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "schedules")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1624,7 +1624,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_post_se
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "set_obo_mobility_intent")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "set_obo_mobility_intent")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1667,7 +1667,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_post_se
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "set_solution_migration_intent")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "set_solution_migration_intent")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1713,7 +1713,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_sol
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "solutions")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "solutions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1752,7 +1752,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_delete_
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "subscribed_apps")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_apps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1791,7 +1791,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_sub
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "subscribed_apps")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_apps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1830,7 +1830,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_post_su
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "subscribed_apps")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_apps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1896,7 +1896,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_tem
 	_ = template_ids // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "template_analytics")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "template_analytics")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -1974,7 +1974,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_tem
 	_ = template_group_ids // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "template_group_analytics")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "template_group_analytics")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2029,7 +2029,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_tem
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "template_groups")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "template_groups")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2083,7 +2083,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_post_te
 	_ = whatsapp_business_templates // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "template_groups")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "template_groups")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2132,7 +2132,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_tem
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "template_performance_metrics")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "template_performance_metrics")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2198,7 +2198,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_post_up
 	_ = name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "upsert_message_templates")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "upsert_message_templates")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2253,7 +2253,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_wel
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "welcome_message_sequences")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "welcome_message_sequences")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2299,7 +2299,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_get_(ar
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -2338,7 +2338,7 @@ func (c *WhatsAppBusinessAccountClient) Facebook_whatsappbusinessaccount_post_(a
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

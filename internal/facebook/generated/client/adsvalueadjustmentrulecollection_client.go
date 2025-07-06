@@ -26,7 +26,7 @@ func (c *AdsValueAdjustmentRuleCollectionClient) Facebook_adsvalueadjustmentrule
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "delete_rule_set")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "delete_rule_set")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +65,7 @@ func (c *AdsValueAdjustmentRuleCollectionClient) Facebook_adsvalueadjustmentrule
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "rules")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "rules")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,7 +104,7 @@ func (c *AdsValueAdjustmentRuleCollectionClient) Facebook_adsvalueadjustmentrule
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -153,7 +153,7 @@ func (c *AdsValueAdjustmentRuleCollectionClient) Facebook_adsvalueadjustmentrule
 	_ = rules // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

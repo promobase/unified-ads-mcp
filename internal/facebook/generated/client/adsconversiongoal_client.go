@@ -26,7 +26,7 @@ func (c *AdsConversionGoalClient) Facebook_adsconversiongoal_get_conversion_even
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "conversion_events")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "conversion_events")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +65,7 @@ func (c *AdsConversionGoalClient) Facebook_adsconversiongoal_get_(args map[strin
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

@@ -36,7 +36,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_post_
 	_ = orders // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "acknowledge_orders")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "acknowledge_orders")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -82,7 +82,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_c
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "commerce_orders")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "commerce_orders")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -134,7 +134,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_c
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "commerce_payouts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "commerce_payouts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -180,7 +180,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_c
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "commerce_transactions")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "commerce_transactions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -229,7 +229,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_o
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "order_management_apps")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "order_management_apps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -268,7 +268,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_post_
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "order_management_apps")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "order_management_apps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -307,7 +307,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_p
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_catalogs")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_catalogs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -346,7 +346,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_r
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "returns")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "returns")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -398,7 +398,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_s
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "setup_status")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "setup_status")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -437,7 +437,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_s
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "shipping_profiles")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shipping_profiles")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -490,7 +490,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_post_
 	_ = shipping_destinations // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "shipping_profiles")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shipping_profiles")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -548,7 +548,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_s
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "shops")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shops")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -587,7 +587,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_t
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "tax_settings")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "tax_settings")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -626,7 +626,7 @@ func (c *CommerceMerchantSettingsClient) Facebook_commercemerchantsettings_get_(
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

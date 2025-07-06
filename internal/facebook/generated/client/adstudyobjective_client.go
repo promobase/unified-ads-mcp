@@ -26,7 +26,7 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_adspixels(args ma
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adspixels")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adspixels")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +65,7 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_applications(args
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "applications")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "applications")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,7 +104,7 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_brand_requests(ar
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "brand_requests")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "brand_requests")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -143,7 +143,7 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_customconversions
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "customconversions")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "customconversions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -182,7 +182,7 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_offline_conversio
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "offline_conversion_data_sets")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "offline_conversion_data_sets")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -221,7 +221,7 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_partner_private_s
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "partner_private_studies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "partner_private_studies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -260,7 +260,7 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_partnerstudies(ar
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "partnerstudies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "partnerstudies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -299,7 +299,7 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_(args map[string]
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -345,7 +345,7 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_post_(args map[string
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

@@ -26,7 +26,7 @@ func (c *MessengerAdsPartialAutomatedStepListClient) Facebook_messengeradspartia
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "steps")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "steps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +65,7 @@ func (c *MessengerAdsPartialAutomatedStepListClient) Facebook_messengeradspartia
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

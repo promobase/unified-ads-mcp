@@ -26,7 +26,7 @@ func (c *CustomAudienceClient) Facebook_customaudience_delete_adaccounts(args ma
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adaccounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -69,7 +69,7 @@ func (c *CustomAudienceClient) Facebook_customaudience_get_adaccounts(args map[s
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adaccounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -112,7 +112,7 @@ func (c *CustomAudienceClient) Facebook_customaudience_post_adaccounts(args map[
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adaccounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -164,7 +164,7 @@ func (c *CustomAudienceClient) Facebook_customaudience_get_ads(args map[string]i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "ads")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ads")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -210,7 +210,7 @@ func (c *CustomAudienceClient) Facebook_customaudience_get_health(args map[strin
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "health")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "health")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -268,7 +268,7 @@ func (c *CustomAudienceClient) Facebook_customaudience_get_salts(args map[string
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "salts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "salts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -326,7 +326,7 @@ func (c *CustomAudienceClient) Facebook_customaudience_post_salts(args map[strin
 	_ = valid_to // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "salts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "salts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -375,7 +375,7 @@ func (c *CustomAudienceClient) Facebook_customaudience_get_sessions(args map[str
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "sessions")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "sessions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -418,7 +418,7 @@ func (c *CustomAudienceClient) Facebook_customaudience_get_shared_account_info(a
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "shared_account_info")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_account_info")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -457,7 +457,7 @@ func (c *CustomAudienceClient) Facebook_customaudience_delete_users(args map[str
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "users")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -506,7 +506,7 @@ func (c *CustomAudienceClient) Facebook_customaudience_post_users(args map[strin
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "users")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -565,7 +565,7 @@ func (c *CustomAudienceClient) Facebook_customaudience_post_usersreplace(args ma
 	_ = session // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "usersreplace")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "usersreplace")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -614,7 +614,7 @@ func (c *CustomAudienceClient) Facebook_customaudience_delete_(args map[string]i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -653,7 +653,7 @@ func (c *CustomAudienceClient) Facebook_customaudience_get_(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -705,7 +705,7 @@ func (c *CustomAudienceClient) Facebook_customaudience_post_(args map[string]int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

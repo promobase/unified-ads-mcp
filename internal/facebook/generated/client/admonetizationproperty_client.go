@@ -31,7 +31,7 @@ func (c *AdMonetizationPropertyClient) Facebook_admonetizationproperty_get_adnet
 	_ = metrics // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adnetworkanalytics")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adnetworkanalytics")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -106,7 +106,7 @@ func (c *AdMonetizationPropertyClient) Facebook_admonetizationproperty_post_adne
 	_ = metrics // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adnetworkanalytics")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adnetworkanalytics")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -173,7 +173,7 @@ func (c *AdMonetizationPropertyClient) Facebook_admonetizationproperty_get_adnet
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adnetworkanalytics_results")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adnetworkanalytics_results")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -216,7 +216,7 @@ func (c *AdMonetizationPropertyClient) Facebook_admonetizationproperty_get_(args
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

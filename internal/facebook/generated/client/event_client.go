@@ -26,7 +26,7 @@ func (c *EventClient) Facebook_event_get_comments(args map[string]interface{}) (
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "comments")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +65,7 @@ func (c *EventClient) Facebook_event_get_feed(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "feed")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "feed")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -104,7 +104,7 @@ func (c *EventClient) Facebook_event_get_live_videos(args map[string]interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "live_videos")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "live_videos")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -143,7 +143,7 @@ func (c *EventClient) Facebook_event_post_live_videos(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "live_videos")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "live_videos")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -243,7 +243,7 @@ func (c *EventClient) Facebook_event_get_photos(args map[string]interface{}) (in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "photos")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "photos")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -282,7 +282,7 @@ func (c *EventClient) Facebook_event_get_picture(args map[string]interface{}) (i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "picture")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "picture")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -321,7 +321,7 @@ func (c *EventClient) Facebook_event_get_posts(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "posts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "posts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -360,7 +360,7 @@ func (c *EventClient) Facebook_event_get_roles(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "roles")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "roles")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -399,7 +399,7 @@ func (c *EventClient) Facebook_event_get_ticket_tiers(args map[string]interface{
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "ticket_tiers")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ticket_tiers")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -438,7 +438,7 @@ func (c *EventClient) Facebook_event_get_videos(args map[string]interface{}) (in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "videos")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -477,7 +477,7 @@ func (c *EventClient) Facebook_event_get_(args map[string]interface{}) (interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

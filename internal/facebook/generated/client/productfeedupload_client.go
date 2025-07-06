@@ -26,7 +26,7 @@ func (c *ProductFeedUploadClient) Facebook_productfeedupload_post_error_report(a
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "error_report")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "error_report")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +65,7 @@ func (c *ProductFeedUploadClient) Facebook_productfeedupload_get_errors(args map
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "errors")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "errors")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -108,7 +108,7 @@ func (c *ProductFeedUploadClient) Facebook_productfeedupload_get_(args map[strin
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

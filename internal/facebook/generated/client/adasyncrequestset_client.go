@@ -26,7 +26,7 @@ func (c *AdAsyncRequestSetClient) Facebook_adasyncrequestset_get_requests(args m
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "requests")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "requests")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -69,7 +69,7 @@ func (c *AdAsyncRequestSetClient) Facebook_adasyncrequestset_delete_(args map[st
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -108,7 +108,7 @@ func (c *AdAsyncRequestSetClient) Facebook_adasyncrequestset_get_(args map[strin
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -147,7 +147,7 @@ func (c *AdAsyncRequestSetClient) Facebook_adasyncrequestset_post_(args map[stri
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

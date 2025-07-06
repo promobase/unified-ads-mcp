@@ -31,7 +31,7 @@ func (c *OfflineConversionDataSetClient) Facebook_offlineconversiondataset_get_a
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adaccounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -74,7 +74,7 @@ func (c *OfflineConversionDataSetClient) Facebook_offlineconversiondataset_get_a
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "agencies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -113,7 +113,7 @@ func (c *OfflineConversionDataSetClient) Facebook_offlineconversiondataset_get_a
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "audiences")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "audiences")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -159,7 +159,7 @@ func (c *OfflineConversionDataSetClient) Facebook_offlineconversiondataset_get_c
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "customconversions")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "customconversions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -202,7 +202,7 @@ func (c *OfflineConversionDataSetClient) Facebook_offlineconversiondataset_get_s
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "server_events_permitted_business")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "server_events_permitted_business")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -251,7 +251,7 @@ func (c *OfflineConversionDataSetClient) Facebook_offlineconversiondataset_get_s
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "shared_accounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -302,7 +302,7 @@ func (c *OfflineConversionDataSetClient) Facebook_offlineconversiondataset_get_s
 	_ = action_source // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "shared_agencies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_agencies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -345,7 +345,7 @@ func (c *OfflineConversionDataSetClient) Facebook_offlineconversiondataset_get_s
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "stats")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "stats")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -403,7 +403,7 @@ func (c *OfflineConversionDataSetClient) Facebook_offlineconversiondataset_get_u
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "uploads")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "uploads")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -458,7 +458,7 @@ func (c *OfflineConversionDataSetClient) Facebook_offlineconversiondataset_get_(
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

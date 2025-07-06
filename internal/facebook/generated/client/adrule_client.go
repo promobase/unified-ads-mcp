@@ -26,7 +26,7 @@ func (c *AdRuleClient) Facebook_adrule_post_execute(args map[string]interface{})
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "execute")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "execute")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +65,7 @@ func (c *AdRuleClient) Facebook_adrule_get_history(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "history")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "history")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -114,7 +114,7 @@ func (c *AdRuleClient) Facebook_adrule_post_preview(args map[string]interface{})
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "preview")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "preview")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -153,7 +153,7 @@ func (c *AdRuleClient) Facebook_adrule_delete_(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -192,7 +192,7 @@ func (c *AdRuleClient) Facebook_adrule_get_(args map[string]interface{}) (interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -231,7 +231,7 @@ func (c *AdRuleClient) Facebook_adrule_post_(args map[string]interface{}) (inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

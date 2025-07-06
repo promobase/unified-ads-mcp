@@ -26,7 +26,7 @@ func (c *ProductGroupClient) Facebook_productgroup_get_products(args map[string]
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "products")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "products")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -90,7 +90,7 @@ func (c *ProductGroupClient) Facebook_productgroup_post_products(args map[string
 	_ = retailer_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "products")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "products")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -343,7 +343,7 @@ func (c *ProductGroupClient) Facebook_productgroup_delete_(args map[string]inter
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -386,7 +386,7 @@ func (c *ProductGroupClient) Facebook_productgroup_get_(args map[string]interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -425,7 +425,7 @@ func (c *ProductGroupClient) Facebook_productgroup_post_(args map[string]interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

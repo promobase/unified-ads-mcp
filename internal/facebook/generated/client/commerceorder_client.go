@@ -31,7 +31,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_acknowledge_order(args
 	_ = idempotency_key // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "acknowledge_order")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "acknowledge_order")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -77,7 +77,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_cancellations(args map[
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "cancellations")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "cancellations")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -121,7 +121,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_cancellations(args map
 	_ = idempotency_key // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "cancellations")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "cancellations")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -183,7 +183,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_item_updates(args map[
 	_ = merchant_order_reference // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "item_updates")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "item_updates")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -229,7 +229,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_items(args map[string]i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "items")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "items")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -268,7 +268,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_payments(args map[strin
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "payments")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "payments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -307,7 +307,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_promotion_details(args 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "promotion_details")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "promotion_details")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -346,7 +346,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_promotions(args map[str
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "promotions")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "promotions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -385,7 +385,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_refunds(args map[string
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "refunds")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "refunds")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -434,7 +434,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_refunds(args map[strin
 	_ = reason_code // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "refunds")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "refunds")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -498,7 +498,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_returns(args map[string
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "returns")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "returns")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -549,7 +549,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_returns(args map[strin
 	_ = items // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "returns")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "returns")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -601,7 +601,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_shipments(args map[stri
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "shipments")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shipments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -645,7 +645,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_shipments(args map[str
 	_ = idempotency_key // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "shipments")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shipments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -725,7 +725,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_post_update_shipment(args m
 	_ = tracking_info // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "update_shipment")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "update_shipment")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -780,7 +780,7 @@ func (c *CommerceOrderClient) Facebook_commerceorder_get_(args map[string]interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

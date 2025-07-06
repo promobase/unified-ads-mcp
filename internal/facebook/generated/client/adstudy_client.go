@@ -26,7 +26,7 @@ func (c *AdStudyClient) Facebook_adstudy_get_cells(args map[string]interface{}) 
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "cells")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "cells")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -80,7 +80,7 @@ func (c *AdStudyClient) Facebook_adstudy_post_checkpoint(args map[string]interfa
 	_ = component // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "checkpoint")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "checkpoint")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -135,7 +135,7 @@ func (c *AdStudyClient) Facebook_adstudy_get_instances(args map[string]interface
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "instances")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "instances")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -179,7 +179,7 @@ func (c *AdStudyClient) Facebook_adstudy_post_instances(args map[string]interfac
 	_ = breakdown_key // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "instances")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "instances")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -225,7 +225,7 @@ func (c *AdStudyClient) Facebook_adstudy_get_objectives(args map[string]interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "objectives")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "objectives")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -264,7 +264,7 @@ func (c *AdStudyClient) Facebook_adstudy_delete_(args map[string]interface{}) (i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -303,7 +303,7 @@ func (c *AdStudyClient) Facebook_adstudy_get_(args map[string]interface{}) (inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -342,7 +342,7 @@ func (c *AdStudyClient) Facebook_adstudy_post_(args map[string]interface{}) (int
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

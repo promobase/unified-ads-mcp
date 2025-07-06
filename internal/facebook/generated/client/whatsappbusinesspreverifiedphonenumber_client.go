@@ -26,7 +26,7 @@ func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Facebook_whatsappbusiness
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "partners")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "partners")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -75,7 +75,7 @@ func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Facebook_whatsappbusiness
 	_ = language // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "request_code")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "request_code")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -126,7 +126,7 @@ func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Facebook_whatsappbusiness
 	_ = code // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "verify_code")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "verify_code")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -169,7 +169,7 @@ func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Facebook_whatsappbusiness
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -208,7 +208,7 @@ func (c *WhatsAppBusinessPreVerifiedPhoneNumberClient) Facebook_whatsappbusiness
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

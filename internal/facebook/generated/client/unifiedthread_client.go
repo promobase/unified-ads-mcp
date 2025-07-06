@@ -26,7 +26,7 @@ func (c *UnifiedThreadClient) Facebook_unifiedthread_get_messages(args map[strin
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "messages")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messages")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -69,7 +69,7 @@ func (c *UnifiedThreadClient) Facebook_unifiedthread_get_(args map[string]interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

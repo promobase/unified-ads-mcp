@@ -31,7 +31,7 @@ func (c *ShadowIGHashtagClient) Facebook_shadowighashtag_get_recent_media(args m
 	_ = user_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "recent_media")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "recent_media")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -79,7 +79,7 @@ func (c *ShadowIGHashtagClient) Facebook_shadowighashtag_get_top_media(args map[
 	_ = user_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "top_media")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "top_media")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -122,7 +122,7 @@ func (c *ShadowIGHashtagClient) Facebook_shadowighashtag_get_(args map[string]in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

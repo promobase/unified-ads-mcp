@@ -26,7 +26,7 @@ func (c *InstagramUserClient) Facebook_instagramuser_get_agencies(args map[strin
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "agencies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -65,7 +65,7 @@ func (c *InstagramUserClient) Facebook_instagramuser_get_ar_effects(args map[str
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "ar_effects")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ar_effects")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -109,7 +109,7 @@ func (c *InstagramUserClient) Facebook_instagramuser_get_authorized_adaccounts(a
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "authorized_adaccounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "authorized_adaccounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -152,7 +152,7 @@ func (c *InstagramUserClient) Facebook_instagramuser_get_upcoming_events(args ma
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "upcoming_events")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "upcoming_events")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -191,7 +191,7 @@ func (c *InstagramUserClient) Facebook_instagramuser_get_(args map[string]interf
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

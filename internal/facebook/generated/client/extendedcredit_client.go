@@ -26,7 +26,7 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_get_extended_credit_invoi
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "extended_credit_invoice_groups")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "extended_credit_invoice_groups")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -75,7 +75,7 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_post_extended_credit_invo
 	_ = name // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "extended_credit_invoice_groups")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "extended_credit_invoice_groups")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -121,7 +121,7 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_get_owning_credit_allocat
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "owning_credit_allocation_configs")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owning_credit_allocation_configs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -169,7 +169,7 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_post_owning_credit_alloca
 	_ = receiving_business_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "owning_credit_allocation_configs")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owning_credit_allocation_configs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -234,7 +234,7 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_post_whatsapp_credit_atta
 	_ = waba_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "whatsapp_credit_attach")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "whatsapp_credit_attach")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -285,7 +285,7 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_post_whatsapp_credit_shar
 	_ = receiving_business_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "whatsapp_credit_sharing")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "whatsapp_credit_sharing")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -338,7 +338,7 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_post_whatsapp_credit_shar
 	_ = waba_id // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "whatsapp_credit_sharing_and_attach")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "whatsapp_credit_sharing_and_attach")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -384,7 +384,7 @@ func (c *ExtendedCreditClient) Facebook_extendedcredit_get_(args map[string]inte
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

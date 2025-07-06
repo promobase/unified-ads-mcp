@@ -31,7 +31,7 @@ func (c *PublisherBlockListClient) Facebook_publisherblocklist_post_append_publi
 	_ = publisher_urls // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "append_publisher_urls")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "append_publisher_urls")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -74,7 +74,7 @@ func (c *PublisherBlockListClient) Facebook_publisherblocklist_get_paged_web_pub
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "paged_web_publishers")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "paged_web_publishers")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -117,7 +117,7 @@ func (c *PublisherBlockListClient) Facebook_publisherblocklist_delete_(args map[
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -156,7 +156,7 @@ func (c *PublisherBlockListClient) Facebook_publisherblocklist_get_(args map[str
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -210,7 +210,7 @@ func (c *PublisherBlockListClient) Facebook_publisherblocklist_post_(args map[st
 	_ = spec // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 

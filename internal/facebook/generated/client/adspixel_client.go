@@ -31,7 +31,7 @@ func (c *AdsPixelClient) Facebook_adspixel_get_adaccounts(args map[string]interf
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adaccounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -79,7 +79,7 @@ func (c *AdsPixelClient) Facebook_adspixel_delete_agencies(args map[string]inter
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "agencies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -122,7 +122,7 @@ func (c *AdsPixelClient) Facebook_adspixel_get_agencies(args map[string]interfac
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "agencies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -171,7 +171,7 @@ func (c *AdsPixelClient) Facebook_adspixel_post_agencies(args map[string]interfa
 	_ = permitted_tasks // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "agencies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -222,7 +222,7 @@ func (c *AdsPixelClient) Facebook_adspixel_post_ahp_configs(args map[string]inte
 	_ = applink_autosetup // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "ahp_configs")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ahp_configs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -270,7 +270,7 @@ func (c *AdsPixelClient) Facebook_adspixel_get_assigned_users(args map[string]in
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_users")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -323,7 +323,7 @@ func (c *AdsPixelClient) Facebook_adspixel_post_assigned_users(args map[string]i
 	_ = user // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_users")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -369,7 +369,7 @@ func (c *AdsPixelClient) Facebook_adspixel_get_da_checks(args map[string]interfa
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "da_checks")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "da_checks")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -420,7 +420,7 @@ func (c *AdsPixelClient) Facebook_adspixel_post_events(args map[string]interface
 	_ = data // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "events")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "events")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -490,7 +490,7 @@ func (c *AdsPixelClient) Facebook_adspixel_get_offline_event_uploads(args map[st
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "offline_event_uploads")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "offline_event_uploads")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -545,7 +545,7 @@ func (c *AdsPixelClient) Facebook_adspixel_get_openbridge_configurations(args ma
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "openbridge_configurations")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "openbridge_configurations")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -584,7 +584,7 @@ func (c *AdsPixelClient) Facebook_adspixel_post_shadowtraffichelper(args map[str
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "shadowtraffichelper")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shadowtraffichelper")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -633,7 +633,7 @@ func (c *AdsPixelClient) Facebook_adspixel_delete_shared_accounts(args map[strin
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "shared_accounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -684,7 +684,7 @@ func (c *AdsPixelClient) Facebook_adspixel_get_shared_accounts(args map[string]i
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "shared_accounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -737,7 +737,7 @@ func (c *AdsPixelClient) Facebook_adspixel_post_shared_accounts(args map[string]
 	_ = business // Suppress unused variable warning
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "shared_accounts")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -783,7 +783,7 @@ func (c *AdsPixelClient) Facebook_adspixel_get_shared_agencies(args map[string]i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "shared_agencies")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_agencies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -822,7 +822,7 @@ func (c *AdsPixelClient) Facebook_adspixel_get_stats(args map[string]interface{}
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "stats")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "stats")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -877,7 +877,7 @@ func (c *AdsPixelClient) Facebook_adspixel_get_(args map[string]interface{}) (in
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
@@ -916,7 +916,7 @@ func (c *AdsPixelClient) Facebook_adspixel_post_(args map[string]interface{}) (i
 	// Extract parameters
 
 	// Build request URL and parameters
-	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
+	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
