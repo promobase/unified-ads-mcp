@@ -1,0 +1,21 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "attribution_windows",
+            "type": "list<string>"
+        },
+        {
+            "name": "conversions",
+            "type": "unsigned int"
+        },
+        {
+            "name": "last_sig_edit_ts",
+            "type": "int"
+        },
+        {
+            "name": "status",
+            "type": "string"
+        }
+    ]
+}

@@ -1,0 +1,1910 @@
+{
+    "apis": [
+        {
+            "method": "DELETE",
+            "endpoint": "accounts",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "type",
+                    "required": false,
+                    "type": "applicationaccounts_type_enum_param"
+                },
+                {
+                    "name": "uid",
+                    "required": true,
+                    "type": "int"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "accounts",
+            "return": "TestAccount",
+            "params": [
+                {
+                    "name": "type",
+                    "required": false,
+                    "type": "applicationaccounts_type_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "accounts",
+            "return": "TestAccount",
+            "params": [
+                {
+                    "name": "installed",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "minor",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "owner_access_token",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "permissions",
+                    "required": false,
+                    "type": "list<Permission>"
+                },
+                {
+                    "name": "type",
+                    "required": false,
+                    "type": "applicationaccounts_type_enum_param"
+                },
+                {
+                    "name": "uid",
+                    "required": false,
+                    "type": "int"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "activities",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "advertiser_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "advertiser_tracking_enabled",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "anon_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "app_user_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "application_tracking_enabled",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "attribution",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "attribution_referrer",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "attribution_sources",
+                    "required": false,
+                    "type": "list<map>"
+                },
+                {
+                    "name": "auto_publish",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "bundle_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "bundle_short_version",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "bundle_version",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "campaign_ids",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "click_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "consider_views",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "custom_events",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "custom_events_file",
+                    "required": false,
+                    "type": "file"
+                },
+                {
+                    "name": "data_processing_options",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "data_processing_options_country",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "data_processing_options_state",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "device_token",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "event",
+                    "required": true,
+                    "type": "applicationactivities_event_enum_param"
+                },
+                {
+                    "name": "event_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "extinfo",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "google_install_referrer",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "include_dwell_data",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "include_video_data",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "install_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "install_referrer",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "install_timestamp",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "installer_package",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "is_fb",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "limited_data_use",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "meta_install_referrer",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "migration_bundle",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "operational_parameters",
+                    "required": false,
+                    "type": "list<map>"
+                },
+                {
+                    "name": "page_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "page_scoped_user_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "receipt_data",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "sdk_version",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "ud",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "url_schemes",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "user_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "user_id_type",
+                    "required": false,
+                    "type": "applicationactivities_user_id_type_enum_param"
+                },
+                {
+                    "name": "vendor_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "windows_attribution_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "ad_placement_groups",
+            "return": "AdPlacementGroup",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "adnetwork_placements",
+            "return": "AdPlacement",
+            "params": [
+                {
+                    "name": "request_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "adnetworkanalytics",
+            "return": "AdNetworkAnalyticsSyncQueryResult",
+            "params": [
+                {
+                    "name": "aggregation_period",
+                    "required": false,
+                    "type": "applicationadnetworkanalytics_aggregation_period_enum_param"
+                },
+                {
+                    "name": "breakdowns",
+                    "required": false,
+                    "type": "list<applicationadnetworkanalytics_breakdowns_enum_param>"
+                },
+                {
+                    "name": "filters",
+                    "required": false,
+                    "type": "list<map>"
+                },
+                {
+                    "name": "limit",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "metrics",
+                    "required": true,
+                    "type": "list<applicationadnetworkanalytics_metrics_enum_param>"
+                },
+                {
+                    "name": "ordering_column",
+                    "required": false,
+                    "type": "applicationadnetworkanalytics_ordering_column_enum_param"
+                },
+                {
+                    "name": "ordering_type",
+                    "required": false,
+                    "type": "applicationadnetworkanalytics_ordering_type_enum_param"
+                },
+                {
+                    "name": "should_include_until",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "since",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "until",
+                    "required": false,
+                    "type": "datetime"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "adnetworkanalytics",
+            "return": "Application",
+            "params": [
+                {
+                    "name": "aggregation_period",
+                    "required": false,
+                    "type": "applicationadnetworkanalytics_aggregation_period_enum_param"
+                },
+                {
+                    "name": "breakdowns",
+                    "required": false,
+                    "type": "list<applicationadnetworkanalytics_breakdowns_enum_param>"
+                },
+                {
+                    "name": "filters",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "limit",
+                    "required": false,
+                    "type": "int"
+                },
+                {
+                    "name": "metrics",
+                    "required": true,
+                    "type": "list<applicationadnetworkanalytics_metrics_enum_param>"
+                },
+                {
+                    "name": "ordering_column",
+                    "required": false,
+                    "type": "applicationadnetworkanalytics_ordering_column_enum_param"
+                },
+                {
+                    "name": "ordering_type",
+                    "required": false,
+                    "type": "applicationadnetworkanalytics_ordering_type_enum_param"
+                },
+                {
+                    "name": "since",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "until",
+                    "required": false,
+                    "type": "datetime"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "adnetworkanalytics_results",
+            "return": "AdNetworkAnalyticsAsyncQueryResult",
+            "params": [
+                {
+                    "name": "query_ids",
+                    "required": false,
+                    "type": "list<string>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "aem_attribution",
+            "return": "AEMAttribution",
+            "params": [
+                {
+                    "name": "advertiser_ids",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "fb_content_data",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "aem_conversion_configs",
+            "return": "AEMConversionConfig",
+            "params": [
+                {
+                    "name": "advertiser_ids",
+                    "required": false,
+                    "type": "list<string>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "aem_conversion_filter",
+            "return": "AEMConversionFilter",
+            "params": [
+                {
+                    "name": "catalog_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "fb_content_ids",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "aem_conversions",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "aem_conversions",
+                    "required": true,
+                    "type": "list<map>"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "aem_skan_readiness",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "app_id",
+                    "required": true,
+                    "type": "int"
+                },
+                {
+                    "name": "is_aem_ready",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_app_aem_install_ready",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_app_aem_ready",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_skan_ready",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "message",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "agencies",
+            "return": "Business",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "aggregate_revenue",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "ecpms",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "query_ids",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "request_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "sync_api",
+                    "required": false,
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "android_dialog_configs",
+            "return": "ApplicationDialogConfig",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "app_capi_settings",
+            "return": "ApplicationAppCapiSetting",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "app_event_types",
+            "return": "ApplicationAppEventTypes",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "app_indexing",
+            "return": "Application",
+            "params": [
+                {
+                    "name": "app_version",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "device_session_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "extra_info",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "platform",
+                    "required": true,
+                    "type": "applicationapp_indexing_platform_enum_param"
+                },
+                {
+                    "name": "request_type",
+                    "required": false,
+                    "type": "applicationapp_indexing_request_type_enum_param"
+                },
+                {
+                    "name": "tree",
+                    "required": true,
+                    "type": "map"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "app_indexing_session",
+            "return": "Application",
+            "params": [
+                {
+                    "name": "device_session_id",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "extinfo",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "app_installed_groups",
+            "return": "Group",
+            "params": [
+                {
+                    "name": "group_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "app_push_device_token",
+            "return": "Application",
+            "params": [
+                {
+                    "name": "device_id",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "device_token",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "platform",
+                    "required": false,
+                    "type": "applicationapp_push_device_token_platform_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "appassets",
+            "return": "CanvasAppAsset",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "assets",
+            "return": "Application",
+            "params": [
+                {
+                    "name": "asset",
+                    "required": true,
+                    "type": "file"
+                },
+                {
+                    "name": "comment",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "type",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "authorized_adaccounts",
+            "return": "AdAccount",
+            "params": [
+                {
+                    "name": "business",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "button_auto_detection_device_selection",
+            "return": "ButtonAutoDetectionDeviceSelection",
+            "params": [
+                {
+                    "name": "device_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "cloudbridge_settings",
+            "return": "CloudbridgeSetting",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "codeless_event_mappings",
+            "return": "Application",
+            "params": [
+                {
+                    "name": "mappings",
+                    "required": true,
+                    "type": "list<map>"
+                },
+                {
+                    "name": "mutation_method",
+                    "required": true,
+                    "type": "applicationcodeless_event_mappings_mutation_method_enum_param"
+                },
+                {
+                    "name": "platform",
+                    "required": true,
+                    "type": "applicationcodeless_event_mappings_platform_enum_param"
+                },
+                {
+                    "name": "post_method",
+                    "required": false,
+                    "type": "applicationcodeless_event_mappings_post_method_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "connected_client_businesses",
+            "return": "Business",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "da_checks",
+            "return": "DACheck",
+            "params": [
+                {
+                    "name": "checks",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "connection_method",
+                    "required": false,
+                    "type": "applicationda_checks_connection_method_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "domain_reports",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "tracking_domains",
+                    "required": true,
+                    "type": "list<string>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "iap_purchases",
+            "return": "DCPAppStoreOrder",
+            "params": [
+                {
+                    "name": "order_id",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "ios_dialog_configs",
+            "return": "ApplicationDialogConfig",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "linked_dataset",
+            "return": "AdsDataset",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "message_templates",
+            "return": "BusinessMessagingPartnerTemplate",
+            "params": [
+                {
+                    "name": "template_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "mmp_auditing",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "advertiser_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "attribution",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "attribution_method",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "attribution_model",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "attribution_referrer",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "auditing_token",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "click_attr_window",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "custom_events",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "decline_reason",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "device_os",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "engagement_type",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "event",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "event_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "event_reported_time",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "fb_ad_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "fb_adgroup_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "fb_click_time",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "fb_view_time",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "google_install_referrer",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "inactivity_window_hours",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "install_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "is_fb",
+                    "required": true,
+                    "type": "bool"
+                },
+                {
+                    "name": "meta_install_referrer",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "used_install_referrer",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "view_attr_window",
+                    "required": false,
+                    "type": "unsigned int"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "mobile_sdk_gk",
+            "return": "MobileSdkGk",
+            "params": [
+                {
+                    "name": "device_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "extinfo",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "os_version",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "platform",
+                    "required": true,
+                    "type": "applicationmobile_sdk_gk_platform_enum_param"
+                },
+                {
+                    "name": "sdk_version",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "monetized_digital_store_objects",
+            "return": "MonetizedDigitalStoreObject",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "monetized_digital_store_objects",
+            "return": "MonetizedDigitalStoreObject",
+            "params": [
+                {
+                    "name": "content_id",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "store",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "object_types",
+            "return": "NullNode",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "objects",
+            "return": "NullNode",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "occludespopups",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "flash",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "unity",
+                    "required": false,
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "permissions",
+            "return": "ApplicationPermission",
+            "params": [
+                {
+                    "name": "android_key_hash",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "ios_bundle_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "permission",
+                    "required": false,
+                    "type": "list<Permission>"
+                },
+                {
+                    "name": "proxied_app_id",
+                    "required": false,
+                    "type": "int"
+                },
+                {
+                    "name": "status",
+                    "required": false,
+                    "type": "list<applicationpermissions_status_enum_param>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "products",
+            "return": "GamesIAPProduct",
+            "params": [
+                {
+                    "name": "product_ids",
+                    "required": false,
+                    "type": "list<string>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "purchases",
+            "return": "GamesIAPOrder",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "roles",
+            "return": "ApplicationRoles",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "server_domain_infos",
+            "return": "ApplicationServerDomainInfos",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "sgw_dataset_status",
+            "return": "ApplicationSgwDatasetStatus",
+            "params": [
+                {
+                    "name": "dataset_id",
+                    "required": true,
+                    "type": "unsigned int"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "sgw_install_deferral_link",
+            "return": "ApplicationSgwInstallDeferralLink",
+            "params": [
+                {
+                    "name": "client_ip",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "dataset_id",
+                    "required": true,
+                    "type": "unsigned int"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "subscribed_domains",
+            "return": "CTCertDomain",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "subscribed_domains",
+            "return": "Application",
+            "params": [
+                {
+                    "name": "subscribe",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "unsubscribe",
+                    "required": false,
+                    "type": "list<string>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "subscribed_domains_phishing",
+            "return": "CTCertDomain",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "subscribed_domains_phishing",
+            "return": "Application",
+            "params": [
+                {
+                    "name": "subscribe",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "unsubscribe",
+                    "required": false,
+                    "type": "list<string>"
+                }
+            ]
+        },
+        {
+            "method": "DELETE",
+            "endpoint": "subscriptions",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "fields",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "object",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "subscriptions",
+            "return": "ApplicationSubscriptions",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "subscriptions",
+            "return": "ApplicationSubscriptions",
+            "params": [
+                {
+                    "name": "callback_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "fields",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "include_values",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "object",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "verify_token",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "uploads",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "file_length",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "file_name",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "file_type",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "session_type",
+                    "required": false,
+                    "type": "applicationuploads_session_type_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "whatsapp_business_solution",
+            "return": "Application",
+            "params": [
+                {
+                    "name": "owner_permissions",
+                    "required": true,
+                    "type": "list<applicationwhatsapp_business_solution_owner_permissions_enum_param>"
+                },
+                {
+                    "name": "partner_app_id",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "partner_permissions",
+                    "required": true,
+                    "type": "list<applicationwhatsapp_business_solution_partner_permissions_enum_param>"
+                },
+                {
+                    "name": "solution_name",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "whatsapp_business_solutions",
+            "return": "WhatsAppBusinessSolution",
+            "params": [
+                {
+                    "name": "role",
+                    "required": false,
+                    "type": "applicationwhatsapp_business_solutions_role_enum_param"
+                }
+            ]
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "Application",
+            "params": [
+                {
+                    "name": "advertiser_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "#update",
+            "method": "POST",
+            "return": "Application",
+            "params": [
+                {
+                    "name": "allow_cycle_app_secret",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "an_platforms",
+                    "required": false,
+                    "type": "list<application_an_platforms>"
+                },
+                {
+                    "name": "app_domains",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "app_name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "app_type",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "auth_dialog_headline",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "auth_dialog_perms_explanation",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "auth_referral_enabled",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "auth_referral_extended_perms",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "auth_referral_friend_perms",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "auth_referral_response_type",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "auth_referral_user_perms",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "canvas_fluid_height",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "canvas_fluid_width",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "canvas_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "contact_email",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "deauth_callback_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "mobile_web_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "namespace",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "page_tab_default_name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "privacy_policy_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "restrictions",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "secure_canvas_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "secure_page_tab_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "server_ip_whitelist",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "terms_of_service_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "url_scheme_suffix",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "user_support_email",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "user_support_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "website_url",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "name": "aam_rules",
+            "type": "string"
+        },
+        {
+            "name": "an_ad_space_limit",
+            "type": "unsigned int"
+        },
+        {
+            "name": "an_platforms",
+            "type": "list<string>"
+        },
+        {
+            "name": "android_key_hash",
+            "type": "list<string>"
+        },
+        {
+            "name": "android_sdk_error_categories",
+            "type": "list<Object>"
+        },
+        {
+            "name": "app_domains",
+            "type": "list<string>"
+        },
+        {
+            "name": "app_events_config",
+            "type": "Object"
+        },
+        {
+            "name": "app_events_feature_bitmask",
+            "type": "unsigned int"
+        },
+        {
+            "name": "app_events_session_timeout",
+            "type": "unsigned int"
+        },
+        {
+            "name": "app_install_tracked",
+            "type": "bool"
+        },
+        {
+            "name": "app_name",
+            "type": "string"
+        },
+        {
+            "name": "app_signals_binding_ios",
+            "type": "list<Object>"
+        },
+        {
+            "name": "app_type",
+            "type": "unsigned int"
+        },
+        {
+            "name": "auth_dialog_data_help_url",
+            "type": "string"
+        },
+        {
+            "name": "auth_dialog_headline",
+            "type": "string"
+        },
+        {
+            "name": "auth_dialog_perms_explanation",
+            "type": "string"
+        },
+        {
+            "name": "auth_referral_default_activity_privacy",
+            "type": "string"
+        },
+        {
+            "name": "auth_referral_enabled",
+            "type": "unsigned int"
+        },
+        {
+            "name": "auth_referral_extended_perms",
+            "type": "list<string>"
+        },
+        {
+            "name": "auth_referral_friend_perms",
+            "type": "list<string>"
+        },
+        {
+            "name": "auth_referral_response_type",
+            "type": "string"
+        },
+        {
+            "name": "auth_referral_user_perms",
+            "type": "list<string>"
+        },
+        {
+            "name": "auto_event_mapping_android",
+            "type": "list<Object>"
+        },
+        {
+            "name": "auto_event_mapping_ios",
+            "type": "list<Object>"
+        },
+        {
+            "name": "auto_event_setup_enabled",
+            "type": "bool"
+        },
+        {
+            "name": "auto_log_app_events_default",
+            "type": "bool"
+        },
+        {
+            "name": "auto_log_app_events_enabled",
+            "type": "bool"
+        },
+        {
+            "name": "business",
+            "type": "Business"
+        },
+        {
+            "name": "canvas_fluid_height",
+            "type": "bool"
+        },
+        {
+            "name": "canvas_fluid_width",
+            "type": "unsigned int"
+        },
+        {
+            "name": "canvas_url",
+            "type": "string"
+        },
+        {
+            "name": "category",
+            "type": "string"
+        },
+        {
+            "name": "client_config",
+            "type": "map"
+        },
+        {
+            "name": "company",
+            "type": "string"
+        },
+        {
+            "name": "configured_ios_sso",
+            "type": "bool"
+        },
+        {
+            "name": "contact_email",
+            "type": "string"
+        },
+        {
+            "name": "created_time",
+            "type": "datetime"
+        },
+        {
+            "name": "creator_uid",
+            "type": "string"
+        },
+        {
+            "name": "daily_active_users",
+            "type": "string"
+        },
+        {
+            "name": "daily_active_users_rank",
+            "type": "unsigned int"
+        },
+        {
+            "name": "deauth_callback_url",
+            "type": "string"
+        },
+        {
+            "name": "default_share_mode",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "string"
+        },
+        {
+            "name": "enigma_config",
+            "type": "Object"
+        },
+        {
+            "name": "financial_id",
+            "type": "string"
+        },
+        {
+            "name": "gdpv4_chrome_custom_tabs_enabled",
+            "type": "bool"
+        },
+        {
+            "name": "gdpv4_enabled",
+            "type": "bool"
+        },
+        {
+            "name": "gdpv4_nux_content",
+            "type": "string"
+        },
+        {
+            "name": "gdpv4_nux_enabled",
+            "type": "bool"
+        },
+        {
+            "name": "has_messenger_product",
+            "type": "bool"
+        },
+        {
+            "name": "hosting_url",
+            "type": "string"
+        },
+        {
+            "name": "icon_url",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "ios_bundle_id",
+            "type": "list<string>"
+        },
+        {
+            "name": "ios_sdk_dialog_flows",
+            "type": "Object"
+        },
+        {
+            "name": "ios_sdk_error_categories",
+            "type": "list<Object>"
+        },
+        {
+            "name": "ios_sfvc_attr",
+            "type": "bool"
+        },
+        {
+            "name": "ios_supports_native_proxy_auth_flow",
+            "type": "bool"
+        },
+        {
+            "name": "ios_supports_system_auth",
+            "type": "bool"
+        },
+        {
+            "name": "ipad_app_store_id",
+            "type": "string"
+        },
+        {
+            "name": "iphone_app_store_id",
+            "type": "string"
+        },
+        {
+            "name": "latest_sdk_version",
+            "type": "Object"
+        },
+        {
+            "name": "link",
+            "type": "string"
+        },
+        {
+            "name": "logging_token",
+            "type": "string"
+        },
+        {
+            "name": "logo_url",
+            "type": "string"
+        },
+        {
+            "name": "migrations",
+            "type": "map<string, bool>"
+        },
+        {
+            "name": "mobile_profile_section_url",
+            "type": "string"
+        },
+        {
+            "name": "mobile_web_url",
+            "type": "string"
+        },
+        {
+            "name": "monthly_active_users",
+            "type": "string"
+        },
+        {
+            "name": "monthly_active_users_rank",
+            "type": "unsigned int"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "namespace",
+            "type": "string"
+        },
+        {
+            "name": "object_store_urls",
+            "type": "Object"
+        },
+        {
+            "name": "owner_business",
+            "type": "Business"
+        },
+        {
+            "name": "page_tab_default_name",
+            "type": "string"
+        },
+        {
+            "name": "page_tab_url",
+            "type": "string"
+        },
+        {
+            "name": "photo_url",
+            "type": "string"
+        },
+        {
+            "name": "privacy_policy_url",
+            "type": "string"
+        },
+        {
+            "name": "profile_section_url",
+            "type": "string"
+        },
+        {
+            "name": "property_id",
+            "type": "string"
+        },
+        {
+            "name": "protected_mode_rules",
+            "type": "Object"
+        },
+        {
+            "name": "real_time_mode_devices",
+            "type": "list<string>"
+        },
+        {
+            "name": "restrictions",
+            "type": "Object"
+        },
+        {
+            "name": "restrictive_data_filter_params",
+            "type": "string"
+        },
+        {
+            "name": "restrictive_data_filter_rules",
+            "type": "string"
+        },
+        {
+            "name": "sdk_update_message",
+            "type": "string"
+        },
+        {
+            "name": "seamless_login",
+            "type": "int"
+        },
+        {
+            "name": "secure_canvas_url",
+            "type": "string"
+        },
+        {
+            "name": "secure_page_tab_url",
+            "type": "string"
+        },
+        {
+            "name": "server_ip_whitelist",
+            "type": "string"
+        },
+        {
+            "name": "smart_login_bookmark_icon_url",
+            "type": "string"
+        },
+        {
+            "name": "smart_login_menu_icon_url",
+            "type": "string"
+        },
+        {
+            "name": "social_discovery",
+            "type": "unsigned int"
+        },
+        {
+            "name": "subcategory",
+            "type": "string"
+        },
+        {
+            "name": "suggested_events_setting",
+            "type": "string"
+        },
+        {
+            "name": "supported_platforms",
+            "type": "list<Application_supported_platforms>"
+        },
+        {
+            "name": "supports_apprequests_fast_app_switch",
+            "type": "Object"
+        },
+        {
+            "name": "supports_attribution",
+            "type": "bool"
+        },
+        {
+            "name": "supports_implicit_sdk_logging",
+            "type": "bool"
+        },
+        {
+            "name": "suppress_native_ios_gdp",
+            "type": "bool"
+        },
+        {
+            "name": "terms_of_service_url",
+            "type": "string"
+        },
+        {
+            "name": "url_scheme_suffix",
+            "type": "string"
+        },
+        {
+            "name": "user_support_email",
+            "type": "string"
+        },
+        {
+            "name": "user_support_url",
+            "type": "string"
+        },
+        {
+            "name": "website_url",
+            "type": "string"
+        },
+        {
+            "name": "weekly_active_users",
+            "type": "string"
+        }
+    ]
+}

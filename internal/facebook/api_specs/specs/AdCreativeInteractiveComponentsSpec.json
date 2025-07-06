@@ -1,0 +1,13 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "child_attachments",
+            "type": "list<Object>"
+        },
+        {
+            "name": "components",
+            "type": "list<Object>"
+        }
+    ]
+}

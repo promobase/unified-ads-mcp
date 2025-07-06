@@ -1,0 +1,28 @@
+{
+    "apis": [
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "ProductImage",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "height",
+            "type": "int"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "image_url",
+            "type": "string"
+        },
+        {
+            "name": "width",
+            "type": "int"
+        }
+    ]
+}

@@ -1,11 +1,7 @@
 package main
 
 import (
-	"context"
 	"log"
-	"os"
-	"os/signal"
-	"syscall"
 
 	"unified-ads-mcp/internal/config"
 	"unified-ads-mcp/internal/mcp"
@@ -17,20 +13,13 @@ func main() {
 		log.Fatalf("Failed to load configuration: %v", err)
 	}
 
-	server := mcp.NewServer(cfg)
+	server, err := mcp.NewMCPServer(cfg)
+	if err != nil {
+		log.Fatalf("Failed to create server: %v", err)
+	}
 
-	ctx, cancel := context.WithCancel(context.Background())
-	defer cancel()
-
-	go func() {
-		sigChan := make(chan os.Signal, 1)
-		signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
-		<-sigChan
-		log.Println("Shutting down server...")
-		cancel()
-	}()
-
-	if err := server.Start(ctx); err != nil {
+	// The mcp-go ServeStdio handles signals internally
+	if err := server.Start(); err != nil {
 		log.Fatalf("Server failed to start: %v", err)
 	}
 }

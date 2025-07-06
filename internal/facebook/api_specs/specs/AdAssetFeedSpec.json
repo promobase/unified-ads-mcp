@@ -1,0 +1,117 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "ad_formats",
+            "type": "list<string>"
+        },
+        {
+            "name": "additional_data",
+            "type": "AdAssetFeedAdditionalData"
+        },
+        {
+            "name": "app_product_page_id",
+            "type": "string"
+        },
+        {
+            "name": "asset_customization_rules",
+            "type": "list<AdAssetFeedSpecAssetCustomizationRule>"
+        },
+        {
+            "name": "audios",
+            "type": "list<Object>"
+        },
+        {
+            "name": "autotranslate",
+            "type": "list<string>"
+        },
+        {
+            "name": "bodies",
+            "type": "list<AdAssetFeedSpecBody>"
+        },
+        {
+            "name": "call_ads_configuration",
+            "type": "Object"
+        },
+        {
+            "name": "call_to_action_types",
+            "type": "list<AdAssetFeedSpec_call_to_action_types>"
+        },
+        {
+            "name": "call_to_actions",
+            "type": "list<AdAssetFeedSpecCallToAction>"
+        },
+        {
+            "name": "captions",
+            "type": "list<AdAssetFeedSpecCaption>"
+        },
+        {
+            "name": "carousels",
+            "type": "list<AdAssetFeedSpecCarousel>"
+        },
+        {
+            "name": "ctwa_consent_data",
+            "type": "list<Object>"
+        },
+        {
+            "name": "descriptions",
+            "type": "list<AdAssetFeedSpecDescription>"
+        },
+        {
+            "name": "events",
+            "type": "list<AdAssetFeedSpecEvents>"
+        },
+        {
+            "name": "groups",
+            "type": "list<AdAssetFeedSpecGroupRule>"
+        },
+        {
+            "name": "images",
+            "type": "list<AdAssetFeedSpecImage>"
+        },
+        {
+            "name": "link_urls",
+            "type": "list<AdAssetFeedSpecLinkURL>"
+        },
+        {
+            "name": "message_extensions",
+            "type": "list<AdAssetMessageExtensions>"
+        },
+        {
+            "name": "onsite_destinations",
+            "type": "list<AdAssetOnsiteDestinations>"
+        },
+        {
+            "name": "optimization_type",
+            "type": "string"
+        },
+        {
+            "name": "promotional_metadata",
+            "type": "Object"
+        },
+        {
+            "name": "reasons_to_shop",
+            "type": "bool"
+        },
+        {
+            "name": "shops_bundle",
+            "type": "bool"
+        },
+        {
+            "name": "titles",
+            "type": "list<AdAssetFeedSpecTitle>"
+        },
+        {
+            "name": "translations",
+            "type": "list<Object>"
+        },
+        {
+            "name": "upcoming_events",
+            "type": "list<Object>"
+        },
+        {
+            "name": "videos",
+            "type": "list<AdAssetFeedSpecVideo>"
+        }
+    ]
+}

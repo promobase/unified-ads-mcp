@@ -1,0 +1,13 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "body",
+            "type": "string"
+        },
+        {
+            "name": "transformation_spec",
+            "type": "Object"
+        }
+    ]
+}

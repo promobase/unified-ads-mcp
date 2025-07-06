@@ -1,0 +1,539 @@
+{
+    "apis": [
+        {
+            "method": "DELETE",
+            "endpoint": "adaccounts",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "adaccounts",
+                    "required": false,
+                    "type": "list<string>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "adaccounts",
+            "return": "CustomAudienceAdAccount",
+            "params": [
+                {
+                    "name": "permissions",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "adaccounts",
+            "return": "CustomAudience",
+            "params": [
+                {
+                    "name": "adaccounts",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "permissions",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "relationship_type",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "replace",
+                    "required": false,
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "ads",
+            "return": "Ad",
+            "params": [
+                {
+                    "name": "effective_status",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "status",
+                    "required": false,
+                    "type": "list<string>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "health",
+            "return": "CustomAudienceHealth",
+            "params": [
+                {
+                    "name": "calculated_date",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "processed_date",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "value_aggregation_duration",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "value_country",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "value_currency",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "value_version",
+                    "required": false,
+                    "type": "unsigned int"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "salts",
+            "return": "CustomAudienceSalts",
+            "params": [
+                {
+                    "name": "params",
+                    "required": false,
+                    "type": "list<string>"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "salts",
+            "return": "CustomAudience",
+            "params": [
+                {
+                    "name": "salt",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "valid_from",
+                    "required": true,
+                    "type": "datetime"
+                },
+                {
+                    "name": "valid_to",
+                    "required": true,
+                    "type": "datetime"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "sessions",
+            "return": "CustomAudienceSession",
+            "params": [
+                {
+                    "name": "session_id",
+                    "required": false,
+                    "type": "unsigned int"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "shared_account_info",
+            "return": "CustomAudiencesharedAccountInfo",
+            "params": []
+        },
+        {
+            "method": "DELETE",
+            "endpoint": "users",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "namespace",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "payload",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "session",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "users",
+            "return": "CustomAudience",
+            "params": [
+                {
+                    "name": "namespace",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "payload",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "session",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "usersreplace",
+            "return": "CustomAudience",
+            "params": [
+                {
+                    "name": "namespace",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "payload",
+                    "required": true,
+                    "type": "Object"
+                },
+                {
+                    "name": "session",
+                    "required": true,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "name": "#delete",
+            "method": "DELETE",
+            "return": "Object",
+            "params": []
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "CustomAudience",
+            "params": [
+                {
+                    "name": "ad_account_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "special_ad_categories",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "special_ad_category_countries",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "target_countries",
+                    "required": false,
+                    "type": "list<string>"
+                }
+            ]
+        },
+        {
+            "name": "#update",
+            "method": "POST",
+            "return": "CustomAudience",
+            "params": [
+                {
+                    "name": "allowed_domains",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "claim_objective",
+                    "required": false,
+                    "type": "customaudience_claim_objective"
+                },
+                {
+                    "name": "content_type",
+                    "required": false,
+                    "type": "customaudience_content_type"
+                },
+                {
+                    "name": "countries",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "customer_file_source",
+                    "required": false,
+                    "type": "customaudience_customer_file_source"
+                },
+                {
+                    "name": "description",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "enable_fetch_or_create",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "event_source_group",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "event_sources",
+                    "required": false,
+                    "type": "list<map>"
+                },
+                {
+                    "name": "exclusions",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "inclusions",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "lookalike_spec",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "opt_out_link",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "parent_audience_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "product_set_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "retention_days",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "rev_share_policy_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "rule",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "rule_aggregation",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "tags",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "use_in_campaigns",
+                    "required": false,
+                    "type": "bool"
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "name": "account_id",
+            "type": "string"
+        },
+        {
+            "name": "approximate_count_lower_bound",
+            "type": "int"
+        },
+        {
+            "name": "approximate_count_upper_bound",
+            "type": "int"
+        },
+        {
+            "name": "customer_file_source",
+            "type": "string"
+        },
+        {
+            "name": "data_source",
+            "type": "CustomAudienceDataSource"
+        },
+        {
+            "name": "data_source_types",
+            "type": "string"
+        },
+        {
+            "name": "datafile_custom_audience_uploading_status",
+            "type": "string"
+        },
+        {
+            "name": "delete_time",
+            "type": "int"
+        },
+        {
+            "name": "delivery_status",
+            "type": "CustomAudienceStatus"
+        },
+        {
+            "name": "description",
+            "type": "string"
+        },
+        {
+            "name": "excluded_custom_audiences",
+            "type": "list<CustomAudience>"
+        },
+        {
+            "name": "external_event_source",
+            "type": "AdsPixel"
+        },
+        {
+            "name": "household_audience",
+            "type": "int"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "included_custom_audiences",
+            "type": "list<CustomAudience>"
+        },
+        {
+            "name": "is_eligible_for_sac_campaigns",
+            "type": "bool"
+        },
+        {
+            "name": "is_household",
+            "type": "bool"
+        },
+        {
+            "name": "is_snapshot",
+            "type": "bool"
+        },
+        {
+            "name": "is_value_based",
+            "type": "bool"
+        },
+        {
+            "name": "lookalike_audience_ids",
+            "type": "list<string>"
+        },
+        {
+            "name": "lookalike_spec",
+            "type": "LookalikeSpec"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "operation_status",
+            "type": "CustomAudienceStatus"
+        },
+        {
+            "name": "opt_out_link",
+            "type": "string"
+        },
+        {
+            "name": "owner_business",
+            "type": "Business"
+        },
+        {
+            "name": "page_deletion_marked_delete_time",
+            "type": "int"
+        },
+        {
+            "name": "permission_for_actions",
+            "type": "AudiencePermissionForActions"
+        },
+        {
+            "name": "pixel_id",
+            "type": "string"
+        },
+        {
+            "name": "regulated_audience_spec",
+            "type": "LookalikeSpec"
+        },
+        {
+            "name": "retention_days",
+            "type": "int"
+        },
+        {
+            "name": "rev_share_policy_id",
+            "type": "unsigned int"
+        },
+        {
+            "name": "rule",
+            "type": "string"
+        },
+        {
+            "name": "rule_aggregation",
+            "type": "string"
+        },
+        {
+            "name": "rule_v2",
+            "type": "string"
+        },
+        {
+            "name": "seed_audience",
+            "type": "int"
+        },
+        {
+            "name": "sharing_status",
+            "type": "CustomAudienceSharingStatus"
+        },
+        {
+            "name": "subtype",
+            "type": "string"
+        },
+        {
+            "name": "time_content_updated",
+            "type": "unsigned int"
+        },
+        {
+            "name": "time_created",
+            "type": "unsigned int"
+        },
+        {
+            "name": "time_updated",
+            "type": "unsigned int"
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "apis": [
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "AdRuleExecutionSpec",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "execution_options",
+            "type": "list<AdRuleExecutionOptions>"
+        },
+        {
+            "name": "execution_type",
+            "type": "AdRuleExecutionSpec_execution_type"
+        },
+        {
+            "name": "is_once_off",
+            "type": "bool"
+        }
+    ]
+}

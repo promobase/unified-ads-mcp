@@ -1,0 +1,32 @@
+{
+    "apis": [
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "SavedMessageResponse",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "image",
+            "type": "string"
+        },
+        {
+            "name": "is_enabled",
+            "type": "bool"
+        },
+        {
+            "name": "message",
+            "type": "string"
+        },
+        {
+            "name": "title",
+            "type": "string"
+        }
+    ]
+}

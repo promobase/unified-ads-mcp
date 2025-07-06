@@ -1,0 +1,4851 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "ab_tests",
+            "return": "PagePostExperiment",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "ab_tests",
+            "return": "PagePostExperiment",
+            "params": [
+                {
+                    "name": "control_video_id",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "description",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "duration",
+                    "required": true,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "experiment_video_ids",
+                    "required": true,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "name",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "optimization_goal",
+                    "required": true,
+                    "type": "pageab_tests_optimization_goal_enum_param"
+                },
+                {
+                    "name": "scheduled_experiment_timestamp",
+                    "required": false,
+                    "type": "unsigned int"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "acknowledge_orders",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "idempotency_key",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "orders",
+                    "required": true,
+                    "type": "list<map>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "ads_posts",
+            "return": "PagePost",
+            "params": [
+                {
+                    "name": "exclude_dynamic_ads",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "include_inline_create",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "since",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "until",
+                    "required": false,
+                    "type": "datetime"
+                }
+            ]
+        },
+        {
+            "method": "DELETE",
+            "endpoint": "agencies",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "business",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "agencies",
+            "return": "Business",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "agencies",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "business",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "permitted_tasks",
+                    "required": false,
+                    "type": "list<pageagencies_permitted_tasks_enum_param>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "albums",
+            "return": "Album",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "ar_experience",
+            "return": "ArAdsDataContainer",
+            "params": []
+        },
+        {
+            "method": "DELETE",
+            "endpoint": "assigned_users",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "user",
+                    "required": true,
+                    "type": "int"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "assigned_users",
+            "return": "AssignedUser",
+            "params": [
+                {
+                    "name": "business",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "assigned_users",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "tasks",
+                    "required": false,
+                    "type": "list<pageassigned_users_tasks_enum_param>"
+                },
+                {
+                    "name": "user",
+                    "required": true,
+                    "type": "int"
+                }
+            ]
+        },
+        {
+            "method": "DELETE",
+            "endpoint": "blocked",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "asid",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "psid",
+                    "required": false,
+                    "type": "int"
+                },
+                {
+                    "name": "uid",
+                    "required": false,
+                    "type": "int"
+                },
+                {
+                    "name": "user",
+                    "required": false,
+                    "type": "int"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "blocked",
+            "return": "Profile",
+            "params": [
+                {
+                    "name": "uid",
+                    "required": false,
+                    "type": "int"
+                },
+                {
+                    "name": "user",
+                    "required": false,
+                    "type": "int"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "blocked",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "asid",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "psid",
+                    "required": false,
+                    "type": "list<int>"
+                },
+                {
+                    "name": "uid",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "user",
+                    "required": false,
+                    "type": "list<string>"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "business_data",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "data",
+                    "required": true,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "partner_agent",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "processing_type",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "businessprojects",
+            "return": "BusinessProject",
+            "params": [
+                {
+                    "name": "business",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "call_to_actions",
+            "return": "PageCallToAction",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "calls",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "action",
+                    "required": true,
+                    "type": "pagecalls_action_enum_param"
+                },
+                {
+                    "name": "call_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "platform",
+                    "required": false,
+                    "type": "pagecalls_platform_enum_param"
+                },
+                {
+                    "name": "session",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "to",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "canvas_elements",
+            "return": "CanvasBodyElement",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "canvas_elements",
+            "return": "CanvasBodyElement",
+            "params": [
+                {
+                    "name": "canvas_button",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "canvas_carousel",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "canvas_footer",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "canvas_header",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "canvas_lead_form",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "canvas_photo",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "canvas_product_list",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "canvas_product_set",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "canvas_store_locator",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "canvas_template_video",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "canvas_text",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "canvas_video",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "canvases",
+            "return": "Canvas",
+            "params": [
+                {
+                    "name": "is_hidden",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_published",
+                    "required": false,
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "canvases",
+            "return": "Canvas",
+            "params": [
+                {
+                    "name": "background_color",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "body_element_ids",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "enable_swipe_to_open",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_hidden",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_published",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "source_template_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "chat_plugin",
+            "return": "ChatPlugin",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "commerce_merchant_settings",
+            "return": "CommerceMerchantSettings",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "commerce_orders",
+            "return": "CommerceOrder",
+            "params": [
+                {
+                    "name": "filters",
+                    "required": false,
+                    "type": "list<pagecommerce_orders_filters_enum_param>"
+                },
+                {
+                    "name": "state",
+                    "required": false,
+                    "type": "list<pagecommerce_orders_state_enum_param>"
+                },
+                {
+                    "name": "updated_after",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "updated_before",
+                    "required": false,
+                    "type": "datetime"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "commerce_payouts",
+            "return": "CommercePayout",
+            "params": [
+                {
+                    "name": "end_time",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "start_time",
+                    "required": false,
+                    "type": "datetime"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "commerce_transactions",
+            "return": "CommerceOrderTransactionDetail",
+            "params": [
+                {
+                    "name": "end_time",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "payout_reference_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "start_time",
+                    "required": false,
+                    "type": "datetime"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "conversations",
+            "return": "UnifiedThread",
+            "params": [
+                {
+                    "name": "folder",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "platform",
+                    "required": false,
+                    "type": "pageconversations_platform_enum_param"
+                },
+                {
+                    "name": "tags",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "user_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "copyright_manual_claims",
+            "return": "VideoCopyrightMatch",
+            "params": [
+                {
+                    "name": "action",
+                    "required": false,
+                    "type": "pagecopyright_manual_claims_action_enum_param"
+                },
+                {
+                    "name": "action_reason",
+                    "required": false,
+                    "type": "pagecopyright_manual_claims_action_reason_enum_param"
+                },
+                {
+                    "name": "countries",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "match_content_type",
+                    "required": true,
+                    "type": "pagecopyright_manual_claims_match_content_type_enum_param"
+                },
+                {
+                    "name": "matched_asset_id",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "reference_asset_id",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "selected_segments",
+                    "required": false,
+                    "type": "list<map>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "crosspost_whitelisted_pages",
+            "return": "Page",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "ctx_optimization_eligibility",
+            "return": "CTXOptimizationEligibility",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "custom_labels",
+            "return": "PageUserMessageThreadLabel",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "custom_labels",
+            "return": "PageUserMessageThreadLabel",
+            "params": [
+                {
+                    "name": "name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "page_label_name",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "DELETE",
+            "endpoint": "custom_user_settings",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "params",
+                    "required": true,
+                    "type": "list<pagecustom_user_settings_params_enum_param>"
+                },
+                {
+                    "name": "psid",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "custom_user_settings",
+            "return": "CustomUserSettings",
+            "params": [
+                {
+                    "name": "psid",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "custom_user_settings",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "persistent_menu",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "psid",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "dataset",
+            "return": "Dataset",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "dataset",
+            "return": "Dataset",
+            "params": [
+                {
+                    "name": "dataset_name",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "events",
+            "return": "Event",
+            "params": [
+                {
+                    "name": "event_state_filter",
+                    "required": false,
+                    "type": "list<pageevents_event_state_filter_enum_param>"
+                },
+                {
+                    "name": "include_canceled",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "time_filter",
+                    "required": false,
+                    "type": "pageevents_time_filter_enum_param"
+                },
+                {
+                    "name": "type",
+                    "required": false,
+                    "type": "pageevents_type_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "extend_thread_control",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "duration",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "recipient",
+                    "required": true,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "fantasy_games",
+            "return": "FantasyGame",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "feed",
+            "return": "PagePost",
+            "params": [
+                {
+                    "name": "include_hidden",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "limit",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "show_expired",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "with",
+                    "required": false,
+                    "type": "pagefeed_with_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "feed",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "actions",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "album_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "android_key_hash",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "application_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "asked_fun_fact_prompt_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "asset3d_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "associated_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "attach_place_suggestion",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "attached_media",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "audience_exp",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "backdated_time",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "backdated_time_granularity",
+                    "required": false,
+                    "type": "pagefeed_backdated_time_granularity_enum_param"
+                },
+                {
+                    "name": "breaking_news",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "breaking_news_expiration",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "call_to_action",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "caption",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "child_attachments",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "client_mutation_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "composer_entry_picker",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "composer_entry_point",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "composer_entry_time",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "composer_session_events_log",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "composer_session_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "composer_source_surface",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "composer_type",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "connection_class",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "content_attachment",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "coordinates",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "cta_link",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "cta_type",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "description",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "direct_share_status",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "enforce_link_ownership",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "expanded_height",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "expanded_width",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "feed_targeting",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "formatting",
+                    "required": false,
+                    "type": "pagefeed_formatting_enum_param"
+                },
+                {
+                    "name": "fun_fact_prompt_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "fun_fact_toastee_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "height",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "home_checkin_city_id",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "image_crops",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "implicit_with_tags",
+                    "required": false,
+                    "type": "list<int>"
+                },
+                {
+                    "name": "instant_game_entry_point_data",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "ios_bundle_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "is_backout_draft",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_boost_intended",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_explicit_location",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_explicit_share",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_group_linking_post",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_photo_container",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "link",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "location_source_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "manual_privacy",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "message",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "multi_share_end_card",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "multi_share_optimized",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "nectar_module",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "object_attachment",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "og_action_type_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "og_hide_object_attachment",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "og_icon_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "og_object_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "og_phrase",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "og_set_profile_badge",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "og_suggestion_mechanism",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "page_recommendation",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "picture",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "place",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "place_attachment_setting",
+                    "required": false,
+                    "type": "pagefeed_place_attachment_setting_enum_param"
+                },
+                {
+                    "name": "place_list",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "place_list_data",
+                    "required": false,
+                    "type": "list"
+                },
+                {
+                    "name": "post_surfaces_blacklist",
+                    "required": false,
+                    "type": "list<pagefeed_post_surfaces_blacklist_enum_param>"
+                },
+                {
+                    "name": "posting_to_redspace",
+                    "required": false,
+                    "type": "pagefeed_posting_to_redspace_enum_param"
+                },
+                {
+                    "name": "privacy",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "prompt_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "prompt_tracking_string",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "properties",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "proxied_app_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "publish_event_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "published",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "quote",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "ref",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "referenceable_image_ids",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "referral_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "scheduled_publish_time",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "source",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "sponsor_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "sponsor_relationship",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "suggested_place_id",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "tags",
+                    "required": false,
+                    "type": "list<int>"
+                },
+                {
+                    "name": "target_surface",
+                    "required": false,
+                    "type": "pagefeed_target_surface_enum_param"
+                },
+                {
+                    "name": "targeting",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "text_format_metadata",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "text_format_preset_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "text_only_place",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "thumbnail",
+                    "required": false,
+                    "type": "file"
+                },
+                {
+                    "name": "time_since_original_post",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "title",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "tracking_info",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "unpublished_content_type",
+                    "required": false,
+                    "type": "pagefeed_unpublished_content_type_enum_param"
+                },
+                {
+                    "name": "user_selected_tags",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "video_start_time_ms",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "viewer_coordinates",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "width",
+                    "required": false,
+                    "type": "unsigned int"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "global_brand_children",
+            "return": "Page",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "image_copyrights",
+            "return": "ImageCopyright",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "image_copyrights",
+            "return": "ImageCopyright",
+            "params": [
+                {
+                    "name": "artist",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "attribution_link",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "creator",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "custom_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "description",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "filename",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "geo_ownership",
+                    "required": true,
+                    "type": "list<pageimage_copyrights_geo_ownership_enum_param>"
+                },
+                {
+                    "name": "original_content_creation_date",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "reference_photo",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "title",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "indexed_videos",
+            "return": "AdVideo",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "insights",
+            "return": "InsightsResult",
+            "params": [
+                {
+                    "name": "breakdown",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "date_preset",
+                    "required": false,
+                    "type": "pageinsights_date_preset_enum_param"
+                },
+                {
+                    "name": "metric",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "period",
+                    "required": false,
+                    "type": "pageinsights_period_enum_param"
+                },
+                {
+                    "name": "show_description_from_api_doc",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "since",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "until",
+                    "required": false,
+                    "type": "datetime"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "instagram_accounts",
+            "return": "IGUser",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "leadgen_forms",
+            "return": "LeadgenForm",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "leadgen_forms",
+            "return": "LeadgenForm",
+            "params": [
+                {
+                    "name": "allow_organic_lead_retrieval",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "block_display_for_non_targeted_viewer",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "context_card",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "cover_photo",
+                    "required": false,
+                    "type": "file"
+                },
+                {
+                    "name": "custom_disclaimer",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "follow_up_action_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "is_for_canvas",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_optimized_for_quality",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "locale",
+                    "required": false,
+                    "type": "pageleadgen_forms_locale_enum_param"
+                },
+                {
+                    "name": "name",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "privacy_policy",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "question_page_custom_headline",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "questions",
+                    "required": true,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "thank_you_page",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "tracking_parameters",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "upload_gated_file",
+                    "required": false,
+                    "type": "file"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "likes",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "target_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "live_videos",
+            "return": "LiveVideo",
+            "params": [
+                {
+                    "name": "broadcast_status",
+                    "required": false,
+                    "type": "list<pagelive_videos_broadcast_status_enum_param>"
+                },
+                {
+                    "name": "source",
+                    "required": false,
+                    "type": "pagelive_videos_source_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "live_videos",
+            "return": "LiveVideo",
+            "params": [
+                {
+                    "name": "content_tags",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "crossposting_actions",
+                    "required": false,
+                    "type": "list<map>"
+                },
+                {
+                    "name": "custom_labels",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "description",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "enable_backup_ingest",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "encoding_settings",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "event_params",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "fisheye_video_cropped",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "front_z_rotation",
+                    "required": false,
+                    "type": "float"
+                },
+                {
+                    "name": "game_show",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "is_audio_only",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_spherical",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "original_fov",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "privacy",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "projection",
+                    "required": false,
+                    "type": "pagelive_videos_projection_enum_param"
+                },
+                {
+                    "name": "published",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "schedule_custom_profile_image",
+                    "required": false,
+                    "type": "file"
+                },
+                {
+                    "name": "spatial_audio_format",
+                    "required": false,
+                    "type": "pagelive_videos_spatial_audio_format_enum_param"
+                },
+                {
+                    "name": "status",
+                    "required": false,
+                    "type": "pagelive_videos_status_enum_param"
+                },
+                {
+                    "name": "stereoscopic_mode",
+                    "required": false,
+                    "type": "pagelive_videos_stereoscopic_mode_enum_param"
+                },
+                {
+                    "name": "stop_on_delete_stream",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "stream_type",
+                    "required": false,
+                    "type": "pagelive_videos_stream_type_enum_param"
+                },
+                {
+                    "name": "targeting",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "title",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "DELETE",
+            "endpoint": "locations",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "location_page_ids",
+                    "required": true,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "store_numbers",
+                    "required": true,
+                    "type": "list<unsigned int>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "locations",
+            "return": "Page",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "locations",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "always_open",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "delivery_and_pickup_option_info",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "differently_open_offerings",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "hours",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "ignore_warnings",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "location",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "location_page_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "old_store_number",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "page_username",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "permanently_closed",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "phone",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "pickup_options",
+                    "required": false,
+                    "type": "list<pagelocations_pickup_options_enum_param>"
+                },
+                {
+                    "name": "place_topics",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "price_range",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "store_code",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "store_location_descriptor",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "store_name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "store_number",
+                    "required": true,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "temporary_status",
+                    "required": false,
+                    "type": "pagelocations_temporary_status_enum_param"
+                },
+                {
+                    "name": "website",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "media_fingerprints",
+            "return": "MediaFingerprint",
+            "params": [
+                {
+                    "name": "universal_content_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "media_fingerprints",
+            "return": "MediaFingerprint",
+            "params": [
+                {
+                    "name": "fingerprint_content_type",
+                    "required": true,
+                    "type": "pagemedia_fingerprints_fingerprint_content_type_enum_param"
+                },
+                {
+                    "name": "metadata",
+                    "required": true,
+                    "type": "list"
+                },
+                {
+                    "name": "source",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "title",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "universal_content_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "message_attachments",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "message",
+                    "required": true,
+                    "type": "Object"
+                },
+                {
+                    "name": "platform",
+                    "required": false,
+                    "type": "pagemessage_attachments_platform_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "DELETE",
+            "endpoint": "message_templates",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "name",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "template_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "message_templates",
+            "return": "MessengerBusinessTemplate",
+            "params": [
+                {
+                    "name": "category",
+                    "required": false,
+                    "type": "list<pagemessage_templates_category_enum_param>"
+                },
+                {
+                    "name": "content",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "language",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "name_or_content",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "status",
+                    "required": false,
+                    "type": "list<pagemessage_templates_status_enum_param>"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "message_templates",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "category",
+                    "required": true,
+                    "type": "pagemessage_templates_category_enum_param"
+                },
+                {
+                    "name": "components",
+                    "required": false,
+                    "type": "list<map>"
+                },
+                {
+                    "name": "language",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "library_template_button_inputs",
+                    "required": false,
+                    "type": "list<map>"
+                },
+                {
+                    "name": "library_template_name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "name",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "messages",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "message",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "messaging_type",
+                    "required": false,
+                    "type": "pagemessages_messaging_type_enum_param"
+                },
+                {
+                    "name": "notification_type",
+                    "required": false,
+                    "type": "pagemessages_notification_type_enum_param"
+                },
+                {
+                    "name": "payload",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "persona_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "recipient",
+                    "required": true,
+                    "type": "Object"
+                },
+                {
+                    "name": "reply_to",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "sender_action",
+                    "required": false,
+                    "type": "pagemessages_sender_action_enum_param"
+                },
+                {
+                    "name": "suggestion_action",
+                    "required": false,
+                    "type": "pagemessages_suggestion_action_enum_param"
+                },
+                {
+                    "name": "tag",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "thread_control",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "messaging_feature_review",
+            "return": "MessagingFeatureReview",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "messenger_call_settings",
+            "return": "MessengerCallSettings",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "messenger_call_settings",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "audio_enabled",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "call_hours",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "call_routing",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "icon_enabled",
+                    "required": false,
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "messenger_lead_forms",
+            "return": "MessengerAdsPartialAutomatedStepList",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "messenger_lead_forms",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "account_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "block_send_api",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "exit_keyphrases",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "handover_app_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "handover_summary",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "privacy_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "reminder_text",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "step_list",
+                    "required": true,
+                    "type": "list<map>"
+                },
+                {
+                    "name": "stop_question_message",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "template_name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "tracking_parameters",
+                    "required": false,
+                    "type": "map"
+                }
+            ]
+        },
+        {
+            "method": "DELETE",
+            "endpoint": "messenger_profile",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "fields",
+                    "required": true,
+                    "type": "list<pagemessenger_profile_fields_enum_param>"
+                },
+                {
+                    "name": "platform",
+                    "required": false,
+                    "type": "pagemessenger_profile_platform_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "messenger_profile",
+            "return": "MessengerProfile",
+            "params": [
+                {
+                    "name": "platform",
+                    "required": false,
+                    "type": "pagemessenger_profile_platform_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "messenger_profile",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "account_linking_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "commands",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "description",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "get_started",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "greeting",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "ice_breakers",
+                    "required": false,
+                    "type": "list<map>"
+                },
+                {
+                    "name": "persistent_menu",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "platform",
+                    "required": false,
+                    "type": "pagemessenger_profile_platform_enum_param"
+                },
+                {
+                    "name": "title",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "whitelisted_domains",
+                    "required": false,
+                    "type": "list<string>"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "moderate_conversations",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "actions",
+                    "required": true,
+                    "type": "list<pagemoderate_conversations_actions_enum_param>"
+                },
+                {
+                    "name": "user_ids",
+                    "required": true,
+                    "type": "list<map>"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "nlp_configs",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "api_version",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "custom_token",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "model",
+                    "required": false,
+                    "type": "pagenlp_configs_model_enum_param"
+                },
+                {
+                    "name": "n_best",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "nlp_enabled",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "other_language_support",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "verbose",
+                    "required": false,
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "notification_message_tokens",
+            "return": "UserPageOneTimeOptInTokenSettings",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "notification_messages_dev_support",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "developer_action",
+                    "required": true,
+                    "type": "pagenotification_messages_dev_support_developer_action_enum_param"
+                },
+                {
+                    "name": "recipient",
+                    "required": true,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "page_backed_instagram_accounts",
+            "return": "IGUser",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "page_backed_instagram_accounts",
+            "return": "IGUser",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "page_whatsapp_number_verification",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "verification_code",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "whatsapp_number",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "pass_thread_control",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "metadata",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "recipient",
+                    "required": true,
+                    "type": "Object"
+                },
+                {
+                    "name": "target_app_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "personas",
+            "return": "Persona",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "personas",
+            "return": "Persona",
+            "params": [
+                {
+                    "name": "name",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "profile_picture_url",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "photo_stories",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "photo_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "photos",
+            "return": "Photo",
+            "params": [
+                {
+                    "name": "biz_tag_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "business_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "type",
+                    "required": false,
+                    "type": "pagephotos_type_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "photos",
+            "return": "Photo",
+            "params": [
+                {
+                    "name": "aid",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "allow_spherical_photo",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "alt_text_custom",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "android_key_hash",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "application_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "attempt",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "audience_exp",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "backdated_time",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "backdated_time_granularity",
+                    "required": false,
+                    "type": "pagephotos_backdated_time_granularity_enum_param"
+                },
+                {
+                    "name": "caption",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "composer_session_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "direct_share_status",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "feed_targeting",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "filter_type",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "full_res_is_coming_later",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "initial_view_heading_override_degrees",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "initial_view_pitch_override_degrees",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "initial_view_vertical_fov_override_degrees",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "ios_bundle_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "is_explicit_location",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_explicit_place",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "location_source_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "manual_privacy",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "message",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "nectar_module",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "no_story",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "offline_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "og_action_type_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "og_icon_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "og_object_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "og_phrase",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "og_set_profile_badge",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "og_suggestion_mechanism",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "parent_media_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "place",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "privacy",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "profile_id",
+                    "required": false,
+                    "type": "int"
+                },
+                {
+                    "name": "provenance_info",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "proxied_app_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "published",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "qn",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "scheduled_publish_time",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "spherical_metadata",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "sponsor_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "sponsor_relationship",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "tags",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "target_id",
+                    "required": false,
+                    "type": "int"
+                },
+                {
+                    "name": "targeting",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "temporary",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "time_since_original_post",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "uid",
+                    "required": false,
+                    "type": "int"
+                },
+                {
+                    "name": "unpublished_content_type",
+                    "required": false,
+                    "type": "pagephotos_unpublished_content_type_enum_param"
+                },
+                {
+                    "name": "url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "user_selected_tags",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "vault_image_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "picture",
+            "return": "ProfilePictureSource",
+            "params": [
+                {
+                    "name": "height",
+                    "required": false,
+                    "type": "int"
+                },
+                {
+                    "name": "redirect",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "type",
+                    "required": false,
+                    "type": "pagepicture_type_enum_param"
+                },
+                {
+                    "name": "width",
+                    "required": false,
+                    "type": "int"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "picture",
+            "return": "ProfilePictureSource",
+            "params": [
+                {
+                    "name": "android_key_hash",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "burn_media_effect",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "caption",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "composer_session_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "frame_entrypoint",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "has_umg",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "height",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "ios_bundle_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "media_effect_ids",
+                    "required": false,
+                    "type": "list<int>"
+                },
+                {
+                    "name": "media_effect_source_object_id",
+                    "required": false,
+                    "type": "int"
+                },
+                {
+                    "name": "msqrd_mask_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "photo",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "picture",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "profile_pic_method",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "profile_pic_source",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "proxied_app_id",
+                    "required": false,
+                    "type": "int"
+                },
+                {
+                    "name": "qn",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "reuse",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "scaled_crop_rect",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "set_profile_photo_shield",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "sticker_id",
+                    "required": false,
+                    "type": "int"
+                },
+                {
+                    "name": "sticker_source_object_id",
+                    "required": false,
+                    "type": "int"
+                },
+                {
+                    "name": "suppress_stories",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "width",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "x",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "y",
+                    "required": false,
+                    "type": "unsigned int"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "posts",
+            "return": "PagePost",
+            "params": [
+                {
+                    "name": "include_hidden",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "limit",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "q",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "show_expired",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "with",
+                    "required": false,
+                    "type": "pageposts_with_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "product_catalogs",
+            "return": "ProductCatalog",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "published_posts",
+            "return": "PagePost",
+            "params": [
+                {
+                    "name": "include_hidden",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "limit",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "show_expired",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "with",
+                    "required": false,
+                    "type": "pagepublished_posts_with_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "release_thread_control",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "recipient",
+                    "required": true,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "request_thread_control",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "metadata",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "recipient",
+                    "required": true,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "roles",
+            "return": "User",
+            "params": [
+                {
+                    "name": "include_deactivated",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "uid",
+                    "required": false,
+                    "type": "int"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "rtb_dynamic_posts",
+            "return": "RTBDynamicPost",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "scheduled_posts",
+            "return": "PagePost",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "secondary_receivers",
+            "return": "Application",
+            "params": [
+                {
+                    "name": "platform",
+                    "required": false,
+                    "type": "pagesecondary_receivers_platform_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "settings",
+            "return": "PageSettings",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "settings",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "option",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "shop_setup_status",
+            "return": "CommerceMerchantSettingsSetupStatus",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "store_locations",
+            "return": "StoreLocation",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "stories",
+            "return": "Stories",
+            "params": [
+                {
+                    "name": "since",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "status",
+                    "required": false,
+                    "type": "list<pagestories_status_enum_param>"
+                },
+                {
+                    "name": "until",
+                    "required": false,
+                    "type": "datetime"
+                }
+            ]
+        },
+        {
+            "method": "DELETE",
+            "endpoint": "subscribed_apps",
+            "return": "Object",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "subscribed_apps",
+            "return": "Application",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "subscribed_apps",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "subscribed_fields",
+                    "required": true,
+                    "type": "list<pagesubscribed_apps_subscribed_fields_enum_param>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "tabs",
+            "return": "Tab",
+            "params": [
+                {
+                    "name": "tab",
+                    "required": false,
+                    "type": "list<string>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "tagged",
+            "return": "PagePost",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "take_thread_control",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "metadata",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "recipient",
+                    "required": true,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "thread_owner",
+            "return": "PageThreadOwner",
+            "params": [
+                {
+                    "name": "recipient",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "threads",
+            "return": "UnifiedThread",
+            "params": [
+                {
+                    "name": "folder",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "platform",
+                    "required": false,
+                    "type": "pagethreads_platform_enum_param"
+                },
+                {
+                    "name": "tags",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "user_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "unlink_accounts",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "psid",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "video_copyright_rules",
+            "return": "VideoCopyrightRule",
+            "params": [
+                {
+                    "name": "selected_rule_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "source",
+                    "required": false,
+                    "type": "pagevideo_copyright_rules_source_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "video_copyright_rules",
+            "return": "VideoCopyrightRule",
+            "params": [
+                {
+                    "name": "condition_groups",
+                    "required": true,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "name",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "video_copyrights",
+            "return": "VideoCopyright",
+            "params": [
+                {
+                    "name": "attribution_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "content_category",
+                    "required": false,
+                    "type": "pagevideo_copyrights_content_category_enum_param"
+                },
+                {
+                    "name": "copyright_content_id",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "excluded_ownership_countries",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "excluded_ownership_segments",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "is_reference_disabled",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_reference_video",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "monitoring_type",
+                    "required": false,
+                    "type": "pagevideo_copyrights_monitoring_type_enum_param"
+                },
+                {
+                    "name": "ownership_countries",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "rule_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "tags",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "whitelisted_ids",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "whitelisted_ig_user_ids",
+                    "required": false,
+                    "type": "list<string>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "video_lists",
+            "return": "VideoList",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "video_reels",
+            "return": "AdVideo",
+            "params": [
+                {
+                    "name": "since",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "until",
+                    "required": false,
+                    "type": "datetime"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "video_reels",
+            "return": "AdVideo",
+            "params": [
+                {
+                    "name": "description",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "feed_targeting",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "place",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "scheduled_publish_time",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "targeting",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "title",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "upload_phase",
+                    "required": true,
+                    "type": "pagevideo_reels_upload_phase_enum_param"
+                },
+                {
+                    "name": "video_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "video_state",
+                    "required": false,
+                    "type": "pagevideo_reels_video_state_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "video_stories",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "description",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "feed_targeting",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "place",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "scheduled_publish_time",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "targeting",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "title",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "upload_phase",
+                    "required": true,
+                    "type": "pagevideo_stories_upload_phase_enum_param"
+                },
+                {
+                    "name": "video_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "video_state",
+                    "required": false,
+                    "type": "pagevideo_stories_video_state_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "videos",
+            "return": "AdVideo",
+            "params": [
+                {
+                    "name": "type",
+                    "required": false,
+                    "type": "pagevideos_type_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "videos",
+            "return": "AdVideo",
+            "params": [
+                {
+                    "name": "ad_breaks",
+                    "required": false,
+                    "type": "list"
+                },
+                {
+                    "name": "application_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "asked_fun_fact_prompt_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "audio_story_wave_animation_handle",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "backdated_post",
+                    "required": false,
+                    "type": "list"
+                },
+                {
+                    "name": "call_to_action",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "composer_entry_picker",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "composer_entry_point",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "composer_entry_time",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "composer_session_events_log",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "composer_session_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "composer_source_surface",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "composer_type",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "container_type",
+                    "required": false,
+                    "type": "pagevideos_container_type_enum_param"
+                },
+                {
+                    "name": "content_category",
+                    "required": false,
+                    "type": "pagevideos_content_category_enum_param"
+                },
+                {
+                    "name": "content_tags",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "creative_tools",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "crossposted_video_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "custom_labels",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "description",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "direct_share_status",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "embeddable",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "end_offset",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "expiration",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "fbuploader_video_file_chunk",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "feed_targeting",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "file_size",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "file_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "fisheye_video_cropped",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "formatting",
+                    "required": false,
+                    "type": "pagevideos_formatting_enum_param"
+                },
+                {
+                    "name": "fov",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "front_z_rotation",
+                    "required": false,
+                    "type": "float"
+                },
+                {
+                    "name": "fun_fact_prompt_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "fun_fact_toastee_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "guide",
+                    "required": false,
+                    "type": "list<list<unsigned int>>"
+                },
+                {
+                    "name": "guide_enabled",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "initial_heading",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "initial_pitch",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "instant_game_entry_point_data",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "is_boost_intended",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_explicit_share",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_group_linking_post",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_partnership_ad",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_voice_clip",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "location_source_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "manual_privacy",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "multilingual_data",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "no_story",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "og_action_type_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "og_icon_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "og_object_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "og_phrase",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "og_suggestion_mechanism",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "original_fov",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "original_projection_type",
+                    "required": false,
+                    "type": "pagevideos_original_projection_type_enum_param"
+                },
+                {
+                    "name": "partnership_ad_ad_code",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "publish_event_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "published",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "reference_only",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "referenced_sticker_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "replace_video_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "scheduled_publish_time",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "secret",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "slideshow_spec",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "social_actions",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "source",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "source_instagram_media_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "specified_dialect",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "spherical",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "sponsor_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "sponsor_relationship",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "start_offset",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "swap_mode",
+                    "required": false,
+                    "type": "pagevideos_swap_mode_enum_param"
+                },
+                {
+                    "name": "targeting",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "text_format_metadata",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "thumb",
+                    "required": false,
+                    "type": "file"
+                },
+                {
+                    "name": "time_since_original_post",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "title",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "transcode_setting_properties",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "universal_video_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "unpublished_content_type",
+                    "required": false,
+                    "type": "pagevideos_unpublished_content_type_enum_param"
+                },
+                {
+                    "name": "upload_phase",
+                    "required": false,
+                    "type": "pagevideos_upload_phase_enum_param"
+                },
+                {
+                    "name": "upload_session_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "upload_setting_properties",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "video_asset_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "video_file_chunk",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "video_id_original",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "video_start_time_ms",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "waterfall_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "visitor_posts",
+            "return": "PagePost",
+            "params": [
+                {
+                    "name": "include_hidden",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "limit",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "show_expired",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "with",
+                    "required": false,
+                    "type": "pagevisitor_posts_with_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "DELETE",
+            "endpoint": "welcome_message_flows",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "flow_id",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "welcome_message_flows",
+            "return": "CTXPartnerAppWelcomeMessageFlow",
+            "params": [
+                {
+                    "name": "app_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "flow_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "welcome_message_flows",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "eligible_platforms",
+                    "required": false,
+                    "type": "list<pagewelcome_message_flows_eligible_platforms_enum_param>"
+                },
+                {
+                    "name": "flow_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "welcome_message_flow",
+                    "required": false,
+                    "type": "list<Object>"
+                }
+            ]
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "account_linking_token",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "#update",
+            "method": "POST",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "about",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "accept_crossposting_handshake",
+                    "required": false,
+                    "type": "list<map>"
+                },
+                {
+                    "name": "allow_spherical_photo",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "attire",
+                    "required": false,
+                    "type": "page_attire"
+                },
+                {
+                    "name": "begin_crossposting_handshake",
+                    "required": false,
+                    "type": "list<map>"
+                },
+                {
+                    "name": "bio",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "category_list",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "company_overview",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "contact_address",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "cover",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "culinary_team",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "delivery_and_pickup_option_info",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "description",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "differently_open_offerings",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "directed_by",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "displayed_message_response_time",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "emails",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "focus_x",
+                    "required": false,
+                    "type": "float"
+                },
+                {
+                    "name": "focus_y",
+                    "required": false,
+                    "type": "float"
+                },
+                {
+                    "name": "food_styles",
+                    "required": false,
+                    "type": "list<page_food_styles>"
+                },
+                {
+                    "name": "gen_ai_provenance_type",
+                    "required": false,
+                    "type": "page_gen_ai_provenance_type"
+                },
+                {
+                    "name": "general_info",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "general_manager",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "genre",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "hours",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "ignore_coordinate_warnings",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "impressum",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "is_always_open",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_permanently_closed",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_published",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_webhooks_subscribed",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "location",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "menu",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "mission",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "no_feed_story",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "no_notification",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "offset_x",
+                    "required": false,
+                    "type": "int"
+                },
+                {
+                    "name": "offset_y",
+                    "required": false,
+                    "type": "int"
+                },
+                {
+                    "name": "parking",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "payment_options",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "phone",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "pickup_options",
+                    "required": false,
+                    "type": "list<page_pickup_options>"
+                },
+                {
+                    "name": "plot_outline",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "price_range",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "public_transit",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "restaurant_services",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "restaurant_specialties",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "scrape",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "service_details",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "spherical_metadata",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "start_info",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "store_location_descriptor",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "temporary_status",
+                    "required": false,
+                    "type": "page_temporary_status"
+                },
+                {
+                    "name": "website",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "zoom_scale_x",
+                    "required": false,
+                    "type": "float"
+                },
+                {
+                    "name": "zoom_scale_y",
+                    "required": false,
+                    "type": "float"
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "name": "about",
+            "type": "string"
+        },
+        {
+            "name": "access_token",
+            "type": "string"
+        },
+        {
+            "name": "ad_campaign",
+            "type": "AdSet"
+        },
+        {
+            "name": "affiliation",
+            "type": "string"
+        },
+        {
+            "name": "app_id",
+            "type": "string"
+        },
+        {
+            "name": "artists_we_like",
+            "type": "string"
+        },
+        {
+            "name": "attire",
+            "type": "string"
+        },
+        {
+            "name": "available_promo_offer_ids",
+            "type": "list<map<string, list<map<string, string>>>>"
+        },
+        {
+            "name": "awards",
+            "type": "string"
+        },
+        {
+            "name": "band_interests",
+            "type": "string"
+        },
+        {
+            "name": "band_members",
+            "type": "string"
+        },
+        {
+            "name": "best_page",
+            "type": "Page"
+        },
+        {
+            "name": "bio",
+            "type": "string"
+        },
+        {
+            "name": "birthday",
+            "type": "string"
+        },
+        {
+            "name": "booking_agent",
+            "type": "string"
+        },
+        {
+            "name": "breaking_news_usage",
+            "type": "Object"
+        },
+        {
+            "name": "built",
+            "type": "string"
+        },
+        {
+            "name": "business",
+            "type": "Object"
+        },
+        {
+            "name": "can_checkin",
+            "type": "bool"
+        },
+        {
+            "name": "can_post",
+            "type": "bool"
+        },
+        {
+            "name": "category",
+            "type": "string"
+        },
+        {
+            "name": "category_list",
+            "type": "list<PageCategory>"
+        },
+        {
+            "name": "checkins",
+            "type": "unsigned int"
+        },
+        {
+            "name": "company_overview",
+            "type": "string"
+        },
+        {
+            "name": "connected_instagram_account",
+            "type": "IGUser"
+        },
+        {
+            "name": "connected_page_backed_instagram_account",
+            "type": "IGUser"
+        },
+        {
+            "name": "contact_address",
+            "type": "MailingAddress"
+        },
+        {
+            "name": "copyright_whitelisted_ig_partners",
+            "type": "list<string>"
+        },
+        {
+            "name": "country_page_likes",
+            "type": "unsigned int"
+        },
+        {
+            "name": "cover",
+            "type": "CoverPhoto"
+        },
+        {
+            "name": "culinary_team",
+            "type": "string"
+        },
+        {
+            "name": "current_location",
+            "type": "string"
+        },
+        {
+            "name": "delivery_and_pickup_option_info",
+            "type": "list<string>"
+        },
+        {
+            "name": "description",
+            "type": "string"
+        },
+        {
+            "name": "description_html",
+            "type": "string"
+        },
+        {
+            "name": "differently_open_offerings",
+            "type": "list<map<string, bool>>"
+        },
+        {
+            "name": "directed_by",
+            "type": "string"
+        },
+        {
+            "name": "display_subtext",
+            "type": "string"
+        },
+        {
+            "name": "displayed_message_response_time",
+            "type": "string"
+        },
+        {
+            "name": "does_viewer_have_page_permission_link_ig",
+            "type": "bool"
+        },
+        {
+            "name": "emails",
+            "type": "list<string>"
+        },
+        {
+            "name": "engagement",
+            "type": "Engagement"
+        },
+        {
+            "name": "fan_count",
+            "type": "unsigned int"
+        },
+        {
+            "name": "featured_video",
+            "type": "AdVideo"
+        },
+        {
+            "name": "features",
+            "type": "string"
+        },
+        {
+            "name": "followers_count",
+            "type": "unsigned int"
+        },
+        {
+            "name": "food_styles",
+            "type": "list<string>"
+        },
+        {
+            "name": "founded",
+            "type": "string"
+        },
+        {
+            "name": "general_info",
+            "type": "string"
+        },
+        {
+            "name": "general_manager",
+            "type": "string"
+        },
+        {
+            "name": "genre",
+            "type": "string"
+        },
+        {
+            "name": "global_brand_page_name",
+            "type": "string"
+        },
+        {
+            "name": "global_brand_root_id",
+            "type": "string"
+        },
+        {
+            "name": "has_added_app",
+            "type": "bool"
+        },
+        {
+            "name": "has_lead_access",
+            "type": "HasLeadAccess"
+        },
+        {
+            "name": "has_transitioned_to_new_page_experience",
+            "type": "bool"
+        },
+        {
+            "name": "has_whatsapp_business_number",
+            "type": "bool"
+        },
+        {
+            "name": "has_whatsapp_number",
+            "type": "bool"
+        },
+        {
+            "name": "hometown",
+            "type": "string"
+        },
+        {
+            "name": "hours",
+            "type": "map<string, string>"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "impressum",
+            "type": "string"
+        },
+        {
+            "name": "influences",
+            "type": "string"
+        },
+        {
+            "name": "instagram_business_account",
+            "type": "IGUser"
+        },
+        {
+            "name": "is_always_open",
+            "type": "bool"
+        },
+        {
+            "name": "is_calling_eligible",
+            "type": "bool"
+        },
+        {
+            "name": "is_chain",
+            "type": "bool"
+        },
+        {
+            "name": "is_community_page",
+            "type": "bool"
+        },
+        {
+            "name": "is_eligible_for_branded_content",
+            "type": "bool"
+        },
+        {
+            "name": "is_eligible_for_disable_connect_ig_btn_for_non_page_admin_am_web",
+            "type": "bool"
+        },
+        {
+            "name": "is_messenger_bot_get_started_enabled",
+            "type": "bool"
+        },
+        {
+            "name": "is_messenger_platform_bot",
+            "type": "bool"
+        },
+        {
+            "name": "is_owned",
+            "type": "bool"
+        },
+        {
+            "name": "is_permanently_closed",
+            "type": "bool"
+        },
+        {
+            "name": "is_published",
+            "type": "bool"
+        },
+        {
+            "name": "is_unclaimed",
+            "type": "bool"
+        },
+        {
+            "name": "is_verified",
+            "type": "bool"
+        },
+        {
+            "name": "is_webhooks_subscribed",
+            "type": "bool"
+        },
+        {
+            "name": "keywords",
+            "type": "Object"
+        },
+        {
+            "name": "leadgen_tos_acceptance_time",
+            "type": "datetime"
+        },
+        {
+            "name": "leadgen_tos_accepted",
+            "type": "bool"
+        },
+        {
+            "name": "leadgen_tos_accepting_user",
+            "type": "User"
+        },
+        {
+            "name": "link",
+            "type": "string"
+        },
+        {
+            "name": "location",
+            "type": "Location"
+        },
+        {
+            "name": "members",
+            "type": "string"
+        },
+        {
+            "name": "merchant_id",
+            "type": "string"
+        },
+        {
+            "name": "merchant_review_status",
+            "type": "string"
+        },
+        {
+            "name": "messaging_feature_status",
+            "type": "MessagingFeatureStatus"
+        },
+        {
+            "name": "messenger_ads_default_icebreakers",
+            "type": "list<string>"
+        },
+        {
+            "name": "messenger_ads_default_quick_replies",
+            "type": "list<string>"
+        },
+        {
+            "name": "messenger_ads_quick_replies_type",
+            "type": "string"
+        },
+        {
+            "name": "mini_shop_storefront",
+            "type": "Shop"
+        },
+        {
+            "name": "mission",
+            "type": "string"
+        },
+        {
+            "name": "mpg",
+            "type": "string"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "name_with_location_descriptor",
+            "type": "string"
+        },
+        {
+            "name": "network",
+            "type": "string"
+        },
+        {
+            "name": "new_like_count",
+            "type": "unsigned int"
+        },
+        {
+            "name": "offer_eligible",
+            "type": "bool"
+        },
+        {
+            "name": "overall_star_rating",
+            "type": "float"
+        },
+        {
+            "name": "owner_business",
+            "type": "Business"
+        },
+        {
+            "name": "page_token",
+            "type": "string"
+        },
+        {
+            "name": "parent_page",
+            "type": "Page"
+        },
+        {
+            "name": "parking",
+            "type": "PageParking"
+        },
+        {
+            "name": "payment_options",
+            "type": "PagePaymentOptions"
+        },
+        {
+            "name": "personal_info",
+            "type": "string"
+        },
+        {
+            "name": "personal_interests",
+            "type": "string"
+        },
+        {
+            "name": "pharma_safety_info",
+            "type": "string"
+        },
+        {
+            "name": "phone",
+            "type": "string"
+        },
+        {
+            "name": "pickup_options",
+            "type": "list<string>"
+        },
+        {
+            "name": "place_type",
+            "type": "string"
+        },
+        {
+            "name": "plot_outline",
+            "type": "string"
+        },
+        {
+            "name": "preferred_audience",
+            "type": "Targeting"
+        },
+        {
+            "name": "press_contact",
+            "type": "string"
+        },
+        {
+            "name": "price_range",
+            "type": "string"
+        },
+        {
+            "name": "privacy_info_url",
+            "type": "string"
+        },
+        {
+            "name": "produced_by",
+            "type": "string"
+        },
+        {
+            "name": "products",
+            "type": "string"
+        },
+        {
+            "name": "promotion_eligible",
+            "type": "bool"
+        },
+        {
+            "name": "promotion_ineligible_reason",
+            "type": "string"
+        },
+        {
+            "name": "public_transit",
+            "type": "string"
+        },
+        {
+            "name": "rating_count",
+            "type": "unsigned int"
+        },
+        {
+            "name": "recipient",
+            "type": "string"
+        },
+        {
+            "name": "record_label",
+            "type": "string"
+        },
+        {
+            "name": "release_date",
+            "type": "string"
+        },
+        {
+            "name": "restaurant_services",
+            "type": "PageRestaurantServices"
+        },
+        {
+            "name": "restaurant_specialties",
+            "type": "PageRestaurantSpecialties"
+        },
+        {
+            "name": "schedule",
+            "type": "string"
+        },
+        {
+            "name": "screenplay_by",
+            "type": "string"
+        },
+        {
+            "name": "season",
+            "type": "string"
+        },
+        {
+            "name": "single_line_address",
+            "type": "string"
+        },
+        {
+            "name": "starring",
+            "type": "string"
+        },
+        {
+            "name": "start_info",
+            "type": "PageStartInfo"
+        },
+        {
+            "name": "store_code",
+            "type": "string"
+        },
+        {
+            "name": "store_location_descriptor",
+            "type": "string"
+        },
+        {
+            "name": "store_number",
+            "type": "unsigned int"
+        },
+        {
+            "name": "studio",
+            "type": "string"
+        },
+        {
+            "name": "supports_donate_button_in_live_video",
+            "type": "bool"
+        },
+        {
+            "name": "talking_about_count",
+            "type": "unsigned int"
+        },
+        {
+            "name": "temporary_status",
+            "type": "string"
+        },
+        {
+            "name": "unread_message_count",
+            "type": "unsigned int"
+        },
+        {
+            "name": "unread_notif_count",
+            "type": "unsigned int"
+        },
+        {
+            "name": "unseen_message_count",
+            "type": "unsigned int"
+        },
+        {
+            "name": "user_access_expire_time",
+            "type": "datetime"
+        },
+        {
+            "name": "username",
+            "type": "string"
+        },
+        {
+            "name": "verification_status",
+            "type": "string"
+        },
+        {
+            "name": "voip_info",
+            "type": "VoipInfo"
+        },
+        {
+            "name": "website",
+            "type": "string"
+        },
+        {
+            "name": "were_here_count",
+            "type": "unsigned int"
+        },
+        {
+            "name": "whatsapp_number",
+            "type": "string"
+        },
+        {
+            "name": "written_by",
+            "type": "string"
+        }
+    ]
+}

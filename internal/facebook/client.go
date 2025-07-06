@@ -46,3 +46,9 @@ func (c *Client) CreateCampaign(args map[string]interface{}) (interface{}, error
 func generateID() int64 {
 	return 67890
 }
+
+// GetMCPTools returns all available MCP tools for Facebook Business API
+func (c *Client) GetMCPTools() []map[string]interface{} {
+	// This method is deprecated, use GetMCPToolsV2 for mcp-go compatibility
+	return []map[string]interface{}{}
+}

@@ -1,0 +1,37 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "app_id",
+            "type": "string"
+        },
+        {
+            "name": "are_app_events_unavailable",
+            "type": "bool"
+        },
+        {
+            "name": "icon_url",
+            "type": "string"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "search_source_store",
+            "type": "string"
+        },
+        {
+            "name": "store",
+            "type": "string"
+        },
+        {
+            "name": "unique_id",
+            "type": "string"
+        },
+        {
+            "name": "url",
+            "type": "string"
+        }
+    ]
+}

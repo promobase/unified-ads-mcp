@@ -1,0 +1,475 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "adaccounts",
+            "return": "AdAccount",
+            "params": [
+                {
+                    "name": "business",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "DELETE",
+            "endpoint": "agencies",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "business",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "agencies",
+            "return": "Business",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "agencies",
+            "return": "AdsPixel",
+            "params": [
+                {
+                    "name": "business",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "permitted_tasks",
+                    "required": true,
+                    "type": "list<adspixelagencies_permitted_tasks_enum_param>"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "ahp_configs",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "applink_autosetup",
+                    "required": true,
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "assigned_users",
+            "return": "AssignedUser",
+            "params": [
+                {
+                    "name": "business",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "assigned_users",
+            "return": "AdsPixel",
+            "params": [
+                {
+                    "name": "tasks",
+                    "required": true,
+                    "type": "list<adspixelassigned_users_tasks_enum_param>"
+                },
+                {
+                    "name": "user",
+                    "required": true,
+                    "type": "int"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "da_checks",
+            "return": "DACheck",
+            "params": [
+                {
+                    "name": "checks",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "connection_method",
+                    "required": false,
+                    "type": "adspixelda_checks_connection_method_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "events",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "data",
+                    "required": true,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "namespace_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "partner_agent",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "platforms",
+                    "required": false,
+                    "type": "list<map>"
+                },
+                {
+                    "name": "progress",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "test_event_code",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "trace",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "upload_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "upload_source",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "upload_tag",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "offline_event_uploads",
+            "return": "OfflineConversionDataSetUpload",
+            "params": [
+                {
+                    "name": "end_time",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "order",
+                    "required": false,
+                    "type": "adspixeloffline_event_uploads_order_enum_param"
+                },
+                {
+                    "name": "sort_by",
+                    "required": false,
+                    "type": "adspixeloffline_event_uploads_sort_by_enum_param"
+                },
+                {
+                    "name": "start_time",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "upload_tag",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "openbridge_configurations",
+            "return": "OpenBridgeConfiguration",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "shadowtraffichelper",
+            "return": "Object",
+            "params": []
+        },
+        {
+            "method": "DELETE",
+            "endpoint": "shared_accounts",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "account_id",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "business",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "shared_accounts",
+            "return": "AdAccount",
+            "params": [
+                {
+                    "name": "business",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "shared_accounts",
+            "return": "AdsPixel",
+            "params": [
+                {
+                    "name": "account_id",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "business",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "shared_agencies",
+            "return": "Business",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "stats",
+            "return": "AdsPixelStatsResult",
+            "params": [
+                {
+                    "name": "aggregation",
+                    "required": false,
+                    "type": "adspixelstats_aggregation_enum_param"
+                },
+                {
+                    "name": "end_time",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "event",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "event_source",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "start_time",
+                    "required": false,
+                    "type": "datetime"
+                }
+            ]
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "AdsPixel",
+            "params": []
+        },
+        {
+            "name": "#update",
+            "method": "POST",
+            "return": "AdsPixel",
+            "params": [
+                {
+                    "name": "automatic_matching_fields",
+                    "required": false,
+                    "type": "list<adspixel_automatic_matching_fields>"
+                },
+                {
+                    "name": "data_use_setting",
+                    "required": false,
+                    "type": "adspixel_data_use_setting"
+                },
+                {
+                    "name": "enable_automatic_matching",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "first_party_cookie_status",
+                    "required": false,
+                    "type": "adspixel_first_party_cookie_status"
+                },
+                {
+                    "name": "name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "server_events_business_ids",
+                    "required": false,
+                    "type": "list<string>"
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "name": "automatic_matching_fields",
+            "type": "list<string>"
+        },
+        {
+            "name": "can_proxy",
+            "type": "bool"
+        },
+        {
+            "name": "code",
+            "type": "string"
+        },
+        {
+            "name": "config",
+            "type": "string"
+        },
+        {
+            "name": "creation_time",
+            "type": "datetime"
+        },
+        {
+            "name": "creator",
+            "type": "User"
+        },
+        {
+            "name": "data_use_setting",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "string"
+        },
+        {
+            "name": "duplicate_entries",
+            "type": "int"
+        },
+        {
+            "name": "enable_auto_assign_to_accounts",
+            "type": "bool"
+        },
+        {
+            "name": "enable_automatic_matching",
+            "type": "bool"
+        },
+        {
+            "name": "event_stats",
+            "type": "string"
+        },
+        {
+            "name": "event_time_max",
+            "type": "int"
+        },
+        {
+            "name": "event_time_min",
+            "type": "int"
+        },
+        {
+            "name": "first_party_cookie_status",
+            "type": "string"
+        },
+        {
+            "name": "has_1p_pixel_event",
+            "type": "bool"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "is_consolidated_container",
+            "type": "bool"
+        },
+        {
+            "name": "is_created_by_business",
+            "type": "bool"
+        },
+        {
+            "name": "is_crm",
+            "type": "bool"
+        },
+        {
+            "name": "is_mta_use",
+            "type": "bool"
+        },
+        {
+            "name": "is_restricted_use",
+            "type": "bool"
+        },
+        {
+            "name": "is_unavailable",
+            "type": "bool"
+        },
+        {
+            "name": "last_fired_time",
+            "type": "datetime"
+        },
+        {
+            "name": "last_upload_app",
+            "type": "string"
+        },
+        {
+            "name": "last_upload_app_changed_time",
+            "type": "int"
+        },
+        {
+            "name": "match_rate_approx",
+            "type": "int"
+        },
+        {
+            "name": "matched_entries",
+            "type": "int"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "owner_ad_account",
+            "type": "AdAccount"
+        },
+        {
+            "name": "owner_business",
+            "type": "Business"
+        },
+        {
+            "name": "usage",
+            "type": "OfflineConversionDataSetUsage"
+        },
+        {
+            "name": "user_access_expire_time",
+            "type": "datetime"
+        },
+        {
+            "name": "valid_entries",
+            "type": "int"
+        }
+    ]
+}

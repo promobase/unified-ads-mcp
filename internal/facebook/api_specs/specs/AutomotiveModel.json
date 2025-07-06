@@ -1,0 +1,197 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "channels_to_integrity_status",
+            "return": "CatalogItemChannelsToIntegrityStatus",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "override_details",
+            "return": "OverrideDetails",
+            "params": [
+                {
+                    "name": "keys",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "type",
+                    "required": false,
+                    "type": "automotivemodeloverride_details_type_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "videos_metadata",
+            "return": "DynamicVideoMetadata",
+            "params": []
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "AutomotiveModel",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "applinks",
+            "type": "CatalogItemAppLinks"
+        },
+        {
+            "name": "automotive_model_id",
+            "type": "string"
+        },
+        {
+            "name": "availability",
+            "type": "string"
+        },
+        {
+            "name": "body_style",
+            "type": "string"
+        },
+        {
+            "name": "category_specific_fields",
+            "type": "CatalogSubVerticalList"
+        },
+        {
+            "name": "currency",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_0",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_1",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_2",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_3",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_4",
+            "type": "string"
+        },
+        {
+            "name": "custom_number_0",
+            "type": "unsigned int"
+        },
+        {
+            "name": "custom_number_1",
+            "type": "unsigned int"
+        },
+        {
+            "name": "custom_number_2",
+            "type": "unsigned int"
+        },
+        {
+            "name": "custom_number_3",
+            "type": "unsigned int"
+        },
+        {
+            "name": "custom_number_4",
+            "type": "unsigned int"
+        },
+        {
+            "name": "description",
+            "type": "string"
+        },
+        {
+            "name": "drivetrain",
+            "type": "string"
+        },
+        {
+            "name": "exterior_color",
+            "type": "string"
+        },
+        {
+            "name": "finance_description",
+            "type": "string"
+        },
+        {
+            "name": "finance_type",
+            "type": "string"
+        },
+        {
+            "name": "fuel_type",
+            "type": "string"
+        },
+        {
+            "name": "generation",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "image_fetch_status",
+            "type": "AutomotiveModel_image_fetch_status"
+        },
+        {
+            "name": "images",
+            "type": "list<string>"
+        },
+        {
+            "name": "interior_color",
+            "type": "string"
+        },
+        {
+            "name": "interior_upholstery",
+            "type": "string"
+        },
+        {
+            "name": "make",
+            "type": "string"
+        },
+        {
+            "name": "model",
+            "type": "string"
+        },
+        {
+            "name": "price",
+            "type": "string"
+        },
+        {
+            "name": "sanitized_images",
+            "type": "list<string>"
+        },
+        {
+            "name": "title",
+            "type": "string"
+        },
+        {
+            "name": "transmission",
+            "type": "string"
+        },
+        {
+            "name": "trim",
+            "type": "string"
+        },
+        {
+            "name": "unit_price",
+            "type": "Object"
+        },
+        {
+            "name": "url",
+            "type": "string"
+        },
+        {
+            "name": "visibility",
+            "type": "AutomotiveModel_visibility"
+        },
+        {
+            "name": "year",
+            "type": "int"
+        }
+    ]
+}

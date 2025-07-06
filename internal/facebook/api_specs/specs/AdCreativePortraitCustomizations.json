@@ -1,0 +1,13 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "carousel_delivery_mode",
+            "type": "string"
+        },
+        {
+            "name": "specifications",
+            "type": "list<Object>"
+        }
+    ]
+}

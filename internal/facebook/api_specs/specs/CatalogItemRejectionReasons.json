@@ -1,0 +1,13 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "capability",
+            "type": "string"
+        },
+        {
+            "name": "rejection_information",
+            "type": "list<Object>"
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "ad_accounts",
+            "return": "AdAccount",
+            "params": []
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "CPASBusinessSetupConfig",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "accepted_collab_ads_tos",
+            "type": "bool"
+        },
+        {
+            "name": "business",
+            "type": "Business"
+        },
+        {
+            "name": "business_capabilities_status",
+            "type": "list<map<string, string>>"
+        },
+        {
+            "name": "capabilities_compliance_status",
+            "type": "list<map<string, Object>>"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        }
+    ]
+}

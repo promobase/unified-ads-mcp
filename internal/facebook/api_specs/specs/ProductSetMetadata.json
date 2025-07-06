@@ -1,0 +1,21 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "cover_image_url",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "string"
+        },
+        {
+            "name": "external_url",
+            "type": "string"
+        },
+        {
+            "name": "integrity_review_status",
+            "type": "string"
+        }
+    ]
+}

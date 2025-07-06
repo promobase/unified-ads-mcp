@@ -1,0 +1,17 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "self_ig_scoped_id",
+            "type": "string"
+        },
+        {
+            "name": "username",
+            "type": "string"
+        }
+    ]
+}

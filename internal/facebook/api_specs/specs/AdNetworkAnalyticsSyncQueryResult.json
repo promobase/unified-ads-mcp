@@ -1,0 +1,17 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "omitted_results",
+            "type": "list<Object>"
+        },
+        {
+            "name": "query_id",
+            "type": "string"
+        },
+        {
+            "name": "results",
+            "type": "list<Object>"
+        }
+    ]
+}

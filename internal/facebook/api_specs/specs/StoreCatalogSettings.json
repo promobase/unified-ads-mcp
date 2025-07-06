@@ -1,0 +1,26 @@
+{
+    "apis": [
+        {
+            "name": "#delete",
+            "method": "DELETE",
+            "return": "Object",
+            "params": []
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "StoreCatalogSettings",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "page",
+            "type": "Page"
+        }
+    ]
+}

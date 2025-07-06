@@ -1,0 +1,52 @@
+{
+    "apis": [
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "ProductFeedSchedule",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "day_of_month",
+            "type": "unsigned int"
+        },
+        {
+            "name": "day_of_week",
+            "type": "string"
+        },
+        {
+            "name": "hour",
+            "type": "unsigned int"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "interval",
+            "type": "ProductFeedSchedule_interval"
+        },
+        {
+            "name": "interval_count",
+            "type": "unsigned int"
+        },
+        {
+            "name": "minute",
+            "type": "unsigned int"
+        },
+        {
+            "name": "timezone",
+            "type": "string"
+        },
+        {
+            "name": "url",
+            "type": "string"
+        },
+        {
+            "name": "username",
+            "type": "string"
+        }
+    ]
+}

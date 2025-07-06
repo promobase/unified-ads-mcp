@@ -1,0 +1,29 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "account_id",
+            "type": "string"
+        },
+        {
+            "name": "campaign_active",
+            "type": "bool"
+        },
+        {
+            "name": "campaign_started",
+            "type": "bool"
+        },
+        {
+            "name": "creative_uploaded",
+            "type": "bool"
+        },
+        {
+            "name": "io_approved",
+            "type": "bool"
+        },
+        {
+            "name": "sf_link",
+            "type": "string"
+        }
+    ]
+}

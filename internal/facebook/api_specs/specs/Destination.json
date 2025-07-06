@@ -1,0 +1,153 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "channels_to_integrity_status",
+            "return": "CatalogItemChannelsToIntegrityStatus",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "override_details",
+            "return": "OverrideDetails",
+            "params": [
+                {
+                    "name": "keys",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "type",
+                    "required": false,
+                    "type": "destinationoverride_details_type_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "videos_metadata",
+            "return": "DynamicVideoMetadata",
+            "params": []
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "Destination",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "address",
+            "type": "string"
+        },
+        {
+            "name": "applinks",
+            "type": "CatalogItemAppLinks"
+        },
+        {
+            "name": "category_specific_fields",
+            "type": "CatalogSubVerticalList"
+        },
+        {
+            "name": "currency",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_0",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_1",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_2",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_3",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_4",
+            "type": "string"
+        },
+        {
+            "name": "custom_number_0",
+            "type": "unsigned int"
+        },
+        {
+            "name": "custom_number_1",
+            "type": "unsigned int"
+        },
+        {
+            "name": "custom_number_2",
+            "type": "unsigned int"
+        },
+        {
+            "name": "custom_number_3",
+            "type": "unsigned int"
+        },
+        {
+            "name": "custom_number_4",
+            "type": "unsigned int"
+        },
+        {
+            "name": "description",
+            "type": "string"
+        },
+        {
+            "name": "destination_id",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "image_fetch_status",
+            "type": "Destination_image_fetch_status"
+        },
+        {
+            "name": "images",
+            "type": "list<string>"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "price",
+            "type": "string"
+        },
+        {
+            "name": "price_change",
+            "type": "string"
+        },
+        {
+            "name": "sanitized_images",
+            "type": "list<string>"
+        },
+        {
+            "name": "tags",
+            "type": "list<string>"
+        },
+        {
+            "name": "types",
+            "type": "list<string>"
+        },
+        {
+            "name": "unit_price",
+            "type": "Object"
+        },
+        {
+            "name": "url",
+            "type": "string"
+        },
+        {
+            "name": "visibility",
+            "type": "Destination_visibility"
+        }
+    ]
+}

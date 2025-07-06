@@ -1,0 +1,45 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "australia_finserv_beneficiary",
+            "type": "string"
+        },
+        {
+            "name": "australia_finserv_payer",
+            "type": "string"
+        },
+        {
+            "name": "india_finserv_beneficiary",
+            "type": "string"
+        },
+        {
+            "name": "india_finserv_payer",
+            "type": "string"
+        },
+        {
+            "name": "singapore_universal_beneficiary",
+            "type": "string"
+        },
+        {
+            "name": "singapore_universal_payer",
+            "type": "string"
+        },
+        {
+            "name": "taiwan_finserv_beneficiary",
+            "type": "string"
+        },
+        {
+            "name": "taiwan_finserv_payer",
+            "type": "string"
+        },
+        {
+            "name": "taiwan_universal_beneficiary",
+            "type": "string"
+        },
+        {
+            "name": "taiwan_universal_payer",
+            "type": "string"
+        }
+    ]
+}

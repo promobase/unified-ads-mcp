@@ -1,0 +1,29 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "daily_outcomes_curve",
+            "type": "list<OutcomePredictionPoint>"
+        },
+        {
+            "name": "estimate_dau",
+            "type": "int"
+        },
+        {
+            "name": "estimate_mau_lower_bound",
+            "type": "int"
+        },
+        {
+            "name": "estimate_mau_upper_bound",
+            "type": "int"
+        },
+        {
+            "name": "estimate_ready",
+            "type": "bool"
+        },
+        {
+            "name": "targeting_optimization_types",
+            "type": "list<map<string, int>>"
+        }
+    ]
+}

@@ -1,0 +1,57 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "amount",
+            "type": "int"
+        },
+        {
+            "name": "campaign_ids",
+            "type": "list<int>"
+        },
+        {
+            "name": "child_ad_account_id",
+            "type": "string"
+        },
+        {
+            "name": "child_bm_id",
+            "type": "string"
+        },
+        {
+            "name": "coupon_id",
+            "type": "string"
+        },
+        {
+            "name": "coupon_tiering",
+            "type": "FundingSourceDetailsCouponTiering"
+        },
+        {
+            "name": "currency",
+            "type": "string"
+        },
+        {
+            "name": "display_amount",
+            "type": "string"
+        },
+        {
+            "name": "expiration",
+            "type": "datetime"
+        },
+        {
+            "name": "original_amount",
+            "type": "int"
+        },
+        {
+            "name": "original_display_amount",
+            "type": "string"
+        },
+        {
+            "name": "start_date",
+            "type": "datetime"
+        },
+        {
+            "name": "vendor_id",
+            "type": "string"
+        }
+    ]
+}

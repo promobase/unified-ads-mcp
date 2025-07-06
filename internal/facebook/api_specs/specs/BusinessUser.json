@@ -1,0 +1,166 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "assigned_ad_accounts",
+            "return": "AdAccount",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "assigned_business_asset_groups",
+            "return": "BusinessAssetGroup",
+            "params": [
+                {
+                    "name": "contained_asset_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "assigned_pages",
+            "return": "Page",
+            "params": [
+                {
+                    "name": "pages",
+                    "required": false,
+                    "type": "list<unsigned int>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "assigned_product_catalogs",
+            "return": "ProductCatalog",
+            "params": []
+        },
+        {
+            "name": "#delete",
+            "method": "DELETE",
+            "return": "Object",
+            "params": []
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "BusinessUser",
+            "params": []
+        },
+        {
+            "name": "#update",
+            "method": "POST",
+            "return": "BusinessUser",
+            "params": [
+                {
+                    "name": "clear_pending_email",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "email",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "first_name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "last_name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "pending_email",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "role",
+                    "required": false,
+                    "type": "businessuser_role"
+                },
+                {
+                    "name": "skip_verification_email",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "tasks",
+                    "required": false,
+                    "type": "list<businessuser_tasks>"
+                },
+                {
+                    "name": "title",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "name": "business",
+            "type": "Business"
+        },
+        {
+            "name": "business_role_request",
+            "type": "BusinessRoleRequest"
+        },
+        {
+            "name": "email",
+            "type": "string"
+        },
+        {
+            "name": "finance_permission",
+            "type": "string"
+        },
+        {
+            "name": "first_name",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "ip_permission",
+            "type": "string"
+        },
+        {
+            "name": "last_name",
+            "type": "string"
+        },
+        {
+            "name": "marked_for_removal",
+            "type": "bool"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "pending_email",
+            "type": "string"
+        },
+        {
+            "name": "role",
+            "type": "string"
+        },
+        {
+            "name": "tasks",
+            "type": "list<string>"
+        },
+        {
+            "name": "title",
+            "type": "string"
+        },
+        {
+            "name": "two_fac_status",
+            "type": "string"
+        }
+    ]
+}

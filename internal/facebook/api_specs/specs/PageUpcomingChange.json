@@ -1,0 +1,36 @@
+{
+    "apis": [
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "PageUpcomingChange",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "change_type",
+            "type": "string"
+        },
+        {
+            "name": "effective_time",
+            "type": "datetime"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "page",
+            "type": "Page"
+        },
+        {
+            "name": "proposal",
+            "type": "PageChangeProposal"
+        },
+        {
+            "name": "timer_status",
+            "type": "string"
+        }
+    ]
+}

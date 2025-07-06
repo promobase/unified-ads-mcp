@@ -1,0 +1,96 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "agencies",
+            "return": "Business",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "ar_effects",
+            "return": "AREffect",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "authorized_adaccounts",
+            "return": "AdAccount",
+            "params": [
+                {
+                    "name": "business",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "upcoming_events",
+            "return": "IGUpcomingEvent",
+            "params": []
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "InstagramUser",
+            "params": [
+                {
+                    "name": "adgroup_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "name": "follow_count",
+            "type": "int"
+        },
+        {
+            "name": "followed_by_count",
+            "type": "int"
+        },
+        {
+            "name": "has_profile_picture",
+            "type": "bool"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "ig_user_id",
+            "type": "string"
+        },
+        {
+            "name": "is_private",
+            "type": "bool"
+        },
+        {
+            "name": "is_published",
+            "type": "bool"
+        },
+        {
+            "name": "media_count",
+            "type": "int"
+        },
+        {
+            "name": "mini_shop_storefront",
+            "type": "Shop"
+        },
+        {
+            "name": "owner_business",
+            "type": "Business"
+        },
+        {
+            "name": "profile_pic",
+            "type": "string"
+        },
+        {
+            "name": "username",
+            "type": "string"
+        }
+    ]
+}

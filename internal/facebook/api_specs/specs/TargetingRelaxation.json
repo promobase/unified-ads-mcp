@@ -1,0 +1,13 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "custom_audience",
+            "type": "unsigned int"
+        },
+        {
+            "name": "lookalike",
+            "type": "unsigned int"
+        }
+    ]
+}

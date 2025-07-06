@@ -1,0 +1,180 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "preview",
+            "return": "CanvasPreview",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "previews",
+            "return": "TextWithEntities",
+            "params": [
+                {
+                    "name": "user_ids",
+                    "required": false,
+                    "type": "list<int>"
+                }
+            ]
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "Canvas",
+            "params": []
+        },
+        {
+            "name": "#update",
+            "method": "POST",
+            "return": "Canvas",
+            "params": [
+                {
+                    "name": "background_color",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "body_element_ids",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "enable_swipe_to_open",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_hidden",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_published",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "source_template_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "name": "background_color",
+            "type": "string"
+        },
+        {
+            "name": "body_elements",
+            "type": "list<Object>"
+        },
+        {
+            "name": "business_id",
+            "type": "string"
+        },
+        {
+            "name": "canvas_link",
+            "type": "string"
+        },
+        {
+            "name": "collection_hero_image",
+            "type": "Photo"
+        },
+        {
+            "name": "collection_hero_video",
+            "type": "AdVideo"
+        },
+        {
+            "name": "collection_thumbnails",
+            "type": "list<CanvasCollectionThumbnail>"
+        },
+        {
+            "name": "dynamic_setting",
+            "type": "CanvasDynamicSetting"
+        },
+        {
+            "name": "element_payload",
+            "type": "string"
+        },
+        {
+            "name": "elements",
+            "type": "list<RichMediaElement>"
+        },
+        {
+            "name": "fb_body_elements",
+            "type": "list<Object>"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "is_hidden",
+            "type": "bool"
+        },
+        {
+            "name": "is_published",
+            "type": "bool"
+        },
+        {
+            "name": "last_editor",
+            "type": "User"
+        },
+        {
+            "name": "linked_documents",
+            "type": "list<Canvas>"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "owner",
+            "type": "Page"
+        },
+        {
+            "name": "property_list",
+            "type": "list<string>"
+        },
+        {
+            "name": "source_template",
+            "type": "CanvasTemplate"
+        },
+        {
+            "name": "store_url",
+            "type": "string"
+        },
+        {
+            "name": "style_list",
+            "type": "list<string>"
+        },
+        {
+            "name": "tags",
+            "type": "list<string>"
+        },
+        {
+            "name": "ui_property_list",
+            "type": "list<string>"
+        },
+        {
+            "name": "unused_body_elements",
+            "type": "list<Object>"
+        },
+        {
+            "name": "update_time",
+            "type": "int"
+        },
+        {
+            "name": "use_retailer_item_ids",
+            "type": "bool"
+        }
+    ]
+}

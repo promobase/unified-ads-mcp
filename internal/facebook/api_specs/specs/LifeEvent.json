@@ -1,0 +1,50 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "likes",
+            "return": "Profile",
+            "params": []
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "LifeEvent",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "description",
+            "type": "string"
+        },
+        {
+            "name": "end_time",
+            "type": "datetime"
+        },
+        {
+            "name": "from",
+            "type": "Page"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "is_hidden",
+            "type": "bool"
+        },
+        {
+            "name": "start_time",
+            "type": "datetime"
+        },
+        {
+            "name": "title",
+            "type": "string"
+        },
+        {
+            "name": "updated_time",
+            "type": "datetime"
+        }
+    ]
+}

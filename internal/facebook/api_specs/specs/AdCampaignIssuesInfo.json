@@ -1,0 +1,29 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "error_code",
+            "type": "int"
+        },
+        {
+            "name": "error_message",
+            "type": "string"
+        },
+        {
+            "name": "error_summary",
+            "type": "string"
+        },
+        {
+            "name": "error_type",
+            "type": "string"
+        },
+        {
+            "name": "level",
+            "type": "string"
+        },
+        {
+            "name": "mid",
+            "type": "string"
+        }
+    ]
+}

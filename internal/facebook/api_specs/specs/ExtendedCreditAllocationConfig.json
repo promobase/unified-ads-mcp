@@ -1,0 +1,70 @@
+{
+    "apis": [
+        {
+            "name": "#delete",
+            "method": "DELETE",
+            "return": "Object",
+            "params": []
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "ExtendedCreditAllocationConfig",
+            "params": []
+        },
+        {
+            "name": "#update",
+            "method": "POST",
+            "return": "ExtendedCreditAllocationConfig",
+            "params": [
+                {
+                    "name": "amount",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "name": "currency_amount",
+            "type": "CurrencyAmount"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "liability_type",
+            "type": "string"
+        },
+        {
+            "name": "owning_business",
+            "type": "Business"
+        },
+        {
+            "name": "owning_credential",
+            "type": "ExtendedCredit"
+        },
+        {
+            "name": "partition_type",
+            "type": "string"
+        },
+        {
+            "name": "receiving_business",
+            "type": "Business"
+        },
+        {
+            "name": "receiving_credential",
+            "type": "ExtendedCredit"
+        },
+        {
+            "name": "request_status",
+            "type": "string"
+        },
+        {
+            "name": "send_bill_to",
+            "type": "string"
+        }
+    ]
+}

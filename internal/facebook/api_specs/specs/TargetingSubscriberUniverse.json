@@ -1,0 +1,17 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "messenger_subscriber_source",
+            "type": "IDName"
+        },
+        {
+            "name": "whatsapp_subscriber_pool",
+            "type": "IDName"
+        },
+        {
+            "name": "whatsapp_subscriber_source",
+            "type": "IDName"
+        }
+    ]
+}

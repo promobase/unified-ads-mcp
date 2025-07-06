@@ -1,0 +1,61 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "ad_format",
+            "type": "int"
+        },
+        {
+            "name": "content_search_input",
+            "type": "string"
+        },
+        {
+            "name": "creator_ad_permission_type",
+            "type": "string"
+        },
+        {
+            "name": "facebook_boost_post_access_token",
+            "type": "string"
+        },
+        {
+            "name": "instagram_boost_post_access_token",
+            "type": "string"
+        },
+        {
+            "name": "is_mca_internal",
+            "type": "bool"
+        },
+        {
+            "name": "parent_source_facebook_post_id",
+            "type": "string"
+        },
+        {
+            "name": "parent_source_instagram_media_id",
+            "type": "string"
+        },
+        {
+            "name": "partners",
+            "type": "list<AdCreativeBrandedContentAdsPartners>"
+        },
+        {
+            "name": "product_set_partner_selection_status",
+            "type": "string"
+        },
+        {
+            "name": "promoted_page_id",
+            "type": "string"
+        },
+        {
+            "name": "testimonial",
+            "type": "string"
+        },
+        {
+            "name": "testimonial_locale",
+            "type": "string"
+        },
+        {
+            "name": "ui_version",
+            "type": "int"
+        }
+    ]
+}

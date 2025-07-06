@@ -1,0 +1,134 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "children",
+            "return": "Media",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "comments",
+            "return": "Comment",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "comments",
+            "return": "IGGraphComment",
+            "params": [
+                {
+                    "name": "message",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "insights",
+            "return": "InsightsResult",
+            "params": [
+                {
+                    "name": "breakdown",
+                    "required": false,
+                    "type": "list<mediainsights_breakdown_enum_param>"
+                },
+                {
+                    "name": "metric",
+                    "required": true,
+                    "type": "list<mediainsights_metric_enum_param>"
+                },
+                {
+                    "name": "period",
+                    "required": false,
+                    "type": "list<mediainsights_period_enum_param>"
+                }
+            ]
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "Media",
+            "params": []
+        },
+        {
+            "name": "#update",
+            "method": "POST",
+            "return": "IGGraphMedia",
+            "params": [
+                {
+                    "name": "comment_enabled",
+                    "required": true,
+                    "type": "bool"
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "name": "alt_text",
+            "type": "string"
+        },
+        {
+            "name": "caption",
+            "type": "string"
+        },
+        {
+            "name": "comments_count",
+            "type": "int"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "is_comment_enabled",
+            "type": "bool"
+        },
+        {
+            "name": "is_shared_to_feed",
+            "type": "bool"
+        },
+        {
+            "name": "like_count",
+            "type": "int"
+        },
+        {
+            "name": "media_product_type",
+            "type": "string"
+        },
+        {
+            "name": "media_type",
+            "type": "string"
+        },
+        {
+            "name": "media_url",
+            "type": "string"
+        },
+        {
+            "name": "owner",
+            "type": "User"
+        },
+        {
+            "name": "permalink",
+            "type": "string"
+        },
+        {
+            "name": "shortcode",
+            "type": "string"
+        },
+        {
+            "name": "thumbnail_url",
+            "type": "string"
+        },
+        {
+            "name": "timestamp",
+            "type": "datetime"
+        },
+        {
+            "name": "username",
+            "type": "string"
+        }
+    ]
+}

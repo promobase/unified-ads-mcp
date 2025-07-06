@@ -1,0 +1,24 @@
+{
+    "apis": [
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "AdRuleEvaluationSpec",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "evaluation_type",
+            "type": "AdRuleEvaluationSpec_evaluation_type"
+        },
+        {
+            "name": "filters",
+            "type": "list<AdRuleFilters>"
+        },
+        {
+            "name": "trigger",
+            "type": "AdRuleTrigger"
+        }
+    ]
+}

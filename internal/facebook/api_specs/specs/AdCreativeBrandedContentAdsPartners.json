@@ -1,0 +1,25 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "fb_page_id",
+            "type": "string"
+        },
+        {
+            "name": "has_create_ads_access",
+            "type": "bool"
+        },
+        {
+            "name": "identity_type",
+            "type": "string"
+        },
+        {
+            "name": "ig_asset_id",
+            "type": "string"
+        },
+        {
+            "name": "ig_user_id",
+            "type": "string"
+        }
+    ]
+}

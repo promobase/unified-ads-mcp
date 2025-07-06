@@ -1,0 +1,177 @@
+{
+    "apis": [
+        {
+            "name": "#delete",
+            "method": "DELETE",
+            "return": "Object",
+            "params": []
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "OpenBridgeConfiguration",
+            "params": []
+        },
+        {
+            "name": "#update",
+            "method": "POST",
+            "return": "OpenBridgeConfiguration",
+            "params": [
+                {
+                    "name": "active",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "cloud_provider",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "cloud_region",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "destination_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "endpoint",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "fallback_domain",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "first_party_domain",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "host_business_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "instance_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "instance_version",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "is_sgw_instance",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_sgw_pixel_from_meta_pixel",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "partner_name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "sgw_account_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "sgw_instance_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "sgw_pixel_id",
+                    "required": false,
+                    "type": "unsigned int"
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "name": "active",
+            "type": "bool"
+        },
+        {
+            "name": "cloud_provider",
+            "type": "string"
+        },
+        {
+            "name": "cloud_region",
+            "type": "string"
+        },
+        {
+            "name": "destination_id",
+            "type": "string"
+        },
+        {
+            "name": "endpoint",
+            "type": "string"
+        },
+        {
+            "name": "fallback_domain",
+            "type": "string"
+        },
+        {
+            "name": "first_party_domain",
+            "type": "string"
+        },
+        {
+            "name": "host_business_id",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "instance_id",
+            "type": "string"
+        },
+        {
+            "name": "instance_version",
+            "type": "string"
+        },
+        {
+            "name": "is_sgw_instance",
+            "type": "bool"
+        },
+        {
+            "name": "is_sgw_pixel_from_meta_pixel",
+            "type": "bool"
+        },
+        {
+            "name": "partner_name",
+            "type": "string"
+        },
+        {
+            "name": "pixel_id",
+            "type": "string"
+        },
+        {
+            "name": "sgw_account_id",
+            "type": "string"
+        },
+        {
+            "name": "sgw_instance_url",
+            "type": "string"
+        },
+        {
+            "name": "sgw_pixel_id",
+            "type": "string"
+        }
+    ]
+}

@@ -1,0 +1,1822 @@
+{
+    "apis": [
+        {
+            "method": "DELETE",
+            "endpoint": "agencies",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "business",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "agencies",
+            "return": "Business",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "agencies",
+            "return": "ProductCatalog",
+            "params": [
+                {
+                    "name": "business",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "permitted_roles",
+                    "required": false,
+                    "type": "list<productcatalogagencies_permitted_roles_enum_param>"
+                },
+                {
+                    "name": "permitted_tasks",
+                    "required": false,
+                    "type": "list<productcatalogagencies_permitted_tasks_enum_param>"
+                },
+                {
+                    "name": "skip_defaults",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "utm_settings",
+                    "required": false,
+                    "type": "map"
+                }
+            ]
+        },
+        {
+            "method": "DELETE",
+            "endpoint": "assigned_users",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "user",
+                    "required": true,
+                    "type": "int"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "assigned_users",
+            "return": "AssignedUser",
+            "params": [
+                {
+                    "name": "business",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "assigned_users",
+            "return": "ProductCatalog",
+            "params": [
+                {
+                    "name": "tasks",
+                    "required": true,
+                    "type": "list<productcatalogassigned_users_tasks_enum_param>"
+                },
+                {
+                    "name": "user",
+                    "required": true,
+                    "type": "int"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "automotive_models",
+            "return": "AutomotiveModel",
+            "params": [
+                {
+                    "name": "bulk_pagination",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "batch",
+            "return": "ProductCatalog",
+            "params": [
+                {
+                    "name": "allow_upsert",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "fbe_external_business_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "requests",
+                    "required": true,
+                    "type": "list<map>"
+                },
+                {
+                    "name": "version",
+                    "required": false,
+                    "type": "unsigned int"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "catalog_store",
+            "return": "StoreCatalogSettings",
+            "params": [
+                {
+                    "name": "page",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "categories",
+            "return": "ProductCatalogCategory",
+            "params": [
+                {
+                    "name": "categorization_criteria",
+                    "required": true,
+                    "type": "productcatalogcategories_categorization_criteria_enum_param"
+                },
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "categories",
+            "return": "ProductCatalogCategory",
+            "params": [
+                {
+                    "name": "data",
+                    "required": true,
+                    "type": "list<map>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "check_batch_request_status",
+            "return": "CheckBatchRequestStatus",
+            "params": [
+                {
+                    "name": "error_priority",
+                    "required": false,
+                    "type": "productcatalogcheck_batch_request_status_error_priority_enum_param"
+                },
+                {
+                    "name": "handle",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "load_ids_of_invalid_requests",
+                    "required": false,
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "check_marketplace_partner_sellers_status",
+            "return": "ProductCatalogCheckMarketplacePartnerSellersStatus",
+            "params": [
+                {
+                    "name": "session_id",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "collaborative_ads_lsb_image_bank",
+            "return": "CPASLsbImageBank",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "collaborative_ads_share_settings",
+            "return": "CollaborativeAdsShareSettings",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "cpas_lsb_image_bank",
+            "return": "CPASLsbImageBank",
+            "params": [
+                {
+                    "name": "ad_group_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "agency_business_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "backup_image_urls",
+                    "required": true,
+                    "type": "list<string>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "creator_asset_creatives",
+            "return": "CreatorAssetCreative",
+            "params": [
+                {
+                    "name": "moderation_status",
+                    "required": false,
+                    "type": "productcatalogcreator_asset_creatives_moderation_status_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "data_sources",
+            "return": "ProductCatalogDataSource",
+            "params": [
+                {
+                    "name": "ingestion_source_type",
+                    "required": false,
+                    "type": "productcatalogdata_sources_ingestion_source_type_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "destinations",
+            "return": "Destination",
+            "params": [
+                {
+                    "name": "bulk_pagination",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "diagnostics",
+            "return": "ProductCatalogDiagnosticGroup",
+            "params": [
+                {
+                    "name": "affected_channels",
+                    "required": false,
+                    "type": "list<productcatalogdiagnostics_affected_channels_enum_param>"
+                },
+                {
+                    "name": "affected_entities",
+                    "required": false,
+                    "type": "list<productcatalogdiagnostics_affected_entities_enum_param>"
+                },
+                {
+                    "name": "affected_features",
+                    "required": false,
+                    "type": "list<productcatalogdiagnostics_affected_features_enum_param>"
+                },
+                {
+                    "name": "severities",
+                    "required": false,
+                    "type": "list<productcatalogdiagnostics_severities_enum_param>"
+                },
+                {
+                    "name": "types",
+                    "required": false,
+                    "type": "list<productcatalogdiagnostics_types_enum_param>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "event_stats",
+            "return": "ProductEventStat",
+            "params": [
+                {
+                    "name": "breakdowns",
+                    "required": false,
+                    "type": "list<productcatalogevent_stats_breakdowns_enum_param>"
+                }
+            ]
+        },
+        {
+            "method": "DELETE",
+            "endpoint": "external_event_sources",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "external_event_sources",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "external_event_sources",
+            "return": "ExternalEventSource",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "external_event_sources",
+            "return": "ProductCatalog",
+            "params": [
+                {
+                    "name": "external_event_sources",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "flights",
+            "return": "Flight",
+            "params": [
+                {
+                    "name": "bulk_pagination",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "geolocated_items_batch",
+            "return": "ProductCatalog",
+            "params": [
+                {
+                    "name": "allow_upsert",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "item_type",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "requests",
+                    "required": true,
+                    "type": "map"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "home_listings",
+            "return": "HomeListing",
+            "params": [
+                {
+                    "name": "bulk_pagination",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "home_listings",
+            "return": "HomeListing",
+            "params": [
+                {
+                    "name": "address",
+                    "required": true,
+                    "type": "Object"
+                },
+                {
+                    "name": "availability",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "currency",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "description",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "home_listing_id",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "images",
+                    "required": true,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "listing_type",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "name",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "num_baths",
+                    "required": false,
+                    "type": "float"
+                },
+                {
+                    "name": "num_beds",
+                    "required": false,
+                    "type": "float"
+                },
+                {
+                    "name": "num_units",
+                    "required": false,
+                    "type": "float"
+                },
+                {
+                    "name": "price",
+                    "required": true,
+                    "type": "float"
+                },
+                {
+                    "name": "property_type",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "url",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "year_built",
+                    "required": true,
+                    "type": "unsigned int"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "hotel_rooms_batch",
+            "return": "ProductCatalogHotelRoomsBatch",
+            "params": [
+                {
+                    "name": "handle",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "hotel_rooms_batch",
+            "return": "ProductCatalog",
+            "params": [
+                {
+                    "name": "file",
+                    "required": false,
+                    "type": "file"
+                },
+                {
+                    "name": "password",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "standard",
+                    "required": true,
+                    "type": "productcataloghotel_rooms_batch_standard_enum_param"
+                },
+                {
+                    "name": "update_only",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "username",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "hotels",
+            "return": "Hotel",
+            "params": [
+                {
+                    "name": "bulk_pagination",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "hotels",
+            "return": "Hotel",
+            "params": [
+                {
+                    "name": "address",
+                    "required": true,
+                    "type": "Object"
+                },
+                {
+                    "name": "applinks",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "base_price",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "brand",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "currency",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "description",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "guest_ratings",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "hotel_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "images",
+                    "required": true,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "name",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "phone",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "star_rating",
+                    "required": false,
+                    "type": "float"
+                },
+                {
+                    "name": "url",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "items_batch",
+            "return": "ProductCatalog",
+            "params": [
+                {
+                    "name": "allow_upsert",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "item_sub_type",
+                    "required": false,
+                    "type": "productcatalogitems_batch_item_sub_type_enum_param"
+                },
+                {
+                    "name": "item_type",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "requests",
+                    "required": true,
+                    "type": "map"
+                },
+                {
+                    "name": "version",
+                    "required": false,
+                    "type": "unsigned int"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "localized_items_batch",
+            "return": "ProductCatalog",
+            "params": [
+                {
+                    "name": "allow_upsert",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "item_type",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "requests",
+                    "required": true,
+                    "type": "map"
+                },
+                {
+                    "name": "version",
+                    "required": false,
+                    "type": "unsigned int"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "marketplace_partner_sellers_details",
+            "return": "ProductCatalog",
+            "params": [
+                {
+                    "name": "requests",
+                    "required": true,
+                    "type": "map"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "marketplace_partner_signals",
+            "return": "ProductCatalog",
+            "params": [
+                {
+                    "name": "event_name",
+                    "required": true,
+                    "type": "productcatalogmarketplace_partner_signals_event_name_enum_param"
+                },
+                {
+                    "name": "event_source_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "event_time",
+                    "required": true,
+                    "type": "datetime"
+                },
+                {
+                    "name": "order_data",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "user_data",
+                    "required": true,
+                    "type": "map"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "pricing_variables_batch",
+            "return": "ProductCatalogPricingVariablesBatch",
+            "params": [
+                {
+                    "name": "handle",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "pricing_variables_batch",
+            "return": "ProductCatalog",
+            "params": [
+                {
+                    "name": "file",
+                    "required": false,
+                    "type": "file"
+                },
+                {
+                    "name": "password",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "standard",
+                    "required": true,
+                    "type": "productcatalogpricing_variables_batch_standard_enum_param"
+                },
+                {
+                    "name": "update_only",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "username",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "product_feeds",
+            "return": "ProductFeed",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "product_feeds",
+            "return": "ProductFeed",
+            "params": [
+                {
+                    "name": "country",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "default_currency",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "deletion_enabled",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "delimiter",
+                    "required": false,
+                    "type": "productcatalogproduct_feeds_delimiter_enum_param"
+                },
+                {
+                    "name": "encoding",
+                    "required": false,
+                    "type": "productcatalogproduct_feeds_encoding_enum_param"
+                },
+                {
+                    "name": "feed_type",
+                    "required": false,
+                    "type": "productcatalogproduct_feeds_feed_type_enum_param"
+                },
+                {
+                    "name": "file_name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "ingestion_source_type",
+                    "required": false,
+                    "type": "productcatalogproduct_feeds_ingestion_source_type_enum_param"
+                },
+                {
+                    "name": "item_sub_type",
+                    "required": false,
+                    "type": "productcatalogproduct_feeds_item_sub_type_enum_param"
+                },
+                {
+                    "name": "migrated_from_feed_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "override_type",
+                    "required": false,
+                    "type": "productcatalogproduct_feeds_override_type_enum_param"
+                },
+                {
+                    "name": "override_value",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "primary_feed_ids",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "quoted_fields_mode",
+                    "required": false,
+                    "type": "productcatalogproduct_feeds_quoted_fields_mode_enum_param"
+                },
+                {
+                    "name": "rules",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "schedule",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "selected_override_fields",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "update_schedule",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "product_groups",
+            "return": "ProductGroup",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "product_groups",
+            "return": "ProductGroup",
+            "params": [
+                {
+                    "name": "retailer_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "variants",
+                    "required": false,
+                    "type": "list<Object>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "product_sets",
+            "return": "ProductSet",
+            "params": [
+                {
+                    "name": "ancestor_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "has_children",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "parent_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "retailer_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "product_sets",
+            "return": "ProductSet",
+            "params": [
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "metadata",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "name",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "ordering_info",
+                    "required": false,
+                    "type": "list<unsigned int>"
+                },
+                {
+                    "name": "publish_to_shops",
+                    "required": false,
+                    "type": "list<map>"
+                },
+                {
+                    "name": "retailer_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "product_sets_batch",
+            "return": "ProductCatalogProductSetsBatch",
+            "params": [
+                {
+                    "name": "handle",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "products",
+            "return": "ProductItem",
+            "params": [
+                {
+                    "name": "bulk_pagination",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "error_priority",
+                    "required": false,
+                    "type": "productcatalogproducts_error_priority_enum_param"
+                },
+                {
+                    "name": "error_type",
+                    "required": false,
+                    "type": "productcatalogproducts_error_type_enum_param"
+                },
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "return_only_approved_products",
+                    "required": false,
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "products",
+            "return": "ProductItem",
+            "params": [
+                {
+                    "name": "additional_image_urls",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "additional_variant_attributes",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "age_group",
+                    "required": false,
+                    "type": "productcatalogproducts_age_group_enum_param"
+                },
+                {
+                    "name": "android_app_name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "android_class",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "android_package",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "android_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "availability",
+                    "required": false,
+                    "type": "productcatalogproducts_availability_enum_param"
+                },
+                {
+                    "name": "brand",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "category",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "category_specific_fields",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "checkout_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "color",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "commerce_tax_category",
+                    "required": false,
+                    "type": "productcatalogproducts_commerce_tax_category_enum_param"
+                },
+                {
+                    "name": "condition",
+                    "required": false,
+                    "type": "productcatalogproducts_condition_enum_param"
+                },
+                {
+                    "name": "currency",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "custom_data",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "custom_label_0",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "custom_label_1",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "custom_label_2",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "custom_label_3",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "custom_label_4",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "custom_number_0",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "custom_number_1",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "custom_number_2",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "custom_number_3",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "custom_number_4",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "description",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "expiration_date",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "fb_product_category",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "gender",
+                    "required": false,
+                    "type": "productcatalogproducts_gender_enum_param"
+                },
+                {
+                    "name": "gtin",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "image_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "importer_address",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "importer_name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "inventory",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "ios_app_name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "ios_app_store_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "ios_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "ipad_app_name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "ipad_app_store_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "ipad_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "iphone_app_name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "iphone_app_store_id",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "iphone_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "launch_date",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "manufacturer_info",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "manufacturer_part_number",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "marked_for_product_launch",
+                    "required": false,
+                    "type": "productcatalogproducts_marked_for_product_launch_enum_param"
+                },
+                {
+                    "name": "material",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "mobile_link",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "name",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "ordering_index",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "origin_country",
+                    "required": false,
+                    "type": "productcatalogproducts_origin_country_enum_param"
+                },
+                {
+                    "name": "pattern",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "price",
+                    "required": true,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "product_priority_0",
+                    "required": false,
+                    "type": "float"
+                },
+                {
+                    "name": "product_priority_1",
+                    "required": false,
+                    "type": "float"
+                },
+                {
+                    "name": "product_priority_2",
+                    "required": false,
+                    "type": "float"
+                },
+                {
+                    "name": "product_priority_3",
+                    "required": false,
+                    "type": "float"
+                },
+                {
+                    "name": "product_priority_4",
+                    "required": false,
+                    "type": "float"
+                },
+                {
+                    "name": "product_type",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "quantity_to_sell_on_facebook",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "retailer_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "retailer_product_group_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "return_policy_days",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "sale_price",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "sale_price_end_date",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "sale_price_start_date",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "short_description",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "size",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "start_date",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "visibility",
+                    "required": false,
+                    "type": "productcatalogproducts_visibility_enum_param"
+                },
+                {
+                    "name": "wa_compliance_category",
+                    "required": false,
+                    "type": "productcatalogproducts_wa_compliance_category_enum_param"
+                },
+                {
+                    "name": "windows_phone_app_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "windows_phone_app_name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "windows_phone_url",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "update_generated_image_config",
+            "return": "ProductCatalog",
+            "params": [
+                {
+                    "name": "data",
+                    "required": true,
+                    "type": "list<Object>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "vehicle_offers",
+            "return": "VehicleOffer",
+            "params": [
+                {
+                    "name": "bulk_pagination",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "vehicles",
+            "return": "Vehicle",
+            "params": [
+                {
+                    "name": "bulk_pagination",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "vehicles",
+            "return": "Vehicle",
+            "params": [
+                {
+                    "name": "address",
+                    "required": true,
+                    "type": "map"
+                },
+                {
+                    "name": "applinks",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "availability",
+                    "required": false,
+                    "type": "productcatalogvehicles_availability_enum_param"
+                },
+                {
+                    "name": "body_style",
+                    "required": true,
+                    "type": "productcatalogvehicles_body_style_enum_param"
+                },
+                {
+                    "name": "condition",
+                    "required": false,
+                    "type": "productcatalogvehicles_condition_enum_param"
+                },
+                {
+                    "name": "currency",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "date_first_on_lot",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "dealer_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "dealer_name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "dealer_phone",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "description",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "drivetrain",
+                    "required": false,
+                    "type": "productcatalogvehicles_drivetrain_enum_param"
+                },
+                {
+                    "name": "exterior_color",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "fb_page_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "fuel_type",
+                    "required": false,
+                    "type": "productcatalogvehicles_fuel_type_enum_param"
+                },
+                {
+                    "name": "images",
+                    "required": true,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "interior_color",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "make",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "mileage",
+                    "required": true,
+                    "type": "map"
+                },
+                {
+                    "name": "model",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "price",
+                    "required": true,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "state_of_vehicle",
+                    "required": true,
+                    "type": "productcatalogvehicles_state_of_vehicle_enum_param"
+                },
+                {
+                    "name": "title",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "transmission",
+                    "required": false,
+                    "type": "productcatalogvehicles_transmission_enum_param"
+                },
+                {
+                    "name": "trim",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "url",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "vehicle_id",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "vehicle_type",
+                    "required": false,
+                    "type": "productcatalogvehicles_vehicle_type_enum_param"
+                },
+                {
+                    "name": "vin",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "year",
+                    "required": true,
+                    "type": "unsigned int"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "version_configs",
+            "return": "CatalogContentVersionConfig",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "version_items_batch",
+            "return": "ProductCatalog",
+            "params": [
+                {
+                    "name": "allow_upsert",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "item_type",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "item_version",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "requests",
+                    "required": true,
+                    "type": "map"
+                },
+                {
+                    "name": "version",
+                    "required": false,
+                    "type": "unsigned int"
+                }
+            ]
+        },
+        {
+            "name": "#delete",
+            "method": "DELETE",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "allow_delete_catalog_with_live_product_set",
+                    "required": false,
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "ProductCatalog",
+            "params": [
+                {
+                    "name": "segment_use_cases",
+                    "required": false,
+                    "type": "list<productcatalog_segment_use_cases>"
+                }
+            ]
+        },
+        {
+            "name": "#update",
+            "method": "POST",
+            "return": "ProductCatalog",
+            "params": [
+                {
+                    "name": "additional_vertical_option",
+                    "required": false,
+                    "type": "productcatalog_additional_vertical_option"
+                },
+                {
+                    "name": "da_display_settings",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "default_image_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "destination_catalog_settings",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "fallback_image_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "flight_catalog_settings",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "partner_integration",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "store_catalog_settings",
+                    "required": false,
+                    "type": "map"
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "name": "ad_account_to_collaborative_ads_share_settings",
+            "type": "CollaborativeAdsShareSettings"
+        },
+        {
+            "name": "agency_collaborative_ads_share_settings",
+            "type": "CollaborativeAdsShareSettings"
+        },
+        {
+            "name": "business",
+            "type": "Business"
+        },
+        {
+            "name": "catalog_store",
+            "type": "StoreCatalogSettings"
+        },
+        {
+            "name": "commerce_merchant_settings",
+            "type": "CommerceMerchantSettings"
+        },
+        {
+            "name": "creator_user",
+            "type": "User"
+        },
+        {
+            "name": "da_display_settings",
+            "type": "ProductCatalogImageSettings"
+        },
+        {
+            "name": "default_image_url",
+            "type": "string"
+        },
+        {
+            "name": "fallback_image_url",
+            "type": "list<string>"
+        },
+        {
+            "name": "feed_count",
+            "type": "int"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "is_catalog_segment",
+            "type": "bool"
+        },
+        {
+            "name": "is_local_catalog",
+            "type": "bool"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "owner_business",
+            "type": "Business"
+        },
+        {
+            "name": "product_count",
+            "type": "int"
+        },
+        {
+            "name": "store_catalog_settings",
+            "type": "StoreCatalogSettings"
+        },
+        {
+            "name": "user_access_expire_time",
+            "type": "datetime"
+        },
+        {
+            "name": "vertical",
+            "type": "string"
+        }
+    ]
+}

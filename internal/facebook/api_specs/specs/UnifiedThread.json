@@ -1,0 +1,92 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "messages",
+            "return": "UnifiedMessage",
+            "params": [
+                {
+                    "name": "source",
+                    "required": false,
+                    "type": "unifiedthreadmessages_source_enum_param"
+                }
+            ]
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "UnifiedThread",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "can_reply",
+            "type": "bool"
+        },
+        {
+            "name": "folder",
+            "type": "string"
+        },
+        {
+            "name": "former_participants",
+            "type": "Object"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "is_subscribed",
+            "type": "bool"
+        },
+        {
+            "name": "link",
+            "type": "string"
+        },
+        {
+            "name": "linked_group",
+            "type": "Group"
+        },
+        {
+            "name": "message_count",
+            "type": "int"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "participants",
+            "type": "Object"
+        },
+        {
+            "name": "scoped_thread_key",
+            "type": "string"
+        },
+        {
+            "name": "senders",
+            "type": "Object"
+        },
+        {
+            "name": "snippet",
+            "type": "string"
+        },
+        {
+            "name": "subject",
+            "type": "string"
+        },
+        {
+            "name": "unread_count",
+            "type": "int"
+        },
+        {
+            "name": "updated_time",
+            "type": "datetime"
+        },
+        {
+            "name": "wallpaper",
+            "type": "string"
+        }
+    ]
+}

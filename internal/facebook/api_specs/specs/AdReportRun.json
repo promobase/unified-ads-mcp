@@ -1,0 +1,82 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "insights",
+            "return": "AdsInsights",
+            "params": []
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "AdReportRun",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "account_id",
+            "type": "string"
+        },
+        {
+            "name": "async_percent_completion",
+            "type": "unsigned int"
+        },
+        {
+            "name": "async_report_url",
+            "type": "string"
+        },
+        {
+            "name": "async_status",
+            "type": "string"
+        },
+        {
+            "name": "date_start",
+            "type": "string"
+        },
+        {
+            "name": "date_stop",
+            "type": "string"
+        },
+        {
+            "name": "emails",
+            "type": "list<string>"
+        },
+        {
+            "name": "error_code",
+            "type": "unsigned int"
+        },
+        {
+            "name": "friendly_name",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "is_async_export",
+            "type": "int"
+        },
+        {
+            "name": "is_bookmarked",
+            "type": "bool"
+        },
+        {
+            "name": "is_running",
+            "type": "bool"
+        },
+        {
+            "name": "schedule_id",
+            "type": "string"
+        },
+        {
+            "name": "time_completed",
+            "type": "unsigned int"
+        },
+        {
+            "name": "time_ref",
+            "type": "unsigned int"
+        }
+    ]
+}

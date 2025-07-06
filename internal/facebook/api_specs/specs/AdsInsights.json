@@ -1,0 +1,801 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "account_currency",
+            "type": "string"
+        },
+        {
+            "name": "account_id",
+            "type": "string"
+        },
+        {
+            "name": "account_name",
+            "type": "string"
+        },
+        {
+            "name": "action_values",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "actions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "ad_click_actions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "ad_id",
+            "type": "string"
+        },
+        {
+            "name": "ad_impression_actions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "ad_name",
+            "type": "string"
+        },
+        {
+            "name": "adset_end",
+            "type": "string"
+        },
+        {
+            "name": "adset_id",
+            "type": "string"
+        },
+        {
+            "name": "adset_name",
+            "type": "string"
+        },
+        {
+            "name": "adset_start",
+            "type": "string"
+        },
+        {
+            "name": "age_targeting",
+            "type": "string"
+        },
+        {
+            "name": "attribution_setting",
+            "type": "string"
+        },
+        {
+            "name": "auction_bid",
+            "type": "string"
+        },
+        {
+            "name": "auction_competitiveness",
+            "type": "string"
+        },
+        {
+            "name": "auction_max_competitor_bid",
+            "type": "string"
+        },
+        {
+            "name": "average_purchases_conversion_value",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "buying_type",
+            "type": "string"
+        },
+        {
+            "name": "campaign_id",
+            "type": "string"
+        },
+        {
+            "name": "campaign_name",
+            "type": "string"
+        },
+        {
+            "name": "canvas_avg_view_percent",
+            "type": "string"
+        },
+        {
+            "name": "canvas_avg_view_time",
+            "type": "string"
+        },
+        {
+            "name": "catalog_segment_actions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "catalog_segment_value",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "catalog_segment_value_mobile_purchase_roas",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "catalog_segment_value_omni_purchase_roas",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "catalog_segment_value_website_purchase_roas",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "clicks",
+            "type": "string"
+        },
+        {
+            "name": "conversion_lead_rate",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "conversion_leads",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "conversion_rate_ranking",
+            "type": "string"
+        },
+        {
+            "name": "conversion_values",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "conversions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_product_app_custom_event_fb_mobile_purchase",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_product_app_custom_event_fb_mobile_purchase_value",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_product_offline_purchase",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_product_offline_purchase_value",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_product_omni_purchase",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_product_omni_purchase_values",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_product_quantity",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_product_value",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_product_website_pixel_purchase",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_product_website_pixel_purchase_value",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_promoted_product_app_custom_event_fb_mobile_purchase",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_promoted_product_app_custom_event_fb_mobile_purchase_value",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_promoted_product_offline_purchase",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_promoted_product_offline_purchase_value",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_promoted_product_omni_purchase",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_promoted_product_omni_purchase_values",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_promoted_product_quantity",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_promoted_product_value",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_promoted_product_website_pixel_purchase",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "converted_promoted_product_website_pixel_purchase_value",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "cost_per_15_sec_video_view",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "cost_per_2_sec_continuous_video_view",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "cost_per_action_type",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "cost_per_ad_click",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "cost_per_conversion",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "cost_per_conversion_lead",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "cost_per_dda_countby_convs",
+            "type": "string"
+        },
+        {
+            "name": "cost_per_estimated_ad_recallers",
+            "type": "string"
+        },
+        {
+            "name": "cost_per_inline_link_click",
+            "type": "string"
+        },
+        {
+            "name": "cost_per_inline_post_engagement",
+            "type": "string"
+        },
+        {
+            "name": "cost_per_objective_result",
+            "type": "list<Object>"
+        },
+        {
+            "name": "cost_per_one_thousand_ad_impression",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "cost_per_outbound_click",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "cost_per_result",
+            "type": "list<Object>"
+        },
+        {
+            "name": "cost_per_thruplay",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "cost_per_unique_action_type",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "cost_per_unique_click",
+            "type": "string"
+        },
+        {
+            "name": "cost_per_unique_conversion",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "cost_per_unique_inline_link_click",
+            "type": "string"
+        },
+        {
+            "name": "cost_per_unique_outbound_click",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "cpc",
+            "type": "string"
+        },
+        {
+            "name": "cpm",
+            "type": "string"
+        },
+        {
+            "name": "cpp",
+            "type": "string"
+        },
+        {
+            "name": "created_time",
+            "type": "string"
+        },
+        {
+            "name": "creative_media_type",
+            "type": "string"
+        },
+        {
+            "name": "ctr",
+            "type": "string"
+        },
+        {
+            "name": "date_start",
+            "type": "string"
+        },
+        {
+            "name": "date_stop",
+            "type": "string"
+        },
+        {
+            "name": "dda_countby_convs",
+            "type": "string"
+        },
+        {
+            "name": "dda_results",
+            "type": "list<Object>"
+        },
+        {
+            "name": "engagement_rate_ranking",
+            "type": "string"
+        },
+        {
+            "name": "estimated_ad_recall_rate",
+            "type": "string"
+        },
+        {
+            "name": "estimated_ad_recall_rate_lower_bound",
+            "type": "string"
+        },
+        {
+            "name": "estimated_ad_recall_rate_upper_bound",
+            "type": "string"
+        },
+        {
+            "name": "estimated_ad_recallers",
+            "type": "string"
+        },
+        {
+            "name": "estimated_ad_recallers_lower_bound",
+            "type": "string"
+        },
+        {
+            "name": "estimated_ad_recallers_upper_bound",
+            "type": "string"
+        },
+        {
+            "name": "frequency",
+            "type": "string"
+        },
+        {
+            "name": "full_view_impressions",
+            "type": "string"
+        },
+        {
+            "name": "full_view_reach",
+            "type": "string"
+        },
+        {
+            "name": "gender_targeting",
+            "type": "string"
+        },
+        {
+            "name": "impressions",
+            "type": "string"
+        },
+        {
+            "name": "inline_link_click_ctr",
+            "type": "string"
+        },
+        {
+            "name": "inline_link_clicks",
+            "type": "string"
+        },
+        {
+            "name": "inline_post_engagement",
+            "type": "string"
+        },
+        {
+            "name": "instagram_upcoming_event_reminders_set",
+            "type": "string"
+        },
+        {
+            "name": "instant_experience_clicks_to_open",
+            "type": "string"
+        },
+        {
+            "name": "instant_experience_clicks_to_start",
+            "type": "string"
+        },
+        {
+            "name": "instant_experience_outbound_clicks",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "interactive_component_tap",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "labels",
+            "type": "string"
+        },
+        {
+            "name": "landing_page_view_actions_per_link_click",
+            "type": "string"
+        },
+        {
+            "name": "landing_page_view_per_link_click",
+            "type": "string"
+        },
+        {
+            "name": "landing_page_view_per_purchase_rate",
+            "type": "string"
+        },
+        {
+            "name": "location",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_click_rate_benchmark",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_cost_per_delivered",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_cost_per_link_btn_click",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_delivered",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_delivery_rate",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_link_btn_click",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_link_btn_click_rate",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_media_view_rate",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_phone_call_btn_click_rate",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_quick_reply_btn_click",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_quick_reply_btn_click_rate",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_read",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_read_rate",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_read_rate_benchmark",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_sent",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_spend",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_spend_currency",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_website_add_to_cart",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_website_initiate_checkout",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_website_purchase",
+            "type": "string"
+        },
+        {
+            "name": "marketing_messages_website_purchase_values",
+            "type": "string"
+        },
+        {
+            "name": "mobile_app_purchase_roas",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "objective",
+            "type": "string"
+        },
+        {
+            "name": "objective_result_rate",
+            "type": "list<Object>"
+        },
+        {
+            "name": "objective_results",
+            "type": "list<Object>"
+        },
+        {
+            "name": "onsite_conversion_messaging_detected_purchase_deduped",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "optimization_goal",
+            "type": "string"
+        },
+        {
+            "name": "outbound_clicks",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "outbound_clicks_ctr",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "place_page_name",
+            "type": "string"
+        },
+        {
+            "name": "product_brand",
+            "type": "string"
+        },
+        {
+            "name": "product_category",
+            "type": "string"
+        },
+        {
+            "name": "product_content_id",
+            "type": "string"
+        },
+        {
+            "name": "product_custom_label_0",
+            "type": "string"
+        },
+        {
+            "name": "product_custom_label_1",
+            "type": "string"
+        },
+        {
+            "name": "product_custom_label_2",
+            "type": "string"
+        },
+        {
+            "name": "product_custom_label_3",
+            "type": "string"
+        },
+        {
+            "name": "product_custom_label_4",
+            "type": "string"
+        },
+        {
+            "name": "product_group_content_id",
+            "type": "string"
+        },
+        {
+            "name": "product_group_retailer_id",
+            "type": "string"
+        },
+        {
+            "name": "product_name",
+            "type": "string"
+        },
+        {
+            "name": "product_retailer_id",
+            "type": "string"
+        },
+        {
+            "name": "purchase_per_landing_page_view",
+            "type": "string"
+        },
+        {
+            "name": "purchase_roas",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "purchases_per_link_click",
+            "type": "string"
+        },
+        {
+            "name": "qualifying_question_qualify_answer_rate",
+            "type": "string"
+        },
+        {
+            "name": "quality_ranking",
+            "type": "string"
+        },
+        {
+            "name": "reach",
+            "type": "string"
+        },
+        {
+            "name": "result_rate",
+            "type": "list<Object>"
+        },
+        {
+            "name": "result_values_performance_indicator",
+            "type": "string"
+        },
+        {
+            "name": "results",
+            "type": "list<Object>"
+        },
+        {
+            "name": "shops_assisted_purchases",
+            "type": "string"
+        },
+        {
+            "name": "social_spend",
+            "type": "string"
+        },
+        {
+            "name": "spend",
+            "type": "string"
+        },
+        {
+            "name": "total_postbacks",
+            "type": "string"
+        },
+        {
+            "name": "total_postbacks_detailed",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "total_postbacks_detailed_v4",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "unique_actions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "unique_clicks",
+            "type": "string"
+        },
+        {
+            "name": "unique_conversions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "unique_ctr",
+            "type": "string"
+        },
+        {
+            "name": "unique_inline_link_click_ctr",
+            "type": "string"
+        },
+        {
+            "name": "unique_inline_link_clicks",
+            "type": "string"
+        },
+        {
+            "name": "unique_link_clicks_ctr",
+            "type": "string"
+        },
+        {
+            "name": "unique_outbound_clicks",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "unique_outbound_clicks_ctr",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "unique_video_continuous_2_sec_watched_actions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "unique_video_view_15_sec",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "updated_time",
+            "type": "string"
+        },
+        {
+            "name": "video_15_sec_watched_actions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "video_30_sec_watched_actions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "video_avg_time_watched_actions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "video_continuous_2_sec_watched_actions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "video_p100_watched_actions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "video_p25_watched_actions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "video_p50_watched_actions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "video_p75_watched_actions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "video_p95_watched_actions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "video_play_actions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "video_play_curve_actions",
+            "type": "list<AdsHistogramStats>"
+        },
+        {
+            "name": "video_play_retention_0_to_15s_actions",
+            "type": "list<AdsHistogramStats>"
+        },
+        {
+            "name": "video_play_retention_20_to_60s_actions",
+            "type": "list<AdsHistogramStats>"
+        },
+        {
+            "name": "video_play_retention_graph_actions",
+            "type": "list<AdsHistogramStats>"
+        },
+        {
+            "name": "video_thruplay_watched_actions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "video_time_watched_actions",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "video_view_per_impression",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "website_ctr",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "website_purchase_roas",
+            "type": "list<AdsActionStats>"
+        },
+        {
+            "name": "wish_bid",
+            "type": "string"
+        }
+    ]
+}

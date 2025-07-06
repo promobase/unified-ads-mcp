@@ -1,0 +1,54 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "videos",
+            "return": "AdVideo",
+            "params": []
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "VideoList",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "creation_time",
+            "type": "datetime"
+        },
+        {
+            "name": "description",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "last_modified",
+            "type": "datetime"
+        },
+        {
+            "name": "owner",
+            "type": "Object"
+        },
+        {
+            "name": "season_number",
+            "type": "int"
+        },
+        {
+            "name": "thumbnail",
+            "type": "string"
+        },
+        {
+            "name": "title",
+            "type": "string"
+        },
+        {
+            "name": "videos_count",
+            "type": "int"
+        }
+    ]
+}

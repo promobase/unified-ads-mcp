@@ -1,0 +1,590 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "agencies",
+            "return": "Business",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "authorized_adaccounts",
+            "return": "AdAccount",
+            "params": [
+                {
+                    "name": "business",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "authorized_adaccounts",
+            "return": "IGUser",
+            "params": [
+                {
+                    "name": "account_id",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "business",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "available_catalogs",
+            "return": "UserAvailableCatalogs",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "branded_content_ad_permissions",
+            "return": "IGBCAdsPermission",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "branded_content_ad_permissions",
+            "return": "IGBCAdsPermission",
+            "params": [
+                {
+                    "name": "creator_instagram_account",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "creator_instagram_username",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "revoke",
+                    "required": false,
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "branded_content_advertisable_medias",
+            "return": "BrandedContentShadowIGMediaID",
+            "params": [
+                {
+                    "name": "ad_code",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "creator_username",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "only_fetch_allowlisted",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "only_fetch_recommended_content",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "permalinks",
+                    "required": false,
+                    "type": "list<string>"
+                }
+            ]
+        },
+        {
+            "method": "DELETE",
+            "endpoint": "branded_content_tag_approval",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "user_ids",
+                    "required": true,
+                    "type": "list<unsigned int>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "branded_content_tag_approval",
+            "return": "BrandedContentShadowIGUserID",
+            "params": [
+                {
+                    "name": "user_ids",
+                    "required": true,
+                    "type": "list<unsigned int>"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "branded_content_tag_approval",
+            "return": "BrandedContentShadowIGUserID",
+            "params": [
+                {
+                    "name": "user_ids",
+                    "required": true,
+                    "type": "list<unsigned int>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "catalog_product_search",
+            "return": "ShadowIGUserCatalogProductSearch",
+            "params": [
+                {
+                    "name": "catalog_id",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "q",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "connected_threads_user",
+            "return": "ThreadsUser",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "content_publishing_limit",
+            "return": "ContentPublishingLimitResponse",
+            "params": [
+                {
+                    "name": "since",
+                    "required": false,
+                    "type": "datetime"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "dataset",
+            "return": "Dataset",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "dataset",
+            "return": "Dataset",
+            "params": [
+                {
+                    "name": "dataset_name",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "insights",
+            "return": "InstagramInsightsResult",
+            "params": [
+                {
+                    "name": "breakdown",
+                    "required": false,
+                    "type": "list<shadowiguserinsights_breakdown_enum_param>"
+                },
+                {
+                    "name": "metric",
+                    "required": true,
+                    "type": "list<shadowiguserinsights_metric_enum_param>"
+                },
+                {
+                    "name": "metric_type",
+                    "required": false,
+                    "type": "shadowiguserinsights_metric_type_enum_param"
+                },
+                {
+                    "name": "period",
+                    "required": true,
+                    "type": "list<shadowiguserinsights_period_enum_param>"
+                },
+                {
+                    "name": "since",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "timeframe",
+                    "required": false,
+                    "type": "shadowiguserinsights_timeframe_enum_param"
+                },
+                {
+                    "name": "until",
+                    "required": false,
+                    "type": "datetime"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "instagram_backed_threads_user",
+            "return": "ThreadsUser",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "live_media",
+            "return": "IGMedia",
+            "params": [
+                {
+                    "name": "since",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "until",
+                    "required": false,
+                    "type": "datetime"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "media",
+            "return": "IGMedia",
+            "params": [
+                {
+                    "name": "since",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "until",
+                    "required": false,
+                    "type": "datetime"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "media",
+            "return": "IGMedia",
+            "params": [
+                {
+                    "name": "alt_text",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "audio_name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "caption",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "children",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "collaborators",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "cover_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "image_url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "is_carousel_item",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "location_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "media_type",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "product_tags",
+                    "required": false,
+                    "type": "list<map>"
+                },
+                {
+                    "name": "share_to_feed",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "thumb_offset",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "upload_type",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "user_tags",
+                    "required": false,
+                    "type": "list<map>"
+                },
+                {
+                    "name": "video_url",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "media_publish",
+            "return": "IGMedia",
+            "params": [
+                {
+                    "name": "creation_id",
+                    "required": true,
+                    "type": "unsigned int"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "mentions",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "comment_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "media_id",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "message",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "notification_message_tokens",
+            "return": "UserPageOneTimeOptInTokenSettings",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "product_appeal",
+            "return": "IGShoppingProductAppeal",
+            "params": [
+                {
+                    "name": "product_id",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "product_appeal",
+            "return": "IGShoppingProductAppeal",
+            "params": [
+                {
+                    "name": "appeal_reason",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "product_id",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "recently_searched_hashtags",
+            "return": "ShadowIGHashtag",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "stories",
+            "return": "IGMedia",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "tags",
+            "return": "IGMedia",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "upcoming_events",
+            "return": "IGUpcomingEvent",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "upcoming_events",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "end_time",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "notification_subtypes",
+                    "required": false,
+                    "type": "list<shadowiguserupcoming_events_notification_subtypes_enum_param>"
+                },
+                {
+                    "name": "start_time",
+                    "required": true,
+                    "type": "datetime"
+                },
+                {
+                    "name": "title",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "welcome_message_flows",
+            "return": "ShadowIGUserCTXPartnerAppWelcomeMessageFlow",
+            "params": [
+                {
+                    "name": "app_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "flow_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "IGUser",
+            "params": [
+                {
+                    "name": "adgroup_id",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "name": "biography",
+            "type": "string"
+        },
+        {
+            "name": "business_discovery",
+            "type": "IGUser"
+        },
+        {
+            "name": "followers_count",
+            "type": "int"
+        },
+        {
+            "name": "follows_count",
+            "type": "int"
+        },
+        {
+            "name": "has_profile_pic",
+            "type": "bool"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "ig_id",
+            "type": "int"
+        },
+        {
+            "name": "is_published",
+            "type": "bool"
+        },
+        {
+            "name": "legacy_instagram_user_id",
+            "type": "string"
+        },
+        {
+            "name": "media_count",
+            "type": "int"
+        },
+        {
+            "name": "mentioned_comment",
+            "type": "IGComment"
+        },
+        {
+            "name": "mentioned_media",
+            "type": "IGMedia"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "owner_business",
+            "type": "Business"
+        },
+        {
+            "name": "profile_picture_url",
+            "type": "string"
+        },
+        {
+            "name": "shopping_product_tag_eligibility",
+            "type": "bool"
+        },
+        {
+            "name": "shopping_review_status",
+            "type": "string"
+        },
+        {
+            "name": "username",
+            "type": "string"
+        },
+        {
+            "name": "website",
+            "type": "string"
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "estimate_ready",
+            "type": "bool"
+        },
+        {
+            "name": "users_lower_bound",
+            "type": "int"
+        },
+        {
+            "name": "users_upper_bound",
+            "type": "int"
+        }
+    ]
+}

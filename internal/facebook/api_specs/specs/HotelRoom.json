@@ -1,0 +1,62 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "pricing_variables",
+            "return": "DynamicPriceConfigByDate",
+            "params": []
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "HotelRoom",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "applinks",
+            "type": "CatalogItemAppLinks"
+        },
+        {
+            "name": "base_price",
+            "type": "string"
+        },
+        {
+            "name": "currency",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "images",
+            "type": "list<string>"
+        },
+        {
+            "name": "margin_level",
+            "type": "string"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "room_id",
+            "type": "string"
+        },
+        {
+            "name": "sale_price",
+            "type": "string"
+        },
+        {
+            "name": "url",
+            "type": "string"
+        }
+    ]
+}

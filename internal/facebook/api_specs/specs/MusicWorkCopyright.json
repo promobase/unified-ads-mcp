@@ -1,0 +1,64 @@
+{
+    "apis": [
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "MusicWorkCopyright",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "available_ui_actions",
+            "type": "list<string>"
+        },
+        {
+            "name": "claim_status",
+            "type": "string"
+        },
+        {
+            "name": "creation_time",
+            "type": "datetime"
+        },
+        {
+            "name": "displayed_fb_matches_count",
+            "type": "int"
+        },
+        {
+            "name": "displayed_ig_matches_count",
+            "type": "int"
+        },
+        {
+            "name": "displayed_matches_count",
+            "type": "int"
+        },
+        {
+            "name": "has_rev_share_eligible_isrcs",
+            "type": "bool"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "is_linking_required_to_monetize_for_manual_claim",
+            "type": "bool"
+        },
+        {
+            "name": "match_rule",
+            "type": "VideoCopyrightRule"
+        },
+        {
+            "name": "status",
+            "type": "string"
+        },
+        {
+            "name": "tags",
+            "type": "list<string>"
+        },
+        {
+            "name": "update_time",
+            "type": "datetime"
+        }
+    ]
+}

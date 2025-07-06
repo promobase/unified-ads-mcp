@@ -1,0 +1,9 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "aesthetics",
+            "type": "list<map<string, string>>"
+        }
+    ]
+}

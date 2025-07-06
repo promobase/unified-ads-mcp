@@ -1,0 +1,145 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "leads",
+            "return": "Lead",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "test_leads",
+            "return": "Lead",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "test_leads",
+            "return": "Lead",
+            "params": [
+                {
+                    "name": "custom_disclaimer_responses",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "field_data",
+                    "required": false,
+                    "type": "list<Object>"
+                }
+            ]
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "LeadgenForm",
+            "params": []
+        },
+        {
+            "name": "#update",
+            "method": "POST",
+            "return": "LeadgenForm",
+            "params": [
+                {
+                    "name": "status",
+                    "required": false,
+                    "type": "leadgendata_status"
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "name": "allow_organic_lead",
+            "type": "bool"
+        },
+        {
+            "name": "block_display_for_non_targeted_viewer",
+            "type": "bool"
+        },
+        {
+            "name": "context_card",
+            "type": "LeadGenContextCard"
+        },
+        {
+            "name": "created_time",
+            "type": "datetime"
+        },
+        {
+            "name": "creator",
+            "type": "User"
+        },
+        {
+            "name": "expired_leads_count",
+            "type": "unsigned int"
+        },
+        {
+            "name": "follow_up_action_text",
+            "type": "string"
+        },
+        {
+            "name": "follow_up_action_url",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "is_optimized_for_quality",
+            "type": "bool"
+        },
+        {
+            "name": "leads_count",
+            "type": "unsigned int"
+        },
+        {
+            "name": "legal_content",
+            "type": "LeadGenLegalContent"
+        },
+        {
+            "name": "locale",
+            "type": "string"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "organic_leads_count",
+            "type": "unsigned int"
+        },
+        {
+            "name": "page",
+            "type": "Page"
+        },
+        {
+            "name": "page_id",
+            "type": "string"
+        },
+        {
+            "name": "privacy_policy_url",
+            "type": "string"
+        },
+        {
+            "name": "question_page_custom_headline",
+            "type": "string"
+        },
+        {
+            "name": "questions",
+            "type": "list<LeadGenQuestion>"
+        },
+        {
+            "name": "status",
+            "type": "string"
+        },
+        {
+            "name": "thank_you_page",
+            "type": "LeadGenThankYouPage"
+        },
+        {
+            "name": "tracking_parameters",
+            "type": "list<map<string, string>>"
+        }
+    ]
+}

@@ -102,7 +102,10 @@ func (s *Server) handleInitialize(request *types.MCPRequest) (*types.MCPResponse
 }
 
 func (s *Server) handleToolsList(request *types.MCPRequest) (*types.MCPResponse, error) {
-	tools := []map[string]interface{}{
+	var tools []map[string]interface{}
+
+	// Add Google Ads tools (placeholder for now)
+	googleTools := []map[string]interface{}{
 		{
 			"name":        "google_ads_create_campaign",
 			"description": "Create a new Google Ads campaign",
@@ -116,19 +119,13 @@ func (s *Server) handleToolsList(request *types.MCPRequest) (*types.MCPResponse,
 				"required": []string{"name", "budget", "type"},
 			},
 		},
-		{
-			"name":        "facebook_ads_create_campaign",
-			"description": "Create a new Facebook Ads campaign",
-			"inputSchema": map[string]interface{}{
-				"type": "object",
-				"properties": map[string]interface{}{
-					"name":      map[string]interface{}{"type": "string"},
-					"objective": map[string]interface{}{"type": "string"},
-					"budget":    map[string]interface{}{"type": "number"},
-				},
-				"required": []string{"name", "objective", "budget"},
-			},
-		},
+	}
+
+	// Add Facebook Business API tools (generated)
+	facebookTools := s.facebookClient.GetMCPTools()
+
+	// Add TikTok Ads tools (placeholder for now)
+	tiktokTools := []map[string]interface{}{
 		{
 			"name":        "tiktok_ads_create_campaign",
 			"description": "Create a new TikTok Ads campaign",
@@ -143,6 +140,11 @@ func (s *Server) handleToolsList(request *types.MCPRequest) (*types.MCPResponse,
 			},
 		},
 	}
+
+	// Combine all tools
+	tools = append(tools, googleTools...)
+	tools = append(tools, facebookTools...)
+	tools = append(tools, tiktokTools...)
 
 	return &types.MCPResponse{
 		ID: request.ID,

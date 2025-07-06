@@ -1,0 +1,325 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "comments",
+            "return": "NullNode",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "feed",
+            "return": "NullNode",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "live_videos",
+            "return": "NullNode",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "live_videos",
+            "return": "LiveVideo",
+            "params": [
+                {
+                    "name": "content_tags",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "description",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "enable_backup_ingest",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "encoding_settings",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "event_params",
+                    "required": false,
+                    "type": "Object"
+                },
+                {
+                    "name": "fisheye_video_cropped",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "front_z_rotation",
+                    "required": false,
+                    "type": "float"
+                },
+                {
+                    "name": "is_audio_only",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "is_spherical",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "original_fov",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "privacy",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "projection",
+                    "required": false,
+                    "type": "eventlive_videos_projection_enum_param"
+                },
+                {
+                    "name": "published",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "schedule_custom_profile_image",
+                    "required": false,
+                    "type": "file"
+                },
+                {
+                    "name": "spatial_audio_format",
+                    "required": false,
+                    "type": "eventlive_videos_spatial_audio_format_enum_param"
+                },
+                {
+                    "name": "status",
+                    "required": false,
+                    "type": "eventlive_videos_status_enum_param"
+                },
+                {
+                    "name": "stereoscopic_mode",
+                    "required": false,
+                    "type": "eventlive_videos_stereoscopic_mode_enum_param"
+                },
+                {
+                    "name": "stop_on_delete_stream",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "stream_type",
+                    "required": false,
+                    "type": "eventlive_videos_stream_type_enum_param"
+                },
+                {
+                    "name": "title",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "photos",
+            "return": "NullNode",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "picture",
+            "return": "NullNode",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "posts",
+            "return": "NullNode",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "roles",
+            "return": "Profile",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "ticket_tiers",
+            "return": "EventTicketTier",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "videos",
+            "return": "NullNode",
+            "params": []
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "Event",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "attending_count",
+            "type": "int"
+        },
+        {
+            "name": "can_guests_invite",
+            "type": "bool"
+        },
+        {
+            "name": "category",
+            "type": "Event_category"
+        },
+        {
+            "name": "cover",
+            "type": "CoverPhoto"
+        },
+        {
+            "name": "created_time",
+            "type": "datetime"
+        },
+        {
+            "name": "declined_count",
+            "type": "int"
+        },
+        {
+            "name": "description",
+            "type": "string"
+        },
+        {
+            "name": "discount_code_enabled",
+            "type": "bool"
+        },
+        {
+            "name": "end_time",
+            "type": "string"
+        },
+        {
+            "name": "event_times",
+            "type": "list<ChildEvent>"
+        },
+        {
+            "name": "guest_list_enabled",
+            "type": "bool"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "interested_count",
+            "type": "int"
+        },
+        {
+            "name": "is_canceled",
+            "type": "bool"
+        },
+        {
+            "name": "is_draft",
+            "type": "bool"
+        },
+        {
+            "name": "is_online",
+            "type": "bool"
+        },
+        {
+            "name": "is_page_owned",
+            "type": "bool"
+        },
+        {
+            "name": "maybe_count",
+            "type": "int"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "noreply_count",
+            "type": "int"
+        },
+        {
+            "name": "online_event_format",
+            "type": "Event_online_event_format"
+        },
+        {
+            "name": "online_event_third_party_url",
+            "type": "string"
+        },
+        {
+            "name": "owner",
+            "type": "Object"
+        },
+        {
+            "name": "parent_group",
+            "type": "Group"
+        },
+        {
+            "name": "place",
+            "type": "Place"
+        },
+        {
+            "name": "registration_setting",
+            "type": "EventRegistrationSetting"
+        },
+        {
+            "name": "scheduled_publish_time",
+            "type": "string"
+        },
+        {
+            "name": "start_time",
+            "type": "string"
+        },
+        {
+            "name": "sub_categories",
+            "type": "list<string>"
+        },
+        {
+            "name": "ticket_selling_status",
+            "type": "string"
+        },
+        {
+            "name": "ticket_setting",
+            "type": "EventTicketSetting"
+        },
+        {
+            "name": "ticket_uri",
+            "type": "string"
+        },
+        {
+            "name": "ticket_uri_start_sales_time",
+            "type": "string"
+        },
+        {
+            "name": "ticketing_privacy_uri",
+            "type": "string"
+        },
+        {
+            "name": "ticketing_terms_uri",
+            "type": "string"
+        },
+        {
+            "name": "timezone",
+            "type": "string"
+        },
+        {
+            "name": "type",
+            "type": "Event_type"
+        },
+        {
+            "name": "updated_time",
+            "type": "datetime"
+        }
+    ]
+}

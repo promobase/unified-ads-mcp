@@ -1,0 +1,17 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "destination_type",
+            "type": "string"
+        },
+        {
+            "name": "objective",
+            "type": "string"
+        },
+        {
+            "name": "optimization_goal",
+            "type": "string"
+        }
+    ]
+}

@@ -1,0 +1,285 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "channels_to_integrity_status",
+            "return": "CatalogItemChannelsToIntegrityStatus",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "override_details",
+            "return": "OverrideDetails",
+            "params": [
+                {
+                    "name": "keys",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "type",
+                    "required": false,
+                    "type": "vehicleofferoverride_details_type_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "videos_metadata",
+            "return": "DynamicVideoMetadata",
+            "params": []
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "VehicleOffer",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "amount_currency",
+            "type": "string"
+        },
+        {
+            "name": "amount_percentage",
+            "type": "float"
+        },
+        {
+            "name": "amount_price",
+            "type": "string"
+        },
+        {
+            "name": "amount_qualifier",
+            "type": "string"
+        },
+        {
+            "name": "applinks",
+            "type": "CatalogItemAppLinks"
+        },
+        {
+            "name": "availability",
+            "type": "string"
+        },
+        {
+            "name": "body_style",
+            "type": "string"
+        },
+        {
+            "name": "cashback_currency",
+            "type": "string"
+        },
+        {
+            "name": "cashback_price",
+            "type": "string"
+        },
+        {
+            "name": "category_specific_fields",
+            "type": "CatalogSubVerticalList"
+        },
+        {
+            "name": "currency",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_0",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_1",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_2",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_3",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_4",
+            "type": "string"
+        },
+        {
+            "name": "custom_number_0",
+            "type": "unsigned int"
+        },
+        {
+            "name": "custom_number_1",
+            "type": "unsigned int"
+        },
+        {
+            "name": "custom_number_2",
+            "type": "unsigned int"
+        },
+        {
+            "name": "custom_number_3",
+            "type": "unsigned int"
+        },
+        {
+            "name": "custom_number_4",
+            "type": "unsigned int"
+        },
+        {
+            "name": "dma_codes",
+            "type": "list<string>"
+        },
+        {
+            "name": "downpayment_currency",
+            "type": "string"
+        },
+        {
+            "name": "downpayment_price",
+            "type": "string"
+        },
+        {
+            "name": "downpayment_qualifier",
+            "type": "string"
+        },
+        {
+            "name": "drivetrain",
+            "type": "string"
+        },
+        {
+            "name": "end_date",
+            "type": "string"
+        },
+        {
+            "name": "end_time",
+            "type": "int"
+        },
+        {
+            "name": "exterior_color",
+            "type": "string"
+        },
+        {
+            "name": "fuel_type",
+            "type": "string"
+        },
+        {
+            "name": "generation",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "image_fetch_status",
+            "type": "VehicleOffer_image_fetch_status"
+        },
+        {
+            "name": "images",
+            "type": "list<string>"
+        },
+        {
+            "name": "interior_color",
+            "type": "string"
+        },
+        {
+            "name": "interior_upholstery",
+            "type": "string"
+        },
+        {
+            "name": "make",
+            "type": "string"
+        },
+        {
+            "name": "model",
+            "type": "string"
+        },
+        {
+            "name": "offer_description",
+            "type": "string"
+        },
+        {
+            "name": "offer_disclaimer",
+            "type": "string"
+        },
+        {
+            "name": "offer_type",
+            "type": "string"
+        },
+        {
+            "name": "price",
+            "type": "string"
+        },
+        {
+            "name": "product_priority_0",
+            "type": "float"
+        },
+        {
+            "name": "product_priority_1",
+            "type": "float"
+        },
+        {
+            "name": "product_priority_2",
+            "type": "float"
+        },
+        {
+            "name": "product_priority_3",
+            "type": "float"
+        },
+        {
+            "name": "product_priority_4",
+            "type": "float"
+        },
+        {
+            "name": "sanitized_images",
+            "type": "list<string>"
+        },
+        {
+            "name": "start_date",
+            "type": "string"
+        },
+        {
+            "name": "start_time",
+            "type": "int"
+        },
+        {
+            "name": "tags",
+            "type": "list<string>"
+        },
+        {
+            "name": "term_length",
+            "type": "unsigned int"
+        },
+        {
+            "name": "term_qualifier",
+            "type": "string"
+        },
+        {
+            "name": "title",
+            "type": "string"
+        },
+        {
+            "name": "transmission",
+            "type": "string"
+        },
+        {
+            "name": "trim",
+            "type": "string"
+        },
+        {
+            "name": "unit_price",
+            "type": "Object"
+        },
+        {
+            "name": "url",
+            "type": "string"
+        },
+        {
+            "name": "vehicle_offer_id",
+            "type": "string"
+        },
+        {
+            "name": "visibility",
+            "type": "VehicleOffer_visibility"
+        },
+        {
+            "name": "year",
+            "type": "int"
+        }
+    ]
+}

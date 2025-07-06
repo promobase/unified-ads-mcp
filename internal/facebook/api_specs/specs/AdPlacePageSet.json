@@ -1,0 +1,36 @@
+{
+    "apis": [
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "AdPlacePageSet",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "account_id",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "location_types",
+            "type": "list<string>"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "pages_count",
+            "type": "int"
+        },
+        {
+            "name": "parent_page",
+            "type": "Page"
+        }
+    ]
+}

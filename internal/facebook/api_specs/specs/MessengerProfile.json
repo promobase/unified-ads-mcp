@@ -1,0 +1,37 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "account_linking_url",
+            "type": "string"
+        },
+        {
+            "name": "commands",
+            "type": "list<Object>"
+        },
+        {
+            "name": "get_started",
+            "type": "Object"
+        },
+        {
+            "name": "greeting",
+            "type": "list<Object>"
+        },
+        {
+            "name": "ice_breakers",
+            "type": "list<Object>"
+        },
+        {
+            "name": "persistent_menu",
+            "type": "list<Object>"
+        },
+        {
+            "name": "subject_to_new_eu_privacy_rules",
+            "type": "bool"
+        },
+        {
+            "name": "whitelisted_domains",
+            "type": "list<string>"
+        }
+    ]
+}

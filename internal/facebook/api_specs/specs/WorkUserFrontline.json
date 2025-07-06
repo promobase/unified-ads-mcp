@@ -1,0 +1,13 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "has_access",
+            "type": "bool"
+        },
+        {
+            "name": "is_frontline",
+            "type": "bool"
+        }
+    ]
+}

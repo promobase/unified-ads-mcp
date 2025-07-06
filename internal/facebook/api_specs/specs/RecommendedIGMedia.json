@@ -1,0 +1,9 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "intent_score",
+            "type": "float"
+        }
+    ]
+}

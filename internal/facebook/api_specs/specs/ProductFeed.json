@@ -1,0 +1,414 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "automotive_models",
+            "return": "AutomotiveModel",
+            "params": [
+                {
+                    "name": "bulk_pagination",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "destinations",
+            "return": "Destination",
+            "params": [
+                {
+                    "name": "bulk_pagination",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "flights",
+            "return": "Flight",
+            "params": [
+                {
+                    "name": "bulk_pagination",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "home_listings",
+            "return": "HomeListing",
+            "params": [
+                {
+                    "name": "bulk_pagination",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "hotels",
+            "return": "Hotel",
+            "params": [
+                {
+                    "name": "bulk_pagination",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "media_titles",
+            "return": "MediaTitle",
+            "params": [
+                {
+                    "name": "bulk_pagination",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "products",
+            "return": "ProductItem",
+            "params": [
+                {
+                    "name": "bulk_pagination",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "error_priority",
+                    "required": false,
+                    "type": "productfeedproducts_error_priority_enum_param"
+                },
+                {
+                    "name": "error_type",
+                    "required": false,
+                    "type": "productfeedproducts_error_type_enum_param"
+                },
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "rules",
+            "return": "ProductFeedRule",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "rules",
+            "return": "ProductFeedRule",
+            "params": [
+                {
+                    "name": "attribute",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "params",
+                    "required": false,
+                    "type": "map"
+                },
+                {
+                    "name": "rule_type",
+                    "required": true,
+                    "type": "productfeedrules_rule_type_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "POST",
+            "endpoint": "supplementary_feed_assocs",
+            "return": "Object",
+            "params": [
+                {
+                    "name": "assoc_data",
+                    "required": true,
+                    "type": "list<map>"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "upload_schedules",
+            "return": "ProductFeedSchedule",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "upload_schedules",
+            "return": "ProductFeed",
+            "params": [
+                {
+                    "name": "upload_schedule",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "uploads",
+            "return": "ProductFeedUpload",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "uploads",
+            "return": "ProductFeedUpload",
+            "params": [
+                {
+                    "name": "fbe_external_business_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "file",
+                    "required": false,
+                    "type": "file"
+                },
+                {
+                    "name": "password",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "update_only",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "url",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "username",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "vehicle_offers",
+            "return": "VehicleOffer",
+            "params": [
+                {
+                    "name": "bulk_pagination",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "vehicles",
+            "return": "Vehicle",
+            "params": [
+                {
+                    "name": "bulk_pagination",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "filter",
+                    "required": false,
+                    "type": "Object"
+                }
+            ]
+        },
+        {
+            "name": "#delete",
+            "method": "DELETE",
+            "return": "Object",
+            "params": []
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "ProductFeed",
+            "params": []
+        },
+        {
+            "name": "#update",
+            "method": "POST",
+            "return": "ProductFeed",
+            "params": [
+                {
+                    "name": "default_currency",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "deletion_enabled",
+                    "required": false,
+                    "type": "bool"
+                },
+                {
+                    "name": "delimiter",
+                    "required": false,
+                    "type": "productfeed_delimiter"
+                },
+                {
+                    "name": "encoding",
+                    "required": false,
+                    "type": "productfeed_encoding"
+                },
+                {
+                    "name": "migrated_from_feed_id",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "name",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "quoted_fields_mode",
+                    "required": false,
+                    "type": "productfeed_quoted_fields_mode"
+                },
+                {
+                    "name": "schedule",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "update_schedule",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "name": "country",
+            "type": "string"
+        },
+        {
+            "name": "created_time",
+            "type": "datetime"
+        },
+        {
+            "name": "default_currency",
+            "type": "string"
+        },
+        {
+            "name": "deletion_enabled",
+            "type": "bool"
+        },
+        {
+            "name": "delimiter",
+            "type": "ProductFeed_delimiter"
+        },
+        {
+            "name": "encoding",
+            "type": "string"
+        },
+        {
+            "name": "file_name",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "ingestion_source_type",
+            "type": "ProductFeed_ingestion_source_type"
+        },
+        {
+            "name": "item_sub_type",
+            "type": "string"
+        },
+        {
+            "name": "latest_upload",
+            "type": "ProductFeedUpload"
+        },
+        {
+            "name": "migrated_from_feed_id",
+            "type": "string"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "override_type",
+            "type": "string"
+        },
+        {
+            "name": "primary_feeds",
+            "type": "list<string>"
+        },
+        {
+            "name": "product_count",
+            "type": "int"
+        },
+        {
+            "name": "quoted_fields_mode",
+            "type": "ProductFeed_quoted_fields_mode"
+        },
+        {
+            "name": "schedule",
+            "type": "ProductFeedSchedule"
+        },
+        {
+            "name": "supplementary_feeds",
+            "type": "list<string>"
+        },
+        {
+            "name": "update_schedule",
+            "type": "ProductFeedSchedule"
+        }
+    ]
+}

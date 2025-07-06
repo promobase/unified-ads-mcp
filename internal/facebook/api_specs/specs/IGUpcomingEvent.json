@@ -1,0 +1,68 @@
+{
+    "apis": [
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "IGUpcomingEvent",
+            "params": []
+        },
+        {
+            "name": "#update",
+            "method": "POST",
+            "return": "IGUpcomingEvent",
+            "params": [
+                {
+                    "name": "end_time",
+                    "required": false,
+                    "type": "datetime"
+                },
+                {
+                    "name": "notification_subtypes",
+                    "required": false,
+                    "type": "list<igupcomingevent_notification_subtypes>"
+                },
+                {
+                    "name": "notification_target_time",
+                    "required": false,
+                    "type": "igupcomingevent_notification_target_time"
+                },
+                {
+                    "name": "start_time",
+                    "required": true,
+                    "type": "datetime"
+                },
+                {
+                    "name": "title",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "name": "end_time",
+            "type": "datetime"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "notification_subtypes",
+            "type": "list<string>"
+        },
+        {
+            "name": "notification_target_time",
+            "type": "string"
+        },
+        {
+            "name": "start_time",
+            "type": "datetime"
+        },
+        {
+            "name": "title",
+            "type": "string"
+        }
+    ]
+}

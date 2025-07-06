@@ -1,0 +1,233 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "channels_to_integrity_status",
+            "return": "CatalogItemChannelsToIntegrityStatus",
+            "params": []
+        },
+        {
+            "method": "GET",
+            "endpoint": "override_details",
+            "return": "OverrideDetails",
+            "params": [
+                {
+                    "name": "keys",
+                    "required": false,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "type",
+                    "required": false,
+                    "type": "flightoverride_details_type_enum_param"
+                }
+            ]
+        },
+        {
+            "method": "GET",
+            "endpoint": "videos_metadata",
+            "return": "DynamicVideoMetadata",
+            "params": []
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "Flight",
+            "params": []
+        },
+        {
+            "name": "#update",
+            "method": "POST",
+            "return": "Flight",
+            "params": [
+                {
+                    "name": "currency",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "description",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "destination_airport",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "destination_city",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "images",
+                    "required": false,
+                    "type": "list<Object>"
+                },
+                {
+                    "name": "origin_airport",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "origin_city",
+                    "required": false,
+                    "type": "string"
+                },
+                {
+                    "name": "price",
+                    "required": false,
+                    "type": "unsigned int"
+                },
+                {
+                    "name": "url",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "name": "applinks",
+            "type": "CatalogItemAppLinks"
+        },
+        {
+            "name": "category_specific_fields",
+            "type": "CatalogSubVerticalList"
+        },
+        {
+            "name": "currency",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_0",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_1",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_2",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_3",
+            "type": "string"
+        },
+        {
+            "name": "custom_label_4",
+            "type": "string"
+        },
+        {
+            "name": "custom_number_0",
+            "type": "unsigned int"
+        },
+        {
+            "name": "custom_number_1",
+            "type": "unsigned int"
+        },
+        {
+            "name": "custom_number_2",
+            "type": "unsigned int"
+        },
+        {
+            "name": "custom_number_3",
+            "type": "unsigned int"
+        },
+        {
+            "name": "custom_number_4",
+            "type": "unsigned int"
+        },
+        {
+            "name": "description",
+            "type": "string"
+        },
+        {
+            "name": "destination_airport",
+            "type": "string"
+        },
+        {
+            "name": "destination_city",
+            "type": "string"
+        },
+        {
+            "name": "flight_id",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "image_fetch_status",
+            "type": "Flight_image_fetch_status"
+        },
+        {
+            "name": "images",
+            "type": "list<string>"
+        },
+        {
+            "name": "oneway_currency",
+            "type": "string"
+        },
+        {
+            "name": "oneway_price",
+            "type": "string"
+        },
+        {
+            "name": "origin_airport",
+            "type": "string"
+        },
+        {
+            "name": "origin_city",
+            "type": "string"
+        },
+        {
+            "name": "price",
+            "type": "string"
+        },
+        {
+            "name": "product_priority_0",
+            "type": "float"
+        },
+        {
+            "name": "product_priority_1",
+            "type": "float"
+        },
+        {
+            "name": "product_priority_2",
+            "type": "float"
+        },
+        {
+            "name": "product_priority_3",
+            "type": "float"
+        },
+        {
+            "name": "product_priority_4",
+            "type": "float"
+        },
+        {
+            "name": "sanitized_images",
+            "type": "list<string>"
+        },
+        {
+            "name": "tags",
+            "type": "list<string>"
+        },
+        {
+            "name": "unit_price",
+            "type": "Object"
+        },
+        {
+            "name": "url",
+            "type": "string"
+        },
+        {
+            "name": "visibility",
+            "type": "Flight_visibility"
+        }
+    ]
+}

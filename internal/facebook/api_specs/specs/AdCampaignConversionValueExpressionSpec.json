@@ -1,0 +1,17 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "adjustment_sign",
+            "type": "string"
+        },
+        {
+            "name": "adjustment_weight",
+            "type": "unsigned int"
+        },
+        {
+            "name": "destination_type",
+            "type": "string"
+        }
+    ]
+}

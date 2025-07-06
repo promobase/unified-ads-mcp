@@ -1,0 +1,9 @@
+{
+    "apis": [],
+    "fields": [
+        {
+            "name": "comment_moderation_filter",
+            "type": "string"
+        }
+    ]
+}

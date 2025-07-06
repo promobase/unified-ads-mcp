@@ -1,0 +1,40 @@
+{
+    "apis": [
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "AdsMcmeConversion",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "creation_time",
+            "type": "datetime"
+        },
+        {
+            "name": "description",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "is_archived",
+            "type": "bool"
+        },
+        {
+            "name": "mcme_conversion_type",
+            "type": "string"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "omnichannel_object_id",
+            "type": "string"
+        }
+    ]
+}

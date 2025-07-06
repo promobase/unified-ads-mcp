@@ -1,0 +1,40 @@
+{
+    "apis": [
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "Shop",
+            "params": []
+        }
+    ],
+    "fields": [
+        {
+            "name": "commerce_merchant_settings",
+            "type": "CommerceMerchantSettings"
+        },
+        {
+            "name": "fb_sales_channel",
+            "type": "Object"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "ig_sales_channel",
+            "type": "Object"
+        },
+        {
+            "name": "is_onsite_enabled",
+            "type": "bool"
+        },
+        {
+            "name": "shop_status",
+            "type": "string"
+        },
+        {
+            "name": "workspace",
+            "type": "Object"
+        }
+    ]
+}

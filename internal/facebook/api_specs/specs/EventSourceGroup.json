@@ -1,0 +1,67 @@
+{
+    "apis": [
+        {
+            "method": "GET",
+            "endpoint": "shared_accounts",
+            "return": "AdAccount",
+            "params": []
+        },
+        {
+            "method": "POST",
+            "endpoint": "shared_accounts",
+            "return": "EventSourceGroup",
+            "params": [
+                {
+                    "name": "accounts",
+                    "required": true,
+                    "type": "list<string>"
+                }
+            ]
+        },
+        {
+            "name": "#get",
+            "method": "GET",
+            "return": "EventSourceGroup",
+            "params": []
+        },
+        {
+            "name": "#update",
+            "method": "POST",
+            "return": "EventSourceGroup",
+            "params": [
+                {
+                    "name": "event_sources",
+                    "required": true,
+                    "type": "list<string>"
+                },
+                {
+                    "name": "name",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        }
+    ],
+    "fields": [
+        {
+            "name": "business",
+            "type": "Business"
+        },
+        {
+            "name": "event_sources",
+            "type": "list<ExternalEventSource>"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "owner_business",
+            "type": "Business"
+        }
+    ]
+}
