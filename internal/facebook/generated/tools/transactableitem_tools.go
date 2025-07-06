@@ -17,12 +17,26 @@ func GetTransactableItemTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// transactableitem_get_channels_to_integrity_status tool
+	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	transactableitem_get_channels_to_integrity_statusTool := mcp.NewTool("transactableitem_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for TransactableItem"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CatalogItemChannelsToIntegrityStatus objects. Available fields: channels, rejection_information"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, transactableitem_get_channels_to_integrity_statusTool)
 
 	// transactableitem_get_override_details tool
+	// Available fields for OverrideDetails: key, type, values
 	transactableitem_get_override_detailsTool := mcp.NewTool("transactableitem_get_override_details",
 		mcp.WithDescription("GET override_details for TransactableItem"),
 		mcp.WithString("keys",
@@ -32,12 +46,37 @@ func GetTransactableItemTools() []mcp.Tool {
 			mcp.Description("type parameter for override_details"),
 			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for OverrideDetails objects. Available fields: key, type, values"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, transactableitem_get_override_detailsTool)
 
 	// transactableitem_get_ tool
+	// Available fields for TransactableItem: action_title, applinks, category_specific_fields, currency, description, duration_time, duration_type, id, image_fetch_status, images, order_index, price, price_type, sanitized_images, session_type, time_padding_after_end, title, transactable_item_id, url, visibility
 	transactableitem_get_Tool := mcp.NewTool("transactableitem_get_",
 		mcp.WithDescription("GET  for TransactableItem"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for TransactableItem objects. Available fields: action_title, applinks, category_specific_fields, currency, description, duration_time, duration_type, id, image_fetch_status, images, order_index, price, price_type, sanitized_images, session_type (and 5 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, transactableitem_get_Tool)
 
@@ -59,6 +98,26 @@ func HandleTransactableitem_get_channels_to_integrity_status(ctx context.Context
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Transactableitem_get_channels_to_integrity_status(args)
@@ -100,6 +159,26 @@ func HandleTransactableitem_get_override_details(ctx context.Context, request mc
 		args["type"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Transactableitem_get_override_details(args)
 	if err != nil {
@@ -128,6 +207,26 @@ func HandleTransactableitem_get_(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Transactableitem_get_(args)

@@ -17,8 +17,21 @@ func GetExtendedCreditTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// extendedcredit_get_extended_credit_invoice_groups tool
+	// Available fields for ExtendedCreditInvoiceGroup: auto_enroll, bill_to_address, customer_po_number, email, emails, id, liable_address, name, sold_to_address
 	extendedcredit_get_extended_credit_invoice_groupsTool := mcp.NewTool("extendedcredit_get_extended_credit_invoice_groups",
 		mcp.WithDescription("GET extended_credit_invoice_groups for ExtendedCredit"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ExtendedCreditInvoiceGroup objects. Available fields: auto_enroll, bill_to_address, customer_po_number, email, emails, id, liable_address, name, sold_to_address"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, extendedcredit_get_extended_credit_invoice_groupsTool)
 
@@ -37,10 +50,23 @@ func GetExtendedCreditTools() []mcp.Tool {
 	tools = append(tools, extendedcredit_post_extended_credit_invoice_groupsTool)
 
 	// extendedcredit_get_owning_credit_allocation_configs tool
+	// Available fields for ExtendedCreditAllocationConfig: currency_amount, id, liability_type, owning_business, owning_credential, partition_type, receiving_business, receiving_credential, request_status, send_bill_to
 	extendedcredit_get_owning_credit_allocation_configsTool := mcp.NewTool("extendedcredit_get_owning_credit_allocation_configs",
 		mcp.WithDescription("GET owning_credit_allocation_configs for ExtendedCredit"),
 		mcp.WithString("receiving_business_id",
 			mcp.Description("receiving_business_id parameter for owning_credit_allocation_configs"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ExtendedCreditAllocationConfig objects. Available fields: currency_amount, id, liability_type, owning_business, owning_credential, partition_type, receiving_business, receiving_credential, request_status, send_bill_to"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, extendedcredit_get_owning_credit_allocation_configsTool)
@@ -109,8 +135,21 @@ func GetExtendedCreditTools() []mcp.Tool {
 	tools = append(tools, extendedcredit_post_whatsapp_credit_sharing_and_attachTool)
 
 	// extendedcredit_get_ tool
+	// Available fields for ExtendedCredit: allocated_amount, balance, credit_available, credit_type, id, is_access_revoked, is_automated_experience, legal_entity_name, liable_address, liable_biz_name, max_balance, online_max_balance, owner_business, owner_business_name, partition_from, receiving_credit_allocation_config, send_bill_to_address, send_bill_to_biz_name, sold_to_address
 	extendedcredit_get_Tool := mcp.NewTool("extendedcredit_get_",
 		mcp.WithDescription("GET  for ExtendedCredit"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ExtendedCredit objects. Available fields: allocated_amount, balance, credit_available, credit_type, id, is_access_revoked, is_automated_experience, legal_entity_name, liable_address, liable_biz_name, max_balance, online_max_balance, owner_business, owner_business_name, partition_from (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, extendedcredit_get_Tool)
 
@@ -132,6 +171,26 @@ func HandleExtendedcredit_get_extended_credit_invoice_groups(ctx context.Context
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Extendedcredit_get_extended_credit_invoice_groups(args)
@@ -208,6 +267,26 @@ func HandleExtendedcredit_get_owning_credit_allocation_configs(ctx context.Conte
 	// Optional: receiving_business_id
 	if val := request.GetString("receiving_business_id", ""); val != "" {
 		args["receiving_business_id"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -417,6 +496,26 @@ func HandleExtendedcredit_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Extendedcredit_get_(args)

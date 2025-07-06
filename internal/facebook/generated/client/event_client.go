@@ -33,6 +33,31 @@ func (c *EventClient) Event_get_comments(args map[string]interface{}) (interface
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -75,6 +100,31 @@ func (c *EventClient) Event_get_feed(args map[string]interface{}) (interface{}, 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -116,6 +166,31 @@ func (c *EventClient) Event_get_live_videos(args map[string]interface{}) (interf
 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -322,6 +397,31 @@ func (c *EventClient) Event_get_photos(args map[string]interface{}) (interface{}
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -363,6 +463,31 @@ func (c *EventClient) Event_get_picture(args map[string]interface{}) (interface{
 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -406,6 +531,31 @@ func (c *EventClient) Event_get_posts(args map[string]interface{}) (interface{},
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -447,6 +597,31 @@ func (c *EventClient) Event_get_roles(args map[string]interface{}) (interface{},
 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -490,6 +665,31 @@ func (c *EventClient) Event_get_ticket_tiers(args map[string]interface{}) (inter
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -532,6 +732,31 @@ func (c *EventClient) Event_get_videos(args map[string]interface{}) (interface{}
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -573,6 +798,31 @@ func (c *EventClient) Event_get_(args map[string]interface{}) (interface{}, erro
 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

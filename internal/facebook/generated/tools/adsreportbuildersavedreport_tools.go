@@ -17,8 +17,21 @@ func GetAdsReportBuilderSavedReportTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adsreportbuildersavedreport_get_ tool
+	// Available fields for AdsReportBuilderSavedReport: action_report_time, ad_account_id, attribution_windows, comparison_date_interval, creation_source, creation_time, currency, date_interval, date_preset, default_attribution_windows, dimension_groups, dimensions, filtering, formatting, id, last_access_by, last_access_time, last_report_snapshot_id, last_report_snapshot_time, last_shared_report_expiration, limit, locked_dimensions, metrics, report_name, report_snapshot_async_percent_completion, report_snapshot_async_status, schedule_frequency, scope, show_deprecate_aw_banner, sorting, start_date, status, subscribers, update_by, update_time, user, user_dimensions, user_metrics, view_type
 	adsreportbuildersavedreport_get_Tool := mcp.NewTool("adsreportbuildersavedreport_get_",
 		mcp.WithDescription("GET  for AdsReportBuilderSavedReport"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsReportBuilderSavedReport objects. Available fields: action_report_time, ad_account_id, attribution_windows, comparison_date_interval, creation_source, creation_time, currency, date_interval, date_preset, default_attribution_windows, dimension_groups, dimensions, filtering, formatting, id (and 24 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adsreportbuildersavedreport_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleAdsreportbuildersavedreport_get_(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adsreportbuildersavedreport_get_(args)

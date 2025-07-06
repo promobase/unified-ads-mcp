@@ -17,8 +17,21 @@ func GetEventTourTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// eventtour_get_ tool
+	// Available fields for EventTour: description, dominant_color, end_time, id, is_past, last_event_timestamp, name, num_events, photo, scheduled_publish_timestamp, start_time, ticketing_uri, video
 	eventtour_get_Tool := mcp.NewTool("eventtour_get_",
 		mcp.WithDescription("GET  for EventTour"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for EventTour objects. Available fields: description, dominant_color, end_time, id, is_past, last_event_timestamp, name, num_events, photo, scheduled_publish_timestamp, start_time, ticketing_uri, video"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, eventtour_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleEventtour_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Eventtour_get_(args)

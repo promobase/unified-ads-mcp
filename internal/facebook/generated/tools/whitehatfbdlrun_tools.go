@@ -17,8 +17,21 @@ func GetWhitehatFBDLRunTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// whitehatfbdlrun_get_ tool
+	// Available fields for WhitehatFBDLRun: creation_time, id, is_pinned, note, result, run_code, status, user_type
 	whitehatfbdlrun_get_Tool := mcp.NewTool("whitehatfbdlrun_get_",
 		mcp.WithDescription("GET  for WhitehatFBDLRun"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for WhitehatFBDLRun objects. Available fields: creation_time, id, is_pinned, note, result, run_code, status, user_type"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whitehatfbdlrun_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleWhitehatfbdlrun_get_(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Whitehatfbdlrun_get_(args)

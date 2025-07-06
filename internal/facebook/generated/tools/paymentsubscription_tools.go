@@ -17,8 +17,21 @@ func GetPaymentSubscriptionTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// paymentsubscription_get_ tool
+	// Available fields for PaymentSubscription: amount, app_param_data, application, billing_period, canceled_reason, created_time, currency, id, last_payment, next_bill_time, next_period_amount, next_period_currency, next_period_product, payment_status, pending_cancel, period_start_time, product, status, test, trial_amount, trial_currency, trial_expiry_time, updated_time, user
 	paymentsubscription_get_Tool := mcp.NewTool("paymentsubscription_get_",
 		mcp.WithDescription("GET  for PaymentSubscription"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for PaymentSubscription objects. Available fields: amount, app_param_data, application, billing_period, canceled_reason, created_time, currency, id, last_payment, next_bill_time, next_period_amount, next_period_currency, next_period_product, payment_status, pending_cancel (and 9 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, paymentsubscription_get_Tool)
 
@@ -40,6 +53,26 @@ func HandlePaymentsubscription_get_(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Paymentsubscription_get_(args)

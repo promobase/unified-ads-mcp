@@ -17,8 +17,21 @@ func GetProductFeedUploadErrorSampleTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// productfeeduploaderrorsample_get_ tool
+	// Available fields for ProductFeedUploadErrorSample: id, retailer_id, row_number
 	productfeeduploaderrorsample_get_Tool := mcp.NewTool("productfeeduploaderrorsample_get_",
 		mcp.WithDescription("GET  for ProductFeedUploadErrorSample"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductFeedUploadErrorSample objects. Available fields: id, retailer_id, row_number"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productfeeduploaderrorsample_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleProductfeeduploaderrorsample_get_(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Productfeeduploaderrorsample_get_(args)

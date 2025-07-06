@@ -17,8 +17,21 @@ func GetCPASCollaborationRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// cpascollaborationrequest_get_ tool
+	// Available fields for CPASCollaborationRequest: brands, contact_email, contact_first_name, contact_last_name, id, phone_number, receiver_business, requester_agency_or_brand, sender_client_business, status
 	cpascollaborationrequest_get_Tool := mcp.NewTool("cpascollaborationrequest_get_",
 		mcp.WithDescription("GET  for CPASCollaborationRequest"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CPASCollaborationRequest objects. Available fields: brands, contact_email, contact_first_name, contact_last_name, id, phone_number, receiver_business, requester_agency_or_brand, sender_client_business, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, cpascollaborationrequest_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleCpascollaborationrequest_get_(ctx context.Context, request mcp.CallTo
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Cpascollaborationrequest_get_(args)

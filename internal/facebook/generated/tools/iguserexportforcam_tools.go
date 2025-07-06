@@ -19,6 +19,18 @@ func GetIGUserExportForCAMTools() []mcp.Tool {
 	// iguserexportforcam_get_branded_content_media tool
 	iguserexportforcam_get_branded_content_mediaTool := mcp.NewTool("iguserexportforcam_get_branded_content_media",
 		mcp.WithDescription("GET branded_content_media for IGUserExportForCAM"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguserexportforcam_get_branded_content_mediaTool)
 
@@ -41,18 +53,55 @@ func GetIGUserExportForCAMTools() []mcp.Tool {
 			mcp.Description("time_range parameter for insights"),
 			mcp.Enum("LAST_14_DAYS", "LAST_90_DAYS", "LIFETIME", "THIS_MONTH", "THIS_WEEK"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguserexportforcam_get_insightsTool)
 
 	// iguserexportforcam_get_recent_media tool
 	iguserexportforcam_get_recent_mediaTool := mcp.NewTool("iguserexportforcam_get_recent_media",
 		mcp.WithDescription("GET recent_media for IGUserExportForCAM"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguserexportforcam_get_recent_mediaTool)
 
 	// iguserexportforcam_get_ tool
+	// Available fields for IGUserExportForCAM: age_bucket, biography, country, email, gender, id, is_account_verified, is_paid_partnership_messages_enabled, messaging_id, onboarded_status, portfolio_url, username
 	iguserexportforcam_get_Tool := mcp.NewTool("iguserexportforcam_get_",
 		mcp.WithDescription("GET  for IGUserExportForCAM"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGUserExportForCAM objects. Available fields: age_bucket, biography, country, email, gender, id, is_account_verified, is_paid_partnership_messages_enabled, messaging_id, onboarded_status, portfolio_url, username"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguserexportforcam_get_Tool)
 
@@ -74,6 +123,26 @@ func HandleIguserexportforcam_get_branded_content_media(ctx context.Context, req
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Iguserexportforcam_get_branded_content_media(args)
@@ -125,6 +194,26 @@ func HandleIguserexportforcam_get_insights(ctx context.Context, request mcp.Call
 		args["time_range"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Iguserexportforcam_get_insights(args)
 	if err != nil {
@@ -154,6 +243,26 @@ func HandleIguserexportforcam_get_recent_media(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Iguserexportforcam_get_recent_media(args)
 	if err != nil {
@@ -182,6 +291,26 @@ func HandleIguserexportforcam_get_(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Iguserexportforcam_get_(args)

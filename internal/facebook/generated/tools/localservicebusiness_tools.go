@@ -17,12 +17,26 @@ func GetLocalServiceBusinessTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// localservicebusiness_get_channels_to_integrity_status tool
+	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	localservicebusiness_get_channels_to_integrity_statusTool := mcp.NewTool("localservicebusiness_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for LocalServiceBusiness"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CatalogItemChannelsToIntegrityStatus objects. Available fields: channels, rejection_information"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, localservicebusiness_get_channels_to_integrity_statusTool)
 
 	// localservicebusiness_get_override_details tool
+	// Available fields for OverrideDetails: key, type, values
 	localservicebusiness_get_override_detailsTool := mcp.NewTool("localservicebusiness_get_override_details",
 		mcp.WithDescription("GET override_details for LocalServiceBusiness"),
 		mcp.WithString("keys",
@@ -32,12 +46,37 @@ func GetLocalServiceBusinessTools() []mcp.Tool {
 			mcp.Description("type parameter for override_details"),
 			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for OverrideDetails objects. Available fields: key, type, values"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, localservicebusiness_get_override_detailsTool)
 
 	// localservicebusiness_get_ tool
+	// Available fields for LocalServiceBusiness: address, applinks, availability, brand, category, category_specific_fields, condition, cuisine_type, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, expiration_date, gtin, id, image_fetch_status, images, local_info, local_service_business_id, main_local_info, phone, price, price_range, retailer_category, sanitized_images, size, tags, title, unit_price, url, vendor_id, visibility
 	localservicebusiness_get_Tool := mcp.NewTool("localservicebusiness_get_",
 		mcp.WithDescription("GET  for LocalServiceBusiness"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for LocalServiceBusiness objects. Available fields: address, applinks, availability, brand, category, category_specific_fields, condition, cuisine_type, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0 (and 25 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, localservicebusiness_get_Tool)
 
@@ -59,6 +98,26 @@ func HandleLocalservicebusiness_get_channels_to_integrity_status(ctx context.Con
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Localservicebusiness_get_channels_to_integrity_status(args)
@@ -100,6 +159,26 @@ func HandleLocalservicebusiness_get_override_details(ctx context.Context, reques
 		args["type"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Localservicebusiness_get_override_details(args)
 	if err != nil {
@@ -128,6 +207,26 @@ func HandleLocalservicebusiness_get_(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Localservicebusiness_get_(args)

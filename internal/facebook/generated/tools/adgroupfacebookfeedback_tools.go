@@ -17,11 +17,24 @@ func GetAdgroupFacebookFeedbackTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adgroupfacebookfeedback_get_comments tool
+	// Available fields for Comment: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count, live_broadcast_timestamp, message, message_tags, object, parent, permalink_url, private_reply_conversation, user_likes
 	adgroupfacebookfeedback_get_commentsTool := mcp.NewTool("adgroupfacebookfeedback_get_comments",
 		mcp.WithDescription("GET comments for AdgroupFacebookFeedback"),
 		mcp.WithString("order",
 			mcp.Description("order parameter for comments"),
 			mcp.Enum("chronological", "reverse_chronological"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Comment objects. Available fields: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count (and 8 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adgroupfacebookfeedback_get_commentsTool)
@@ -48,6 +61,26 @@ func HandleAdgroupfacebookfeedback_get_comments(ctx context.Context, request mcp
 	// Optional: order
 	if val := request.GetString("order", ""); val != "" {
 		args["order"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method

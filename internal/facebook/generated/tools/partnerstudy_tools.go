@@ -17,8 +17,21 @@ func GetPartnerStudyTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// partnerstudy_get_ tool
+	// Available fields for PartnerStudy: additional_info, brand, client_name, emails, id, input_ids, is_export, lift_study, location, match_file_ds, name, partner_defined_id, partner_household_graph_dataset_id, status, study_end_date, study_start_date, study_type, submit_date
 	partnerstudy_get_Tool := mcp.NewTool("partnerstudy_get_",
 		mcp.WithDescription("GET  for PartnerStudy"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for PartnerStudy objects. Available fields: additional_info, brand, client_name, emails, id, input_ids, is_export, lift_study, location, match_file_ds, name, partner_defined_id, partner_household_graph_dataset_id, status, study_end_date (and 3 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, partnerstudy_get_Tool)
 
@@ -40,6 +53,26 @@ func HandlePartnerstudy_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Partnerstudy_get_(args)

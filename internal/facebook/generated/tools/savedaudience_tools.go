@@ -17,8 +17,21 @@ func GetSavedAudienceTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// savedaudience_get_ tool
+	// Available fields for SavedAudience: account, approximate_count_lower_bound, approximate_count_upper_bound, delete_time, description, id, name, operation_status, owner_business, page_deletion_marked_delete_time, permission_for_actions, run_status, sentence_lines, targeting, time_created, time_updated
 	savedaudience_get_Tool := mcp.NewTool("savedaudience_get_",
 		mcp.WithDescription("GET  for SavedAudience"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for SavedAudience objects. Available fields: account, approximate_count_lower_bound, approximate_count_upper_bound, delete_time, description, id, name, operation_status, owner_business, page_deletion_marked_delete_time, permission_for_actions, run_status, sentence_lines, targeting, time_created (and 1 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, savedaudience_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleSavedaudience_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Savedaudience_get_(args)

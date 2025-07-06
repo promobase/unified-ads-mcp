@@ -23,8 +23,21 @@ func GetOpenBridgeConfigurationTools() []mcp.Tool {
 	tools = append(tools, openbridgeconfiguration_delete_Tool)
 
 	// openbridgeconfiguration_get_ tool
+	// Available fields for OpenBridgeConfiguration: active, cloud_provider, cloud_region, destination_id, endpoint, fallback_domain, first_party_domain, host_business_id, id, instance_id, instance_version, is_sgw_instance, is_sgw_pixel_from_meta_pixel, partner_name, pixel_id, sgw_account_id, sgw_instance_url, sgw_pixel_id
 	openbridgeconfiguration_get_Tool := mcp.NewTool("openbridgeconfiguration_get_",
 		mcp.WithDescription("GET  for OpenBridgeConfiguration"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for OpenBridgeConfiguration objects. Available fields: active, cloud_provider, cloud_region, destination_id, endpoint, fallback_domain, first_party_domain, host_business_id, id, instance_id, instance_version, is_sgw_instance, is_sgw_pixel_from_meta_pixel, partner_name, pixel_id (and 3 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, openbridgeconfiguration_get_Tool)
 
@@ -129,6 +142,26 @@ func HandleOpenbridgeconfiguration_get_(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Openbridgeconfiguration_get_(args)

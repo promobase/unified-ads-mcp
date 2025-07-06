@@ -19,6 +19,18 @@ func GetPagePostExperimentTools() []mcp.Tool {
 	// pagepostexperiment_get_video_insights tool
 	pagepostexperiment_get_video_insightsTool := mcp.NewTool("pagepostexperiment_get_video_insights",
 		mcp.WithDescription("GET video_insights for PagePostExperiment"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, pagepostexperiment_get_video_insightsTool)
 
@@ -29,8 +41,21 @@ func GetPagePostExperimentTools() []mcp.Tool {
 	tools = append(tools, pagepostexperiment_delete_Tool)
 
 	// pagepostexperiment_get_ tool
+	// Available fields for PagePostExperiment: auto_resolve_settings, control_video_id, creation_time, creator, declared_winning_time, declared_winning_video_id, description, experiment_video_ids, id, insight_snapshots, name, optimization_goal, publish_status, publish_time, scheduled_experiment_timestamp, updated_time
 	pagepostexperiment_get_Tool := mcp.NewTool("pagepostexperiment_get_",
 		mcp.WithDescription("GET  for PagePostExperiment"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for PagePostExperiment objects. Available fields: auto_resolve_settings, control_video_id, creation_time, creator, declared_winning_time, declared_winning_video_id, description, experiment_video_ids, id, insight_snapshots, name, optimization_goal, publish_status, publish_time, scheduled_experiment_timestamp (and 1 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, pagepostexperiment_get_Tool)
 
@@ -52,6 +77,26 @@ func HandlePagepostexperiment_get_video_insights(ctx context.Context, request mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Pagepostexperiment_get_video_insights(args)
@@ -110,6 +155,26 @@ func HandlePagepostexperiment_get_(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Pagepostexperiment_get_(args)

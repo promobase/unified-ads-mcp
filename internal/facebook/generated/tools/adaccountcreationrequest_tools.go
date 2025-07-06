@@ -17,14 +17,40 @@ func GetAdAccountCreationRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adaccountcreationrequest_get_adaccounts tool
+	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	adaccountcreationrequest_get_adaccountsTool := mcp.NewTool("adaccountcreationrequest_get_adaccounts",
 		mcp.WithDescription("GET adaccounts for AdAccountCreationRequest"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccountcreationrequest_get_adaccountsTool)
 
 	// adaccountcreationrequest_get_ tool
+	// Available fields for AdAccountCreationRequest: ad_accounts_currency, ad_accounts_info, additional_comment, address_in_chinese, address_in_english, address_in_local_language, advertiser_business, appeal_reason, business, business_registration_id, chinese_legal_entity_name, contact, creator, credit_card_id, disapproval_reasons, english_legal_entity_name, extended_credit_id, id, is_smb, is_test, legal_entity_name_in_local_language, oe_request_id, official_website_url, planning_agency_business, planning_agency_business_id, promotable_app_ids, promotable_page_ids, promotable_urls, request_change_reasons, status, subvertical, subvertical_v2, time_created, vertical, vertical_v2
 	adaccountcreationrequest_get_Tool := mcp.NewTool("adaccountcreationrequest_get_",
 		mcp.WithDescription("GET  for AdAccountCreationRequest"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccountCreationRequest objects. Available fields: ad_accounts_currency, ad_accounts_info, additional_comment, address_in_chinese, address_in_english, address_in_local_language, advertiser_business, appeal_reason, business, business_registration_id, chinese_legal_entity_name, contact, creator, credit_card_id, disapproval_reasons (and 20 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccountcreationrequest_get_Tool)
 
@@ -46,6 +72,26 @@ func HandleAdaccountcreationrequest_get_adaccounts(ctx context.Context, request 
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccountcreationrequest_get_adaccounts(args)
@@ -75,6 +121,26 @@ func HandleAdaccountcreationrequest_get_(ctx context.Context, request mcp.CallTo
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccountcreationrequest_get_(args)

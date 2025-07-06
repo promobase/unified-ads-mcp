@@ -33,3 +33,5 @@ go.work.sum
 
 # executables
 unified-ads-mcp
+
+.claude/mcp.json

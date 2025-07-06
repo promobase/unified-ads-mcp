@@ -17,14 +17,40 @@ func GetBizInboxOffsiteEmailAccountTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// bizinboxoffsiteemailaccount_get_assigned_users tool
+	// Available fields for AssignedUser: business, id, name, user_type
 	bizinboxoffsiteemailaccount_get_assigned_usersTool := mcp.NewTool("bizinboxoffsiteemailaccount_get_assigned_users",
 		mcp.WithDescription("GET assigned_users for BizInboxOffsiteEmailAccount"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AssignedUser objects. Available fields: business, id, name, user_type"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, bizinboxoffsiteemailaccount_get_assigned_usersTool)
 
 	// bizinboxoffsiteemailaccount_get_ tool
+	// Available fields for BizInboxOffsiteEmailAccount: email_address, id
 	bizinboxoffsiteemailaccount_get_Tool := mcp.NewTool("bizinboxoffsiteemailaccount_get_",
 		mcp.WithDescription("GET  for BizInboxOffsiteEmailAccount"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BizInboxOffsiteEmailAccount objects. Available fields: email_address, id"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, bizinboxoffsiteemailaccount_get_Tool)
 
@@ -46,6 +72,26 @@ func HandleBizinboxoffsiteemailaccount_get_assigned_users(ctx context.Context, r
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Bizinboxoffsiteemailaccount_get_assigned_users(args)
@@ -75,6 +121,26 @@ func HandleBizinboxoffsiteemailaccount_get_(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Bizinboxoffsiteemailaccount_get_(args)

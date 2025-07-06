@@ -17,8 +17,21 @@ func GetAudioSubLabelTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// audiosublabel_get_ tool
+	// Available fields for AudioSubLabel: expiration_timestamp, flagged_timestamp, id, label_name, last_update_timestamp, num_audio_tracks, state
 	audiosublabel_get_Tool := mcp.NewTool("audiosublabel_get_",
 		mcp.WithDescription("GET  for AudioSubLabel"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AudioSubLabel objects. Available fields: expiration_timestamp, flagged_timestamp, id, label_name, last_update_timestamp, num_audio_tracks, state"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, audiosublabel_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleAudiosublabel_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Audiosublabel_get_(args)

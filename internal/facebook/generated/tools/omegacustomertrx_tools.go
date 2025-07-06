@@ -19,12 +19,37 @@ func GetOmegaCustomerTrxTools() []mcp.Tool {
 	// omegacustomertrx_get_campaigns tool
 	omegacustomertrx_get_campaignsTool := mcp.NewTool("omegacustomertrx_get_campaigns",
 		mcp.WithDescription("GET campaigns for OmegaCustomerTrx"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, omegacustomertrx_get_campaignsTool)
 
 	// omegacustomertrx_get_ tool
+	// Available fields for OmegaCustomerTrx: ad_account_ids, advertiser_name, amount, amount_due, billed_amount_details, billing_period, cdn_download_uri, currency, download_uri, due_date, entity, id, invoice_date, invoice_id, invoice_type, liability_type, payment_status, payment_term, type
 	omegacustomertrx_get_Tool := mcp.NewTool("omegacustomertrx_get_",
 		mcp.WithDescription("GET  for OmegaCustomerTrx"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for OmegaCustomerTrx objects. Available fields: ad_account_ids, advertiser_name, amount, amount_due, billed_amount_details, billing_period, cdn_download_uri, currency, download_uri, due_date, entity, id, invoice_date, invoice_id, invoice_type (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, omegacustomertrx_get_Tool)
 
@@ -46,6 +71,26 @@ func HandleOmegacustomertrx_get_campaigns(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Omegacustomertrx_get_campaigns(args)
@@ -75,6 +120,26 @@ func HandleOmegacustomertrx_get_(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Omegacustomertrx_get_(args)

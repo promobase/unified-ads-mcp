@@ -37,6 +37,18 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Description("type parameter for accounts"),
 			mcp.Enum("test-users"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_accountsTool)
 
@@ -218,19 +230,45 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_ad_placement_groups tool
 	application_get_ad_placement_groupsTool := mcp.NewTool("application_get_ad_placement_groups",
 		mcp.WithDescription("GET ad_placement_groups for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_ad_placement_groupsTool)
 
 	// application_get_adnetwork_placements tool
+	// Available fields for AdPlacement: bundle_id, display_format, external_placement_id, google_display_format, id, name, placement_group, platform, status
 	application_get_adnetwork_placementsTool := mcp.NewTool("application_get_adnetwork_placements",
 		mcp.WithDescription("GET adnetwork_placements for Application"),
 		mcp.WithString("request_id",
 			mcp.Description("request_id parameter for adnetwork_placements"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdPlacement objects. Available fields: bundle_id, display_format, external_placement_id, google_display_format, id, name, placement_group, platform, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_adnetwork_placementsTool)
 
 	// application_get_adnetworkanalytics tool
+	// Available fields for AdNetworkAnalyticsSyncQueryResult: omitted_results, query_id, results
 	application_get_adnetworkanalyticsTool := mcp.NewTool("application_get_adnetworkanalytics",
 		mcp.WithDescription("GET adnetworkanalytics for Application"),
 		mcp.WithString("aggregation_period",
@@ -268,6 +306,18 @@ func GetApplicationTools() []mcp.Tool {
 		),
 		mcp.WithString("until",
 			mcp.Description("until parameter for adnetworkanalytics"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdNetworkAnalyticsSyncQueryResult objects. Available fields: omitted_results, query_id, results"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, application_get_adnetworkanalyticsTool)
@@ -312,10 +362,23 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_post_adnetworkanalyticsTool)
 
 	// application_get_adnetworkanalytics_results tool
+	// Available fields for AdNetworkAnalyticsAsyncQueryResult: data, omitted_results, query_id, results, status
 	application_get_adnetworkanalytics_resultsTool := mcp.NewTool("application_get_adnetworkanalytics_results",
 		mcp.WithDescription("GET adnetworkanalytics_results for Application"),
 		mcp.WithString("query_ids",
 			mcp.Description("query_ids parameter for adnetworkanalytics_results"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdNetworkAnalyticsAsyncQueryResult objects. Available fields: data, omitted_results, query_id, results, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, application_get_adnetworkanalytics_resultsTool)
@@ -329,6 +392,18 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithString("fb_content_data",
 			mcp.Description("fb_content_data parameter for aem_attribution"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_aem_attributionTool)
 
@@ -337,6 +412,18 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithDescription("GET aem_conversion_configs for Application"),
 		mcp.WithString("advertiser_ids",
 			mcp.Description("advertiser_ids parameter for aem_conversion_configs"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, application_get_aem_conversion_configsTool)
@@ -349,6 +436,18 @@ func GetApplicationTools() []mcp.Tool {
 		),
 		mcp.WithString("fb_content_ids",
 			mcp.Description("fb_content_ids parameter for aem_conversion_filter"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, application_get_aem_conversion_filterTool)
@@ -389,8 +488,21 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_post_aem_skan_readinessTool)
 
 	// application_get_agencies tool
+	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	application_get_agenciesTool := mcp.NewTool("application_get_agencies",
 		mcp.WithDescription("GET agencies for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_agenciesTool)
 
@@ -415,18 +527,54 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_android_dialog_configs tool
 	application_get_android_dialog_configsTool := mcp.NewTool("application_get_android_dialog_configs",
 		mcp.WithDescription("GET android_dialog_configs for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_android_dialog_configsTool)
 
 	// application_get_app_capi_settings tool
 	application_get_app_capi_settingsTool := mcp.NewTool("application_get_app_capi_settings",
 		mcp.WithDescription("GET app_capi_settings for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_app_capi_settingsTool)
 
 	// application_get_app_event_types tool
 	application_get_app_event_typesTool := mcp.NewTool("application_get_app_event_types",
 		mcp.WithDescription("GET app_event_types for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_app_event_typesTool)
 
@@ -473,10 +621,23 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_post_app_indexing_sessionTool)
 
 	// application_get_app_installed_groups tool
+	// Available fields for Group: archived, cover, created_time, description, email, icon, id, install, link, member_count, member_request_count, name, parent, permissions, privacy, purpose, subdomain, updated_time, venue
 	application_get_app_installed_groupsTool := mcp.NewTool("application_get_app_installed_groups",
 		mcp.WithDescription("GET app_installed_groups for Application"),
 		mcp.WithString("group_id",
 			mcp.Description("group_id parameter for app_installed_groups"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Group objects. Available fields: archived, cover, created_time, description, email, icon, id, install, link, member_count, member_request_count, name, parent, permissions, privacy (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, application_get_app_installed_groupsTool)
@@ -502,6 +663,18 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_appassets tool
 	application_get_appassetsTool := mcp.NewTool("application_get_appassets",
 		mcp.WithDescription("GET appassets for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_appassetsTool)
 
@@ -523,10 +696,23 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_post_assetsTool)
 
 	// application_get_authorized_adaccounts tool
+	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	application_get_authorized_adaccountsTool := mcp.NewTool("application_get_authorized_adaccounts",
 		mcp.WithDescription("GET authorized_adaccounts for Application"),
 		mcp.WithString("business",
 			mcp.Description("business parameter for authorized_adaccounts"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, application_get_authorized_adaccountsTool)
@@ -537,12 +723,36 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithString("device_id",
 			mcp.Description("device_id parameter for button_auto_detection_device_selection"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_button_auto_detection_device_selectionTool)
 
 	// application_get_cloudbridge_settings tool
 	application_get_cloudbridge_settingsTool := mcp.NewTool("application_get_cloudbridge_settings",
 		mcp.WithDescription("GET cloudbridge_settings for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_cloudbridge_settingsTool)
 
@@ -571,12 +781,26 @@ func GetApplicationTools() []mcp.Tool {
 	tools = append(tools, application_post_codeless_event_mappingsTool)
 
 	// application_get_connected_client_businesses tool
+	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	application_get_connected_client_businessesTool := mcp.NewTool("application_get_connected_client_businesses",
 		mcp.WithDescription("GET connected_client_businesses for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_connected_client_businessesTool)
 
 	// application_get_da_checks tool
+	// Available fields for DACheck: action_uri, description, key, result, title, user_message
 	application_get_da_checksTool := mcp.NewTool("application_get_da_checks",
 		mcp.WithDescription("GET da_checks for Application"),
 		mcp.WithString("checks",
@@ -585,6 +809,18 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithString("connection_method",
 			mcp.Description("connection_method parameter for da_checks"),
 			mcp.Enum("ALL", "APP", "BROWSER", "SERVER"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for DACheck objects. Available fields: action_uri, description, key, result, title, user_message"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, application_get_da_checksTool)
@@ -606,18 +842,55 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("order_id parameter for iap_purchases"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_iap_purchasesTool)
 
 	// application_get_ios_dialog_configs tool
 	application_get_ios_dialog_configsTool := mcp.NewTool("application_get_ios_dialog_configs",
 		mcp.WithDescription("GET ios_dialog_configs for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_ios_dialog_configsTool)
 
 	// application_get_linked_dataset tool
+	// Available fields for AdsDataset: can_proxy, collection_rate, config, creation_time, creator, dataset_id, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_events, enable_automatic_matching, enable_real_time_event_log, event_stats, event_time_max, event_time_min, first_party_cookie_status, has_bapi_domains, has_catalog_microdata_activity, has_ofa_redacted_keys, has_sent_pii, id, is_consolidated_container, is_created_by_business, is_crm, is_eligible_for_sharing_to_ad_account, is_eligible_for_sharing_to_business, is_eligible_for_value_optimization, is_mta_use, is_restricted_use, is_unavailable, last_fired_time, last_upload_app, last_upload_app_changed_time, last_upload_time, late_upload_reminder_eligibility, match_rate_approx, matched_entries, name, no_ads_tracked_for_weekly_uploaded_events_reminder_eligibility, num_active_ad_set_tracked, num_recent_offline_conversions_uploaded, num_uploads, owner_ad_account, owner_business, percentage_of_late_uploads_in_external_suboptimal_window, permissions, server_last_fired_time, show_automatic_events, upload_rate, upload_reminder_eligibility, usage, valid_entries
 	application_get_linked_datasetTool := mcp.NewTool("application_get_linked_dataset",
 		mcp.WithDescription("GET linked_dataset for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsDataset objects. Available fields: can_proxy, collection_rate, config, creation_time, creator, dataset_id, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_events, enable_automatic_matching, enable_real_time_event_log, event_stats, event_time_max, event_time_min (and 37 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_linked_datasetTool)
 
@@ -626,6 +899,18 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithDescription("GET message_templates for Application"),
 		mcp.WithString("template_id",
 			mcp.Description("template_id parameter for message_templates"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, application_get_message_templatesTool)
@@ -734,12 +1019,36 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("sdk_version parameter for mobile_sdk_gk"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_mobile_sdk_gkTool)
 
 	// application_get_monetized_digital_store_objects tool
 	application_get_monetized_digital_store_objectsTool := mcp.NewTool("application_get_monetized_digital_store_objects",
 		mcp.WithDescription("GET monetized_digital_store_objects for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_monetized_digital_store_objectsTool)
 
@@ -760,12 +1069,36 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_object_types tool
 	application_get_object_typesTool := mcp.NewTool("application_get_object_types",
 		mcp.WithDescription("GET object_types for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_object_typesTool)
 
 	// application_get_objects tool
 	application_get_objectsTool := mcp.NewTool("application_get_objects",
 		mcp.WithDescription("GET objects for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_objectsTool)
 
@@ -800,6 +1133,18 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Description("status parameter for permissions"),
 			mcp.Enum("live", "unapproved"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_permissionsTool)
 
@@ -809,24 +1154,72 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithString("product_ids",
 			mcp.Description("product_ids parameter for products"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_productsTool)
 
 	// application_get_purchases tool
 	application_get_purchasesTool := mcp.NewTool("application_get_purchases",
 		mcp.WithDescription("GET purchases for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_purchasesTool)
 
 	// application_get_roles tool
 	application_get_rolesTool := mcp.NewTool("application_get_roles",
 		mcp.WithDescription("GET roles for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_rolesTool)
 
 	// application_get_server_domain_infos tool
 	application_get_server_domain_infosTool := mcp.NewTool("application_get_server_domain_infos",
 		mcp.WithDescription("GET server_domain_infos for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_server_domain_infosTool)
 
@@ -836,6 +1229,18 @@ func GetApplicationTools() []mcp.Tool {
 		mcp.WithNumber("dataset_id",
 			mcp.Required(),
 			mcp.Description("dataset_id parameter for sgw_dataset_status"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, application_get_sgw_dataset_statusTool)
@@ -850,12 +1255,36 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("dataset_id parameter for sgw_install_deferral_link"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_sgw_install_deferral_linkTool)
 
 	// application_get_subscribed_domains tool
 	application_get_subscribed_domainsTool := mcp.NewTool("application_get_subscribed_domains",
 		mcp.WithDescription("GET subscribed_domains for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_subscribed_domainsTool)
 
@@ -874,6 +1303,18 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_subscribed_domains_phishing tool
 	application_get_subscribed_domains_phishingTool := mcp.NewTool("application_get_subscribed_domains_phishing",
 		mcp.WithDescription("GET subscribed_domains_phishing for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_subscribed_domains_phishingTool)
 
@@ -904,6 +1345,18 @@ func GetApplicationTools() []mcp.Tool {
 	// application_get_subscriptions tool
 	application_get_subscriptionsTool := mcp.NewTool("application_get_subscriptions",
 		mcp.WithDescription("GET subscriptions for Application"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_subscriptionsTool)
 
@@ -979,14 +1432,39 @@ func GetApplicationTools() []mcp.Tool {
 			mcp.Description("role parameter for whatsapp_business_solutions"),
 			mcp.Enum("OWNER", "PARTNER"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, application_get_whatsapp_business_solutionsTool)
 
 	// application_get_ tool
+	// Available fields for Application: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline, auth_dialog_perms_explanation, auth_referral_default_activity_privacy, auth_referral_enabled, auth_referral_extended_perms, auth_referral_friend_perms, auth_referral_response_type, auth_referral_user_perms, auto_event_mapping_android, auto_event_mapping_ios, auto_event_setup_enabled, auto_log_app_events_default, auto_log_app_events_enabled, business, canvas_fluid_height, canvas_fluid_width, canvas_url, category, client_config, company, configured_ios_sso, contact_email, created_time, creator_uid, daily_active_users, daily_active_users_rank, deauth_callback_url, default_share_mode, description, enigma_config, financial_id, gdpv4_chrome_custom_tabs_enabled, gdpv4_enabled, gdpv4_nux_content, gdpv4_nux_enabled, has_messenger_product, hosting_url, icon_url, id, ios_bundle_id, ios_sdk_dialog_flows, ios_sdk_error_categories, ios_sfvc_attr, ios_supports_native_proxy_auth_flow, ios_supports_system_auth, ipad_app_store_id, iphone_app_store_id, latest_sdk_version, link, logging_token, logo_url, migrations, mobile_profile_section_url, mobile_web_url, monthly_active_users, monthly_active_users_rank, name, namespace, object_store_urls, owner_business, page_tab_default_name, page_tab_url, photo_url, privacy_policy_url, profile_section_url, property_id, protected_mode_rules, real_time_mode_devices, restrictions, restrictive_data_filter_params, restrictive_data_filter_rules, sdk_update_message, seamless_login, secure_canvas_url, secure_page_tab_url, server_ip_whitelist, smart_login_bookmark_icon_url, smart_login_menu_icon_url, social_discovery, subcategory, suggested_events_setting, supported_platforms, supports_apprequests_fast_app_switch, supports_attribution, supports_implicit_sdk_logging, suppress_native_ios_gdp, terms_of_service_url, url_scheme_suffix, user_support_email, user_support_url, website_url, weekly_active_users
 	application_get_Tool := mcp.NewTool("application_get_",
 		mcp.WithDescription("GET  for Application"),
 		mcp.WithString("advertiser_id",
 			mcp.Description("advertiser_id parameter for "),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Application objects. Available fields: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline (and 91 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, application_get_Tool)
@@ -1151,6 +1629,26 @@ func HandleApplication_get_accounts(ctx context.Context, request mcp.CallToolReq
 	// Optional: type
 	if val := request.GetString("type", ""); val != "" {
 		args["type"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -1514,6 +2012,26 @@ func HandleApplication_get_ad_placement_groups(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_ad_placement_groups(args)
 	if err != nil {
@@ -1546,6 +2064,26 @@ func HandleApplication_get_adnetwork_placements(ctx context.Context, request mcp
 	// Optional: request_id
 	if val := request.GetString("request_id", ""); val != "" {
 		args["request_id"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -1629,6 +2167,26 @@ func HandleApplication_get_adnetworkanalytics(ctx context.Context, request mcp.C
 	// Optional: until
 	if val := request.GetString("until", ""); val != "" {
 		args["until"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -1744,6 +2302,26 @@ func HandleApplication_get_adnetworkanalytics_results(ctx context.Context, reque
 		args["query_ids"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_adnetworkanalytics_results(args)
 	if err != nil {
@@ -1784,6 +2362,26 @@ func HandleApplication_get_aem_attribution(ctx context.Context, request mcp.Call
 		args["fb_content_data"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_aem_attribution(args)
 	if err != nil {
@@ -1817,6 +2415,26 @@ func HandleApplication_get_aem_conversion_configs(ctx context.Context, request m
 	// array type - using string
 	if val := request.GetString("advertiser_ids", ""); val != "" {
 		args["advertiser_ids"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -1856,6 +2474,26 @@ func HandleApplication_get_aem_conversion_filter(ctx context.Context, request mc
 	// Optional: fb_content_ids
 	if val := request.GetString("fb_content_ids", ""); val != "" {
 		args["fb_content_ids"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -1984,6 +2622,26 @@ func HandleApplication_get_agencies(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_agencies(args)
 	if err != nil {
@@ -2064,6 +2722,26 @@ func HandleApplication_get_android_dialog_configs(ctx context.Context, request m
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_android_dialog_configs(args)
 	if err != nil {
@@ -2093,6 +2771,26 @@ func HandleApplication_get_app_capi_settings(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_app_capi_settings(args)
 	if err != nil {
@@ -2121,6 +2819,26 @@ func HandleApplication_get_app_event_types(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Application_get_app_event_types(args)
@@ -2262,6 +2980,26 @@ func HandleApplication_get_app_installed_groups(ctx context.Context, request mcp
 		args["group_id"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_app_installed_groups(args)
 	if err != nil {
@@ -2338,6 +3076,26 @@ func HandleApplication_get_appassets(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Application_get_appassets(args)
@@ -2421,6 +3179,26 @@ func HandleApplication_get_authorized_adaccounts(ctx context.Context, request mc
 		args["business"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_authorized_adaccounts(args)
 	if err != nil {
@@ -2455,6 +3233,26 @@ func HandleApplication_get_button_auto_detection_device_selection(ctx context.Co
 		args["device_id"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_button_auto_detection_device_selection(args)
 	if err != nil {
@@ -2483,6 +3281,26 @@ func HandleApplication_get_cloudbridge_settings(ctx context.Context, request mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Application_get_cloudbridge_settings(args)
@@ -2568,6 +3386,26 @@ func HandleApplication_get_connected_client_businesses(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_connected_client_businesses(args)
 	if err != nil {
@@ -2606,6 +3444,26 @@ func HandleApplication_get_da_checks(ctx context.Context, request mcp.CallToolRe
 	// Optional: connection_method
 	if val := request.GetString("connection_method", ""); val != "" {
 		args["connection_method"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -2680,6 +3538,26 @@ func HandleApplication_get_iap_purchases(ctx context.Context, request mcp.CallTo
 	}
 	args["order_id"] = order_id
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_iap_purchases(args)
 	if err != nil {
@@ -2709,6 +3587,26 @@ func HandleApplication_get_ios_dialog_configs(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_ios_dialog_configs(args)
 	if err != nil {
@@ -2737,6 +3635,26 @@ func HandleApplication_get_linked_dataset(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Application_get_linked_dataset(args)
@@ -2770,6 +3688,26 @@ func HandleApplication_get_message_templates(ctx context.Context, request mcp.Ca
 	// Optional: template_id
 	if val := request.GetString("template_id", ""); val != "" {
 		args["template_id"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -2990,6 +3928,26 @@ func HandleApplication_get_mobile_sdk_gk(ctx context.Context, request mcp.CallTo
 	}
 	args["sdk_version"] = sdk_version
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_mobile_sdk_gk(args)
 	if err != nil {
@@ -3018,6 +3976,26 @@ func HandleApplication_get_monetized_digital_store_objects(ctx context.Context, 
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Application_get_monetized_digital_store_objects(args)
@@ -3091,6 +4069,26 @@ func HandleApplication_get_object_types(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_object_types(args)
 	if err != nil {
@@ -3119,6 +4117,26 @@ func HandleApplication_get_objects(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Application_get_objects(args)
@@ -3215,6 +4233,26 @@ func HandleApplication_get_permissions(ctx context.Context, request mcp.CallTool
 		args["status"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_permissions(args)
 	if err != nil {
@@ -3250,6 +4288,26 @@ func HandleApplication_get_products(ctx context.Context, request mcp.CallToolReq
 		args["product_ids"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_products(args)
 	if err != nil {
@@ -3278,6 +4336,26 @@ func HandleApplication_get_purchases(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Application_get_purchases(args)
@@ -3308,6 +4386,26 @@ func HandleApplication_get_roles(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_roles(args)
 	if err != nil {
@@ -3336,6 +4434,26 @@ func HandleApplication_get_server_domain_infos(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Application_get_server_domain_infos(args)
@@ -3372,6 +4490,26 @@ func HandleApplication_get_sgw_dataset_status(ctx context.Context, request mcp.C
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter dataset_id: %v", err)), nil
 	}
 	args["dataset_id"] = dataset_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Application_get_sgw_dataset_status(args)
@@ -3414,6 +4552,26 @@ func HandleApplication_get_sgw_install_deferral_link(ctx context.Context, reques
 	}
 	args["dataset_id"] = dataset_id
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_sgw_install_deferral_link(args)
 	if err != nil {
@@ -3442,6 +4600,26 @@ func HandleApplication_get_subscribed_domains(ctx context.Context, request mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Application_get_subscribed_domains(args)
@@ -3512,6 +4690,26 @@ func HandleApplication_get_subscribed_domains_phishing(ctx context.Context, requ
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Application_get_subscribed_domains_phishing(args)
@@ -3622,6 +4820,26 @@ func HandleApplication_get_subscriptions(ctx context.Context, request mcp.CallTo
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Application_get_subscriptions(args)
@@ -3822,6 +5040,26 @@ func HandleApplication_get_whatsapp_business_solutions(ctx context.Context, requ
 		args["role"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Application_get_whatsapp_business_solutions(args)
 	if err != nil {
@@ -3854,6 +5092,26 @@ func HandleApplication_get_(ctx context.Context, request mcp.CallToolRequest) (*
 	// Optional: advertiser_id
 	if val := request.GetString("advertiser_id", ""); val != "" {
 		args["advertiser_id"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method

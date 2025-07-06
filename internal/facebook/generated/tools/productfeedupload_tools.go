@@ -23,18 +23,44 @@ func GetProductFeedUploadTools() []mcp.Tool {
 	tools = append(tools, productfeedupload_post_error_reportTool)
 
 	// productfeedupload_get_errors tool
+	// Available fields for ProductFeedUploadError: affected_surfaces, description, error_type, id, severity, summary, total_count
 	productfeedupload_get_errorsTool := mcp.NewTool("productfeedupload_get_errors",
 		mcp.WithDescription("GET errors for ProductFeedUpload"),
 		mcp.WithString("error_priority",
 			mcp.Description("error_priority parameter for errors"),
 			mcp.Enum("HIGH", "LOW", "MEDIUM"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductFeedUploadError objects. Available fields: affected_surfaces, description, error_type, id, severity, summary, total_count"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productfeedupload_get_errorsTool)
 
 	// productfeedupload_get_ tool
+	// Available fields for ProductFeedUpload: end_time, error_count, error_report, filename, id, input_method, num_deleted_items, num_detected_items, num_invalid_items, num_persisted_items, start_time, url, warning_count
 	productfeedupload_get_Tool := mcp.NewTool("productfeedupload_get_",
 		mcp.WithDescription("GET  for ProductFeedUpload"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductFeedUpload objects. Available fields: end_time, error_count, error_report, filename, id, input_method, num_deleted_items, num_detected_items, num_invalid_items, num_persisted_items, start_time, url, warning_count"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productfeedupload_get_Tool)
 
@@ -91,6 +117,26 @@ func HandleProductfeedupload_get_errors(ctx context.Context, request mcp.CallToo
 		args["error_priority"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Productfeedupload_get_errors(args)
 	if err != nil {
@@ -119,6 +165,26 @@ func HandleProductfeedupload_get_(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Productfeedupload_get_(args)

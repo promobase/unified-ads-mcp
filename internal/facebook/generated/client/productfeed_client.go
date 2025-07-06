@@ -45,6 +45,30 @@ func (c *ProductFeedClient) Productfeed_get_automotive_models(args map[string]in
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -98,6 +122,30 @@ func (c *ProductFeedClient) Productfeed_get_destinations(args map[string]interfa
 		// Skip ID parameters as they're already in the URL path
 
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
 
 	}
 
@@ -155,6 +203,30 @@ func (c *ProductFeedClient) Productfeed_get_flights(args map[string]interface{})
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -208,6 +280,30 @@ func (c *ProductFeedClient) Productfeed_get_home_listings(args map[string]interf
 		// Skip ID parameters as they're already in the URL path
 
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
 
 	}
 
@@ -265,6 +361,30 @@ func (c *ProductFeedClient) Productfeed_get_hotels(args map[string]interface{}) 
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -318,6 +438,30 @@ func (c *ProductFeedClient) Productfeed_get_media_titles(args map[string]interfa
 		// Skip ID parameters as they're already in the URL path
 
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
 
 	}
 
@@ -387,6 +531,30 @@ func (c *ProductFeedClient) Productfeed_get_products(args map[string]interface{}
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -429,6 +597,31 @@ func (c *ProductFeedClient) Productfeed_get_rules(args map[string]interface{}) (
 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -597,6 +790,31 @@ func (c *ProductFeedClient) Productfeed_get_upload_schedules(args map[string]int
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -687,6 +905,31 @@ func (c *ProductFeedClient) Productfeed_get_uploads(args map[string]interface{})
 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -821,6 +1064,30 @@ func (c *ProductFeedClient) Productfeed_get_vehicle_offers(args map[string]inter
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -874,6 +1141,30 @@ func (c *ProductFeedClient) Productfeed_get_vehicles(args map[string]interface{}
 		// Skip ID parameters as they're already in the URL path
 
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
 
 	}
 
@@ -960,6 +1251,31 @@ func (c *ProductFeedClient) Productfeed_get_(args map[string]interface{}) (inter
 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

@@ -17,8 +17,21 @@ func GetAdsReportBuilderExportCoreTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adsreportbuilderexportcore_get_ tool
+	// Available fields for AdsReportBuilderExportCore: async_percent_completion, async_report_url, async_status, client_creation_value, expiry_time, export_download_time, export_format, export_name, export_type, has_seen, id, is_sharing, link_sharing_expiration_time, link_sharing_uri, time_completed, time_start
 	adsreportbuilderexportcore_get_Tool := mcp.NewTool("adsreportbuilderexportcore_get_",
 		mcp.WithDescription("GET  for AdsReportBuilderExportCore"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsReportBuilderExportCore objects. Available fields: async_percent_completion, async_report_url, async_status, client_creation_value, expiry_time, export_download_time, export_format, export_name, export_type, has_seen, id, is_sharing, link_sharing_expiration_time, link_sharing_uri, time_completed (and 1 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adsreportbuilderexportcore_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleAdsreportbuilderexportcore_get_(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adsreportbuilderexportcore_get_(args)

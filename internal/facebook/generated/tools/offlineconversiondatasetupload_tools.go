@@ -19,18 +19,55 @@ func GetOfflineConversionDataSetUploadTools() []mcp.Tool {
 	// offlineconversiondatasetupload_get_progress tool
 	offlineconversiondatasetupload_get_progressTool := mcp.NewTool("offlineconversiondatasetupload_get_progress",
 		mcp.WithDescription("GET progress for OfflineConversionDataSetUpload"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, offlineconversiondatasetupload_get_progressTool)
 
 	// offlineconversiondatasetupload_get_pull_sessions tool
 	offlineconversiondatasetupload_get_pull_sessionsTool := mcp.NewTool("offlineconversiondatasetupload_get_pull_sessions",
 		mcp.WithDescription("GET pull_sessions for OfflineConversionDataSetUpload"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, offlineconversiondatasetupload_get_pull_sessionsTool)
 
 	// offlineconversiondatasetupload_get_ tool
+	// Available fields for OfflineConversionDataSetUpload: api_calls, creation_time, duplicate_entries, event_stats, event_time_max, event_time_min, first_upload_time, id, is_excluded_for_lift, last_upload_time, match_rate_approx, matched_entries, upload_tag, valid_entries
 	offlineconversiondatasetupload_get_Tool := mcp.NewTool("offlineconversiondatasetupload_get_",
 		mcp.WithDescription("GET  for OfflineConversionDataSetUpload"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for OfflineConversionDataSetUpload objects. Available fields: api_calls, creation_time, duplicate_entries, event_stats, event_time_max, event_time_min, first_upload_time, id, is_excluded_for_lift, last_upload_time, match_rate_approx, matched_entries, upload_tag, valid_entries"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, offlineconversiondatasetupload_get_Tool)
 
@@ -52,6 +89,26 @@ func HandleOfflineconversiondatasetupload_get_progress(ctx context.Context, requ
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Offlineconversiondatasetupload_get_progress(args)
@@ -82,6 +139,26 @@ func HandleOfflineconversiondatasetupload_get_pull_sessions(ctx context.Context,
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Offlineconversiondatasetupload_get_pull_sessions(args)
 	if err != nil {
@@ -110,6 +187,26 @@ func HandleOfflineconversiondatasetupload_get_(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Offlineconversiondatasetupload_get_(args)

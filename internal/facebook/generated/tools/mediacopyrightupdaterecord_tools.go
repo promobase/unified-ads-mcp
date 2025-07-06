@@ -17,8 +17,21 @@ func GetMediaCopyrightUpdateRecordTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// mediacopyrightupdaterecord_get_ tool
+	// Available fields for MediaCopyrightUpdateRecord: action_types, actor, actor_type, creation_time, id, ownership_countries, whitelisted_accounts
 	mediacopyrightupdaterecord_get_Tool := mcp.NewTool("mediacopyrightupdaterecord_get_",
 		mcp.WithDescription("GET  for MediaCopyrightUpdateRecord"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for MediaCopyrightUpdateRecord objects. Available fields: action_types, actor, actor_type, creation_time, id, ownership_countries, whitelisted_accounts"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, mediacopyrightupdaterecord_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleMediacopyrightupdaterecord_get_(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Mediacopyrightupdaterecord_get_(args)

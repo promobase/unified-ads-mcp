@@ -17,8 +17,21 @@ func GetLeadGenDataDraftTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// leadgendatadraft_get_ tool
+	// Available fields for LeadGenDataDraft: block_display_for_non_targeted_viewer, created_time, disqualified_end_component, follow_up_action_url, id, is_optimized_for_quality, legal_content, locale, name, page, question_page_custom_headline, questions, status, thank_you_page, tracking_parameters
 	leadgendatadraft_get_Tool := mcp.NewTool("leadgendatadraft_get_",
 		mcp.WithDescription("GET  for LeadGenDataDraft"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for LeadGenDataDraft objects. Available fields: block_display_for_non_targeted_viewer, created_time, disqualified_end_component, follow_up_action_url, id, is_optimized_for_quality, legal_content, locale, name, page, question_page_custom_headline, questions, status, thank_you_page, tracking_parameters"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, leadgendatadraft_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleLeadgendatadraft_get_(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Leadgendatadraft_get_(args)

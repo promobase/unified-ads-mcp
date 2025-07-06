@@ -17,8 +17,21 @@ func GetUserPageOneTimeOptInTokenSettingsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// userpageonetimeoptintokensettings_get_ tool
+	// Available fields for UserPageOneTimeOptInTokenSettings: creation_timestamp, next_eligible_time, notification_messages_frequency, notification_messages_reoptin, notification_messages_timezone, notification_messages_token, recipient_id, token_expiry_timestamp, topic_title, user_token_status
 	userpageonetimeoptintokensettings_get_Tool := mcp.NewTool("userpageonetimeoptintokensettings_get_",
 		mcp.WithDescription("GET  for UserPageOneTimeOptInTokenSettings"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for UserPageOneTimeOptInTokenSettings objects. Available fields: creation_timestamp, next_eligible_time, notification_messages_frequency, notification_messages_reoptin, notification_messages_timezone, notification_messages_token, recipient_id, token_expiry_timestamp, topic_title, user_token_status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, userpageonetimeoptintokensettings_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleUserpageonetimeoptintokensettings_get_(ctx context.Context, request m
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Userpageonetimeoptintokensettings_get_(args)

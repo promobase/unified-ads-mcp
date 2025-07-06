@@ -17,17 +17,43 @@ func GetIGUserTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// iguser_get_agencies tool
+	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	iguser_get_agenciesTool := mcp.NewTool("iguser_get_agencies",
 		mcp.WithDescription("GET agencies for IGUser"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguser_get_agenciesTool)
 
 	// iguser_get_authorized_adaccounts tool
+	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	iguser_get_authorized_adaccountsTool := mcp.NewTool("iguser_get_authorized_adaccounts",
 		mcp.WithDescription("GET authorized_adaccounts for IGUser"),
 		mcp.WithString("business",
 			mcp.Required(),
 			mcp.Description("business parameter for authorized_adaccounts"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, iguser_get_authorized_adaccountsTool)
@@ -47,14 +73,40 @@ func GetIGUserTools() []mcp.Tool {
 	tools = append(tools, iguser_post_authorized_adaccountsTool)
 
 	// iguser_get_available_catalogs tool
+	// Available fields for UserAvailableCatalogs: catalog_id, catalog_name, product_count, shop_name
 	iguser_get_available_catalogsTool := mcp.NewTool("iguser_get_available_catalogs",
 		mcp.WithDescription("GET available_catalogs for IGUser"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for UserAvailableCatalogs objects. Available fields: catalog_id, catalog_name, product_count, shop_name"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguser_get_available_catalogsTool)
 
 	// iguser_get_branded_content_ad_permissions tool
+	// Available fields for IGBCAdsPermission: id, permission_type, status
 	iguser_get_branded_content_ad_permissionsTool := mcp.NewTool("iguser_get_branded_content_ad_permissions",
 		mcp.WithDescription("GET branded_content_ad_permissions for IGUser"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGBCAdsPermission objects. Available fields: id, permission_type, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguser_get_branded_content_ad_permissionsTool)
 
@@ -74,6 +126,7 @@ func GetIGUserTools() []mcp.Tool {
 	tools = append(tools, iguser_post_branded_content_ad_permissionsTool)
 
 	// iguser_get_branded_content_advertisable_medias tool
+	// Available fields for BrandedContentShadowIGMediaID: eligibility_errors, has_permission_for_partnership_ad, id, owner_id, permalink, recommended_campaign_objectives
 	iguser_get_branded_content_advertisable_mediasTool := mcp.NewTool("iguser_get_branded_content_advertisable_medias",
 		mcp.WithDescription("GET branded_content_advertisable_medias for IGUser"),
 		mcp.WithString("ad_code",
@@ -91,6 +144,18 @@ func GetIGUserTools() []mcp.Tool {
 		mcp.WithString("permalinks",
 			mcp.Description("permalinks parameter for branded_content_advertisable_medias"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BrandedContentShadowIGMediaID objects. Available fields: eligibility_errors, has_permission_for_partnership_ad, id, owner_id, permalink, recommended_campaign_objectives"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguser_get_branded_content_advertisable_mediasTool)
 
@@ -105,11 +170,24 @@ func GetIGUserTools() []mcp.Tool {
 	tools = append(tools, iguser_delete_branded_content_tag_approvalTool)
 
 	// iguser_get_branded_content_tag_approval tool
+	// Available fields for BrandedContentShadowIGUserID: id
 	iguser_get_branded_content_tag_approvalTool := mcp.NewTool("iguser_get_branded_content_tag_approval",
 		mcp.WithDescription("GET branded_content_tag_approval for IGUser"),
 		mcp.WithString("user_ids",
 			mcp.Required(),
 			mcp.Description("user_ids parameter for branded_content_tag_approval"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BrandedContentShadowIGUserID objects. Available fields: id"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, iguser_get_branded_content_tag_approvalTool)
@@ -125,6 +203,7 @@ func GetIGUserTools() []mcp.Tool {
 	tools = append(tools, iguser_post_branded_content_tag_approvalTool)
 
 	// iguser_get_catalog_product_search tool
+	// Available fields for ShadowIGUserCatalogProductSearch: image_url, is_checkout_flow, merchant_id, product_id, product_name, product_variants, retailer_id, review_status
 	iguser_get_catalog_product_searchTool := mcp.NewTool("iguser_get_catalog_product_search",
 		mcp.WithDescription("GET catalog_product_search for IGUser"),
 		mcp.WithString("catalog_id",
@@ -134,27 +213,78 @@ func GetIGUserTools() []mcp.Tool {
 		mcp.WithString("q",
 			mcp.Description("q parameter for catalog_product_search"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ShadowIGUserCatalogProductSearch objects. Available fields: image_url, is_checkout_flow, merchant_id, product_id, product_name, product_variants, retailer_id, review_status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguser_get_catalog_product_searchTool)
 
 	// iguser_get_connected_threads_user tool
+	// Available fields for ThreadsUser: threads_user_id, threads_user_profile_pic
 	iguser_get_connected_threads_userTool := mcp.NewTool("iguser_get_connected_threads_user",
 		mcp.WithDescription("GET connected_threads_user for IGUser"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ThreadsUser objects. Available fields: threads_user_id, threads_user_profile_pic"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguser_get_connected_threads_userTool)
 
 	// iguser_get_content_publishing_limit tool
+	// Available fields for ContentPublishingLimitResponse: config, quota_usage
 	iguser_get_content_publishing_limitTool := mcp.NewTool("iguser_get_content_publishing_limit",
 		mcp.WithDescription("GET content_publishing_limit for IGUser"),
 		mcp.WithString("since",
 			mcp.Description("since parameter for content_publishing_limit"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ContentPublishingLimitResponse objects. Available fields: config, quota_usage"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguser_get_content_publishing_limitTool)
 
 	// iguser_get_dataset tool
+	// Available fields for Dataset: id, name
 	iguser_get_datasetTool := mcp.NewTool("iguser_get_dataset",
 		mcp.WithDescription("GET dataset for IGUser"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Dataset objects. Available fields: id, name"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguser_get_datasetTool)
 
@@ -168,6 +298,7 @@ func GetIGUserTools() []mcp.Tool {
 	tools = append(tools, iguser_post_datasetTool)
 
 	// iguser_get_insights tool
+	// Available fields for InstagramInsightsResult: description, id, name, period, title, total_value, values
 	iguser_get_insightsTool := mcp.NewTool("iguser_get_insights",
 		mcp.WithDescription("GET insights for IGUser"),
 		mcp.WithString("breakdown",
@@ -198,16 +329,42 @@ func GetIGUserTools() []mcp.Tool {
 		mcp.WithString("until",
 			mcp.Description("until parameter for insights"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for InstagramInsightsResult objects. Available fields: description, id, name, period, title, total_value, values"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguser_get_insightsTool)
 
 	// iguser_get_instagram_backed_threads_user tool
+	// Available fields for ThreadsUser: threads_user_id, threads_user_profile_pic
 	iguser_get_instagram_backed_threads_userTool := mcp.NewTool("iguser_get_instagram_backed_threads_user",
 		mcp.WithDescription("GET instagram_backed_threads_user for IGUser"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ThreadsUser objects. Available fields: threads_user_id, threads_user_profile_pic"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguser_get_instagram_backed_threads_userTool)
 
 	// iguser_get_live_media tool
+	// Available fields for IGMedia: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner, permalink, shortcode, thumbnail_url, timestamp, username, view_count
 	iguser_get_live_mediaTool := mcp.NewTool("iguser_get_live_media",
 		mcp.WithDescription("GET live_media for IGUser"),
 		mcp.WithString("since",
@@ -216,10 +373,23 @@ func GetIGUserTools() []mcp.Tool {
 		mcp.WithString("until",
 			mcp.Description("until parameter for live_media"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGMedia objects. Available fields: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner (and 6 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguser_get_live_mediaTool)
 
 	// iguser_get_media tool
+	// Available fields for IGMedia: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner, permalink, shortcode, thumbnail_url, timestamp, username, view_count
 	iguser_get_mediaTool := mcp.NewTool("iguser_get_media",
 		mcp.WithDescription("GET media for IGUser"),
 		mcp.WithString("since",
@@ -227,6 +397,18 @@ func GetIGUserTools() []mcp.Tool {
 		),
 		mcp.WithString("until",
 			mcp.Description("until parameter for media"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGMedia objects. Available fields: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner (and 6 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, iguser_get_mediaTool)
@@ -313,17 +495,43 @@ func GetIGUserTools() []mcp.Tool {
 	tools = append(tools, iguser_post_mentionsTool)
 
 	// iguser_get_notification_message_tokens tool
+	// Available fields for UserPageOneTimeOptInTokenSettings: creation_timestamp, next_eligible_time, notification_messages_frequency, notification_messages_reoptin, notification_messages_timezone, notification_messages_token, recipient_id, token_expiry_timestamp, topic_title, user_token_status
 	iguser_get_notification_message_tokensTool := mcp.NewTool("iguser_get_notification_message_tokens",
 		mcp.WithDescription("GET notification_message_tokens for IGUser"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for UserPageOneTimeOptInTokenSettings objects. Available fields: creation_timestamp, next_eligible_time, notification_messages_frequency, notification_messages_reoptin, notification_messages_timezone, notification_messages_token, recipient_id, token_expiry_timestamp, topic_title, user_token_status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguser_get_notification_message_tokensTool)
 
 	// iguser_get_product_appeal tool
+	// Available fields for IGShoppingProductAppeal: eligible_for_appeal, product_appeal_status, product_id, rejection_reasons, review_status
 	iguser_get_product_appealTool := mcp.NewTool("iguser_get_product_appeal",
 		mcp.WithDescription("GET product_appeal for IGUser"),
 		mcp.WithString("product_id",
 			mcp.Required(),
 			mcp.Description("product_id parameter for product_appeal"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGShoppingProductAppeal objects. Available fields: eligible_for_appeal, product_appeal_status, product_id, rejection_reasons, review_status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, iguser_get_product_appealTool)
@@ -343,26 +551,78 @@ func GetIGUserTools() []mcp.Tool {
 	tools = append(tools, iguser_post_product_appealTool)
 
 	// iguser_get_recently_searched_hashtags tool
+	// Available fields for ShadowIGHashtag: id, name
 	iguser_get_recently_searched_hashtagsTool := mcp.NewTool("iguser_get_recently_searched_hashtags",
 		mcp.WithDescription("GET recently_searched_hashtags for IGUser"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ShadowIGHashtag objects. Available fields: id, name"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguser_get_recently_searched_hashtagsTool)
 
 	// iguser_get_stories tool
+	// Available fields for IGMedia: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner, permalink, shortcode, thumbnail_url, timestamp, username, view_count
 	iguser_get_storiesTool := mcp.NewTool("iguser_get_stories",
 		mcp.WithDescription("GET stories for IGUser"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGMedia objects. Available fields: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner (and 6 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguser_get_storiesTool)
 
 	// iguser_get_tags tool
+	// Available fields for IGMedia: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner, permalink, shortcode, thumbnail_url, timestamp, username, view_count
 	iguser_get_tagsTool := mcp.NewTool("iguser_get_tags",
 		mcp.WithDescription("GET tags for IGUser"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGMedia objects. Available fields: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner (and 6 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguser_get_tagsTool)
 
 	// iguser_get_upcoming_events tool
+	// Available fields for IGUpcomingEvent: end_time, id, notification_subtypes, notification_target_time, start_time, title
 	iguser_get_upcoming_eventsTool := mcp.NewTool("iguser_get_upcoming_events",
 		mcp.WithDescription("GET upcoming_events for IGUser"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGUpcomingEvent objects. Available fields: end_time, id, notification_subtypes, notification_target_time, start_time, title"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguser_get_upcoming_eventsTool)
 
@@ -388,6 +648,7 @@ func GetIGUserTools() []mcp.Tool {
 	tools = append(tools, iguser_post_upcoming_eventsTool)
 
 	// iguser_get_welcome_message_flows tool
+	// Available fields for ShadowIGUserCTXPartnerAppWelcomeMessageFlow: compatible_platforms, eligible_platforms, id, is_ig_only_flow, is_used_in_ad, last_update_time, name, welcome_message_flow
 	iguser_get_welcome_message_flowsTool := mcp.NewTool("iguser_get_welcome_message_flows",
 		mcp.WithDescription("GET welcome_message_flows for IGUser"),
 		mcp.WithString("app_id",
@@ -396,14 +657,39 @@ func GetIGUserTools() []mcp.Tool {
 		mcp.WithString("flow_id",
 			mcp.Description("flow_id parameter for welcome_message_flows"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ShadowIGUserCTXPartnerAppWelcomeMessageFlow objects. Available fields: compatible_platforms, eligible_platforms, id, is_ig_only_flow, is_used_in_ad, last_update_time, name, welcome_message_flow"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguser_get_welcome_message_flowsTool)
 
 	// iguser_get_ tool
+	// Available fields for IGUser: biography, business_discovery, followers_count, follows_count, has_profile_pic, id, ig_id, is_published, legacy_instagram_user_id, media_count, mentioned_comment, mentioned_media, name, owner_business, profile_picture_url, shopping_product_tag_eligibility, shopping_review_status, username, website
 	iguser_get_Tool := mcp.NewTool("iguser_get_",
 		mcp.WithDescription("GET  for IGUser"),
 		mcp.WithString("adgroup_id",
 			mcp.Description("adgroup_id parameter for "),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGUser objects. Available fields: biography, business_discovery, followers_count, follows_count, has_profile_pic, id, ig_id, is_published, legacy_instagram_user_id, media_count, mentioned_comment, mentioned_media, name, owner_business, profile_picture_url (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, iguser_get_Tool)
@@ -426,6 +712,26 @@ func HandleIguser_get_agencies(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Iguser_get_agencies(args)
@@ -462,6 +768,26 @@ func HandleIguser_get_authorized_adaccounts(ctx context.Context, request mcp.Cal
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
 	}
 	args["business"] = business
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Iguser_get_authorized_adaccounts(args)
@@ -535,6 +861,26 @@ func HandleIguser_get_available_catalogs(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Iguser_get_available_catalogs(args)
 	if err != nil {
@@ -563,6 +909,26 @@ func HandleIguser_get_branded_content_ad_permissions(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Iguser_get_branded_content_ad_permissions(args)
@@ -663,6 +1029,26 @@ func HandleIguser_get_branded_content_advertisable_medias(ctx context.Context, r
 		args["permalinks"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Iguser_get_branded_content_advertisable_medias(args)
 	if err != nil {
@@ -734,6 +1120,26 @@ func HandleIguser_get_branded_content_tag_approval(ctx context.Context, request 
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user_ids: %v", err)), nil
 	}
 	args["user_ids"] = user_ids
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Iguser_get_branded_content_tag_approval(args)
@@ -812,6 +1218,26 @@ func HandleIguser_get_catalog_product_search(ctx context.Context, request mcp.Ca
 		args["q"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Iguser_get_catalog_product_search(args)
 	if err != nil {
@@ -840,6 +1266,26 @@ func HandleIguser_get_connected_threads_user(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Iguser_get_connected_threads_user(args)
@@ -875,6 +1321,26 @@ func HandleIguser_get_content_publishing_limit(ctx context.Context, request mcp.
 		args["since"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Iguser_get_content_publishing_limit(args)
 	if err != nil {
@@ -903,6 +1369,26 @@ func HandleIguser_get_dataset(ctx context.Context, request mcp.CallToolRequest) 
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Iguser_get_dataset(args)
@@ -1007,6 +1493,26 @@ func HandleIguser_get_insights(ctx context.Context, request mcp.CallToolRequest)
 		args["until"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Iguser_get_insights(args)
 	if err != nil {
@@ -1035,6 +1541,26 @@ func HandleIguser_get_instagram_backed_threads_user(ctx context.Context, request
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Iguser_get_instagram_backed_threads_user(args)
@@ -1075,6 +1601,26 @@ func HandleIguser_get_live_media(ctx context.Context, request mcp.CallToolReques
 		args["until"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Iguser_get_live_media(args)
 	if err != nil {
@@ -1112,6 +1658,26 @@ func HandleIguser_get_media(ctx context.Context, request mcp.CallToolRequest) (*
 	// Optional: until
 	if val := request.GetString("until", ""); val != "" {
 		args["until"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -1340,6 +1906,26 @@ func HandleIguser_get_notification_message_tokens(ctx context.Context, request m
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Iguser_get_notification_message_tokens(args)
 	if err != nil {
@@ -1375,6 +1961,26 @@ func HandleIguser_get_product_appeal(ctx context.Context, request mcp.CallToolRe
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter product_id: %v", err)), nil
 	}
 	args["product_id"] = product_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Iguser_get_product_appeal(args)
@@ -1448,6 +2054,26 @@ func HandleIguser_get_recently_searched_hashtags(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Iguser_get_recently_searched_hashtags(args)
 	if err != nil {
@@ -1476,6 +2102,26 @@ func HandleIguser_get_stories(ctx context.Context, request mcp.CallToolRequest) 
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Iguser_get_stories(args)
@@ -1506,6 +2152,26 @@ func HandleIguser_get_tags(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Iguser_get_tags(args)
 	if err != nil {
@@ -1534,6 +2200,26 @@ func HandleIguser_get_upcoming_events(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Iguser_get_upcoming_events(args)
@@ -1628,6 +2314,26 @@ func HandleIguser_get_welcome_message_flows(ctx context.Context, request mcp.Cal
 		args["flow_id"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Iguser_get_welcome_message_flows(args)
 	if err != nil {
@@ -1660,6 +2366,26 @@ func HandleIguser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	// Optional: adgroup_id
 	if val := request.GetString("adgroup_id", ""); val != "" {
 		args["adgroup_id"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method

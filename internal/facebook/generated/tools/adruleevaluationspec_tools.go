@@ -17,8 +17,21 @@ func GetAdRuleEvaluationSpecTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adruleevaluationspec_get_ tool
+	// Available fields for AdRuleEvaluationSpec: evaluation_type, filters, trigger
 	adruleevaluationspec_get_Tool := mcp.NewTool("adruleevaluationspec_get_",
 		mcp.WithDescription("GET  for AdRuleEvaluationSpec"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdRuleEvaluationSpec objects. Available fields: evaluation_type, filters, trigger"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adruleevaluationspec_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleAdruleevaluationspec_get_(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adruleevaluationspec_get_(args)

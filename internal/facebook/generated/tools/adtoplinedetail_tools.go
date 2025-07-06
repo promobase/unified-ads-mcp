@@ -17,8 +17,21 @@ func GetAdToplineDetailTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adtoplinedetail_get_ tool
+	// Available fields for AdToplineDetail: active_status, ad_account_id, flight_end_date, flight_start_date, id, io_number, line_number, price, quantity, sf_detail_line_id, subline_id, targets, time_created, time_updated
 	adtoplinedetail_get_Tool := mcp.NewTool("adtoplinedetail_get_",
 		mcp.WithDescription("GET  for AdToplineDetail"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdToplineDetail objects. Available fields: active_status, ad_account_id, flight_end_date, flight_start_date, id, io_number, line_number, price, quantity, sf_detail_line_id, subline_id, targets, time_created, time_updated"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adtoplinedetail_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleAdtoplinedetail_get_(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adtoplinedetail_get_(args)

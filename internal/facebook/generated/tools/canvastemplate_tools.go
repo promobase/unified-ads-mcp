@@ -17,8 +17,21 @@ func GetCanvasTemplateTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// canvastemplate_get_ tool
+	// Available fields for CanvasTemplate: channels, description, document, id, is_multi_tab_supportable, is_new, name, objectives, owner_id, required_capabilities, snapshot_photo, status, sub_verticals, verticals
 	canvastemplate_get_Tool := mcp.NewTool("canvastemplate_get_",
 		mcp.WithDescription("GET  for CanvasTemplate"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CanvasTemplate objects. Available fields: channels, description, document, id, is_multi_tab_supportable, is_new, name, objectives, owner_id, required_capabilities, snapshot_photo, status, sub_verticals, verticals"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, canvastemplate_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleCanvastemplate_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Canvastemplate_get_(args)

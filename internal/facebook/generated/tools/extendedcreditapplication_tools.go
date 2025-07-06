@@ -17,8 +17,21 @@ func GetExtendedCreditApplicationTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// extendedcreditapplication_get_ tool
+	// Available fields for ExtendedCreditApplication: billing_country, city, cnpj, country, display_currency, duns_number, id, invoice_email_address, is_umi, legal_entity_name, original_online_limit, phone_number, postal_code, product_types, proposed_credit_limit, registration_number, run_id, state, status, street1, street2, submitter, tax_exempt_status, tax_id, terms
 	extendedcreditapplication_get_Tool := mcp.NewTool("extendedcreditapplication_get_",
 		mcp.WithDescription("GET  for ExtendedCreditApplication"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ExtendedCreditApplication objects. Available fields: billing_country, city, cnpj, country, display_currency, duns_number, id, invoice_email_address, is_umi, legal_entity_name, original_online_limit, phone_number, postal_code, product_types, proposed_credit_limit (and 10 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, extendedcreditapplication_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleExtendedcreditapplication_get_(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Extendedcreditapplication_get_(args)

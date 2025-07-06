@@ -17,11 +17,24 @@ func GetPlaceTopicTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// placetopic_get_ tool
+	// Available fields for PlaceTopic: count, has_children, icon_url, id, name, parent_ids, plural_name, top_subtopic_names
 	placetopic_get_Tool := mcp.NewTool("placetopic_get_",
 		mcp.WithDescription("GET  for PlaceTopic"),
 		mcp.WithString("icon_size",
 			mcp.Description("icon_size parameter for "),
 			mcp.Enum("24", "36", "48", "72"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for PlaceTopic objects. Available fields: count, has_children, icon_url, id, name, parent_ids, plural_name, top_subtopic_names"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, placetopic_get_Tool)
@@ -48,6 +61,26 @@ func HandlePlacetopic_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Optional: icon_size
 	if val := request.GetString("icon_size", ""); val != "" {
 		args["icon_size"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method

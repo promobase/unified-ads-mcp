@@ -17,10 +17,23 @@ func GetOffsitePixelTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// offsitepixel_get_ tool
+	// Available fields for OffsitePixel: creator, id, js_pixel, last_firing_time, name, tag
 	offsitepixel_get_Tool := mcp.NewTool("offsitepixel_get_",
 		mcp.WithDescription("GET  for OffsitePixel"),
 		mcp.WithNumber("value",
 			mcp.Description("value parameter for "),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for OffsitePixel objects. Available fields: creator, id, js_pixel, last_firing_time, name, tag"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, offsitepixel_get_Tool)
@@ -47,6 +60,26 @@ func HandleOffsitepixel_get_(ctx context.Context, request mcp.CallToolRequest) (
 	// Optional: value
 	if val := request.GetInt("value", 0); val != 0 {
 		args["value"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method

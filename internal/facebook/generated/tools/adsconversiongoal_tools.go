@@ -19,12 +19,37 @@ func GetAdsConversionGoalTools() []mcp.Tool {
 	// adsconversiongoal_get_conversion_events tool
 	adsconversiongoal_get_conversion_eventsTool := mcp.NewTool("adsconversiongoal_get_conversion_events",
 		mcp.WithDescription("GET conversion_events for AdsConversionGoal"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adsconversiongoal_get_conversion_eventsTool)
 
 	// adsconversiongoal_get_ tool
+	// Available fields for AdsConversionGoal: ad_account_id, conversion_event_value_source, description, goal_creation_method, id, name, performance_goal, update_status
 	adsconversiongoal_get_Tool := mcp.NewTool("adsconversiongoal_get_",
 		mcp.WithDescription("GET  for AdsConversionGoal"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsConversionGoal objects. Available fields: ad_account_id, conversion_event_value_source, description, goal_creation_method, id, name, performance_goal, update_status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adsconversiongoal_get_Tool)
 
@@ -46,6 +71,26 @@ func HandleAdsconversiongoal_get_conversion_events(ctx context.Context, request 
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adsconversiongoal_get_conversion_events(args)
@@ -75,6 +120,26 @@ func HandleAdsconversiongoal_get_(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adsconversiongoal_get_(args)

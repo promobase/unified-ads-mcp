@@ -17,8 +17,21 @@ func GetThirdPartyPartnerViewabilityRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// thirdpartypartnerviewabilityrequest_get_ tool
+	// Available fields for ThirdPartyPartnerViewabilityRequest: created_time, description, ds, hour, id, metric, modified_time, owner_instance_id, platform, status, total_file_count
 	thirdpartypartnerviewabilityrequest_get_Tool := mcp.NewTool("thirdpartypartnerviewabilityrequest_get_",
 		mcp.WithDescription("GET  for ThirdPartyPartnerViewabilityRequest"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ThirdPartyPartnerViewabilityRequest objects. Available fields: created_time, description, ds, hour, id, metric, modified_time, owner_instance_id, platform, status, total_file_count"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, thirdpartypartnerviewabilityrequest_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleThirdpartypartnerviewabilityrequest_get_(ctx context.Context, request
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Thirdpartypartnerviewabilityrequest_get_(args)

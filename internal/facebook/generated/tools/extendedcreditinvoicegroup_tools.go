@@ -27,8 +27,21 @@ func GetExtendedCreditInvoiceGroupTools() []mcp.Tool {
 	tools = append(tools, extendedcreditinvoicegroup_delete_ad_accountsTool)
 
 	// extendedcreditinvoicegroup_get_ad_accounts tool
+	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	extendedcreditinvoicegroup_get_ad_accountsTool := mcp.NewTool("extendedcreditinvoicegroup_get_ad_accounts",
 		mcp.WithDescription("GET ad_accounts for ExtendedCreditInvoiceGroup"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, extendedcreditinvoicegroup_get_ad_accountsTool)
 
@@ -49,8 +62,21 @@ func GetExtendedCreditInvoiceGroupTools() []mcp.Tool {
 	tools = append(tools, extendedcreditinvoicegroup_delete_Tool)
 
 	// extendedcreditinvoicegroup_get_ tool
+	// Available fields for ExtendedCreditInvoiceGroup: auto_enroll, bill_to_address, customer_po_number, email, emails, id, liable_address, name, sold_to_address
 	extendedcreditinvoicegroup_get_Tool := mcp.NewTool("extendedcreditinvoicegroup_get_",
 		mcp.WithDescription("GET  for ExtendedCreditInvoiceGroup"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ExtendedCreditInvoiceGroup objects. Available fields: auto_enroll, bill_to_address, customer_po_number, email, emails, id, liable_address, name, sold_to_address"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, extendedcreditinvoicegroup_get_Tool)
 
@@ -120,6 +146,26 @@ func HandleExtendedcreditinvoicegroup_get_ad_accounts(ctx context.Context, reque
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Extendedcreditinvoicegroup_get_ad_accounts(args)
@@ -214,6 +260,26 @@ func HandleExtendedcreditinvoicegroup_get_(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Extendedcreditinvoicegroup_get_(args)

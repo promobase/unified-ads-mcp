@@ -17,8 +17,21 @@ func GetOwnedDomainTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// owneddomain_get_ tool
+	// Available fields for OwnedDomain: domain_name, id, owner_business, status, verification_code
 	owneddomain_get_Tool := mcp.NewTool("owneddomain_get_",
 		mcp.WithDescription("GET  for OwnedDomain"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for OwnedDomain objects. Available fields: domain_name, id, owner_business, status, verification_code"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, owneddomain_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleOwneddomain_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Owneddomain_get_(args)

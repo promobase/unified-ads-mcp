@@ -17,8 +17,21 @@ func GetIGCommentTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// igcomment_get_replies tool
+	// Available fields for IGComment: from, hidden, id, legacy_instagram_comment_id, like_count, media, parent_id, text, timestamp, user, username
 	igcomment_get_repliesTool := mcp.NewTool("igcomment_get_replies",
 		mcp.WithDescription("GET replies for IGComment"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGComment objects. Available fields: from, hidden, id, legacy_instagram_comment_id, like_count, media, parent_id, text, timestamp, user, username"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, igcomment_get_repliesTool)
 
@@ -41,8 +54,21 @@ func GetIGCommentTools() []mcp.Tool {
 	tools = append(tools, igcomment_delete_Tool)
 
 	// igcomment_get_ tool
+	// Available fields for IGComment: from, hidden, id, legacy_instagram_comment_id, like_count, media, parent_id, text, timestamp, user, username
 	igcomment_get_Tool := mcp.NewTool("igcomment_get_",
 		mcp.WithDescription("GET  for IGComment"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGComment objects. Available fields: from, hidden, id, legacy_instagram_comment_id, like_count, media, parent_id, text, timestamp, user, username"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, igcomment_get_Tool)
 
@@ -77,6 +103,26 @@ func HandleIgcomment_get_replies(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Igcomment_get_replies(args)
@@ -174,6 +220,26 @@ func HandleIgcomment_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Igcomment_get_(args)

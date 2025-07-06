@@ -19,6 +19,18 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// whatsappbusinessaccount_get_activities tool
 	whatsappbusinessaccount_get_activitiesTool := mcp.NewTool("whatsappbusinessaccount_get_activities",
 		mcp.WithDescription("GET activities for WhatsAppBusinessAccount"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_activitiesTool)
 
@@ -33,11 +45,24 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_delete_assigned_usersTool)
 
 	// whatsappbusinessaccount_get_assigned_users tool
+	// Available fields for AssignedUser: business, id, name, user_type
 	whatsappbusinessaccount_get_assigned_usersTool := mcp.NewTool("whatsappbusinessaccount_get_assigned_users",
 		mcp.WithDescription("GET assigned_users for WhatsAppBusinessAccount"),
 		mcp.WithString("business",
 			mcp.Required(),
 			mcp.Description("business parameter for assigned_users"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AssignedUser objects. Available fields: business, id, name, user_type"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_assigned_usersTool)
@@ -60,6 +85,18 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// whatsappbusinessaccount_get_audiences tool
 	whatsappbusinessaccount_get_audiencesTool := mcp.NewTool("whatsappbusinessaccount_get_audiences",
 		mcp.WithDescription("GET audiences for WhatsAppBusinessAccount"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_audiencesTool)
 
@@ -96,6 +133,18 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 		mcp.WithNumber("start",
 			mcp.Required(),
 			mcp.Description("start parameter for call_analytics"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_call_analyticsTool)
@@ -142,12 +191,37 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("start parameter for conversation_analytics"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_conversation_analyticsTool)
 
 	// whatsappbusinessaccount_get_dataset tool
+	// Available fields for Dataset: id, name
 	whatsappbusinessaccount_get_datasetTool := mcp.NewTool("whatsappbusinessaccount_get_dataset",
 		mcp.WithDescription("GET dataset for WhatsAppBusinessAccount"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Dataset objects. Available fields: id, name"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_datasetTool)
 
@@ -163,6 +237,18 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// whatsappbusinessaccount_get_flows tool
 	whatsappbusinessaccount_get_flowsTool := mcp.NewTool("whatsappbusinessaccount_get_flows",
 		mcp.WithDescription("GET flows for WhatsAppBusinessAccount"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_flowsTool)
 
@@ -209,6 +295,18 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// whatsappbusinessaccount_get_message_campaigns tool
 	whatsappbusinessaccount_get_message_campaignsTool := mcp.NewTool("whatsappbusinessaccount_get_message_campaigns",
 		mcp.WithDescription("GET message_campaigns for WhatsAppBusinessAccount"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_message_campaignsTool)
 
@@ -232,6 +330,18 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 		),
 		mcp.WithString("languages",
 			mcp.Description("languages parameter for message_template_previews"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_message_template_previewsTool)
@@ -275,6 +385,18 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 		mcp.WithString("status",
 			mcp.Description("status parameter for message_templates"),
 			mcp.Enum("APPROVED", "ARCHIVED", "DELETED", "DISABLED", "IN_APPEAL", "LIMIT_EXCEEDED", "PAUSED", "PENDING", "PENDING_DELETION", "REJECTED"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_message_templatesTool)
@@ -377,6 +499,18 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("configuration_name parameter for payment_configuration"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_payment_configurationTool)
 
@@ -412,12 +546,36 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// whatsappbusinessaccount_get_payment_configurations tool
 	whatsappbusinessaccount_get_payment_configurationsTool := mcp.NewTool("whatsappbusinessaccount_get_payment_configurations",
 		mcp.WithDescription("GET payment_configurations for WhatsAppBusinessAccount"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_payment_configurationsTool)
 
 	// whatsappbusinessaccount_get_phone_numbers tool
 	whatsappbusinessaccount_get_phone_numbersTool := mcp.NewTool("whatsappbusinessaccount_get_phone_numbers",
 		mcp.WithDescription("GET phone_numbers for WhatsAppBusinessAccount"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_phone_numbersTool)
 
@@ -483,6 +641,18 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 		mcp.WithString("tiers",
 			mcp.Description("tiers parameter for pricing_analytics"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_pricing_analyticsTool)
 
@@ -497,8 +667,21 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_delete_product_catalogsTool)
 
 	// whatsappbusinessaccount_get_product_catalogs tool
+	// Available fields for ProductCatalog: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business, product_count, store_catalog_settings, user_access_expire_time, vertical
 	whatsappbusinessaccount_get_product_catalogsTool := mcp.NewTool("whatsappbusinessaccount_get_product_catalogs",
 		mcp.WithDescription("GET product_catalogs for WhatsAppBusinessAccount"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductCatalog objects. Available fields: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_product_catalogsTool)
 
@@ -515,6 +698,18 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// whatsappbusinessaccount_get_schedules tool
 	whatsappbusinessaccount_get_schedulesTool := mcp.NewTool("whatsappbusinessaccount_get_schedules",
 		mcp.WithDescription("GET schedules for WhatsAppBusinessAccount"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_schedulesTool)
 
@@ -542,6 +737,18 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// whatsappbusinessaccount_get_solutions tool
 	whatsappbusinessaccount_get_solutionsTool := mcp.NewTool("whatsappbusinessaccount_get_solutions",
 		mcp.WithDescription("GET solutions for WhatsAppBusinessAccount"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_solutionsTool)
 
@@ -554,6 +761,18 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	// whatsappbusinessaccount_get_subscribed_apps tool
 	whatsappbusinessaccount_get_subscribed_appsTool := mcp.NewTool("whatsappbusinessaccount_get_subscribed_apps",
 		mcp.WithDescription("GET subscribed_apps for WhatsAppBusinessAccount"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_subscribed_appsTool)
 
@@ -597,6 +816,18 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("template_ids parameter for template_analytics"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_template_analyticsTool)
 
@@ -624,12 +855,36 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("template_group_ids parameter for template_group_analytics"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_template_group_analyticsTool)
 
 	// whatsappbusinessaccount_get_template_groups tool
 	whatsappbusinessaccount_get_template_groupsTool := mcp.NewTool("whatsappbusinessaccount_get_template_groups",
 		mcp.WithDescription("GET template_groups for WhatsAppBusinessAccount"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_template_groupsTool)
 
@@ -659,6 +914,18 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 		),
 		mcp.WithString("template_id",
 			mcp.Description("template_id parameter for template_performance_metrics"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_template_performance_metricsTool)
@@ -690,6 +957,7 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinessaccount_post_upsert_message_templatesTool)
 
 	// whatsappbusinessaccount_get_welcome_message_sequences tool
+	// Available fields for CTXPartnerAppWelcomeMessageFlow: compatible_platforms, eligible_platforms, id, is_ig_only_flow, is_used_in_ad, last_update_time, name, welcome_message_flow, welcome_message_sequence
 	whatsappbusinessaccount_get_welcome_message_sequencesTool := mcp.NewTool("whatsappbusinessaccount_get_welcome_message_sequences",
 		mcp.WithDescription("GET welcome_message_sequences for WhatsAppBusinessAccount"),
 		mcp.WithString("app_id",
@@ -698,12 +966,37 @@ func GetWhatsAppBusinessAccountTools() []mcp.Tool {
 		mcp.WithString("sequence_id",
 			mcp.Description("sequence_id parameter for welcome_message_sequences"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CTXPartnerAppWelcomeMessageFlow objects. Available fields: compatible_platforms, eligible_platforms, id, is_ig_only_flow, is_used_in_ad, last_update_time, name, welcome_message_flow, welcome_message_sequence"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_welcome_message_sequencesTool)
 
 	// whatsappbusinessaccount_get_ tool
+	// Available fields for WhatsAppBusinessAccount: account_review_status, analytics, auth_international_rate_eligibility, business_verification_status, country, creation_time, currency, health_status, id, is_enabled_for_insights, is_shared_with_partners, linked_commerce_account, marketing_messages_lite_api_status, message_template_namespace, name, on_behalf_of_business_info, owner_business, owner_business_info, ownership_type, primary_business_location, primary_funding_id, purchase_order_number, status, timezone_id
 	whatsappbusinessaccount_get_Tool := mcp.NewTool("whatsappbusinessaccount_get_",
 		mcp.WithDescription("GET  for WhatsAppBusinessAccount"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for WhatsAppBusinessAccount objects. Available fields: account_review_status, analytics, auth_international_rate_eligibility, business_verification_status, country, creation_time, currency, health_status, id, is_enabled_for_insights, is_shared_with_partners, linked_commerce_account, marketing_messages_lite_api_status, message_template_namespace, name (and 9 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinessaccount_get_Tool)
 
@@ -734,6 +1027,26 @@ func HandleWhatsappbusinessaccount_get_activities(ctx context.Context, request m
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_activities(args)
@@ -807,6 +1120,26 @@ func HandleWhatsappbusinessaccount_get_assigned_users(ctx context.Context, reque
 	}
 	args["business"] = business
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_assigned_users(args)
 	if err != nil {
@@ -878,6 +1211,26 @@ func HandleWhatsappbusinessaccount_get_audiences(ctx context.Context, request mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_audiences(args)
@@ -958,6 +1311,26 @@ func HandleWhatsappbusinessaccount_get_call_analytics(ctx context.Context, reque
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter start: %v", err)), nil
 	}
 	args["start"] = start
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_call_analytics(args)
@@ -1051,6 +1424,26 @@ func HandleWhatsappbusinessaccount_get_conversation_analytics(ctx context.Contex
 	}
 	args["start"] = start
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_conversation_analytics(args)
 	if err != nil {
@@ -1079,6 +1472,26 @@ func HandleWhatsappbusinessaccount_get_dataset(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_dataset(args)
@@ -1142,6 +1555,26 @@ func HandleWhatsappbusinessaccount_get_flows(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_flows(args)
@@ -1276,6 +1709,26 @@ func HandleWhatsappbusinessaccount_get_message_campaigns(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_message_campaigns(args)
 	if err != nil {
@@ -1332,6 +1785,26 @@ func HandleWhatsappbusinessaccount_get_message_template_previews(ctx context.Con
 	// array type - using string
 	if val := request.GetString("languages", ""); val != "" {
 		args["languages"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -1441,6 +1914,26 @@ func HandleWhatsappbusinessaccount_get_message_templates(ctx context.Context, re
 	// array type - using string
 	if val := request.GetString("status", ""); val != "" {
 		args["status"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -1705,6 +2198,26 @@ func HandleWhatsappbusinessaccount_get_payment_configuration(ctx context.Context
 	}
 	args["configuration_name"] = configuration_name
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_payment_configuration(args)
 	if err != nil {
@@ -1800,6 +2313,26 @@ func HandleWhatsappbusinessaccount_get_payment_configurations(ctx context.Contex
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_payment_configurations(args)
 	if err != nil {
@@ -1828,6 +2361,26 @@ func HandleWhatsappbusinessaccount_get_phone_numbers(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_phone_numbers(args)
@@ -1975,6 +2528,26 @@ func HandleWhatsappbusinessaccount_get_pricing_analytics(ctx context.Context, re
 		args["tiers"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_pricing_analytics(args)
 	if err != nil {
@@ -2040,6 +2613,26 @@ func HandleWhatsappbusinessaccount_get_product_catalogs(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_product_catalogs(args)
 	if err != nil {
@@ -2104,6 +2697,26 @@ func HandleWhatsappbusinessaccount_get_schedules(ctx context.Context, request mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_schedules(args)
@@ -2207,6 +2820,26 @@ func HandleWhatsappbusinessaccount_get_solutions(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_solutions(args)
 	if err != nil {
@@ -2264,6 +2897,26 @@ func HandleWhatsappbusinessaccount_get_subscribed_apps(ctx context.Context, requ
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_subscribed_apps(args)
@@ -2372,6 +3025,26 @@ func HandleWhatsappbusinessaccount_get_template_analytics(ctx context.Context, r
 	}
 	args["template_ids"] = template_ids
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_template_analytics(args)
 	if err != nil {
@@ -2435,6 +3108,26 @@ func HandleWhatsappbusinessaccount_get_template_group_analytics(ctx context.Cont
 	}
 	args["template_group_ids"] = template_group_ids
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_template_group_analytics(args)
 	if err != nil {
@@ -2463,6 +3156,26 @@ func HandleWhatsappbusinessaccount_get_template_groups(ctx context.Context, requ
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_template_groups(args)
@@ -2551,6 +3264,26 @@ func HandleWhatsappbusinessaccount_get_template_performance_metrics(ctx context.
 	// Optional: template_id
 	if val := request.GetString("template_id", ""); val != "" {
 		args["template_id"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -2654,6 +3387,26 @@ func HandleWhatsappbusinessaccount_get_welcome_message_sequences(ctx context.Con
 		args["sequence_id"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_welcome_message_sequences(args)
 	if err != nil {
@@ -2682,6 +3435,26 @@ func HandleWhatsappbusinessaccount_get_(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_(args)

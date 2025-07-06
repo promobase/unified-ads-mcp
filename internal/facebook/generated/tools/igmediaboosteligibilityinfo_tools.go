@@ -17,8 +17,21 @@ func GetIGMediaBoostEligibilityInfoTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// igmediaboosteligibilityinfo_get_ tool
+	// Available fields for IGMediaBoostEligibilityInfo: boost_ineligible_reason, eligible_to_boost
 	igmediaboosteligibilityinfo_get_Tool := mcp.NewTool("igmediaboosteligibilityinfo_get_",
 		mcp.WithDescription("GET  for IGMediaBoostEligibilityInfo"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGMediaBoostEligibilityInfo objects. Available fields: boost_ineligible_reason, eligible_to_boost"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, igmediaboosteligibilityinfo_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleIgmediaboosteligibilityinfo_get_(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Igmediaboosteligibilityinfo_get_(args)

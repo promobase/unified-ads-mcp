@@ -17,8 +17,21 @@ func GetBusinessProjectTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// businessproject_get_ tool
+	// Available fields for BusinessProject: business, created_time, creator, id, name
 	businessproject_get_Tool := mcp.NewTool("businessproject_get_",
 		mcp.WithDescription("GET  for BusinessProject"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BusinessProject objects. Available fields: business, created_time, creator, id, name"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, businessproject_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleBusinessproject_get_(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Businessproject_get_(args)

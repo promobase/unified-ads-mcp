@@ -17,10 +17,23 @@ func GetLiveVideoInputStreamTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// livevideoinputstream_get_ tool
+	// Available fields for LiveVideoInputStream: dash_ingest_url, dash_preview_url, id, is_master, secure_stream_url, stream_health, stream_id, stream_url
 	livevideoinputstream_get_Tool := mcp.NewTool("livevideoinputstream_get_",
 		mcp.WithDescription("GET  for LiveVideoInputStream"),
 		mcp.WithString("target_token",
 			mcp.Description("target_token parameter for "),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for LiveVideoInputStream objects. Available fields: dash_ingest_url, dash_preview_url, id, is_master, secure_stream_url, stream_health, stream_id, stream_url"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, livevideoinputstream_get_Tool)
@@ -47,6 +60,26 @@ func HandleLivevideoinputstream_get_(ctx context.Context, request mcp.CallToolRe
 	// Optional: target_token
 	if val := request.GetString("target_token", ""); val != "" {
 		args["target_token"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method

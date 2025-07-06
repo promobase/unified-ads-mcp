@@ -39,6 +39,30 @@ func (c *LiveVideoClient) Livevideo_get_blocked_users(args map[string]interface{
 		urlParams.Set("uid", fmt.Sprintf("%v", val))
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -106,6 +130,30 @@ func (c *LiveVideoClient) Livevideo_get_comments(args map[string]interface{}) (i
 		urlParams.Set("since", fmt.Sprintf("%v", val))
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -149,6 +197,31 @@ func (c *LiveVideoClient) Livevideo_get_crosspost_shared_pages(args map[string]i
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -191,6 +264,31 @@ func (c *LiveVideoClient) Livevideo_get_crossposted_broadcasts(args map[string]i
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
+
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -232,6 +330,31 @@ func (c *LiveVideoClient) Livevideo_get_errors(args map[string]interface{}) (int
 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -316,6 +439,31 @@ func (c *LiveVideoClient) Livevideo_get_polls(args map[string]interface{}) (inte
 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -460,6 +608,30 @@ func (c *LiveVideoClient) Livevideo_get_reactions(args map[string]interface{}) (
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -549,6 +721,30 @@ func (c *LiveVideoClient) Livevideo_get_(args map[string]interface{}) (interface
 		// Skip ID parameters as they're already in the URL path
 
 		urlParams.Set("target_token", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
 
 	}
 

@@ -17,8 +17,21 @@ func GetAudioReleaseTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// audiorelease_get_ tool
+	// Available fields for AudioRelease: album_title, asset_availability_status, audio_availability_status, audio_release_image_uri, created_time, displayed_artist, ean, genre, grid, id, isrc, label_name, original_release_date, parental_warning_type, proprietary_id, upc
 	audiorelease_get_Tool := mcp.NewTool("audiorelease_get_",
 		mcp.WithDescription("GET  for AudioRelease"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AudioRelease objects. Available fields: album_title, asset_availability_status, audio_availability_status, audio_release_image_uri, created_time, displayed_artist, ean, genre, grid, id, isrc, label_name, original_release_date, parental_warning_type, proprietary_id (and 1 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, audiorelease_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleAudiorelease_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Audiorelease_get_(args)

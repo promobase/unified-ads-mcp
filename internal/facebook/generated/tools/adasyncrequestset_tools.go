@@ -17,11 +17,24 @@ func GetAdAsyncRequestSetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adasyncrequestset_get_requests tool
+	// Available fields for AdAsyncRequest: async_request_set, created_time, id, input, result, scope_object_id, status, type, updated_time
 	adasyncrequestset_get_requestsTool := mcp.NewTool("adasyncrequestset_get_requests",
 		mcp.WithDescription("GET requests for AdAsyncRequestSet"),
 		mcp.WithString("statuses",
 			mcp.Description("statuses parameter for requests"),
 			mcp.Enum("CANCELED", "CANCELED_DEPENDENCY", "ERROR", "ERROR_CONFLICTS", "ERROR_DEPENDENCY", "INITIAL", "IN_PROGRESS", "PENDING_DEPENDENCY", "PROCESS_BY_AD_ASYNC_ENGINE", "PROCESS_BY_EVENT_PROCESSOR", "SUCCESS", "USER_CANCELED", "USER_CANCELED_DEPENDENCY"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAsyncRequest objects. Available fields: async_request_set, created_time, id, input, result, scope_object_id, status, type, updated_time"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adasyncrequestset_get_requestsTool)
@@ -33,8 +46,21 @@ func GetAdAsyncRequestSetTools() []mcp.Tool {
 	tools = append(tools, adasyncrequestset_delete_Tool)
 
 	// adasyncrequestset_get_ tool
+	// Available fields for AdAsyncRequestSet: canceled_count, created_time, error_count, id, in_progress_count, initial_count, is_completed, name, notification_mode, notification_result, notification_status, notification_uri, owner_id, success_count, total_count, updated_time
 	adasyncrequestset_get_Tool := mcp.NewTool("adasyncrequestset_get_",
 		mcp.WithDescription("GET  for AdAsyncRequestSet"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAsyncRequestSet objects. Available fields: canceled_count, created_time, error_count, id, in_progress_count, initial_count, is_completed, name, notification_mode, notification_result, notification_status, notification_uri, owner_id, success_count, total_count (and 1 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adasyncrequestset_get_Tool)
 
@@ -77,6 +103,26 @@ func HandleAdasyncrequestset_get_requests(ctx context.Context, request mcp.CallT
 	// array type - using string
 	if val := request.GetString("statuses", ""); val != "" {
 		args["statuses"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -136,6 +182,26 @@ func HandleAdasyncrequestset_get_(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adasyncrequestset_get_(args)

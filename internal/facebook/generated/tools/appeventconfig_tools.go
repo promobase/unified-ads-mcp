@@ -17,10 +17,23 @@ func GetAppEventConfigTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// appeventconfig_get_ tool
+	// Available fields for AppEventConfig: breakdowns_config, builtin_fields_config, deprecated_events_config, events_config, id, ios_purchase_validation_secret, is_any_role_able_to_see_restricted_insights, is_implicit_purchase_logging_on_android_supported, is_implicit_purchase_logging_on_ios_supported, is_track_android_app_uninstall_supported, is_track_ios_app_uninstall_supported, journey_backfill_status, journey_conversion_events, journey_enabled, journey_timeout, latest_sdk_versions, log_android_implicit_purchase_events, log_automatic_analytics_events, log_implicit_purchase_events, prev_journey_conversion_events, query_approximation_accuracy_level, query_currency, query_timezone, recent_events_update_time, session_timeout_interval, track_android_app_uninstall, track_ios_app_uninstall
 	appeventconfig_get_Tool := mcp.NewTool("appeventconfig_get_",
 		mcp.WithDescription("GET  for AppEventConfig"),
 		mcp.WithString("event_name",
 			mcp.Description("event_name parameter for "),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AppEventConfig objects. Available fields: breakdowns_config, builtin_fields_config, deprecated_events_config, events_config, id, ios_purchase_validation_secret, is_any_role_able_to_see_restricted_insights, is_implicit_purchase_logging_on_android_supported, is_implicit_purchase_logging_on_ios_supported, is_track_android_app_uninstall_supported, is_track_ios_app_uninstall_supported, journey_backfill_status, journey_conversion_events, journey_enabled, journey_timeout (and 12 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, appeventconfig_get_Tool)
@@ -47,6 +60,26 @@ func HandleAppeventconfig_get_(ctx context.Context, request mcp.CallToolRequest)
 	// Optional: event_name
 	if val := request.GetString("event_name", ""); val != "" {
 		args["event_name"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method

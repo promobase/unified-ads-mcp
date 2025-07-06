@@ -19,12 +19,36 @@ func GetCommerceOrderTransactionDetailTools() []mcp.Tool {
 	// commerceordertransactiondetail_get_items tool
 	commerceordertransactiondetail_get_itemsTool := mcp.NewTool("commerceordertransactiondetail_get_items",
 		mcp.WithDescription("GET items for CommerceOrderTransactionDetail"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, commerceordertransactiondetail_get_itemsTool)
 
 	// commerceordertransactiondetail_get_tax_details tool
 	commerceordertransactiondetail_get_tax_detailsTool := mcp.NewTool("commerceordertransactiondetail_get_tax_details",
 		mcp.WithDescription("GET tax_details for CommerceOrderTransactionDetail"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, commerceordertransactiondetail_get_tax_detailsTool)
 
@@ -46,6 +70,26 @@ func HandleCommerceordertransactiondetail_get_items(ctx context.Context, request
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Commerceordertransactiondetail_get_items(args)
@@ -75,6 +119,26 @@ func HandleCommerceordertransactiondetail_get_tax_details(ctx context.Context, r
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Commerceordertransactiondetail_get_tax_details(args)

@@ -39,6 +39,30 @@ func (c *AppEventConfigClient) Appeventconfig_get_(args map[string]interface{}) 
 		urlParams.Set("event_name", fmt.Sprintf("%v", val))
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

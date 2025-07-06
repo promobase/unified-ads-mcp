@@ -17,11 +17,24 @@ func GetAdAccountTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adaccount_get_account_controls tool
+	// Available fields for AdAccountBusinessConstraints: audience_controls, campaigns_with_error, placement_controls, status
 	adaccount_get_account_controlsTool := mcp.NewTool("adaccount_get_account_controls",
 		mcp.WithDescription("GET account_controls for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccountBusinessConstraints objects. Available fields: audience_controls, campaigns_with_error, placement_controls, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_account_controlsTool)
@@ -44,6 +57,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_account_controlsTool)
 
 	// adaccount_get_activities tool
+	// Available fields for AdActivity: actor_id, actor_name, application_id, application_name, date_time_in_timezone, event_time, event_type, extra_data, object_id, object_name, object_type, translated_event_type
 	adaccount_get_activitiesTool := mcp.NewTool("adaccount_get_activities",
 		mcp.WithDescription("GET activities for AdAccount"),
 		mcp.WithString("account_id",
@@ -85,15 +99,40 @@ func GetAdAccountTools() []mcp.Tool {
 		mcp.WithString("until",
 			mcp.Description("until parameter for activities"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdActivity objects. Available fields: actor_id, actor_name, application_id, application_name, date_time_in_timezone, event_time, event_type, extra_data, object_id, object_name, object_type, translated_event_type"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_activitiesTool)
 
 	// adaccount_get_ad_place_page_sets tool
+	// Available fields for AdPlacePageSet: account_id, id, location_types, name, pages_count, parent_page
 	adaccount_get_ad_place_page_setsTool := mcp.NewTool("adaccount_get_ad_place_page_sets",
 		mcp.WithDescription("GET ad_place_page_sets for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdPlacePageSet objects. Available fields: account_id, id, location_types, name, pages_count, parent_page"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_ad_place_page_setsTool)
@@ -151,6 +190,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_ad_place_page_sets_asyncTool)
 
 	// adaccount_get_ad_saved_keywords tool
+	// Available fields for AdSavedKeywords: account, id, keywords, name, run_status, time_created, time_updated
 	adaccount_get_ad_saved_keywordsTool := mcp.NewTool("adaccount_get_ad_saved_keywords",
 		mcp.WithDescription("GET ad_saved_keywords for AdAccount"),
 		mcp.WithString("account_id",
@@ -160,35 +200,86 @@ func GetAdAccountTools() []mcp.Tool {
 		mcp.WithString("fields",
 			mcp.Description("fields parameter for ad_saved_keywords"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdSavedKeywords objects. Available fields: account, id, keywords, name, run_status, time_created, time_updated"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_ad_saved_keywordsTool)
 
 	// adaccount_get_ad_studies tool
+	// Available fields for AdStudy: business, canceled_time, client_business, cooldown_start_time, created_by, created_time, description, end_time, id, measurement_contact, name, observation_end_time, results_first_available_date, sales_contact, start_time, type, updated_by, updated_time
 	adaccount_get_ad_studiesTool := mcp.NewTool("adaccount_get_ad_studies",
 		mcp.WithDescription("GET ad_studies for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdStudy objects. Available fields: business, canceled_time, client_business, cooldown_start_time, created_by, created_time, description, end_time, id, measurement_contact, name, observation_end_time, results_first_available_date, sales_contact, start_time (and 3 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_ad_studiesTool)
 
 	// adaccount_get_adcloudplayables tool
+	// Available fields for CloudGame: id, name, owner, playable_ad_file_size, playable_ad_orientation, playable_ad_package_name, playable_ad_reject_reason, playable_ad_status, playable_ad_upload_time
 	adaccount_get_adcloudplayablesTool := mcp.NewTool("adaccount_get_adcloudplayables",
 		mcp.WithDescription("GET adcloudplayables for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CloudGame objects. Available fields: id, name, owner, playable_ad_file_size, playable_ad_orientation, playable_ad_package_name, playable_ad_reject_reason, playable_ad_status, playable_ad_upload_time"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_adcloudplayablesTool)
 
 	// adaccount_get_adcreatives tool
+	// Available fields for AdCreative: account_id, actor_id, ad_disclaimer_spec, adlabels, applink_treatment, asset_feed_spec, authorization_category, auto_update, body, branded_content, branded_content_sponsor_page_id, bundle_folder_id, call_to_action, call_to_action_type, categorization_criteria, category_media_source, collaborative_ads_lsb_image_bank_id, contextual_multi_ads, creative_sourcing_spec, degrees_of_freedom_spec, destination_set_id, dynamic_ad_voice, effective_authorization_category, effective_instagram_media_id, effective_object_story_id, enable_direct_install, enable_launch_instant_app, facebook_branded_content, id, image_crops, image_hash, image_url, instagram_branded_content, instagram_permalink_url, instagram_user_id, interactive_components_spec, link_deep_link_url, link_destination_display_url, link_og_id, link_url, messenger_sponsored_message, name, object_id, object_store_url, object_story_id, object_story_spec, object_type, object_url, omnichannel_link_spec, page_welcome_message, photo_album_source_object_story_id, place_page_set_id, platform_customizations, playable_asset_id, portrait_customizations, product_data, product_set_id, recommender_settings, regional_regulation_disclaimer_spec, source_facebook_post_id, source_instagram_media_id, status, template_url, template_url_spec, thumbnail_id, thumbnail_url, title, url_tags, use_page_actor_override, video_id
 	adaccount_get_adcreativesTool := mcp.NewTool("adaccount_get_adcreatives",
 		mcp.WithDescription("GET adcreatives for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdCreative objects. Available fields: account_id, actor_id, ad_disclaimer_spec, adlabels, applink_treatment, asset_feed_spec, authorization_category, auto_update, body, branded_content, branded_content_sponsor_page_id, bundle_folder_id, call_to_action, call_to_action_type, categorization_criteria (and 55 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_adcreativesTool)
@@ -368,6 +459,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_adcreativesTool)
 
 	// adaccount_get_adcreativesbylabels tool
+	// Available fields for AdCreative: account_id, actor_id, ad_disclaimer_spec, adlabels, applink_treatment, asset_feed_spec, authorization_category, auto_update, body, branded_content, branded_content_sponsor_page_id, bundle_folder_id, call_to_action, call_to_action_type, categorization_criteria, category_media_source, collaborative_ads_lsb_image_bank_id, contextual_multi_ads, creative_sourcing_spec, degrees_of_freedom_spec, destination_set_id, dynamic_ad_voice, effective_authorization_category, effective_instagram_media_id, effective_object_story_id, enable_direct_install, enable_launch_instant_app, facebook_branded_content, id, image_crops, image_hash, image_url, instagram_branded_content, instagram_permalink_url, instagram_user_id, interactive_components_spec, link_deep_link_url, link_destination_display_url, link_og_id, link_url, messenger_sponsored_message, name, object_id, object_store_url, object_story_id, object_story_spec, object_type, object_url, omnichannel_link_spec, page_welcome_message, photo_album_source_object_story_id, place_page_set_id, platform_customizations, playable_asset_id, portrait_customizations, product_data, product_set_id, recommender_settings, regional_regulation_disclaimer_spec, source_facebook_post_id, source_instagram_media_id, status, template_url, template_url_spec, thumbnail_id, thumbnail_url, title, url_tags, use_page_actor_override, video_id
 	adaccount_get_adcreativesbylabelsTool := mcp.NewTool("adaccount_get_adcreativesbylabels",
 		mcp.WithDescription("GET adcreativesbylabels for AdAccount"),
 		mcp.WithString("account_id",
@@ -381,6 +473,18 @@ func GetAdAccountTools() []mcp.Tool {
 		mcp.WithString("operator",
 			mcp.Description("operator parameter for adcreativesbylabels"),
 			mcp.Enum("ALL", "ANY"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdCreative objects. Available fields: account_id, actor_id, ad_disclaimer_spec, adlabels, applink_treatment, asset_feed_spec, authorization_category, auto_update, body, branded_content, branded_content_sponsor_page_id, bundle_folder_id, call_to_action, call_to_action_type, categorization_criteria (and 55 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_adcreativesbylabelsTool)
@@ -400,6 +504,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_delete_adimagesTool)
 
 	// adaccount_get_adimages tool
+	// Available fields for AdImage: account_id, created_time, creatives, hash, height, id, is_associated_creatives_in_adgroups, name, original_height, original_width, owner_business, permalink_url, status, updated_time, url, url_128, width
 	adaccount_get_adimagesTool := mcp.NewTool("adaccount_get_adimages",
 		mcp.WithDescription("GET adimages for AdAccount"),
 		mcp.WithString("account_id",
@@ -427,6 +532,18 @@ func GetAdAccountTools() []mcp.Tool {
 		mcp.WithString("selected_hashes",
 			mcp.Description("selected_hashes parameter for adimages"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdImage objects. Available fields: account_id, created_time, creatives, hash, height, id, is_associated_creatives_in_adgroups, name, original_height, original_width, owner_business, permalink_url, status, updated_time, url (and 2 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_adimagesTool)
 
@@ -447,11 +564,24 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_adimagesTool)
 
 	// adaccount_get_adlabels tool
+	// Available fields for AdLabel: account, created_time, id, name, updated_time
 	adaccount_get_adlabelsTool := mcp.NewTool("adaccount_get_adlabels",
 		mcp.WithDescription("GET adlabels for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdLabel objects. Available fields: account, created_time, id, name, updated_time"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_adlabelsTool)
@@ -471,11 +601,24 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_adlabelsTool)
 
 	// adaccount_get_adplayables tool
+	// Available fields for PlayableContent: id, name, owner
 	adaccount_get_adplayablesTool := mcp.NewTool("adaccount_get_adplayables",
 		mcp.WithDescription("GET adplayables for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for PlayableContent objects. Available fields: id, name, owner"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_adplayablesTool)
@@ -510,6 +653,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_adplayablesTool)
 
 	// adaccount_get_adrules_history tool
+	// Available fields for AdAccountAdRulesHistory: evaluation_spec, exception_code, exception_message, execution_spec, is_manual, results, rule_id, schedule_spec, timestamp
 	adaccount_get_adrules_historyTool := mcp.NewTool("adaccount_get_adrules_history",
 		mcp.WithDescription("GET adrules_history for AdAccount"),
 		mcp.WithString("account_id",
@@ -530,15 +674,40 @@ func GetAdAccountTools() []mcp.Tool {
 		mcp.WithString("object_id",
 			mcp.Description("object_id parameter for adrules_history"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccountAdRulesHistory objects. Available fields: evaluation_spec, exception_code, exception_message, execution_spec, is_manual, results, rule_id, schedule_spec, timestamp"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_adrules_historyTool)
 
 	// adaccount_get_adrules_library tool
+	// Available fields for AdRule: account_id, created_by, created_time, disable_error_code, evaluation_spec, execution_spec, id, name, schedule_spec, status, updated_time
 	adaccount_get_adrules_libraryTool := mcp.NewTool("adaccount_get_adrules_library",
 		mcp.WithDescription("GET adrules_library for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdRule objects. Available fields: account_id, created_by, created_time, disable_error_code, evaluation_spec, execution_spec, id, name, schedule_spec, status, updated_time"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_adrules_libraryTool)
@@ -580,6 +749,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_adrules_libraryTool)
 
 	// adaccount_get_ads tool
+	// Available fields for Ad: account_id, ad_active_time, ad_review_feedback, ad_schedule_end_time, ad_schedule_start_time, adlabels, adset, adset_id, bid_amount, bid_info, bid_type, campaign, campaign_id, configured_status, conversion_domain, conversion_specs, created_time, creative, creative_asset_groups_spec, demolink_hash, display_sequence, effective_status, engagement_audience, failed_delivery_checks, id, issues_info, last_updated_by_app_id, name, placement, preview_shareable_link, priority, recommendations, source_ad, source_ad_id, status, targeting, tracking_and_conversion_with_defaults, tracking_specs, updated_time
 	adaccount_get_adsTool := mcp.NewTool("adaccount_get_ads",
 		mcp.WithDescription("GET ads for AdAccount"),
 		mcp.WithString("account_id",
@@ -598,6 +768,18 @@ func GetAdAccountTools() []mcp.Tool {
 		),
 		mcp.WithNumber("updated_since",
 			mcp.Description("updated_since parameter for ads"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Ad objects. Available fields: account_id, ad_active_time, ad_review_feedback, ad_schedule_end_time, ad_schedule_start_time, adlabels, adset, adset_id, bid_amount, bid_info, bid_type, campaign, campaign_id, configured_status, conversion_domain (and 24 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_adsTool)
@@ -680,6 +862,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_adsTool)
 
 	// adaccount_get_ads_reporting_mmm_reports tool
+	// Available fields for AdsReportBuilderMMMReport: async_status, export_format, export_name, export_type, has_seen, id, mmm_status, time_start
 	adaccount_get_ads_reporting_mmm_reportsTool := mcp.NewTool("adaccount_get_ads_reporting_mmm_reports",
 		mcp.WithDescription("GET ads_reporting_mmm_reports for AdAccount"),
 		mcp.WithString("account_id",
@@ -689,20 +872,46 @@ func GetAdAccountTools() []mcp.Tool {
 		mcp.WithString("filtering",
 			mcp.Description("filtering parameter for ads_reporting_mmm_reports"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsReportBuilderMMMReport objects. Available fields: async_status, export_format, export_name, export_type, has_seen, id, mmm_status, time_start"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_ads_reporting_mmm_reportsTool)
 
 	// adaccount_get_ads_reporting_mmm_schedulers tool
+	// Available fields for AdsReportBuilderMMMReportScheduler: ad_account_ids, filtering, id, report_name, schedule_frequency
 	adaccount_get_ads_reporting_mmm_schedulersTool := mcp.NewTool("adaccount_get_ads_reporting_mmm_schedulers",
 		mcp.WithDescription("GET ads_reporting_mmm_schedulers for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsReportBuilderMMMReportScheduler objects. Available fields: ad_account_ids, filtering, id, report_name, schedule_frequency"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_ads_reporting_mmm_schedulersTool)
 
 	// adaccount_get_ads_volume tool
+	// Available fields for AdAccountAdVolume: actor_id, actor_name, ad_limit_scope_business, ad_limit_scope_business_manager_id, ad_limit_set_by_page_admin, ads_running_or_in_review_count, ads_running_or_in_review_count_subject_to_limit_set_by_page, current_account_ads_running_or_in_review_count, future_limit_activation_date, future_limit_on_ads_running_or_in_review, limit_on_ads_running_or_in_review, recommendations
 	adaccount_get_ads_volumeTool := mcp.NewTool("adaccount_get_ads_volume",
 		mcp.WithDescription("GET ads_volume for AdAccount"),
 		mcp.WithString("account_id",
@@ -719,10 +928,23 @@ func GetAdAccountTools() []mcp.Tool {
 		mcp.WithBoolean("show_breakdown_by_actor",
 			mcp.Description("show_breakdown_by_actor parameter for ads_volume"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccountAdVolume objects. Available fields: actor_id, actor_name, ad_limit_scope_business, ad_limit_scope_business_manager_id, ad_limit_set_by_page_admin, ads_running_or_in_review_count, ads_running_or_in_review_count_subject_to_limit_set_by_page, current_account_ads_running_or_in_review_count, future_limit_activation_date, future_limit_on_ads_running_or_in_review, limit_on_ads_running_or_in_review, recommendations"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_ads_volumeTool)
 
 	// adaccount_get_adsbylabels tool
+	// Available fields for Ad: account_id, ad_active_time, ad_review_feedback, ad_schedule_end_time, ad_schedule_start_time, adlabels, adset, adset_id, bid_amount, bid_info, bid_type, campaign, campaign_id, configured_status, conversion_domain, conversion_specs, created_time, creative, creative_asset_groups_spec, demolink_hash, display_sequence, effective_status, engagement_audience, failed_delivery_checks, id, issues_info, last_updated_by_app_id, name, placement, preview_shareable_link, priority, recommendations, source_ad, source_ad_id, status, targeting, tracking_and_conversion_with_defaults, tracking_specs, updated_time
 	adaccount_get_adsbylabelsTool := mcp.NewTool("adaccount_get_adsbylabels",
 		mcp.WithDescription("GET adsbylabels for AdAccount"),
 		mcp.WithString("account_id",
@@ -737,10 +959,23 @@ func GetAdAccountTools() []mcp.Tool {
 			mcp.Description("operator parameter for adsbylabels"),
 			mcp.Enum("ALL", "ANY"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Ad objects. Available fields: account_id, ad_active_time, ad_review_feedback, ad_schedule_end_time, ad_schedule_start_time, adlabels, adset, adset_id, bid_amount, bid_info, bid_type, campaign, campaign_id, configured_status, conversion_domain (and 24 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_adsbylabelsTool)
 
 	// adaccount_get_adsets tool
+	// Available fields for AdSet: account_id, adlabels, adset_schedule, asset_feed_id, attribution_spec, bid_adjustments, bid_amount, bid_constraints, bid_info, bid_strategy, billing_event, brand_safety_config, budget_remaining, campaign, campaign_active_time, campaign_attribution, campaign_id, configured_status, created_time, creative_sequence, creative_sequence_repetition_pattern, daily_budget, daily_min_spend_target, daily_spend_cap, destination_type, dsa_beneficiary, dsa_payor, effective_status, end_time, existing_customer_budget_percentage, frequency_control_specs, full_funnel_exploration_mode, id, instagram_user_id, is_ba_skip_delayed_eligible, is_budget_schedule_enabled, is_dynamic_creative, is_incremental_attribution_enabled, issues_info, learning_stage_info, lifetime_budget, lifetime_imps, lifetime_min_spend_target, lifetime_spend_cap, max_budget_spend_percentage, min_budget_spend_percentage, multi_optimization_goal_weight, name, optimization_goal, optimization_sub_event, pacing_type, promoted_object, recommendations, recurring_budget_semantics, regional_regulated_categories, regional_regulation_identities, review_feedback, rf_prediction_id, source_adset, source_adset_id, start_time, status, targeting, targeting_optimization_types, time_based_ad_rotation_id_blocks, time_based_ad_rotation_intervals, updated_time, use_new_app_click
 	adaccount_get_adsetsTool := mcp.NewTool("adaccount_get_adsets",
 		mcp.WithDescription("GET adsets for AdAccount"),
 		mcp.WithString("account_id",
@@ -763,6 +998,18 @@ func GetAdAccountTools() []mcp.Tool {
 		),
 		mcp.WithNumber("updated_since",
 			mcp.Description("updated_since parameter for adsets"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdSet objects. Available fields: account_id, adlabels, adset_schedule, asset_feed_id, attribution_spec, bid_adjustments, bid_amount, bid_constraints, bid_info, bid_strategy, billing_event, brand_safety_config, budget_remaining, campaign, campaign_active_time (and 53 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_adsetsTool)
@@ -969,6 +1216,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_adsetsTool)
 
 	// adaccount_get_adsetsbylabels tool
+	// Available fields for AdSet: account_id, adlabels, adset_schedule, asset_feed_id, attribution_spec, bid_adjustments, bid_amount, bid_constraints, bid_info, bid_strategy, billing_event, brand_safety_config, budget_remaining, campaign, campaign_active_time, campaign_attribution, campaign_id, configured_status, created_time, creative_sequence, creative_sequence_repetition_pattern, daily_budget, daily_min_spend_target, daily_spend_cap, destination_type, dsa_beneficiary, dsa_payor, effective_status, end_time, existing_customer_budget_percentage, frequency_control_specs, full_funnel_exploration_mode, id, instagram_user_id, is_ba_skip_delayed_eligible, is_budget_schedule_enabled, is_dynamic_creative, is_incremental_attribution_enabled, issues_info, learning_stage_info, lifetime_budget, lifetime_imps, lifetime_min_spend_target, lifetime_spend_cap, max_budget_spend_percentage, min_budget_spend_percentage, multi_optimization_goal_weight, name, optimization_goal, optimization_sub_event, pacing_type, promoted_object, recommendations, recurring_budget_semantics, regional_regulated_categories, regional_regulation_identities, review_feedback, rf_prediction_id, source_adset, source_adset_id, start_time, status, targeting, targeting_optimization_types, time_based_ad_rotation_id_blocks, time_based_ad_rotation_intervals, updated_time, use_new_app_click
 	adaccount_get_adsetsbylabelsTool := mcp.NewTool("adaccount_get_adsetsbylabels",
 		mcp.WithDescription("GET adsetsbylabels for AdAccount"),
 		mcp.WithString("account_id",
@@ -983,10 +1231,23 @@ func GetAdAccountTools() []mcp.Tool {
 			mcp.Description("operator parameter for adsetsbylabels"),
 			mcp.Enum("ALL", "ANY"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdSet objects. Available fields: account_id, adlabels, adset_schedule, asset_feed_id, attribution_spec, bid_adjustments, bid_amount, bid_constraints, bid_info, bid_strategy, billing_event, brand_safety_config, budget_remaining, campaign, campaign_active_time (and 53 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_adsetsbylabelsTool)
 
 	// adaccount_get_adspixels tool
+	// Available fields for AdsPixel: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status, has_1p_pixel_event, id, is_consolidated_container, is_created_by_business, is_crm, is_mta_use, is_restricted_use, is_unavailable, last_fired_time, last_upload_app, last_upload_app_changed_time, match_rate_approx, matched_entries, name, owner_ad_account, owner_business, usage, user_access_expire_time, valid_entries
 	adaccount_get_adspixelsTool := mcp.NewTool("adaccount_get_adspixels",
 		mcp.WithDescription("GET adspixels for AdAccount"),
 		mcp.WithString("account_id",
@@ -996,6 +1257,18 @@ func GetAdAccountTools() []mcp.Tool {
 		mcp.WithString("sort_by",
 			mcp.Description("sort_by parameter for adspixels"),
 			mcp.Enum("LAST_FIRED_TIME", "NAME"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsPixel objects. Available fields: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status (and 19 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_adspixelsTool)
@@ -1014,6 +1287,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_adspixelsTool)
 
 	// adaccount_get_advertisable_applications tool
+	// Available fields for Application: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline, auth_dialog_perms_explanation, auth_referral_default_activity_privacy, auth_referral_enabled, auth_referral_extended_perms, auth_referral_friend_perms, auth_referral_response_type, auth_referral_user_perms, auto_event_mapping_android, auto_event_mapping_ios, auto_event_setup_enabled, auto_log_app_events_default, auto_log_app_events_enabled, business, canvas_fluid_height, canvas_fluid_width, canvas_url, category, client_config, company, configured_ios_sso, contact_email, created_time, creator_uid, daily_active_users, daily_active_users_rank, deauth_callback_url, default_share_mode, description, enigma_config, financial_id, gdpv4_chrome_custom_tabs_enabled, gdpv4_enabled, gdpv4_nux_content, gdpv4_nux_enabled, has_messenger_product, hosting_url, icon_url, id, ios_bundle_id, ios_sdk_dialog_flows, ios_sdk_error_categories, ios_sfvc_attr, ios_supports_native_proxy_auth_flow, ios_supports_system_auth, ipad_app_store_id, iphone_app_store_id, latest_sdk_version, link, logging_token, logo_url, migrations, mobile_profile_section_url, mobile_web_url, monthly_active_users, monthly_active_users_rank, name, namespace, object_store_urls, owner_business, page_tab_default_name, page_tab_url, photo_url, privacy_policy_url, profile_section_url, property_id, protected_mode_rules, real_time_mode_devices, restrictions, restrictive_data_filter_params, restrictive_data_filter_rules, sdk_update_message, seamless_login, secure_canvas_url, secure_page_tab_url, server_ip_whitelist, smart_login_bookmark_icon_url, smart_login_menu_icon_url, social_discovery, subcategory, suggested_events_setting, supported_platforms, supports_apprequests_fast_app_switch, supports_attribution, supports_implicit_sdk_logging, suppress_native_ios_gdp, terms_of_service_url, url_scheme_suffix, user_support_email, user_support_url, website_url, weekly_active_users
 	adaccount_get_advertisable_applicationsTool := mcp.NewTool("adaccount_get_advertisable_applications",
 		mcp.WithDescription("GET advertisable_applications for AdAccount"),
 		mcp.WithString("account_id",
@@ -1025,6 +1299,18 @@ func GetAdAccountTools() []mcp.Tool {
 		),
 		mcp.WithString("business_id",
 			mcp.Description("business_id parameter for advertisable_applications"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Application objects. Available fields: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline (and 91 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_advertisable_applicationsTool)
@@ -1044,6 +1330,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_delete_advideosTool)
 
 	// adaccount_get_advideos tool
+	// Available fields for AdVideo: ad_breaks, admin_creator, audio_isrc, backdated_time, backdated_time_granularity, boost_eligibility_info, content_category, content_tags, copyright, copyright_check_information, copyright_monitoring_status, created_time, custom_labels, description, embed_html, embeddable, event, expiration, format, from, icon, id, is_crosspost_video, is_crossposting_eligible, is_episode, is_instagram_eligible, is_reference_only, length, live_audience_count, live_status, music_video_copyright, permalink_url, picture, place, post_id, post_views, premiere_living_room_status, privacy, published, scheduled_publish_time, source, spherical, status, title, universal_video_id, updated_time, views
 	adaccount_get_advideosTool := mcp.NewTool("adaccount_get_advideos",
 		mcp.WithDescription("GET advideos for AdAccount"),
 		mcp.WithString("account_id",
@@ -1076,6 +1363,18 @@ func GetAdAccountTools() []mcp.Tool {
 		),
 		mcp.WithString("title",
 			mcp.Description("title parameter for advideos"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdVideo objects. Available fields: ad_breaks, admin_creator, audio_isrc, backdated_time, backdated_time_granularity, boost_eligibility_info, content_category, content_tags, copyright, copyright_check_information, copyright_monitoring_status, created_time, custom_labels, description, embed_html (and 32 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_advideosTool)
@@ -1299,11 +1598,24 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_advideosTool)
 
 	// adaccount_get_affectedadsets tool
+	// Available fields for AdSet: account_id, adlabels, adset_schedule, asset_feed_id, attribution_spec, bid_adjustments, bid_amount, bid_constraints, bid_info, bid_strategy, billing_event, brand_safety_config, budget_remaining, campaign, campaign_active_time, campaign_attribution, campaign_id, configured_status, created_time, creative_sequence, creative_sequence_repetition_pattern, daily_budget, daily_min_spend_target, daily_spend_cap, destination_type, dsa_beneficiary, dsa_payor, effective_status, end_time, existing_customer_budget_percentage, frequency_control_specs, full_funnel_exploration_mode, id, instagram_user_id, is_ba_skip_delayed_eligible, is_budget_schedule_enabled, is_dynamic_creative, is_incremental_attribution_enabled, issues_info, learning_stage_info, lifetime_budget, lifetime_imps, lifetime_min_spend_target, lifetime_spend_cap, max_budget_spend_percentage, min_budget_spend_percentage, multi_optimization_goal_weight, name, optimization_goal, optimization_sub_event, pacing_type, promoted_object, recommendations, recurring_budget_semantics, regional_regulated_categories, regional_regulation_identities, review_feedback, rf_prediction_id, source_adset, source_adset_id, start_time, status, targeting, targeting_optimization_types, time_based_ad_rotation_id_blocks, time_based_ad_rotation_intervals, updated_time, use_new_app_click
 	adaccount_get_affectedadsetsTool := mcp.NewTool("adaccount_get_affectedadsets",
 		mcp.WithDescription("GET affectedadsets for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdSet objects. Available fields: account_id, adlabels, adset_schedule, asset_feed_id, attribution_spec, bid_adjustments, bid_amount, bid_constraints, bid_info, bid_strategy, billing_event, brand_safety_config, budget_remaining, campaign, campaign_active_time (and 53 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_affectedadsetsTool)
@@ -1323,11 +1635,24 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_delete_agenciesTool)
 
 	// adaccount_get_agencies tool
+	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	adaccount_get_agenciesTool := mcp.NewTool("adaccount_get_agencies",
 		mcp.WithDescription("GET agencies for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_agenciesTool)
@@ -1351,11 +1676,24 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_agenciesTool)
 
 	// adaccount_get_applications tool
+	// Available fields for Application: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline, auth_dialog_perms_explanation, auth_referral_default_activity_privacy, auth_referral_enabled, auth_referral_extended_perms, auth_referral_friend_perms, auth_referral_response_type, auth_referral_user_perms, auto_event_mapping_android, auto_event_mapping_ios, auto_event_setup_enabled, auto_log_app_events_default, auto_log_app_events_enabled, business, canvas_fluid_height, canvas_fluid_width, canvas_url, category, client_config, company, configured_ios_sso, contact_email, created_time, creator_uid, daily_active_users, daily_active_users_rank, deauth_callback_url, default_share_mode, description, enigma_config, financial_id, gdpv4_chrome_custom_tabs_enabled, gdpv4_enabled, gdpv4_nux_content, gdpv4_nux_enabled, has_messenger_product, hosting_url, icon_url, id, ios_bundle_id, ios_sdk_dialog_flows, ios_sdk_error_categories, ios_sfvc_attr, ios_supports_native_proxy_auth_flow, ios_supports_system_auth, ipad_app_store_id, iphone_app_store_id, latest_sdk_version, link, logging_token, logo_url, migrations, mobile_profile_section_url, mobile_web_url, monthly_active_users, monthly_active_users_rank, name, namespace, object_store_urls, owner_business, page_tab_default_name, page_tab_url, photo_url, privacy_policy_url, profile_section_url, property_id, protected_mode_rules, real_time_mode_devices, restrictions, restrictive_data_filter_params, restrictive_data_filter_rules, sdk_update_message, seamless_login, secure_canvas_url, secure_page_tab_url, server_ip_whitelist, smart_login_bookmark_icon_url, smart_login_menu_icon_url, social_discovery, subcategory, suggested_events_setting, supported_platforms, supports_apprequests_fast_app_switch, supports_attribution, supports_implicit_sdk_logging, suppress_native_ios_gdp, terms_of_service_url, url_scheme_suffix, user_support_email, user_support_url, website_url, weekly_active_users
 	adaccount_get_applicationsTool := mcp.NewTool("adaccount_get_applications",
 		mcp.WithDescription("GET applications for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Application objects. Available fields: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline (and 91 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_applicationsTool)
@@ -1375,6 +1713,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_delete_assigned_usersTool)
 
 	// adaccount_get_assigned_users tool
+	// Available fields for AssignedUser: business, id, name, user_type
 	adaccount_get_assigned_usersTool := mcp.NewTool("adaccount_get_assigned_users",
 		mcp.WithDescription("GET assigned_users for AdAccount"),
 		mcp.WithString("account_id",
@@ -1384,6 +1723,18 @@ func GetAdAccountTools() []mcp.Tool {
 		mcp.WithString("business",
 			mcp.Required(),
 			mcp.Description("business parameter for assigned_users"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AssignedUser objects. Available fields: business, id, name, user_type"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_assigned_usersTool)
@@ -1425,6 +1776,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_async_batch_requestsTool)
 
 	// adaccount_get_async_requests tool
+	// Available fields for AsyncRequest: id, result, status, type
 	adaccount_get_async_requestsTool := mcp.NewTool("adaccount_get_async_requests",
 		mcp.WithDescription("GET async_requests for AdAccount"),
 		mcp.WithString("account_id",
@@ -1439,10 +1791,23 @@ func GetAdAccountTools() []mcp.Tool {
 			mcp.Description("type parameter for async_requests"),
 			mcp.Enum("ASYNC_ADGROUP_CREATION", "BATCH_API", "DRAFTS"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AsyncRequest objects. Available fields: id, result, status, type"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_async_requestsTool)
 
 	// adaccount_get_asyncadcreatives tool
+	// Available fields for AdAsyncRequestSet: canceled_count, created_time, error_count, id, in_progress_count, initial_count, is_completed, name, notification_mode, notification_result, notification_status, notification_uri, owner_id, success_count, total_count, updated_time
 	adaccount_get_asyncadcreativesTool := mcp.NewTool("adaccount_get_asyncadcreatives",
 		mcp.WithDescription("GET asyncadcreatives for AdAccount"),
 		mcp.WithString("account_id",
@@ -1451,6 +1816,18 @@ func GetAdAccountTools() []mcp.Tool {
 		),
 		mcp.WithBoolean("is_completed",
 			mcp.Description("is_completed parameter for asyncadcreatives"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAsyncRequestSet objects. Available fields: canceled_count, created_time, error_count, id, in_progress_count, initial_count, is_completed, name, notification_mode, notification_result, notification_status, notification_uri, owner_id, success_count, total_count (and 1 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_asyncadcreativesTool)
@@ -1481,6 +1858,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_asyncadcreativesTool)
 
 	// adaccount_get_asyncadrequestsets tool
+	// Available fields for AdAsyncRequestSet: canceled_count, created_time, error_count, id, in_progress_count, initial_count, is_completed, name, notification_mode, notification_result, notification_status, notification_uri, owner_id, success_count, total_count, updated_time
 	adaccount_get_asyncadrequestsetsTool := mcp.NewTool("adaccount_get_asyncadrequestsets",
 		mcp.WithDescription("GET asyncadrequestsets for AdAccount"),
 		mcp.WithString("account_id",
@@ -1489,6 +1867,18 @@ func GetAdAccountTools() []mcp.Tool {
 		),
 		mcp.WithBoolean("is_completed",
 			mcp.Description("is_completed parameter for asyncadrequestsets"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAsyncRequestSet objects. Available fields: canceled_count, created_time, error_count, id, in_progress_count, initial_count, is_completed, name, notification_mode, notification_result, notification_status, notification_uri, owner_id, success_count, total_count (and 1 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_asyncadrequestsetsTool)
@@ -1519,11 +1909,24 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_asyncadrequestsetsTool)
 
 	// adaccount_get_audience_funnel tool
+	// Available fields for AudienceFunnel: audience_type_param_name, audience_type_param_tags, custom_audience_groups_info
 	adaccount_get_audience_funnelTool := mcp.NewTool("adaccount_get_audience_funnel",
 		mcp.WithDescription("GET audience_funnel for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AudienceFunnel objects. Available fields: audience_type_param_name, audience_type_param_tags, custom_audience_groups_info"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_audience_funnelTool)
@@ -1561,6 +1964,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_brand_safety_content_filter_levelsTool)
 
 	// adaccount_get_broadtargetingcategories tool
+	// Available fields for BroadTargetingCategories: category_description, id, name, parent_category, path, size_lower_bound, size_upper_bound, source, type, type_name, untranslated_name, untranslated_parent_name
 	adaccount_get_broadtargetingcategoriesTool := mcp.NewTool("adaccount_get_broadtargetingcategories",
 		mcp.WithDescription("GET broadtargetingcategories for AdAccount"),
 		mcp.WithString("account_id",
@@ -1570,10 +1974,23 @@ func GetAdAccountTools() []mcp.Tool {
 		mcp.WithBoolean("custom_categories_only",
 			mcp.Description("custom_categories_only parameter for broadtargetingcategories"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BroadTargetingCategories objects. Available fields: category_description, id, name, parent_category, path, size_lower_bound, size_upper_bound, source, type, type_name, untranslated_name, untranslated_parent_name"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_broadtargetingcategoriesTool)
 
 	// adaccount_get_businessprojects tool
+	// Available fields for BusinessProject: business, created_time, creator, id, name
 	adaccount_get_businessprojectsTool := mcp.NewTool("adaccount_get_businessprojects",
 		mcp.WithDescription("GET businessprojects for AdAccount"),
 		mcp.WithString("account_id",
@@ -1582,6 +1999,18 @@ func GetAdAccountTools() []mcp.Tool {
 		),
 		mcp.WithString("business",
 			mcp.Description("business parameter for businessprojects"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BusinessProject objects. Available fields: business, created_time, creator, id, name"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_businessprojectsTool)
@@ -1611,6 +2040,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_delete_campaignsTool)
 
 	// adaccount_get_campaigns tool
+	// Available fields for Campaign: account_id, adlabels, advantage_state_info, bid_strategy, boosted_object_id, brand_lift_studies, budget_rebalance_flag, budget_remaining, buying_type, campaign_group_active_time, can_create_brand_lift_study, can_use_spend_cap, configured_status, created_time, daily_budget, effective_status, has_secondary_skadnetwork_reporting, id, is_budget_schedule_enabled, is_skadnetwork_attribution, issues_info, last_budget_toggling_time, lifetime_budget, name, objective, pacing_type, primary_attribution, promoted_object, recommendations, smart_promotion_type, source_campaign, source_campaign_id, source_recommendation_type, special_ad_categories, special_ad_category, special_ad_category_country, spend_cap, start_time, status, stop_time, topline_id, updated_time
 	adaccount_get_campaignsTool := mcp.NewTool("adaccount_get_campaigns",
 		mcp.WithDescription("GET campaigns for AdAccount"),
 		mcp.WithString("account_id",
@@ -1630,6 +2060,18 @@ func GetAdAccountTools() []mcp.Tool {
 		),
 		mcp.WithString("time_range",
 			mcp.Description("time_range parameter for campaigns"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Campaign objects. Available fields: account_id, adlabels, advantage_state_info, bid_strategy, boosted_object_id, brand_lift_studies, budget_rebalance_flag, budget_remaining, buying_type, campaign_group_active_time, can_create_brand_lift_study, can_use_spend_cap, configured_status, created_time, daily_budget (and 27 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_campaignsTool)
@@ -1716,6 +2158,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_campaignsTool)
 
 	// adaccount_get_campaignsbylabels tool
+	// Available fields for Campaign: account_id, adlabels, advantage_state_info, bid_strategy, boosted_object_id, brand_lift_studies, budget_rebalance_flag, budget_remaining, buying_type, campaign_group_active_time, can_create_brand_lift_study, can_use_spend_cap, configured_status, created_time, daily_budget, effective_status, has_secondary_skadnetwork_reporting, id, is_budget_schedule_enabled, is_skadnetwork_attribution, issues_info, last_budget_toggling_time, lifetime_budget, name, objective, pacing_type, primary_attribution, promoted_object, recommendations, smart_promotion_type, source_campaign, source_campaign_id, source_recommendation_type, special_ad_categories, special_ad_category, special_ad_category_country, spend_cap, start_time, status, stop_time, topline_id, updated_time
 	adaccount_get_campaignsbylabelsTool := mcp.NewTool("adaccount_get_campaignsbylabels",
 		mcp.WithDescription("GET campaignsbylabels for AdAccount"),
 		mcp.WithString("account_id",
@@ -1730,20 +2173,46 @@ func GetAdAccountTools() []mcp.Tool {
 			mcp.Description("operator parameter for campaignsbylabels"),
 			mcp.Enum("ALL", "ANY"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Campaign objects. Available fields: account_id, adlabels, advantage_state_info, bid_strategy, boosted_object_id, brand_lift_studies, budget_rebalance_flag, budget_remaining, buying_type, campaign_group_active_time, can_create_brand_lift_study, can_use_spend_cap, configured_status, created_time, daily_budget (and 27 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_campaignsbylabelsTool)
 
 	// adaccount_get_connected_instagram_accounts tool
+	// Available fields for IGUser: biography, business_discovery, followers_count, follows_count, has_profile_pic, id, ig_id, is_published, legacy_instagram_user_id, media_count, mentioned_comment, mentioned_media, name, owner_business, profile_picture_url, shopping_product_tag_eligibility, shopping_review_status, username, website
 	adaccount_get_connected_instagram_accountsTool := mcp.NewTool("adaccount_get_connected_instagram_accounts",
 		mcp.WithDescription("GET connected_instagram_accounts for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGUser objects. Available fields: biography, business_discovery, followers_count, follows_count, has_profile_pic, id, ig_id, is_published, legacy_instagram_user_id, media_count, mentioned_comment, mentioned_media, name, owner_business, profile_picture_url (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_connected_instagram_accountsTool)
 
 	// adaccount_get_connected_instagram_accounts_with_iabp tool
+	// Available fields for IGUser: biography, business_discovery, followers_count, follows_count, has_profile_pic, id, ig_id, is_published, legacy_instagram_user_id, media_count, mentioned_comment, mentioned_media, name, owner_business, profile_picture_url, shopping_product_tag_eligibility, shopping_review_status, username, website
 	adaccount_get_connected_instagram_accounts_with_iabpTool := mcp.NewTool("adaccount_get_connected_instagram_accounts_with_iabp",
 		mcp.WithDescription("GET connected_instagram_accounts_with_iabp for AdAccount"),
 		mcp.WithString("account_id",
@@ -1753,20 +2222,46 @@ func GetAdAccountTools() []mcp.Tool {
 		mcp.WithString("business_id",
 			mcp.Description("business_id parameter for connected_instagram_accounts_with_iabp"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGUser objects. Available fields: biography, business_discovery, followers_count, follows_count, has_profile_pic, id, ig_id, is_published, legacy_instagram_user_id, media_count, mentioned_comment, mentioned_media, name, owner_business, profile_picture_url (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_connected_instagram_accounts_with_iabpTool)
 
 	// adaccount_get_conversion_goals tool
+	// Available fields for AdsConversionGoal: ad_account_id, conversion_event_value_source, description, goal_creation_method, id, name, performance_goal, update_status
 	adaccount_get_conversion_goalsTool := mcp.NewTool("adaccount_get_conversion_goals",
 		mcp.WithDescription("GET conversion_goals for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsConversionGoal objects. Available fields: ad_account_id, conversion_event_value_source, description, goal_creation_method, id, name, performance_goal, update_status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_conversion_goalsTool)
 
 	// adaccount_get_customaudiences tool
+	// Available fields for CustomAudience: account_id, approximate_count_lower_bound, approximate_count_upper_bound, customer_file_source, data_source, data_source_types, datafile_custom_audience_uploading_status, delete_time, delivery_status, description, excluded_custom_audiences, external_event_source, household_audience, id, included_custom_audiences, is_eligible_for_sac_campaigns, is_household, is_snapshot, is_value_based, lookalike_audience_ids, lookalike_spec, name, operation_status, opt_out_link, owner_business, page_deletion_marked_delete_time, permission_for_actions, pixel_id, regulated_audience_spec, retention_days, rev_share_policy_id, rule, rule_aggregation, rule_v2, seed_audience, sharing_status, subtype, time_content_updated, time_created, time_updated
 	adaccount_get_customaudiencesTool := mcp.NewTool("adaccount_get_customaudiences",
 		mcp.WithDescription("GET customaudiences for AdAccount"),
 		mcp.WithString("account_id",
@@ -1787,6 +2282,18 @@ func GetAdAccountTools() []mcp.Tool {
 		),
 		mcp.WithString("pixel_id",
 			mcp.Description("pixel_id parameter for customaudiences"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CustomAudience objects. Available fields: account_id, approximate_count_lower_bound, approximate_count_upper_bound, customer_file_source, data_source, data_source_types, datafile_custom_audience_uploading_status, delete_time, delivery_status, description, excluded_custom_audiences, external_event_source, household_audience, id, included_custom_audiences (and 25 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_customaudiencesTool)
@@ -1925,11 +2432,24 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_customaudiencesTool)
 
 	// adaccount_get_customaudiencestos tool
+	// Available fields for CustomAudiencesTOS: content, id, type
 	adaccount_get_customaudiencestosTool := mcp.NewTool("adaccount_get_customaudiencestos",
 		mcp.WithDescription("GET customaudiencestos for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CustomAudiencesTOS objects. Available fields: content, id, type"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_customaudiencestosTool)
@@ -1952,11 +2472,24 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_customaudiencestosTool)
 
 	// adaccount_get_customconversions tool
+	// Available fields for CustomConversion: account_id, aggregation_rule, business, creation_time, custom_event_type, data_sources, default_conversion_value, description, event_source_type, first_fired_time, id, is_archived, is_unavailable, last_fired_time, name, offline_conversion_data_set, pixel, retention_days, rule
 	adaccount_get_customconversionsTool := mcp.NewTool("adaccount_get_customconversions",
 		mcp.WithDescription("GET customconversions for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CustomConversion objects. Available fields: account_id, aggregation_rule, business, creation_time, custom_event_type, data_sources, default_conversion_value, description, event_source_type, first_fired_time, id, is_archived, is_unavailable, last_fired_time, name (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_customconversionsTool)
@@ -1999,6 +2532,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_customconversionsTool)
 
 	// adaccount_get_delivery_estimate tool
+	// Available fields for AdAccountDeliveryEstimate: daily_outcomes_curve, estimate_dau, estimate_mau_lower_bound, estimate_mau_upper_bound, estimate_ready, targeting_optimization_types
 	adaccount_get_delivery_estimateTool := mcp.NewTool("adaccount_get_delivery_estimate",
 		mcp.WithDescription("GET delivery_estimate for AdAccount"),
 		mcp.WithString("account_id",
@@ -2017,10 +2551,23 @@ func GetAdAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("targeting_spec parameter for delivery_estimate"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccountDeliveryEstimate objects. Available fields: daily_outcomes_curve, estimate_dau, estimate_mau_lower_bound, estimate_mau_upper_bound, estimate_ready, targeting_optimization_types"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_delivery_estimateTool)
 
 	// adaccount_get_deprecatedtargetingadsets tool
+	// Available fields for AdSet: account_id, adlabels, adset_schedule, asset_feed_id, attribution_spec, bid_adjustments, bid_amount, bid_constraints, bid_info, bid_strategy, billing_event, brand_safety_config, budget_remaining, campaign, campaign_active_time, campaign_attribution, campaign_id, configured_status, created_time, creative_sequence, creative_sequence_repetition_pattern, daily_budget, daily_min_spend_target, daily_spend_cap, destination_type, dsa_beneficiary, dsa_payor, effective_status, end_time, existing_customer_budget_percentage, frequency_control_specs, full_funnel_exploration_mode, id, instagram_user_id, is_ba_skip_delayed_eligible, is_budget_schedule_enabled, is_dynamic_creative, is_incremental_attribution_enabled, issues_info, learning_stage_info, lifetime_budget, lifetime_imps, lifetime_min_spend_target, lifetime_spend_cap, max_budget_spend_percentage, min_budget_spend_percentage, multi_optimization_goal_weight, name, optimization_goal, optimization_sub_event, pacing_type, promoted_object, recommendations, recurring_budget_semantics, regional_regulated_categories, regional_regulation_identities, review_feedback, rf_prediction_id, source_adset, source_adset_id, start_time, status, targeting, targeting_optimization_types, time_based_ad_rotation_id_blocks, time_based_ad_rotation_intervals, updated_time, use_new_app_click
 	adaccount_get_deprecatedtargetingadsetsTool := mcp.NewTool("adaccount_get_deprecatedtargetingadsets",
 		mcp.WithDescription("GET deprecatedtargetingadsets for AdAccount"),
 		mcp.WithString("account_id",
@@ -2030,20 +2577,46 @@ func GetAdAccountTools() []mcp.Tool {
 		mcp.WithString("type",
 			mcp.Description("type parameter for deprecatedtargetingadsets"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdSet objects. Available fields: account_id, adlabels, adset_schedule, asset_feed_id, attribution_spec, bid_adjustments, bid_amount, bid_constraints, bid_info, bid_strategy, billing_event, brand_safety_config, budget_remaining, campaign, campaign_active_time (and 53 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_deprecatedtargetingadsetsTool)
 
 	// adaccount_get_dsa_recommendations tool
+	// Available fields for AdAccountDsaRecommendations: recommendations
 	adaccount_get_dsa_recommendationsTool := mcp.NewTool("adaccount_get_dsa_recommendations",
 		mcp.WithDescription("GET dsa_recommendations for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccountDsaRecommendations objects. Available fields: recommendations"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_dsa_recommendationsTool)
 
 	// adaccount_get_generatepreviews tool
+	// Available fields for AdPreview: body, transformation_spec
 	adaccount_get_generatepreviewsTool := mcp.NewTool("adaccount_get_generatepreviews",
 		mcp.WithDescription("GET generatepreviews for AdAccount"),
 		mcp.WithString("account_id",
@@ -2100,20 +2673,46 @@ func GetAdAccountTools() []mcp.Tool {
 		mcp.WithNumber("width",
 			mcp.Description("width parameter for generatepreviews"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdPreview objects. Available fields: body, transformation_spec"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_generatepreviewsTool)
 
 	// adaccount_get_impacting_ad_studies tool
+	// Available fields for AdStudy: business, canceled_time, client_business, cooldown_start_time, created_by, created_time, description, end_time, id, measurement_contact, name, observation_end_time, results_first_available_date, sales_contact, start_time, type, updated_by, updated_time
 	adaccount_get_impacting_ad_studiesTool := mcp.NewTool("adaccount_get_impacting_ad_studies",
 		mcp.WithDescription("GET impacting_ad_studies for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdStudy objects. Available fields: business, canceled_time, client_business, cooldown_start_time, created_by, created_time, description, end_time, id, measurement_contact, name, observation_end_time, results_first_available_date, sales_contact, start_time (and 3 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_impacting_ad_studiesTool)
 
 	// adaccount_get_insights tool
+	// Available fields for AdsInsights: account_currency, account_id, account_name, action_values, actions, ad_click_actions, ad_id, ad_impression_actions, ad_name, adset_end, adset_id, adset_name, adset_start, age_targeting, attribution_setting, auction_bid, auction_competitiveness, auction_max_competitor_bid, average_purchases_conversion_value, buying_type, campaign_id, campaign_name, canvas_avg_view_percent, canvas_avg_view_time, catalog_segment_actions, catalog_segment_value, catalog_segment_value_mobile_purchase_roas, catalog_segment_value_omni_purchase_roas, catalog_segment_value_website_purchase_roas, clicks, conversion_lead_rate, conversion_leads, conversion_rate_ranking, conversion_values, conversions, converted_product_app_custom_event_fb_mobile_purchase, converted_product_app_custom_event_fb_mobile_purchase_value, converted_product_offline_purchase, converted_product_offline_purchase_value, converted_product_omni_purchase, converted_product_omni_purchase_values, converted_product_quantity, converted_product_value, converted_product_website_pixel_purchase, converted_product_website_pixel_purchase_value, converted_promoted_product_app_custom_event_fb_mobile_purchase, converted_promoted_product_app_custom_event_fb_mobile_purchase_value, converted_promoted_product_offline_purchase, converted_promoted_product_offline_purchase_value, converted_promoted_product_omni_purchase, converted_promoted_product_omni_purchase_values, converted_promoted_product_quantity, converted_promoted_product_value, converted_promoted_product_website_pixel_purchase, converted_promoted_product_website_pixel_purchase_value, cost_per_15_sec_video_view, cost_per_2_sec_continuous_video_view, cost_per_action_type, cost_per_ad_click, cost_per_conversion, cost_per_conversion_lead, cost_per_dda_countby_convs, cost_per_estimated_ad_recallers, cost_per_inline_link_click, cost_per_inline_post_engagement, cost_per_objective_result, cost_per_one_thousand_ad_impression, cost_per_outbound_click, cost_per_result, cost_per_thruplay, cost_per_unique_action_type, cost_per_unique_click, cost_per_unique_conversion, cost_per_unique_inline_link_click, cost_per_unique_outbound_click, cpc, cpm, cpp, created_time, creative_media_type, ctr, date_start, date_stop, dda_countby_convs, dda_results, engagement_rate_ranking, estimated_ad_recall_rate, estimated_ad_recall_rate_lower_bound, estimated_ad_recall_rate_upper_bound, estimated_ad_recallers, estimated_ad_recallers_lower_bound, estimated_ad_recallers_upper_bound, frequency, full_view_impressions, full_view_reach, gender_targeting, impressions, inline_link_click_ctr, inline_link_clicks, inline_post_engagement, instagram_upcoming_event_reminders_set, instant_experience_clicks_to_open, instant_experience_clicks_to_start, instant_experience_outbound_clicks, interactive_component_tap, labels, landing_page_view_actions_per_link_click, landing_page_view_per_link_click, landing_page_view_per_purchase_rate, location, marketing_messages_click_rate_benchmark, marketing_messages_cost_per_delivered, marketing_messages_cost_per_link_btn_click, marketing_messages_delivered, marketing_messages_delivery_rate, marketing_messages_link_btn_click, marketing_messages_link_btn_click_rate, marketing_messages_media_view_rate, marketing_messages_phone_call_btn_click_rate, marketing_messages_quick_reply_btn_click, marketing_messages_quick_reply_btn_click_rate, marketing_messages_read, marketing_messages_read_rate, marketing_messages_read_rate_benchmark, marketing_messages_sent, marketing_messages_spend, marketing_messages_spend_currency, marketing_messages_website_add_to_cart, marketing_messages_website_initiate_checkout, marketing_messages_website_purchase, marketing_messages_website_purchase_values, mobile_app_purchase_roas, objective, objective_result_rate, objective_results, onsite_conversion_messaging_detected_purchase_deduped, optimization_goal, outbound_clicks, outbound_clicks_ctr, place_page_name, product_brand, product_category, product_content_id, product_custom_label_0, product_custom_label_1, product_custom_label_2, product_custom_label_3, product_custom_label_4, product_group_content_id, product_group_retailer_id, product_name, product_retailer_id, purchase_per_landing_page_view, purchase_roas, purchases_per_link_click, qualifying_question_qualify_answer_rate, quality_ranking, reach, result_rate, result_values_performance_indicator, results, shops_assisted_purchases, social_spend, spend, total_postbacks, total_postbacks_detailed, total_postbacks_detailed_v4, unique_actions, unique_clicks, unique_conversions, unique_ctr, unique_inline_link_click_ctr, unique_inline_link_clicks, unique_link_clicks_ctr, unique_outbound_clicks, unique_outbound_clicks_ctr, unique_video_continuous_2_sec_watched_actions, unique_video_view_15_sec, updated_time, video_15_sec_watched_actions, video_30_sec_watched_actions, video_avg_time_watched_actions, video_continuous_2_sec_watched_actions, video_p100_watched_actions, video_p25_watched_actions, video_p50_watched_actions, video_p75_watched_actions, video_p95_watched_actions, video_play_actions, video_play_curve_actions, video_play_retention_0_to_15s_actions, video_play_retention_20_to_60s_actions, video_play_retention_graph_actions, video_thruplay_watched_actions, video_time_watched_actions, video_view_per_impression, website_ctr, website_purchase_roas, wish_bid
 	adaccount_get_insightsTool := mcp.NewTool("adaccount_get_insights",
 		mcp.WithDescription("GET insights for AdAccount"),
 		mcp.WithString("account_id",
@@ -2192,6 +2791,18 @@ func GetAdAccountTools() []mcp.Tool {
 		),
 		mcp.WithBoolean("use_unified_attribution_setting",
 			mcp.Description("use_unified_attribution_setting parameter for insights"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsInsights objects. Available fields: account_currency, account_id, account_name, action_values, actions, ad_click_actions, ad_id, ad_impression_actions, ad_name, adset_end, adset_id, adset_name, adset_start, age_targeting, attribution_setting (and 184 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_insightsTool)
@@ -2280,16 +2891,30 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_insightsTool)
 
 	// adaccount_get_instagram_accounts tool
+	// Available fields for IGUser: biography, business_discovery, followers_count, follows_count, has_profile_pic, id, ig_id, is_published, legacy_instagram_user_id, media_count, mentioned_comment, mentioned_media, name, owner_business, profile_picture_url, shopping_product_tag_eligibility, shopping_review_status, username, website
 	adaccount_get_instagram_accountsTool := mcp.NewTool("adaccount_get_instagram_accounts",
 		mcp.WithDescription("GET instagram_accounts for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGUser objects. Available fields: biography, business_discovery, followers_count, follows_count, has_profile_pic, id, ig_id, is_published, legacy_instagram_user_id, media_count, mentioned_comment, mentioned_media, name, owner_business, profile_picture_url (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_instagram_accountsTool)
 
 	// adaccount_get_ios_fourteen_campaign_limits tool
+	// Available fields for AdAccountIosFourteenCampaignLimits: campaign_group_limit, campaign_group_limits_details, campaign_limit
 	adaccount_get_ios_fourteen_campaign_limitsTool := mcp.NewTool("adaccount_get_ios_fourteen_campaign_limits",
 		mcp.WithDescription("GET ios_fourteen_campaign_limits for AdAccount"),
 		mcp.WithString("account_id",
@@ -2300,10 +2925,23 @@ func GetAdAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("app_id parameter for ios_fourteen_campaign_limits"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccountIosFourteenCampaignLimits objects. Available fields: campaign_group_limit, campaign_group_limits_details, campaign_limit"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_ios_fourteen_campaign_limitsTool)
 
 	// adaccount_get_matched_search_applications tool
+	// Available fields for AdAccountMatchedSearchApplicationsEdgeData: app_id, are_app_events_unavailable, icon_url, name, search_source_store, store, unique_id, url
 	adaccount_get_matched_search_applicationsTool := mcp.NewTool("adaccount_get_matched_search_applications",
 		mcp.WithDescription("GET matched_search_applications for AdAccount"),
 		mcp.WithString("account_id",
@@ -2334,30 +2972,69 @@ func GetAdAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("query_term parameter for matched_search_applications"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccountMatchedSearchApplicationsEdgeData objects. Available fields: app_id, are_app_events_unavailable, icon_url, name, search_source_store, store, unique_id, url"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_matched_search_applicationsTool)
 
 	// adaccount_get_max_bid tool
+	// Available fields for AdAccountMaxBid: max_bid
 	adaccount_get_max_bidTool := mcp.NewTool("adaccount_get_max_bid",
 		mcp.WithDescription("GET max_bid for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccountMaxBid objects. Available fields: max_bid"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_max_bidTool)
 
 	// adaccount_get_mcmeconversions tool
+	// Available fields for AdsMcmeConversion: creation_time, description, id, is_archived, mcme_conversion_type, name, omnichannel_object_id
 	adaccount_get_mcmeconversionsTool := mcp.NewTool("adaccount_get_mcmeconversions",
 		mcp.WithDescription("GET mcmeconversions for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsMcmeConversion objects. Available fields: creation_time, description, id, is_archived, mcme_conversion_type, name, omnichannel_object_id"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_mcmeconversionsTool)
 
 	// adaccount_get_minimum_budgets tool
+	// Available fields for MinimumBudget: currency, min_daily_budget_high_freq, min_daily_budget_imp, min_daily_budget_low_freq, min_daily_budget_video_views
 	adaccount_get_minimum_budgetsTool := mcp.NewTool("adaccount_get_minimum_budgets",
 		mcp.WithDescription("GET minimum_budgets for AdAccount"),
 		mcp.WithString("account_id",
@@ -2367,10 +3044,23 @@ func GetAdAccountTools() []mcp.Tool {
 		mcp.WithNumber("bid_amount",
 			mcp.Description("bid_amount parameter for minimum_budgets"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for MinimumBudget objects. Available fields: currency, min_daily_budget_high_freq, min_daily_budget_imp, min_daily_budget_low_freq, min_daily_budget_video_views"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_minimum_budgetsTool)
 
 	// adaccount_get_onbehalf_requests tool
+	// Available fields for BusinessOwnedObjectOnBehalfOfRequest: business_owned_object, id, receiving_business, requesting_business, status
 	adaccount_get_onbehalf_requestsTool := mcp.NewTool("adaccount_get_onbehalf_requests",
 		mcp.WithDescription("GET onbehalf_requests for AdAccount"),
 		mcp.WithString("account_id",
@@ -2380,6 +3070,18 @@ func GetAdAccountTools() []mcp.Tool {
 		mcp.WithString("status",
 			mcp.Description("status parameter for onbehalf_requests"),
 			mcp.Enum("APPROVE", "CANCELED", "DECLINE", "EXPIRED", "IN_PROGRESS", "PENDING", "PENDING_EMAIL_VERIFICATION", "PENDING_INTEGRITY_REVIEW"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BusinessOwnedObjectOnBehalfOfRequest objects. Available fields: business_owned_object, id, receiving_business, requesting_business, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_onbehalf_requestsTool)
@@ -2457,21 +3159,47 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_product_audiencesTool)
 
 	// adaccount_get_promote_pages tool
+	// Available fields for Page: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent, breaking_news_usage, built, business, can_checkin, can_post, category, category_list, checkins, company_overview, connected_instagram_account, connected_page_backed_instagram_account, contact_address, copyright_whitelisted_ig_partners, country_page_likes, cover, culinary_team, current_location, delivery_and_pickup_option_info, description, description_html, differently_open_offerings, directed_by, display_subtext, displayed_message_response_time, does_viewer_have_page_permission_link_ig, emails, engagement, fan_count, featured_video, features, followers_count, food_styles, founded, general_info, general_manager, genre, global_brand_page_name, global_brand_root_id, has_added_app, has_lead_access, has_transitioned_to_new_page_experience, has_whatsapp_business_number, has_whatsapp_number, hometown, hours, id, impressum, influences, instagram_business_account, is_always_open, is_calling_eligible, is_chain, is_community_page, is_eligible_for_branded_content, is_eligible_for_disable_connect_ig_btn_for_non_page_admin_am_web, is_messenger_bot_get_started_enabled, is_messenger_platform_bot, is_owned, is_permanently_closed, is_published, is_unclaimed, is_verified, is_webhooks_subscribed, keywords, leadgen_tos_acceptance_time, leadgen_tos_accepted, leadgen_tos_accepting_user, link, location, members, merchant_id, merchant_review_status, messaging_feature_status, messenger_ads_default_icebreakers, messenger_ads_default_quick_replies, messenger_ads_quick_replies_type, mini_shop_storefront, mission, mpg, name, name_with_location_descriptor, network, new_like_count, offer_eligible, overall_star_rating, owner_business, page_token, parent_page, parking, payment_options, personal_info, personal_interests, pharma_safety_info, phone, pickup_options, place_type, plot_outline, preferred_audience, press_contact, price_range, privacy_info_url, produced_by, products, promotion_eligible, promotion_ineligible_reason, public_transit, rating_count, recipient, record_label, release_date, restaurant_services, restaurant_specialties, schedule, screenplay_by, season, single_line_address, starring, start_info, store_code, store_location_descriptor, store_number, studio, supports_donate_button_in_live_video, talking_about_count, temporary_status, unread_message_count, unread_notif_count, unseen_message_count, user_access_expire_time, username, verification_status, voip_info, website, were_here_count, whatsapp_number, written_by
 	adaccount_get_promote_pagesTool := mcp.NewTool("adaccount_get_promote_pages",
 		mcp.WithDescription("GET promote_pages for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Page objects. Available fields: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent (and 136 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_promote_pagesTool)
 
 	// adaccount_get_publisher_block_lists tool
+	// Available fields for PublisherBlockList: app_publishers, business_owner_id, id, is_auto_blocking_on, is_eligible_at_campaign_level, last_update_time, last_update_user, name, owner_ad_account_id, web_publishers
 	adaccount_get_publisher_block_listsTool := mcp.NewTool("adaccount_get_publisher_block_lists",
 		mcp.WithDescription("GET publisher_block_lists for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for PublisherBlockList objects. Available fields: app_publishers, business_owner_id, id, is_auto_blocking_on, is_eligible_at_campaign_level, last_update_time, last_update_user, name, owner_ad_account_id, web_publishers"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_publisher_block_listsTool)
@@ -2490,6 +3218,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_publisher_block_listsTool)
 
 	// adaccount_get_reachestimate tool
+	// Available fields for AdAccountReachEstimate: estimate_ready, users_lower_bound, users_upper_bound
 	adaccount_get_reachestimateTool := mcp.NewTool("adaccount_get_reachestimate",
 		mcp.WithDescription("GET reachestimate for AdAccount"),
 		mcp.WithString("account_id",
@@ -2518,15 +3247,40 @@ func GetAdAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("targeting_spec parameter for reachestimate"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccountReachEstimate objects. Available fields: estimate_ready, users_lower_bound, users_upper_bound"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_reachestimateTool)
 
 	// adaccount_get_reachfrequencypredictions tool
+	// Available fields for ReachFrequencyPrediction: account_id, activity_status, ad_formats, auction_entry_option_index, audience_size_lower_bound, audience_size_upper_bound, business_id, buying_type, campaign_group_id, campaign_id, campaign_time_start, campaign_time_stop, currency, curve_budget_reach, curve_reach, daily_grp_curve, daily_impression_curve, daily_impression_curve_map, day_parting_schedule, destination_id, end_time, expiration_time, external_budget, external_impression, external_maximum_budget, external_maximum_impression, external_maximum_reach, external_minimum_budget, external_minimum_impression, external_minimum_reach, external_reach, feed_ratio_0000, frequency_cap, frequency_distribution_map, frequency_distribution_map_agg, grp_audience_size, grp_avg_probability_map, grp_country_audience_size, grp_curve, grp_dmas_audience_size, grp_filtering_threshold_00, grp_points, grp_ratio, grp_reach_ratio, grp_status, holdout_percentage, id, impression_curve, instagram_destination_id, instream_packages, interval_frequency_cap, interval_frequency_cap_reset_period, is_balanced_frequency, is_bonus_media, is_conversion_goal, is_higher_average_frequency, is_io, is_reserved_buying, is_trp, name, objective, objective_name, odax_objective, odax_objective_name, optimization_goal, optimization_goal_name, pause_periods, percent_reach_at_target_frequency, placement_breakdown, placement_breakdown_map, plan_name, plan_type, prediction_mode, prediction_progress, reference_id, reservation_status, start_time, status, story_event_type, target_cpm, target_frequency, target_frequency_reset_period, target_spec, time_created, time_updated, timezone_id, timezone_name, topline_id, video_view_length_constraint, viewtag
 	adaccount_get_reachfrequencypredictionsTool := mcp.NewTool("adaccount_get_reachfrequencypredictions",
 		mcp.WithDescription("GET reachfrequencypredictions for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ReachFrequencyPrediction objects. Available fields: account_id, activity_status, ad_formats, auction_entry_option_index, audience_size_lower_bound, audience_size_upper_bound, business_id, buying_type, campaign_group_id, campaign_id, campaign_time_start, campaign_time_stop, currency, curve_budget_reach, curve_reach (and 75 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_reachfrequencypredictionsTool)
@@ -2671,11 +3425,24 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_reachfrequencypredictionsTool)
 
 	// adaccount_get_recommendations tool
+	// Available fields for AdAccountRecommendations: recommendations
 	adaccount_get_recommendationsTool := mcp.NewTool("adaccount_get_recommendations",
 		mcp.WithDescription("GET recommendations for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccountRecommendations objects. Available fields: recommendations"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_recommendationsTool)
@@ -2710,6 +3477,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_recommendationsTool)
 
 	// adaccount_get_saved_audiences tool
+	// Available fields for SavedAudience: account, approximate_count_lower_bound, approximate_count_upper_bound, delete_time, description, id, name, operation_status, owner_business, page_deletion_marked_delete_time, permission_for_actions, run_status, sentence_lines, targeting, time_created, time_updated
 	adaccount_get_saved_audiencesTool := mcp.NewTool("adaccount_get_saved_audiences",
 		mcp.WithDescription("GET saved_audiences for AdAccount"),
 		mcp.WithString("account_id",
@@ -2724,6 +3492,18 @@ func GetAdAccountTools() []mcp.Tool {
 		),
 		mcp.WithString("filtering",
 			mcp.Description("filtering parameter for saved_audiences"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for SavedAudience objects. Available fields: account, approximate_count_lower_bound, approximate_count_upper_bound, delete_time, description, id, name, operation_status, owner_business, page_deletion_marked_delete_time, permission_for_actions, run_status, sentence_lines, targeting, time_created (and 1 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_saved_audiencesTool)
@@ -2742,11 +3522,24 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_delete_subscribed_appsTool)
 
 	// adaccount_get_subscribed_apps tool
+	// Available fields for AdAccountSubscribedApps: app_id, app_name
 	adaccount_get_subscribed_appsTool := mcp.NewTool("adaccount_get_subscribed_apps",
 		mcp.WithDescription("GET subscribed_apps for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccountSubscribedApps objects. Available fields: app_id, app_name"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_subscribed_appsTool)
@@ -2765,6 +3558,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_subscribed_appsTool)
 
 	// adaccount_get_targetingbrowse tool
+	// Available fields for AdAccountTargetingUnified: audience_size_lower_bound, audience_size_upper_bound, conversion_lift, description, id, img, info, info_title, is_recommendation, key, link, name, parent, partner, path, performance_rating, raw_name, recommendation_model, search_interest_id, source, spend, type, valid
 	adaccount_get_targetingbrowseTool := mcp.NewTool("adaccount_get_targetingbrowse",
 		mcp.WithDescription("GET targetingbrowse for AdAccount"),
 		mcp.WithString("account_id",
@@ -2796,10 +3590,23 @@ func GetAdAccountTools() []mcp.Tool {
 			mcp.Description("whitelisted_types parameter for targetingbrowse"),
 			mcp.Enum("adgroup_id", "age_max", "age_min", "age_range", "alternate_auto_targeting_option", "app_install_state", "audience_network_positions", "behaviors", "brand_safety_content_filter_levels", "brand_safety_content_severity_levels", "cafe_ca_contraction_targeting_signal", "cafe_ca_expansion_targeting_signal", "catalog_based_targeting", "cities", "city_keys", "college_years", "conjunctive_user_adclusters", "connections", "contextual_targeting_categories", "countries", "country", "country_groups", "custom_audiences", "device_platforms", "direct_install_devices", "dynamic_audience_ids", "education_majors", "education_schools", "education_statuses", "effective_audience_network_positions", "effective_device_platforms", "effective_facebook_positions", "effective_instagram_positions", "effective_messenger_positions", "effective_oculus_positions", "effective_publisher_platforms", "effective_threads_positions", "effective_whatsapp_positions", "engagement_specs", "ethnic_affinity", "exclude_previous_days", "exclude_reached_since", "excluded_brand_safety_content_types", "excluded_connections", "excluded_custom_audiences", "excluded_dynamic_audience_ids", "excluded_engagement_specs", "excluded_geo_locations", "excluded_mobile_device_model", "excluded_product_audience_specs", "excluded_publisher_categories", "excluded_publisher_list_ids", "excluded_user_adclusters", "excluded_user_device", "exclusions", "expanded_implicit_custom_audiences", "facebook_positions", "family_statuses", "fb_deal_id", "flexible_spec", "follow_profiles", "follow_profiles_negative", "format", "friends_of_connections", "gatekeepers", "genders", "generation", "geo_locations", "home_ownership", "home_type", "home_value", "household_composition", "household_income", "id", "income", "industries", "instagram_hashtags", "instagram_positions", "install_state_application", "instream_video_skippable_excluded", "instream_video_sponsorship_placements", "interest_defaults_source", "interested_in", "interests", "is_instagram_destination_ad", "is_whatsapp_destination_ad", "keywords", "life_events", "locales", "location_categories", "location_cluster_ids", "location_expansion", "marketing_message_channels", "marketplace_product_categories", "messenger_positions", "mobile_device_model", "moms", "net_worth", "oculus_positions", "office_type", "page_types", "place_page_set_ids", "political_views", "politics", "product_audience_specs", "prospecting_audience", "publisher_platforms", "radius", "region_keys", "regions", "relationship_statuses", "rtb_flag", "site_category", "subscriber_universe", "tafe_ca_mitigation_strategy", "targeting_automation", "targeting_optimization", "targeting_relaxation_types", "threads_positions", "timezones", "topic", "trending", "user_adclusters", "user_age_unknown", "user_device", "user_event", "user_os", "user_page_threads", "user_page_threads_excluded", "whatsapp_positions", "wireless_carrier", "work_employers", "work_positions", "zips"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccountTargetingUnified objects. Available fields: audience_size_lower_bound, audience_size_upper_bound, conversion_lift, description, id, img, info, info_title, is_recommendation, key, link, name, parent, partner, path (and 8 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_targetingbrowseTool)
 
 	// adaccount_get_targetingsearch tool
+	// Available fields for AdAccountTargetingUnified: audience_size_lower_bound, audience_size_upper_bound, conversion_lift, description, id, img, info, info_title, is_recommendation, key, link, name, parent, partner, path, performance_rating, raw_name, recommendation_model, search_interest_id, source, spend, type, valid
 	adaccount_get_targetingsearchTool := mcp.NewTool("adaccount_get_targetingsearch",
 		mcp.WithDescription("GET targetingsearch for AdAccount"),
 		mcp.WithString("account_id",
@@ -2858,10 +3665,23 @@ func GetAdAccountTools() []mcp.Tool {
 			mcp.Description("whitelisted_types parameter for targetingsearch"),
 			mcp.Enum("adgroup_id", "age_max", "age_min", "age_range", "alternate_auto_targeting_option", "app_install_state", "audience_network_positions", "behaviors", "brand_safety_content_filter_levels", "brand_safety_content_severity_levels", "cafe_ca_contraction_targeting_signal", "cafe_ca_expansion_targeting_signal", "catalog_based_targeting", "cities", "city_keys", "college_years", "conjunctive_user_adclusters", "connections", "contextual_targeting_categories", "countries", "country", "country_groups", "custom_audiences", "device_platforms", "direct_install_devices", "dynamic_audience_ids", "education_majors", "education_schools", "education_statuses", "effective_audience_network_positions", "effective_device_platforms", "effective_facebook_positions", "effective_instagram_positions", "effective_messenger_positions", "effective_oculus_positions", "effective_publisher_platforms", "effective_threads_positions", "effective_whatsapp_positions", "engagement_specs", "ethnic_affinity", "exclude_previous_days", "exclude_reached_since", "excluded_brand_safety_content_types", "excluded_connections", "excluded_custom_audiences", "excluded_dynamic_audience_ids", "excluded_engagement_specs", "excluded_geo_locations", "excluded_mobile_device_model", "excluded_product_audience_specs", "excluded_publisher_categories", "excluded_publisher_list_ids", "excluded_user_adclusters", "excluded_user_device", "exclusions", "expanded_implicit_custom_audiences", "facebook_positions", "family_statuses", "fb_deal_id", "flexible_spec", "follow_profiles", "follow_profiles_negative", "format", "friends_of_connections", "gatekeepers", "genders", "generation", "geo_locations", "home_ownership", "home_type", "home_value", "household_composition", "household_income", "id", "income", "industries", "instagram_hashtags", "instagram_positions", "install_state_application", "instream_video_skippable_excluded", "instream_video_sponsorship_placements", "interest_defaults_source", "interested_in", "interests", "is_instagram_destination_ad", "is_whatsapp_destination_ad", "keywords", "life_events", "locales", "location_categories", "location_cluster_ids", "location_expansion", "marketing_message_channels", "marketplace_product_categories", "messenger_positions", "mobile_device_model", "moms", "net_worth", "oculus_positions", "office_type", "page_types", "place_page_set_ids", "political_views", "politics", "product_audience_specs", "prospecting_audience", "publisher_platforms", "radius", "region_keys", "regions", "relationship_statuses", "rtb_flag", "site_category", "subscriber_universe", "tafe_ca_mitigation_strategy", "targeting_automation", "targeting_optimization", "targeting_relaxation_types", "threads_positions", "timezones", "topic", "trending", "user_adclusters", "user_age_unknown", "user_device", "user_event", "user_os", "user_page_threads", "user_page_threads_excluded", "whatsapp_positions", "wireless_carrier", "work_employers", "work_positions", "zips"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccountTargetingUnified objects. Available fields: audience_size_lower_bound, audience_size_upper_bound, conversion_lift, description, id, img, info, info_title, is_recommendation, key, link, name, parent, partner, path (and 8 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_targetingsearchTool)
 
 	// adaccount_get_targetingsentencelines tool
+	// Available fields for TargetingSentenceLine: id, params, targetingsentencelines
 	adaccount_get_targetingsentencelinesTool := mcp.NewTool("adaccount_get_targetingsentencelines",
 		mcp.WithDescription("GET targetingsentencelines for AdAccount"),
 		mcp.WithString("account_id",
@@ -2881,10 +3701,23 @@ func GetAdAccountTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("targeting_spec parameter for targetingsentencelines"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for TargetingSentenceLine objects. Available fields: id, params, targetingsentencelines"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_targetingsentencelinesTool)
 
 	// adaccount_get_targetingsuggestions tool
+	// Available fields for AdAccountTargetingUnified: audience_size_lower_bound, audience_size_upper_bound, conversion_lift, description, id, img, info, info_title, is_recommendation, key, link, name, parent, partner, path, performance_rating, raw_name, recommendation_model, search_interest_id, source, spend, type, valid
 	adaccount_get_targetingsuggestionsTool := mcp.NewTool("adaccount_get_targetingsuggestions",
 		mcp.WithDescription("GET targetingsuggestions for AdAccount"),
 		mcp.WithString("account_id",
@@ -2931,10 +3764,23 @@ func GetAdAccountTools() []mcp.Tool {
 			mcp.Description("whitelisted_types parameter for targetingsuggestions"),
 			mcp.Enum("behaviors", "college_years", "education_majors", "education_schools", "education_statuses", "family_statuses", "home_value", "income", "industries", "interested_in", "interests", "life_events", "location_categories", "relationship_statuses", "user_adclusters", "work_employers", "work_positions"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccountTargetingUnified objects. Available fields: audience_size_lower_bound, audience_size_upper_bound, conversion_lift, description, id, img, info, info_title, is_recommendation, key, link, name, parent, partner, path (and 8 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_targetingsuggestionsTool)
 
 	// adaccount_get_targetingvalidation tool
+	// Available fields for AdAccountTargetingUnified: audience_size_lower_bound, audience_size_upper_bound, conversion_lift, description, id, img, info, info_title, is_recommendation, key, link, name, parent, partner, path, performance_rating, raw_name, recommendation_model, search_interest_id, source, spend, type, valid
 	adaccount_get_targetingvalidationTool := mcp.NewTool("adaccount_get_targetingvalidation",
 		mcp.WithDescription("GET targetingvalidation for AdAccount"),
 		mcp.WithString("account_id",
@@ -2953,15 +3799,40 @@ func GetAdAccountTools() []mcp.Tool {
 		mcp.WithString("targeting_list",
 			mcp.Description("targeting_list parameter for targetingvalidation"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccountTargetingUnified objects. Available fields: audience_size_lower_bound, audience_size_upper_bound, conversion_lift, description, id, img, info, info_title, is_recommendation, key, link, name, parent, partner, path (and 8 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adaccount_get_targetingvalidationTool)
 
 	// adaccount_get_tracking tool
+	// Available fields for AdAccountTrackingData: tracking_specs
 	adaccount_get_trackingTool := mcp.NewTool("adaccount_get_tracking",
 		mcp.WithDescription("GET tracking for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccountTrackingData objects. Available fields: tracking_specs"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_trackingTool)
@@ -2981,11 +3852,24 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_trackingTool)
 
 	// adaccount_get_users tool
+	// Available fields for AdAccountUser: id, name, tasks
 	adaccount_get_usersTool := mcp.NewTool("adaccount_get_users",
 		mcp.WithDescription("GET users for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccountUser objects. Available fields: id, name, tasks"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_usersTool)
@@ -3010,6 +3894,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_delete_usersofanyaudienceTool)
 
 	// adaccount_get_value_rule_set tool
+	// Available fields for AdsValueAdjustmentRuleCollection: id, is_default_setting, name, product_type, status
 	adaccount_get_value_rule_setTool := mcp.NewTool("adaccount_get_value_rule_set",
 		mcp.WithDescription("GET value_rule_set for AdAccount"),
 		mcp.WithString("account_id",
@@ -3023,6 +3908,18 @@ func GetAdAccountTools() []mcp.Tool {
 		mcp.WithString("status",
 			mcp.Description("status parameter for value_rule_set"),
 			mcp.Enum("ACTIVE", "DELETED"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsValueAdjustmentRuleCollection objects. Available fields: id, is_default_setting, name, product_type, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_value_rule_setTool)
@@ -3050,6 +3947,7 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_value_rule_setTool)
 
 	// adaccount_get_video_ads tool
+	// Available fields for AdVideo: ad_breaks, admin_creator, audio_isrc, backdated_time, backdated_time_granularity, boost_eligibility_info, content_category, content_tags, copyright, copyright_check_information, copyright_monitoring_status, created_time, custom_labels, description, embed_html, embeddable, event, expiration, format, from, icon, id, is_crosspost_video, is_crossposting_eligible, is_episode, is_instagram_eligible, is_reference_only, length, live_audience_count, live_status, music_video_copyright, permalink_url, picture, place, post_id, post_views, premiere_living_room_status, privacy, published, scheduled_publish_time, source, spherical, status, title, universal_video_id, updated_time, views
 	adaccount_get_video_adsTool := mcp.NewTool("adaccount_get_video_ads",
 		mcp.WithDescription("GET video_ads for AdAccount"),
 		mcp.WithString("account_id",
@@ -3061,6 +3959,18 @@ func GetAdAccountTools() []mcp.Tool {
 		),
 		mcp.WithString("until",
 			mcp.Description("until parameter for video_ads"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdVideo objects. Available fields: ad_breaks, admin_creator, audio_isrc, backdated_time, backdated_time_granularity, boost_eligibility_info, content_category, content_tags, copyright, copyright_check_information, copyright_monitoring_status, created_time, custom_labels, description, embed_html (and 32 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_video_adsTool)
@@ -3097,11 +4007,24 @@ func GetAdAccountTools() []mcp.Tool {
 	tools = append(tools, adaccount_post_video_adsTool)
 
 	// adaccount_get_ tool
+	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	adaccount_get_Tool := mcp.NewTool("adaccount_get_",
 		mcp.WithDescription("GET  for AdAccount"),
 		mcp.WithString("account_id",
 			mcp.Required(),
 			mcp.Description("Facebook Ad Account ID (without 'act_' prefix)"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adaccount_get_Tool)
@@ -3196,6 +4119,26 @@ func HandleAdaccount_get_account_controls(ctx context.Context, request mcp.CallT
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_account_controls(args)
@@ -3338,6 +4281,26 @@ func HandleAdaccount_get_activities(ctx context.Context, request mcp.CallToolReq
 		args["until"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_activities(args)
 	if err != nil {
@@ -3373,6 +4336,26 @@ func HandleAdaccount_get_ad_place_page_sets(ctx context.Context, request mcp.Cal
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_ad_place_page_sets(args)
@@ -3538,6 +4521,26 @@ func HandleAdaccount_get_ad_saved_keywords(ctx context.Context, request mcp.Call
 		args["fields"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_ad_saved_keywords(args)
 	if err != nil {
@@ -3573,6 +4576,26 @@ func HandleAdaccount_get_ad_studies(ctx context.Context, request mcp.CallToolReq
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_ad_studies(args)
@@ -3610,6 +4633,26 @@ func HandleAdaccount_get_adcloudplayables(ctx context.Context, request mcp.CallT
 	}
 	args["account_id"] = account_id
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_adcloudplayables(args)
 	if err != nil {
@@ -3645,6 +4688,26 @@ func HandleAdaccount_get_adcreatives(ctx context.Context, request mcp.CallToolRe
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_adcreatives(args)
@@ -3999,6 +5062,26 @@ func HandleAdaccount_get_adcreativesbylabels(ctx context.Context, request mcp.Ca
 		args["operator"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_adcreativesbylabels(args)
 	if err != nil {
@@ -4115,6 +5198,26 @@ func HandleAdaccount_get_adimages(ctx context.Context, request mcp.CallToolReque
 		args["selected_hashes"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_adimages(args)
 	if err != nil {
@@ -4198,6 +5301,26 @@ func HandleAdaccount_get_adlabels(ctx context.Context, request mcp.CallToolReque
 	}
 	args["account_id"] = account_id
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_adlabels(args)
 	if err != nil {
@@ -4276,6 +5399,26 @@ func HandleAdaccount_get_adplayables(ctx context.Context, request mcp.CallToolRe
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_adplayables(args)
@@ -4401,6 +5544,26 @@ func HandleAdaccount_get_adrules_history(ctx context.Context, request mcp.CallTo
 		args["object_id"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_adrules_history(args)
 	if err != nil {
@@ -4436,6 +5599,26 @@ func HandleAdaccount_get_adrules_library(ctx context.Context, request mcp.CallTo
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_adrules_library(args)
@@ -4570,6 +5753,26 @@ func HandleAdaccount_get_ads(ctx context.Context, request mcp.CallToolRequest) (
 	// Optional: updated_since
 	if val := request.GetInt("updated_since", 0); val != 0 {
 		args["updated_since"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -4763,6 +5966,26 @@ func HandleAdaccount_get_ads_reporting_mmm_reports(ctx context.Context, request 
 		args["filtering"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_ads_reporting_mmm_reports(args)
 	if err != nil {
@@ -4798,6 +6021,26 @@ func HandleAdaccount_get_ads_reporting_mmm_schedulers(ctx context.Context, reque
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_ads_reporting_mmm_schedulers(args)
@@ -4850,6 +6093,26 @@ func HandleAdaccount_get_ads_volume(ctx context.Context, request mcp.CallToolReq
 		args["show_breakdown_by_actor"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_ads_volume(args)
 	if err != nil {
@@ -4896,6 +6159,26 @@ func HandleAdaccount_get_adsbylabels(ctx context.Context, request mcp.CallToolRe
 	// Optional: operator
 	if val := request.GetString("operator", ""); val != "" {
 		args["operator"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -4958,6 +6241,26 @@ func HandleAdaccount_get_adsets(ctx context.Context, request mcp.CallToolRequest
 	// Optional: updated_since
 	if val := request.GetInt("updated_since", 0); val != 0 {
 		args["updated_since"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -5355,6 +6658,26 @@ func HandleAdaccount_get_adsetsbylabels(ctx context.Context, request mcp.CallToo
 		args["operator"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_adsetsbylabels(args)
 	if err != nil {
@@ -5394,6 +6717,26 @@ func HandleAdaccount_get_adspixels(ctx context.Context, request mcp.CallToolRequ
 	// Optional: sort_by
 	if val := request.GetString("sort_by", ""); val != "" {
 		args["sort_by"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -5481,6 +6824,26 @@ func HandleAdaccount_get_advertisable_applications(ctx context.Context, request 
 	// Optional: business_id
 	if val := request.GetString("business_id", ""); val != "" {
 		args["business_id"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -5605,6 +6968,26 @@ func HandleAdaccount_get_advideos(ctx context.Context, request mcp.CallToolReque
 	// Optional: title
 	if val := request.GetString("title", ""); val != "" {
 		args["title"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -6015,6 +7398,26 @@ func HandleAdaccount_get_affectedadsets(ctx context.Context, request mcp.CallToo
 	}
 	args["account_id"] = account_id
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_affectedadsets(args)
 	if err != nil {
@@ -6093,6 +7496,26 @@ func HandleAdaccount_get_agencies(ctx context.Context, request mcp.CallToolReque
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_agencies(args)
@@ -6179,6 +7602,26 @@ func HandleAdaccount_get_applications(ctx context.Context, request mcp.CallToolR
 	}
 	args["account_id"] = account_id
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_applications(args)
 	if err != nil {
@@ -6264,6 +7707,26 @@ func HandleAdaccount_get_assigned_users(ctx context.Context, request mcp.CallToo
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
 	}
 	args["business"] = business
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_assigned_users(args)
@@ -6410,6 +7873,26 @@ func HandleAdaccount_get_async_requests(ctx context.Context, request mcp.CallToo
 		args["type"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_async_requests(args)
 	if err != nil {
@@ -6449,6 +7932,26 @@ func HandleAdaccount_get_asyncadcreatives(ctx context.Context, request mcp.CallT
 	// Optional: is_completed
 	if val := request.GetBool("is_completed", false); val {
 		args["is_completed"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -6552,6 +8055,26 @@ func HandleAdaccount_get_asyncadrequestsets(ctx context.Context, request mcp.Cal
 		args["is_completed"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_asyncadrequestsets(args)
 	if err != nil {
@@ -6647,6 +8170,26 @@ func HandleAdaccount_get_audience_funnel(ctx context.Context, request mcp.CallTo
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_audience_funnel(args)
@@ -6780,6 +8323,26 @@ func HandleAdaccount_get_broadtargetingcategories(ctx context.Context, request m
 		args["custom_categories_only"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_broadtargetingcategories(args)
 	if err != nil {
@@ -6819,6 +8382,26 @@ func HandleAdaccount_get_businessprojects(ctx context.Context, request mcp.CallT
 	// Optional: business
 	if val := request.GetString("business", ""); val != "" {
 		args["business"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -6934,6 +8517,26 @@ func HandleAdaccount_get_campaigns(ctx context.Context, request mcp.CallToolRequ
 	// Optional: time_range
 	if val := request.GetString("time_range", ""); val != "" {
 		args["time_range"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -7133,6 +8736,26 @@ func HandleAdaccount_get_campaignsbylabels(ctx context.Context, request mcp.Call
 		args["operator"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_campaignsbylabels(args)
 	if err != nil {
@@ -7168,6 +8791,26 @@ func HandleAdaccount_get_connected_instagram_accounts(ctx context.Context, reque
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_connected_instagram_accounts(args)
@@ -7210,6 +8853,26 @@ func HandleAdaccount_get_connected_instagram_accounts_with_iabp(ctx context.Cont
 		args["business_id"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_connected_instagram_accounts_with_iabp(args)
 	if err != nil {
@@ -7245,6 +8908,26 @@ func HandleAdaccount_get_conversion_goals(ctx context.Context, request mcp.CallT
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_conversion_goals(args)
@@ -7307,6 +8990,26 @@ func HandleAdaccount_get_customaudiences(ctx context.Context, request mcp.CallTo
 	// Optional: pixel_id
 	if val := request.GetString("pixel_id", ""); val != "" {
 		args["pixel_id"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -7585,6 +9288,26 @@ func HandleAdaccount_get_customaudiencestos(ctx context.Context, request mcp.Cal
 	}
 	args["account_id"] = account_id
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_customaudiencestos(args)
 	if err != nil {
@@ -7668,6 +9391,26 @@ func HandleAdaccount_get_customconversions(ctx context.Context, request mcp.Call
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_customconversions(args)
@@ -7803,6 +9546,26 @@ func HandleAdaccount_get_delivery_estimate(ctx context.Context, request mcp.Call
 	}
 	args["targeting_spec"] = targeting_spec
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_delivery_estimate(args)
 	if err != nil {
@@ -7844,6 +9607,26 @@ func HandleAdaccount_get_deprecatedtargetingadsets(ctx context.Context, request 
 		args["type"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_deprecatedtargetingadsets(args)
 	if err != nil {
@@ -7879,6 +9662,26 @@ func HandleAdaccount_get_dsa_recommendations(ctx context.Context, request mcp.Ca
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_dsa_recommendations(args)
@@ -7999,6 +9802,26 @@ func HandleAdaccount_get_generatepreviews(ctx context.Context, request mcp.CallT
 		args["width"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_generatepreviews(args)
 	if err != nil {
@@ -8034,6 +9857,26 @@ func HandleAdaccount_get_impacting_ad_studies(ctx context.Context, request mcp.C
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_impacting_ad_studies(args)
@@ -8189,6 +10032,26 @@ func HandleAdaccount_get_insights(ctx context.Context, request mcp.CallToolReque
 	// Optional: use_unified_attribution_setting
 	if val := request.GetBool("use_unified_attribution_setting", false); val {
 		args["use_unified_attribution_setting"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -8383,6 +10246,26 @@ func HandleAdaccount_get_instagram_accounts(ctx context.Context, request mcp.Cal
 	}
 	args["account_id"] = account_id
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_instagram_accounts(args)
 	if err != nil {
@@ -8425,6 +10308,26 @@ func HandleAdaccount_get_ios_fourteen_campaign_limits(ctx context.Context, reque
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter app_id: %v", err)), nil
 	}
 	args["app_id"] = app_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_ios_fourteen_campaign_limits(args)
@@ -8501,6 +10404,26 @@ func HandleAdaccount_get_matched_search_applications(ctx context.Context, reques
 	}
 	args["query_term"] = query_term
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_matched_search_applications(args)
 	if err != nil {
@@ -8537,6 +10460,26 @@ func HandleAdaccount_get_max_bid(ctx context.Context, request mcp.CallToolReques
 	}
 	args["account_id"] = account_id
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_max_bid(args)
 	if err != nil {
@@ -8572,6 +10515,26 @@ func HandleAdaccount_get_mcmeconversions(ctx context.Context, request mcp.CallTo
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_mcmeconversions(args)
@@ -8614,6 +10577,26 @@ func HandleAdaccount_get_minimum_budgets(ctx context.Context, request mcp.CallTo
 		args["bid_amount"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_minimum_budgets(args)
 	if err != nil {
@@ -8653,6 +10636,26 @@ func HandleAdaccount_get_onbehalf_requests(ctx context.Context, request mcp.Call
 	// Optional: status
 	if val := request.GetString("status", ""); val != "" {
 		args["status"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -8830,6 +10833,26 @@ func HandleAdaccount_get_promote_pages(ctx context.Context, request mcp.CallTool
 	}
 	args["account_id"] = account_id
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_promote_pages(args)
 	if err != nil {
@@ -8865,6 +10888,26 @@ func HandleAdaccount_get_publisher_block_lists(ctx context.Context, request mcp.
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_publisher_block_lists(args)
@@ -8981,6 +11024,26 @@ func HandleAdaccount_get_reachestimate(ctx context.Context, request mcp.CallTool
 	}
 	args["targeting_spec"] = targeting_spec
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_reachestimate(args)
 	if err != nil {
@@ -9016,6 +11079,26 @@ func HandleAdaccount_get_reachfrequencypredictions(ctx context.Context, request 
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_reachfrequencypredictions(args)
@@ -9303,6 +11386,26 @@ func HandleAdaccount_get_recommendations(ctx context.Context, request mcp.CallTo
 	}
 	args["account_id"] = account_id
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_recommendations(args)
 	if err != nil {
@@ -9424,6 +11527,26 @@ func HandleAdaccount_get_saved_audiences(ctx context.Context, request mcp.CallTo
 		args["filtering"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_saved_audiences(args)
 	if err != nil {
@@ -9500,6 +11623,26 @@ func HandleAdaccount_get_subscribed_apps(ctx context.Context, request mcp.CallTo
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_subscribed_apps(args)
@@ -9614,6 +11757,26 @@ func HandleAdaccount_get_targetingbrowse(ctx context.Context, request mcp.CallTo
 	// array type - using string
 	if val := request.GetString("whitelisted_types", ""); val != "" {
 		args["whitelisted_types"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -9735,6 +11898,26 @@ func HandleAdaccount_get_targetingsearch(ctx context.Context, request mcp.CallTo
 		args["whitelisted_types"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_targetingsearch(args)
 	if err != nil {
@@ -9792,6 +11975,26 @@ func HandleAdaccount_get_targetingsentencelines(ctx context.Context, request mcp
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter targeting_spec: %v", err)), nil
 	}
 	args["targeting_spec"] = targeting_spec
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_targetingsentencelines(args)
@@ -9890,6 +12093,26 @@ func HandleAdaccount_get_targetingsuggestions(ctx context.Context, request mcp.C
 		args["whitelisted_types"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_targetingsuggestions(args)
 	if err != nil {
@@ -9949,6 +12172,26 @@ func HandleAdaccount_get_targetingvalidation(ctx context.Context, request mcp.Ca
 		args["targeting_list"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adaccount_get_targetingvalidation(args)
 	if err != nil {
@@ -9984,6 +12227,26 @@ func HandleAdaccount_get_tracking(ctx context.Context, request mcp.CallToolReque
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_tracking(args)
@@ -10063,6 +12326,26 @@ func HandleAdaccount_get_users(ctx context.Context, request mcp.CallToolRequest)
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_users(args)
@@ -10161,6 +12444,26 @@ func HandleAdaccount_get_value_rule_set(ctx context.Context, request mcp.CallToo
 	// Optional: status
 	if val := request.GetString("status", ""); val != "" {
 		args["status"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -10262,6 +12565,26 @@ func HandleAdaccount_get_video_ads(ctx context.Context, request mcp.CallToolRequ
 	// Optional: until
 	if val := request.GetString("until", ""); val != "" {
 		args["until"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -10367,6 +12690,26 @@ func HandleAdaccount_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
 	}
 	args["account_id"] = account_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adaccount_get_(args)

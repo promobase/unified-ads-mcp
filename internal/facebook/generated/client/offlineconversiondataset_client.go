@@ -44,6 +44,30 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_adaccounts
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -86,6 +110,31 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_agencies(a
 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -141,6 +190,30 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_audiences(
 		urlParams.Set("ad_account", fmt.Sprintf("%v", val))
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -190,6 +263,30 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_customconv
 		urlParams.Set("ad_account", fmt.Sprintf("%v", val))
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -232,6 +329,31 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_server_eve
 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -297,6 +419,30 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_shared_acc
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -349,6 +495,30 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_shared_age
 		// Skip ID parameters as they're already in the URL path
 
 		urlParams.Set("action_source", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
 
 	}
 
@@ -430,6 +600,30 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_stats(args
 		urlParams.Set("user_timezone_id", fmt.Sprintf("%v", val))
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -503,6 +697,30 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_uploads(ar
 		urlParams.Set("upload_tag", fmt.Sprintf("%v", val))
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -545,6 +763,31 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_(args map[
 
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("fields", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("limit", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("after", fmt.Sprintf("%v", val))
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		urlParams.Set("before", fmt.Sprintf("%v", val))
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response

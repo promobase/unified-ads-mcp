@@ -125,6 +125,38 @@ func (c *AdCreativeClient) Adcreative_get_creative_insights(args map[string]inte
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "ad_creative_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "ad_creative_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "ad_creative_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "ad_creative_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -303,6 +335,38 @@ func (c *AdCreativeClient) Adcreative_get_previews(args map[string]interface{}) 
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "ad_creative_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "ad_creative_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "ad_creative_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "ad_creative_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -470,6 +534,38 @@ func (c *AdCreativeClient) Adcreative_get_(args map[string]interface{}) (interfa
 
 		if "thumbnail_width" != "ad_creative_id" {
 			urlParams.Set("thumbnail_width", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "ad_creative_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "ad_creative_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "ad_creative_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "ad_creative_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}

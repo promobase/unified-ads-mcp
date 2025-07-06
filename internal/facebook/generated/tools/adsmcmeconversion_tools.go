@@ -17,8 +17,21 @@ func GetAdsMcmeConversionTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adsmcmeconversion_get_ tool
+	// Available fields for AdsMcmeConversion: creation_time, description, id, is_archived, mcme_conversion_type, name, omnichannel_object_id
 	adsmcmeconversion_get_Tool := mcp.NewTool("adsmcmeconversion_get_",
 		mcp.WithDescription("GET  for AdsMcmeConversion"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsMcmeConversion objects. Available fields: creation_time, description, id, is_archived, mcme_conversion_type, name, omnichannel_object_id"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adsmcmeconversion_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleAdsmcmeconversion_get_(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adsmcmeconversion_get_(args)

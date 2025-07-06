@@ -23,12 +23,37 @@ func GetUnifiedThreadTools() []mcp.Tool {
 			mcp.Description("source parameter for messages"),
 			mcp.Enum("ALL", "PARTICIPANTS"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, unifiedthread_get_messagesTool)
 
 	// unifiedthread_get_ tool
+	// Available fields for UnifiedThread: can_reply, folder, former_participants, id, is_subscribed, link, linked_group, message_count, name, participants, scoped_thread_key, senders, snippet, subject, unread_count, updated_time, wallpaper
 	unifiedthread_get_Tool := mcp.NewTool("unifiedthread_get_",
 		mcp.WithDescription("GET  for UnifiedThread"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for UnifiedThread objects. Available fields: can_reply, folder, former_participants, id, is_subscribed, link, linked_group, message_count, name, participants, scoped_thread_key, senders, snippet, subject, unread_count (and 2 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, unifiedthread_get_Tool)
 
@@ -54,6 +79,26 @@ func HandleUnifiedthread_get_messages(ctx context.Context, request mcp.CallToolR
 	// Optional: source
 	if val := request.GetString("source", ""); val != "" {
 		args["source"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -84,6 +129,26 @@ func HandleUnifiedthread_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Unifiedthread_get_(args)

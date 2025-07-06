@@ -17,14 +17,40 @@ func GetHotelRoomTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// hotelroom_get_pricing_variables tool
+	// Available fields for DynamicPriceConfigByDate: checkin_date, prices, prices_pretty
 	hotelroom_get_pricing_variablesTool := mcp.NewTool("hotelroom_get_pricing_variables",
 		mcp.WithDescription("GET pricing_variables for HotelRoom"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for DynamicPriceConfigByDate objects. Available fields: checkin_date, prices, prices_pretty"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, hotelroom_get_pricing_variablesTool)
 
 	// hotelroom_get_ tool
+	// Available fields for HotelRoom: applinks, base_price, currency, description, id, images, margin_level, name, room_id, sale_price, url
 	hotelroom_get_Tool := mcp.NewTool("hotelroom_get_",
 		mcp.WithDescription("GET  for HotelRoom"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for HotelRoom objects. Available fields: applinks, base_price, currency, description, id, images, margin_level, name, room_id, sale_price, url"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, hotelroom_get_Tool)
 
@@ -46,6 +72,26 @@ func HandleHotelroom_get_pricing_variables(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Hotelroom_get_pricing_variables(args)
@@ -75,6 +121,26 @@ func HandleHotelroom_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Hotelroom_get_(args)

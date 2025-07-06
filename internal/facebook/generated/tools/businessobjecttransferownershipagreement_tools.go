@@ -17,8 +17,21 @@ func GetBusinessObjectTransferOwnershipAgreementTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// businessobjecttransferownershipagreement_get_ tool
+	// Available fields for BusinessObjectTransferOwnershipAgreement: id, receiving_business, requesting_business, status
 	businessobjecttransferownershipagreement_get_Tool := mcp.NewTool("businessobjecttransferownershipagreement_get_",
 		mcp.WithDescription("GET  for BusinessObjectTransferOwnershipAgreement"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BusinessObjectTransferOwnershipAgreement objects. Available fields: id, receiving_business, requesting_business, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, businessobjecttransferownershipagreement_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleBusinessobjecttransferownershipagreement_get_(ctx context.Context, re
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Businessobjecttransferownershipagreement_get_(args)

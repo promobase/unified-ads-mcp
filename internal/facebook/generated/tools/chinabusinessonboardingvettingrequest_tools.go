@@ -17,8 +17,21 @@ func GetChinaBusinessOnboardingVettingRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// chinabusinessonboardingvettingrequest_get_ tool
+	// Available fields for ChinaBusinessOnboardingVettingRequest: ad_account_creation_request_status, ad_account_limit, ad_account_number, ad_accounts_info, advertiser_business_id, advertiser_business_name, business_manager_id, business_registration, business_registration_id, business_verification_status, chinese_address, chinese_legal_entity_name, city, contact, coupon_code, disapprove_reason, english_business_name, id, official_website_url, org_ad_account_count, payment_type, planning_agency_id, planning_agency_name, promotable_app_ids, promotable_page_ids, promotable_pages, promotable_urls, request_changes_reason, reviewed_user, spend_limit, status, subvertical, subvertical_v2, supporting_document, time_changes_requested, time_created, time_updated, time_zone, used_reseller_link, user_id, user_name, vertical, vertical_v2, viewed_by_reseller, zip_code
 	chinabusinessonboardingvettingrequest_get_Tool := mcp.NewTool("chinabusinessonboardingvettingrequest_get_",
 		mcp.WithDescription("GET  for ChinaBusinessOnboardingVettingRequest"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ChinaBusinessOnboardingVettingRequest objects. Available fields: ad_account_creation_request_status, ad_account_limit, ad_account_number, ad_accounts_info, advertiser_business_id, advertiser_business_name, business_manager_id, business_registration, business_registration_id, business_verification_status, chinese_address, chinese_legal_entity_name, city, contact, coupon_code (and 30 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, chinabusinessonboardingvettingrequest_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleChinabusinessonboardingvettingrequest_get_(ctx context.Context, reque
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Chinabusinessonboardingvettingrequest_get_(args)

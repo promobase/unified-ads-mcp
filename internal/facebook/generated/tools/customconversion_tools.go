@@ -17,6 +17,7 @@ func GetCustomConversionTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// customconversion_get_stats tool
+	// Available fields for CustomConversionStatsResult: aggregation, data, timestamp
 	customconversion_get_statsTool := mcp.NewTool("customconversion_get_stats",
 		mcp.WithDescription("GET stats for CustomConversion"),
 		mcp.WithString("aggregation",
@@ -29,6 +30,18 @@ func GetCustomConversionTools() []mcp.Tool {
 		mcp.WithString("start_time",
 			mcp.Description("start_time parameter for stats"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CustomConversionStatsResult objects. Available fields: aggregation, data, timestamp"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, customconversion_get_statsTool)
 
@@ -39,8 +52,21 @@ func GetCustomConversionTools() []mcp.Tool {
 	tools = append(tools, customconversion_delete_Tool)
 
 	// customconversion_get_ tool
+	// Available fields for CustomConversion: account_id, aggregation_rule, business, creation_time, custom_event_type, data_sources, default_conversion_value, description, event_source_type, first_fired_time, id, is_archived, is_unavailable, last_fired_time, name, offline_conversion_data_set, pixel, retention_days, rule
 	customconversion_get_Tool := mcp.NewTool("customconversion_get_",
 		mcp.WithDescription("GET  for CustomConversion"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CustomConversion objects. Available fields: account_id, aggregation_rule, business, creation_time, custom_event_type, data_sources, default_conversion_value, description, event_source_type, first_fired_time, id, is_archived, is_unavailable, last_fired_time, name (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, customconversion_get_Tool)
 
@@ -91,6 +117,26 @@ func HandleCustomconversion_get_stats(ctx context.Context, request mcp.CallToolR
 	// Optional: start_time
 	if val := request.GetString("start_time", ""); val != "" {
 		args["start_time"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -150,6 +196,26 @@ func HandleCustomconversion_get_(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Customconversion_get_(args)

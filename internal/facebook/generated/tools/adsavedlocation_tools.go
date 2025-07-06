@@ -17,8 +17,21 @@ func GetAdSavedLocationTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adsavedlocation_get_ tool
+	// Available fields for AdSavedLocation: cities, countries, country_groups, custom_locations, geo_markets, id, location_sentences, name, regions, zips
 	adsavedlocation_get_Tool := mcp.NewTool("adsavedlocation_get_",
 		mcp.WithDescription("GET  for AdSavedLocation"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdSavedLocation objects. Available fields: cities, countries, country_groups, custom_locations, geo_markets, id, location_sentences, name, regions, zips"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adsavedlocation_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleAdsavedlocation_get_(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adsavedlocation_get_(args)

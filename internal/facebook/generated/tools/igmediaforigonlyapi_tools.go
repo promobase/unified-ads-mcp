@@ -19,12 +19,37 @@ func GetIGMediaForIGOnlyAPITools() []mcp.Tool {
 	// igmediaforigonlyapi_get_children tool
 	igmediaforigonlyapi_get_childrenTool := mcp.NewTool("igmediaforigonlyapi_get_children",
 		mcp.WithDescription("GET children for IGMediaForIGOnlyAPI"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, igmediaforigonlyapi_get_childrenTool)
 
 	// igmediaforigonlyapi_get_comments tool
+	// Available fields for Comment: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count, live_broadcast_timestamp, message, message_tags, object, parent, permalink_url, private_reply_conversation, user_likes
 	igmediaforigonlyapi_get_commentsTool := mcp.NewTool("igmediaforigonlyapi_get_comments",
 		mcp.WithDescription("GET comments for IGMediaForIGOnlyAPI"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Comment objects. Available fields: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count (and 8 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, igmediaforigonlyapi_get_commentsTool)
 
@@ -38,6 +63,7 @@ func GetIGMediaForIGOnlyAPITools() []mcp.Tool {
 	tools = append(tools, igmediaforigonlyapi_post_commentsTool)
 
 	// igmediaforigonlyapi_get_insights tool
+	// Available fields for InsightsResult: description, description_from_api_doc, id, name, period, title, values
 	igmediaforigonlyapi_get_insightsTool := mcp.NewTool("igmediaforigonlyapi_get_insights",
 		mcp.WithDescription("GET insights for IGMediaForIGOnlyAPI"),
 		mcp.WithString("breakdown",
@@ -53,12 +79,36 @@ func GetIGMediaForIGOnlyAPITools() []mcp.Tool {
 			mcp.Description("period parameter for insights"),
 			mcp.Enum("day", "days_28", "lifetime", "month", "total_over_range", "week"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for InsightsResult objects. Available fields: description, description_from_api_doc, id, name, period, title, values"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, igmediaforigonlyapi_get_insightsTool)
 
 	// igmediaforigonlyapi_get_ tool
 	igmediaforigonlyapi_get_Tool := mcp.NewTool("igmediaforigonlyapi_get_",
 		mcp.WithDescription("GET  for IGMediaForIGOnlyAPI"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, igmediaforigonlyapi_get_Tool)
 
@@ -91,6 +141,26 @@ func HandleIgmediaforigonlyapi_get_children(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Igmediaforigonlyapi_get_children(args)
 	if err != nil {
@@ -119,6 +189,26 @@ func HandleIgmediaforigonlyapi_get_comments(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Igmediaforigonlyapi_get_comments(args)
@@ -202,6 +292,26 @@ func HandleIgmediaforigonlyapi_get_insights(ctx context.Context, request mcp.Cal
 		args["period"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Igmediaforigonlyapi_get_insights(args)
 	if err != nil {
@@ -230,6 +340,26 @@ func HandleIgmediaforigonlyapi_get_(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Igmediaforigonlyapi_get_(args)

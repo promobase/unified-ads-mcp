@@ -17,8 +17,21 @@ func GetWhatsAppBusinessPreVerifiedPhoneNumberTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// whatsappbusinesspreverifiedphonenumber_get_partners tool
+	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	whatsappbusinesspreverifiedphonenumber_get_partnersTool := mcp.NewTool("whatsappbusinesspreverifiedphonenumber_get_partners",
 		mcp.WithDescription("GET partners for WhatsAppBusinessPreVerifiedPhoneNumber"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinesspreverifiedphonenumber_get_partnersTool)
 
@@ -54,8 +67,21 @@ func GetWhatsAppBusinessPreVerifiedPhoneNumberTools() []mcp.Tool {
 	tools = append(tools, whatsappbusinesspreverifiedphonenumber_delete_Tool)
 
 	// whatsappbusinesspreverifiedphonenumber_get_ tool
+	// Available fields for WhatsAppBusinessPreVerifiedPhoneNumber: code_verification_status, code_verification_time, id, owner_business, phone_number, verification_expiry_time
 	whatsappbusinesspreverifiedphonenumber_get_Tool := mcp.NewTool("whatsappbusinesspreverifiedphonenumber_get_",
 		mcp.WithDescription("GET  for WhatsAppBusinessPreVerifiedPhoneNumber"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for WhatsAppBusinessPreVerifiedPhoneNumber objects. Available fields: code_verification_status, code_verification_time, id, owner_business, phone_number, verification_expiry_time"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, whatsappbusinesspreverifiedphonenumber_get_Tool)
 
@@ -77,6 +103,26 @@ func HandleWhatsappbusinesspreverifiedphonenumber_get_partners(ctx context.Conte
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinesspreverifiedphonenumber_get_partners(args)
@@ -214,6 +260,26 @@ func HandleWhatsappbusinesspreverifiedphonenumber_get_(ctx context.Context, requ
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Whatsappbusinesspreverifiedphonenumber_get_(args)

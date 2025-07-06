@@ -17,6 +17,7 @@ func GetAlbumTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// album_get_comments tool
+	// Available fields for Comment: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count, live_broadcast_timestamp, message, message_tags, object, parent, permalink_url, private_reply_conversation, user_likes
 	album_get_commentsTool := mcp.NewTool("album_get_comments",
 		mcp.WithDescription("GET comments for Album"),
 		mcp.WithString("filter",
@@ -33,6 +34,18 @@ func GetAlbumTools() []mcp.Tool {
 		),
 		mcp.WithString("since",
 			mcp.Description("since parameter for comments"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Comment objects. Available fields: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count (and 8 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, album_get_commentsTool)
@@ -84,8 +97,21 @@ func GetAlbumTools() []mcp.Tool {
 	tools = append(tools, album_post_commentsTool)
 
 	// album_get_likes tool
+	// Available fields for Profile: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username
 	album_get_likesTool := mcp.NewTool("album_get_likes",
 		mcp.WithDescription("GET likes for Album"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Profile objects. Available fields: can_post, id, link, name, pic, pic_crop, pic_large, pic_small, pic_square, profile_type, username"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, album_get_likesTool)
 
@@ -108,8 +134,21 @@ func GetAlbumTools() []mcp.Tool {
 	tools = append(tools, album_post_likesTool)
 
 	// album_get_photos tool
+	// Available fields for Photo: album, alt_text, alt_text_custom, backdated_time, backdated_time_granularity, can_backdate, can_delete, can_tag, created_time, event, from, height, icon, id, images, link, name, name_tags, page_story_id, picture, place, position, source, target, updated_time, webp_images, width
 	album_get_photosTool := mcp.NewTool("album_get_photos",
 		mcp.WithDescription("GET photos for Album"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Photo objects. Available fields: album, alt_text, alt_text_custom, backdated_time, backdated_time_granularity, can_backdate, can_delete, can_tag, created_time, event, from, height, icon, id, images (and 12 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, album_get_photosTool)
 
@@ -275,6 +314,7 @@ func GetAlbumTools() []mcp.Tool {
 	tools = append(tools, album_post_photosTool)
 
 	// album_get_picture tool
+	// Available fields for ProfilePictureSource: bottom, cache_key, height, is_silhouette, left, right, top, url, width
 	album_get_pictureTool := mcp.NewTool("album_get_picture",
 		mcp.WithDescription("GET picture for Album"),
 		mcp.WithBoolean("redirect",
@@ -284,12 +324,37 @@ func GetAlbumTools() []mcp.Tool {
 			mcp.Description("type parameter for picture"),
 			mcp.Enum("album", "small", "thumbnail"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProfilePictureSource objects. Available fields: bottom, cache_key, height, is_silhouette, left, right, top, url, width"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, album_get_pictureTool)
 
 	// album_get_ tool
+	// Available fields for Album: backdated_time, backdated_time_granularity, can_backdate, can_upload, count, cover_photo, created_time, description, edit_link, event, from, id, is_user_facing, link, location, modified_major, name, photo_count, place, privacy, type, updated_time, video_count
 	album_get_Tool := mcp.NewTool("album_get_",
 		mcp.WithDescription("GET  for Album"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Album objects. Available fields: backdated_time, backdated_time_granularity, can_backdate, can_upload, count, cover_photo, created_time, description, edit_link, event, from, id, is_user_facing, link, location (and 8 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, album_get_Tool)
 
@@ -330,6 +395,26 @@ func HandleAlbum_get_comments(ctx context.Context, request mcp.CallToolRequest) 
 	// Optional: since
 	if val := request.GetString("since", ""); val != "" {
 		args["since"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -457,6 +542,26 @@ func HandleAlbum_get_likes(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Album_get_likes(args)
 	if err != nil {
@@ -534,6 +639,26 @@ func HandleAlbum_get_photos(ctx context.Context, request mcp.CallToolRequest) (*
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Album_get_photos(args)
@@ -862,6 +987,26 @@ func HandleAlbum_get_picture(ctx context.Context, request mcp.CallToolRequest) (
 		args["type"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Album_get_picture(args)
 	if err != nil {
@@ -890,6 +1035,26 @@ func HandleAlbum_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Album_get_(args)

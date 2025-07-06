@@ -17,6 +17,7 @@ func GetAnalyticsSegmentTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// analyticssegment_get_ tool
+	// Available fields for AnalyticsSegment: custom_audience_ineligiblity_reasons, description, estimated_custom_audience_size, event_info_rules, event_rules, filter_set, has_demographic_rules, id, is_all_user, is_eligible_for_push_campaign, is_internal, name, percentile_rules, time_last_seen, time_last_updated, user_property_rules, web_param_rules
 	analyticssegment_get_Tool := mcp.NewTool("analyticssegment_get_",
 		mcp.WithDescription("GET  for AnalyticsSegment"),
 		mcp.WithString("async_task_id",
@@ -27,6 +28,18 @@ func GetAnalyticsSegmentTools() []mcp.Tool {
 		),
 		mcp.WithNumber("start_date",
 			mcp.Description("start_date parameter for "),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AnalyticsSegment objects. Available fields: custom_audience_ineligiblity_reasons, description, estimated_custom_audience_size, event_info_rules, event_rules, filter_set, has_demographic_rules, id, is_all_user, is_eligible_for_push_campaign, is_internal, name, percentile_rules, time_last_seen, time_last_updated (and 2 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, analyticssegment_get_Tool)
@@ -63,6 +76,26 @@ func HandleAnalyticssegment_get_(ctx context.Context, request mcp.CallToolReques
 	// Optional: start_date
 	if val := request.GetInt("start_date", 0); val != 0 {
 		args["start_date"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method

@@ -26,10 +26,23 @@ func GetCustomAudienceTools() []mcp.Tool {
 	tools = append(tools, customaudience_delete_adaccountsTool)
 
 	// customaudience_get_adaccounts tool
+	// Available fields for CustomAudienceAdAccount: id
 	customaudience_get_adaccountsTool := mcp.NewTool("customaudience_get_adaccounts",
 		mcp.WithDescription("GET adaccounts for CustomAudience"),
 		mcp.WithString("permissions",
 			mcp.Description("permissions parameter for adaccounts"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CustomAudienceAdAccount objects. Available fields: id"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, customaudience_get_adaccountsTool)
@@ -53,6 +66,7 @@ func GetCustomAudienceTools() []mcp.Tool {
 	tools = append(tools, customaudience_post_adaccountsTool)
 
 	// customaudience_get_ads tool
+	// Available fields for Ad: account_id, ad_active_time, ad_review_feedback, ad_schedule_end_time, ad_schedule_start_time, adlabels, adset, adset_id, bid_amount, bid_info, bid_type, campaign, campaign_id, configured_status, conversion_domain, conversion_specs, created_time, creative, creative_asset_groups_spec, demolink_hash, display_sequence, effective_status, engagement_audience, failed_delivery_checks, id, issues_info, last_updated_by_app_id, name, placement, preview_shareable_link, priority, recommendations, source_ad, source_ad_id, status, targeting, tracking_and_conversion_with_defaults, tracking_specs, updated_time
 	customaudience_get_adsTool := mcp.NewTool("customaudience_get_ads",
 		mcp.WithDescription("GET ads for CustomAudience"),
 		mcp.WithString("effective_status",
@@ -61,10 +75,23 @@ func GetCustomAudienceTools() []mcp.Tool {
 		mcp.WithString("status",
 			mcp.Description("status parameter for ads"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Ad objects. Available fields: account_id, ad_active_time, ad_review_feedback, ad_schedule_end_time, ad_schedule_start_time, adlabels, adset, adset_id, bid_amount, bid_info, bid_type, campaign, campaign_id, configured_status, conversion_domain (and 24 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, customaudience_get_adsTool)
 
 	// customaudience_get_health tool
+	// Available fields for CustomAudienceHealth: health
 	customaudience_get_healthTool := mcp.NewTool("customaudience_get_health",
 		mcp.WithDescription("GET health for CustomAudience"),
 		mcp.WithString("calculated_date",
@@ -85,14 +112,39 @@ func GetCustomAudienceTools() []mcp.Tool {
 		mcp.WithNumber("value_version",
 			mcp.Description("value_version parameter for health"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CustomAudienceHealth objects. Available fields: health"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, customaudience_get_healthTool)
 
 	// customaudience_get_salts tool
+	// Available fields for CustomAudienceSalts: app_id, public_key, salts, user_id
 	customaudience_get_saltsTool := mcp.NewTool("customaudience_get_salts",
 		mcp.WithDescription("GET salts for CustomAudience"),
 		mcp.WithString("params",
 			mcp.Description("params parameter for salts"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CustomAudienceSalts objects. Available fields: app_id, public_key, salts, user_id"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, customaudience_get_saltsTool)
@@ -116,17 +168,43 @@ func GetCustomAudienceTools() []mcp.Tool {
 	tools = append(tools, customaudience_post_saltsTool)
 
 	// customaudience_get_sessions tool
+	// Available fields for CustomAudienceSession: end_time, num_invalid_entries, num_matched, num_received, progress, session_id, stage, start_time
 	customaudience_get_sessionsTool := mcp.NewTool("customaudience_get_sessions",
 		mcp.WithDescription("GET sessions for CustomAudience"),
 		mcp.WithNumber("session_id",
 			mcp.Description("session_id parameter for sessions"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CustomAudienceSession objects. Available fields: end_time, num_invalid_entries, num_matched, num_received, progress, session_id, stage, start_time"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, customaudience_get_sessionsTool)
 
 	// customaudience_get_shared_account_info tool
+	// Available fields for CustomAudiencesharedAccountInfo: account_id, account_name, business_id, business_name, sharing_status
 	customaudience_get_shared_account_infoTool := mcp.NewTool("customaudience_get_shared_account_info",
 		mcp.WithDescription("GET shared_account_info for CustomAudience"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CustomAudiencesharedAccountInfo objects. Available fields: account_id, account_name, business_id, business_name, sharing_status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, customaudience_get_shared_account_infoTool)
 
@@ -184,6 +262,7 @@ func GetCustomAudienceTools() []mcp.Tool {
 	tools = append(tools, customaudience_delete_Tool)
 
 	// customaudience_get_ tool
+	// Available fields for CustomAudience: account_id, approximate_count_lower_bound, approximate_count_upper_bound, customer_file_source, data_source, data_source_types, datafile_custom_audience_uploading_status, delete_time, delivery_status, description, excluded_custom_audiences, external_event_source, household_audience, id, included_custom_audiences, is_eligible_for_sac_campaigns, is_household, is_snapshot, is_value_based, lookalike_audience_ids, lookalike_spec, name, operation_status, opt_out_link, owner_business, page_deletion_marked_delete_time, permission_for_actions, pixel_id, regulated_audience_spec, retention_days, rev_share_policy_id, rule, rule_aggregation, rule_v2, seed_audience, sharing_status, subtype, time_content_updated, time_created, time_updated
 	customaudience_get_Tool := mcp.NewTool("customaudience_get_",
 		mcp.WithDescription("GET  for CustomAudience"),
 		mcp.WithString("ad_account_id",
@@ -197,6 +276,18 @@ func GetCustomAudienceTools() []mcp.Tool {
 		),
 		mcp.WithString("target_countries",
 			mcp.Description("target_countries parameter for "),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CustomAudience objects. Available fields: account_id, approximate_count_lower_bound, approximate_count_upper_bound, customer_file_source, data_source, data_source_types, datafile_custom_audience_uploading_status, delete_time, delivery_status, description, excluded_custom_audiences, external_event_source, household_audience, id, included_custom_audiences (and 25 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, customaudience_get_Tool)
@@ -335,6 +426,26 @@ func HandleCustomaudience_get_adaccounts(ctx context.Context, request mcp.CallTo
 		args["permissions"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Customaudience_get_adaccounts(args)
 	if err != nil {
@@ -427,6 +538,26 @@ func HandleCustomaudience_get_ads(ctx context.Context, request mcp.CallToolReque
 		args["status"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Customaudience_get_ads(args)
 	if err != nil {
@@ -486,6 +617,26 @@ func HandleCustomaudience_get_health(ctx context.Context, request mcp.CallToolRe
 		args["value_version"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Customaudience_get_health(args)
 	if err != nil {
@@ -519,6 +670,26 @@ func HandleCustomaudience_get_salts(ctx context.Context, request mcp.CallToolReq
 	// array type - using string
 	if val := request.GetString("params", ""); val != "" {
 		args["params"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -605,6 +776,26 @@ func HandleCustomaudience_get_sessions(ctx context.Context, request mcp.CallTool
 		args["session_id"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Customaudience_get_sessions(args)
 	if err != nil {
@@ -633,6 +824,26 @@ func HandleCustomaudience_get_shared_account_info(ctx context.Context, request m
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Customaudience_get_shared_account_info(args)
@@ -853,6 +1064,26 @@ func HandleCustomaudience_get_(ctx context.Context, request mcp.CallToolRequest)
 	// array type - using string
 	if val := request.GetString("target_countries", ""); val != "" {
 		args["target_countries"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method

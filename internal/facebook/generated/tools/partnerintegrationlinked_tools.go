@@ -17,8 +17,21 @@ func GetPartnerIntegrationLinkedTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// partnerintegrationlinked_get_ tool
+	// Available fields for PartnerIntegrationLinked: ads_pixel, application, completed_integration_types, external_business_connection_id, external_id, has_oauth_token, id, mbe_app_id, mbe_asset_id, mbe_external_business_id, name, offline_conversion_data_set, page, partner, product_catalog, setup_status
 	partnerintegrationlinked_get_Tool := mcp.NewTool("partnerintegrationlinked_get_",
 		mcp.WithDescription("GET  for PartnerIntegrationLinked"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for PartnerIntegrationLinked objects. Available fields: ads_pixel, application, completed_integration_types, external_business_connection_id, external_id, has_oauth_token, id, mbe_app_id, mbe_asset_id, mbe_external_business_id, name, offline_conversion_data_set, page, partner, product_catalog (and 1 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, partnerintegrationlinked_get_Tool)
 
@@ -40,6 +53,26 @@ func HandlePartnerintegrationlinked_get_(ctx context.Context, request mcp.CallTo
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Partnerintegrationlinked_get_(args)

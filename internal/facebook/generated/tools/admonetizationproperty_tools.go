@@ -17,6 +17,7 @@ func GetAdMonetizationPropertyTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// admonetizationproperty_get_adnetworkanalytics tool
+	// Available fields for AdNetworkAnalyticsSyncQueryResult: omitted_results, query_id, results
 	admonetizationproperty_get_adnetworkanalyticsTool := mcp.NewTool("admonetizationproperty_get_adnetworkanalytics",
 		mcp.WithDescription("GET adnetworkanalytics for AdMonetizationProperty"),
 		mcp.WithString("aggregation_period",
@@ -54,6 +55,18 @@ func GetAdMonetizationPropertyTools() []mcp.Tool {
 		),
 		mcp.WithString("until",
 			mcp.Description("until parameter for adnetworkanalytics"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdNetworkAnalyticsSyncQueryResult objects. Available fields: omitted_results, query_id, results"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, admonetizationproperty_get_adnetworkanalyticsTool)
@@ -98,17 +111,43 @@ func GetAdMonetizationPropertyTools() []mcp.Tool {
 	tools = append(tools, admonetizationproperty_post_adnetworkanalyticsTool)
 
 	// admonetizationproperty_get_adnetworkanalytics_results tool
+	// Available fields for AdNetworkAnalyticsAsyncQueryResult: data, omitted_results, query_id, results, status
 	admonetizationproperty_get_adnetworkanalytics_resultsTool := mcp.NewTool("admonetizationproperty_get_adnetworkanalytics_results",
 		mcp.WithDescription("GET adnetworkanalytics_results for AdMonetizationProperty"),
 		mcp.WithString("query_ids",
 			mcp.Description("query_ids parameter for adnetworkanalytics_results"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdNetworkAnalyticsAsyncQueryResult objects. Available fields: data, omitted_results, query_id, results, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, admonetizationproperty_get_adnetworkanalytics_resultsTool)
 
 	// admonetizationproperty_get_ tool
+	// Available fields for AdMonetizationProperty: owner_business
 	admonetizationproperty_get_Tool := mcp.NewTool("admonetizationproperty_get_",
 		mcp.WithDescription("GET  for AdMonetizationProperty"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdMonetizationProperty objects. Available fields: owner_business"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, admonetizationproperty_get_Tool)
 
@@ -183,6 +222,26 @@ func HandleAdmonetizationproperty_get_adnetworkanalytics(ctx context.Context, re
 	// Optional: until
 	if val := request.GetString("until", ""); val != "" {
 		args["until"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -298,6 +357,26 @@ func HandleAdmonetizationproperty_get_adnetworkanalytics_results(ctx context.Con
 		args["query_ids"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Admonetizationproperty_get_adnetworkanalytics_results(args)
 	if err != nil {
@@ -326,6 +405,26 @@ func HandleAdmonetizationproperty_get_(ctx context.Context, request mcp.CallTool
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Admonetizationproperty_get_(args)

@@ -17,14 +17,40 @@ func GetVideoCopyrightTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// videocopyright_get_update_records tool
+	// Available fields for MediaCopyrightUpdateRecord: action_types, actor, actor_type, creation_time, id, ownership_countries, whitelisted_accounts
 	videocopyright_get_update_recordsTool := mcp.NewTool("videocopyright_get_update_records",
 		mcp.WithDescription("GET update_records for VideoCopyright"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for MediaCopyrightUpdateRecord objects. Available fields: action_types, actor, actor_type, creation_time, id, ownership_countries, whitelisted_accounts"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, videocopyright_get_update_recordsTool)
 
 	// videocopyright_get_ tool
+	// Available fields for VideoCopyright: content_category, copyright_content_id, creator, excluded_ownership_segments, id, in_conflict, monitoring_status, monitoring_type, ownership_countries, reference_file, reference_file_disabled, reference_file_disabled_by_ops, reference_owner_id, rule_ids, tags, whitelisted_ids
 	videocopyright_get_Tool := mcp.NewTool("videocopyright_get_",
 		mcp.WithDescription("GET  for VideoCopyright"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for VideoCopyright objects. Available fields: content_category, copyright_content_id, creator, excluded_ownership_segments, id, in_conflict, monitoring_status, monitoring_type, ownership_countries, reference_file, reference_file_disabled, reference_file_disabled_by_ops, reference_owner_id, rule_ids, tags (and 1 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, videocopyright_get_Tool)
 
@@ -88,6 +114,26 @@ func HandleVideocopyright_get_update_records(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Videocopyright_get_update_records(args)
 	if err != nil {
@@ -116,6 +162,26 @@ func HandleVideocopyright_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Videocopyright_get_(args)

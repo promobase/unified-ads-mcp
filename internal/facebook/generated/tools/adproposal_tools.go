@@ -17,8 +17,21 @@ func GetAdProposalTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adproposal_get_ tool
+	// Available fields for AdProposal: ad_proposal_type_name, adaccount, creation_time, creator, delivery_interface, expiration_time, has_conflict, id, kpi_metric, message, name, proposal_dts_template, proposal_template_name, recommendation, review_time, reviewed_by, send_time, status, use_testing
 	adproposal_get_Tool := mcp.NewTool("adproposal_get_",
 		mcp.WithDescription("GET  for AdProposal"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdProposal objects. Available fields: ad_proposal_type_name, adaccount, creation_time, creator, delivery_interface, expiration_time, has_conflict, id, kpi_metric, message, name, proposal_dts_template, proposal_template_name, recommendation, review_time (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adproposal_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleAdproposal_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adproposal_get_(args)

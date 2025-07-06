@@ -23,6 +23,7 @@ func GetAdRuleTools() []mcp.Tool {
 	tools = append(tools, adrule_post_executeTool)
 
 	// adrule_get_history tool
+	// Available fields for AdRuleHistory: evaluation_spec, exception_code, exception_message, execution_spec, is_manual, results, schedule_spec, timestamp
 	adrule_get_historyTool := mcp.NewTool("adrule_get_history",
 		mcp.WithDescription("GET history for AdRule"),
 		mcp.WithString("action",
@@ -34,6 +35,18 @@ func GetAdRuleTools() []mcp.Tool {
 		),
 		mcp.WithString("object_id",
 			mcp.Description("object_id parameter for history"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdRuleHistory objects. Available fields: evaluation_spec, exception_code, exception_message, execution_spec, is_manual, results, schedule_spec, timestamp"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adrule_get_historyTool)
@@ -51,8 +64,21 @@ func GetAdRuleTools() []mcp.Tool {
 	tools = append(tools, adrule_delete_Tool)
 
 	// adrule_get_ tool
+	// Available fields for AdRule: account_id, created_by, created_time, disable_error_code, evaluation_spec, execution_spec, id, name, schedule_spec, status, updated_time
 	adrule_get_Tool := mcp.NewTool("adrule_get_",
 		mcp.WithDescription("GET  for AdRule"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdRule objects. Available fields: account_id, created_by, created_time, disable_error_code, evaluation_spec, execution_spec, id, name, schedule_spec, status, updated_time"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adrule_get_Tool)
 
@@ -141,6 +167,26 @@ func HandleAdrule_get_history(ctx context.Context, request mcp.CallToolRequest) 
 		args["object_id"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adrule_get_history(args)
 	if err != nil {
@@ -227,6 +273,26 @@ func HandleAdrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adrule_get_(args)

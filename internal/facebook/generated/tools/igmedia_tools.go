@@ -17,14 +17,40 @@ func GetIGMediaTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// igmedia_get_boost_ads_list tool
+	// Available fields for IGBoostMediaAd: ad_id, ad_status
 	igmedia_get_boost_ads_listTool := mcp.NewTool("igmedia_get_boost_ads_list",
 		mcp.WithDescription("GET boost_ads_list for IGMedia"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGBoostMediaAd objects. Available fields: ad_id, ad_status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, igmedia_get_boost_ads_listTool)
 
 	// igmedia_get_branded_content_partner_promote tool
+	// Available fields for BrandedContentShadowIGUserID: id
 	igmedia_get_branded_content_partner_promoteTool := mcp.NewTool("igmedia_get_branded_content_partner_promote",
 		mcp.WithDescription("GET branded_content_partner_promote for IGMedia"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BrandedContentShadowIGUserID objects. Available fields: id"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, igmedia_get_branded_content_partner_promoteTool)
 
@@ -43,20 +69,59 @@ func GetIGMediaTools() []mcp.Tool {
 	tools = append(tools, igmedia_post_branded_content_partner_promoteTool)
 
 	// igmedia_get_children tool
+	// Available fields for IGMedia: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner, permalink, shortcode, thumbnail_url, timestamp, username, view_count
 	igmedia_get_childrenTool := mcp.NewTool("igmedia_get_children",
 		mcp.WithDescription("GET children for IGMedia"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGMedia objects. Available fields: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner (and 6 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, igmedia_get_childrenTool)
 
 	// igmedia_get_collaborators tool
+	// Available fields for ShadowIGMediaCollaborators: id, invite_status, username
 	igmedia_get_collaboratorsTool := mcp.NewTool("igmedia_get_collaborators",
 		mcp.WithDescription("GET collaborators for IGMedia"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ShadowIGMediaCollaborators objects. Available fields: id, invite_status, username"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, igmedia_get_collaboratorsTool)
 
 	// igmedia_get_comments tool
+	// Available fields for IGComment: from, hidden, id, legacy_instagram_comment_id, like_count, media, parent_id, text, timestamp, user, username
 	igmedia_get_commentsTool := mcp.NewTool("igmedia_get_comments",
 		mcp.WithDescription("GET comments for IGMedia"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGComment objects. Available fields: from, hidden, id, legacy_instagram_comment_id, like_count, media, parent_id, text, timestamp, user, username"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, igmedia_get_commentsTool)
 
@@ -73,6 +138,7 @@ func GetIGMediaTools() []mcp.Tool {
 	tools = append(tools, igmedia_post_commentsTool)
 
 	// igmedia_get_insights tool
+	// Available fields for InstagramInsightsResult: description, id, name, period, title, total_value, values
 	igmedia_get_insightsTool := mcp.NewTool("igmedia_get_insights",
 		mcp.WithDescription("GET insights for IGMedia"),
 		mcp.WithString("breakdown",
@@ -87,6 +153,18 @@ func GetIGMediaTools() []mcp.Tool {
 		mcp.WithString("period",
 			mcp.Description("period parameter for insights"),
 			mcp.Enum("day", "days_28", "lifetime", "month", "total_over_range", "week"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for InstagramInsightsResult objects. Available fields: description, id, name, period, title, total_value, values"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, igmedia_get_insightsTool)
@@ -104,8 +182,21 @@ func GetIGMediaTools() []mcp.Tool {
 	tools = append(tools, igmedia_post_partnership_ad_codeTool)
 
 	// igmedia_get_product_tags tool
+	// Available fields for ShadowIGMediaProductTags: image_url, is_checkout, merchant_id, name, price_string, product_id, review_status, stripped_price_string, stripped_sale_price_string, x, y
 	igmedia_get_product_tagsTool := mcp.NewTool("igmedia_get_product_tags",
 		mcp.WithDescription("GET product_tags for IGMedia"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ShadowIGMediaProductTags objects. Available fields: image_url, is_checkout, merchant_id, name, price_string, product_id, review_status, stripped_price_string, stripped_sale_price_string, x, y"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, igmedia_get_product_tagsTool)
 
@@ -123,6 +214,7 @@ func GetIGMediaTools() []mcp.Tool {
 	tools = append(tools, igmedia_post_product_tagsTool)
 
 	// igmedia_get_ tool
+	// Available fields for IGMedia: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner, permalink, shortcode, thumbnail_url, timestamp, username, view_count
 	igmedia_get_Tool := mcp.NewTool("igmedia_get_",
 		mcp.WithDescription("GET  for IGMedia"),
 		mcp.WithNumber("ad_account_id",
@@ -146,6 +238,18 @@ func GetIGMediaTools() []mcp.Tool {
 		),
 		mcp.WithString("secondary_ig_user_id",
 			mcp.Description("secondary_ig_user_id parameter for "),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGMedia objects. Available fields: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner (and 6 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, igmedia_get_Tool)
@@ -179,6 +283,26 @@ func HandleIgmedia_get_boost_ads_list(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Igmedia_get_boost_ads_list(args)
 	if err != nil {
@@ -207,6 +331,26 @@ func HandleIgmedia_get_branded_content_partner_promote(ctx context.Context, requ
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Igmedia_get_branded_content_partner_promote(args)
@@ -280,6 +424,26 @@ func HandleIgmedia_get_children(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Igmedia_get_children(args)
 	if err != nil {
@@ -309,6 +473,26 @@ func HandleIgmedia_get_collaborators(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Igmedia_get_collaborators(args)
 	if err != nil {
@@ -337,6 +521,26 @@ func HandleIgmedia_get_comments(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Igmedia_get_comments(args)
@@ -425,6 +629,26 @@ func HandleIgmedia_get_insights(ctx context.Context, request mcp.CallToolRequest
 		args["period"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Igmedia_get_insights(args)
 	if err != nil {
@@ -511,6 +735,26 @@ func HandleIgmedia_get_product_tags(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Igmedia_get_product_tags(args)
@@ -615,6 +859,26 @@ func HandleIgmedia_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	// Optional: secondary_ig_user_id
 	if val := request.GetString("secondary_ig_user_id", ""); val != "" {
 		args["secondary_ig_user_id"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method

@@ -27,8 +27,21 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_delete_agenciesTool)
 
 	// productcatalog_get_agencies tool
+	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	productcatalog_get_agenciesTool := mcp.NewTool("productcatalog_get_agencies",
 		mcp.WithDescription("GET agencies for ProductCatalog"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productcatalog_get_agenciesTool)
 
@@ -67,11 +80,24 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_delete_assigned_usersTool)
 
 	// productcatalog_get_assigned_users tool
+	// Available fields for AssignedUser: business, id, name, user_type
 	productcatalog_get_assigned_usersTool := mcp.NewTool("productcatalog_get_assigned_users",
 		mcp.WithDescription("GET assigned_users for ProductCatalog"),
 		mcp.WithString("business",
 			mcp.Required(),
 			mcp.Description("business parameter for assigned_users"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AssignedUser objects. Available fields: business, id, name, user_type"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, productcatalog_get_assigned_usersTool)
@@ -92,6 +118,7 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_post_assigned_usersTool)
 
 	// productcatalog_get_automotive_models tool
+	// Available fields for AutomotiveModel: applinks, automotive_model_id, availability, body_style, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, drivetrain, exterior_color, finance_description, finance_type, fuel_type, generation, id, image_fetch_status, images, interior_color, interior_upholstery, make, model, price, sanitized_images, title, transmission, trim, unit_price, url, visibility, year
 	productcatalog_get_automotive_modelsTool := mcp.NewTool("productcatalog_get_automotive_models",
 		mcp.WithDescription("GET automotive_models for ProductCatalog"),
 		mcp.WithBoolean("bulk_pagination",
@@ -99,6 +126,18 @@ func GetProductCatalogTools() []mcp.Tool {
 		),
 		mcp.WithString("filter",
 			mcp.Description("filter parameter for automotive_models"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AutomotiveModel objects. Available fields: applinks, automotive_model_id, availability, body_style, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3 (and 24 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, productcatalog_get_automotive_modelsTool)
@@ -133,6 +172,7 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_post_catalog_storeTool)
 
 	// productcatalog_get_categories tool
+	// Available fields for ProductCatalogCategory: criteria_value, description, destination_uri, image_url, name, num_items, tokens
 	productcatalog_get_categoriesTool := mcp.NewTool("productcatalog_get_categories",
 		mcp.WithDescription("GET categories for ProductCatalog"),
 		mcp.WithString("categorization_criteria",
@@ -142,6 +182,18 @@ func GetProductCatalogTools() []mcp.Tool {
 		),
 		mcp.WithString("filter",
 			mcp.Description("filter parameter for categories"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductCatalogCategory objects. Available fields: criteria_value, description, destination_uri, image_url, name, num_items, tokens"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, productcatalog_get_categoriesTool)
@@ -157,6 +209,7 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_post_categoriesTool)
 
 	// productcatalog_get_check_batch_request_status tool
+	// Available fields for CheckBatchRequestStatus: errors, errors_total_count, handle, ids_of_invalid_requests, status, warnings, warnings_total_count
 	productcatalog_get_check_batch_request_statusTool := mcp.NewTool("productcatalog_get_check_batch_request_status",
 		mcp.WithDescription("GET check_batch_request_status for ProductCatalog"),
 		mcp.WithString("error_priority",
@@ -170,28 +223,79 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithBoolean("load_ids_of_invalid_requests",
 			mcp.Description("load_ids_of_invalid_requests parameter for check_batch_request_status"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CheckBatchRequestStatus objects. Available fields: errors, errors_total_count, handle, ids_of_invalid_requests, status, warnings, warnings_total_count"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productcatalog_get_check_batch_request_statusTool)
 
 	// productcatalog_get_check_marketplace_partner_sellers_status tool
+	// Available fields for ProductCatalogCheckMarketplacePartnerSellersStatus: sample_errors, session_id, status
 	productcatalog_get_check_marketplace_partner_sellers_statusTool := mcp.NewTool("productcatalog_get_check_marketplace_partner_sellers_status",
 		mcp.WithDescription("GET check_marketplace_partner_sellers_status for ProductCatalog"),
 		mcp.WithString("session_id",
 			mcp.Required(),
 			mcp.Description("session_id parameter for check_marketplace_partner_sellers_status"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductCatalogCheckMarketplacePartnerSellersStatus objects. Available fields: sample_errors, session_id, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productcatalog_get_check_marketplace_partner_sellers_statusTool)
 
 	// productcatalog_get_collaborative_ads_lsb_image_bank tool
+	// Available fields for CPASLsbImageBank: ad_group_id, catalog_segment_proxy_id, id
 	productcatalog_get_collaborative_ads_lsb_image_bankTool := mcp.NewTool("productcatalog_get_collaborative_ads_lsb_image_bank",
 		mcp.WithDescription("GET collaborative_ads_lsb_image_bank for ProductCatalog"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CPASLsbImageBank objects. Available fields: ad_group_id, catalog_segment_proxy_id, id"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productcatalog_get_collaborative_ads_lsb_image_bankTool)
 
 	// productcatalog_get_collaborative_ads_share_settings tool
+	// Available fields for CollaborativeAdsShareSettings: agency_business, id, product_catalog_proxy_id, utm_campaign, utm_medium, utm_source
 	productcatalog_get_collaborative_ads_share_settingsTool := mcp.NewTool("productcatalog_get_collaborative_ads_share_settings",
 		mcp.WithDescription("GET collaborative_ads_share_settings for ProductCatalog"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CollaborativeAdsShareSettings objects. Available fields: agency_business, id, product_catalog_proxy_id, utm_campaign, utm_medium, utm_source"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productcatalog_get_collaborative_ads_share_settingsTool)
 
@@ -212,26 +316,53 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_post_cpas_lsb_image_bankTool)
 
 	// productcatalog_get_creator_asset_creatives tool
+	// Available fields for CreatorAssetCreative: id, image_url, moderation_status, product_item_retailer_id, product_url, retailer_id, video_url
 	productcatalog_get_creator_asset_creativesTool := mcp.NewTool("productcatalog_get_creator_asset_creatives",
 		mcp.WithDescription("GET creator_asset_creatives for ProductCatalog"),
 		mcp.WithString("moderation_status",
 			mcp.Description("moderation_status parameter for creator_asset_creatives"),
 			mcp.Enum("ARCHIVED", "ELIGIBLE", "EXPIRED", "INELIGIBLE", "IN_REVIEW", "PAUSED", "UNKNOWN"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CreatorAssetCreative objects. Available fields: id, image_url, moderation_status, product_item_retailer_id, product_url, retailer_id, video_url"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productcatalog_get_creator_asset_creativesTool)
 
 	// productcatalog_get_data_sources tool
+	// Available fields for ProductCatalogDataSource: app_id, id, ingestion_source_type, name, upload_type
 	productcatalog_get_data_sourcesTool := mcp.NewTool("productcatalog_get_data_sources",
 		mcp.WithDescription("GET data_sources for ProductCatalog"),
 		mcp.WithString("ingestion_source_type",
 			mcp.Description("ingestion_source_type parameter for data_sources"),
 			mcp.Enum("ALL", "PRIMARY", "SUPPLEMENTARY"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductCatalogDataSource objects. Available fields: app_id, id, ingestion_source_type, name, upload_type"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productcatalog_get_data_sourcesTool)
 
 	// productcatalog_get_destinations tool
+	// Available fields for Destination: address, applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_id, id, image_fetch_status, images, name, price, price_change, sanitized_images, tags, types, unit_price, url, visibility
 	productcatalog_get_destinationsTool := mcp.NewTool("productcatalog_get_destinations",
 		mcp.WithDescription("GET destinations for ProductCatalog"),
 		mcp.WithBoolean("bulk_pagination",
@@ -240,10 +371,23 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithString("filter",
 			mcp.Description("filter parameter for destinations"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Destination objects. Available fields: address, applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description (and 13 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productcatalog_get_destinationsTool)
 
 	// productcatalog_get_diagnostics tool
+	// Available fields for ProductCatalogDiagnosticGroup: affected_channels, affected_entity, affected_features, diagnostics, error_code, number_of_affected_entities, number_of_affected_items, severity, subtitle, title, type
 	productcatalog_get_diagnosticsTool := mcp.NewTool("productcatalog_get_diagnostics",
 		mcp.WithDescription("GET diagnostics for ProductCatalog"),
 		mcp.WithString("affected_channels",
@@ -266,15 +410,40 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Description("types parameter for diagnostics"),
 			mcp.Enum("AR_VISIBILITY_ISSUES", "ATTRIBUTES_INVALID", "ATTRIBUTES_MISSING", "CATEGORY", "CHECKOUT", "DA_VISIBILITY_ISSUES", "EVENT_SOURCE_ISSUES", "IMAGE_QUALITY", "LOW_QUALITY_TITLE_AND_DESCRIPTION", "POLICY_VIOLATION", "SHOPS_VISIBILITY_ISSUES"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductCatalogDiagnosticGroup objects. Available fields: affected_channels, affected_entity, affected_features, diagnostics, error_code, number_of_affected_entities, number_of_affected_items, severity, subtitle, title, type"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productcatalog_get_diagnosticsTool)
 
 	// productcatalog_get_event_stats tool
+	// Available fields for ProductEventStat: date_start, date_stop, device_type, event, event_source, total_content_ids_matched_other_catalogs, total_matched_content_ids, total_unmatched_content_ids, unique_content_ids_matched_other_catalogs, unique_matched_content_ids, unique_unmatched_content_ids
 	productcatalog_get_event_statsTool := mcp.NewTool("productcatalog_get_event_stats",
 		mcp.WithDescription("GET event_stats for ProductCatalog"),
 		mcp.WithString("breakdowns",
 			mcp.Description("breakdowns parameter for event_stats"),
 			mcp.Enum("DEVICE_TYPE"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductEventStat objects. Available fields: date_start, date_stop, device_type, event, event_source, total_content_ids_matched_other_catalogs, total_matched_content_ids, total_unmatched_content_ids, unique_content_ids_matched_other_catalogs, unique_matched_content_ids, unique_unmatched_content_ids"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, productcatalog_get_event_statsTool)
@@ -289,8 +458,21 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_delete_external_event_sourcesTool)
 
 	// productcatalog_get_external_event_sources tool
+	// Available fields for ExternalEventSource: id, name, source_type
 	productcatalog_get_external_event_sourcesTool := mcp.NewTool("productcatalog_get_external_event_sources",
 		mcp.WithDescription("GET external_event_sources for ProductCatalog"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ExternalEventSource objects. Available fields: id, name, source_type"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productcatalog_get_external_event_sourcesTool)
 
@@ -304,6 +486,7 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_post_external_event_sourcesTool)
 
 	// productcatalog_get_flights tool
+	// Available fields for Flight: applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_airport, destination_city, flight_id, id, image_fetch_status, images, oneway_currency, oneway_price, origin_airport, origin_city, price, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sanitized_images, tags, unit_price, url, visibility
 	productcatalog_get_flightsTool := mcp.NewTool("productcatalog_get_flights",
 		mcp.WithDescription("GET flights for ProductCatalog"),
 		mcp.WithBoolean("bulk_pagination",
@@ -311,6 +494,18 @@ func GetProductCatalogTools() []mcp.Tool {
 		),
 		mcp.WithString("filter",
 			mcp.Description("filter parameter for flights"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Flight objects. Available fields: applinks, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, destination_airport (and 20 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, productcatalog_get_flightsTool)
@@ -333,6 +528,7 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_post_geolocated_items_batchTool)
 
 	// productcatalog_get_home_listings tool
+	// Available fields for HomeListing: ac_type, additional_fees_description, address, agent_company, agent_email, agent_fb_page_id, agent_name, agent_phone, applinks, area_size, area_unit, availability, category_specific_fields, co_2_emission_rating_eu, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, days_on_market, description, energy_rating_eu, furnish_type, group_id, heating_type, home_listing_id, id, image_fetch_status, images, laundry_type, listing_type, max_currency, max_price, min_currency, min_price, name, num_baths, num_beds, num_rooms, num_units, parking_type, partner_verification, pet_policy, price, property_type, sanitized_images, securitydeposit_currency, securitydeposit_price, tags, unit_price, url, visibility, year_built
 	productcatalog_get_home_listingsTool := mcp.NewTool("productcatalog_get_home_listings",
 		mcp.WithDescription("GET home_listings for ProductCatalog"),
 		mcp.WithBoolean("bulk_pagination",
@@ -340,6 +536,18 @@ func GetProductCatalogTools() []mcp.Tool {
 		),
 		mcp.WithString("filter",
 			mcp.Description("filter parameter for home_listings"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for HomeListing objects. Available fields: ac_type, additional_fees_description, address, agent_company, agent_email, agent_fb_page_id, agent_name, agent_phone, applinks, area_size, area_unit, availability, category_specific_fields, co_2_emission_rating_eu, currency (and 44 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, productcatalog_get_home_listingsTool)
@@ -405,11 +613,24 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_post_home_listingsTool)
 
 	// productcatalog_get_hotel_rooms_batch tool
+	// Available fields for ProductCatalogHotelRoomsBatch: errors, errors_total_count, handle, status
 	productcatalog_get_hotel_rooms_batchTool := mcp.NewTool("productcatalog_get_hotel_rooms_batch",
 		mcp.WithDescription("GET hotel_rooms_batch for ProductCatalog"),
 		mcp.WithString("handle",
 			mcp.Required(),
 			mcp.Description("handle parameter for hotel_rooms_batch"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductCatalogHotelRoomsBatch objects. Available fields: errors, errors_total_count, handle, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, productcatalog_get_hotel_rooms_batchTool)
@@ -441,6 +662,7 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_post_hotel_rooms_batchTool)
 
 	// productcatalog_get_hotels tool
+	// Available fields for Hotel: address, applinks, brand, category, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, guest_ratings, hotel_id, id, image_fetch_status, images, lowest_base_price, loyalty_program, margin_level, name, phone, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sale_price, sanitized_images, star_rating, tags, unit_price, url, visibility
 	productcatalog_get_hotelsTool := mcp.NewTool("productcatalog_get_hotels",
 		mcp.WithDescription("GET hotels for ProductCatalog"),
 		mcp.WithBoolean("bulk_pagination",
@@ -448,6 +670,18 @@ func GetProductCatalogTools() []mcp.Tool {
 		),
 		mcp.WithString("filter",
 			mcp.Description("filter parameter for hotels"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Hotel objects. Available fields: address, applinks, brand, category, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3 (and 24 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, productcatalog_get_hotelsTool)
@@ -582,11 +816,24 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_post_marketplace_partner_signalsTool)
 
 	// productcatalog_get_pricing_variables_batch tool
+	// Available fields for ProductCatalogPricingVariablesBatch: errors, errors_total_count, handle, status
 	productcatalog_get_pricing_variables_batchTool := mcp.NewTool("productcatalog_get_pricing_variables_batch",
 		mcp.WithDescription("GET pricing_variables_batch for ProductCatalog"),
 		mcp.WithString("handle",
 			mcp.Required(),
 			mcp.Description("handle parameter for pricing_variables_batch"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductCatalogPricingVariablesBatch objects. Available fields: errors, errors_total_count, handle, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, productcatalog_get_pricing_variables_batchTool)
@@ -618,8 +865,21 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_post_pricing_variables_batchTool)
 
 	// productcatalog_get_product_feeds tool
+	// Available fields for ProductFeed: country, created_time, default_currency, deletion_enabled, delimiter, encoding, file_name, id, ingestion_source_type, item_sub_type, latest_upload, migrated_from_feed_id, name, override_type, primary_feeds, product_count, quoted_fields_mode, schedule, supplementary_feeds, update_schedule
 	productcatalog_get_product_feedsTool := mcp.NewTool("productcatalog_get_product_feeds",
 		mcp.WithDescription("GET product_feeds for ProductCatalog"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductFeed objects. Available fields: country, created_time, default_currency, deletion_enabled, delimiter, encoding, file_name, id, ingestion_source_type, item_sub_type, latest_upload, migrated_from_feed_id, name, override_type, primary_feeds (and 5 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productcatalog_get_product_feedsTool)
 
@@ -694,8 +954,21 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_post_product_feedsTool)
 
 	// productcatalog_get_product_groups tool
+	// Available fields for ProductGroup: id, product_catalog, retailer_id, variants
 	productcatalog_get_product_groupsTool := mcp.NewTool("productcatalog_get_product_groups",
 		mcp.WithDescription("GET product_groups for ProductCatalog"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductGroup objects. Available fields: id, product_catalog, retailer_id, variants"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productcatalog_get_product_groupsTool)
 
@@ -712,6 +985,7 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_post_product_groupsTool)
 
 	// productcatalog_get_product_sets tool
+	// Available fields for ProductSet: auto_creation_url, filter, id, latest_metadata, live_metadata, name, ordering_info, product_catalog, product_count, retailer_id
 	productcatalog_get_product_setsTool := mcp.NewTool("productcatalog_get_product_sets",
 		mcp.WithDescription("GET product_sets for ProductCatalog"),
 		mcp.WithString("ancestor_id",
@@ -725,6 +999,18 @@ func GetProductCatalogTools() []mcp.Tool {
 		),
 		mcp.WithString("retailer_id",
 			mcp.Description("retailer_id parameter for product_sets"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductSet objects. Available fields: auto_creation_url, filter, id, latest_metadata, live_metadata, name, ordering_info, product_catalog, product_count, retailer_id"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, productcatalog_get_product_setsTool)
@@ -755,16 +1041,30 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_post_product_setsTool)
 
 	// productcatalog_get_product_sets_batch tool
+	// Available fields for ProductCatalogProductSetsBatch: errors, errors_total_count, handle, status
 	productcatalog_get_product_sets_batchTool := mcp.NewTool("productcatalog_get_product_sets_batch",
 		mcp.WithDescription("GET product_sets_batch for ProductCatalog"),
 		mcp.WithString("handle",
 			mcp.Required(),
 			mcp.Description("handle parameter for product_sets_batch"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductCatalogProductSetsBatch objects. Available fields: errors, errors_total_count, handle, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productcatalog_get_product_sets_batchTool)
 
 	// productcatalog_get_products tool
+	// Available fields for ProductItem: additional_image_cdn_urls, additional_image_urls, additional_variant_attributes, age_group, applinks, availability, brand, bundle_items, bundle_retailer_ids, capability_to_review_status, category, category_specific_fields, color, commerce_insights, condition, currency, custom_data, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, description, errors, expiration_date, fb_product_category, gender, generated_background_images, generated_background_images_ad_usage, gtin, id, image_cdn_urls, image_fetch_status, image_url, images, importer_address, importer_name, invalidation_errors, inventory, is_bundle_hero, manufacturer_info, manufacturer_part_number, marked_for_product_launch, material, mobile_link, name, ordering_index, origin_country, parent_product_id, pattern, post_conversion_signal_based_enforcement_appeal_eligibility, price, product_catalog, product_feed, product_group, product_local_info, product_relationship, product_type, quantity_to_sell_on_facebook, retailer_id, retailer_product_group_id, review_rejection_reasons, review_status, sale_price, sale_price_end_date, sale_price_start_date, shipping_weight_unit, shipping_weight_value, short_description, size, start_date, tags, url, vendor_id, video_fetch_status, videos, visibility, wa_compliance_category
 	productcatalog_get_productsTool := mcp.NewTool("productcatalog_get_products",
 		mcp.WithDescription("GET products for ProductCatalog"),
 		mcp.WithBoolean("bulk_pagination",
@@ -783,6 +1083,18 @@ func GetProductCatalogTools() []mcp.Tool {
 		),
 		mcp.WithBoolean("return_only_approved_products",
 			mcp.Description("return_only_approved_products parameter for products"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductItem objects. Available fields: additional_image_cdn_urls, additional_image_urls, additional_variant_attributes, age_group, applinks, availability, brand, bundle_items, bundle_retailer_ids, capability_to_review_status, category, category_specific_fields, color, commerce_insights, condition (and 68 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, productcatalog_get_productsTool)
@@ -1050,6 +1362,7 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_post_update_generated_image_configTool)
 
 	// productcatalog_get_vehicle_offers tool
+	// Available fields for VehicleOffer: amount_currency, amount_percentage, amount_price, amount_qualifier, applinks, availability, body_style, cashback_currency, cashback_price, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, dma_codes, downpayment_currency, downpayment_price, downpayment_qualifier, drivetrain, end_date, end_time, exterior_color, fuel_type, generation, id, image_fetch_status, images, interior_color, interior_upholstery, make, model, offer_description, offer_disclaimer, offer_type, price, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sanitized_images, start_date, start_time, tags, term_length, term_qualifier, title, transmission, trim, unit_price, url, vehicle_offer_id, visibility, year
 	productcatalog_get_vehicle_offersTool := mcp.NewTool("productcatalog_get_vehicle_offers",
 		mcp.WithDescription("GET vehicle_offers for ProductCatalog"),
 		mcp.WithBoolean("bulk_pagination",
@@ -1058,10 +1371,23 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithString("filter",
 			mcp.Description("filter parameter for vehicle_offers"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for VehicleOffer objects. Available fields: amount_currency, amount_percentage, amount_price, amount_qualifier, applinks, availability, body_style, cashback_currency, cashback_price, category_specific_fields, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3 (and 46 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productcatalog_get_vehicle_offersTool)
 
 	// productcatalog_get_vehicles tool
+	// Available fields for Vehicle: address, applinks, availability, availability_circle_radius, availability_circle_radius_unit, body_style, category_specific_fields, condition, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0, custom_number_1, custom_number_2, custom_number_3, custom_number_4, date_first_on_lot, dealer_communication_channel, dealer_email, dealer_id, dealer_name, dealer_phone, dealer_privacy_policy_url, description, drivetrain, exterior_color, fb_page_id, features, fuel_type, id, image_fetch_status, images, interior_color, legal_disclosure_impressum_url, make, mileage, model, previous_currency, previous_price, price, product_priority_0, product_priority_1, product_priority_2, product_priority_3, product_priority_4, sale_currency, sale_price, sanitized_images, state_of_vehicle, tags, title, transmission, trim, unit_price, url, vehicle_id, vehicle_registration_plate, vehicle_specifications, vehicle_type, vin, visibility, year
 	productcatalog_get_vehiclesTool := mcp.NewTool("productcatalog_get_vehicles",
 		mcp.WithDescription("GET vehicles for ProductCatalog"),
 		mcp.WithBoolean("bulk_pagination",
@@ -1069,6 +1395,18 @@ func GetProductCatalogTools() []mcp.Tool {
 		),
 		mcp.WithString("filter",
 			mcp.Description("filter parameter for vehicles"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Vehicle objects. Available fields: address, applinks, availability, availability_circle_radius, availability_circle_radius_unit, body_style, category_specific_fields, condition, currency, custom_label_0, custom_label_1, custom_label_2, custom_label_3, custom_label_4, custom_number_0 (and 50 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, productcatalog_get_vehiclesTool)
@@ -1194,8 +1532,21 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_post_vehiclesTool)
 
 	// productcatalog_get_version_configs tool
+	// Available fields for CatalogContentVersionConfig: id, name, version
 	productcatalog_get_version_configsTool := mcp.NewTool("productcatalog_get_version_configs",
 		mcp.WithDescription("GET version_configs for ProductCatalog"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CatalogContentVersionConfig objects. Available fields: id, name, version"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productcatalog_get_version_configsTool)
 
@@ -1233,11 +1584,24 @@ func GetProductCatalogTools() []mcp.Tool {
 	tools = append(tools, productcatalog_delete_Tool)
 
 	// productcatalog_get_ tool
+	// Available fields for ProductCatalog: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business, product_count, store_catalog_settings, user_access_expire_time, vertical
 	productcatalog_get_Tool := mcp.NewTool("productcatalog_get_",
 		mcp.WithDescription("GET  for ProductCatalog"),
 		mcp.WithString("segment_use_cases",
 			mcp.Description("segment_use_cases parameter for "),
 			mcp.Enum("AFFILIATE_SELLER_STOREFRONT", "AFFILIATE_TAGGED_ONLY_DEPRECATED", "COLLAB_ADS", "COLLAB_ADS_FOR_MARKETPLACE_PARTNER", "COLLAB_ADS_SEGMENT_WITHOUT_SEGMENT_SYNCING", "DIGITAL_CIRCULARS", "FB_LIVE_SHOPPING", "IG_SHOPPING", "IG_SHOPPING_SUGGESTED_PRODUCTS", "MARKETPLACE_SHOPS", "TEST"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductCatalog objects. Available fields: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, productcatalog_get_Tool)
@@ -1330,6 +1694,26 @@ func HandleProductcatalog_get_agencies(ctx context.Context, request mcp.CallTool
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Productcatalog_get_agencies(args)
@@ -1461,6 +1845,26 @@ func HandleProductcatalog_get_assigned_users(ctx context.Context, request mcp.Ca
 	}
 	args["business"] = business
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Productcatalog_get_assigned_users(args)
 	if err != nil {
@@ -1542,6 +1946,26 @@ func HandleProductcatalog_get_automotive_models(ctx context.Context, request mcp
 	// object type - using string
 	if val := request.GetString("filter", ""); val != "" {
 		args["filter"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -1673,6 +2097,26 @@ func HandleProductcatalog_get_categories(ctx context.Context, request mcp.CallTo
 		args["filter"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Productcatalog_get_categories(args)
 	if err != nil {
@@ -1755,6 +2199,26 @@ func HandleProductcatalog_get_check_batch_request_status(ctx context.Context, re
 		args["load_ids_of_invalid_requests"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Productcatalog_get_check_batch_request_status(args)
 	if err != nil {
@@ -1791,6 +2255,26 @@ func HandleProductcatalog_get_check_marketplace_partner_sellers_status(ctx conte
 	}
 	args["session_id"] = session_id
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Productcatalog_get_check_marketplace_partner_sellers_status(args)
 	if err != nil {
@@ -1820,6 +2304,26 @@ func HandleProductcatalog_get_collaborative_ads_lsb_image_bank(ctx context.Conte
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Productcatalog_get_collaborative_ads_lsb_image_bank(args)
 	if err != nil {
@@ -1848,6 +2352,26 @@ func HandleProductcatalog_get_collaborative_ads_share_settings(ctx context.Conte
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Productcatalog_get_collaborative_ads_share_settings(args)
@@ -1929,6 +2453,26 @@ func HandleProductcatalog_get_creator_asset_creatives(ctx context.Context, reque
 		args["moderation_status"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Productcatalog_get_creator_asset_creatives(args)
 	if err != nil {
@@ -1961,6 +2505,26 @@ func HandleProductcatalog_get_data_sources(ctx context.Context, request mcp.Call
 	// Optional: ingestion_source_type
 	if val := request.GetString("ingestion_source_type", ""); val != "" {
 		args["ingestion_source_type"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -2001,6 +2565,26 @@ func HandleProductcatalog_get_destinations(ctx context.Context, request mcp.Call
 	// object type - using string
 	if val := request.GetString("filter", ""); val != "" {
 		args["filter"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -2062,6 +2646,26 @@ func HandleProductcatalog_get_diagnostics(ctx context.Context, request mcp.CallT
 		args["types"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Productcatalog_get_diagnostics(args)
 	if err != nil {
@@ -2095,6 +2699,26 @@ func HandleProductcatalog_get_event_stats(ctx context.Context, request mcp.CallT
 	// array type - using string
 	if val := request.GetString("breakdowns", ""); val != "" {
 		args["breakdowns"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -2160,6 +2784,26 @@ func HandleProductcatalog_get_external_event_sources(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Productcatalog_get_external_event_sources(args)
@@ -2234,6 +2878,26 @@ func HandleProductcatalog_get_flights(ctx context.Context, request mcp.CallToolR
 	// object type - using string
 	if val := request.GetString("filter", ""); val != "" {
 		args["filter"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -2322,6 +2986,26 @@ func HandleProductcatalog_get_home_listings(ctx context.Context, request mcp.Cal
 	// object type - using string
 	if val := request.GetString("filter", ""); val != "" {
 		args["filter"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -2482,6 +3166,26 @@ func HandleProductcatalog_get_hotel_rooms_batch(ctx context.Context, request mcp
 	}
 	args["handle"] = handle
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Productcatalog_get_hotel_rooms_batch(args)
 	if err != nil {
@@ -2581,6 +3285,26 @@ func HandleProductcatalog_get_hotels(ctx context.Context, request mcp.CallToolRe
 	// object type - using string
 	if val := request.GetString("filter", ""); val != "" {
 		args["filter"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -2932,6 +3656,26 @@ func HandleProductcatalog_get_pricing_variables_batch(ctx context.Context, reque
 	}
 	args["handle"] = handle
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Productcatalog_get_pricing_variables_batch(args)
 	if err != nil {
@@ -3021,6 +3765,26 @@ func HandleProductcatalog_get_product_feeds(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Productcatalog_get_product_feeds(args)
@@ -3178,6 +3942,26 @@ func HandleProductcatalog_get_product_groups(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Productcatalog_get_product_groups(args)
 	if err != nil {
@@ -3265,6 +4049,26 @@ func HandleProductcatalog_get_product_sets(ctx context.Context, request mcp.Call
 	// Optional: retailer_id
 	if val := request.GetString("retailer_id", ""); val != "" {
 		args["retailer_id"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -3367,6 +4171,26 @@ func HandleProductcatalog_get_product_sets_batch(ctx context.Context, request mc
 	}
 	args["handle"] = handle
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Productcatalog_get_product_sets_batch(args)
 	if err != nil {
@@ -3420,6 +4244,26 @@ func HandleProductcatalog_get_products(ctx context.Context, request mcp.CallTool
 	// Optional: return_only_approved_products
 	if val := request.GetBool("return_only_approved_products", false); val {
 		args["return_only_approved_products"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -3924,6 +4768,26 @@ func HandleProductcatalog_get_vehicle_offers(ctx context.Context, request mcp.Ca
 		args["filter"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Productcatalog_get_vehicle_offers(args)
 	if err != nil {
@@ -3962,6 +4826,26 @@ func HandleProductcatalog_get_vehicles(ctx context.Context, request mcp.CallTool
 	// object type - using string
 	if val := request.GetString("filter", ""); val != "" {
 		args["filter"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -4205,6 +5089,26 @@ func HandleProductcatalog_get_version_configs(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Productcatalog_get_version_configs(args)
 	if err != nil {
@@ -4332,6 +5236,26 @@ func HandleProductcatalog_get_(ctx context.Context, request mcp.CallToolRequest)
 	// array type - using string
 	if val := request.GetString("segment_use_cases", ""); val != "" {
 		args["segment_use_cases"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method

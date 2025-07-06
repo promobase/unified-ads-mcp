@@ -17,28 +17,67 @@ func GetShadowIGHashtagTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// shadowighashtag_get_recent_media tool
+	// Available fields for IGMedia: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner, permalink, shortcode, thumbnail_url, timestamp, username, view_count
 	shadowighashtag_get_recent_mediaTool := mcp.NewTool("shadowighashtag_get_recent_media",
 		mcp.WithDescription("GET recent_media for ShadowIGHashtag"),
 		mcp.WithString("user_id",
 			mcp.Required(),
 			mcp.Description("user_id parameter for recent_media"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGMedia objects. Available fields: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner (and 6 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, shadowighashtag_get_recent_mediaTool)
 
 	// shadowighashtag_get_top_media tool
+	// Available fields for IGMedia: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner, permalink, shortcode, thumbnail_url, timestamp, username, view_count
 	shadowighashtag_get_top_mediaTool := mcp.NewTool("shadowighashtag_get_top_media",
 		mcp.WithDescription("GET top_media for ShadowIGHashtag"),
 		mcp.WithString("user_id",
 			mcp.Required(),
 			mcp.Description("user_id parameter for top_media"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGMedia objects. Available fields: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner (and 6 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, shadowighashtag_get_top_mediaTool)
 
 	// shadowighashtag_get_ tool
+	// Available fields for ShadowIGHashtag: id, name
 	shadowighashtag_get_Tool := mcp.NewTool("shadowighashtag_get_",
 		mcp.WithDescription("GET  for ShadowIGHashtag"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ShadowIGHashtag objects. Available fields: id, name"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, shadowighashtag_get_Tool)
 
@@ -67,6 +106,26 @@ func HandleShadowighashtag_get_recent_media(ctx context.Context, request mcp.Cal
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user_id: %v", err)), nil
 	}
 	args["user_id"] = user_id
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Shadowighashtag_get_recent_media(args)
@@ -104,6 +163,26 @@ func HandleShadowighashtag_get_top_media(ctx context.Context, request mcp.CallTo
 	}
 	args["user_id"] = user_id
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Shadowighashtag_get_top_media(args)
 	if err != nil {
@@ -132,6 +211,26 @@ func HandleShadowighashtag_get_(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Shadowighashtag_get_(args)

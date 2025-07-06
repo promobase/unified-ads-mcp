@@ -17,14 +17,40 @@ func GetAudioCopyrightTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// audiocopyright_get_update_records tool
+	// Available fields for MediaCopyrightUpdateRecord: action_types, actor, actor_type, creation_time, id, ownership_countries, whitelisted_accounts
 	audiocopyright_get_update_recordsTool := mcp.NewTool("audiocopyright_get_update_records",
 		mcp.WithDescription("GET update_records for AudioCopyright"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for MediaCopyrightUpdateRecord objects. Available fields: action_types, actor, actor_type, creation_time, id, ownership_countries, whitelisted_accounts"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, audiocopyright_get_update_recordsTool)
 
 	// audiocopyright_get_ tool
+	// Available fields for AudioCopyright: creation_time, displayed_matches_count, id, in_conflict, isrc, match_rule, ownership_countries, ownership_details, reference_file_status, ridge_monitoring_status, tags, update_time, whitelisted_fb_users, whitelisted_ig_users
 	audiocopyright_get_Tool := mcp.NewTool("audiocopyright_get_",
 		mcp.WithDescription("GET  for AudioCopyright"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AudioCopyright objects. Available fields: creation_time, displayed_matches_count, id, in_conflict, isrc, match_rule, ownership_countries, ownership_details, reference_file_status, ridge_monitoring_status, tags, update_time, whitelisted_fb_users, whitelisted_ig_users"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, audiocopyright_get_Tool)
 
@@ -46,6 +72,26 @@ func HandleAudiocopyright_get_update_records(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Audiocopyright_get_update_records(args)
@@ -75,6 +121,26 @@ func HandleAudiocopyright_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Audiocopyright_get_(args)

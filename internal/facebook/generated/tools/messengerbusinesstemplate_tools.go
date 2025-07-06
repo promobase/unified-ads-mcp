@@ -17,8 +17,21 @@ func GetMessengerBusinessTemplateTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// messengerbusinesstemplate_get_ tool
+	// Available fields for MessengerBusinessTemplate: category, components, creation_time, id, language, language_count, last_updated_time, library_template_name, name, rejected_reason, rejection_reasons, specific_rejection_reasons, status
 	messengerbusinesstemplate_get_Tool := mcp.NewTool("messengerbusinesstemplate_get_",
 		mcp.WithDescription("GET  for MessengerBusinessTemplate"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for MessengerBusinessTemplate objects. Available fields: category, components, creation_time, id, language, language_count, last_updated_time, library_template_name, name, rejected_reason, rejection_reasons, specific_rejection_reasons, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, messengerbusinesstemplate_get_Tool)
 
@@ -49,6 +62,26 @@ func HandleMessengerbusinesstemplate_get_(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Messengerbusinesstemplate_get_(args)

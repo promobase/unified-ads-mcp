@@ -17,18 +17,44 @@ func GetStoriesTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// stories_get_insights tool
+	// Available fields for InsightsResult: description, description_from_api_doc, id, name, period, title, values
 	stories_get_insightsTool := mcp.NewTool("stories_get_insights",
 		mcp.WithDescription("GET insights for Stories"),
 		mcp.WithString("metric",
 			mcp.Description("metric parameter for insights"),
 			mcp.Enum("PAGES_FB_STORY_REPLIES", "PAGES_FB_STORY_SHARES", "PAGES_FB_STORY_STICKER_INTERACTIONS", "PAGES_FB_STORY_THREAD_LIGHTWEIGHT_REACTIONS", "PAGE_STORY_IMPRESSIONS_BY_STORY_ID", "PAGE_STORY_IMPRESSIONS_BY_STORY_ID_UNIQUE", "STORY_INTERACTION"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for InsightsResult objects. Available fields: description, description_from_api_doc, id, name, period, title, values"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, stories_get_insightsTool)
 
 	// stories_get_ tool
+	// Available fields for Stories: creation_time, media_id, media_type, post_id, status, url
 	stories_get_Tool := mcp.NewTool("stories_get_",
 		mcp.WithDescription("GET  for Stories"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Stories objects. Available fields: creation_time, media_id, media_type, post_id, status, url"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, stories_get_Tool)
 
@@ -55,6 +81,26 @@ func HandleStories_get_insights(ctx context.Context, request mcp.CallToolRequest
 	// array type - using string
 	if val := request.GetString("metric", ""); val != "" {
 		args["metric"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -85,6 +131,26 @@ func HandleStories_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Stories_get_(args)

@@ -23,19 +23,45 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("feature parameter for business_messaging_feature_status"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguserforigonlyapi_get_business_messaging_feature_statusTool)
 
 	// iguserforigonlyapi_get_content_publishing_limit tool
+	// Available fields for ContentPublishingLimitResponse: config, quota_usage
 	iguserforigonlyapi_get_content_publishing_limitTool := mcp.NewTool("iguserforigonlyapi_get_content_publishing_limit",
 		mcp.WithDescription("GET content_publishing_limit for IGUserForIGOnlyAPI"),
 		mcp.WithString("since",
 			mcp.Description("since parameter for content_publishing_limit"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ContentPublishingLimitResponse objects. Available fields: config, quota_usage"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguserforigonlyapi_get_content_publishing_limitTool)
 
 	// iguserforigonlyapi_get_conversations tool
+	// Available fields for UnifiedThread: can_reply, folder, former_participants, id, is_subscribed, link, linked_group, message_count, name, participants, scoped_thread_key, senders, snippet, subject, unread_count, updated_time, wallpaper
 	iguserforigonlyapi_get_conversationsTool := mcp.NewTool("iguserforigonlyapi_get_conversations",
 		mcp.WithDescription("GET conversations for IGUserForIGOnlyAPI"),
 		mcp.WithString("folder",
@@ -51,10 +77,23 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 		mcp.WithString("user_id",
 			mcp.Description("user_id parameter for conversations"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for UnifiedThread objects. Available fields: can_reply, folder, former_participants, id, is_subscribed, link, linked_group, message_count, name, participants, scoped_thread_key, senders, snippet, subject, unread_count (and 2 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguserforigonlyapi_get_conversationsTool)
 
 	// iguserforigonlyapi_get_insights tool
+	// Available fields for InsightsResult: description, description_from_api_doc, id, name, period, title, values
 	iguserforigonlyapi_get_insightsTool := mcp.NewTool("iguserforigonlyapi_get_insights",
 		mcp.WithDescription("GET insights for IGUserForIGOnlyAPI"),
 		mcp.WithString("breakdown",
@@ -85,12 +124,36 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 		mcp.WithString("until",
 			mcp.Description("until parameter for insights"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for InsightsResult objects. Available fields: description, description_from_api_doc, id, name, period, title, values"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguserforigonlyapi_get_insightsTool)
 
 	// iguserforigonlyapi_get_live_media tool
 	iguserforigonlyapi_get_live_mediaTool := mcp.NewTool("iguserforigonlyapi_get_live_media",
 		mcp.WithDescription("GET live_media for IGUserForIGOnlyAPI"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguserforigonlyapi_get_live_mediaTool)
 
@@ -102,6 +165,18 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 		),
 		mcp.WithString("until",
 			mcp.Description("until parameter for media"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, iguserforigonlyapi_get_mediaTool)
@@ -240,6 +315,18 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	// iguserforigonlyapi_get_messenger_profile tool
 	iguserforigonlyapi_get_messenger_profileTool := mcp.NewTool("iguserforigonlyapi_get_messenger_profile",
 		mcp.WithDescription("GET messenger_profile for IGUserForIGOnlyAPI"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguserforigonlyapi_get_messenger_profileTool)
 
@@ -258,6 +345,18 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	// iguserforigonlyapi_get_stories tool
 	iguserforigonlyapi_get_storiesTool := mcp.NewTool("iguserforigonlyapi_get_stories",
 		mcp.WithDescription("GET stories for IGUserForIGOnlyAPI"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguserforigonlyapi_get_storiesTool)
 
@@ -270,6 +369,18 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	// iguserforigonlyapi_get_subscribed_apps tool
 	iguserforigonlyapi_get_subscribed_appsTool := mcp.NewTool("iguserforigonlyapi_get_subscribed_apps",
 		mcp.WithDescription("GET subscribed_apps for IGUserForIGOnlyAPI"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguserforigonlyapi_get_subscribed_appsTool)
 
@@ -287,6 +398,18 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	// iguserforigonlyapi_get_tags tool
 	iguserforigonlyapi_get_tagsTool := mcp.NewTool("iguserforigonlyapi_get_tags",
 		mcp.WithDescription("GET tags for IGUserForIGOnlyAPI"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguserforigonlyapi_get_tagsTool)
 
@@ -300,6 +423,7 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	tools = append(tools, iguserforigonlyapi_delete_welcome_message_flowsTool)
 
 	// iguserforigonlyapi_get_welcome_message_flows tool
+	// Available fields for CTXPartnerAppWelcomeMessageFlow: compatible_platforms, eligible_platforms, id, is_ig_only_flow, is_used_in_ad, last_update_time, name, welcome_message_flow, welcome_message_sequence
 	iguserforigonlyapi_get_welcome_message_flowsTool := mcp.NewTool("iguserforigonlyapi_get_welcome_message_flows",
 		mcp.WithDescription("GET welcome_message_flows for IGUserForIGOnlyAPI"),
 		mcp.WithString("app_id",
@@ -307,6 +431,18 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 		),
 		mcp.WithString("flow_id",
 			mcp.Description("flow_id parameter for welcome_message_flows"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CTXPartnerAppWelcomeMessageFlow objects. Available fields: compatible_platforms, eligible_platforms, id, is_ig_only_flow, is_used_in_ad, last_update_time, name, welcome_message_flow, welcome_message_sequence"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, iguserforigonlyapi_get_welcome_message_flowsTool)
@@ -331,8 +467,21 @@ func GetIGUserForIGOnlyAPITools() []mcp.Tool {
 	tools = append(tools, iguserforigonlyapi_post_welcome_message_flowsTool)
 
 	// iguserforigonlyapi_get_ tool
+	// Available fields for User: about, age_range, avatar_2d_profile_picture, birthday, client_business_id, community, cover, currency, education, email, favorite_athletes, favorite_teams, first_name, gender, hometown, id, id_for_avatars, inspirational_people, install_type, installed, is_guest_user, is_work_account, languages, last_name, link, local_news_megaphone_dismiss_status, local_news_subscription_status, locale, location, meeting_for, middle_name, name, name_format, payment_pricepoints, political, profile_pic, quotes, relationship_status, religion, shared_login_upgrade_required_by, short_name, significant_other, sports, supports_donate_button_in_live_video, third_party_id, timezone, token_for_business, updated_time, verified, video_upload_limits, website
 	iguserforigonlyapi_get_Tool := mcp.NewTool("iguserforigonlyapi_get_",
 		mcp.WithDescription("GET  for IGUserForIGOnlyAPI"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for User objects. Available fields: about, age_range, avatar_2d_profile_picture, birthday, client_business_id, community, cover, currency, education, email, favorite_athletes, favorite_teams, first_name, gender, hometown (and 36 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, iguserforigonlyapi_get_Tool)
 
@@ -361,6 +510,26 @@ func HandleIguserforigonlyapi_get_business_messaging_feature_status(ctx context.
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter feature: %v", err)), nil
 	}
 	args["feature"] = feature
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_business_messaging_feature_status(args)
@@ -394,6 +563,26 @@ func HandleIguserforigonlyapi_get_content_publishing_limit(ctx context.Context, 
 	// Optional: since
 	if val := request.GetString("since", ""); val != "" {
 		args["since"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -444,6 +633,26 @@ func HandleIguserforigonlyapi_get_conversations(ctx context.Context, request mcp
 	// Optional: user_id
 	if val := request.GetString("user_id", ""); val != "" {
 		args["user_id"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -515,6 +724,26 @@ func HandleIguserforigonlyapi_get_insights(ctx context.Context, request mcp.Call
 		args["until"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_insights(args)
 	if err != nil {
@@ -543,6 +772,26 @@ func HandleIguserforigonlyapi_get_live_media(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_live_media(args)
@@ -581,6 +830,26 @@ func HandleIguserforigonlyapi_get_media(ctx context.Context, request mcp.CallToo
 	// Optional: until
 	if val := request.GetString("until", ""); val != "" {
 		args["until"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -949,6 +1218,26 @@ func HandleIguserforigonlyapi_get_messenger_profile(ctx context.Context, request
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_messenger_profile(args)
 	if err != nil {
@@ -1019,6 +1308,26 @@ func HandleIguserforigonlyapi_get_stories(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_stories(args)
 	if err != nil {
@@ -1076,6 +1385,26 @@ func HandleIguserforigonlyapi_get_subscribed_apps(ctx context.Context, request m
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_subscribed_apps(args)
@@ -1141,6 +1470,26 @@ func HandleIguserforigonlyapi_get_tags(ctx context.Context, request mcp.CallTool
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_tags(args)
@@ -1213,6 +1562,26 @@ func HandleIguserforigonlyapi_get_welcome_message_flows(ctx context.Context, req
 	// Optional: flow_id
 	if val := request.GetString("flow_id", ""); val != "" {
 		args["flow_id"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -1294,6 +1663,26 @@ func HandleIguserforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Iguserforigonlyapi_get_(args)

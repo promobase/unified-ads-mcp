@@ -17,12 +17,26 @@ func GetOfflineProductItemTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// offlineproductitem_get_channels_to_integrity_status tool
+	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	offlineproductitem_get_channels_to_integrity_statusTool := mcp.NewTool("offlineproductitem_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for OfflineProductItem"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CatalogItemChannelsToIntegrityStatus objects. Available fields: channels, rejection_information"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, offlineproductitem_get_channels_to_integrity_statusTool)
 
 	// offlineproductitem_get_override_details tool
+	// Available fields for OverrideDetails: key, type, values
 	offlineproductitem_get_override_detailsTool := mcp.NewTool("offlineproductitem_get_override_details",
 		mcp.WithDescription("GET override_details for OfflineProductItem"),
 		mcp.WithString("keys",
@@ -32,12 +46,37 @@ func GetOfflineProductItemTools() []mcp.Tool {
 			mcp.Description("type parameter for override_details"),
 			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for OverrideDetails objects. Available fields: key, type, values"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, offlineproductitem_get_override_detailsTool)
 
 	// offlineproductitem_get_ tool
+	// Available fields for OfflineProductItem: applinks, brand, category, category_specific_fields, currency, description, id, image_fetch_status, image_url, images, name, offline_product_item_id, price, sanitized_images, url, visibility
 	offlineproductitem_get_Tool := mcp.NewTool("offlineproductitem_get_",
 		mcp.WithDescription("GET  for OfflineProductItem"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for OfflineProductItem objects. Available fields: applinks, brand, category, category_specific_fields, currency, description, id, image_fetch_status, image_url, images, name, offline_product_item_id, price, sanitized_images, url (and 1 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, offlineproductitem_get_Tool)
 
@@ -59,6 +98,26 @@ func HandleOfflineproductitem_get_channels_to_integrity_status(ctx context.Conte
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Offlineproductitem_get_channels_to_integrity_status(args)
@@ -100,6 +159,26 @@ func HandleOfflineproductitem_get_override_details(ctx context.Context, request 
 		args["type"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Offlineproductitem_get_override_details(args)
 	if err != nil {
@@ -128,6 +207,26 @@ func HandleOfflineproductitem_get_(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Offlineproductitem_get_(args)

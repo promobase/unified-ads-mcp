@@ -51,6 +51,38 @@ func (c *CampaignClient) Campaign_get_ad_studies(args map[string]interface{}) (i
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "campaign_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "campaign_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "campaign_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "campaign_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -202,6 +234,38 @@ func (c *CampaignClient) Campaign_get_adrules_governed(args map[string]interface
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "campaign_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "campaign_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "campaign_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "campaign_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -295,6 +359,38 @@ func (c *CampaignClient) Campaign_get_ads(args map[string]interface{}) (interfac
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "campaign_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "campaign_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "campaign_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "campaign_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -385,6 +481,38 @@ func (c *CampaignClient) Campaign_get_adsets(args map[string]interface{}) (inter
 
 		if "time_range" != "campaign_id" {
 			urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "campaign_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "campaign_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "campaign_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "campaign_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -591,6 +719,38 @@ func (c *CampaignClient) Campaign_get_copies(args map[string]interface{}) (inter
 
 		if "time_range" != "campaign_id" {
 			urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "campaign_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "campaign_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "campaign_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "campaign_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -929,6 +1089,38 @@ func (c *CampaignClient) Campaign_get_insights(args map[string]interface{}) (int
 
 		if "use_unified_attribution_setting" != "campaign_id" {
 			urlParams.Set("use_unified_attribution_setting", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "campaign_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "campaign_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "campaign_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "campaign_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -1320,6 +1512,38 @@ func (c *CampaignClient) Campaign_get_(args map[string]interface{}) (interface{}
 
 		if "time_range" != "campaign_id" {
 			urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "campaign_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "campaign_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "campaign_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "campaign_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}

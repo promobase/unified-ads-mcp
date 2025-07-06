@@ -17,8 +17,21 @@ func GetAdSavedReportTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adsavedreport_get_ tool
+	// Available fields for AdSavedReport: app_owner, breakdowns, builtin_column_set, creation_source, date_interval, date_preset, format_version, id, insights_section, is_shared_unread, level, name, normalized_filter, sort, user_attribution_windows, user_columns, user_filter, user_owner
 	adsavedreport_get_Tool := mcp.NewTool("adsavedreport_get_",
 		mcp.WithDescription("GET  for AdSavedReport"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdSavedReport objects. Available fields: app_owner, breakdowns, builtin_column_set, creation_source, date_interval, date_preset, format_version, id, insights_section, is_shared_unread, level, name, normalized_filter, sort, user_attribution_windows (and 3 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adsavedreport_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleAdsavedreport_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adsavedreport_get_(args)

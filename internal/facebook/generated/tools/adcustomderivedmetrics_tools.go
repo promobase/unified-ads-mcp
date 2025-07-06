@@ -17,8 +17,21 @@ func GetAdCustomDerivedMetricsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adcustomderivedmetrics_get_ tool
+	// Available fields for AdCustomDerivedMetrics: ad_account_id, business, creation_time, creator, custom_derived_metric_type, deletion_time, deletor, description, format_type, formula, has_attribution_windows, has_inline_attribution_window, id, name, permission, saved_report_id, scope
 	adcustomderivedmetrics_get_Tool := mcp.NewTool("adcustomderivedmetrics_get_",
 		mcp.WithDescription("GET  for AdCustomDerivedMetrics"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdCustomDerivedMetrics objects. Available fields: ad_account_id, business, creation_time, creator, custom_derived_metric_type, deletion_time, deletor, description, format_type, formula, has_attribution_windows, has_inline_attribution_window, id, name, permission (and 2 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adcustomderivedmetrics_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleAdcustomderivedmetrics_get_(ctx context.Context, request mcp.CallTool
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adcustomderivedmetrics_get_(args)

@@ -17,8 +17,21 @@ func GetCatalogSmartPixelSettingsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// catalogsmartpixelsettings_get_ tool
+	// Available fields for CatalogSmartPixelSettings: allowed_domains, available_property_filters, catalog, cbb_custom_override_filters, cbb_default_filter, defaults, filters, id, is_cbb_enabled, is_create_enabled, is_delete_enabled, is_update_enabled, microdata_format_precedence, pixel, property_filter, trusted_domains
 	catalogsmartpixelsettings_get_Tool := mcp.NewTool("catalogsmartpixelsettings_get_",
 		mcp.WithDescription("GET  for CatalogSmartPixelSettings"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CatalogSmartPixelSettings objects. Available fields: allowed_domains, available_property_filters, catalog, cbb_custom_override_filters, cbb_default_filter, defaults, filters, id, is_cbb_enabled, is_create_enabled, is_delete_enabled, is_update_enabled, microdata_format_precedence, pixel, property_filter (and 1 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, catalogsmartpixelsettings_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleCatalogsmartpixelsettings_get_(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Catalogsmartpixelsettings_get_(args)

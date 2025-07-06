@@ -17,11 +17,24 @@ func GetAdsPixelTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adspixel_get_adaccounts tool
+	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	adspixel_get_adaccountsTool := mcp.NewTool("adspixel_get_adaccounts",
 		mcp.WithDescription("GET adaccounts for AdsPixel"),
 		mcp.WithString("business",
 			mcp.Required(),
 			mcp.Description("business parameter for adaccounts"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adspixel_get_adaccountsTool)
@@ -37,8 +50,21 @@ func GetAdsPixelTools() []mcp.Tool {
 	tools = append(tools, adspixel_delete_agenciesTool)
 
 	// adspixel_get_agencies tool
+	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	adspixel_get_agenciesTool := mcp.NewTool("adspixel_get_agencies",
 		mcp.WithDescription("GET agencies for AdsPixel"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adspixel_get_agenciesTool)
 
@@ -68,11 +94,24 @@ func GetAdsPixelTools() []mcp.Tool {
 	tools = append(tools, adspixel_post_ahp_configsTool)
 
 	// adspixel_get_assigned_users tool
+	// Available fields for AssignedUser: business, id, name, user_type
 	adspixel_get_assigned_usersTool := mcp.NewTool("adspixel_get_assigned_users",
 		mcp.WithDescription("GET assigned_users for AdsPixel"),
 		mcp.WithString("business",
 			mcp.Required(),
 			mcp.Description("business parameter for assigned_users"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AssignedUser objects. Available fields: business, id, name, user_type"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adspixel_get_assigned_usersTool)
@@ -93,6 +132,7 @@ func GetAdsPixelTools() []mcp.Tool {
 	tools = append(tools, adspixel_post_assigned_usersTool)
 
 	// adspixel_get_da_checks tool
+	// Available fields for DACheck: action_uri, description, key, result, title, user_message
 	adspixel_get_da_checksTool := mcp.NewTool("adspixel_get_da_checks",
 		mcp.WithDescription("GET da_checks for AdsPixel"),
 		mcp.WithString("checks",
@@ -101,6 +141,18 @@ func GetAdsPixelTools() []mcp.Tool {
 		mcp.WithString("connection_method",
 			mcp.Description("connection_method parameter for da_checks"),
 			mcp.Enum("ALL", "APP", "BROWSER", "SERVER"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for DACheck objects. Available fields: action_uri, description, key, result, title, user_message"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adspixel_get_da_checksTool)
@@ -143,6 +195,7 @@ func GetAdsPixelTools() []mcp.Tool {
 	tools = append(tools, adspixel_post_eventsTool)
 
 	// adspixel_get_offline_event_uploads tool
+	// Available fields for OfflineConversionDataSetUpload: api_calls, creation_time, duplicate_entries, event_stats, event_time_max, event_time_min, first_upload_time, id, is_excluded_for_lift, last_upload_time, match_rate_approx, matched_entries, upload_tag, valid_entries
 	adspixel_get_offline_event_uploadsTool := mcp.NewTool("adspixel_get_offline_event_uploads",
 		mcp.WithDescription("GET offline_event_uploads for AdsPixel"),
 		mcp.WithString("end_time",
@@ -162,12 +215,37 @@ func GetAdsPixelTools() []mcp.Tool {
 		mcp.WithString("upload_tag",
 			mcp.Description("upload_tag parameter for offline_event_uploads"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for OfflineConversionDataSetUpload objects. Available fields: api_calls, creation_time, duplicate_entries, event_stats, event_time_max, event_time_min, first_upload_time, id, is_excluded_for_lift, last_upload_time, match_rate_approx, matched_entries, upload_tag, valid_entries"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adspixel_get_offline_event_uploadsTool)
 
 	// adspixel_get_openbridge_configurations tool
+	// Available fields for OpenBridgeConfiguration: active, cloud_provider, cloud_region, destination_id, endpoint, fallback_domain, first_party_domain, host_business_id, id, instance_id, instance_version, is_sgw_instance, is_sgw_pixel_from_meta_pixel, partner_name, pixel_id, sgw_account_id, sgw_instance_url, sgw_pixel_id
 	adspixel_get_openbridge_configurationsTool := mcp.NewTool("adspixel_get_openbridge_configurations",
 		mcp.WithDescription("GET openbridge_configurations for AdsPixel"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for OpenBridgeConfiguration objects. Available fields: active, cloud_provider, cloud_region, destination_id, endpoint, fallback_domain, first_party_domain, host_business_id, id, instance_id, instance_version, is_sgw_instance, is_sgw_pixel_from_meta_pixel, partner_name, pixel_id (and 3 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adspixel_get_openbridge_configurationsTool)
 
@@ -192,11 +270,24 @@ func GetAdsPixelTools() []mcp.Tool {
 	tools = append(tools, adspixel_delete_shared_accountsTool)
 
 	// adspixel_get_shared_accounts tool
+	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	adspixel_get_shared_accountsTool := mcp.NewTool("adspixel_get_shared_accounts",
 		mcp.WithDescription("GET shared_accounts for AdsPixel"),
 		mcp.WithString("business",
 			mcp.Required(),
 			mcp.Description("business parameter for shared_accounts"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, adspixel_get_shared_accountsTool)
@@ -216,12 +307,26 @@ func GetAdsPixelTools() []mcp.Tool {
 	tools = append(tools, adspixel_post_shared_accountsTool)
 
 	// adspixel_get_shared_agencies tool
+	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	adspixel_get_shared_agenciesTool := mcp.NewTool("adspixel_get_shared_agencies",
 		mcp.WithDescription("GET shared_agencies for AdsPixel"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adspixel_get_shared_agenciesTool)
 
 	// adspixel_get_stats tool
+	// Available fields for AdsPixelStatsResult: aggregation, data, start_time
 	adspixel_get_statsTool := mcp.NewTool("adspixel_get_stats",
 		mcp.WithDescription("GET stats for AdsPixel"),
 		mcp.WithString("aggregation",
@@ -240,12 +345,37 @@ func GetAdsPixelTools() []mcp.Tool {
 		mcp.WithString("start_time",
 			mcp.Description("start_time parameter for stats"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsPixelStatsResult objects. Available fields: aggregation, data, start_time"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adspixel_get_statsTool)
 
 	// adspixel_get_ tool
+	// Available fields for AdsPixel: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status, has_1p_pixel_event, id, is_consolidated_container, is_created_by_business, is_crm, is_mta_use, is_restricted_use, is_unavailable, last_fired_time, last_upload_app, last_upload_app_changed_time, match_rate_approx, matched_entries, name, owner_ad_account, owner_business, usage, user_access_expire_time, valid_entries
 	adspixel_get_Tool := mcp.NewTool("adspixel_get_",
 		mcp.WithDescription("GET  for AdsPixel"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsPixel objects. Available fields: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status (and 19 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adspixel_get_Tool)
 
@@ -301,6 +431,26 @@ func HandleAdspixel_get_adaccounts(ctx context.Context, request mcp.CallToolRequ
 		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
 	}
 	args["business"] = business
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adspixel_get_adaccounts(args)
@@ -366,6 +516,26 @@ func HandleAdspixel_get_agencies(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adspixel_get_agencies(args)
@@ -482,6 +652,26 @@ func HandleAdspixel_get_assigned_users(ctx context.Context, request mcp.CallTool
 	}
 	args["business"] = business
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adspixel_get_assigned_users(args)
 	if err != nil {
@@ -563,6 +753,26 @@ func HandleAdspixel_get_da_checks(ctx context.Context, request mcp.CallToolReque
 	// Optional: connection_method
 	if val := request.GetString("connection_method", ""); val != "" {
 		args["connection_method"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -702,6 +912,26 @@ func HandleAdspixel_get_offline_event_uploads(ctx context.Context, request mcp.C
 		args["upload_tag"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adspixel_get_offline_event_uploads(args)
 	if err != nil {
@@ -730,6 +960,26 @@ func HandleAdspixel_get_openbridge_configurations(ctx context.Context, request m
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adspixel_get_openbridge_configurations(args)
@@ -839,6 +1089,26 @@ func HandleAdspixel_get_shared_accounts(ctx context.Context, request mcp.CallToo
 	}
 	args["business"] = business
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adspixel_get_shared_accounts(args)
 	if err != nil {
@@ -911,6 +1181,26 @@ func HandleAdspixel_get_shared_agencies(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adspixel_get_shared_agencies(args)
 	if err != nil {
@@ -965,6 +1255,26 @@ func HandleAdspixel_get_stats(ctx context.Context, request mcp.CallToolRequest) 
 		args["start_time"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adspixel_get_stats(args)
 	if err != nil {
@@ -993,6 +1303,26 @@ func HandleAdspixel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adspixel_get_(args)

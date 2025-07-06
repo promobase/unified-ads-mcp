@@ -17,8 +17,21 @@ func GetAdsNamingTemplateTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adsnamingtemplate_get_ tool
+	// Available fields for AdsNamingTemplate: api_fields, api_version, field_order, id, level, separator, template_version, user_defined_fields, value_separator
 	adsnamingtemplate_get_Tool := mcp.NewTool("adsnamingtemplate_get_",
 		mcp.WithDescription("GET  for AdsNamingTemplate"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsNamingTemplate objects. Available fields: api_fields, api_version, field_order, id, level, separator, template_version, user_defined_fields, value_separator"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adsnamingtemplate_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleAdsnamingtemplate_get_(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adsnamingtemplate_get_(args)

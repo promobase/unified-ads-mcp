@@ -17,8 +17,21 @@ func GetMeasurementReportTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// measurementreport_get_ tool
+	// Available fields for MeasurementReport: download_urls, id, metadata, report_type, status
 	measurementreport_get_Tool := mcp.NewTool("measurementreport_get_",
 		mcp.WithDescription("GET  for MeasurementReport"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for MeasurementReport objects. Available fields: download_urls, id, metadata, report_type, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, measurementreport_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleMeasurementreport_get_(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Measurementreport_get_(args)

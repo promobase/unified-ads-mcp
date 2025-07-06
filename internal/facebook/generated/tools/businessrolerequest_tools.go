@@ -23,8 +23,21 @@ func GetBusinessRoleRequestTools() []mcp.Tool {
 	tools = append(tools, businessrolerequest_delete_Tool)
 
 	// businessrolerequest_get_ tool
+	// Available fields for BusinessRoleRequest: created_by, created_time, email, expiration_time, expiry_time, finance_role, id, invite_link, invited_user_type, ip_role, owner, role, status, tasks, updated_by, updated_time
 	businessrolerequest_get_Tool := mcp.NewTool("businessrolerequest_get_",
 		mcp.WithDescription("GET  for BusinessRoleRequest"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BusinessRoleRequest objects. Available fields: created_by, created_time, email, expiration_time, expiry_time, finance_role, id, invite_link, invited_user_type, ip_role, owner, role, status, tasks, updated_by (and 1 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, businessrolerequest_get_Tool)
 
@@ -89,6 +102,26 @@ func HandleBusinessrolerequest_get_(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Businessrolerequest_get_(args)

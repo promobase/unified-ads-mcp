@@ -17,8 +17,21 @@ func GetThirdPartyPartnerPanelRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// thirdpartypartnerpanelrequest_get_ tool
+	// Available fields for ThirdPartyPartnerPanelRequest: adentities_ids, country, created_time, description, id, modified_time, owner_instance_id, owner_panel_id, owner_panel_name, status, study_end_time, study_start_time, study_type
 	thirdpartypartnerpanelrequest_get_Tool := mcp.NewTool("thirdpartypartnerpanelrequest_get_",
 		mcp.WithDescription("GET  for ThirdPartyPartnerPanelRequest"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ThirdPartyPartnerPanelRequest objects. Available fields: adentities_ids, country, created_time, description, id, modified_time, owner_instance_id, owner_panel_id, owner_panel_name, status, study_end_time, study_start_time, study_type"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, thirdpartypartnerpanelrequest_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleThirdpartypartnerpanelrequest_get_(ctx context.Context, request mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Thirdpartypartnerpanelrequest_get_(args)

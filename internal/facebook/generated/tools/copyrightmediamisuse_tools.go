@@ -17,8 +17,21 @@ func GetCopyrightMediaMisuseTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// copyrightmediamisuse_get_ tool
+	// Available fields for CopyrightMediaMisuse: audio_segments, creation_time, disabled_audio_segments, disabled_video_segments, entire_file_issue, entire_file_issue_reasons, expiration_time, id, media_asset_id, reasons, requested_audio_segments, requested_video_segments, resolution_type, status, update_time, video_copyright, video_segments
 	copyrightmediamisuse_get_Tool := mcp.NewTool("copyrightmediamisuse_get_",
 		mcp.WithDescription("GET  for CopyrightMediaMisuse"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CopyrightMediaMisuse objects. Available fields: audio_segments, creation_time, disabled_audio_segments, disabled_video_segments, entire_file_issue, entire_file_issue_reasons, expiration_time, id, media_asset_id, reasons, requested_audio_segments, requested_video_segments, resolution_type, status, update_time (and 2 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, copyrightmediamisuse_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleCopyrightmediamisuse_get_(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Copyrightmediamisuse_get_(args)

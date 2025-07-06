@@ -23,8 +23,21 @@ func GetExtendedCreditAllocationConfigTools() []mcp.Tool {
 	tools = append(tools, extendedcreditallocationconfig_delete_Tool)
 
 	// extendedcreditallocationconfig_get_ tool
+	// Available fields for ExtendedCreditAllocationConfig: currency_amount, id, liability_type, owning_business, owning_credential, partition_type, receiving_business, receiving_credential, request_status, send_bill_to
 	extendedcreditallocationconfig_get_Tool := mcp.NewTool("extendedcreditallocationconfig_get_",
 		mcp.WithDescription("GET  for ExtendedCreditAllocationConfig"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ExtendedCreditAllocationConfig objects. Available fields: currency_amount, id, liability_type, owning_business, owning_credential, partition_type, receiving_business, receiving_credential, request_status, send_bill_to"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, extendedcreditallocationconfig_get_Tool)
 
@@ -84,6 +97,26 @@ func HandleExtendedcreditallocationconfig_get_(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Extendedcreditallocationconfig_get_(args)

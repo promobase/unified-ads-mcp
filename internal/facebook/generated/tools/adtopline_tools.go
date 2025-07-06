@@ -17,8 +17,21 @@ func GetAdToplineTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adtopline_get_ tool
+	// Available fields for AdTopline: account_id, client_approval_date, created_by, created_date, description, flight_end_date, flight_start_date, func_cap_amount, func_cap_amount_with_offset, func_line_amount, func_line_amount_with_offset, func_price, func_price_with_offset, gender, id, impressions, io_number, is_bonus_line, keywords, last_updated_by, last_updated_date, line_number, line_position, line_type, location, max_age, max_budget, min_age, price_per_trp, product_type, rev_assurance_approval_date, targets, trp_updated_time, trp_value, uom
 	adtopline_get_Tool := mcp.NewTool("adtopline_get_",
 		mcp.WithDescription("GET  for AdTopline"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdTopline objects. Available fields: account_id, client_approval_date, created_by, created_date, description, flight_end_date, flight_start_date, func_cap_amount, func_cap_amount_with_offset, func_line_amount, func_line_amount_with_offset, func_price, func_price_with_offset, gender, id (and 20 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adtopline_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleAdtopline_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adtopline_get_(args)

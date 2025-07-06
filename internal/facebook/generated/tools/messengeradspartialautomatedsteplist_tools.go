@@ -19,12 +19,37 @@ func GetMessengerAdsPartialAutomatedStepListTools() []mcp.Tool {
 	// messengeradspartialautomatedsteplist_get_steps tool
 	messengeradspartialautomatedsteplist_get_stepsTool := mcp.NewTool("messengeradspartialautomatedsteplist_get_steps",
 		mcp.WithDescription("GET steps for MessengerAdsPartialAutomatedStepList"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, messengeradspartialautomatedsteplist_get_stepsTool)
 
 	// messengeradspartialautomatedsteplist_get_ tool
+	// Available fields for MessengerAdsPartialAutomatedStepList: fblead_form, first_step_id, id, page, privacy_url, reminder_text, stop_question_message
 	messengeradspartialautomatedsteplist_get_Tool := mcp.NewTool("messengeradspartialautomatedsteplist_get_",
 		mcp.WithDescription("GET  for MessengerAdsPartialAutomatedStepList"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for MessengerAdsPartialAutomatedStepList objects. Available fields: fblead_form, first_step_id, id, page, privacy_url, reminder_text, stop_question_message"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, messengeradspartialautomatedsteplist_get_Tool)
 
@@ -46,6 +71,26 @@ func HandleMessengeradspartialautomatedsteplist_get_steps(ctx context.Context, r
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Messengeradspartialautomatedsteplist_get_steps(args)
@@ -75,6 +120,26 @@ func HandleMessengeradspartialautomatedsteplist_get_(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Messengeradspartialautomatedsteplist_get_(args)

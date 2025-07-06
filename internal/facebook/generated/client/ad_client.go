@@ -51,6 +51,38 @@ func (c *AdClient) Ad_get_adcreatives(args map[string]interface{}) (interface{},
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "ad_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "ad_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "ad_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "ad_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -202,6 +234,38 @@ func (c *AdClient) Ad_get_adrules_governed(args map[string]interface{}) (interfa
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "ad_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "ad_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "ad_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "ad_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -292,6 +356,38 @@ func (c *AdClient) Ad_get_copies(args map[string]interface{}) (interface{}, erro
 
 		if "updated_since" != "ad_id" {
 			urlParams.Set("updated_since", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "ad_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "ad_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "ad_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "ad_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -625,6 +721,38 @@ func (c *AdClient) Ad_get_insights(args map[string]interface{}) (interface{}, er
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "ad_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "ad_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "ad_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "ad_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -923,6 +1051,38 @@ func (c *AdClient) Ad_get_leads(args map[string]interface{}) (interface{}, error
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "ad_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "ad_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "ad_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "ad_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1101,6 +1261,38 @@ func (c *AdClient) Ad_get_previews(args map[string]interface{}) (interface{}, er
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "ad_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "ad_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "ad_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "ad_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1159,6 +1351,38 @@ func (c *AdClient) Ad_get_targetingsentencelines(args map[string]interface{}) (i
 
 		if "ad_id" != "ad_id" {
 			urlParams.Set("ad_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "ad_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "ad_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "ad_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "ad_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -1321,6 +1545,38 @@ func (c *AdClient) Ad_get_(args map[string]interface{}) (interface{}, error) {
 
 		if "time_range" != "ad_id" {
 			urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "ad_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "ad_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "ad_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "ad_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}

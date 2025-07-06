@@ -51,6 +51,38 @@ func (c *AdAccountClient) Adaccount_get_account_controls(args map[string]interfa
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -282,6 +314,38 @@ func (c *AdAccountClient) Adaccount_get_activities(args map[string]interface{}) 
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -340,6 +404,38 @@ func (c *AdAccountClient) Adaccount_get_ad_place_page_sets(args map[string]inter
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -618,6 +714,38 @@ func (c *AdAccountClient) Adaccount_get_ad_saved_keywords(args map[string]interf
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -676,6 +804,38 @@ func (c *AdAccountClient) Adaccount_get_ad_studies(args map[string]interface{}) 
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -740,6 +900,38 @@ func (c *AdAccountClient) Adaccount_get_adcloudplayables(args map[string]interfa
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -798,6 +990,38 @@ func (c *AdAccountClient) Adaccount_get_adcreatives(args map[string]interface{})
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -1368,6 +1592,38 @@ func (c *AdAccountClient) Adaccount_get_adcreativesbylabels(args map[string]inte
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1559,6 +1815,38 @@ func (c *AdAccountClient) Adaccount_get_adimages(args map[string]interface{}) (i
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1697,6 +1985,38 @@ func (c *AdAccountClient) Adaccount_get_adlabels(args map[string]interface{}) (i
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1829,6 +2149,38 @@ func (c *AdAccountClient) Adaccount_get_adplayables(args map[string]interface{})
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -2039,6 +2391,38 @@ func (c *AdAccountClient) Adaccount_get_adrules_history(args map[string]interfac
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2097,6 +2481,38 @@ func (c *AdAccountClient) Adaccount_get_adrules_library(args map[string]interfac
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -2322,6 +2738,38 @@ func (c *AdAccountClient) Adaccount_get_ads(args map[string]interface{}) (interf
 
 		if "updated_since" != "account_id" {
 			urlParams.Set("updated_since", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -2633,6 +3081,38 @@ func (c *AdAccountClient) Adaccount_get_ads_reporting_mmm_reports(args map[strin
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2691,6 +3171,38 @@ func (c *AdAccountClient) Adaccount_get_ads_reporting_mmm_schedulers(args map[st
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -2779,6 +3291,38 @@ func (c *AdAccountClient) Adaccount_get_ads_volume(args map[string]interface{}) 
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2858,6 +3402,38 @@ func (c *AdAccountClient) Adaccount_get_adsbylabels(args map[string]interface{})
 
 		if "operator" != "account_id" {
 			urlParams.Set("operator", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -2959,6 +3535,38 @@ func (c *AdAccountClient) Adaccount_get_adsets(args map[string]interface{}) (int
 
 		if "updated_since" != "account_id" {
 			urlParams.Set("updated_since", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -3582,6 +4190,38 @@ func (c *AdAccountClient) Adaccount_get_adsetsbylabels(args map[string]interface
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3648,6 +4288,38 @@ func (c *AdAccountClient) Adaccount_get_adspixels(args map[string]interface{}) (
 
 		if "sort_by" != "account_id" {
 			urlParams.Set("sort_by", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -3794,6 +4466,38 @@ func (c *AdAccountClient) Adaccount_get_advertisable_applications(args map[strin
 
 		if "business_id" != "account_id" {
 			urlParams.Set("business_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -4001,6 +4705,38 @@ func (c *AdAccountClient) Adaccount_get_advideos(args map[string]interface{}) (i
 
 		if "title" != "account_id" {
 			urlParams.Set("title", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -4662,6 +5398,38 @@ func (c *AdAccountClient) Adaccount_get_affectedadsets(args map[string]interface
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -4794,6 +5562,38 @@ func (c *AdAccountClient) Adaccount_get_agencies(args map[string]interface{}) (i
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -4937,6 +5737,38 @@ func (c *AdAccountClient) Adaccount_get_applications(args map[string]interface{}
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -5085,6 +5917,38 @@ func (c *AdAccountClient) Adaccount_get_assigned_users(args map[string]interface
 
 		if "business" != "account_id" {
 			urlParams.Set("business", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -5334,6 +6198,38 @@ func (c *AdAccountClient) Adaccount_get_async_requests(args map[string]interface
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5400,6 +6296,38 @@ func (c *AdAccountClient) Adaccount_get_asyncadcreatives(args map[string]interfa
 
 		if "is_completed" != "account_id" {
 			urlParams.Set("is_completed", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -5575,6 +6503,38 @@ func (c *AdAccountClient) Adaccount_get_asyncadrequestsets(args map[string]inter
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5736,6 +6696,38 @@ func (c *AdAccountClient) Adaccount_get_audience_funnel(args map[string]interfac
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -5964,6 +6956,38 @@ func (c *AdAccountClient) Adaccount_get_broadtargetingcategories(args map[string
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -6030,6 +7054,38 @@ func (c *AdAccountClient) Adaccount_get_businessprojects(args map[string]interfa
 
 		if "business" != "account_id" {
 			urlParams.Set("business", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -6221,6 +7277,38 @@ func (c *AdAccountClient) Adaccount_get_campaigns(args map[string]interface{}) (
 
 		if "time_range" != "account_id" {
 			urlParams.Set("time_range", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -6540,6 +7628,38 @@ func (c *AdAccountClient) Adaccount_get_campaignsbylabels(args map[string]interf
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -6598,6 +7718,38 @@ func (c *AdAccountClient) Adaccount_get_connected_instagram_accounts(args map[st
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -6670,6 +7822,38 @@ func (c *AdAccountClient) Adaccount_get_connected_instagram_accounts_with_iabp(a
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -6728,6 +7912,38 @@ func (c *AdAccountClient) Adaccount_get_conversion_goals(args map[string]interfa
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -6829,6 +8045,38 @@ func (c *AdAccountClient) Adaccount_get_customaudiences(args map[string]interfac
 
 		if "pixel_id" != "account_id" {
 			urlParams.Set("pixel_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -7266,6 +8514,38 @@ func (c *AdAccountClient) Adaccount_get_customaudiencestos(args map[string]inter
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -7406,6 +8686,38 @@ func (c *AdAccountClient) Adaccount_get_customconversions(args map[string]interf
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -7634,6 +8946,38 @@ func (c *AdAccountClient) Adaccount_get_delivery_estimate(args map[string]interf
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -7703,6 +9047,38 @@ func (c *AdAccountClient) Adaccount_get_deprecatedtargetingadsets(args map[strin
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -7761,6 +9137,38 @@ func (c *AdAccountClient) Adaccount_get_dsa_recommendations(args map[string]inte
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -7955,6 +9363,38 @@ func (c *AdAccountClient) Adaccount_get_generatepreviews(args map[string]interfa
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -8013,6 +9453,38 @@ func (c *AdAccountClient) Adaccount_get_impacting_ad_studies(args map[string]int
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -8250,6 +9722,38 @@ func (c *AdAccountClient) Adaccount_get_insights(args map[string]interface{}) (i
 
 		if "use_unified_attribution_setting" != "account_id" {
 			urlParams.Set("use_unified_attribution_setting", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -8551,6 +10055,38 @@ func (c *AdAccountClient) Adaccount_get_instagram_accounts(args map[string]inter
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -8622,6 +10158,38 @@ func (c *AdAccountClient) Adaccount_get_ios_fourteen_campaign_limits(args map[st
 
 		if "app_id" != "account_id" {
 			urlParams.Set("app_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -8752,6 +10320,38 @@ func (c *AdAccountClient) Adaccount_get_matched_search_applications(args map[str
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -8813,6 +10413,38 @@ func (c *AdAccountClient) Adaccount_get_max_bid(args map[string]interface{}) (in
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -8871,6 +10503,38 @@ func (c *AdAccountClient) Adaccount_get_mcmeconversions(args map[string]interfac
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -8943,6 +10607,38 @@ func (c *AdAccountClient) Adaccount_get_minimum_budgets(args map[string]interfac
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -9009,6 +10705,38 @@ func (c *AdAccountClient) Adaccount_get_onbehalf_requests(args map[string]interf
 
 		if "status" != "account_id" {
 			urlParams.Set("status", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -9296,6 +11024,38 @@ func (c *AdAccountClient) Adaccount_get_promote_pages(args map[string]interface{
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -9354,6 +11114,38 @@ func (c *AdAccountClient) Adaccount_get_publisher_block_lists(args map[string]in
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -9548,6 +11340,38 @@ func (c *AdAccountClient) Adaccount_get_reachestimate(args map[string]interface{
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -9606,6 +11430,38 @@ func (c *AdAccountClient) Adaccount_get_reachfrequencypredictions(args map[strin
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -10067,6 +11923,38 @@ func (c *AdAccountClient) Adaccount_get_recommendations(args map[string]interfac
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -10266,6 +12154,38 @@ func (c *AdAccountClient) Adaccount_get_saved_audiences(args map[string]interfac
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -10393,6 +12313,38 @@ func (c *AdAccountClient) Adaccount_get_subscribed_apps(args map[string]interfac
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -10582,6 +12534,38 @@ func (c *AdAccountClient) Adaccount_get_targetingbrowse(args map[string]interfac
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -10768,6 +12752,38 @@ func (c *AdAccountClient) Adaccount_get_targetingsearch(args map[string]interfac
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -10863,6 +12879,38 @@ func (c *AdAccountClient) Adaccount_get_targetingsentencelines(args map[string]i
 
 		if "targeting_spec" != "account_id" {
 			urlParams.Set("targeting_spec", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -11015,6 +13063,38 @@ func (c *AdAccountClient) Adaccount_get_targetingsuggestions(args map[string]int
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -11108,6 +13188,38 @@ func (c *AdAccountClient) Adaccount_get_targetingvalidation(args map[string]inte
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -11166,6 +13278,38 @@ func (c *AdAccountClient) Adaccount_get_tracking(args map[string]interface{}) (i
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -11301,6 +13445,38 @@ func (c *AdAccountClient) Adaccount_get_users(args map[string]interface{}) (inte
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -11463,6 +13639,38 @@ func (c *AdAccountClient) Adaccount_get_value_rule_set(args map[string]interface
 
 		if "status" != "account_id" {
 			urlParams.Set("status", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}
@@ -11638,6 +13846,38 @@ func (c *AdAccountClient) Adaccount_get_video_ads(args map[string]interface{}) (
 		}
 
 	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
+		}
+
+	}
 
 	// Make HTTP request
 	var resp *http.Response
@@ -11810,6 +14050,38 @@ func (c *AdAccountClient) Adaccount_get_(args map[string]interface{}) (interface
 
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["fields"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "fields" != "account_id" {
+			urlParams.Set("fields", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["limit"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "limit" != "account_id" {
+			urlParams.Set("limit", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["after"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "after" != "account_id" {
+			urlParams.Set("after", fmt.Sprintf("%v", val))
+		}
+
+	}
+	if val, ok := args["before"]; ok {
+		// Skip ID parameters as they're already in the URL path
+
+		if "before" != "account_id" {
+			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
 
 	}

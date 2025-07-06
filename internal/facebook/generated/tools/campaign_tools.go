@@ -17,11 +17,24 @@ func GetCampaignTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// campaign_get_ad_studies tool
+	// Available fields for AdStudy: business, canceled_time, client_business, cooldown_start_time, created_by, created_time, description, end_time, id, measurement_contact, name, observation_end_time, results_first_available_date, sales_contact, start_time, type, updated_by, updated_time
 	campaign_get_ad_studiesTool := mcp.NewTool("campaign_get_ad_studies",
 		mcp.WithDescription("GET ad_studies for Campaign"),
 		mcp.WithString("campaign_id",
 			mcp.Required(),
 			mcp.Description("Facebook Campaign ID"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdStudy objects. Available fields: business, canceled_time, client_business, cooldown_start_time, created_by, created_time, description, end_time, id, measurement_contact, name, observation_end_time, results_first_available_date, sales_contact, start_time (and 3 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, campaign_get_ad_studiesTool)
@@ -45,6 +58,7 @@ func GetCampaignTools() []mcp.Tool {
 	tools = append(tools, campaign_post_adlabelsTool)
 
 	// campaign_get_adrules_governed tool
+	// Available fields for AdRule: account_id, created_by, created_time, disable_error_code, evaluation_spec, execution_spec, id, name, schedule_spec, status, updated_time
 	campaign_get_adrules_governedTool := mcp.NewTool("campaign_get_adrules_governed",
 		mcp.WithDescription("GET adrules_governed for Campaign"),
 		mcp.WithString("campaign_id",
@@ -54,10 +68,23 @@ func GetCampaignTools() []mcp.Tool {
 		mcp.WithBoolean("pass_evaluation",
 			mcp.Description("pass_evaluation parameter for adrules_governed"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdRule objects. Available fields: account_id, created_by, created_time, disable_error_code, evaluation_spec, execution_spec, id, name, schedule_spec, status, updated_time"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, campaign_get_adrules_governedTool)
 
 	// campaign_get_ads tool
+	// Available fields for Ad: account_id, ad_active_time, ad_review_feedback, ad_schedule_end_time, ad_schedule_start_time, adlabels, adset, adset_id, bid_amount, bid_info, bid_type, campaign, campaign_id, configured_status, conversion_domain, conversion_specs, created_time, creative, creative_asset_groups_spec, demolink_hash, display_sequence, effective_status, engagement_audience, failed_delivery_checks, id, issues_info, last_updated_by_app_id, name, placement, preview_shareable_link, priority, recommendations, source_ad, source_ad_id, status, targeting, tracking_and_conversion_with_defaults, tracking_specs, updated_time
 	campaign_get_adsTool := mcp.NewTool("campaign_get_ads",
 		mcp.WithDescription("GET ads for Campaign"),
 		mcp.WithString("campaign_id",
@@ -77,10 +104,23 @@ func GetCampaignTools() []mcp.Tool {
 		mcp.WithNumber("updated_since",
 			mcp.Description("updated_since parameter for ads"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Ad objects. Available fields: account_id, ad_active_time, ad_review_feedback, ad_schedule_end_time, ad_schedule_start_time, adlabels, adset, adset_id, bid_amount, bid_info, bid_type, campaign, campaign_id, configured_status, conversion_domain (and 24 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, campaign_get_adsTool)
 
 	// campaign_get_adsets tool
+	// Available fields for AdSet: account_id, adlabels, adset_schedule, asset_feed_id, attribution_spec, bid_adjustments, bid_amount, bid_constraints, bid_info, bid_strategy, billing_event, brand_safety_config, budget_remaining, campaign, campaign_active_time, campaign_attribution, campaign_id, configured_status, created_time, creative_sequence, creative_sequence_repetition_pattern, daily_budget, daily_min_spend_target, daily_spend_cap, destination_type, dsa_beneficiary, dsa_payor, effective_status, end_time, existing_customer_budget_percentage, frequency_control_specs, full_funnel_exploration_mode, id, instagram_user_id, is_ba_skip_delayed_eligible, is_budget_schedule_enabled, is_dynamic_creative, is_incremental_attribution_enabled, issues_info, learning_stage_info, lifetime_budget, lifetime_imps, lifetime_min_spend_target, lifetime_spend_cap, max_budget_spend_percentage, min_budget_spend_percentage, multi_optimization_goal_weight, name, optimization_goal, optimization_sub_event, pacing_type, promoted_object, recommendations, recurring_budget_semantics, regional_regulated_categories, regional_regulation_identities, review_feedback, rf_prediction_id, source_adset, source_adset_id, start_time, status, targeting, targeting_optimization_types, time_based_ad_rotation_id_blocks, time_based_ad_rotation_intervals, updated_time, use_new_app_click
 	campaign_get_adsetsTool := mcp.NewTool("campaign_get_adsets",
 		mcp.WithDescription("GET adsets for Campaign"),
 		mcp.WithString("campaign_id",
@@ -100,6 +140,18 @@ func GetCampaignTools() []mcp.Tool {
 		),
 		mcp.WithString("time_range",
 			mcp.Description("time_range parameter for adsets"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdSet objects. Available fields: account_id, adlabels, adset_schedule, asset_feed_id, attribution_spec, bid_adjustments, bid_amount, bid_constraints, bid_info, bid_strategy, billing_event, brand_safety_config, budget_remaining, campaign, campaign_active_time (and 53 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, campaign_get_adsetsTool)
@@ -132,6 +184,7 @@ func GetCampaignTools() []mcp.Tool {
 	tools = append(tools, campaign_post_budget_schedulesTool)
 
 	// campaign_get_copies tool
+	// Available fields for Campaign: account_id, adlabels, advantage_state_info, bid_strategy, boosted_object_id, brand_lift_studies, budget_rebalance_flag, budget_remaining, buying_type, campaign_group_active_time, can_create_brand_lift_study, can_use_spend_cap, configured_status, created_time, daily_budget, effective_status, has_secondary_skadnetwork_reporting, id, is_budget_schedule_enabled, is_skadnetwork_attribution, issues_info, last_budget_toggling_time, lifetime_budget, name, objective, pacing_type, primary_attribution, promoted_object, recommendations, smart_promotion_type, source_campaign, source_campaign_id, source_recommendation_type, special_ad_categories, special_ad_category, special_ad_category_country, spend_cap, start_time, status, stop_time, topline_id, updated_time
 	campaign_get_copiesTool := mcp.NewTool("campaign_get_copies",
 		mcp.WithDescription("GET copies for Campaign"),
 		mcp.WithString("campaign_id",
@@ -151,6 +204,18 @@ func GetCampaignTools() []mcp.Tool {
 		),
 		mcp.WithString("time_range",
 			mcp.Description("time_range parameter for copies"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Campaign objects. Available fields: account_id, adlabels, advantage_state_info, bid_strategy, boosted_object_id, brand_lift_studies, budget_rebalance_flag, budget_remaining, buying_type, campaign_group_active_time, can_create_brand_lift_study, can_use_spend_cap, configured_status, created_time, daily_budget (and 27 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, campaign_get_copiesTool)
@@ -182,6 +247,7 @@ func GetCampaignTools() []mcp.Tool {
 	tools = append(tools, campaign_post_copiesTool)
 
 	// campaign_get_insights tool
+	// Available fields for AdsInsights: account_currency, account_id, account_name, action_values, actions, ad_click_actions, ad_id, ad_impression_actions, ad_name, adset_end, adset_id, adset_name, adset_start, age_targeting, attribution_setting, auction_bid, auction_competitiveness, auction_max_competitor_bid, average_purchases_conversion_value, buying_type, campaign_id, campaign_name, canvas_avg_view_percent, canvas_avg_view_time, catalog_segment_actions, catalog_segment_value, catalog_segment_value_mobile_purchase_roas, catalog_segment_value_omni_purchase_roas, catalog_segment_value_website_purchase_roas, clicks, conversion_lead_rate, conversion_leads, conversion_rate_ranking, conversion_values, conversions, converted_product_app_custom_event_fb_mobile_purchase, converted_product_app_custom_event_fb_mobile_purchase_value, converted_product_offline_purchase, converted_product_offline_purchase_value, converted_product_omni_purchase, converted_product_omni_purchase_values, converted_product_quantity, converted_product_value, converted_product_website_pixel_purchase, converted_product_website_pixel_purchase_value, converted_promoted_product_app_custom_event_fb_mobile_purchase, converted_promoted_product_app_custom_event_fb_mobile_purchase_value, converted_promoted_product_offline_purchase, converted_promoted_product_offline_purchase_value, converted_promoted_product_omni_purchase, converted_promoted_product_omni_purchase_values, converted_promoted_product_quantity, converted_promoted_product_value, converted_promoted_product_website_pixel_purchase, converted_promoted_product_website_pixel_purchase_value, cost_per_15_sec_video_view, cost_per_2_sec_continuous_video_view, cost_per_action_type, cost_per_ad_click, cost_per_conversion, cost_per_conversion_lead, cost_per_dda_countby_convs, cost_per_estimated_ad_recallers, cost_per_inline_link_click, cost_per_inline_post_engagement, cost_per_objective_result, cost_per_one_thousand_ad_impression, cost_per_outbound_click, cost_per_result, cost_per_thruplay, cost_per_unique_action_type, cost_per_unique_click, cost_per_unique_conversion, cost_per_unique_inline_link_click, cost_per_unique_outbound_click, cpc, cpm, cpp, created_time, creative_media_type, ctr, date_start, date_stop, dda_countby_convs, dda_results, engagement_rate_ranking, estimated_ad_recall_rate, estimated_ad_recall_rate_lower_bound, estimated_ad_recall_rate_upper_bound, estimated_ad_recallers, estimated_ad_recallers_lower_bound, estimated_ad_recallers_upper_bound, frequency, full_view_impressions, full_view_reach, gender_targeting, impressions, inline_link_click_ctr, inline_link_clicks, inline_post_engagement, instagram_upcoming_event_reminders_set, instant_experience_clicks_to_open, instant_experience_clicks_to_start, instant_experience_outbound_clicks, interactive_component_tap, labels, landing_page_view_actions_per_link_click, landing_page_view_per_link_click, landing_page_view_per_purchase_rate, location, marketing_messages_click_rate_benchmark, marketing_messages_cost_per_delivered, marketing_messages_cost_per_link_btn_click, marketing_messages_delivered, marketing_messages_delivery_rate, marketing_messages_link_btn_click, marketing_messages_link_btn_click_rate, marketing_messages_media_view_rate, marketing_messages_phone_call_btn_click_rate, marketing_messages_quick_reply_btn_click, marketing_messages_quick_reply_btn_click_rate, marketing_messages_read, marketing_messages_read_rate, marketing_messages_read_rate_benchmark, marketing_messages_sent, marketing_messages_spend, marketing_messages_spend_currency, marketing_messages_website_add_to_cart, marketing_messages_website_initiate_checkout, marketing_messages_website_purchase, marketing_messages_website_purchase_values, mobile_app_purchase_roas, objective, objective_result_rate, objective_results, onsite_conversion_messaging_detected_purchase_deduped, optimization_goal, outbound_clicks, outbound_clicks_ctr, place_page_name, product_brand, product_category, product_content_id, product_custom_label_0, product_custom_label_1, product_custom_label_2, product_custom_label_3, product_custom_label_4, product_group_content_id, product_group_retailer_id, product_name, product_retailer_id, purchase_per_landing_page_view, purchase_roas, purchases_per_link_click, qualifying_question_qualify_answer_rate, quality_ranking, reach, result_rate, result_values_performance_indicator, results, shops_assisted_purchases, social_spend, spend, total_postbacks, total_postbacks_detailed, total_postbacks_detailed_v4, unique_actions, unique_clicks, unique_conversions, unique_ctr, unique_inline_link_click_ctr, unique_inline_link_clicks, unique_link_clicks_ctr, unique_outbound_clicks, unique_outbound_clicks_ctr, unique_video_continuous_2_sec_watched_actions, unique_video_view_15_sec, updated_time, video_15_sec_watched_actions, video_30_sec_watched_actions, video_avg_time_watched_actions, video_continuous_2_sec_watched_actions, video_p100_watched_actions, video_p25_watched_actions, video_p50_watched_actions, video_p75_watched_actions, video_p95_watched_actions, video_play_actions, video_play_curve_actions, video_play_retention_0_to_15s_actions, video_play_retention_20_to_60s_actions, video_play_retention_graph_actions, video_thruplay_watched_actions, video_time_watched_actions, video_view_per_impression, website_ctr, website_purchase_roas, wish_bid
 	campaign_get_insightsTool := mcp.NewTool("campaign_get_insights",
 		mcp.WithDescription("GET insights for Campaign"),
 		mcp.WithString("campaign_id",
@@ -260,6 +326,18 @@ func GetCampaignTools() []mcp.Tool {
 		),
 		mcp.WithBoolean("use_unified_attribution_setting",
 			mcp.Description("use_unified_attribution_setting parameter for insights"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsInsights objects. Available fields: account_currency, account_id, account_name, action_values, actions, ad_click_actions, ad_id, ad_impression_actions, ad_name, adset_end, adset_id, adset_name, adset_start, age_targeting, attribution_setting (and 184 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, campaign_get_insightsTool)
@@ -358,6 +436,7 @@ func GetCampaignTools() []mcp.Tool {
 	tools = append(tools, campaign_delete_Tool)
 
 	// campaign_get_ tool
+	// Available fields for Campaign: account_id, adlabels, advantage_state_info, bid_strategy, boosted_object_id, brand_lift_studies, budget_rebalance_flag, budget_remaining, buying_type, campaign_group_active_time, can_create_brand_lift_study, can_use_spend_cap, configured_status, created_time, daily_budget, effective_status, has_secondary_skadnetwork_reporting, id, is_budget_schedule_enabled, is_skadnetwork_attribution, issues_info, last_budget_toggling_time, lifetime_budget, name, objective, pacing_type, primary_attribution, promoted_object, recommendations, smart_promotion_type, source_campaign, source_campaign_id, source_recommendation_type, special_ad_categories, special_ad_category, special_ad_category_country, spend_cap, start_time, status, stop_time, topline_id, updated_time
 	campaign_get_Tool := mcp.NewTool("campaign_get_",
 		mcp.WithDescription("GET  for Campaign"),
 		mcp.WithString("campaign_id",
@@ -376,6 +455,18 @@ func GetCampaignTools() []mcp.Tool {
 		),
 		mcp.WithString("time_range",
 			mcp.Description("time_range parameter for "),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Campaign objects. Available fields: account_id, adlabels, advantage_state_info, bid_strategy, boosted_object_id, brand_lift_studies, budget_rebalance_flag, budget_remaining, buying_type, campaign_group_active_time, can_create_brand_lift_study, can_use_spend_cap, configured_status, created_time, daily_budget (and 27 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, campaign_get_Tool)
@@ -490,6 +581,26 @@ func HandleCampaign_get_ad_studies(ctx context.Context, request mcp.CallToolRequ
 	}
 	args["campaign_id"] = campaign_id
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Campaign_get_ad_studies(args)
 	if err != nil {
@@ -580,6 +691,26 @@ func HandleCampaign_get_adrules_governed(ctx context.Context, request mcp.CallTo
 		args["pass_evaluation"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Campaign_get_adrules_governed(args)
 	if err != nil {
@@ -637,6 +768,26 @@ func HandleCampaign_get_ads(ctx context.Context, request mcp.CallToolRequest) (*
 		args["updated_since"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Campaign_get_ads(args)
 	if err != nil {
@@ -692,6 +843,26 @@ func HandleCampaign_get_adsets(ctx context.Context, request mcp.CallToolRequest)
 	// Optional: time_range
 	if val := request.GetString("time_range", ""); val != "" {
 		args["time_range"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -813,6 +984,26 @@ func HandleCampaign_get_copies(ctx context.Context, request mcp.CallToolRequest)
 	// Optional: time_range
 	if val := request.GetString("time_range", ""); val != "" {
 		args["time_range"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -1031,6 +1222,26 @@ func HandleCampaign_get_insights(ctx context.Context, request mcp.CallToolReques
 	// Optional: use_unified_attribution_setting
 	if val := request.GetBool("use_unified_attribution_setting", false); val {
 		args["use_unified_attribution_setting"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -1279,6 +1490,26 @@ func HandleCampaign_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	// Optional: time_range
 	if val := request.GetString("time_range", ""); val != "" {
 		args["time_range"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method

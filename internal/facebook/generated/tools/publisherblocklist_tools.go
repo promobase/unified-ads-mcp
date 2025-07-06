@@ -27,10 +27,23 @@ func GetPublisherBlockListTools() []mcp.Tool {
 	tools = append(tools, publisherblocklist_post_append_publisher_urlsTool)
 
 	// publisherblocklist_get_paged_web_publishers tool
+	// Available fields for WebPublisher: domain_url, id, publisher_name
 	publisherblocklist_get_paged_web_publishersTool := mcp.NewTool("publisherblocklist_get_paged_web_publishers",
 		mcp.WithDescription("GET paged_web_publishers for PublisherBlockList"),
 		mcp.WithString("draft_id",
 			mcp.Description("draft_id parameter for paged_web_publishers"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for WebPublisher objects. Available fields: domain_url, id, publisher_name"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, publisherblocklist_get_paged_web_publishersTool)
@@ -42,6 +55,7 @@ func GetPublisherBlockListTools() []mcp.Tool {
 	tools = append(tools, publisherblocklist_delete_Tool)
 
 	// publisherblocklist_get_ tool
+	// Available fields for PublisherBlockList: app_publishers, business_owner_id, id, is_auto_blocking_on, is_eligible_at_campaign_level, last_update_time, last_update_user, name, owner_ad_account_id, web_publishers
 	publisherblocklist_get_Tool := mcp.NewTool("publisherblocklist_get_",
 		mcp.WithDescription("GET  for PublisherBlockList"),
 		mcp.WithNumber("account_id",
@@ -52,6 +66,18 @@ func GetPublisherBlockListTools() []mcp.Tool {
 		),
 		mcp.WithString("draft_id",
 			mcp.Description("draft_id parameter for "),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for PublisherBlockList objects. Available fields: app_publishers, business_owner_id, id, is_auto_blocking_on, is_eligible_at_campaign_level, last_update_time, last_update_user, name, owner_ad_account_id, web_publishers"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, publisherblocklist_get_Tool)
@@ -126,6 +152,26 @@ func HandlePublisherblocklist_get_paged_web_publishers(ctx context.Context, requ
 		args["draft_id"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Publisherblocklist_get_paged_web_publishers(args)
 	if err != nil {
@@ -197,6 +243,26 @@ func HandlePublisherblocklist_get_(ctx context.Context, request mcp.CallToolRequ
 	// Optional: draft_id
 	if val := request.GetString("draft_id", ""); val != "" {
 		args["draft_id"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method

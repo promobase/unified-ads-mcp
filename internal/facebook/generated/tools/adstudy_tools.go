@@ -17,8 +17,21 @@ func GetAdStudyTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adstudy_get_cells tool
+	// Available fields for AdStudyCell: ad_entities_count, control_percentage, id, name, treatment_percentage
 	adstudy_get_cellsTool := mcp.NewTool("adstudy_get_cells",
 		mcp.WithDescription("GET cells for AdStudy"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdStudyCell objects. Available fields: ad_entities_count, control_percentage, id, name, treatment_percentage"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adstudy_get_cellsTool)
 
@@ -47,8 +60,21 @@ func GetAdStudyTools() []mcp.Tool {
 	tools = append(tools, adstudy_post_checkpointTool)
 
 	// adstudy_get_instances tool
+	// Available fields for PrivateLiftStudyInstance: breakdown_key, created_time, feature_list, id, issuer_certificate, latest_status_update_time, run_id, server_hostnames, server_ips, status, tier
 	adstudy_get_instancesTool := mcp.NewTool("adstudy_get_instances",
 		mcp.WithDescription("GET instances for AdStudy"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for PrivateLiftStudyInstance objects. Available fields: breakdown_key, created_time, feature_list, id, issuer_certificate, latest_status_update_time, run_id, server_hostnames, server_ips, status, tier"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adstudy_get_instancesTool)
 
@@ -66,8 +92,21 @@ func GetAdStudyTools() []mcp.Tool {
 	tools = append(tools, adstudy_post_instancesTool)
 
 	// adstudy_get_objectives tool
+	// Available fields for AdStudyObjective: id, is_primary, last_updated_results, name, results, type
 	adstudy_get_objectivesTool := mcp.NewTool("adstudy_get_objectives",
 		mcp.WithDescription("GET objectives for AdStudy"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdStudyObjective objects. Available fields: id, is_primary, last_updated_results, name, results, type"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adstudy_get_objectivesTool)
 
@@ -78,8 +117,21 @@ func GetAdStudyTools() []mcp.Tool {
 	tools = append(tools, adstudy_delete_Tool)
 
 	// adstudy_get_ tool
+	// Available fields for AdStudy: business, canceled_time, client_business, cooldown_start_time, created_by, created_time, description, end_time, id, measurement_contact, name, observation_end_time, results_first_available_date, sales_contact, start_time, type, updated_by, updated_time
 	adstudy_get_Tool := mcp.NewTool("adstudy_get_",
 		mcp.WithDescription("GET  for AdStudy"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdStudy objects. Available fields: business, canceled_time, client_business, cooldown_start_time, created_by, created_time, description, end_time, id, measurement_contact, name, observation_end_time, results_first_available_date, sales_contact, start_time (and 3 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adstudy_get_Tool)
 
@@ -144,6 +196,26 @@ func HandleAdstudy_get_cells(ctx context.Context, request mcp.CallToolRequest) (
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adstudy_get_cells(args)
@@ -234,6 +306,26 @@ func HandleAdstudy_get_instances(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adstudy_get_instances(args)
 	if err != nil {
@@ -304,6 +396,26 @@ func HandleAdstudy_get_objectives(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adstudy_get_objectives(args)
 	if err != nil {
@@ -361,6 +473,26 @@ func HandleAdstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adstudy_get_(args)

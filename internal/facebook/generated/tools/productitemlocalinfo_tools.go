@@ -17,8 +17,21 @@ func GetProductItemLocalInfoTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// productitemlocalinfo_get_ tool
+	// Available fields for ProductItemLocalInfo: availability_circle_origin, availability_circle_radius, availability_circle_radius_unit, availability_polygon_coordinates, availability_postal_codes, availability_source, id, inferred_circle_origin, inferred_circle_radius
 	productitemlocalinfo_get_Tool := mcp.NewTool("productitemlocalinfo_get_",
 		mcp.WithDescription("GET  for ProductItemLocalInfo"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductItemLocalInfo objects. Available fields: availability_circle_origin, availability_circle_radius, availability_circle_radius_unit, availability_polygon_coordinates, availability_postal_codes, availability_source, id, inferred_circle_origin, inferred_circle_radius"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, productitemlocalinfo_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleProductitemlocalinfo_get_(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Productitemlocalinfo_get_(args)

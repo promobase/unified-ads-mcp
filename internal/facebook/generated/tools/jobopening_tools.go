@@ -17,8 +17,21 @@ func GetJobOpeningTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// jobopening_get_ tool
+	// Available fields for JobOpening: address, application_callback_url, created_time, description, errors, external_company_facebook_url, external_company_full_address, external_company_id, external_company_name, external_id, id, job_status, latitude, longitude, offsite_application_url, page, photo, platform_review_status, post, remote_type, review_rejection_reasons, title, type
 	jobopening_get_Tool := mcp.NewTool("jobopening_get_",
 		mcp.WithDescription("GET  for JobOpening"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for JobOpening objects. Available fields: address, application_callback_url, created_time, description, errors, external_company_facebook_url, external_company_full_address, external_company_id, external_company_name, external_id, id, job_status, latitude, longitude, offsite_application_url (and 8 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, jobopening_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleJobopening_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Jobopening_get_(args)

@@ -17,8 +17,21 @@ func GetBCPCampaignTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// bcpcampaign_get_ tool
+	// Available fields for BCPCampaign: ads_permission_required, application_deadline, campaign_goal, campaign_goal_other, content_delivery_deadline, content_delivery_start_date, content_requirements, content_requirements_description, currency, deal_negotiation_type, description, has_free_product, id, name, payment_amount_for_ads, payment_amount_for_content, payment_description
 	bcpcampaign_get_Tool := mcp.NewTool("bcpcampaign_get_",
 		mcp.WithDescription("GET  for BCPCampaign"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BCPCampaign objects. Available fields: ads_permission_required, application_deadline, campaign_goal, campaign_goal_other, content_delivery_deadline, content_delivery_start_date, content_requirements, content_requirements_description, currency, deal_negotiation_type, description, has_free_product, id, name, payment_amount_for_ads (and 2 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, bcpcampaign_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleBcpcampaign_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Bcpcampaign_get_(args)

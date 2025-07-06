@@ -25,12 +25,37 @@ func GetAdsValueAdjustmentRuleCollectionTools() []mcp.Tool {
 	// adsvalueadjustmentrulecollection_get_rules tool
 	adsvalueadjustmentrulecollection_get_rulesTool := mcp.NewTool("adsvalueadjustmentrulecollection_get_rules",
 		mcp.WithDescription("GET rules for AdsValueAdjustmentRuleCollection"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adsvalueadjustmentrulecollection_get_rulesTool)
 
 	// adsvalueadjustmentrulecollection_get_ tool
+	// Available fields for AdsValueAdjustmentRuleCollection: id, is_default_setting, name, product_type, status
 	adsvalueadjustmentrulecollection_get_Tool := mcp.NewTool("adsvalueadjustmentrulecollection_get_",
 		mcp.WithDescription("GET  for AdsValueAdjustmentRuleCollection"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsValueAdjustmentRuleCollection objects. Available fields: id, is_default_setting, name, product_type, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, adsvalueadjustmentrulecollection_get_Tool)
 
@@ -99,6 +124,26 @@ func HandleAdsvalueadjustmentrulecollection_get_rules(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Adsvalueadjustmentrulecollection_get_rules(args)
 	if err != nil {
@@ -127,6 +172,26 @@ func HandleAdsvalueadjustmentrulecollection_get_(ctx context.Context, request mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Adsvalueadjustmentrulecollection_get_(args)

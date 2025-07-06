@@ -17,8 +17,21 @@ func GetThirdPartyPartnerLiftRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// thirdpartypartnerliftrequest_get_ tool
+	// Available fields for ThirdPartyPartnerLiftRequest: ad_entities, country, created_time, description, holdout_size, id, legacy_ads_data_partner_id, legacy_ads_data_partner_name, modified_time, owner_instance_id, partner_household_graph_dataset_id, region, status, study_cells, study_end_time, study_start_time
 	thirdpartypartnerliftrequest_get_Tool := mcp.NewTool("thirdpartypartnerliftrequest_get_",
 		mcp.WithDescription("GET  for ThirdPartyPartnerLiftRequest"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ThirdPartyPartnerLiftRequest objects. Available fields: ad_entities, country, created_time, description, holdout_size, id, legacy_ads_data_partner_id, legacy_ads_data_partner_name, modified_time, owner_instance_id, partner_household_graph_dataset_id, region, status, study_cells, study_end_time (and 1 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, thirdpartypartnerliftrequest_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleThirdpartypartnerliftrequest_get_(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Thirdpartypartnerliftrequest_get_(args)

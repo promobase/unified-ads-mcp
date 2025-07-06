@@ -17,8 +17,21 @@ func GetFBImageCopyrightMatchTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// fbimagecopyrightmatch_get_ tool
+	// Available fields for FBImageCopyrightMatch: added_to_dashboard_time, applied_actions, audit_log, available_ui_actions, expiration_days, generic_match_data, id, is_business_page_match, last_modified_time, match_data, match_status, ownership_countries, reference_owner, time_to_appeal
 	fbimagecopyrightmatch_get_Tool := mcp.NewTool("fbimagecopyrightmatch_get_",
 		mcp.WithDescription("GET  for FBImageCopyrightMatch"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for FBImageCopyrightMatch objects. Available fields: added_to_dashboard_time, applied_actions, audit_log, available_ui_actions, expiration_days, generic_match_data, id, is_business_page_match, last_modified_time, match_data, match_status, ownership_countries, reference_owner, time_to_appeal"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, fbimagecopyrightmatch_get_Tool)
 
@@ -40,6 +53,26 @@ func HandleFbimagecopyrightmatch_get_(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Fbimagecopyrightmatch_get_(args)

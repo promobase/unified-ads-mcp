@@ -61,13 +61,14 @@ type CodegenContext struct {
 
 // MCPTool represents a generated MCP tool
 type MCPTool struct {
-	Name        string
-	Description string
-	Method      string
-	Endpoint    string
-	Return      string
-	Parameters  []MCPParameter
-	NodeType    string
+	Name            string
+	Description     string
+	Method          string
+	Endpoint        string
+	Return          string
+	Parameters      []MCPParameter
+	NodeType        string
+	AvailableFields []string // For GET endpoints, the fields that can be requested
 }
 
 // MCPParameter represents a parameter for an MCP tool
@@ -253,6 +254,85 @@ func generateTools(ctx *CodegenContext) {
 				tool.Parameters = append(tool.Parameters, mcpParam)
 			}
 
+			// Add common parameters for GET endpoints
+			if api.Method == "GET" {
+				// Add fields parameter with type-safe enum values
+				fieldsParam := MCPParameter{
+					Name:        "fields",
+					Type:        "string", // Comma-separated string of field names
+					Required:    false,
+					Description: fmt.Sprintf("Comma-separated list of fields to return for %s objects", api.Return),
+				}
+				
+				// Get available fields from the return type spec
+				// For edge endpoints, api.Return contains the type being returned
+				// For non-edge endpoints (like GET /{id}), we might need to use the node type itself
+				var targetType string
+				if api.Return != "" && api.Return != "Object" {
+					targetType = api.Return
+				} else if api.Endpoint == "" || api.Endpoint == "/" {
+					// Non-edge endpoint, use the node type itself
+					targetType = nodeName
+				} else {
+					// Default to the return type
+					targetType = api.Return
+				}
+				
+				// Look up the fields from the target type's spec
+				if targetSpec, exists := ctx.Specs[targetType]; exists && len(targetSpec.Fields) > 0 {
+					var fieldNames []string
+					for _, field := range targetSpec.Fields {
+						fieldNames = append(fieldNames, field.Name)
+					}
+					if len(fieldNames) > 0 {
+						// Store available fields in the tool for type-safe generation
+						tool.AvailableFields = fieldNames
+						
+						// Add field names to description for reference (show first 15 fields)
+						displayFields := fieldNames
+						if len(fieldNames) > 15 {
+							displayFields = fieldNames[:15]
+						}
+						fieldsParam.Description = fmt.Sprintf("Comma-separated list of fields to return for %s objects. Available fields: %s", 
+							targetType, strings.Join(displayFields, ", "))
+						if len(fieldNames) > 15 {
+							fieldsParam.Description += fmt.Sprintf(" (and %d more)", len(fieldNames)-15)
+						}
+						
+						tool.Parameters = append(tool.Parameters, fieldsParam)
+					}
+				} else {
+					// If no fields found, still add the parameter but with a generic description
+					fieldsParam.Description = "Comma-separated list of fields to return"
+					tool.Parameters = append(tool.Parameters, fieldsParam)
+				}
+
+				// Add pagination parameters
+				limitParam := MCPParameter{
+					Name:        "limit",
+					Type:        "integer",
+					Required:    false,
+					Description: "Maximum number of results to return (default: 25, max: 500)",
+				}
+				tool.Parameters = append(tool.Parameters, limitParam)
+
+				afterParam := MCPParameter{
+					Name:        "after",
+					Type:        "string",
+					Required:    false,
+					Description: "Cursor for pagination (use 'next' cursor from previous response)",
+				}
+				tool.Parameters = append(tool.Parameters, afterParam)
+
+				beforeParam := MCPParameter{
+					Name:        "before",
+					Type:        "string",
+					Required:    false,
+					Description: "Cursor for pagination (use 'previous' cursor from previous response)",
+				}
+				tool.Parameters = append(tool.Parameters, beforeParam)
+			}
+
 			ctx.Tools = append(ctx.Tools, tool)
 		}
 	}
@@ -291,6 +371,13 @@ func generateTypes(ctx *CodegenContext) {
 
 func normalizeEndpoint(endpoint string) string {
 	return strings.ReplaceAll(endpoint, "/", "_")
+}
+
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
 }
 
 func convertType(fbType string) string {
@@ -573,7 +660,7 @@ func generateCode(ctx *CodegenContext) error {
 	}
 
 	// Generate constants
-	if err := generateConstantsFile(generatedDir); err != nil {
+	if err := generateConstantsFile(ctx, generatedDir); err != nil {
 		return fmt.Errorf("failed to generate constants: %w", err)
 	}
 
@@ -934,7 +1021,8 @@ func Get{{.NodeName}}Tools() []mcp.Tool {
 	var tools []mcp.Tool
 
 {{range .Tools}}
-	// {{.Name}} tool
+	// {{.Name}} tool{{if .AvailableFields}}
+	// Available fields for {{.Return}}: {{range $i, $field := .AvailableFields}}{{if $i}}, {{end}}{{$field}}{{end}}{{end}}
 	{{sanitizeVarName .Name}}Tool := mcp.NewTool("{{.Name}}",
 		mcp.WithDescription("{{.Description}}"),
 {{range .Parameters}}		mcp.With{{paramType .Type}}("{{.Name}}",
@@ -1268,7 +1356,23 @@ package generated
 	return err
 }
 
-func generateConstantsFile(outputDir string) error {
+func generateConstantsFile(ctx *CodegenContext, outputDir string) error {
+	// Create constants directory
+	constantsDir := filepath.Join(outputDir, "constants")
+	if err := os.MkdirAll(constantsDir, 0755); err != nil {
+		return fmt.Errorf("failed to create constants directory: %w", err)
+	}
+
+	// Generate field constants for each type
+	for typeName, spec := range ctx.Specs {
+		if len(spec.Fields) > 0 {
+			if err := generateFieldConstantsFile(constantsDir, typeName, spec); err != nil {
+				return fmt.Errorf("failed to generate field constants for %s: %w", typeName, err)
+			}
+		}
+	}
+
+	// Generate main constants file
 	tmpl := `// Code generated by Facebook Business API codegen. DO NOT EDIT.
 
 package generated
@@ -1285,4 +1389,88 @@ const APIVersion = "` + APIVersion + `"
 
 	_, err = file.WriteString(tmpl)
 	return err
+}
+
+func generateFieldConstantsFile(constantsDir string, typeName string, spec *APISpec) error {
+	tmpl := `// Code generated by Facebook Business API codegen. DO NOT EDIT.
+
+package constants
+
+// {{.TypeName}}Fields contains field name constants for {{.TypeName}} objects
+var {{.TypeName}}Fields = struct {
+{{range .Fields}}	{{.ConstName}} string
+{{end}}}{
+{{range .Fields}}	{{.ConstName}}: "{{.Name}}",
+{{end}}}
+
+// {{.TypeName}}FieldsList contains all available fields for {{.TypeName}} objects
+var {{.TypeName}}FieldsList = []string{
+{{range .Fields}}	"{{.Name}}",
+{{end}}}
+`
+
+	type fieldData struct {
+		Name      string
+		ConstName string
+	}
+
+	data := struct {
+		TypeName string
+		Fields   []fieldData
+	}{
+		TypeName: typeName,
+	}
+
+	// Convert field names to Go constant names
+	for _, field := range spec.Fields {
+		constName := ""
+		// Replace dots with underscores first
+		sanitizedName := strings.ReplaceAll(field.Name, ".", "_")
+		
+		// Convert field name to PascalCase for constant name
+		parts := strings.Split(sanitizedName, "_")
+		for _, part := range parts {
+			if len(part) > 0 {
+				constName += strings.ToUpper(part[:1]) + part[1:]
+			}
+		}
+		
+		// Handle special cases
+		if constName == "" {
+			constName = "Field" + sanitizedName
+		}
+		
+		// If starts with number, prefix with Field
+		if len(constName) > 0 && constName[0] >= '0' && constName[0] <= '9' {
+			constName = "Field" + constName
+		}
+		
+		// Handle Go keywords
+		switch constName {
+		case "Type", "Func", "Var", "Const", "Package", "Import", "Interface", 
+		     "Struct", "Map", "Chan", "Select", "Case", "Default", "If", "Else",
+		     "For", "Range", "Switch", "Return", "Break", "Continue", "Goto",
+		     "Defer", "Go":
+			constName = "Field" + constName
+		}
+		
+		data.Fields = append(data.Fields, fieldData{
+			Name:      field.Name,
+			ConstName: constName,
+		})
+	}
+
+	t, err := template.New("fieldConstants").Parse(tmpl)
+	if err != nil {
+		return err
+	}
+
+	filename := fmt.Sprintf("%s_fields.go", strings.ToLower(typeName))
+	file, err := os.Create(filepath.Join(constantsDir, filename))
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	return t.Execute(file, data)
 }

@@ -37,6 +37,7 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_access_tokenTool)
 
 	// business_get_ad_account_infos tool
+	// Available fields for ALMAdAccountInfo: ad_account_id, id, managed_by, owned_by, parent_advertiser_id, sub_vertical, tag, user_ids, vertical
 	business_get_ad_account_infosTool := mcp.NewTool("business_get_ad_account_infos",
 		mcp.WithDescription("GET ad_account_infos for Business"),
 		mcp.WithString("ad_account_id",
@@ -47,6 +48,18 @@ func GetBusinessTools() []mcp.Tool {
 		),
 		mcp.WithString("user_id",
 			mcp.Description("user_id parameter for ad_account_infos"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ALMAdAccountInfo objects. Available fields: ad_account_id, id, managed_by, owned_by, parent_advertiser_id, sub_vertical, tag, user_ids, vertical"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, business_get_ad_account_infosTool)
@@ -71,8 +84,21 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_ad_review_requestsTool)
 
 	// business_get_ad_studies tool
+	// Available fields for AdStudy: business, canceled_time, client_business, cooldown_start_time, created_by, created_time, description, end_time, id, measurement_contact, name, observation_end_time, results_first_available_date, sales_contact, start_time, type, updated_by, updated_time
 	business_get_ad_studiesTool := mcp.NewTool("business_get_ad_studies",
 		mcp.WithDescription("GET ad_studies for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdStudy objects. Available fields: business, canceled_time, client_business, cooldown_start_time, created_by, created_time, description, end_time, id, measurement_contact, name, observation_end_time, results_first_available_date, sales_contact, start_time (and 3 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_ad_studiesTool)
 
@@ -195,6 +221,7 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_adnetwork_applicationsTool)
 
 	// business_get_adnetworkanalytics tool
+	// Available fields for AdNetworkAnalyticsSyncQueryResult: omitted_results, query_id, results
 	business_get_adnetworkanalyticsTool := mcp.NewTool("business_get_adnetworkanalytics",
 		mcp.WithDescription("GET adnetworkanalytics for Business"),
 		mcp.WithString("aggregation_period",
@@ -232,6 +259,18 @@ func GetBusinessTools() []mcp.Tool {
 		),
 		mcp.WithString("until",
 			mcp.Description("until parameter for adnetworkanalytics"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdNetworkAnalyticsSyncQueryResult objects. Available fields: omitted_results, query_id, results"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, business_get_adnetworkanalyticsTool)
@@ -276,15 +315,29 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_adnetworkanalyticsTool)
 
 	// business_get_adnetworkanalytics_results tool
+	// Available fields for AdNetworkAnalyticsAsyncQueryResult: data, omitted_results, query_id, results, status
 	business_get_adnetworkanalytics_resultsTool := mcp.NewTool("business_get_adnetworkanalytics_results",
 		mcp.WithDescription("GET adnetworkanalytics_results for Business"),
 		mcp.WithString("query_ids",
 			mcp.Description("query_ids parameter for adnetworkanalytics_results"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdNetworkAnalyticsAsyncQueryResult objects. Available fields: data, omitted_results, query_id, results, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_adnetworkanalytics_resultsTool)
 
 	// business_get_ads_dataset tool
+	// Available fields for AdsDataset: can_proxy, collection_rate, config, creation_time, creator, dataset_id, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_events, enable_automatic_matching, enable_real_time_event_log, event_stats, event_time_max, event_time_min, first_party_cookie_status, has_bapi_domains, has_catalog_microdata_activity, has_ofa_redacted_keys, has_sent_pii, id, is_consolidated_container, is_created_by_business, is_crm, is_eligible_for_sharing_to_ad_account, is_eligible_for_sharing_to_business, is_eligible_for_value_optimization, is_mta_use, is_restricted_use, is_unavailable, last_fired_time, last_upload_app, last_upload_app_changed_time, last_upload_time, late_upload_reminder_eligibility, match_rate_approx, matched_entries, name, no_ads_tracked_for_weekly_uploaded_events_reminder_eligibility, num_active_ad_set_tracked, num_recent_offline_conversions_uploaded, num_uploads, owner_ad_account, owner_business, percentage_of_late_uploads_in_external_suboptimal_window, permissions, server_last_fired_time, show_automatic_events, upload_rate, upload_reminder_eligibility, usage, valid_entries
 	business_get_ads_datasetTool := mcp.NewTool("business_get_ads_dataset",
 		mcp.WithDescription("GET ads_dataset for Business"),
 		mcp.WithString("id_filter",
@@ -296,6 +349,18 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithString("sort_by",
 			mcp.Description("sort_by parameter for ads_dataset"),
 			mcp.Enum("LAST_FIRED_TIME", "NAME"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsDataset objects. Available fields: can_proxy, collection_rate, config, creation_time, creator, dataset_id, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_events, enable_automatic_matching, enable_real_time_event_log, event_stats, event_time_max, event_time_min (and 37 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, business_get_ads_datasetTool)
@@ -320,21 +385,48 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_ads_datasetTool)
 
 	// business_get_ads_reporting_mmm_reports tool
+	// Available fields for AdsReportBuilderMMMReport: async_status, export_format, export_name, export_type, has_seen, id, mmm_status, time_start
 	business_get_ads_reporting_mmm_reportsTool := mcp.NewTool("business_get_ads_reporting_mmm_reports",
 		mcp.WithDescription("GET ads_reporting_mmm_reports for Business"),
 		mcp.WithString("filtering",
 			mcp.Description("filtering parameter for ads_reporting_mmm_reports"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsReportBuilderMMMReport objects. Available fields: async_status, export_format, export_name, export_type, has_seen, id, mmm_status, time_start"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_ads_reporting_mmm_reportsTool)
 
 	// business_get_ads_reporting_mmm_schedulers tool
+	// Available fields for AdsReportBuilderMMMReportScheduler: ad_account_ids, filtering, id, report_name, schedule_frequency
 	business_get_ads_reporting_mmm_schedulersTool := mcp.NewTool("business_get_ads_reporting_mmm_schedulers",
 		mcp.WithDescription("GET ads_reporting_mmm_schedulers for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsReportBuilderMMMReportScheduler objects. Available fields: ad_account_ids, filtering, id, report_name, schedule_frequency"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_ads_reporting_mmm_schedulersTool)
 
 	// business_get_adspixels tool
+	// Available fields for AdsPixel: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status, has_1p_pixel_event, id, is_consolidated_container, is_created_by_business, is_crm, is_mta_use, is_restricted_use, is_unavailable, last_fired_time, last_upload_app, last_upload_app_changed_time, match_rate_approx, matched_entries, name, owner_ad_account, owner_business, usage, user_access_expire_time, valid_entries
 	business_get_adspixelsTool := mcp.NewTool("business_get_adspixels",
 		mcp.WithDescription("GET adspixels for Business"),
 		mcp.WithString("id_filter",
@@ -346,6 +438,18 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithString("sort_by",
 			mcp.Description("sort_by parameter for adspixels"),
 			mcp.Enum("LAST_FIRED_TIME", "NAME"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsPixel objects. Available fields: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status (and 19 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, business_get_adspixelsTool)
@@ -374,14 +478,40 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_delete_agenciesTool)
 
 	// business_get_agencies tool
+	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	business_get_agenciesTool := mcp.NewTool("business_get_agencies",
 		mcp.WithDescription("GET agencies for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_agenciesTool)
 
 	// business_get_an_placements tool
+	// Available fields for AdPlacement: bundle_id, display_format, external_placement_id, google_display_format, id, name, placement_group, platform, status
 	business_get_an_placementsTool := mcp.NewTool("business_get_an_placements",
 		mcp.WithDescription("GET an_placements for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdPlacement objects. Available fields: bundle_id, display_format, external_placement_id, google_display_format, id, name, placement_group, platform, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_an_placementsTool)
 
@@ -406,12 +536,26 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_bm_review_requestsTool)
 
 	// business_get_business_asset_groups tool
+	// Available fields for BusinessAssetGroup: id, name, owner_business
 	business_get_business_asset_groupsTool := mcp.NewTool("business_get_business_asset_groups",
 		mcp.WithDescription("GET business_asset_groups for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BusinessAssetGroup objects. Available fields: id, name, owner_business"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_business_asset_groupsTool)
 
 	// business_get_business_invoices tool
+	// Available fields for OmegaCustomerTrx: ad_account_ids, advertiser_name, amount, amount_due, billed_amount_details, billing_period, cdn_download_uri, currency, download_uri, due_date, entity, id, invoice_date, invoice_id, invoice_type, liability_type, payment_status, payment_term, type
 	business_get_business_invoicesTool := mcp.NewTool("business_get_business_invoices",
 		mcp.WithDescription("GET business_invoices for Business"),
 		mcp.WithString("end_date",
@@ -436,12 +580,37 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Description("type parameter for business_invoices"),
 			mcp.Enum("CM", "DM", "INV", "PRO_FORMA"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for OmegaCustomerTrx objects. Available fields: ad_account_ids, advertiser_name, amount, amount_due, billed_amount_details, billing_period, cdn_download_uri, currency, download_uri, due_date, entity, id, invoice_date, invoice_id, invoice_type (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_business_invoicesTool)
 
 	// business_get_business_users tool
+	// Available fields for BusinessUser: business, business_role_request, email, finance_permission, first_name, id, ip_permission, last_name, marked_for_removal, name, pending_email, role, tasks, title, two_fac_status
 	business_get_business_usersTool := mcp.NewTool("business_get_business_users",
 		mcp.WithDescription("GET business_users for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BusinessUser objects. Available fields: business, business_role_request, email, finance_permission, first_name, id, ip_permission, last_name, marked_for_removal, name, pending_email, role, tasks, title, two_fac_status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_business_usersTool)
 
@@ -468,8 +637,21 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_business_usersTool)
 
 	// business_get_businessprojects tool
+	// Available fields for BusinessProject: business, created_time, creator, id, name
 	business_get_businessprojectsTool := mcp.NewTool("business_get_businessprojects",
 		mcp.WithDescription("GET businessprojects for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BusinessProject objects. Available fields: business, created_time, creator, id, name"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_businessprojectsTool)
 
@@ -484,17 +666,43 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_claim_custom_conversionsTool)
 
 	// business_get_client_ad_accounts tool
+	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	business_get_client_ad_accountsTool := mcp.NewTool("business_get_client_ad_accounts",
 		mcp.WithDescription("GET client_ad_accounts for Business"),
 		mcp.WithString("search_query",
 			mcp.Description("search_query parameter for client_ad_accounts"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_client_ad_accountsTool)
 
 	// business_get_client_apps tool
+	// Available fields for Application: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline, auth_dialog_perms_explanation, auth_referral_default_activity_privacy, auth_referral_enabled, auth_referral_extended_perms, auth_referral_friend_perms, auth_referral_response_type, auth_referral_user_perms, auto_event_mapping_android, auto_event_mapping_ios, auto_event_setup_enabled, auto_log_app_events_default, auto_log_app_events_enabled, business, canvas_fluid_height, canvas_fluid_width, canvas_url, category, client_config, company, configured_ios_sso, contact_email, created_time, creator_uid, daily_active_users, daily_active_users_rank, deauth_callback_url, default_share_mode, description, enigma_config, financial_id, gdpv4_chrome_custom_tabs_enabled, gdpv4_enabled, gdpv4_nux_content, gdpv4_nux_enabled, has_messenger_product, hosting_url, icon_url, id, ios_bundle_id, ios_sdk_dialog_flows, ios_sdk_error_categories, ios_sfvc_attr, ios_supports_native_proxy_auth_flow, ios_supports_system_auth, ipad_app_store_id, iphone_app_store_id, latest_sdk_version, link, logging_token, logo_url, migrations, mobile_profile_section_url, mobile_web_url, monthly_active_users, monthly_active_users_rank, name, namespace, object_store_urls, owner_business, page_tab_default_name, page_tab_url, photo_url, privacy_policy_url, profile_section_url, property_id, protected_mode_rules, real_time_mode_devices, restrictions, restrictive_data_filter_params, restrictive_data_filter_rules, sdk_update_message, seamless_login, secure_canvas_url, secure_page_tab_url, server_ip_whitelist, smart_login_bookmark_icon_url, smart_login_menu_icon_url, social_discovery, subcategory, suggested_events_setting, supported_platforms, supports_apprequests_fast_app_switch, supports_attribution, supports_implicit_sdk_logging, suppress_native_ios_gdp, terms_of_service_url, url_scheme_suffix, user_support_email, user_support_url, website_url, weekly_active_users
 	business_get_client_appsTool := mcp.NewTool("business_get_client_apps",
 		mcp.WithDescription("GET client_apps for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Application objects. Available fields: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline (and 91 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_client_appsTool)
 
@@ -509,14 +717,40 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_client_appsTool)
 
 	// business_get_client_offsite_signal_container_business_objects tool
+	// Available fields for OffsiteSignalContainerBusinessObject: business, id, is_eligible_for_sharing_to_ad_account, is_eligible_for_sharing_to_business, is_unavailable, name, primary_container_id
 	business_get_client_offsite_signal_container_business_objectsTool := mcp.NewTool("business_get_client_offsite_signal_container_business_objects",
 		mcp.WithDescription("GET client_offsite_signal_container_business_objects for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for OffsiteSignalContainerBusinessObject objects. Available fields: business, id, is_eligible_for_sharing_to_ad_account, is_eligible_for_sharing_to_business, is_unavailable, name, primary_container_id"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_client_offsite_signal_container_business_objectsTool)
 
 	// business_get_client_pages tool
+	// Available fields for Page: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent, breaking_news_usage, built, business, can_checkin, can_post, category, category_list, checkins, company_overview, connected_instagram_account, connected_page_backed_instagram_account, contact_address, copyright_whitelisted_ig_partners, country_page_likes, cover, culinary_team, current_location, delivery_and_pickup_option_info, description, description_html, differently_open_offerings, directed_by, display_subtext, displayed_message_response_time, does_viewer_have_page_permission_link_ig, emails, engagement, fan_count, featured_video, features, followers_count, food_styles, founded, general_info, general_manager, genre, global_brand_page_name, global_brand_root_id, has_added_app, has_lead_access, has_transitioned_to_new_page_experience, has_whatsapp_business_number, has_whatsapp_number, hometown, hours, id, impressum, influences, instagram_business_account, is_always_open, is_calling_eligible, is_chain, is_community_page, is_eligible_for_branded_content, is_eligible_for_disable_connect_ig_btn_for_non_page_admin_am_web, is_messenger_bot_get_started_enabled, is_messenger_platform_bot, is_owned, is_permanently_closed, is_published, is_unclaimed, is_verified, is_webhooks_subscribed, keywords, leadgen_tos_acceptance_time, leadgen_tos_accepted, leadgen_tos_accepting_user, link, location, members, merchant_id, merchant_review_status, messaging_feature_status, messenger_ads_default_icebreakers, messenger_ads_default_quick_replies, messenger_ads_quick_replies_type, mini_shop_storefront, mission, mpg, name, name_with_location_descriptor, network, new_like_count, offer_eligible, overall_star_rating, owner_business, page_token, parent_page, parking, payment_options, personal_info, personal_interests, pharma_safety_info, phone, pickup_options, place_type, plot_outline, preferred_audience, press_contact, price_range, privacy_info_url, produced_by, products, promotion_eligible, promotion_ineligible_reason, public_transit, rating_count, recipient, record_label, release_date, restaurant_services, restaurant_specialties, schedule, screenplay_by, season, single_line_address, starring, start_info, store_code, store_location_descriptor, store_number, studio, supports_donate_button_in_live_video, talking_about_count, temporary_status, unread_message_count, unread_notif_count, unseen_message_count, user_access_expire_time, username, verification_status, voip_info, website, were_here_count, whatsapp_number, written_by
 	business_get_client_pagesTool := mcp.NewTool("business_get_client_pages",
 		mcp.WithDescription("GET client_pages for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Page objects. Available fields: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent (and 136 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_client_pagesTool)
 
@@ -535,20 +769,59 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_client_pagesTool)
 
 	// business_get_client_pixels tool
+	// Available fields for AdsPixel: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status, has_1p_pixel_event, id, is_consolidated_container, is_created_by_business, is_crm, is_mta_use, is_restricted_use, is_unavailable, last_fired_time, last_upload_app, last_upload_app_changed_time, match_rate_approx, matched_entries, name, owner_ad_account, owner_business, usage, user_access_expire_time, valid_entries
 	business_get_client_pixelsTool := mcp.NewTool("business_get_client_pixels",
 		mcp.WithDescription("GET client_pixels for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsPixel objects. Available fields: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status (and 19 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_client_pixelsTool)
 
 	// business_get_client_product_catalogs tool
+	// Available fields for ProductCatalog: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business, product_count, store_catalog_settings, user_access_expire_time, vertical
 	business_get_client_product_catalogsTool := mcp.NewTool("business_get_client_product_catalogs",
 		mcp.WithDescription("GET client_product_catalogs for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductCatalog objects. Available fields: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_client_product_catalogsTool)
 
 	// business_get_client_whatsapp_business_accounts tool
+	// Available fields for WhatsAppBusinessAccount: account_review_status, analytics, auth_international_rate_eligibility, business_verification_status, country, creation_time, currency, health_status, id, is_enabled_for_insights, is_shared_with_partners, linked_commerce_account, marketing_messages_lite_api_status, message_template_namespace, name, on_behalf_of_business_info, owner_business, owner_business_info, ownership_type, primary_business_location, primary_funding_id, purchase_order_number, status, timezone_id
 	business_get_client_whatsapp_business_accountsTool := mcp.NewTool("business_get_client_whatsapp_business_accounts",
 		mcp.WithDescription("GET client_whatsapp_business_accounts for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for WhatsAppBusinessAccount objects. Available fields: account_review_status, analytics, auth_international_rate_eligibility, business_verification_status, country, creation_time, currency, health_status, id, is_enabled_for_insights, is_shared_with_partners, linked_commerce_account, marketing_messages_lite_api_status, message_template_namespace, name (and 9 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_client_whatsapp_business_accountsTool)
 
@@ -563,16 +836,42 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_delete_clientsTool)
 
 	// business_get_clients tool
+	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	business_get_clientsTool := mcp.NewTool("business_get_clients",
 		mcp.WithDescription("GET clients for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_clientsTool)
 
 	// business_get_collaborative_ads_collaboration_requests tool
+	// Available fields for CPASCollaborationRequest: brands, contact_email, contact_first_name, contact_last_name, id, phone_number, receiver_business, requester_agency_or_brand, sender_client_business, status
 	business_get_collaborative_ads_collaboration_requestsTool := mcp.NewTool("business_get_collaborative_ads_collaboration_requests",
 		mcp.WithDescription("GET collaborative_ads_collaboration_requests for Business"),
 		mcp.WithString("status",
 			mcp.Description("status parameter for collaborative_ads_collaboration_requests"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CPASCollaborationRequest objects. Available fields: brands, contact_email, contact_first_name, contact_last_name, id, phone_number, receiver_business, requester_agency_or_brand, sender_client_business, status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, business_get_collaborative_ads_collaboration_requestsTool)
@@ -615,20 +914,59 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_collaborative_ads_collaboration_requestsTool)
 
 	// business_get_collaborative_ads_suggested_partners tool
+	// Available fields for CPASAdvertiserPartnershipRecommendation: advertiser_business_id, brand_business_id, brands, countries, id, merchant_business_id, merchant_categories, status, status_reason
 	business_get_collaborative_ads_suggested_partnersTool := mcp.NewTool("business_get_collaborative_ads_suggested_partners",
 		mcp.WithDescription("GET collaborative_ads_suggested_partners for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CPASAdvertiserPartnershipRecommendation objects. Available fields: advertiser_business_id, brand_business_id, brands, countries, id, merchant_business_id, merchant_categories, status, status_reason"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_collaborative_ads_suggested_partnersTool)
 
 	// business_get_commerce_merchant_settings tool
+	// Available fields for CommerceMerchantSettings: checkout_config, checkout_message, contact_email, cta, display_name, facebook_channel, id, instagram_channel, korea_ftc_listing, merchant_page, merchant_status, onsite_commerce_merchant, payment_provider, privacy_policy_localized, return_policy_localized, review_rejection_messages, review_rejection_reasons, terms
 	business_get_commerce_merchant_settingsTool := mcp.NewTool("business_get_commerce_merchant_settings",
 		mcp.WithDescription("GET commerce_merchant_settings for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CommerceMerchantSettings objects. Available fields: checkout_config, checkout_message, contact_email, cta, display_name, facebook_channel, id, instagram_channel, korea_ftc_listing, merchant_page, merchant_status, onsite_commerce_merchant, payment_provider, privacy_policy_localized, return_policy_localized (and 3 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_commerce_merchant_settingsTool)
 
 	// business_get_cpas_business_setup_config tool
+	// Available fields for CPASBusinessSetupConfig: accepted_collab_ads_tos, business, business_capabilities_status, capabilities_compliance_status, id
 	business_get_cpas_business_setup_configTool := mcp.NewTool("business_get_cpas_business_setup_config",
 		mcp.WithDescription("GET cpas_business_setup_config for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CPASBusinessSetupConfig objects. Available fields: accepted_collab_ads_tos, business, business_capabilities_status, capabilities_compliance_status, id"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_cpas_business_setup_configTool)
 
@@ -651,8 +989,21 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_cpas_business_setup_configTool)
 
 	// business_get_cpas_merchant_config tool
+	// Available fields for CPASMerchantConfig: accepted_tos, beta_features, business_outcomes_status, id, is_test_merchant, outcomes_compliance_status, qualified_to_onboard
 	business_get_cpas_merchant_configTool := mcp.NewTool("business_get_cpas_merchant_config",
 		mcp.WithDescription("GET cpas_merchant_config for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CPASMerchantConfig objects. Available fields: accepted_tos, beta_features, business_outcomes_status, id, is_test_merchant, outcomes_compliance_status, qualified_to_onboard"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_cpas_merchant_configTool)
 
@@ -673,8 +1024,21 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_creative_foldersTool)
 
 	// business_get_creditcards tool
+	// Available fields for CreditCard: billing_address, card_cobadging, card_holder_name, card_type, credential_id, default_receiving_method_products, expiry_month, expiry_year, id, is_cvv_tricky_bin, is_enabled, is_last_used, is_network_tokenized_in_india, is_soft_disabled, is_user_verified, is_zip_verified, last4, readable_card_type, time_created, time_created_ts, type
 	business_get_creditcardsTool := mcp.NewTool("business_get_creditcards",
 		mcp.WithDescription("GET creditcards for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for CreditCard objects. Available fields: billing_address, card_cobadging, card_holder_name, card_type, credential_id, default_receiving_method_products, expiry_month, expiry_year, id, is_cvv_tricky_bin, is_enabled, is_last_used, is_network_tokenized_in_india, is_soft_disabled, is_user_verified (and 6 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_creditcardsTool)
 
@@ -713,8 +1077,21 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_customconversionsTool)
 
 	// business_get_event_source_groups tool
+	// Available fields for EventSourceGroup: business, event_sources, id, name, owner_business
 	business_get_event_source_groupsTool := mcp.NewTool("business_get_event_source_groups",
 		mcp.WithDescription("GET event_source_groups for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for EventSourceGroup objects. Available fields: business, event_sources, id, name, owner_business"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_event_source_groupsTool)
 
@@ -733,19 +1110,45 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_event_source_groupsTool)
 
 	// business_get_extendedcreditapplications tool
+	// Available fields for ExtendedCreditApplication: billing_country, city, cnpj, country, display_currency, duns_number, id, invoice_email_address, is_umi, legal_entity_name, original_online_limit, phone_number, postal_code, product_types, proposed_credit_limit, registration_number, run_id, state, status, street1, street2, submitter, tax_exempt_status, tax_id, terms
 	business_get_extendedcreditapplicationsTool := mcp.NewTool("business_get_extendedcreditapplications",
 		mcp.WithDescription("GET extendedcreditapplications for Business"),
 		mcp.WithBoolean("only_show_pending",
 			mcp.Description("only_show_pending parameter for extendedcreditapplications"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ExtendedCreditApplication objects. Available fields: billing_country, city, cnpj, country, display_currency, duns_number, id, invoice_email_address, is_umi, legal_entity_name, original_online_limit, phone_number, postal_code, product_types, proposed_credit_limit (and 10 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_extendedcreditapplicationsTool)
 
 	// business_get_extendedcredits tool
+	// Available fields for ExtendedCredit: allocated_amount, balance, credit_available, credit_type, id, is_access_revoked, is_automated_experience, legal_entity_name, liable_address, liable_biz_name, max_balance, online_max_balance, owner_business, owner_business_name, partition_from, receiving_credit_allocation_config, send_bill_to_address, send_bill_to_biz_name, sold_to_address
 	business_get_extendedcreditsTool := mcp.NewTool("business_get_extendedcredits",
 		mcp.WithDescription("GET extendedcredits for Business"),
 		mcp.WithBoolean("order_by_is_owned_credential",
 			mcp.Description("order_by_is_owned_credential parameter for extendedcredits"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ExtendedCredit objects. Available fields: allocated_amount, balance, credit_available, credit_type, id, is_access_revoked, is_automated_experience, legal_entity_name, liable_address, liable_biz_name, max_balance, online_max_balance, owner_business, owner_business_name, partition_from (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, business_get_extendedcreditsTool)
@@ -774,6 +1177,7 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_imagesTool)
 
 	// business_get_initiated_audience_sharing_requests tool
+	// Available fields for BusinessAssetSharingAgreement: id, initiator, recipient, relationship_type, request_status, request_type
 	business_get_initiated_audience_sharing_requestsTool := mcp.NewTool("business_get_initiated_audience_sharing_requests",
 		mcp.WithDescription("GET initiated_audience_sharing_requests for Business"),
 		mcp.WithString("recipient_id",
@@ -782,6 +1186,18 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithString("request_status",
 			mcp.Description("request_status parameter for initiated_audience_sharing_requests"),
 			mcp.Enum("APPROVE", "CANCELED", "DECLINE", "EXPIRED", "IN_PROGRESS", "PENDING", "PENDING_EMAIL_VERIFICATION", "PENDING_INTEGRITY_REVIEW"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BusinessAssetSharingAgreement objects. Available fields: id, initiator, recipient, relationship_type, request_status, request_type"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, business_get_initiated_audience_sharing_requestsTool)
@@ -797,14 +1213,40 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_delete_instagram_accountsTool)
 
 	// business_get_instagram_accounts tool
+	// Available fields for IGUser: biography, business_discovery, followers_count, follows_count, has_profile_pic, id, ig_id, is_published, legacy_instagram_user_id, media_count, mentioned_comment, mentioned_media, name, owner_business, profile_picture_url, shopping_product_tag_eligibility, shopping_review_status, username, website
 	business_get_instagram_accountsTool := mcp.NewTool("business_get_instagram_accounts",
 		mcp.WithDescription("GET instagram_accounts for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGUser objects. Available fields: biography, business_discovery, followers_count, follows_count, has_profile_pic, id, ig_id, is_published, legacy_instagram_user_id, media_count, mentioned_comment, mentioned_media, name, owner_business, profile_picture_url (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_instagram_accountsTool)
 
 	// business_get_instagram_business_accounts tool
+	// Available fields for IGUser: biography, business_discovery, followers_count, follows_count, has_profile_pic, id, ig_id, is_published, legacy_instagram_user_id, media_count, mentioned_comment, mentioned_media, name, owner_business, profile_picture_url, shopping_product_tag_eligibility, shopping_review_status, username, website
 	business_get_instagram_business_accountsTool := mcp.NewTool("business_get_instagram_business_accounts",
 		mcp.WithDescription("GET instagram_business_accounts for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGUser objects. Available fields: biography, business_discovery, followers_count, follows_count, has_profile_pic, id, ig_id, is_published, legacy_instagram_user_id, media_count, mentioned_comment, mentioned_media, name, owner_business, profile_picture_url (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_instagram_business_accountsTool)
 
@@ -855,10 +1297,23 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_managed_businessesTool)
 
 	// business_get_managed_partner_ads_funding_source_details tool
+	// Available fields for FundingSourceDetailsCoupon: amount, campaign_ids, child_ad_account_id, child_bm_id, coupon_id, coupon_tiering, currency, display_amount, expiration, original_amount, original_display_amount, start_date, vendor_id
 	business_get_managed_partner_ads_funding_source_detailsTool := mcp.NewTool("business_get_managed_partner_ads_funding_source_details",
 		mcp.WithDescription("GET managed_partner_ads_funding_source_details for Business"),
 		mcp.WithString("year_quarter",
 			mcp.Description("year_quarter parameter for managed_partner_ads_funding_source_details"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for FundingSourceDetailsCoupon objects. Available fields: amount, campaign_ids, child_ad_account_id, child_bm_id, coupon_id, coupon_tiering, currency, display_amount, expiration, original_amount, original_display_amount, start_date, vendor_id"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, business_get_managed_partner_ads_funding_source_detailsTool)
@@ -990,8 +1445,21 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_onboard_partners_to_mm_liteTool)
 
 	// business_get_openbridge_configurations tool
+	// Available fields for OpenBridgeConfiguration: active, cloud_provider, cloud_region, destination_id, endpoint, fallback_domain, first_party_domain, host_business_id, id, instance_id, instance_version, is_sgw_instance, is_sgw_pixel_from_meta_pixel, partner_name, pixel_id, sgw_account_id, sgw_instance_url, sgw_pixel_id
 	business_get_openbridge_configurationsTool := mcp.NewTool("business_get_openbridge_configurations",
 		mcp.WithDescription("GET openbridge_configurations for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for OpenBridgeConfiguration objects. Available fields: active, cloud_provider, cloud_region, destination_id, endpoint, fallback_domain, first_party_domain, host_business_id, id, instance_id, instance_version, is_sgw_instance, is_sgw_pixel_from_meta_pixel, partner_name, pixel_id (and 3 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_openbridge_configurationsTool)
 
@@ -1054,10 +1522,23 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_openbridge_configurationsTool)
 
 	// business_get_owned_ad_accounts tool
+	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	business_get_owned_ad_accountsTool := mcp.NewTool("business_get_owned_ad_accounts",
 		mcp.WithDescription("GET owned_ad_accounts for Business"),
 		mcp.WithString("search_query",
 			mcp.Description("search_query parameter for owned_ad_accounts"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdAccount objects. Available fields: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state (and 58 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, business_get_owned_ad_accountsTool)
@@ -1073,8 +1554,21 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_owned_ad_accountsTool)
 
 	// business_get_owned_apps tool
+	// Available fields for Application: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline, auth_dialog_perms_explanation, auth_referral_default_activity_privacy, auth_referral_enabled, auth_referral_extended_perms, auth_referral_friend_perms, auth_referral_response_type, auth_referral_user_perms, auto_event_mapping_android, auto_event_mapping_ios, auto_event_setup_enabled, auto_log_app_events_default, auto_log_app_events_enabled, business, canvas_fluid_height, canvas_fluid_width, canvas_url, category, client_config, company, configured_ios_sso, contact_email, created_time, creator_uid, daily_active_users, daily_active_users_rank, deauth_callback_url, default_share_mode, description, enigma_config, financial_id, gdpv4_chrome_custom_tabs_enabled, gdpv4_enabled, gdpv4_nux_content, gdpv4_nux_enabled, has_messenger_product, hosting_url, icon_url, id, ios_bundle_id, ios_sdk_dialog_flows, ios_sdk_error_categories, ios_sfvc_attr, ios_supports_native_proxy_auth_flow, ios_supports_system_auth, ipad_app_store_id, iphone_app_store_id, latest_sdk_version, link, logging_token, logo_url, migrations, mobile_profile_section_url, mobile_web_url, monthly_active_users, monthly_active_users_rank, name, namespace, object_store_urls, owner_business, page_tab_default_name, page_tab_url, photo_url, privacy_policy_url, profile_section_url, property_id, protected_mode_rules, real_time_mode_devices, restrictions, restrictive_data_filter_params, restrictive_data_filter_rules, sdk_update_message, seamless_login, secure_canvas_url, secure_page_tab_url, server_ip_whitelist, smart_login_bookmark_icon_url, smart_login_menu_icon_url, social_discovery, subcategory, suggested_events_setting, supported_platforms, supports_apprequests_fast_app_switch, supports_attribution, supports_implicit_sdk_logging, suppress_native_ios_gdp, terms_of_service_url, url_scheme_suffix, user_support_email, user_support_url, website_url, weekly_active_users
 	business_get_owned_appsTool := mcp.NewTool("business_get_owned_apps",
 		mcp.WithDescription("GET owned_apps for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Application objects. Available fields: aam_rules, an_ad_space_limit, an_platforms, android_key_hash, android_sdk_error_categories, app_domains, app_events_config, app_events_feature_bitmask, app_events_session_timeout, app_install_tracked, app_name, app_signals_binding_ios, app_type, auth_dialog_data_help_url, auth_dialog_headline (and 91 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_owned_appsTool)
 
@@ -1099,6 +1593,7 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_delete_owned_businessesTool)
 
 	// business_get_owned_businesses tool
+	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	business_get_owned_businessesTool := mcp.NewTool("business_get_owned_businesses",
 		mcp.WithDescription("GET owned_businesses for Business"),
 		mcp.WithString("child_business_external_id",
@@ -1106,6 +1601,18 @@ func GetBusinessTools() []mcp.Tool {
 		),
 		mcp.WithNumber("client_user_id",
 			mcp.Description("client_user_id parameter for owned_businesses"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, business_get_owned_businessesTool)
@@ -1156,20 +1663,59 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_owned_businessesTool)
 
 	// business_get_owned_instagram_accounts tool
+	// Available fields for IGUser: biography, business_discovery, followers_count, follows_count, has_profile_pic, id, ig_id, is_published, legacy_instagram_user_id, media_count, mentioned_comment, mentioned_media, name, owner_business, profile_picture_url, shopping_product_tag_eligibility, shopping_review_status, username, website
 	business_get_owned_instagram_accountsTool := mcp.NewTool("business_get_owned_instagram_accounts",
 		mcp.WithDescription("GET owned_instagram_accounts for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for IGUser objects. Available fields: biography, business_discovery, followers_count, follows_count, has_profile_pic, id, ig_id, is_published, legacy_instagram_user_id, media_count, mentioned_comment, mentioned_media, name, owner_business, profile_picture_url (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_owned_instagram_accountsTool)
 
 	// business_get_owned_offsite_signal_container_business_objects tool
+	// Available fields for OffsiteSignalContainerBusinessObject: business, id, is_eligible_for_sharing_to_ad_account, is_eligible_for_sharing_to_business, is_unavailable, name, primary_container_id
 	business_get_owned_offsite_signal_container_business_objectsTool := mcp.NewTool("business_get_owned_offsite_signal_container_business_objects",
 		mcp.WithDescription("GET owned_offsite_signal_container_business_objects for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for OffsiteSignalContainerBusinessObject objects. Available fields: business, id, is_eligible_for_sharing_to_ad_account, is_eligible_for_sharing_to_business, is_unavailable, name, primary_container_id"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_owned_offsite_signal_container_business_objectsTool)
 
 	// business_get_owned_pages tool
+	// Available fields for Page: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent, breaking_news_usage, built, business, can_checkin, can_post, category, category_list, checkins, company_overview, connected_instagram_account, connected_page_backed_instagram_account, contact_address, copyright_whitelisted_ig_partners, country_page_likes, cover, culinary_team, current_location, delivery_and_pickup_option_info, description, description_html, differently_open_offerings, directed_by, display_subtext, displayed_message_response_time, does_viewer_have_page_permission_link_ig, emails, engagement, fan_count, featured_video, features, followers_count, food_styles, founded, general_info, general_manager, genre, global_brand_page_name, global_brand_root_id, has_added_app, has_lead_access, has_transitioned_to_new_page_experience, has_whatsapp_business_number, has_whatsapp_number, hometown, hours, id, impressum, influences, instagram_business_account, is_always_open, is_calling_eligible, is_chain, is_community_page, is_eligible_for_branded_content, is_eligible_for_disable_connect_ig_btn_for_non_page_admin_am_web, is_messenger_bot_get_started_enabled, is_messenger_platform_bot, is_owned, is_permanently_closed, is_published, is_unclaimed, is_verified, is_webhooks_subscribed, keywords, leadgen_tos_acceptance_time, leadgen_tos_accepted, leadgen_tos_accepting_user, link, location, members, merchant_id, merchant_review_status, messaging_feature_status, messenger_ads_default_icebreakers, messenger_ads_default_quick_replies, messenger_ads_quick_replies_type, mini_shop_storefront, mission, mpg, name, name_with_location_descriptor, network, new_like_count, offer_eligible, overall_star_rating, owner_business, page_token, parent_page, parking, payment_options, personal_info, personal_interests, pharma_safety_info, phone, pickup_options, place_type, plot_outline, preferred_audience, press_contact, price_range, privacy_info_url, produced_by, products, promotion_eligible, promotion_ineligible_reason, public_transit, rating_count, recipient, record_label, release_date, restaurant_services, restaurant_specialties, schedule, screenplay_by, season, single_line_address, starring, start_info, store_code, store_location_descriptor, store_number, studio, supports_donate_button_in_live_video, talking_about_count, temporary_status, unread_message_count, unread_notif_count, unseen_message_count, user_access_expire_time, username, verification_status, voip_info, website, were_here_count, whatsapp_number, written_by
 	business_get_owned_pagesTool := mcp.NewTool("business_get_owned_pages",
 		mcp.WithDescription("GET owned_pages for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Page objects. Available fields: about, access_token, ad_campaign, affiliation, app_id, artists_we_like, attire, available_promo_offer_ids, awards, band_interests, band_members, best_page, bio, birthday, booking_agent (and 136 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_owned_pagesTool)
 
@@ -1190,14 +1736,40 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_owned_pagesTool)
 
 	// business_get_owned_pixels tool
+	// Available fields for AdsPixel: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status, has_1p_pixel_event, id, is_consolidated_container, is_created_by_business, is_crm, is_mta_use, is_restricted_use, is_unavailable, last_fired_time, last_upload_app, last_upload_app_changed_time, match_rate_approx, matched_entries, name, owner_ad_account, owner_business, usage, user_access_expire_time, valid_entries
 	business_get_owned_pixelsTool := mcp.NewTool("business_get_owned_pixels",
 		mcp.WithDescription("GET owned_pixels for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for AdsPixel objects. Available fields: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status (and 19 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_owned_pixelsTool)
 
 	// business_get_owned_product_catalogs tool
+	// Available fields for ProductCatalog: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business, product_count, store_catalog_settings, user_access_expire_time, vertical
 	business_get_owned_product_catalogsTool := mcp.NewTool("business_get_owned_product_catalogs",
 		mcp.WithDescription("GET owned_product_catalogs for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProductCatalog objects. Available fields: ad_account_to_collaborative_ads_share_settings, agency_collaborative_ads_share_settings, business, catalog_store, commerce_merchant_settings, creator_user, da_display_settings, default_image_url, fallback_image_url, feed_count, id, is_catalog_segment, is_local_catalog, name, owner_business (and 4 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_owned_product_catalogsTool)
 
@@ -1247,8 +1819,21 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_owned_product_catalogsTool)
 
 	// business_get_owned_whatsapp_business_accounts tool
+	// Available fields for WhatsAppBusinessAccount: account_review_status, analytics, auth_international_rate_eligibility, business_verification_status, country, creation_time, currency, health_status, id, is_enabled_for_insights, is_shared_with_partners, linked_commerce_account, marketing_messages_lite_api_status, message_template_namespace, name, on_behalf_of_business_info, owner_business, owner_business_info, ownership_type, primary_business_location, primary_funding_id, purchase_order_number, status, timezone_id
 	business_get_owned_whatsapp_business_accountsTool := mcp.NewTool("business_get_owned_whatsapp_business_accounts",
 		mcp.WithDescription("GET owned_whatsapp_business_accounts for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for WhatsAppBusinessAccount objects. Available fields: account_review_status, analytics, auth_international_rate_eligibility, business_verification_status, country, creation_time, currency, health_status, id, is_enabled_for_insights, is_shared_with_partners, linked_commerce_account, marketing_messages_lite_api_status, message_template_namespace, name (and 9 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_owned_whatsapp_business_accountsTool)
 
@@ -1263,8 +1848,21 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_delete_pagesTool)
 
 	// business_get_partner_account_linking tool
+	// Available fields for PartnerAccountLinking: adaccount, app, business, externalidentifier, externalidentifieruri, id, partnername, pixel
 	business_get_partner_account_linkingTool := mcp.NewTool("business_get_partner_account_linking",
 		mcp.WithDescription("GET partner_account_linking for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for PartnerAccountLinking objects. Available fields: adaccount, app, business, externalidentifier, externalidentifieruri, id, partnername, pixel"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_partner_account_linkingTool)
 
@@ -1299,55 +1897,159 @@ func GetBusinessTools() []mcp.Tool {
 	// business_get_passback_attribution_metadata_configs tool
 	business_get_passback_attribution_metadata_configsTool := mcp.NewTool("business_get_passback_attribution_metadata_configs",
 		mcp.WithDescription("GET passback_attribution_metadata_configs for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_passback_attribution_metadata_configsTool)
 
 	// business_get_pending_client_ad_accounts tool
+	// Available fields for BusinessAdAccountRequest: ad_account, id
 	business_get_pending_client_ad_accountsTool := mcp.NewTool("business_get_pending_client_ad_accounts",
 		mcp.WithDescription("GET pending_client_ad_accounts for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BusinessAdAccountRequest objects. Available fields: ad_account, id"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_pending_client_ad_accountsTool)
 
 	// business_get_pending_client_apps tool
+	// Available fields for BusinessApplicationRequest: application, id
 	business_get_pending_client_appsTool := mcp.NewTool("business_get_pending_client_apps",
 		mcp.WithDescription("GET pending_client_apps for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BusinessApplicationRequest objects. Available fields: application, id"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_pending_client_appsTool)
 
 	// business_get_pending_client_pages tool
+	// Available fields for BusinessPageRequest: id, page
 	business_get_pending_client_pagesTool := mcp.NewTool("business_get_pending_client_pages",
 		mcp.WithDescription("GET pending_client_pages for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BusinessPageRequest objects. Available fields: id, page"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_pending_client_pagesTool)
 
 	// business_get_pending_owned_ad_accounts tool
+	// Available fields for BusinessAdAccountRequest: ad_account, id
 	business_get_pending_owned_ad_accountsTool := mcp.NewTool("business_get_pending_owned_ad_accounts",
 		mcp.WithDescription("GET pending_owned_ad_accounts for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BusinessAdAccountRequest objects. Available fields: ad_account, id"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_pending_owned_ad_accountsTool)
 
 	// business_get_pending_owned_pages tool
+	// Available fields for BusinessPageRequest: id, page
 	business_get_pending_owned_pagesTool := mcp.NewTool("business_get_pending_owned_pages",
 		mcp.WithDescription("GET pending_owned_pages for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BusinessPageRequest objects. Available fields: id, page"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_pending_owned_pagesTool)
 
 	// business_get_pending_shared_offsite_signal_container_business_objects tool
+	// Available fields for OffsiteSignalContainerBusinessObject: business, id, is_eligible_for_sharing_to_ad_account, is_eligible_for_sharing_to_business, is_unavailable, name, primary_container_id
 	business_get_pending_shared_offsite_signal_container_business_objectsTool := mcp.NewTool("business_get_pending_shared_offsite_signal_container_business_objects",
 		mcp.WithDescription("GET pending_shared_offsite_signal_container_business_objects for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for OffsiteSignalContainerBusinessObject objects. Available fields: business, id, is_eligible_for_sharing_to_ad_account, is_eligible_for_sharing_to_business, is_unavailable, name, primary_container_id"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_pending_shared_offsite_signal_container_business_objectsTool)
 
 	// business_get_pending_users tool
+	// Available fields for BusinessRoleRequest: created_by, created_time, email, expiration_time, expiry_time, finance_role, id, invite_link, invited_user_type, ip_role, owner, role, status, tasks, updated_by, updated_time
 	business_get_pending_usersTool := mcp.NewTool("business_get_pending_users",
 		mcp.WithDescription("GET pending_users for Business"),
 		mcp.WithString("email",
 			mcp.Description("email parameter for pending_users"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BusinessRoleRequest objects. Available fields: created_by, created_time, email, expiration_time, expiry_time, finance_role, id, invite_link, invited_user_type, ip_role, owner, role, status, tasks, updated_by (and 1 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_pending_usersTool)
 
 	// business_get_picture tool
+	// Available fields for ProfilePictureSource: bottom, cache_key, height, is_silhouette, left, right, top, url, width
 	business_get_pictureTool := mcp.NewTool("business_get_picture",
 		mcp.WithDescription("GET picture for Business"),
 		mcp.WithNumber("height",
@@ -1363,6 +2065,18 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithNumber("width",
 			mcp.Description("width parameter for picture"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ProfilePictureSource objects. Available fields: bottom, cache_key, height, is_silhouette, left, right, top, url, width"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_pictureTool)
 
@@ -1373,6 +2087,7 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_pixel_tosTool)
 
 	// business_get_preverified_numbers tool
+	// Available fields for WhatsAppBusinessPreVerifiedPhoneNumber: code_verification_status, code_verification_time, id, owner_business, phone_number, verification_expiry_time
 	business_get_preverified_numbersTool := mcp.NewTool("business_get_preverified_numbers",
 		mcp.WithDescription("GET preverified_numbers for Business"),
 		mcp.WithString("code_verification_status",
@@ -1382,10 +2097,23 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithString("phone_number",
 			mcp.Description("phone_number parameter for preverified_numbers"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for WhatsAppBusinessPreVerifiedPhoneNumber objects. Available fields: code_verification_status, code_verification_time, id, owner_business, phone_number, verification_expiry_time"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_preverified_numbersTool)
 
 	// business_get_received_audience_sharing_requests tool
+	// Available fields for BusinessAssetSharingAgreement: id, initiator, recipient, relationship_type, request_status, request_type
 	business_get_received_audience_sharing_requestsTool := mcp.NewTool("business_get_received_audience_sharing_requests",
 		mcp.WithDescription("GET received_audience_sharing_requests for Business"),
 		mcp.WithString("initiator_id",
@@ -1395,20 +2123,58 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Description("request_status parameter for received_audience_sharing_requests"),
 			mcp.Enum("APPROVE", "CANCELED", "DECLINE", "EXPIRED", "IN_PROGRESS", "PENDING", "PENDING_EMAIL_VERIFICATION", "PENDING_INTEGRITY_REVIEW"),
 		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for BusinessAssetSharingAgreement objects. Available fields: id, initiator, recipient, relationship_type, request_status, request_type"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_received_audience_sharing_requestsTool)
 
 	// business_get_reseller_guidances tool
+	// Available fields for ResellerGuidance: ad_account_first_spend_date, ad_account_id, adopted_guidance_l7d, advertiser_name, attributed_to_reseller_l7d, available_guidance, guidance_adoption_rate_l7d, nurtured_by_reseller_l7d, planning_agency_name, recommendation_time, reporting_ds, reseller, revenue_l30d, ultimate_advertiser_name
 	business_get_reseller_guidancesTool := mcp.NewTool("business_get_reseller_guidances",
 		mcp.WithDescription("GET reseller_guidances for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ResellerGuidance objects. Available fields: ad_account_first_spend_date, ad_account_id, adopted_guidance_l7d, advertiser_name, attributed_to_reseller_l7d, available_guidance, guidance_adoption_rate_l7d, nurtured_by_reseller_l7d, planning_agency_name, recommendation_time, reporting_ds, reseller, revenue_l30d, ultimate_advertiser_name"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_reseller_guidancesTool)
 
 	// business_get_self_certified_whatsapp_business_submissions tool
+	// Available fields for WhatsAppBusinessPartnerClientVerificationSubmission: client_business_id, id, rejection_reasons, submitted_info, submitted_time, update_time, verification_status
 	business_get_self_certified_whatsapp_business_submissionsTool := mcp.NewTool("business_get_self_certified_whatsapp_business_submissions",
 		mcp.WithDescription("GET self_certified_whatsapp_business_submissions for Business"),
 		mcp.WithString("end_business_id",
 			mcp.Description("end_business_id parameter for self_certified_whatsapp_business_submissions"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for WhatsAppBusinessPartnerClientVerificationSubmission objects. Available fields: client_business_id, id, rejection_reasons, submitted_info, submitted_time, update_time, verification_status"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
 		),
 	)
 	tools = append(tools, business_get_self_certified_whatsapp_business_submissionsTool)
@@ -1527,8 +2293,21 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_system_user_access_tokensTool)
 
 	// business_get_system_users tool
+	// Available fields for SystemUser: created_by, created_time, finance_permission, id, ip_permission, name
 	business_get_system_usersTool := mcp.NewTool("business_get_system_users",
 		mcp.WithDescription("GET system_users for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for SystemUser objects. Available fields: created_by, created_time, finance_permission, id, ip_permission, name"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_system_usersTool)
 
@@ -1550,8 +2329,21 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_system_usersTool)
 
 	// business_get_third_party_measurement_report_dataset tool
+	// Available fields for ThirdPartyMeasurementReportDataset: category, id, partner, product, schema
 	business_get_third_party_measurement_report_datasetTool := mcp.NewTool("business_get_third_party_measurement_report_dataset",
 		mcp.WithDescription("GET third_party_measurement_report_dataset for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for ThirdPartyMeasurementReportDataset objects. Available fields: category, id, partner, product, schema"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_third_party_measurement_report_datasetTool)
 
@@ -1778,8 +2570,21 @@ func GetBusinessTools() []mcp.Tool {
 	tools = append(tools, business_post_videosTool)
 
 	// business_get_ tool
+	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	business_get_Tool := mcp.NewTool("business_get_",
 		mcp.WithDescription("GET  for Business"),
+		mcp.WithString("fields",
+			mcp.Description("Comma-separated list of fields to return for Business objects. Available fields: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id (and 7 more)"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("Maximum number of results to return (default: 25, max: 500)"),
+		),
+		mcp.WithString("after",
+			mcp.Description("Cursor for pagination (use 'next' cursor from previous response)"),
+		),
+		mcp.WithString("before",
+			mcp.Description("Cursor for pagination (use 'previous' cursor from previous response)"),
+		),
 	)
 	tools = append(tools, business_get_Tool)
 
@@ -1896,6 +2701,26 @@ func HandleBusiness_get_ad_account_infos(ctx context.Context, request mcp.CallTo
 		args["user_id"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_ad_account_infos(args)
 	if err != nil {
@@ -1995,6 +2820,26 @@ func HandleBusiness_get_ad_studies(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_ad_studies(args)
@@ -2357,6 +3202,26 @@ func HandleBusiness_get_adnetworkanalytics(ctx context.Context, request mcp.Call
 		args["until"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_adnetworkanalytics(args)
 	if err != nil {
@@ -2470,6 +3335,26 @@ func HandleBusiness_get_adnetworkanalytics_results(ctx context.Context, request 
 		args["query_ids"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_adnetworkanalytics_results(args)
 	if err != nil {
@@ -2512,6 +3397,26 @@ func HandleBusiness_get_ads_dataset(ctx context.Context, request mcp.CallToolReq
 	// Optional: sort_by
 	if val := request.GetString("sort_by", ""); val != "" {
 		args["sort_by"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -2600,6 +3505,26 @@ func HandleBusiness_get_ads_reporting_mmm_reports(ctx context.Context, request m
 		args["filtering"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_ads_reporting_mmm_reports(args)
 	if err != nil {
@@ -2628,6 +3553,26 @@ func HandleBusiness_get_ads_reporting_mmm_schedulers(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_ads_reporting_mmm_schedulers(args)
@@ -2671,6 +3616,26 @@ func HandleBusiness_get_adspixels(ctx context.Context, request mcp.CallToolReque
 	// Optional: sort_by
 	if val := request.GetString("sort_by", ""); val != "" {
 		args["sort_by"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -2779,6 +3744,26 @@ func HandleBusiness_get_agencies(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_agencies(args)
 	if err != nil {
@@ -2807,6 +3792,26 @@ func HandleBusiness_get_an_placements(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_an_placements(args)
@@ -2909,6 +3914,26 @@ func HandleBusiness_get_business_asset_groups(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_business_asset_groups(args)
 	if err != nil {
@@ -2973,6 +3998,26 @@ func HandleBusiness_get_business_invoices(ctx context.Context, request mcp.CallT
 		args["type"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_business_invoices(args)
 	if err != nil {
@@ -3001,6 +4046,26 @@ func HandleBusiness_get_business_users(ctx context.Context, request mcp.CallTool
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_business_users(args)
@@ -3084,6 +4149,26 @@ func HandleBusiness_get_businessprojects(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_businessprojects(args)
 	if err != nil {
@@ -3154,6 +4239,26 @@ func HandleBusiness_get_client_ad_accounts(ctx context.Context, request mcp.Call
 		args["search_query"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_client_ad_accounts(args)
 	if err != nil {
@@ -3182,6 +4287,26 @@ func HandleBusiness_get_client_apps(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_client_apps(args)
@@ -3248,6 +4373,26 @@ func HandleBusiness_get_client_offsite_signal_container_business_objects(ctx con
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_client_offsite_signal_container_business_objects(args)
 	if err != nil {
@@ -3276,6 +4421,26 @@ func HandleBusiness_get_client_pages(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_client_pages(args)
@@ -3348,6 +4513,26 @@ func HandleBusiness_get_client_pixels(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_client_pixels(args)
 	if err != nil {
@@ -3377,6 +4562,26 @@ func HandleBusiness_get_client_product_catalogs(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_client_product_catalogs(args)
 	if err != nil {
@@ -3405,6 +4610,26 @@ func HandleBusiness_get_client_whatsapp_business_accounts(ctx context.Context, r
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_client_whatsapp_business_accounts(args)
@@ -3471,6 +4696,26 @@ func HandleBusiness_get_clients(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_clients(args)
 	if err != nil {
@@ -3503,6 +4748,26 @@ func HandleBusiness_get_collaborative_ads_collaboration_requests(ctx context.Con
 	// Optional: status
 	if val := request.GetString("status", ""); val != "" {
 		args["status"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -3615,6 +4880,26 @@ func HandleBusiness_get_collaborative_ads_suggested_partners(ctx context.Context
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_collaborative_ads_suggested_partners(args)
 	if err != nil {
@@ -3644,6 +4929,26 @@ func HandleBusiness_get_commerce_merchant_settings(ctx context.Context, request 
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_commerce_merchant_settings(args)
 	if err != nil {
@@ -3672,6 +4977,26 @@ func HandleBusiness_get_cpas_business_setup_config(ctx context.Context, request 
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_cpas_business_setup_config(args)
@@ -3752,6 +5077,26 @@ func HandleBusiness_get_cpas_merchant_config(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_cpas_merchant_config(args)
 	if err != nil {
@@ -3826,6 +5171,26 @@ func HandleBusiness_get_creditcards(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_creditcards(args)
@@ -3929,6 +5294,26 @@ func HandleBusiness_get_event_source_groups(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_event_source_groups(args)
 	if err != nil {
@@ -4006,6 +5391,26 @@ func HandleBusiness_get_extendedcreditapplications(ctx context.Context, request 
 		args["only_show_pending"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_extendedcreditapplications(args)
 	if err != nil {
@@ -4038,6 +5443,26 @@ func HandleBusiness_get_extendedcredits(ctx context.Context, request mcp.CallToo
 	// Optional: order_by_is_owned_credential
 	if val := request.GetBool("order_by_is_owned_credential", false); val {
 		args["order_by_is_owned_credential"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -4136,6 +5561,26 @@ func HandleBusiness_get_initiated_audience_sharing_requests(ctx context.Context,
 		args["request_status"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_initiated_audience_sharing_requests(args)
 	if err != nil {
@@ -4201,6 +5646,26 @@ func HandleBusiness_get_instagram_accounts(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_instagram_accounts(args)
 	if err != nil {
@@ -4229,6 +5694,26 @@ func HandleBusiness_get_instagram_business_accounts(ctx context.Context, request
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_instagram_business_accounts(args)
@@ -4372,6 +5857,26 @@ func HandleBusiness_get_managed_partner_ads_funding_source_details(ctx context.C
 	// Optional: year_quarter
 	if val := request.GetString("year_quarter", ""); val != "" {
 		args["year_quarter"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -4687,6 +6192,26 @@ func HandleBusiness_get_openbridge_configurations(ctx context.Context, request m
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_openbridge_configurations(args)
 	if err != nil {
@@ -4837,6 +6362,26 @@ func HandleBusiness_get_owned_ad_accounts(ctx context.Context, request mcp.CallT
 		args["search_query"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_owned_ad_accounts(args)
 	if err != nil {
@@ -4901,6 +6446,26 @@ func HandleBusiness_get_owned_apps(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_owned_apps(args)
@@ -5011,6 +6576,26 @@ func HandleBusiness_get_owned_businesses(ctx context.Context, request mcp.CallTo
 	// Optional: client_user_id
 	if val := request.GetInt("client_user_id", 0); val != 0 {
 		args["client_user_id"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -5131,6 +6716,26 @@ func HandleBusiness_get_owned_instagram_accounts(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_owned_instagram_accounts(args)
 	if err != nil {
@@ -5160,6 +6765,26 @@ func HandleBusiness_get_owned_offsite_signal_container_business_objects(ctx cont
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_owned_offsite_signal_container_business_objects(args)
 	if err != nil {
@@ -5188,6 +6813,26 @@ func HandleBusiness_get_owned_pages(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_owned_pages(args)
@@ -5264,6 +6909,26 @@ func HandleBusiness_get_owned_pixels(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_owned_pixels(args)
 	if err != nil {
@@ -5292,6 +6957,26 @@ func HandleBusiness_get_owned_product_catalogs(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_owned_product_catalogs(args)
@@ -5415,6 +7100,26 @@ func HandleBusiness_get_owned_whatsapp_business_accounts(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_owned_whatsapp_business_accounts(args)
 	if err != nil {
@@ -5479,6 +7184,26 @@ func HandleBusiness_get_partner_account_linking(ctx context.Context, request mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_partner_account_linking(args)
@@ -5576,6 +7301,26 @@ func HandleBusiness_get_passback_attribution_metadata_configs(ctx context.Contex
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_passback_attribution_metadata_configs(args)
 	if err != nil {
@@ -5604,6 +7349,26 @@ func HandleBusiness_get_pending_client_ad_accounts(ctx context.Context, request 
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_pending_client_ad_accounts(args)
@@ -5634,6 +7399,26 @@ func HandleBusiness_get_pending_client_apps(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_pending_client_apps(args)
 	if err != nil {
@@ -5662,6 +7447,26 @@ func HandleBusiness_get_pending_client_pages(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_pending_client_pages(args)
@@ -5692,6 +7497,26 @@ func HandleBusiness_get_pending_owned_ad_accounts(ctx context.Context, request m
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_pending_owned_ad_accounts(args)
 	if err != nil {
@@ -5721,6 +7546,26 @@ func HandleBusiness_get_pending_owned_pages(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_pending_owned_pages(args)
 	if err != nil {
@@ -5749,6 +7594,26 @@ func HandleBusiness_get_pending_shared_offsite_signal_container_business_objects
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_pending_shared_offsite_signal_container_business_objects(args)
@@ -5782,6 +7647,26 @@ func HandleBusiness_get_pending_users(ctx context.Context, request mcp.CallToolR
 	// Optional: email
 	if val := request.GetString("email", ""); val != "" {
 		args["email"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -5831,6 +7716,26 @@ func HandleBusiness_get_picture(ctx context.Context, request mcp.CallToolRequest
 	// Optional: width
 	if val := request.GetInt("width", 0); val != 0 {
 		args["width"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -5901,6 +7806,26 @@ func HandleBusiness_get_preverified_numbers(ctx context.Context, request mcp.Cal
 		args["phone_number"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_preverified_numbers(args)
 	if err != nil {
@@ -5940,6 +7865,26 @@ func HandleBusiness_get_received_audience_sharing_requests(ctx context.Context, 
 		args["request_status"] = val
 	}
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_received_audience_sharing_requests(args)
 	if err != nil {
@@ -5968,6 +7913,26 @@ func HandleBusiness_get_reseller_guidances(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_reseller_guidances(args)
@@ -6001,6 +7966,26 @@ func HandleBusiness_get_self_certified_whatsapp_business_submissions(ctx context
 	// Optional: end_business_id
 	if val := request.GetString("end_business_id", ""); val != "" {
 		args["end_business_id"] = val
+	}
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
 	}
 
 	// Call the client method
@@ -6317,6 +8302,26 @@ func HandleBusiness_get_system_users(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
+
 	// Call the client method
 	result, err := client.Business_get_system_users(args)
 	if err != nil {
@@ -6391,6 +8396,26 @@ func HandleBusiness_get_third_party_measurement_report_dataset(ctx context.Conte
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_third_party_measurement_report_dataset(args)
@@ -6798,6 +8823,26 @@ func HandleBusiness_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+	// Optional: fields
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: before
+	if val := request.GetString("before", ""); val != "" {
+		args["before"] = val
+	}
 
 	// Call the client method
 	result, err := client.Business_get_(args)
