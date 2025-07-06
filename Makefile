@@ -21,9 +21,21 @@ build-facebook:
 	@echo "Building Facebook MCP server..."
 	$(GOCMD) build -ldflags "-s -w" -o $(FACEBOOK_BINARY) ./cmd/facebook-mcp
 
-# Run the server
+# Run the server (default: core_ads)
 run: build
 	./$(BINARY_NAME)
+
+# Run the server with all categories
+run-all: build
+	./$(BINARY_NAME) --categories=all
+
+# Run the server with specific categories
+run-reporting: build
+	./$(BINARY_NAME) --categories=core_ads,reporting
+
+# Show help
+help: build
+	./$(BINARY_NAME) --help
 
 # Run the Facebook server
 run-facebook: build-facebook
