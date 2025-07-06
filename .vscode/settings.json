@@ -1,5 +1,15 @@
 {
+    "go.useLanguageServer": true,
+    "go.alternateTools": {
+        "go": "go"
+    },
     "gopls": {
-        "ui.semanticTokens": true
-    }
+        "ui.semanticTokens": true,
+        "ui.completion.usePlaceholders": true,
+        "ui.diagnostic.staticcheck": true,
+        "ui.navigation.importShortcut": "Definition",
+        "build.directoryFilters": ["-node_modules"],
+        "formatting.gofumpt": true
+    },
+    "go.toolsManagement.autoUpdate": true
 }
