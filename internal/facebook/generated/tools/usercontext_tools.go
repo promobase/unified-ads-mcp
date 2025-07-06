@@ -15,7 +15,6 @@ import (
 func GetUserContextTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_usercontext_get_ tool
 	facebook_usercontext_get_Tool := mcp.NewTool("facebook_usercontext_get_",
 		mcp.WithDescription("GET  for UserContext"),
@@ -26,12 +25,10 @@ func GetUserContextTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_usercontext_get_Tool)
 
-
 	return tools
 }
 
 // UserContext handlers
-
 
 // HandleFacebook_usercontext_get_ handles the facebook_usercontext_get_ tool
 func HandleFacebook_usercontext_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_usercontext_get_(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_usercontext_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_usercontext_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

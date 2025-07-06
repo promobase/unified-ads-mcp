@@ -15,7 +15,6 @@ import (
 func GetAdVideoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_advideo_get_boost_ads_list tool
 	facebook_advideo_get_boost_ads_listTool := mcp.NewTool("facebook_advideo_get_boost_ads_list",
 		mcp.WithDescription("GET boost_ads_list for AdVideo"),
@@ -448,12 +447,10 @@ func GetAdVideoTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_advideo_post_Tool)
 
-
 	return tools
 }
 
 // AdVideo handlers
-
 
 // HandleFacebook_advideo_get_boost_ads_list handles the facebook_advideo_get_boost_ads_list tool
 func HandleFacebook_advideo_get_boost_ads_list(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -468,8 +465,6 @@ func HandleFacebook_advideo_get_boost_ads_list(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_advideo_get_boost_ads_list(args)
@@ -486,7 +481,6 @@ func HandleFacebook_advideo_get_boost_ads_list(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_advideo_get_captions handles the facebook_advideo_get_captions tool
 func HandleFacebook_advideo_get_captions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -500,8 +494,6 @@ func HandleFacebook_advideo_get_captions(ctx context.Context, request mcp.CallTo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_advideo_get_captions(args)
@@ -517,7 +509,6 @@ func HandleFacebook_advideo_get_captions(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_advideo_post_captions handles the facebook_advideo_post_captions tool
 func HandleFacebook_advideo_post_captions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -549,8 +540,6 @@ func HandleFacebook_advideo_post_captions(ctx context.Context, request mcp.CallT
 		args["locales_to_delete"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_advideo_post_captions(args)
 	if err != nil {
@@ -566,7 +555,6 @@ func HandleFacebook_advideo_post_captions(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_advideo_get_collaborators handles the facebook_advideo_get_collaborators tool
 func HandleFacebook_advideo_get_collaborators(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -580,8 +568,6 @@ func HandleFacebook_advideo_get_collaborators(ctx context.Context, request mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_advideo_get_collaborators(args)
@@ -597,7 +583,6 @@ func HandleFacebook_advideo_get_collaborators(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_advideo_post_collaborators handles the facebook_advideo_post_collaborators tool
 func HandleFacebook_advideo_post_collaborators(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -620,8 +605,6 @@ func HandleFacebook_advideo_post_collaborators(ctx context.Context, request mcp.
 	}
 	args["target_id"] = target_id
 
-
-
 	// Call the client method
 	result, err := client.Facebook_advideo_post_collaborators(args)
 	if err != nil {
@@ -636,7 +619,6 @@ func HandleFacebook_advideo_post_collaborators(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_advideo_get_comments handles the facebook_advideo_get_comments tool
 func HandleFacebook_advideo_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -672,8 +654,6 @@ func HandleFacebook_advideo_get_comments(ctx context.Context, request mcp.CallTo
 		args["since"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_advideo_get_comments(args)
 	if err != nil {
@@ -688,7 +668,6 @@ func HandleFacebook_advideo_get_comments(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_advideo_post_comments handles the facebook_advideo_post_comments tool
 func HandleFacebook_advideo_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -771,8 +750,6 @@ func HandleFacebook_advideo_post_comments(ctx context.Context, request mcp.CallT
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_advideo_post_comments(args)
 	if err != nil {
@@ -788,7 +765,6 @@ func HandleFacebook_advideo_post_comments(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_advideo_get_crosspost_shared_pages handles the facebook_advideo_get_crosspost_shared_pages tool
 func HandleFacebook_advideo_get_crosspost_shared_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -802,8 +778,6 @@ func HandleFacebook_advideo_get_crosspost_shared_pages(ctx context.Context, requ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_advideo_get_crosspost_shared_pages(args)
@@ -819,7 +793,6 @@ func HandleFacebook_advideo_get_crosspost_shared_pages(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_advideo_post_gaming_clip_create handles the facebook_advideo_post_gaming_clip_create tool
 func HandleFacebook_advideo_post_gaming_clip_create(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -840,8 +813,6 @@ func HandleFacebook_advideo_post_gaming_clip_create(ctx context.Context, request
 		args["duration_seconds"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_advideo_post_gaming_clip_create(args)
 	if err != nil {
@@ -857,7 +828,6 @@ func HandleFacebook_advideo_post_gaming_clip_create(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_advideo_get_likes handles the facebook_advideo_get_likes tool
 func HandleFacebook_advideo_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -871,8 +841,6 @@ func HandleFacebook_advideo_get_likes(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_advideo_get_likes(args)
@@ -888,7 +856,6 @@ func HandleFacebook_advideo_get_likes(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_advideo_post_likes handles the facebook_advideo_post_likes tool
 func HandleFacebook_advideo_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -924,8 +891,6 @@ func HandleFacebook_advideo_post_likes(ctx context.Context, request mcp.CallTool
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_advideo_post_likes(args)
 	if err != nil {
@@ -941,7 +906,6 @@ func HandleFacebook_advideo_post_likes(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_advideo_get_poll_settings handles the facebook_advideo_get_poll_settings tool
 func HandleFacebook_advideo_get_poll_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -955,8 +919,6 @@ func HandleFacebook_advideo_get_poll_settings(ctx context.Context, request mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_advideo_get_poll_settings(args)
@@ -973,7 +935,6 @@ func HandleFacebook_advideo_get_poll_settings(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_advideo_get_polls handles the facebook_advideo_get_polls tool
 func HandleFacebook_advideo_get_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -987,8 +948,6 @@ func HandleFacebook_advideo_get_polls(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_advideo_get_polls(args)
@@ -1004,7 +963,6 @@ func HandleFacebook_advideo_get_polls(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_advideo_post_polls handles the facebook_advideo_post_polls tool
 func HandleFacebook_advideo_post_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1059,8 +1017,6 @@ func HandleFacebook_advideo_post_polls(ctx context.Context, request mcp.CallTool
 		args["show_results"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_advideo_post_polls(args)
 	if err != nil {
@@ -1076,7 +1032,6 @@ func HandleFacebook_advideo_post_polls(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_advideo_get_sponsor_tags handles the facebook_advideo_get_sponsor_tags tool
 func HandleFacebook_advideo_get_sponsor_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1090,8 +1045,6 @@ func HandleFacebook_advideo_get_sponsor_tags(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_advideo_get_sponsor_tags(args)
@@ -1108,7 +1061,6 @@ func HandleFacebook_advideo_get_sponsor_tags(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_advideo_get_tags handles the facebook_advideo_get_tags tool
 func HandleFacebook_advideo_get_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1122,8 +1074,6 @@ func HandleFacebook_advideo_get_tags(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_advideo_get_tags(args)
@@ -1140,7 +1090,6 @@ func HandleFacebook_advideo_get_tags(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_advideo_get_thumbnails handles the facebook_advideo_get_thumbnails tool
 func HandleFacebook_advideo_get_thumbnails(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1154,8 +1103,6 @@ func HandleFacebook_advideo_get_thumbnails(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_advideo_get_thumbnails(args)
@@ -1171,7 +1118,6 @@ func HandleFacebook_advideo_get_thumbnails(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_advideo_post_thumbnails handles the facebook_advideo_post_thumbnails tool
 func HandleFacebook_advideo_post_thumbnails(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1199,8 +1145,6 @@ func HandleFacebook_advideo_post_thumbnails(ctx context.Context, request mcp.Cal
 	}
 	args["source"] = source
 
-
-
 	// Call the client method
 	result, err := client.Facebook_advideo_post_thumbnails(args)
 	if err != nil {
@@ -1215,7 +1159,6 @@ func HandleFacebook_advideo_post_thumbnails(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_advideo_get_video_insights handles the facebook_advideo_get_video_insights tool
 func HandleFacebook_advideo_get_video_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1252,8 +1195,6 @@ func HandleFacebook_advideo_get_video_insights(ctx context.Context, request mcp.
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_advideo_get_video_insights(args)
 	if err != nil {
@@ -1269,7 +1210,6 @@ func HandleFacebook_advideo_get_video_insights(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_advideo_delete_ handles the facebook_advideo_delete_ tool
 func HandleFacebook_advideo_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1283,8 +1223,6 @@ func HandleFacebook_advideo_delete_(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_advideo_delete_(args)
@@ -1301,7 +1239,6 @@ func HandleFacebook_advideo_delete_(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_advideo_get_ handles the facebook_advideo_get_ tool
 func HandleFacebook_advideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1315,8 +1252,6 @@ func HandleFacebook_advideo_get_(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_advideo_get_(args)
@@ -1332,7 +1267,6 @@ func HandleFacebook_advideo_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_advideo_post_ handles the facebook_advideo_post_ tool
 func HandleFacebook_advideo_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1494,8 +1428,6 @@ func HandleFacebook_advideo_post_(ctx context.Context, request mcp.CallToolReque
 		args["universal_video_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_advideo_post_(args)
 	if err != nil {
@@ -1510,4 +1442,3 @@ func HandleFacebook_advideo_post_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

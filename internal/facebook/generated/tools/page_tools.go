@@ -15,7 +15,6 @@ import (
 func GetPageTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_page_get_ab_tests tool
 	facebook_page_get_ab_testsTool := mcp.NewTool("facebook_page_get_ab_tests",
 		mcp.WithDescription("GET ab_tests for Page"),
@@ -3462,12 +3461,10 @@ func GetPageTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_page_post_Tool)
 
-
 	return tools
 }
 
 // Page handlers
-
 
 // HandleFacebook_page_get_ab_tests handles the facebook_page_get_ab_tests tool
 func HandleFacebook_page_get_ab_tests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3483,8 +3480,6 @@ func HandleFacebook_page_get_ab_tests(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_ab_tests(args)
 	if err != nil {
@@ -3499,7 +3494,6 @@ func HandleFacebook_page_get_ab_tests(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_ab_tests handles the facebook_page_post_ab_tests tool
 func HandleFacebook_page_post_ab_tests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3562,8 +3556,6 @@ func HandleFacebook_page_post_ab_tests(ctx context.Context, request mcp.CallTool
 		args["scheduled_experiment_timestamp"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_ab_tests(args)
 	if err != nil {
@@ -3578,7 +3570,6 @@ func HandleFacebook_page_post_ab_tests(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_acknowledge_orders handles the facebook_page_post_acknowledge_orders tool
 func HandleFacebook_page_post_acknowledge_orders(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3608,8 +3599,6 @@ func HandleFacebook_page_post_acknowledge_orders(ctx context.Context, request mc
 	}
 	args["orders"] = orders
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_acknowledge_orders(args)
 	if err != nil {
@@ -3624,7 +3613,6 @@ func HandleFacebook_page_post_acknowledge_orders(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_ads_posts handles the facebook_page_get_ads_posts tool
 func HandleFacebook_page_get_ads_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3660,8 +3648,6 @@ func HandleFacebook_page_get_ads_posts(ctx context.Context, request mcp.CallTool
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_ads_posts(args)
 	if err != nil {
@@ -3676,7 +3662,6 @@ func HandleFacebook_page_get_ads_posts(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_delete_agencies handles the facebook_page_delete_agencies tool
 func HandleFacebook_page_delete_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3699,8 +3684,6 @@ func HandleFacebook_page_delete_agencies(ctx context.Context, request mcp.CallTo
 	}
 	args["business"] = business
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_delete_agencies(args)
 	if err != nil {
@@ -3716,7 +3699,6 @@ func HandleFacebook_page_delete_agencies(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_agencies handles the facebook_page_get_agencies tool
 func HandleFacebook_page_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -3730,8 +3712,6 @@ func HandleFacebook_page_get_agencies(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_agencies(args)
@@ -3747,7 +3727,6 @@ func HandleFacebook_page_get_agencies(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_agencies handles the facebook_page_post_agencies tool
 func HandleFacebook_page_post_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3776,8 +3755,6 @@ func HandleFacebook_page_post_agencies(ctx context.Context, request mcp.CallTool
 		args["permitted_tasks"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_agencies(args)
 	if err != nil {
@@ -3793,7 +3770,6 @@ func HandleFacebook_page_post_agencies(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_albums handles the facebook_page_get_albums tool
 func HandleFacebook_page_get_albums(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -3807,8 +3783,6 @@ func HandleFacebook_page_get_albums(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_albums(args)
@@ -3825,7 +3799,6 @@ func HandleFacebook_page_get_albums(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_ar_experience handles the facebook_page_get_ar_experience tool
 func HandleFacebook_page_get_ar_experience(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -3839,8 +3812,6 @@ func HandleFacebook_page_get_ar_experience(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_ar_experience(args)
@@ -3856,7 +3827,6 @@ func HandleFacebook_page_get_ar_experience(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_delete_assigned_users handles the facebook_page_delete_assigned_users tool
 func HandleFacebook_page_delete_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3879,8 +3849,6 @@ func HandleFacebook_page_delete_assigned_users(ctx context.Context, request mcp.
 	}
 	args["user"] = user
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_delete_assigned_users(args)
 	if err != nil {
@@ -3895,7 +3863,6 @@ func HandleFacebook_page_delete_assigned_users(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_assigned_users handles the facebook_page_get_assigned_users tool
 func HandleFacebook_page_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3918,8 +3885,6 @@ func HandleFacebook_page_get_assigned_users(ctx context.Context, request mcp.Cal
 	}
 	args["business"] = business
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_assigned_users(args)
 	if err != nil {
@@ -3934,7 +3899,6 @@ func HandleFacebook_page_get_assigned_users(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_assigned_users handles the facebook_page_post_assigned_users tool
 func HandleFacebook_page_post_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3963,8 +3927,6 @@ func HandleFacebook_page_post_assigned_users(ctx context.Context, request mcp.Ca
 	}
 	args["user"] = user
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_assigned_users(args)
 	if err != nil {
@@ -3979,7 +3941,6 @@ func HandleFacebook_page_post_assigned_users(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_delete_blocked handles the facebook_page_delete_blocked tool
 func HandleFacebook_page_delete_blocked(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4015,8 +3976,6 @@ func HandleFacebook_page_delete_blocked(ctx context.Context, request mcp.CallToo
 		args["user"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_delete_blocked(args)
 	if err != nil {
@@ -4031,7 +3990,6 @@ func HandleFacebook_page_delete_blocked(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_blocked handles the facebook_page_get_blocked tool
 func HandleFacebook_page_get_blocked(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4057,8 +4015,6 @@ func HandleFacebook_page_get_blocked(ctx context.Context, request mcp.CallToolRe
 		args["user"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_blocked(args)
 	if err != nil {
@@ -4073,7 +4029,6 @@ func HandleFacebook_page_get_blocked(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_blocked handles the facebook_page_post_blocked tool
 func HandleFacebook_page_post_blocked(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4113,8 +4068,6 @@ func HandleFacebook_page_post_blocked(ctx context.Context, request mcp.CallToolR
 		args["user"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_blocked(args)
 	if err != nil {
@@ -4129,7 +4082,6 @@ func HandleFacebook_page_post_blocked(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_business_data handles the facebook_page_post_business_data tool
 func HandleFacebook_page_post_business_data(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4164,8 +4116,6 @@ func HandleFacebook_page_post_business_data(ctx context.Context, request mcp.Cal
 		args["processing_type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_business_data(args)
 	if err != nil {
@@ -4180,7 +4130,6 @@ func HandleFacebook_page_post_business_data(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_businessprojects handles the facebook_page_get_businessprojects tool
 func HandleFacebook_page_get_businessprojects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4201,8 +4150,6 @@ func HandleFacebook_page_get_businessprojects(ctx context.Context, request mcp.C
 		args["business"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_businessprojects(args)
 	if err != nil {
@@ -4218,7 +4165,6 @@ func HandleFacebook_page_get_businessprojects(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_call_to_actions handles the facebook_page_get_call_to_actions tool
 func HandleFacebook_page_get_call_to_actions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -4232,8 +4178,6 @@ func HandleFacebook_page_get_call_to_actions(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_call_to_actions(args)
@@ -4249,7 +4193,6 @@ func HandleFacebook_page_get_call_to_actions(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_calls handles the facebook_page_post_calls tool
 func HandleFacebook_page_post_calls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4292,8 +4235,6 @@ func HandleFacebook_page_post_calls(ctx context.Context, request mcp.CallToolReq
 		args["to"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_calls(args)
 	if err != nil {
@@ -4309,7 +4250,6 @@ func HandleFacebook_page_post_calls(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_canvas_elements handles the facebook_page_get_canvas_elements tool
 func HandleFacebook_page_get_canvas_elements(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -4323,8 +4263,6 @@ func HandleFacebook_page_get_canvas_elements(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_canvas_elements(args)
@@ -4340,7 +4278,6 @@ func HandleFacebook_page_get_canvas_elements(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_canvas_elements handles the facebook_page_post_canvas_elements tool
 func HandleFacebook_page_post_canvas_elements(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4428,8 +4365,6 @@ func HandleFacebook_page_post_canvas_elements(ctx context.Context, request mcp.C
 		args["canvas_video"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_canvas_elements(args)
 	if err != nil {
@@ -4444,7 +4379,6 @@ func HandleFacebook_page_post_canvas_elements(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_canvases handles the facebook_page_get_canvases tool
 func HandleFacebook_page_get_canvases(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4470,8 +4404,6 @@ func HandleFacebook_page_get_canvases(ctx context.Context, request mcp.CallToolR
 		args["is_published"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_canvases(args)
 	if err != nil {
@@ -4486,7 +4418,6 @@ func HandleFacebook_page_get_canvases(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_canvases handles the facebook_page_post_canvases tool
 func HandleFacebook_page_post_canvases(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4538,8 +4469,6 @@ func HandleFacebook_page_post_canvases(ctx context.Context, request mcp.CallTool
 		args["source_template_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_canvases(args)
 	if err != nil {
@@ -4555,7 +4484,6 @@ func HandleFacebook_page_post_canvases(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_chat_plugin handles the facebook_page_get_chat_plugin tool
 func HandleFacebook_page_get_chat_plugin(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -4569,8 +4497,6 @@ func HandleFacebook_page_get_chat_plugin(ctx context.Context, request mcp.CallTo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_chat_plugin(args)
@@ -4587,7 +4513,6 @@ func HandleFacebook_page_get_chat_plugin(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_commerce_merchant_settings handles the facebook_page_get_commerce_merchant_settings tool
 func HandleFacebook_page_get_commerce_merchant_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -4601,8 +4526,6 @@ func HandleFacebook_page_get_commerce_merchant_settings(ctx context.Context, req
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_commerce_merchant_settings(args)
@@ -4618,7 +4541,6 @@ func HandleFacebook_page_get_commerce_merchant_settings(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_commerce_orders handles the facebook_page_get_commerce_orders tool
 func HandleFacebook_page_get_commerce_orders(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4656,8 +4578,6 @@ func HandleFacebook_page_get_commerce_orders(ctx context.Context, request mcp.Ca
 		args["updated_before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_commerce_orders(args)
 	if err != nil {
@@ -4672,7 +4592,6 @@ func HandleFacebook_page_get_commerce_orders(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_commerce_payouts handles the facebook_page_get_commerce_payouts tool
 func HandleFacebook_page_get_commerce_payouts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4698,8 +4617,6 @@ func HandleFacebook_page_get_commerce_payouts(ctx context.Context, request mcp.C
 		args["start_time"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_commerce_payouts(args)
 	if err != nil {
@@ -4714,7 +4631,6 @@ func HandleFacebook_page_get_commerce_payouts(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_commerce_transactions handles the facebook_page_get_commerce_transactions tool
 func HandleFacebook_page_get_commerce_transactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4745,8 +4661,6 @@ func HandleFacebook_page_get_commerce_transactions(ctx context.Context, request 
 		args["start_time"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_commerce_transactions(args)
 	if err != nil {
@@ -4761,7 +4675,6 @@ func HandleFacebook_page_get_commerce_transactions(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_conversations handles the facebook_page_get_conversations tool
 func HandleFacebook_page_get_conversations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4798,8 +4711,6 @@ func HandleFacebook_page_get_conversations(ctx context.Context, request mcp.Call
 		args["user_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_conversations(args)
 	if err != nil {
@@ -4814,7 +4725,6 @@ func HandleFacebook_page_get_conversations(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_copyright_manual_claims handles the facebook_page_post_copyright_manual_claims tool
 func HandleFacebook_page_post_copyright_manual_claims(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4873,8 +4783,6 @@ func HandleFacebook_page_post_copyright_manual_claims(ctx context.Context, reque
 		args["selected_segments"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_copyright_manual_claims(args)
 	if err != nil {
@@ -4890,7 +4798,6 @@ func HandleFacebook_page_post_copyright_manual_claims(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_crosspost_whitelisted_pages handles the facebook_page_get_crosspost_whitelisted_pages tool
 func HandleFacebook_page_get_crosspost_whitelisted_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -4904,8 +4811,6 @@ func HandleFacebook_page_get_crosspost_whitelisted_pages(ctx context.Context, re
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_crosspost_whitelisted_pages(args)
@@ -4922,7 +4827,6 @@ func HandleFacebook_page_get_crosspost_whitelisted_pages(ctx context.Context, re
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_ctx_optimization_eligibility handles the facebook_page_get_ctx_optimization_eligibility tool
 func HandleFacebook_page_get_ctx_optimization_eligibility(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -4936,8 +4840,6 @@ func HandleFacebook_page_get_ctx_optimization_eligibility(ctx context.Context, r
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_ctx_optimization_eligibility(args)
@@ -4954,7 +4856,6 @@ func HandleFacebook_page_get_ctx_optimization_eligibility(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_custom_labels handles the facebook_page_get_custom_labels tool
 func HandleFacebook_page_get_custom_labels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -4968,8 +4869,6 @@ func HandleFacebook_page_get_custom_labels(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_custom_labels(args)
@@ -4985,7 +4884,6 @@ func HandleFacebook_page_get_custom_labels(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_custom_labels handles the facebook_page_post_custom_labels tool
 func HandleFacebook_page_post_custom_labels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5013,8 +4911,6 @@ func HandleFacebook_page_post_custom_labels(ctx context.Context, request mcp.Cal
 	}
 	args["page_label_name"] = page_label_name
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_custom_labels(args)
 	if err != nil {
@@ -5029,7 +4925,6 @@ func HandleFacebook_page_post_custom_labels(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_delete_custom_user_settings handles the facebook_page_delete_custom_user_settings tool
 func HandleFacebook_page_delete_custom_user_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5059,8 +4954,6 @@ func HandleFacebook_page_delete_custom_user_settings(ctx context.Context, reques
 	}
 	args["psid"] = psid
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_delete_custom_user_settings(args)
 	if err != nil {
@@ -5075,7 +4968,6 @@ func HandleFacebook_page_delete_custom_user_settings(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_custom_user_settings handles the facebook_page_get_custom_user_settings tool
 func HandleFacebook_page_get_custom_user_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5098,8 +4990,6 @@ func HandleFacebook_page_get_custom_user_settings(ctx context.Context, request m
 	}
 	args["psid"] = psid
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_custom_user_settings(args)
 	if err != nil {
@@ -5114,7 +5004,6 @@ func HandleFacebook_page_get_custom_user_settings(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_custom_user_settings handles the facebook_page_post_custom_user_settings tool
 func HandleFacebook_page_post_custom_user_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5143,8 +5032,6 @@ func HandleFacebook_page_post_custom_user_settings(ctx context.Context, request 
 	}
 	args["psid"] = psid
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_custom_user_settings(args)
 	if err != nil {
@@ -5160,7 +5047,6 @@ func HandleFacebook_page_post_custom_user_settings(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_dataset handles the facebook_page_get_dataset tool
 func HandleFacebook_page_get_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -5174,8 +5060,6 @@ func HandleFacebook_page_get_dataset(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_dataset(args)
@@ -5191,7 +5075,6 @@ func HandleFacebook_page_get_dataset(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_dataset handles the facebook_page_post_dataset tool
 func HandleFacebook_page_post_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5212,8 +5095,6 @@ func HandleFacebook_page_post_dataset(ctx context.Context, request mcp.CallToolR
 		args["dataset_name"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_dataset(args)
 	if err != nil {
@@ -5228,7 +5109,6 @@ func HandleFacebook_page_post_dataset(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_events handles the facebook_page_get_events tool
 func HandleFacebook_page_get_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5265,8 +5145,6 @@ func HandleFacebook_page_get_events(ctx context.Context, request mcp.CallToolReq
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_events(args)
 	if err != nil {
@@ -5281,7 +5159,6 @@ func HandleFacebook_page_get_events(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_extend_thread_control handles the facebook_page_post_extend_thread_control tool
 func HandleFacebook_page_post_extend_thread_control(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5309,8 +5186,6 @@ func HandleFacebook_page_post_extend_thread_control(ctx context.Context, request
 	}
 	args["recipient"] = recipient
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_extend_thread_control(args)
 	if err != nil {
@@ -5326,7 +5201,6 @@ func HandleFacebook_page_post_extend_thread_control(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_fantasy_games handles the facebook_page_get_fantasy_games tool
 func HandleFacebook_page_get_fantasy_games(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -5340,8 +5214,6 @@ func HandleFacebook_page_get_fantasy_games(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_fantasy_games(args)
@@ -5357,7 +5229,6 @@ func HandleFacebook_page_get_fantasy_games(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_feed handles the facebook_page_get_feed tool
 func HandleFacebook_page_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5393,8 +5264,6 @@ func HandleFacebook_page_get_feed(ctx context.Context, request mcp.CallToolReque
 		args["with"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_feed(args)
 	if err != nil {
@@ -5409,7 +5278,6 @@ func HandleFacebook_page_get_feed(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_feed handles the facebook_page_post_feed tool
 func HandleFacebook_page_post_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5972,8 +5840,6 @@ func HandleFacebook_page_post_feed(ctx context.Context, request mcp.CallToolRequ
 		args["width"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_feed(args)
 	if err != nil {
@@ -5989,7 +5855,6 @@ func HandleFacebook_page_post_feed(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_global_brand_children handles the facebook_page_get_global_brand_children tool
 func HandleFacebook_page_get_global_brand_children(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -6003,8 +5868,6 @@ func HandleFacebook_page_get_global_brand_children(ctx context.Context, request 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_global_brand_children(args)
@@ -6021,7 +5884,6 @@ func HandleFacebook_page_get_global_brand_children(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_image_copyrights handles the facebook_page_get_image_copyrights tool
 func HandleFacebook_page_get_image_copyrights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -6035,8 +5897,6 @@ func HandleFacebook_page_get_image_copyrights(ctx context.Context, request mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_image_copyrights(args)
@@ -6052,7 +5912,6 @@ func HandleFacebook_page_get_image_copyrights(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_image_copyrights handles the facebook_page_post_image_copyrights tool
 func HandleFacebook_page_post_image_copyrights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6124,8 +5983,6 @@ func HandleFacebook_page_post_image_copyrights(ctx context.Context, request mcp.
 		args["title"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_image_copyrights(args)
 	if err != nil {
@@ -6141,7 +5998,6 @@ func HandleFacebook_page_post_image_copyrights(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_indexed_videos handles the facebook_page_get_indexed_videos tool
 func HandleFacebook_page_get_indexed_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -6155,8 +6011,6 @@ func HandleFacebook_page_get_indexed_videos(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_indexed_videos(args)
@@ -6172,7 +6026,6 @@ func HandleFacebook_page_get_indexed_videos(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_insights handles the facebook_page_get_insights tool
 func HandleFacebook_page_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6225,8 +6078,6 @@ func HandleFacebook_page_get_insights(ctx context.Context, request mcp.CallToolR
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_insights(args)
 	if err != nil {
@@ -6242,7 +6093,6 @@ func HandleFacebook_page_get_insights(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_instagram_accounts handles the facebook_page_get_instagram_accounts tool
 func HandleFacebook_page_get_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -6256,8 +6106,6 @@ func HandleFacebook_page_get_instagram_accounts(ctx context.Context, request mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_instagram_accounts(args)
@@ -6274,7 +6122,6 @@ func HandleFacebook_page_get_instagram_accounts(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_leadgen_forms handles the facebook_page_get_leadgen_forms tool
 func HandleFacebook_page_get_leadgen_forms(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -6288,8 +6135,6 @@ func HandleFacebook_page_get_leadgen_forms(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_leadgen_forms(args)
@@ -6305,7 +6150,6 @@ func HandleFacebook_page_get_leadgen_forms(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_leadgen_forms handles the facebook_page_post_leadgen_forms tool
 func HandleFacebook_page_post_leadgen_forms(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6409,8 +6253,6 @@ func HandleFacebook_page_post_leadgen_forms(ctx context.Context, request mcp.Cal
 		args["upload_gated_file"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_leadgen_forms(args)
 	if err != nil {
@@ -6425,7 +6267,6 @@ func HandleFacebook_page_post_leadgen_forms(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_likes handles the facebook_page_get_likes tool
 func HandleFacebook_page_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6446,8 +6287,6 @@ func HandleFacebook_page_get_likes(ctx context.Context, request mcp.CallToolRequ
 		args["target_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_likes(args)
 	if err != nil {
@@ -6462,7 +6301,6 @@ func HandleFacebook_page_get_likes(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_live_videos handles the facebook_page_get_live_videos tool
 func HandleFacebook_page_get_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6489,8 +6327,6 @@ func HandleFacebook_page_get_live_videos(ctx context.Context, request mcp.CallTo
 		args["source"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_live_videos(args)
 	if err != nil {
@@ -6505,7 +6341,6 @@ func HandleFacebook_page_get_live_videos(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_live_videos handles the facebook_page_post_live_videos tool
 func HandleFacebook_page_post_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6646,8 +6481,6 @@ func HandleFacebook_page_post_live_videos(ctx context.Context, request mcp.CallT
 		args["title"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_live_videos(args)
 	if err != nil {
@@ -6662,7 +6495,6 @@ func HandleFacebook_page_post_live_videos(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_delete_locations handles the facebook_page_delete_locations tool
 func HandleFacebook_page_delete_locations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6692,8 +6524,6 @@ func HandleFacebook_page_delete_locations(ctx context.Context, request mcp.CallT
 	}
 	args["store_numbers"] = store_numbers
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_delete_locations(args)
 	if err != nil {
@@ -6709,7 +6539,6 @@ func HandleFacebook_page_delete_locations(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_locations handles the facebook_page_get_locations tool
 func HandleFacebook_page_get_locations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -6723,8 +6552,6 @@ func HandleFacebook_page_get_locations(ctx context.Context, request mcp.CallTool
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_locations(args)
@@ -6740,7 +6567,6 @@ func HandleFacebook_page_get_locations(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_locations handles the facebook_page_post_locations tool
 func HandleFacebook_page_post_locations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6862,8 +6688,6 @@ func HandleFacebook_page_post_locations(ctx context.Context, request mcp.CallToo
 		args["website"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_locations(args)
 	if err != nil {
@@ -6878,7 +6702,6 @@ func HandleFacebook_page_post_locations(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_media_fingerprints handles the facebook_page_get_media_fingerprints tool
 func HandleFacebook_page_get_media_fingerprints(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6899,8 +6722,6 @@ func HandleFacebook_page_get_media_fingerprints(ctx context.Context, request mcp
 		args["universal_content_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_media_fingerprints(args)
 	if err != nil {
@@ -6915,7 +6736,6 @@ func HandleFacebook_page_get_media_fingerprints(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_media_fingerprints handles the facebook_page_post_media_fingerprints tool
 func HandleFacebook_page_post_media_fingerprints(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6964,8 +6784,6 @@ func HandleFacebook_page_post_media_fingerprints(ctx context.Context, request mc
 		args["universal_content_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_media_fingerprints(args)
 	if err != nil {
@@ -6980,7 +6798,6 @@ func HandleFacebook_page_post_media_fingerprints(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_message_attachments handles the facebook_page_post_message_attachments tool
 func HandleFacebook_page_post_message_attachments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7008,8 +6825,6 @@ func HandleFacebook_page_post_message_attachments(ctx context.Context, request m
 		args["platform"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_message_attachments(args)
 	if err != nil {
@@ -7024,7 +6839,6 @@ func HandleFacebook_page_post_message_attachments(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_delete_message_templates handles the facebook_page_delete_message_templates tool
 func HandleFacebook_page_delete_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7052,8 +6866,6 @@ func HandleFacebook_page_delete_message_templates(ctx context.Context, request m
 		args["template_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_delete_message_templates(args)
 	if err != nil {
@@ -7068,7 +6880,6 @@ func HandleFacebook_page_delete_message_templates(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_message_templates handles the facebook_page_get_message_templates tool
 func HandleFacebook_page_get_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7117,8 +6928,6 @@ func HandleFacebook_page_get_message_templates(ctx context.Context, request mcp.
 		args["status"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_message_templates(args)
 	if err != nil {
@@ -7133,7 +6942,6 @@ func HandleFacebook_page_get_message_templates(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_message_templates handles the facebook_page_post_message_templates tool
 func HandleFacebook_page_post_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7187,8 +6995,6 @@ func HandleFacebook_page_post_message_templates(ctx context.Context, request mcp
 	}
 	args["name"] = name
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_message_templates(args)
 	if err != nil {
@@ -7203,7 +7009,6 @@ func HandleFacebook_page_post_message_templates(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_messages handles the facebook_page_post_messages tool
 func HandleFacebook_page_post_messages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7279,8 +7084,6 @@ func HandleFacebook_page_post_messages(ctx context.Context, request mcp.CallTool
 		args["thread_control"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_messages(args)
 	if err != nil {
@@ -7296,7 +7099,6 @@ func HandleFacebook_page_post_messages(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_messaging_feature_review handles the facebook_page_get_messaging_feature_review tool
 func HandleFacebook_page_get_messaging_feature_review(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -7310,8 +7112,6 @@ func HandleFacebook_page_get_messaging_feature_review(ctx context.Context, reque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_messaging_feature_review(args)
@@ -7328,7 +7128,6 @@ func HandleFacebook_page_get_messaging_feature_review(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_messenger_call_settings handles the facebook_page_get_messenger_call_settings tool
 func HandleFacebook_page_get_messenger_call_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -7342,8 +7141,6 @@ func HandleFacebook_page_get_messenger_call_settings(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_messenger_call_settings(args)
@@ -7359,7 +7156,6 @@ func HandleFacebook_page_get_messenger_call_settings(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_messenger_call_settings handles the facebook_page_post_messenger_call_settings tool
 func HandleFacebook_page_post_messenger_call_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7395,8 +7191,6 @@ func HandleFacebook_page_post_messenger_call_settings(ctx context.Context, reque
 		args["icon_enabled"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_messenger_call_settings(args)
 	if err != nil {
@@ -7412,7 +7206,6 @@ func HandleFacebook_page_post_messenger_call_settings(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_messenger_lead_forms handles the facebook_page_get_messenger_lead_forms tool
 func HandleFacebook_page_get_messenger_lead_forms(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -7426,8 +7219,6 @@ func HandleFacebook_page_get_messenger_lead_forms(ctx context.Context, request m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_messenger_lead_forms(args)
@@ -7443,7 +7234,6 @@ func HandleFacebook_page_get_messenger_lead_forms(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_messenger_lead_forms handles the facebook_page_post_messenger_lead_forms tool
 func HandleFacebook_page_post_messenger_lead_forms(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7516,8 +7306,6 @@ func HandleFacebook_page_post_messenger_lead_forms(ctx context.Context, request 
 		args["tracking_parameters"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_messenger_lead_forms(args)
 	if err != nil {
@@ -7532,7 +7320,6 @@ func HandleFacebook_page_post_messenger_lead_forms(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_delete_messenger_profile handles the facebook_page_delete_messenger_profile tool
 func HandleFacebook_page_delete_messenger_profile(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7560,8 +7347,6 @@ func HandleFacebook_page_delete_messenger_profile(ctx context.Context, request m
 		args["platform"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_delete_messenger_profile(args)
 	if err != nil {
@@ -7576,7 +7361,6 @@ func HandleFacebook_page_delete_messenger_profile(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_messenger_profile handles the facebook_page_get_messenger_profile tool
 func HandleFacebook_page_get_messenger_profile(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7597,8 +7381,6 @@ func HandleFacebook_page_get_messenger_profile(ctx context.Context, request mcp.
 		args["platform"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_messenger_profile(args)
 	if err != nil {
@@ -7613,7 +7395,6 @@ func HandleFacebook_page_get_messenger_profile(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_messenger_profile handles the facebook_page_post_messenger_profile tool
 func HandleFacebook_page_post_messenger_profile(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7687,8 +7468,6 @@ func HandleFacebook_page_post_messenger_profile(ctx context.Context, request mcp
 		args["whitelisted_domains"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_messenger_profile(args)
 	if err != nil {
@@ -7703,7 +7482,6 @@ func HandleFacebook_page_post_messenger_profile(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_moderate_conversations handles the facebook_page_post_moderate_conversations tool
 func HandleFacebook_page_post_moderate_conversations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7733,8 +7511,6 @@ func HandleFacebook_page_post_moderate_conversations(ctx context.Context, reques
 	}
 	args["user_ids"] = user_ids
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_moderate_conversations(args)
 	if err != nil {
@@ -7749,7 +7525,6 @@ func HandleFacebook_page_post_moderate_conversations(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_nlp_configs handles the facebook_page_post_nlp_configs tool
 func HandleFacebook_page_post_nlp_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7801,8 +7576,6 @@ func HandleFacebook_page_post_nlp_configs(ctx context.Context, request mcp.CallT
 		args["verbose"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_nlp_configs(args)
 	if err != nil {
@@ -7818,7 +7591,6 @@ func HandleFacebook_page_post_nlp_configs(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_notification_message_tokens handles the facebook_page_get_notification_message_tokens tool
 func HandleFacebook_page_get_notification_message_tokens(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -7832,8 +7604,6 @@ func HandleFacebook_page_get_notification_message_tokens(ctx context.Context, re
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_notification_message_tokens(args)
@@ -7849,7 +7619,6 @@ func HandleFacebook_page_get_notification_message_tokens(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_notification_messages_dev_support handles the facebook_page_post_notification_messages_dev_support tool
 func HandleFacebook_page_post_notification_messages_dev_support(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7879,8 +7648,6 @@ func HandleFacebook_page_post_notification_messages_dev_support(ctx context.Cont
 	}
 	args["recipient"] = recipient
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_notification_messages_dev_support(args)
 	if err != nil {
@@ -7896,7 +7663,6 @@ func HandleFacebook_page_post_notification_messages_dev_support(ctx context.Cont
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_page_backed_instagram_accounts handles the facebook_page_get_page_backed_instagram_accounts tool
 func HandleFacebook_page_get_page_backed_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -7910,8 +7676,6 @@ func HandleFacebook_page_get_page_backed_instagram_accounts(ctx context.Context,
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_page_backed_instagram_accounts(args)
@@ -7928,7 +7692,6 @@ func HandleFacebook_page_get_page_backed_instagram_accounts(ctx context.Context,
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_post_page_backed_instagram_accounts handles the facebook_page_post_page_backed_instagram_accounts tool
 func HandleFacebook_page_post_page_backed_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -7942,8 +7705,6 @@ func HandleFacebook_page_post_page_backed_instagram_accounts(ctx context.Context
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_post_page_backed_instagram_accounts(args)
@@ -7959,7 +7720,6 @@ func HandleFacebook_page_post_page_backed_instagram_accounts(ctx context.Context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_page_whatsapp_number_verification handles the facebook_page_post_page_whatsapp_number_verification tool
 func HandleFacebook_page_post_page_whatsapp_number_verification(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7987,8 +7747,6 @@ func HandleFacebook_page_post_page_whatsapp_number_verification(ctx context.Cont
 	}
 	args["whatsapp_number"] = whatsapp_number
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_page_whatsapp_number_verification(args)
 	if err != nil {
@@ -8003,7 +7761,6 @@ func HandleFacebook_page_post_page_whatsapp_number_verification(ctx context.Cont
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_pass_thread_control handles the facebook_page_post_pass_thread_control tool
 func HandleFacebook_page_post_pass_thread_control(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8036,8 +7793,6 @@ func HandleFacebook_page_post_pass_thread_control(ctx context.Context, request m
 		args["target_app_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_pass_thread_control(args)
 	if err != nil {
@@ -8053,7 +7808,6 @@ func HandleFacebook_page_post_pass_thread_control(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_personas handles the facebook_page_get_personas tool
 func HandleFacebook_page_get_personas(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -8067,8 +7821,6 @@ func HandleFacebook_page_get_personas(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_personas(args)
@@ -8084,7 +7836,6 @@ func HandleFacebook_page_get_personas(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_personas handles the facebook_page_post_personas tool
 func HandleFacebook_page_post_personas(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8114,8 +7865,6 @@ func HandleFacebook_page_post_personas(ctx context.Context, request mcp.CallTool
 	}
 	args["profile_picture_url"] = profile_picture_url
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_personas(args)
 	if err != nil {
@@ -8130,7 +7879,6 @@ func HandleFacebook_page_post_personas(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_photo_stories handles the facebook_page_post_photo_stories tool
 func HandleFacebook_page_post_photo_stories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8151,8 +7899,6 @@ func HandleFacebook_page_post_photo_stories(ctx context.Context, request mcp.Cal
 		args["photo_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_photo_stories(args)
 	if err != nil {
@@ -8167,7 +7913,6 @@ func HandleFacebook_page_post_photo_stories(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_photos handles the facebook_page_get_photos tool
 func HandleFacebook_page_get_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8198,8 +7943,6 @@ func HandleFacebook_page_get_photos(ctx context.Context, request mcp.CallToolReq
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_photos(args)
 	if err != nil {
@@ -8214,7 +7957,6 @@ func HandleFacebook_page_get_photos(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_photos handles the facebook_page_post_photos tool
 func HandleFacebook_page_post_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8514,8 +8256,6 @@ func HandleFacebook_page_post_photos(ctx context.Context, request mcp.CallToolRe
 		args["vault_image_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_photos(args)
 	if err != nil {
@@ -8530,7 +8270,6 @@ func HandleFacebook_page_post_photos(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_picture handles the facebook_page_get_picture tool
 func HandleFacebook_page_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8566,8 +8305,6 @@ func HandleFacebook_page_get_picture(ctx context.Context, request mcp.CallToolRe
 		args["width"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_picture(args)
 	if err != nil {
@@ -8582,7 +8319,6 @@ func HandleFacebook_page_get_picture(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_picture handles the facebook_page_post_picture tool
 func HandleFacebook_page_post_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8730,8 +8466,6 @@ func HandleFacebook_page_post_picture(ctx context.Context, request mcp.CallToolR
 		args["y"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_picture(args)
 	if err != nil {
@@ -8746,7 +8480,6 @@ func HandleFacebook_page_post_picture(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_posts handles the facebook_page_get_posts tool
 func HandleFacebook_page_get_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8787,8 +8520,6 @@ func HandleFacebook_page_get_posts(ctx context.Context, request mcp.CallToolRequ
 		args["with"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_posts(args)
 	if err != nil {
@@ -8804,7 +8535,6 @@ func HandleFacebook_page_get_posts(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_product_catalogs handles the facebook_page_get_product_catalogs tool
 func HandleFacebook_page_get_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -8818,8 +8548,6 @@ func HandleFacebook_page_get_product_catalogs(ctx context.Context, request mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_product_catalogs(args)
@@ -8835,7 +8563,6 @@ func HandleFacebook_page_get_product_catalogs(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_published_posts handles the facebook_page_get_published_posts tool
 func HandleFacebook_page_get_published_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8871,8 +8598,6 @@ func HandleFacebook_page_get_published_posts(ctx context.Context, request mcp.Ca
 		args["with"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_published_posts(args)
 	if err != nil {
@@ -8887,7 +8612,6 @@ func HandleFacebook_page_get_published_posts(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_release_thread_control handles the facebook_page_post_release_thread_control tool
 func HandleFacebook_page_post_release_thread_control(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8910,8 +8634,6 @@ func HandleFacebook_page_post_release_thread_control(ctx context.Context, reques
 	}
 	args["recipient"] = recipient
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_release_thread_control(args)
 	if err != nil {
@@ -8926,7 +8648,6 @@ func HandleFacebook_page_post_release_thread_control(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_request_thread_control handles the facebook_page_post_request_thread_control tool
 func HandleFacebook_page_post_request_thread_control(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8954,8 +8675,6 @@ func HandleFacebook_page_post_request_thread_control(ctx context.Context, reques
 	}
 	args["recipient"] = recipient
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_request_thread_control(args)
 	if err != nil {
@@ -8970,7 +8689,6 @@ func HandleFacebook_page_post_request_thread_control(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_roles handles the facebook_page_get_roles tool
 func HandleFacebook_page_get_roles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8996,8 +8714,6 @@ func HandleFacebook_page_get_roles(ctx context.Context, request mcp.CallToolRequ
 		args["uid"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_roles(args)
 	if err != nil {
@@ -9013,7 +8729,6 @@ func HandleFacebook_page_get_roles(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_rtb_dynamic_posts handles the facebook_page_get_rtb_dynamic_posts tool
 func HandleFacebook_page_get_rtb_dynamic_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -9027,8 +8742,6 @@ func HandleFacebook_page_get_rtb_dynamic_posts(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_rtb_dynamic_posts(args)
@@ -9045,7 +8758,6 @@ func HandleFacebook_page_get_rtb_dynamic_posts(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_scheduled_posts handles the facebook_page_get_scheduled_posts tool
 func HandleFacebook_page_get_scheduled_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -9059,8 +8771,6 @@ func HandleFacebook_page_get_scheduled_posts(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_scheduled_posts(args)
@@ -9076,7 +8786,6 @@ func HandleFacebook_page_get_scheduled_posts(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_secondary_receivers handles the facebook_page_get_secondary_receivers tool
 func HandleFacebook_page_get_secondary_receivers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9097,8 +8806,6 @@ func HandleFacebook_page_get_secondary_receivers(ctx context.Context, request mc
 		args["platform"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_secondary_receivers(args)
 	if err != nil {
@@ -9114,7 +8821,6 @@ func HandleFacebook_page_get_secondary_receivers(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_settings handles the facebook_page_get_settings tool
 func HandleFacebook_page_get_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -9128,8 +8834,6 @@ func HandleFacebook_page_get_settings(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_settings(args)
@@ -9145,7 +8849,6 @@ func HandleFacebook_page_get_settings(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_settings handles the facebook_page_post_settings tool
 func HandleFacebook_page_post_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9167,8 +8870,6 @@ func HandleFacebook_page_post_settings(ctx context.Context, request mcp.CallTool
 		args["option"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_settings(args)
 	if err != nil {
@@ -9184,7 +8885,6 @@ func HandleFacebook_page_post_settings(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_shop_setup_status handles the facebook_page_get_shop_setup_status tool
 func HandleFacebook_page_get_shop_setup_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -9198,8 +8898,6 @@ func HandleFacebook_page_get_shop_setup_status(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_shop_setup_status(args)
@@ -9216,7 +8914,6 @@ func HandleFacebook_page_get_shop_setup_status(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_store_locations handles the facebook_page_get_store_locations tool
 func HandleFacebook_page_get_store_locations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -9230,8 +8927,6 @@ func HandleFacebook_page_get_store_locations(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_store_locations(args)
@@ -9247,7 +8942,6 @@ func HandleFacebook_page_get_store_locations(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_stories handles the facebook_page_get_stories tool
 func HandleFacebook_page_get_stories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9279,8 +8973,6 @@ func HandleFacebook_page_get_stories(ctx context.Context, request mcp.CallToolRe
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_stories(args)
 	if err != nil {
@@ -9296,7 +8988,6 @@ func HandleFacebook_page_get_stories(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_delete_subscribed_apps handles the facebook_page_delete_subscribed_apps tool
 func HandleFacebook_page_delete_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -9310,8 +9001,6 @@ func HandleFacebook_page_delete_subscribed_apps(ctx context.Context, request mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_delete_subscribed_apps(args)
@@ -9328,7 +9017,6 @@ func HandleFacebook_page_delete_subscribed_apps(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_subscribed_apps handles the facebook_page_get_subscribed_apps tool
 func HandleFacebook_page_get_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -9342,8 +9030,6 @@ func HandleFacebook_page_get_subscribed_apps(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_subscribed_apps(args)
@@ -9359,7 +9045,6 @@ func HandleFacebook_page_get_subscribed_apps(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_subscribed_apps handles the facebook_page_post_subscribed_apps tool
 func HandleFacebook_page_post_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9382,8 +9067,6 @@ func HandleFacebook_page_post_subscribed_apps(ctx context.Context, request mcp.C
 	}
 	args["subscribed_fields"] = subscribed_fields
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_subscribed_apps(args)
 	if err != nil {
@@ -9398,7 +9081,6 @@ func HandleFacebook_page_post_subscribed_apps(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_tabs handles the facebook_page_get_tabs tool
 func HandleFacebook_page_get_tabs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9420,8 +9102,6 @@ func HandleFacebook_page_get_tabs(ctx context.Context, request mcp.CallToolReque
 		args["tab"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_tabs(args)
 	if err != nil {
@@ -9437,7 +9117,6 @@ func HandleFacebook_page_get_tabs(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_tagged handles the facebook_page_get_tagged tool
 func HandleFacebook_page_get_tagged(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -9451,8 +9130,6 @@ func HandleFacebook_page_get_tagged(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_tagged(args)
@@ -9468,7 +9145,6 @@ func HandleFacebook_page_get_tagged(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_take_thread_control handles the facebook_page_post_take_thread_control tool
 func HandleFacebook_page_post_take_thread_control(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9496,8 +9172,6 @@ func HandleFacebook_page_post_take_thread_control(ctx context.Context, request m
 	}
 	args["recipient"] = recipient
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_take_thread_control(args)
 	if err != nil {
@@ -9512,7 +9186,6 @@ func HandleFacebook_page_post_take_thread_control(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_thread_owner handles the facebook_page_get_thread_owner tool
 func HandleFacebook_page_get_thread_owner(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9535,8 +9208,6 @@ func HandleFacebook_page_get_thread_owner(ctx context.Context, request mcp.CallT
 	}
 	args["recipient"] = recipient
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_thread_owner(args)
 	if err != nil {
@@ -9551,7 +9222,6 @@ func HandleFacebook_page_get_thread_owner(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_threads handles the facebook_page_get_threads tool
 func HandleFacebook_page_get_threads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9588,8 +9258,6 @@ func HandleFacebook_page_get_threads(ctx context.Context, request mcp.CallToolRe
 		args["user_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_threads(args)
 	if err != nil {
@@ -9604,7 +9272,6 @@ func HandleFacebook_page_get_threads(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_unlink_accounts handles the facebook_page_post_unlink_accounts tool
 func HandleFacebook_page_post_unlink_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9627,8 +9294,6 @@ func HandleFacebook_page_post_unlink_accounts(ctx context.Context, request mcp.C
 	}
 	args["psid"] = psid
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_unlink_accounts(args)
 	if err != nil {
@@ -9643,7 +9308,6 @@ func HandleFacebook_page_post_unlink_accounts(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_video_copyright_rules handles the facebook_page_get_video_copyright_rules tool
 func HandleFacebook_page_get_video_copyright_rules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9669,8 +9333,6 @@ func HandleFacebook_page_get_video_copyright_rules(ctx context.Context, request 
 		args["source"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_video_copyright_rules(args)
 	if err != nil {
@@ -9685,7 +9347,6 @@ func HandleFacebook_page_get_video_copyright_rules(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_video_copyright_rules handles the facebook_page_post_video_copyright_rules tool
 func HandleFacebook_page_post_video_copyright_rules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9715,8 +9376,6 @@ func HandleFacebook_page_post_video_copyright_rules(ctx context.Context, request
 	}
 	args["name"] = name
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_video_copyright_rules(args)
 	if err != nil {
@@ -9731,7 +9390,6 @@ func HandleFacebook_page_post_video_copyright_rules(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_video_copyrights handles the facebook_page_post_video_copyrights tool
 func HandleFacebook_page_post_video_copyrights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9820,8 +9478,6 @@ func HandleFacebook_page_post_video_copyrights(ctx context.Context, request mcp.
 		args["whitelisted_ig_user_ids"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_video_copyrights(args)
 	if err != nil {
@@ -9837,7 +9493,6 @@ func HandleFacebook_page_post_video_copyrights(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_page_get_video_lists handles the facebook_page_get_video_lists tool
 func HandleFacebook_page_get_video_lists(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -9851,8 +9506,6 @@ func HandleFacebook_page_get_video_lists(ctx context.Context, request mcp.CallTo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_page_get_video_lists(args)
@@ -9868,7 +9521,6 @@ func HandleFacebook_page_get_video_lists(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_video_reels handles the facebook_page_get_video_reels tool
 func HandleFacebook_page_get_video_reels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9894,8 +9546,6 @@ func HandleFacebook_page_get_video_reels(ctx context.Context, request mcp.CallTo
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_video_reels(args)
 	if err != nil {
@@ -9910,7 +9560,6 @@ func HandleFacebook_page_get_video_reels(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_video_reels handles the facebook_page_post_video_reels tool
 func HandleFacebook_page_post_video_reels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9975,8 +9624,6 @@ func HandleFacebook_page_post_video_reels(ctx context.Context, request mcp.CallT
 		args["video_state"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_video_reels(args)
 	if err != nil {
@@ -9991,7 +9638,6 @@ func HandleFacebook_page_post_video_reels(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_video_stories handles the facebook_page_post_video_stories tool
 func HandleFacebook_page_post_video_stories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10056,8 +9702,6 @@ func HandleFacebook_page_post_video_stories(ctx context.Context, request mcp.Cal
 		args["video_state"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_video_stories(args)
 	if err != nil {
@@ -10072,7 +9716,6 @@ func HandleFacebook_page_post_video_stories(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_videos handles the facebook_page_get_videos tool
 func HandleFacebook_page_get_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10093,8 +9736,6 @@ func HandleFacebook_page_get_videos(ctx context.Context, request mcp.CallToolReq
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_videos(args)
 	if err != nil {
@@ -10109,7 +9750,6 @@ func HandleFacebook_page_get_videos(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_videos handles the facebook_page_post_videos tool
 func HandleFacebook_page_post_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10578,8 +10218,6 @@ func HandleFacebook_page_post_videos(ctx context.Context, request mcp.CallToolRe
 		args["waterfall_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_videos(args)
 	if err != nil {
@@ -10594,7 +10232,6 @@ func HandleFacebook_page_post_videos(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_visitor_posts handles the facebook_page_get_visitor_posts tool
 func HandleFacebook_page_get_visitor_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10630,8 +10267,6 @@ func HandleFacebook_page_get_visitor_posts(ctx context.Context, request mcp.Call
 		args["with"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_visitor_posts(args)
 	if err != nil {
@@ -10646,7 +10281,6 @@ func HandleFacebook_page_get_visitor_posts(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_delete_welcome_message_flows handles the facebook_page_delete_welcome_message_flows tool
 func HandleFacebook_page_delete_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10669,8 +10303,6 @@ func HandleFacebook_page_delete_welcome_message_flows(ctx context.Context, reque
 	}
 	args["flow_id"] = flow_id
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_delete_welcome_message_flows(args)
 	if err != nil {
@@ -10685,7 +10317,6 @@ func HandleFacebook_page_delete_welcome_message_flows(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_welcome_message_flows handles the facebook_page_get_welcome_message_flows tool
 func HandleFacebook_page_get_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10711,8 +10342,6 @@ func HandleFacebook_page_get_welcome_message_flows(ctx context.Context, request 
 		args["flow_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_welcome_message_flows(args)
 	if err != nil {
@@ -10727,7 +10356,6 @@ func HandleFacebook_page_get_welcome_message_flows(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_welcome_message_flows handles the facebook_page_post_welcome_message_flows tool
 func HandleFacebook_page_post_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10765,8 +10393,6 @@ func HandleFacebook_page_post_welcome_message_flows(ctx context.Context, request
 		args["welcome_message_flow"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_welcome_message_flows(args)
 	if err != nil {
@@ -10781,7 +10407,6 @@ func HandleFacebook_page_post_welcome_message_flows(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_get_ handles the facebook_page_get_ tool
 func HandleFacebook_page_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10802,8 +10427,6 @@ func HandleFacebook_page_get_(ctx context.Context, request mcp.CallToolRequest) 
 		args["account_linking_token"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_get_(args)
 	if err != nil {
@@ -10818,7 +10441,6 @@ func HandleFacebook_page_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_page_post_ handles the facebook_page_post_ tool
 func HandleFacebook_page_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -11124,8 +10746,6 @@ func HandleFacebook_page_post_(ctx context.Context, request mcp.CallToolRequest)
 		args["zoom_scale_y"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_page_post_(args)
 	if err != nil {
@@ -11140,4 +10760,3 @@ func HandleFacebook_page_post_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

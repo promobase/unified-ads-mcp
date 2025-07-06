@@ -4,6 +4,6 @@ package types
 
 // SmartPixelInsights represents a Facebook SmartPixelInsights object
 type SmartPixelInsights struct {
-	Source string `json:"source"`
-	Stats []map[string]interface{} `json:"stats"`
+	Source string                   `json:"source"`
+	Stats  []map[string]interface{} `json:"stats"`
 }

@@ -5,6 +5,6 @@ package types
 // ProductCatalogCheckMarketplacePartnerSellersStatus represents a Facebook ProductCatalogCheckMarketplacePartnerSellersStatus object
 type ProductCatalogCheckMarketplacePartnerSellersStatus struct {
 	Sample_errors []map[string]interface{} `json:"sample_errors"`
-	Session_id string `json:"session_id"`
-	Status string `json:"status"`
+	Session_id    string                   `json:"session_id"`
+	Status        string                   `json:"status"`
 }

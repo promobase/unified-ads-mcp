@@ -15,7 +15,6 @@ import (
 func GetAnalyticsSegmentTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_analyticssegment_get_ tool
 	facebook_analyticssegment_get_Tool := mcp.NewTool("facebook_analyticssegment_get_",
 		mcp.WithDescription("GET  for AnalyticsSegment"),
@@ -35,12 +34,10 @@ func GetAnalyticsSegmentTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_analyticssegment_get_Tool)
 
-
 	return tools
 }
 
 // AnalyticsSegment handlers
-
 
 // HandleFacebook_analyticssegment_get_ handles the facebook_analyticssegment_get_ tool
 func HandleFacebook_analyticssegment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -71,8 +68,6 @@ func HandleFacebook_analyticssegment_get_(ctx context.Context, request mcp.CallT
 		args["start_date"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_analyticssegment_get_(args)
 	if err != nil {
@@ -87,4 +82,3 @@ func HandleFacebook_analyticssegment_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

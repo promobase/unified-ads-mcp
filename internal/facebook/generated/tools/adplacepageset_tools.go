@@ -15,7 +15,6 @@ import (
 func GetAdPlacePageSetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_adplacepageset_get_ tool
 	facebook_adplacepageset_get_Tool := mcp.NewTool("facebook_adplacepageset_get_",
 		mcp.WithDescription("GET  for AdPlacePageSet"),
@@ -26,12 +25,10 @@ func GetAdPlacePageSetTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_adplacepageset_get_Tool)
 
-
 	return tools
 }
 
 // AdPlacePageSet handlers
-
 
 // HandleFacebook_adplacepageset_get_ handles the facebook_adplacepageset_get_ tool
 func HandleFacebook_adplacepageset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_adplacepageset_get_(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adplacepageset_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_adplacepageset_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -4,6 +4,6 @@ package types
 
 // AdRuleScheduleSpec represents a Facebook AdRuleScheduleSpec object
 type AdRuleScheduleSpec struct {
-	Schedule []AdRuleSchedule `json:"schedule"`
-	Schedule_type string `json:"schedule_type"`
+	Schedule      []AdRuleSchedule `json:"schedule"`
+	Schedule_type string           `json:"schedule_type"`
 }

@@ -21,18 +21,14 @@ func NewProductFeedRuleClient(accessToken string) *ProductFeedRuleClient {
 	}
 }
 
-
 // facebook_productfeedrule_delete_ DELETE  for ProductFeedRule
 func (c *ProductFeedRuleClient) Facebook_productfeedrule_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,18 +60,14 @@ func (c *ProductFeedRuleClient) Facebook_productfeedrule_delete_(args map[string
 	return result, nil
 }
 
-
 // facebook_productfeedrule_get_ GET  for ProductFeedRule
 func (c *ProductFeedRuleClient) Facebook_productfeedrule_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -107,7 +99,6 @@ func (c *ProductFeedRuleClient) Facebook_productfeedrule_get_(args map[string]in
 	return result, nil
 }
 
-
 // facebook_productfeedrule_post_ POST  for ProductFeedRule
 func (c *ProductFeedRuleClient) Facebook_productfeedrule_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -117,7 +108,6 @@ func (c *ProductFeedRuleClient) Facebook_productfeedrule_post_(args map[string]i
 	}
 	_ = params // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
@@ -126,7 +116,6 @@ func (c *ProductFeedRuleClient) Facebook_productfeedrule_post_(args map[string]i
 	if val, ok := args["params"]; ok {
 		urlParams.Set("params", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -157,4 +146,3 @@ func (c *ProductFeedRuleClient) Facebook_productfeedrule_post_(args map[string]i
 
 	return result, nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetCustomConversionTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_customconversion_get_stats tool
 	facebook_customconversion_get_statsTool := mcp.NewTool("facebook_customconversion_get_stats",
 		mcp.WithDescription("GET stats for CustomConversion"),
@@ -75,12 +74,10 @@ func GetCustomConversionTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_customconversion_post_Tool)
 
-
 	return tools
 }
 
 // CustomConversion handlers
-
 
 // HandleFacebook_customconversion_get_stats handles the facebook_customconversion_get_stats tool
 func HandleFacebook_customconversion_get_stats(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -111,8 +108,6 @@ func HandleFacebook_customconversion_get_stats(ctx context.Context, request mcp.
 		args["start_time"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_customconversion_get_stats(args)
 	if err != nil {
@@ -128,7 +123,6 @@ func HandleFacebook_customconversion_get_stats(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_customconversion_delete_ handles the facebook_customconversion_delete_ tool
 func HandleFacebook_customconversion_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -142,8 +136,6 @@ func HandleFacebook_customconversion_delete_(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_customconversion_delete_(args)
@@ -160,7 +152,6 @@ func HandleFacebook_customconversion_delete_(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_customconversion_get_ handles the facebook_customconversion_get_ tool
 func HandleFacebook_customconversion_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -174,8 +165,6 @@ func HandleFacebook_customconversion_get_(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_customconversion_get_(args)
@@ -191,7 +180,6 @@ func HandleFacebook_customconversion_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_customconversion_post_ handles the facebook_customconversion_post_ tool
 func HandleFacebook_customconversion_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -222,8 +210,6 @@ func HandleFacebook_customconversion_post_(ctx context.Context, request mcp.Call
 		args["name"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_customconversion_post_(args)
 	if err != nil {
@@ -238,4 +224,3 @@ func HandleFacebook_customconversion_post_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

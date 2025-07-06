@@ -5,9 +5,9 @@ package types
 // CallAdsPhoneData represents a Facebook CallAdsPhoneData object
 type CallAdsPhoneData struct {
 	Call_ads_phone_data_use_case string `json:"call_ads_phone_data_use_case"`
-	Callback_variant string `json:"callback_variant"`
-	Destination_website_url string `json:"destination_website_url"`
-	Id string `json:"id"`
-	Page *Page `json:"page"`
-	Phone_number string `json:"phone_number"`
+	Callback_variant             string `json:"callback_variant"`
+	Destination_website_url      string `json:"destination_website_url"`
+	Id                           string `json:"id"`
+	Page                         *Page  `json:"page"`
+	Phone_number                 string `json:"phone_number"`
 }

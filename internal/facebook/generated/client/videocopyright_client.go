@@ -21,19 +21,15 @@ func NewVideoCopyrightClient(accessToken string) *VideoCopyrightClient {
 	}
 }
 
-
 // facebook_videocopyright_get_update_records GET update_records for VideoCopyright
 func (c *VideoCopyrightClient) Facebook_videocopyright_get_update_records(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "update_records")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *VideoCopyrightClient) Facebook_videocopyright_get_update_records(args m
 	return result, nil
 }
 
-
 // facebook_videocopyright_get_ GET  for VideoCopyright
 func (c *VideoCopyrightClient) Facebook_videocopyright_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -107,11 +99,9 @@ func (c *VideoCopyrightClient) Facebook_videocopyright_get_(args map[string]inte
 	return result, nil
 }
 
-
 // facebook_videocopyright_post_ POST  for VideoCopyright
 func (c *VideoCopyrightClient) Facebook_videocopyright_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -152,7 +142,6 @@ func (c *VideoCopyrightClient) Facebook_videocopyright_post_(args map[string]int
 		urlParams.Set("whitelisted_ig_user_ids", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -182,4 +171,3 @@ func (c *VideoCopyrightClient) Facebook_videocopyright_post_(args map[string]int
 
 	return result, nil
 }
-

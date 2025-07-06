@@ -15,7 +15,6 @@ import (
 func GetProductItemOfferTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_productitemoffer_get_ tool
 	facebook_productitemoffer_get_Tool := mcp.NewTool("facebook_productitemoffer_get_",
 		mcp.WithDescription("GET  for ProductItemOffer"),
@@ -26,12 +25,10 @@ func GetProductItemOfferTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_productitemoffer_get_Tool)
 
-
 	return tools
 }
 
 // ProductItemOffer handlers
-
 
 // HandleFacebook_productitemoffer_get_ handles the facebook_productitemoffer_get_ tool
 func HandleFacebook_productitemoffer_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_productitemoffer_get_(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productitemoffer_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_productitemoffer_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

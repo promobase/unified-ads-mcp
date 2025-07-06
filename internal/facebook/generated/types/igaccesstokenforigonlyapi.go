@@ -5,6 +5,6 @@ package types
 // IGAccessTokenForIGOnlyAPI represents a Facebook IGAccessTokenForIGOnlyAPI object
 type IGAccessTokenForIGOnlyAPI struct {
 	Access_token string `json:"access_token"`
-	Expires_in int `json:"expires_in"`
-	Token_type string `json:"token_type"`
+	Expires_in   int    `json:"expires_in"`
+	Token_type   string `json:"token_type"`
 }

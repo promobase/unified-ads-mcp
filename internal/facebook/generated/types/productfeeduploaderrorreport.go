@@ -4,6 +4,6 @@ package types
 
 // ProductFeedUploadErrorReport represents a Facebook ProductFeedUploadErrorReport object
 type ProductFeedUploadErrorReport struct {
-	File_handle string `json:"file_handle"`
+	File_handle   string `json:"file_handle"`
 	Report_status string `json:"report_status"`
 }

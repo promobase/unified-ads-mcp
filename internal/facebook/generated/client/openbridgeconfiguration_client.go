@@ -21,18 +21,14 @@ func NewOpenBridgeConfigurationClient(accessToken string) *OpenBridgeConfigurati
 	}
 }
 
-
 // facebook_openbridgeconfiguration_delete_ DELETE  for OpenBridgeConfiguration
 func (c *OpenBridgeConfigurationClient) Facebook_openbridgeconfiguration_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,18 +60,14 @@ func (c *OpenBridgeConfigurationClient) Facebook_openbridgeconfiguration_delete_
 	return result, nil
 }
 
-
 // facebook_openbridgeconfiguration_get_ GET  for OpenBridgeConfiguration
 func (c *OpenBridgeConfigurationClient) Facebook_openbridgeconfiguration_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -107,11 +99,9 @@ func (c *OpenBridgeConfigurationClient) Facebook_openbridgeconfiguration_get_(ar
 	return result, nil
 }
 
-
 // facebook_openbridgeconfiguration_post_ POST  for OpenBridgeConfiguration
 func (c *OpenBridgeConfigurationClient) Facebook_openbridgeconfiguration_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -167,7 +157,6 @@ func (c *OpenBridgeConfigurationClient) Facebook_openbridgeconfiguration_post_(a
 		urlParams.Set("sgw_pixel_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -197,4 +186,3 @@ func (c *OpenBridgeConfigurationClient) Facebook_openbridgeconfiguration_post_(a
 
 	return result, nil
 }
-

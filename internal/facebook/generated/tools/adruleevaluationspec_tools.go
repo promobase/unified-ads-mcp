@@ -15,7 +15,6 @@ import (
 func GetAdRuleEvaluationSpecTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_adruleevaluationspec_get_ tool
 	facebook_adruleevaluationspec_get_Tool := mcp.NewTool("facebook_adruleevaluationspec_get_",
 		mcp.WithDescription("GET  for AdRuleEvaluationSpec"),
@@ -26,12 +25,10 @@ func GetAdRuleEvaluationSpecTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_adruleevaluationspec_get_Tool)
 
-
 	return tools
 }
 
 // AdRuleEvaluationSpec handlers
-
 
 // HandleFacebook_adruleevaluationspec_get_ handles the facebook_adruleevaluationspec_get_ tool
 func HandleFacebook_adruleevaluationspec_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_adruleevaluationspec_get_(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adruleevaluationspec_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_adruleevaluationspec_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

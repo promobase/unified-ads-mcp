@@ -4,9 +4,9 @@ package types
 
 // TargetingGeoLocationGeoEntities represents a Facebook TargetingGeoLocationGeoEntities object
 type TargetingGeoLocationGeoEntities struct {
-	Country string `json:"country"`
-	Key string `json:"key"`
-	Name string `json:"name"`
-	Region string `json:"region"`
+	Country   string `json:"country"`
+	Key       string `json:"key"`
+	Name      string `json:"name"`
+	Region    string `json:"region"`
 	Region_id string `json:"region_id"`
 }

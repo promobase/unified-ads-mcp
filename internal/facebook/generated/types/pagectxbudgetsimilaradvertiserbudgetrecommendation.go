@@ -4,6 +4,6 @@ package types
 
 // PageCTXBudgetSimilarAdvertiserBudgetRecommendation represents a Facebook PageCTXBudgetSimilarAdvertiserBudgetRecommendation object
 type PageCTXBudgetSimilarAdvertiserBudgetRecommendation struct {
-	Budget string `json:"budget"`
+	Budget              string `json:"budget"`
 	Reported_conversion string `json:"reported_conversion"`
 }

@@ -15,7 +15,6 @@ import (
 func GetBusinessUserTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_businessuser_get_assigned_ad_accounts tool
 	facebook_businessuser_get_assigned_ad_accountsTool := mcp.NewTool("facebook_businessuser_get_assigned_ad_accounts",
 		mcp.WithDescription("GET assigned_ad_accounts for BusinessUser"),
@@ -121,12 +120,10 @@ func GetBusinessUserTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_businessuser_post_Tool)
 
-
 	return tools
 }
 
 // BusinessUser handlers
-
 
 // HandleFacebook_businessuser_get_assigned_ad_accounts handles the facebook_businessuser_get_assigned_ad_accounts tool
 func HandleFacebook_businessuser_get_assigned_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -142,8 +139,6 @@ func HandleFacebook_businessuser_get_assigned_ad_accounts(ctx context.Context, r
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_businessuser_get_assigned_ad_accounts(args)
 	if err != nil {
@@ -158,7 +153,6 @@ func HandleFacebook_businessuser_get_assigned_ad_accounts(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_businessuser_get_assigned_business_asset_groups handles the facebook_businessuser_get_assigned_business_asset_groups tool
 func HandleFacebook_businessuser_get_assigned_business_asset_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -179,8 +173,6 @@ func HandleFacebook_businessuser_get_assigned_business_asset_groups(ctx context.
 		args["contained_asset_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_businessuser_get_assigned_business_asset_groups(args)
 	if err != nil {
@@ -195,7 +187,6 @@ func HandleFacebook_businessuser_get_assigned_business_asset_groups(ctx context.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_businessuser_get_assigned_pages handles the facebook_businessuser_get_assigned_pages tool
 func HandleFacebook_businessuser_get_assigned_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -217,8 +208,6 @@ func HandleFacebook_businessuser_get_assigned_pages(ctx context.Context, request
 		args["pages"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_businessuser_get_assigned_pages(args)
 	if err != nil {
@@ -234,7 +223,6 @@ func HandleFacebook_businessuser_get_assigned_pages(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_businessuser_get_assigned_product_catalogs handles the facebook_businessuser_get_assigned_product_catalogs tool
 func HandleFacebook_businessuser_get_assigned_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -248,8 +236,6 @@ func HandleFacebook_businessuser_get_assigned_product_catalogs(ctx context.Conte
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_businessuser_get_assigned_product_catalogs(args)
@@ -266,7 +252,6 @@ func HandleFacebook_businessuser_get_assigned_product_catalogs(ctx context.Conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_businessuser_delete_ handles the facebook_businessuser_delete_ tool
 func HandleFacebook_businessuser_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -280,8 +265,6 @@ func HandleFacebook_businessuser_delete_(ctx context.Context, request mcp.CallTo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_businessuser_delete_(args)
@@ -298,7 +281,6 @@ func HandleFacebook_businessuser_delete_(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_businessuser_get_ handles the facebook_businessuser_get_ tool
 func HandleFacebook_businessuser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -312,8 +294,6 @@ func HandleFacebook_businessuser_get_(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_businessuser_get_(args)
@@ -329,7 +309,6 @@ func HandleFacebook_businessuser_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_businessuser_post_ handles the facebook_businessuser_post_ tool
 func HandleFacebook_businessuser_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -391,8 +370,6 @@ func HandleFacebook_businessuser_post_(ctx context.Context, request mcp.CallTool
 		args["title"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_businessuser_post_(args)
 	if err != nil {
@@ -407,4 +384,3 @@ func HandleFacebook_businessuser_post_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

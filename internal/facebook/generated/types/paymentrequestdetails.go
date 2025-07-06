@@ -4,13 +4,13 @@ package types
 
 // PaymentRequestDetails represents a Facebook PaymentRequestDetails object
 type PaymentRequestDetails struct {
-	Amount map[string]interface{} `json:"amount"`
-	Creation_time int `json:"creation_time"`
-	Note string `json:"note"`
-	Payment_request_id string `json:"payment_request_id"`
-	Receiver_id string `json:"receiver_id"`
-	Reference_number string `json:"reference_number"`
-	Sender_id string `json:"sender_id"`
-	Status string `json:"status"`
-	Transaction_time int `json:"transaction_time"`
+	Amount             map[string]interface{} `json:"amount"`
+	Creation_time      int                    `json:"creation_time"`
+	Note               string                 `json:"note"`
+	Payment_request_id string                 `json:"payment_request_id"`
+	Receiver_id        string                 `json:"receiver_id"`
+	Reference_number   string                 `json:"reference_number"`
+	Sender_id          string                 `json:"sender_id"`
+	Status             string                 `json:"status"`
+	Transaction_time   int                    `json:"transaction_time"`
 }

@@ -15,7 +15,6 @@ import (
 func GetLiveVideoInputStreamTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_livevideoinputstream_get_ tool
 	facebook_livevideoinputstream_get_Tool := mcp.NewTool("facebook_livevideoinputstream_get_",
 		mcp.WithDescription("GET  for LiveVideoInputStream"),
@@ -29,12 +28,10 @@ func GetLiveVideoInputStreamTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_livevideoinputstream_get_Tool)
 
-
 	return tools
 }
 
 // LiveVideoInputStream handlers
-
 
 // HandleFacebook_livevideoinputstream_get_ handles the facebook_livevideoinputstream_get_ tool
 func HandleFacebook_livevideoinputstream_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -55,8 +52,6 @@ func HandleFacebook_livevideoinputstream_get_(ctx context.Context, request mcp.C
 		args["target_token"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_livevideoinputstream_get_(args)
 	if err != nil {
@@ -71,4 +66,3 @@ func HandleFacebook_livevideoinputstream_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -6,13 +6,13 @@ import "time"
 
 // BusinessRequest represents a Facebook BusinessRequest object
 type BusinessRequest struct {
-	Accessor *Business `json:"accessor"`
-	Creation_time time.Time `json:"creation_time"`
-	Id string `json:"id"`
-	Object_id string `json:"object_id"`
-	Object_type string `json:"object_type"`
-	Permitted_tasks []string `json:"permitted_tasks"`
-	Request_status string `json:"request_status"`
-	Request_type string `json:"request_type"`
-	Requestor string `json:"requestor"`
+	Accessor        *Business `json:"accessor"`
+	Creation_time   time.Time `json:"creation_time"`
+	Id              string    `json:"id"`
+	Object_id       string    `json:"object_id"`
+	Object_type     string    `json:"object_type"`
+	Permitted_tasks []string  `json:"permitted_tasks"`
+	Request_status  string    `json:"request_status"`
+	Request_type    string    `json:"request_type"`
+	Requestor       string    `json:"requestor"`
 }

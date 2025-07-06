@@ -5,6 +5,6 @@ package types
 // DynamicContentSet represents a Facebook DynamicContentSet object
 type DynamicContentSet struct {
 	Business_id string `json:"business_id"`
-	Id string `json:"id"`
-	Name string `json:"name"`
+	Id          string `json:"id"`
+	Name        string `json:"name"`
 }

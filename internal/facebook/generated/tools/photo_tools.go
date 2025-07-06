@@ -15,7 +15,6 @@ import (
 func GetPhotoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_photo_get_comments tool
 	facebook_photo_get_commentsTool := mcp.NewTool("facebook_photo_get_comments",
 		mcp.WithDescription("GET comments for Photo"),
@@ -180,12 +179,10 @@ func GetPhotoTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_photo_get_Tool)
 
-
 	return tools
 }
 
 // Photo handlers
-
 
 // HandleFacebook_photo_get_comments handles the facebook_photo_get_comments tool
 func HandleFacebook_photo_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -221,8 +218,6 @@ func HandleFacebook_photo_get_comments(ctx context.Context, request mcp.CallTool
 		args["since"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_photo_get_comments(args)
 	if err != nil {
@@ -237,7 +232,6 @@ func HandleFacebook_photo_get_comments(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_photo_post_comments handles the facebook_photo_post_comments tool
 func HandleFacebook_photo_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -320,8 +314,6 @@ func HandleFacebook_photo_post_comments(ctx context.Context, request mcp.CallToo
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_photo_post_comments(args)
 	if err != nil {
@@ -336,7 +328,6 @@ func HandleFacebook_photo_post_comments(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_photo_get_insights handles the facebook_photo_get_insights tool
 func HandleFacebook_photo_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -378,8 +369,6 @@ func HandleFacebook_photo_get_insights(ctx context.Context, request mcp.CallTool
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_photo_get_insights(args)
 	if err != nil {
@@ -395,7 +384,6 @@ func HandleFacebook_photo_get_insights(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_photo_get_likes handles the facebook_photo_get_likes tool
 func HandleFacebook_photo_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -409,8 +397,6 @@ func HandleFacebook_photo_get_likes(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_photo_get_likes(args)
@@ -426,7 +412,6 @@ func HandleFacebook_photo_get_likes(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_photo_post_likes handles the facebook_photo_post_likes tool
 func HandleFacebook_photo_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -462,8 +447,6 @@ func HandleFacebook_photo_post_likes(ctx context.Context, request mcp.CallToolRe
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_photo_post_likes(args)
 	if err != nil {
@@ -479,7 +462,6 @@ func HandleFacebook_photo_post_likes(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_photo_get_sponsor_tags handles the facebook_photo_get_sponsor_tags tool
 func HandleFacebook_photo_get_sponsor_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -493,8 +475,6 @@ func HandleFacebook_photo_get_sponsor_tags(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_photo_get_sponsor_tags(args)
@@ -511,7 +491,6 @@ func HandleFacebook_photo_get_sponsor_tags(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_photo_delete_ handles the facebook_photo_delete_ tool
 func HandleFacebook_photo_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -525,8 +504,6 @@ func HandleFacebook_photo_delete_(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_photo_delete_(args)
@@ -543,7 +520,6 @@ func HandleFacebook_photo_delete_(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_photo_get_ handles the facebook_photo_get_ tool
 func HandleFacebook_photo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -557,8 +533,6 @@ func HandleFacebook_photo_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_photo_get_(args)
@@ -574,4 +548,3 @@ func HandleFacebook_photo_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

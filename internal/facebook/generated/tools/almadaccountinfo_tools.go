@@ -15,7 +15,6 @@ import (
 func GetALMAdAccountInfoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_almadaccountinfo_get_ tool
 	facebook_almadaccountinfo_get_Tool := mcp.NewTool("facebook_almadaccountinfo_get_",
 		mcp.WithDescription("GET  for ALMAdAccountInfo"),
@@ -26,12 +25,10 @@ func GetALMAdAccountInfoTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_almadaccountinfo_get_Tool)
 
-
 	return tools
 }
 
 // ALMAdAccountInfo handlers
-
 
 // HandleFacebook_almadaccountinfo_get_ handles the facebook_almadaccountinfo_get_ tool
 func HandleFacebook_almadaccountinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_almadaccountinfo_get_(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_almadaccountinfo_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_almadaccountinfo_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -4,15 +4,15 @@ package types
 
 // HotelRoom represents a Facebook HotelRoom object
 type HotelRoom struct {
-	Applinks *CatalogItemAppLinks `json:"applinks"`
-	Base_price string `json:"base_price"`
-	Currency string `json:"currency"`
-	Description string `json:"description"`
-	Id string `json:"id"`
-	Images []string `json:"images"`
-	Margin_level string `json:"margin_level"`
-	Name string `json:"name"`
-	Room_id string `json:"room_id"`
-	Sale_price string `json:"sale_price"`
-	Url string `json:"url"`
+	Applinks     *CatalogItemAppLinks `json:"applinks"`
+	Base_price   string               `json:"base_price"`
+	Currency     string               `json:"currency"`
+	Description  string               `json:"description"`
+	Id           string               `json:"id"`
+	Images       []string             `json:"images"`
+	Margin_level string               `json:"margin_level"`
+	Name         string               `json:"name"`
+	Room_id      string               `json:"room_id"`
+	Sale_price   string               `json:"sale_price"`
+	Url          string               `json:"url"`
 }

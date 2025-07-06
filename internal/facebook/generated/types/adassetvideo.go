@@ -4,15 +4,15 @@ package types
 
 // AdAssetVideo represents a Facebook AdAssetVideo object
 type AdAssetVideo struct {
-	Caption_ids []string `json:"caption_ids"`
-	Id string `json:"id"`
-	Source_image_url string `json:"source_image_url"`
-	Tag string `json:"tag"`
-	Thumbnail_hash string `json:"thumbnail_hash"`
-	Thumbnail_source string `json:"thumbnail_source"`
-	Thumbnail_url string `json:"thumbnail_url"`
-	Url string `json:"url"`
-	Url_tags string `json:"url_tags"`
-	Video_id string `json:"video_id"`
-	Video_name string `json:"video_name"`
+	Caption_ids      []string `json:"caption_ids"`
+	Id               string   `json:"id"`
+	Source_image_url string   `json:"source_image_url"`
+	Tag              string   `json:"tag"`
+	Thumbnail_hash   string   `json:"thumbnail_hash"`
+	Thumbnail_source string   `json:"thumbnail_source"`
+	Thumbnail_url    string   `json:"thumbnail_url"`
+	Url              string   `json:"url"`
+	Url_tags         string   `json:"url_tags"`
+	Video_id         string   `json:"video_id"`
+	Video_name       string   `json:"video_name"`
 }

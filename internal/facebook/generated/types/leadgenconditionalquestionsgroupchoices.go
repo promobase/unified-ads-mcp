@@ -4,7 +4,7 @@ package types
 
 // LeadGenConditionalQuestionsGroupChoices represents a Facebook LeadGenConditionalQuestionsGroupChoices object
 type LeadGenConditionalQuestionsGroupChoices struct {
-	Customized_token string `json:"customized_token"`
+	Customized_token      string                                    `json:"customized_token"`
 	Next_question_choices []LeadGenConditionalQuestionsGroupChoices `json:"next_question_choices"`
-	Value string `json:"value"`
+	Value                 string                                    `json:"value"`
 }

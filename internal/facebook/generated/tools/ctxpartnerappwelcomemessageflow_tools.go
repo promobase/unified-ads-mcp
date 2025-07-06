@@ -15,7 +15,6 @@ import (
 func GetCTXPartnerAppWelcomeMessageFlowTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_ctxpartnerappwelcomemessageflow_get_ tool
 	facebook_ctxpartnerappwelcomemessageflow_get_Tool := mcp.NewTool("facebook_ctxpartnerappwelcomemessageflow_get_",
 		mcp.WithDescription("GET  for CTXPartnerAppWelcomeMessageFlow"),
@@ -26,12 +25,10 @@ func GetCTXPartnerAppWelcomeMessageFlowTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_ctxpartnerappwelcomemessageflow_get_Tool)
 
-
 	return tools
 }
 
 // CTXPartnerAppWelcomeMessageFlow handlers
-
 
 // HandleFacebook_ctxpartnerappwelcomemessageflow_get_ handles the facebook_ctxpartnerappwelcomemessageflow_get_ tool
 func HandleFacebook_ctxpartnerappwelcomemessageflow_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_ctxpartnerappwelcomemessageflow_get_(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_ctxpartnerappwelcomemessageflow_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_ctxpartnerappwelcomemessageflow_get_(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

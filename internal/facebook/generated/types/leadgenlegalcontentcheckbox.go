@@ -4,9 +4,9 @@ package types
 
 // LeadGenLegalContentCheckbox represents a Facebook LeadGenLegalContentCheckbox object
 type LeadGenLegalContentCheckbox struct {
-	Id string `json:"id"`
-	Is_checked_by_default bool `json:"is_checked_by_default"`
-	Is_required bool `json:"is_required"`
-	Key string `json:"key"`
-	Text string `json:"text"`
+	Id                    string `json:"id"`
+	Is_checked_by_default bool   `json:"is_checked_by_default"`
+	Is_required           bool   `json:"is_required"`
+	Key                   string `json:"key"`
+	Text                  string `json:"text"`
 }

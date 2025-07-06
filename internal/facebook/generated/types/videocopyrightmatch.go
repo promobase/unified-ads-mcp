@@ -6,12 +6,12 @@ import "time"
 
 // VideoCopyrightMatch represents a Facebook VideoCopyrightMatch object
 type VideoCopyrightMatch struct {
-	Created_date time.Time `json:"created_date"`
-	Id string `json:"id"`
-	Last_modified_user *User `json:"last_modified_user"`
-	Match_data []map[string]interface{} `json:"match_data"`
-	Match_status string `json:"match_status"`
-	Notes string `json:"notes"`
-	Permalink string `json:"permalink"`
-	Ugc_content_format string `json:"ugc_content_format"`
+	Created_date       time.Time                `json:"created_date"`
+	Id                 string                   `json:"id"`
+	Last_modified_user *User                    `json:"last_modified_user"`
+	Match_data         []map[string]interface{} `json:"match_data"`
+	Match_status       string                   `json:"match_status"`
+	Notes              string                   `json:"notes"`
+	Permalink          string                   `json:"permalink"`
+	Ugc_content_format string                   `json:"ugc_content_format"`
 }

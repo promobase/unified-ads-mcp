@@ -15,7 +15,6 @@ import (
 func GetBusinessOwnedObjectOnBehalfOfRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_businessownedobjectonbehalfofrequest_get_ tool
 	facebook_businessownedobjectonbehalfofrequest_get_Tool := mcp.NewTool("facebook_businessownedobjectonbehalfofrequest_get_",
 		mcp.WithDescription("GET  for BusinessOwnedObjectOnBehalfOfRequest"),
@@ -26,12 +25,10 @@ func GetBusinessOwnedObjectOnBehalfOfRequestTools(accessToken string) []mcp.Tool
 	)
 	tools = append(tools, facebook_businessownedobjectonbehalfofrequest_get_Tool)
 
-
 	return tools
 }
 
 // BusinessOwnedObjectOnBehalfOfRequest handlers
-
 
 // HandleFacebook_businessownedobjectonbehalfofrequest_get_ handles the facebook_businessownedobjectonbehalfofrequest_get_ tool
 func HandleFacebook_businessownedobjectonbehalfofrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_businessownedobjectonbehalfofrequest_get_(ctx context.Contex
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_businessownedobjectonbehalfofrequest_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_businessownedobjectonbehalfofrequest_get_(ctx context.Contex
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

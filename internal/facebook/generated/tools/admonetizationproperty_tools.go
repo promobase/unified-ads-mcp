@@ -15,7 +15,6 @@ import (
 func GetAdMonetizationPropertyTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_admonetizationproperty_get_adnetworkanalytics tool
 	facebook_admonetizationproperty_get_adnetworkanalyticsTool := mcp.NewTool("facebook_admonetizationproperty_get_adnetworkanalytics",
 		mcp.WithDescription("GET adnetworkanalytics for AdMonetizationProperty"),
@@ -128,12 +127,10 @@ func GetAdMonetizationPropertyTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_admonetizationproperty_get_Tool)
 
-
 	return tools
 }
 
 // AdMonetizationProperty handlers
-
 
 // HandleFacebook_admonetizationproperty_get_adnetworkanalytics handles the facebook_admonetizationproperty_get_adnetworkanalytics tool
 func HandleFacebook_admonetizationproperty_get_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -203,8 +200,6 @@ func HandleFacebook_admonetizationproperty_get_adnetworkanalytics(ctx context.Co
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_admonetizationproperty_get_adnetworkanalytics(args)
 	if err != nil {
@@ -219,7 +214,6 @@ func HandleFacebook_admonetizationproperty_get_adnetworkanalytics(ctx context.Co
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_admonetizationproperty_post_adnetworkanalytics handles the facebook_admonetizationproperty_post_adnetworkanalytics tool
 func HandleFacebook_admonetizationproperty_post_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -284,8 +278,6 @@ func HandleFacebook_admonetizationproperty_post_adnetworkanalytics(ctx context.C
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_admonetizationproperty_post_adnetworkanalytics(args)
 	if err != nil {
@@ -300,7 +292,6 @@ func HandleFacebook_admonetizationproperty_post_adnetworkanalytics(ctx context.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_admonetizationproperty_get_adnetworkanalytics_results handles the facebook_admonetizationproperty_get_adnetworkanalytics_results tool
 func HandleFacebook_admonetizationproperty_get_adnetworkanalytics_results(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -322,8 +313,6 @@ func HandleFacebook_admonetizationproperty_get_adnetworkanalytics_results(ctx co
 		args["query_ids"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_admonetizationproperty_get_adnetworkanalytics_results(args)
 	if err != nil {
@@ -339,7 +328,6 @@ func HandleFacebook_admonetizationproperty_get_adnetworkanalytics_results(ctx co
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_admonetizationproperty_get_ handles the facebook_admonetizationproperty_get_ tool
 func HandleFacebook_admonetizationproperty_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -353,8 +341,6 @@ func HandleFacebook_admonetizationproperty_get_(ctx context.Context, request mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_admonetizationproperty_get_(args)
@@ -370,4 +356,3 @@ func HandleFacebook_admonetizationproperty_get_(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

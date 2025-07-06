@@ -21,19 +21,15 @@ func NewLeadgenFormClient(accessToken string) *LeadgenFormClient {
 	}
 }
 
-
 // facebook_leadgenform_get_leads GET leads for LeadgenForm
 func (c *LeadgenFormClient) Facebook_leadgenform_get_leads(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "leads")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *LeadgenFormClient) Facebook_leadgenform_get_leads(args map[string]inter
 	return result, nil
 }
 
-
 // facebook_leadgenform_get_test_leads GET test_leads for LeadgenForm
 func (c *LeadgenFormClient) Facebook_leadgenform_get_test_leads(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "test_leads")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -107,11 +99,9 @@ func (c *LeadgenFormClient) Facebook_leadgenform_get_test_leads(args map[string]
 	return result, nil
 }
 
-
 // facebook_leadgenform_post_test_leads POST test_leads for LeadgenForm
 func (c *LeadgenFormClient) Facebook_leadgenform_post_test_leads(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "test_leads")
@@ -125,7 +115,6 @@ func (c *LeadgenFormClient) Facebook_leadgenform_post_test_leads(args map[string
 		urlParams.Set("field_data", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -156,18 +145,14 @@ func (c *LeadgenFormClient) Facebook_leadgenform_post_test_leads(args map[string
 	return result, nil
 }
 
-
 // facebook_leadgenform_get_ GET  for LeadgenForm
 func (c *LeadgenFormClient) Facebook_leadgenform_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -199,11 +184,9 @@ func (c *LeadgenFormClient) Facebook_leadgenform_get_(args map[string]interface{
 	return result, nil
 }
 
-
 // facebook_leadgenform_post_ POST  for LeadgenForm
 func (c *LeadgenFormClient) Facebook_leadgenform_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -213,7 +196,6 @@ func (c *LeadgenFormClient) Facebook_leadgenform_post_(args map[string]interface
 	if val, ok := args["status"]; ok {
 		urlParams.Set("status", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -244,4 +226,3 @@ func (c *LeadgenFormClient) Facebook_leadgenform_post_(args map[string]interface
 
 	return result, nil
 }
-

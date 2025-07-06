@@ -4,16 +4,16 @@ package types
 
 // LookalikeSpec represents a Facebook LookalikeSpec object
 type LookalikeSpec struct {
-	Country string `json:"country"`
-	Is_financial_service bool `json:"is_financial_service"`
-	Origin []map[string]interface{} `json:"origin"`
-	Origin_event_name string `json:"origin_event_name"`
-	Origin_event_source_name string `json:"origin_event_source_name"`
-	Origin_event_source_type string `json:"origin_event_source_type"`
-	Product_set_name string `json:"product_set_name"`
-	Ratio float64 `json:"ratio"`
-	Starting_ratio float64 `json:"starting_ratio"`
-	Target_countries []string `json:"target_countries"`
-	Target_country_names []interface{} `json:"target_country_names"`
-	Type_ string `json:"type"`
+	Country                  string                   `json:"country"`
+	Is_financial_service     bool                     `json:"is_financial_service"`
+	Origin                   []map[string]interface{} `json:"origin"`
+	Origin_event_name        string                   `json:"origin_event_name"`
+	Origin_event_source_name string                   `json:"origin_event_source_name"`
+	Origin_event_source_type string                   `json:"origin_event_source_type"`
+	Product_set_name         string                   `json:"product_set_name"`
+	Ratio                    float64                  `json:"ratio"`
+	Starting_ratio           float64                  `json:"starting_ratio"`
+	Target_countries         []string                 `json:"target_countries"`
+	Target_country_names     []interface{}            `json:"target_country_names"`
+	Type_                    string                   `json:"type"`
 }

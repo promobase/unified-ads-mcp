@@ -5,5 +5,5 @@ package types
 // McomOnboardingStatus represents a Facebook McomOnboardingStatus object
 type McomOnboardingStatus struct {
 	Onboarding_status string `json:"onboarding_status"`
-	Page_id string `json:"page_id"`
+	Page_id           string `json:"page_id"`
 }

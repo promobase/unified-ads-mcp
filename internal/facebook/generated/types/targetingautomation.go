@@ -4,8 +4,8 @@ package types
 
 // TargetingAutomation represents a Facebook TargetingAutomation object
 type TargetingAutomation struct {
-	Advantage_audience int `json:"advantage_audience"`
+	Advantage_audience int                    `json:"advantage_audience"`
 	Individual_setting map[string]interface{} `json:"individual_setting"`
-	Shared_audiences int `json:"shared_audiences"`
-	Value_expression int `json:"value_expression"`
+	Shared_audiences   int                    `json:"shared_audiences"`
+	Value_expression   int                    `json:"value_expression"`
 }

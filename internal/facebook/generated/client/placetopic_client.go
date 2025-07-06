@@ -21,11 +21,9 @@ func NewPlaceTopicClient(accessToken string) *PlaceTopicClient {
 	}
 }
 
-
 // facebook_placetopic_get_ GET  for PlaceTopic
 func (c *PlaceTopicClient) Facebook_placetopic_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -35,7 +33,6 @@ func (c *PlaceTopicClient) Facebook_placetopic_get_(args map[string]interface{})
 	if val, ok := args["icon_size"]; ok {
 		urlParams.Set("icon_size", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -66,4 +63,3 @@ func (c *PlaceTopicClient) Facebook_placetopic_get_(args map[string]interface{})
 
 	return result, nil
 }
-

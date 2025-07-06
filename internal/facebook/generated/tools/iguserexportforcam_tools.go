@@ -15,7 +15,6 @@ import (
 func GetIGUserExportForCAMTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_iguserexportforcam_get_branded_content_media tool
 	facebook_iguserexportforcam_get_branded_content_mediaTool := mcp.NewTool("facebook_iguserexportforcam_get_branded_content_media",
 		mcp.WithDescription("GET branded_content_media for IGUserExportForCAM"),
@@ -72,12 +71,10 @@ func GetIGUserExportForCAMTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_iguserexportforcam_get_Tool)
 
-
 	return tools
 }
 
 // IGUserExportForCAM handlers
-
 
 // HandleFacebook_iguserexportforcam_get_branded_content_media handles the facebook_iguserexportforcam_get_branded_content_media tool
 func HandleFacebook_iguserexportforcam_get_branded_content_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -93,8 +90,6 @@ func HandleFacebook_iguserexportforcam_get_branded_content_media(ctx context.Con
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguserexportforcam_get_branded_content_media(args)
 	if err != nil {
@@ -109,7 +104,6 @@ func HandleFacebook_iguserexportforcam_get_branded_content_media(ctx context.Con
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguserexportforcam_get_insights handles the facebook_iguserexportforcam_get_insights tool
 func HandleFacebook_iguserexportforcam_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -146,8 +140,6 @@ func HandleFacebook_iguserexportforcam_get_insights(ctx context.Context, request
 		args["time_range"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguserexportforcam_get_insights(args)
 	if err != nil {
@@ -163,7 +155,6 @@ func HandleFacebook_iguserexportforcam_get_insights(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguserexportforcam_get_recent_media handles the facebook_iguserexportforcam_get_recent_media tool
 func HandleFacebook_iguserexportforcam_get_recent_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -177,8 +168,6 @@ func HandleFacebook_iguserexportforcam_get_recent_media(ctx context.Context, req
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguserexportforcam_get_recent_media(args)
@@ -195,7 +184,6 @@ func HandleFacebook_iguserexportforcam_get_recent_media(ctx context.Context, req
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguserexportforcam_get_ handles the facebook_iguserexportforcam_get_ tool
 func HandleFacebook_iguserexportforcam_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -209,8 +197,6 @@ func HandleFacebook_iguserexportforcam_get_(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguserexportforcam_get_(args)
@@ -226,4 +212,3 @@ func HandleFacebook_iguserexportforcam_get_(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

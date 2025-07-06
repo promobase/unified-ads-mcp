@@ -15,7 +15,6 @@ import (
 func GetImageReferenceMatchTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_imagereferencematch_get_ tool
 	facebook_imagereferencematch_get_Tool := mcp.NewTool("facebook_imagereferencematch_get_",
 		mcp.WithDescription("GET  for ImageReferenceMatch"),
@@ -26,12 +25,10 @@ func GetImageReferenceMatchTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_imagereferencematch_get_Tool)
 
-
 	return tools
 }
 
 // ImageReferenceMatch handlers
-
 
 // HandleFacebook_imagereferencematch_get_ handles the facebook_imagereferencematch_get_ tool
 func HandleFacebook_imagereferencematch_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_imagereferencematch_get_(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_imagereferencematch_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_imagereferencematch_get_(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

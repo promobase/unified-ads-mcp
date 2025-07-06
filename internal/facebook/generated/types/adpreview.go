@@ -4,6 +4,6 @@ package types
 
 // AdPreview represents a Facebook AdPreview object
 type AdPreview struct {
-	Body string `json:"body"`
+	Body                string                 `json:"body"`
 	Transformation_spec map[string]interface{} `json:"transformation_spec"`
 }

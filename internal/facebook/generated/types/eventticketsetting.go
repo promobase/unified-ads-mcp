@@ -4,6 +4,6 @@ package types
 
 // EventTicketSetting represents a Facebook EventTicketSetting object
 type EventTicketSetting struct {
-	Id string `json:"id"`
+	Id                   string `json:"id"`
 	Ticket_delivery_type string `json:"ticket_delivery_type"`
 }

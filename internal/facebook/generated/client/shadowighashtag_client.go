@@ -21,7 +21,6 @@ func NewShadowIGHashtagClient(accessToken string) *ShadowIGHashtagClient {
 	}
 }
 
-
 // facebook_shadowighashtag_get_recent_media GET recent_media for ShadowIGHashtag
 func (c *ShadowIGHashtagClient) Facebook_shadowighashtag_get_recent_media(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -30,7 +29,6 @@ func (c *ShadowIGHashtagClient) Facebook_shadowighashtag_get_recent_media(args m
 		return nil, fmt.Errorf("missing required parameter: user_id")
 	}
 	_ = user_id // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "recent_media")
@@ -41,7 +39,6 @@ func (c *ShadowIGHashtagClient) Facebook_shadowighashtag_get_recent_media(args m
 		urlParams.Set("user_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -71,7 +68,6 @@ func (c *ShadowIGHashtagClient) Facebook_shadowighashtag_get_recent_media(args m
 
 	return result, nil
 }
-
 
 // facebook_shadowighashtag_get_top_media GET top_media for ShadowIGHashtag
 func (c *ShadowIGHashtagClient) Facebook_shadowighashtag_get_top_media(args map[string]interface{}) (interface{}, error) {
@@ -82,7 +78,6 @@ func (c *ShadowIGHashtagClient) Facebook_shadowighashtag_get_top_media(args map[
 	}
 	_ = user_id // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "top_media")
 	urlParams := url.Values{}
@@ -92,7 +87,6 @@ func (c *ShadowIGHashtagClient) Facebook_shadowighashtag_get_top_media(args map[
 		urlParams.Set("user_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -123,19 +117,15 @@ func (c *ShadowIGHashtagClient) Facebook_shadowighashtag_get_top_media(args map[
 	return result, nil
 }
 
-
 // facebook_shadowighashtag_get_ GET  for ShadowIGHashtag
 func (c *ShadowIGHashtagClient) Facebook_shadowighashtag_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -165,4 +155,3 @@ func (c *ShadowIGHashtagClient) Facebook_shadowighashtag_get_(args map[string]in
 
 	return result, nil
 }
-

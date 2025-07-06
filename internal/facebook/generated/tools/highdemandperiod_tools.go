@@ -15,7 +15,6 @@ import (
 func GetHighDemandPeriodTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_highdemandperiod_delete_ tool
 	facebook_highdemandperiod_delete_Tool := mcp.NewTool("facebook_highdemandperiod_delete_",
 		mcp.WithDescription("DELETE  for HighDemandPeriod"),
@@ -59,12 +58,10 @@ func GetHighDemandPeriodTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_highdemandperiod_post_Tool)
 
-
 	return tools
 }
 
 // HighDemandPeriod handlers
-
 
 // HandleFacebook_highdemandperiod_delete_ handles the facebook_highdemandperiod_delete_ tool
 func HandleFacebook_highdemandperiod_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -79,8 +76,6 @@ func HandleFacebook_highdemandperiod_delete_(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_highdemandperiod_delete_(args)
@@ -97,7 +92,6 @@ func HandleFacebook_highdemandperiod_delete_(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_highdemandperiod_get_ handles the facebook_highdemandperiod_get_ tool
 func HandleFacebook_highdemandperiod_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -111,8 +105,6 @@ func HandleFacebook_highdemandperiod_get_(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_highdemandperiod_get_(args)
@@ -128,7 +120,6 @@ func HandleFacebook_highdemandperiod_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_highdemandperiod_post_ handles the facebook_highdemandperiod_post_ tool
 func HandleFacebook_highdemandperiod_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -164,8 +155,6 @@ func HandleFacebook_highdemandperiod_post_(ctx context.Context, request mcp.Call
 		args["time_start"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_highdemandperiod_post_(args)
 	if err != nil {
@@ -180,4 +169,3 @@ func HandleFacebook_highdemandperiod_post_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

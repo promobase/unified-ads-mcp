@@ -4,8 +4,8 @@ package types
 
 // OutcomePredictionPoint represents a Facebook OutcomePredictionPoint object
 type OutcomePredictionPoint struct {
-	Actions float64 `json:"actions"`
+	Actions     float64 `json:"actions"`
 	Impressions float64 `json:"impressions"`
-	Reach float64 `json:"reach"`
-	Spend int `json:"spend"`
+	Reach       float64 `json:"reach"`
+	Spend       int     `json:"spend"`
 }

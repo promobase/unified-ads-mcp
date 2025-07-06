@@ -4,12 +4,12 @@ package types
 
 // MailingAddress represents a Facebook MailingAddress object
 type MailingAddress struct {
-	City string `json:"city"`
-	City_page *Page `json:"city_page"`
-	Country string `json:"country"`
-	Id string `json:"id"`
+	City        string `json:"city"`
+	City_page   *Page  `json:"city_page"`
+	Country     string `json:"country"`
+	Id          string `json:"id"`
 	Postal_code string `json:"postal_code"`
-	Region string `json:"region"`
-	Street1 string `json:"street1"`
-	Street2 string `json:"street2"`
+	Region      string `json:"region"`
+	Street1     string `json:"street1"`
+	Street2     string `json:"street2"`
 }

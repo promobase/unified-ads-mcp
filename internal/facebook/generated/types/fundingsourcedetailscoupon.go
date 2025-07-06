@@ -6,17 +6,17 @@ import "time"
 
 // FundingSourceDetailsCoupon represents a Facebook FundingSourceDetailsCoupon object
 type FundingSourceDetailsCoupon struct {
-	Amount int `json:"amount"`
-	Campaign_ids []int `json:"campaign_ids"`
-	Child_ad_account_id string `json:"child_ad_account_id"`
-	Child_bm_id string `json:"child_bm_id"`
-	Coupon_id string `json:"coupon_id"`
-	Coupon_tiering *FundingSourceDetailsCouponTiering `json:"coupon_tiering"`
-	Currency string `json:"currency"`
-	Display_amount string `json:"display_amount"`
-	Expiration time.Time `json:"expiration"`
-	Original_amount int `json:"original_amount"`
-	Original_display_amount string `json:"original_display_amount"`
-	Start_date time.Time `json:"start_date"`
-	Vendor_id string `json:"vendor_id"`
+	Amount                  int                                `json:"amount"`
+	Campaign_ids            []int                              `json:"campaign_ids"`
+	Child_ad_account_id     string                             `json:"child_ad_account_id"`
+	Child_bm_id             string                             `json:"child_bm_id"`
+	Coupon_id               string                             `json:"coupon_id"`
+	Coupon_tiering          *FundingSourceDetailsCouponTiering `json:"coupon_tiering"`
+	Currency                string                             `json:"currency"`
+	Display_amount          string                             `json:"display_amount"`
+	Expiration              time.Time                          `json:"expiration"`
+	Original_amount         int                                `json:"original_amount"`
+	Original_display_amount string                             `json:"original_display_amount"`
+	Start_date              time.Time                          `json:"start_date"`
+	Vendor_id               string                             `json:"vendor_id"`
 }

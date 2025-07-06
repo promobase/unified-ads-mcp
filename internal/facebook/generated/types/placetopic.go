@@ -4,12 +4,12 @@ package types
 
 // PlaceTopic represents a Facebook PlaceTopic object
 type PlaceTopic struct {
-	Count int `json:"count"`
-	Has_children bool `json:"has_children"`
-	Icon_url string `json:"icon_url"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Parent_ids []string `json:"parent_ids"`
-	Plural_name string `json:"plural_name"`
+	Count              int      `json:"count"`
+	Has_children       bool     `json:"has_children"`
+	Icon_url           string   `json:"icon_url"`
+	Id                 string   `json:"id"`
+	Name               string   `json:"name"`
+	Parent_ids         []string `json:"parent_ids"`
+	Plural_name        string   `json:"plural_name"`
 	Top_subtopic_names []string `json:"top_subtopic_names"`
 }

@@ -6,20 +6,20 @@ import "time"
 
 // PagePostExperiment represents a Facebook PagePostExperiment object
 type PagePostExperiment struct {
-	Auto_resolve_settings map[string]interface{} `json:"auto_resolve_settings"`
-	Control_video_id string `json:"control_video_id"`
-	Creation_time time.Time `json:"creation_time"`
-	Creator *User `json:"creator"`
-	Declared_winning_time time.Time `json:"declared_winning_time"`
-	Declared_winning_video_id string `json:"declared_winning_video_id"`
-	Description string `json:"description"`
-	Experiment_video_ids []string `json:"experiment_video_ids"`
-	Id string `json:"id"`
-	Insight_snapshots []interface{} `json:"insight_snapshots"`
-	Name string `json:"name"`
-	Optimization_goal string `json:"optimization_goal"`
-	Publish_status string `json:"publish_status"`
-	Publish_time time.Time `json:"publish_time"`
-	Scheduled_experiment_timestamp time.Time `json:"scheduled_experiment_timestamp"`
-	Updated_time time.Time `json:"updated_time"`
+	Auto_resolve_settings          map[string]interface{} `json:"auto_resolve_settings"`
+	Control_video_id               string                 `json:"control_video_id"`
+	Creation_time                  time.Time              `json:"creation_time"`
+	Creator                        *User                  `json:"creator"`
+	Declared_winning_time          time.Time              `json:"declared_winning_time"`
+	Declared_winning_video_id      string                 `json:"declared_winning_video_id"`
+	Description                    string                 `json:"description"`
+	Experiment_video_ids           []string               `json:"experiment_video_ids"`
+	Id                             string                 `json:"id"`
+	Insight_snapshots              []interface{}          `json:"insight_snapshots"`
+	Name                           string                 `json:"name"`
+	Optimization_goal              string                 `json:"optimization_goal"`
+	Publish_status                 string                 `json:"publish_status"`
+	Publish_time                   time.Time              `json:"publish_time"`
+	Scheduled_experiment_timestamp time.Time              `json:"scheduled_experiment_timestamp"`
+	Updated_time                   time.Time              `json:"updated_time"`
 }

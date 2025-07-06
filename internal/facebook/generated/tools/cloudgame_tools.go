@@ -15,7 +15,6 @@ import (
 func GetCloudGameTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_cloudgame_get_ tool
 	facebook_cloudgame_get_Tool := mcp.NewTool("facebook_cloudgame_get_",
 		mcp.WithDescription("GET  for CloudGame"),
@@ -26,12 +25,10 @@ func GetCloudGameTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_cloudgame_get_Tool)
 
-
 	return tools
 }
 
 // CloudGame handlers
-
 
 // HandleFacebook_cloudgame_get_ handles the facebook_cloudgame_get_ tool
 func HandleFacebook_cloudgame_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_cloudgame_get_(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_cloudgame_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_cloudgame_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

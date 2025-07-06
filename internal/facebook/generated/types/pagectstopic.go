@@ -4,10 +4,10 @@ package types
 
 // PageCTSTopic represents a Facebook PageCTSTopic object
 type PageCTSTopic struct {
-	App_id string `json:"app_id"`
-	Frequency string `json:"frequency"`
+	App_id     string `json:"app_id"`
+	Frequency  string `json:"frequency"`
 	Image_hash string `json:"image_hash"`
-	Image_url string `json:"image_url"`
-	Subscriber int `json:"subscriber"`
-	Title string `json:"title"`
+	Image_url  string `json:"image_url"`
+	Subscriber int    `json:"subscriber"`
+	Title      string `json:"title"`
 }

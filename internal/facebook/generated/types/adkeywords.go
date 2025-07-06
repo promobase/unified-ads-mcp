@@ -4,8 +4,8 @@ package types
 
 // AdKeywords represents a Facebook AdKeywords object
 type AdKeywords struct {
-	Brands []string `json:"brands"`
+	Brands             []string `json:"brands"`
 	Product_categories []string `json:"product_categories"`
-	Product_names []string `json:"product_names"`
-	Search_terms []string `json:"search_terms"`
+	Product_names      []string `json:"product_names"`
+	Search_terms       []string `json:"search_terms"`
 }

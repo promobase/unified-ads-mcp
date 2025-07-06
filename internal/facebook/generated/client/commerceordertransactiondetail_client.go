@@ -21,19 +21,15 @@ func NewCommerceOrderTransactionDetailClient(accessToken string) *CommerceOrderT
 	}
 }
 
-
 // facebook_commerceordertransactiondetail_get_items GET items for CommerceOrderTransactionDetail
 func (c *CommerceOrderTransactionDetailClient) Facebook_commerceordertransactiondetail_get_items(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "items")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *CommerceOrderTransactionDetailClient) Facebook_commerceordertransaction
 	return result, nil
 }
 
-
 // facebook_commerceordertransactiondetail_get_tax_details GET tax_details for CommerceOrderTransactionDetail
 func (c *CommerceOrderTransactionDetailClient) Facebook_commerceordertransactiondetail_get_tax_details(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "tax_details")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -106,4 +98,3 @@ func (c *CommerceOrderTransactionDetailClient) Facebook_commerceordertransaction
 
 	return result, nil
 }
-

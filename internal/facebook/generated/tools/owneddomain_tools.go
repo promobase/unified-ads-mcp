@@ -15,7 +15,6 @@ import (
 func GetOwnedDomainTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_owneddomain_get_ tool
 	facebook_owneddomain_get_Tool := mcp.NewTool("facebook_owneddomain_get_",
 		mcp.WithDescription("GET  for OwnedDomain"),
@@ -26,12 +25,10 @@ func GetOwnedDomainTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_owneddomain_get_Tool)
 
-
 	return tools
 }
 
 // OwnedDomain handlers
-
 
 // HandleFacebook_owneddomain_get_ handles the facebook_owneddomain_get_ tool
 func HandleFacebook_owneddomain_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_owneddomain_get_(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_owneddomain_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_owneddomain_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

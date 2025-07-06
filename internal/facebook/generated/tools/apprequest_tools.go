@@ -15,7 +15,6 @@ import (
 func GetAppRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_apprequest_delete_ tool
 	facebook_apprequest_delete_Tool := mcp.NewTool("facebook_apprequest_delete_",
 		mcp.WithDescription("DELETE  for AppRequest"),
@@ -40,12 +39,10 @@ func GetAppRequestTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_apprequest_get_Tool)
 
-
 	return tools
 }
 
 // AppRequest handlers
-
 
 // HandleFacebook_apprequest_delete_ handles the facebook_apprequest_delete_ tool
 func HandleFacebook_apprequest_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -68,8 +65,6 @@ func HandleFacebook_apprequest_delete_(ctx context.Context, request mcp.CallTool
 	}
 	args["ids"] = ids
 
-
-
 	// Call the client method
 	result, err := client.Facebook_apprequest_delete_(args)
 	if err != nil {
@@ -85,7 +80,6 @@ func HandleFacebook_apprequest_delete_(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_apprequest_get_ handles the facebook_apprequest_get_ tool
 func HandleFacebook_apprequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -99,8 +93,6 @@ func HandleFacebook_apprequest_get_(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_apprequest_get_(args)
@@ -116,4 +108,3 @@ func HandleFacebook_apprequest_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

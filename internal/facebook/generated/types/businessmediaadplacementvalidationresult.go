@@ -4,8 +4,8 @@ package types
 
 // BusinessMediaAdPlacementValidationResult represents a Facebook BusinessMediaAdPlacementValidationResult object
 type BusinessMediaAdPlacementValidationResult struct {
-	Ad_placement string `json:"ad_placement"`
-	Ad_placement_label string `json:"ad_placement_label"`
-	Error_messages []string `json:"error_messages"`
-	Is_valid bool `json:"is_valid"`
+	Ad_placement       string   `json:"ad_placement"`
+	Ad_placement_label string   `json:"ad_placement_label"`
+	Error_messages     []string `json:"error_messages"`
+	Is_valid           bool     `json:"is_valid"`
 }

@@ -21,19 +21,15 @@ func NewMessengerAdsPartialAutomatedStepListClient(accessToken string) *Messenge
 	}
 }
 
-
 // facebook_messengeradspartialautomatedsteplist_get_steps GET steps for MessengerAdsPartialAutomatedStepList
 func (c *MessengerAdsPartialAutomatedStepListClient) Facebook_messengeradspartialautomatedsteplist_get_steps(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "steps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *MessengerAdsPartialAutomatedStepListClient) Facebook_messengeradspartia
 	return result, nil
 }
 
-
 // facebook_messengeradspartialautomatedsteplist_get_ GET  for MessengerAdsPartialAutomatedStepList
 func (c *MessengerAdsPartialAutomatedStepListClient) Facebook_messengeradspartialautomatedsteplist_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -106,4 +98,3 @@ func (c *MessengerAdsPartialAutomatedStepListClient) Facebook_messengeradspartia
 
 	return result, nil
 }
-

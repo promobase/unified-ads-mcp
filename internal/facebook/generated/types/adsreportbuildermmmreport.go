@@ -6,12 +6,12 @@ import "time"
 
 // AdsReportBuilderMMMReport represents a Facebook AdsReportBuilderMMMReport object
 type AdsReportBuilderMMMReport struct {
-	Async_status string `json:"async_status"`
-	Export_format string `json:"export_format"`
-	Export_name string `json:"export_name"`
-	Export_type string `json:"export_type"`
-	Has_seen bool `json:"has_seen"`
-	Id string `json:"id"`
-	Mmm_status string `json:"mmm_status"`
-	Time_start time.Time `json:"time_start"`
+	Async_status  string    `json:"async_status"`
+	Export_format string    `json:"export_format"`
+	Export_name   string    `json:"export_name"`
+	Export_type   string    `json:"export_type"`
+	Has_seen      bool      `json:"has_seen"`
+	Id            string    `json:"id"`
+	Mmm_status    string    `json:"mmm_status"`
+	Time_start    time.Time `json:"time_start"`
 }

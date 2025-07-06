@@ -15,7 +15,6 @@ import (
 func GetIGUserTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_iguser_get_agencies tool
 	facebook_iguser_get_agenciesTool := mcp.NewTool("facebook_iguser_get_agencies",
 		mcp.WithDescription("GET agencies for IGUser"),
@@ -536,12 +535,10 @@ func GetIGUserTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_iguser_get_Tool)
 
-
 	return tools
 }
 
 // IGUser handlers
-
 
 // HandleFacebook_iguser_get_agencies handles the facebook_iguser_get_agencies tool
 func HandleFacebook_iguser_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -557,8 +554,6 @@ func HandleFacebook_iguser_get_agencies(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_get_agencies(args)
 	if err != nil {
@@ -573,7 +568,6 @@ func HandleFacebook_iguser_get_agencies(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_get_authorized_adaccounts handles the facebook_iguser_get_authorized_adaccounts tool
 func HandleFacebook_iguser_get_authorized_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -596,8 +590,6 @@ func HandleFacebook_iguser_get_authorized_adaccounts(ctx context.Context, reques
 	}
 	args["business"] = business
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_get_authorized_adaccounts(args)
 	if err != nil {
@@ -612,7 +604,6 @@ func HandleFacebook_iguser_get_authorized_adaccounts(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_post_authorized_adaccounts handles the facebook_iguser_post_authorized_adaccounts tool
 func HandleFacebook_iguser_post_authorized_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -642,8 +633,6 @@ func HandleFacebook_iguser_post_authorized_adaccounts(ctx context.Context, reque
 	}
 	args["business"] = business
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_post_authorized_adaccounts(args)
 	if err != nil {
@@ -659,7 +648,6 @@ func HandleFacebook_iguser_post_authorized_adaccounts(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguser_get_available_catalogs handles the facebook_iguser_get_available_catalogs tool
 func HandleFacebook_iguser_get_available_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -673,8 +661,6 @@ func HandleFacebook_iguser_get_available_catalogs(ctx context.Context, request m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguser_get_available_catalogs(args)
@@ -691,7 +677,6 @@ func HandleFacebook_iguser_get_available_catalogs(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguser_get_branded_content_ad_permissions handles the facebook_iguser_get_branded_content_ad_permissions tool
 func HandleFacebook_iguser_get_branded_content_ad_permissions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -705,8 +690,6 @@ func HandleFacebook_iguser_get_branded_content_ad_permissions(ctx context.Contex
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguser_get_branded_content_ad_permissions(args)
@@ -722,7 +705,6 @@ func HandleFacebook_iguser_get_branded_content_ad_permissions(ctx context.Contex
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_post_branded_content_ad_permissions handles the facebook_iguser_post_branded_content_ad_permissions tool
 func HandleFacebook_iguser_post_branded_content_ad_permissions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -753,8 +735,6 @@ func HandleFacebook_iguser_post_branded_content_ad_permissions(ctx context.Conte
 		args["revoke"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_post_branded_content_ad_permissions(args)
 	if err != nil {
@@ -769,7 +749,6 @@ func HandleFacebook_iguser_post_branded_content_ad_permissions(ctx context.Conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_get_branded_content_advertisable_medias handles the facebook_iguser_get_branded_content_advertisable_medias tool
 func HandleFacebook_iguser_get_branded_content_advertisable_medias(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -811,8 +790,6 @@ func HandleFacebook_iguser_get_branded_content_advertisable_medias(ctx context.C
 		args["permalinks"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_get_branded_content_advertisable_medias(args)
 	if err != nil {
@@ -827,7 +804,6 @@ func HandleFacebook_iguser_get_branded_content_advertisable_medias(ctx context.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_delete_branded_content_tag_approval handles the facebook_iguser_delete_branded_content_tag_approval tool
 func HandleFacebook_iguser_delete_branded_content_tag_approval(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -850,8 +826,6 @@ func HandleFacebook_iguser_delete_branded_content_tag_approval(ctx context.Conte
 	}
 	args["user_ids"] = user_ids
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_delete_branded_content_tag_approval(args)
 	if err != nil {
@@ -866,7 +840,6 @@ func HandleFacebook_iguser_delete_branded_content_tag_approval(ctx context.Conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_get_branded_content_tag_approval handles the facebook_iguser_get_branded_content_tag_approval tool
 func HandleFacebook_iguser_get_branded_content_tag_approval(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -889,8 +862,6 @@ func HandleFacebook_iguser_get_branded_content_tag_approval(ctx context.Context,
 	}
 	args["user_ids"] = user_ids
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_get_branded_content_tag_approval(args)
 	if err != nil {
@@ -905,7 +876,6 @@ func HandleFacebook_iguser_get_branded_content_tag_approval(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_post_branded_content_tag_approval handles the facebook_iguser_post_branded_content_tag_approval tool
 func HandleFacebook_iguser_post_branded_content_tag_approval(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -928,8 +898,6 @@ func HandleFacebook_iguser_post_branded_content_tag_approval(ctx context.Context
 	}
 	args["user_ids"] = user_ids
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_post_branded_content_tag_approval(args)
 	if err != nil {
@@ -944,7 +912,6 @@ func HandleFacebook_iguser_post_branded_content_tag_approval(ctx context.Context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_get_catalog_product_search handles the facebook_iguser_get_catalog_product_search tool
 func HandleFacebook_iguser_get_catalog_product_search(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -972,8 +939,6 @@ func HandleFacebook_iguser_get_catalog_product_search(ctx context.Context, reque
 		args["q"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_get_catalog_product_search(args)
 	if err != nil {
@@ -989,7 +954,6 @@ func HandleFacebook_iguser_get_catalog_product_search(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguser_get_connected_threads_user handles the facebook_iguser_get_connected_threads_user tool
 func HandleFacebook_iguser_get_connected_threads_user(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1003,8 +967,6 @@ func HandleFacebook_iguser_get_connected_threads_user(ctx context.Context, reque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguser_get_connected_threads_user(args)
@@ -1020,7 +982,6 @@ func HandleFacebook_iguser_get_connected_threads_user(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_get_content_publishing_limit handles the facebook_iguser_get_content_publishing_limit tool
 func HandleFacebook_iguser_get_content_publishing_limit(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1041,8 +1002,6 @@ func HandleFacebook_iguser_get_content_publishing_limit(ctx context.Context, req
 		args["since"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_get_content_publishing_limit(args)
 	if err != nil {
@@ -1058,7 +1017,6 @@ func HandleFacebook_iguser_get_content_publishing_limit(ctx context.Context, req
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguser_get_dataset handles the facebook_iguser_get_dataset tool
 func HandleFacebook_iguser_get_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1072,8 +1030,6 @@ func HandleFacebook_iguser_get_dataset(ctx context.Context, request mcp.CallTool
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguser_get_dataset(args)
@@ -1089,7 +1045,6 @@ func HandleFacebook_iguser_get_dataset(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_post_dataset handles the facebook_iguser_post_dataset tool
 func HandleFacebook_iguser_post_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1110,8 +1065,6 @@ func HandleFacebook_iguser_post_dataset(ctx context.Context, request mcp.CallToo
 		args["dataset_name"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_post_dataset(args)
 	if err != nil {
@@ -1126,7 +1079,6 @@ func HandleFacebook_iguser_post_dataset(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_get_insights handles the facebook_iguser_get_insights tool
 func HandleFacebook_iguser_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1182,8 +1134,6 @@ func HandleFacebook_iguser_get_insights(ctx context.Context, request mcp.CallToo
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_get_insights(args)
 	if err != nil {
@@ -1199,7 +1149,6 @@ func HandleFacebook_iguser_get_insights(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguser_get_instagram_backed_threads_user handles the facebook_iguser_get_instagram_backed_threads_user tool
 func HandleFacebook_iguser_get_instagram_backed_threads_user(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1213,8 +1162,6 @@ func HandleFacebook_iguser_get_instagram_backed_threads_user(ctx context.Context
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguser_get_instagram_backed_threads_user(args)
@@ -1230,7 +1177,6 @@ func HandleFacebook_iguser_get_instagram_backed_threads_user(ctx context.Context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_get_live_media handles the facebook_iguser_get_live_media tool
 func HandleFacebook_iguser_get_live_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1256,8 +1202,6 @@ func HandleFacebook_iguser_get_live_media(ctx context.Context, request mcp.CallT
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_get_live_media(args)
 	if err != nil {
@@ -1272,7 +1216,6 @@ func HandleFacebook_iguser_get_live_media(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_get_media handles the facebook_iguser_get_media tool
 func HandleFacebook_iguser_get_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1298,8 +1241,6 @@ func HandleFacebook_iguser_get_media(ctx context.Context, request mcp.CallToolRe
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_get_media(args)
 	if err != nil {
@@ -1314,7 +1255,6 @@ func HandleFacebook_iguser_get_media(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_post_media handles the facebook_iguser_post_media tool
 func HandleFacebook_iguser_post_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1414,8 +1354,6 @@ func HandleFacebook_iguser_post_media(ctx context.Context, request mcp.CallToolR
 		args["video_url"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_post_media(args)
 	if err != nil {
@@ -1430,7 +1368,6 @@ func HandleFacebook_iguser_post_media(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_post_media_publish handles the facebook_iguser_post_media_publish tool
 func HandleFacebook_iguser_post_media_publish(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1453,8 +1390,6 @@ func HandleFacebook_iguser_post_media_publish(ctx context.Context, request mcp.C
 	}
 	args["creation_id"] = creation_id
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_post_media_publish(args)
 	if err != nil {
@@ -1469,7 +1404,6 @@ func HandleFacebook_iguser_post_media_publish(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_post_mentions handles the facebook_iguser_post_mentions tool
 func HandleFacebook_iguser_post_mentions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1504,8 +1438,6 @@ func HandleFacebook_iguser_post_mentions(ctx context.Context, request mcp.CallTo
 	}
 	args["message"] = message
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_post_mentions(args)
 	if err != nil {
@@ -1521,7 +1453,6 @@ func HandleFacebook_iguser_post_mentions(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguser_get_notification_message_tokens handles the facebook_iguser_get_notification_message_tokens tool
 func HandleFacebook_iguser_get_notification_message_tokens(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1535,8 +1466,6 @@ func HandleFacebook_iguser_get_notification_message_tokens(ctx context.Context, 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguser_get_notification_message_tokens(args)
@@ -1552,7 +1481,6 @@ func HandleFacebook_iguser_get_notification_message_tokens(ctx context.Context, 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_get_product_appeal handles the facebook_iguser_get_product_appeal tool
 func HandleFacebook_iguser_get_product_appeal(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1575,8 +1503,6 @@ func HandleFacebook_iguser_get_product_appeal(ctx context.Context, request mcp.C
 	}
 	args["product_id"] = product_id
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_get_product_appeal(args)
 	if err != nil {
@@ -1591,7 +1517,6 @@ func HandleFacebook_iguser_get_product_appeal(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_post_product_appeal handles the facebook_iguser_post_product_appeal tool
 func HandleFacebook_iguser_post_product_appeal(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1621,8 +1546,6 @@ func HandleFacebook_iguser_post_product_appeal(ctx context.Context, request mcp.
 	}
 	args["product_id"] = product_id
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_post_product_appeal(args)
 	if err != nil {
@@ -1638,7 +1561,6 @@ func HandleFacebook_iguser_post_product_appeal(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguser_get_recently_searched_hashtags handles the facebook_iguser_get_recently_searched_hashtags tool
 func HandleFacebook_iguser_get_recently_searched_hashtags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1652,8 +1574,6 @@ func HandleFacebook_iguser_get_recently_searched_hashtags(ctx context.Context, r
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguser_get_recently_searched_hashtags(args)
@@ -1670,7 +1590,6 @@ func HandleFacebook_iguser_get_recently_searched_hashtags(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguser_get_stories handles the facebook_iguser_get_stories tool
 func HandleFacebook_iguser_get_stories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1684,8 +1603,6 @@ func HandleFacebook_iguser_get_stories(ctx context.Context, request mcp.CallTool
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguser_get_stories(args)
@@ -1702,7 +1619,6 @@ func HandleFacebook_iguser_get_stories(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguser_get_tags handles the facebook_iguser_get_tags tool
 func HandleFacebook_iguser_get_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1716,8 +1632,6 @@ func HandleFacebook_iguser_get_tags(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguser_get_tags(args)
@@ -1734,7 +1648,6 @@ func HandleFacebook_iguser_get_tags(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguser_get_upcoming_events handles the facebook_iguser_get_upcoming_events tool
 func HandleFacebook_iguser_get_upcoming_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1748,8 +1661,6 @@ func HandleFacebook_iguser_get_upcoming_events(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguser_get_upcoming_events(args)
@@ -1765,7 +1676,6 @@ func HandleFacebook_iguser_get_upcoming_events(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_post_upcoming_events handles the facebook_iguser_post_upcoming_events tool
 func HandleFacebook_iguser_post_upcoming_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1806,8 +1716,6 @@ func HandleFacebook_iguser_post_upcoming_events(ctx context.Context, request mcp
 	}
 	args["title"] = title
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_post_upcoming_events(args)
 	if err != nil {
@@ -1822,7 +1730,6 @@ func HandleFacebook_iguser_post_upcoming_events(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_get_welcome_message_flows handles the facebook_iguser_get_welcome_message_flows tool
 func HandleFacebook_iguser_get_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1848,8 +1755,6 @@ func HandleFacebook_iguser_get_welcome_message_flows(ctx context.Context, reques
 		args["flow_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_get_welcome_message_flows(args)
 	if err != nil {
@@ -1864,7 +1769,6 @@ func HandleFacebook_iguser_get_welcome_message_flows(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguser_get_ handles the facebook_iguser_get_ tool
 func HandleFacebook_iguser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1885,8 +1789,6 @@ func HandleFacebook_iguser_get_(ctx context.Context, request mcp.CallToolRequest
 		args["adgroup_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguser_get_(args)
 	if err != nil {
@@ -1901,4 +1803,3 @@ func HandleFacebook_iguser_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

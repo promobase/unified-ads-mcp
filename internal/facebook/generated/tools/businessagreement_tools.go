@@ -15,7 +15,6 @@ import (
 func GetBusinessAgreementTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_businessagreement_get_ tool
 	facebook_businessagreement_get_Tool := mcp.NewTool("facebook_businessagreement_get_",
 		mcp.WithDescription("GET  for BusinessAgreement"),
@@ -43,12 +42,10 @@ func GetBusinessAgreementTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_businessagreement_post_Tool)
 
-
 	return tools
 }
 
 // BusinessAgreement handlers
-
 
 // HandleFacebook_businessagreement_get_ handles the facebook_businessagreement_get_ tool
 func HandleFacebook_businessagreement_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -64,8 +61,6 @@ func HandleFacebook_businessagreement_get_(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_businessagreement_get_(args)
 	if err != nil {
@@ -80,7 +75,6 @@ func HandleFacebook_businessagreement_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_businessagreement_post_ handles the facebook_businessagreement_post_ tool
 func HandleFacebook_businessagreement_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -106,8 +100,6 @@ func HandleFacebook_businessagreement_post_(ctx context.Context, request mcp.Cal
 		args["request_status"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_businessagreement_post_(args)
 	if err != nil {
@@ -122,4 +114,3 @@ func HandleFacebook_businessagreement_post_(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetAdStudyTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_adstudy_get_cells tool
 	facebook_adstudy_get_cellsTool := mcp.NewTool("facebook_adstudy_get_cells",
 		mcp.WithDescription("GET cells for AdStudy"),
@@ -158,12 +157,10 @@ func GetAdStudyTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_adstudy_post_Tool)
 
-
 	return tools
 }
 
 // AdStudy handlers
-
 
 // HandleFacebook_adstudy_get_cells handles the facebook_adstudy_get_cells tool
 func HandleFacebook_adstudy_get_cells(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -179,8 +176,6 @@ func HandleFacebook_adstudy_get_cells(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adstudy_get_cells(args)
 	if err != nil {
@@ -195,7 +190,6 @@ func HandleFacebook_adstudy_get_cells(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adstudy_post_checkpoint handles the facebook_adstudy_post_checkpoint tool
 func HandleFacebook_adstudy_post_checkpoint(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -242,8 +236,6 @@ func HandleFacebook_adstudy_post_checkpoint(ctx context.Context, request mcp.Cal
 		args["run_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adstudy_post_checkpoint(args)
 	if err != nil {
@@ -259,7 +251,6 @@ func HandleFacebook_adstudy_post_checkpoint(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adstudy_get_instances handles the facebook_adstudy_get_instances tool
 func HandleFacebook_adstudy_get_instances(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -273,8 +264,6 @@ func HandleFacebook_adstudy_get_instances(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adstudy_get_instances(args)
@@ -290,7 +279,6 @@ func HandleFacebook_adstudy_get_instances(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adstudy_post_instances handles the facebook_adstudy_post_instances tool
 func HandleFacebook_adstudy_post_instances(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -318,8 +306,6 @@ func HandleFacebook_adstudy_post_instances(ctx context.Context, request mcp.Call
 		args["run_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adstudy_post_instances(args)
 	if err != nil {
@@ -335,7 +321,6 @@ func HandleFacebook_adstudy_post_instances(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adstudy_get_objectives handles the facebook_adstudy_get_objectives tool
 func HandleFacebook_adstudy_get_objectives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -349,8 +334,6 @@ func HandleFacebook_adstudy_get_objectives(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adstudy_get_objectives(args)
@@ -367,7 +350,6 @@ func HandleFacebook_adstudy_get_objectives(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adstudy_delete_ handles the facebook_adstudy_delete_ tool
 func HandleFacebook_adstudy_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -381,8 +363,6 @@ func HandleFacebook_adstudy_delete_(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adstudy_delete_(args)
@@ -399,7 +379,6 @@ func HandleFacebook_adstudy_delete_(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adstudy_get_ handles the facebook_adstudy_get_ tool
 func HandleFacebook_adstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -413,8 +392,6 @@ func HandleFacebook_adstudy_get_(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adstudy_get_(args)
@@ -430,7 +407,6 @@ func HandleFacebook_adstudy_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adstudy_post_ handles the facebook_adstudy_post_ tool
 func HandleFacebook_adstudy_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -509,8 +485,6 @@ func HandleFacebook_adstudy_post_(ctx context.Context, request mcp.CallToolReque
 		args["viewers"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adstudy_post_(args)
 	if err != nil {
@@ -525,4 +499,3 @@ func HandleFacebook_adstudy_post_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

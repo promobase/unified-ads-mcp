@@ -15,7 +15,6 @@ import (
 func GetWebsiteCreativeAssetSuggestionsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_websitecreativeassetsuggestions_get_ tool
 	facebook_websitecreativeassetsuggestions_get_Tool := mcp.NewTool("facebook_websitecreativeassetsuggestions_get_",
 		mcp.WithDescription("GET  for WebsiteCreativeAssetSuggestions"),
@@ -26,12 +25,10 @@ func GetWebsiteCreativeAssetSuggestionsTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_websitecreativeassetsuggestions_get_Tool)
 
-
 	return tools
 }
 
 // WebsiteCreativeAssetSuggestions handlers
-
 
 // HandleFacebook_websitecreativeassetsuggestions_get_ handles the facebook_websitecreativeassetsuggestions_get_ tool
 func HandleFacebook_websitecreativeassetsuggestions_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_websitecreativeassetsuggestions_get_(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_websitecreativeassetsuggestions_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_websitecreativeassetsuggestions_get_(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

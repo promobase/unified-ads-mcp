@@ -6,25 +6,25 @@ import "time"
 
 // BrandRequest represents a Facebook BrandRequest object
 type BrandRequest struct {
-	Ad_countries []string `json:"ad_countries"`
-	Additional_contacts []string `json:"additional_contacts"`
-	Approval_level int `json:"approval_level"`
-	Cells []map[string]interface{} `json:"cells"`
-	Countries []string `json:"countries"`
-	Deny_reason string `json:"deny_reason"`
-	End_time time.Time `json:"end_time"`
-	Estimated_reach int `json:"estimated_reach"`
-	Id string `json:"id"`
-	Is_multicell bool `json:"is_multicell"`
-	Locale string `json:"locale"`
-	Max_age int `json:"max_age"`
-	Min_age int `json:"min_age"`
-	Questions []map[string]interface{} `json:"questions"`
-	Region string `json:"region"`
-	Request_status string `json:"request_status"`
-	Review_date time.Time `json:"review_date"`
-	Start_time time.Time `json:"start_time"`
-	Status string `json:"status"`
-	Submit_date time.Time `json:"submit_date"`
-	Total_budget int `json:"total_budget"`
+	Ad_countries        []string                 `json:"ad_countries"`
+	Additional_contacts []string                 `json:"additional_contacts"`
+	Approval_level      int                      `json:"approval_level"`
+	Cells               []map[string]interface{} `json:"cells"`
+	Countries           []string                 `json:"countries"`
+	Deny_reason         string                   `json:"deny_reason"`
+	End_time            time.Time                `json:"end_time"`
+	Estimated_reach     int                      `json:"estimated_reach"`
+	Id                  string                   `json:"id"`
+	Is_multicell        bool                     `json:"is_multicell"`
+	Locale              string                   `json:"locale"`
+	Max_age             int                      `json:"max_age"`
+	Min_age             int                      `json:"min_age"`
+	Questions           []map[string]interface{} `json:"questions"`
+	Region              string                   `json:"region"`
+	Request_status      string                   `json:"request_status"`
+	Review_date         time.Time                `json:"review_date"`
+	Start_time          time.Time                `json:"start_time"`
+	Status              string                   `json:"status"`
+	Submit_date         time.Time                `json:"submit_date"`
+	Total_budget        int                      `json:"total_budget"`
 }

@@ -21,11 +21,9 @@ func NewAppEventConfigClient(accessToken string) *AppEventConfigClient {
 	}
 }
 
-
 // facebook_appeventconfig_get_ GET  for AppEventConfig
 func (c *AppEventConfigClient) Facebook_appeventconfig_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -35,7 +33,6 @@ func (c *AppEventConfigClient) Facebook_appeventconfig_get_(args map[string]inte
 	if val, ok := args["event_name"]; ok {
 		urlParams.Set("event_name", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -66,4 +63,3 @@ func (c *AppEventConfigClient) Facebook_appeventconfig_get_(args map[string]inte
 
 	return result, nil
 }
-

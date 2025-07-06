@@ -4,6 +4,6 @@ package types
 
 // ShadowIGUserCatalogProductVariant represents a Facebook ShadowIGUserCatalogProductVariant object
 type ShadowIGUserCatalogProductVariant struct {
-	Product_id int `json:"product_id"`
+	Product_id   int    `json:"product_id"`
 	Variant_name string `json:"variant_name"`
 }

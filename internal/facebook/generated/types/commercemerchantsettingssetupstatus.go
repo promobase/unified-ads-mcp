@@ -4,10 +4,10 @@ package types
 
 // CommerceMerchantSettingsSetupStatus represents a Facebook CommerceMerchantSettingsSetupStatus object
 type CommerceMerchantSettingsSetupStatus struct {
-	Deals_setup string `json:"deals_setup"`
-	Marketplace_approval_status string `json:"marketplace_approval_status"`
+	Deals_setup                         string                 `json:"deals_setup"`
+	Marketplace_approval_status         string                 `json:"marketplace_approval_status"`
 	Marketplace_approval_status_details map[string]interface{} `json:"marketplace_approval_status_details"`
-	Payment_setup string `json:"payment_setup"`
-	Review_status map[string]interface{} `json:"review_status"`
-	Shop_setup string `json:"shop_setup"`
+	Payment_setup                       string                 `json:"payment_setup"`
+	Review_status                       map[string]interface{} `json:"review_status"`
+	Shop_setup                          string                 `json:"shop_setup"`
 }

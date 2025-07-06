@@ -15,7 +15,6 @@ import (
 func GetCatalogWebsiteOnboardingSettingsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_catalogwebsiteonboardingsettings_get_ tool
 	facebook_catalogwebsiteonboardingsettings_get_Tool := mcp.NewTool("facebook_catalogwebsiteonboardingsettings_get_",
 		mcp.WithDescription("GET  for CatalogWebsiteOnboardingSettings"),
@@ -26,12 +25,10 @@ func GetCatalogWebsiteOnboardingSettingsTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_catalogwebsiteonboardingsettings_get_Tool)
 
-
 	return tools
 }
 
 // CatalogWebsiteOnboardingSettings handlers
-
 
 // HandleFacebook_catalogwebsiteonboardingsettings_get_ handles the facebook_catalogwebsiteonboardingsettings_get_ tool
 func HandleFacebook_catalogwebsiteonboardingsettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_catalogwebsiteonboardingsettings_get_(ctx context.Context, r
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_catalogwebsiteonboardingsettings_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_catalogwebsiteonboardingsettings_get_(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

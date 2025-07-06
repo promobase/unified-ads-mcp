@@ -15,7 +15,6 @@ import (
 func GetMediaFingerprintTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_mediafingerprint_get_ tool
 	facebook_mediafingerprint_get_Tool := mcp.NewTool("facebook_mediafingerprint_get_",
 		mcp.WithDescription("GET  for MediaFingerprint"),
@@ -48,12 +47,10 @@ func GetMediaFingerprintTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_mediafingerprint_post_Tool)
 
-
 	return tools
 }
 
 // MediaFingerprint handlers
-
 
 // HandleFacebook_mediafingerprint_get_ handles the facebook_mediafingerprint_get_ tool
 func HandleFacebook_mediafingerprint_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -69,8 +66,6 @@ func HandleFacebook_mediafingerprint_get_(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_mediafingerprint_get_(args)
 	if err != nil {
@@ -85,7 +80,6 @@ func HandleFacebook_mediafingerprint_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_mediafingerprint_post_ handles the facebook_mediafingerprint_post_ tool
 func HandleFacebook_mediafingerprint_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -121,8 +115,6 @@ func HandleFacebook_mediafingerprint_post_(ctx context.Context, request mcp.Call
 		args["universal_content_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_mediafingerprint_post_(args)
 	if err != nil {
@@ -137,4 +129,3 @@ func HandleFacebook_mediafingerprint_post_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

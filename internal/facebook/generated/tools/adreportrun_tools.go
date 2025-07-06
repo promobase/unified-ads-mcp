@@ -15,7 +15,6 @@ import (
 func GetAdReportRunTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_adreportrun_get_insights tool
 	facebook_adreportrun_get_insightsTool := mcp.NewTool("facebook_adreportrun_get_insights",
 		mcp.WithDescription("GET insights for AdReportRun"),
@@ -36,12 +35,10 @@ func GetAdReportRunTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_adreportrun_get_Tool)
 
-
 	return tools
 }
 
 // AdReportRun handlers
-
 
 // HandleFacebook_adreportrun_get_insights handles the facebook_adreportrun_get_insights tool
 func HandleFacebook_adreportrun_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleFacebook_adreportrun_get_insights(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adreportrun_get_insights(args)
@@ -74,7 +69,6 @@ func HandleFacebook_adreportrun_get_insights(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adreportrun_get_ handles the facebook_adreportrun_get_ tool
 func HandleFacebook_adreportrun_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleFacebook_adreportrun_get_(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adreportrun_get_(args)
@@ -105,4 +97,3 @@ func HandleFacebook_adreportrun_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

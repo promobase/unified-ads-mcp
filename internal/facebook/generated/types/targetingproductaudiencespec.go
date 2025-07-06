@@ -4,7 +4,7 @@ package types
 
 // TargetingProductAudienceSpec represents a Facebook TargetingProductAudienceSpec object
 type TargetingProductAudienceSpec struct {
-	Exclusions []TargetingProductAudienceSubSpec `json:"exclusions"`
-	Inclusions []TargetingProductAudienceSubSpec `json:"inclusions"`
-	Product_set_id string `json:"product_set_id"`
+	Exclusions     []TargetingProductAudienceSubSpec `json:"exclusions"`
+	Inclusions     []TargetingProductAudienceSubSpec `json:"inclusions"`
+	Product_set_id string                            `json:"product_set_id"`
 }

@@ -5,5 +5,5 @@ package types
 // IGResumableVideoUploadStatus represents a Facebook IGResumableVideoUploadStatus object
 type IGResumableVideoUploadStatus struct {
 	Processing_phase *VideoStatusProcessingPhase `json:"processing_phase"`
-	Uploading_phase *VideoStatusUploadingPhase `json:"uploading_phase"`
+	Uploading_phase  *VideoStatusUploadingPhase  `json:"uploading_phase"`
 }

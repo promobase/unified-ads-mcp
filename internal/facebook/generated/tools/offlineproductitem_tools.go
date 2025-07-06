@@ -15,7 +15,6 @@ import (
 func GetOfflineProductItemTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_offlineproductitem_get_channels_to_integrity_status tool
 	facebook_offlineproductitem_get_channels_to_integrity_statusTool := mcp.NewTool("facebook_offlineproductitem_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for OfflineProductItem"),
@@ -53,12 +52,10 @@ func GetOfflineProductItemTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_offlineproductitem_get_Tool)
 
-
 	return tools
 }
 
 // OfflineProductItem handlers
-
 
 // HandleFacebook_offlineproductitem_get_channels_to_integrity_status handles the facebook_offlineproductitem_get_channels_to_integrity_status tool
 func HandleFacebook_offlineproductitem_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -74,8 +71,6 @@ func HandleFacebook_offlineproductitem_get_channels_to_integrity_status(ctx cont
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_offlineproductitem_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -90,7 +85,6 @@ func HandleFacebook_offlineproductitem_get_channels_to_integrity_status(ctx cont
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_offlineproductitem_get_override_details handles the facebook_offlineproductitem_get_override_details tool
 func HandleFacebook_offlineproductitem_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -117,8 +111,6 @@ func HandleFacebook_offlineproductitem_get_override_details(ctx context.Context,
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_offlineproductitem_get_override_details(args)
 	if err != nil {
@@ -134,7 +126,6 @@ func HandleFacebook_offlineproductitem_get_override_details(ctx context.Context,
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_offlineproductitem_get_ handles the facebook_offlineproductitem_get_ tool
 func HandleFacebook_offlineproductitem_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -148,8 +139,6 @@ func HandleFacebook_offlineproductitem_get_(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_offlineproductitem_get_(args)
@@ -165,4 +154,3 @@ func HandleFacebook_offlineproductitem_get_(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

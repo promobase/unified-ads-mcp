@@ -5,6 +5,6 @@ package types
 // LeadGenLegalContent represents a Facebook LeadGenLegalContent object
 type LeadGenLegalContent struct {
 	Custom_disclaimer *LeadGenCustomDisclaimer `json:"custom_disclaimer"`
-	Id string `json:"id"`
-	Privacy_policy *LeadGenPrivacyPolicy `json:"privacy_policy"`
+	Id                string                   `json:"id"`
+	Privacy_policy    *LeadGenPrivacyPolicy    `json:"privacy_policy"`
 }

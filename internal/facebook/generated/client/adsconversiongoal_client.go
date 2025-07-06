@@ -21,19 +21,15 @@ func NewAdsConversionGoalClient(accessToken string) *AdsConversionGoalClient {
 	}
 }
 
-
 // facebook_adsconversiongoal_get_conversion_events GET conversion_events for AdsConversionGoal
 func (c *AdsConversionGoalClient) Facebook_adsconversiongoal_get_conversion_events(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "conversion_events")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *AdsConversionGoalClient) Facebook_adsconversiongoal_get_conversion_even
 	return result, nil
 }
 
-
 // facebook_adsconversiongoal_get_ GET  for AdsConversionGoal
 func (c *AdsConversionGoalClient) Facebook_adsconversiongoal_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -106,4 +98,3 @@ func (c *AdsConversionGoalClient) Facebook_adsconversiongoal_get_(args map[strin
 
 	return result, nil
 }
-

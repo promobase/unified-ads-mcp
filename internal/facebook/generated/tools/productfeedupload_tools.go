@@ -15,7 +15,6 @@ import (
 func GetProductFeedUploadTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_productfeedupload_post_error_report tool
 	facebook_productfeedupload_post_error_reportTool := mcp.NewTool("facebook_productfeedupload_post_error_report",
 		mcp.WithDescription("POST error_report for ProductFeedUpload"),
@@ -50,12 +49,10 @@ func GetProductFeedUploadTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_productfeedupload_get_Tool)
 
-
 	return tools
 }
 
 // ProductFeedUpload handlers
-
 
 // HandleFacebook_productfeedupload_post_error_report handles the facebook_productfeedupload_post_error_report tool
 func HandleFacebook_productfeedupload_post_error_report(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -71,8 +68,6 @@ func HandleFacebook_productfeedupload_post_error_report(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productfeedupload_post_error_report(args)
 	if err != nil {
@@ -87,7 +82,6 @@ func HandleFacebook_productfeedupload_post_error_report(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productfeedupload_get_errors handles the facebook_productfeedupload_get_errors tool
 func HandleFacebook_productfeedupload_get_errors(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -108,8 +102,6 @@ func HandleFacebook_productfeedupload_get_errors(ctx context.Context, request mc
 		args["error_priority"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productfeedupload_get_errors(args)
 	if err != nil {
@@ -125,7 +117,6 @@ func HandleFacebook_productfeedupload_get_errors(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_productfeedupload_get_ handles the facebook_productfeedupload_get_ tool
 func HandleFacebook_productfeedupload_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -139,8 +130,6 @@ func HandleFacebook_productfeedupload_get_(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_productfeedupload_get_(args)
@@ -156,4 +145,3 @@ func HandleFacebook_productfeedupload_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

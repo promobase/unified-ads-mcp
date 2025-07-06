@@ -21,18 +21,14 @@ func NewProductItemClient(accessToken string) *ProductItemClient {
 	}
 }
 
-
 // facebook_productitem_get_channels_to_integrity_status GET channels_to_integrity_status for ProductItem
 func (c *ProductItemClient) Facebook_productitem_get_channels_to_integrity_status(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "channels_to_integrity_status")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,11 +60,9 @@ func (c *ProductItemClient) Facebook_productitem_get_channels_to_integrity_statu
 	return result, nil
 }
 
-
 // facebook_productitem_get_override_details GET override_details for ProductItem
 func (c *ProductItemClient) Facebook_productitem_get_override_details(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "override_details")
@@ -82,7 +76,6 @@ func (c *ProductItemClient) Facebook_productitem_get_override_details(args map[s
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -113,19 +106,15 @@ func (c *ProductItemClient) Facebook_productitem_get_override_details(args map[s
 	return result, nil
 }
 
-
 // facebook_productitem_get_product_sets GET product_sets for ProductItem
 func (c *ProductItemClient) Facebook_productitem_get_product_sets(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_sets")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -156,19 +145,15 @@ func (c *ProductItemClient) Facebook_productitem_get_product_sets(args map[strin
 	return result, nil
 }
 
-
 // facebook_productitem_get_videos_metadata GET videos_metadata for ProductItem
 func (c *ProductItemClient) Facebook_productitem_get_videos_metadata(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "videos_metadata")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -199,18 +184,14 @@ func (c *ProductItemClient) Facebook_productitem_get_videos_metadata(args map[st
 	return result, nil
 }
 
-
 // facebook_productitem_delete_ DELETE  for ProductItem
 func (c *ProductItemClient) Facebook_productitem_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -242,11 +223,9 @@ func (c *ProductItemClient) Facebook_productitem_delete_(args map[string]interfa
 	return result, nil
 }
 
-
 // facebook_productitem_get_ GET  for ProductItem
 func (c *ProductItemClient) Facebook_productitem_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -268,7 +247,6 @@ func (c *ProductItemClient) Facebook_productitem_get_(args map[string]interface{
 	if val, ok := args["override_language"]; ok {
 		urlParams.Set("override_language", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -300,11 +278,9 @@ func (c *ProductItemClient) Facebook_productitem_get_(args map[string]interface{
 	return result, nil
 }
 
-
 // facebook_productitem_post_ POST  for ProductItem
 func (c *ProductItemClient) Facebook_productitem_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -543,7 +519,6 @@ func (c *ProductItemClient) Facebook_productitem_post_(args map[string]interface
 		urlParams.Set("windows_phone_url", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -573,4 +548,3 @@ func (c *ProductItemClient) Facebook_productitem_post_(args map[string]interface
 
 	return result, nil
 }
-

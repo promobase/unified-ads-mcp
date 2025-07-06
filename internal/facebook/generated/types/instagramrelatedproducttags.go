@@ -5,9 +5,9 @@ package types
 // InstagramRelatedProductTags represents a Facebook InstagramRelatedProductTags object
 type InstagramRelatedProductTags struct {
 	Checkout_setting string `json:"checkout_setting"`
-	Id int `json:"id"`
-	Image_uri string `json:"image_uri"`
-	Name string `json:"name"`
-	Price_label string `json:"price_label"`
+	Id               int    `json:"id"`
+	Image_uri        string `json:"image_uri"`
+	Name             string `json:"name"`
+	Price_label      string `json:"price_label"`
 	Sale_price_label string `json:"sale_price_label"`
 }

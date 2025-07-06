@@ -21,7 +21,6 @@ func NewPaymentEnginePaymentClient(accessToken string) *PaymentEnginePaymentClie
 	}
 }
 
-
 // facebook_paymentenginepayment_post_dispute POST dispute for PaymentEnginePayment
 func (c *PaymentEnginePaymentClient) Facebook_paymentenginepayment_post_dispute(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -31,7 +30,6 @@ func (c *PaymentEnginePaymentClient) Facebook_paymentenginepayment_post_dispute(
 	}
 	_ = reason // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "dispute")
 	urlParams := url.Values{}
@@ -40,7 +38,6 @@ func (c *PaymentEnginePaymentClient) Facebook_paymentenginepayment_post_dispute(
 	if val, ok := args["reason"]; ok {
 		urlParams.Set("reason", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -72,7 +69,6 @@ func (c *PaymentEnginePaymentClient) Facebook_paymentenginepayment_post_dispute(
 	return result, nil
 }
 
-
 // facebook_paymentenginepayment_post_refunds POST refunds for PaymentEnginePayment
 func (c *PaymentEnginePaymentClient) Facebook_paymentenginepayment_post_refunds(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -86,7 +82,6 @@ func (c *PaymentEnginePaymentClient) Facebook_paymentenginepayment_post_refunds(
 		return nil, fmt.Errorf("missing required parameter: currency")
 	}
 	_ = currency // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "refunds")
@@ -103,7 +98,6 @@ func (c *PaymentEnginePaymentClient) Facebook_paymentenginepayment_post_refunds(
 		urlParams.Set("reason", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -134,18 +128,14 @@ func (c *PaymentEnginePaymentClient) Facebook_paymentenginepayment_post_refunds(
 	return result, nil
 }
 
-
 // facebook_paymentenginepayment_get_ GET  for PaymentEnginePayment
 func (c *PaymentEnginePaymentClient) Facebook_paymentenginepayment_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -176,4 +166,3 @@ func (c *PaymentEnginePaymentClient) Facebook_paymentenginepayment_get_(args map
 
 	return result, nil
 }
-

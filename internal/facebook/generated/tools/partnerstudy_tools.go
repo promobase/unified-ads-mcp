@@ -15,7 +15,6 @@ import (
 func GetPartnerStudyTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_partnerstudy_get_ tool
 	facebook_partnerstudy_get_Tool := mcp.NewTool("facebook_partnerstudy_get_",
 		mcp.WithDescription("GET  for PartnerStudy"),
@@ -26,12 +25,10 @@ func GetPartnerStudyTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_partnerstudy_get_Tool)
 
-
 	return tools
 }
 
 // PartnerStudy handlers
-
 
 // HandleFacebook_partnerstudy_get_ handles the facebook_partnerstudy_get_ tool
 func HandleFacebook_partnerstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_partnerstudy_get_(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_partnerstudy_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_partnerstudy_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

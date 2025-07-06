@@ -4,6 +4,6 @@ package types
 
 // LeadGenAppointmentTimeSlot represents a Facebook LeadGenAppointmentTimeSlot object
 type LeadGenAppointmentTimeSlot struct {
-	End_time int `json:"end_time"`
+	End_time   int `json:"end_time"`
 	Start_time int `json:"start_time"`
 }

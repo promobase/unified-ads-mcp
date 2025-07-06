@@ -21,18 +21,14 @@ func NewAnalyticsUserConfigClient(accessToken string) *AnalyticsUserConfigClient
 	}
 }
 
-
 // facebook_analyticsuserconfig_get_ GET  for AnalyticsUserConfig
 func (c *AnalyticsUserConfigClient) Facebook_analyticsuserconfig_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -63,4 +59,3 @@ func (c *AnalyticsUserConfigClient) Facebook_analyticsuserconfig_get_(args map[s
 
 	return result, nil
 }
-

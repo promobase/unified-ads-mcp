@@ -4,13 +4,13 @@ package types
 
 // AdsNamingTemplate represents a Facebook AdsNamingTemplate object
 type AdsNamingTemplate struct {
-	Api_fields [][]interface{} `json:"api_fields"`
-	Api_version string `json:"api_version"`
-	Field_order []string `json:"field_order"`
-	Id string `json:"id"`
-	Level string `json:"level"`
-	Separator string `json:"separator"`
-	Template_version string `json:"template_version"`
+	Api_fields          [][]interface{} `json:"api_fields"`
+	Api_version         string          `json:"api_version"`
+	Field_order         []string        `json:"field_order"`
+	Id                  string          `json:"id"`
+	Level               string          `json:"level"`
+	Separator           string          `json:"separator"`
+	Template_version    string          `json:"template_version"`
 	User_defined_fields [][]interface{} `json:"user_defined_fields"`
-	Value_separator string `json:"value_separator"`
+	Value_separator     string          `json:"value_separator"`
 }

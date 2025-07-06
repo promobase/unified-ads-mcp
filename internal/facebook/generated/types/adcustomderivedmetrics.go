@@ -6,21 +6,21 @@ import "time"
 
 // AdCustomDerivedMetrics represents a Facebook AdCustomDerivedMetrics object
 type AdCustomDerivedMetrics struct {
-	Ad_account_id string `json:"ad_account_id"`
-	Business *Business `json:"business"`
-	Creation_time time.Time `json:"creation_time"`
-	Creator *Profile `json:"creator"`
-	Custom_derived_metric_type string `json:"custom_derived_metric_type"`
-	Deletion_time time.Time `json:"deletion_time"`
-	Deletor *Profile `json:"deletor"`
-	Description string `json:"description"`
-	Format_type string `json:"format_type"`
-	Formula string `json:"formula"`
-	Has_attribution_windows bool `json:"has_attribution_windows"`
-	Has_inline_attribution_window bool `json:"has_inline_attribution_window"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Permission string `json:"permission"`
-	Saved_report_id string `json:"saved_report_id"`
-	Scope string `json:"scope"`
+	Ad_account_id                 string    `json:"ad_account_id"`
+	Business                      *Business `json:"business"`
+	Creation_time                 time.Time `json:"creation_time"`
+	Creator                       *Profile  `json:"creator"`
+	Custom_derived_metric_type    string    `json:"custom_derived_metric_type"`
+	Deletion_time                 time.Time `json:"deletion_time"`
+	Deletor                       *Profile  `json:"deletor"`
+	Description                   string    `json:"description"`
+	Format_type                   string    `json:"format_type"`
+	Formula                       string    `json:"formula"`
+	Has_attribution_windows       bool      `json:"has_attribution_windows"`
+	Has_inline_attribution_window bool      `json:"has_inline_attribution_window"`
+	Id                            string    `json:"id"`
+	Name                          string    `json:"name"`
+	Permission                    string    `json:"permission"`
+	Saved_report_id               string    `json:"saved_report_id"`
+	Scope                         string    `json:"scope"`
 }

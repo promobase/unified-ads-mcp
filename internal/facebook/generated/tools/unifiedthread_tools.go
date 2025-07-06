@@ -15,7 +15,6 @@ import (
 func GetUnifiedThreadTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_unifiedthread_get_messages tool
 	facebook_unifiedthread_get_messagesTool := mcp.NewTool("facebook_unifiedthread_get_messages",
 		mcp.WithDescription("GET messages for UnifiedThread"),
@@ -40,12 +39,10 @@ func GetUnifiedThreadTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_unifiedthread_get_Tool)
 
-
 	return tools
 }
 
 // UnifiedThread handlers
-
 
 // HandleFacebook_unifiedthread_get_messages handles the facebook_unifiedthread_get_messages tool
 func HandleFacebook_unifiedthread_get_messages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -66,8 +63,6 @@ func HandleFacebook_unifiedthread_get_messages(ctx context.Context, request mcp.
 		args["source"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_unifiedthread_get_messages(args)
 	if err != nil {
@@ -83,7 +78,6 @@ func HandleFacebook_unifiedthread_get_messages(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_unifiedthread_get_ handles the facebook_unifiedthread_get_ tool
 func HandleFacebook_unifiedthread_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -97,8 +91,6 @@ func HandleFacebook_unifiedthread_get_(ctx context.Context, request mcp.CallTool
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_unifiedthread_get_(args)
@@ -114,4 +106,3 @@ func HandleFacebook_unifiedthread_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

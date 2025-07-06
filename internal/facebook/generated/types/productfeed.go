@@ -6,24 +6,24 @@ import "time"
 
 // ProductFeed represents a Facebook ProductFeed object
 type ProductFeed struct {
-	Country string `json:"country"`
-	Created_time time.Time `json:"created_time"`
-	Default_currency string `json:"default_currency"`
-	Deletion_enabled bool `json:"deletion_enabled"`
-	Delimiter string `json:"delimiter"`
-	Encoding string `json:"encoding"`
-	File_name string `json:"file_name"`
-	Id string `json:"id"`
-	Ingestion_source_type string `json:"ingestion_source_type"`
-	Item_sub_type string `json:"item_sub_type"`
-	Latest_upload *ProductFeedUpload `json:"latest_upload"`
-	Migrated_from_feed_id string `json:"migrated_from_feed_id"`
-	Name string `json:"name"`
-	Override_type string `json:"override_type"`
-	Primary_feeds []string `json:"primary_feeds"`
-	Product_count int `json:"product_count"`
-	Quoted_fields_mode string `json:"quoted_fields_mode"`
-	Schedule *ProductFeedSchedule `json:"schedule"`
-	Supplementary_feeds []string `json:"supplementary_feeds"`
-	Update_schedule *ProductFeedSchedule `json:"update_schedule"`
+	Country               string               `json:"country"`
+	Created_time          time.Time            `json:"created_time"`
+	Default_currency      string               `json:"default_currency"`
+	Deletion_enabled      bool                 `json:"deletion_enabled"`
+	Delimiter             string               `json:"delimiter"`
+	Encoding              string               `json:"encoding"`
+	File_name             string               `json:"file_name"`
+	Id                    string               `json:"id"`
+	Ingestion_source_type string               `json:"ingestion_source_type"`
+	Item_sub_type         string               `json:"item_sub_type"`
+	Latest_upload         *ProductFeedUpload   `json:"latest_upload"`
+	Migrated_from_feed_id string               `json:"migrated_from_feed_id"`
+	Name                  string               `json:"name"`
+	Override_type         string               `json:"override_type"`
+	Primary_feeds         []string             `json:"primary_feeds"`
+	Product_count         int                  `json:"product_count"`
+	Quoted_fields_mode    string               `json:"quoted_fields_mode"`
+	Schedule              *ProductFeedSchedule `json:"schedule"`
+	Supplementary_feeds   []string             `json:"supplementary_feeds"`
+	Update_schedule       *ProductFeedSchedule `json:"update_schedule"`
 }

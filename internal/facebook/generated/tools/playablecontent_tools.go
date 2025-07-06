@@ -15,7 +15,6 @@ import (
 func GetPlayableContentTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_playablecontent_get_ tool
 	facebook_playablecontent_get_Tool := mcp.NewTool("facebook_playablecontent_get_",
 		mcp.WithDescription("GET  for PlayableContent"),
@@ -26,12 +25,10 @@ func GetPlayableContentTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_playablecontent_get_Tool)
 
-
 	return tools
 }
 
 // PlayableContent handlers
-
 
 // HandleFacebook_playablecontent_get_ handles the facebook_playablecontent_get_ tool
 func HandleFacebook_playablecontent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_playablecontent_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_playablecontent_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_playablecontent_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetURLTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_url_get_ tool
 	facebook_url_get_Tool := mcp.NewTool("facebook_url_get_",
 		mcp.WithDescription("GET  for URL"),
@@ -55,12 +54,10 @@ func GetURLTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_url_post_Tool)
 
-
 	return tools
 }
 
 // URL handlers
-
 
 // HandleFacebook_url_get_ handles the facebook_url_get_ tool
 func HandleFacebook_url_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -76,8 +73,6 @@ func HandleFacebook_url_get_(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_url_get_(args)
 	if err != nil {
@@ -92,7 +87,6 @@ func HandleFacebook_url_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_url_post_ handles the facebook_url_post_ tool
 func HandleFacebook_url_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -140,8 +134,6 @@ func HandleFacebook_url_post_(ctx context.Context, request mcp.CallToolRequest) 
 		args["ts"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_url_post_(args)
 	if err != nil {
@@ -156,4 +148,3 @@ func HandleFacebook_url_post_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

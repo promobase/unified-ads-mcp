@@ -15,7 +15,6 @@ import (
 func GetCopyrightMediaMisuseTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_copyrightmediamisuse_get_ tool
 	facebook_copyrightmediamisuse_get_Tool := mcp.NewTool("facebook_copyrightmediamisuse_get_",
 		mcp.WithDescription("GET  for CopyrightMediaMisuse"),
@@ -26,12 +25,10 @@ func GetCopyrightMediaMisuseTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_copyrightmediamisuse_get_Tool)
 
-
 	return tools
 }
 
 // CopyrightMediaMisuse handlers
-
 
 // HandleFacebook_copyrightmediamisuse_get_ handles the facebook_copyrightmediamisuse_get_ tool
 func HandleFacebook_copyrightmediamisuse_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_copyrightmediamisuse_get_(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_copyrightmediamisuse_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_copyrightmediamisuse_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

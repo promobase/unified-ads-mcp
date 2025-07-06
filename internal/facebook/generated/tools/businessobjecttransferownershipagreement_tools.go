@@ -15,7 +15,6 @@ import (
 func GetBusinessObjectTransferOwnershipAgreementTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_businessobjecttransferownershipagreement_get_ tool
 	facebook_businessobjecttransferownershipagreement_get_Tool := mcp.NewTool("facebook_businessobjecttransferownershipagreement_get_",
 		mcp.WithDescription("GET  for BusinessObjectTransferOwnershipAgreement"),
@@ -26,12 +25,10 @@ func GetBusinessObjectTransferOwnershipAgreementTools(accessToken string) []mcp.
 	)
 	tools = append(tools, facebook_businessobjecttransferownershipagreement_get_Tool)
 
-
 	return tools
 }
 
 // BusinessObjectTransferOwnershipAgreement handlers
-
 
 // HandleFacebook_businessobjecttransferownershipagreement_get_ handles the facebook_businessobjecttransferownershipagreement_get_ tool
 func HandleFacebook_businessobjecttransferownershipagreement_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_businessobjecttransferownershipagreement_get_(ctx context.Co
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_businessobjecttransferownershipagreement_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_businessobjecttransferownershipagreement_get_(ctx context.Co
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

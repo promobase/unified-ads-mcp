@@ -5,6 +5,6 @@ package types
 // AdRuleExecutionSpec represents a Facebook AdRuleExecutionSpec object
 type AdRuleExecutionSpec struct {
 	Execution_options []AdRuleExecutionOptions `json:"execution_options"`
-	Execution_type string `json:"execution_type"`
-	Is_once_off bool `json:"is_once_off"`
+	Execution_type    string                   `json:"execution_type"`
+	Is_once_off       bool                     `json:"is_once_off"`
 }

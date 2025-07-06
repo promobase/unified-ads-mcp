@@ -4,7 +4,7 @@ package types
 
 // PagePartnerWithLeadsAccess represents a Facebook PagePartnerWithLeadsAccess object
 type PagePartnerWithLeadsAccess struct {
-	Can_access_leads bool `json:"can_access_leads"`
+	Can_access_leads bool      `json:"can_access_leads"`
 	Partner_business *Business `json:"partner_business"`
-	Permitted_tasks []string `json:"permitted_tasks"`
+	Permitted_tasks  []string  `json:"permitted_tasks"`
 }

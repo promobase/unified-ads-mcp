@@ -21,18 +21,14 @@ func NewIGMediaBoostEligibilityInfoClient(accessToken string) *IGMediaBoostEligi
 	}
 }
 
-
 // facebook_igmediaboosteligibilityinfo_get_ GET  for IGMediaBoostEligibilityInfo
 func (c *IGMediaBoostEligibilityInfoClient) Facebook_igmediaboosteligibilityinfo_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -63,4 +59,3 @@ func (c *IGMediaBoostEligibilityInfoClient) Facebook_igmediaboosteligibilityinfo
 
 	return result, nil
 }
-

@@ -21,18 +21,14 @@ func NewProductGroupClient(accessToken string) *ProductGroupClient {
 	}
 }
 
-
 // facebook_productgroup_get_products GET products for ProductGroup
 func (c *ProductGroupClient) Facebook_productgroup_get_products(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "products")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,7 +60,6 @@ func (c *ProductGroupClient) Facebook_productgroup_get_products(args map[string]
 	return result, nil
 }
 
-
 // facebook_productgroup_post_products POST products for ProductGroup
 func (c *ProductGroupClient) Facebook_productgroup_post_products(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -93,7 +88,6 @@ func (c *ProductGroupClient) Facebook_productgroup_post_products(args map[string
 		return nil, fmt.Errorf("missing required parameter: retailer_id")
 	}
 	_ = retailer_id // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "products")
@@ -314,7 +308,6 @@ func (c *ProductGroupClient) Facebook_productgroup_post_products(args map[string
 		urlParams.Set("windows_phone_url", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -345,11 +338,9 @@ func (c *ProductGroupClient) Facebook_productgroup_post_products(args map[string
 	return result, nil
 }
 
-
 // facebook_productgroup_delete_ DELETE  for ProductGroup
 func (c *ProductGroupClient) Facebook_productgroup_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -359,7 +350,6 @@ func (c *ProductGroupClient) Facebook_productgroup_delete_(args map[string]inter
 	if val, ok := args["deletion_method"]; ok {
 		urlParams.Set("deletion_method", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -391,18 +381,14 @@ func (c *ProductGroupClient) Facebook_productgroup_delete_(args map[string]inter
 	return result, nil
 }
 
-
 // facebook_productgroup_get_ GET  for ProductGroup
 func (c *ProductGroupClient) Facebook_productgroup_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -434,11 +420,9 @@ func (c *ProductGroupClient) Facebook_productgroup_get_(args map[string]interfac
 	return result, nil
 }
 
-
 // facebook_productgroup_post_ POST  for ProductGroup
 func (c *ProductGroupClient) Facebook_productgroup_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -451,7 +435,6 @@ func (c *ProductGroupClient) Facebook_productgroup_post_(args map[string]interfa
 	if val, ok := args["variants"]; ok {
 		urlParams.Set("variants", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -482,4 +465,3 @@ func (c *ProductGroupClient) Facebook_productgroup_post_(args map[string]interfa
 
 	return result, nil
 }
-

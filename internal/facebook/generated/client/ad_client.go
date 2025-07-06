@@ -21,18 +21,14 @@ func NewAdClient(accessToken string) *AdClient {
 	}
 }
 
-
 // facebook_ad_get_adcreatives GET adcreatives for Ad
 func (c *AdClient) Facebook_ad_get_adcreatives(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adcreatives")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,7 +60,6 @@ func (c *AdClient) Facebook_ad_get_adcreatives(args map[string]interface{}) (int
 	return result, nil
 }
 
-
 // facebook_ad_post_adlabels POST adlabels for Ad
 func (c *AdClient) Facebook_ad_post_adlabels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -73,7 +68,6 @@ func (c *AdClient) Facebook_ad_post_adlabels(args map[string]interface{}) (inter
 		return nil, fmt.Errorf("missing required parameter: adlabels")
 	}
 	_ = adlabels // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adlabels")
@@ -86,7 +80,6 @@ func (c *AdClient) Facebook_ad_post_adlabels(args map[string]interface{}) (inter
 	if val, ok := args["execution_options"]; ok {
 		urlParams.Set("execution_options", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -118,11 +111,9 @@ func (c *AdClient) Facebook_ad_post_adlabels(args map[string]interface{}) (inter
 	return result, nil
 }
 
-
 // facebook_ad_get_adrules_governed GET adrules_governed for Ad
 func (c *AdClient) Facebook_ad_get_adrules_governed(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adrules_governed")
@@ -132,7 +123,6 @@ func (c *AdClient) Facebook_ad_get_adrules_governed(args map[string]interface{})
 	if val, ok := args["pass_evaluation"]; ok {
 		urlParams.Set("pass_evaluation", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -164,11 +154,9 @@ func (c *AdClient) Facebook_ad_get_adrules_governed(args map[string]interface{})
 	return result, nil
 }
 
-
 // facebook_ad_get_copies GET copies for Ad
 func (c *AdClient) Facebook_ad_get_copies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "copies")
@@ -188,7 +176,6 @@ func (c *AdClient) Facebook_ad_get_copies(args map[string]interface{}) (interfac
 		urlParams.Set("updated_since", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -219,11 +206,9 @@ func (c *AdClient) Facebook_ad_get_copies(args map[string]interface{}) (interfac
 	return result, nil
 }
 
-
 // facebook_ad_post_copies POST copies for Ad
 func (c *AdClient) Facebook_ad_post_copies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "copies")
@@ -243,7 +228,6 @@ func (c *AdClient) Facebook_ad_post_copies(args map[string]interface{}) (interfa
 		urlParams.Set("status_option", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -274,11 +258,9 @@ func (c *AdClient) Facebook_ad_post_copies(args map[string]interface{}) (interfa
 	return result, nil
 }
 
-
 // facebook_ad_get_insights GET insights for Ad
 func (c *AdClient) Facebook_ad_get_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "insights")
@@ -351,7 +333,6 @@ func (c *AdClient) Facebook_ad_get_insights(args map[string]interface{}) (interf
 	if val, ok := args["use_unified_attribution_setting"]; ok {
 		urlParams.Set("use_unified_attribution_setting", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -383,11 +364,9 @@ func (c *AdClient) Facebook_ad_get_insights(args map[string]interface{}) (interf
 	return result, nil
 }
 
-
 // facebook_ad_post_insights POST insights for Ad
 func (c *AdClient) Facebook_ad_post_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "insights")
@@ -461,7 +440,6 @@ func (c *AdClient) Facebook_ad_post_insights(args map[string]interface{}) (inter
 		urlParams.Set("use_unified_attribution_setting", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -492,19 +470,15 @@ func (c *AdClient) Facebook_ad_post_insights(args map[string]interface{}) (inter
 	return result, nil
 }
 
-
 // facebook_ad_get_leads GET leads for Ad
 func (c *AdClient) Facebook_ad_get_leads(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "leads")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -534,7 +508,6 @@ func (c *AdClient) Facebook_ad_get_leads(args map[string]interface{}) (interface
 
 	return result, nil
 }
-
 
 // facebook_ad_get_previews GET previews for Ad
 func (c *AdClient) Facebook_ad_get_previews(args map[string]interface{}) (interface{}, error) {
@@ -544,7 +517,6 @@ func (c *AdClient) Facebook_ad_get_previews(args map[string]interface{}) (interf
 		return nil, fmt.Errorf("missing required parameter: ad_format")
 	}
 	_ = ad_format // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "previews")
@@ -594,7 +566,6 @@ func (c *AdClient) Facebook_ad_get_previews(args map[string]interface{}) (interf
 		urlParams.Set("width", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -625,19 +596,15 @@ func (c *AdClient) Facebook_ad_get_previews(args map[string]interface{}) (interf
 	return result, nil
 }
 
-
 // facebook_ad_get_targetingsentencelines GET targetingsentencelines for Ad
 func (c *AdClient) Facebook_ad_get_targetingsentencelines(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "targetingsentencelines")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -668,18 +635,14 @@ func (c *AdClient) Facebook_ad_get_targetingsentencelines(args map[string]interf
 	return result, nil
 }
 
-
 // facebook_ad_delete_ DELETE  for Ad
 func (c *AdClient) Facebook_ad_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -711,11 +674,9 @@ func (c *AdClient) Facebook_ad_delete_(args map[string]interface{}) (interface{}
 	return result, nil
 }
 
-
 // facebook_ad_get_ GET  for Ad
 func (c *AdClient) Facebook_ad_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -737,7 +698,6 @@ func (c *AdClient) Facebook_ad_get_(args map[string]interface{}) (interface{}, e
 	if val, ok := args["time_range"]; ok {
 		urlParams.Set("time_range", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -769,11 +729,9 @@ func (c *AdClient) Facebook_ad_get_(args map[string]interface{}) (interface{}, e
 	return result, nil
 }
 
-
 // facebook_ad_post_ POST  for Ad
 func (c *AdClient) Facebook_ad_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -835,7 +793,6 @@ func (c *AdClient) Facebook_ad_post_(args map[string]interface{}) (interface{}, 
 		urlParams.Set("tracking_specs", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -865,4 +822,3 @@ func (c *AdClient) Facebook_ad_post_(args map[string]interface{}) (interface{}, 
 
 	return result, nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetProductSetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_productset_get_automotive_models tool
 	facebook_productset_get_automotive_modelsTool := mcp.NewTool("facebook_productset_get_automotive_models",
 		mcp.WithDescription("GET automotive_models for ProductSet"),
@@ -219,12 +218,10 @@ func GetProductSetTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_productset_post_Tool)
 
-
 	return tools
 }
 
 // ProductSet handlers
-
 
 // HandleFacebook_productset_get_automotive_models handles the facebook_productset_get_automotive_models tool
 func HandleFacebook_productset_get_automotive_models(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -251,8 +248,6 @@ func HandleFacebook_productset_get_automotive_models(ctx context.Context, reques
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productset_get_automotive_models(args)
 	if err != nil {
@@ -267,7 +262,6 @@ func HandleFacebook_productset_get_automotive_models(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productset_get_destinations handles the facebook_productset_get_destinations tool
 func HandleFacebook_productset_get_destinations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -294,8 +288,6 @@ func HandleFacebook_productset_get_destinations(ctx context.Context, request mcp
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productset_get_destinations(args)
 	if err != nil {
@@ -310,7 +302,6 @@ func HandleFacebook_productset_get_destinations(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productset_get_flights handles the facebook_productset_get_flights tool
 func HandleFacebook_productset_get_flights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -337,8 +328,6 @@ func HandleFacebook_productset_get_flights(ctx context.Context, request mcp.Call
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productset_get_flights(args)
 	if err != nil {
@@ -353,7 +342,6 @@ func HandleFacebook_productset_get_flights(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productset_get_home_listings handles the facebook_productset_get_home_listings tool
 func HandleFacebook_productset_get_home_listings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -380,8 +368,6 @@ func HandleFacebook_productset_get_home_listings(ctx context.Context, request mc
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productset_get_home_listings(args)
 	if err != nil {
@@ -396,7 +382,6 @@ func HandleFacebook_productset_get_home_listings(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productset_get_hotels handles the facebook_productset_get_hotels tool
 func HandleFacebook_productset_get_hotels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -423,8 +408,6 @@ func HandleFacebook_productset_get_hotels(ctx context.Context, request mcp.CallT
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productset_get_hotels(args)
 	if err != nil {
@@ -439,7 +422,6 @@ func HandleFacebook_productset_get_hotels(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productset_get_media_titles handles the facebook_productset_get_media_titles tool
 func HandleFacebook_productset_get_media_titles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -466,8 +448,6 @@ func HandleFacebook_productset_get_media_titles(ctx context.Context, request mcp
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productset_get_media_titles(args)
 	if err != nil {
@@ -482,7 +462,6 @@ func HandleFacebook_productset_get_media_titles(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productset_get_products handles the facebook_productset_get_products tool
 func HandleFacebook_productset_get_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -519,8 +498,6 @@ func HandleFacebook_productset_get_products(ctx context.Context, request mcp.Cal
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productset_get_products(args)
 	if err != nil {
@@ -535,7 +512,6 @@ func HandleFacebook_productset_get_products(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productset_get_vehicle_offers handles the facebook_productset_get_vehicle_offers tool
 func HandleFacebook_productset_get_vehicle_offers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -562,8 +538,6 @@ func HandleFacebook_productset_get_vehicle_offers(ctx context.Context, request m
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productset_get_vehicle_offers(args)
 	if err != nil {
@@ -578,7 +552,6 @@ func HandleFacebook_productset_get_vehicle_offers(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productset_get_vehicles handles the facebook_productset_get_vehicles tool
 func HandleFacebook_productset_get_vehicles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -605,8 +578,6 @@ func HandleFacebook_productset_get_vehicles(ctx context.Context, request mcp.Cal
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productset_get_vehicles(args)
 	if err != nil {
@@ -621,7 +592,6 @@ func HandleFacebook_productset_get_vehicles(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productset_delete_ handles the facebook_productset_delete_ tool
 func HandleFacebook_productset_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -642,8 +612,6 @@ func HandleFacebook_productset_delete_(ctx context.Context, request mcp.CallTool
 		args["allow_live_product_set_deletion"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productset_delete_(args)
 	if err != nil {
@@ -659,7 +627,6 @@ func HandleFacebook_productset_delete_(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_productset_get_ handles the facebook_productset_get_ tool
 func HandleFacebook_productset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -673,8 +640,6 @@ func HandleFacebook_productset_get_(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_productset_get_(args)
@@ -690,7 +655,6 @@ func HandleFacebook_productset_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productset_post_ handles the facebook_productset_post_ tool
 func HandleFacebook_productset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -739,8 +703,6 @@ func HandleFacebook_productset_post_(ctx context.Context, request mcp.CallToolRe
 		args["retailer_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productset_post_(args)
 	if err != nil {
@@ -755,4 +717,3 @@ func HandleFacebook_productset_post_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

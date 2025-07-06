@@ -4,6 +4,6 @@ package types
 
 // AdCreativeProductData represents a Facebook AdCreativeProductData object
 type AdCreativeProductData struct {
-	Product_id string `json:"product_id"`
+	Product_id     string `json:"product_id"`
 	Product_source string `json:"product_source"`
 }

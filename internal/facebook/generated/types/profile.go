@@ -4,15 +4,15 @@ package types
 
 // Profile represents a Facebook Profile object
 type Profile struct {
-	Can_post bool `json:"can_post"`
-	Id string `json:"id"`
-	Link string `json:"link"`
-	Name string `json:"name"`
-	Pic string `json:"pic"`
-	Pic_crop *ProfilePictureSource `json:"pic_crop"`
-	Pic_large string `json:"pic_large"`
-	Pic_small string `json:"pic_small"`
-	Pic_square string `json:"pic_square"`
-	Profile_type string `json:"profile_type"`
-	Username string `json:"username"`
+	Can_post     bool                  `json:"can_post"`
+	Id           string                `json:"id"`
+	Link         string                `json:"link"`
+	Name         string                `json:"name"`
+	Pic          string                `json:"pic"`
+	Pic_crop     *ProfilePictureSource `json:"pic_crop"`
+	Pic_large    string                `json:"pic_large"`
+	Pic_small    string                `json:"pic_small"`
+	Pic_square   string                `json:"pic_square"`
+	Profile_type string                `json:"profile_type"`
+	Username     string                `json:"username"`
 }

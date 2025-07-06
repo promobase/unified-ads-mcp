@@ -15,7 +15,6 @@ import (
 func GetAdColumnSizesTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_adcolumnsizes_get_ tool
 	facebook_adcolumnsizes_get_Tool := mcp.NewTool("facebook_adcolumnsizes_get_",
 		mcp.WithDescription("GET  for AdColumnSizes"),
@@ -26,12 +25,10 @@ func GetAdColumnSizesTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_adcolumnsizes_get_Tool)
 
-
 	return tools
 }
 
 // AdColumnSizes handlers
-
 
 // HandleFacebook_adcolumnsizes_get_ handles the facebook_adcolumnsizes_get_ tool
 func HandleFacebook_adcolumnsizes_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_adcolumnsizes_get_(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adcolumnsizes_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_adcolumnsizes_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetRightsManagerDataExportTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_rightsmanagerdataexport_get_ tool
 	facebook_rightsmanagerdataexport_get_Tool := mcp.NewTool("facebook_rightsmanagerdataexport_get_",
 		mcp.WithDescription("GET  for RightsManagerDataExport"),
@@ -26,12 +25,10 @@ func GetRightsManagerDataExportTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_rightsmanagerdataexport_get_Tool)
 
-
 	return tools
 }
 
 // RightsManagerDataExport handlers
-
 
 // HandleFacebook_rightsmanagerdataexport_get_ handles the facebook_rightsmanagerdataexport_get_ tool
 func HandleFacebook_rightsmanagerdataexport_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_rightsmanagerdataexport_get_(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_rightsmanagerdataexport_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_rightsmanagerdataexport_get_(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

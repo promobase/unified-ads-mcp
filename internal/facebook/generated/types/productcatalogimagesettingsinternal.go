@@ -5,6 +5,6 @@ package types
 // ProductCatalogImageSettingsInternal represents a Facebook ProductCatalogImageSettingsInternal object
 type ProductCatalogImageSettingsInternal struct {
 	Carousel_ad *ProductCatalogImageSettingsOperation `json:"carousel_ad"`
-	Shops_pdp *ProductCatalogImageSettingsOperation `json:"shops_pdp"`
-	Single_ad *ProductCatalogImageSettingsOperation `json:"single_ad"`
+	Shops_pdp   *ProductCatalogImageSettingsOperation `json:"shops_pdp"`
+	Single_ad   *ProductCatalogImageSettingsOperation `json:"single_ad"`
 }

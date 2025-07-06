@@ -4,7 +4,7 @@ package types
 
 // CatalogContentVersionConfig represents a Facebook CatalogContentVersionConfig object
 type CatalogContentVersionConfig struct {
-	Id string `json:"id"`
-	Name string `json:"name"`
+	Id      string `json:"id"`
+	Name    string `json:"name"`
 	Version string `json:"version"`
 }

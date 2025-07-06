@@ -15,7 +15,6 @@ import (
 func GetRobotTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_robot_get_ tool
 	facebook_robot_get_Tool := mcp.NewTool("facebook_robot_get_",
 		mcp.WithDescription("GET  for Robot"),
@@ -26,12 +25,10 @@ func GetRobotTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_robot_get_Tool)
 
-
 	return tools
 }
 
 // Robot handlers
-
 
 // HandleFacebook_robot_get_ handles the facebook_robot_get_ tool
 func HandleFacebook_robot_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_robot_get_(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_robot_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_robot_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetPageCallToActionTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_pagecalltoaction_delete_ tool
 	facebook_pagecalltoaction_delete_Tool := mcp.NewTool("facebook_pagecalltoaction_delete_",
 		mcp.WithDescription("DELETE  for PageCallToAction"),
@@ -86,12 +85,10 @@ func GetPageCallToActionTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_pagecalltoaction_post_Tool)
 
-
 	return tools
 }
 
 // PageCallToAction handlers
-
 
 // HandleFacebook_pagecalltoaction_delete_ handles the facebook_pagecalltoaction_delete_ tool
 func HandleFacebook_pagecalltoaction_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -106,8 +103,6 @@ func HandleFacebook_pagecalltoaction_delete_(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_pagecalltoaction_delete_(args)
@@ -124,7 +119,6 @@ func HandleFacebook_pagecalltoaction_delete_(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_pagecalltoaction_get_ handles the facebook_pagecalltoaction_get_ tool
 func HandleFacebook_pagecalltoaction_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -138,8 +132,6 @@ func HandleFacebook_pagecalltoaction_get_(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_pagecalltoaction_get_(args)
@@ -155,7 +147,6 @@ func HandleFacebook_pagecalltoaction_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_pagecalltoaction_post_ handles the facebook_pagecalltoaction_post_ tool
 func HandleFacebook_pagecalltoaction_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -231,8 +222,6 @@ func HandleFacebook_pagecalltoaction_post_(ctx context.Context, request mcp.Call
 		args["web_url"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_pagecalltoaction_post_(args)
 	if err != nil {
@@ -247,4 +236,3 @@ func HandleFacebook_pagecalltoaction_post_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

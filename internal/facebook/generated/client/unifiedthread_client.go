@@ -21,11 +21,9 @@ func NewUnifiedThreadClient(accessToken string) *UnifiedThreadClient {
 	}
 }
 
-
 // facebook_unifiedthread_get_messages GET messages for UnifiedThread
 func (c *UnifiedThreadClient) Facebook_unifiedthread_get_messages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "messages")
@@ -36,7 +34,6 @@ func (c *UnifiedThreadClient) Facebook_unifiedthread_get_messages(args map[strin
 		urlParams.Set("source", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -67,19 +64,15 @@ func (c *UnifiedThreadClient) Facebook_unifiedthread_get_messages(args map[strin
 	return result, nil
 }
 
-
 // facebook_unifiedthread_get_ GET  for UnifiedThread
 func (c *UnifiedThreadClient) Facebook_unifiedthread_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -109,4 +102,3 @@ func (c *UnifiedThreadClient) Facebook_unifiedthread_get_(args map[string]interf
 
 	return result, nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetWhitehatFBDLRunTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_whitehatfbdlrun_get_ tool
 	facebook_whitehatfbdlrun_get_Tool := mcp.NewTool("facebook_whitehatfbdlrun_get_",
 		mcp.WithDescription("GET  for WhitehatFBDLRun"),
@@ -26,12 +25,10 @@ func GetWhitehatFBDLRunTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_whitehatfbdlrun_get_Tool)
 
-
 	return tools
 }
 
 // WhitehatFBDLRun handlers
-
 
 // HandleFacebook_whitehatfbdlrun_get_ handles the facebook_whitehatfbdlrun_get_ tool
 func HandleFacebook_whitehatfbdlrun_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_whitehatfbdlrun_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_whitehatfbdlrun_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_whitehatfbdlrun_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -5,9 +5,9 @@ package types
 // AdCreativePhotoData represents a Facebook AdCreativePhotoData object
 type AdCreativePhotoData struct {
 	Branded_content_shared_to_sponsor_status string `json:"branded_content_shared_to_sponsor_status"`
-	Branded_content_sponsor_page_id string `json:"branded_content_sponsor_page_id"`
-	Caption string `json:"caption"`
-	Image_hash string `json:"image_hash"`
-	Page_welcome_message string `json:"page_welcome_message"`
-	Url string `json:"url"`
+	Branded_content_sponsor_page_id          string `json:"branded_content_sponsor_page_id"`
+	Caption                                  string `json:"caption"`
+	Image_hash                               string `json:"image_hash"`
+	Page_welcome_message                     string `json:"page_welcome_message"`
+	Url                                      string `json:"url"`
 }

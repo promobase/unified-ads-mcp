@@ -6,8 +6,8 @@ import "time"
 
 // AdAccountASLSchedule represents a Facebook AdAccountASLSchedule object
 type AdAccountASLSchedule struct {
-	Ad_account *AdAccount `json:"ad_account"`
-	Id string `json:"id"`
-	Time_created time.Time `json:"time_created"`
-	Time_updated time.Time `json:"time_updated"`
+	Ad_account   *AdAccount `json:"ad_account"`
+	Id           string     `json:"id"`
+	Time_created time.Time  `json:"time_created"`
+	Time_updated time.Time  `json:"time_updated"`
 }

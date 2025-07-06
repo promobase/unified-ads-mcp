@@ -15,7 +15,6 @@ import (
 func GetSavedAudienceTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_savedaudience_get_ tool
 	facebook_savedaudience_get_Tool := mcp.NewTool("facebook_savedaudience_get_",
 		mcp.WithDescription("GET  for SavedAudience"),
@@ -26,12 +25,10 @@ func GetSavedAudienceTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_savedaudience_get_Tool)
 
-
 	return tools
 }
 
 // SavedAudience handlers
-
 
 // HandleFacebook_savedaudience_get_ handles the facebook_savedaudience_get_ tool
 func HandleFacebook_savedaudience_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_savedaudience_get_(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_savedaudience_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_savedaudience_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

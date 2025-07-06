@@ -4,8 +4,8 @@ package types
 
 // WebsiteCreativeAssetSuggestions represents a Facebook WebsiteCreativeAssetSuggestions object
 type WebsiteCreativeAssetSuggestions struct {
-	Ad_account_id string `json:"ad_account_id"`
+	Ad_account_id     string `json:"ad_account_id"`
 	Extraction_status string `json:"extraction_status"`
-	Id string `json:"id"`
-	Link_url string `json:"link_url"`
+	Id                string `json:"id"`
+	Link_url          string `json:"link_url"`
 }

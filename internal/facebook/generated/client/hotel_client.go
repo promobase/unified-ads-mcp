@@ -21,19 +21,15 @@ func NewHotelClient(accessToken string) *HotelClient {
 	}
 }
 
-
 // facebook_hotel_get_channels_to_integrity_status GET channels_to_integrity_status for Hotel
 func (c *HotelClient) Facebook_hotel_get_channels_to_integrity_status(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "channels_to_integrity_status")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *HotelClient) Facebook_hotel_get_channels_to_integrity_status(args map[s
 	return result, nil
 }
 
-
 // facebook_hotel_get_hotel_rooms GET hotel_rooms for Hotel
 func (c *HotelClient) Facebook_hotel_get_hotel_rooms(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "hotel_rooms")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -107,11 +99,9 @@ func (c *HotelClient) Facebook_hotel_get_hotel_rooms(args map[string]interface{}
 	return result, nil
 }
 
-
 // facebook_hotel_get_override_details GET override_details for Hotel
 func (c *HotelClient) Facebook_hotel_get_override_details(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "override_details")
@@ -125,7 +115,6 @@ func (c *HotelClient) Facebook_hotel_get_override_details(args map[string]interf
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -156,19 +145,15 @@ func (c *HotelClient) Facebook_hotel_get_override_details(args map[string]interf
 	return result, nil
 }
 
-
 // facebook_hotel_get_videos_metadata GET videos_metadata for Hotel
 func (c *HotelClient) Facebook_hotel_get_videos_metadata(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "videos_metadata")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -199,18 +184,14 @@ func (c *HotelClient) Facebook_hotel_get_videos_metadata(args map[string]interfa
 	return result, nil
 }
 
-
 // facebook_hotel_delete_ DELETE  for Hotel
 func (c *HotelClient) Facebook_hotel_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -242,18 +223,14 @@ func (c *HotelClient) Facebook_hotel_delete_(args map[string]interface{}) (inter
 	return result, nil
 }
 
-
 // facebook_hotel_get_ GET  for Hotel
 func (c *HotelClient) Facebook_hotel_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -285,11 +262,9 @@ func (c *HotelClient) Facebook_hotel_get_(args map[string]interface{}) (interfac
 	return result, nil
 }
 
-
 // facebook_hotel_post_ POST  for Hotel
 func (c *HotelClient) Facebook_hotel_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -333,7 +308,6 @@ func (c *HotelClient) Facebook_hotel_post_(args map[string]interface{}) (interfa
 		urlParams.Set("url", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -363,4 +337,3 @@ func (c *HotelClient) Facebook_hotel_post_(args map[string]interface{}) (interfa
 
 	return result, nil
 }
-

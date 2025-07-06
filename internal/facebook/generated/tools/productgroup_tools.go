@@ -15,7 +15,6 @@ import (
 func GetProductGroupTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_productgroup_get_products tool
 	facebook_productgroup_get_productsTool := mcp.NewTool("facebook_productgroup_get_products",
 		mcp.WithDescription("GET products for ProductGroup"),
@@ -301,12 +300,10 @@ func GetProductGroupTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_productgroup_post_Tool)
 
-
 	return tools
 }
 
 // ProductGroup handlers
-
 
 // HandleFacebook_productgroup_get_products handles the facebook_productgroup_get_products tool
 func HandleFacebook_productgroup_get_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -322,8 +319,6 @@ func HandleFacebook_productgroup_get_products(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productgroup_get_products(args)
 	if err != nil {
@@ -338,7 +333,6 @@ func HandleFacebook_productgroup_get_products(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productgroup_post_products handles the facebook_productgroup_post_products tool
 func HandleFacebook_productgroup_post_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -720,8 +714,6 @@ func HandleFacebook_productgroup_post_products(ctx context.Context, request mcp.
 		args["windows_phone_url"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productgroup_post_products(args)
 	if err != nil {
@@ -736,7 +728,6 @@ func HandleFacebook_productgroup_post_products(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productgroup_delete_ handles the facebook_productgroup_delete_ tool
 func HandleFacebook_productgroup_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -757,8 +748,6 @@ func HandleFacebook_productgroup_delete_(ctx context.Context, request mcp.CallTo
 		args["deletion_method"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productgroup_delete_(args)
 	if err != nil {
@@ -774,7 +763,6 @@ func HandleFacebook_productgroup_delete_(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_productgroup_get_ handles the facebook_productgroup_get_ tool
 func HandleFacebook_productgroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -788,8 +776,6 @@ func HandleFacebook_productgroup_get_(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_productgroup_get_(args)
@@ -805,7 +791,6 @@ func HandleFacebook_productgroup_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productgroup_post_ handles the facebook_productgroup_post_ tool
 func HandleFacebook_productgroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -832,8 +817,6 @@ func HandleFacebook_productgroup_post_(ctx context.Context, request mcp.CallTool
 		args["variants"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productgroup_post_(args)
 	if err != nil {
@@ -848,4 +831,3 @@ func HandleFacebook_productgroup_post_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

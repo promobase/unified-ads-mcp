@@ -15,7 +15,6 @@ import (
 func GetAdSavedReportTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_adsavedreport_get_ tool
 	facebook_adsavedreport_get_Tool := mcp.NewTool("facebook_adsavedreport_get_",
 		mcp.WithDescription("GET  for AdSavedReport"),
@@ -26,12 +25,10 @@ func GetAdSavedReportTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_adsavedreport_get_Tool)
 
-
 	return tools
 }
 
 // AdSavedReport handlers
-
 
 // HandleFacebook_adsavedreport_get_ handles the facebook_adsavedreport_get_ tool
 func HandleFacebook_adsavedreport_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_adsavedreport_get_(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adsavedreport_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_adsavedreport_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

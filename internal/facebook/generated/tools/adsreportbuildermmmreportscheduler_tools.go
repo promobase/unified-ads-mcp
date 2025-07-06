@@ -15,7 +15,6 @@ import (
 func GetAdsReportBuilderMMMReportSchedulerTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_adsreportbuildermmmreportscheduler_get_ tool
 	facebook_adsreportbuildermmmreportscheduler_get_Tool := mcp.NewTool("facebook_adsreportbuildermmmreportscheduler_get_",
 		mcp.WithDescription("GET  for AdsReportBuilderMMMReportScheduler"),
@@ -26,12 +25,10 @@ func GetAdsReportBuilderMMMReportSchedulerTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_adsreportbuildermmmreportscheduler_get_Tool)
 
-
 	return tools
 }
 
 // AdsReportBuilderMMMReportScheduler handlers
-
 
 // HandleFacebook_adsreportbuildermmmreportscheduler_get_ handles the facebook_adsreportbuildermmmreportscheduler_get_ tool
 func HandleFacebook_adsreportbuildermmmreportscheduler_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_adsreportbuildermmmreportscheduler_get_(ctx context.Context,
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adsreportbuildermmmreportscheduler_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_adsreportbuildermmmreportscheduler_get_(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

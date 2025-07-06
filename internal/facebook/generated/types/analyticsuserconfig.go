@@ -5,6 +5,6 @@ package types
 // AnalyticsUserConfig represents a Facebook AnalyticsUserConfig object
 type AnalyticsUserConfig struct {
 	Demo_app_nux_config map[string]interface{} `json:"demo_app_nux_config"`
-	Flags []interface{} `json:"flags"`
-	Id string `json:"id"`
+	Flags               []interface{}          `json:"flags"`
+	Id                  string                 `json:"id"`
 }

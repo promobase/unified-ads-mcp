@@ -5,6 +5,6 @@ package types
 // AdAssetFeedSpecDescription represents a Facebook AdAssetFeedSpecDescription object
 type AdAssetFeedSpecDescription struct {
 	Adlabels []AdAssetFeedSpecAssetLabel `json:"adlabels"`
-	Text string `json:"text"`
-	Url_tags string `json:"url_tags"`
+	Text     string                      `json:"text"`
+	Url_tags string                      `json:"url_tags"`
 }

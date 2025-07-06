@@ -15,7 +15,6 @@ import (
 func GetCanvasTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_canvas_get_preview tool
 	facebook_canvas_get_previewTool := mcp.NewTool("facebook_canvas_get_preview",
 		mcp.WithDescription("GET preview for Canvas"),
@@ -80,12 +79,10 @@ func GetCanvasTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_canvas_post_Tool)
 
-
 	return tools
 }
 
 // Canvas handlers
-
 
 // HandleFacebook_canvas_get_preview handles the facebook_canvas_get_preview tool
 func HandleFacebook_canvas_get_preview(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -101,8 +98,6 @@ func HandleFacebook_canvas_get_preview(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_canvas_get_preview(args)
 	if err != nil {
@@ -117,7 +112,6 @@ func HandleFacebook_canvas_get_preview(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_canvas_get_previews handles the facebook_canvas_get_previews tool
 func HandleFacebook_canvas_get_previews(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -139,8 +133,6 @@ func HandleFacebook_canvas_get_previews(ctx context.Context, request mcp.CallToo
 		args["user_ids"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_canvas_get_previews(args)
 	if err != nil {
@@ -156,7 +148,6 @@ func HandleFacebook_canvas_get_previews(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_canvas_get_ handles the facebook_canvas_get_ tool
 func HandleFacebook_canvas_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -170,8 +161,6 @@ func HandleFacebook_canvas_get_(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_canvas_get_(args)
@@ -187,7 +176,6 @@ func HandleFacebook_canvas_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_canvas_post_ handles the facebook_canvas_post_ tool
 func HandleFacebook_canvas_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -239,8 +227,6 @@ func HandleFacebook_canvas_post_(ctx context.Context, request mcp.CallToolReques
 		args["source_template_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_canvas_post_(args)
 	if err != nil {
@@ -255,4 +241,3 @@ func HandleFacebook_canvas_post_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

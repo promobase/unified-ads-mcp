@@ -6,9 +6,9 @@ import "time"
 
 // AdsCreationSavedState represents a Facebook AdsCreationSavedState object
 type AdsCreationSavedState struct {
-	Ad_account *AdAccount `json:"ad_account"`
-	Id string `json:"id"`
-	Serialized_store_data string `json:"serialized_store_data"`
-	Time_updated time.Time `json:"time_updated"`
-	User map[string]interface{} `json:"user"`
+	Ad_account            *AdAccount             `json:"ad_account"`
+	Id                    string                 `json:"id"`
+	Serialized_store_data string                 `json:"serialized_store_data"`
+	Time_updated          time.Time              `json:"time_updated"`
+	User                  map[string]interface{} `json:"user"`
 }

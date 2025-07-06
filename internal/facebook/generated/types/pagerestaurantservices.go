@@ -6,12 +6,12 @@ package types
 type PageRestaurantServices struct {
 	Catering bool `json:"catering"`
 	Delivery bool `json:"delivery"`
-	Groups bool `json:"groups"`
-	Kids bool `json:"kids"`
-	Outdoor bool `json:"outdoor"`
-	Pickup bool `json:"pickup"`
-	Reserve bool `json:"reserve"`
-	Takeout bool `json:"takeout"`
-	Waiter bool `json:"waiter"`
-	Walkins bool `json:"walkins"`
+	Groups   bool `json:"groups"`
+	Kids     bool `json:"kids"`
+	Outdoor  bool `json:"outdoor"`
+	Pickup   bool `json:"pickup"`
+	Reserve  bool `json:"reserve"`
+	Takeout  bool `json:"takeout"`
+	Waiter   bool `json:"waiter"`
+	Walkins  bool `json:"walkins"`
 }

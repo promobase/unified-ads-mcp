@@ -5,5 +5,5 @@ package types
 // ProductCatalogUserTasks represents a Facebook ProductCatalogUserTasks object
 type ProductCatalogUserTasks struct {
 	Business *Business `json:"business"`
-	Tasks []string `json:"tasks"`
+	Tasks    []string  `json:"tasks"`
 }

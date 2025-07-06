@@ -21,19 +21,15 @@ func NewIGMediaForIGOnlyAPIClient(accessToken string) *IGMediaForIGOnlyAPIClient
 	}
 }
 
-
 // facebook_igmediaforigonlyapi_get_children GET children for IGMediaForIGOnlyAPI
 func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_get_children(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "children")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_get_children(ar
 	return result, nil
 }
 
-
 // facebook_igmediaforigonlyapi_get_comments GET comments for IGMediaForIGOnlyAPI
 func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_get_comments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "comments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -107,11 +99,9 @@ func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_get_comments(ar
 	return result, nil
 }
 
-
 // facebook_igmediaforigonlyapi_post_comments POST comments for IGMediaForIGOnlyAPI
 func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_post_comments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "comments")
@@ -121,7 +111,6 @@ func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_post_comments(a
 	if val, ok := args["message"]; ok {
 		urlParams.Set("message", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -153,7 +142,6 @@ func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_post_comments(a
 	return result, nil
 }
 
-
 // facebook_igmediaforigonlyapi_get_insights GET insights for IGMediaForIGOnlyAPI
 func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_get_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -162,7 +150,6 @@ func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_get_insights(ar
 		return nil, fmt.Errorf("missing required parameter: metric")
 	}
 	_ = metric // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "insights")
@@ -179,7 +166,6 @@ func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_get_insights(ar
 		urlParams.Set("period", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -210,19 +196,15 @@ func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_get_insights(ar
 	return result, nil
 }
 
-
 // facebook_igmediaforigonlyapi_get_ GET  for IGMediaForIGOnlyAPI
 func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -252,7 +234,6 @@ func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_get_(args map[s
 
 	return result, nil
 }
-
 
 // facebook_igmediaforigonlyapi_post_ POST  for IGMediaForIGOnlyAPI
 func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_post_(args map[string]interface{}) (interface{}, error) {
@@ -263,7 +244,6 @@ func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_post_(args map[
 	}
 	_ = comment_enabled // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
@@ -272,7 +252,6 @@ func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_post_(args map[
 	if val, ok := args["comment_enabled"]; ok {
 		urlParams.Set("comment_enabled", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -303,4 +282,3 @@ func (c *IGMediaForIGOnlyAPIClient) Facebook_igmediaforigonlyapi_post_(args map[
 
 	return result, nil
 }
-

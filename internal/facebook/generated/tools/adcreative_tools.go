@@ -15,7 +15,6 @@ import (
 func GetAdCreativeTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_adcreative_post_adlabels tool
 	facebook_adcreative_post_adlabelsTool := mcp.NewTool("facebook_adcreative_post_adlabels",
 		mcp.WithDescription("POST adlabels for AdCreative"),
@@ -158,12 +157,10 @@ func GetAdCreativeTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_adcreative_post_Tool)
 
-
 	return tools
 }
 
 // AdCreative handlers
-
 
 // HandleFacebook_adcreative_post_adlabels handles the facebook_adcreative_post_adlabels tool
 func HandleFacebook_adcreative_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -186,8 +183,6 @@ func HandleFacebook_adcreative_post_adlabels(ctx context.Context, request mcp.Ca
 	}
 	args["adlabels"] = adlabels
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adcreative_post_adlabels(args)
 	if err != nil {
@@ -203,7 +198,6 @@ func HandleFacebook_adcreative_post_adlabels(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adcreative_get_creative_insights handles the facebook_adcreative_get_creative_insights tool
 func HandleFacebook_adcreative_get_creative_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -217,8 +211,6 @@ func HandleFacebook_adcreative_get_creative_insights(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adcreative_get_creative_insights(args)
@@ -234,7 +226,6 @@ func HandleFacebook_adcreative_get_creative_insights(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adcreative_get_previews handles the facebook_adcreative_get_previews tool
 func HandleFacebook_adcreative_get_previews(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -326,8 +317,6 @@ func HandleFacebook_adcreative_get_previews(ctx context.Context, request mcp.Cal
 		args["width"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adcreative_get_previews(args)
 	if err != nil {
@@ -342,7 +331,6 @@ func HandleFacebook_adcreative_get_previews(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adcreative_delete_ handles the facebook_adcreative_delete_ tool
 func HandleFacebook_adcreative_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -379,8 +367,6 @@ func HandleFacebook_adcreative_delete_(ctx context.Context, request mcp.CallTool
 		args["status"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adcreative_delete_(args)
 	if err != nil {
@@ -395,7 +381,6 @@ func HandleFacebook_adcreative_delete_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adcreative_get_ handles the facebook_adcreative_get_ tool
 func HandleFacebook_adcreative_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -421,8 +406,6 @@ func HandleFacebook_adcreative_get_(ctx context.Context, request mcp.CallToolReq
 		args["thumbnail_width"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adcreative_get_(args)
 	if err != nil {
@@ -437,7 +420,6 @@ func HandleFacebook_adcreative_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adcreative_post_ handles the facebook_adcreative_post_ tool
 func HandleFacebook_adcreative_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -474,8 +456,6 @@ func HandleFacebook_adcreative_post_(ctx context.Context, request mcp.CallToolRe
 		args["status"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adcreative_post_(args)
 	if err != nil {
@@ -490,4 +470,3 @@ func HandleFacebook_adcreative_post_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

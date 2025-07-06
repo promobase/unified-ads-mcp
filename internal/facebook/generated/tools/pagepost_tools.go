@@ -15,7 +15,6 @@ import (
 func GetPagePostTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_pagepost_get_attachments tool
 	facebook_pagepost_get_attachmentsTool := mcp.NewTool("facebook_pagepost_get_attachments",
 		mcp.WithDescription("GET attachments for PagePost"),
@@ -353,12 +352,10 @@ func GetPagePostTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_pagepost_post_Tool)
 
-
 	return tools
 }
 
 // PagePost handlers
-
 
 // HandleFacebook_pagepost_get_attachments handles the facebook_pagepost_get_attachments tool
 func HandleFacebook_pagepost_get_attachments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -374,8 +371,6 @@ func HandleFacebook_pagepost_get_attachments(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_pagepost_get_attachments(args)
 	if err != nil {
@@ -390,7 +385,6 @@ func HandleFacebook_pagepost_get_attachments(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_pagepost_get_comments handles the facebook_pagepost_get_comments tool
 func HandleFacebook_pagepost_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -426,8 +420,6 @@ func HandleFacebook_pagepost_get_comments(ctx context.Context, request mcp.CallT
 		args["since"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_pagepost_get_comments(args)
 	if err != nil {
@@ -442,7 +434,6 @@ func HandleFacebook_pagepost_get_comments(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_pagepost_post_comments handles the facebook_pagepost_post_comments tool
 func HandleFacebook_pagepost_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -514,8 +505,6 @@ func HandleFacebook_pagepost_post_comments(ctx context.Context, request mcp.Call
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_pagepost_post_comments(args)
 	if err != nil {
@@ -531,7 +520,6 @@ func HandleFacebook_pagepost_post_comments(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_pagepost_get_dynamic_posts handles the facebook_pagepost_get_dynamic_posts tool
 func HandleFacebook_pagepost_get_dynamic_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -545,8 +533,6 @@ func HandleFacebook_pagepost_get_dynamic_posts(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_pagepost_get_dynamic_posts(args)
@@ -562,7 +548,6 @@ func HandleFacebook_pagepost_get_dynamic_posts(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_pagepost_get_insights handles the facebook_pagepost_get_insights tool
 func HandleFacebook_pagepost_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -604,8 +589,6 @@ func HandleFacebook_pagepost_get_insights(ctx context.Context, request mcp.CallT
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_pagepost_get_insights(args)
 	if err != nil {
@@ -620,7 +603,6 @@ func HandleFacebook_pagepost_get_insights(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_pagepost_delete_likes handles the facebook_pagepost_delete_likes tool
 func HandleFacebook_pagepost_delete_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -646,8 +628,6 @@ func HandleFacebook_pagepost_delete_likes(ctx context.Context, request mcp.CallT
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_pagepost_delete_likes(args)
 	if err != nil {
@@ -663,7 +643,6 @@ func HandleFacebook_pagepost_delete_likes(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_pagepost_get_likes handles the facebook_pagepost_get_likes tool
 func HandleFacebook_pagepost_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -677,8 +656,6 @@ func HandleFacebook_pagepost_get_likes(ctx context.Context, request mcp.CallTool
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_pagepost_get_likes(args)
@@ -694,7 +671,6 @@ func HandleFacebook_pagepost_get_likes(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_pagepost_post_likes handles the facebook_pagepost_post_likes tool
 func HandleFacebook_pagepost_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -725,8 +701,6 @@ func HandleFacebook_pagepost_post_likes(ctx context.Context, request mcp.CallToo
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_pagepost_post_likes(args)
 	if err != nil {
@@ -741,7 +715,6 @@ func HandleFacebook_pagepost_post_likes(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_pagepost_get_reactions handles the facebook_pagepost_get_reactions tool
 func HandleFacebook_pagepost_get_reactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -762,8 +735,6 @@ func HandleFacebook_pagepost_get_reactions(ctx context.Context, request mcp.Call
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_pagepost_get_reactions(args)
 	if err != nil {
@@ -779,7 +750,6 @@ func HandleFacebook_pagepost_get_reactions(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_pagepost_get_sharedposts handles the facebook_pagepost_get_sharedposts tool
 func HandleFacebook_pagepost_get_sharedposts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -793,8 +763,6 @@ func HandleFacebook_pagepost_get_sharedposts(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_pagepost_get_sharedposts(args)
@@ -811,7 +779,6 @@ func HandleFacebook_pagepost_get_sharedposts(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_pagepost_get_sponsor_tags handles the facebook_pagepost_get_sponsor_tags tool
 func HandleFacebook_pagepost_get_sponsor_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -825,8 +792,6 @@ func HandleFacebook_pagepost_get_sponsor_tags(ctx context.Context, request mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_pagepost_get_sponsor_tags(args)
@@ -843,7 +808,6 @@ func HandleFacebook_pagepost_get_sponsor_tags(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_pagepost_get_to handles the facebook_pagepost_get_to tool
 func HandleFacebook_pagepost_get_to(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -857,8 +821,6 @@ func HandleFacebook_pagepost_get_to(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_pagepost_get_to(args)
@@ -875,7 +837,6 @@ func HandleFacebook_pagepost_get_to(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_pagepost_delete_ handles the facebook_pagepost_delete_ tool
 func HandleFacebook_pagepost_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -889,8 +850,6 @@ func HandleFacebook_pagepost_delete_(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_pagepost_delete_(args)
@@ -906,7 +865,6 @@ func HandleFacebook_pagepost_delete_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_pagepost_get_ handles the facebook_pagepost_get_ tool
 func HandleFacebook_pagepost_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -932,8 +890,6 @@ func HandleFacebook_pagepost_get_(ctx context.Context, request mcp.CallToolReque
 		args["primary_ig_user_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_pagepost_get_(args)
 	if err != nil {
@@ -948,7 +904,6 @@ func HandleFacebook_pagepost_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_pagepost_post_ handles the facebook_pagepost_post_ tool
 func HandleFacebook_pagepost_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1124,8 +1079,6 @@ func HandleFacebook_pagepost_post_(ctx context.Context, request mcp.CallToolRequ
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_pagepost_post_(args)
 	if err != nil {
@@ -1140,4 +1093,3 @@ func HandleFacebook_pagepost_post_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

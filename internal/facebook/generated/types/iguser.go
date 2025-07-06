@@ -4,23 +4,23 @@ package types
 
 // IGUser represents a Facebook IGUser object
 type IGUser struct {
-	Biography string `json:"biography"`
-	Business_discovery *IGUser `json:"business_discovery"`
-	Followers_count int `json:"followers_count"`
-	Follows_count int `json:"follows_count"`
-	Has_profile_pic bool `json:"has_profile_pic"`
-	Id string `json:"id"`
-	Ig_id int `json:"ig_id"`
-	Is_published bool `json:"is_published"`
-	Legacy_instagram_user_id string `json:"legacy_instagram_user_id"`
-	Media_count int `json:"media_count"`
-	Mentioned_comment *IGComment `json:"mentioned_comment"`
-	Mentioned_media *IGMedia `json:"mentioned_media"`
-	Name string `json:"name"`
-	Owner_business *Business `json:"owner_business"`
-	Profile_picture_url string `json:"profile_picture_url"`
-	Shopping_product_tag_eligibility bool `json:"shopping_product_tag_eligibility"`
-	Shopping_review_status string `json:"shopping_review_status"`
-	Username string `json:"username"`
-	Website string `json:"website"`
+	Biography                        string     `json:"biography"`
+	Business_discovery               *IGUser    `json:"business_discovery"`
+	Followers_count                  int        `json:"followers_count"`
+	Follows_count                    int        `json:"follows_count"`
+	Has_profile_pic                  bool       `json:"has_profile_pic"`
+	Id                               string     `json:"id"`
+	Ig_id                            int        `json:"ig_id"`
+	Is_published                     bool       `json:"is_published"`
+	Legacy_instagram_user_id         string     `json:"legacy_instagram_user_id"`
+	Media_count                      int        `json:"media_count"`
+	Mentioned_comment                *IGComment `json:"mentioned_comment"`
+	Mentioned_media                  *IGMedia   `json:"mentioned_media"`
+	Name                             string     `json:"name"`
+	Owner_business                   *Business  `json:"owner_business"`
+	Profile_picture_url              string     `json:"profile_picture_url"`
+	Shopping_product_tag_eligibility bool       `json:"shopping_product_tag_eligibility"`
+	Shopping_review_status           string     `json:"shopping_review_status"`
+	Username                         string     `json:"username"`
+	Website                          string     `json:"website"`
 }

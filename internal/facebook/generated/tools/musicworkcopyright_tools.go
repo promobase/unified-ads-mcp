@@ -15,7 +15,6 @@ import (
 func GetMusicWorkCopyrightTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_musicworkcopyright_get_ tool
 	facebook_musicworkcopyright_get_Tool := mcp.NewTool("facebook_musicworkcopyright_get_",
 		mcp.WithDescription("GET  for MusicWorkCopyright"),
@@ -26,12 +25,10 @@ func GetMusicWorkCopyrightTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_musicworkcopyright_get_Tool)
 
-
 	return tools
 }
 
 // MusicWorkCopyright handlers
-
 
 // HandleFacebook_musicworkcopyright_get_ handles the facebook_musicworkcopyright_get_ tool
 func HandleFacebook_musicworkcopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_musicworkcopyright_get_(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_musicworkcopyright_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_musicworkcopyright_get_(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetOmegaCustomerTrxTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_omegacustomertrx_get_campaigns tool
 	facebook_omegacustomertrx_get_campaignsTool := mcp.NewTool("facebook_omegacustomertrx_get_campaigns",
 		mcp.WithDescription("GET campaigns for OmegaCustomerTrx"),
@@ -36,12 +35,10 @@ func GetOmegaCustomerTrxTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_omegacustomertrx_get_Tool)
 
-
 	return tools
 }
 
 // OmegaCustomerTrx handlers
-
 
 // HandleFacebook_omegacustomertrx_get_campaigns handles the facebook_omegacustomertrx_get_campaigns tool
 func HandleFacebook_omegacustomertrx_get_campaigns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleFacebook_omegacustomertrx_get_campaigns(ctx context.Context, request 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_omegacustomertrx_get_campaigns(args)
@@ -74,7 +69,6 @@ func HandleFacebook_omegacustomertrx_get_campaigns(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_omegacustomertrx_get_ handles the facebook_omegacustomertrx_get_ tool
 func HandleFacebook_omegacustomertrx_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleFacebook_omegacustomertrx_get_(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_omegacustomertrx_get_(args)
@@ -105,4 +97,3 @@ func HandleFacebook_omegacustomertrx_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

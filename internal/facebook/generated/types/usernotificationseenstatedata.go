@@ -4,6 +4,6 @@ package types
 
 // UserNotificationSeenStateData represents a Facebook UserNotificationSeenStateData object
 type UserNotificationSeenStateData struct {
-	Id string `json:"id"`
+	Id         string `json:"id"`
 	Seen_state string `json:"seen_state"`
 }

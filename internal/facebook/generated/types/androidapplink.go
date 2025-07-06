@@ -5,7 +5,7 @@ package types
 // AndroidAppLink represents a Facebook AndroidAppLink object
 type AndroidAppLink struct {
 	App_name string `json:"app_name"`
-	Class string `json:"class"`
+	Class    string `json:"class"`
 	Package_ string `json:"package"`
-	Url string `json:"url"`
+	Url      string `json:"url"`
 }

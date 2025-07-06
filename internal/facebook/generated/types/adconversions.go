@@ -4,8 +4,8 @@ package types
 
 // AdConversions represents a Facebook AdConversions object
 type AdConversions struct {
-	Account_id string `json:"account_id"`
-	Adgroup_id string `json:"adgroup_id"`
-	Campaign_id string `json:"campaign_id"`
-	Values []interface{} `json:"values"`
+	Account_id  string        `json:"account_id"`
+	Adgroup_id  string        `json:"adgroup_id"`
+	Campaign_id string        `json:"campaign_id"`
+	Values      []interface{} `json:"values"`
 }

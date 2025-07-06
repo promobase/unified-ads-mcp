@@ -4,12 +4,12 @@ package types
 
 // AdCreativeObjectStorySpec represents a Facebook AdCreativeObjectStorySpec object
 type AdCreativeObjectStorySpec struct {
-	Instagram_user_id string `json:"instagram_user_id"`
-	Link_data *AdCreativeLinkData `json:"link_data"`
-	Page_id string `json:"page_id"`
-	Photo_data *AdCreativePhotoData `json:"photo_data"`
-	Product_data []AdCreativeProductData `json:"product_data"`
-	Template_data *AdCreativeLinkData `json:"template_data"`
-	Text_data *AdCreativeTextData `json:"text_data"`
-	Video_data *AdCreativeVideoData `json:"video_data"`
+	Instagram_user_id string                  `json:"instagram_user_id"`
+	Link_data         *AdCreativeLinkData     `json:"link_data"`
+	Page_id           string                  `json:"page_id"`
+	Photo_data        *AdCreativePhotoData    `json:"photo_data"`
+	Product_data      []AdCreativeProductData `json:"product_data"`
+	Template_data     *AdCreativeLinkData     `json:"template_data"`
+	Text_data         *AdCreativeTextData     `json:"text_data"`
+	Video_data        *AdCreativeVideoData    `json:"video_data"`
 }

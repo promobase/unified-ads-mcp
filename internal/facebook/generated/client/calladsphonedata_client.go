@@ -21,18 +21,14 @@ func NewCallAdsPhoneDataClient(accessToken string) *CallAdsPhoneDataClient {
 	}
 }
 
-
 // facebook_calladsphonedata_get_ GET  for CallAdsPhoneData
 func (c *CallAdsPhoneDataClient) Facebook_calladsphonedata_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -63,4 +59,3 @@ func (c *CallAdsPhoneDataClient) Facebook_calladsphonedata_get_(args map[string]
 
 	return result, nil
 }
-

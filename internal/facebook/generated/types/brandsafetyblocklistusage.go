@@ -4,9 +4,9 @@ package types
 
 // BrandSafetyBlockListUsage represents a Facebook BrandSafetyBlockListUsage object
 type BrandSafetyBlockListUsage struct {
-	Current_usage int `json:"current_usage"`
-	New_usage int `json:"new_usage"`
-	Platform string `json:"platform"`
-	Position string `json:"position"`
-	Threshold int `json:"threshold"`
+	Current_usage int    `json:"current_usage"`
+	New_usage     int    `json:"new_usage"`
+	Platform      string `json:"platform"`
+	Position      string `json:"position"`
+	Threshold     int    `json:"threshold"`
 }

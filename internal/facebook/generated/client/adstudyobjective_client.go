@@ -21,19 +21,15 @@ func NewAdStudyObjectiveClient(accessToken string) *AdStudyObjectiveClient {
 	}
 }
 
-
 // facebook_adstudyobjective_get_adspixels GET adspixels for AdStudyObjective
 func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_adspixels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "adspixels")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_adspixels(args ma
 	return result, nil
 }
 
-
 // facebook_adstudyobjective_get_applications GET applications for AdStudyObjective
 func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_applications(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "applications")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -107,19 +99,15 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_applications(args
 	return result, nil
 }
 
-
 // facebook_adstudyobjective_get_brand_requests GET brand_requests for AdStudyObjective
 func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_brand_requests(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "brand_requests")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -150,19 +138,15 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_brand_requests(ar
 	return result, nil
 }
 
-
 // facebook_adstudyobjective_get_customconversions GET customconversions for AdStudyObjective
 func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_customconversions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "customconversions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -193,19 +177,15 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_customconversions
 	return result, nil
 }
 
-
 // facebook_adstudyobjective_get_offline_conversion_data_sets GET offline_conversion_data_sets for AdStudyObjective
 func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_offline_conversion_data_sets(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "offline_conversion_data_sets")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -236,19 +216,15 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_offline_conversio
 	return result, nil
 }
 
-
 // facebook_adstudyobjective_get_partner_private_studies GET partner_private_studies for AdStudyObjective
 func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_partner_private_studies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "partner_private_studies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -279,19 +255,15 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_partner_private_s
 	return result, nil
 }
 
-
 // facebook_adstudyobjective_get_partnerstudies GET partnerstudies for AdStudyObjective
 func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_partnerstudies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "partnerstudies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -322,11 +294,9 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_partnerstudies(ar
 	return result, nil
 }
 
-
 // facebook_adstudyobjective_get_ GET  for AdStudyObjective
 func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -340,7 +310,6 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_(args map[string]
 		urlParams.Set("ds", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -371,11 +340,9 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_get_(args map[string]
 	return result, nil
 }
 
-
 // facebook_adstudyobjective_post_ POST  for AdStudyObjective
 func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -413,7 +380,6 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_post_(args map[string
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -443,4 +409,3 @@ func (c *AdStudyObjectiveClient) Facebook_adstudyobjective_post_(args map[string
 
 	return result, nil
 }
-

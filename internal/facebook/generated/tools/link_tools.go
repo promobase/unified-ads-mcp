@@ -15,7 +15,6 @@ import (
 func GetLinkTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_link_post_comments tool
 	facebook_link_post_commentsTool := mcp.NewTool("facebook_link_post_comments",
 		mcp.WithDescription("POST comments for Link"),
@@ -86,12 +85,10 @@ func GetLinkTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_link_get_Tool)
 
-
 	return tools
 }
 
 // Link handlers
-
 
 // HandleFacebook_link_post_comments handles the facebook_link_post_comments tool
 func HandleFacebook_link_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -174,8 +171,6 @@ func HandleFacebook_link_post_comments(ctx context.Context, request mcp.CallTool
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_link_post_comments(args)
 	if err != nil {
@@ -191,7 +186,6 @@ func HandleFacebook_link_post_comments(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_link_get_likes handles the facebook_link_get_likes tool
 func HandleFacebook_link_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -205,8 +199,6 @@ func HandleFacebook_link_get_likes(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_link_get_likes(args)
@@ -223,7 +215,6 @@ func HandleFacebook_link_get_likes(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_link_get_ handles the facebook_link_get_ tool
 func HandleFacebook_link_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -237,8 +228,6 @@ func HandleFacebook_link_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_link_get_(args)
@@ -254,4 +243,3 @@ func HandleFacebook_link_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -5,6 +5,6 @@ package types
 // AdCreativeShopSpec represents a Facebook AdCreativeShopSpec object
 type AdCreativeShopSpec struct {
 	Collection_id string `json:"collection_id"`
-	Landing_view string `json:"landing_view"`
-	Shop_id string `json:"shop_id"`
+	Landing_view  string `json:"landing_view"`
+	Shop_id       string `json:"shop_id"`
 }

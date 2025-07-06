@@ -6,9 +6,9 @@ import "time"
 
 // ProductFeedUploadProgress represents a Facebook ProductFeedUploadProgress object
 type ProductFeedUploadProgress struct {
-	Pos int `json:"pos"`
-	Size int `json:"size"`
-	Step string `json:"step"`
-	Unit string `json:"unit"`
+	Pos          int       `json:"pos"`
+	Size         int       `json:"size"`
+	Step         string    `json:"step"`
+	Unit         string    `json:"unit"`
 	Updated_time time.Time `json:"updated_time"`
 }

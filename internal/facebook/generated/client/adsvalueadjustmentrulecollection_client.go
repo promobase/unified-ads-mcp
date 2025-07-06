@@ -21,18 +21,14 @@ func NewAdsValueAdjustmentRuleCollectionClient(accessToken string) *AdsValueAdju
 	}
 }
 
-
 // facebook_adsvalueadjustmentrulecollection_post_delete_rule_set POST delete_rule_set for AdsValueAdjustmentRuleCollection
 func (c *AdsValueAdjustmentRuleCollectionClient) Facebook_adsvalueadjustmentrulecollection_post_delete_rule_set(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "delete_rule_set")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,19 +60,15 @@ func (c *AdsValueAdjustmentRuleCollectionClient) Facebook_adsvalueadjustmentrule
 	return result, nil
 }
 
-
 // facebook_adsvalueadjustmentrulecollection_get_rules GET rules for AdsValueAdjustmentRuleCollection
 func (c *AdsValueAdjustmentRuleCollectionClient) Facebook_adsvalueadjustmentrulecollection_get_rules(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "rules")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -107,19 +99,15 @@ func (c *AdsValueAdjustmentRuleCollectionClient) Facebook_adsvalueadjustmentrule
 	return result, nil
 }
 
-
 // facebook_adsvalueadjustmentrulecollection_get_ GET  for AdsValueAdjustmentRuleCollection
 func (c *AdsValueAdjustmentRuleCollectionClient) Facebook_adsvalueadjustmentrulecollection_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -149,7 +137,6 @@ func (c *AdsValueAdjustmentRuleCollectionClient) Facebook_adsvalueadjustmentrule
 
 	return result, nil
 }
-
 
 // facebook_adsvalueadjustmentrulecollection_post_ POST  for AdsValueAdjustmentRuleCollection
 func (c *AdsValueAdjustmentRuleCollectionClient) Facebook_adsvalueadjustmentrulecollection_post_(args map[string]interface{}) (interface{}, error) {
@@ -164,7 +151,6 @@ func (c *AdsValueAdjustmentRuleCollectionClient) Facebook_adsvalueadjustmentrule
 		return nil, fmt.Errorf("missing required parameter: rules")
 	}
 	_ = rules // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -181,7 +167,6 @@ func (c *AdsValueAdjustmentRuleCollectionClient) Facebook_adsvalueadjustmentrule
 		urlParams.Set("rules", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -211,4 +196,3 @@ func (c *AdsValueAdjustmentRuleCollectionClient) Facebook_adsvalueadjustmentrule
 
 	return result, nil
 }
-

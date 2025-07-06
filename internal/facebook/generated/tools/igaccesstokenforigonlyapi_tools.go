@@ -15,7 +15,6 @@ import (
 func GetIGAccessTokenForIGOnlyAPITools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_igaccesstokenforigonlyapi_get_ tool
 	facebook_igaccesstokenforigonlyapi_get_Tool := mcp.NewTool("facebook_igaccesstokenforigonlyapi_get_",
 		mcp.WithDescription("GET  for IGAccessTokenForIGOnlyAPI"),
@@ -38,12 +37,10 @@ func GetIGAccessTokenForIGOnlyAPITools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_igaccesstokenforigonlyapi_get_Tool)
 
-
 	return tools
 }
 
 // IGAccessTokenForIGOnlyAPI handlers
-
 
 // HandleFacebook_igaccesstokenforigonlyapi_get_ handles the facebook_igaccesstokenforigonlyapi_get_ tool
 func HandleFacebook_igaccesstokenforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,8 +77,6 @@ func HandleFacebook_igaccesstokenforigonlyapi_get_(ctx context.Context, request 
 	}
 	args["grant_type"] = grant_type
 
-
-
 	// Call the client method
 	result, err := client.Facebook_igaccesstokenforigonlyapi_get_(args)
 	if err != nil {
@@ -96,4 +91,3 @@ func HandleFacebook_igaccesstokenforigonlyapi_get_(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetPlaceTopicTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_placetopic_get_ tool
 	facebook_placetopic_get_Tool := mcp.NewTool("facebook_placetopic_get_",
 		mcp.WithDescription("GET  for PlaceTopic"),
@@ -30,12 +29,10 @@ func GetPlaceTopicTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_placetopic_get_Tool)
 
-
 	return tools
 }
 
 // PlaceTopic handlers
-
 
 // HandleFacebook_placetopic_get_ handles the facebook_placetopic_get_ tool
 func HandleFacebook_placetopic_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleFacebook_placetopic_get_(ctx context.Context, request mcp.CallToolReq
 		args["icon_size"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_placetopic_get_(args)
 	if err != nil {
@@ -72,4 +67,3 @@ func HandleFacebook_placetopic_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

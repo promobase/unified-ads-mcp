@@ -21,18 +21,14 @@ func NewVehicleOfferClient(accessToken string) *VehicleOfferClient {
 	}
 }
 
-
 // facebook_vehicleoffer_get_channels_to_integrity_status GET channels_to_integrity_status for VehicleOffer
 func (c *VehicleOfferClient) Facebook_vehicleoffer_get_channels_to_integrity_status(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "channels_to_integrity_status")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,11 +60,9 @@ func (c *VehicleOfferClient) Facebook_vehicleoffer_get_channels_to_integrity_sta
 	return result, nil
 }
 
-
 // facebook_vehicleoffer_get_override_details GET override_details for VehicleOffer
 func (c *VehicleOfferClient) Facebook_vehicleoffer_get_override_details(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "override_details")
@@ -82,7 +76,6 @@ func (c *VehicleOfferClient) Facebook_vehicleoffer_get_override_details(args map
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -113,19 +106,15 @@ func (c *VehicleOfferClient) Facebook_vehicleoffer_get_override_details(args map
 	return result, nil
 }
 
-
 // facebook_vehicleoffer_get_videos_metadata GET videos_metadata for VehicleOffer
 func (c *VehicleOfferClient) Facebook_vehicleoffer_get_videos_metadata(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "videos_metadata")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -156,19 +145,15 @@ func (c *VehicleOfferClient) Facebook_vehicleoffer_get_videos_metadata(args map[
 	return result, nil
 }
 
-
 // facebook_vehicleoffer_get_ GET  for VehicleOffer
 func (c *VehicleOfferClient) Facebook_vehicleoffer_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -198,4 +183,3 @@ func (c *VehicleOfferClient) Facebook_vehicleoffer_get_(args map[string]interfac
 
 	return result, nil
 }
-

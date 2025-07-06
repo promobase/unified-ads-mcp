@@ -4,12 +4,12 @@ package types
 
 // ReachFrequencyEstimatesCurve represents a Facebook ReachFrequencyEstimatesCurve object
 type ReachFrequencyEstimatesCurve struct {
-	Budget []int `json:"budget"`
-	Conversion []int `json:"conversion"`
-	Impression []int `json:"impression"`
+	Budget             []int   `json:"budget"`
+	Conversion         []int   `json:"conversion"`
+	Impression         []int   `json:"impression"`
 	Interpolated_reach float64 `json:"interpolated_reach"`
-	Num_points int `json:"num_points"`
-	Raw_impression []int `json:"raw_impression"`
-	Raw_reach []int `json:"raw_reach"`
-	Reach []int `json:"reach"`
+	Num_points         int     `json:"num_points"`
+	Raw_impression     []int   `json:"raw_impression"`
+	Raw_reach          []int   `json:"raw_reach"`
+	Reach              []int   `json:"reach"`
 }

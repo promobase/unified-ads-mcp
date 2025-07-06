@@ -21,11 +21,9 @@ func NewProductSetClient(accessToken string) *ProductSetClient {
 	}
 }
 
-
 // facebook_productset_get_automotive_models GET automotive_models for ProductSet
 func (c *ProductSetClient) Facebook_productset_get_automotive_models(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "automotive_models")
@@ -39,7 +37,6 @@ func (c *ProductSetClient) Facebook_productset_get_automotive_models(args map[st
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -70,11 +67,9 @@ func (c *ProductSetClient) Facebook_productset_get_automotive_models(args map[st
 	return result, nil
 }
 
-
 // facebook_productset_get_destinations GET destinations for ProductSet
 func (c *ProductSetClient) Facebook_productset_get_destinations(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "destinations")
@@ -88,7 +83,6 @@ func (c *ProductSetClient) Facebook_productset_get_destinations(args map[string]
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -119,11 +113,9 @@ func (c *ProductSetClient) Facebook_productset_get_destinations(args map[string]
 	return result, nil
 }
 
-
 // facebook_productset_get_flights GET flights for ProductSet
 func (c *ProductSetClient) Facebook_productset_get_flights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "flights")
@@ -137,7 +129,6 @@ func (c *ProductSetClient) Facebook_productset_get_flights(args map[string]inter
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -168,11 +159,9 @@ func (c *ProductSetClient) Facebook_productset_get_flights(args map[string]inter
 	return result, nil
 }
 
-
 // facebook_productset_get_home_listings GET home_listings for ProductSet
 func (c *ProductSetClient) Facebook_productset_get_home_listings(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "home_listings")
@@ -186,7 +175,6 @@ func (c *ProductSetClient) Facebook_productset_get_home_listings(args map[string
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -217,11 +205,9 @@ func (c *ProductSetClient) Facebook_productset_get_home_listings(args map[string
 	return result, nil
 }
 
-
 // facebook_productset_get_hotels GET hotels for ProductSet
 func (c *ProductSetClient) Facebook_productset_get_hotels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "hotels")
@@ -235,7 +221,6 @@ func (c *ProductSetClient) Facebook_productset_get_hotels(args map[string]interf
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -266,11 +251,9 @@ func (c *ProductSetClient) Facebook_productset_get_hotels(args map[string]interf
 	return result, nil
 }
 
-
 // facebook_productset_get_media_titles GET media_titles for ProductSet
 func (c *ProductSetClient) Facebook_productset_get_media_titles(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "media_titles")
@@ -284,7 +267,6 @@ func (c *ProductSetClient) Facebook_productset_get_media_titles(args map[string]
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -315,11 +297,9 @@ func (c *ProductSetClient) Facebook_productset_get_media_titles(args map[string]
 	return result, nil
 }
 
-
 // facebook_productset_get_products GET products for ProductSet
 func (c *ProductSetClient) Facebook_productset_get_products(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "products")
@@ -339,7 +319,6 @@ func (c *ProductSetClient) Facebook_productset_get_products(args map[string]inte
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -370,11 +349,9 @@ func (c *ProductSetClient) Facebook_productset_get_products(args map[string]inte
 	return result, nil
 }
 
-
 // facebook_productset_get_vehicle_offers GET vehicle_offers for ProductSet
 func (c *ProductSetClient) Facebook_productset_get_vehicle_offers(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "vehicle_offers")
@@ -388,7 +365,6 @@ func (c *ProductSetClient) Facebook_productset_get_vehicle_offers(args map[strin
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -419,11 +395,9 @@ func (c *ProductSetClient) Facebook_productset_get_vehicle_offers(args map[strin
 	return result, nil
 }
 
-
 // facebook_productset_get_vehicles GET vehicles for ProductSet
 func (c *ProductSetClient) Facebook_productset_get_vehicles(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "vehicles")
@@ -437,7 +411,6 @@ func (c *ProductSetClient) Facebook_productset_get_vehicles(args map[string]inte
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -468,11 +441,9 @@ func (c *ProductSetClient) Facebook_productset_get_vehicles(args map[string]inte
 	return result, nil
 }
 
-
 // facebook_productset_delete_ DELETE  for ProductSet
 func (c *ProductSetClient) Facebook_productset_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -482,7 +453,6 @@ func (c *ProductSetClient) Facebook_productset_delete_(args map[string]interface
 	if val, ok := args["allow_live_product_set_deletion"]; ok {
 		urlParams.Set("allow_live_product_set_deletion", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -514,18 +484,14 @@ func (c *ProductSetClient) Facebook_productset_delete_(args map[string]interface
 	return result, nil
 }
 
-
 // facebook_productset_get_ GET  for ProductSet
 func (c *ProductSetClient) Facebook_productset_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -557,11 +523,9 @@ func (c *ProductSetClient) Facebook_productset_get_(args map[string]interface{})
 	return result, nil
 }
 
-
 // facebook_productset_post_ POST  for ProductSet
 func (c *ProductSetClient) Facebook_productset_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -586,7 +550,6 @@ func (c *ProductSetClient) Facebook_productset_post_(args map[string]interface{}
 	if val, ok := args["retailer_id"]; ok {
 		urlParams.Set("retailer_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -617,4 +580,3 @@ func (c *ProductSetClient) Facebook_productset_post_(args map[string]interface{}
 
 	return result, nil
 }
-

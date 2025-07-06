@@ -15,7 +15,6 @@ import (
 func GetFantasyGameTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_fantasygame_get_ tool
 	facebook_fantasygame_get_Tool := mcp.NewTool("facebook_fantasygame_get_",
 		mcp.WithDescription("GET  for FantasyGame"),
@@ -26,12 +25,10 @@ func GetFantasyGameTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_fantasygame_get_Tool)
 
-
 	return tools
 }
 
 // FantasyGame handlers
-
 
 // HandleFacebook_fantasygame_get_ handles the facebook_fantasygame_get_ tool
 func HandleFacebook_fantasygame_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_fantasygame_get_(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_fantasygame_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_fantasygame_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

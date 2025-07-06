@@ -21,11 +21,9 @@ func NewLiveVideoInputStreamClient(accessToken string) *LiveVideoInputStreamClie
 	}
 }
 
-
 // facebook_livevideoinputstream_get_ GET  for LiveVideoInputStream
 func (c *LiveVideoInputStreamClient) Facebook_livevideoinputstream_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -35,7 +33,6 @@ func (c *LiveVideoInputStreamClient) Facebook_livevideoinputstream_get_(args map
 	if val, ok := args["target_token"]; ok {
 		urlParams.Set("target_token", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -66,4 +63,3 @@ func (c *LiveVideoInputStreamClient) Facebook_livevideoinputstream_get_(args map
 
 	return result, nil
 }
-

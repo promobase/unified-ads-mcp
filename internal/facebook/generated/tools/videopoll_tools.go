@@ -15,7 +15,6 @@ import (
 func GetVideoPollTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_videopoll_get_poll_options tool
 	facebook_videopoll_get_poll_optionsTool := mcp.NewTool("facebook_videopoll_get_poll_options",
 		mcp.WithDescription("GET poll_options for VideoPoll"),
@@ -63,12 +62,10 @@ func GetVideoPollTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_videopoll_post_Tool)
 
-
 	return tools
 }
 
 // VideoPoll handlers
-
 
 // HandleFacebook_videopoll_get_poll_options handles the facebook_videopoll_get_poll_options tool
 func HandleFacebook_videopoll_get_poll_options(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleFacebook_videopoll_get_poll_options(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_videopoll_get_poll_options(args)
@@ -101,7 +96,6 @@ func HandleFacebook_videopoll_get_poll_options(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_videopoll_get_ handles the facebook_videopoll_get_ tool
 func HandleFacebook_videopoll_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -115,8 +109,6 @@ func HandleFacebook_videopoll_get_(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_videopoll_get_(args)
@@ -132,7 +124,6 @@ func HandleFacebook_videopoll_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_videopoll_post_ handles the facebook_videopoll_post_ tool
 func HandleFacebook_videopoll_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -175,8 +166,6 @@ func HandleFacebook_videopoll_post_(ctx context.Context, request mcp.CallToolReq
 		args["show_results"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_videopoll_post_(args)
 	if err != nil {
@@ -191,4 +180,3 @@ func HandleFacebook_videopoll_post_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -21,7 +21,6 @@ func NewGroupClient(accessToken string) *GroupClient {
 	}
 }
 
-
 // facebook_group_delete_admins DELETE admins for Group
 func (c *GroupClient) Facebook_group_delete_admins(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -31,7 +30,6 @@ func (c *GroupClient) Facebook_group_delete_admins(args map[string]interface{}) 
 	}
 	_ = uid // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "admins")
 	urlParams := url.Values{}
@@ -40,7 +38,6 @@ func (c *GroupClient) Facebook_group_delete_admins(args map[string]interface{}) 
 	if val, ok := args["uid"]; ok {
 		urlParams.Set("uid", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -72,7 +69,6 @@ func (c *GroupClient) Facebook_group_delete_admins(args map[string]interface{}) 
 	return result, nil
 }
 
-
 // facebook_group_post_admins POST admins for Group
 func (c *GroupClient) Facebook_group_post_admins(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -82,7 +78,6 @@ func (c *GroupClient) Facebook_group_post_admins(args map[string]interface{}) (i
 	}
 	_ = uid // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "admins")
 	urlParams := url.Values{}
@@ -91,7 +86,6 @@ func (c *GroupClient) Facebook_group_post_admins(args map[string]interface{}) (i
 	if val, ok := args["uid"]; ok {
 		urlParams.Set("uid", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -123,19 +117,15 @@ func (c *GroupClient) Facebook_group_post_admins(args map[string]interface{}) (i
 	return result, nil
 }
 
-
 // facebook_group_get_albums GET albums for Group
 func (c *GroupClient) Facebook_group_get_albums(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "albums")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -166,19 +156,15 @@ func (c *GroupClient) Facebook_group_get_albums(args map[string]interface{}) (in
 	return result, nil
 }
 
-
 // facebook_group_get_docs GET docs for Group
 func (c *GroupClient) Facebook_group_get_docs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "docs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -209,19 +195,15 @@ func (c *GroupClient) Facebook_group_get_docs(args map[string]interface{}) (inte
 	return result, nil
 }
 
-
 // facebook_group_get_events GET events for Group
 func (c *GroupClient) Facebook_group_get_events(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "events")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -252,11 +234,9 @@ func (c *GroupClient) Facebook_group_get_events(args map[string]interface{}) (in
 	return result, nil
 }
 
-
 // facebook_group_get_feed GET feed for Group
 func (c *GroupClient) Facebook_group_get_feed(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "feed")
@@ -282,7 +262,6 @@ func (c *GroupClient) Facebook_group_get_feed(args map[string]interface{}) (inte
 		urlParams.Set("with", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -313,11 +292,9 @@ func (c *GroupClient) Facebook_group_get_feed(args map[string]interface{}) (inte
 	return result, nil
 }
 
-
 // facebook_group_post_feed POST feed for Group
 func (c *GroupClient) Facebook_group_post_feed(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "feed")
@@ -640,7 +617,6 @@ func (c *GroupClient) Facebook_group_post_feed(args map[string]interface{}) (int
 		urlParams.Set("width", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -671,19 +647,15 @@ func (c *GroupClient) Facebook_group_post_feed(args map[string]interface{}) (int
 	return result, nil
 }
 
-
 // facebook_group_get_files GET files for Group
 func (c *GroupClient) Facebook_group_get_files(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "files")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -714,19 +686,15 @@ func (c *GroupClient) Facebook_group_get_files(args map[string]interface{}) (int
 	return result, nil
 }
 
-
 // facebook_group_get_groups GET groups for Group
 func (c *GroupClient) Facebook_group_get_groups(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "groups")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -756,7 +724,6 @@ func (c *GroupClient) Facebook_group_get_groups(args map[string]interface{}) (in
 
 	return result, nil
 }
-
 
 // facebook_group_post_groups POST groups for Group
 func (c *GroupClient) Facebook_group_post_groups(args map[string]interface{}) (interface{}, error) {
@@ -766,7 +733,6 @@ func (c *GroupClient) Facebook_group_post_groups(args map[string]interface{}) (i
 		return nil, fmt.Errorf("missing required parameter: name")
 	}
 	_ = name // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "groups")
@@ -807,7 +773,6 @@ func (c *GroupClient) Facebook_group_post_groups(args map[string]interface{}) (i
 		urlParams.Set("ref", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -838,11 +803,9 @@ func (c *GroupClient) Facebook_group_post_groups(args map[string]interface{}) (i
 	return result, nil
 }
 
-
 // facebook_group_get_live_videos GET live_videos for Group
 func (c *GroupClient) Facebook_group_get_live_videos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "live_videos")
@@ -855,7 +818,6 @@ func (c *GroupClient) Facebook_group_get_live_videos(args map[string]interface{}
 	if val, ok := args["source"]; ok {
 		urlParams.Set("source", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -887,11 +849,9 @@ func (c *GroupClient) Facebook_group_get_live_videos(args map[string]interface{}
 	return result, nil
 }
 
-
 // facebook_group_post_live_videos POST live_videos for Group
 func (c *GroupClient) Facebook_group_post_live_videos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "live_videos")
@@ -959,7 +919,6 @@ func (c *GroupClient) Facebook_group_post_live_videos(args map[string]interface{
 		urlParams.Set("title", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -990,11 +949,9 @@ func (c *GroupClient) Facebook_group_post_live_videos(args map[string]interface{
 	return result, nil
 }
 
-
 // facebook_group_delete_members DELETE members for Group
 func (c *GroupClient) Facebook_group_delete_members(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "members")
@@ -1007,7 +964,6 @@ func (c *GroupClient) Facebook_group_delete_members(args map[string]interface{})
 	if val, ok := args["member"]; ok {
 		urlParams.Set("member", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1039,11 +995,9 @@ func (c *GroupClient) Facebook_group_delete_members(args map[string]interface{})
 	return result, nil
 }
 
-
 // facebook_group_post_members POST members for Group
 func (c *GroupClient) Facebook_group_post_members(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "members")
@@ -1065,7 +1019,6 @@ func (c *GroupClient) Facebook_group_post_members(args map[string]interface{}) (
 	if val, ok := args["source"]; ok {
 		urlParams.Set("source", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1097,18 +1050,14 @@ func (c *GroupClient) Facebook_group_post_members(args map[string]interface{}) (
 	return result, nil
 }
 
-
 // facebook_group_get_opted_in_members GET opted_in_members for Group
 func (c *GroupClient) Facebook_group_get_opted_in_members(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "opted_in_members")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1140,11 +1089,9 @@ func (c *GroupClient) Facebook_group_get_opted_in_members(args map[string]interf
 	return result, nil
 }
 
-
 // facebook_group_post_photos POST photos for Group
 func (c *GroupClient) Facebook_group_post_photos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "photos")
@@ -1305,7 +1252,6 @@ func (c *GroupClient) Facebook_group_post_photos(args map[string]interface{}) (i
 		urlParams.Set("vault_image_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1336,11 +1282,9 @@ func (c *GroupClient) Facebook_group_post_photos(args map[string]interface{}) (i
 	return result, nil
 }
 
-
 // facebook_group_get_picture GET picture for Group
 func (c *GroupClient) Facebook_group_get_picture(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "picture")
@@ -1360,7 +1304,6 @@ func (c *GroupClient) Facebook_group_get_picture(args map[string]interface{}) (i
 		urlParams.Set("width", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1391,11 +1334,9 @@ func (c *GroupClient) Facebook_group_get_picture(args map[string]interface{}) (i
 	return result, nil
 }
 
-
 // facebook_group_get_videos GET videos for Group
 func (c *GroupClient) Facebook_group_get_videos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "videos")
@@ -1406,7 +1347,6 @@ func (c *GroupClient) Facebook_group_get_videos(args map[string]interface{}) (in
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1437,11 +1377,9 @@ func (c *GroupClient) Facebook_group_get_videos(args map[string]interface{}) (in
 	return result, nil
 }
 
-
 // facebook_group_post_videos POST videos for Group
 func (c *GroupClient) Facebook_group_post_videos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "videos")
@@ -1656,7 +1594,6 @@ func (c *GroupClient) Facebook_group_post_videos(args map[string]interface{}) (i
 		urlParams.Set("waterfall_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1687,11 +1624,9 @@ func (c *GroupClient) Facebook_group_post_videos(args map[string]interface{}) (i
 	return result, nil
 }
 
-
 // facebook_group_get_ GET  for Group
 func (c *GroupClient) Facebook_group_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -1701,7 +1636,6 @@ func (c *GroupClient) Facebook_group_get_(args map[string]interface{}) (interfac
 	if val, ok := args["icon_size"]; ok {
 		urlParams.Set("icon_size", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1733,11 +1667,9 @@ func (c *GroupClient) Facebook_group_get_(args map[string]interface{}) (interfac
 	return result, nil
 }
 
-
 // facebook_group_post_ POST  for Group
 func (c *GroupClient) Facebook_group_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -1793,7 +1725,6 @@ func (c *GroupClient) Facebook_group_post_(args map[string]interface{}) (interfa
 		urlParams.Set("update_view_time", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1823,4 +1754,3 @@ func (c *GroupClient) Facebook_group_post_(args map[string]interface{}) (interfa
 
 	return result, nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetHotelTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_hotel_get_channels_to_integrity_status tool
 	facebook_hotel_get_channels_to_integrity_statusTool := mcp.NewTool("facebook_hotel_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for Hotel"),
@@ -129,12 +128,10 @@ func GetHotelTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_hotel_post_Tool)
 
-
 	return tools
 }
 
 // Hotel handlers
-
 
 // HandleFacebook_hotel_get_channels_to_integrity_status handles the facebook_hotel_get_channels_to_integrity_status tool
 func HandleFacebook_hotel_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -149,8 +146,6 @@ func HandleFacebook_hotel_get_channels_to_integrity_status(ctx context.Context, 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_hotel_get_channels_to_integrity_status(args)
@@ -167,7 +162,6 @@ func HandleFacebook_hotel_get_channels_to_integrity_status(ctx context.Context, 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_hotel_get_hotel_rooms handles the facebook_hotel_get_hotel_rooms tool
 func HandleFacebook_hotel_get_hotel_rooms(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -181,8 +175,6 @@ func HandleFacebook_hotel_get_hotel_rooms(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_hotel_get_hotel_rooms(args)
@@ -198,7 +190,6 @@ func HandleFacebook_hotel_get_hotel_rooms(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_hotel_get_override_details handles the facebook_hotel_get_override_details tool
 func HandleFacebook_hotel_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -225,8 +216,6 @@ func HandleFacebook_hotel_get_override_details(ctx context.Context, request mcp.
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_hotel_get_override_details(args)
 	if err != nil {
@@ -242,7 +231,6 @@ func HandleFacebook_hotel_get_override_details(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_hotel_get_videos_metadata handles the facebook_hotel_get_videos_metadata tool
 func HandleFacebook_hotel_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -256,8 +244,6 @@ func HandleFacebook_hotel_get_videos_metadata(ctx context.Context, request mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_hotel_get_videos_metadata(args)
@@ -274,7 +260,6 @@ func HandleFacebook_hotel_get_videos_metadata(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_hotel_delete_ handles the facebook_hotel_delete_ tool
 func HandleFacebook_hotel_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -288,8 +273,6 @@ func HandleFacebook_hotel_delete_(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_hotel_delete_(args)
@@ -306,7 +289,6 @@ func HandleFacebook_hotel_delete_(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_hotel_get_ handles the facebook_hotel_get_ tool
 func HandleFacebook_hotel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -320,8 +302,6 @@ func HandleFacebook_hotel_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_hotel_get_(args)
@@ -337,7 +317,6 @@ func HandleFacebook_hotel_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_hotel_post_ handles the facebook_hotel_post_ tool
 func HandleFacebook_hotel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -417,8 +396,6 @@ func HandleFacebook_hotel_post_(ctx context.Context, request mcp.CallToolRequest
 		args["url"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_hotel_post_(args)
 	if err != nil {
@@ -433,4 +410,3 @@ func HandleFacebook_hotel_post_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

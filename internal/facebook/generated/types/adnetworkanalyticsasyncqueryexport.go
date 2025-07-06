@@ -5,6 +5,6 @@ package types
 // AdNetworkAnalyticsAsyncQueryExport represents a Facebook AdNetworkAnalyticsAsyncQueryExport object
 type AdNetworkAnalyticsAsyncQueryExport struct {
 	Export_link string `json:"export_link"`
-	Query_id string `json:"query_id"`
-	Status string `json:"status"`
+	Query_id    string `json:"query_id"`
+	Status      string `json:"status"`
 }

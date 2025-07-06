@@ -4,6 +4,6 @@ package types
 
 // AdCreativeLinkDataMoment represents a Facebook AdCreativeLinkDataMoment object
 type AdCreativeLinkDataMoment struct {
-	Id string `json:"id"`
+	Id    string `json:"id"`
 	Type_ string `json:"type"`
 }

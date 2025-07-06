@@ -15,7 +15,6 @@ import (
 func GetVehicleOfferTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_vehicleoffer_get_channels_to_integrity_status tool
 	facebook_vehicleoffer_get_channels_to_integrity_statusTool := mcp.NewTool("facebook_vehicleoffer_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for VehicleOffer"),
@@ -63,12 +62,10 @@ func GetVehicleOfferTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_vehicleoffer_get_Tool)
 
-
 	return tools
 }
 
 // VehicleOffer handlers
-
 
 // HandleFacebook_vehicleoffer_get_channels_to_integrity_status handles the facebook_vehicleoffer_get_channels_to_integrity_status tool
 func HandleFacebook_vehicleoffer_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -84,8 +81,6 @@ func HandleFacebook_vehicleoffer_get_channels_to_integrity_status(ctx context.Co
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_vehicleoffer_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -100,7 +95,6 @@ func HandleFacebook_vehicleoffer_get_channels_to_integrity_status(ctx context.Co
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_vehicleoffer_get_override_details handles the facebook_vehicleoffer_get_override_details tool
 func HandleFacebook_vehicleoffer_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -127,8 +121,6 @@ func HandleFacebook_vehicleoffer_get_override_details(ctx context.Context, reque
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_vehicleoffer_get_override_details(args)
 	if err != nil {
@@ -144,7 +136,6 @@ func HandleFacebook_vehicleoffer_get_override_details(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_vehicleoffer_get_videos_metadata handles the facebook_vehicleoffer_get_videos_metadata tool
 func HandleFacebook_vehicleoffer_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -158,8 +149,6 @@ func HandleFacebook_vehicleoffer_get_videos_metadata(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_vehicleoffer_get_videos_metadata(args)
@@ -176,7 +165,6 @@ func HandleFacebook_vehicleoffer_get_videos_metadata(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_vehicleoffer_get_ handles the facebook_vehicleoffer_get_ tool
 func HandleFacebook_vehicleoffer_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -190,8 +178,6 @@ func HandleFacebook_vehicleoffer_get_(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_vehicleoffer_get_(args)
@@ -207,4 +193,3 @@ func HandleFacebook_vehicleoffer_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

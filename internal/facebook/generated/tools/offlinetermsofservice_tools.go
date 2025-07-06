@@ -15,7 +15,6 @@ import (
 func GetOfflineTermsOfServiceTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_offlinetermsofservice_get_ tool
 	facebook_offlinetermsofservice_get_Tool := mcp.NewTool("facebook_offlinetermsofservice_get_",
 		mcp.WithDescription("GET  for OfflineTermsOfService"),
@@ -26,12 +25,10 @@ func GetOfflineTermsOfServiceTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_offlinetermsofservice_get_Tool)
 
-
 	return tools
 }
 
 // OfflineTermsOfService handlers
-
 
 // HandleFacebook_offlinetermsofservice_get_ handles the facebook_offlinetermsofservice_get_ tool
 func HandleFacebook_offlinetermsofservice_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_offlinetermsofservice_get_(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_offlinetermsofservice_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_offlinetermsofservice_get_(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

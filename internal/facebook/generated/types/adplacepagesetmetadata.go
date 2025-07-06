@@ -4,8 +4,8 @@ package types
 
 // AdPlacePageSetMetadata represents a Facebook AdPlacePageSetMetadata object
 type AdPlacePageSetMetadata struct {
-	Audience map[string]interface{} `json:"audience"`
-	Custom map[string]interface{} `json:"custom"`
-	Extra_data string `json:"extra_data"`
+	Audience     map[string]interface{} `json:"audience"`
+	Custom       map[string]interface{} `json:"custom"`
+	Extra_data   string                 `json:"extra_data"`
 	Fixed_radius map[string]interface{} `json:"fixed_radius"`
 }

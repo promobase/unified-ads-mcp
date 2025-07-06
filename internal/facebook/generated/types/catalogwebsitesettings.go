@@ -4,6 +4,6 @@ package types
 
 // CatalogWebsiteSettings represents a Facebook CatalogWebsiteSettings object
 type CatalogWebsiteSettings struct {
-	Id string `json:"id"`
-	Is_allowed_to_crawl bool `json:"is_allowed_to_crawl"`
+	Id                  string `json:"id"`
+	Is_allowed_to_crawl bool   `json:"is_allowed_to_crawl"`
 }

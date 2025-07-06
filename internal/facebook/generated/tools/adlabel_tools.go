@@ -15,7 +15,6 @@ import (
 func GetAdLabelTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_adlabel_get_adcreatives tool
 	facebook_adlabel_get_adcreativesTool := mcp.NewTool("facebook_adlabel_get_adcreatives",
 		mcp.WithDescription("GET adcreatives for AdLabel"),
@@ -90,12 +89,10 @@ func GetAdLabelTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_adlabel_post_Tool)
 
-
 	return tools
 }
 
 // AdLabel handlers
-
 
 // HandleFacebook_adlabel_get_adcreatives handles the facebook_adlabel_get_adcreatives tool
 func HandleFacebook_adlabel_get_adcreatives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -110,8 +107,6 @@ func HandleFacebook_adlabel_get_adcreatives(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adlabel_get_adcreatives(args)
@@ -128,7 +123,6 @@ func HandleFacebook_adlabel_get_adcreatives(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adlabel_get_ads handles the facebook_adlabel_get_ads tool
 func HandleFacebook_adlabel_get_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -142,8 +136,6 @@ func HandleFacebook_adlabel_get_ads(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adlabel_get_ads(args)
@@ -160,7 +152,6 @@ func HandleFacebook_adlabel_get_ads(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adlabel_get_adsets handles the facebook_adlabel_get_adsets tool
 func HandleFacebook_adlabel_get_adsets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -174,8 +165,6 @@ func HandleFacebook_adlabel_get_adsets(ctx context.Context, request mcp.CallTool
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adlabel_get_adsets(args)
@@ -192,7 +181,6 @@ func HandleFacebook_adlabel_get_adsets(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adlabel_get_campaigns handles the facebook_adlabel_get_campaigns tool
 func HandleFacebook_adlabel_get_campaigns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -206,8 +194,6 @@ func HandleFacebook_adlabel_get_campaigns(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adlabel_get_campaigns(args)
@@ -224,7 +210,6 @@ func HandleFacebook_adlabel_get_campaigns(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adlabel_delete_ handles the facebook_adlabel_delete_ tool
 func HandleFacebook_adlabel_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -238,8 +223,6 @@ func HandleFacebook_adlabel_delete_(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adlabel_delete_(args)
@@ -256,7 +239,6 @@ func HandleFacebook_adlabel_delete_(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adlabel_get_ handles the facebook_adlabel_get_ tool
 func HandleFacebook_adlabel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -270,8 +252,6 @@ func HandleFacebook_adlabel_get_(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adlabel_get_(args)
@@ -287,7 +267,6 @@ func HandleFacebook_adlabel_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adlabel_post_ handles the facebook_adlabel_post_ tool
 func HandleFacebook_adlabel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -310,8 +289,6 @@ func HandleFacebook_adlabel_post_(ctx context.Context, request mcp.CallToolReque
 	}
 	args["name"] = name
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adlabel_post_(args)
 	if err != nil {
@@ -326,4 +303,3 @@ func HandleFacebook_adlabel_post_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

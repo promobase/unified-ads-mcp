@@ -15,7 +15,6 @@ import (
 func GetProfileTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_profile_get_picture tool
 	facebook_profile_get_pictureTool := mcp.NewTool("facebook_profile_get_picture",
 		mcp.WithDescription("GET picture for Profile"),
@@ -49,12 +48,10 @@ func GetProfileTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_profile_get_Tool)
 
-
 	return tools
 }
 
 // Profile handlers
-
 
 // HandleFacebook_profile_get_picture handles the facebook_profile_get_picture tool
 func HandleFacebook_profile_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -90,8 +87,6 @@ func HandleFacebook_profile_get_picture(ctx context.Context, request mcp.CallToo
 		args["width"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_profile_get_picture(args)
 	if err != nil {
@@ -107,7 +102,6 @@ func HandleFacebook_profile_get_picture(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_profile_get_ handles the facebook_profile_get_ tool
 func HandleFacebook_profile_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -121,8 +115,6 @@ func HandleFacebook_profile_get_(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_profile_get_(args)
@@ -138,4 +130,3 @@ func HandleFacebook_profile_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

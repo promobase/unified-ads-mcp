@@ -15,7 +15,6 @@ import (
 func GetProductFeedUploadErrorTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_productfeeduploaderror_get_samples tool
 	facebook_productfeeduploaderror_get_samplesTool := mcp.NewTool("facebook_productfeeduploaderror_get_samples",
 		mcp.WithDescription("GET samples for ProductFeedUploadError"),
@@ -46,12 +45,10 @@ func GetProductFeedUploadErrorTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_productfeeduploaderror_get_Tool)
 
-
 	return tools
 }
 
 // ProductFeedUploadError handlers
-
 
 // HandleFacebook_productfeeduploaderror_get_samples handles the facebook_productfeeduploaderror_get_samples tool
 func HandleFacebook_productfeeduploaderror_get_samples(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -66,8 +63,6 @@ func HandleFacebook_productfeeduploaderror_get_samples(ctx context.Context, requ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_productfeeduploaderror_get_samples(args)
@@ -84,7 +79,6 @@ func HandleFacebook_productfeeduploaderror_get_samples(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_productfeeduploaderror_get_suggested_rules handles the facebook_productfeeduploaderror_get_suggested_rules tool
 func HandleFacebook_productfeeduploaderror_get_suggested_rules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -98,8 +92,6 @@ func HandleFacebook_productfeeduploaderror_get_suggested_rules(ctx context.Conte
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_productfeeduploaderror_get_suggested_rules(args)
@@ -116,7 +108,6 @@ func HandleFacebook_productfeeduploaderror_get_suggested_rules(ctx context.Conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_productfeeduploaderror_get_ handles the facebook_productfeeduploaderror_get_ tool
 func HandleFacebook_productfeeduploaderror_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -130,8 +121,6 @@ func HandleFacebook_productfeeduploaderror_get_(ctx context.Context, request mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_productfeeduploaderror_get_(args)
@@ -147,4 +136,3 @@ func HandleFacebook_productfeeduploaderror_get_(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

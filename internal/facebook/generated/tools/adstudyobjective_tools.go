@@ -15,7 +15,6 @@ import (
 func GetAdStudyObjectiveTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_adstudyobjective_get_adspixels tool
 	facebook_adstudyobjective_get_adspixelsTool := mcp.NewTool("facebook_adstudyobjective_get_adspixels",
 		mcp.WithDescription("GET adspixels for AdStudyObjective"),
@@ -144,12 +143,10 @@ func GetAdStudyObjectiveTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_adstudyobjective_post_Tool)
 
-
 	return tools
 }
 
 // AdStudyObjective handlers
-
 
 // HandleFacebook_adstudyobjective_get_adspixels handles the facebook_adstudyobjective_get_adspixels tool
 func HandleFacebook_adstudyobjective_get_adspixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -164,8 +161,6 @@ func HandleFacebook_adstudyobjective_get_adspixels(ctx context.Context, request 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adstudyobjective_get_adspixels(args)
@@ -182,7 +177,6 @@ func HandleFacebook_adstudyobjective_get_adspixels(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adstudyobjective_get_applications handles the facebook_adstudyobjective_get_applications tool
 func HandleFacebook_adstudyobjective_get_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -196,8 +190,6 @@ func HandleFacebook_adstudyobjective_get_applications(ctx context.Context, reque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adstudyobjective_get_applications(args)
@@ -214,7 +206,6 @@ func HandleFacebook_adstudyobjective_get_applications(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adstudyobjective_get_brand_requests handles the facebook_adstudyobjective_get_brand_requests tool
 func HandleFacebook_adstudyobjective_get_brand_requests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -228,8 +219,6 @@ func HandleFacebook_adstudyobjective_get_brand_requests(ctx context.Context, req
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adstudyobjective_get_brand_requests(args)
@@ -246,7 +235,6 @@ func HandleFacebook_adstudyobjective_get_brand_requests(ctx context.Context, req
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adstudyobjective_get_customconversions handles the facebook_adstudyobjective_get_customconversions tool
 func HandleFacebook_adstudyobjective_get_customconversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -260,8 +248,6 @@ func HandleFacebook_adstudyobjective_get_customconversions(ctx context.Context, 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adstudyobjective_get_customconversions(args)
@@ -278,7 +264,6 @@ func HandleFacebook_adstudyobjective_get_customconversions(ctx context.Context, 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adstudyobjective_get_offline_conversion_data_sets handles the facebook_adstudyobjective_get_offline_conversion_data_sets tool
 func HandleFacebook_adstudyobjective_get_offline_conversion_data_sets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -292,8 +277,6 @@ func HandleFacebook_adstudyobjective_get_offline_conversion_data_sets(ctx contex
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adstudyobjective_get_offline_conversion_data_sets(args)
@@ -310,7 +293,6 @@ func HandleFacebook_adstudyobjective_get_offline_conversion_data_sets(ctx contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adstudyobjective_get_partner_private_studies handles the facebook_adstudyobjective_get_partner_private_studies tool
 func HandleFacebook_adstudyobjective_get_partner_private_studies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -324,8 +306,6 @@ func HandleFacebook_adstudyobjective_get_partner_private_studies(ctx context.Con
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adstudyobjective_get_partner_private_studies(args)
@@ -342,7 +322,6 @@ func HandleFacebook_adstudyobjective_get_partner_private_studies(ctx context.Con
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adstudyobjective_get_partnerstudies handles the facebook_adstudyobjective_get_partnerstudies tool
 func HandleFacebook_adstudyobjective_get_partnerstudies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -356,8 +335,6 @@ func HandleFacebook_adstudyobjective_get_partnerstudies(ctx context.Context, req
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adstudyobjective_get_partnerstudies(args)
@@ -373,7 +350,6 @@ func HandleFacebook_adstudyobjective_get_partnerstudies(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adstudyobjective_get_ handles the facebook_adstudyobjective_get_ tool
 func HandleFacebook_adstudyobjective_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -400,8 +376,6 @@ func HandleFacebook_adstudyobjective_get_(ctx context.Context, request mcp.CallT
 		args["ds"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adstudyobjective_get_(args)
 	if err != nil {
@@ -416,7 +390,6 @@ func HandleFacebook_adstudyobjective_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adstudyobjective_post_ handles the facebook_adstudyobjective_post_ tool
 func HandleFacebook_adstudyobjective_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -489,8 +462,6 @@ func HandleFacebook_adstudyobjective_post_(ctx context.Context, request mcp.Call
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adstudyobjective_post_(args)
 	if err != nil {
@@ -505,4 +476,3 @@ func HandleFacebook_adstudyobjective_post_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

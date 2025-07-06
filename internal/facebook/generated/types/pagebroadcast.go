@@ -4,7 +4,7 @@ package types
 
 // PageBroadcast represents a Facebook PageBroadcast object
 type PageBroadcast struct {
-	Id string `json:"id"`
+	Id             string `json:"id"`
 	Scheduled_time string `json:"scheduled_time"`
-	Status string `json:"status"`
+	Status         string `json:"status"`
 }

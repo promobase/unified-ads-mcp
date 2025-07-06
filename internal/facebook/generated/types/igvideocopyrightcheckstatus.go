@@ -4,6 +4,6 @@ package types
 
 // IGVideoCopyrightCheckStatus represents a Facebook IGVideoCopyrightCheckStatus object
 type IGVideoCopyrightCheckStatus struct {
-	Matches_found bool `json:"matches_found"`
-	Status string `json:"status"`
+	Matches_found bool   `json:"matches_found"`
+	Status        string `json:"status"`
 }

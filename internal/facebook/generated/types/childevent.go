@@ -4,8 +4,8 @@ package types
 
 // ChildEvent represents a Facebook ChildEvent object
 type ChildEvent struct {
-	End_time string `json:"end_time"`
-	Id string `json:"id"`
+	End_time   string `json:"end_time"`
+	Id         string `json:"id"`
 	Start_time string `json:"start_time"`
 	Ticket_uri string `json:"ticket_uri"`
 }

@@ -4,6 +4,6 @@ package types
 
 // Hours represents a Facebook Hours object
 type Hours struct {
-	Id string `json:"id"`
+	Id               string `json:"id"`
 	Permanent_status string `json:"permanent_status"`
 }

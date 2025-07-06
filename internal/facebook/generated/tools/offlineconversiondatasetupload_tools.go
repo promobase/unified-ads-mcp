@@ -15,7 +15,6 @@ import (
 func GetOfflineConversionDataSetUploadTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_offlineconversiondatasetupload_get_progress tool
 	facebook_offlineconversiondatasetupload_get_progressTool := mcp.NewTool("facebook_offlineconversiondatasetupload_get_progress",
 		mcp.WithDescription("GET progress for OfflineConversionDataSetUpload"),
@@ -46,12 +45,10 @@ func GetOfflineConversionDataSetUploadTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_offlineconversiondatasetupload_get_Tool)
 
-
 	return tools
 }
 
 // OfflineConversionDataSetUpload handlers
-
 
 // HandleFacebook_offlineconversiondatasetupload_get_progress handles the facebook_offlineconversiondatasetupload_get_progress tool
 func HandleFacebook_offlineconversiondatasetupload_get_progress(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -66,8 +63,6 @@ func HandleFacebook_offlineconversiondatasetupload_get_progress(ctx context.Cont
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_offlineconversiondatasetupload_get_progress(args)
@@ -84,7 +79,6 @@ func HandleFacebook_offlineconversiondatasetupload_get_progress(ctx context.Cont
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_offlineconversiondatasetupload_get_pull_sessions handles the facebook_offlineconversiondatasetupload_get_pull_sessions tool
 func HandleFacebook_offlineconversiondatasetupload_get_pull_sessions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -98,8 +92,6 @@ func HandleFacebook_offlineconversiondatasetupload_get_pull_sessions(ctx context
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_offlineconversiondatasetupload_get_pull_sessions(args)
@@ -116,7 +108,6 @@ func HandleFacebook_offlineconversiondatasetupload_get_pull_sessions(ctx context
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_offlineconversiondatasetupload_get_ handles the facebook_offlineconversiondatasetupload_get_ tool
 func HandleFacebook_offlineconversiondatasetupload_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -130,8 +121,6 @@ func HandleFacebook_offlineconversiondatasetupload_get_(ctx context.Context, req
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_offlineconversiondatasetupload_get_(args)
@@ -147,4 +136,3 @@ func HandleFacebook_offlineconversiondatasetupload_get_(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

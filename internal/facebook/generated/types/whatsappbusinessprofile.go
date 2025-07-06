@@ -4,7 +4,7 @@ package types
 
 // WhatsAppBusinessProfile represents a Facebook WhatsAppBusinessProfile object
 type WhatsAppBusinessProfile struct {
-	Id string `json:"id"`
-	Name_verification map[string]interface{} `json:"name_verification"`
+	Id                         string                 `json:"id"`
+	Name_verification          map[string]interface{} `json:"name_verification"`
 	Whatsapp_business_api_data map[string]interface{} `json:"whatsapp_business_api_data"`
 }

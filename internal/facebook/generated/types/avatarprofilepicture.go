@@ -4,6 +4,6 @@ package types
 
 // AvatarProfilePicture represents a Facebook AvatarProfilePicture object
 type AvatarProfilePicture struct {
-	Id string `json:"id"`
+	Id  string `json:"id"`
 	Url string `json:"url"`
 }

@@ -15,7 +15,6 @@ import (
 func GetPagePostExperimentTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_pagepostexperiment_get_video_insights tool
 	facebook_pagepostexperiment_get_video_insightsTool := mcp.NewTool("facebook_pagepostexperiment_get_video_insights",
 		mcp.WithDescription("GET video_insights for PagePostExperiment"),
@@ -46,12 +45,10 @@ func GetPagePostExperimentTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_pagepostexperiment_get_Tool)
 
-
 	return tools
 }
 
 // PagePostExperiment handlers
-
 
 // HandleFacebook_pagepostexperiment_get_video_insights handles the facebook_pagepostexperiment_get_video_insights tool
 func HandleFacebook_pagepostexperiment_get_video_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -66,8 +63,6 @@ func HandleFacebook_pagepostexperiment_get_video_insights(ctx context.Context, r
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_pagepostexperiment_get_video_insights(args)
@@ -84,7 +79,6 @@ func HandleFacebook_pagepostexperiment_get_video_insights(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_pagepostexperiment_delete_ handles the facebook_pagepostexperiment_delete_ tool
 func HandleFacebook_pagepostexperiment_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -98,8 +92,6 @@ func HandleFacebook_pagepostexperiment_delete_(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_pagepostexperiment_delete_(args)
@@ -116,7 +108,6 @@ func HandleFacebook_pagepostexperiment_delete_(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_pagepostexperiment_get_ handles the facebook_pagepostexperiment_get_ tool
 func HandleFacebook_pagepostexperiment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -130,8 +121,6 @@ func HandleFacebook_pagepostexperiment_get_(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_pagepostexperiment_get_(args)
@@ -147,4 +136,3 @@ func HandleFacebook_pagepostexperiment_get_(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

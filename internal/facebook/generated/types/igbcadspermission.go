@@ -4,7 +4,7 @@ package types
 
 // IGBCAdsPermission represents a Facebook IGBCAdsPermission object
 type IGBCAdsPermission struct {
-	Id string `json:"id"`
+	Id              string `json:"id"`
 	Permission_type string `json:"permission_type"`
-	Status string `json:"status"`
+	Status          string `json:"status"`
 }

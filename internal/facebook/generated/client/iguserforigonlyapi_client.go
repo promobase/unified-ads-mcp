@@ -21,7 +21,6 @@ func NewIGUserForIGOnlyAPIClient(accessToken string) *IGUserForIGOnlyAPIClient {
 	}
 }
 
-
 // facebook_iguserforigonlyapi_get_business_messaging_feature_status GET business_messaging_feature_status for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_business_messaging_feature_status(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -30,7 +29,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_business_mess
 		return nil, fmt.Errorf("missing required parameter: feature")
 	}
 	_ = feature // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "business_messaging_feature_status")
@@ -41,7 +39,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_business_mess
 		urlParams.Set("feature", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -72,11 +69,9 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_business_mess
 	return result, nil
 }
 
-
 // facebook_iguserforigonlyapi_get_content_publishing_limit GET content_publishing_limit for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_content_publishing_limit(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "content_publishing_limit")
@@ -87,7 +82,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_content_publi
 		urlParams.Set("since", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -118,11 +112,9 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_content_publi
 	return result, nil
 }
 
-
 // facebook_iguserforigonlyapi_get_conversations GET conversations for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_conversations(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "conversations")
@@ -142,7 +134,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_conversations
 		urlParams.Set("user_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -173,7 +164,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_conversations
 	return result, nil
 }
 
-
 // facebook_iguserforigonlyapi_get_insights GET insights for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -187,7 +177,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_insights(args
 		return nil, fmt.Errorf("missing required parameter: period")
 	}
 	_ = period // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "insights")
@@ -216,7 +205,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_insights(args
 		urlParams.Set("until", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -247,19 +235,15 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_insights(args
 	return result, nil
 }
 
-
 // facebook_iguserforigonlyapi_get_live_media GET live_media for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_live_media(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "live_media")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -290,11 +274,9 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_live_media(ar
 	return result, nil
 }
 
-
 // facebook_iguserforigonlyapi_get_media GET media for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_media(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "media")
@@ -308,7 +290,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_media(args ma
 		urlParams.Set("until", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -339,11 +320,9 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_media(args ma
 	return result, nil
 }
 
-
 // facebook_iguserforigonlyapi_post_media POST media for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_media(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "media")
@@ -399,7 +378,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_media(args m
 		urlParams.Set("video_url", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -429,7 +407,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_media(args m
 
 	return result, nil
 }
-
 
 // facebook_iguserforigonlyapi_post_mediapublish POST mediapublish for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_mediapublish(args map[string]interface{}) (interface{}, error) {
@@ -440,7 +417,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_mediapublish
 	}
 	_ = creation_id // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "mediapublish")
 	urlParams := url.Values{}
@@ -449,7 +425,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_mediapublish
 	if val, ok := args["creation_id"]; ok {
 		urlParams.Set("creation_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -480,7 +455,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_mediapublish
 
 	return result, nil
 }
-
 
 // facebook_iguserforigonlyapi_post_mentions POST mentions for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_mentions(args map[string]interface{}) (interface{}, error) {
@@ -495,7 +469,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_mentions(arg
 		return nil, fmt.Errorf("missing required parameter: message")
 	}
 	_ = message // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "mentions")
@@ -512,7 +485,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_mentions(arg
 		urlParams.Set("message", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -542,7 +514,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_mentions(arg
 
 	return result, nil
 }
-
 
 // facebook_iguserforigonlyapi_post_messageattachments POST messageattachments for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_messageattachments(args map[string]interface{}) (interface{}, error) {
@@ -553,7 +524,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_messageattac
 	}
 	_ = message // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "messageattachments")
 	urlParams := url.Values{}
@@ -562,7 +532,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_messageattac
 	if val, ok := args["message"]; ok {
 		urlParams.Set("message", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -594,11 +563,9 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_messageattac
 	return result, nil
 }
 
-
 // facebook_iguserforigonlyapi_post_messages POST messages for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_messages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "messages")
@@ -627,7 +594,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_messages(arg
 		urlParams.Set("thread_control", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -658,7 +624,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_messages(arg
 	return result, nil
 }
 
-
 // facebook_iguserforigonlyapi_delete_messenger_profile DELETE messenger_profile for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_delete_messenger_profile(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -668,7 +633,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_delete_messenger_
 	}
 	_ = fields // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "messenger_profile")
 	urlParams := url.Values{}
@@ -677,7 +641,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_delete_messenger_
 	if val, ok := args["fields"]; ok {
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -709,18 +672,14 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_delete_messenger_
 	return result, nil
 }
 
-
 // facebook_iguserforigonlyapi_get_messenger_profile GET messenger_profile for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_messenger_profile(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "messenger_profile")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -752,11 +711,9 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_messenger_pro
 	return result, nil
 }
 
-
 // facebook_iguserforigonlyapi_post_messenger_profile POST messenger_profile for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_messenger_profile(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "messenger_profile")
@@ -770,7 +727,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_messenger_pr
 		urlParams.Set("persistent_menu", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -801,18 +757,14 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_messenger_pr
 	return result, nil
 }
 
-
 // facebook_iguserforigonlyapi_get_stories GET stories for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_stories(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "stories")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -844,18 +796,14 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_stories(args 
 	return result, nil
 }
 
-
 // facebook_iguserforigonlyapi_delete_subscribed_apps DELETE subscribed_apps for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_delete_subscribed_apps(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "subscribed_apps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -887,18 +835,14 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_delete_subscribed
 	return result, nil
 }
 
-
 // facebook_iguserforigonlyapi_get_subscribed_apps GET subscribed_apps for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_subscribed_apps(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "subscribed_apps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -929,7 +873,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_subscribed_ap
 
 	return result, nil
 }
-
 
 // facebook_iguserforigonlyapi_post_subscribed_apps POST subscribed_apps for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_subscribed_apps(args map[string]interface{}) (interface{}, error) {
@@ -940,7 +883,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_subscribed_a
 	}
 	_ = subscribed_fields // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "subscribed_apps")
 	urlParams := url.Values{}
@@ -949,7 +891,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_subscribed_a
 	if val, ok := args["subscribed_fields"]; ok {
 		urlParams.Set("subscribed_fields", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -981,18 +922,14 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_subscribed_a
 	return result, nil
 }
 
-
 // facebook_iguserforigonlyapi_get_tags GET tags for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_tags(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "tags")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1024,11 +961,9 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_tags(args map
 	return result, nil
 }
 
-
 // facebook_iguserforigonlyapi_delete_welcome_message_flows DELETE welcome_message_flows for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_delete_welcome_message_flows(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "welcome_message_flows")
@@ -1038,7 +973,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_delete_welcome_me
 	if val, ok := args["flow_id"]; ok {
 		urlParams.Set("flow_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1070,11 +1004,9 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_delete_welcome_me
 	return result, nil
 }
 
-
 // facebook_iguserforigonlyapi_get_welcome_message_flows GET welcome_message_flows for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_welcome_message_flows(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "welcome_message_flows")
@@ -1088,7 +1020,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_welcome_messa
 		urlParams.Set("flow_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1119,11 +1050,9 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_welcome_messa
 	return result, nil
 }
 
-
 // facebook_iguserforigonlyapi_post_welcome_message_flows POST welcome_message_flows for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_welcome_message_flows(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "welcome_message_flows")
@@ -1143,7 +1072,6 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_welcome_mess
 		urlParams.Set("welcome_message_flow", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1174,18 +1102,14 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_post_welcome_mess
 	return result, nil
 }
 
-
 // facebook_iguserforigonlyapi_get_ GET  for IGUserForIGOnlyAPI
 func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1216,4 +1140,3 @@ func (c *IGUserForIGOnlyAPIClient) Facebook_iguserforigonlyapi_get_(args map[str
 
 	return result, nil
 }
-

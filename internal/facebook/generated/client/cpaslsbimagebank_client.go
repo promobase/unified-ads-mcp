@@ -21,19 +21,15 @@ func NewCPASLsbImageBankClient(accessToken string) *CPASLsbImageBankClient {
 	}
 }
 
-
 // facebook_cpaslsbimagebank_get_backup_images GET backup_images for CPASLsbImageBank
 func (c *CPASLsbImageBankClient) Facebook_cpaslsbimagebank_get_backup_images(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "backup_images")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *CPASLsbImageBankClient) Facebook_cpaslsbimagebank_get_backup_images(arg
 	return result, nil
 }
 
-
 // facebook_cpaslsbimagebank_get_ GET  for CPASLsbImageBank
 func (c *CPASLsbImageBankClient) Facebook_cpaslsbimagebank_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -106,7 +98,6 @@ func (c *CPASLsbImageBankClient) Facebook_cpaslsbimagebank_get_(args map[string]
 
 	return result, nil
 }
-
 
 // facebook_cpaslsbimagebank_post_ POST  for CPASLsbImageBank
 func (c *CPASLsbImageBankClient) Facebook_cpaslsbimagebank_post_(args map[string]interface{}) (interface{}, error) {
@@ -117,7 +108,6 @@ func (c *CPASLsbImageBankClient) Facebook_cpaslsbimagebank_post_(args map[string
 	}
 	_ = backup_image_urls // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
@@ -126,7 +116,6 @@ func (c *CPASLsbImageBankClient) Facebook_cpaslsbimagebank_post_(args map[string
 	if val, ok := args["backup_image_urls"]; ok {
 		urlParams.Set("backup_image_urls", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -157,4 +146,3 @@ func (c *CPASLsbImageBankClient) Facebook_cpaslsbimagebank_post_(args map[string
 
 	return result, nil
 }
-

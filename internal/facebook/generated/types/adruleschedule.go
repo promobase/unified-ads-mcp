@@ -4,7 +4,7 @@ package types
 
 // AdRuleSchedule represents a Facebook AdRuleSchedule object
 type AdRuleSchedule struct {
-	Days []int `json:"days"`
-	End_minute int `json:"end_minute"`
-	Start_minute int `json:"start_minute"`
+	Days         []int `json:"days"`
+	End_minute   int   `json:"end_minute"`
+	Start_minute int   `json:"start_minute"`
 }

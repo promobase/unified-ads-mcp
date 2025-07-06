@@ -21,19 +21,15 @@ func NewContentBlockListClient(accessToken string) *ContentBlockListClient {
 	}
 }
 
-
 // facebook_contentblocklist_get_applied_ad_accounts GET applied_ad_accounts for ContentBlockList
 func (c *ContentBlockListClient) Facebook_contentblocklist_get_applied_ad_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "applied_ad_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *ContentBlockListClient) Facebook_contentblocklist_get_applied_ad_accoun
 	return result, nil
 }
 
-
 // facebook_contentblocklist_get_facebook_content GET facebook_content for ContentBlockList
 func (c *ContentBlockListClient) Facebook_contentblocklist_get_facebook_content(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "facebook_content")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -107,19 +99,15 @@ func (c *ContentBlockListClient) Facebook_contentblocklist_get_facebook_content(
 	return result, nil
 }
 
-
 // facebook_contentblocklist_get_instagram_content GET instagram_content for ContentBlockList
 func (c *ContentBlockListClient) Facebook_contentblocklist_get_instagram_content(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "instagram_content")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -150,19 +138,15 @@ func (c *ContentBlockListClient) Facebook_contentblocklist_get_instagram_content
 	return result, nil
 }
 
-
 // facebook_contentblocklist_get_ GET  for ContentBlockList
 func (c *ContentBlockListClient) Facebook_contentblocklist_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -192,4 +176,3 @@ func (c *ContentBlockListClient) Facebook_contentblocklist_get_(args map[string]
 
 	return result, nil
 }
-

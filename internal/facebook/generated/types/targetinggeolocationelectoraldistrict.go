@@ -4,9 +4,9 @@ package types
 
 // TargetingGeoLocationElectoralDistrict represents a Facebook TargetingGeoLocationElectoralDistrict object
 type TargetingGeoLocationElectoralDistrict struct {
-	Country string `json:"country"`
-	Deprecation_code string `json:"deprecation_code"`
+	Country            string `json:"country"`
+	Deprecation_code   string `json:"deprecation_code"`
 	Electoral_district string `json:"electoral_district"`
-	Key string `json:"key"`
-	Name string `json:"name"`
+	Key                string `json:"key"`
+	Name               string `json:"name"`
 }

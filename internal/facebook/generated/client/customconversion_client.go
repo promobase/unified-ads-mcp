@@ -21,11 +21,9 @@ func NewCustomConversionClient(accessToken string) *CustomConversionClient {
 	}
 }
 
-
 // facebook_customconversion_get_stats GET stats for CustomConversion
 func (c *CustomConversionClient) Facebook_customconversion_get_stats(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "stats")
@@ -41,7 +39,6 @@ func (c *CustomConversionClient) Facebook_customconversion_get_stats(args map[st
 	if val, ok := args["start_time"]; ok {
 		urlParams.Set("start_time", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -73,18 +70,14 @@ func (c *CustomConversionClient) Facebook_customconversion_get_stats(args map[st
 	return result, nil
 }
 
-
 // facebook_customconversion_delete_ DELETE  for CustomConversion
 func (c *CustomConversionClient) Facebook_customconversion_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -116,18 +109,14 @@ func (c *CustomConversionClient) Facebook_customconversion_delete_(args map[stri
 	return result, nil
 }
 
-
 // facebook_customconversion_get_ GET  for CustomConversion
 func (c *CustomConversionClient) Facebook_customconversion_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -159,11 +148,9 @@ func (c *CustomConversionClient) Facebook_customconversion_get_(args map[string]
 	return result, nil
 }
 
-
 // facebook_customconversion_post_ POST  for CustomConversion
 func (c *CustomConversionClient) Facebook_customconversion_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -179,7 +166,6 @@ func (c *CustomConversionClient) Facebook_customconversion_post_(args map[string
 	if val, ok := args["name"]; ok {
 		urlParams.Set("name", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -210,4 +196,3 @@ func (c *CustomConversionClient) Facebook_customconversion_post_(args map[string
 
 	return result, nil
 }
-

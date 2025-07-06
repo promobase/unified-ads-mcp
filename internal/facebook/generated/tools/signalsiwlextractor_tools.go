@@ -15,7 +15,6 @@ import (
 func GetSignalsIWLExtractorTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_signalsiwlextractor_get_ tool
 	facebook_signalsiwlextractor_get_Tool := mcp.NewTool("facebook_signalsiwlextractor_get_",
 		mcp.WithDescription("GET  for SignalsIWLExtractor"),
@@ -26,12 +25,10 @@ func GetSignalsIWLExtractorTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_signalsiwlextractor_get_Tool)
 
-
 	return tools
 }
 
 // SignalsIWLExtractor handlers
-
 
 // HandleFacebook_signalsiwlextractor_get_ handles the facebook_signalsiwlextractor_get_ tool
 func HandleFacebook_signalsiwlextractor_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_signalsiwlextractor_get_(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_signalsiwlextractor_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_signalsiwlextractor_get_(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

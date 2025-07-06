@@ -15,7 +15,6 @@ import (
 func GetPageUserMessageThreadLabelTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_pageusermessagethreadlabel_delete_label tool
 	facebook_pageusermessagethreadlabel_delete_labelTool := mcp.NewTool("facebook_pageusermessagethreadlabel_delete_label",
 		mcp.WithDescription("DELETE label for PageUserMessageThreadLabel"),
@@ -64,12 +63,10 @@ func GetPageUserMessageThreadLabelTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_pageusermessagethreadlabel_get_Tool)
 
-
 	return tools
 }
 
 // PageUserMessageThreadLabel handlers
-
 
 // HandleFacebook_pageusermessagethreadlabel_delete_label handles the facebook_pageusermessagethreadlabel_delete_label tool
 func HandleFacebook_pageusermessagethreadlabel_delete_label(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -92,8 +89,6 @@ func HandleFacebook_pageusermessagethreadlabel_delete_label(ctx context.Context,
 	}
 	args["user"] = user
 
-
-
 	// Call the client method
 	result, err := client.Facebook_pageusermessagethreadlabel_delete_label(args)
 	if err != nil {
@@ -108,7 +103,6 @@ func HandleFacebook_pageusermessagethreadlabel_delete_label(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_pageusermessagethreadlabel_post_label handles the facebook_pageusermessagethreadlabel_post_label tool
 func HandleFacebook_pageusermessagethreadlabel_post_label(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -131,8 +125,6 @@ func HandleFacebook_pageusermessagethreadlabel_post_label(ctx context.Context, r
 	}
 	args["user"] = user
 
-
-
 	// Call the client method
 	result, err := client.Facebook_pageusermessagethreadlabel_post_label(args)
 	if err != nil {
@@ -148,7 +140,6 @@ func HandleFacebook_pageusermessagethreadlabel_post_label(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_pageusermessagethreadlabel_delete_ handles the facebook_pageusermessagethreadlabel_delete_ tool
 func HandleFacebook_pageusermessagethreadlabel_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -162,8 +153,6 @@ func HandleFacebook_pageusermessagethreadlabel_delete_(ctx context.Context, requ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_pageusermessagethreadlabel_delete_(args)
@@ -180,7 +169,6 @@ func HandleFacebook_pageusermessagethreadlabel_delete_(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_pageusermessagethreadlabel_get_ handles the facebook_pageusermessagethreadlabel_get_ tool
 func HandleFacebook_pageusermessagethreadlabel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -194,8 +182,6 @@ func HandleFacebook_pageusermessagethreadlabel_get_(ctx context.Context, request
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_pageusermessagethreadlabel_get_(args)
@@ -211,4 +197,3 @@ func HandleFacebook_pageusermessagethreadlabel_get_(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetFundraiserPersonToCharityTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_fundraiserpersontocharity_get_donations tool
 	facebook_fundraiserpersontocharity_get_donationsTool := mcp.NewTool("facebook_fundraiserpersontocharity_get_donations",
 		mcp.WithDescription("GET donations for FundraiserPersonToCharity"),
@@ -123,12 +122,10 @@ func GetFundraiserPersonToCharityTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_fundraiserpersontocharity_post_Tool)
 
-
 	return tools
 }
 
 // FundraiserPersonToCharity handlers
-
 
 // HandleFacebook_fundraiserpersontocharity_get_donations handles the facebook_fundraiserpersontocharity_get_donations tool
 func HandleFacebook_fundraiserpersontocharity_get_donations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -143,8 +140,6 @@ func HandleFacebook_fundraiserpersontocharity_get_donations(ctx context.Context,
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_fundraiserpersontocharity_get_donations(args)
@@ -161,7 +156,6 @@ func HandleFacebook_fundraiserpersontocharity_get_donations(ctx context.Context,
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_fundraiserpersontocharity_post_end_fundraiser handles the facebook_fundraiserpersontocharity_post_end_fundraiser tool
 func HandleFacebook_fundraiserpersontocharity_post_end_fundraiser(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -175,8 +169,6 @@ func HandleFacebook_fundraiserpersontocharity_post_end_fundraiser(ctx context.Co
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_fundraiserpersontocharity_post_end_fundraiser(args)
@@ -193,7 +185,6 @@ func HandleFacebook_fundraiserpersontocharity_post_end_fundraiser(ctx context.Co
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_fundraiserpersontocharity_get_external_donations handles the facebook_fundraiserpersontocharity_get_external_donations tool
 func HandleFacebook_fundraiserpersontocharity_get_external_donations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -207,8 +198,6 @@ func HandleFacebook_fundraiserpersontocharity_get_external_donations(ctx context
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_fundraiserpersontocharity_get_external_donations(args)
@@ -224,7 +213,6 @@ func HandleFacebook_fundraiserpersontocharity_get_external_donations(ctx context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_fundraiserpersontocharity_post_external_donations handles the facebook_fundraiserpersontocharity_post_external_donations tool
 func HandleFacebook_fundraiserpersontocharity_post_external_donations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -275,8 +263,6 @@ func HandleFacebook_fundraiserpersontocharity_post_external_donations(ctx contex
 	}
 	args["donor_id_hash"] = donor_id_hash
 
-
-
 	// Call the client method
 	result, err := client.Facebook_fundraiserpersontocharity_post_external_donations(args)
 	if err != nil {
@@ -292,7 +278,6 @@ func HandleFacebook_fundraiserpersontocharity_post_external_donations(ctx contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_fundraiserpersontocharity_get_ handles the facebook_fundraiserpersontocharity_get_ tool
 func HandleFacebook_fundraiserpersontocharity_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -306,8 +291,6 @@ func HandleFacebook_fundraiserpersontocharity_get_(ctx context.Context, request 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_fundraiserpersontocharity_get_(args)
@@ -323,7 +306,6 @@ func HandleFacebook_fundraiserpersontocharity_get_(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_fundraiserpersontocharity_post_ handles the facebook_fundraiserpersontocharity_post_ tool
 func HandleFacebook_fundraiserpersontocharity_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -384,8 +366,6 @@ func HandleFacebook_fundraiserpersontocharity_post_(ctx context.Context, request
 		args["name"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_fundraiserpersontocharity_post_(args)
 	if err != nil {
@@ -400,4 +380,3 @@ func HandleFacebook_fundraiserpersontocharity_post_(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

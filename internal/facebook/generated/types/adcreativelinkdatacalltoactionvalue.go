@@ -4,16 +4,16 @@ package types
 
 // AdCreativeLinkDataCallToActionValue represents a Facebook AdCreativeLinkDataCallToActionValue object
 type AdCreativeLinkDataCallToActionValue struct {
-	App_destination string `json:"app_destination"`
-	App_link string `json:"app_link"`
-	Application string `json:"application"`
-	Event_id string `json:"event_id"`
-	Lead_gen_form_id string `json:"lead_gen_form_id"`
-	Link string `json:"link"`
-	Link_caption string `json:"link_caption"`
-	Link_format string `json:"link_format"`
+	App_destination   string   `json:"app_destination"`
+	App_link          string   `json:"app_link"`
+	Application       string   `json:"application"`
+	Event_id          string   `json:"event_id"`
+	Lead_gen_form_id  string   `json:"lead_gen_form_id"`
+	Link              string   `json:"link"`
+	Link_caption      string   `json:"link_caption"`
+	Link_format       string   `json:"link_format"`
 	Object_store_urls []string `json:"object_store_urls"`
-	Page string `json:"page"`
-	Product_link string `json:"product_link"`
-	Whatsapp_number string `json:"whatsapp_number"`
+	Page              string   `json:"page"`
+	Product_link      string   `json:"product_link"`
+	Whatsapp_number   string   `json:"whatsapp_number"`
 }

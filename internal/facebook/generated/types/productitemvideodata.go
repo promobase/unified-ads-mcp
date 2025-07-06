@@ -5,5 +5,5 @@ package types
 // ProductItemVideoData represents a Facebook ProductItemVideoData object
 type ProductItemVideoData struct {
 	Tags []string `json:"tags"`
-	Url string `json:"url"`
+	Url  string   `json:"url"`
 }

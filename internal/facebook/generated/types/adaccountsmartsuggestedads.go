@@ -4,8 +4,8 @@ package types
 
 // AdAccountSmartSuggestedAds represents a Facebook AdAccountSmartSuggestedAds object
 type AdAccountSmartSuggestedAds struct {
-	Ad_creative_spec string `json:"ad_creative_spec"`
-	Description string `json:"description"`
-	Guidance_spec []string `json:"guidance_spec"`
-	Thumbnail_url string `json:"thumbnail_url"`
+	Ad_creative_spec string   `json:"ad_creative_spec"`
+	Description      string   `json:"description"`
+	Guidance_spec    []string `json:"guidance_spec"`
+	Thumbnail_url    string   `json:"thumbnail_url"`
 }

@@ -4,7 +4,7 @@ package types
 
 // AdsReportBuilder represents a Facebook AdsReportBuilder object
 type AdsReportBuilder struct {
-	Headers map[string]interface{} `json:"headers"`
-	Rows []map[string]interface{} `json:"rows"`
-	Skan_readiness_status []interface{} `json:"skan_readiness_status"`
+	Headers               map[string]interface{}   `json:"headers"`
+	Rows                  []map[string]interface{} `json:"rows"`
+	Skan_readiness_status []interface{}            `json:"skan_readiness_status"`
 }

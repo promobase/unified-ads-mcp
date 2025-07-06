@@ -4,10 +4,10 @@ package types
 
 // AdKpiShift represents a Facebook AdKpiShift object
 type AdKpiShift struct {
-	Ad_set *AdSet `json:"ad_set"`
+	Ad_set                *AdSet  `json:"ad_set"`
 	Cost_per_result_shift float64 `json:"cost_per_result_shift"`
-	Enough_effective_days bool `json:"enough_effective_days"`
-	Result_indicator string `json:"result_indicator"`
-	Result_shift float64 `json:"result_shift"`
-	Spend_shift float64 `json:"spend_shift"`
+	Enough_effective_days bool    `json:"enough_effective_days"`
+	Result_indicator      string  `json:"result_indicator"`
+	Result_shift          float64 `json:"result_shift"`
+	Spend_shift           float64 `json:"spend_shift"`
 }

@@ -15,7 +15,6 @@ import (
 func GetIGUserForIGOnlyAPITools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_iguserforigonlyapi_get_business_messaging_feature_status tool
 	facebook_iguserforigonlyapi_get_business_messaging_feature_statusTool := mcp.NewTool("facebook_iguserforigonlyapi_get_business_messaging_feature_status",
 		mcp.WithDescription("GET business_messaging_feature_status for IGUserForIGOnlyAPI"),
@@ -428,12 +427,10 @@ func GetIGUserForIGOnlyAPITools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_iguserforigonlyapi_get_Tool)
 
-
 	return tools
 }
 
 // IGUserForIGOnlyAPI handlers
-
 
 // HandleFacebook_iguserforigonlyapi_get_business_messaging_feature_status handles the facebook_iguserforigonlyapi_get_business_messaging_feature_status tool
 func HandleFacebook_iguserforigonlyapi_get_business_messaging_feature_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -456,8 +453,6 @@ func HandleFacebook_iguserforigonlyapi_get_business_messaging_feature_status(ctx
 	}
 	args["feature"] = feature
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_get_business_messaging_feature_status(args)
 	if err != nil {
@@ -472,7 +467,6 @@ func HandleFacebook_iguserforigonlyapi_get_business_messaging_feature_status(ctx
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguserforigonlyapi_get_content_publishing_limit handles the facebook_iguserforigonlyapi_get_content_publishing_limit tool
 func HandleFacebook_iguserforigonlyapi_get_content_publishing_limit(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -493,8 +487,6 @@ func HandleFacebook_iguserforigonlyapi_get_content_publishing_limit(ctx context.
 		args["since"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_get_content_publishing_limit(args)
 	if err != nil {
@@ -509,7 +501,6 @@ func HandleFacebook_iguserforigonlyapi_get_content_publishing_limit(ctx context.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguserforigonlyapi_get_conversations handles the facebook_iguserforigonlyapi_get_conversations tool
 func HandleFacebook_iguserforigonlyapi_get_conversations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -546,8 +537,6 @@ func HandleFacebook_iguserforigonlyapi_get_conversations(ctx context.Context, re
 		args["user_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_get_conversations(args)
 	if err != nil {
@@ -562,7 +551,6 @@ func HandleFacebook_iguserforigonlyapi_get_conversations(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguserforigonlyapi_get_insights handles the facebook_iguserforigonlyapi_get_insights tool
 func HandleFacebook_iguserforigonlyapi_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -618,8 +606,6 @@ func HandleFacebook_iguserforigonlyapi_get_insights(ctx context.Context, request
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_get_insights(args)
 	if err != nil {
@@ -635,7 +621,6 @@ func HandleFacebook_iguserforigonlyapi_get_insights(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguserforigonlyapi_get_live_media handles the facebook_iguserforigonlyapi_get_live_media tool
 func HandleFacebook_iguserforigonlyapi_get_live_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -649,8 +634,6 @@ func HandleFacebook_iguserforigonlyapi_get_live_media(ctx context.Context, reque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_get_live_media(args)
@@ -666,7 +649,6 @@ func HandleFacebook_iguserforigonlyapi_get_live_media(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguserforigonlyapi_get_media handles the facebook_iguserforigonlyapi_get_media tool
 func HandleFacebook_iguserforigonlyapi_get_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -692,8 +674,6 @@ func HandleFacebook_iguserforigonlyapi_get_media(ctx context.Context, request mc
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_get_media(args)
 	if err != nil {
@@ -708,7 +688,6 @@ func HandleFacebook_iguserforigonlyapi_get_media(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguserforigonlyapi_post_media handles the facebook_iguserforigonlyapi_post_media tool
 func HandleFacebook_iguserforigonlyapi_post_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -808,8 +787,6 @@ func HandleFacebook_iguserforigonlyapi_post_media(ctx context.Context, request m
 		args["video_url"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_post_media(args)
 	if err != nil {
@@ -824,7 +801,6 @@ func HandleFacebook_iguserforigonlyapi_post_media(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguserforigonlyapi_post_mediapublish handles the facebook_iguserforigonlyapi_post_mediapublish tool
 func HandleFacebook_iguserforigonlyapi_post_mediapublish(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -847,8 +823,6 @@ func HandleFacebook_iguserforigonlyapi_post_mediapublish(ctx context.Context, re
 	}
 	args["creation_id"] = creation_id
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_post_mediapublish(args)
 	if err != nil {
@@ -863,7 +837,6 @@ func HandleFacebook_iguserforigonlyapi_post_mediapublish(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguserforigonlyapi_post_mentions handles the facebook_iguserforigonlyapi_post_mentions tool
 func HandleFacebook_iguserforigonlyapi_post_mentions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -898,8 +871,6 @@ func HandleFacebook_iguserforigonlyapi_post_mentions(ctx context.Context, reques
 	}
 	args["message"] = message
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_post_mentions(args)
 	if err != nil {
@@ -914,7 +885,6 @@ func HandleFacebook_iguserforigonlyapi_post_mentions(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguserforigonlyapi_post_messageattachments handles the facebook_iguserforigonlyapi_post_messageattachments tool
 func HandleFacebook_iguserforigonlyapi_post_messageattachments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -937,8 +907,6 @@ func HandleFacebook_iguserforigonlyapi_post_messageattachments(ctx context.Conte
 	}
 	args["message"] = message
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_post_messageattachments(args)
 	if err != nil {
@@ -953,7 +921,6 @@ func HandleFacebook_iguserforigonlyapi_post_messageattachments(ctx context.Conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguserforigonlyapi_post_messages handles the facebook_iguserforigonlyapi_post_messages tool
 func HandleFacebook_iguserforigonlyapi_post_messages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1008,8 +975,6 @@ func HandleFacebook_iguserforigonlyapi_post_messages(ctx context.Context, reques
 		args["thread_control"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_post_messages(args)
 	if err != nil {
@@ -1024,7 +989,6 @@ func HandleFacebook_iguserforigonlyapi_post_messages(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguserforigonlyapi_delete_messenger_profile handles the facebook_iguserforigonlyapi_delete_messenger_profile tool
 func HandleFacebook_iguserforigonlyapi_delete_messenger_profile(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1047,8 +1011,6 @@ func HandleFacebook_iguserforigonlyapi_delete_messenger_profile(ctx context.Cont
 	}
 	args["fields"] = fields
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_delete_messenger_profile(args)
 	if err != nil {
@@ -1064,7 +1026,6 @@ func HandleFacebook_iguserforigonlyapi_delete_messenger_profile(ctx context.Cont
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguserforigonlyapi_get_messenger_profile handles the facebook_iguserforigonlyapi_get_messenger_profile tool
 func HandleFacebook_iguserforigonlyapi_get_messenger_profile(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1078,8 +1039,6 @@ func HandleFacebook_iguserforigonlyapi_get_messenger_profile(ctx context.Context
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_get_messenger_profile(args)
@@ -1095,7 +1054,6 @@ func HandleFacebook_iguserforigonlyapi_get_messenger_profile(ctx context.Context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguserforigonlyapi_post_messenger_profile handles the facebook_iguserforigonlyapi_post_messenger_profile tool
 func HandleFacebook_iguserforigonlyapi_post_messenger_profile(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1123,8 +1081,6 @@ func HandleFacebook_iguserforigonlyapi_post_messenger_profile(ctx context.Contex
 		args["persistent_menu"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_post_messenger_profile(args)
 	if err != nil {
@@ -1140,7 +1096,6 @@ func HandleFacebook_iguserforigonlyapi_post_messenger_profile(ctx context.Contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguserforigonlyapi_get_stories handles the facebook_iguserforigonlyapi_get_stories tool
 func HandleFacebook_iguserforigonlyapi_get_stories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1154,8 +1109,6 @@ func HandleFacebook_iguserforigonlyapi_get_stories(ctx context.Context, request 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_get_stories(args)
@@ -1172,7 +1125,6 @@ func HandleFacebook_iguserforigonlyapi_get_stories(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguserforigonlyapi_delete_subscribed_apps handles the facebook_iguserforigonlyapi_delete_subscribed_apps tool
 func HandleFacebook_iguserforigonlyapi_delete_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1186,8 +1138,6 @@ func HandleFacebook_iguserforigonlyapi_delete_subscribed_apps(ctx context.Contex
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_delete_subscribed_apps(args)
@@ -1204,7 +1154,6 @@ func HandleFacebook_iguserforigonlyapi_delete_subscribed_apps(ctx context.Contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguserforigonlyapi_get_subscribed_apps handles the facebook_iguserforigonlyapi_get_subscribed_apps tool
 func HandleFacebook_iguserforigonlyapi_get_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1218,8 +1167,6 @@ func HandleFacebook_iguserforigonlyapi_get_subscribed_apps(ctx context.Context, 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_get_subscribed_apps(args)
@@ -1235,7 +1182,6 @@ func HandleFacebook_iguserforigonlyapi_get_subscribed_apps(ctx context.Context, 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguserforigonlyapi_post_subscribed_apps handles the facebook_iguserforigonlyapi_post_subscribed_apps tool
 func HandleFacebook_iguserforigonlyapi_post_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1258,8 +1204,6 @@ func HandleFacebook_iguserforigonlyapi_post_subscribed_apps(ctx context.Context,
 	}
 	args["subscribed_fields"] = subscribed_fields
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_post_subscribed_apps(args)
 	if err != nil {
@@ -1275,7 +1219,6 @@ func HandleFacebook_iguserforigonlyapi_post_subscribed_apps(ctx context.Context,
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguserforigonlyapi_get_tags handles the facebook_iguserforigonlyapi_get_tags tool
 func HandleFacebook_iguserforigonlyapi_get_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1289,8 +1232,6 @@ func HandleFacebook_iguserforigonlyapi_get_tags(ctx context.Context, request mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_get_tags(args)
@@ -1306,7 +1247,6 @@ func HandleFacebook_iguserforigonlyapi_get_tags(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguserforigonlyapi_delete_welcome_message_flows handles the facebook_iguserforigonlyapi_delete_welcome_message_flows tool
 func HandleFacebook_iguserforigonlyapi_delete_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1327,8 +1267,6 @@ func HandleFacebook_iguserforigonlyapi_delete_welcome_message_flows(ctx context.
 		args["flow_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_delete_welcome_message_flows(args)
 	if err != nil {
@@ -1343,7 +1281,6 @@ func HandleFacebook_iguserforigonlyapi_delete_welcome_message_flows(ctx context.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguserforigonlyapi_get_welcome_message_flows handles the facebook_iguserforigonlyapi_get_welcome_message_flows tool
 func HandleFacebook_iguserforigonlyapi_get_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1369,8 +1306,6 @@ func HandleFacebook_iguserforigonlyapi_get_welcome_message_flows(ctx context.Con
 		args["flow_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_get_welcome_message_flows(args)
 	if err != nil {
@@ -1385,7 +1320,6 @@ func HandleFacebook_iguserforigonlyapi_get_welcome_message_flows(ctx context.Con
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_iguserforigonlyapi_post_welcome_message_flows handles the facebook_iguserforigonlyapi_post_welcome_message_flows tool
 func HandleFacebook_iguserforigonlyapi_post_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1423,8 +1357,6 @@ func HandleFacebook_iguserforigonlyapi_post_welcome_message_flows(ctx context.Co
 		args["welcome_message_flow"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_post_welcome_message_flows(args)
 	if err != nil {
@@ -1440,7 +1372,6 @@ func HandleFacebook_iguserforigonlyapi_post_welcome_message_flows(ctx context.Co
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_iguserforigonlyapi_get_ handles the facebook_iguserforigonlyapi_get_ tool
 func HandleFacebook_iguserforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1454,8 +1385,6 @@ func HandleFacebook_iguserforigonlyapi_get_(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_iguserforigonlyapi_get_(args)
@@ -1471,4 +1400,3 @@ func HandleFacebook_iguserforigonlyapi_get_(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

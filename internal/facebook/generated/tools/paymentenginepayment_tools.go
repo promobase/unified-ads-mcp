@@ -15,7 +15,6 @@ import (
 func GetPaymentEnginePaymentTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_paymentenginepayment_post_dispute tool
 	facebook_paymentenginepayment_post_disputeTool := mcp.NewTool("facebook_paymentenginepayment_post_dispute",
 		mcp.WithDescription("POST dispute for PaymentEnginePayment"),
@@ -63,12 +62,10 @@ func GetPaymentEnginePaymentTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_paymentenginepayment_get_Tool)
 
-
 	return tools
 }
 
 // PaymentEnginePayment handlers
-
 
 // HandleFacebook_paymentenginepayment_post_dispute handles the facebook_paymentenginepayment_post_dispute tool
 func HandleFacebook_paymentenginepayment_post_dispute(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -91,8 +88,6 @@ func HandleFacebook_paymentenginepayment_post_dispute(ctx context.Context, reque
 	}
 	args["reason"] = reason
 
-
-
 	// Call the client method
 	result, err := client.Facebook_paymentenginepayment_post_dispute(args)
 	if err != nil {
@@ -107,7 +102,6 @@ func HandleFacebook_paymentenginepayment_post_dispute(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_paymentenginepayment_post_refunds handles the facebook_paymentenginepayment_post_refunds tool
 func HandleFacebook_paymentenginepayment_post_refunds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -142,8 +136,6 @@ func HandleFacebook_paymentenginepayment_post_refunds(ctx context.Context, reque
 		args["reason"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_paymentenginepayment_post_refunds(args)
 	if err != nil {
@@ -159,7 +151,6 @@ func HandleFacebook_paymentenginepayment_post_refunds(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_paymentenginepayment_get_ handles the facebook_paymentenginepayment_get_ tool
 func HandleFacebook_paymentenginepayment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -173,8 +164,6 @@ func HandleFacebook_paymentenginepayment_get_(ctx context.Context, request mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_paymentenginepayment_get_(args)
@@ -190,4 +179,3 @@ func HandleFacebook_paymentenginepayment_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

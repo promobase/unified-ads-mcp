@@ -4,7 +4,7 @@ package types
 
 // AdAccountAAACompatibleAdObjects represents a Facebook AdAccountAAACompatibleAdObjects object
 type AdAccountAAACompatibleAdObjects struct {
-	Adgroup_ids []string `json:"adgroup_ids"`
+	Adgroup_ids        []string `json:"adgroup_ids"`
 	Campaign_group_ids []string `json:"campaign_group_ids"`
-	Campaign_ids []string `json:"campaign_ids"`
+	Campaign_ids       []string `json:"campaign_ids"`
 }

@@ -4,6 +4,6 @@ package types
 
 // BlindPig represents a Facebook BlindPig object
 type BlindPig struct {
-	Id string `json:"id"`
+	Id   string `json:"id"`
 	Name string `json:"name"`
 }

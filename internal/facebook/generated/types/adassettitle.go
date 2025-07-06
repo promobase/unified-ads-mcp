@@ -4,7 +4,7 @@ package types
 
 // AdAssetTitle represents a Facebook AdAssetTitle object
 type AdAssetTitle struct {
-	Id string `json:"id"`
-	Text string `json:"text"`
+	Id       string `json:"id"`
+	Text     string `json:"text"`
 	Url_tags string `json:"url_tags"`
 }

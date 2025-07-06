@@ -4,7 +4,7 @@ package types
 
 // AdCreativeCollectionThumbnailInfo represents a Facebook AdCreativeCollectionThumbnailInfo object
 type AdCreativeCollectionThumbnailInfo struct {
-	Element_child_index int `json:"element_child_index"`
-	Element_crops *AdsImageCrops `json:"element_crops"`
-	Element_id string `json:"element_id"`
+	Element_child_index int            `json:"element_child_index"`
+	Element_crops       *AdsImageCrops `json:"element_crops"`
+	Element_id          string         `json:"element_id"`
 }

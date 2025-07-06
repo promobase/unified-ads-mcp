@@ -15,7 +15,6 @@ import (
 func GetAvatarTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_avatar_get_models tool
 	facebook_avatar_get_modelsTool := mcp.NewTool("facebook_avatar_get_models",
 		mcp.WithDescription("GET models for Avatar"),
@@ -58,12 +57,10 @@ func GetAvatarTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_avatar_get_Tool)
 
-
 	return tools
 }
 
 // Avatar handlers
-
 
 // HandleFacebook_avatar_get_models handles the facebook_avatar_get_models tool
 func HandleFacebook_avatar_get_models(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -116,8 +113,6 @@ func HandleFacebook_avatar_get_models(ctx context.Context, request mcp.CallToolR
 		args["sdk_version"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_avatar_get_models(args)
 	if err != nil {
@@ -133,7 +128,6 @@ func HandleFacebook_avatar_get_models(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_avatar_get_ handles the facebook_avatar_get_ tool
 func HandleFacebook_avatar_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -147,8 +141,6 @@ func HandleFacebook_avatar_get_(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_avatar_get_(args)
@@ -164,4 +156,3 @@ func HandleFacebook_avatar_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

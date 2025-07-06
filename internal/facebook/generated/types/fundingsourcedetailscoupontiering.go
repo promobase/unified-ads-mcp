@@ -4,6 +4,6 @@ package types
 
 // FundingSourceDetailsCouponTiering represents a Facebook FundingSourceDetailsCouponTiering object
 type FundingSourceDetailsCouponTiering struct {
-	Coupon_tiering_new map[string]interface{} `json:"coupon_tiering_new"`
+	Coupon_tiering_new          map[string]interface{} `json:"coupon_tiering_new"`
 	Coupon_tiering_reactivation map[string]interface{} `json:"coupon_tiering_reactivation"`
 }

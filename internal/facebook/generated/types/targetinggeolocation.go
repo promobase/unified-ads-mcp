@@ -4,23 +4,23 @@ package types
 
 // TargetingGeoLocation represents a Facebook TargetingGeoLocation object
 type TargetingGeoLocation struct {
-	Cities []TargetingGeoLocationCity `json:"cities"`
-	Countries []string `json:"countries"`
-	Country_groups []string `json:"country_groups"`
-	Custom_locations []TargetingGeoLocationCustomLocation `json:"custom_locations"`
-	Electoral_districts []TargetingGeoLocationElectoralDistrict `json:"electoral_districts"`
-	Geo_markets []TargetingGeoLocationMarket `json:"geo_markets"`
-	Large_geo_areas []TargetingGeoLocationGeoEntities `json:"large_geo_areas"`
-	Location_cluster_ids []TargetingGeoLocationLocationCluster `json:"location_cluster_ids"`
-	Location_types []string `json:"location_types"`
-	Medium_geo_areas []TargetingGeoLocationGeoEntities `json:"medium_geo_areas"`
-	Metro_areas []TargetingGeoLocationGeoEntities `json:"metro_areas"`
-	Neighborhoods []TargetingGeoLocationGeoEntities `json:"neighborhoods"`
-	Places []TargetingGeoLocationPlace `json:"places"`
-	Political_districts []TargetingGeoLocationPoliticalDistrict `json:"political_districts"`
-	Regions []TargetingGeoLocationRegion `json:"regions"`
-	Small_geo_areas []TargetingGeoLocationGeoEntities `json:"small_geo_areas"`
-	Subcities []TargetingGeoLocationGeoEntities `json:"subcities"`
-	Subneighborhoods []TargetingGeoLocationGeoEntities `json:"subneighborhoods"`
-	Zips []TargetingGeoLocationZip `json:"zips"`
+	Cities               []TargetingGeoLocationCity              `json:"cities"`
+	Countries            []string                                `json:"countries"`
+	Country_groups       []string                                `json:"country_groups"`
+	Custom_locations     []TargetingGeoLocationCustomLocation    `json:"custom_locations"`
+	Electoral_districts  []TargetingGeoLocationElectoralDistrict `json:"electoral_districts"`
+	Geo_markets          []TargetingGeoLocationMarket            `json:"geo_markets"`
+	Large_geo_areas      []TargetingGeoLocationGeoEntities       `json:"large_geo_areas"`
+	Location_cluster_ids []TargetingGeoLocationLocationCluster   `json:"location_cluster_ids"`
+	Location_types       []string                                `json:"location_types"`
+	Medium_geo_areas     []TargetingGeoLocationGeoEntities       `json:"medium_geo_areas"`
+	Metro_areas          []TargetingGeoLocationGeoEntities       `json:"metro_areas"`
+	Neighborhoods        []TargetingGeoLocationGeoEntities       `json:"neighborhoods"`
+	Places               []TargetingGeoLocationPlace             `json:"places"`
+	Political_districts  []TargetingGeoLocationPoliticalDistrict `json:"political_districts"`
+	Regions              []TargetingGeoLocationRegion            `json:"regions"`
+	Small_geo_areas      []TargetingGeoLocationGeoEntities       `json:"small_geo_areas"`
+	Subcities            []TargetingGeoLocationGeoEntities       `json:"subcities"`
+	Subneighborhoods     []TargetingGeoLocationGeoEntities       `json:"subneighborhoods"`
+	Zips                 []TargetingGeoLocationZip               `json:"zips"`
 }

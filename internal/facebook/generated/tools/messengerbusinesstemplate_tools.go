@@ -15,7 +15,6 @@ import (
 func GetMessengerBusinessTemplateTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_messengerbusinesstemplate_get_ tool
 	facebook_messengerbusinesstemplate_get_Tool := mcp.NewTool("facebook_messengerbusinesstemplate_get_",
 		mcp.WithDescription("GET  for MessengerBusinessTemplate"),
@@ -39,12 +38,10 @@ func GetMessengerBusinessTemplateTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_messengerbusinesstemplate_post_Tool)
 
-
 	return tools
 }
 
 // MessengerBusinessTemplate handlers
-
 
 // HandleFacebook_messengerbusinesstemplate_get_ handles the facebook_messengerbusinesstemplate_get_ tool
 func HandleFacebook_messengerbusinesstemplate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -60,8 +57,6 @@ func HandleFacebook_messengerbusinesstemplate_get_(ctx context.Context, request 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_messengerbusinesstemplate_get_(args)
 	if err != nil {
@@ -76,7 +71,6 @@ func HandleFacebook_messengerbusinesstemplate_get_(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_messengerbusinesstemplate_post_ handles the facebook_messengerbusinesstemplate_post_ tool
 func HandleFacebook_messengerbusinesstemplate_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -98,8 +92,6 @@ func HandleFacebook_messengerbusinesstemplate_post_(ctx context.Context, request
 		args["components"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_messengerbusinesstemplate_post_(args)
 	if err != nil {
@@ -114,4 +106,3 @@ func HandleFacebook_messengerbusinesstemplate_post_(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

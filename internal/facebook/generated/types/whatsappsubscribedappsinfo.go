@@ -4,6 +4,6 @@ package types
 
 // WhatsappSubscribedAppsInfo represents a Facebook WhatsappSubscribedAppsInfo object
 type WhatsappSubscribedAppsInfo struct {
-	Page_whatsapp_number string `json:"page_whatsapp_number"`
-	Subscribed_apps []map[string]interface{} `json:"subscribed_apps"`
+	Page_whatsapp_number string                   `json:"page_whatsapp_number"`
+	Subscribed_apps      []map[string]interface{} `json:"subscribed_apps"`
 }

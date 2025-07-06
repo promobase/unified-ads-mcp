@@ -15,7 +15,6 @@ import (
 func GetAudioCopyrightTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_audiocopyright_get_update_records tool
 	facebook_audiocopyright_get_update_recordsTool := mcp.NewTool("facebook_audiocopyright_get_update_records",
 		mcp.WithDescription("GET update_records for AudioCopyright"),
@@ -36,12 +35,10 @@ func GetAudioCopyrightTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_audiocopyright_get_Tool)
 
-
 	return tools
 }
 
 // AudioCopyright handlers
-
 
 // HandleFacebook_audiocopyright_get_update_records handles the facebook_audiocopyright_get_update_records tool
 func HandleFacebook_audiocopyright_get_update_records(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleFacebook_audiocopyright_get_update_records(ctx context.Context, reque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_audiocopyright_get_update_records(args)
@@ -74,7 +69,6 @@ func HandleFacebook_audiocopyright_get_update_records(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_audiocopyright_get_ handles the facebook_audiocopyright_get_ tool
 func HandleFacebook_audiocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleFacebook_audiocopyright_get_(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_audiocopyright_get_(args)
@@ -105,4 +97,3 @@ func HandleFacebook_audiocopyright_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

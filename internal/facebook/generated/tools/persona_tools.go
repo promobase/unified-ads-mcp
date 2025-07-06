@@ -15,7 +15,6 @@ import (
 func GetPersonaTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_persona_delete_ tool
 	facebook_persona_delete_Tool := mcp.NewTool("facebook_persona_delete_",
 		mcp.WithDescription("DELETE  for Persona"),
@@ -36,12 +35,10 @@ func GetPersonaTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_persona_get_Tool)
 
-
 	return tools
 }
 
 // Persona handlers
-
 
 // HandleFacebook_persona_delete_ handles the facebook_persona_delete_ tool
 func HandleFacebook_persona_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleFacebook_persona_delete_(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_persona_delete_(args)
@@ -74,7 +69,6 @@ func HandleFacebook_persona_delete_(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_persona_get_ handles the facebook_persona_get_ tool
 func HandleFacebook_persona_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleFacebook_persona_get_(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_persona_get_(args)
@@ -105,4 +97,3 @@ func HandleFacebook_persona_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -4,7 +4,7 @@ package types
 
 // IGCommentFromUser represents a Facebook IGCommentFromUser object
 type IGCommentFromUser struct {
-	Id string `json:"id"`
+	Id                string `json:"id"`
 	Self_ig_scoped_id string `json:"self_ig_scoped_id"`
-	Username string `json:"username"`
+	Username          string `json:"username"`
 }

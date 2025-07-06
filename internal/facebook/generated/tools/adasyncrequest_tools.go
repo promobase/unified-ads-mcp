@@ -15,7 +15,6 @@ import (
 func GetAdAsyncRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_adasyncrequest_delete_ tool
 	facebook_adasyncrequest_delete_Tool := mcp.NewTool("facebook_adasyncrequest_delete_",
 		mcp.WithDescription("DELETE  for AdAsyncRequest"),
@@ -36,12 +35,10 @@ func GetAdAsyncRequestTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_adasyncrequest_get_Tool)
 
-
 	return tools
 }
 
 // AdAsyncRequest handlers
-
 
 // HandleFacebook_adasyncrequest_delete_ handles the facebook_adasyncrequest_delete_ tool
 func HandleFacebook_adasyncrequest_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleFacebook_adasyncrequest_delete_(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adasyncrequest_delete_(args)
@@ -74,7 +69,6 @@ func HandleFacebook_adasyncrequest_delete_(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adasyncrequest_get_ handles the facebook_adasyncrequest_get_ tool
 func HandleFacebook_adasyncrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleFacebook_adasyncrequest_get_(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adasyncrequest_get_(args)
@@ -105,4 +97,3 @@ func HandleFacebook_adasyncrequest_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

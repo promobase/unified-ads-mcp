@@ -15,7 +15,6 @@ import (
 func GetCPASBusinessSetupConfigTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_cpasbusinesssetupconfig_get_ad_accounts tool
 	facebook_cpasbusinesssetupconfig_get_ad_accountsTool := mcp.NewTool("facebook_cpasbusinesssetupconfig_get_ad_accounts",
 		mcp.WithDescription("GET ad_accounts for CPASBusinessSetupConfig"),
@@ -36,12 +35,10 @@ func GetCPASBusinessSetupConfigTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_cpasbusinesssetupconfig_get_Tool)
 
-
 	return tools
 }
 
 // CPASBusinessSetupConfig handlers
-
 
 // HandleFacebook_cpasbusinesssetupconfig_get_ad_accounts handles the facebook_cpasbusinesssetupconfig_get_ad_accounts tool
 func HandleFacebook_cpasbusinesssetupconfig_get_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleFacebook_cpasbusinesssetupconfig_get_ad_accounts(ctx context.Context,
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_cpasbusinesssetupconfig_get_ad_accounts(args)
@@ -74,7 +69,6 @@ func HandleFacebook_cpasbusinesssetupconfig_get_ad_accounts(ctx context.Context,
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_cpasbusinesssetupconfig_get_ handles the facebook_cpasbusinesssetupconfig_get_ tool
 func HandleFacebook_cpasbusinesssetupconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleFacebook_cpasbusinesssetupconfig_get_(ctx context.Context, request mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_cpasbusinesssetupconfig_get_(args)
@@ -105,4 +97,3 @@ func HandleFacebook_cpasbusinesssetupconfig_get_(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

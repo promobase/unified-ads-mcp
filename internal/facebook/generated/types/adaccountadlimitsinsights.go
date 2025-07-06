@@ -5,5 +5,5 @@ package types
 // AdAccountAdLimitsInsights represents a Facebook AdAccountAdLimitsInsights object
 type AdAccountAdLimitsInsights struct {
 	Date_start string `json:"date_start"`
-	Date_stop string `json:"date_stop"`
+	Date_stop  string `json:"date_stop"`
 }

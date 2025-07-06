@@ -15,7 +15,6 @@ import (
 func GetJobOpeningTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_jobopening_get_ tool
 	facebook_jobopening_get_Tool := mcp.NewTool("facebook_jobopening_get_",
 		mcp.WithDescription("GET  for JobOpening"),
@@ -26,12 +25,10 @@ func GetJobOpeningTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_jobopening_get_Tool)
 
-
 	return tools
 }
 
 // JobOpening handlers
-
 
 // HandleFacebook_jobopening_get_ handles the facebook_jobopening_get_ tool
 func HandleFacebook_jobopening_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_jobopening_get_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_jobopening_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_jobopening_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

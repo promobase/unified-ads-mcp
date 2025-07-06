@@ -15,7 +15,6 @@ import (
 func GetCPASLsbImageBankTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_cpaslsbimagebank_get_backup_images tool
 	facebook_cpaslsbimagebank_get_backup_imagesTool := mcp.NewTool("facebook_cpaslsbimagebank_get_backup_images",
 		mcp.WithDescription("GET backup_images for CPASLsbImageBank"),
@@ -50,12 +49,10 @@ func GetCPASLsbImageBankTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_cpaslsbimagebank_post_Tool)
 
-
 	return tools
 }
 
 // CPASLsbImageBank handlers
-
 
 // HandleFacebook_cpaslsbimagebank_get_backup_images handles the facebook_cpaslsbimagebank_get_backup_images tool
 func HandleFacebook_cpaslsbimagebank_get_backup_images(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -70,8 +67,6 @@ func HandleFacebook_cpaslsbimagebank_get_backup_images(ctx context.Context, requ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_cpaslsbimagebank_get_backup_images(args)
@@ -88,7 +83,6 @@ func HandleFacebook_cpaslsbimagebank_get_backup_images(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_cpaslsbimagebank_get_ handles the facebook_cpaslsbimagebank_get_ tool
 func HandleFacebook_cpaslsbimagebank_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -102,8 +96,6 @@ func HandleFacebook_cpaslsbimagebank_get_(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_cpaslsbimagebank_get_(args)
@@ -119,7 +111,6 @@ func HandleFacebook_cpaslsbimagebank_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_cpaslsbimagebank_post_ handles the facebook_cpaslsbimagebank_post_ tool
 func HandleFacebook_cpaslsbimagebank_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -142,8 +133,6 @@ func HandleFacebook_cpaslsbimagebank_post_(ctx context.Context, request mcp.Call
 	}
 	args["backup_image_urls"] = backup_image_urls
 
-
-
 	// Call the client method
 	result, err := client.Facebook_cpaslsbimagebank_post_(args)
 	if err != nil {
@@ -158,4 +147,3 @@ func HandleFacebook_cpaslsbimagebank_post_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

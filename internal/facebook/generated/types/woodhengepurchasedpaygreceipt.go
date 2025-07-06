@@ -6,8 +6,8 @@ import "time"
 
 // WoodhengePurchasedPAYGReceipt represents a Facebook WoodhengePurchasedPAYGReceipt object
 type WoodhengePurchasedPAYGReceipt struct {
-	Id string `json:"id"`
-	Number_of_subscriptions_purchased int `json:"number_of_subscriptions_purchased"`
-	Purchase_time time.Time `json:"purchase_time"`
-	User *User `json:"user"`
+	Id                                string    `json:"id"`
+	Number_of_subscriptions_purchased int       `json:"number_of_subscriptions_purchased"`
+	Purchase_time                     time.Time `json:"purchase_time"`
+	User                              *User     `json:"user"`
 }

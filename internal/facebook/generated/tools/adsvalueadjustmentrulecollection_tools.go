@@ -15,7 +15,6 @@ import (
 func GetAdsValueAdjustmentRuleCollectionTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_adsvalueadjustmentrulecollection_post_delete_rule_set tool
 	facebook_adsvalueadjustmentrulecollection_post_delete_rule_setTool := mcp.NewTool("facebook_adsvalueadjustmentrulecollection_post_delete_rule_set",
 		mcp.WithDescription("POST delete_rule_set for AdsValueAdjustmentRuleCollection"),
@@ -67,12 +66,10 @@ func GetAdsValueAdjustmentRuleCollectionTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_adsvalueadjustmentrulecollection_post_Tool)
 
-
 	return tools
 }
 
 // AdsValueAdjustmentRuleCollection handlers
-
 
 // HandleFacebook_adsvalueadjustmentrulecollection_post_delete_rule_set handles the facebook_adsvalueadjustmentrulecollection_post_delete_rule_set tool
 func HandleFacebook_adsvalueadjustmentrulecollection_post_delete_rule_set(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -87,8 +84,6 @@ func HandleFacebook_adsvalueadjustmentrulecollection_post_delete_rule_set(ctx co
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adsvalueadjustmentrulecollection_post_delete_rule_set(args)
@@ -105,7 +100,6 @@ func HandleFacebook_adsvalueadjustmentrulecollection_post_delete_rule_set(ctx co
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adsvalueadjustmentrulecollection_get_rules handles the facebook_adsvalueadjustmentrulecollection_get_rules tool
 func HandleFacebook_adsvalueadjustmentrulecollection_get_rules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -119,8 +113,6 @@ func HandleFacebook_adsvalueadjustmentrulecollection_get_rules(ctx context.Conte
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adsvalueadjustmentrulecollection_get_rules(args)
@@ -137,7 +129,6 @@ func HandleFacebook_adsvalueadjustmentrulecollection_get_rules(ctx context.Conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adsvalueadjustmentrulecollection_get_ handles the facebook_adsvalueadjustmentrulecollection_get_ tool
 func HandleFacebook_adsvalueadjustmentrulecollection_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -151,8 +142,6 @@ func HandleFacebook_adsvalueadjustmentrulecollection_get_(ctx context.Context, r
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adsvalueadjustmentrulecollection_get_(args)
@@ -168,7 +157,6 @@ func HandleFacebook_adsvalueadjustmentrulecollection_get_(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adsvalueadjustmentrulecollection_post_ handles the facebook_adsvalueadjustmentrulecollection_post_ tool
 func HandleFacebook_adsvalueadjustmentrulecollection_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -203,8 +191,6 @@ func HandleFacebook_adsvalueadjustmentrulecollection_post_(ctx context.Context, 
 	}
 	args["rules"] = rules
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adsvalueadjustmentrulecollection_post_(args)
 	if err != nil {
@@ -219,4 +205,3 @@ func HandleFacebook_adsvalueadjustmentrulecollection_post_(ctx context.Context, 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

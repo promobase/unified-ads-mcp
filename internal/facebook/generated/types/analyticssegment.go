@@ -4,21 +4,21 @@ package types
 
 // AnalyticsSegment represents a Facebook AnalyticsSegment object
 type AnalyticsSegment struct {
-	Custom_audience_ineligiblity_reasons []string `json:"custom_audience_ineligiblity_reasons"`
-	Description string `json:"description"`
-	Estimated_custom_audience_size int `json:"estimated_custom_audience_size"`
-	Event_info_rules []map[string]interface{} `json:"event_info_rules"`
-	Event_rules []map[string]interface{} `json:"event_rules"`
-	Filter_set string `json:"filter_set"`
-	Has_demographic_rules bool `json:"has_demographic_rules"`
-	Id string `json:"id"`
-	Is_all_user bool `json:"is_all_user"`
-	Is_eligible_for_push_campaign bool `json:"is_eligible_for_push_campaign"`
-	Is_internal bool `json:"is_internal"`
-	Name string `json:"name"`
-	Percentile_rules []map[string]interface{} `json:"percentile_rules"`
-	Time_last_seen int `json:"time_last_seen"`
-	Time_last_updated int `json:"time_last_updated"`
-	User_property_rules []map[string]interface{} `json:"user_property_rules"`
-	Web_param_rules []map[string]interface{} `json:"web_param_rules"`
+	Custom_audience_ineligiblity_reasons []string                 `json:"custom_audience_ineligiblity_reasons"`
+	Description                          string                   `json:"description"`
+	Estimated_custom_audience_size       int                      `json:"estimated_custom_audience_size"`
+	Event_info_rules                     []map[string]interface{} `json:"event_info_rules"`
+	Event_rules                          []map[string]interface{} `json:"event_rules"`
+	Filter_set                           string                   `json:"filter_set"`
+	Has_demographic_rules                bool                     `json:"has_demographic_rules"`
+	Id                                   string                   `json:"id"`
+	Is_all_user                          bool                     `json:"is_all_user"`
+	Is_eligible_for_push_campaign        bool                     `json:"is_eligible_for_push_campaign"`
+	Is_internal                          bool                     `json:"is_internal"`
+	Name                                 string                   `json:"name"`
+	Percentile_rules                     []map[string]interface{} `json:"percentile_rules"`
+	Time_last_seen                       int                      `json:"time_last_seen"`
+	Time_last_updated                    int                      `json:"time_last_updated"`
+	User_property_rules                  []map[string]interface{} `json:"user_property_rules"`
+	Web_param_rules                      []map[string]interface{} `json:"web_param_rules"`
 }

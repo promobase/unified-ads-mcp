@@ -21,18 +21,14 @@ func NewPageCallToActionClient(accessToken string) *PageCallToActionClient {
 	}
 }
 
-
 // facebook_pagecalltoaction_delete_ DELETE  for PageCallToAction
 func (c *PageCallToActionClient) Facebook_pagecalltoaction_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,18 +60,14 @@ func (c *PageCallToActionClient) Facebook_pagecalltoaction_delete_(args map[stri
 	return result, nil
 }
 
-
 // facebook_pagecalltoaction_get_ GET  for PageCallToAction
 func (c *PageCallToActionClient) Facebook_pagecalltoaction_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -107,11 +99,9 @@ func (c *PageCallToActionClient) Facebook_pagecalltoaction_get_(args map[string]
 	return result, nil
 }
 
-
 // facebook_pagecalltoaction_post_ POST  for PageCallToAction
 func (c *PageCallToActionClient) Facebook_pagecalltoaction_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -155,7 +145,6 @@ func (c *PageCallToActionClient) Facebook_pagecalltoaction_post_(args map[string
 		urlParams.Set("web_url", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -185,4 +174,3 @@ func (c *PageCallToActionClient) Facebook_pagecalltoaction_post_(args map[string
 
 	return result, nil
 }
-

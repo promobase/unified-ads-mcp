@@ -15,7 +15,6 @@ import (
 func GetCollaborativeAdsShareSettingsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_collaborativeadssharesettings_get_ tool
 	facebook_collaborativeadssharesettings_get_Tool := mcp.NewTool("facebook_collaborativeadssharesettings_get_",
 		mcp.WithDescription("GET  for CollaborativeAdsShareSettings"),
@@ -26,12 +25,10 @@ func GetCollaborativeAdsShareSettingsTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_collaborativeadssharesettings_get_Tool)
 
-
 	return tools
 }
 
 // CollaborativeAdsShareSettings handlers
-
 
 // HandleFacebook_collaborativeadssharesettings_get_ handles the facebook_collaborativeadssharesettings_get_ tool
 func HandleFacebook_collaborativeadssharesettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_collaborativeadssharesettings_get_(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_collaborativeadssharesettings_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_collaborativeadssharesettings_get_(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

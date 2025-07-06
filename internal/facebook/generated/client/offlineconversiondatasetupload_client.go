@@ -21,19 +21,15 @@ func NewOfflineConversionDataSetUploadClient(accessToken string) *OfflineConvers
 	}
 }
 
-
 // facebook_offlineconversiondatasetupload_get_progress GET progress for OfflineConversionDataSetUpload
 func (c *OfflineConversionDataSetUploadClient) Facebook_offlineconversiondatasetupload_get_progress(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "progress")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *OfflineConversionDataSetUploadClient) Facebook_offlineconversiondataset
 	return result, nil
 }
 
-
 // facebook_offlineconversiondatasetupload_get_pull_sessions GET pull_sessions for OfflineConversionDataSetUpload
 func (c *OfflineConversionDataSetUploadClient) Facebook_offlineconversiondatasetupload_get_pull_sessions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "pull_sessions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -107,19 +99,15 @@ func (c *OfflineConversionDataSetUploadClient) Facebook_offlineconversiondataset
 	return result, nil
 }
 
-
 // facebook_offlineconversiondatasetupload_get_ GET  for OfflineConversionDataSetUpload
 func (c *OfflineConversionDataSetUploadClient) Facebook_offlineconversiondatasetupload_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -149,4 +137,3 @@ func (c *OfflineConversionDataSetUploadClient) Facebook_offlineconversiondataset
 
 	return result, nil
 }
-

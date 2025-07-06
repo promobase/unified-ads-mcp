@@ -21,18 +21,14 @@ func NewURLClient(accessToken string) *URLClient {
 	}
 }
 
-
 // facebook_url_get_ GET  for URL
 func (c *URLClient) Facebook_url_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,11 +60,9 @@ func (c *URLClient) Facebook_url_get_(args map[string]interface{}) (interface{},
 	return result, nil
 }
 
-
 // facebook_url_post_ POST  for URL
 func (c *URLClient) Facebook_url_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -93,7 +87,6 @@ func (c *URLClient) Facebook_url_post_(args map[string]interface{}) (interface{}
 	if val, ok := args["ts"]; ok {
 		urlParams.Set("ts", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -124,4 +117,3 @@ func (c *URLClient) Facebook_url_post_(args map[string]interface{}) (interface{}
 
 	return result, nil
 }
-

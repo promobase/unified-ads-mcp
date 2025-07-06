@@ -15,7 +15,6 @@ import (
 func GetAdRuleTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_adrule_post_execute tool
 	facebook_adrule_post_executeTool := mcp.NewTool("facebook_adrule_post_execute",
 		mcp.WithDescription("POST execute for AdRule"),
@@ -102,12 +101,10 @@ func GetAdRuleTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_adrule_post_Tool)
 
-
 	return tools
 }
 
 // AdRule handlers
-
 
 // HandleFacebook_adrule_post_execute handles the facebook_adrule_post_execute tool
 func HandleFacebook_adrule_post_execute(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -123,8 +120,6 @@ func HandleFacebook_adrule_post_execute(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adrule_post_execute(args)
 	if err != nil {
@@ -139,7 +134,6 @@ func HandleFacebook_adrule_post_execute(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adrule_get_history handles the facebook_adrule_get_history tool
 func HandleFacebook_adrule_get_history(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -170,8 +164,6 @@ func HandleFacebook_adrule_get_history(ctx context.Context, request mcp.CallTool
 		args["object_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adrule_get_history(args)
 	if err != nil {
@@ -187,7 +179,6 @@ func HandleFacebook_adrule_get_history(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adrule_post_preview handles the facebook_adrule_post_preview tool
 func HandleFacebook_adrule_post_preview(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -201,8 +192,6 @@ func HandleFacebook_adrule_post_preview(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adrule_post_preview(args)
@@ -219,7 +208,6 @@ func HandleFacebook_adrule_post_preview(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adrule_delete_ handles the facebook_adrule_delete_ tool
 func HandleFacebook_adrule_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -233,8 +221,6 @@ func HandleFacebook_adrule_delete_(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adrule_delete_(args)
@@ -251,7 +237,6 @@ func HandleFacebook_adrule_delete_(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adrule_get_ handles the facebook_adrule_get_ tool
 func HandleFacebook_adrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -265,8 +250,6 @@ func HandleFacebook_adrule_get_(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adrule_get_(args)
@@ -282,7 +265,6 @@ func HandleFacebook_adrule_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adrule_post_ handles the facebook_adrule_post_ tool
 func HandleFacebook_adrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -326,8 +308,6 @@ func HandleFacebook_adrule_post_(ctx context.Context, request mcp.CallToolReques
 		args["status"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adrule_post_(args)
 	if err != nil {
@@ -342,4 +322,3 @@ func HandleFacebook_adrule_post_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

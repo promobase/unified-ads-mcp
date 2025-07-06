@@ -15,7 +15,6 @@ import (
 func GetThirdPartyMeasurementReportDatasetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_thirdpartymeasurementreportdataset_get_ tool
 	facebook_thirdpartymeasurementreportdataset_get_Tool := mcp.NewTool("facebook_thirdpartymeasurementreportdataset_get_",
 		mcp.WithDescription("GET  for ThirdPartyMeasurementReportDataset"),
@@ -26,12 +25,10 @@ func GetThirdPartyMeasurementReportDatasetTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_thirdpartymeasurementreportdataset_get_Tool)
 
-
 	return tools
 }
 
 // ThirdPartyMeasurementReportDataset handlers
-
 
 // HandleFacebook_thirdpartymeasurementreportdataset_get_ handles the facebook_thirdpartymeasurementreportdataset_get_ tool
 func HandleFacebook_thirdpartymeasurementreportdataset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_thirdpartymeasurementreportdataset_get_(ctx context.Context,
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_thirdpartymeasurementreportdataset_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_thirdpartymeasurementreportdataset_get_(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

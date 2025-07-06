@@ -15,7 +15,6 @@ import (
 func GetDynamicVideoMetadataTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_dynamicvideometadata_get_ tool
 	facebook_dynamicvideometadata_get_Tool := mcp.NewTool("facebook_dynamicvideometadata_get_",
 		mcp.WithDescription("GET  for DynamicVideoMetadata"),
@@ -26,12 +25,10 @@ func GetDynamicVideoMetadataTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_dynamicvideometadata_get_Tool)
 
-
 	return tools
 }
 
 // DynamicVideoMetadata handlers
-
 
 // HandleFacebook_dynamicvideometadata_get_ handles the facebook_dynamicvideometadata_get_ tool
 func HandleFacebook_dynamicvideometadata_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_dynamicvideometadata_get_(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_dynamicvideometadata_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_dynamicvideometadata_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

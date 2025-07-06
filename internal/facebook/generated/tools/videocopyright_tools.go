@@ -15,7 +15,6 @@ import (
 func GetVideoCopyrightTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_videocopyright_get_update_records tool
 	facebook_videocopyright_get_update_recordsTool := mcp.NewTool("facebook_videocopyright_get_update_records",
 		mcp.WithDescription("GET update_records for VideoCopyright"),
@@ -81,12 +80,10 @@ func GetVideoCopyrightTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_videocopyright_post_Tool)
 
-
 	return tools
 }
 
 // VideoCopyright handlers
-
 
 // HandleFacebook_videocopyright_get_update_records handles the facebook_videocopyright_get_update_records tool
 func HandleFacebook_videocopyright_get_update_records(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -101,8 +98,6 @@ func HandleFacebook_videocopyright_get_update_records(ctx context.Context, reque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_videocopyright_get_update_records(args)
@@ -119,7 +114,6 @@ func HandleFacebook_videocopyright_get_update_records(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_videocopyright_get_ handles the facebook_videocopyright_get_ tool
 func HandleFacebook_videocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -133,8 +127,6 @@ func HandleFacebook_videocopyright_get_(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_videocopyright_get_(args)
@@ -150,7 +142,6 @@ func HandleFacebook_videocopyright_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_videocopyright_post_ handles the facebook_videocopyright_post_ tool
 func HandleFacebook_videocopyright_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -226,8 +217,6 @@ func HandleFacebook_videocopyright_post_(ctx context.Context, request mcp.CallTo
 		args["whitelisted_ig_user_ids"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_videocopyright_post_(args)
 	if err != nil {
@@ -242,4 +231,3 @@ func HandleFacebook_videocopyright_post_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetHomeListingTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_homelisting_get_channels_to_integrity_status tool
 	facebook_homelisting_get_channels_to_integrity_statusTool := mcp.NewTool("facebook_homelisting_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for HomeListing"),
@@ -125,12 +124,10 @@ func GetHomeListingTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_homelisting_post_Tool)
 
-
 	return tools
 }
 
 // HomeListing handlers
-
 
 // HandleFacebook_homelisting_get_channels_to_integrity_status handles the facebook_homelisting_get_channels_to_integrity_status tool
 func HandleFacebook_homelisting_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -146,8 +143,6 @@ func HandleFacebook_homelisting_get_channels_to_integrity_status(ctx context.Con
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_homelisting_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -162,7 +157,6 @@ func HandleFacebook_homelisting_get_channels_to_integrity_status(ctx context.Con
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_homelisting_get_override_details handles the facebook_homelisting_get_override_details tool
 func HandleFacebook_homelisting_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -189,8 +183,6 @@ func HandleFacebook_homelisting_get_override_details(ctx context.Context, reques
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_homelisting_get_override_details(args)
 	if err != nil {
@@ -206,7 +198,6 @@ func HandleFacebook_homelisting_get_override_details(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_homelisting_get_videos_metadata handles the facebook_homelisting_get_videos_metadata tool
 func HandleFacebook_homelisting_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -220,8 +211,6 @@ func HandleFacebook_homelisting_get_videos_metadata(ctx context.Context, request
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_homelisting_get_videos_metadata(args)
@@ -238,7 +227,6 @@ func HandleFacebook_homelisting_get_videos_metadata(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_homelisting_delete_ handles the facebook_homelisting_delete_ tool
 func HandleFacebook_homelisting_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -252,8 +240,6 @@ func HandleFacebook_homelisting_delete_(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_homelisting_delete_(args)
@@ -270,7 +256,6 @@ func HandleFacebook_homelisting_delete_(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_homelisting_get_ handles the facebook_homelisting_get_ tool
 func HandleFacebook_homelisting_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -284,8 +269,6 @@ func HandleFacebook_homelisting_get_(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_homelisting_get_(args)
@@ -301,7 +284,6 @@ func HandleFacebook_homelisting_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_homelisting_post_ handles the facebook_homelisting_post_ tool
 func HandleFacebook_homelisting_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -389,8 +371,6 @@ func HandleFacebook_homelisting_post_(ctx context.Context, request mcp.CallToolR
 		args["year_built"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_homelisting_post_(args)
 	if err != nil {
@@ -405,4 +385,3 @@ func HandleFacebook_homelisting_post_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

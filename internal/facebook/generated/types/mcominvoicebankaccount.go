@@ -4,8 +4,8 @@ package types
 
 // McomInvoiceBankAccount represents a Facebook McomInvoiceBankAccount object
 type McomInvoiceBankAccount struct {
-	Num_pending_verification_accounts int `json:"num_pending_verification_accounts"`
-	Num_verified_accounts int `json:"num_verified_accounts"`
-	Pending_verification_accounts []map[string]interface{} `json:"pending_verification_accounts"`
-	Verified_accounts []map[string]interface{} `json:"verified_accounts"`
+	Num_pending_verification_accounts int                      `json:"num_pending_verification_accounts"`
+	Num_verified_accounts             int                      `json:"num_verified_accounts"`
+	Pending_verification_accounts     []map[string]interface{} `json:"pending_verification_accounts"`
+	Verified_accounts                 []map[string]interface{} `json:"verified_accounts"`
 }

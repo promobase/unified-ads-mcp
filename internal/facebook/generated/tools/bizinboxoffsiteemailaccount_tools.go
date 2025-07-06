@@ -15,7 +15,6 @@ import (
 func GetBizInboxOffsiteEmailAccountTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_bizinboxoffsiteemailaccount_get_assigned_users tool
 	facebook_bizinboxoffsiteemailaccount_get_assigned_usersTool := mcp.NewTool("facebook_bizinboxoffsiteemailaccount_get_assigned_users",
 		mcp.WithDescription("GET assigned_users for BizInboxOffsiteEmailAccount"),
@@ -36,12 +35,10 @@ func GetBizInboxOffsiteEmailAccountTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_bizinboxoffsiteemailaccount_get_Tool)
 
-
 	return tools
 }
 
 // BizInboxOffsiteEmailAccount handlers
-
 
 // HandleFacebook_bizinboxoffsiteemailaccount_get_assigned_users handles the facebook_bizinboxoffsiteemailaccount_get_assigned_users tool
 func HandleFacebook_bizinboxoffsiteemailaccount_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleFacebook_bizinboxoffsiteemailaccount_get_assigned_users(ctx context.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_bizinboxoffsiteemailaccount_get_assigned_users(args)
@@ -74,7 +69,6 @@ func HandleFacebook_bizinboxoffsiteemailaccount_get_assigned_users(ctx context.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_bizinboxoffsiteemailaccount_get_ handles the facebook_bizinboxoffsiteemailaccount_get_ tool
 func HandleFacebook_bizinboxoffsiteemailaccount_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleFacebook_bizinboxoffsiteemailaccount_get_(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_bizinboxoffsiteemailaccount_get_(args)
@@ -105,4 +97,3 @@ func HandleFacebook_bizinboxoffsiteemailaccount_get_(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

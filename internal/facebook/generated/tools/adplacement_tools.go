@@ -15,7 +15,6 @@ import (
 func GetAdPlacementTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_adplacement_get_ tool
 	facebook_adplacement_get_Tool := mcp.NewTool("facebook_adplacement_get_",
 		mcp.WithDescription("GET  for AdPlacement"),
@@ -26,12 +25,10 @@ func GetAdPlacementTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_adplacement_get_Tool)
 
-
 	return tools
 }
 
 // AdPlacement handlers
-
 
 // HandleFacebook_adplacement_get_ handles the facebook_adplacement_get_ tool
 func HandleFacebook_adplacement_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_adplacement_get_(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adplacement_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_adplacement_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

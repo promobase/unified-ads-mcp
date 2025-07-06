@@ -15,7 +15,6 @@ import (
 func GetVideoListTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_videolist_get_videos tool
 	facebook_videolist_get_videosTool := mcp.NewTool("facebook_videolist_get_videos",
 		mcp.WithDescription("GET videos for VideoList"),
@@ -36,12 +35,10 @@ func GetVideoListTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_videolist_get_Tool)
 
-
 	return tools
 }
 
 // VideoList handlers
-
 
 // HandleFacebook_videolist_get_videos handles the facebook_videolist_get_videos tool
 func HandleFacebook_videolist_get_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleFacebook_videolist_get_videos(ctx context.Context, request mcp.CallTo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_videolist_get_videos(args)
@@ -74,7 +69,6 @@ func HandleFacebook_videolist_get_videos(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_videolist_get_ handles the facebook_videolist_get_ tool
 func HandleFacebook_videolist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleFacebook_videolist_get_(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_videolist_get_(args)
@@ -105,4 +97,3 @@ func HandleFacebook_videolist_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

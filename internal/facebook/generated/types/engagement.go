@@ -4,11 +4,11 @@ package types
 
 // Engagement represents a Facebook Engagement object
 type Engagement struct {
-	Count int `json:"count"`
-	Count_string string `json:"count_string"`
-	Count_string_with_like string `json:"count_string_with_like"`
-	Count_string_without_like string `json:"count_string_without_like"`
-	Social_sentence string `json:"social_sentence"`
-	Social_sentence_with_like string `json:"social_sentence_with_like"`
+	Count                        int    `json:"count"`
+	Count_string                 string `json:"count_string"`
+	Count_string_with_like       string `json:"count_string_with_like"`
+	Count_string_without_like    string `json:"count_string_without_like"`
+	Social_sentence              string `json:"social_sentence"`
+	Social_sentence_with_like    string `json:"social_sentence_with_like"`
 	Social_sentence_without_like string `json:"social_sentence_without_like"`
 }

@@ -15,7 +15,6 @@ import (
 func GetProductFeedRuleTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_productfeedrule_delete_ tool
 	facebook_productfeedrule_delete_Tool := mcp.NewTool("facebook_productfeedrule_delete_",
 		mcp.WithDescription("DELETE  for ProductFeedRule"),
@@ -50,12 +49,10 @@ func GetProductFeedRuleTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_productfeedrule_post_Tool)
 
-
 	return tools
 }
 
 // ProductFeedRule handlers
-
 
 // HandleFacebook_productfeedrule_delete_ handles the facebook_productfeedrule_delete_ tool
 func HandleFacebook_productfeedrule_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -70,8 +67,6 @@ func HandleFacebook_productfeedrule_delete_(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_productfeedrule_delete_(args)
@@ -88,7 +83,6 @@ func HandleFacebook_productfeedrule_delete_(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_productfeedrule_get_ handles the facebook_productfeedrule_get_ tool
 func HandleFacebook_productfeedrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -102,8 +96,6 @@ func HandleFacebook_productfeedrule_get_(ctx context.Context, request mcp.CallTo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_productfeedrule_get_(args)
@@ -119,7 +111,6 @@ func HandleFacebook_productfeedrule_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productfeedrule_post_ handles the facebook_productfeedrule_post_ tool
 func HandleFacebook_productfeedrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -142,8 +133,6 @@ func HandleFacebook_productfeedrule_post_(ctx context.Context, request mcp.CallT
 	}
 	args["params"] = params
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productfeedrule_post_(args)
 	if err != nil {
@@ -158,4 +147,3 @@ func HandleFacebook_productfeedrule_post_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

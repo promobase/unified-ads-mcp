@@ -4,12 +4,12 @@ package types
 
 // TargetingDynamicRule represents a Facebook TargetingDynamicRule object
 type TargetingDynamicRule struct {
-	Action_type string `json:"action.type"`
-	Ad_group_id string `json:"ad_group_id"`
+	Action_type       string `json:"action.type"`
+	Ad_group_id       string `json:"ad_group_id"`
 	Campaign_group_id string `json:"campaign_group_id"`
-	Campaign_id string `json:"campaign_id"`
-	Impression_count string `json:"impression_count"`
-	Page_id string `json:"page_id"`
-	Post string `json:"post"`
+	Campaign_id       string `json:"campaign_id"`
+	Impression_count  string `json:"impression_count"`
+	Page_id           string `json:"page_id"`
+	Post              string `json:"post"`
 	Retention_seconds string `json:"retention_seconds"`
 }

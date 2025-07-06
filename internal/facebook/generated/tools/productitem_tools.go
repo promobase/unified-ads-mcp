@@ -15,7 +15,6 @@ import (
 func GetProductItemTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_productitem_get_channels_to_integrity_status tool
 	facebook_productitem_get_channels_to_integrity_statusTool := mcp.NewTool("facebook_productitem_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for ProductItem"),
@@ -348,12 +347,10 @@ func GetProductItemTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_productitem_post_Tool)
 
-
 	return tools
 }
 
 // ProductItem handlers
-
 
 // HandleFacebook_productitem_get_channels_to_integrity_status handles the facebook_productitem_get_channels_to_integrity_status tool
 func HandleFacebook_productitem_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -369,8 +366,6 @@ func HandleFacebook_productitem_get_channels_to_integrity_status(ctx context.Con
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productitem_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -385,7 +380,6 @@ func HandleFacebook_productitem_get_channels_to_integrity_status(ctx context.Con
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productitem_get_override_details handles the facebook_productitem_get_override_details tool
 func HandleFacebook_productitem_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -412,8 +406,6 @@ func HandleFacebook_productitem_get_override_details(ctx context.Context, reques
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productitem_get_override_details(args)
 	if err != nil {
@@ -429,7 +421,6 @@ func HandleFacebook_productitem_get_override_details(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_productitem_get_product_sets handles the facebook_productitem_get_product_sets tool
 func HandleFacebook_productitem_get_product_sets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -443,8 +434,6 @@ func HandleFacebook_productitem_get_product_sets(ctx context.Context, request mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_productitem_get_product_sets(args)
@@ -461,7 +450,6 @@ func HandleFacebook_productitem_get_product_sets(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_productitem_get_videos_metadata handles the facebook_productitem_get_videos_metadata tool
 func HandleFacebook_productitem_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -475,8 +463,6 @@ func HandleFacebook_productitem_get_videos_metadata(ctx context.Context, request
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_productitem_get_videos_metadata(args)
@@ -493,7 +479,6 @@ func HandleFacebook_productitem_get_videos_metadata(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_productitem_delete_ handles the facebook_productitem_delete_ tool
 func HandleFacebook_productitem_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -507,8 +492,6 @@ func HandleFacebook_productitem_delete_(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_productitem_delete_(args)
@@ -524,7 +507,6 @@ func HandleFacebook_productitem_delete_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productitem_get_ handles the facebook_productitem_get_ tool
 func HandleFacebook_productitem_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -565,8 +547,6 @@ func HandleFacebook_productitem_get_(ctx context.Context, request mcp.CallToolRe
 		args["override_language"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productitem_get_(args)
 	if err != nil {
@@ -581,7 +561,6 @@ func HandleFacebook_productitem_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productitem_post_ handles the facebook_productitem_post_ tool
 func HandleFacebook_productitem_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -983,8 +962,6 @@ func HandleFacebook_productitem_post_(ctx context.Context, request mcp.CallToolR
 		args["windows_phone_url"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productitem_post_(args)
 	if err != nil {
@@ -999,4 +976,3 @@ func HandleFacebook_productitem_post_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

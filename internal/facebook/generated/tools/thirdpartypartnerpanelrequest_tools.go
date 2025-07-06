@@ -15,7 +15,6 @@ import (
 func GetThirdPartyPartnerPanelRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_thirdpartypartnerpanelrequest_get_ tool
 	facebook_thirdpartypartnerpanelrequest_get_Tool := mcp.NewTool("facebook_thirdpartypartnerpanelrequest_get_",
 		mcp.WithDescription("GET  for ThirdPartyPartnerPanelRequest"),
@@ -26,12 +25,10 @@ func GetThirdPartyPartnerPanelRequestTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_thirdpartypartnerpanelrequest_get_Tool)
 
-
 	return tools
 }
 
 // ThirdPartyPartnerPanelRequest handlers
-
 
 // HandleFacebook_thirdpartypartnerpanelrequest_get_ handles the facebook_thirdpartypartnerpanelrequest_get_ tool
 func HandleFacebook_thirdpartypartnerpanelrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_thirdpartypartnerpanelrequest_get_(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_thirdpartypartnerpanelrequest_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_thirdpartypartnerpanelrequest_get_(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

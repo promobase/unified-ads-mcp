@@ -15,7 +15,6 @@ import (
 func GetProductFeedTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_productfeed_get_automotive_models tool
 	facebook_productfeed_get_automotive_modelsTool := mcp.NewTool("facebook_productfeed_get_automotive_models",
 		mcp.WithDescription("GET automotive_models for ProductFeed"),
@@ -335,12 +334,10 @@ func GetProductFeedTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_productfeed_post_Tool)
 
-
 	return tools
 }
 
 // ProductFeed handlers
-
 
 // HandleFacebook_productfeed_get_automotive_models handles the facebook_productfeed_get_automotive_models tool
 func HandleFacebook_productfeed_get_automotive_models(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -367,8 +364,6 @@ func HandleFacebook_productfeed_get_automotive_models(ctx context.Context, reque
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productfeed_get_automotive_models(args)
 	if err != nil {
@@ -383,7 +378,6 @@ func HandleFacebook_productfeed_get_automotive_models(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productfeed_get_destinations handles the facebook_productfeed_get_destinations tool
 func HandleFacebook_productfeed_get_destinations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -410,8 +404,6 @@ func HandleFacebook_productfeed_get_destinations(ctx context.Context, request mc
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productfeed_get_destinations(args)
 	if err != nil {
@@ -426,7 +418,6 @@ func HandleFacebook_productfeed_get_destinations(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productfeed_get_flights handles the facebook_productfeed_get_flights tool
 func HandleFacebook_productfeed_get_flights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -453,8 +444,6 @@ func HandleFacebook_productfeed_get_flights(ctx context.Context, request mcp.Cal
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productfeed_get_flights(args)
 	if err != nil {
@@ -469,7 +458,6 @@ func HandleFacebook_productfeed_get_flights(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productfeed_get_home_listings handles the facebook_productfeed_get_home_listings tool
 func HandleFacebook_productfeed_get_home_listings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -496,8 +484,6 @@ func HandleFacebook_productfeed_get_home_listings(ctx context.Context, request m
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productfeed_get_home_listings(args)
 	if err != nil {
@@ -512,7 +498,6 @@ func HandleFacebook_productfeed_get_home_listings(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productfeed_get_hotels handles the facebook_productfeed_get_hotels tool
 func HandleFacebook_productfeed_get_hotels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -539,8 +524,6 @@ func HandleFacebook_productfeed_get_hotels(ctx context.Context, request mcp.Call
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productfeed_get_hotels(args)
 	if err != nil {
@@ -555,7 +538,6 @@ func HandleFacebook_productfeed_get_hotels(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productfeed_get_media_titles handles the facebook_productfeed_get_media_titles tool
 func HandleFacebook_productfeed_get_media_titles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -582,8 +564,6 @@ func HandleFacebook_productfeed_get_media_titles(ctx context.Context, request mc
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productfeed_get_media_titles(args)
 	if err != nil {
@@ -598,7 +578,6 @@ func HandleFacebook_productfeed_get_media_titles(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productfeed_get_products handles the facebook_productfeed_get_products tool
 func HandleFacebook_productfeed_get_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -635,8 +614,6 @@ func HandleFacebook_productfeed_get_products(ctx context.Context, request mcp.Ca
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productfeed_get_products(args)
 	if err != nil {
@@ -652,7 +629,6 @@ func HandleFacebook_productfeed_get_products(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_productfeed_get_rules handles the facebook_productfeed_get_rules tool
 func HandleFacebook_productfeed_get_rules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -666,8 +642,6 @@ func HandleFacebook_productfeed_get_rules(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_productfeed_get_rules(args)
@@ -683,7 +657,6 @@ func HandleFacebook_productfeed_get_rules(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productfeed_post_rules handles the facebook_productfeed_post_rules tool
 func HandleFacebook_productfeed_post_rules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -718,8 +691,6 @@ func HandleFacebook_productfeed_post_rules(ctx context.Context, request mcp.Call
 	}
 	args["rule_type"] = rule_type
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productfeed_post_rules(args)
 	if err != nil {
@@ -734,7 +705,6 @@ func HandleFacebook_productfeed_post_rules(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productfeed_post_supplementary_feed_assocs handles the facebook_productfeed_post_supplementary_feed_assocs tool
 func HandleFacebook_productfeed_post_supplementary_feed_assocs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -757,8 +727,6 @@ func HandleFacebook_productfeed_post_supplementary_feed_assocs(ctx context.Conte
 	}
 	args["assoc_data"] = assoc_data
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productfeed_post_supplementary_feed_assocs(args)
 	if err != nil {
@@ -774,7 +742,6 @@ func HandleFacebook_productfeed_post_supplementary_feed_assocs(ctx context.Conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_productfeed_get_upload_schedules handles the facebook_productfeed_get_upload_schedules tool
 func HandleFacebook_productfeed_get_upload_schedules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -788,8 +755,6 @@ func HandleFacebook_productfeed_get_upload_schedules(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_productfeed_get_upload_schedules(args)
@@ -805,7 +770,6 @@ func HandleFacebook_productfeed_get_upload_schedules(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productfeed_post_upload_schedules handles the facebook_productfeed_post_upload_schedules tool
 func HandleFacebook_productfeed_post_upload_schedules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -826,8 +790,6 @@ func HandleFacebook_productfeed_post_upload_schedules(ctx context.Context, reque
 		args["upload_schedule"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productfeed_post_upload_schedules(args)
 	if err != nil {
@@ -843,7 +805,6 @@ func HandleFacebook_productfeed_post_upload_schedules(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_productfeed_get_uploads handles the facebook_productfeed_get_uploads tool
 func HandleFacebook_productfeed_get_uploads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -857,8 +818,6 @@ func HandleFacebook_productfeed_get_uploads(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_productfeed_get_uploads(args)
@@ -874,7 +833,6 @@ func HandleFacebook_productfeed_get_uploads(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productfeed_post_uploads handles the facebook_productfeed_post_uploads tool
 func HandleFacebook_productfeed_post_uploads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -920,8 +878,6 @@ func HandleFacebook_productfeed_post_uploads(ctx context.Context, request mcp.Ca
 		args["username"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productfeed_post_uploads(args)
 	if err != nil {
@@ -936,7 +892,6 @@ func HandleFacebook_productfeed_post_uploads(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productfeed_get_vehicle_offers handles the facebook_productfeed_get_vehicle_offers tool
 func HandleFacebook_productfeed_get_vehicle_offers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -963,8 +918,6 @@ func HandleFacebook_productfeed_get_vehicle_offers(ctx context.Context, request 
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productfeed_get_vehicle_offers(args)
 	if err != nil {
@@ -979,7 +932,6 @@ func HandleFacebook_productfeed_get_vehicle_offers(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productfeed_get_vehicles handles the facebook_productfeed_get_vehicles tool
 func HandleFacebook_productfeed_get_vehicles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1006,8 +958,6 @@ func HandleFacebook_productfeed_get_vehicles(ctx context.Context, request mcp.Ca
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productfeed_get_vehicles(args)
 	if err != nil {
@@ -1023,7 +973,6 @@ func HandleFacebook_productfeed_get_vehicles(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_productfeed_delete_ handles the facebook_productfeed_delete_ tool
 func HandleFacebook_productfeed_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1037,8 +986,6 @@ func HandleFacebook_productfeed_delete_(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_productfeed_delete_(args)
@@ -1055,7 +1002,6 @@ func HandleFacebook_productfeed_delete_(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_productfeed_get_ handles the facebook_productfeed_get_ tool
 func HandleFacebook_productfeed_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1069,8 +1015,6 @@ func HandleFacebook_productfeed_get_(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_productfeed_get_(args)
@@ -1086,7 +1030,6 @@ func HandleFacebook_productfeed_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_productfeed_post_ handles the facebook_productfeed_post_ tool
 func HandleFacebook_productfeed_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1147,8 +1090,6 @@ func HandleFacebook_productfeed_post_(ctx context.Context, request mcp.CallToolR
 		args["update_schedule"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_productfeed_post_(args)
 	if err != nil {
@@ -1163,4 +1104,3 @@ func HandleFacebook_productfeed_post_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetAdAccountTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_adaccount_get_account_controls tool
 	facebook_adaccount_get_account_controlsTool := mcp.NewTool("facebook_adaccount_get_account_controls",
 		mcp.WithDescription("GET account_controls for AdAccount"),
@@ -3171,12 +3170,10 @@ func GetAdAccountTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_adaccount_post_Tool)
 
-
 	return tools
 }
 
 // AdAccount handlers
-
 
 // HandleFacebook_adaccount_get_account_controls handles the facebook_adaccount_get_account_controls tool
 func HandleFacebook_adaccount_get_account_controls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3192,8 +3189,6 @@ func HandleFacebook_adaccount_get_account_controls(ctx context.Context, request 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_account_controls(args)
 	if err != nil {
@@ -3208,7 +3203,6 @@ func HandleFacebook_adaccount_get_account_controls(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_account_controls handles the facebook_adaccount_post_account_controls tool
 func HandleFacebook_adaccount_post_account_controls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3237,8 +3231,6 @@ func HandleFacebook_adaccount_post_account_controls(ctx context.Context, request
 		args["placement_controls"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_account_controls(args)
 	if err != nil {
@@ -3253,7 +3245,6 @@ func HandleFacebook_adaccount_post_account_controls(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_activities handles the facebook_adaccount_get_activities tool
 func HandleFacebook_adaccount_get_activities(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3325,8 +3316,6 @@ func HandleFacebook_adaccount_get_activities(ctx context.Context, request mcp.Ca
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_activities(args)
 	if err != nil {
@@ -3342,7 +3331,6 @@ func HandleFacebook_adaccount_get_activities(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_ad_place_page_sets handles the facebook_adaccount_get_ad_place_page_sets tool
 func HandleFacebook_adaccount_get_ad_place_page_sets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -3356,8 +3344,6 @@ func HandleFacebook_adaccount_get_ad_place_page_sets(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_ad_place_page_sets(args)
@@ -3373,7 +3359,6 @@ func HandleFacebook_adaccount_get_ad_place_page_sets(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_ad_place_page_sets handles the facebook_adaccount_post_ad_place_page_sets tool
 func HandleFacebook_adaccount_post_ad_place_page_sets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3414,8 +3399,6 @@ func HandleFacebook_adaccount_post_ad_place_page_sets(ctx context.Context, reque
 		args["targeted_area_type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_ad_place_page_sets(args)
 	if err != nil {
@@ -3430,7 +3413,6 @@ func HandleFacebook_adaccount_post_ad_place_page_sets(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_ad_place_page_sets_async handles the facebook_adaccount_post_ad_place_page_sets_async tool
 func HandleFacebook_adaccount_post_ad_place_page_sets_async(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3471,8 +3453,6 @@ func HandleFacebook_adaccount_post_ad_place_page_sets_async(ctx context.Context,
 		args["targeted_area_type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_ad_place_page_sets_async(args)
 	if err != nil {
@@ -3487,7 +3467,6 @@ func HandleFacebook_adaccount_post_ad_place_page_sets_async(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_ad_saved_keywords handles the facebook_adaccount_get_ad_saved_keywords tool
 func HandleFacebook_adaccount_get_ad_saved_keywords(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3509,8 +3488,6 @@ func HandleFacebook_adaccount_get_ad_saved_keywords(ctx context.Context, request
 		args["fields"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_ad_saved_keywords(args)
 	if err != nil {
@@ -3526,7 +3503,6 @@ func HandleFacebook_adaccount_get_ad_saved_keywords(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_ad_studies handles the facebook_adaccount_get_ad_studies tool
 func HandleFacebook_adaccount_get_ad_studies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -3540,8 +3516,6 @@ func HandleFacebook_adaccount_get_ad_studies(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_ad_studies(args)
@@ -3558,7 +3532,6 @@ func HandleFacebook_adaccount_get_ad_studies(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_adcloudplayables handles the facebook_adaccount_get_adcloudplayables tool
 func HandleFacebook_adaccount_get_adcloudplayables(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -3572,8 +3545,6 @@ func HandleFacebook_adaccount_get_adcloudplayables(ctx context.Context, request 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_adcloudplayables(args)
@@ -3590,7 +3561,6 @@ func HandleFacebook_adaccount_get_adcloudplayables(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_adcreatives handles the facebook_adaccount_get_adcreatives tool
 func HandleFacebook_adaccount_get_adcreatives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -3604,8 +3574,6 @@ func HandleFacebook_adaccount_get_adcreatives(ctx context.Context, request mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_adcreatives(args)
@@ -3621,7 +3589,6 @@ func HandleFacebook_adaccount_get_adcreatives(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_adcreatives handles the facebook_adaccount_post_adcreatives tool
 func HandleFacebook_adaccount_post_adcreatives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3906,8 +3873,6 @@ func HandleFacebook_adaccount_post_adcreatives(ctx context.Context, request mcp.
 		args["use_page_actor_override"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_adcreatives(args)
 	if err != nil {
@@ -3922,7 +3887,6 @@ func HandleFacebook_adaccount_post_adcreatives(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_adcreativesbylabels handles the facebook_adaccount_get_adcreativesbylabels tool
 func HandleFacebook_adaccount_get_adcreativesbylabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3950,8 +3914,6 @@ func HandleFacebook_adaccount_get_adcreativesbylabels(ctx context.Context, reque
 		args["operator"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_adcreativesbylabels(args)
 	if err != nil {
@@ -3966,7 +3928,6 @@ func HandleFacebook_adaccount_get_adcreativesbylabels(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_delete_adimages handles the facebook_adaccount_delete_adimages tool
 func HandleFacebook_adaccount_delete_adimages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3989,8 +3950,6 @@ func HandleFacebook_adaccount_delete_adimages(ctx context.Context, request mcp.C
 	}
 	args["hash"] = hash
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_delete_adimages(args)
 	if err != nil {
@@ -4005,7 +3964,6 @@ func HandleFacebook_adaccount_delete_adimages(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_adimages handles the facebook_adaccount_get_adimages tool
 func HandleFacebook_adaccount_get_adimages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4058,8 +4016,6 @@ func HandleFacebook_adaccount_get_adimages(ctx context.Context, request mcp.Call
 		args["selected_hashes"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_adimages(args)
 	if err != nil {
@@ -4074,7 +4030,6 @@ func HandleFacebook_adaccount_get_adimages(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_adimages handles the facebook_adaccount_post_adimages tool
 func HandleFacebook_adaccount_post_adimages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4101,8 +4056,6 @@ func HandleFacebook_adaccount_post_adimages(ctx context.Context, request mcp.Cal
 		args["copy_from"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_adimages(args)
 	if err != nil {
@@ -4118,7 +4071,6 @@ func HandleFacebook_adaccount_post_adimages(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_adlabels handles the facebook_adaccount_get_adlabels tool
 func HandleFacebook_adaccount_get_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -4132,8 +4084,6 @@ func HandleFacebook_adaccount_get_adlabels(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_adlabels(args)
@@ -4149,7 +4099,6 @@ func HandleFacebook_adaccount_get_adlabels(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_adlabels handles the facebook_adaccount_post_adlabels tool
 func HandleFacebook_adaccount_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4172,8 +4121,6 @@ func HandleFacebook_adaccount_post_adlabels(ctx context.Context, request mcp.Cal
 	}
 	args["name"] = name
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_adlabels(args)
 	if err != nil {
@@ -4189,7 +4136,6 @@ func HandleFacebook_adaccount_post_adlabels(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_adplayables handles the facebook_adaccount_get_adplayables tool
 func HandleFacebook_adaccount_get_adplayables(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -4203,8 +4149,6 @@ func HandleFacebook_adaccount_get_adplayables(ctx context.Context, request mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_adplayables(args)
@@ -4220,7 +4164,6 @@ func HandleFacebook_adaccount_get_adplayables(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_adplayables handles the facebook_adaccount_post_adplayables tool
 func HandleFacebook_adaccount_post_adplayables(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4268,8 +4211,6 @@ func HandleFacebook_adaccount_post_adplayables(ctx context.Context, request mcp.
 		args["source_zip"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_adplayables(args)
 	if err != nil {
@@ -4284,7 +4225,6 @@ func HandleFacebook_adaccount_post_adplayables(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_adrules_history handles the facebook_adaccount_get_adrules_history tool
 func HandleFacebook_adaccount_get_adrules_history(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4320,8 +4260,6 @@ func HandleFacebook_adaccount_get_adrules_history(ctx context.Context, request m
 		args["object_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_adrules_history(args)
 	if err != nil {
@@ -4337,7 +4275,6 @@ func HandleFacebook_adaccount_get_adrules_history(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_adrules_library handles the facebook_adaccount_get_adrules_library tool
 func HandleFacebook_adaccount_get_adrules_library(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -4351,8 +4288,6 @@ func HandleFacebook_adaccount_get_adrules_library(ctx context.Context, request m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_adrules_library(args)
@@ -4368,7 +4303,6 @@ func HandleFacebook_adaccount_get_adrules_library(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_adrules_library handles the facebook_adaccount_post_adrules_library tool
 func HandleFacebook_adaccount_post_adrules_library(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4426,8 +4360,6 @@ func HandleFacebook_adaccount_post_adrules_library(ctx context.Context, request 
 		args["ui_creation_source"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_adrules_library(args)
 	if err != nil {
@@ -4442,7 +4374,6 @@ func HandleFacebook_adaccount_post_adrules_library(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_ads handles the facebook_adaccount_get_ads tool
 func HandleFacebook_adaccount_get_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4479,8 +4410,6 @@ func HandleFacebook_adaccount_get_ads(ctx context.Context, request mcp.CallToolR
 		args["updated_since"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_ads(args)
 	if err != nil {
@@ -4495,7 +4424,6 @@ func HandleFacebook_adaccount_get_ads(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_ads handles the facebook_adaccount_post_ads tool
 func HandleFacebook_adaccount_post_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4624,8 +4552,6 @@ func HandleFacebook_adaccount_post_ads(ctx context.Context, request mcp.CallTool
 		args["tracking_specs"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_ads(args)
 	if err != nil {
@@ -4640,7 +4566,6 @@ func HandleFacebook_adaccount_post_ads(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_ads_reporting_mmm_reports handles the facebook_adaccount_get_ads_reporting_mmm_reports tool
 func HandleFacebook_adaccount_get_ads_reporting_mmm_reports(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4662,8 +4587,6 @@ func HandleFacebook_adaccount_get_ads_reporting_mmm_reports(ctx context.Context,
 		args["filtering"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_ads_reporting_mmm_reports(args)
 	if err != nil {
@@ -4679,7 +4602,6 @@ func HandleFacebook_adaccount_get_ads_reporting_mmm_reports(ctx context.Context,
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_ads_reporting_mmm_schedulers handles the facebook_adaccount_get_ads_reporting_mmm_schedulers tool
 func HandleFacebook_adaccount_get_ads_reporting_mmm_schedulers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -4693,8 +4615,6 @@ func HandleFacebook_adaccount_get_ads_reporting_mmm_schedulers(ctx context.Conte
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_ads_reporting_mmm_schedulers(args)
@@ -4710,7 +4630,6 @@ func HandleFacebook_adaccount_get_ads_reporting_mmm_schedulers(ctx context.Conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_ads_volume handles the facebook_adaccount_get_ads_volume tool
 func HandleFacebook_adaccount_get_ads_volume(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4741,8 +4660,6 @@ func HandleFacebook_adaccount_get_ads_volume(ctx context.Context, request mcp.Ca
 		args["show_breakdown_by_actor"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_ads_volume(args)
 	if err != nil {
@@ -4757,7 +4674,6 @@ func HandleFacebook_adaccount_get_ads_volume(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_adsbylabels handles the facebook_adaccount_get_adsbylabels tool
 func HandleFacebook_adaccount_get_adsbylabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4785,8 +4701,6 @@ func HandleFacebook_adaccount_get_adsbylabels(ctx context.Context, request mcp.C
 		args["operator"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_adsbylabels(args)
 	if err != nil {
@@ -4801,7 +4715,6 @@ func HandleFacebook_adaccount_get_adsbylabels(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_adsets handles the facebook_adaccount_get_adsets tool
 func HandleFacebook_adaccount_get_adsets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4843,8 +4756,6 @@ func HandleFacebook_adaccount_get_adsets(ctx context.Context, request mcp.CallTo
 		args["updated_since"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_adsets(args)
 	if err != nil {
@@ -4859,7 +4770,6 @@ func HandleFacebook_adaccount_get_adsets(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_adsets handles the facebook_adaccount_post_adsets tool
 func HandleFacebook_adaccount_post_adsets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5186,8 +5096,6 @@ func HandleFacebook_adaccount_post_adsets(ctx context.Context, request mcp.CallT
 		args["tune_for_category"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_adsets(args)
 	if err != nil {
@@ -5202,7 +5110,6 @@ func HandleFacebook_adaccount_post_adsets(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_adsetsbylabels handles the facebook_adaccount_get_adsetsbylabels tool
 func HandleFacebook_adaccount_get_adsetsbylabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5230,8 +5137,6 @@ func HandleFacebook_adaccount_get_adsetsbylabels(ctx context.Context, request mc
 		args["operator"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_adsetsbylabels(args)
 	if err != nil {
@@ -5246,7 +5151,6 @@ func HandleFacebook_adaccount_get_adsetsbylabels(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_adspixels handles the facebook_adaccount_get_adspixels tool
 func HandleFacebook_adaccount_get_adspixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5267,8 +5171,6 @@ func HandleFacebook_adaccount_get_adspixels(ctx context.Context, request mcp.Cal
 		args["sort_by"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_adspixels(args)
 	if err != nil {
@@ -5283,7 +5185,6 @@ func HandleFacebook_adaccount_get_adspixels(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_adspixels handles the facebook_adaccount_post_adspixels tool
 func HandleFacebook_adaccount_post_adspixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5304,8 +5205,6 @@ func HandleFacebook_adaccount_post_adspixels(ctx context.Context, request mcp.Ca
 		args["name"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_adspixels(args)
 	if err != nil {
@@ -5320,7 +5219,6 @@ func HandleFacebook_adaccount_post_adspixels(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_advertisable_applications handles the facebook_adaccount_get_advertisable_applications tool
 func HandleFacebook_adaccount_get_advertisable_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5346,8 +5244,6 @@ func HandleFacebook_adaccount_get_advertisable_applications(ctx context.Context,
 		args["business_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_advertisable_applications(args)
 	if err != nil {
@@ -5362,7 +5258,6 @@ func HandleFacebook_adaccount_get_advertisable_applications(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_delete_advideos handles the facebook_adaccount_delete_advideos tool
 func HandleFacebook_adaccount_delete_advideos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5385,8 +5280,6 @@ func HandleFacebook_adaccount_delete_advideos(ctx context.Context, request mcp.C
 	}
 	args["video_id"] = video_id
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_delete_advideos(args)
 	if err != nil {
@@ -5401,7 +5294,6 @@ func HandleFacebook_adaccount_delete_advideos(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_advideos handles the facebook_adaccount_get_advideos tool
 func HandleFacebook_adaccount_get_advideos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5462,8 +5354,6 @@ func HandleFacebook_adaccount_get_advideos(ctx context.Context, request mcp.Call
 		args["title"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_advideos(args)
 	if err != nil {
@@ -5478,7 +5368,6 @@ func HandleFacebook_adaccount_get_advideos(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_advideos handles the facebook_adaccount_post_advideos tool
 func HandleFacebook_adaccount_post_advideos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5830,8 +5719,6 @@ func HandleFacebook_adaccount_post_advideos(ctx context.Context, request mcp.Cal
 		args["waterfall_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_advideos(args)
 	if err != nil {
@@ -5847,7 +5734,6 @@ func HandleFacebook_adaccount_post_advideos(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_affectedadsets handles the facebook_adaccount_get_affectedadsets tool
 func HandleFacebook_adaccount_get_affectedadsets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -5861,8 +5747,6 @@ func HandleFacebook_adaccount_get_affectedadsets(ctx context.Context, request mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_affectedadsets(args)
@@ -5878,7 +5762,6 @@ func HandleFacebook_adaccount_get_affectedadsets(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_delete_agencies handles the facebook_adaccount_delete_agencies tool
 func HandleFacebook_adaccount_delete_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5901,8 +5784,6 @@ func HandleFacebook_adaccount_delete_agencies(ctx context.Context, request mcp.C
 	}
 	args["business"] = business
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_delete_agencies(args)
 	if err != nil {
@@ -5918,7 +5799,6 @@ func HandleFacebook_adaccount_delete_agencies(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_agencies handles the facebook_adaccount_get_agencies tool
 func HandleFacebook_adaccount_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -5932,8 +5812,6 @@ func HandleFacebook_adaccount_get_agencies(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_agencies(args)
@@ -5949,7 +5827,6 @@ func HandleFacebook_adaccount_get_agencies(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_agencies handles the facebook_adaccount_post_agencies tool
 func HandleFacebook_adaccount_post_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5978,8 +5855,6 @@ func HandleFacebook_adaccount_post_agencies(ctx context.Context, request mcp.Cal
 		args["permitted_tasks"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_agencies(args)
 	if err != nil {
@@ -5995,7 +5870,6 @@ func HandleFacebook_adaccount_post_agencies(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_applications handles the facebook_adaccount_get_applications tool
 func HandleFacebook_adaccount_get_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -6009,8 +5883,6 @@ func HandleFacebook_adaccount_get_applications(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_applications(args)
@@ -6026,7 +5898,6 @@ func HandleFacebook_adaccount_get_applications(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_delete_assigned_users handles the facebook_adaccount_delete_assigned_users tool
 func HandleFacebook_adaccount_delete_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6049,8 +5920,6 @@ func HandleFacebook_adaccount_delete_assigned_users(ctx context.Context, request
 	}
 	args["user"] = user
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_delete_assigned_users(args)
 	if err != nil {
@@ -6065,7 +5934,6 @@ func HandleFacebook_adaccount_delete_assigned_users(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_assigned_users handles the facebook_adaccount_get_assigned_users tool
 func HandleFacebook_adaccount_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6088,8 +5956,6 @@ func HandleFacebook_adaccount_get_assigned_users(ctx context.Context, request mc
 	}
 	args["business"] = business
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_assigned_users(args)
 	if err != nil {
@@ -6104,7 +5970,6 @@ func HandleFacebook_adaccount_get_assigned_users(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_assigned_users handles the facebook_adaccount_post_assigned_users tool
 func HandleFacebook_adaccount_post_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6133,8 +5998,6 @@ func HandleFacebook_adaccount_post_assigned_users(ctx context.Context, request m
 	}
 	args["user"] = user
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_assigned_users(args)
 	if err != nil {
@@ -6149,7 +6012,6 @@ func HandleFacebook_adaccount_post_assigned_users(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_async_batch_requests handles the facebook_adaccount_post_async_batch_requests tool
 func HandleFacebook_adaccount_post_async_batch_requests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6179,8 +6041,6 @@ func HandleFacebook_adaccount_post_async_batch_requests(ctx context.Context, req
 	}
 	args["name"] = name
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_async_batch_requests(args)
 	if err != nil {
@@ -6195,7 +6055,6 @@ func HandleFacebook_adaccount_post_async_batch_requests(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_async_requests handles the facebook_adaccount_get_async_requests tool
 func HandleFacebook_adaccount_get_async_requests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6221,8 +6080,6 @@ func HandleFacebook_adaccount_get_async_requests(ctx context.Context, request mc
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_async_requests(args)
 	if err != nil {
@@ -6237,7 +6094,6 @@ func HandleFacebook_adaccount_get_async_requests(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_asyncadcreatives handles the facebook_adaccount_get_asyncadcreatives tool
 func HandleFacebook_adaccount_get_asyncadcreatives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6258,8 +6114,6 @@ func HandleFacebook_adaccount_get_asyncadcreatives(ctx context.Context, request 
 		args["is_completed"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_asyncadcreatives(args)
 	if err != nil {
@@ -6274,7 +6128,6 @@ func HandleFacebook_adaccount_get_asyncadcreatives(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_asyncadcreatives handles the facebook_adaccount_post_asyncadcreatives tool
 func HandleFacebook_adaccount_post_asyncadcreatives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6314,8 +6167,6 @@ func HandleFacebook_adaccount_post_asyncadcreatives(ctx context.Context, request
 		args["notification_uri"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_asyncadcreatives(args)
 	if err != nil {
@@ -6330,7 +6181,6 @@ func HandleFacebook_adaccount_post_asyncadcreatives(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_asyncadrequestsets handles the facebook_adaccount_get_asyncadrequestsets tool
 func HandleFacebook_adaccount_get_asyncadrequestsets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6351,8 +6201,6 @@ func HandleFacebook_adaccount_get_asyncadrequestsets(ctx context.Context, reques
 		args["is_completed"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_asyncadrequestsets(args)
 	if err != nil {
@@ -6367,7 +6215,6 @@ func HandleFacebook_adaccount_get_asyncadrequestsets(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_asyncadrequestsets handles the facebook_adaccount_post_asyncadrequestsets tool
 func HandleFacebook_adaccount_post_asyncadrequestsets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6407,8 +6254,6 @@ func HandleFacebook_adaccount_post_asyncadrequestsets(ctx context.Context, reque
 		args["notification_uri"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_asyncadrequestsets(args)
 	if err != nil {
@@ -6424,7 +6269,6 @@ func HandleFacebook_adaccount_post_asyncadrequestsets(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_audience_funnel handles the facebook_adaccount_get_audience_funnel tool
 func HandleFacebook_adaccount_get_audience_funnel(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -6438,8 +6282,6 @@ func HandleFacebook_adaccount_get_audience_funnel(ctx context.Context, request m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_audience_funnel(args)
@@ -6455,7 +6297,6 @@ func HandleFacebook_adaccount_get_audience_funnel(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_block_list_drafts handles the facebook_adaccount_post_block_list_drafts tool
 func HandleFacebook_adaccount_post_block_list_drafts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6478,8 +6319,6 @@ func HandleFacebook_adaccount_post_block_list_drafts(ctx context.Context, reques
 	}
 	args["publisher_urls_file"] = publisher_urls_file
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_block_list_drafts(args)
 	if err != nil {
@@ -6494,7 +6333,6 @@ func HandleFacebook_adaccount_post_block_list_drafts(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_brand_safety_content_filter_levels handles the facebook_adaccount_post_brand_safety_content_filter_levels tool
 func HandleFacebook_adaccount_post_brand_safety_content_filter_levels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6522,8 +6360,6 @@ func HandleFacebook_adaccount_post_brand_safety_content_filter_levels(ctx contex
 		args["business_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_brand_safety_content_filter_levels(args)
 	if err != nil {
@@ -6538,7 +6374,6 @@ func HandleFacebook_adaccount_post_brand_safety_content_filter_levels(ctx contex
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_broadtargetingcategories handles the facebook_adaccount_get_broadtargetingcategories tool
 func HandleFacebook_adaccount_get_broadtargetingcategories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6559,8 +6394,6 @@ func HandleFacebook_adaccount_get_broadtargetingcategories(ctx context.Context, 
 		args["custom_categories_only"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_broadtargetingcategories(args)
 	if err != nil {
@@ -6575,7 +6408,6 @@ func HandleFacebook_adaccount_get_broadtargetingcategories(ctx context.Context, 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_businessprojects handles the facebook_adaccount_get_businessprojects tool
 func HandleFacebook_adaccount_get_businessprojects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6596,8 +6428,6 @@ func HandleFacebook_adaccount_get_businessprojects(ctx context.Context, request 
 		args["business"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_businessprojects(args)
 	if err != nil {
@@ -6612,7 +6442,6 @@ func HandleFacebook_adaccount_get_businessprojects(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_delete_campaigns handles the facebook_adaccount_delete_campaigns tool
 func HandleFacebook_adaccount_delete_campaigns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6650,8 +6479,6 @@ func HandleFacebook_adaccount_delete_campaigns(ctx context.Context, request mcp.
 		args["object_count"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_delete_campaigns(args)
 	if err != nil {
@@ -6666,7 +6493,6 @@ func HandleFacebook_adaccount_delete_campaigns(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_campaigns handles the facebook_adaccount_get_campaigns tool
 func HandleFacebook_adaccount_get_campaigns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6703,8 +6529,6 @@ func HandleFacebook_adaccount_get_campaigns(ctx context.Context, request mcp.Cal
 		args["time_range"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_campaigns(args)
 	if err != nil {
@@ -6719,7 +6543,6 @@ func HandleFacebook_adaccount_get_campaigns(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_campaigns handles the facebook_adaccount_post_campaigns tool
 func HandleFacebook_adaccount_post_campaigns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6848,8 +6671,6 @@ func HandleFacebook_adaccount_post_campaigns(ctx context.Context, request mcp.Ca
 		args["topline_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_campaigns(args)
 	if err != nil {
@@ -6864,7 +6685,6 @@ func HandleFacebook_adaccount_post_campaigns(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_campaignsbylabels handles the facebook_adaccount_get_campaignsbylabels tool
 func HandleFacebook_adaccount_get_campaignsbylabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6892,8 +6712,6 @@ func HandleFacebook_adaccount_get_campaignsbylabels(ctx context.Context, request
 		args["operator"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_campaignsbylabels(args)
 	if err != nil {
@@ -6909,7 +6727,6 @@ func HandleFacebook_adaccount_get_campaignsbylabels(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_connected_instagram_accounts handles the facebook_adaccount_get_connected_instagram_accounts tool
 func HandleFacebook_adaccount_get_connected_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -6923,8 +6740,6 @@ func HandleFacebook_adaccount_get_connected_instagram_accounts(ctx context.Conte
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_connected_instagram_accounts(args)
@@ -6940,7 +6755,6 @@ func HandleFacebook_adaccount_get_connected_instagram_accounts(ctx context.Conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_connected_instagram_accounts_with_iabp handles the facebook_adaccount_get_connected_instagram_accounts_with_iabp tool
 func HandleFacebook_adaccount_get_connected_instagram_accounts_with_iabp(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6961,8 +6775,6 @@ func HandleFacebook_adaccount_get_connected_instagram_accounts_with_iabp(ctx con
 		args["business_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_connected_instagram_accounts_with_iabp(args)
 	if err != nil {
@@ -6978,7 +6790,6 @@ func HandleFacebook_adaccount_get_connected_instagram_accounts_with_iabp(ctx con
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_conversion_goals handles the facebook_adaccount_get_conversion_goals tool
 func HandleFacebook_adaccount_get_conversion_goals(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -6992,8 +6803,6 @@ func HandleFacebook_adaccount_get_conversion_goals(ctx context.Context, request 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_conversion_goals(args)
@@ -7009,7 +6818,6 @@ func HandleFacebook_adaccount_get_conversion_goals(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_customaudiences handles the facebook_adaccount_get_customaudiences tool
 func HandleFacebook_adaccount_get_customaudiences(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7052,8 +6860,6 @@ func HandleFacebook_adaccount_get_customaudiences(ctx context.Context, request m
 		args["pixel_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_customaudiences(args)
 	if err != nil {
@@ -7068,7 +6874,6 @@ func HandleFacebook_adaccount_get_customaudiences(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_customaudiences handles the facebook_adaccount_post_customaudiences tool
 func HandleFacebook_adaccount_post_customaudiences(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7288,8 +7093,6 @@ func HandleFacebook_adaccount_post_customaudiences(ctx context.Context, request 
 		args["whats_app_business_phone_number_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_customaudiences(args)
 	if err != nil {
@@ -7305,7 +7108,6 @@ func HandleFacebook_adaccount_post_customaudiences(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_customaudiencestos handles the facebook_adaccount_get_customaudiencestos tool
 func HandleFacebook_adaccount_get_customaudiencestos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -7319,8 +7121,6 @@ func HandleFacebook_adaccount_get_customaudiencestos(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_customaudiencestos(args)
@@ -7336,7 +7136,6 @@ func HandleFacebook_adaccount_get_customaudiencestos(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_customaudiencestos handles the facebook_adaccount_post_customaudiencestos tool
 func HandleFacebook_adaccount_post_customaudiencestos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7364,8 +7163,6 @@ func HandleFacebook_adaccount_post_customaudiencestos(ctx context.Context, reque
 	}
 	args["tos_id"] = tos_id
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_customaudiencestos(args)
 	if err != nil {
@@ -7381,7 +7178,6 @@ func HandleFacebook_adaccount_post_customaudiencestos(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_customconversions handles the facebook_adaccount_get_customconversions tool
 func HandleFacebook_adaccount_get_customconversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -7395,8 +7191,6 @@ func HandleFacebook_adaccount_get_customconversions(ctx context.Context, request
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_customconversions(args)
@@ -7412,7 +7206,6 @@ func HandleFacebook_adaccount_get_customconversions(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_customconversions handles the facebook_adaccount_post_customconversions tool
 func HandleFacebook_adaccount_post_customconversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7470,8 +7263,6 @@ func HandleFacebook_adaccount_post_customconversions(ctx context.Context, reques
 		args["rule"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_customconversions(args)
 	if err != nil {
@@ -7486,7 +7277,6 @@ func HandleFacebook_adaccount_post_customconversions(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_delivery_estimate handles the facebook_adaccount_get_delivery_estimate tool
 func HandleFacebook_adaccount_get_delivery_estimate(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7522,8 +7312,6 @@ func HandleFacebook_adaccount_get_delivery_estimate(ctx context.Context, request
 	}
 	args["targeting_spec"] = targeting_spec
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_delivery_estimate(args)
 	if err != nil {
@@ -7538,7 +7326,6 @@ func HandleFacebook_adaccount_get_delivery_estimate(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_deprecatedtargetingadsets handles the facebook_adaccount_get_deprecatedtargetingadsets tool
 func HandleFacebook_adaccount_get_deprecatedtargetingadsets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7559,8 +7346,6 @@ func HandleFacebook_adaccount_get_deprecatedtargetingadsets(ctx context.Context,
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_deprecatedtargetingadsets(args)
 	if err != nil {
@@ -7576,7 +7361,6 @@ func HandleFacebook_adaccount_get_deprecatedtargetingadsets(ctx context.Context,
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_dsa_recommendations handles the facebook_adaccount_get_dsa_recommendations tool
 func HandleFacebook_adaccount_get_dsa_recommendations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -7590,8 +7374,6 @@ func HandleFacebook_adaccount_get_dsa_recommendations(ctx context.Context, reque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_dsa_recommendations(args)
@@ -7607,7 +7389,6 @@ func HandleFacebook_adaccount_get_dsa_recommendations(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_generatepreviews handles the facebook_adaccount_get_generatepreviews tool
 func HandleFacebook_adaccount_get_generatepreviews(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7706,8 +7487,6 @@ func HandleFacebook_adaccount_get_generatepreviews(ctx context.Context, request 
 		args["width"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_generatepreviews(args)
 	if err != nil {
@@ -7723,7 +7502,6 @@ func HandleFacebook_adaccount_get_generatepreviews(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_impacting_ad_studies handles the facebook_adaccount_get_impacting_ad_studies tool
 func HandleFacebook_adaccount_get_impacting_ad_studies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -7737,8 +7515,6 @@ func HandleFacebook_adaccount_get_impacting_ad_studies(ctx context.Context, requ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_impacting_ad_studies(args)
@@ -7754,7 +7530,6 @@ func HandleFacebook_adaccount_get_impacting_ad_studies(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_insights handles the facebook_adaccount_get_insights tool
 func HandleFacebook_adaccount_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7890,8 +7665,6 @@ func HandleFacebook_adaccount_get_insights(ctx context.Context, request mcp.Call
 		args["use_unified_attribution_setting"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_insights(args)
 	if err != nil {
@@ -7906,7 +7679,6 @@ func HandleFacebook_adaccount_get_insights(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_insights handles the facebook_adaccount_post_insights tool
 func HandleFacebook_adaccount_post_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8042,8 +7814,6 @@ func HandleFacebook_adaccount_post_insights(ctx context.Context, request mcp.Cal
 		args["use_unified_attribution_setting"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_insights(args)
 	if err != nil {
@@ -8059,7 +7829,6 @@ func HandleFacebook_adaccount_post_insights(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_instagram_accounts handles the facebook_adaccount_get_instagram_accounts tool
 func HandleFacebook_adaccount_get_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -8073,8 +7842,6 @@ func HandleFacebook_adaccount_get_instagram_accounts(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_instagram_accounts(args)
@@ -8090,7 +7857,6 @@ func HandleFacebook_adaccount_get_instagram_accounts(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_ios_fourteen_campaign_limits handles the facebook_adaccount_get_ios_fourteen_campaign_limits tool
 func HandleFacebook_adaccount_get_ios_fourteen_campaign_limits(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8113,8 +7879,6 @@ func HandleFacebook_adaccount_get_ios_fourteen_campaign_limits(ctx context.Conte
 	}
 	args["app_id"] = app_id
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_ios_fourteen_campaign_limits(args)
 	if err != nil {
@@ -8129,7 +7893,6 @@ func HandleFacebook_adaccount_get_ios_fourteen_campaign_limits(ctx context.Conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_matched_search_applications handles the facebook_adaccount_get_matched_search_applications tool
 func HandleFacebook_adaccount_get_matched_search_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8184,8 +7947,6 @@ func HandleFacebook_adaccount_get_matched_search_applications(ctx context.Contex
 	}
 	args["query_term"] = query_term
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_matched_search_applications(args)
 	if err != nil {
@@ -8201,7 +7962,6 @@ func HandleFacebook_adaccount_get_matched_search_applications(ctx context.Contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_max_bid handles the facebook_adaccount_get_max_bid tool
 func HandleFacebook_adaccount_get_max_bid(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -8215,8 +7975,6 @@ func HandleFacebook_adaccount_get_max_bid(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_max_bid(args)
@@ -8233,7 +7991,6 @@ func HandleFacebook_adaccount_get_max_bid(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_mcmeconversions handles the facebook_adaccount_get_mcmeconversions tool
 func HandleFacebook_adaccount_get_mcmeconversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -8247,8 +8004,6 @@ func HandleFacebook_adaccount_get_mcmeconversions(ctx context.Context, request m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_mcmeconversions(args)
@@ -8264,7 +8019,6 @@ func HandleFacebook_adaccount_get_mcmeconversions(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_minimum_budgets handles the facebook_adaccount_get_minimum_budgets tool
 func HandleFacebook_adaccount_get_minimum_budgets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8285,8 +8039,6 @@ func HandleFacebook_adaccount_get_minimum_budgets(ctx context.Context, request m
 		args["bid_amount"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_minimum_budgets(args)
 	if err != nil {
@@ -8301,7 +8053,6 @@ func HandleFacebook_adaccount_get_minimum_budgets(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_onbehalf_requests handles the facebook_adaccount_get_onbehalf_requests tool
 func HandleFacebook_adaccount_get_onbehalf_requests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8322,8 +8073,6 @@ func HandleFacebook_adaccount_get_onbehalf_requests(ctx context.Context, request
 		args["status"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_onbehalf_requests(args)
 	if err != nil {
@@ -8338,7 +8087,6 @@ func HandleFacebook_adaccount_get_onbehalf_requests(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_product_audiences handles the facebook_adaccount_post_product_audiences tool
 func HandleFacebook_adaccount_post_product_audiences(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8457,8 +8205,6 @@ func HandleFacebook_adaccount_post_product_audiences(ctx context.Context, reques
 		args["subtype"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_product_audiences(args)
 	if err != nil {
@@ -8474,7 +8220,6 @@ func HandleFacebook_adaccount_post_product_audiences(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_promote_pages handles the facebook_adaccount_get_promote_pages tool
 func HandleFacebook_adaccount_get_promote_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -8488,8 +8233,6 @@ func HandleFacebook_adaccount_get_promote_pages(ctx context.Context, request mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_promote_pages(args)
@@ -8506,7 +8249,6 @@ func HandleFacebook_adaccount_get_promote_pages(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_publisher_block_lists handles the facebook_adaccount_get_publisher_block_lists tool
 func HandleFacebook_adaccount_get_publisher_block_lists(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -8520,8 +8262,6 @@ func HandleFacebook_adaccount_get_publisher_block_lists(ctx context.Context, req
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_publisher_block_lists(args)
@@ -8537,7 +8277,6 @@ func HandleFacebook_adaccount_get_publisher_block_lists(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_publisher_block_lists handles the facebook_adaccount_post_publisher_block_lists tool
 func HandleFacebook_adaccount_post_publisher_block_lists(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8558,8 +8297,6 @@ func HandleFacebook_adaccount_post_publisher_block_lists(ctx context.Context, re
 		args["name"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_publisher_block_lists(args)
 	if err != nil {
@@ -8574,7 +8311,6 @@ func HandleFacebook_adaccount_post_publisher_block_lists(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_reachestimate handles the facebook_adaccount_get_reachestimate tool
 func HandleFacebook_adaccount_get_reachestimate(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8628,8 +8364,6 @@ func HandleFacebook_adaccount_get_reachestimate(ctx context.Context, request mcp
 	}
 	args["targeting_spec"] = targeting_spec
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_reachestimate(args)
 	if err != nil {
@@ -8645,7 +8379,6 @@ func HandleFacebook_adaccount_get_reachestimate(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_reachfrequencypredictions handles the facebook_adaccount_get_reachfrequencypredictions tool
 func HandleFacebook_adaccount_get_reachfrequencypredictions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -8659,8 +8392,6 @@ func HandleFacebook_adaccount_get_reachfrequencypredictions(ctx context.Context,
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_reachfrequencypredictions(args)
@@ -8676,7 +8407,6 @@ func HandleFacebook_adaccount_get_reachfrequencypredictions(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_reachfrequencypredictions handles the facebook_adaccount_post_reachfrequencypredictions tool
 func HandleFacebook_adaccount_post_reachfrequencypredictions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8906,8 +8636,6 @@ func HandleFacebook_adaccount_post_reachfrequencypredictions(ctx context.Context
 		args["video_view_length_constraint"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_reachfrequencypredictions(args)
 	if err != nil {
@@ -8923,7 +8651,6 @@ func HandleFacebook_adaccount_post_reachfrequencypredictions(ctx context.Context
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_recommendations handles the facebook_adaccount_get_recommendations tool
 func HandleFacebook_adaccount_get_recommendations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -8937,8 +8664,6 @@ func HandleFacebook_adaccount_get_recommendations(ctx context.Context, request m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_recommendations(args)
@@ -8954,7 +8679,6 @@ func HandleFacebook_adaccount_get_recommendations(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_recommendations handles the facebook_adaccount_post_recommendations tool
 func HandleFacebook_adaccount_post_recommendations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9002,8 +8726,6 @@ func HandleFacebook_adaccount_post_recommendations(ctx context.Context, request 
 		args["scale_good_campaign_parameters"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_recommendations(args)
 	if err != nil {
@@ -9018,7 +8740,6 @@ func HandleFacebook_adaccount_post_recommendations(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_saved_audiences handles the facebook_adaccount_get_saved_audiences tool
 func HandleFacebook_adaccount_get_saved_audiences(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9051,8 +8772,6 @@ func HandleFacebook_adaccount_get_saved_audiences(ctx context.Context, request m
 		args["filtering"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_saved_audiences(args)
 	if err != nil {
@@ -9067,7 +8786,6 @@ func HandleFacebook_adaccount_get_saved_audiences(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_delete_subscribed_apps handles the facebook_adaccount_delete_subscribed_apps tool
 func HandleFacebook_adaccount_delete_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9088,8 +8806,6 @@ func HandleFacebook_adaccount_delete_subscribed_apps(ctx context.Context, reques
 		args["app_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_delete_subscribed_apps(args)
 	if err != nil {
@@ -9105,7 +8821,6 @@ func HandleFacebook_adaccount_delete_subscribed_apps(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_subscribed_apps handles the facebook_adaccount_get_subscribed_apps tool
 func HandleFacebook_adaccount_get_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -9119,8 +8834,6 @@ func HandleFacebook_adaccount_get_subscribed_apps(ctx context.Context, request m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_subscribed_apps(args)
@@ -9136,7 +8849,6 @@ func HandleFacebook_adaccount_get_subscribed_apps(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_subscribed_apps handles the facebook_adaccount_post_subscribed_apps tool
 func HandleFacebook_adaccount_post_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9157,8 +8869,6 @@ func HandleFacebook_adaccount_post_subscribed_apps(ctx context.Context, request 
 		args["app_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_subscribed_apps(args)
 	if err != nil {
@@ -9173,7 +8883,6 @@ func HandleFacebook_adaccount_post_subscribed_apps(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_targetingbrowse handles the facebook_adaccount_get_targetingbrowse tool
 func HandleFacebook_adaccount_get_targetingbrowse(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9227,8 +8936,6 @@ func HandleFacebook_adaccount_get_targetingbrowse(ctx context.Context, request m
 		args["whitelisted_types"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_targetingbrowse(args)
 	if err != nil {
@@ -9243,7 +8950,6 @@ func HandleFacebook_adaccount_get_targetingbrowse(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_targetingsearch handles the facebook_adaccount_get_targetingsearch tool
 func HandleFacebook_adaccount_get_targetingsearch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9342,8 +9048,6 @@ func HandleFacebook_adaccount_get_targetingsearch(ctx context.Context, request m
 		args["whitelisted_types"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_targetingsearch(args)
 	if err != nil {
@@ -9358,7 +9062,6 @@ func HandleFacebook_adaccount_get_targetingsearch(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_targetingsentencelines handles the facebook_adaccount_get_targetingsentencelines tool
 func HandleFacebook_adaccount_get_targetingsentencelines(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9396,8 +9099,6 @@ func HandleFacebook_adaccount_get_targetingsentencelines(ctx context.Context, re
 	}
 	args["targeting_spec"] = targeting_spec
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_targetingsentencelines(args)
 	if err != nil {
@@ -9412,7 +9113,6 @@ func HandleFacebook_adaccount_get_targetingsentencelines(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_targetingsuggestions handles the facebook_adaccount_get_targetingsuggestions tool
 func HandleFacebook_adaccount_get_targetingsuggestions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9489,8 +9189,6 @@ func HandleFacebook_adaccount_get_targetingsuggestions(ctx context.Context, requ
 		args["whitelisted_types"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_targetingsuggestions(args)
 	if err != nil {
@@ -9505,7 +9203,6 @@ func HandleFacebook_adaccount_get_targetingsuggestions(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_targetingvalidation handles the facebook_adaccount_get_targetingvalidation tool
 func HandleFacebook_adaccount_get_targetingvalidation(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9544,8 +9241,6 @@ func HandleFacebook_adaccount_get_targetingvalidation(ctx context.Context, reque
 		args["targeting_list"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_targetingvalidation(args)
 	if err != nil {
@@ -9561,7 +9256,6 @@ func HandleFacebook_adaccount_get_targetingvalidation(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_tracking handles the facebook_adaccount_get_tracking tool
 func HandleFacebook_adaccount_get_tracking(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -9575,8 +9269,6 @@ func HandleFacebook_adaccount_get_tracking(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_tracking(args)
@@ -9592,7 +9284,6 @@ func HandleFacebook_adaccount_get_tracking(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_tracking handles the facebook_adaccount_post_tracking tool
 func HandleFacebook_adaccount_post_tracking(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9615,8 +9306,6 @@ func HandleFacebook_adaccount_post_tracking(ctx context.Context, request mcp.Cal
 	}
 	args["tracking_specs"] = tracking_specs
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_tracking(args)
 	if err != nil {
@@ -9632,7 +9321,6 @@ func HandleFacebook_adaccount_post_tracking(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_users handles the facebook_adaccount_get_users tool
 func HandleFacebook_adaccount_get_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -9646,8 +9334,6 @@ func HandleFacebook_adaccount_get_users(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_users(args)
@@ -9663,7 +9349,6 @@ func HandleFacebook_adaccount_get_users(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_delete_usersofanyaudience handles the facebook_adaccount_delete_usersofanyaudience tool
 func HandleFacebook_adaccount_delete_usersofanyaudience(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9696,8 +9381,6 @@ func HandleFacebook_adaccount_delete_usersofanyaudience(ctx context.Context, req
 		args["session"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_delete_usersofanyaudience(args)
 	if err != nil {
@@ -9712,7 +9395,6 @@ func HandleFacebook_adaccount_delete_usersofanyaudience(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_value_rule_set handles the facebook_adaccount_get_value_rule_set tool
 func HandleFacebook_adaccount_get_value_rule_set(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9738,8 +9420,6 @@ func HandleFacebook_adaccount_get_value_rule_set(ctx context.Context, request mc
 		args["status"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_value_rule_set(args)
 	if err != nil {
@@ -9754,7 +9434,6 @@ func HandleFacebook_adaccount_get_value_rule_set(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_value_rule_set handles the facebook_adaccount_post_value_rule_set tool
 func HandleFacebook_adaccount_post_value_rule_set(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9789,8 +9468,6 @@ func HandleFacebook_adaccount_post_value_rule_set(ctx context.Context, request m
 	}
 	args["rules"] = rules
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_value_rule_set(args)
 	if err != nil {
@@ -9805,7 +9482,6 @@ func HandleFacebook_adaccount_post_value_rule_set(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_get_video_ads handles the facebook_adaccount_get_video_ads tool
 func HandleFacebook_adaccount_get_video_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9831,8 +9507,6 @@ func HandleFacebook_adaccount_get_video_ads(ctx context.Context, request mcp.Cal
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_video_ads(args)
 	if err != nil {
@@ -9847,7 +9521,6 @@ func HandleFacebook_adaccount_get_video_ads(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_video_ads handles the facebook_adaccount_post_video_ads tool
 func HandleFacebook_adaccount_post_video_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9895,8 +9568,6 @@ func HandleFacebook_adaccount_post_video_ads(ctx context.Context, request mcp.Ca
 		args["video_state"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_video_ads(args)
 	if err != nil {
@@ -9912,7 +9583,6 @@ func HandleFacebook_adaccount_post_video_ads(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_adaccount_get_ handles the facebook_adaccount_get_ tool
 func HandleFacebook_adaccount_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -9926,8 +9596,6 @@ func HandleFacebook_adaccount_get_(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_adaccount_get_(args)
@@ -9943,7 +9611,6 @@ func HandleFacebook_adaccount_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_adaccount_post_ handles the facebook_adaccount_post_ tool
 func HandleFacebook_adaccount_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -10051,8 +9718,6 @@ func HandleFacebook_adaccount_post_(ctx context.Context, request mcp.CallToolReq
 		args["tos_accepted"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adaccount_post_(args)
 	if err != nil {
@@ -10067,4 +9732,3 @@ func HandleFacebook_adaccount_post_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

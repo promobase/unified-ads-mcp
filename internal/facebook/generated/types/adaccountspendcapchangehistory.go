@@ -4,8 +4,8 @@ package types
 
 // AdAccountSpendCapChangeHistory represents a Facebook AdAccountSpendCapChangeHistory object
 type AdAccountSpendCapChangeHistory struct {
-	Action string `json:"action"`
-	Spend_cap int `json:"spend_cap"`
+	Action     string `json:"action"`
+	Spend_cap  int    `json:"spend_cap"`
 	Time_start string `json:"time_start"`
-	Time_stop string `json:"time_stop"`
+	Time_stop  string `json:"time_stop"`
 }

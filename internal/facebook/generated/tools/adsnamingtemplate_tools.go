@@ -15,7 +15,6 @@ import (
 func GetAdsNamingTemplateTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_adsnamingtemplate_get_ tool
 	facebook_adsnamingtemplate_get_Tool := mcp.NewTool("facebook_adsnamingtemplate_get_",
 		mcp.WithDescription("GET  for AdsNamingTemplate"),
@@ -26,12 +25,10 @@ func GetAdsNamingTemplateTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_adsnamingtemplate_get_Tool)
 
-
 	return tools
 }
 
 // AdsNamingTemplate handlers
-
 
 // HandleFacebook_adsnamingtemplate_get_ handles the facebook_adsnamingtemplate_get_ tool
 func HandleFacebook_adsnamingtemplate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_adsnamingtemplate_get_(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_adsnamingtemplate_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_adsnamingtemplate_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

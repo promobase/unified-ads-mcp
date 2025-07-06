@@ -15,7 +15,6 @@ import (
 func GetEventSourceGroupTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_eventsourcegroup_get_shared_accounts tool
 	facebook_eventsourcegroup_get_shared_accountsTool := mcp.NewTool("facebook_eventsourcegroup_get_shared_accounts",
 		mcp.WithDescription("GET shared_accounts for EventSourceGroup"),
@@ -68,12 +67,10 @@ func GetEventSourceGroupTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_eventsourcegroup_post_Tool)
 
-
 	return tools
 }
 
 // EventSourceGroup handlers
-
 
 // HandleFacebook_eventsourcegroup_get_shared_accounts handles the facebook_eventsourcegroup_get_shared_accounts tool
 func HandleFacebook_eventsourcegroup_get_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -89,8 +86,6 @@ func HandleFacebook_eventsourcegroup_get_shared_accounts(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_eventsourcegroup_get_shared_accounts(args)
 	if err != nil {
@@ -105,7 +100,6 @@ func HandleFacebook_eventsourcegroup_get_shared_accounts(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_eventsourcegroup_post_shared_accounts handles the facebook_eventsourcegroup_post_shared_accounts tool
 func HandleFacebook_eventsourcegroup_post_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -128,8 +122,6 @@ func HandleFacebook_eventsourcegroup_post_shared_accounts(ctx context.Context, r
 	}
 	args["accounts"] = accounts
 
-
-
 	// Call the client method
 	result, err := client.Facebook_eventsourcegroup_post_shared_accounts(args)
 	if err != nil {
@@ -145,7 +137,6 @@ func HandleFacebook_eventsourcegroup_post_shared_accounts(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_eventsourcegroup_get_ handles the facebook_eventsourcegroup_get_ tool
 func HandleFacebook_eventsourcegroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -159,8 +150,6 @@ func HandleFacebook_eventsourcegroup_get_(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_eventsourcegroup_get_(args)
@@ -176,7 +165,6 @@ func HandleFacebook_eventsourcegroup_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_eventsourcegroup_post_ handles the facebook_eventsourcegroup_post_ tool
 func HandleFacebook_eventsourcegroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -206,8 +194,6 @@ func HandleFacebook_eventsourcegroup_post_(ctx context.Context, request mcp.Call
 	}
 	args["name"] = name
 
-
-
 	// Call the client method
 	result, err := client.Facebook_eventsourcegroup_post_(args)
 	if err != nil {
@@ -222,4 +208,3 @@ func HandleFacebook_eventsourcegroup_post_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

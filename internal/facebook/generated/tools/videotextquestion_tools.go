@@ -15,7 +15,6 @@ import (
 func GetVideoTextQuestionTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_videotextquestion_get_ tool
 	facebook_videotextquestion_get_Tool := mcp.NewTool("facebook_videotextquestion_get_",
 		mcp.WithDescription("GET  for VideoTextQuestion"),
@@ -26,12 +25,10 @@ func GetVideoTextQuestionTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_videotextquestion_get_Tool)
 
-
 	return tools
 }
 
 // VideoTextQuestion handlers
-
 
 // HandleFacebook_videotextquestion_get_ handles the facebook_videotextquestion_get_ tool
 func HandleFacebook_videotextquestion_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_videotextquestion_get_(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_videotextquestion_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_videotextquestion_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

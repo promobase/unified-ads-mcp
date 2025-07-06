@@ -15,7 +15,6 @@ import (
 func GetLeadTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_lead_delete_ tool
 	facebook_lead_delete_Tool := mcp.NewTool("facebook_lead_delete_",
 		mcp.WithDescription("DELETE  for Lead"),
@@ -36,12 +35,10 @@ func GetLeadTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_lead_get_Tool)
 
-
 	return tools
 }
 
 // Lead handlers
-
 
 // HandleFacebook_lead_delete_ handles the facebook_lead_delete_ tool
 func HandleFacebook_lead_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleFacebook_lead_delete_(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_lead_delete_(args)
@@ -74,7 +69,6 @@ func HandleFacebook_lead_delete_(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_lead_get_ handles the facebook_lead_get_ tool
 func HandleFacebook_lead_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleFacebook_lead_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_lead_get_(args)
@@ -105,4 +97,3 @@ func HandleFacebook_lead_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

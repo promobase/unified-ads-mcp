@@ -6,12 +6,12 @@ import "time"
 
 // BusinessCreativeFolder represents a Facebook BusinessCreativeFolder object
 type BusinessCreativeFolder struct {
-	Business *Business `json:"business"`
-	Creation_time time.Time `json:"creation_time"`
+	Business                     *Business     `json:"business"`
+	Creation_time                time.Time     `json:"creation_time"`
 	Creative_insight_permissions []interface{} `json:"creative_insight_permissions"`
-	Description string `json:"description"`
-	Id string `json:"id"`
-	Media_library_url string `json:"media_library_url"`
-	Name string `json:"name"`
-	Owner_business *Business `json:"owner_business"`
+	Description                  string        `json:"description"`
+	Id                           string        `json:"id"`
+	Media_library_url            string        `json:"media_library_url"`
+	Name                         string        `json:"name"`
+	Owner_business               *Business     `json:"owner_business"`
 }

@@ -15,7 +15,6 @@ import (
 func GetExtendedCreditInvoiceGroupTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_extendedcreditinvoicegroup_delete_ad_accounts tool
 	facebook_extendedcreditinvoicegroup_delete_ad_accountsTool := mcp.NewTool("facebook_extendedcreditinvoicegroup_delete_ad_accounts",
 		mcp.WithDescription("DELETE ad_accounts for ExtendedCreditInvoiceGroup"),
@@ -90,12 +89,10 @@ func GetExtendedCreditInvoiceGroupTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_extendedcreditinvoicegroup_post_Tool)
 
-
 	return tools
 }
 
 // ExtendedCreditInvoiceGroup handlers
-
 
 // HandleFacebook_extendedcreditinvoicegroup_delete_ad_accounts handles the facebook_extendedcreditinvoicegroup_delete_ad_accounts tool
 func HandleFacebook_extendedcreditinvoicegroup_delete_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -118,8 +115,6 @@ func HandleFacebook_extendedcreditinvoicegroup_delete_ad_accounts(ctx context.Co
 	}
 	args["ad_account_id"] = ad_account_id
 
-
-
 	// Call the client method
 	result, err := client.Facebook_extendedcreditinvoicegroup_delete_ad_accounts(args)
 	if err != nil {
@@ -135,7 +130,6 @@ func HandleFacebook_extendedcreditinvoicegroup_delete_ad_accounts(ctx context.Co
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_extendedcreditinvoicegroup_get_ad_accounts handles the facebook_extendedcreditinvoicegroup_get_ad_accounts tool
 func HandleFacebook_extendedcreditinvoicegroup_get_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -149,8 +143,6 @@ func HandleFacebook_extendedcreditinvoicegroup_get_ad_accounts(ctx context.Conte
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_extendedcreditinvoicegroup_get_ad_accounts(args)
@@ -166,7 +158,6 @@ func HandleFacebook_extendedcreditinvoicegroup_get_ad_accounts(ctx context.Conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_extendedcreditinvoicegroup_post_ad_accounts handles the facebook_extendedcreditinvoicegroup_post_ad_accounts tool
 func HandleFacebook_extendedcreditinvoicegroup_post_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -189,8 +180,6 @@ func HandleFacebook_extendedcreditinvoicegroup_post_ad_accounts(ctx context.Cont
 	}
 	args["ad_account_id"] = ad_account_id
 
-
-
 	// Call the client method
 	result, err := client.Facebook_extendedcreditinvoicegroup_post_ad_accounts(args)
 	if err != nil {
@@ -206,7 +195,6 @@ func HandleFacebook_extendedcreditinvoicegroup_post_ad_accounts(ctx context.Cont
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_extendedcreditinvoicegroup_delete_ handles the facebook_extendedcreditinvoicegroup_delete_ tool
 func HandleFacebook_extendedcreditinvoicegroup_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -220,8 +208,6 @@ func HandleFacebook_extendedcreditinvoicegroup_delete_(ctx context.Context, requ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_extendedcreditinvoicegroup_delete_(args)
@@ -238,7 +224,6 @@ func HandleFacebook_extendedcreditinvoicegroup_delete_(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_extendedcreditinvoicegroup_get_ handles the facebook_extendedcreditinvoicegroup_get_ tool
 func HandleFacebook_extendedcreditinvoicegroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -252,8 +237,6 @@ func HandleFacebook_extendedcreditinvoicegroup_get_(ctx context.Context, request
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_extendedcreditinvoicegroup_get_(args)
@@ -269,7 +252,6 @@ func HandleFacebook_extendedcreditinvoicegroup_get_(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_extendedcreditinvoicegroup_post_ handles the facebook_extendedcreditinvoicegroup_post_ tool
 func HandleFacebook_extendedcreditinvoicegroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -296,8 +278,6 @@ func HandleFacebook_extendedcreditinvoicegroup_post_(ctx context.Context, reques
 		args["name"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_extendedcreditinvoicegroup_post_(args)
 	if err != nil {
@@ -312,4 +292,3 @@ func HandleFacebook_extendedcreditinvoicegroup_post_(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

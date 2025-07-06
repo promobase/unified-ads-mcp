@@ -5,7 +5,7 @@ package tools
 import (
 	"context"
 	"fmt"
-	
+
 	"github.com/mark3labs/mcp-go/mcp"
 )
 
@@ -13,12 +13,12 @@ import (
 func CallTool(client interface{}, name string, args map[string]interface{}) (interface{}, error) {
 	// Get the handler for the tool
 	handlers := GetAllHandlers()
-	
+
 	handler, ok := handlers[name]
 	if !ok {
 		return nil, fmt.Errorf("unknown tool: %s", name)
 	}
-	
+
 	// Create a CallToolRequest
 	request := mcp.CallToolRequest{
 		Params: mcp.CallToolParams{
@@ -26,13 +26,13 @@ func CallTool(client interface{}, name string, args map[string]interface{}) (int
 			Arguments: args,
 		},
 	}
-	
+
 	// Execute the handler
 	result, err := handler(context.Background(), request)
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// Return the result
 	return result, nil
 }

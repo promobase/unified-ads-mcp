@@ -15,7 +15,6 @@ import (
 func GetEventTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_event_get_comments tool
 	facebook_event_get_commentsTool := mcp.NewTool("facebook_event_get_comments",
 		mcp.WithDescription("GET comments for Event"),
@@ -191,12 +190,10 @@ func GetEventTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_event_get_Tool)
 
-
 	return tools
 }
 
 // Event handlers
-
 
 // HandleFacebook_event_get_comments handles the facebook_event_get_comments tool
 func HandleFacebook_event_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -211,8 +208,6 @@ func HandleFacebook_event_get_comments(ctx context.Context, request mcp.CallTool
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_event_get_comments(args)
@@ -229,7 +224,6 @@ func HandleFacebook_event_get_comments(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_event_get_feed handles the facebook_event_get_feed tool
 func HandleFacebook_event_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -243,8 +237,6 @@ func HandleFacebook_event_get_feed(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_event_get_feed(args)
@@ -261,7 +253,6 @@ func HandleFacebook_event_get_feed(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_event_get_live_videos handles the facebook_event_get_live_videos tool
 func HandleFacebook_event_get_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -275,8 +266,6 @@ func HandleFacebook_event_get_live_videos(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_event_get_live_videos(args)
@@ -292,7 +281,6 @@ func HandleFacebook_event_get_live_videos(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFacebook_event_post_live_videos handles the facebook_event_post_live_videos tool
 func HandleFacebook_event_post_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -410,8 +398,6 @@ func HandleFacebook_event_post_live_videos(ctx context.Context, request mcp.Call
 		args["title"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_event_post_live_videos(args)
 	if err != nil {
@@ -427,7 +413,6 @@ func HandleFacebook_event_post_live_videos(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_event_get_photos handles the facebook_event_get_photos tool
 func HandleFacebook_event_get_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -441,8 +426,6 @@ func HandleFacebook_event_get_photos(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_event_get_photos(args)
@@ -459,7 +442,6 @@ func HandleFacebook_event_get_photos(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_event_get_picture handles the facebook_event_get_picture tool
 func HandleFacebook_event_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -473,8 +455,6 @@ func HandleFacebook_event_get_picture(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_event_get_picture(args)
@@ -491,7 +471,6 @@ func HandleFacebook_event_get_picture(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_event_get_posts handles the facebook_event_get_posts tool
 func HandleFacebook_event_get_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -505,8 +484,6 @@ func HandleFacebook_event_get_posts(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_event_get_posts(args)
@@ -523,7 +500,6 @@ func HandleFacebook_event_get_posts(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_event_get_roles handles the facebook_event_get_roles tool
 func HandleFacebook_event_get_roles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -537,8 +513,6 @@ func HandleFacebook_event_get_roles(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_event_get_roles(args)
@@ -555,7 +529,6 @@ func HandleFacebook_event_get_roles(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_event_get_ticket_tiers handles the facebook_event_get_ticket_tiers tool
 func HandleFacebook_event_get_ticket_tiers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -569,8 +542,6 @@ func HandleFacebook_event_get_ticket_tiers(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_event_get_ticket_tiers(args)
@@ -587,7 +558,6 @@ func HandleFacebook_event_get_ticket_tiers(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_event_get_videos handles the facebook_event_get_videos tool
 func HandleFacebook_event_get_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -601,8 +571,6 @@ func HandleFacebook_event_get_videos(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_event_get_videos(args)
@@ -619,7 +587,6 @@ func HandleFacebook_event_get_videos(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_event_get_ handles the facebook_event_get_ tool
 func HandleFacebook_event_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -633,8 +600,6 @@ func HandleFacebook_event_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_event_get_(args)
@@ -650,4 +615,3 @@ func HandleFacebook_event_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

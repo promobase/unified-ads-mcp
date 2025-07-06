@@ -15,7 +15,6 @@ import (
 func GetIGMediaBoostEligibilityInfoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_igmediaboosteligibilityinfo_get_ tool
 	facebook_igmediaboosteligibilityinfo_get_Tool := mcp.NewTool("facebook_igmediaboosteligibilityinfo_get_",
 		mcp.WithDescription("GET  for IGMediaBoostEligibilityInfo"),
@@ -26,12 +25,10 @@ func GetIGMediaBoostEligibilityInfoTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_igmediaboosteligibilityinfo_get_Tool)
 
-
 	return tools
 }
 
 // IGMediaBoostEligibilityInfo handlers
-
 
 // HandleFacebook_igmediaboosteligibilityinfo_get_ handles the facebook_igmediaboosteligibilityinfo_get_ tool
 func HandleFacebook_igmediaboosteligibilityinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_igmediaboosteligibilityinfo_get_(ctx context.Context, reques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_igmediaboosteligibilityinfo_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_igmediaboosteligibilityinfo_get_(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

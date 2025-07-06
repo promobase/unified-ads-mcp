@@ -4,7 +4,7 @@ package types
 
 // AdAccountUser represents a Facebook AdAccountUser object
 type AdAccountUser struct {
-	Id string `json:"id"`
-	Name string `json:"name"`
+	Id    string   `json:"id"`
+	Name  string   `json:"name"`
 	Tasks []string `json:"tasks"`
 }

@@ -15,7 +15,6 @@ import (
 func GetStatusTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_status_post_likes tool
 	facebook_status_post_likesTool := mcp.NewTool("facebook_status_post_likes",
 		mcp.WithDescription("POST likes for Status"),
@@ -48,12 +47,10 @@ func GetStatusTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_status_get_Tool)
 
-
 	return tools
 }
 
 // Status handlers
-
 
 // HandleFacebook_status_post_likes handles the facebook_status_post_likes tool
 func HandleFacebook_status_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -89,8 +86,6 @@ func HandleFacebook_status_post_likes(ctx context.Context, request mcp.CallToolR
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_status_post_likes(args)
 	if err != nil {
@@ -106,7 +101,6 @@ func HandleFacebook_status_post_likes(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_status_get_ handles the facebook_status_get_ tool
 func HandleFacebook_status_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -120,8 +114,6 @@ func HandleFacebook_status_get_(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_status_get_(args)
@@ -137,4 +129,3 @@ func HandleFacebook_status_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

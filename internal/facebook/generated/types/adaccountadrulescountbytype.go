@@ -4,6 +4,6 @@ package types
 
 // AdAccountAdRulesCountByType represents a Facebook AdAccountAdRulesCountByType object
 type AdAccountAdRulesCountByType struct {
-	Count int `json:"count"`
+	Count           int    `json:"count"`
 	Evaluation_type string `json:"evaluation_type"`
 }

@@ -4,7 +4,7 @@ package types
 
 // ProductItemOffer represents a Facebook ProductItemOffer object
 type ProductItemOffer struct {
-	Availability_area []map[string]interface{} `json:"availability_area"`
-	Availability_radius float64 `json:"availability_radius"`
-	Id string `json:"id"`
+	Availability_area   []map[string]interface{} `json:"availability_area"`
+	Availability_radius float64                  `json:"availability_radius"`
+	Id                  string                   `json:"id"`
 }

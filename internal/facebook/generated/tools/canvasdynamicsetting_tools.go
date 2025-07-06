@@ -15,7 +15,6 @@ import (
 func GetCanvasDynamicSettingTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_canvasdynamicsetting_get_ tool
 	facebook_canvasdynamicsetting_get_Tool := mcp.NewTool("facebook_canvasdynamicsetting_get_",
 		mcp.WithDescription("GET  for CanvasDynamicSetting"),
@@ -26,12 +25,10 @@ func GetCanvasDynamicSettingTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_canvasdynamicsetting_get_Tool)
 
-
 	return tools
 }
 
 // CanvasDynamicSetting handlers
-
 
 // HandleFacebook_canvasdynamicsetting_get_ handles the facebook_canvasdynamicsetting_get_ tool
 func HandleFacebook_canvasdynamicsetting_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_canvasdynamicsetting_get_(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_canvasdynamicsetting_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_canvasdynamicsetting_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

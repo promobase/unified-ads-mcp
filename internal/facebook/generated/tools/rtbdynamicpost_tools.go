@@ -15,7 +15,6 @@ import (
 func GetRTBDynamicPostTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_rtbdynamicpost_get_comments tool
 	facebook_rtbdynamicpost_get_commentsTool := mcp.NewTool("facebook_rtbdynamicpost_get_comments",
 		mcp.WithDescription("GET comments for RTBDynamicPost"),
@@ -61,12 +60,10 @@ func GetRTBDynamicPostTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_rtbdynamicpost_get_Tool)
 
-
 	return tools
 }
 
 // RTBDynamicPost handlers
-
 
 // HandleFacebook_rtbdynamicpost_get_comments handles the facebook_rtbdynamicpost_get_comments tool
 func HandleFacebook_rtbdynamicpost_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -102,8 +99,6 @@ func HandleFacebook_rtbdynamicpost_get_comments(ctx context.Context, request mcp
 		args["since"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Facebook_rtbdynamicpost_get_comments(args)
 	if err != nil {
@@ -119,7 +114,6 @@ func HandleFacebook_rtbdynamicpost_get_comments(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_rtbdynamicpost_get_likes handles the facebook_rtbdynamicpost_get_likes tool
 func HandleFacebook_rtbdynamicpost_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -133,8 +127,6 @@ func HandleFacebook_rtbdynamicpost_get_likes(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_rtbdynamicpost_get_likes(args)
@@ -151,7 +143,6 @@ func HandleFacebook_rtbdynamicpost_get_likes(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFacebook_rtbdynamicpost_get_ handles the facebook_rtbdynamicpost_get_ tool
 func HandleFacebook_rtbdynamicpost_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -165,8 +156,6 @@ func HandleFacebook_rtbdynamicpost_get_(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Facebook_rtbdynamicpost_get_(args)
@@ -182,4 +171,3 @@ func HandleFacebook_rtbdynamicpost_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

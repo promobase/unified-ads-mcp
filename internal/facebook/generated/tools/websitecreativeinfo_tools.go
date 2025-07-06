@@ -15,7 +15,6 @@ import (
 func GetWebsiteCreativeInfoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_websitecreativeinfo_get_ tool
 	facebook_websitecreativeinfo_get_Tool := mcp.NewTool("facebook_websitecreativeinfo_get_",
 		mcp.WithDescription("GET  for WebsiteCreativeInfo"),
@@ -26,12 +25,10 @@ func GetWebsiteCreativeInfoTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_websitecreativeinfo_get_Tool)
 
-
 	return tools
 }
 
 // WebsiteCreativeInfo handlers
-
 
 // HandleFacebook_websitecreativeinfo_get_ handles the facebook_websitecreativeinfo_get_ tool
 func HandleFacebook_websitecreativeinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_websitecreativeinfo_get_(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_websitecreativeinfo_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_websitecreativeinfo_get_(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

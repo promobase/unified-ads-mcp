@@ -21,18 +21,14 @@ func NewInstagramBusinessAssetClient(accessToken string) *InstagramBusinessAsset
 	}
 }
 
-
 // facebook_instagrambusinessasset_get_ GET  for InstagramBusinessAsset
 func (c *InstagramBusinessAssetClient) Facebook_instagrambusinessasset_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -63,4 +59,3 @@ func (c *InstagramBusinessAssetClient) Facebook_instagrambusinessasset_get_(args
 
 	return result, nil
 }
-

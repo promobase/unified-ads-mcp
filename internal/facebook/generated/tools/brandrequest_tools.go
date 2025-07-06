@@ -15,7 +15,6 @@ import (
 func GetBrandRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_brandrequest_get_ tool
 	facebook_brandrequest_get_Tool := mcp.NewTool("facebook_brandrequest_get_",
 		mcp.WithDescription("GET  for BrandRequest"),
@@ -26,12 +25,10 @@ func GetBrandRequestTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_brandrequest_get_Tool)
 
-
 	return tools
 }
 
 // BrandRequest handlers
-
 
 // HandleFacebook_brandrequest_get_ handles the facebook_brandrequest_get_ tool
 func HandleFacebook_brandrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_brandrequest_get_(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_brandrequest_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_brandrequest_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -21,18 +21,14 @@ func NewEventSourceGroupClient(accessToken string) *EventSourceGroupClient {
 	}
 }
 
-
 // facebook_eventsourcegroup_get_shared_accounts GET shared_accounts for EventSourceGroup
 func (c *EventSourceGroupClient) Facebook_eventsourcegroup_get_shared_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "shared_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,7 +60,6 @@ func (c *EventSourceGroupClient) Facebook_eventsourcegroup_get_shared_accounts(a
 	return result, nil
 }
 
-
 // facebook_eventsourcegroup_post_shared_accounts POST shared_accounts for EventSourceGroup
 func (c *EventSourceGroupClient) Facebook_eventsourcegroup_post_shared_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -74,7 +69,6 @@ func (c *EventSourceGroupClient) Facebook_eventsourcegroup_post_shared_accounts(
 	}
 	_ = accounts // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "shared_accounts")
 	urlParams := url.Values{}
@@ -83,7 +77,6 @@ func (c *EventSourceGroupClient) Facebook_eventsourcegroup_post_shared_accounts(
 	if val, ok := args["accounts"]; ok {
 		urlParams.Set("accounts", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -115,18 +108,14 @@ func (c *EventSourceGroupClient) Facebook_eventsourcegroup_post_shared_accounts(
 	return result, nil
 }
 
-
 // facebook_eventsourcegroup_get_ GET  for EventSourceGroup
 func (c *EventSourceGroupClient) Facebook_eventsourcegroup_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -157,7 +146,6 @@ func (c *EventSourceGroupClient) Facebook_eventsourcegroup_get_(args map[string]
 
 	return result, nil
 }
-
 
 // facebook_eventsourcegroup_post_ POST  for EventSourceGroup
 func (c *EventSourceGroupClient) Facebook_eventsourcegroup_post_(args map[string]interface{}) (interface{}, error) {
@@ -173,7 +161,6 @@ func (c *EventSourceGroupClient) Facebook_eventsourcegroup_post_(args map[string
 	}
 	_ = name // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
@@ -185,7 +172,6 @@ func (c *EventSourceGroupClient) Facebook_eventsourcegroup_post_(args map[string
 	if val, ok := args["name"]; ok {
 		urlParams.Set("name", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -216,4 +202,3 @@ func (c *EventSourceGroupClient) Facebook_eventsourcegroup_post_(args map[string
 
 	return result, nil
 }
-

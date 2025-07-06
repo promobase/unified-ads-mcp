@@ -15,7 +15,6 @@ import (
 func GetAdvAInstanceTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_advainstance_get_ tool
 	facebook_advainstance_get_Tool := mcp.NewTool("facebook_advainstance_get_",
 		mcp.WithDescription("GET  for AdvAInstance"),
@@ -26,12 +25,10 @@ func GetAdvAInstanceTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_advainstance_get_Tool)
 
-
 	return tools
 }
 
 // AdvAInstance handlers
-
 
 // HandleFacebook_advainstance_get_ handles the facebook_advainstance_get_ tool
 func HandleFacebook_advainstance_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_advainstance_get_(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_advainstance_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_advainstance_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

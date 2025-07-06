@@ -21,7 +21,6 @@ func NewIGRefreshAccessTokenForIGOnlyAPIClient(accessToken string) *IGRefreshAcc
 	}
 }
 
-
 // facebook_igrefreshaccesstokenforigonlyapi_get_ GET  for IGRefreshAccessTokenForIGOnlyAPI
 func (c *IGRefreshAccessTokenForIGOnlyAPIClient) Facebook_igrefreshaccesstokenforigonlyapi_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -36,7 +35,6 @@ func (c *IGRefreshAccessTokenForIGOnlyAPIClient) Facebook_igrefreshaccesstokenfo
 	}
 	_ = grant_type // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
@@ -48,7 +46,6 @@ func (c *IGRefreshAccessTokenForIGOnlyAPIClient) Facebook_igrefreshaccesstokenfo
 	if val, ok := args["grant_type"]; ok {
 		urlParams.Set("grant_type", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -79,4 +76,3 @@ func (c *IGRefreshAccessTokenForIGOnlyAPIClient) Facebook_igrefreshaccesstokenfo
 
 	return result, nil
 }
-

@@ -21,7 +21,6 @@ func NewProductCatalogClient(accessToken string) *ProductCatalogClient {
 	}
 }
 
-
 // facebook_productcatalog_delete_agencies DELETE agencies for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_delete_agencies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -31,7 +30,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_delete_agencies(args map[
 	}
 	_ = business // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "agencies")
 	urlParams := url.Values{}
@@ -40,7 +38,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_delete_agencies(args map[
 	if val, ok := args["business"]; ok {
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -72,18 +69,14 @@ func (c *ProductCatalogClient) Facebook_productcatalog_delete_agencies(args map[
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_agencies GET agencies for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_agencies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "agencies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -115,7 +108,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_agencies(args map[str
 	return result, nil
 }
 
-
 // facebook_productcatalog_post_agencies POST agencies for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_agencies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -124,7 +116,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_agencies(args map[st
 		return nil, fmt.Errorf("missing required parameter: business")
 	}
 	_ = business // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "agencies")
@@ -147,7 +138,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_agencies(args map[st
 		urlParams.Set("utm_settings", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -178,7 +168,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_agencies(args map[st
 	return result, nil
 }
 
-
 // facebook_productcatalog_delete_assigned_users DELETE assigned_users for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_delete_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -188,7 +177,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_delete_assigned_users(arg
 	}
 	_ = user // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_users")
 	urlParams := url.Values{}
@@ -197,7 +185,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_delete_assigned_users(arg
 	if val, ok := args["user"]; ok {
 		urlParams.Set("user", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -229,7 +216,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_delete_assigned_users(arg
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_assigned_users GET assigned_users for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -239,7 +225,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_assigned_users(args m
 	}
 	_ = business // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_users")
 	urlParams := url.Values{}
@@ -248,7 +233,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_assigned_users(args m
 	if val, ok := args["business"]; ok {
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -280,7 +264,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_assigned_users(args m
 	return result, nil
 }
 
-
 // facebook_productcatalog_post_assigned_users POST assigned_users for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -295,7 +278,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_assigned_users(args 
 	}
 	_ = user // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "assigned_users")
 	urlParams := url.Values{}
@@ -307,7 +289,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_assigned_users(args 
 	if val, ok := args["user"]; ok {
 		urlParams.Set("user", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -339,11 +320,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_assigned_users(args 
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_automotive_models GET automotive_models for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_automotive_models(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "automotive_models")
@@ -356,7 +335,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_automotive_models(arg
 	if val, ok := args["filter"]; ok {
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -388,7 +366,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_automotive_models(arg
 	return result, nil
 }
 
-
 // facebook_productcatalog_post_batch POST batch for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -397,7 +374,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_batch(args map[strin
 		return nil, fmt.Errorf("missing required parameter: requests")
 	}
 	_ = requests // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "batch")
@@ -417,7 +393,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_batch(args map[strin
 		urlParams.Set("version", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -447,7 +422,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_batch(args map[strin
 
 	return result, nil
 }
-
 
 // facebook_productcatalog_post_catalog_store POST catalog_store for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_catalog_store(args map[string]interface{}) (interface{}, error) {
@@ -458,7 +432,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_catalog_store(args m
 	}
 	_ = page // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "catalog_store")
 	urlParams := url.Values{}
@@ -467,7 +440,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_catalog_store(args m
 	if val, ok := args["page"]; ok {
 		urlParams.Set("page", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -499,7 +471,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_catalog_store(args m
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_categories GET categories for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_categories(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -508,7 +479,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_categories(args map[s
 		return nil, fmt.Errorf("missing required parameter: categorization_criteria")
 	}
 	_ = categorization_criteria // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "categories")
@@ -521,7 +491,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_categories(args map[s
 	if val, ok := args["filter"]; ok {
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -553,7 +522,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_categories(args map[s
 	return result, nil
 }
 
-
 // facebook_productcatalog_post_categories POST categories for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_categories(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -563,7 +531,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_categories(args map[
 	}
 	_ = data // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "categories")
 	urlParams := url.Values{}
@@ -572,7 +539,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_categories(args map[
 	if val, ok := args["data"]; ok {
 		urlParams.Set("data", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -604,7 +570,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_categories(args map[
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_check_batch_request_status GET check_batch_request_status for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_check_batch_request_status(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -613,7 +578,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_check_batch_request_s
 		return nil, fmt.Errorf("missing required parameter: handle")
 	}
 	_ = handle // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "check_batch_request_status")
@@ -630,7 +594,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_check_batch_request_s
 		urlParams.Set("load_ids_of_invalid_requests", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -660,7 +623,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_check_batch_request_s
 
 	return result, nil
 }
-
 
 // facebook_productcatalog_get_check_marketplace_partner_sellers_status GET check_marketplace_partner_sellers_status for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_check_marketplace_partner_sellers_status(args map[string]interface{}) (interface{}, error) {
@@ -671,7 +633,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_check_marketplace_par
 	}
 	_ = session_id // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "check_marketplace_partner_sellers_status")
 	urlParams := url.Values{}
@@ -681,7 +642,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_check_marketplace_par
 		urlParams.Set("session_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -712,19 +672,15 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_check_marketplace_par
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_collaborative_ads_lsb_image_bank GET collaborative_ads_lsb_image_bank for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_collaborative_ads_lsb_image_bank(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "collaborative_ads_lsb_image_bank")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -755,19 +711,15 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_collaborative_ads_lsb
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_collaborative_ads_share_settings GET collaborative_ads_share_settings for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_collaborative_ads_share_settings(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "collaborative_ads_share_settings")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -797,7 +749,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_collaborative_ads_sha
 
 	return result, nil
 }
-
 
 // facebook_productcatalog_post_cpas_lsb_image_bank POST cpas_lsb_image_bank for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_cpas_lsb_image_bank(args map[string]interface{}) (interface{}, error) {
@@ -807,7 +758,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_cpas_lsb_image_bank(
 		return nil, fmt.Errorf("missing required parameter: backup_image_urls")
 	}
 	_ = backup_image_urls // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "cpas_lsb_image_bank")
@@ -823,7 +773,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_cpas_lsb_image_bank(
 	if val, ok := args["backup_image_urls"]; ok {
 		urlParams.Set("backup_image_urls", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -855,11 +804,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_cpas_lsb_image_bank(
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_creator_asset_creatives GET creator_asset_creatives for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_creator_asset_creatives(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "creator_asset_creatives")
@@ -870,7 +817,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_creator_asset_creativ
 		urlParams.Set("moderation_status", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -901,11 +847,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_creator_asset_creativ
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_data_sources GET data_sources for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_data_sources(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "data_sources")
@@ -916,7 +860,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_data_sources(args map
 		urlParams.Set("ingestion_source_type", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -947,11 +890,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_data_sources(args map
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_destinations GET destinations for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_destinations(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "destinations")
@@ -965,7 +906,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_destinations(args map
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -996,11 +936,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_destinations(args map
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_diagnostics GET diagnostics for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_diagnostics(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "diagnostics")
@@ -1023,7 +961,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_diagnostics(args map[
 		urlParams.Set("types", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1054,11 +991,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_diagnostics(args map[
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_event_stats GET event_stats for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_event_stats(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "event_stats")
@@ -1069,7 +1004,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_event_stats(args map[
 		urlParams.Set("breakdowns", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1100,11 +1034,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_event_stats(args map[
 	return result, nil
 }
 
-
 // facebook_productcatalog_delete_external_event_sources DELETE external_event_sources for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_delete_external_event_sources(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "external_event_sources")
@@ -1114,7 +1046,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_delete_external_event_sou
 	if val, ok := args["external_event_sources"]; ok {
 		urlParams.Set("external_event_sources", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1146,18 +1077,14 @@ func (c *ProductCatalogClient) Facebook_productcatalog_delete_external_event_sou
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_external_event_sources GET external_event_sources for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_external_event_sources(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "external_event_sources")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1189,11 +1116,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_external_event_source
 	return result, nil
 }
 
-
 // facebook_productcatalog_post_external_event_sources POST external_event_sources for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_external_event_sources(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "external_event_sources")
@@ -1203,7 +1128,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_external_event_sourc
 	if val, ok := args["external_event_sources"]; ok {
 		urlParams.Set("external_event_sources", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1235,11 +1159,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_external_event_sourc
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_flights GET flights for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_flights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "flights")
@@ -1252,7 +1174,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_flights(args map[stri
 	if val, ok := args["filter"]; ok {
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1284,7 +1205,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_flights(args map[stri
 	return result, nil
 }
 
-
 // facebook_productcatalog_post_geolocated_items_batch POST geolocated_items_batch for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_geolocated_items_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -1298,7 +1218,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_geolocated_items_bat
 		return nil, fmt.Errorf("missing required parameter: requests")
 	}
 	_ = requests // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "geolocated_items_batch")
@@ -1315,7 +1234,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_geolocated_items_bat
 		urlParams.Set("requests", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1346,11 +1264,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_geolocated_items_bat
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_home_listings GET home_listings for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_home_listings(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "home_listings")
@@ -1363,7 +1279,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_home_listings(args ma
 	if val, ok := args["filter"]; ok {
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1394,7 +1309,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_home_listings(args ma
 
 	return result, nil
 }
-
 
 // facebook_productcatalog_post_home_listings POST home_listings for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_home_listings(args map[string]interface{}) (interface{}, error) {
@@ -1444,7 +1358,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_home_listings(args m
 		return nil, fmt.Errorf("missing required parameter: year_built")
 	}
 	_ = year_built // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "home_listings")
@@ -1497,7 +1410,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_home_listings(args m
 		urlParams.Set("year_built", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1528,7 +1440,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_home_listings(args m
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_hotel_rooms_batch GET hotel_rooms_batch for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_hotel_rooms_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -1538,7 +1449,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_hotel_rooms_batch(arg
 	}
 	_ = handle // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "hotel_rooms_batch")
 	urlParams := url.Values{}
@@ -1547,7 +1457,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_hotel_rooms_batch(arg
 	if val, ok := args["handle"]; ok {
 		urlParams.Set("handle", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1579,7 +1488,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_hotel_rooms_batch(arg
 	return result, nil
 }
 
-
 // facebook_productcatalog_post_hotel_rooms_batch POST hotel_rooms_batch for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_hotel_rooms_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -1588,7 +1496,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_hotel_rooms_batch(ar
 		return nil, fmt.Errorf("missing required parameter: standard")
 	}
 	_ = standard // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "hotel_rooms_batch")
@@ -1614,7 +1521,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_hotel_rooms_batch(ar
 		urlParams.Set("username", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1645,11 +1551,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_hotel_rooms_batch(ar
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_hotels GET hotels for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_hotels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "hotels")
@@ -1662,7 +1566,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_hotels(args map[strin
 	if val, ok := args["filter"]; ok {
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1693,7 +1596,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_hotels(args map[strin
 
 	return result, nil
 }
-
 
 // facebook_productcatalog_post_hotels POST hotels for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_hotels(args map[string]interface{}) (interface{}, error) {
@@ -1723,7 +1625,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_hotels(args map[stri
 		return nil, fmt.Errorf("missing required parameter: url")
 	}
 	_ = url_ // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "hotels")
@@ -1770,7 +1671,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_hotels(args map[stri
 		urlParams.Set("url", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1801,7 +1701,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_hotels(args map[stri
 	return result, nil
 }
 
-
 // facebook_productcatalog_post_items_batch POST items_batch for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_items_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -1815,7 +1714,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_items_batch(args map
 		return nil, fmt.Errorf("missing required parameter: requests")
 	}
 	_ = requests // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "items_batch")
@@ -1838,7 +1736,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_items_batch(args map
 		urlParams.Set("version", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1869,7 +1766,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_items_batch(args map
 	return result, nil
 }
 
-
 // facebook_productcatalog_post_localized_items_batch POST localized_items_batch for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_localized_items_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -1883,7 +1779,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_localized_items_batc
 		return nil, fmt.Errorf("missing required parameter: requests")
 	}
 	_ = requests // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "localized_items_batch")
@@ -1903,7 +1798,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_localized_items_batc
 		urlParams.Set("version", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1933,7 +1827,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_localized_items_batc
 
 	return result, nil
 }
-
 
 // facebook_productcatalog_post_marketplace_partner_sellers_details POST marketplace_partner_sellers_details for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_marketplace_partner_sellers_details(args map[string]interface{}) (interface{}, error) {
@@ -1944,7 +1837,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_marketplace_partner_
 	}
 	_ = requests // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "marketplace_partner_sellers_details")
 	urlParams := url.Values{}
@@ -1953,7 +1845,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_marketplace_partner_
 	if val, ok := args["requests"]; ok {
 		urlParams.Set("requests", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1984,7 +1875,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_marketplace_partner_
 
 	return result, nil
 }
-
 
 // facebook_productcatalog_post_marketplace_partner_signals POST marketplace_partner_signals for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_marketplace_partner_signals(args map[string]interface{}) (interface{}, error) {
@@ -2004,7 +1894,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_marketplace_partner_
 		return nil, fmt.Errorf("missing required parameter: user_data")
 	}
 	_ = user_data // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "marketplace_partner_signals")
@@ -2027,7 +1916,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_marketplace_partner_
 		urlParams.Set("user_data", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2058,7 +1946,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_marketplace_partner_
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_pricing_variables_batch GET pricing_variables_batch for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_pricing_variables_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -2068,7 +1955,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_pricing_variables_bat
 	}
 	_ = handle // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "pricing_variables_batch")
 	urlParams := url.Values{}
@@ -2077,7 +1963,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_pricing_variables_bat
 	if val, ok := args["handle"]; ok {
 		urlParams.Set("handle", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2109,7 +1994,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_pricing_variables_bat
 	return result, nil
 }
 
-
 // facebook_productcatalog_post_pricing_variables_batch POST pricing_variables_batch for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_pricing_variables_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -2118,7 +2002,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_pricing_variables_ba
 		return nil, fmt.Errorf("missing required parameter: standard")
 	}
 	_ = standard // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "pricing_variables_batch")
@@ -2144,7 +2027,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_pricing_variables_ba
 		urlParams.Set("username", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2175,18 +2057,14 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_pricing_variables_ba
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_product_feeds GET product_feeds for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_product_feeds(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_feeds")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2218,11 +2096,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_product_feeds(args ma
 	return result, nil
 }
 
-
 // facebook_productcatalog_post_product_feeds POST product_feeds for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_product_feeds(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_feeds")
@@ -2287,7 +2163,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_product_feeds(args m
 		urlParams.Set("update_schedule", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2318,18 +2193,14 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_product_feeds(args m
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_product_groups GET product_groups for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_product_groups(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_groups")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2361,11 +2232,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_product_groups(args m
 	return result, nil
 }
 
-
 // facebook_productcatalog_post_product_groups POST product_groups for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_product_groups(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_groups")
@@ -2378,7 +2247,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_product_groups(args 
 	if val, ok := args["variants"]; ok {
 		urlParams.Set("variants", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2410,11 +2278,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_product_groups(args 
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_product_sets GET product_sets for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_product_sets(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_sets")
@@ -2434,7 +2300,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_product_sets(args map
 		urlParams.Set("retailer_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2465,7 +2330,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_product_sets(args map
 	return result, nil
 }
 
-
 // facebook_productcatalog_post_product_sets POST product_sets for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_product_sets(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -2474,7 +2338,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_product_sets(args ma
 		return nil, fmt.Errorf("missing required parameter: name")
 	}
 	_ = name // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_sets")
@@ -2500,7 +2363,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_product_sets(args ma
 		urlParams.Set("retailer_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2531,7 +2393,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_product_sets(args ma
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_product_sets_batch GET product_sets_batch for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_product_sets_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -2541,7 +2402,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_product_sets_batch(ar
 	}
 	_ = handle // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "product_sets_batch")
 	urlParams := url.Values{}
@@ -2550,7 +2410,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_product_sets_batch(ar
 	if val, ok := args["handle"]; ok {
 		urlParams.Set("handle", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2582,11 +2441,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_product_sets_batch(ar
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_products GET products for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_products(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "products")
@@ -2609,7 +2466,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_products(args map[str
 		urlParams.Set("return_only_approved_products", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2640,7 +2496,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_products(args map[str
 	return result, nil
 }
 
-
 // facebook_productcatalog_post_products POST products for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_products(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -2659,7 +2514,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_products(args map[st
 		return nil, fmt.Errorf("missing required parameter: price")
 	}
 	_ = price // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "products")
@@ -2901,7 +2755,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_products(args map[st
 		urlParams.Set("windows_phone_url", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2931,7 +2784,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_products(args map[st
 
 	return result, nil
 }
-
 
 // facebook_productcatalog_post_update_generated_image_config POST update_generated_image_config for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_update_generated_image_config(args map[string]interface{}) (interface{}, error) {
@@ -2942,7 +2794,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_update_generated_ima
 	}
 	_ = data // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "update_generated_image_config")
 	urlParams := url.Values{}
@@ -2951,7 +2802,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_update_generated_ima
 	if val, ok := args["data"]; ok {
 		urlParams.Set("data", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2983,11 +2833,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_update_generated_ima
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_vehicle_offers GET vehicle_offers for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_vehicle_offers(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "vehicle_offers")
@@ -3001,7 +2849,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_vehicle_offers(args m
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -3032,11 +2879,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_vehicle_offers(args m
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_vehicles GET vehicles for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_vehicles(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "vehicles")
@@ -3050,7 +2895,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_vehicles(args map[str
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -3080,7 +2924,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_vehicles(args map[str
 
 	return result, nil
 }
-
 
 // facebook_productcatalog_post_vehicles POST vehicles for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_vehicles(args map[string]interface{}) (interface{}, error) {
@@ -3165,7 +3008,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_vehicles(args map[st
 		return nil, fmt.Errorf("missing required parameter: year")
 	}
 	_ = year // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "vehicles")
@@ -3263,7 +3105,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_vehicles(args map[st
 		urlParams.Set("year", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -3294,18 +3135,14 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_vehicles(args map[st
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_version_configs GET version_configs for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_version_configs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "version_configs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3337,7 +3174,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_version_configs(args 
 	return result, nil
 }
 
-
 // facebook_productcatalog_post_version_items_batch POST version_items_batch for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_version_items_batch(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -3356,7 +3192,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_version_items_batch(
 		return nil, fmt.Errorf("missing required parameter: requests")
 	}
 	_ = requests // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "version_items_batch")
@@ -3378,7 +3213,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_version_items_batch(
 	if val, ok := args["version"]; ok {
 		urlParams.Set("version", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3410,11 +3244,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_version_items_batch(
 	return result, nil
 }
 
-
 // facebook_productcatalog_delete_ DELETE  for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -3424,7 +3256,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_delete_(args map[string]i
 	if val, ok := args["allow_delete_catalog_with_live_product_set"]; ok {
 		urlParams.Set("allow_delete_catalog_with_live_product_set", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3456,11 +3287,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_delete_(args map[string]i
 	return result, nil
 }
 
-
 // facebook_productcatalog_get_ GET  for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -3470,7 +3299,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_(args map[string]inte
 	if val, ok := args["segment_use_cases"]; ok {
 		urlParams.Set("segment_use_cases", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3502,11 +3330,9 @@ func (c *ProductCatalogClient) Facebook_productcatalog_get_(args map[string]inte
 	return result, nil
 }
 
-
 // facebook_productcatalog_post_ POST  for ProductCatalog
 func (c *ProductCatalogClient) Facebook_productcatalog_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
@@ -3541,7 +3367,6 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_(args map[string]int
 		urlParams.Set("store_catalog_settings", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -3571,4 +3396,3 @@ func (c *ProductCatalogClient) Facebook_productcatalog_post_(args map[string]int
 
 	return result, nil
 }
-

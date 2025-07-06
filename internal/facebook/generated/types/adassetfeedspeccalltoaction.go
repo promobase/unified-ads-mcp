@@ -4,7 +4,7 @@ package types
 
 // AdAssetFeedSpecCallToAction represents a Facebook AdAssetFeedSpecCallToAction object
 type AdAssetFeedSpecCallToAction struct {
-	Adlabels []AdAssetFeedSpecAssetLabel `json:"adlabels"`
-	Type_ string `json:"type"`
-	Value *AdCreativeLinkDataCallToActionValue `json:"value"`
+	Adlabels []AdAssetFeedSpecAssetLabel          `json:"adlabels"`
+	Type_    string                               `json:"type"`
+	Value    *AdCreativeLinkDataCallToActionValue `json:"value"`
 }

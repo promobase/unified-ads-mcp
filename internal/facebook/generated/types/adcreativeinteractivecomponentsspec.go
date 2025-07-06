@@ -5,5 +5,5 @@ package types
 // AdCreativeInteractiveComponentsSpec represents a Facebook AdCreativeInteractiveComponentsSpec object
 type AdCreativeInteractiveComponentsSpec struct {
 	Child_attachments []map[string]interface{} `json:"child_attachments"`
-	Components []map[string]interface{} `json:"components"`
+	Components        []map[string]interface{} `json:"components"`
 }

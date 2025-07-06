@@ -21,18 +21,14 @@ func NewAdImageClient(accessToken string) *AdImageClient {
 	}
 }
 
-
 // facebook_adimage_get_ GET  for AdImage
 func (c *AdImageClient) Facebook_adimage_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/v23.0/%s", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -63,4 +59,3 @@ func (c *AdImageClient) Facebook_adimage_get_(args map[string]interface{}) (inte
 
 	return result, nil
 }
-

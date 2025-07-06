@@ -4,6 +4,6 @@ package types
 
 // WebAppLink represents a Facebook WebAppLink object
 type WebAppLink struct {
-	Should_fallback bool `json:"should_fallback"`
-	Url string `json:"url"`
+	Should_fallback bool   `json:"should_fallback"`
+	Url             string `json:"url"`
 }

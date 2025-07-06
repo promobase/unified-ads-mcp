@@ -15,7 +15,6 @@ import (
 func GetCanvasTemplateTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// facebook_canvastemplate_get_ tool
 	facebook_canvastemplate_get_Tool := mcp.NewTool("facebook_canvastemplate_get_",
 		mcp.WithDescription("GET  for CanvasTemplate"),
@@ -26,12 +25,10 @@ func GetCanvasTemplateTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, facebook_canvastemplate_get_Tool)
 
-
 	return tools
 }
 
 // CanvasTemplate handlers
-
 
 // HandleFacebook_canvastemplate_get_ handles the facebook_canvastemplate_get_ tool
 func HandleFacebook_canvastemplate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFacebook_canvastemplate_get_(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Facebook_canvastemplate_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFacebook_canvastemplate_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

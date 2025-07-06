@@ -4,9 +4,9 @@ package types
 
 // AdAssetFeedSpecImage represents a Facebook AdAssetFeedSpecImage object
 type AdAssetFeedSpecImage struct {
-	Adlabels []AdAssetFeedSpecAssetLabel `json:"adlabels"`
-	Hash string `json:"hash"`
-	Image_crops *AdsImageCrops `json:"image_crops"`
-	Url string `json:"url"`
-	Url_tags string `json:"url_tags"`
+	Adlabels    []AdAssetFeedSpecAssetLabel `json:"adlabels"`
+	Hash        string                      `json:"hash"`
+	Image_crops *AdsImageCrops              `json:"image_crops"`
+	Url         string                      `json:"url"`
+	Url_tags    string                      `json:"url_tags"`
 }

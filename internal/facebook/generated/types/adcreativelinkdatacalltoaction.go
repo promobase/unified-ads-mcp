@@ -4,6 +4,6 @@ package types
 
 // AdCreativeLinkDataCallToAction represents a Facebook AdCreativeLinkDataCallToAction object
 type AdCreativeLinkDataCallToAction struct {
-	Type_ string `json:"type"`
+	Type_ string                               `json:"type"`
 	Value *AdCreativeLinkDataCallToActionValue `json:"value"`
 }
