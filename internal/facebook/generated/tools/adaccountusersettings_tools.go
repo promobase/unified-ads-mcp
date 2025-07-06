@@ -13,24 +13,7 @@ import (
 )
 
 // GetAdAccountUserSettingsTools returns MCP tools for AdAccountUserSettings
-func GetAdAccountUserSettingsTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// adaccountusersettings_get_ tool
-	adaccountusersettings_get_Tool := mcp.NewTool("adaccountusersettings_get_",
-		mcp.WithDescription("GET  for AdAccountUserSettings"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adaccountusersettings_get_Tool)
-
-	return tools
-}
-
-// GetAdAccountUserSettingsToolsWithoutAuth returns MCP tools for AdAccountUserSettings without access_token parameter
-func GetAdAccountUserSettingsToolsWithoutAuth() []mcp.Tool {
+func GetAdAccountUserSettingsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adaccountusersettings_get_ tool
@@ -44,39 +27,8 @@ func GetAdAccountUserSettingsToolsWithoutAuth() []mcp.Tool {
 
 // AdAccountUserSettings handlers
 
-// HandleAdaccountusersettings_get_ handles the adaccountusersettings_get_ tool
+// HandleAdaccountusersettings_get_ handles the adaccountusersettings_get_ tool with context-based auth
 func HandleAdaccountusersettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdAccountUserSettingsClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adaccountusersettings_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adaccountusersettings_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAdaccountusersettings_get_ handles the adaccountusersettings_get_ tool with context-based auth
-func HandleContextAdaccountusersettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

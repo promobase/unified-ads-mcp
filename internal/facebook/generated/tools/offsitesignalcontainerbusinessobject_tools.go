@@ -13,44 +13,7 @@ import (
 )
 
 // GetOffsiteSignalContainerBusinessObjectTools returns MCP tools for OffsiteSignalContainerBusinessObject
-func GetOffsiteSignalContainerBusinessObjectTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// offsitesignalcontainerbusinessobject_get_linked_application tool
-	offsitesignalcontainerbusinessobject_get_linked_applicationTool := mcp.NewTool("offsitesignalcontainerbusinessobject_get_linked_application",
-		mcp.WithDescription("GET linked_application for OffsiteSignalContainerBusinessObject"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, offsitesignalcontainerbusinessobject_get_linked_applicationTool)
-
-	// offsitesignalcontainerbusinessobject_get_linked_page tool
-	offsitesignalcontainerbusinessobject_get_linked_pageTool := mcp.NewTool("offsitesignalcontainerbusinessobject_get_linked_page",
-		mcp.WithDescription("GET linked_page for OffsiteSignalContainerBusinessObject"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, offsitesignalcontainerbusinessobject_get_linked_pageTool)
-
-	// offsitesignalcontainerbusinessobject_get_ tool
-	offsitesignalcontainerbusinessobject_get_Tool := mcp.NewTool("offsitesignalcontainerbusinessobject_get_",
-		mcp.WithDescription("GET  for OffsiteSignalContainerBusinessObject"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, offsitesignalcontainerbusinessobject_get_Tool)
-
-	return tools
-}
-
-// GetOffsiteSignalContainerBusinessObjectToolsWithoutAuth returns MCP tools for OffsiteSignalContainerBusinessObject without access_token parameter
-func GetOffsiteSignalContainerBusinessObjectToolsWithoutAuth() []mcp.Tool {
+func GetOffsiteSignalContainerBusinessObjectTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// offsitesignalcontainerbusinessobject_get_linked_application tool
@@ -76,12 +39,12 @@ func GetOffsiteSignalContainerBusinessObjectToolsWithoutAuth() []mcp.Tool {
 
 // OffsiteSignalContainerBusinessObject handlers
 
-// HandleOffsitesignalcontainerbusinessobject_get_linked_application handles the offsitesignalcontainerbusinessobject_get_linked_application tool
+// HandleOffsitesignalcontainerbusinessobject_get_linked_application handles the offsitesignalcontainerbusinessobject_get_linked_application tool with context-based auth
 func HandleOffsitesignalcontainerbusinessobject_get_linked_application(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -105,12 +68,12 @@ func HandleOffsitesignalcontainerbusinessobject_get_linked_application(ctx conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleOffsitesignalcontainerbusinessobject_get_linked_page handles the offsitesignalcontainerbusinessobject_get_linked_page tool
+// HandleOffsitesignalcontainerbusinessobject_get_linked_page handles the offsitesignalcontainerbusinessobject_get_linked_page tool with context-based auth
 func HandleOffsitesignalcontainerbusinessobject_get_linked_page(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -134,97 +97,8 @@ func HandleOffsitesignalcontainerbusinessobject_get_linked_page(ctx context.Cont
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleOffsitesignalcontainerbusinessobject_get_ handles the offsitesignalcontainerbusinessobject_get_ tool
+// HandleOffsitesignalcontainerbusinessobject_get_ handles the offsitesignalcontainerbusinessobject_get_ tool with context-based auth
 func HandleOffsitesignalcontainerbusinessobject_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewOffsiteSignalContainerBusinessObjectClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Offsitesignalcontainerbusinessobject_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute offsitesignalcontainerbusinessobject_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextOffsitesignalcontainerbusinessobject_get_linked_application handles the offsitesignalcontainerbusinessobject_get_linked_application tool with context-based auth
-func HandleContextOffsitesignalcontainerbusinessobject_get_linked_application(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewOffsiteSignalContainerBusinessObjectClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Offsitesignalcontainerbusinessobject_get_linked_application(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute offsitesignalcontainerbusinessobject_get_linked_application: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextOffsitesignalcontainerbusinessobject_get_linked_page handles the offsitesignalcontainerbusinessobject_get_linked_page tool with context-based auth
-func HandleContextOffsitesignalcontainerbusinessobject_get_linked_page(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewOffsiteSignalContainerBusinessObjectClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Offsitesignalcontainerbusinessobject_get_linked_page(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute offsitesignalcontainerbusinessobject_get_linked_page: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextOffsitesignalcontainerbusinessobject_get_ handles the offsitesignalcontainerbusinessobject_get_ tool with context-based auth
-func HandleContextOffsitesignalcontainerbusinessobject_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

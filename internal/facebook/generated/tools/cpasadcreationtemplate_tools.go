@@ -13,24 +13,7 @@ import (
 )
 
 // GetCPASAdCreationTemplateTools returns MCP tools for CPASAdCreationTemplate
-func GetCPASAdCreationTemplateTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// cpasadcreationtemplate_get_ tool
-	cpasadcreationtemplate_get_Tool := mcp.NewTool("cpasadcreationtemplate_get_",
-		mcp.WithDescription("GET  for CPASAdCreationTemplate"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, cpasadcreationtemplate_get_Tool)
-
-	return tools
-}
-
-// GetCPASAdCreationTemplateToolsWithoutAuth returns MCP tools for CPASAdCreationTemplate without access_token parameter
-func GetCPASAdCreationTemplateToolsWithoutAuth() []mcp.Tool {
+func GetCPASAdCreationTemplateTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// cpasadcreationtemplate_get_ tool
@@ -44,39 +27,8 @@ func GetCPASAdCreationTemplateToolsWithoutAuth() []mcp.Tool {
 
 // CPASAdCreationTemplate handlers
 
-// HandleCpasadcreationtemplate_get_ handles the cpasadcreationtemplate_get_ tool
+// HandleCpasadcreationtemplate_get_ handles the cpasadcreationtemplate_get_ tool with context-based auth
 func HandleCpasadcreationtemplate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewCPASAdCreationTemplateClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Cpasadcreationtemplate_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute cpasadcreationtemplate_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextCpasadcreationtemplate_get_ handles the cpasadcreationtemplate_get_ tool with context-based auth
-func HandleContextCpasadcreationtemplate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

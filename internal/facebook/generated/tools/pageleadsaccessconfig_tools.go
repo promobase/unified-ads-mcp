@@ -13,24 +13,7 @@ import (
 )
 
 // GetPageLeadsAccessConfigTools returns MCP tools for PageLeadsAccessConfig
-func GetPageLeadsAccessConfigTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// pageleadsaccessconfig_get_ tool
-	pageleadsaccessconfig_get_Tool := mcp.NewTool("pageleadsaccessconfig_get_",
-		mcp.WithDescription("GET  for PageLeadsAccessConfig"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, pageleadsaccessconfig_get_Tool)
-
-	return tools
-}
-
-// GetPageLeadsAccessConfigToolsWithoutAuth returns MCP tools for PageLeadsAccessConfig without access_token parameter
-func GetPageLeadsAccessConfigToolsWithoutAuth() []mcp.Tool {
+func GetPageLeadsAccessConfigTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// pageleadsaccessconfig_get_ tool
@@ -44,39 +27,8 @@ func GetPageLeadsAccessConfigToolsWithoutAuth() []mcp.Tool {
 
 // PageLeadsAccessConfig handlers
 
-// HandlePageleadsaccessconfig_get_ handles the pageleadsaccessconfig_get_ tool
+// HandlePageleadsaccessconfig_get_ handles the pageleadsaccessconfig_get_ tool with context-based auth
 func HandlePageleadsaccessconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewPageLeadsAccessConfigClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Pageleadsaccessconfig_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pageleadsaccessconfig_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextPageleadsaccessconfig_get_ handles the pageleadsaccessconfig_get_ tool with context-based auth
-func HandleContextPageleadsaccessconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

@@ -13,83 +13,7 @@ import (
 )
 
 // GetAdStudyCellTools returns MCP tools for AdStudyCell
-func GetAdStudyCellTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// adstudycell_get_adaccounts tool
-	adstudycell_get_adaccountsTool := mcp.NewTool("adstudycell_get_adaccounts",
-		mcp.WithDescription("GET adaccounts for AdStudyCell"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adstudycell_get_adaccountsTool)
-
-	// adstudycell_get_adsets tool
-	adstudycell_get_adsetsTool := mcp.NewTool("adstudycell_get_adsets",
-		mcp.WithDescription("GET adsets for AdStudyCell"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adstudycell_get_adsetsTool)
-
-	// adstudycell_get_campaigns tool
-	adstudycell_get_campaignsTool := mcp.NewTool("adstudycell_get_campaigns",
-		mcp.WithDescription("GET campaigns for AdStudyCell"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adstudycell_get_campaignsTool)
-
-	// adstudycell_get_ tool
-	adstudycell_get_Tool := mcp.NewTool("adstudycell_get_",
-		mcp.WithDescription("GET  for AdStudyCell"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adstudycell_get_Tool)
-
-	// adstudycell_post_ tool
-	adstudycell_post_Tool := mcp.NewTool("adstudycell_post_",
-		mcp.WithDescription("POST  for AdStudyCell"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("adaccounts",
-			mcp.Description("adaccounts parameter for "),
-		),
-		mcp.WithString("adsets",
-			mcp.Description("adsets parameter for "),
-		),
-		mcp.WithString("campaigns",
-			mcp.Description("campaigns parameter for "),
-		),
-		mcp.WithString("creation_template",
-			mcp.Description("creation_template parameter for "),
-			mcp.Enum("AUTOMATIC_PLACEMENTS", "BRAND_AWARENESS", "FACEBOOK", "FACEBOOK_AUDIENCE_NETWORK", "FACEBOOK_INSTAGRAM", "FACEBOOK_NEWS_FEED", "FACEBOOK_NEWS_FEED_IN_STREAM_VIDEO", "HIGH_FREQUENCY", "INSTAGRAM", "IN_STREAM_VIDEO", "LOW_FREQUENCY", "MEDIUM_FREQUENCY", "MOBILE_OPTIMIZED_VIDEO", "PAGE_POST_ENGAGEMENT", "REACH", "TV_COMMERCIAL", "TV_FACEBOOK", "VIDEO_VIEW_OPTIMIZATION"),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-	)
-	tools = append(tools, adstudycell_post_Tool)
-
-	return tools
-}
-
-// GetAdStudyCellToolsWithoutAuth returns MCP tools for AdStudyCell without access_token parameter
-func GetAdStudyCellToolsWithoutAuth() []mcp.Tool {
+func GetAdStudyCellTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adstudycell_get_adaccounts tool
@@ -146,12 +70,12 @@ func GetAdStudyCellToolsWithoutAuth() []mcp.Tool {
 
 // AdStudyCell handlers
 
-// HandleAdstudycell_get_adaccounts handles the adstudycell_get_adaccounts tool
+// HandleAdstudycell_get_adaccounts handles the adstudycell_get_adaccounts tool with context-based auth
 func HandleAdstudycell_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -175,12 +99,12 @@ func HandleAdstudycell_get_adaccounts(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdstudycell_get_adsets handles the adstudycell_get_adsets tool
+// HandleAdstudycell_get_adsets handles the adstudycell_get_adsets tool with context-based auth
 func HandleAdstudycell_get_adsets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -204,12 +128,12 @@ func HandleAdstudycell_get_adsets(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdstudycell_get_campaigns handles the adstudycell_get_campaigns tool
+// HandleAdstudycell_get_campaigns handles the adstudycell_get_campaigns tool with context-based auth
 func HandleAdstudycell_get_campaigns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -233,12 +157,12 @@ func HandleAdstudycell_get_campaigns(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdstudycell_get_ handles the adstudycell_get_ tool
+// HandleAdstudycell_get_ handles the adstudycell_get_ tool with context-based auth
 func HandleAdstudycell_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -262,188 +186,8 @@ func HandleAdstudycell_get_(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdstudycell_post_ handles the adstudycell_post_ tool
+// HandleAdstudycell_post_ handles the adstudycell_post_ tool with context-based auth
 func HandleAdstudycell_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdStudyCellClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: adaccounts
-	// array type - using string
-	if val := request.GetString("adaccounts", ""); val != "" {
-		args["adaccounts"] = val
-	}
-
-	// Optional: adsets
-	// array type - using string
-	if val := request.GetString("adsets", ""); val != "" {
-		args["adsets"] = val
-	}
-
-	// Optional: campaigns
-	// array type - using string
-	if val := request.GetString("campaigns", ""); val != "" {
-		args["campaigns"] = val
-	}
-
-	// Optional: creation_template
-	if val := request.GetString("creation_template", ""); val != "" {
-		args["creation_template"] = val
-	}
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Call the client method
-	result, err := client.Adstudycell_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudycell_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAdstudycell_get_adaccounts handles the adstudycell_get_adaccounts tool with context-based auth
-func HandleContextAdstudycell_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdStudyCellClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adstudycell_get_adaccounts(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudycell_get_adaccounts: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdstudycell_get_adsets handles the adstudycell_get_adsets tool with context-based auth
-func HandleContextAdstudycell_get_adsets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdStudyCellClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adstudycell_get_adsets(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudycell_get_adsets: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdstudycell_get_campaigns handles the adstudycell_get_campaigns tool with context-based auth
-func HandleContextAdstudycell_get_campaigns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdStudyCellClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adstudycell_get_campaigns(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudycell_get_campaigns: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdstudycell_get_ handles the adstudycell_get_ tool with context-based auth
-func HandleContextAdstudycell_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdStudyCellClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adstudycell_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudycell_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdstudycell_post_ handles the adstudycell_post_ tool with context-based auth
-func HandleContextAdstudycell_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

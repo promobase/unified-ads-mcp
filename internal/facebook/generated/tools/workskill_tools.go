@@ -13,34 +13,7 @@ import (
 )
 
 // GetWorkSkillTools returns MCP tools for WorkSkill
-func GetWorkSkillTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// workskill_get_users tool
-	workskill_get_usersTool := mcp.NewTool("workskill_get_users",
-		mcp.WithDescription("GET users for WorkSkill"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, workskill_get_usersTool)
-
-	// workskill_get_ tool
-	workskill_get_Tool := mcp.NewTool("workskill_get_",
-		mcp.WithDescription("GET  for WorkSkill"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, workskill_get_Tool)
-
-	return tools
-}
-
-// GetWorkSkillToolsWithoutAuth returns MCP tools for WorkSkill without access_token parameter
-func GetWorkSkillToolsWithoutAuth() []mcp.Tool {
+func GetWorkSkillTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// workskill_get_users tool
@@ -60,68 +33,8 @@ func GetWorkSkillToolsWithoutAuth() []mcp.Tool {
 
 // WorkSkill handlers
 
-// HandleWorkskill_get_users handles the workskill_get_users tool
+// HandleWorkskill_get_users handles the workskill_get_users tool with context-based auth
 func HandleWorkskill_get_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewWorkSkillClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Workskill_get_users(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute workskill_get_users: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleWorkskill_get_ handles the workskill_get_ tool
-func HandleWorkskill_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewWorkSkillClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Workskill_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute workskill_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextWorkskill_get_users handles the workskill_get_users tool with context-based auth
-func HandleContextWorkskill_get_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {
@@ -149,8 +62,8 @@ func HandleContextWorkskill_get_users(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleContextWorkskill_get_ handles the workskill_get_ tool with context-based auth
-func HandleContextWorkskill_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleWorkskill_get_ handles the workskill_get_ tool with context-based auth
+func HandleWorkskill_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

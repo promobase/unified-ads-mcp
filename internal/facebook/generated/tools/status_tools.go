@@ -13,46 +13,7 @@ import (
 )
 
 // GetStatusTools returns MCP tools for Status
-func GetStatusTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// status_post_likes tool
-	status_post_likesTool := mcp.NewTool("status_post_likes",
-		mcp.WithDescription("POST likes for Status"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("feedback_source",
-			mcp.Description("feedback_source parameter for likes"),
-		),
-		mcp.WithString("nectar_module",
-			mcp.Description("nectar_module parameter for likes"),
-		),
-		mcp.WithBoolean("notify",
-			mcp.Description("notify parameter for likes"),
-		),
-		mcp.WithString("tracking",
-			mcp.Description("tracking parameter for likes"),
-		),
-	)
-	tools = append(tools, status_post_likesTool)
-
-	// status_get_ tool
-	status_get_Tool := mcp.NewTool("status_get_",
-		mcp.WithDescription("GET  for Status"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, status_get_Tool)
-
-	return tools
-}
-
-// GetStatusToolsWithoutAuth returns MCP tools for Status without access_token parameter
-func GetStatusToolsWithoutAuth() []mcp.Tool {
+func GetStatusTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// status_post_likes tool
@@ -84,88 +45,8 @@ func GetStatusToolsWithoutAuth() []mcp.Tool {
 
 // Status handlers
 
-// HandleStatus_post_likes handles the status_post_likes tool
+// HandleStatus_post_likes handles the status_post_likes tool with context-based auth
 func HandleStatus_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewStatusClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: feedback_source
-	if val := request.GetString("feedback_source", ""); val != "" {
-		args["feedback_source"] = val
-	}
-
-	// Optional: nectar_module
-	if val := request.GetString("nectar_module", ""); val != "" {
-		args["nectar_module"] = val
-	}
-
-	// Optional: notify
-	if val := request.GetBool("notify", false); val {
-		args["notify"] = val
-	}
-
-	// Optional: tracking
-	if val := request.GetString("tracking", ""); val != "" {
-		args["tracking"] = val
-	}
-
-	// Call the client method
-	result, err := client.Status_post_likes(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute status_post_likes: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleStatus_get_ handles the status_get_ tool
-func HandleStatus_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewStatusClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Status_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute status_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextStatus_post_likes handles the status_post_likes tool with context-based auth
-func HandleContextStatus_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {
@@ -213,8 +94,8 @@ func HandleContextStatus_post_likes(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleContextStatus_get_ handles the status_get_ tool with context-based auth
-func HandleContextStatus_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleStatus_get_ handles the status_get_ tool with context-based auth
+func HandleStatus_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

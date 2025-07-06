@@ -13,51 +13,7 @@ import (
 )
 
 // GetTransactableItemTools returns MCP tools for TransactableItem
-func GetTransactableItemTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// transactableitem_get_channels_to_integrity_status tool
-	transactableitem_get_channels_to_integrity_statusTool := mcp.NewTool("transactableitem_get_channels_to_integrity_status",
-		mcp.WithDescription("GET channels_to_integrity_status for TransactableItem"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, transactableitem_get_channels_to_integrity_statusTool)
-
-	// transactableitem_get_override_details tool
-	transactableitem_get_override_detailsTool := mcp.NewTool("transactableitem_get_override_details",
-		mcp.WithDescription("GET override_details for TransactableItem"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("keys",
-			mcp.Description("keys parameter for override_details"),
-		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for override_details"),
-			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
-		),
-	)
-	tools = append(tools, transactableitem_get_override_detailsTool)
-
-	// transactableitem_get_ tool
-	transactableitem_get_Tool := mcp.NewTool("transactableitem_get_",
-		mcp.WithDescription("GET  for TransactableItem"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, transactableitem_get_Tool)
-
-	return tools
-}
-
-// GetTransactableItemToolsWithoutAuth returns MCP tools for TransactableItem without access_token parameter
-func GetTransactableItemToolsWithoutAuth() []mcp.Tool {
+func GetTransactableItemTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// transactableitem_get_channels_to_integrity_status tool
@@ -90,12 +46,12 @@ func GetTransactableItemToolsWithoutAuth() []mcp.Tool {
 
 // TransactableItem handlers
 
-// HandleTransactableitem_get_channels_to_integrity_status handles the transactableitem_get_channels_to_integrity_status tool
+// HandleTransactableitem_get_channels_to_integrity_status handles the transactableitem_get_channels_to_integrity_status tool with context-based auth
 func HandleTransactableitem_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -119,12 +75,12 @@ func HandleTransactableitem_get_channels_to_integrity_status(ctx context.Context
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleTransactableitem_get_override_details handles the transactableitem_get_override_details tool
+// HandleTransactableitem_get_override_details handles the transactableitem_get_override_details tool with context-based auth
 func HandleTransactableitem_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -159,108 +115,8 @@ func HandleTransactableitem_get_override_details(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleTransactableitem_get_ handles the transactableitem_get_ tool
+// HandleTransactableitem_get_ handles the transactableitem_get_ tool with context-based auth
 func HandleTransactableitem_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewTransactableItemClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Transactableitem_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute transactableitem_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextTransactableitem_get_channels_to_integrity_status handles the transactableitem_get_channels_to_integrity_status tool with context-based auth
-func HandleContextTransactableitem_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewTransactableItemClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Transactableitem_get_channels_to_integrity_status(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute transactableitem_get_channels_to_integrity_status: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextTransactableitem_get_override_details handles the transactableitem_get_override_details tool with context-based auth
-func HandleContextTransactableitem_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewTransactableItemClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: keys
-	// array type - using string
-	if val := request.GetString("keys", ""); val != "" {
-		args["keys"] = val
-	}
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
-	}
-
-	// Call the client method
-	result, err := client.Transactableitem_get_override_details(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute transactableitem_get_override_details: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextTransactableitem_get_ handles the transactableitem_get_ tool with context-based auth
-func HandleContextTransactableitem_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

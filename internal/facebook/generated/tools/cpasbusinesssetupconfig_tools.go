@@ -13,34 +13,7 @@ import (
 )
 
 // GetCPASBusinessSetupConfigTools returns MCP tools for CPASBusinessSetupConfig
-func GetCPASBusinessSetupConfigTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// cpasbusinesssetupconfig_get_ad_accounts tool
-	cpasbusinesssetupconfig_get_ad_accountsTool := mcp.NewTool("cpasbusinesssetupconfig_get_ad_accounts",
-		mcp.WithDescription("GET ad_accounts for CPASBusinessSetupConfig"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, cpasbusinesssetupconfig_get_ad_accountsTool)
-
-	// cpasbusinesssetupconfig_get_ tool
-	cpasbusinesssetupconfig_get_Tool := mcp.NewTool("cpasbusinesssetupconfig_get_",
-		mcp.WithDescription("GET  for CPASBusinessSetupConfig"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, cpasbusinesssetupconfig_get_Tool)
-
-	return tools
-}
-
-// GetCPASBusinessSetupConfigToolsWithoutAuth returns MCP tools for CPASBusinessSetupConfig without access_token parameter
-func GetCPASBusinessSetupConfigToolsWithoutAuth() []mcp.Tool {
+func GetCPASBusinessSetupConfigTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// cpasbusinesssetupconfig_get_ad_accounts tool
@@ -60,68 +33,8 @@ func GetCPASBusinessSetupConfigToolsWithoutAuth() []mcp.Tool {
 
 // CPASBusinessSetupConfig handlers
 
-// HandleCpasbusinesssetupconfig_get_ad_accounts handles the cpasbusinesssetupconfig_get_ad_accounts tool
+// HandleCpasbusinesssetupconfig_get_ad_accounts handles the cpasbusinesssetupconfig_get_ad_accounts tool with context-based auth
 func HandleCpasbusinesssetupconfig_get_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewCPASBusinessSetupConfigClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Cpasbusinesssetupconfig_get_ad_accounts(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute cpasbusinesssetupconfig_get_ad_accounts: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleCpasbusinesssetupconfig_get_ handles the cpasbusinesssetupconfig_get_ tool
-func HandleCpasbusinesssetupconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewCPASBusinessSetupConfigClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Cpasbusinesssetupconfig_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute cpasbusinesssetupconfig_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextCpasbusinesssetupconfig_get_ad_accounts handles the cpasbusinesssetupconfig_get_ad_accounts tool with context-based auth
-func HandleContextCpasbusinesssetupconfig_get_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {
@@ -149,8 +62,8 @@ func HandleContextCpasbusinesssetupconfig_get_ad_accounts(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleContextCpasbusinesssetupconfig_get_ handles the cpasbusinesssetupconfig_get_ tool with context-based auth
-func HandleContextCpasbusinesssetupconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleCpasbusinesssetupconfig_get_ handles the cpasbusinesssetupconfig_get_ tool with context-based auth
+func HandleCpasbusinesssetupconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

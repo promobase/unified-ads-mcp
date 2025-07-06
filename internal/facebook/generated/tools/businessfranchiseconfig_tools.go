@@ -13,24 +13,7 @@ import (
 )
 
 // GetBusinessFranchiseConfigTools returns MCP tools for BusinessFranchiseConfig
-func GetBusinessFranchiseConfigTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// businessfranchiseconfig_get_ tool
-	businessfranchiseconfig_get_Tool := mcp.NewTool("businessfranchiseconfig_get_",
-		mcp.WithDescription("GET  for BusinessFranchiseConfig"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, businessfranchiseconfig_get_Tool)
-
-	return tools
-}
-
-// GetBusinessFranchiseConfigToolsWithoutAuth returns MCP tools for BusinessFranchiseConfig without access_token parameter
-func GetBusinessFranchiseConfigToolsWithoutAuth() []mcp.Tool {
+func GetBusinessFranchiseConfigTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// businessfranchiseconfig_get_ tool
@@ -44,39 +27,8 @@ func GetBusinessFranchiseConfigToolsWithoutAuth() []mcp.Tool {
 
 // BusinessFranchiseConfig handlers
 
-// HandleBusinessfranchiseconfig_get_ handles the businessfranchiseconfig_get_ tool
+// HandleBusinessfranchiseconfig_get_ handles the businessfranchiseconfig_get_ tool with context-based auth
 func HandleBusinessfranchiseconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewBusinessFranchiseConfigClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Businessfranchiseconfig_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessfranchiseconfig_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextBusinessfranchiseconfig_get_ handles the businessfranchiseconfig_get_ tool with context-based auth
-func HandleContextBusinessfranchiseconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

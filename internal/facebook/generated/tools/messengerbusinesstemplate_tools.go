@@ -13,37 +13,7 @@ import (
 )
 
 // GetMessengerBusinessTemplateTools returns MCP tools for MessengerBusinessTemplate
-func GetMessengerBusinessTemplateTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// messengerbusinesstemplate_get_ tool
-	messengerbusinesstemplate_get_Tool := mcp.NewTool("messengerbusinesstemplate_get_",
-		mcp.WithDescription("GET  for MessengerBusinessTemplate"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, messengerbusinesstemplate_get_Tool)
-
-	// messengerbusinesstemplate_post_ tool
-	messengerbusinesstemplate_post_Tool := mcp.NewTool("messengerbusinesstemplate_post_",
-		mcp.WithDescription("POST  for MessengerBusinessTemplate"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("components",
-			mcp.Description("components parameter for "),
-		),
-	)
-	tools = append(tools, messengerbusinesstemplate_post_Tool)
-
-	return tools
-}
-
-// GetMessengerBusinessTemplateToolsWithoutAuth returns MCP tools for MessengerBusinessTemplate without access_token parameter
-func GetMessengerBusinessTemplateToolsWithoutAuth() []mcp.Tool {
+func GetMessengerBusinessTemplateTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// messengerbusinesstemplate_get_ tool
@@ -66,74 +36,8 @@ func GetMessengerBusinessTemplateToolsWithoutAuth() []mcp.Tool {
 
 // MessengerBusinessTemplate handlers
 
-// HandleMessengerbusinesstemplate_get_ handles the messengerbusinesstemplate_get_ tool
+// HandleMessengerbusinesstemplate_get_ handles the messengerbusinesstemplate_get_ tool with context-based auth
 func HandleMessengerbusinesstemplate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewMessengerBusinessTemplateClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Messengerbusinesstemplate_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute messengerbusinesstemplate_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleMessengerbusinesstemplate_post_ handles the messengerbusinesstemplate_post_ tool
-func HandleMessengerbusinesstemplate_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewMessengerBusinessTemplateClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: components
-	// array type - using string
-	if val := request.GetString("components", ""); val != "" {
-		args["components"] = val
-	}
-
-	// Call the client method
-	result, err := client.Messengerbusinesstemplate_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute messengerbusinesstemplate_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextMessengerbusinesstemplate_get_ handles the messengerbusinesstemplate_get_ tool with context-based auth
-func HandleContextMessengerbusinesstemplate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {
@@ -161,8 +65,8 @@ func HandleContextMessengerbusinesstemplate_get_(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleContextMessengerbusinesstemplate_post_ handles the messengerbusinesstemplate_post_ tool with context-based auth
-func HandleContextMessengerbusinesstemplate_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleMessengerbusinesstemplate_post_ handles the messengerbusinesstemplate_post_ tool with context-based auth
+func HandleMessengerbusinesstemplate_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

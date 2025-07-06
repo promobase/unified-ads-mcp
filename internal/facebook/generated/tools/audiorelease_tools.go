@@ -13,24 +13,7 @@ import (
 )
 
 // GetAudioReleaseTools returns MCP tools for AudioRelease
-func GetAudioReleaseTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// audiorelease_get_ tool
-	audiorelease_get_Tool := mcp.NewTool("audiorelease_get_",
-		mcp.WithDescription("GET  for AudioRelease"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, audiorelease_get_Tool)
-
-	return tools
-}
-
-// GetAudioReleaseToolsWithoutAuth returns MCP tools for AudioRelease without access_token parameter
-func GetAudioReleaseToolsWithoutAuth() []mcp.Tool {
+func GetAudioReleaseTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// audiorelease_get_ tool
@@ -44,39 +27,8 @@ func GetAudioReleaseToolsWithoutAuth() []mcp.Tool {
 
 // AudioRelease handlers
 
-// HandleAudiorelease_get_ handles the audiorelease_get_ tool
+// HandleAudiorelease_get_ handles the audiorelease_get_ tool with context-based auth
 func HandleAudiorelease_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAudioReleaseClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Audiorelease_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute audiorelease_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAudiorelease_get_ handles the audiorelease_get_ tool with context-based auth
-func HandleContextAudiorelease_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

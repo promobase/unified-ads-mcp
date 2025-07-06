@@ -13,28 +13,7 @@ import (
 )
 
 // GetPlaceTopicTools returns MCP tools for PlaceTopic
-func GetPlaceTopicTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// placetopic_get_ tool
-	placetopic_get_Tool := mcp.NewTool("placetopic_get_",
-		mcp.WithDescription("GET  for PlaceTopic"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("icon_size",
-			mcp.Description("icon_size parameter for "),
-			mcp.Enum("24", "36", "48", "72"),
-		),
-	)
-	tools = append(tools, placetopic_get_Tool)
-
-	return tools
-}
-
-// GetPlaceTopicToolsWithoutAuth returns MCP tools for PlaceTopic without access_token parameter
-func GetPlaceTopicToolsWithoutAuth() []mcp.Tool {
+func GetPlaceTopicTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// placetopic_get_ tool
@@ -52,44 +31,8 @@ func GetPlaceTopicToolsWithoutAuth() []mcp.Tool {
 
 // PlaceTopic handlers
 
-// HandlePlacetopic_get_ handles the placetopic_get_ tool
+// HandlePlacetopic_get_ handles the placetopic_get_ tool with context-based auth
 func HandlePlacetopic_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewPlaceTopicClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: icon_size
-	if val := request.GetString("icon_size", ""); val != "" {
-		args["icon_size"] = val
-	}
-
-	// Call the client method
-	result, err := client.Placetopic_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute placetopic_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextPlacetopic_get_ handles the placetopic_get_ tool with context-based auth
-func HandleContextPlacetopic_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

@@ -13,51 +13,7 @@ import (
 )
 
 // GetLocalServiceBusinessTools returns MCP tools for LocalServiceBusiness
-func GetLocalServiceBusinessTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// localservicebusiness_get_channels_to_integrity_status tool
-	localservicebusiness_get_channels_to_integrity_statusTool := mcp.NewTool("localservicebusiness_get_channels_to_integrity_status",
-		mcp.WithDescription("GET channels_to_integrity_status for LocalServiceBusiness"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, localservicebusiness_get_channels_to_integrity_statusTool)
-
-	// localservicebusiness_get_override_details tool
-	localservicebusiness_get_override_detailsTool := mcp.NewTool("localservicebusiness_get_override_details",
-		mcp.WithDescription("GET override_details for LocalServiceBusiness"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("keys",
-			mcp.Description("keys parameter for override_details"),
-		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for override_details"),
-			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
-		),
-	)
-	tools = append(tools, localservicebusiness_get_override_detailsTool)
-
-	// localservicebusiness_get_ tool
-	localservicebusiness_get_Tool := mcp.NewTool("localservicebusiness_get_",
-		mcp.WithDescription("GET  for LocalServiceBusiness"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, localservicebusiness_get_Tool)
-
-	return tools
-}
-
-// GetLocalServiceBusinessToolsWithoutAuth returns MCP tools for LocalServiceBusiness without access_token parameter
-func GetLocalServiceBusinessToolsWithoutAuth() []mcp.Tool {
+func GetLocalServiceBusinessTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// localservicebusiness_get_channels_to_integrity_status tool
@@ -90,12 +46,12 @@ func GetLocalServiceBusinessToolsWithoutAuth() []mcp.Tool {
 
 // LocalServiceBusiness handlers
 
-// HandleLocalservicebusiness_get_channels_to_integrity_status handles the localservicebusiness_get_channels_to_integrity_status tool
+// HandleLocalservicebusiness_get_channels_to_integrity_status handles the localservicebusiness_get_channels_to_integrity_status tool with context-based auth
 func HandleLocalservicebusiness_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -119,12 +75,12 @@ func HandleLocalservicebusiness_get_channels_to_integrity_status(ctx context.Con
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleLocalservicebusiness_get_override_details handles the localservicebusiness_get_override_details tool
+// HandleLocalservicebusiness_get_override_details handles the localservicebusiness_get_override_details tool with context-based auth
 func HandleLocalservicebusiness_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -159,108 +115,8 @@ func HandleLocalservicebusiness_get_override_details(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleLocalservicebusiness_get_ handles the localservicebusiness_get_ tool
+// HandleLocalservicebusiness_get_ handles the localservicebusiness_get_ tool with context-based auth
 func HandleLocalservicebusiness_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewLocalServiceBusinessClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Localservicebusiness_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute localservicebusiness_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextLocalservicebusiness_get_channels_to_integrity_status handles the localservicebusiness_get_channels_to_integrity_status tool with context-based auth
-func HandleContextLocalservicebusiness_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewLocalServiceBusinessClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Localservicebusiness_get_channels_to_integrity_status(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute localservicebusiness_get_channels_to_integrity_status: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextLocalservicebusiness_get_override_details handles the localservicebusiness_get_override_details tool with context-based auth
-func HandleContextLocalservicebusiness_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewLocalServiceBusinessClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: keys
-	// array type - using string
-	if val := request.GetString("keys", ""); val != "" {
-		args["keys"] = val
-	}
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
-	}
-
-	// Call the client method
-	result, err := client.Localservicebusiness_get_override_details(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute localservicebusiness_get_override_details: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextLocalservicebusiness_get_ handles the localservicebusiness_get_ tool with context-based auth
-func HandleContextLocalservicebusiness_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

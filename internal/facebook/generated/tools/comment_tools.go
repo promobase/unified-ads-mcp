@@ -13,196 +13,7 @@ import (
 )
 
 // GetCommentTools returns MCP tools for Comment
-func GetCommentTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// comment_get_comments tool
-	comment_get_commentsTool := mcp.NewTool("comment_get_comments",
-		mcp.WithDescription("GET comments for Comment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for comments"),
-			mcp.Enum("stream", "toplevel"),
-		),
-		mcp.WithString("live_filter",
-			mcp.Description("live_filter parameter for comments"),
-			mcp.Enum("filter_low_quality", "no_filter"),
-		),
-		mcp.WithString("order",
-			mcp.Description("order parameter for comments"),
-			mcp.Enum("chronological", "reverse_chronological"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for comments"),
-		),
-	)
-	tools = append(tools, comment_get_commentsTool)
-
-	// comment_post_comments tool
-	comment_post_commentsTool := mcp.NewTool("comment_post_comments",
-		mcp.WithDescription("POST comments for Comment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("attachment_id",
-			mcp.Description("attachment_id parameter for comments"),
-		),
-		mcp.WithString("attachment_share_url",
-			mcp.Description("attachment_share_url parameter for comments"),
-		),
-		mcp.WithString("attachment_url",
-			mcp.Description("attachment_url parameter for comments"),
-		),
-		mcp.WithString("comment_privacy_value",
-			mcp.Description("comment_privacy_value parameter for comments"),
-			mcp.Enum("DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"),
-		),
-		mcp.WithString("facepile_mentioned_ids",
-			mcp.Description("facepile_mentioned_ids parameter for comments"),
-		),
-		mcp.WithString("feedback_source",
-			mcp.Description("feedback_source parameter for comments"),
-		),
-		mcp.WithBoolean("is_offline",
-			mcp.Description("is_offline parameter for comments"),
-		),
-		mcp.WithString("message",
-			mcp.Description("message parameter for comments"),
-		),
-		mcp.WithString("nectar_module",
-			mcp.Description("nectar_module parameter for comments"),
-		),
-		mcp.WithString("object_id",
-			mcp.Description("object_id parameter for comments"),
-		),
-		mcp.WithString("parent_comment_id",
-			mcp.Description("parent_comment_id parameter for comments"),
-		),
-		mcp.WithString("text",
-			mcp.Description("text parameter for comments"),
-		),
-		mcp.WithString("tracking",
-			mcp.Description("tracking parameter for comments"),
-		),
-	)
-	tools = append(tools, comment_post_commentsTool)
-
-	// comment_delete_likes tool
-	comment_delete_likesTool := mcp.NewTool("comment_delete_likes",
-		mcp.WithDescription("DELETE likes for Comment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("feedback_source",
-			mcp.Description("feedback_source parameter for likes"),
-		),
-		mcp.WithString("nectar_module",
-			mcp.Description("nectar_module parameter for likes"),
-		),
-		mcp.WithString("tracking",
-			mcp.Description("tracking parameter for likes"),
-		),
-	)
-	tools = append(tools, comment_delete_likesTool)
-
-	// comment_get_likes tool
-	comment_get_likesTool := mcp.NewTool("comment_get_likes",
-		mcp.WithDescription("GET likes for Comment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, comment_get_likesTool)
-
-	// comment_post_likes tool
-	comment_post_likesTool := mcp.NewTool("comment_post_likes",
-		mcp.WithDescription("POST likes for Comment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("feedback_source",
-			mcp.Description("feedback_source parameter for likes"),
-		),
-		mcp.WithString("nectar_module",
-			mcp.Description("nectar_module parameter for likes"),
-		),
-		mcp.WithString("tracking",
-			mcp.Description("tracking parameter for likes"),
-		),
-	)
-	tools = append(tools, comment_post_likesTool)
-
-	// comment_get_reactions tool
-	comment_get_reactionsTool := mcp.NewTool("comment_get_reactions",
-		mcp.WithDescription("GET reactions for Comment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for reactions"),
-			mcp.Enum("ANGRY", "CARE", "FIRE", "HAHA", "HUNDRED", "LIKE", "LOVE", "NONE", "PRIDE", "SAD", "THANKFUL", "WOW"),
-		),
-	)
-	tools = append(tools, comment_get_reactionsTool)
-
-	// comment_delete_ tool
-	comment_delete_Tool := mcp.NewTool("comment_delete_",
-		mcp.WithDescription("DELETE  for Comment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, comment_delete_Tool)
-
-	// comment_get_ tool
-	comment_get_Tool := mcp.NewTool("comment_get_",
-		mcp.WithDescription("GET  for Comment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, comment_get_Tool)
-
-	// comment_post_ tool
-	comment_post_Tool := mcp.NewTool("comment_post_",
-		mcp.WithDescription("POST  for Comment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("attachment_id",
-			mcp.Description("attachment_id parameter for "),
-		),
-		mcp.WithString("attachment_share_url",
-			mcp.Description("attachment_share_url parameter for "),
-		),
-		mcp.WithString("attachment_url",
-			mcp.Description("attachment_url parameter for "),
-		),
-		mcp.WithBoolean("is_hidden",
-			mcp.Description("is_hidden parameter for "),
-		),
-		mcp.WithString("message",
-			mcp.Description("message parameter for "),
-		),
-	)
-	tools = append(tools, comment_post_Tool)
-
-	return tools
-}
-
-// GetCommentToolsWithoutAuth returns MCP tools for Comment without access_token parameter
-func GetCommentToolsWithoutAuth() []mcp.Tool {
+func GetCommentTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// comment_get_comments tool
@@ -356,12 +167,12 @@ func GetCommentToolsWithoutAuth() []mcp.Tool {
 
 // Comment handlers
 
-// HandleComment_get_comments handles the comment_get_comments tool
+// HandleComment_get_comments handles the comment_get_comments tool with context-based auth
 func HandleComment_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -405,12 +216,12 @@ func HandleComment_get_comments(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleComment_post_comments handles the comment_post_comments tool
+// HandleComment_post_comments handles the comment_post_comments tool with context-based auth
 func HandleComment_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -501,12 +312,12 @@ func HandleComment_post_comments(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleComment_delete_likes handles the comment_delete_likes tool
+// HandleComment_delete_likes handles the comment_delete_likes tool with context-based auth
 func HandleComment_delete_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -545,12 +356,12 @@ func HandleComment_delete_likes(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleComment_get_likes handles the comment_get_likes tool
+// HandleComment_get_likes handles the comment_get_likes tool with context-based auth
 func HandleComment_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -574,12 +385,12 @@ func HandleComment_get_likes(ctx context.Context, request mcp.CallToolRequest) (
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleComment_post_likes handles the comment_post_likes tool
+// HandleComment_post_likes handles the comment_post_likes tool with context-based auth
 func HandleComment_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -618,12 +429,12 @@ func HandleComment_post_likes(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleComment_get_reactions handles the comment_get_reactions tool
+// HandleComment_get_reactions handles the comment_get_reactions tool with context-based auth
 func HandleComment_get_reactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -652,12 +463,12 @@ func HandleComment_get_reactions(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleComment_delete_ handles the comment_delete_ tool
+// HandleComment_delete_ handles the comment_delete_ tool with context-based auth
 func HandleComment_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -681,12 +492,12 @@ func HandleComment_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleComment_get_ handles the comment_get_ tool
+// HandleComment_get_ handles the comment_get_ tool with context-based auth
 func HandleComment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -710,418 +521,8 @@ func HandleComment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleComment_post_ handles the comment_post_ tool
+// HandleComment_post_ handles the comment_post_ tool with context-based auth
 func HandleComment_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewCommentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: attachment_id
-	if val := request.GetString("attachment_id", ""); val != "" {
-		args["attachment_id"] = val
-	}
-
-	// Optional: attachment_share_url
-	if val := request.GetString("attachment_share_url", ""); val != "" {
-		args["attachment_share_url"] = val
-	}
-
-	// Optional: attachment_url
-	if val := request.GetString("attachment_url", ""); val != "" {
-		args["attachment_url"] = val
-	}
-
-	// Optional: is_hidden
-	if val := request.GetBool("is_hidden", false); val {
-		args["is_hidden"] = val
-	}
-
-	// Optional: message
-	if val := request.GetString("message", ""); val != "" {
-		args["message"] = val
-	}
-
-	// Call the client method
-	result, err := client.Comment_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute comment_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextComment_get_comments handles the comment_get_comments tool with context-based auth
-func HandleContextComment_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewCommentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: filter
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Optional: live_filter
-	if val := request.GetString("live_filter", ""); val != "" {
-		args["live_filter"] = val
-	}
-
-	// Optional: order
-	if val := request.GetString("order", ""); val != "" {
-		args["order"] = val
-	}
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Call the client method
-	result, err := client.Comment_get_comments(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute comment_get_comments: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextComment_post_comments handles the comment_post_comments tool with context-based auth
-func HandleContextComment_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewCommentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: attachment_id
-	if val := request.GetString("attachment_id", ""); val != "" {
-		args["attachment_id"] = val
-	}
-
-	// Optional: attachment_share_url
-	if val := request.GetString("attachment_share_url", ""); val != "" {
-		args["attachment_share_url"] = val
-	}
-
-	// Optional: attachment_url
-	if val := request.GetString("attachment_url", ""); val != "" {
-		args["attachment_url"] = val
-	}
-
-	// Optional: comment_privacy_value
-	if val := request.GetString("comment_privacy_value", ""); val != "" {
-		args["comment_privacy_value"] = val
-	}
-
-	// Optional: facepile_mentioned_ids
-	// array type - using string
-	if val := request.GetString("facepile_mentioned_ids", ""); val != "" {
-		args["facepile_mentioned_ids"] = val
-	}
-
-	// Optional: feedback_source
-	if val := request.GetString("feedback_source", ""); val != "" {
-		args["feedback_source"] = val
-	}
-
-	// Optional: is_offline
-	if val := request.GetBool("is_offline", false); val {
-		args["is_offline"] = val
-	}
-
-	// Optional: message
-	if val := request.GetString("message", ""); val != "" {
-		args["message"] = val
-	}
-
-	// Optional: nectar_module
-	if val := request.GetString("nectar_module", ""); val != "" {
-		args["nectar_module"] = val
-	}
-
-	// Optional: object_id
-	if val := request.GetString("object_id", ""); val != "" {
-		args["object_id"] = val
-	}
-
-	// Optional: parent_comment_id
-	// object type - using string
-	if val := request.GetString("parent_comment_id", ""); val != "" {
-		args["parent_comment_id"] = val
-	}
-
-	// Optional: text
-	if val := request.GetString("text", ""); val != "" {
-		args["text"] = val
-	}
-
-	// Optional: tracking
-	if val := request.GetString("tracking", ""); val != "" {
-		args["tracking"] = val
-	}
-
-	// Call the client method
-	result, err := client.Comment_post_comments(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute comment_post_comments: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextComment_delete_likes handles the comment_delete_likes tool with context-based auth
-func HandleContextComment_delete_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewCommentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: feedback_source
-	if val := request.GetString("feedback_source", ""); val != "" {
-		args["feedback_source"] = val
-	}
-
-	// Optional: nectar_module
-	if val := request.GetString("nectar_module", ""); val != "" {
-		args["nectar_module"] = val
-	}
-
-	// Optional: tracking
-	if val := request.GetString("tracking", ""); val != "" {
-		args["tracking"] = val
-	}
-
-	// Call the client method
-	result, err := client.Comment_delete_likes(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute comment_delete_likes: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextComment_get_likes handles the comment_get_likes tool with context-based auth
-func HandleContextComment_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewCommentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Comment_get_likes(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute comment_get_likes: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextComment_post_likes handles the comment_post_likes tool with context-based auth
-func HandleContextComment_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewCommentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: feedback_source
-	if val := request.GetString("feedback_source", ""); val != "" {
-		args["feedback_source"] = val
-	}
-
-	// Optional: nectar_module
-	if val := request.GetString("nectar_module", ""); val != "" {
-		args["nectar_module"] = val
-	}
-
-	// Optional: tracking
-	if val := request.GetString("tracking", ""); val != "" {
-		args["tracking"] = val
-	}
-
-	// Call the client method
-	result, err := client.Comment_post_likes(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute comment_post_likes: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextComment_get_reactions handles the comment_get_reactions tool with context-based auth
-func HandleContextComment_get_reactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewCommentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
-	}
-
-	// Call the client method
-	result, err := client.Comment_get_reactions(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute comment_get_reactions: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextComment_delete_ handles the comment_delete_ tool with context-based auth
-func HandleContextComment_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewCommentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Comment_delete_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute comment_delete_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextComment_get_ handles the comment_get_ tool with context-based auth
-func HandleContextComment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewCommentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Comment_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute comment_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextComment_post_ handles the comment_post_ tool with context-based auth
-func HandleContextComment_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

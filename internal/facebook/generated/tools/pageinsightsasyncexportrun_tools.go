@@ -13,24 +13,7 @@ import (
 )
 
 // GetPageInsightsAsyncExportRunTools returns MCP tools for PageInsightsAsyncExportRun
-func GetPageInsightsAsyncExportRunTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// pageinsightsasyncexportrun_get_ tool
-	pageinsightsasyncexportrun_get_Tool := mcp.NewTool("pageinsightsasyncexportrun_get_",
-		mcp.WithDescription("GET  for PageInsightsAsyncExportRun"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, pageinsightsasyncexportrun_get_Tool)
-
-	return tools
-}
-
-// GetPageInsightsAsyncExportRunToolsWithoutAuth returns MCP tools for PageInsightsAsyncExportRun without access_token parameter
-func GetPageInsightsAsyncExportRunToolsWithoutAuth() []mcp.Tool {
+func GetPageInsightsAsyncExportRunTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// pageinsightsasyncexportrun_get_ tool
@@ -44,39 +27,8 @@ func GetPageInsightsAsyncExportRunToolsWithoutAuth() []mcp.Tool {
 
 // PageInsightsAsyncExportRun handlers
 
-// HandlePageinsightsasyncexportrun_get_ handles the pageinsightsasyncexportrun_get_ tool
+// HandlePageinsightsasyncexportrun_get_ handles the pageinsightsasyncexportrun_get_ tool with context-based auth
 func HandlePageinsightsasyncexportrun_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewPageInsightsAsyncExportRunClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Pageinsightsasyncexportrun_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pageinsightsasyncexportrun_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextPageinsightsasyncexportrun_get_ handles the pageinsightsasyncexportrun_get_ tool with context-based auth
-func HandleContextPageinsightsasyncexportrun_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

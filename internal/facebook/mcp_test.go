@@ -8,8 +8,7 @@ import (
 
 func TestGetAllTools(t *testing.T) {
 	// Test that we can get all tools
-	accessToken := "test-token"
-	allTools := tools.GetAllTools(accessToken)
+	allTools := tools.GetAllTools()
 
 	if len(allTools) == 0 {
 		t.Error("Expected to get some tools, but got none")

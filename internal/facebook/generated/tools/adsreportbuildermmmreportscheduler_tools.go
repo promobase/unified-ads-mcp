@@ -13,24 +13,7 @@ import (
 )
 
 // GetAdsReportBuilderMMMReportSchedulerTools returns MCP tools for AdsReportBuilderMMMReportScheduler
-func GetAdsReportBuilderMMMReportSchedulerTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// adsreportbuildermmmreportscheduler_get_ tool
-	adsreportbuildermmmreportscheduler_get_Tool := mcp.NewTool("adsreportbuildermmmreportscheduler_get_",
-		mcp.WithDescription("GET  for AdsReportBuilderMMMReportScheduler"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adsreportbuildermmmreportscheduler_get_Tool)
-
-	return tools
-}
-
-// GetAdsReportBuilderMMMReportSchedulerToolsWithoutAuth returns MCP tools for AdsReportBuilderMMMReportScheduler without access_token parameter
-func GetAdsReportBuilderMMMReportSchedulerToolsWithoutAuth() []mcp.Tool {
+func GetAdsReportBuilderMMMReportSchedulerTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adsreportbuildermmmreportscheduler_get_ tool
@@ -44,39 +27,8 @@ func GetAdsReportBuilderMMMReportSchedulerToolsWithoutAuth() []mcp.Tool {
 
 // AdsReportBuilderMMMReportScheduler handlers
 
-// HandleAdsreportbuildermmmreportscheduler_get_ handles the adsreportbuildermmmreportscheduler_get_ tool
+// HandleAdsreportbuildermmmreportscheduler_get_ handles the adsreportbuildermmmreportscheduler_get_ tool with context-based auth
 func HandleAdsreportbuildermmmreportscheduler_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdsReportBuilderMMMReportSchedulerClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adsreportbuildermmmreportscheduler_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adsreportbuildermmmreportscheduler_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAdsreportbuildermmmreportscheduler_get_ handles the adsreportbuildermmmreportscheduler_get_ tool with context-based auth
-func HandleContextAdsreportbuildermmmreportscheduler_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

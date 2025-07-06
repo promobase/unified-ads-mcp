@@ -13,94 +13,7 @@ import (
 )
 
 // GetIGMediaForIGOnlyAPITools returns MCP tools for IGMediaForIGOnlyAPI
-func GetIGMediaForIGOnlyAPITools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// igmediaforigonlyapi_get_children tool
-	igmediaforigonlyapi_get_childrenTool := mcp.NewTool("igmediaforigonlyapi_get_children",
-		mcp.WithDescription("GET children for IGMediaForIGOnlyAPI"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, igmediaforigonlyapi_get_childrenTool)
-
-	// igmediaforigonlyapi_get_comments tool
-	igmediaforigonlyapi_get_commentsTool := mcp.NewTool("igmediaforigonlyapi_get_comments",
-		mcp.WithDescription("GET comments for IGMediaForIGOnlyAPI"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, igmediaforigonlyapi_get_commentsTool)
-
-	// igmediaforigonlyapi_post_comments tool
-	igmediaforigonlyapi_post_commentsTool := mcp.NewTool("igmediaforigonlyapi_post_comments",
-		mcp.WithDescription("POST comments for IGMediaForIGOnlyAPI"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("message",
-			mcp.Description("message parameter for comments"),
-		),
-	)
-	tools = append(tools, igmediaforigonlyapi_post_commentsTool)
-
-	// igmediaforigonlyapi_get_insights tool
-	igmediaforigonlyapi_get_insightsTool := mcp.NewTool("igmediaforigonlyapi_get_insights",
-		mcp.WithDescription("GET insights for IGMediaForIGOnlyAPI"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("breakdown",
-			mcp.Description("breakdown parameter for insights"),
-			mcp.Enum("action_type", "follow_type", "story_navigation_action_type", "surface_type"),
-		),
-		mcp.WithString("metric",
-			mcp.Required(),
-			mcp.Description("metric parameter for insights"),
-			mcp.Enum("clips_replays_count", "comments", "content_views", "follows", "ig_reels_aggregated_all_plays_count", "ig_reels_avg_watch_time", "ig_reels_video_view_total_time", "impressions", "likes", "navigation", "plays", "profile_activity", "profile_visits", "quotes", "reach", "replies", "reposts", "saved", "shares", "thread_replies", "thread_shares", "threads_media_clicks", "threads_views", "total_interactions", "views"),
-		),
-		mcp.WithString("period",
-			mcp.Description("period parameter for insights"),
-			mcp.Enum("day", "days_28", "lifetime", "month", "total_over_range", "week"),
-		),
-	)
-	tools = append(tools, igmediaforigonlyapi_get_insightsTool)
-
-	// igmediaforigonlyapi_get_ tool
-	igmediaforigonlyapi_get_Tool := mcp.NewTool("igmediaforigonlyapi_get_",
-		mcp.WithDescription("GET  for IGMediaForIGOnlyAPI"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, igmediaforigonlyapi_get_Tool)
-
-	// igmediaforigonlyapi_post_ tool
-	igmediaforigonlyapi_post_Tool := mcp.NewTool("igmediaforigonlyapi_post_",
-		mcp.WithDescription("POST  for IGMediaForIGOnlyAPI"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithBoolean("comment_enabled",
-			mcp.Required(),
-			mcp.Description("comment_enabled parameter for "),
-		),
-	)
-	tools = append(tools, igmediaforigonlyapi_post_Tool)
-
-	return tools
-}
-
-// GetIGMediaForIGOnlyAPIToolsWithoutAuth returns MCP tools for IGMediaForIGOnlyAPI without access_token parameter
-func GetIGMediaForIGOnlyAPIToolsWithoutAuth() []mcp.Tool {
+func GetIGMediaForIGOnlyAPITools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// igmediaforigonlyapi_get_children tool
@@ -164,12 +77,12 @@ func GetIGMediaForIGOnlyAPIToolsWithoutAuth() []mcp.Tool {
 
 // IGMediaForIGOnlyAPI handlers
 
-// HandleIgmediaforigonlyapi_get_children handles the igmediaforigonlyapi_get_children tool
+// HandleIgmediaforigonlyapi_get_children handles the igmediaforigonlyapi_get_children tool with context-based auth
 func HandleIgmediaforigonlyapi_get_children(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -193,12 +106,12 @@ func HandleIgmediaforigonlyapi_get_children(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIgmediaforigonlyapi_get_comments handles the igmediaforigonlyapi_get_comments tool
+// HandleIgmediaforigonlyapi_get_comments handles the igmediaforigonlyapi_get_comments tool with context-based auth
 func HandleIgmediaforigonlyapi_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -222,12 +135,12 @@ func HandleIgmediaforigonlyapi_get_comments(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIgmediaforigonlyapi_post_comments handles the igmediaforigonlyapi_post_comments tool
+// HandleIgmediaforigonlyapi_post_comments handles the igmediaforigonlyapi_post_comments tool with context-based auth
 func HandleIgmediaforigonlyapi_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -256,12 +169,12 @@ func HandleIgmediaforigonlyapi_post_comments(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIgmediaforigonlyapi_get_insights handles the igmediaforigonlyapi_get_insights tool
+// HandleIgmediaforigonlyapi_get_insights handles the igmediaforigonlyapi_get_insights tool with context-based auth
 func HandleIgmediaforigonlyapi_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -304,12 +217,12 @@ func HandleIgmediaforigonlyapi_get_insights(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIgmediaforigonlyapi_get_ handles the igmediaforigonlyapi_get_ tool
+// HandleIgmediaforigonlyapi_get_ handles the igmediaforigonlyapi_get_ tool with context-based auth
 func HandleIgmediaforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -333,215 +246,8 @@ func HandleIgmediaforigonlyapi_get_(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIgmediaforigonlyapi_post_ handles the igmediaforigonlyapi_post_ tool
+// HandleIgmediaforigonlyapi_post_ handles the igmediaforigonlyapi_post_ tool with context-based auth
 func HandleIgmediaforigonlyapi_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewIGMediaForIGOnlyAPIClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: comment_enabled
-	comment_enabled, err := request.RequireBool("comment_enabled")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter comment_enabled: %v", err)), nil
-	}
-	args["comment_enabled"] = comment_enabled
-
-	// Call the client method
-	result, err := client.Igmediaforigonlyapi_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmediaforigonlyapi_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextIgmediaforigonlyapi_get_children handles the igmediaforigonlyapi_get_children tool with context-based auth
-func HandleContextIgmediaforigonlyapi_get_children(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGMediaForIGOnlyAPIClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Igmediaforigonlyapi_get_children(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmediaforigonlyapi_get_children: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIgmediaforigonlyapi_get_comments handles the igmediaforigonlyapi_get_comments tool with context-based auth
-func HandleContextIgmediaforigonlyapi_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGMediaForIGOnlyAPIClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Igmediaforigonlyapi_get_comments(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmediaforigonlyapi_get_comments: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIgmediaforigonlyapi_post_comments handles the igmediaforigonlyapi_post_comments tool with context-based auth
-func HandleContextIgmediaforigonlyapi_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGMediaForIGOnlyAPIClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: message
-	if val := request.GetString("message", ""); val != "" {
-		args["message"] = val
-	}
-
-	// Call the client method
-	result, err := client.Igmediaforigonlyapi_post_comments(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmediaforigonlyapi_post_comments: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIgmediaforigonlyapi_get_insights handles the igmediaforigonlyapi_get_insights tool with context-based auth
-func HandleContextIgmediaforigonlyapi_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGMediaForIGOnlyAPIClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: breakdown
-	// array type - using string
-	if val := request.GetString("breakdown", ""); val != "" {
-		args["breakdown"] = val
-	}
-
-	// Required: metric
-	metric, err := request.RequireString("metric")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter metric: %v", err)), nil
-	}
-	args["metric"] = metric
-
-	// Optional: period
-	// array type - using string
-	if val := request.GetString("period", ""); val != "" {
-		args["period"] = val
-	}
-
-	// Call the client method
-	result, err := client.Igmediaforigonlyapi_get_insights(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmediaforigonlyapi_get_insights: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIgmediaforigonlyapi_get_ handles the igmediaforigonlyapi_get_ tool with context-based auth
-func HandleContextIgmediaforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGMediaForIGOnlyAPIClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Igmediaforigonlyapi_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmediaforigonlyapi_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIgmediaforigonlyapi_post_ handles the igmediaforigonlyapi_post_ tool with context-based auth
-func HandleContextIgmediaforigonlyapi_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

@@ -13,24 +13,7 @@ import (
 )
 
 // GetExtendedCreditApplicationTools returns MCP tools for ExtendedCreditApplication
-func GetExtendedCreditApplicationTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// extendedcreditapplication_get_ tool
-	extendedcreditapplication_get_Tool := mcp.NewTool("extendedcreditapplication_get_",
-		mcp.WithDescription("GET  for ExtendedCreditApplication"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, extendedcreditapplication_get_Tool)
-
-	return tools
-}
-
-// GetExtendedCreditApplicationToolsWithoutAuth returns MCP tools for ExtendedCreditApplication without access_token parameter
-func GetExtendedCreditApplicationToolsWithoutAuth() []mcp.Tool {
+func GetExtendedCreditApplicationTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// extendedcreditapplication_get_ tool
@@ -44,39 +27,8 @@ func GetExtendedCreditApplicationToolsWithoutAuth() []mcp.Tool {
 
 // ExtendedCreditApplication handlers
 
-// HandleExtendedcreditapplication_get_ handles the extendedcreditapplication_get_ tool
+// HandleExtendedcreditapplication_get_ handles the extendedcreditapplication_get_ tool with context-based auth
 func HandleExtendedcreditapplication_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewExtendedCreditApplicationClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Extendedcreditapplication_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcreditapplication_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextExtendedcreditapplication_get_ handles the extendedcreditapplication_get_ tool with context-based auth
-func HandleContextExtendedcreditapplication_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

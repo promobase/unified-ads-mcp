@@ -13,24 +13,7 @@ import (
 )
 
 // GetOrganizationTools returns MCP tools for Organization
-func GetOrganizationTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// organization_get_ tool
-	organization_get_Tool := mcp.NewTool("organization_get_",
-		mcp.WithDescription("GET  for Organization"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, organization_get_Tool)
-
-	return tools
-}
-
-// GetOrganizationToolsWithoutAuth returns MCP tools for Organization without access_token parameter
-func GetOrganizationToolsWithoutAuth() []mcp.Tool {
+func GetOrganizationTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// organization_get_ tool
@@ -44,39 +27,8 @@ func GetOrganizationToolsWithoutAuth() []mcp.Tool {
 
 // Organization handlers
 
-// HandleOrganization_get_ handles the organization_get_ tool
+// HandleOrganization_get_ handles the organization_get_ tool with context-based auth
 func HandleOrganization_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewOrganizationClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Organization_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute organization_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextOrganization_get_ handles the organization_get_ tool with context-based auth
-func HandleContextOrganization_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

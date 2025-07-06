@@ -13,66 +13,7 @@ import (
 )
 
 // GetEventSourceGroupTools returns MCP tools for EventSourceGroup
-func GetEventSourceGroupTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// eventsourcegroup_get_shared_accounts tool
-	eventsourcegroup_get_shared_accountsTool := mcp.NewTool("eventsourcegroup_get_shared_accounts",
-		mcp.WithDescription("GET shared_accounts for EventSourceGroup"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, eventsourcegroup_get_shared_accountsTool)
-
-	// eventsourcegroup_post_shared_accounts tool
-	eventsourcegroup_post_shared_accountsTool := mcp.NewTool("eventsourcegroup_post_shared_accounts",
-		mcp.WithDescription("POST shared_accounts for EventSourceGroup"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("accounts",
-			mcp.Required(),
-			mcp.Description("accounts parameter for shared_accounts"),
-		),
-	)
-	tools = append(tools, eventsourcegroup_post_shared_accountsTool)
-
-	// eventsourcegroup_get_ tool
-	eventsourcegroup_get_Tool := mcp.NewTool("eventsourcegroup_get_",
-		mcp.WithDescription("GET  for EventSourceGroup"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, eventsourcegroup_get_Tool)
-
-	// eventsourcegroup_post_ tool
-	eventsourcegroup_post_Tool := mcp.NewTool("eventsourcegroup_post_",
-		mcp.WithDescription("POST  for EventSourceGroup"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("event_sources",
-			mcp.Required(),
-			mcp.Description("event_sources parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Required(),
-			mcp.Description("name parameter for "),
-		),
-	)
-	tools = append(tools, eventsourcegroup_post_Tool)
-
-	return tools
-}
-
-// GetEventSourceGroupToolsWithoutAuth returns MCP tools for EventSourceGroup without access_token parameter
-func GetEventSourceGroupToolsWithoutAuth() []mcp.Tool {
+func GetEventSourceGroupTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// eventsourcegroup_get_shared_accounts tool
@@ -116,12 +57,12 @@ func GetEventSourceGroupToolsWithoutAuth() []mcp.Tool {
 
 // EventSourceGroup handlers
 
-// HandleEventsourcegroup_get_shared_accounts handles the eventsourcegroup_get_shared_accounts tool
+// HandleEventsourcegroup_get_shared_accounts handles the eventsourcegroup_get_shared_accounts tool with context-based auth
 func HandleEventsourcegroup_get_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -145,12 +86,12 @@ func HandleEventsourcegroup_get_shared_accounts(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleEventsourcegroup_post_shared_accounts handles the eventsourcegroup_post_shared_accounts tool
+// HandleEventsourcegroup_post_shared_accounts handles the eventsourcegroup_post_shared_accounts tool with context-based auth
 func HandleEventsourcegroup_post_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -181,12 +122,12 @@ func HandleEventsourcegroup_post_shared_accounts(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleEventsourcegroup_get_ handles the eventsourcegroup_get_ tool
+// HandleEventsourcegroup_get_ handles the eventsourcegroup_get_ tool with context-based auth
 func HandleEventsourcegroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -210,147 +151,8 @@ func HandleEventsourcegroup_get_(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleEventsourcegroup_post_ handles the eventsourcegroup_post_ tool
+// HandleEventsourcegroup_post_ handles the eventsourcegroup_post_ tool with context-based auth
 func HandleEventsourcegroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewEventSourceGroupClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: event_sources
-	event_sources, err := request.RequireString("event_sources")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter event_sources: %v", err)), nil
-	}
-	args["event_sources"] = event_sources
-
-	// Required: name
-	name, err := request.RequireString("name")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
-	}
-	args["name"] = name
-
-	// Call the client method
-	result, err := client.Eventsourcegroup_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute eventsourcegroup_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextEventsourcegroup_get_shared_accounts handles the eventsourcegroup_get_shared_accounts tool with context-based auth
-func HandleContextEventsourcegroup_get_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewEventSourceGroupClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Eventsourcegroup_get_shared_accounts(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute eventsourcegroup_get_shared_accounts: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextEventsourcegroup_post_shared_accounts handles the eventsourcegroup_post_shared_accounts tool with context-based auth
-func HandleContextEventsourcegroup_post_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewEventSourceGroupClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: accounts
-	accounts, err := request.RequireString("accounts")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter accounts: %v", err)), nil
-	}
-	args["accounts"] = accounts
-
-	// Call the client method
-	result, err := client.Eventsourcegroup_post_shared_accounts(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute eventsourcegroup_post_shared_accounts: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextEventsourcegroup_get_ handles the eventsourcegroup_get_ tool with context-based auth
-func HandleContextEventsourcegroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewEventSourceGroupClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Eventsourcegroup_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute eventsourcegroup_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextEventsourcegroup_post_ handles the eventsourcegroup_post_ tool with context-based auth
-func HandleContextEventsourcegroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

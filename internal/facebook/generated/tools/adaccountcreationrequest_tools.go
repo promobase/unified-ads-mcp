@@ -13,34 +13,7 @@ import (
 )
 
 // GetAdAccountCreationRequestTools returns MCP tools for AdAccountCreationRequest
-func GetAdAccountCreationRequestTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// adaccountcreationrequest_get_adaccounts tool
-	adaccountcreationrequest_get_adaccountsTool := mcp.NewTool("adaccountcreationrequest_get_adaccounts",
-		mcp.WithDescription("GET adaccounts for AdAccountCreationRequest"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adaccountcreationrequest_get_adaccountsTool)
-
-	// adaccountcreationrequest_get_ tool
-	adaccountcreationrequest_get_Tool := mcp.NewTool("adaccountcreationrequest_get_",
-		mcp.WithDescription("GET  for AdAccountCreationRequest"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adaccountcreationrequest_get_Tool)
-
-	return tools
-}
-
-// GetAdAccountCreationRequestToolsWithoutAuth returns MCP tools for AdAccountCreationRequest without access_token parameter
-func GetAdAccountCreationRequestToolsWithoutAuth() []mcp.Tool {
+func GetAdAccountCreationRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adaccountcreationrequest_get_adaccounts tool
@@ -60,68 +33,8 @@ func GetAdAccountCreationRequestToolsWithoutAuth() []mcp.Tool {
 
 // AdAccountCreationRequest handlers
 
-// HandleAdaccountcreationrequest_get_adaccounts handles the adaccountcreationrequest_get_adaccounts tool
+// HandleAdaccountcreationrequest_get_adaccounts handles the adaccountcreationrequest_get_adaccounts tool with context-based auth
 func HandleAdaccountcreationrequest_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdAccountCreationRequestClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adaccountcreationrequest_get_adaccounts(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adaccountcreationrequest_get_adaccounts: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleAdaccountcreationrequest_get_ handles the adaccountcreationrequest_get_ tool
-func HandleAdaccountcreationrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdAccountCreationRequestClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adaccountcreationrequest_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adaccountcreationrequest_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAdaccountcreationrequest_get_adaccounts handles the adaccountcreationrequest_get_adaccounts tool with context-based auth
-func HandleContextAdaccountcreationrequest_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {
@@ -149,8 +62,8 @@ func HandleContextAdaccountcreationrequest_get_adaccounts(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleContextAdaccountcreationrequest_get_ handles the adaccountcreationrequest_get_ tool with context-based auth
-func HandleContextAdaccountcreationrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleAdaccountcreationrequest_get_ handles the adaccountcreationrequest_get_ tool with context-based auth
+func HandleAdaccountcreationrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

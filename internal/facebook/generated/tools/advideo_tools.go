@@ -13,446 +13,7 @@ import (
 )
 
 // GetAdVideoTools returns MCP tools for AdVideo
-func GetAdVideoTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// advideo_get_boost_ads_list tool
-	advideo_get_boost_ads_listTool := mcp.NewTool("advideo_get_boost_ads_list",
-		mcp.WithDescription("GET boost_ads_list for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, advideo_get_boost_ads_listTool)
-
-	// advideo_get_captions tool
-	advideo_get_captionsTool := mcp.NewTool("advideo_get_captions",
-		mcp.WithDescription("GET captions for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, advideo_get_captionsTool)
-
-	// advideo_post_captions tool
-	advideo_post_captionsTool := mcp.NewTool("advideo_post_captions",
-		mcp.WithDescription("POST captions for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("captions_file",
-			mcp.Description("captions_file parameter for captions"),
-		),
-		mcp.WithString("default_locale",
-			mcp.Description("default_locale parameter for captions"),
-		),
-		mcp.WithString("locales_to_delete",
-			mcp.Description("locales_to_delete parameter for captions"),
-		),
-	)
-	tools = append(tools, advideo_post_captionsTool)
-
-	// advideo_get_collaborators tool
-	advideo_get_collaboratorsTool := mcp.NewTool("advideo_get_collaborators",
-		mcp.WithDescription("GET collaborators for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, advideo_get_collaboratorsTool)
-
-	// advideo_post_collaborators tool
-	advideo_post_collaboratorsTool := mcp.NewTool("advideo_post_collaborators",
-		mcp.WithDescription("POST collaborators for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("target_id",
-			mcp.Required(),
-			mcp.Description("target_id parameter for collaborators"),
-		),
-	)
-	tools = append(tools, advideo_post_collaboratorsTool)
-
-	// advideo_get_comments tool
-	advideo_get_commentsTool := mcp.NewTool("advideo_get_comments",
-		mcp.WithDescription("GET comments for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for comments"),
-			mcp.Enum("stream", "toplevel"),
-		),
-		mcp.WithString("live_filter",
-			mcp.Description("live_filter parameter for comments"),
-			mcp.Enum("filter_low_quality", "no_filter"),
-		),
-		mcp.WithString("order",
-			mcp.Description("order parameter for comments"),
-			mcp.Enum("chronological", "reverse_chronological"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for comments"),
-		),
-	)
-	tools = append(tools, advideo_get_commentsTool)
-
-	// advideo_post_comments tool
-	advideo_post_commentsTool := mcp.NewTool("advideo_post_comments",
-		mcp.WithDescription("POST comments for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("attachment_id",
-			mcp.Description("attachment_id parameter for comments"),
-		),
-		mcp.WithString("attachment_share_url",
-			mcp.Description("attachment_share_url parameter for comments"),
-		),
-		mcp.WithString("attachment_url",
-			mcp.Description("attachment_url parameter for comments"),
-		),
-		mcp.WithString("comment_privacy_value",
-			mcp.Description("comment_privacy_value parameter for comments"),
-			mcp.Enum("DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"),
-		),
-		mcp.WithString("facepile_mentioned_ids",
-			mcp.Description("facepile_mentioned_ids parameter for comments"),
-		),
-		mcp.WithString("feedback_source",
-			mcp.Description("feedback_source parameter for comments"),
-		),
-		mcp.WithBoolean("is_offline",
-			mcp.Description("is_offline parameter for comments"),
-		),
-		mcp.WithString("message",
-			mcp.Description("message parameter for comments"),
-		),
-		mcp.WithString("nectar_module",
-			mcp.Description("nectar_module parameter for comments"),
-		),
-		mcp.WithString("object_id",
-			mcp.Description("object_id parameter for comments"),
-		),
-		mcp.WithString("parent_comment_id",
-			mcp.Description("parent_comment_id parameter for comments"),
-		),
-		mcp.WithString("text",
-			mcp.Description("text parameter for comments"),
-		),
-		mcp.WithString("tracking",
-			mcp.Description("tracking parameter for comments"),
-		),
-	)
-	tools = append(tools, advideo_post_commentsTool)
-
-	// advideo_get_crosspost_shared_pages tool
-	advideo_get_crosspost_shared_pagesTool := mcp.NewTool("advideo_get_crosspost_shared_pages",
-		mcp.WithDescription("GET crosspost_shared_pages for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, advideo_get_crosspost_shared_pagesTool)
-
-	// advideo_post_gaming_clip_create tool
-	advideo_post_gaming_clip_createTool := mcp.NewTool("advideo_post_gaming_clip_create",
-		mcp.WithDescription("POST gaming_clip_create for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithNumber("duration_seconds",
-			mcp.Description("duration_seconds parameter for gaming_clip_create"),
-		),
-	)
-	tools = append(tools, advideo_post_gaming_clip_createTool)
-
-	// advideo_get_likes tool
-	advideo_get_likesTool := mcp.NewTool("advideo_get_likes",
-		mcp.WithDescription("GET likes for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, advideo_get_likesTool)
-
-	// advideo_post_likes tool
-	advideo_post_likesTool := mcp.NewTool("advideo_post_likes",
-		mcp.WithDescription("POST likes for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("feedback_source",
-			mcp.Description("feedback_source parameter for likes"),
-		),
-		mcp.WithString("nectar_module",
-			mcp.Description("nectar_module parameter for likes"),
-		),
-		mcp.WithBoolean("notify",
-			mcp.Description("notify parameter for likes"),
-		),
-		mcp.WithString("tracking",
-			mcp.Description("tracking parameter for likes"),
-		),
-	)
-	tools = append(tools, advideo_post_likesTool)
-
-	// advideo_get_poll_settings tool
-	advideo_get_poll_settingsTool := mcp.NewTool("advideo_get_poll_settings",
-		mcp.WithDescription("GET poll_settings for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, advideo_get_poll_settingsTool)
-
-	// advideo_get_polls tool
-	advideo_get_pollsTool := mcp.NewTool("advideo_get_polls",
-		mcp.WithDescription("GET polls for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, advideo_get_pollsTool)
-
-	// advideo_post_polls tool
-	advideo_post_pollsTool := mcp.NewTool("advideo_post_polls",
-		mcp.WithDescription("POST polls for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithBoolean("close_after_voting",
-			mcp.Description("close_after_voting parameter for polls"),
-		),
-		mcp.WithNumber("correct_option",
-			mcp.Description("correct_option parameter for polls"),
-		),
-		mcp.WithBoolean("default_open",
-			mcp.Description("default_open parameter for polls"),
-		),
-		mcp.WithString("options",
-			mcp.Required(),
-			mcp.Description("options parameter for polls"),
-		),
-		mcp.WithString("question",
-			mcp.Required(),
-			mcp.Description("question parameter for polls"),
-		),
-		mcp.WithBoolean("show_gradient",
-			mcp.Description("show_gradient parameter for polls"),
-		),
-		mcp.WithBoolean("show_results",
-			mcp.Description("show_results parameter for polls"),
-		),
-	)
-	tools = append(tools, advideo_post_pollsTool)
-
-	// advideo_get_sponsor_tags tool
-	advideo_get_sponsor_tagsTool := mcp.NewTool("advideo_get_sponsor_tags",
-		mcp.WithDescription("GET sponsor_tags for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, advideo_get_sponsor_tagsTool)
-
-	// advideo_get_tags tool
-	advideo_get_tagsTool := mcp.NewTool("advideo_get_tags",
-		mcp.WithDescription("GET tags for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, advideo_get_tagsTool)
-
-	// advideo_get_thumbnails tool
-	advideo_get_thumbnailsTool := mcp.NewTool("advideo_get_thumbnails",
-		mcp.WithDescription("GET thumbnails for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, advideo_get_thumbnailsTool)
-
-	// advideo_post_thumbnails tool
-	advideo_post_thumbnailsTool := mcp.NewTool("advideo_post_thumbnails",
-		mcp.WithDescription("POST thumbnails for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithBoolean("is_preferred",
-			mcp.Description("is_preferred parameter for thumbnails"),
-		),
-		mcp.WithString("source",
-			mcp.Required(),
-			mcp.Description("source parameter for thumbnails"),
-		),
-	)
-	tools = append(tools, advideo_post_thumbnailsTool)
-
-	// advideo_get_video_insights tool
-	advideo_get_video_insightsTool := mcp.NewTool("advideo_get_video_insights",
-		mcp.WithDescription("GET video_insights for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("metric",
-			mcp.Description("metric parameter for video_insights"),
-		),
-		mcp.WithString("period",
-			mcp.Description("period parameter for video_insights"),
-			mcp.Enum("day", "days_28", "lifetime", "month", "total_over_range", "week"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for video_insights"),
-		),
-		mcp.WithString("until",
-			mcp.Description("until parameter for video_insights"),
-		),
-	)
-	tools = append(tools, advideo_get_video_insightsTool)
-
-	// advideo_delete_ tool
-	advideo_delete_Tool := mcp.NewTool("advideo_delete_",
-		mcp.WithDescription("DELETE  for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, advideo_delete_Tool)
-
-	// advideo_get_ tool
-	advideo_get_Tool := mcp.NewTool("advideo_get_",
-		mcp.WithDescription("GET  for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, advideo_get_Tool)
-
-	// advideo_post_ tool
-	advideo_post_Tool := mcp.NewTool("advideo_post_",
-		mcp.WithDescription("POST  for AdVideo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("ad_breaks",
-			mcp.Description("ad_breaks parameter for "),
-		),
-		mcp.WithBoolean("allow_bm_crossposting",
-			mcp.Description("allow_bm_crossposting parameter for "),
-		),
-		mcp.WithString("allow_crossposting_for_pages",
-			mcp.Description("allow_crossposting_for_pages parameter for "),
-		),
-		mcp.WithString("backdated_time",
-			mcp.Description("backdated_time parameter for "),
-		),
-		mcp.WithString("backdated_time_granularity",
-			mcp.Description("backdated_time_granularity parameter for "),
-			mcp.Enum("day", "hour", "min", "month", "none", "year"),
-		),
-		mcp.WithString("call_to_action",
-			mcp.Description("call_to_action parameter for "),
-		),
-		mcp.WithString("content_category",
-			mcp.Description("content_category parameter for "),
-			mcp.Enum("BEAUTY_FASHION", "BUSINESS", "CARS_TRUCKS", "COMEDY", "CUTE_ANIMALS", "ENTERTAINMENT", "FAMILY", "FOOD_HEALTH", "HOME", "LIFESTYLE", "MUSIC", "NEWS", "OTHER", "POLITICS", "SCIENCE", "SPORTS", "TECHNOLOGY", "VIDEO_GAMING"),
-		),
-		mcp.WithString("content_tags",
-			mcp.Description("content_tags parameter for "),
-		),
-		mcp.WithString("custom_labels",
-			mcp.Description("custom_labels parameter for "),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for "),
-		),
-		mcp.WithNumber("direct_share_status",
-			mcp.Description("direct_share_status parameter for "),
-		),
-		mcp.WithBoolean("embeddable",
-			mcp.Description("embeddable parameter for "),
-		),
-		mcp.WithString("expiration",
-			mcp.Description("expiration parameter for "),
-		),
-		mcp.WithBoolean("expire_now",
-			mcp.Description("expire_now parameter for "),
-		),
-		mcp.WithBoolean("increment_play_count",
-			mcp.Description("increment_play_count parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("preferred_thumbnail_id",
-			mcp.Description("preferred_thumbnail_id parameter for "),
-		),
-		mcp.WithString("privacy",
-			mcp.Description("privacy parameter for "),
-		),
-		mcp.WithBoolean("publish_to_news_feed",
-			mcp.Description("publish_to_news_feed parameter for "),
-		),
-		mcp.WithBoolean("publish_to_videos_tab",
-			mcp.Description("publish_to_videos_tab parameter for "),
-		),
-		mcp.WithBoolean("published",
-			mcp.Description("published parameter for "),
-		),
-		mcp.WithNumber("scheduled_publish_time",
-			mcp.Description("scheduled_publish_time parameter for "),
-		),
-		mcp.WithBoolean("social_actions",
-			mcp.Description("social_actions parameter for "),
-		),
-		mcp.WithString("sponsor_id",
-			mcp.Description("sponsor_id parameter for "),
-		),
-		mcp.WithNumber("sponsor_relationship",
-			mcp.Description("sponsor_relationship parameter for "),
-		),
-		mcp.WithString("tags",
-			mcp.Description("tags parameter for "),
-		),
-		mcp.WithString("target",
-			mcp.Description("target parameter for "),
-		),
-		mcp.WithString("universal_video_id",
-			mcp.Description("universal_video_id parameter for "),
-		),
-	)
-	tools = append(tools, advideo_post_Tool)
-
-	return tools
-}
-
-// GetAdVideoToolsWithoutAuth returns MCP tools for AdVideo without access_token parameter
-func GetAdVideoToolsWithoutAuth() []mcp.Tool {
+func GetAdVideoTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// advideo_get_boost_ads_list tool
@@ -804,12 +365,12 @@ func GetAdVideoToolsWithoutAuth() []mcp.Tool {
 
 // AdVideo handlers
 
-// HandleAdvideo_get_boost_ads_list handles the advideo_get_boost_ads_list tool
+// HandleAdvideo_get_boost_ads_list handles the advideo_get_boost_ads_list tool with context-based auth
 func HandleAdvideo_get_boost_ads_list(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -833,12 +394,12 @@ func HandleAdvideo_get_boost_ads_list(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_get_captions handles the advideo_get_captions tool
+// HandleAdvideo_get_captions handles the advideo_get_captions tool with context-based auth
 func HandleAdvideo_get_captions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -862,12 +423,12 @@ func HandleAdvideo_get_captions(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_post_captions handles the advideo_post_captions tool
+// HandleAdvideo_post_captions handles the advideo_post_captions tool with context-based auth
 func HandleAdvideo_post_captions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -907,12 +468,12 @@ func HandleAdvideo_post_captions(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_get_collaborators handles the advideo_get_collaborators tool
+// HandleAdvideo_get_collaborators handles the advideo_get_collaborators tool with context-based auth
 func HandleAdvideo_get_collaborators(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -936,12 +497,12 @@ func HandleAdvideo_get_collaborators(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_post_collaborators handles the advideo_post_collaborators tool
+// HandleAdvideo_post_collaborators handles the advideo_post_collaborators tool with context-based auth
 func HandleAdvideo_post_collaborators(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -972,12 +533,12 @@ func HandleAdvideo_post_collaborators(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_get_comments handles the advideo_get_comments tool
+// HandleAdvideo_get_comments handles the advideo_get_comments tool with context-based auth
 func HandleAdvideo_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1021,12 +582,12 @@ func HandleAdvideo_get_comments(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_post_comments handles the advideo_post_comments tool
+// HandleAdvideo_post_comments handles the advideo_post_comments tool with context-based auth
 func HandleAdvideo_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1117,12 +678,12 @@ func HandleAdvideo_post_comments(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_get_crosspost_shared_pages handles the advideo_get_crosspost_shared_pages tool
+// HandleAdvideo_get_crosspost_shared_pages handles the advideo_get_crosspost_shared_pages tool with context-based auth
 func HandleAdvideo_get_crosspost_shared_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1146,12 +707,12 @@ func HandleAdvideo_get_crosspost_shared_pages(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_post_gaming_clip_create handles the advideo_post_gaming_clip_create tool
+// HandleAdvideo_post_gaming_clip_create handles the advideo_post_gaming_clip_create tool with context-based auth
 func HandleAdvideo_post_gaming_clip_create(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1180,12 +741,12 @@ func HandleAdvideo_post_gaming_clip_create(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_get_likes handles the advideo_get_likes tool
+// HandleAdvideo_get_likes handles the advideo_get_likes tool with context-based auth
 func HandleAdvideo_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1209,12 +770,12 @@ func HandleAdvideo_get_likes(ctx context.Context, request mcp.CallToolRequest) (
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_post_likes handles the advideo_post_likes tool
+// HandleAdvideo_post_likes handles the advideo_post_likes tool with context-based auth
 func HandleAdvideo_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1258,12 +819,12 @@ func HandleAdvideo_post_likes(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_get_poll_settings handles the advideo_get_poll_settings tool
+// HandleAdvideo_get_poll_settings handles the advideo_get_poll_settings tool with context-based auth
 func HandleAdvideo_get_poll_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1287,12 +848,12 @@ func HandleAdvideo_get_poll_settings(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_get_polls handles the advideo_get_polls tool
+// HandleAdvideo_get_polls handles the advideo_get_polls tool with context-based auth
 func HandleAdvideo_get_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1316,12 +877,12 @@ func HandleAdvideo_get_polls(ctx context.Context, request mcp.CallToolRequest) (
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_post_polls handles the advideo_post_polls tool
+// HandleAdvideo_post_polls handles the advideo_post_polls tool with context-based auth
 func HandleAdvideo_post_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1384,12 +945,12 @@ func HandleAdvideo_post_polls(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_get_sponsor_tags handles the advideo_get_sponsor_tags tool
+// HandleAdvideo_get_sponsor_tags handles the advideo_get_sponsor_tags tool with context-based auth
 func HandleAdvideo_get_sponsor_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1413,12 +974,12 @@ func HandleAdvideo_get_sponsor_tags(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_get_tags handles the advideo_get_tags tool
+// HandleAdvideo_get_tags handles the advideo_get_tags tool with context-based auth
 func HandleAdvideo_get_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1442,12 +1003,12 @@ func HandleAdvideo_get_tags(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_get_thumbnails handles the advideo_get_thumbnails tool
+// HandleAdvideo_get_thumbnails handles the advideo_get_thumbnails tool with context-based auth
 func HandleAdvideo_get_thumbnails(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1471,12 +1032,12 @@ func HandleAdvideo_get_thumbnails(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_post_thumbnails handles the advideo_post_thumbnails tool
+// HandleAdvideo_post_thumbnails handles the advideo_post_thumbnails tool with context-based auth
 func HandleAdvideo_post_thumbnails(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1512,12 +1073,12 @@ func HandleAdvideo_post_thumbnails(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_get_video_insights handles the advideo_get_video_insights tool
+// HandleAdvideo_get_video_insights handles the advideo_get_video_insights tool with context-based auth
 func HandleAdvideo_get_video_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1562,12 +1123,12 @@ func HandleAdvideo_get_video_insights(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_delete_ handles the advideo_delete_ tool
+// HandleAdvideo_delete_ handles the advideo_delete_ tool with context-based auth
 func HandleAdvideo_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1591,12 +1152,12 @@ func HandleAdvideo_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_get_ handles the advideo_get_ tool
+// HandleAdvideo_get_ handles the advideo_get_ tool with context-based auth
 func HandleAdvideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1620,1001 +1181,8 @@ func HandleAdvideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdvideo_post_ handles the advideo_post_ tool
+// HandleAdvideo_post_ handles the advideo_post_ tool with context-based auth
 func HandleAdvideo_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: ad_breaks
-	if val := request.GetString("ad_breaks", ""); val != "" {
-		args["ad_breaks"] = val
-	}
-
-	// Optional: allow_bm_crossposting
-	if val := request.GetBool("allow_bm_crossposting", false); val {
-		args["allow_bm_crossposting"] = val
-	}
-
-	// Optional: allow_crossposting_for_pages
-	// array type - using string
-	if val := request.GetString("allow_crossposting_for_pages", ""); val != "" {
-		args["allow_crossposting_for_pages"] = val
-	}
-
-	// Optional: backdated_time
-	if val := request.GetString("backdated_time", ""); val != "" {
-		args["backdated_time"] = val
-	}
-
-	// Optional: backdated_time_granularity
-	if val := request.GetString("backdated_time_granularity", ""); val != "" {
-		args["backdated_time_granularity"] = val
-	}
-
-	// Optional: call_to_action
-	// object type - using string
-	if val := request.GetString("call_to_action", ""); val != "" {
-		args["call_to_action"] = val
-	}
-
-	// Optional: content_category
-	if val := request.GetString("content_category", ""); val != "" {
-		args["content_category"] = val
-	}
-
-	// Optional: content_tags
-	// array type - using string
-	if val := request.GetString("content_tags", ""); val != "" {
-		args["content_tags"] = val
-	}
-
-	// Optional: custom_labels
-	// array type - using string
-	if val := request.GetString("custom_labels", ""); val != "" {
-		args["custom_labels"] = val
-	}
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: direct_share_status
-	if val := request.GetInt("direct_share_status", 0); val != 0 {
-		args["direct_share_status"] = val
-	}
-
-	// Optional: embeddable
-	if val := request.GetBool("embeddable", false); val {
-		args["embeddable"] = val
-	}
-
-	// Optional: expiration
-	// object type - using string
-	if val := request.GetString("expiration", ""); val != "" {
-		args["expiration"] = val
-	}
-
-	// Optional: expire_now
-	if val := request.GetBool("expire_now", false); val {
-		args["expire_now"] = val
-	}
-
-	// Optional: increment_play_count
-	if val := request.GetBool("increment_play_count", false); val {
-		args["increment_play_count"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: preferred_thumbnail_id
-	if val := request.GetString("preferred_thumbnail_id", ""); val != "" {
-		args["preferred_thumbnail_id"] = val
-	}
-
-	// Optional: privacy
-	if val := request.GetString("privacy", ""); val != "" {
-		args["privacy"] = val
-	}
-
-	// Optional: publish_to_news_feed
-	if val := request.GetBool("publish_to_news_feed", false); val {
-		args["publish_to_news_feed"] = val
-	}
-
-	// Optional: publish_to_videos_tab
-	if val := request.GetBool("publish_to_videos_tab", false); val {
-		args["publish_to_videos_tab"] = val
-	}
-
-	// Optional: published
-	if val := request.GetBool("published", false); val {
-		args["published"] = val
-	}
-
-	// Optional: scheduled_publish_time
-	if val := request.GetInt("scheduled_publish_time", 0); val != 0 {
-		args["scheduled_publish_time"] = val
-	}
-
-	// Optional: social_actions
-	if val := request.GetBool("social_actions", false); val {
-		args["social_actions"] = val
-	}
-
-	// Optional: sponsor_id
-	if val := request.GetString("sponsor_id", ""); val != "" {
-		args["sponsor_id"] = val
-	}
-
-	// Optional: sponsor_relationship
-	if val := request.GetInt("sponsor_relationship", 0); val != 0 {
-		args["sponsor_relationship"] = val
-	}
-
-	// Optional: tags
-	// array type - using string
-	if val := request.GetString("tags", ""); val != "" {
-		args["tags"] = val
-	}
-
-	// Optional: target
-	if val := request.GetString("target", ""); val != "" {
-		args["target"] = val
-	}
-
-	// Optional: universal_video_id
-	if val := request.GetString("universal_video_id", ""); val != "" {
-		args["universal_video_id"] = val
-	}
-
-	// Call the client method
-	result, err := client.Advideo_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAdvideo_get_boost_ads_list handles the advideo_get_boost_ads_list tool with context-based auth
-func HandleContextAdvideo_get_boost_ads_list(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Advideo_get_boost_ads_list(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_boost_ads_list: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_get_captions handles the advideo_get_captions tool with context-based auth
-func HandleContextAdvideo_get_captions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Advideo_get_captions(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_captions: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_post_captions handles the advideo_post_captions tool with context-based auth
-func HandleContextAdvideo_post_captions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: captions_file
-	if val := request.GetString("captions_file", ""); val != "" {
-		args["captions_file"] = val
-	}
-
-	// Optional: default_locale
-	if val := request.GetString("default_locale", ""); val != "" {
-		args["default_locale"] = val
-	}
-
-	// Optional: locales_to_delete
-	// array type - using string
-	if val := request.GetString("locales_to_delete", ""); val != "" {
-		args["locales_to_delete"] = val
-	}
-
-	// Call the client method
-	result, err := client.Advideo_post_captions(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_post_captions: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_get_collaborators handles the advideo_get_collaborators tool with context-based auth
-func HandleContextAdvideo_get_collaborators(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Advideo_get_collaborators(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_collaborators: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_post_collaborators handles the advideo_post_collaborators tool with context-based auth
-func HandleContextAdvideo_post_collaborators(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: target_id
-	target_id, err := request.RequireString("target_id")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter target_id: %v", err)), nil
-	}
-	args["target_id"] = target_id
-
-	// Call the client method
-	result, err := client.Advideo_post_collaborators(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_post_collaborators: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_get_comments handles the advideo_get_comments tool with context-based auth
-func HandleContextAdvideo_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: filter
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Optional: live_filter
-	if val := request.GetString("live_filter", ""); val != "" {
-		args["live_filter"] = val
-	}
-
-	// Optional: order
-	if val := request.GetString("order", ""); val != "" {
-		args["order"] = val
-	}
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Call the client method
-	result, err := client.Advideo_get_comments(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_comments: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_post_comments handles the advideo_post_comments tool with context-based auth
-func HandleContextAdvideo_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: attachment_id
-	if val := request.GetString("attachment_id", ""); val != "" {
-		args["attachment_id"] = val
-	}
-
-	// Optional: attachment_share_url
-	if val := request.GetString("attachment_share_url", ""); val != "" {
-		args["attachment_share_url"] = val
-	}
-
-	// Optional: attachment_url
-	if val := request.GetString("attachment_url", ""); val != "" {
-		args["attachment_url"] = val
-	}
-
-	// Optional: comment_privacy_value
-	if val := request.GetString("comment_privacy_value", ""); val != "" {
-		args["comment_privacy_value"] = val
-	}
-
-	// Optional: facepile_mentioned_ids
-	// array type - using string
-	if val := request.GetString("facepile_mentioned_ids", ""); val != "" {
-		args["facepile_mentioned_ids"] = val
-	}
-
-	// Optional: feedback_source
-	if val := request.GetString("feedback_source", ""); val != "" {
-		args["feedback_source"] = val
-	}
-
-	// Optional: is_offline
-	if val := request.GetBool("is_offline", false); val {
-		args["is_offline"] = val
-	}
-
-	// Optional: message
-	if val := request.GetString("message", ""); val != "" {
-		args["message"] = val
-	}
-
-	// Optional: nectar_module
-	if val := request.GetString("nectar_module", ""); val != "" {
-		args["nectar_module"] = val
-	}
-
-	// Optional: object_id
-	if val := request.GetString("object_id", ""); val != "" {
-		args["object_id"] = val
-	}
-
-	// Optional: parent_comment_id
-	// object type - using string
-	if val := request.GetString("parent_comment_id", ""); val != "" {
-		args["parent_comment_id"] = val
-	}
-
-	// Optional: text
-	if val := request.GetString("text", ""); val != "" {
-		args["text"] = val
-	}
-
-	// Optional: tracking
-	if val := request.GetString("tracking", ""); val != "" {
-		args["tracking"] = val
-	}
-
-	// Call the client method
-	result, err := client.Advideo_post_comments(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_post_comments: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_get_crosspost_shared_pages handles the advideo_get_crosspost_shared_pages tool with context-based auth
-func HandleContextAdvideo_get_crosspost_shared_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Advideo_get_crosspost_shared_pages(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_crosspost_shared_pages: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_post_gaming_clip_create handles the advideo_post_gaming_clip_create tool with context-based auth
-func HandleContextAdvideo_post_gaming_clip_create(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: duration_seconds
-	if val := request.GetFloat("duration_seconds", 0); val != 0 {
-		args["duration_seconds"] = val
-	}
-
-	// Call the client method
-	result, err := client.Advideo_post_gaming_clip_create(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_post_gaming_clip_create: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_get_likes handles the advideo_get_likes tool with context-based auth
-func HandleContextAdvideo_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Advideo_get_likes(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_likes: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_post_likes handles the advideo_post_likes tool with context-based auth
-func HandleContextAdvideo_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: feedback_source
-	if val := request.GetString("feedback_source", ""); val != "" {
-		args["feedback_source"] = val
-	}
-
-	// Optional: nectar_module
-	if val := request.GetString("nectar_module", ""); val != "" {
-		args["nectar_module"] = val
-	}
-
-	// Optional: notify
-	if val := request.GetBool("notify", false); val {
-		args["notify"] = val
-	}
-
-	// Optional: tracking
-	if val := request.GetString("tracking", ""); val != "" {
-		args["tracking"] = val
-	}
-
-	// Call the client method
-	result, err := client.Advideo_post_likes(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_post_likes: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_get_poll_settings handles the advideo_get_poll_settings tool with context-based auth
-func HandleContextAdvideo_get_poll_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Advideo_get_poll_settings(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_poll_settings: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_get_polls handles the advideo_get_polls tool with context-based auth
-func HandleContextAdvideo_get_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Advideo_get_polls(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_polls: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_post_polls handles the advideo_post_polls tool with context-based auth
-func HandleContextAdvideo_post_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: close_after_voting
-	if val := request.GetBool("close_after_voting", false); val {
-		args["close_after_voting"] = val
-	}
-
-	// Optional: correct_option
-	if val := request.GetInt("correct_option", 0); val != 0 {
-		args["correct_option"] = val
-	}
-
-	// Optional: default_open
-	if val := request.GetBool("default_open", false); val {
-		args["default_open"] = val
-	}
-
-	// Required: options
-	options, err := request.RequireString("options")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter options: %v", err)), nil
-	}
-	args["options"] = options
-
-	// Required: question
-	question, err := request.RequireString("question")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter question: %v", err)), nil
-	}
-	args["question"] = question
-
-	// Optional: show_gradient
-	if val := request.GetBool("show_gradient", false); val {
-		args["show_gradient"] = val
-	}
-
-	// Optional: show_results
-	if val := request.GetBool("show_results", false); val {
-		args["show_results"] = val
-	}
-
-	// Call the client method
-	result, err := client.Advideo_post_polls(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_post_polls: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_get_sponsor_tags handles the advideo_get_sponsor_tags tool with context-based auth
-func HandleContextAdvideo_get_sponsor_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Advideo_get_sponsor_tags(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_sponsor_tags: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_get_tags handles the advideo_get_tags tool with context-based auth
-func HandleContextAdvideo_get_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Advideo_get_tags(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_tags: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_get_thumbnails handles the advideo_get_thumbnails tool with context-based auth
-func HandleContextAdvideo_get_thumbnails(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Advideo_get_thumbnails(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_thumbnails: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_post_thumbnails handles the advideo_post_thumbnails tool with context-based auth
-func HandleContextAdvideo_post_thumbnails(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: is_preferred
-	if val := request.GetBool("is_preferred", false); val {
-		args["is_preferred"] = val
-	}
-
-	// Required: source
-	source, err := request.RequireString("source")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter source: %v", err)), nil
-	}
-	args["source"] = source
-
-	// Call the client method
-	result, err := client.Advideo_post_thumbnails(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_post_thumbnails: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_get_video_insights handles the advideo_get_video_insights tool with context-based auth
-func HandleContextAdvideo_get_video_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: metric
-	// array type - using string
-	if val := request.GetString("metric", ""); val != "" {
-		args["metric"] = val
-	}
-
-	// Optional: period
-	if val := request.GetString("period", ""); val != "" {
-		args["period"] = val
-	}
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Optional: until
-	if val := request.GetString("until", ""); val != "" {
-		args["until"] = val
-	}
-
-	// Call the client method
-	result, err := client.Advideo_get_video_insights(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_video_insights: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_delete_ handles the advideo_delete_ tool with context-based auth
-func HandleContextAdvideo_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Advideo_delete_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_delete_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_get_ handles the advideo_get_ tool with context-based auth
-func HandleContextAdvideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdVideoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Advideo_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advideo_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdvideo_post_ handles the advideo_post_ tool with context-based auth
-func HandleContextAdvideo_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

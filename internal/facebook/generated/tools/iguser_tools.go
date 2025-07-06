@@ -13,534 +13,7 @@ import (
 )
 
 // GetIGUserTools returns MCP tools for IGUser
-func GetIGUserTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// iguser_get_agencies tool
-	iguser_get_agenciesTool := mcp.NewTool("iguser_get_agencies",
-		mcp.WithDescription("GET agencies for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, iguser_get_agenciesTool)
-
-	// iguser_get_authorized_adaccounts tool
-	iguser_get_authorized_adaccountsTool := mcp.NewTool("iguser_get_authorized_adaccounts",
-		mcp.WithDescription("GET authorized_adaccounts for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("business",
-			mcp.Required(),
-			mcp.Description("business parameter for authorized_adaccounts"),
-		),
-	)
-	tools = append(tools, iguser_get_authorized_adaccountsTool)
-
-	// iguser_post_authorized_adaccounts tool
-	iguser_post_authorized_adaccountsTool := mcp.NewTool("iguser_post_authorized_adaccounts",
-		mcp.WithDescription("POST authorized_adaccounts for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("account_id",
-			mcp.Required(),
-			mcp.Description("account_id parameter for authorized_adaccounts"),
-		),
-		mcp.WithString("business",
-			mcp.Required(),
-			mcp.Description("business parameter for authorized_adaccounts"),
-		),
-	)
-	tools = append(tools, iguser_post_authorized_adaccountsTool)
-
-	// iguser_get_available_catalogs tool
-	iguser_get_available_catalogsTool := mcp.NewTool("iguser_get_available_catalogs",
-		mcp.WithDescription("GET available_catalogs for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, iguser_get_available_catalogsTool)
-
-	// iguser_get_branded_content_ad_permissions tool
-	iguser_get_branded_content_ad_permissionsTool := mcp.NewTool("iguser_get_branded_content_ad_permissions",
-		mcp.WithDescription("GET branded_content_ad_permissions for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, iguser_get_branded_content_ad_permissionsTool)
-
-	// iguser_post_branded_content_ad_permissions tool
-	iguser_post_branded_content_ad_permissionsTool := mcp.NewTool("iguser_post_branded_content_ad_permissions",
-		mcp.WithDescription("POST branded_content_ad_permissions for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("creator_instagram_account",
-			mcp.Description("creator_instagram_account parameter for branded_content_ad_permissions"),
-		),
-		mcp.WithString("creator_instagram_username",
-			mcp.Description("creator_instagram_username parameter for branded_content_ad_permissions"),
-		),
-		mcp.WithBoolean("revoke",
-			mcp.Description("revoke parameter for branded_content_ad_permissions"),
-		),
-	)
-	tools = append(tools, iguser_post_branded_content_ad_permissionsTool)
-
-	// iguser_get_branded_content_advertisable_medias tool
-	iguser_get_branded_content_advertisable_mediasTool := mcp.NewTool("iguser_get_branded_content_advertisable_medias",
-		mcp.WithDescription("GET branded_content_advertisable_medias for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("ad_code",
-			mcp.Description("ad_code parameter for branded_content_advertisable_medias"),
-		),
-		mcp.WithString("creator_username",
-			mcp.Description("creator_username parameter for branded_content_advertisable_medias"),
-		),
-		mcp.WithBoolean("only_fetch_allowlisted",
-			mcp.Description("only_fetch_allowlisted parameter for branded_content_advertisable_medias"),
-		),
-		mcp.WithBoolean("only_fetch_recommended_content",
-			mcp.Description("only_fetch_recommended_content parameter for branded_content_advertisable_medias"),
-		),
-		mcp.WithString("permalinks",
-			mcp.Description("permalinks parameter for branded_content_advertisable_medias"),
-		),
-	)
-	tools = append(tools, iguser_get_branded_content_advertisable_mediasTool)
-
-	// iguser_delete_branded_content_tag_approval tool
-	iguser_delete_branded_content_tag_approvalTool := mcp.NewTool("iguser_delete_branded_content_tag_approval",
-		mcp.WithDescription("DELETE branded_content_tag_approval for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("user_ids",
-			mcp.Required(),
-			mcp.Description("user_ids parameter for branded_content_tag_approval"),
-		),
-	)
-	tools = append(tools, iguser_delete_branded_content_tag_approvalTool)
-
-	// iguser_get_branded_content_tag_approval tool
-	iguser_get_branded_content_tag_approvalTool := mcp.NewTool("iguser_get_branded_content_tag_approval",
-		mcp.WithDescription("GET branded_content_tag_approval for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("user_ids",
-			mcp.Required(),
-			mcp.Description("user_ids parameter for branded_content_tag_approval"),
-		),
-	)
-	tools = append(tools, iguser_get_branded_content_tag_approvalTool)
-
-	// iguser_post_branded_content_tag_approval tool
-	iguser_post_branded_content_tag_approvalTool := mcp.NewTool("iguser_post_branded_content_tag_approval",
-		mcp.WithDescription("POST branded_content_tag_approval for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("user_ids",
-			mcp.Required(),
-			mcp.Description("user_ids parameter for branded_content_tag_approval"),
-		),
-	)
-	tools = append(tools, iguser_post_branded_content_tag_approvalTool)
-
-	// iguser_get_catalog_product_search tool
-	iguser_get_catalog_product_searchTool := mcp.NewTool("iguser_get_catalog_product_search",
-		mcp.WithDescription("GET catalog_product_search for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("catalog_id",
-			mcp.Required(),
-			mcp.Description("catalog_id parameter for catalog_product_search"),
-		),
-		mcp.WithString("q",
-			mcp.Description("q parameter for catalog_product_search"),
-		),
-	)
-	tools = append(tools, iguser_get_catalog_product_searchTool)
-
-	// iguser_get_connected_threads_user tool
-	iguser_get_connected_threads_userTool := mcp.NewTool("iguser_get_connected_threads_user",
-		mcp.WithDescription("GET connected_threads_user for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, iguser_get_connected_threads_userTool)
-
-	// iguser_get_content_publishing_limit tool
-	iguser_get_content_publishing_limitTool := mcp.NewTool("iguser_get_content_publishing_limit",
-		mcp.WithDescription("GET content_publishing_limit for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for content_publishing_limit"),
-		),
-	)
-	tools = append(tools, iguser_get_content_publishing_limitTool)
-
-	// iguser_get_dataset tool
-	iguser_get_datasetTool := mcp.NewTool("iguser_get_dataset",
-		mcp.WithDescription("GET dataset for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, iguser_get_datasetTool)
-
-	// iguser_post_dataset tool
-	iguser_post_datasetTool := mcp.NewTool("iguser_post_dataset",
-		mcp.WithDescription("POST dataset for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("dataset_name",
-			mcp.Description("dataset_name parameter for dataset"),
-		),
-	)
-	tools = append(tools, iguser_post_datasetTool)
-
-	// iguser_get_insights tool
-	iguser_get_insightsTool := mcp.NewTool("iguser_get_insights",
-		mcp.WithDescription("GET insights for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("breakdown",
-			mcp.Description("breakdown parameter for insights"),
-			mcp.Enum("age", "city", "contact_button_type", "country", "follow_type", "gender", "media_product_type"),
-		),
-		mcp.WithString("metric",
-			mcp.Required(),
-			mcp.Description("metric parameter for insights"),
-			mcp.Enum("accounts_engaged", "comments", "content_views", "engaged_audience_demographics", "follower_count", "follower_demographics", "follows_and_unfollows", "impressions", "likes", "online_followers", "profile_links_taps", "profile_views", "quotes", "reach", "reached_audience_demographics", "replies", "reposts", "saves", "shares", "threads_follower_demographics", "threads_followers", "threads_likes", "threads_replies", "threads_views", "total_interactions", "views", "website_clicks"),
-		),
-		mcp.WithString("metric_type",
-			mcp.Description("metric_type parameter for insights"),
-			mcp.Enum("default", "time_series", "total_value"),
-		),
-		mcp.WithString("period",
-			mcp.Required(),
-			mcp.Description("period parameter for insights"),
-			mcp.Enum("day", "days_28", "lifetime", "month", "total_over_range", "week"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for insights"),
-		),
-		mcp.WithString("timeframe",
-			mcp.Description("timeframe parameter for insights"),
-			mcp.Enum("last_14_days", "last_30_days", "last_90_days", "prev_month", "this_month", "this_week"),
-		),
-		mcp.WithString("until",
-			mcp.Description("until parameter for insights"),
-		),
-	)
-	tools = append(tools, iguser_get_insightsTool)
-
-	// iguser_get_instagram_backed_threads_user tool
-	iguser_get_instagram_backed_threads_userTool := mcp.NewTool("iguser_get_instagram_backed_threads_user",
-		mcp.WithDescription("GET instagram_backed_threads_user for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, iguser_get_instagram_backed_threads_userTool)
-
-	// iguser_get_live_media tool
-	iguser_get_live_mediaTool := mcp.NewTool("iguser_get_live_media",
-		mcp.WithDescription("GET live_media for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for live_media"),
-		),
-		mcp.WithString("until",
-			mcp.Description("until parameter for live_media"),
-		),
-	)
-	tools = append(tools, iguser_get_live_mediaTool)
-
-	// iguser_get_media tool
-	iguser_get_mediaTool := mcp.NewTool("iguser_get_media",
-		mcp.WithDescription("GET media for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for media"),
-		),
-		mcp.WithString("until",
-			mcp.Description("until parameter for media"),
-		),
-	)
-	tools = append(tools, iguser_get_mediaTool)
-
-	// iguser_post_media tool
-	iguser_post_mediaTool := mcp.NewTool("iguser_post_media",
-		mcp.WithDescription("POST media for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("alt_text",
-			mcp.Description("alt_text parameter for media"),
-		),
-		mcp.WithString("audio_name",
-			mcp.Description("audio_name parameter for media"),
-		),
-		mcp.WithString("caption",
-			mcp.Description("caption parameter for media"),
-		),
-		mcp.WithString("children",
-			mcp.Description("children parameter for media"),
-		),
-		mcp.WithString("collaborators",
-			mcp.Description("collaborators parameter for media"),
-		),
-		mcp.WithString("cover_url",
-			mcp.Description("cover_url parameter for media"),
-		),
-		mcp.WithString("image_url",
-			mcp.Description("image_url parameter for media"),
-		),
-		mcp.WithBoolean("is_carousel_item",
-			mcp.Description("is_carousel_item parameter for media"),
-		),
-		mcp.WithString("location_id",
-			mcp.Description("location_id parameter for media"),
-		),
-		mcp.WithString("media_type",
-			mcp.Description("media_type parameter for media"),
-		),
-		mcp.WithString("product_tags",
-			mcp.Description("product_tags parameter for media"),
-		),
-		mcp.WithBoolean("share_to_feed",
-			mcp.Description("share_to_feed parameter for media"),
-		),
-		mcp.WithString("thumb_offset",
-			mcp.Description("thumb_offset parameter for media"),
-		),
-		mcp.WithString("upload_type",
-			mcp.Description("upload_type parameter for media"),
-		),
-		mcp.WithString("user_tags",
-			mcp.Description("user_tags parameter for media"),
-		),
-		mcp.WithString("video_url",
-			mcp.Description("video_url parameter for media"),
-		),
-	)
-	tools = append(tools, iguser_post_mediaTool)
-
-	// iguser_post_media_publish tool
-	iguser_post_media_publishTool := mcp.NewTool("iguser_post_media_publish",
-		mcp.WithDescription("POST media_publish for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithNumber("creation_id",
-			mcp.Required(),
-			mcp.Description("creation_id parameter for media_publish"),
-		),
-	)
-	tools = append(tools, iguser_post_media_publishTool)
-
-	// iguser_post_mentions tool
-	iguser_post_mentionsTool := mcp.NewTool("iguser_post_mentions",
-		mcp.WithDescription("POST mentions for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("comment_id",
-			mcp.Description("comment_id parameter for mentions"),
-		),
-		mcp.WithString("media_id",
-			mcp.Required(),
-			mcp.Description("media_id parameter for mentions"),
-		),
-		mcp.WithString("message",
-			mcp.Required(),
-			mcp.Description("message parameter for mentions"),
-		),
-	)
-	tools = append(tools, iguser_post_mentionsTool)
-
-	// iguser_get_notification_message_tokens tool
-	iguser_get_notification_message_tokensTool := mcp.NewTool("iguser_get_notification_message_tokens",
-		mcp.WithDescription("GET notification_message_tokens for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, iguser_get_notification_message_tokensTool)
-
-	// iguser_get_product_appeal tool
-	iguser_get_product_appealTool := mcp.NewTool("iguser_get_product_appeal",
-		mcp.WithDescription("GET product_appeal for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("product_id",
-			mcp.Required(),
-			mcp.Description("product_id parameter for product_appeal"),
-		),
-	)
-	tools = append(tools, iguser_get_product_appealTool)
-
-	// iguser_post_product_appeal tool
-	iguser_post_product_appealTool := mcp.NewTool("iguser_post_product_appeal",
-		mcp.WithDescription("POST product_appeal for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("appeal_reason",
-			mcp.Required(),
-			mcp.Description("appeal_reason parameter for product_appeal"),
-		),
-		mcp.WithString("product_id",
-			mcp.Required(),
-			mcp.Description("product_id parameter for product_appeal"),
-		),
-	)
-	tools = append(tools, iguser_post_product_appealTool)
-
-	// iguser_get_recently_searched_hashtags tool
-	iguser_get_recently_searched_hashtagsTool := mcp.NewTool("iguser_get_recently_searched_hashtags",
-		mcp.WithDescription("GET recently_searched_hashtags for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, iguser_get_recently_searched_hashtagsTool)
-
-	// iguser_get_stories tool
-	iguser_get_storiesTool := mcp.NewTool("iguser_get_stories",
-		mcp.WithDescription("GET stories for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, iguser_get_storiesTool)
-
-	// iguser_get_tags tool
-	iguser_get_tagsTool := mcp.NewTool("iguser_get_tags",
-		mcp.WithDescription("GET tags for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, iguser_get_tagsTool)
-
-	// iguser_get_upcoming_events tool
-	iguser_get_upcoming_eventsTool := mcp.NewTool("iguser_get_upcoming_events",
-		mcp.WithDescription("GET upcoming_events for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, iguser_get_upcoming_eventsTool)
-
-	// iguser_post_upcoming_events tool
-	iguser_post_upcoming_eventsTool := mcp.NewTool("iguser_post_upcoming_events",
-		mcp.WithDescription("POST upcoming_events for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("end_time",
-			mcp.Description("end_time parameter for upcoming_events"),
-		),
-		mcp.WithString("notification_subtypes",
-			mcp.Description("notification_subtypes parameter for upcoming_events"),
-			mcp.Enum("AFTER_EVENT_1DAY", "AFTER_EVENT_2DAY", "AFTER_EVENT_3DAY", "AFTER_EVENT_4DAY", "AFTER_EVENT_5DAY", "AFTER_EVENT_6DAY", "AFTER_EVENT_7DAY", "BEFORE_EVENT_15MIN", "BEFORE_EVENT_1DAY", "BEFORE_EVENT_1HOUR", "BEFORE_EVENT_2DAY", "EVENT_START", "RESCHEDULED"),
-		),
-		mcp.WithString("start_time",
-			mcp.Required(),
-			mcp.Description("start_time parameter for upcoming_events"),
-		),
-		mcp.WithString("title",
-			mcp.Required(),
-			mcp.Description("title parameter for upcoming_events"),
-		),
-	)
-	tools = append(tools, iguser_post_upcoming_eventsTool)
-
-	// iguser_get_welcome_message_flows tool
-	iguser_get_welcome_message_flowsTool := mcp.NewTool("iguser_get_welcome_message_flows",
-		mcp.WithDescription("GET welcome_message_flows for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("app_id",
-			mcp.Description("app_id parameter for welcome_message_flows"),
-		),
-		mcp.WithString("flow_id",
-			mcp.Description("flow_id parameter for welcome_message_flows"),
-		),
-	)
-	tools = append(tools, iguser_get_welcome_message_flowsTool)
-
-	// iguser_get_ tool
-	iguser_get_Tool := mcp.NewTool("iguser_get_",
-		mcp.WithDescription("GET  for IGUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("adgroup_id",
-			mcp.Description("adgroup_id parameter for "),
-		),
-	)
-	tools = append(tools, iguser_get_Tool)
-
-	return tools
-}
-
-// GetIGUserToolsWithoutAuth returns MCP tools for IGUser without access_token parameter
-func GetIGUserToolsWithoutAuth() []mcp.Tool {
+func GetIGUserTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// iguser_get_agencies tool
@@ -940,12 +413,12 @@ func GetIGUserToolsWithoutAuth() []mcp.Tool {
 
 // IGUser handlers
 
-// HandleIguser_get_agencies handles the iguser_get_agencies tool
+// HandleIguser_get_agencies handles the iguser_get_agencies tool with context-based auth
 func HandleIguser_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -969,12 +442,12 @@ func HandleIguser_get_agencies(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_authorized_adaccounts handles the iguser_get_authorized_adaccounts tool
+// HandleIguser_get_authorized_adaccounts handles the iguser_get_authorized_adaccounts tool with context-based auth
 func HandleIguser_get_authorized_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1005,12 +478,12 @@ func HandleIguser_get_authorized_adaccounts(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_post_authorized_adaccounts handles the iguser_post_authorized_adaccounts tool
+// HandleIguser_post_authorized_adaccounts handles the iguser_post_authorized_adaccounts tool with context-based auth
 func HandleIguser_post_authorized_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1048,12 +521,12 @@ func HandleIguser_post_authorized_adaccounts(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_available_catalogs handles the iguser_get_available_catalogs tool
+// HandleIguser_get_available_catalogs handles the iguser_get_available_catalogs tool with context-based auth
 func HandleIguser_get_available_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1077,12 +550,12 @@ func HandleIguser_get_available_catalogs(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_branded_content_ad_permissions handles the iguser_get_branded_content_ad_permissions tool
+// HandleIguser_get_branded_content_ad_permissions handles the iguser_get_branded_content_ad_permissions tool with context-based auth
 func HandleIguser_get_branded_content_ad_permissions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1106,12 +579,12 @@ func HandleIguser_get_branded_content_ad_permissions(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_post_branded_content_ad_permissions handles the iguser_post_branded_content_ad_permissions tool
+// HandleIguser_post_branded_content_ad_permissions handles the iguser_post_branded_content_ad_permissions tool with context-based auth
 func HandleIguser_post_branded_content_ad_permissions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1150,12 +623,12 @@ func HandleIguser_post_branded_content_ad_permissions(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_branded_content_advertisable_medias handles the iguser_get_branded_content_advertisable_medias tool
+// HandleIguser_get_branded_content_advertisable_medias handles the iguser_get_branded_content_advertisable_medias tool with context-based auth
 func HandleIguser_get_branded_content_advertisable_medias(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1205,12 +678,12 @@ func HandleIguser_get_branded_content_advertisable_medias(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_delete_branded_content_tag_approval handles the iguser_delete_branded_content_tag_approval tool
+// HandleIguser_delete_branded_content_tag_approval handles the iguser_delete_branded_content_tag_approval tool with context-based auth
 func HandleIguser_delete_branded_content_tag_approval(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1241,12 +714,12 @@ func HandleIguser_delete_branded_content_tag_approval(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_branded_content_tag_approval handles the iguser_get_branded_content_tag_approval tool
+// HandleIguser_get_branded_content_tag_approval handles the iguser_get_branded_content_tag_approval tool with context-based auth
 func HandleIguser_get_branded_content_tag_approval(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1277,12 +750,12 @@ func HandleIguser_get_branded_content_tag_approval(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_post_branded_content_tag_approval handles the iguser_post_branded_content_tag_approval tool
+// HandleIguser_post_branded_content_tag_approval handles the iguser_post_branded_content_tag_approval tool with context-based auth
 func HandleIguser_post_branded_content_tag_approval(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1313,12 +786,12 @@ func HandleIguser_post_branded_content_tag_approval(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_catalog_product_search handles the iguser_get_catalog_product_search tool
+// HandleIguser_get_catalog_product_search handles the iguser_get_catalog_product_search tool with context-based auth
 func HandleIguser_get_catalog_product_search(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1354,12 +827,12 @@ func HandleIguser_get_catalog_product_search(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_connected_threads_user handles the iguser_get_connected_threads_user tool
+// HandleIguser_get_connected_threads_user handles the iguser_get_connected_threads_user tool with context-based auth
 func HandleIguser_get_connected_threads_user(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1383,12 +856,12 @@ func HandleIguser_get_connected_threads_user(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_content_publishing_limit handles the iguser_get_content_publishing_limit tool
+// HandleIguser_get_content_publishing_limit handles the iguser_get_content_publishing_limit tool with context-based auth
 func HandleIguser_get_content_publishing_limit(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1417,12 +890,12 @@ func HandleIguser_get_content_publishing_limit(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_dataset handles the iguser_get_dataset tool
+// HandleIguser_get_dataset handles the iguser_get_dataset tool with context-based auth
 func HandleIguser_get_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1446,12 +919,12 @@ func HandleIguser_get_dataset(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_post_dataset handles the iguser_post_dataset tool
+// HandleIguser_post_dataset handles the iguser_post_dataset tool with context-based auth
 func HandleIguser_post_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1480,12 +953,12 @@ func HandleIguser_post_dataset(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_insights handles the iguser_get_insights tool
+// HandleIguser_get_insights handles the iguser_get_insights tool with context-based auth
 func HandleIguser_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1549,12 +1022,12 @@ func HandleIguser_get_insights(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_instagram_backed_threads_user handles the iguser_get_instagram_backed_threads_user tool
+// HandleIguser_get_instagram_backed_threads_user handles the iguser_get_instagram_backed_threads_user tool with context-based auth
 func HandleIguser_get_instagram_backed_threads_user(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1578,12 +1051,12 @@ func HandleIguser_get_instagram_backed_threads_user(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_live_media handles the iguser_get_live_media tool
+// HandleIguser_get_live_media handles the iguser_get_live_media tool with context-based auth
 func HandleIguser_get_live_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1617,12 +1090,12 @@ func HandleIguser_get_live_media(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_media handles the iguser_get_media tool
+// HandleIguser_get_media handles the iguser_get_media tool with context-based auth
 func HandleIguser_get_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1656,12 +1129,12 @@ func HandleIguser_get_media(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_post_media handles the iguser_post_media tool
+// HandleIguser_post_media handles the iguser_post_media tool with context-based auth
 func HandleIguser_post_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1769,12 +1242,12 @@ func HandleIguser_post_media(ctx context.Context, request mcp.CallToolRequest) (
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_post_media_publish handles the iguser_post_media_publish tool
+// HandleIguser_post_media_publish handles the iguser_post_media_publish tool with context-based auth
 func HandleIguser_post_media_publish(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1805,12 +1278,12 @@ func HandleIguser_post_media_publish(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_post_mentions handles the iguser_post_mentions tool
+// HandleIguser_post_mentions handles the iguser_post_mentions tool with context-based auth
 func HandleIguser_post_mentions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1853,12 +1326,12 @@ func HandleIguser_post_mentions(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_notification_message_tokens handles the iguser_get_notification_message_tokens tool
+// HandleIguser_get_notification_message_tokens handles the iguser_get_notification_message_tokens tool with context-based auth
 func HandleIguser_get_notification_message_tokens(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1882,12 +1355,12 @@ func HandleIguser_get_notification_message_tokens(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_product_appeal handles the iguser_get_product_appeal tool
+// HandleIguser_get_product_appeal handles the iguser_get_product_appeal tool with context-based auth
 func HandleIguser_get_product_appeal(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1918,12 +1391,12 @@ func HandleIguser_get_product_appeal(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_post_product_appeal handles the iguser_post_product_appeal tool
+// HandleIguser_post_product_appeal handles the iguser_post_product_appeal tool with context-based auth
 func HandleIguser_post_product_appeal(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1961,12 +1434,12 @@ func HandleIguser_post_product_appeal(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_recently_searched_hashtags handles the iguser_get_recently_searched_hashtags tool
+// HandleIguser_get_recently_searched_hashtags handles the iguser_get_recently_searched_hashtags tool with context-based auth
 func HandleIguser_get_recently_searched_hashtags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -1990,12 +1463,12 @@ func HandleIguser_get_recently_searched_hashtags(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_stories handles the iguser_get_stories tool
+// HandleIguser_get_stories handles the iguser_get_stories tool with context-based auth
 func HandleIguser_get_stories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -2019,12 +1492,12 @@ func HandleIguser_get_stories(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_tags handles the iguser_get_tags tool
+// HandleIguser_get_tags handles the iguser_get_tags tool with context-based auth
 func HandleIguser_get_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -2048,12 +1521,12 @@ func HandleIguser_get_tags(ctx context.Context, request mcp.CallToolRequest) (*m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_upcoming_events handles the iguser_get_upcoming_events tool
+// HandleIguser_get_upcoming_events handles the iguser_get_upcoming_events tool with context-based auth
 func HandleIguser_get_upcoming_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -2077,12 +1550,12 @@ func HandleIguser_get_upcoming_events(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_post_upcoming_events handles the iguser_post_upcoming_events tool
+// HandleIguser_post_upcoming_events handles the iguser_post_upcoming_events tool with context-based auth
 func HandleIguser_post_upcoming_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -2131,12 +1604,12 @@ func HandleIguser_post_upcoming_events(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_welcome_message_flows handles the iguser_get_welcome_message_flows tool
+// HandleIguser_get_welcome_message_flows handles the iguser_get_welcome_message_flows tool with context-based auth
 func HandleIguser_get_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -2170,1274 +1643,8 @@ func HandleIguser_get_welcome_message_flows(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIguser_get_ handles the iguser_get_ tool
+// HandleIguser_get_ handles the iguser_get_ tool with context-based auth
 func HandleIguser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: adgroup_id
-	if val := request.GetString("adgroup_id", ""); val != "" {
-		args["adgroup_id"] = val
-	}
-
-	// Call the client method
-	result, err := client.Iguser_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextIguser_get_agencies handles the iguser_get_agencies tool with context-based auth
-func HandleContextIguser_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Iguser_get_agencies(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_agencies: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_authorized_adaccounts handles the iguser_get_authorized_adaccounts tool with context-based auth
-func HandleContextIguser_get_authorized_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: business
-	business, err := request.RequireString("business")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
-	}
-	args["business"] = business
-
-	// Call the client method
-	result, err := client.Iguser_get_authorized_adaccounts(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_authorized_adaccounts: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_post_authorized_adaccounts handles the iguser_post_authorized_adaccounts tool with context-based auth
-func HandleContextIguser_post_authorized_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: account_id
-	account_id, err := request.RequireString("account_id")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter account_id: %v", err)), nil
-	}
-	args["account_id"] = account_id
-
-	// Required: business
-	business, err := request.RequireString("business")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
-	}
-	args["business"] = business
-
-	// Call the client method
-	result, err := client.Iguser_post_authorized_adaccounts(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_post_authorized_adaccounts: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_available_catalogs handles the iguser_get_available_catalogs tool with context-based auth
-func HandleContextIguser_get_available_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Iguser_get_available_catalogs(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_available_catalogs: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_branded_content_ad_permissions handles the iguser_get_branded_content_ad_permissions tool with context-based auth
-func HandleContextIguser_get_branded_content_ad_permissions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Iguser_get_branded_content_ad_permissions(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_branded_content_ad_permissions: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_post_branded_content_ad_permissions handles the iguser_post_branded_content_ad_permissions tool with context-based auth
-func HandleContextIguser_post_branded_content_ad_permissions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: creator_instagram_account
-	if val := request.GetString("creator_instagram_account", ""); val != "" {
-		args["creator_instagram_account"] = val
-	}
-
-	// Optional: creator_instagram_username
-	if val := request.GetString("creator_instagram_username", ""); val != "" {
-		args["creator_instagram_username"] = val
-	}
-
-	// Optional: revoke
-	if val := request.GetBool("revoke", false); val {
-		args["revoke"] = val
-	}
-
-	// Call the client method
-	result, err := client.Iguser_post_branded_content_ad_permissions(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_post_branded_content_ad_permissions: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_branded_content_advertisable_medias handles the iguser_get_branded_content_advertisable_medias tool with context-based auth
-func HandleContextIguser_get_branded_content_advertisable_medias(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: ad_code
-	if val := request.GetString("ad_code", ""); val != "" {
-		args["ad_code"] = val
-	}
-
-	// Optional: creator_username
-	if val := request.GetString("creator_username", ""); val != "" {
-		args["creator_username"] = val
-	}
-
-	// Optional: only_fetch_allowlisted
-	if val := request.GetBool("only_fetch_allowlisted", false); val {
-		args["only_fetch_allowlisted"] = val
-	}
-
-	// Optional: only_fetch_recommended_content
-	if val := request.GetBool("only_fetch_recommended_content", false); val {
-		args["only_fetch_recommended_content"] = val
-	}
-
-	// Optional: permalinks
-	// array type - using string
-	if val := request.GetString("permalinks", ""); val != "" {
-		args["permalinks"] = val
-	}
-
-	// Call the client method
-	result, err := client.Iguser_get_branded_content_advertisable_medias(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_branded_content_advertisable_medias: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_delete_branded_content_tag_approval handles the iguser_delete_branded_content_tag_approval tool with context-based auth
-func HandleContextIguser_delete_branded_content_tag_approval(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: user_ids
-	user_ids, err := request.RequireString("user_ids")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user_ids: %v", err)), nil
-	}
-	args["user_ids"] = user_ids
-
-	// Call the client method
-	result, err := client.Iguser_delete_branded_content_tag_approval(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_delete_branded_content_tag_approval: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_branded_content_tag_approval handles the iguser_get_branded_content_tag_approval tool with context-based auth
-func HandleContextIguser_get_branded_content_tag_approval(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: user_ids
-	user_ids, err := request.RequireString("user_ids")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user_ids: %v", err)), nil
-	}
-	args["user_ids"] = user_ids
-
-	// Call the client method
-	result, err := client.Iguser_get_branded_content_tag_approval(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_branded_content_tag_approval: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_post_branded_content_tag_approval handles the iguser_post_branded_content_tag_approval tool with context-based auth
-func HandleContextIguser_post_branded_content_tag_approval(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: user_ids
-	user_ids, err := request.RequireString("user_ids")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user_ids: %v", err)), nil
-	}
-	args["user_ids"] = user_ids
-
-	// Call the client method
-	result, err := client.Iguser_post_branded_content_tag_approval(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_post_branded_content_tag_approval: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_catalog_product_search handles the iguser_get_catalog_product_search tool with context-based auth
-func HandleContextIguser_get_catalog_product_search(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: catalog_id
-	catalog_id, err := request.RequireString("catalog_id")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter catalog_id: %v", err)), nil
-	}
-	args["catalog_id"] = catalog_id
-
-	// Optional: q
-	if val := request.GetString("q", ""); val != "" {
-		args["q"] = val
-	}
-
-	// Call the client method
-	result, err := client.Iguser_get_catalog_product_search(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_catalog_product_search: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_connected_threads_user handles the iguser_get_connected_threads_user tool with context-based auth
-func HandleContextIguser_get_connected_threads_user(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Iguser_get_connected_threads_user(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_connected_threads_user: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_content_publishing_limit handles the iguser_get_content_publishing_limit tool with context-based auth
-func HandleContextIguser_get_content_publishing_limit(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Call the client method
-	result, err := client.Iguser_get_content_publishing_limit(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_content_publishing_limit: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_dataset handles the iguser_get_dataset tool with context-based auth
-func HandleContextIguser_get_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Iguser_get_dataset(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_dataset: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_post_dataset handles the iguser_post_dataset tool with context-based auth
-func HandleContextIguser_post_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: dataset_name
-	if val := request.GetString("dataset_name", ""); val != "" {
-		args["dataset_name"] = val
-	}
-
-	// Call the client method
-	result, err := client.Iguser_post_dataset(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_post_dataset: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_insights handles the iguser_get_insights tool with context-based auth
-func HandleContextIguser_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: breakdown
-	// array type - using string
-	if val := request.GetString("breakdown", ""); val != "" {
-		args["breakdown"] = val
-	}
-
-	// Required: metric
-	metric, err := request.RequireString("metric")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter metric: %v", err)), nil
-	}
-	args["metric"] = metric
-
-	// Optional: metric_type
-	if val := request.GetString("metric_type", ""); val != "" {
-		args["metric_type"] = val
-	}
-
-	// Required: period
-	period, err := request.RequireString("period")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter period: %v", err)), nil
-	}
-	args["period"] = period
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Optional: timeframe
-	if val := request.GetString("timeframe", ""); val != "" {
-		args["timeframe"] = val
-	}
-
-	// Optional: until
-	if val := request.GetString("until", ""); val != "" {
-		args["until"] = val
-	}
-
-	// Call the client method
-	result, err := client.Iguser_get_insights(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_insights: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_instagram_backed_threads_user handles the iguser_get_instagram_backed_threads_user tool with context-based auth
-func HandleContextIguser_get_instagram_backed_threads_user(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Iguser_get_instagram_backed_threads_user(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_instagram_backed_threads_user: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_live_media handles the iguser_get_live_media tool with context-based auth
-func HandleContextIguser_get_live_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Optional: until
-	if val := request.GetString("until", ""); val != "" {
-		args["until"] = val
-	}
-
-	// Call the client method
-	result, err := client.Iguser_get_live_media(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_live_media: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_media handles the iguser_get_media tool with context-based auth
-func HandleContextIguser_get_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Optional: until
-	if val := request.GetString("until", ""); val != "" {
-		args["until"] = val
-	}
-
-	// Call the client method
-	result, err := client.Iguser_get_media(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_media: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_post_media handles the iguser_post_media tool with context-based auth
-func HandleContextIguser_post_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: alt_text
-	if val := request.GetString("alt_text", ""); val != "" {
-		args["alt_text"] = val
-	}
-
-	// Optional: audio_name
-	if val := request.GetString("audio_name", ""); val != "" {
-		args["audio_name"] = val
-	}
-
-	// Optional: caption
-	if val := request.GetString("caption", ""); val != "" {
-		args["caption"] = val
-	}
-
-	// Optional: children
-	// array type - using string
-	if val := request.GetString("children", ""); val != "" {
-		args["children"] = val
-	}
-
-	// Optional: collaborators
-	// array type - using string
-	if val := request.GetString("collaborators", ""); val != "" {
-		args["collaborators"] = val
-	}
-
-	// Optional: cover_url
-	if val := request.GetString("cover_url", ""); val != "" {
-		args["cover_url"] = val
-	}
-
-	// Optional: image_url
-	if val := request.GetString("image_url", ""); val != "" {
-		args["image_url"] = val
-	}
-
-	// Optional: is_carousel_item
-	if val := request.GetBool("is_carousel_item", false); val {
-		args["is_carousel_item"] = val
-	}
-
-	// Optional: location_id
-	if val := request.GetString("location_id", ""); val != "" {
-		args["location_id"] = val
-	}
-
-	// Optional: media_type
-	if val := request.GetString("media_type", ""); val != "" {
-		args["media_type"] = val
-	}
-
-	// Optional: product_tags
-	// array type - using string
-	if val := request.GetString("product_tags", ""); val != "" {
-		args["product_tags"] = val
-	}
-
-	// Optional: share_to_feed
-	if val := request.GetBool("share_to_feed", false); val {
-		args["share_to_feed"] = val
-	}
-
-	// Optional: thumb_offset
-	if val := request.GetString("thumb_offset", ""); val != "" {
-		args["thumb_offset"] = val
-	}
-
-	// Optional: upload_type
-	if val := request.GetString("upload_type", ""); val != "" {
-		args["upload_type"] = val
-	}
-
-	// Optional: user_tags
-	// array type - using string
-	if val := request.GetString("user_tags", ""); val != "" {
-		args["user_tags"] = val
-	}
-
-	// Optional: video_url
-	if val := request.GetString("video_url", ""); val != "" {
-		args["video_url"] = val
-	}
-
-	// Call the client method
-	result, err := client.Iguser_post_media(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_post_media: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_post_media_publish handles the iguser_post_media_publish tool with context-based auth
-func HandleContextIguser_post_media_publish(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: creation_id
-	creation_id, err := request.RequireInt("creation_id")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter creation_id: %v", err)), nil
-	}
-	args["creation_id"] = creation_id
-
-	// Call the client method
-	result, err := client.Iguser_post_media_publish(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_post_media_publish: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_post_mentions handles the iguser_post_mentions tool with context-based auth
-func HandleContextIguser_post_mentions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: comment_id
-	if val := request.GetString("comment_id", ""); val != "" {
-		args["comment_id"] = val
-	}
-
-	// Required: media_id
-	media_id, err := request.RequireString("media_id")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter media_id: %v", err)), nil
-	}
-	args["media_id"] = media_id
-
-	// Required: message
-	message, err := request.RequireString("message")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter message: %v", err)), nil
-	}
-	args["message"] = message
-
-	// Call the client method
-	result, err := client.Iguser_post_mentions(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_post_mentions: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_notification_message_tokens handles the iguser_get_notification_message_tokens tool with context-based auth
-func HandleContextIguser_get_notification_message_tokens(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Iguser_get_notification_message_tokens(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_notification_message_tokens: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_product_appeal handles the iguser_get_product_appeal tool with context-based auth
-func HandleContextIguser_get_product_appeal(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: product_id
-	product_id, err := request.RequireString("product_id")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter product_id: %v", err)), nil
-	}
-	args["product_id"] = product_id
-
-	// Call the client method
-	result, err := client.Iguser_get_product_appeal(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_product_appeal: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_post_product_appeal handles the iguser_post_product_appeal tool with context-based auth
-func HandleContextIguser_post_product_appeal(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: appeal_reason
-	appeal_reason, err := request.RequireString("appeal_reason")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter appeal_reason: %v", err)), nil
-	}
-	args["appeal_reason"] = appeal_reason
-
-	// Required: product_id
-	product_id, err := request.RequireString("product_id")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter product_id: %v", err)), nil
-	}
-	args["product_id"] = product_id
-
-	// Call the client method
-	result, err := client.Iguser_post_product_appeal(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_post_product_appeal: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_recently_searched_hashtags handles the iguser_get_recently_searched_hashtags tool with context-based auth
-func HandleContextIguser_get_recently_searched_hashtags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Iguser_get_recently_searched_hashtags(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_recently_searched_hashtags: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_stories handles the iguser_get_stories tool with context-based auth
-func HandleContextIguser_get_stories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Iguser_get_stories(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_stories: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_tags handles the iguser_get_tags tool with context-based auth
-func HandleContextIguser_get_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Iguser_get_tags(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_tags: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_upcoming_events handles the iguser_get_upcoming_events tool with context-based auth
-func HandleContextIguser_get_upcoming_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Iguser_get_upcoming_events(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_upcoming_events: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_post_upcoming_events handles the iguser_post_upcoming_events tool with context-based auth
-func HandleContextIguser_post_upcoming_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: end_time
-	if val := request.GetString("end_time", ""); val != "" {
-		args["end_time"] = val
-	}
-
-	// Optional: notification_subtypes
-	// array type - using string
-	if val := request.GetString("notification_subtypes", ""); val != "" {
-		args["notification_subtypes"] = val
-	}
-
-	// Required: start_time
-	start_time, err := request.RequireString("start_time")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter start_time: %v", err)), nil
-	}
-	args["start_time"] = start_time
-
-	// Required: title
-	title, err := request.RequireString("title")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter title: %v", err)), nil
-	}
-	args["title"] = title
-
-	// Call the client method
-	result, err := client.Iguser_post_upcoming_events(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_post_upcoming_events: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_welcome_message_flows handles the iguser_get_welcome_message_flows tool with context-based auth
-func HandleContextIguser_get_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: app_id
-	if val := request.GetString("app_id", ""); val != "" {
-		args["app_id"] = val
-	}
-
-	// Optional: flow_id
-	if val := request.GetString("flow_id", ""); val != "" {
-		args["flow_id"] = val
-	}
-
-	// Call the client method
-	result, err := client.Iguser_get_welcome_message_flows(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguser_get_welcome_message_flows: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIguser_get_ handles the iguser_get_ tool with context-based auth
-func HandleContextIguser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

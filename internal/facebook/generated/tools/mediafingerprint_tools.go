@@ -13,46 +13,7 @@ import (
 )
 
 // GetMediaFingerprintTools returns MCP tools for MediaFingerprint
-func GetMediaFingerprintTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// mediafingerprint_get_ tool
-	mediafingerprint_get_Tool := mcp.NewTool("mediafingerprint_get_",
-		mcp.WithDescription("GET  for MediaFingerprint"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, mediafingerprint_get_Tool)
-
-	// mediafingerprint_post_ tool
-	mediafingerprint_post_Tool := mcp.NewTool("mediafingerprint_post_",
-		mcp.WithDescription("POST  for MediaFingerprint"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("metadata",
-			mcp.Description("metadata parameter for "),
-		),
-		mcp.WithString("source",
-			mcp.Description("source parameter for "),
-		),
-		mcp.WithString("title",
-			mcp.Description("title parameter for "),
-		),
-		mcp.WithString("universal_content_id",
-			mcp.Description("universal_content_id parameter for "),
-		),
-	)
-	tools = append(tools, mediafingerprint_post_Tool)
-
-	return tools
-}
-
-// GetMediaFingerprintToolsWithoutAuth returns MCP tools for MediaFingerprint without access_token parameter
-func GetMediaFingerprintToolsWithoutAuth() []mcp.Tool {
+func GetMediaFingerprintTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// mediafingerprint_get_ tool
@@ -84,88 +45,8 @@ func GetMediaFingerprintToolsWithoutAuth() []mcp.Tool {
 
 // MediaFingerprint handlers
 
-// HandleMediafingerprint_get_ handles the mediafingerprint_get_ tool
+// HandleMediafingerprint_get_ handles the mediafingerprint_get_ tool with context-based auth
 func HandleMediafingerprint_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewMediaFingerprintClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Mediafingerprint_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute mediafingerprint_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleMediafingerprint_post_ handles the mediafingerprint_post_ tool
-func HandleMediafingerprint_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewMediaFingerprintClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: metadata
-	if val := request.GetString("metadata", ""); val != "" {
-		args["metadata"] = val
-	}
-
-	// Optional: source
-	if val := request.GetString("source", ""); val != "" {
-		args["source"] = val
-	}
-
-	// Optional: title
-	if val := request.GetString("title", ""); val != "" {
-		args["title"] = val
-	}
-
-	// Optional: universal_content_id
-	if val := request.GetString("universal_content_id", ""); val != "" {
-		args["universal_content_id"] = val
-	}
-
-	// Call the client method
-	result, err := client.Mediafingerprint_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute mediafingerprint_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextMediafingerprint_get_ handles the mediafingerprint_get_ tool with context-based auth
-func HandleContextMediafingerprint_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {
@@ -193,8 +74,8 @@ func HandleContextMediafingerprint_get_(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleContextMediafingerprint_post_ handles the mediafingerprint_post_ tool with context-based auth
-func HandleContextMediafingerprint_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleMediafingerprint_post_ handles the mediafingerprint_post_ tool with context-based auth
+func HandleMediafingerprint_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

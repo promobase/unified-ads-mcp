@@ -141,6 +141,10 @@ func (s *WrappedMCPServer) registerFacebookTools(mcpServer *server.MCPServer) er
 	allTools := facebook.GetFilteredMCPTools(s.enabledObjects)
 	handlers := facebook.GetContextAwareHandlers(s.facebookToken)
 
+	log.Printf("Found %d filtered tools", len(allTools))
+	log.Printf("Found %d handlers", len(handlers))
+	log.Printf("Enabled objects: %v", s.enabledObjects)
+
 	// Count registered tools
 	registeredCount := 0
 
@@ -151,10 +155,15 @@ func (s *WrappedMCPServer) registerFacebookTools(mcpServer *server.MCPServer) er
 			wrappedHandler := s.wrapHandlerWithContext(handler)
 			mcpServer.AddTool(tool, wrappedHandler)
 			registeredCount++
+		} else {
+			// Log first few missing handlers for debugging
+			if registeredCount == 0 && len(allTools)-registeredCount < 5 {
+				log.Printf("No handler found for tool: %s", tool.Name)
+			}
 		}
 	}
 
-	log.Printf("Registered %d tools (filtered from total available tools)", registeredCount)
+	log.Printf("Registered %d tools out of %d filtered tools", registeredCount, len(allTools))
 	return nil
 }
 

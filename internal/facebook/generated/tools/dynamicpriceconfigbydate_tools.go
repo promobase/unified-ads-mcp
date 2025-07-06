@@ -13,24 +13,7 @@ import (
 )
 
 // GetDynamicPriceConfigByDateTools returns MCP tools for DynamicPriceConfigByDate
-func GetDynamicPriceConfigByDateTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// dynamicpriceconfigbydate_get_ tool
-	dynamicpriceconfigbydate_get_Tool := mcp.NewTool("dynamicpriceconfigbydate_get_",
-		mcp.WithDescription("GET  for DynamicPriceConfigByDate"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, dynamicpriceconfigbydate_get_Tool)
-
-	return tools
-}
-
-// GetDynamicPriceConfigByDateToolsWithoutAuth returns MCP tools for DynamicPriceConfigByDate without access_token parameter
-func GetDynamicPriceConfigByDateToolsWithoutAuth() []mcp.Tool {
+func GetDynamicPriceConfigByDateTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// dynamicpriceconfigbydate_get_ tool
@@ -44,39 +27,8 @@ func GetDynamicPriceConfigByDateToolsWithoutAuth() []mcp.Tool {
 
 // DynamicPriceConfigByDate handlers
 
-// HandleDynamicpriceconfigbydate_get_ handles the dynamicpriceconfigbydate_get_ tool
+// HandleDynamicpriceconfigbydate_get_ handles the dynamicpriceconfigbydate_get_ tool with context-based auth
 func HandleDynamicpriceconfigbydate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewDynamicPriceConfigByDateClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Dynamicpriceconfigbydate_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute dynamicpriceconfigbydate_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextDynamicpriceconfigbydate_get_ handles the dynamicpriceconfigbydate_get_ tool with context-based auth
-func HandleContextDynamicpriceconfigbydate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

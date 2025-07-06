@@ -13,24 +13,7 @@ import (
 )
 
 // GetCatalogWebsiteSettingsTools returns MCP tools for CatalogWebsiteSettings
-func GetCatalogWebsiteSettingsTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// catalogwebsitesettings_get_ tool
-	catalogwebsitesettings_get_Tool := mcp.NewTool("catalogwebsitesettings_get_",
-		mcp.WithDescription("GET  for CatalogWebsiteSettings"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, catalogwebsitesettings_get_Tool)
-
-	return tools
-}
-
-// GetCatalogWebsiteSettingsToolsWithoutAuth returns MCP tools for CatalogWebsiteSettings without access_token parameter
-func GetCatalogWebsiteSettingsToolsWithoutAuth() []mcp.Tool {
+func GetCatalogWebsiteSettingsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// catalogwebsitesettings_get_ tool
@@ -44,39 +27,8 @@ func GetCatalogWebsiteSettingsToolsWithoutAuth() []mcp.Tool {
 
 // CatalogWebsiteSettings handlers
 
-// HandleCatalogwebsitesettings_get_ handles the catalogwebsitesettings_get_ tool
+// HandleCatalogwebsitesettings_get_ handles the catalogwebsitesettings_get_ tool with context-based auth
 func HandleCatalogwebsitesettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewCatalogWebsiteSettingsClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Catalogwebsitesettings_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute catalogwebsitesettings_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextCatalogwebsitesettings_get_ handles the catalogwebsitesettings_get_ tool with context-based auth
-func HandleContextCatalogwebsitesettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

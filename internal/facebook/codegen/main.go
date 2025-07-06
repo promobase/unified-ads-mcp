@@ -613,19 +613,47 @@ func generateLegacyToolsFile(ctx *CodegenContext, outputDir string) error {
 package facebook
 
 import (
+	"context"
+
+	"unified-ads-mcp/internal/facebook/generated/tools"
+
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
-	"unified-ads-mcp/internal/facebook/generated/tools"
 )
 
 // GetMCPTools returns all available MCP tools for Facebook Business API
 func GetMCPTools(accessToken string) []mcp.Tool {
-	return tools.GetAllTools(accessToken)
+	// Deprecated: accessToken parameter is ignored, use context instead
+	return tools.GetAllTools()
+}
+
+// GetFilteredMCPTools returns filtered MCP tools based on enabled objects
+func GetFilteredMCPTools(enabledObjects map[string]bool) []mcp.Tool {
+	return tools.GetFilteredTools(enabledObjects)
+}
+
+// GetContextAwareHandlers returns handlers that get auth from context
+func GetContextAwareHandlers(accessToken string) map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Deprecated: accessToken parameter is ignored, use context instead
+	return tools.GetHandlers()
 }
 
 // RegisterMCPTools registers all Facebook Business API tools with the MCP server
 func RegisterMCPTools(s *server.MCPServer, accessToken string) error {
-	return tools.RegisterTools(s, accessToken)
+	// Deprecated: accessToken parameter is ignored, use context instead
+	return tools.RegisterTools(s)
+}
+
+// Legacy compatibility functions that match the old tools package signatures
+
+// GetAllTools with accessToken parameter (for backward compatibility)
+func GetAllTools(accessToken string) []mcp.Tool {
+	return tools.GetAllTools()
+}
+
+// RegisterTools with accessToken parameter (for backward compatibility)  
+func RegisterTools(s *server.MCPServer, accessToken string) error {
+	return tools.RegisterTools(s)
 }
 `
 
@@ -797,31 +825,7 @@ import (
 )
 
 // Get{{.NodeName}}Tools returns MCP tools for {{.NodeName}}
-func Get{{.NodeName}}Tools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-{{range .Tools}}
-	// {{.Name}} tool
-	{{sanitizeVarName .Name}}Tool := mcp.NewTool("{{.Name}}",
-		mcp.WithDescription("{{.Description}}"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-{{range .Parameters}}		mcp.With{{paramType .Type}}("{{.Name}}",
-{{if .Required}}			mcp.Required(),
-{{end}}			mcp.Description("{{.Description}}"),
-{{if .EnumValues}}			mcp.Enum({{range $i, $val := .EnumValues}}{{if $i}}, {{end}}"{{$val}}"{{end}}),
-{{end}}		),
-{{end}}	)
-	tools = append(tools, {{sanitizeVarName .Name}}Tool)
-{{end}}
-
-	return tools
-}
-
-// Get{{.NodeName}}ToolsWithoutAuth returns MCP tools for {{.NodeName}} without access_token parameter
-func Get{{.NodeName}}ToolsWithoutAuth() []mcp.Tool {
+func Get{{.NodeName}}Tools() []mcp.Tool {
 	var tools []mcp.Tool
 
 {{range .Tools}}
@@ -843,67 +847,8 @@ func Get{{.NodeName}}ToolsWithoutAuth() []mcp.Tool {
 // {{.NodeName}} handlers
 
 {{range .Tools}}
-// Handle{{capitalizeFirst .Name}} handles the {{.Name}} tool
+// Handle{{capitalizeFirst .Name}} handles the {{.Name}} tool with context-based auth
 func Handle{{capitalizeFirst .Name}}(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.New{{$.NodeName}}Client(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-{{range .Parameters}}{{if .Required}}	// Required: {{.Name}}
-	{{sanitizeVarName .Name}}, err := request.{{requireMethod .Type}}("{{.Name}}")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter {{.Name}}: %v", err)), nil
-	}
-	args["{{.Name}}"] = {{sanitizeVarName .Name}}
-{{else}}	// Optional: {{.Name}}
-{{if eq .Type "string"}}	if val := request.GetString("{{.Name}}", ""); val != "" {
-		args["{{.Name}}"] = val
-	}
-{{else if eq .Type "integer"}}	if val := request.GetInt("{{.Name}}", 0); val != 0 {
-		args["{{.Name}}"] = val
-	}
-{{else if eq .Type "number"}}	if val := request.GetFloat("{{.Name}}", 0); val != 0 {
-		args["{{.Name}}"] = val
-	}
-{{else if eq .Type "boolean"}}	if val := request.GetBool("{{.Name}}", false); val {
-		args["{{.Name}}"] = val
-	}
-{{else}}	// {{.Type}} type - using string
-	if val := request.GetString("{{.Name}}", ""); val != "" {
-		args["{{.Name}}"] = val
-	}
-{{end}}{{end}}
-{{end}}
-
-	// Call the client method
-	result, err := client.{{capitalizeFirst .Name}}(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute {{.Name}}: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-{{end}}
-// Context-aware handlers
-
-{{range .Tools}}
-// HandleContext{{capitalizeFirst .Name}} handles the {{.Name}} tool with context-based auth
-func HandleContext{{capitalizeFirst .Name}}(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {
@@ -1033,43 +978,21 @@ import (
 )
 
 // GetAllTools returns all available MCP tools for Facebook Business API
-func GetAllTools(accessToken string) []mcp.Tool {
+func GetAllTools() []mcp.Tool {
 	var allTools []mcp.Tool
 
-{{range $nodeName, $_ := .NodeNames}}	allTools = append(allTools, Get{{$nodeName}}Tools(accessToken)...)
-{{end}}
-
-	return allTools
-}
-
-// GetAllToolsWithoutAuth returns all available MCP tools without access_token parameter
-func GetAllToolsWithoutAuth() []mcp.Tool {
-	var allTools []mcp.Tool
-
-{{range $nodeName, $_ := .NodeNames}}	allTools = append(allTools, Get{{$nodeName}}ToolsWithoutAuth()...)
+{{range $nodeName, $_ := .NodeNames}}	allTools = append(allTools, Get{{$nodeName}}Tools()...)
 {{end}}
 
 	return allTools
 }
 
 // GetFilteredTools returns tools filtered by object type
-func GetFilteredTools(accessToken string, enabledObjects map[string]bool) []mcp.Tool {
+func GetFilteredTools(enabledObjects map[string]bool) []mcp.Tool {
 	var filteredTools []mcp.Tool
 
 {{range $nodeName, $_ := .NodeNames}}	if enabled, ok := enabledObjects[strings.ToLower("{{$nodeName}}")]; ok && enabled {
-		filteredTools = append(filteredTools, Get{{$nodeName}}Tools(accessToken)...)
-	}
-{{end}}
-
-	return filteredTools
-}
-
-// GetFilteredToolsWithoutAuth returns tools filtered by object type without auth
-func GetFilteredToolsWithoutAuth(enabledObjects map[string]bool) []mcp.Tool {
-	var filteredTools []mcp.Tool
-
-{{range $nodeName, $_ := .NodeNames}}	if enabled, ok := enabledObjects[strings.ToLower("{{$nodeName}}")]; ok && enabled {
-		filteredTools = append(filteredTools, Get{{$nodeName}}ToolsWithoutAuth()...)
+		filteredTools = append(filteredTools, Get{{$nodeName}}Tools()...)
 	}
 {{end}}
 
@@ -1077,12 +1000,12 @@ func GetFilteredToolsWithoutAuth(enabledObjects map[string]bool) []mcp.Tool {
 }
 
 // RegisterTools registers all Facebook Business API tools with the MCP server
-func RegisterTools(s *server.MCPServer, accessToken string) error {
+func RegisterTools(s *server.MCPServer) error {
 	// Get all tools
-	tools := GetAllTools(accessToken)
+	tools := GetAllTools()
 
 	// Create a map of handlers
-	handlers := GetAllHandlers()
+	handlers := GetHandlers()
 
 	// Register each tool with its handler
 	for i := range tools {
@@ -1097,12 +1020,12 @@ func RegisterTools(s *server.MCPServer, accessToken string) error {
 }
 
 // RegisterFilteredTools registers filtered Facebook Business API tools with the MCP server
-func RegisterFilteredTools(s *server.MCPServer, accessToken string, enabledObjects map[string]bool) error {
+func RegisterFilteredTools(s *server.MCPServer, enabledObjects map[string]bool) error {
 	// Get filtered tools
-	tools := GetFilteredTools(accessToken, enabledObjects)
+	tools := GetFilteredTools(enabledObjects)
 
 	// Create a map of handlers
-	handlers := GetAllHandlers()
+	handlers := GetHandlers()
 
 	// Register each tool with its handler
 	for i := range tools {
@@ -1116,41 +1039,11 @@ func RegisterFilteredTools(s *server.MCPServer, accessToken string, enabledObjec
 	return nil
 }
 
-// RegisterFilteredToolsWithContextAuth registers filtered tools with context-aware handlers
-func RegisterFilteredToolsWithContextAuth(s *server.MCPServer, enabledObjects map[string]bool) error {
-	// Get filtered tools without auth param
-	tools := GetFilteredToolsWithoutAuth(enabledObjects)
-
-	// Create a map of context-aware handlers
-	handlers := GetContextAwareHandlers()
-
-	// Register each tool with its context-aware handler
-	for i := range tools {
-		handler, ok := handlers[tools[i].Name]
-		if !ok {
-			continue // Skip if no handler found
-		}
-		s.AddTool(tools[i], handler)
-	}
-
-	return nil
-}
-
-// GetAllHandlers returns a map of tool name to handler function
-func GetAllHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// GetHandlers returns a map of tool name to handler function
+func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
 {{range .Tools}}	handlers["{{.Name}}"] = Handle{{capitalizeFirst .Name}}
-{{end}}
-
-	return handlers
-}
-
-// GetContextAwareHandlers returns a map of tool name to context-aware handler function
-func GetContextAwareHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
-
-{{range .Tools}}	handlers["{{.Name}}"] = HandleContext{{capitalizeFirst .Name}}
 {{end}}
 
 	return handlers

@@ -13,24 +13,7 @@ import (
 )
 
 // GetAdPlacementTools returns MCP tools for AdPlacement
-func GetAdPlacementTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// adplacement_get_ tool
-	adplacement_get_Tool := mcp.NewTool("adplacement_get_",
-		mcp.WithDescription("GET  for AdPlacement"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adplacement_get_Tool)
-
-	return tools
-}
-
-// GetAdPlacementToolsWithoutAuth returns MCP tools for AdPlacement without access_token parameter
-func GetAdPlacementToolsWithoutAuth() []mcp.Tool {
+func GetAdPlacementTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adplacement_get_ tool
@@ -44,39 +27,8 @@ func GetAdPlacementToolsWithoutAuth() []mcp.Tool {
 
 // AdPlacement handlers
 
-// HandleAdplacement_get_ handles the adplacement_get_ tool
+// HandleAdplacement_get_ handles the adplacement_get_ tool with context-based auth
 func HandleAdplacement_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdPlacementClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adplacement_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adplacement_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAdplacement_get_ handles the adplacement_get_ tool with context-based auth
-func HandleContextAdplacement_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

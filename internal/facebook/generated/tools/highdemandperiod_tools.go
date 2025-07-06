@@ -13,57 +13,7 @@ import (
 )
 
 // GetHighDemandPeriodTools returns MCP tools for HighDemandPeriod
-func GetHighDemandPeriodTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// highdemandperiod_delete_ tool
-	highdemandperiod_delete_Tool := mcp.NewTool("highdemandperiod_delete_",
-		mcp.WithDescription("DELETE  for HighDemandPeriod"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, highdemandperiod_delete_Tool)
-
-	// highdemandperiod_get_ tool
-	highdemandperiod_get_Tool := mcp.NewTool("highdemandperiod_get_",
-		mcp.WithDescription("GET  for HighDemandPeriod"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, highdemandperiod_get_Tool)
-
-	// highdemandperiod_post_ tool
-	highdemandperiod_post_Tool := mcp.NewTool("highdemandperiod_post_",
-		mcp.WithDescription("POST  for HighDemandPeriod"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithNumber("budget_value",
-			mcp.Description("budget_value parameter for "),
-		),
-		mcp.WithString("budget_value_type",
-			mcp.Description("budget_value_type parameter for "),
-			mcp.Enum("ABSOLUTE", "MULTIPLIER"),
-		),
-		mcp.WithNumber("time_end",
-			mcp.Description("time_end parameter for "),
-		),
-		mcp.WithNumber("time_start",
-			mcp.Description("time_start parameter for "),
-		),
-	)
-	tools = append(tools, highdemandperiod_post_Tool)
-
-	return tools
-}
-
-// GetHighDemandPeriodToolsWithoutAuth returns MCP tools for HighDemandPeriod without access_token parameter
-func GetHighDemandPeriodToolsWithoutAuth() []mcp.Tool {
+func GetHighDemandPeriodTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// highdemandperiod_delete_ tool
@@ -102,12 +52,12 @@ func GetHighDemandPeriodToolsWithoutAuth() []mcp.Tool {
 
 // HighDemandPeriod handlers
 
-// HandleHighdemandperiod_delete_ handles the highdemandperiod_delete_ tool
+// HandleHighdemandperiod_delete_ handles the highdemandperiod_delete_ tool with context-based auth
 func HandleHighdemandperiod_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -131,12 +81,12 @@ func HandleHighdemandperiod_delete_(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleHighdemandperiod_get_ handles the highdemandperiod_get_ tool
+// HandleHighdemandperiod_get_ handles the highdemandperiod_get_ tool with context-based auth
 func HandleHighdemandperiod_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -160,117 +110,8 @@ func HandleHighdemandperiod_get_(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleHighdemandperiod_post_ handles the highdemandperiod_post_ tool
+// HandleHighdemandperiod_post_ handles the highdemandperiod_post_ tool with context-based auth
 func HandleHighdemandperiod_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewHighDemandPeriodClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: budget_value
-	if val := request.GetInt("budget_value", 0); val != 0 {
-		args["budget_value"] = val
-	}
-
-	// Optional: budget_value_type
-	if val := request.GetString("budget_value_type", ""); val != "" {
-		args["budget_value_type"] = val
-	}
-
-	// Optional: time_end
-	if val := request.GetInt("time_end", 0); val != 0 {
-		args["time_end"] = val
-	}
-
-	// Optional: time_start
-	if val := request.GetInt("time_start", 0); val != 0 {
-		args["time_start"] = val
-	}
-
-	// Call the client method
-	result, err := client.Highdemandperiod_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute highdemandperiod_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextHighdemandperiod_delete_ handles the highdemandperiod_delete_ tool with context-based auth
-func HandleContextHighdemandperiod_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewHighDemandPeriodClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Highdemandperiod_delete_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute highdemandperiod_delete_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextHighdemandperiod_get_ handles the highdemandperiod_get_ tool with context-based auth
-func HandleContextHighdemandperiod_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewHighDemandPeriodClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Highdemandperiod_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute highdemandperiod_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextHighdemandperiod_post_ handles the highdemandperiod_post_ tool with context-based auth
-func HandleContextHighdemandperiod_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

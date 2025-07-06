@@ -13,24 +13,7 @@ import (
 )
 
 // GetAdsPivotRulesTools returns MCP tools for AdsPivotRules
-func GetAdsPivotRulesTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// adspivotrules_get_ tool
-	adspivotrules_get_Tool := mcp.NewTool("adspivotrules_get_",
-		mcp.WithDescription("GET  for AdsPivotRules"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adspivotrules_get_Tool)
-
-	return tools
-}
-
-// GetAdsPivotRulesToolsWithoutAuth returns MCP tools for AdsPivotRules without access_token parameter
-func GetAdsPivotRulesToolsWithoutAuth() []mcp.Tool {
+func GetAdsPivotRulesTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adspivotrules_get_ tool
@@ -44,39 +27,8 @@ func GetAdsPivotRulesToolsWithoutAuth() []mcp.Tool {
 
 // AdsPivotRules handlers
 
-// HandleAdspivotrules_get_ handles the adspivotrules_get_ tool
+// HandleAdspivotrules_get_ handles the adspivotrules_get_ tool with context-based auth
 func HandleAdspivotrules_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdsPivotRulesClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adspivotrules_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adspivotrules_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAdspivotrules_get_ handles the adspivotrules_get_ tool with context-based auth
-func HandleContextAdspivotrules_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

@@ -13,24 +13,7 @@ import (
 )
 
 // GetFAMEKumoTools returns MCP tools for FAMEKumo
-func GetFAMEKumoTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// famekumo_get_ tool
-	famekumo_get_Tool := mcp.NewTool("famekumo_get_",
-		mcp.WithDescription("GET  for FAMEKumo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, famekumo_get_Tool)
-
-	return tools
-}
-
-// GetFAMEKumoToolsWithoutAuth returns MCP tools for FAMEKumo without access_token parameter
-func GetFAMEKumoToolsWithoutAuth() []mcp.Tool {
+func GetFAMEKumoTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// famekumo_get_ tool
@@ -44,39 +27,8 @@ func GetFAMEKumoToolsWithoutAuth() []mcp.Tool {
 
 // FAMEKumo handlers
 
-// HandleFamekumo_get_ handles the famekumo_get_ tool
+// HandleFamekumo_get_ handles the famekumo_get_ tool with context-based auth
 func HandleFamekumo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewFAMEKumoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Famekumo_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute famekumo_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextFamekumo_get_ handles the famekumo_get_ tool with context-based auth
-func HandleContextFamekumo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

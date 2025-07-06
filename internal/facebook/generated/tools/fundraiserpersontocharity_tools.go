@@ -13,121 +13,7 @@ import (
 )
 
 // GetFundraiserPersonToCharityTools returns MCP tools for FundraiserPersonToCharity
-func GetFundraiserPersonToCharityTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// fundraiserpersontocharity_get_donations tool
-	fundraiserpersontocharity_get_donationsTool := mcp.NewTool("fundraiserpersontocharity_get_donations",
-		mcp.WithDescription("GET donations for FundraiserPersonToCharity"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, fundraiserpersontocharity_get_donationsTool)
-
-	// fundraiserpersontocharity_post_end_fundraiser tool
-	fundraiserpersontocharity_post_end_fundraiserTool := mcp.NewTool("fundraiserpersontocharity_post_end_fundraiser",
-		mcp.WithDescription("POST end_fundraiser for FundraiserPersonToCharity"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, fundraiserpersontocharity_post_end_fundraiserTool)
-
-	// fundraiserpersontocharity_get_external_donations tool
-	fundraiserpersontocharity_get_external_donationsTool := mcp.NewTool("fundraiserpersontocharity_get_external_donations",
-		mcp.WithDescription("GET external_donations for FundraiserPersonToCharity"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, fundraiserpersontocharity_get_external_donationsTool)
-
-	// fundraiserpersontocharity_post_external_donations tool
-	fundraiserpersontocharity_post_external_donationsTool := mcp.NewTool("fundraiserpersontocharity_post_external_donations",
-		mcp.WithDescription("POST external_donations for FundraiserPersonToCharity"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithNumber("amount_received",
-			mcp.Required(),
-			mcp.Description("amount_received parameter for external_donations"),
-		),
-		mcp.WithString("currency",
-			mcp.Required(),
-			mcp.Description("currency parameter for external_donations"),
-		),
-		mcp.WithString("donation_id_hash",
-			mcp.Required(),
-			mcp.Description("donation_id_hash parameter for external_donations"),
-		),
-		mcp.WithNumber("donation_time",
-			mcp.Required(),
-			mcp.Description("donation_time parameter for external_donations"),
-		),
-		mcp.WithString("donor_id_hash",
-			mcp.Required(),
-			mcp.Description("donor_id_hash parameter for external_donations"),
-		),
-	)
-	tools = append(tools, fundraiserpersontocharity_post_external_donationsTool)
-
-	// fundraiserpersontocharity_get_ tool
-	fundraiserpersontocharity_get_Tool := mcp.NewTool("fundraiserpersontocharity_get_",
-		mcp.WithDescription("GET  for FundraiserPersonToCharity"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, fundraiserpersontocharity_get_Tool)
-
-	// fundraiserpersontocharity_post_ tool
-	fundraiserpersontocharity_post_Tool := mcp.NewTool("fundraiserpersontocharity_post_",
-		mcp.WithDescription("POST  for FundraiserPersonToCharity"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for "),
-		),
-		mcp.WithString("end_time",
-			mcp.Description("end_time parameter for "),
-		),
-		mcp.WithString("external_event_name",
-			mcp.Description("external_event_name parameter for "),
-		),
-		mcp.WithString("external_event_start_time",
-			mcp.Description("external_event_start_time parameter for "),
-		),
-		mcp.WithString("external_event_uri",
-			mcp.Description("external_event_uri parameter for "),
-		),
-		mcp.WithString("external_fundraiser_uri",
-			mcp.Description("external_fundraiser_uri parameter for "),
-		),
-		mcp.WithString("external_id",
-			mcp.Description("external_id parameter for "),
-		),
-		mcp.WithNumber("goal_amount",
-			mcp.Description("goal_amount parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-	)
-	tools = append(tools, fundraiserpersontocharity_post_Tool)
-
-	return tools
-}
-
-// GetFundraiserPersonToCharityToolsWithoutAuth returns MCP tools for FundraiserPersonToCharity without access_token parameter
-func GetFundraiserPersonToCharityToolsWithoutAuth() []mcp.Tool {
+func GetFundraiserPersonToCharityTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// fundraiserpersontocharity_get_donations tool
@@ -218,12 +104,12 @@ func GetFundraiserPersonToCharityToolsWithoutAuth() []mcp.Tool {
 
 // FundraiserPersonToCharity handlers
 
-// HandleFundraiserpersontocharity_get_donations handles the fundraiserpersontocharity_get_donations tool
+// HandleFundraiserpersontocharity_get_donations handles the fundraiserpersontocharity_get_donations tool with context-based auth
 func HandleFundraiserpersontocharity_get_donations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -247,12 +133,12 @@ func HandleFundraiserpersontocharity_get_donations(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFundraiserpersontocharity_post_end_fundraiser handles the fundraiserpersontocharity_post_end_fundraiser tool
+// HandleFundraiserpersontocharity_post_end_fundraiser handles the fundraiserpersontocharity_post_end_fundraiser tool with context-based auth
 func HandleFundraiserpersontocharity_post_end_fundraiser(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -276,12 +162,12 @@ func HandleFundraiserpersontocharity_post_end_fundraiser(ctx context.Context, re
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFundraiserpersontocharity_get_external_donations handles the fundraiserpersontocharity_get_external_donations tool
+// HandleFundraiserpersontocharity_get_external_donations handles the fundraiserpersontocharity_get_external_donations tool with context-based auth
 func HandleFundraiserpersontocharity_get_external_donations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -305,12 +191,12 @@ func HandleFundraiserpersontocharity_get_external_donations(ctx context.Context,
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFundraiserpersontocharity_post_external_donations handles the fundraiserpersontocharity_post_external_donations tool
+// HandleFundraiserpersontocharity_post_external_donations handles the fundraiserpersontocharity_post_external_donations tool with context-based auth
 func HandleFundraiserpersontocharity_post_external_donations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -369,12 +255,12 @@ func HandleFundraiserpersontocharity_post_external_donations(ctx context.Context
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFundraiserpersontocharity_get_ handles the fundraiserpersontocharity_get_ tool
+// HandleFundraiserpersontocharity_get_ handles the fundraiserpersontocharity_get_ tool with context-based auth
 func HandleFundraiserpersontocharity_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -398,264 +284,8 @@ func HandleFundraiserpersontocharity_get_(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleFundraiserpersontocharity_post_ handles the fundraiserpersontocharity_post_ tool
+// HandleFundraiserpersontocharity_post_ handles the fundraiserpersontocharity_post_ tool with context-based auth
 func HandleFundraiserpersontocharity_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewFundraiserPersonToCharityClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: end_time
-	if val := request.GetString("end_time", ""); val != "" {
-		args["end_time"] = val
-	}
-
-	// Optional: external_event_name
-	if val := request.GetString("external_event_name", ""); val != "" {
-		args["external_event_name"] = val
-	}
-
-	// Optional: external_event_start_time
-	if val := request.GetString("external_event_start_time", ""); val != "" {
-		args["external_event_start_time"] = val
-	}
-
-	// Optional: external_event_uri
-	if val := request.GetString("external_event_uri", ""); val != "" {
-		args["external_event_uri"] = val
-	}
-
-	// Optional: external_fundraiser_uri
-	if val := request.GetString("external_fundraiser_uri", ""); val != "" {
-		args["external_fundraiser_uri"] = val
-	}
-
-	// Optional: external_id
-	if val := request.GetString("external_id", ""); val != "" {
-		args["external_id"] = val
-	}
-
-	// Optional: goal_amount
-	if val := request.GetInt("goal_amount", 0); val != 0 {
-		args["goal_amount"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Call the client method
-	result, err := client.Fundraiserpersontocharity_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute fundraiserpersontocharity_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextFundraiserpersontocharity_get_donations handles the fundraiserpersontocharity_get_donations tool with context-based auth
-func HandleContextFundraiserpersontocharity_get_donations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewFundraiserPersonToCharityClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Fundraiserpersontocharity_get_donations(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute fundraiserpersontocharity_get_donations: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextFundraiserpersontocharity_post_end_fundraiser handles the fundraiserpersontocharity_post_end_fundraiser tool with context-based auth
-func HandleContextFundraiserpersontocharity_post_end_fundraiser(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewFundraiserPersonToCharityClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Fundraiserpersontocharity_post_end_fundraiser(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute fundraiserpersontocharity_post_end_fundraiser: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextFundraiserpersontocharity_get_external_donations handles the fundraiserpersontocharity_get_external_donations tool with context-based auth
-func HandleContextFundraiserpersontocharity_get_external_donations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewFundraiserPersonToCharityClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Fundraiserpersontocharity_get_external_donations(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute fundraiserpersontocharity_get_external_donations: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextFundraiserpersontocharity_post_external_donations handles the fundraiserpersontocharity_post_external_donations tool with context-based auth
-func HandleContextFundraiserpersontocharity_post_external_donations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewFundraiserPersonToCharityClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: amount_received
-	amount_received, err := request.RequireInt("amount_received")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter amount_received: %v", err)), nil
-	}
-	args["amount_received"] = amount_received
-
-	// Required: currency
-	currency, err := request.RequireString("currency")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter currency: %v", err)), nil
-	}
-	args["currency"] = currency
-
-	// Required: donation_id_hash
-	donation_id_hash, err := request.RequireString("donation_id_hash")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter donation_id_hash: %v", err)), nil
-	}
-	args["donation_id_hash"] = donation_id_hash
-
-	// Required: donation_time
-	donation_time, err := request.RequireInt("donation_time")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter donation_time: %v", err)), nil
-	}
-	args["donation_time"] = donation_time
-
-	// Required: donor_id_hash
-	donor_id_hash, err := request.RequireString("donor_id_hash")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter donor_id_hash: %v", err)), nil
-	}
-	args["donor_id_hash"] = donor_id_hash
-
-	// Call the client method
-	result, err := client.Fundraiserpersontocharity_post_external_donations(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute fundraiserpersontocharity_post_external_donations: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextFundraiserpersontocharity_get_ handles the fundraiserpersontocharity_get_ tool with context-based auth
-func HandleContextFundraiserpersontocharity_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewFundraiserPersonToCharityClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Fundraiserpersontocharity_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute fundraiserpersontocharity_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextFundraiserpersontocharity_post_ handles the fundraiserpersontocharity_post_ tool with context-based auth
-func HandleContextFundraiserpersontocharity_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

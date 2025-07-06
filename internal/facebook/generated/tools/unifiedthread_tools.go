@@ -13,38 +13,7 @@ import (
 )
 
 // GetUnifiedThreadTools returns MCP tools for UnifiedThread
-func GetUnifiedThreadTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// unifiedthread_get_messages tool
-	unifiedthread_get_messagesTool := mcp.NewTool("unifiedthread_get_messages",
-		mcp.WithDescription("GET messages for UnifiedThread"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("source",
-			mcp.Description("source parameter for messages"),
-			mcp.Enum("ALL", "PARTICIPANTS"),
-		),
-	)
-	tools = append(tools, unifiedthread_get_messagesTool)
-
-	// unifiedthread_get_ tool
-	unifiedthread_get_Tool := mcp.NewTool("unifiedthread_get_",
-		mcp.WithDescription("GET  for UnifiedThread"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, unifiedthread_get_Tool)
-
-	return tools
-}
-
-// GetUnifiedThreadToolsWithoutAuth returns MCP tools for UnifiedThread without access_token parameter
-func GetUnifiedThreadToolsWithoutAuth() []mcp.Tool {
+func GetUnifiedThreadTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// unifiedthread_get_messages tool
@@ -68,73 +37,8 @@ func GetUnifiedThreadToolsWithoutAuth() []mcp.Tool {
 
 // UnifiedThread handlers
 
-// HandleUnifiedthread_get_messages handles the unifiedthread_get_messages tool
+// HandleUnifiedthread_get_messages handles the unifiedthread_get_messages tool with context-based auth
 func HandleUnifiedthread_get_messages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewUnifiedThreadClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: source
-	if val := request.GetString("source", ""); val != "" {
-		args["source"] = val
-	}
-
-	// Call the client method
-	result, err := client.Unifiedthread_get_messages(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute unifiedthread_get_messages: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleUnifiedthread_get_ handles the unifiedthread_get_ tool
-func HandleUnifiedthread_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewUnifiedThreadClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Unifiedthread_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute unifiedthread_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextUnifiedthread_get_messages handles the unifiedthread_get_messages tool with context-based auth
-func HandleContextUnifiedthread_get_messages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {
@@ -167,8 +71,8 @@ func HandleContextUnifiedthread_get_messages(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleContextUnifiedthread_get_ handles the unifiedthread_get_ tool with context-based auth
-func HandleContextUnifiedthread_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleUnifiedthread_get_ handles the unifiedthread_get_ tool with context-based auth
+func HandleUnifiedthread_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

@@ -13,24 +13,7 @@ import (
 )
 
 // GetInstagramBusinessAssetTools returns MCP tools for InstagramBusinessAsset
-func GetInstagramBusinessAssetTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// instagrambusinessasset_get_ tool
-	instagrambusinessasset_get_Tool := mcp.NewTool("instagrambusinessasset_get_",
-		mcp.WithDescription("GET  for InstagramBusinessAsset"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, instagrambusinessasset_get_Tool)
-
-	return tools
-}
-
-// GetInstagramBusinessAssetToolsWithoutAuth returns MCP tools for InstagramBusinessAsset without access_token parameter
-func GetInstagramBusinessAssetToolsWithoutAuth() []mcp.Tool {
+func GetInstagramBusinessAssetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// instagrambusinessasset_get_ tool
@@ -44,39 +27,8 @@ func GetInstagramBusinessAssetToolsWithoutAuth() []mcp.Tool {
 
 // InstagramBusinessAsset handlers
 
-// HandleInstagrambusinessasset_get_ handles the instagrambusinessasset_get_ tool
+// HandleInstagrambusinessasset_get_ handles the instagrambusinessasset_get_ tool with context-based auth
 func HandleInstagrambusinessasset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewInstagramBusinessAssetClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Instagrambusinessasset_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute instagrambusinessasset_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextInstagrambusinessasset_get_ handles the instagrambusinessasset_get_ tool with context-based auth
-func HandleContextInstagrambusinessasset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

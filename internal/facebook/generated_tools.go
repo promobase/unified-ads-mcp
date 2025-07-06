@@ -3,6 +3,8 @@
 package facebook
 
 import (
+	"context"
+
 	"unified-ads-mcp/internal/facebook/generated/tools"
 
 	"github.com/mark3labs/mcp-go/mcp"
@@ -11,10 +13,35 @@ import (
 
 // GetMCPTools returns all available MCP tools for Facebook Business API
 func GetMCPTools(accessToken string) []mcp.Tool {
-	return tools.GetAllTools(accessToken)
+	// Deprecated: accessToken parameter is ignored, use context instead
+	return tools.GetAllTools()
+}
+
+// GetFilteredMCPTools returns filtered MCP tools based on enabled objects
+func GetFilteredMCPTools(enabledObjects map[string]bool) []mcp.Tool {
+	return tools.GetFilteredTools(enabledObjects)
+}
+
+// GetContextAwareHandlers returns handlers that get auth from context
+func GetContextAwareHandlers(accessToken string) map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Deprecated: accessToken parameter is ignored, use context instead
+	return tools.GetHandlers()
 }
 
 // RegisterMCPTools registers all Facebook Business API tools with the MCP server
 func RegisterMCPTools(s *server.MCPServer, accessToken string) error {
-	return tools.RegisterTools(s, accessToken)
+	// Deprecated: accessToken parameter is ignored, use context instead
+	return tools.RegisterTools(s)
+}
+
+// Legacy compatibility functions that match the old tools package signatures
+
+// GetAllTools with accessToken parameter (for backward compatibility)
+func GetAllTools(accessToken string) []mcp.Tool {
+	return tools.GetAllTools()
+}
+
+// RegisterTools with accessToken parameter (for backward compatibility)  
+func RegisterTools(s *server.MCPServer, accessToken string) error {
+	return tools.RegisterTools(s)
 }

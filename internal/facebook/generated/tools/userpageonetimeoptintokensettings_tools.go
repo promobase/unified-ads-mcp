@@ -13,24 +13,7 @@ import (
 )
 
 // GetUserPageOneTimeOptInTokenSettingsTools returns MCP tools for UserPageOneTimeOptInTokenSettings
-func GetUserPageOneTimeOptInTokenSettingsTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// userpageonetimeoptintokensettings_get_ tool
-	userpageonetimeoptintokensettings_get_Tool := mcp.NewTool("userpageonetimeoptintokensettings_get_",
-		mcp.WithDescription("GET  for UserPageOneTimeOptInTokenSettings"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, userpageonetimeoptintokensettings_get_Tool)
-
-	return tools
-}
-
-// GetUserPageOneTimeOptInTokenSettingsToolsWithoutAuth returns MCP tools for UserPageOneTimeOptInTokenSettings without access_token parameter
-func GetUserPageOneTimeOptInTokenSettingsToolsWithoutAuth() []mcp.Tool {
+func GetUserPageOneTimeOptInTokenSettingsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// userpageonetimeoptintokensettings_get_ tool
@@ -44,39 +27,8 @@ func GetUserPageOneTimeOptInTokenSettingsToolsWithoutAuth() []mcp.Tool {
 
 // UserPageOneTimeOptInTokenSettings handlers
 
-// HandleUserpageonetimeoptintokensettings_get_ handles the userpageonetimeoptintokensettings_get_ tool
+// HandleUserpageonetimeoptintokensettings_get_ handles the userpageonetimeoptintokensettings_get_ tool with context-based auth
 func HandleUserpageonetimeoptintokensettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewUserPageOneTimeOptInTokenSettingsClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Userpageonetimeoptintokensettings_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute userpageonetimeoptintokensettings_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextUserpageonetimeoptintokensettings_get_ handles the userpageonetimeoptintokensettings_get_ tool with context-based auth
-func HandleContextUserpageonetimeoptintokensettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

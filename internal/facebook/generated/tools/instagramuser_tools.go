@@ -13,71 +13,7 @@ import (
 )
 
 // GetInstagramUserTools returns MCP tools for InstagramUser
-func GetInstagramUserTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// instagramuser_get_agencies tool
-	instagramuser_get_agenciesTool := mcp.NewTool("instagramuser_get_agencies",
-		mcp.WithDescription("GET agencies for InstagramUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, instagramuser_get_agenciesTool)
-
-	// instagramuser_get_ar_effects tool
-	instagramuser_get_ar_effectsTool := mcp.NewTool("instagramuser_get_ar_effects",
-		mcp.WithDescription("GET ar_effects for InstagramUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, instagramuser_get_ar_effectsTool)
-
-	// instagramuser_get_authorized_adaccounts tool
-	instagramuser_get_authorized_adaccountsTool := mcp.NewTool("instagramuser_get_authorized_adaccounts",
-		mcp.WithDescription("GET authorized_adaccounts for InstagramUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("business",
-			mcp.Required(),
-			mcp.Description("business parameter for authorized_adaccounts"),
-		),
-	)
-	tools = append(tools, instagramuser_get_authorized_adaccountsTool)
-
-	// instagramuser_get_upcoming_events tool
-	instagramuser_get_upcoming_eventsTool := mcp.NewTool("instagramuser_get_upcoming_events",
-		mcp.WithDescription("GET upcoming_events for InstagramUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, instagramuser_get_upcoming_eventsTool)
-
-	// instagramuser_get_ tool
-	instagramuser_get_Tool := mcp.NewTool("instagramuser_get_",
-		mcp.WithDescription("GET  for InstagramUser"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("adgroup_id",
-			mcp.Description("adgroup_id parameter for "),
-		),
-	)
-	tools = append(tools, instagramuser_get_Tool)
-
-	return tools
-}
-
-// GetInstagramUserToolsWithoutAuth returns MCP tools for InstagramUser without access_token parameter
-func GetInstagramUserToolsWithoutAuth() []mcp.Tool {
+func GetInstagramUserTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// instagramuser_get_agencies tool
@@ -122,12 +58,12 @@ func GetInstagramUserToolsWithoutAuth() []mcp.Tool {
 
 // InstagramUser handlers
 
-// HandleInstagramuser_get_agencies handles the instagramuser_get_agencies tool
+// HandleInstagramuser_get_agencies handles the instagramuser_get_agencies tool with context-based auth
 func HandleInstagramuser_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -151,12 +87,12 @@ func HandleInstagramuser_get_agencies(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleInstagramuser_get_ar_effects handles the instagramuser_get_ar_effects tool
+// HandleInstagramuser_get_ar_effects handles the instagramuser_get_ar_effects tool with context-based auth
 func HandleInstagramuser_get_ar_effects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -180,12 +116,12 @@ func HandleInstagramuser_get_ar_effects(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleInstagramuser_get_authorized_adaccounts handles the instagramuser_get_authorized_adaccounts tool
+// HandleInstagramuser_get_authorized_adaccounts handles the instagramuser_get_authorized_adaccounts tool with context-based auth
 func HandleInstagramuser_get_authorized_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -216,12 +152,12 @@ func HandleInstagramuser_get_authorized_adaccounts(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleInstagramuser_get_upcoming_events handles the instagramuser_get_upcoming_events tool
+// HandleInstagramuser_get_upcoming_events handles the instagramuser_get_upcoming_events tool with context-based auth
 func HandleInstagramuser_get_upcoming_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -245,167 +181,8 @@ func HandleInstagramuser_get_upcoming_events(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleInstagramuser_get_ handles the instagramuser_get_ tool
+// HandleInstagramuser_get_ handles the instagramuser_get_ tool with context-based auth
 func HandleInstagramuser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewInstagramUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: adgroup_id
-	if val := request.GetString("adgroup_id", ""); val != "" {
-		args["adgroup_id"] = val
-	}
-
-	// Call the client method
-	result, err := client.Instagramuser_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute instagramuser_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextInstagramuser_get_agencies handles the instagramuser_get_agencies tool with context-based auth
-func HandleContextInstagramuser_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewInstagramUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Instagramuser_get_agencies(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute instagramuser_get_agencies: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextInstagramuser_get_ar_effects handles the instagramuser_get_ar_effects tool with context-based auth
-func HandleContextInstagramuser_get_ar_effects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewInstagramUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Instagramuser_get_ar_effects(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute instagramuser_get_ar_effects: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextInstagramuser_get_authorized_adaccounts handles the instagramuser_get_authorized_adaccounts tool with context-based auth
-func HandleContextInstagramuser_get_authorized_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewInstagramUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: business
-	business, err := request.RequireString("business")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
-	}
-	args["business"] = business
-
-	// Call the client method
-	result, err := client.Instagramuser_get_authorized_adaccounts(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute instagramuser_get_authorized_adaccounts: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextInstagramuser_get_upcoming_events handles the instagramuser_get_upcoming_events tool with context-based auth
-func HandleContextInstagramuser_get_upcoming_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewInstagramUserClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Instagramuser_get_upcoming_events(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute instagramuser_get_upcoming_events: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextInstagramuser_get_ handles the instagramuser_get_ tool with context-based auth
-func HandleContextInstagramuser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

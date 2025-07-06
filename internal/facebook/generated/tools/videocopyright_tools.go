@@ -13,79 +13,7 @@ import (
 )
 
 // GetVideoCopyrightTools returns MCP tools for VideoCopyright
-func GetVideoCopyrightTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// videocopyright_get_update_records tool
-	videocopyright_get_update_recordsTool := mcp.NewTool("videocopyright_get_update_records",
-		mcp.WithDescription("GET update_records for VideoCopyright"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, videocopyright_get_update_recordsTool)
-
-	// videocopyright_get_ tool
-	videocopyright_get_Tool := mcp.NewTool("videocopyright_get_",
-		mcp.WithDescription("GET  for VideoCopyright"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, videocopyright_get_Tool)
-
-	// videocopyright_post_ tool
-	videocopyright_post_Tool := mcp.NewTool("videocopyright_post_",
-		mcp.WithDescription("POST  for VideoCopyright"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithBoolean("append_excluded_ownership_segments",
-			mcp.Description("append_excluded_ownership_segments parameter for "),
-		),
-		mcp.WithString("attribution_id",
-			mcp.Description("attribution_id parameter for "),
-		),
-		mcp.WithString("content_category",
-			mcp.Description("content_category parameter for "),
-			mcp.Enum("episode", "movie", "web"),
-		),
-		mcp.WithString("excluded_ownership_countries",
-			mcp.Description("excluded_ownership_countries parameter for "),
-		),
-		mcp.WithString("excluded_ownership_segments",
-			mcp.Description("excluded_ownership_segments parameter for "),
-		),
-		mcp.WithBoolean("is_reference_disabled",
-			mcp.Description("is_reference_disabled parameter for "),
-		),
-		mcp.WithString("monitoring_type",
-			mcp.Description("monitoring_type parameter for "),
-			mcp.Enum("AUDIO_ONLY", "VIDEO_AND_AUDIO", "VIDEO_ONLY"),
-		),
-		mcp.WithString("ownership_countries",
-			mcp.Description("ownership_countries parameter for "),
-		),
-		mcp.WithString("rule_id",
-			mcp.Description("rule_id parameter for "),
-		),
-		mcp.WithString("whitelisted_ids",
-			mcp.Description("whitelisted_ids parameter for "),
-		),
-		mcp.WithString("whitelisted_ig_user_ids",
-			mcp.Description("whitelisted_ig_user_ids parameter for "),
-		),
-	)
-	tools = append(tools, videocopyright_post_Tool)
-
-	return tools
-}
-
-// GetVideoCopyrightToolsWithoutAuth returns MCP tools for VideoCopyright without access_token parameter
-func GetVideoCopyrightToolsWithoutAuth() []mcp.Tool {
+func GetVideoCopyrightTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// videocopyright_get_update_records tool
@@ -146,12 +74,12 @@ func GetVideoCopyrightToolsWithoutAuth() []mcp.Tool {
 
 // VideoCopyright handlers
 
-// HandleVideocopyright_get_update_records handles the videocopyright_get_update_records tool
+// HandleVideocopyright_get_update_records handles the videocopyright_get_update_records tool with context-based auth
 func HandleVideocopyright_get_update_records(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -175,12 +103,12 @@ func HandleVideocopyright_get_update_records(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleVideocopyright_get_ handles the videocopyright_get_ tool
+// HandleVideocopyright_get_ handles the videocopyright_get_ tool with context-based auth
 func HandleVideocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -204,157 +132,8 @@ func HandleVideocopyright_get_(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleVideocopyright_post_ handles the videocopyright_post_ tool
+// HandleVideocopyright_post_ handles the videocopyright_post_ tool with context-based auth
 func HandleVideocopyright_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewVideoCopyrightClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: append_excluded_ownership_segments
-	if val := request.GetBool("append_excluded_ownership_segments", false); val {
-		args["append_excluded_ownership_segments"] = val
-	}
-
-	// Optional: attribution_id
-	if val := request.GetString("attribution_id", ""); val != "" {
-		args["attribution_id"] = val
-	}
-
-	// Optional: content_category
-	if val := request.GetString("content_category", ""); val != "" {
-		args["content_category"] = val
-	}
-
-	// Optional: excluded_ownership_countries
-	// array type - using string
-	if val := request.GetString("excluded_ownership_countries", ""); val != "" {
-		args["excluded_ownership_countries"] = val
-	}
-
-	// Optional: excluded_ownership_segments
-	// array type - using string
-	if val := request.GetString("excluded_ownership_segments", ""); val != "" {
-		args["excluded_ownership_segments"] = val
-	}
-
-	// Optional: is_reference_disabled
-	if val := request.GetBool("is_reference_disabled", false); val {
-		args["is_reference_disabled"] = val
-	}
-
-	// Optional: monitoring_type
-	if val := request.GetString("monitoring_type", ""); val != "" {
-		args["monitoring_type"] = val
-	}
-
-	// Optional: ownership_countries
-	// array type - using string
-	if val := request.GetString("ownership_countries", ""); val != "" {
-		args["ownership_countries"] = val
-	}
-
-	// Optional: rule_id
-	if val := request.GetString("rule_id", ""); val != "" {
-		args["rule_id"] = val
-	}
-
-	// Optional: whitelisted_ids
-	// array type - using string
-	if val := request.GetString("whitelisted_ids", ""); val != "" {
-		args["whitelisted_ids"] = val
-	}
-
-	// Optional: whitelisted_ig_user_ids
-	// array type - using string
-	if val := request.GetString("whitelisted_ig_user_ids", ""); val != "" {
-		args["whitelisted_ig_user_ids"] = val
-	}
-
-	// Call the client method
-	result, err := client.Videocopyright_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute videocopyright_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextVideocopyright_get_update_records handles the videocopyright_get_update_records tool with context-based auth
-func HandleContextVideocopyright_get_update_records(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewVideoCopyrightClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Videocopyright_get_update_records(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute videocopyright_get_update_records: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextVideocopyright_get_ handles the videocopyright_get_ tool with context-based auth
-func HandleContextVideocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewVideoCopyrightClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Videocopyright_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute videocopyright_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextVideocopyright_post_ handles the videocopyright_post_ tool with context-based auth
-func HandleContextVideocopyright_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

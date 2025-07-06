@@ -13,13 +13,12 @@ import (
 )
 
 func main() {
-	// Load .env file
-	utils.LoadEnv()
+	utils.LoadFacebookConfig()
 
 	// Define command-line flags
 	var (
-		categories = flag.String("categories", "core_ads", 
-			fmt.Sprintf("Comma-separated list of enabled categories. Valid options: %s", 
+		categories = flag.String("categories", "core_ads",
+			fmt.Sprintf("Comma-separated list of enabled categories. Valid options: %s",
 				strings.Join(mcp.GetValidCategories(), ", ")))
 		help = flag.Bool("help", false, "Show help message")
 	)

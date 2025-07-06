@@ -13,48 +13,7 @@ import (
 )
 
 // GetCPASLsbImageBankTools returns MCP tools for CPASLsbImageBank
-func GetCPASLsbImageBankTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// cpaslsbimagebank_get_backup_images tool
-	cpaslsbimagebank_get_backup_imagesTool := mcp.NewTool("cpaslsbimagebank_get_backup_images",
-		mcp.WithDescription("GET backup_images for CPASLsbImageBank"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, cpaslsbimagebank_get_backup_imagesTool)
-
-	// cpaslsbimagebank_get_ tool
-	cpaslsbimagebank_get_Tool := mcp.NewTool("cpaslsbimagebank_get_",
-		mcp.WithDescription("GET  for CPASLsbImageBank"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, cpaslsbimagebank_get_Tool)
-
-	// cpaslsbimagebank_post_ tool
-	cpaslsbimagebank_post_Tool := mcp.NewTool("cpaslsbimagebank_post_",
-		mcp.WithDescription("POST  for CPASLsbImageBank"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("backup_image_urls",
-			mcp.Required(),
-			mcp.Description("backup_image_urls parameter for "),
-		),
-	)
-	tools = append(tools, cpaslsbimagebank_post_Tool)
-
-	return tools
-}
-
-// GetCPASLsbImageBankToolsWithoutAuth returns MCP tools for CPASLsbImageBank without access_token parameter
-func GetCPASLsbImageBankToolsWithoutAuth() []mcp.Tool {
+func GetCPASLsbImageBankTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// cpaslsbimagebank_get_backup_images tool
@@ -84,12 +43,12 @@ func GetCPASLsbImageBankToolsWithoutAuth() []mcp.Tool {
 
 // CPASLsbImageBank handlers
 
-// HandleCpaslsbimagebank_get_backup_images handles the cpaslsbimagebank_get_backup_images tool
+// HandleCpaslsbimagebank_get_backup_images handles the cpaslsbimagebank_get_backup_images tool with context-based auth
 func HandleCpaslsbimagebank_get_backup_images(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -113,12 +72,12 @@ func HandleCpaslsbimagebank_get_backup_images(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleCpaslsbimagebank_get_ handles the cpaslsbimagebank_get_ tool
+// HandleCpaslsbimagebank_get_ handles the cpaslsbimagebank_get_ tool with context-based auth
 func HandleCpaslsbimagebank_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -142,104 +101,8 @@ func HandleCpaslsbimagebank_get_(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleCpaslsbimagebank_post_ handles the cpaslsbimagebank_post_ tool
+// HandleCpaslsbimagebank_post_ handles the cpaslsbimagebank_post_ tool with context-based auth
 func HandleCpaslsbimagebank_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewCPASLsbImageBankClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: backup_image_urls
-	backup_image_urls, err := request.RequireString("backup_image_urls")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter backup_image_urls: %v", err)), nil
-	}
-	args["backup_image_urls"] = backup_image_urls
-
-	// Call the client method
-	result, err := client.Cpaslsbimagebank_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute cpaslsbimagebank_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextCpaslsbimagebank_get_backup_images handles the cpaslsbimagebank_get_backup_images tool with context-based auth
-func HandleContextCpaslsbimagebank_get_backup_images(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewCPASLsbImageBankClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Cpaslsbimagebank_get_backup_images(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute cpaslsbimagebank_get_backup_images: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextCpaslsbimagebank_get_ handles the cpaslsbimagebank_get_ tool with context-based auth
-func HandleContextCpaslsbimagebank_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewCPASLsbImageBankClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Cpaslsbimagebank_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute cpaslsbimagebank_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextCpaslsbimagebank_post_ handles the cpaslsbimagebank_post_ tool with context-based auth
-func HandleContextCpaslsbimagebank_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

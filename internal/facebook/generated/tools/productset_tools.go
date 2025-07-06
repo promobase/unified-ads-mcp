@@ -13,217 +13,7 @@ import (
 )
 
 // GetProductSetTools returns MCP tools for ProductSet
-func GetProductSetTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// productset_get_automotive_models tool
-	productset_get_automotive_modelsTool := mcp.NewTool("productset_get_automotive_models",
-		mcp.WithDescription("GET automotive_models for ProductSet"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for automotive_models"),
-		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for automotive_models"),
-		),
-	)
-	tools = append(tools, productset_get_automotive_modelsTool)
-
-	// productset_get_destinations tool
-	productset_get_destinationsTool := mcp.NewTool("productset_get_destinations",
-		mcp.WithDescription("GET destinations for ProductSet"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for destinations"),
-		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for destinations"),
-		),
-	)
-	tools = append(tools, productset_get_destinationsTool)
-
-	// productset_get_flights tool
-	productset_get_flightsTool := mcp.NewTool("productset_get_flights",
-		mcp.WithDescription("GET flights for ProductSet"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for flights"),
-		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for flights"),
-		),
-	)
-	tools = append(tools, productset_get_flightsTool)
-
-	// productset_get_home_listings tool
-	productset_get_home_listingsTool := mcp.NewTool("productset_get_home_listings",
-		mcp.WithDescription("GET home_listings for ProductSet"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for home_listings"),
-		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for home_listings"),
-		),
-	)
-	tools = append(tools, productset_get_home_listingsTool)
-
-	// productset_get_hotels tool
-	productset_get_hotelsTool := mcp.NewTool("productset_get_hotels",
-		mcp.WithDescription("GET hotels for ProductSet"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for hotels"),
-		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for hotels"),
-		),
-	)
-	tools = append(tools, productset_get_hotelsTool)
-
-	// productset_get_media_titles tool
-	productset_get_media_titlesTool := mcp.NewTool("productset_get_media_titles",
-		mcp.WithDescription("GET media_titles for ProductSet"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for media_titles"),
-		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for media_titles"),
-		),
-	)
-	tools = append(tools, productset_get_media_titlesTool)
-
-	// productset_get_products tool
-	productset_get_productsTool := mcp.NewTool("productset_get_products",
-		mcp.WithDescription("GET products for ProductSet"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for products"),
-		),
-		mcp.WithString("error_priority",
-			mcp.Description("error_priority parameter for products"),
-			mcp.Enum("HIGH", "LOW", "MEDIUM"),
-		),
-		mcp.WithString("error_type",
-			mcp.Description("error_type parameter for products"),
-			mcp.Enum("ADDRESS_BLOCKLISTED_IN_MARKET", "AGGREGATED_LOCALIZATION_ISSUES", "APP_HAS_NO_AEM_SETUP", "AR_DELETED_DUE_TO_UPDATE", "AR_POLICY_VIOLATED", "AVAILABLE", "BAD_QUALITY_IMAGE", "BIG_CATALOG_WITH_ALL_ITEMS_IN_STOCK", "BIZ_MSG_AI_AGENT_DISABLED_BY_USER", "BIZ_MSG_GEN_AI_POLICY_VIOLATED", "CANNOT_EDIT_SUBSCRIPTION_PRODUCTS", "CATALOG_NOT_CONNECTED_TO_EVENT_SOURCE", "CHECKOUT_DISABLED_BY_USER", "COMMERCE_ACCOUNT_LEGAL_ADDRESS_INVALID", "COMMERCE_ACCOUNT_NOT_LEGALLY_COMPLIANT", "CRAWLED_AVAILABILITY_MISMATCH", "DA_DISABLED_BY_USER", "DA_POLICY_UNFIT_FOR_AUDIENCE", "DA_POLICY_VIOLATION", "DELETED_ITEM", "DIGITAL_GOODS_NOT_AVAILABLE_FOR_CHECKOUT", "DUPLICATE_IMAGES", "DUPLICATE_TITLE_AND_DESCRIPTION", "EMPTY_AVAILABILITY", "EMPTY_CONDITION", "EMPTY_DESCRIPTION", "EMPTY_IMAGE_URL", "EMPTY_PRICE", "EMPTY_PRODUCT_URL", "EMPTY_SELLER_DESCRIPTION", "EMPTY_TITLE", "EXTERNAL_MERCHANT_ID_MISMATCH", "GENERIC_INVALID_FIELD", "GROUPS_DISABLED_BY_USER", "HIDDEN_UNTIL_PRODUCT_LAUNCH", "ILLEGAL_PRODUCT_CATEGORY", "IMAGE_FETCH_FAILED", "IMAGE_FETCH_FAILED_BAD_GATEWAY", "IMAGE_FETCH_FAILED_FILE_SIZE_EXCEEDED", "IMAGE_FETCH_FAILED_FORBIDDEN", "IMAGE_FETCH_FAILED_LINK_BROKEN", "IMAGE_FETCH_FAILED_TIMED_OUT", "IMAGE_RESOLUTION_LOW", "INACTIVE_SHOPIFY_PRODUCT", "INVALID_COMMERCE_TAX_CATEGORY", "INVALID_CONSOLIDATED_LOCALITY_INFORMATION", "INVALID_CONTENT_ID", "INVALID_DEALER_COMMUNICATION_PARAMETERS", "INVALID_DMA_CODES", "INVALID_FB_PAGE_ID", "INVALID_IMAGES", "INVALID_MONETIZER_RETURN_POLICY", "INVALID_OFFER_DISCLAIMER_URL", "INVALID_OFFER_END_DATE", "INVALID_PRE_ORDER_PARAMS", "INVALID_RANGE_FOR_AREA_SIZE", "INVALID_RANGE_FOR_BUILT_UP_AREA_SIZE", "INVALID_RANGE_FOR_NUM_OF_BATHS", "INVALID_RANGE_FOR_NUM_OF_BEDS", "INVALID_RANGE_FOR_NUM_OF_ROOMS", "INVALID_RANGE_FOR_PARKING_SPACES", "INVALID_SHELTER_PAGE_ID", "INVALID_SHIPPING_PROFILE_PARAMS", "INVALID_SUBSCRIPTION_DISABLE_PARAMS", "INVALID_SUBSCRIPTION_ENABLE_PARAMS", "INVALID_SUBSCRIPTION_PARAMS", "INVALID_TAX_EXTENSION_STATE", "INVALID_VEHICLE_STATE", "INVALID_VIRTUAL_TOUR_URL_DOMAIN", "INVENTORY_ZERO_AVAILABILITY_IN_STOCK", "IN_ANOTHER_PRODUCT_LAUNCH", "ITEM_GROUP_NOT_SPECIFIED", "ITEM_NOT_SHIPPABLE_FOR_SCA_SHOP", "ITEM_OVERRIDE_EMPTY_AVAILABILITY", "ITEM_OVERRIDE_EMPTY_PRICE", "ITEM_OVERRIDE_NOT_VISIBLE", "ITEM_PRICE_NOT_POSITIVE", "ITEM_STALE_OUT_OF_STOCK", "MARKETPLACE_DISABLED_BY_USER", "MARKETPLACE_PARTNER_AUCTION_NO_BID_CLOSE_TIME", "MARKETPLACE_PARTNER_CURRENCY_NOT_VALID", "MARKETPLACE_PARTNER_LISTING_COUNTRY_NOT_MATCH_CATALOG", "MARKETPLACE_PARTNER_LISTING_LIMIT_EXCEEDED", "MARKETPLACE_PARTNER_MISSING_LATLONG", "MARKETPLACE_PARTNER_MISSING_SHIPPING_COST", "MARKETPLACE_PARTNER_NOT_LOCAL_ITEM", "MARKETPLACE_PARTNER_NOT_SHIPPED_ITEM", "MARKETPLACE_PARTNER_POLICY_VIOLATION", "MARKETPLACE_PARTNER_RULE_LISTING_LIMIT_EXCEEDED", "MARKETPLACE_PARTNER_SELLER_BANNED", "MARKETPLACE_PARTNER_SELLER_NOT_VALID", "MINI_SHOPS_DISABLED_BY_USER", "MISSING_CHECKOUT", "MISSING_CHECKOUT_CURRENCY", "MISSING_COLOR", "MISSING_COUNTRY_OVERRIDE_IN_SHIPPING_PROFILE", "MISSING_EVENT", "MISSING_INDIA_COMPLIANCE_FIELDS", "MISSING_SHIPPING_PROFILE", "MISSING_SIZE", "MISSING_TAX_CATEGORY", "NEGATIVE_COMMUNITY_FEEDBACK", "NEGATIVE_PRICE", "NOT_ENOUGH_IMAGES", "NOT_ENOUGH_UNIQUE_PRODUCTS", "NO_CONTENT_ID", "OVERLAY_DISCLAIMER_EXCEEDED_MAX_LENGTH", "PART_OF_PRODUCT_LAUNCH", "PASSING_MULTIPLE_CONTENT_IDS", "PRODUCT_DOMINANT_CURRENCY_MISMATCH", "PRODUCT_EXPIRED", "PRODUCT_ITEM_HIDDEN_FROM_ALL_SHOPS", "PRODUCT_ITEM_INVALID_PARTNER_TOKENS", "PRODUCT_ITEM_NOT_INCLUDED_IN_ANY_SHOP", "PRODUCT_ITEM_NOT_VISIBLE", "PRODUCT_NOT_APPROVED", "PRODUCT_NOT_DOMINANT_CURRENCY", "PRODUCT_OUT_OF_STOCK", "PRODUCT_URL_EQUALS_DOMAIN", "PROPERTY_PRICE_CURRENCY_NOT_SUPPORTED", "PROPERTY_PRICE_TOO_HIGH", "PROPERTY_PRICE_TOO_LOW", "PROPERTY_UNIT_PRICE_CURRENCY_MISMATCH_ITEM_PRICE_CURRENCY", "PROPERTY_VALUE_CONTAINS_HTML_TAGS", "PROPERTY_VALUE_DESCRIPTION_CONTAINS_OFF_PLATFORM_LINK", "PROPERTY_VALUE_FORMAT", "PROPERTY_VALUE_MISSING", "PROPERTY_VALUE_MISSING_WARNING", "PROPERTY_VALUE_NON_POSITIVE", "PROPERTY_VALUE_STRING_EXCEEDS_LENGTH", "PROPERTY_VALUE_STRING_TOO_SHORT", "PROPERTY_VALUE_UPPERCASE", "PROPERTY_VALUE_UPPERCASE_WARNING", "PURCHASE_RATE_BELOW_ADDTOCART", "PURCHASE_RATE_BELOW_VIEWCONTENT", "QUALITY_DUPLICATED_DESCRIPTION", "QUALITY_ITEM_LINK_BROKEN", "QUALITY_ITEM_LINK_REDIRECTING", "RETAILER_ID_NOT_PROVIDED", "SHOPIFY_INVALID_RETAILER_ID", "SHOPIFY_ITEM_MISSING_SHIPPING_PROFILE", "SHOPS_POLICY_VIOLATION", "SUBSCRIPTION_INFO_NOT_ENABLED_FOR_FEED", "TAX_CATEGORY_NOT_SUPPORTED_IN_UK", "UNIQUE_PRODUCT_IDENTIFIER_MISSING", "UNMATCHED_EVENTS", "UNSUPPORTED_PRODUCT_CATEGORY", "VARIANT_ATTRIBUTE_ISSUE", "VIDEO_FETCH_FAILED", "VIDEO_FETCH_FAILED_BAD_GATEWAY", "VIDEO_FETCH_FAILED_FILE_SIZE_EXCEEDED", "VIDEO_FETCH_FAILED_FORBIDDEN", "VIDEO_FETCH_FAILED_LINK_BROKEN", "VIDEO_FETCH_FAILED_TIMED_OUT", "VIDEO_NOT_DOWNLOADABLE", "WHATSAPP_DISABLED_BY_USER", "WHATSAPP_MARKETING_MESSAGE_DISABLED_BY_USER", "WHATSAPP_MARKETING_MESSAGE_POLICY_VIOLATION", "WHATSAPP_POLICY_VIOLATION"),
-		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for products"),
-		),
-	)
-	tools = append(tools, productset_get_productsTool)
-
-	// productset_get_vehicle_offers tool
-	productset_get_vehicle_offersTool := mcp.NewTool("productset_get_vehicle_offers",
-		mcp.WithDescription("GET vehicle_offers for ProductSet"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for vehicle_offers"),
-		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for vehicle_offers"),
-		),
-	)
-	tools = append(tools, productset_get_vehicle_offersTool)
-
-	// productset_get_vehicles tool
-	productset_get_vehiclesTool := mcp.NewTool("productset_get_vehicles",
-		mcp.WithDescription("GET vehicles for ProductSet"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithBoolean("bulk_pagination",
-			mcp.Description("bulk_pagination parameter for vehicles"),
-		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for vehicles"),
-		),
-	)
-	tools = append(tools, productset_get_vehiclesTool)
-
-	// productset_delete_ tool
-	productset_delete_Tool := mcp.NewTool("productset_delete_",
-		mcp.WithDescription("DELETE  for ProductSet"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithBoolean("allow_live_product_set_deletion",
-			mcp.Description("allow_live_product_set_deletion parameter for "),
-		),
-	)
-	tools = append(tools, productset_delete_Tool)
-
-	// productset_get_ tool
-	productset_get_Tool := mcp.NewTool("productset_get_",
-		mcp.WithDescription("GET  for ProductSet"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, productset_get_Tool)
-
-	// productset_post_ tool
-	productset_post_Tool := mcp.NewTool("productset_post_",
-		mcp.WithDescription("POST  for ProductSet"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for "),
-		),
-		mcp.WithString("metadata",
-			mcp.Description("metadata parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("ordering_info",
-			mcp.Description("ordering_info parameter for "),
-		),
-		mcp.WithString("publish_to_shops",
-			mcp.Description("publish_to_shops parameter for "),
-		),
-		mcp.WithString("retailer_id",
-			mcp.Description("retailer_id parameter for "),
-		),
-	)
-	tools = append(tools, productset_post_Tool)
-
-	return tools
-}
-
-// GetProductSetToolsWithoutAuth returns MCP tools for ProductSet without access_token parameter
-func GetProductSetToolsWithoutAuth() []mcp.Tool {
+func GetProductSetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// productset_get_automotive_models tool
@@ -386,12 +176,12 @@ func GetProductSetToolsWithoutAuth() []mcp.Tool {
 
 // ProductSet handlers
 
-// HandleProductset_get_automotive_models handles the productset_get_automotive_models tool
+// HandleProductset_get_automotive_models handles the productset_get_automotive_models tool with context-based auth
 func HandleProductset_get_automotive_models(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -426,12 +216,12 @@ func HandleProductset_get_automotive_models(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleProductset_get_destinations handles the productset_get_destinations tool
+// HandleProductset_get_destinations handles the productset_get_destinations tool with context-based auth
 func HandleProductset_get_destinations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -466,12 +256,12 @@ func HandleProductset_get_destinations(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleProductset_get_flights handles the productset_get_flights tool
+// HandleProductset_get_flights handles the productset_get_flights tool with context-based auth
 func HandleProductset_get_flights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -506,12 +296,12 @@ func HandleProductset_get_flights(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleProductset_get_home_listings handles the productset_get_home_listings tool
+// HandleProductset_get_home_listings handles the productset_get_home_listings tool with context-based auth
 func HandleProductset_get_home_listings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -546,12 +336,12 @@ func HandleProductset_get_home_listings(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleProductset_get_hotels handles the productset_get_hotels tool
+// HandleProductset_get_hotels handles the productset_get_hotels tool with context-based auth
 func HandleProductset_get_hotels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -586,12 +376,12 @@ func HandleProductset_get_hotels(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleProductset_get_media_titles handles the productset_get_media_titles tool
+// HandleProductset_get_media_titles handles the productset_get_media_titles tool with context-based auth
 func HandleProductset_get_media_titles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -626,12 +416,12 @@ func HandleProductset_get_media_titles(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleProductset_get_products handles the productset_get_products tool
+// HandleProductset_get_products handles the productset_get_products tool with context-based auth
 func HandleProductset_get_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -676,12 +466,12 @@ func HandleProductset_get_products(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleProductset_get_vehicle_offers handles the productset_get_vehicle_offers tool
+// HandleProductset_get_vehicle_offers handles the productset_get_vehicle_offers tool with context-based auth
 func HandleProductset_get_vehicle_offers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -716,12 +506,12 @@ func HandleProductset_get_vehicle_offers(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleProductset_get_vehicles handles the productset_get_vehicles tool
+// HandleProductset_get_vehicles handles the productset_get_vehicles tool with context-based auth
 func HandleProductset_get_vehicles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -756,12 +546,12 @@ func HandleProductset_get_vehicles(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleProductset_delete_ handles the productset_delete_ tool
+// HandleProductset_delete_ handles the productset_delete_ tool with context-based auth
 func HandleProductset_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -790,12 +580,12 @@ func HandleProductset_delete_(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleProductset_get_ handles the productset_get_ tool
+// HandleProductset_get_ handles the productset_get_ tool with context-based auth
 func HandleProductset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -819,505 +609,8 @@ func HandleProductset_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleProductset_post_ handles the productset_post_ tool
+// HandleProductset_post_ handles the productset_post_ tool with context-based auth
 func HandleProductset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewProductSetClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Optional: metadata
-	if val := request.GetString("metadata", ""); val != "" {
-		args["metadata"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: ordering_info
-	// array type - using string
-	if val := request.GetString("ordering_info", ""); val != "" {
-		args["ordering_info"] = val
-	}
-
-	// Optional: publish_to_shops
-	// array type - using string
-	if val := request.GetString("publish_to_shops", ""); val != "" {
-		args["publish_to_shops"] = val
-	}
-
-	// Optional: retailer_id
-	if val := request.GetString("retailer_id", ""); val != "" {
-		args["retailer_id"] = val
-	}
-
-	// Call the client method
-	result, err := client.Productset_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productset_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextProductset_get_automotive_models handles the productset_get_automotive_models tool with context-based auth
-func HandleContextProductset_get_automotive_models(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewProductSetClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Call the client method
-	result, err := client.Productset_get_automotive_models(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productset_get_automotive_models: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextProductset_get_destinations handles the productset_get_destinations tool with context-based auth
-func HandleContextProductset_get_destinations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewProductSetClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Call the client method
-	result, err := client.Productset_get_destinations(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productset_get_destinations: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextProductset_get_flights handles the productset_get_flights tool with context-based auth
-func HandleContextProductset_get_flights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewProductSetClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Call the client method
-	result, err := client.Productset_get_flights(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productset_get_flights: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextProductset_get_home_listings handles the productset_get_home_listings tool with context-based auth
-func HandleContextProductset_get_home_listings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewProductSetClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Call the client method
-	result, err := client.Productset_get_home_listings(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productset_get_home_listings: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextProductset_get_hotels handles the productset_get_hotels tool with context-based auth
-func HandleContextProductset_get_hotels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewProductSetClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Call the client method
-	result, err := client.Productset_get_hotels(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productset_get_hotels: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextProductset_get_media_titles handles the productset_get_media_titles tool with context-based auth
-func HandleContextProductset_get_media_titles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewProductSetClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Call the client method
-	result, err := client.Productset_get_media_titles(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productset_get_media_titles: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextProductset_get_products handles the productset_get_products tool with context-based auth
-func HandleContextProductset_get_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewProductSetClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: error_priority
-	if val := request.GetString("error_priority", ""); val != "" {
-		args["error_priority"] = val
-	}
-
-	// Optional: error_type
-	if val := request.GetString("error_type", ""); val != "" {
-		args["error_type"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Call the client method
-	result, err := client.Productset_get_products(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productset_get_products: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextProductset_get_vehicle_offers handles the productset_get_vehicle_offers tool with context-based auth
-func HandleContextProductset_get_vehicle_offers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewProductSetClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Call the client method
-	result, err := client.Productset_get_vehicle_offers(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productset_get_vehicle_offers: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextProductset_get_vehicles handles the productset_get_vehicles tool with context-based auth
-func HandleContextProductset_get_vehicles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewProductSetClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: bulk_pagination
-	if val := request.GetBool("bulk_pagination", false); val {
-		args["bulk_pagination"] = val
-	}
-
-	// Optional: filter
-	// object type - using string
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Call the client method
-	result, err := client.Productset_get_vehicles(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productset_get_vehicles: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextProductset_delete_ handles the productset_delete_ tool with context-based auth
-func HandleContextProductset_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewProductSetClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: allow_live_product_set_deletion
-	if val := request.GetBool("allow_live_product_set_deletion", false); val {
-		args["allow_live_product_set_deletion"] = val
-	}
-
-	// Call the client method
-	result, err := client.Productset_delete_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productset_delete_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextProductset_get_ handles the productset_get_ tool with context-based auth
-func HandleContextProductset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewProductSetClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Productset_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productset_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextProductset_post_ handles the productset_post_ tool with context-based auth
-func HandleContextProductset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

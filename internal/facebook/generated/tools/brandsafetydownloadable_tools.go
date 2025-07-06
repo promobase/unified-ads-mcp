@@ -13,24 +13,7 @@ import (
 )
 
 // GetBrandSafetyDownloadableTools returns MCP tools for BrandSafetyDownloadable
-func GetBrandSafetyDownloadableTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// brandsafetydownloadable_get_ tool
-	brandsafetydownloadable_get_Tool := mcp.NewTool("brandsafetydownloadable_get_",
-		mcp.WithDescription("GET  for BrandSafetyDownloadable"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, brandsafetydownloadable_get_Tool)
-
-	return tools
-}
-
-// GetBrandSafetyDownloadableToolsWithoutAuth returns MCP tools for BrandSafetyDownloadable without access_token parameter
-func GetBrandSafetyDownloadableToolsWithoutAuth() []mcp.Tool {
+func GetBrandSafetyDownloadableTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// brandsafetydownloadable_get_ tool
@@ -44,39 +27,8 @@ func GetBrandSafetyDownloadableToolsWithoutAuth() []mcp.Tool {
 
 // BrandSafetyDownloadable handlers
 
-// HandleBrandsafetydownloadable_get_ handles the brandsafetydownloadable_get_ tool
+// HandleBrandsafetydownloadable_get_ handles the brandsafetydownloadable_get_ tool with context-based auth
 func HandleBrandsafetydownloadable_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewBrandSafetyDownloadableClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Brandsafetydownloadable_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute brandsafetydownloadable_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextBrandsafetydownloadable_get_ handles the brandsafetydownloadable_get_ tool with context-based auth
-func HandleContextBrandsafetydownloadable_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

@@ -13,27 +13,7 @@ import (
 )
 
 // GetAppEventConfigTools returns MCP tools for AppEventConfig
-func GetAppEventConfigTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// appeventconfig_get_ tool
-	appeventconfig_get_Tool := mcp.NewTool("appeventconfig_get_",
-		mcp.WithDescription("GET  for AppEventConfig"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("event_name",
-			mcp.Description("event_name parameter for "),
-		),
-	)
-	tools = append(tools, appeventconfig_get_Tool)
-
-	return tools
-}
-
-// GetAppEventConfigToolsWithoutAuth returns MCP tools for AppEventConfig without access_token parameter
-func GetAppEventConfigToolsWithoutAuth() []mcp.Tool {
+func GetAppEventConfigTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// appeventconfig_get_ tool
@@ -50,44 +30,8 @@ func GetAppEventConfigToolsWithoutAuth() []mcp.Tool {
 
 // AppEventConfig handlers
 
-// HandleAppeventconfig_get_ handles the appeventconfig_get_ tool
+// HandleAppeventconfig_get_ handles the appeventconfig_get_ tool with context-based auth
 func HandleAppeventconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAppEventConfigClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: event_name
-	if val := request.GetString("event_name", ""); val != "" {
-		args["event_name"] = val
-	}
-
-	// Call the client method
-	result, err := client.Appeventconfig_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute appeventconfig_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAppeventconfig_get_ handles the appeventconfig_get_ tool with context-based auth
-func HandleContextAppeventconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

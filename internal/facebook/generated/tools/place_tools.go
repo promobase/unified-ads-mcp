@@ -13,24 +13,7 @@ import (
 )
 
 // GetPlaceTools returns MCP tools for Place
-func GetPlaceTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// place_get_ tool
-	place_get_Tool := mcp.NewTool("place_get_",
-		mcp.WithDescription("GET  for Place"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, place_get_Tool)
-
-	return tools
-}
-
-// GetPlaceToolsWithoutAuth returns MCP tools for Place without access_token parameter
-func GetPlaceToolsWithoutAuth() []mcp.Tool {
+func GetPlaceTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// place_get_ tool
@@ -44,39 +27,8 @@ func GetPlaceToolsWithoutAuth() []mcp.Tool {
 
 // Place handlers
 
-// HandlePlace_get_ handles the place_get_ tool
+// HandlePlace_get_ handles the place_get_ tool with context-based auth
 func HandlePlace_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewPlaceClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Place_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute place_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextPlace_get_ handles the place_get_ tool with context-based auth
-func HandleContextPlace_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

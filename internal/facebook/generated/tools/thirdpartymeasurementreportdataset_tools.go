@@ -13,24 +13,7 @@ import (
 )
 
 // GetThirdPartyMeasurementReportDatasetTools returns MCP tools for ThirdPartyMeasurementReportDataset
-func GetThirdPartyMeasurementReportDatasetTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// thirdpartymeasurementreportdataset_get_ tool
-	thirdpartymeasurementreportdataset_get_Tool := mcp.NewTool("thirdpartymeasurementreportdataset_get_",
-		mcp.WithDescription("GET  for ThirdPartyMeasurementReportDataset"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, thirdpartymeasurementreportdataset_get_Tool)
-
-	return tools
-}
-
-// GetThirdPartyMeasurementReportDatasetToolsWithoutAuth returns MCP tools for ThirdPartyMeasurementReportDataset without access_token parameter
-func GetThirdPartyMeasurementReportDatasetToolsWithoutAuth() []mcp.Tool {
+func GetThirdPartyMeasurementReportDatasetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// thirdpartymeasurementreportdataset_get_ tool
@@ -44,39 +27,8 @@ func GetThirdPartyMeasurementReportDatasetToolsWithoutAuth() []mcp.Tool {
 
 // ThirdPartyMeasurementReportDataset handlers
 
-// HandleThirdpartymeasurementreportdataset_get_ handles the thirdpartymeasurementreportdataset_get_ tool
+// HandleThirdpartymeasurementreportdataset_get_ handles the thirdpartymeasurementreportdataset_get_ tool with context-based auth
 func HandleThirdpartymeasurementreportdataset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewThirdPartyMeasurementReportDatasetClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Thirdpartymeasurementreportdataset_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute thirdpartymeasurementreportdataset_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextThirdpartymeasurementreportdataset_get_ handles the thirdpartymeasurementreportdataset_get_ tool with context-based auth
-func HandleContextThirdpartymeasurementreportdataset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

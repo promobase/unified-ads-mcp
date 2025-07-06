@@ -13,61 +13,7 @@ import (
 )
 
 // GetAutomotiveModelTools returns MCP tools for AutomotiveModel
-func GetAutomotiveModelTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// automotivemodel_get_channels_to_integrity_status tool
-	automotivemodel_get_channels_to_integrity_statusTool := mcp.NewTool("automotivemodel_get_channels_to_integrity_status",
-		mcp.WithDescription("GET channels_to_integrity_status for AutomotiveModel"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, automotivemodel_get_channels_to_integrity_statusTool)
-
-	// automotivemodel_get_override_details tool
-	automotivemodel_get_override_detailsTool := mcp.NewTool("automotivemodel_get_override_details",
-		mcp.WithDescription("GET override_details for AutomotiveModel"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("keys",
-			mcp.Description("keys parameter for override_details"),
-		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for override_details"),
-			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
-		),
-	)
-	tools = append(tools, automotivemodel_get_override_detailsTool)
-
-	// automotivemodel_get_videos_metadata tool
-	automotivemodel_get_videos_metadataTool := mcp.NewTool("automotivemodel_get_videos_metadata",
-		mcp.WithDescription("GET videos_metadata for AutomotiveModel"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, automotivemodel_get_videos_metadataTool)
-
-	// automotivemodel_get_ tool
-	automotivemodel_get_Tool := mcp.NewTool("automotivemodel_get_",
-		mcp.WithDescription("GET  for AutomotiveModel"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, automotivemodel_get_Tool)
-
-	return tools
-}
-
-// GetAutomotiveModelToolsWithoutAuth returns MCP tools for AutomotiveModel without access_token parameter
-func GetAutomotiveModelToolsWithoutAuth() []mcp.Tool {
+func GetAutomotiveModelTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// automotivemodel_get_channels_to_integrity_status tool
@@ -106,12 +52,12 @@ func GetAutomotiveModelToolsWithoutAuth() []mcp.Tool {
 
 // AutomotiveModel handlers
 
-// HandleAutomotivemodel_get_channels_to_integrity_status handles the automotivemodel_get_channels_to_integrity_status tool
+// HandleAutomotivemodel_get_channels_to_integrity_status handles the automotivemodel_get_channels_to_integrity_status tool with context-based auth
 func HandleAutomotivemodel_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -135,12 +81,12 @@ func HandleAutomotivemodel_get_channels_to_integrity_status(ctx context.Context,
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAutomotivemodel_get_override_details handles the automotivemodel_get_override_details tool
+// HandleAutomotivemodel_get_override_details handles the automotivemodel_get_override_details tool with context-based auth
 func HandleAutomotivemodel_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -175,12 +121,12 @@ func HandleAutomotivemodel_get_override_details(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAutomotivemodel_get_videos_metadata handles the automotivemodel_get_videos_metadata tool
+// HandleAutomotivemodel_get_videos_metadata handles the automotivemodel_get_videos_metadata tool with context-based auth
 func HandleAutomotivemodel_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -204,137 +150,8 @@ func HandleAutomotivemodel_get_videos_metadata(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAutomotivemodel_get_ handles the automotivemodel_get_ tool
+// HandleAutomotivemodel_get_ handles the automotivemodel_get_ tool with context-based auth
 func HandleAutomotivemodel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAutomotiveModelClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Automotivemodel_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute automotivemodel_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAutomotivemodel_get_channels_to_integrity_status handles the automotivemodel_get_channels_to_integrity_status tool with context-based auth
-func HandleContextAutomotivemodel_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAutomotiveModelClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Automotivemodel_get_channels_to_integrity_status(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute automotivemodel_get_channels_to_integrity_status: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAutomotivemodel_get_override_details handles the automotivemodel_get_override_details tool with context-based auth
-func HandleContextAutomotivemodel_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAutomotiveModelClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: keys
-	// array type - using string
-	if val := request.GetString("keys", ""); val != "" {
-		args["keys"] = val
-	}
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
-	}
-
-	// Call the client method
-	result, err := client.Automotivemodel_get_override_details(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute automotivemodel_get_override_details: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAutomotivemodel_get_videos_metadata handles the automotivemodel_get_videos_metadata tool with context-based auth
-func HandleContextAutomotivemodel_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAutomotiveModelClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Automotivemodel_get_videos_metadata(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute automotivemodel_get_videos_metadata: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAutomotivemodel_get_ handles the automotivemodel_get_ tool with context-based auth
-func HandleContextAutomotivemodel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

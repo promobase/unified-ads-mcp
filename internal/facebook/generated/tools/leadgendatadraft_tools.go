@@ -13,24 +13,7 @@ import (
 )
 
 // GetLeadGenDataDraftTools returns MCP tools for LeadGenDataDraft
-func GetLeadGenDataDraftTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// leadgendatadraft_get_ tool
-	leadgendatadraft_get_Tool := mcp.NewTool("leadgendatadraft_get_",
-		mcp.WithDescription("GET  for LeadGenDataDraft"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, leadgendatadraft_get_Tool)
-
-	return tools
-}
-
-// GetLeadGenDataDraftToolsWithoutAuth returns MCP tools for LeadGenDataDraft without access_token parameter
-func GetLeadGenDataDraftToolsWithoutAuth() []mcp.Tool {
+func GetLeadGenDataDraftTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// leadgendatadraft_get_ tool
@@ -44,39 +27,8 @@ func GetLeadGenDataDraftToolsWithoutAuth() []mcp.Tool {
 
 // LeadGenDataDraft handlers
 
-// HandleLeadgendatadraft_get_ handles the leadgendatadraft_get_ tool
+// HandleLeadgendatadraft_get_ handles the leadgendatadraft_get_ tool with context-based auth
 func HandleLeadgendatadraft_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewLeadGenDataDraftClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Leadgendatadraft_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute leadgendatadraft_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextLeadgendatadraft_get_ handles the leadgendatadraft_get_ tool with context-based auth
-func HandleContextLeadgendatadraft_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

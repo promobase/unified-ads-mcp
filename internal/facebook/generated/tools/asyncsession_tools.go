@@ -13,24 +13,7 @@ import (
 )
 
 // GetAsyncSessionTools returns MCP tools for AsyncSession
-func GetAsyncSessionTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// asyncsession_get_ tool
-	asyncsession_get_Tool := mcp.NewTool("asyncsession_get_",
-		mcp.WithDescription("GET  for AsyncSession"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, asyncsession_get_Tool)
-
-	return tools
-}
-
-// GetAsyncSessionToolsWithoutAuth returns MCP tools for AsyncSession without access_token parameter
-func GetAsyncSessionToolsWithoutAuth() []mcp.Tool {
+func GetAsyncSessionTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// asyncsession_get_ tool
@@ -44,39 +27,8 @@ func GetAsyncSessionToolsWithoutAuth() []mcp.Tool {
 
 // AsyncSession handlers
 
-// HandleAsyncsession_get_ handles the asyncsession_get_ tool
+// HandleAsyncsession_get_ handles the asyncsession_get_ tool with context-based auth
 func HandleAsyncsession_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAsyncSessionClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Asyncsession_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute asyncsession_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAsyncsession_get_ handles the asyncsession_get_ tool with context-based auth
-func HandleContextAsyncsession_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

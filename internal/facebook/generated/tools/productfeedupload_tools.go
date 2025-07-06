@@ -13,48 +13,7 @@ import (
 )
 
 // GetProductFeedUploadTools returns MCP tools for ProductFeedUpload
-func GetProductFeedUploadTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// productfeedupload_post_error_report tool
-	productfeedupload_post_error_reportTool := mcp.NewTool("productfeedupload_post_error_report",
-		mcp.WithDescription("POST error_report for ProductFeedUpload"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, productfeedupload_post_error_reportTool)
-
-	// productfeedupload_get_errors tool
-	productfeedupload_get_errorsTool := mcp.NewTool("productfeedupload_get_errors",
-		mcp.WithDescription("GET errors for ProductFeedUpload"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("error_priority",
-			mcp.Description("error_priority parameter for errors"),
-			mcp.Enum("HIGH", "LOW", "MEDIUM"),
-		),
-	)
-	tools = append(tools, productfeedupload_get_errorsTool)
-
-	// productfeedupload_get_ tool
-	productfeedupload_get_Tool := mcp.NewTool("productfeedupload_get_",
-		mcp.WithDescription("GET  for ProductFeedUpload"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, productfeedupload_get_Tool)
-
-	return tools
-}
-
-// GetProductFeedUploadToolsWithoutAuth returns MCP tools for ProductFeedUpload without access_token parameter
-func GetProductFeedUploadToolsWithoutAuth() []mcp.Tool {
+func GetProductFeedUploadTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// productfeedupload_post_error_report tool
@@ -84,12 +43,12 @@ func GetProductFeedUploadToolsWithoutAuth() []mcp.Tool {
 
 // ProductFeedUpload handlers
 
-// HandleProductfeedupload_post_error_report handles the productfeedupload_post_error_report tool
+// HandleProductfeedupload_post_error_report handles the productfeedupload_post_error_report tool with context-based auth
 func HandleProductfeedupload_post_error_report(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -113,12 +72,12 @@ func HandleProductfeedupload_post_error_report(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleProductfeedupload_get_errors handles the productfeedupload_get_errors tool
+// HandleProductfeedupload_get_errors handles the productfeedupload_get_errors tool with context-based auth
 func HandleProductfeedupload_get_errors(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -147,102 +106,8 @@ func HandleProductfeedupload_get_errors(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleProductfeedupload_get_ handles the productfeedupload_get_ tool
+// HandleProductfeedupload_get_ handles the productfeedupload_get_ tool with context-based auth
 func HandleProductfeedupload_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewProductFeedUploadClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Productfeedupload_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productfeedupload_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextProductfeedupload_post_error_report handles the productfeedupload_post_error_report tool with context-based auth
-func HandleContextProductfeedupload_post_error_report(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewProductFeedUploadClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Productfeedupload_post_error_report(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productfeedupload_post_error_report: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextProductfeedupload_get_errors handles the productfeedupload_get_errors tool with context-based auth
-func HandleContextProductfeedupload_get_errors(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewProductFeedUploadClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: error_priority
-	if val := request.GetString("error_priority", ""); val != "" {
-		args["error_priority"] = val
-	}
-
-	// Call the client method
-	result, err := client.Productfeedupload_get_errors(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productfeedupload_get_errors: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextProductfeedupload_get_ handles the productfeedupload_get_ tool with context-based auth
-func HandleContextProductfeedupload_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

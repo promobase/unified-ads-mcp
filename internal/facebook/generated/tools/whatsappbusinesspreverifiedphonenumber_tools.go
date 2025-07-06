@@ -13,77 +13,7 @@ import (
 )
 
 // GetWhatsAppBusinessPreVerifiedPhoneNumberTools returns MCP tools for WhatsAppBusinessPreVerifiedPhoneNumber
-func GetWhatsAppBusinessPreVerifiedPhoneNumberTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// whatsappbusinesspreverifiedphonenumber_get_partners tool
-	whatsappbusinesspreverifiedphonenumber_get_partnersTool := mcp.NewTool("whatsappbusinesspreverifiedphonenumber_get_partners",
-		mcp.WithDescription("GET partners for WhatsAppBusinessPreVerifiedPhoneNumber"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, whatsappbusinesspreverifiedphonenumber_get_partnersTool)
-
-	// whatsappbusinesspreverifiedphonenumber_post_request_code tool
-	whatsappbusinesspreverifiedphonenumber_post_request_codeTool := mcp.NewTool("whatsappbusinesspreverifiedphonenumber_post_request_code",
-		mcp.WithDescription("POST request_code for WhatsAppBusinessPreVerifiedPhoneNumber"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("code_method",
-			mcp.Required(),
-			mcp.Description("code_method parameter for request_code"),
-			mcp.Enum("SMS", "VOICE"),
-		),
-		mcp.WithString("language",
-			mcp.Required(),
-			mcp.Description("language parameter for request_code"),
-		),
-	)
-	tools = append(tools, whatsappbusinesspreverifiedphonenumber_post_request_codeTool)
-
-	// whatsappbusinesspreverifiedphonenumber_post_verify_code tool
-	whatsappbusinesspreverifiedphonenumber_post_verify_codeTool := mcp.NewTool("whatsappbusinesspreverifiedphonenumber_post_verify_code",
-		mcp.WithDescription("POST verify_code for WhatsAppBusinessPreVerifiedPhoneNumber"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("code",
-			mcp.Required(),
-			mcp.Description("code parameter for verify_code"),
-		),
-	)
-	tools = append(tools, whatsappbusinesspreverifiedphonenumber_post_verify_codeTool)
-
-	// whatsappbusinesspreverifiedphonenumber_delete_ tool
-	whatsappbusinesspreverifiedphonenumber_delete_Tool := mcp.NewTool("whatsappbusinesspreverifiedphonenumber_delete_",
-		mcp.WithDescription("DELETE  for WhatsAppBusinessPreVerifiedPhoneNumber"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, whatsappbusinesspreverifiedphonenumber_delete_Tool)
-
-	// whatsappbusinesspreverifiedphonenumber_get_ tool
-	whatsappbusinesspreverifiedphonenumber_get_Tool := mcp.NewTool("whatsappbusinesspreverifiedphonenumber_get_",
-		mcp.WithDescription("GET  for WhatsAppBusinessPreVerifiedPhoneNumber"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, whatsappbusinesspreverifiedphonenumber_get_Tool)
-
-	return tools
-}
-
-// GetWhatsAppBusinessPreVerifiedPhoneNumberToolsWithoutAuth returns MCP tools for WhatsAppBusinessPreVerifiedPhoneNumber without access_token parameter
-func GetWhatsAppBusinessPreVerifiedPhoneNumberToolsWithoutAuth() []mcp.Tool {
+func GetWhatsAppBusinessPreVerifiedPhoneNumberTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// whatsappbusinesspreverifiedphonenumber_get_partners tool
@@ -134,12 +64,12 @@ func GetWhatsAppBusinessPreVerifiedPhoneNumberToolsWithoutAuth() []mcp.Tool {
 
 // WhatsAppBusinessPreVerifiedPhoneNumber handlers
 
-// HandleWhatsappbusinesspreverifiedphonenumber_get_partners handles the whatsappbusinesspreverifiedphonenumber_get_partners tool
+// HandleWhatsappbusinesspreverifiedphonenumber_get_partners handles the whatsappbusinesspreverifiedphonenumber_get_partners tool with context-based auth
 func HandleWhatsappbusinesspreverifiedphonenumber_get_partners(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -163,12 +93,12 @@ func HandleWhatsappbusinesspreverifiedphonenumber_get_partners(ctx context.Conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleWhatsappbusinesspreverifiedphonenumber_post_request_code handles the whatsappbusinesspreverifiedphonenumber_post_request_code tool
+// HandleWhatsappbusinesspreverifiedphonenumber_post_request_code handles the whatsappbusinesspreverifiedphonenumber_post_request_code tool with context-based auth
 func HandleWhatsappbusinesspreverifiedphonenumber_post_request_code(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -206,12 +136,12 @@ func HandleWhatsappbusinesspreverifiedphonenumber_post_request_code(ctx context.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleWhatsappbusinesspreverifiedphonenumber_post_verify_code handles the whatsappbusinesspreverifiedphonenumber_post_verify_code tool
+// HandleWhatsappbusinesspreverifiedphonenumber_post_verify_code handles the whatsappbusinesspreverifiedphonenumber_post_verify_code tool with context-based auth
 func HandleWhatsappbusinesspreverifiedphonenumber_post_verify_code(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -242,12 +172,12 @@ func HandleWhatsappbusinesspreverifiedphonenumber_post_verify_code(ctx context.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleWhatsappbusinesspreverifiedphonenumber_delete_ handles the whatsappbusinesspreverifiedphonenumber_delete_ tool
+// HandleWhatsappbusinesspreverifiedphonenumber_delete_ handles the whatsappbusinesspreverifiedphonenumber_delete_ tool with context-based auth
 func HandleWhatsappbusinesspreverifiedphonenumber_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -271,176 +201,8 @@ func HandleWhatsappbusinesspreverifiedphonenumber_delete_(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleWhatsappbusinesspreverifiedphonenumber_get_ handles the whatsappbusinesspreverifiedphonenumber_get_ tool
+// HandleWhatsappbusinesspreverifiedphonenumber_get_ handles the whatsappbusinesspreverifiedphonenumber_get_ tool with context-based auth
 func HandleWhatsappbusinesspreverifiedphonenumber_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewWhatsAppBusinessPreVerifiedPhoneNumberClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Whatsappbusinesspreverifiedphonenumber_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute whatsappbusinesspreverifiedphonenumber_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextWhatsappbusinesspreverifiedphonenumber_get_partners handles the whatsappbusinesspreverifiedphonenumber_get_partners tool with context-based auth
-func HandleContextWhatsappbusinesspreverifiedphonenumber_get_partners(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewWhatsAppBusinessPreVerifiedPhoneNumberClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Whatsappbusinesspreverifiedphonenumber_get_partners(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute whatsappbusinesspreverifiedphonenumber_get_partners: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextWhatsappbusinesspreverifiedphonenumber_post_request_code handles the whatsappbusinesspreverifiedphonenumber_post_request_code tool with context-based auth
-func HandleContextWhatsappbusinesspreverifiedphonenumber_post_request_code(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewWhatsAppBusinessPreVerifiedPhoneNumberClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: code_method
-	code_method, err := request.RequireString("code_method")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter code_method: %v", err)), nil
-	}
-	args["code_method"] = code_method
-
-	// Required: language
-	language, err := request.RequireString("language")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter language: %v", err)), nil
-	}
-	args["language"] = language
-
-	// Call the client method
-	result, err := client.Whatsappbusinesspreverifiedphonenumber_post_request_code(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute whatsappbusinesspreverifiedphonenumber_post_request_code: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextWhatsappbusinesspreverifiedphonenumber_post_verify_code handles the whatsappbusinesspreverifiedphonenumber_post_verify_code tool with context-based auth
-func HandleContextWhatsappbusinesspreverifiedphonenumber_post_verify_code(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewWhatsAppBusinessPreVerifiedPhoneNumberClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: code
-	code, err := request.RequireString("code")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter code: %v", err)), nil
-	}
-	args["code"] = code
-
-	// Call the client method
-	result, err := client.Whatsappbusinesspreverifiedphonenumber_post_verify_code(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute whatsappbusinesspreverifiedphonenumber_post_verify_code: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextWhatsappbusinesspreverifiedphonenumber_delete_ handles the whatsappbusinesspreverifiedphonenumber_delete_ tool with context-based auth
-func HandleContextWhatsappbusinesspreverifiedphonenumber_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewWhatsAppBusinessPreVerifiedPhoneNumberClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Whatsappbusinesspreverifiedphonenumber_delete_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute whatsappbusinesspreverifiedphonenumber_delete_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextWhatsappbusinesspreverifiedphonenumber_get_ handles the whatsappbusinesspreverifiedphonenumber_get_ tool with context-based auth
-func HandleContextWhatsappbusinesspreverifiedphonenumber_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

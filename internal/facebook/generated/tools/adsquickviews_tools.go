@@ -13,24 +13,7 @@ import (
 )
 
 // GetAdsQuickViewsTools returns MCP tools for AdsQuickViews
-func GetAdsQuickViewsTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// adsquickviews_get_ tool
-	adsquickviews_get_Tool := mcp.NewTool("adsquickviews_get_",
-		mcp.WithDescription("GET  for AdsQuickViews"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adsquickviews_get_Tool)
-
-	return tools
-}
-
-// GetAdsQuickViewsToolsWithoutAuth returns MCP tools for AdsQuickViews without access_token parameter
-func GetAdsQuickViewsToolsWithoutAuth() []mcp.Tool {
+func GetAdsQuickViewsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adsquickviews_get_ tool
@@ -44,39 +27,8 @@ func GetAdsQuickViewsToolsWithoutAuth() []mcp.Tool {
 
 // AdsQuickViews handlers
 
-// HandleAdsquickviews_get_ handles the adsquickviews_get_ tool
+// HandleAdsquickviews_get_ handles the adsquickviews_get_ tool with context-based auth
 func HandleAdsquickviews_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdsQuickViewsClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adsquickviews_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adsquickviews_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAdsquickviews_get_ handles the adsquickviews_get_ tool with context-based auth
-func HandleContextAdsquickviews_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

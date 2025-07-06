@@ -13,24 +13,7 @@ import (
 )
 
 // GetDynamicItemDisplayBundleFolderTools returns MCP tools for DynamicItemDisplayBundleFolder
-func GetDynamicItemDisplayBundleFolderTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// dynamicitemdisplaybundlefolder_get_ tool
-	dynamicitemdisplaybundlefolder_get_Tool := mcp.NewTool("dynamicitemdisplaybundlefolder_get_",
-		mcp.WithDescription("GET  for DynamicItemDisplayBundleFolder"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, dynamicitemdisplaybundlefolder_get_Tool)
-
-	return tools
-}
-
-// GetDynamicItemDisplayBundleFolderToolsWithoutAuth returns MCP tools for DynamicItemDisplayBundleFolder without access_token parameter
-func GetDynamicItemDisplayBundleFolderToolsWithoutAuth() []mcp.Tool {
+func GetDynamicItemDisplayBundleFolderTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// dynamicitemdisplaybundlefolder_get_ tool
@@ -44,39 +27,8 @@ func GetDynamicItemDisplayBundleFolderToolsWithoutAuth() []mcp.Tool {
 
 // DynamicItemDisplayBundleFolder handlers
 
-// HandleDynamicitemdisplaybundlefolder_get_ handles the dynamicitemdisplaybundlefolder_get_ tool
+// HandleDynamicitemdisplaybundlefolder_get_ handles the dynamicitemdisplaybundlefolder_get_ tool with context-based auth
 func HandleDynamicitemdisplaybundlefolder_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewDynamicItemDisplayBundleFolderClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Dynamicitemdisplaybundlefolder_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute dynamicitemdisplaybundlefolder_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextDynamicitemdisplaybundlefolder_get_ handles the dynamicitemdisplaybundlefolder_get_ tool with context-based auth
-func HandleContextDynamicitemdisplaybundlefolder_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

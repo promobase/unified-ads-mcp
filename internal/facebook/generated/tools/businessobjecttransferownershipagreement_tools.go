@@ -13,24 +13,7 @@ import (
 )
 
 // GetBusinessObjectTransferOwnershipAgreementTools returns MCP tools for BusinessObjectTransferOwnershipAgreement
-func GetBusinessObjectTransferOwnershipAgreementTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// businessobjecttransferownershipagreement_get_ tool
-	businessobjecttransferownershipagreement_get_Tool := mcp.NewTool("businessobjecttransferownershipagreement_get_",
-		mcp.WithDescription("GET  for BusinessObjectTransferOwnershipAgreement"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, businessobjecttransferownershipagreement_get_Tool)
-
-	return tools
-}
-
-// GetBusinessObjectTransferOwnershipAgreementToolsWithoutAuth returns MCP tools for BusinessObjectTransferOwnershipAgreement without access_token parameter
-func GetBusinessObjectTransferOwnershipAgreementToolsWithoutAuth() []mcp.Tool {
+func GetBusinessObjectTransferOwnershipAgreementTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// businessobjecttransferownershipagreement_get_ tool
@@ -44,39 +27,8 @@ func GetBusinessObjectTransferOwnershipAgreementToolsWithoutAuth() []mcp.Tool {
 
 // BusinessObjectTransferOwnershipAgreement handlers
 
-// HandleBusinessobjecttransferownershipagreement_get_ handles the businessobjecttransferownershipagreement_get_ tool
+// HandleBusinessobjecttransferownershipagreement_get_ handles the businessobjecttransferownershipagreement_get_ tool with context-based auth
 func HandleBusinessobjecttransferownershipagreement_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewBusinessObjectTransferOwnershipAgreementClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Businessobjecttransferownershipagreement_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessobjecttransferownershipagreement_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextBusinessobjecttransferownershipagreement_get_ handles the businessobjecttransferownershipagreement_get_ tool with context-based auth
-func HandleContextBusinessobjecttransferownershipagreement_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

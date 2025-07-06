@@ -13,24 +13,7 @@ import (
 )
 
 // GetProductSetUsageTools returns MCP tools for ProductSetUsage
-func GetProductSetUsageTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// productsetusage_get_ tool
-	productsetusage_get_Tool := mcp.NewTool("productsetusage_get_",
-		mcp.WithDescription("GET  for ProductSetUsage"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, productsetusage_get_Tool)
-
-	return tools
-}
-
-// GetProductSetUsageToolsWithoutAuth returns MCP tools for ProductSetUsage without access_token parameter
-func GetProductSetUsageToolsWithoutAuth() []mcp.Tool {
+func GetProductSetUsageTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// productsetusage_get_ tool
@@ -44,39 +27,8 @@ func GetProductSetUsageToolsWithoutAuth() []mcp.Tool {
 
 // ProductSetUsage handlers
 
-// HandleProductsetusage_get_ handles the productsetusage_get_ tool
+// HandleProductsetusage_get_ handles the productsetusage_get_ tool with context-based auth
 func HandleProductsetusage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewProductSetUsageClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Productsetusage_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productsetusage_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextProductsetusage_get_ handles the productsetusage_get_ tool with context-based auth
-func HandleContextProductsetusage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

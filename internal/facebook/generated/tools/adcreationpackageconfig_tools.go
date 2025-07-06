@@ -13,24 +13,7 @@ import (
 )
 
 // GetAdCreationPackageConfigTools returns MCP tools for AdCreationPackageConfig
-func GetAdCreationPackageConfigTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// adcreationpackageconfig_get_ tool
-	adcreationpackageconfig_get_Tool := mcp.NewTool("adcreationpackageconfig_get_",
-		mcp.WithDescription("GET  for AdCreationPackageConfig"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adcreationpackageconfig_get_Tool)
-
-	return tools
-}
-
-// GetAdCreationPackageConfigToolsWithoutAuth returns MCP tools for AdCreationPackageConfig without access_token parameter
-func GetAdCreationPackageConfigToolsWithoutAuth() []mcp.Tool {
+func GetAdCreationPackageConfigTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adcreationpackageconfig_get_ tool
@@ -44,39 +27,8 @@ func GetAdCreationPackageConfigToolsWithoutAuth() []mcp.Tool {
 
 // AdCreationPackageConfig handlers
 
-// HandleAdcreationpackageconfig_get_ handles the adcreationpackageconfig_get_ tool
+// HandleAdcreationpackageconfig_get_ handles the adcreationpackageconfig_get_ tool with context-based auth
 func HandleAdcreationpackageconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdCreationPackageConfigClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adcreationpackageconfig_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adcreationpackageconfig_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAdcreationpackageconfig_get_ handles the adcreationpackageconfig_get_ tool with context-based auth
-func HandleContextAdcreationpackageconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

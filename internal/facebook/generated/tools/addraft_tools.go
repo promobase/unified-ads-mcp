@@ -13,24 +13,7 @@ import (
 )
 
 // GetAdDraftTools returns MCP tools for AdDraft
-func GetAdDraftTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// addraft_get_ tool
-	addraft_get_Tool := mcp.NewTool("addraft_get_",
-		mcp.WithDescription("GET  for AdDraft"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, addraft_get_Tool)
-
-	return tools
-}
-
-// GetAdDraftToolsWithoutAuth returns MCP tools for AdDraft without access_token parameter
-func GetAdDraftToolsWithoutAuth() []mcp.Tool {
+func GetAdDraftTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// addraft_get_ tool
@@ -44,39 +27,8 @@ func GetAdDraftToolsWithoutAuth() []mcp.Tool {
 
 // AdDraft handlers
 
-// HandleAddraft_get_ handles the addraft_get_ tool
+// HandleAddraft_get_ handles the addraft_get_ tool with context-based auth
 func HandleAddraft_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdDraftClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Addraft_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute addraft_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAddraft_get_ handles the addraft_get_ tool with context-based auth
-func HandleContextAddraft_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

@@ -13,77 +13,7 @@ import (
 )
 
 // GetIGCommentTools returns MCP tools for IGComment
-func GetIGCommentTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// igcomment_get_replies tool
-	igcomment_get_repliesTool := mcp.NewTool("igcomment_get_replies",
-		mcp.WithDescription("GET replies for IGComment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, igcomment_get_repliesTool)
-
-	// igcomment_post_replies tool
-	igcomment_post_repliesTool := mcp.NewTool("igcomment_post_replies",
-		mcp.WithDescription("POST replies for IGComment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("message",
-			mcp.Description("message parameter for replies"),
-		),
-	)
-	tools = append(tools, igcomment_post_repliesTool)
-
-	// igcomment_delete_ tool
-	igcomment_delete_Tool := mcp.NewTool("igcomment_delete_",
-		mcp.WithDescription("DELETE  for IGComment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("ad_id",
-			mcp.Description("ad_id parameter for "),
-		),
-	)
-	tools = append(tools, igcomment_delete_Tool)
-
-	// igcomment_get_ tool
-	igcomment_get_Tool := mcp.NewTool("igcomment_get_",
-		mcp.WithDescription("GET  for IGComment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, igcomment_get_Tool)
-
-	// igcomment_post_ tool
-	igcomment_post_Tool := mcp.NewTool("igcomment_post_",
-		mcp.WithDescription("POST  for IGComment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("ad_id",
-			mcp.Description("ad_id parameter for "),
-		),
-		mcp.WithBoolean("hide",
-			mcp.Required(),
-			mcp.Description("hide parameter for "),
-		),
-	)
-	tools = append(tools, igcomment_post_Tool)
-
-	return tools
-}
-
-// GetIGCommentToolsWithoutAuth returns MCP tools for IGComment without access_token parameter
-func GetIGCommentToolsWithoutAuth() []mcp.Tool {
+func GetIGCommentTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// igcomment_get_replies tool
@@ -134,12 +64,12 @@ func GetIGCommentToolsWithoutAuth() []mcp.Tool {
 
 // IGComment handlers
 
-// HandleIgcomment_get_replies handles the igcomment_get_replies tool
+// HandleIgcomment_get_replies handles the igcomment_get_replies tool with context-based auth
 func HandleIgcomment_get_replies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -163,12 +93,12 @@ func HandleIgcomment_get_replies(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIgcomment_post_replies handles the igcomment_post_replies tool
+// HandleIgcomment_post_replies handles the igcomment_post_replies tool with context-based auth
 func HandleIgcomment_post_replies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -197,12 +127,12 @@ func HandleIgcomment_post_replies(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIgcomment_delete_ handles the igcomment_delete_ tool
+// HandleIgcomment_delete_ handles the igcomment_delete_ tool with context-based auth
 func HandleIgcomment_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -231,12 +161,12 @@ func HandleIgcomment_delete_(ctx context.Context, request mcp.CallToolRequest) (
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIgcomment_get_ handles the igcomment_get_ tool
+// HandleIgcomment_get_ handles the igcomment_get_ tool with context-based auth
 func HandleIgcomment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -260,177 +190,8 @@ func HandleIgcomment_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleIgcomment_post_ handles the igcomment_post_ tool
+// HandleIgcomment_post_ handles the igcomment_post_ tool with context-based auth
 func HandleIgcomment_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewIGCommentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: ad_id
-	if val := request.GetString("ad_id", ""); val != "" {
-		args["ad_id"] = val
-	}
-
-	// Required: hide
-	hide, err := request.RequireBool("hide")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter hide: %v", err)), nil
-	}
-	args["hide"] = hide
-
-	// Call the client method
-	result, err := client.Igcomment_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igcomment_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextIgcomment_get_replies handles the igcomment_get_replies tool with context-based auth
-func HandleContextIgcomment_get_replies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGCommentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Igcomment_get_replies(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igcomment_get_replies: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIgcomment_post_replies handles the igcomment_post_replies tool with context-based auth
-func HandleContextIgcomment_post_replies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGCommentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: message
-	if val := request.GetString("message", ""); val != "" {
-		args["message"] = val
-	}
-
-	// Call the client method
-	result, err := client.Igcomment_post_replies(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igcomment_post_replies: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIgcomment_delete_ handles the igcomment_delete_ tool with context-based auth
-func HandleContextIgcomment_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGCommentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: ad_id
-	if val := request.GetString("ad_id", ""); val != "" {
-		args["ad_id"] = val
-	}
-
-	// Call the client method
-	result, err := client.Igcomment_delete_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igcomment_delete_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIgcomment_get_ handles the igcomment_get_ tool with context-based auth
-func HandleContextIgcomment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewIGCommentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Igcomment_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igcomment_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextIgcomment_post_ handles the igcomment_post_ tool with context-based auth
-func HandleContextIgcomment_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

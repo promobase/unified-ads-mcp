@@ -13,24 +13,7 @@ import (
 )
 
 // GetALMAdAccountInfoTools returns MCP tools for ALMAdAccountInfo
-func GetALMAdAccountInfoTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// almadaccountinfo_get_ tool
-	almadaccountinfo_get_Tool := mcp.NewTool("almadaccountinfo_get_",
-		mcp.WithDescription("GET  for ALMAdAccountInfo"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, almadaccountinfo_get_Tool)
-
-	return tools
-}
-
-// GetALMAdAccountInfoToolsWithoutAuth returns MCP tools for ALMAdAccountInfo without access_token parameter
-func GetALMAdAccountInfoToolsWithoutAuth() []mcp.Tool {
+func GetALMAdAccountInfoTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// almadaccountinfo_get_ tool
@@ -44,39 +27,8 @@ func GetALMAdAccountInfoToolsWithoutAuth() []mcp.Tool {
 
 // ALMAdAccountInfo handlers
 
-// HandleAlmadaccountinfo_get_ handles the almadaccountinfo_get_ tool
+// HandleAlmadaccountinfo_get_ handles the almadaccountinfo_get_ tool with context-based auth
 func HandleAlmadaccountinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewALMAdAccountInfoClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Almadaccountinfo_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute almadaccountinfo_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAlmadaccountinfo_get_ handles the almadaccountinfo_get_ tool with context-based auth
-func HandleContextAlmadaccountinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

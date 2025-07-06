@@ -13,61 +13,7 @@ import (
 )
 
 // GetPaymentEnginePaymentTools returns MCP tools for PaymentEnginePayment
-func GetPaymentEnginePaymentTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// paymentenginepayment_post_dispute tool
-	paymentenginepayment_post_disputeTool := mcp.NewTool("paymentenginepayment_post_dispute",
-		mcp.WithDescription("POST dispute for PaymentEnginePayment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("reason",
-			mcp.Required(),
-			mcp.Description("reason parameter for dispute"),
-			mcp.Enum("BANNED_USER", "DENIED_REFUND", "GRANTED_REPLACEMENT_ITEM"),
-		),
-	)
-	tools = append(tools, paymentenginepayment_post_disputeTool)
-
-	// paymentenginepayment_post_refunds tool
-	paymentenginepayment_post_refundsTool := mcp.NewTool("paymentenginepayment_post_refunds",
-		mcp.WithDescription("POST refunds for PaymentEnginePayment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithNumber("amount",
-			mcp.Required(),
-			mcp.Description("amount parameter for refunds"),
-		),
-		mcp.WithString("currency",
-			mcp.Required(),
-			mcp.Description("currency parameter for refunds"),
-		),
-		mcp.WithString("reason",
-			mcp.Description("reason parameter for refunds"),
-			mcp.Enum("CUSTOMER_SERVICE", "FRIENDLY_FRAUD", "MALICIOUS_FRAUD"),
-		),
-	)
-	tools = append(tools, paymentenginepayment_post_refundsTool)
-
-	// paymentenginepayment_get_ tool
-	paymentenginepayment_get_Tool := mcp.NewTool("paymentenginepayment_get_",
-		mcp.WithDescription("GET  for PaymentEnginePayment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, paymentenginepayment_get_Tool)
-
-	return tools
-}
-
-// GetPaymentEnginePaymentToolsWithoutAuth returns MCP tools for PaymentEnginePayment without access_token parameter
-func GetPaymentEnginePaymentToolsWithoutAuth() []mcp.Tool {
+func GetPaymentEnginePaymentTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// paymentenginepayment_post_dispute tool
@@ -110,12 +56,12 @@ func GetPaymentEnginePaymentToolsWithoutAuth() []mcp.Tool {
 
 // PaymentEnginePayment handlers
 
-// HandlePaymentenginepayment_post_dispute handles the paymentenginepayment_post_dispute tool
+// HandlePaymentenginepayment_post_dispute handles the paymentenginepayment_post_dispute tool with context-based auth
 func HandlePaymentenginepayment_post_dispute(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -146,12 +92,12 @@ func HandlePaymentenginepayment_post_dispute(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandlePaymentenginepayment_post_refunds handles the paymentenginepayment_post_refunds tool
+// HandlePaymentenginepayment_post_refunds handles the paymentenginepayment_post_refunds tool with context-based auth
 func HandlePaymentenginepayment_post_refunds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -194,123 +140,8 @@ func HandlePaymentenginepayment_post_refunds(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandlePaymentenginepayment_get_ handles the paymentenginepayment_get_ tool
+// HandlePaymentenginepayment_get_ handles the paymentenginepayment_get_ tool with context-based auth
 func HandlePaymentenginepayment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewPaymentEnginePaymentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Paymentenginepayment_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute paymentenginepayment_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextPaymentenginepayment_post_dispute handles the paymentenginepayment_post_dispute tool with context-based auth
-func HandleContextPaymentenginepayment_post_dispute(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewPaymentEnginePaymentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: reason
-	reason, err := request.RequireString("reason")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter reason: %v", err)), nil
-	}
-	args["reason"] = reason
-
-	// Call the client method
-	result, err := client.Paymentenginepayment_post_dispute(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute paymentenginepayment_post_dispute: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextPaymentenginepayment_post_refunds handles the paymentenginepayment_post_refunds tool with context-based auth
-func HandleContextPaymentenginepayment_post_refunds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewPaymentEnginePaymentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: amount
-	amount, err := request.RequireFloat("amount")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter amount: %v", err)), nil
-	}
-	args["amount"] = amount
-
-	// Required: currency
-	currency, err := request.RequireString("currency")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter currency: %v", err)), nil
-	}
-	args["currency"] = currency
-
-	// Optional: reason
-	if val := request.GetString("reason", ""); val != "" {
-		args["reason"] = val
-	}
-
-	// Call the client method
-	result, err := client.Paymentenginepayment_post_refunds(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute paymentenginepayment_post_refunds: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextPaymentenginepayment_get_ handles the paymentenginepayment_get_ tool with context-based auth
-func HandleContextPaymentenginepayment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

@@ -13,156 +13,7 @@ import (
 )
 
 // GetAdCreativeTools returns MCP tools for AdCreative
-func GetAdCreativeTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// adcreative_post_adlabels tool
-	adcreative_post_adlabelsTool := mcp.NewTool("adcreative_post_adlabels",
-		mcp.WithDescription("POST adlabels for AdCreative"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("adlabels",
-			mcp.Required(),
-			mcp.Description("adlabels parameter for adlabels"),
-		),
-	)
-	tools = append(tools, adcreative_post_adlabelsTool)
-
-	// adcreative_get_creative_insights tool
-	adcreative_get_creative_insightsTool := mcp.NewTool("adcreative_get_creative_insights",
-		mcp.WithDescription("GET creative_insights for AdCreative"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adcreative_get_creative_insightsTool)
-
-	// adcreative_get_previews tool
-	adcreative_get_previewsTool := mcp.NewTool("adcreative_get_previews",
-		mcp.WithDescription("GET previews for AdCreative"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("ad_format",
-			mcp.Required(),
-			mcp.Description("ad_format parameter for previews"),
-			mcp.Enum("AUDIENCE_NETWORK_INSTREAM_VIDEO", "AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE", "AUDIENCE_NETWORK_OUTSTREAM_VIDEO", "AUDIENCE_NETWORK_REWARDED_VIDEO", "BIZ_DISCO_FEED_MOBILE", "DESKTOP_FEED_STANDARD", "FACEBOOK_PROFILE_FEED_DESKTOP", "FACEBOOK_PROFILE_FEED_MOBILE", "FACEBOOK_PROFILE_REELS_MOBILE", "FACEBOOK_REELS_BANNER", "FACEBOOK_REELS_BANNER_DESKTOP", "FACEBOOK_REELS_BANNER_FULLSCREEN_IOS", "FACEBOOK_REELS_BANNER_FULLSCREEN_MOBILE", "FACEBOOK_REELS_MOBILE", "FACEBOOK_REELS_POSTLOOP", "FACEBOOK_REELS_STICKER", "FACEBOOK_STORY_MOBILE", "FACEBOOK_STORY_STICKER_MOBILE", "INSTAGRAM_EXPLORE_CONTEXTUAL", "INSTAGRAM_EXPLORE_GRID_HOME", "INSTAGRAM_EXPLORE_IMMERSIVE", "INSTAGRAM_FEED_WEB", "INSTAGRAM_FEED_WEB_M_SITE", "INSTAGRAM_LEAD_GEN_MULTI_SUBMIT_ADS", "INSTAGRAM_PROFILE_FEED", "INSTAGRAM_PROFILE_REELS", "INSTAGRAM_REELS", "INSTAGRAM_REELS_OVERLAY", "INSTAGRAM_SEARCH_CHAIN", "INSTAGRAM_SEARCH_GRID", "INSTAGRAM_STANDARD", "INSTAGRAM_STORY", "INSTAGRAM_STORY_EFFECT_TRAY", "INSTAGRAM_STORY_WEB", "INSTAGRAM_STORY_WEB_M_SITE", "INSTANT_ARTICLE_RECIRCULATION_AD", "INSTANT_ARTICLE_STANDARD", "INSTREAM_BANNER_DESKTOP", "INSTREAM_BANNER_FULLSCREEN_IOS", "INSTREAM_BANNER_FULLSCREEN_MOBILE", "INSTREAM_BANNER_IMMERSIVE_MOBILE", "INSTREAM_BANNER_MOBILE", "INSTREAM_VIDEO_DESKTOP", "INSTREAM_VIDEO_FULLSCREEN_IOS", "INSTREAM_VIDEO_FULLSCREEN_MOBILE", "INSTREAM_VIDEO_IMAGE", "INSTREAM_VIDEO_IMMERSIVE_MOBILE", "INSTREAM_VIDEO_MOBILE", "JOB_BROWSER_DESKTOP", "JOB_BROWSER_MOBILE", "MARKETPLACE_MOBILE", "MESSENGER_MOBILE_INBOX_MEDIA", "MESSENGER_MOBILE_STORY_MEDIA", "MOBILE_BANNER", "MOBILE_FEED_BASIC", "MOBILE_FEED_STANDARD", "MOBILE_FULLWIDTH", "MOBILE_INTERSTITIAL", "MOBILE_MEDIUM_RECTANGLE", "MOBILE_NATIVE", "RIGHT_COLUMN_STANDARD", "SUGGESTED_VIDEO_DESKTOP", "SUGGESTED_VIDEO_FULLSCREEN_MOBILE", "SUGGESTED_VIDEO_IMMERSIVE_MOBILE", "SUGGESTED_VIDEO_MOBILE", "WATCH_FEED_HOME", "WATCH_FEED_MOBILE"),
-		),
-		mcp.WithString("creative_feature",
-			mcp.Description("creative_feature parameter for previews"),
-			mcp.Enum("product_metadata_automation", "profile_card", "standard_enhancements_catalog", "video_to_image"),
-		),
-		mcp.WithString("dynamic_asset_label",
-			mcp.Description("dynamic_asset_label parameter for previews"),
-		),
-		mcp.WithString("dynamic_creative_spec",
-			mcp.Description("dynamic_creative_spec parameter for previews"),
-		),
-		mcp.WithString("dynamic_customization",
-			mcp.Description("dynamic_customization parameter for previews"),
-		),
-		mcp.WithString("end_date",
-			mcp.Description("end_date parameter for previews"),
-		),
-		mcp.WithNumber("height",
-			mcp.Description("height parameter for previews"),
-		),
-		mcp.WithString("locale",
-			mcp.Description("locale parameter for previews"),
-		),
-		mcp.WithNumber("place_page_id",
-			mcp.Description("place_page_id parameter for previews"),
-		),
-		mcp.WithString("post",
-			mcp.Description("post parameter for previews"),
-		),
-		mcp.WithString("product_item_ids",
-			mcp.Description("product_item_ids parameter for previews"),
-		),
-		mcp.WithString("render_type",
-			mcp.Description("render_type parameter for previews"),
-			mcp.Enum("FALLBACK"),
-		),
-		mcp.WithString("start_date",
-			mcp.Description("start_date parameter for previews"),
-		),
-		mcp.WithNumber("width",
-			mcp.Description("width parameter for previews"),
-		),
-	)
-	tools = append(tools, adcreative_get_previewsTool)
-
-	// adcreative_delete_ tool
-	adcreative_delete_Tool := mcp.NewTool("adcreative_delete_",
-		mcp.WithDescription("DELETE  for AdCreative"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("account_id",
-			mcp.Description("account_id parameter for "),
-		),
-		mcp.WithString("adlabels",
-			mcp.Description("adlabels parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("status",
-			mcp.Description("status parameter for "),
-			mcp.Enum("ACTIVE", "DELETED", "IN_PROCESS", "WITH_ISSUES"),
-		),
-	)
-	tools = append(tools, adcreative_delete_Tool)
-
-	// adcreative_get_ tool
-	adcreative_get_Tool := mcp.NewTool("adcreative_get_",
-		mcp.WithDescription("GET  for AdCreative"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithNumber("thumbnail_height",
-			mcp.Description("thumbnail_height parameter for "),
-		),
-		mcp.WithNumber("thumbnail_width",
-			mcp.Description("thumbnail_width parameter for "),
-		),
-	)
-	tools = append(tools, adcreative_get_Tool)
-
-	// adcreative_post_ tool
-	adcreative_post_Tool := mcp.NewTool("adcreative_post_",
-		mcp.WithDescription("POST  for AdCreative"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("account_id",
-			mcp.Description("account_id parameter for "),
-		),
-		mcp.WithString("adlabels",
-			mcp.Description("adlabels parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("status",
-			mcp.Description("status parameter for "),
-			mcp.Enum("ACTIVE", "DELETED", "IN_PROCESS", "WITH_ISSUES"),
-		),
-	)
-	tools = append(tools, adcreative_post_Tool)
-
-	return tools
-}
-
-// GetAdCreativeToolsWithoutAuth returns MCP tools for AdCreative without access_token parameter
-func GetAdCreativeToolsWithoutAuth() []mcp.Tool {
+func GetAdCreativeTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adcreative_post_adlabels tool
@@ -288,12 +139,12 @@ func GetAdCreativeToolsWithoutAuth() []mcp.Tool {
 
 // AdCreative handlers
 
-// HandleAdcreative_post_adlabels handles the adcreative_post_adlabels tool
+// HandleAdcreative_post_adlabels handles the adcreative_post_adlabels tool with context-based auth
 func HandleAdcreative_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -324,12 +175,12 @@ func HandleAdcreative_post_adlabels(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdcreative_get_creative_insights handles the adcreative_get_creative_insights tool
+// HandleAdcreative_get_creative_insights handles the adcreative_get_creative_insights tool with context-based auth
 func HandleAdcreative_get_creative_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -353,12 +204,12 @@ func HandleAdcreative_get_creative_insights(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdcreative_get_previews handles the adcreative_get_previews tool
+// HandleAdcreative_get_previews handles the adcreative_get_previews tool with context-based auth
 func HandleAdcreative_get_previews(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -458,12 +309,12 @@ func HandleAdcreative_get_previews(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdcreative_delete_ handles the adcreative_delete_ tool
+// HandleAdcreative_delete_ handles the adcreative_delete_ tool with context-based auth
 func HandleAdcreative_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -508,12 +359,12 @@ func HandleAdcreative_delete_(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdcreative_get_ handles the adcreative_get_ tool
+// HandleAdcreative_get_ handles the adcreative_get_ tool with context-based auth
 func HandleAdcreative_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -547,319 +398,8 @@ func HandleAdcreative_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdcreative_post_ handles the adcreative_post_ tool
+// HandleAdcreative_post_ handles the adcreative_post_ tool with context-based auth
 func HandleAdcreative_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdCreativeClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: account_id
-	if val := request.GetString("account_id", ""); val != "" {
-		args["account_id"] = val
-	}
-
-	// Optional: adlabels
-	// array type - using string
-	if val := request.GetString("adlabels", ""); val != "" {
-		args["adlabels"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: status
-	if val := request.GetString("status", ""); val != "" {
-		args["status"] = val
-	}
-
-	// Call the client method
-	result, err := client.Adcreative_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adcreative_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAdcreative_post_adlabels handles the adcreative_post_adlabels tool with context-based auth
-func HandleContextAdcreative_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdCreativeClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: adlabels
-	adlabels, err := request.RequireString("adlabels")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter adlabels: %v", err)), nil
-	}
-	args["adlabels"] = adlabels
-
-	// Call the client method
-	result, err := client.Adcreative_post_adlabels(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adcreative_post_adlabels: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdcreative_get_creative_insights handles the adcreative_get_creative_insights tool with context-based auth
-func HandleContextAdcreative_get_creative_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdCreativeClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adcreative_get_creative_insights(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adcreative_get_creative_insights: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdcreative_get_previews handles the adcreative_get_previews tool with context-based auth
-func HandleContextAdcreative_get_previews(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdCreativeClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: ad_format
-	ad_format, err := request.RequireString("ad_format")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_format: %v", err)), nil
-	}
-	args["ad_format"] = ad_format
-
-	// Optional: creative_feature
-	if val := request.GetString("creative_feature", ""); val != "" {
-		args["creative_feature"] = val
-	}
-
-	// Optional: dynamic_asset_label
-	if val := request.GetString("dynamic_asset_label", ""); val != "" {
-		args["dynamic_asset_label"] = val
-	}
-
-	// Optional: dynamic_creative_spec
-	// object type - using string
-	if val := request.GetString("dynamic_creative_spec", ""); val != "" {
-		args["dynamic_creative_spec"] = val
-	}
-
-	// Optional: dynamic_customization
-	// object type - using string
-	if val := request.GetString("dynamic_customization", ""); val != "" {
-		args["dynamic_customization"] = val
-	}
-
-	// Optional: end_date
-	if val := request.GetString("end_date", ""); val != "" {
-		args["end_date"] = val
-	}
-
-	// Optional: height
-	if val := request.GetInt("height", 0); val != 0 {
-		args["height"] = val
-	}
-
-	// Optional: locale
-	if val := request.GetString("locale", ""); val != "" {
-		args["locale"] = val
-	}
-
-	// Optional: place_page_id
-	if val := request.GetInt("place_page_id", 0); val != 0 {
-		args["place_page_id"] = val
-	}
-
-	// Optional: post
-	// object type - using string
-	if val := request.GetString("post", ""); val != "" {
-		args["post"] = val
-	}
-
-	// Optional: product_item_ids
-	// array type - using string
-	if val := request.GetString("product_item_ids", ""); val != "" {
-		args["product_item_ids"] = val
-	}
-
-	// Optional: render_type
-	if val := request.GetString("render_type", ""); val != "" {
-		args["render_type"] = val
-	}
-
-	// Optional: start_date
-	if val := request.GetString("start_date", ""); val != "" {
-		args["start_date"] = val
-	}
-
-	// Optional: width
-	if val := request.GetInt("width", 0); val != 0 {
-		args["width"] = val
-	}
-
-	// Call the client method
-	result, err := client.Adcreative_get_previews(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adcreative_get_previews: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdcreative_delete_ handles the adcreative_delete_ tool with context-based auth
-func HandleContextAdcreative_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdCreativeClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: account_id
-	if val := request.GetString("account_id", ""); val != "" {
-		args["account_id"] = val
-	}
-
-	// Optional: adlabels
-	// array type - using string
-	if val := request.GetString("adlabels", ""); val != "" {
-		args["adlabels"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: status
-	if val := request.GetString("status", ""); val != "" {
-		args["status"] = val
-	}
-
-	// Call the client method
-	result, err := client.Adcreative_delete_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adcreative_delete_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdcreative_get_ handles the adcreative_get_ tool with context-based auth
-func HandleContextAdcreative_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdCreativeClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: thumbnail_height
-	if val := request.GetInt("thumbnail_height", 0); val != 0 {
-		args["thumbnail_height"] = val
-	}
-
-	// Optional: thumbnail_width
-	if val := request.GetInt("thumbnail_width", 0); val != 0 {
-		args["thumbnail_width"] = val
-	}
-
-	// Call the client method
-	result, err := client.Adcreative_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adcreative_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdcreative_post_ handles the adcreative_post_ tool with context-based auth
-func HandleContextAdcreative_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

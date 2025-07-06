@@ -13,36 +13,7 @@ import (
 )
 
 // GetIGAccessTokenForIGOnlyAPITools returns MCP tools for IGAccessTokenForIGOnlyAPI
-func GetIGAccessTokenForIGOnlyAPITools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// igaccesstokenforigonlyapi_get_ tool
-	igaccesstokenforigonlyapi_get_Tool := mcp.NewTool("igaccesstokenforigonlyapi_get_",
-		mcp.WithDescription("GET  for IGAccessTokenForIGOnlyAPI"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("access_token parameter for "),
-		),
-		mcp.WithString("client_secret",
-			mcp.Required(),
-			mcp.Description("client_secret parameter for "),
-		),
-		mcp.WithString("grant_type",
-			mcp.Required(),
-			mcp.Description("grant_type parameter for "),
-		),
-	)
-	tools = append(tools, igaccesstokenforigonlyapi_get_Tool)
-
-	return tools
-}
-
-// GetIGAccessTokenForIGOnlyAPIToolsWithoutAuth returns MCP tools for IGAccessTokenForIGOnlyAPI without access_token parameter
-func GetIGAccessTokenForIGOnlyAPIToolsWithoutAuth() []mcp.Tool {
+func GetIGAccessTokenForIGOnlyAPITools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// igaccesstokenforigonlyapi_get_ tool
@@ -68,60 +39,8 @@ func GetIGAccessTokenForIGOnlyAPIToolsWithoutAuth() []mcp.Tool {
 
 // IGAccessTokenForIGOnlyAPI handlers
 
-// HandleIgaccesstokenforigonlyapi_get_ handles the igaccesstokenforigonlyapi_get_ tool
+// HandleIgaccesstokenforigonlyapi_get_ handles the igaccesstokenforigonlyapi_get_ tool with context-based auth
 func HandleIgaccesstokenforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewIGAccessTokenForIGOnlyAPIClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: access_token
-	access_token, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter access_token: %v", err)), nil
-	}
-	args["access_token"] = access_token
-
-	// Required: client_secret
-	client_secret, err := request.RequireString("client_secret")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter client_secret: %v", err)), nil
-	}
-	args["client_secret"] = client_secret
-
-	// Required: grant_type
-	grant_type, err := request.RequireString("grant_type")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter grant_type: %v", err)), nil
-	}
-	args["grant_type"] = grant_type
-
-	// Call the client method
-	result, err := client.Igaccesstokenforigonlyapi_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igaccesstokenforigonlyapi_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextIgaccesstokenforigonlyapi_get_ handles the igaccesstokenforigonlyapi_get_ tool with context-based auth
-func HandleContextIgaccesstokenforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

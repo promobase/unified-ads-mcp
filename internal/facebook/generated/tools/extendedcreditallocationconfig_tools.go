@@ -13,47 +13,7 @@ import (
 )
 
 // GetExtendedCreditAllocationConfigTools returns MCP tools for ExtendedCreditAllocationConfig
-func GetExtendedCreditAllocationConfigTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// extendedcreditallocationconfig_delete_ tool
-	extendedcreditallocationconfig_delete_Tool := mcp.NewTool("extendedcreditallocationconfig_delete_",
-		mcp.WithDescription("DELETE  for ExtendedCreditAllocationConfig"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, extendedcreditallocationconfig_delete_Tool)
-
-	// extendedcreditallocationconfig_get_ tool
-	extendedcreditallocationconfig_get_Tool := mcp.NewTool("extendedcreditallocationconfig_get_",
-		mcp.WithDescription("GET  for ExtendedCreditAllocationConfig"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, extendedcreditallocationconfig_get_Tool)
-
-	// extendedcreditallocationconfig_post_ tool
-	extendedcreditallocationconfig_post_Tool := mcp.NewTool("extendedcreditallocationconfig_post_",
-		mcp.WithDescription("POST  for ExtendedCreditAllocationConfig"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("amount",
-			mcp.Description("amount parameter for "),
-		),
-	)
-	tools = append(tools, extendedcreditallocationconfig_post_Tool)
-
-	return tools
-}
-
-// GetExtendedCreditAllocationConfigToolsWithoutAuth returns MCP tools for ExtendedCreditAllocationConfig without access_token parameter
-func GetExtendedCreditAllocationConfigToolsWithoutAuth() []mcp.Tool {
+func GetExtendedCreditAllocationConfigTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// extendedcreditallocationconfig_delete_ tool
@@ -82,12 +42,12 @@ func GetExtendedCreditAllocationConfigToolsWithoutAuth() []mcp.Tool {
 
 // ExtendedCreditAllocationConfig handlers
 
-// HandleExtendedcreditallocationconfig_delete_ handles the extendedcreditallocationconfig_delete_ tool
+// HandleExtendedcreditallocationconfig_delete_ handles the extendedcreditallocationconfig_delete_ tool with context-based auth
 func HandleExtendedcreditallocationconfig_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -111,12 +71,12 @@ func HandleExtendedcreditallocationconfig_delete_(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleExtendedcreditallocationconfig_get_ handles the extendedcreditallocationconfig_get_ tool
+// HandleExtendedcreditallocationconfig_get_ handles the extendedcreditallocationconfig_get_ tool with context-based auth
 func HandleExtendedcreditallocationconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -140,103 +100,8 @@ func HandleExtendedcreditallocationconfig_get_(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleExtendedcreditallocationconfig_post_ handles the extendedcreditallocationconfig_post_ tool
+// HandleExtendedcreditallocationconfig_post_ handles the extendedcreditallocationconfig_post_ tool with context-based auth
 func HandleExtendedcreditallocationconfig_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewExtendedCreditAllocationConfigClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: amount
-	// object type - using string
-	if val := request.GetString("amount", ""); val != "" {
-		args["amount"] = val
-	}
-
-	// Call the client method
-	result, err := client.Extendedcreditallocationconfig_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcreditallocationconfig_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextExtendedcreditallocationconfig_delete_ handles the extendedcreditallocationconfig_delete_ tool with context-based auth
-func HandleContextExtendedcreditallocationconfig_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewExtendedCreditAllocationConfigClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Extendedcreditallocationconfig_delete_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcreditallocationconfig_delete_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextExtendedcreditallocationconfig_get_ handles the extendedcreditallocationconfig_get_ tool with context-based auth
-func HandleContextExtendedcreditallocationconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewExtendedCreditAllocationConfigClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Extendedcreditallocationconfig_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcreditallocationconfig_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextExtendedcreditallocationconfig_post_ handles the extendedcreditallocationconfig_post_ tool with context-based auth
-func HandleContextExtendedcreditallocationconfig_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

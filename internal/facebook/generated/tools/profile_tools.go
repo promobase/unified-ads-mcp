@@ -13,47 +13,7 @@ import (
 )
 
 // GetProfileTools returns MCP tools for Profile
-func GetProfileTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// profile_get_picture tool
-	profile_get_pictureTool := mcp.NewTool("profile_get_picture",
-		mcp.WithDescription("GET picture for Profile"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithNumber("height",
-			mcp.Description("height parameter for picture"),
-		),
-		mcp.WithBoolean("redirect",
-			mcp.Description("redirect parameter for picture"),
-		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for picture"),
-			mcp.Enum("album", "large", "normal", "small", "square"),
-		),
-		mcp.WithNumber("width",
-			mcp.Description("width parameter for picture"),
-		),
-	)
-	tools = append(tools, profile_get_pictureTool)
-
-	// profile_get_ tool
-	profile_get_Tool := mcp.NewTool("profile_get_",
-		mcp.WithDescription("GET  for Profile"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, profile_get_Tool)
-
-	return tools
-}
-
-// GetProfileToolsWithoutAuth returns MCP tools for Profile without access_token parameter
-func GetProfileToolsWithoutAuth() []mcp.Tool {
+func GetProfileTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// profile_get_picture tool
@@ -86,88 +46,8 @@ func GetProfileToolsWithoutAuth() []mcp.Tool {
 
 // Profile handlers
 
-// HandleProfile_get_picture handles the profile_get_picture tool
+// HandleProfile_get_picture handles the profile_get_picture tool with context-based auth
 func HandleProfile_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewProfileClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: height
-	if val := request.GetInt("height", 0); val != 0 {
-		args["height"] = val
-	}
-
-	// Optional: redirect
-	if val := request.GetBool("redirect", false); val {
-		args["redirect"] = val
-	}
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
-	}
-
-	// Optional: width
-	if val := request.GetInt("width", 0); val != 0 {
-		args["width"] = val
-	}
-
-	// Call the client method
-	result, err := client.Profile_get_picture(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute profile_get_picture: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleProfile_get_ handles the profile_get_ tool
-func HandleProfile_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewProfileClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Profile_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute profile_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextProfile_get_picture handles the profile_get_picture tool with context-based auth
-func HandleContextProfile_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {
@@ -215,8 +95,8 @@ func HandleContextProfile_get_picture(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleContextProfile_get_ handles the profile_get_ tool with context-based auth
-func HandleContextProfile_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleProfile_get_ handles the profile_get_ tool with context-based auth
+func HandleProfile_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

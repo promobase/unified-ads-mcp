@@ -13,84 +13,7 @@ import (
 )
 
 // GetPageCallToActionTools returns MCP tools for PageCallToAction
-func GetPageCallToActionTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// pagecalltoaction_delete_ tool
-	pagecalltoaction_delete_Tool := mcp.NewTool("pagecalltoaction_delete_",
-		mcp.WithDescription("DELETE  for PageCallToAction"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, pagecalltoaction_delete_Tool)
-
-	// pagecalltoaction_get_ tool
-	pagecalltoaction_get_Tool := mcp.NewTool("pagecalltoaction_get_",
-		mcp.WithDescription("GET  for PageCallToAction"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, pagecalltoaction_get_Tool)
-
-	// pagecalltoaction_post_ tool
-	pagecalltoaction_post_Tool := mcp.NewTool("pagecalltoaction_post_",
-		mcp.WithDescription("POST  for PageCallToAction"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithNumber("android_app_id",
-			mcp.Description("android_app_id parameter for "),
-		),
-		mcp.WithString("android_destination_type",
-			mcp.Description("android_destination_type parameter for "),
-			mcp.Enum("APP_DEEPLINK", "BECOME_A_VOLUNTEER", "EMAIL", "FACEBOOK_APP", "FOLLOW", "MARKETPLACE_INVENTORY_PAGE", "MENU_ON_FACEBOOK", "MESSENGER", "MINI_SHOP", "MOBILE_CENTER", "NONE", "PHONE_CALL", "SHOP_ON_FACEBOOK", "WEBSITE"),
-		),
-		mcp.WithString("android_package_name",
-			mcp.Description("android_package_name parameter for "),
-		),
-		mcp.WithString("android_url",
-			mcp.Description("android_url parameter for "),
-		),
-		mcp.WithString("email_address",
-			mcp.Description("email_address parameter for "),
-		),
-		mcp.WithString("intl_number_with_plus",
-			mcp.Description("intl_number_with_plus parameter for "),
-		),
-		mcp.WithNumber("iphone_app_id",
-			mcp.Description("iphone_app_id parameter for "),
-		),
-		mcp.WithString("iphone_destination_type",
-			mcp.Description("iphone_destination_type parameter for "),
-			mcp.Enum("APP_DEEPLINK", "BECOME_A_VOLUNTEER", "EMAIL", "FACEBOOK_APP", "FOLLOW", "MARKETPLACE_INVENTORY_PAGE", "MENU_ON_FACEBOOK", "MESSENGER", "MINI_SHOP", "NONE", "PHONE_CALL", "SHOP_ON_FACEBOOK", "WEBSITE"),
-		),
-		mcp.WithString("iphone_url",
-			mcp.Description("iphone_url parameter for "),
-		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for "),
-			mcp.Enum("BECOME_A_VOLUNTEER", "BOOK_APPOINTMENT", "BOOK_NOW", "BUY_TICKETS", "CALL_NOW", "CHARITY_DONATE", "CHECK_IN", "CONTACT_US", "CREATOR_STOREFRONT", "DONATE_NOW", "EMAIL", "FOLLOW_PAGE", "GET_DIRECTIONS", "GET_OFFER", "GET_OFFER_VIEW", "INTERESTED", "LEARN_MORE", "LISTEN", "LOCAL_DEV_PLATFORM", "MESSAGE", "MOBILE_CENTER", "OPEN_APP", "ORDER_FOOD", "PLAY_MUSIC", "PLAY_NOW", "PURCHASE_GIFT_CARDS", "REQUEST_APPOINTMENT", "REQUEST_QUOTE", "SHOP_NOW", "SHOP_ON_FACEBOOK", "SIGN_UP", "VIEW_INVENTORY", "VIEW_MENU", "VIEW_SHOP", "VISIT_GROUP", "WATCH_NOW", "WOODHENGE_SUPPORT"),
-		),
-		mcp.WithString("web_destination_type",
-			mcp.Description("web_destination_type parameter for "),
-			mcp.Enum("BECOME_A_VOLUNTEER", "BECOME_SUPPORTER", "EMAIL", "FOLLOW", "MESSENGER", "MOBILE_CENTER", "NONE", "SHOP_ON_FACEBOOK", "WEBSITE"),
-		),
-		mcp.WithString("web_url",
-			mcp.Description("web_url parameter for "),
-		),
-	)
-	tools = append(tools, pagecalltoaction_post_Tool)
-
-	return tools
-}
-
-// GetPageCallToActionToolsWithoutAuth returns MCP tools for PageCallToAction without access_token parameter
-func GetPageCallToActionToolsWithoutAuth() []mcp.Tool {
+func GetPageCallToActionTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// pagecalltoaction_delete_ tool
@@ -156,12 +79,12 @@ func GetPageCallToActionToolsWithoutAuth() []mcp.Tool {
 
 // PageCallToAction handlers
 
-// HandlePagecalltoaction_delete_ handles the pagecalltoaction_delete_ tool
+// HandlePagecalltoaction_delete_ handles the pagecalltoaction_delete_ tool with context-based auth
 func HandlePagecalltoaction_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -185,12 +108,12 @@ func HandlePagecalltoaction_delete_(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandlePagecalltoaction_get_ handles the pagecalltoaction_get_ tool
+// HandlePagecalltoaction_get_ handles the pagecalltoaction_get_ tool with context-based auth
 func HandlePagecalltoaction_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -214,157 +137,8 @@ func HandlePagecalltoaction_get_(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandlePagecalltoaction_post_ handles the pagecalltoaction_post_ tool
+// HandlePagecalltoaction_post_ handles the pagecalltoaction_post_ tool with context-based auth
 func HandlePagecalltoaction_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewPageCallToActionClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: android_app_id
-	if val := request.GetInt("android_app_id", 0); val != 0 {
-		args["android_app_id"] = val
-	}
-
-	// Optional: android_destination_type
-	if val := request.GetString("android_destination_type", ""); val != "" {
-		args["android_destination_type"] = val
-	}
-
-	// Optional: android_package_name
-	if val := request.GetString("android_package_name", ""); val != "" {
-		args["android_package_name"] = val
-	}
-
-	// Optional: android_url
-	if val := request.GetString("android_url", ""); val != "" {
-		args["android_url"] = val
-	}
-
-	// Optional: email_address
-	if val := request.GetString("email_address", ""); val != "" {
-		args["email_address"] = val
-	}
-
-	// Optional: intl_number_with_plus
-	if val := request.GetString("intl_number_with_plus", ""); val != "" {
-		args["intl_number_with_plus"] = val
-	}
-
-	// Optional: iphone_app_id
-	if val := request.GetInt("iphone_app_id", 0); val != 0 {
-		args["iphone_app_id"] = val
-	}
-
-	// Optional: iphone_destination_type
-	if val := request.GetString("iphone_destination_type", ""); val != "" {
-		args["iphone_destination_type"] = val
-	}
-
-	// Optional: iphone_url
-	if val := request.GetString("iphone_url", ""); val != "" {
-		args["iphone_url"] = val
-	}
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
-	}
-
-	// Optional: web_destination_type
-	if val := request.GetString("web_destination_type", ""); val != "" {
-		args["web_destination_type"] = val
-	}
-
-	// Optional: web_url
-	if val := request.GetString("web_url", ""); val != "" {
-		args["web_url"] = val
-	}
-
-	// Call the client method
-	result, err := client.Pagecalltoaction_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pagecalltoaction_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextPagecalltoaction_delete_ handles the pagecalltoaction_delete_ tool with context-based auth
-func HandleContextPagecalltoaction_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewPageCallToActionClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Pagecalltoaction_delete_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pagecalltoaction_delete_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextPagecalltoaction_get_ handles the pagecalltoaction_get_ tool with context-based auth
-func HandleContextPagecalltoaction_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewPageCallToActionClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Pagecalltoaction_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pagecalltoaction_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextPagecalltoaction_post_ handles the pagecalltoaction_post_ tool with context-based auth
-func HandleContextPagecalltoaction_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

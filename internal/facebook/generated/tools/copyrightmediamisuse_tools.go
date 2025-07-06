@@ -13,24 +13,7 @@ import (
 )
 
 // GetCopyrightMediaMisuseTools returns MCP tools for CopyrightMediaMisuse
-func GetCopyrightMediaMisuseTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// copyrightmediamisuse_get_ tool
-	copyrightmediamisuse_get_Tool := mcp.NewTool("copyrightmediamisuse_get_",
-		mcp.WithDescription("GET  for CopyrightMediaMisuse"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, copyrightmediamisuse_get_Tool)
-
-	return tools
-}
-
-// GetCopyrightMediaMisuseToolsWithoutAuth returns MCP tools for CopyrightMediaMisuse without access_token parameter
-func GetCopyrightMediaMisuseToolsWithoutAuth() []mcp.Tool {
+func GetCopyrightMediaMisuseTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// copyrightmediamisuse_get_ tool
@@ -44,39 +27,8 @@ func GetCopyrightMediaMisuseToolsWithoutAuth() []mcp.Tool {
 
 // CopyrightMediaMisuse handlers
 
-// HandleCopyrightmediamisuse_get_ handles the copyrightmediamisuse_get_ tool
+// HandleCopyrightmediamisuse_get_ handles the copyrightmediamisuse_get_ tool with context-based auth
 func HandleCopyrightmediamisuse_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewCopyrightMediaMisuseClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Copyrightmediamisuse_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute copyrightmediamisuse_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextCopyrightmediamisuse_get_ handles the copyrightmediamisuse_get_ tool with context-based auth
-func HandleContextCopyrightmediamisuse_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

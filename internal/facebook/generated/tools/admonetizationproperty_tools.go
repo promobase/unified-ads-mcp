@@ -13,126 +13,7 @@ import (
 )
 
 // GetAdMonetizationPropertyTools returns MCP tools for AdMonetizationProperty
-func GetAdMonetizationPropertyTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// admonetizationproperty_get_adnetworkanalytics tool
-	admonetizationproperty_get_adnetworkanalyticsTool := mcp.NewTool("admonetizationproperty_get_adnetworkanalytics",
-		mcp.WithDescription("GET adnetworkanalytics for AdMonetizationProperty"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("aggregation_period",
-			mcp.Description("aggregation_period parameter for adnetworkanalytics"),
-			mcp.Enum("DAY", "TOTAL"),
-		),
-		mcp.WithString("breakdowns",
-			mcp.Description("breakdowns parameter for adnetworkanalytics"),
-			mcp.Enum("AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION"),
-		),
-		mcp.WithString("filters",
-			mcp.Description("filters parameter for adnetworkanalytics"),
-		),
-		mcp.WithNumber("limit",
-			mcp.Description("limit parameter for adnetworkanalytics"),
-		),
-		mcp.WithString("metrics",
-			mcp.Required(),
-			mcp.Description("metrics parameter for adnetworkanalytics"),
-			mcp.Enum("FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE"),
-		),
-		mcp.WithString("ordering_column",
-			mcp.Description("ordering_column parameter for adnetworkanalytics"),
-			mcp.Enum("METRIC", "TIME", "VALUE"),
-		),
-		mcp.WithString("ordering_type",
-			mcp.Description("ordering_type parameter for adnetworkanalytics"),
-			mcp.Enum("ASCENDING", "DESCENDING"),
-		),
-		mcp.WithBoolean("should_include_until",
-			mcp.Description("should_include_until parameter for adnetworkanalytics"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for adnetworkanalytics"),
-		),
-		mcp.WithString("until",
-			mcp.Description("until parameter for adnetworkanalytics"),
-		),
-	)
-	tools = append(tools, admonetizationproperty_get_adnetworkanalyticsTool)
-
-	// admonetizationproperty_post_adnetworkanalytics tool
-	admonetizationproperty_post_adnetworkanalyticsTool := mcp.NewTool("admonetizationproperty_post_adnetworkanalytics",
-		mcp.WithDescription("POST adnetworkanalytics for AdMonetizationProperty"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("aggregation_period",
-			mcp.Description("aggregation_period parameter for adnetworkanalytics"),
-			mcp.Enum("DAY", "TOTAL"),
-		),
-		mcp.WithString("breakdowns",
-			mcp.Description("breakdowns parameter for adnetworkanalytics"),
-			mcp.Enum("AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION"),
-		),
-		mcp.WithString("filters",
-			mcp.Description("filters parameter for adnetworkanalytics"),
-		),
-		mcp.WithNumber("limit",
-			mcp.Description("limit parameter for adnetworkanalytics"),
-		),
-		mcp.WithString("metrics",
-			mcp.Required(),
-			mcp.Description("metrics parameter for adnetworkanalytics"),
-			mcp.Enum("FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE"),
-		),
-		mcp.WithString("ordering_column",
-			mcp.Description("ordering_column parameter for adnetworkanalytics"),
-			mcp.Enum("METRIC", "TIME", "VALUE"),
-		),
-		mcp.WithString("ordering_type",
-			mcp.Description("ordering_type parameter for adnetworkanalytics"),
-			mcp.Enum("ASCENDING", "DESCENDING"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for adnetworkanalytics"),
-		),
-		mcp.WithString("until",
-			mcp.Description("until parameter for adnetworkanalytics"),
-		),
-	)
-	tools = append(tools, admonetizationproperty_post_adnetworkanalyticsTool)
-
-	// admonetizationproperty_get_adnetworkanalytics_results tool
-	admonetizationproperty_get_adnetworkanalytics_resultsTool := mcp.NewTool("admonetizationproperty_get_adnetworkanalytics_results",
-		mcp.WithDescription("GET adnetworkanalytics_results for AdMonetizationProperty"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("query_ids",
-			mcp.Description("query_ids parameter for adnetworkanalytics_results"),
-		),
-	)
-	tools = append(tools, admonetizationproperty_get_adnetworkanalytics_resultsTool)
-
-	// admonetizationproperty_get_ tool
-	admonetizationproperty_get_Tool := mcp.NewTool("admonetizationproperty_get_",
-		mcp.WithDescription("GET  for AdMonetizationProperty"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, admonetizationproperty_get_Tool)
-
-	return tools
-}
-
-// GetAdMonetizationPropertyToolsWithoutAuth returns MCP tools for AdMonetizationProperty without access_token parameter
-func GetAdMonetizationPropertyToolsWithoutAuth() []mcp.Tool {
+func GetAdMonetizationPropertyTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// admonetizationproperty_get_adnetworkanalytics tool
@@ -236,12 +117,12 @@ func GetAdMonetizationPropertyToolsWithoutAuth() []mcp.Tool {
 
 // AdMonetizationProperty handlers
 
-// HandleAdmonetizationproperty_get_adnetworkanalytics handles the admonetizationproperty_get_adnetworkanalytics tool
+// HandleAdmonetizationproperty_get_adnetworkanalytics handles the admonetizationproperty_get_adnetworkanalytics tool with context-based auth
 func HandleAdmonetizationproperty_get_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -319,12 +200,12 @@ func HandleAdmonetizationproperty_get_adnetworkanalytics(ctx context.Context, re
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdmonetizationproperty_post_adnetworkanalytics handles the admonetizationproperty_post_adnetworkanalytics tool
+// HandleAdmonetizationproperty_post_adnetworkanalytics handles the admonetizationproperty_post_adnetworkanalytics tool with context-based auth
 func HandleAdmonetizationproperty_post_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -397,12 +278,12 @@ func HandleAdmonetizationproperty_post_adnetworkanalytics(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdmonetizationproperty_get_adnetworkanalytics_results handles the admonetizationproperty_get_adnetworkanalytics_results tool
+// HandleAdmonetizationproperty_get_adnetworkanalytics_results handles the admonetizationproperty_get_adnetworkanalytics_results tool with context-based auth
 func HandleAdmonetizationproperty_get_adnetworkanalytics_results(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -432,235 +313,8 @@ func HandleAdmonetizationproperty_get_adnetworkanalytics_results(ctx context.Con
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdmonetizationproperty_get_ handles the admonetizationproperty_get_ tool
+// HandleAdmonetizationproperty_get_ handles the admonetizationproperty_get_ tool with context-based auth
 func HandleAdmonetizationproperty_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdMonetizationPropertyClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Admonetizationproperty_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute admonetizationproperty_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAdmonetizationproperty_get_adnetworkanalytics handles the admonetizationproperty_get_adnetworkanalytics tool with context-based auth
-func HandleContextAdmonetizationproperty_get_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdMonetizationPropertyClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: aggregation_period
-	if val := request.GetString("aggregation_period", ""); val != "" {
-		args["aggregation_period"] = val
-	}
-
-	// Optional: breakdowns
-	// array type - using string
-	if val := request.GetString("breakdowns", ""); val != "" {
-		args["breakdowns"] = val
-	}
-
-	// Optional: filters
-	// array type - using string
-	if val := request.GetString("filters", ""); val != "" {
-		args["filters"] = val
-	}
-
-	// Optional: limit
-	if val := request.GetInt("limit", 0); val != 0 {
-		args["limit"] = val
-	}
-
-	// Required: metrics
-	metrics, err := request.RequireString("metrics")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter metrics: %v", err)), nil
-	}
-	args["metrics"] = metrics
-
-	// Optional: ordering_column
-	if val := request.GetString("ordering_column", ""); val != "" {
-		args["ordering_column"] = val
-	}
-
-	// Optional: ordering_type
-	if val := request.GetString("ordering_type", ""); val != "" {
-		args["ordering_type"] = val
-	}
-
-	// Optional: should_include_until
-	if val := request.GetBool("should_include_until", false); val {
-		args["should_include_until"] = val
-	}
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Optional: until
-	if val := request.GetString("until", ""); val != "" {
-		args["until"] = val
-	}
-
-	// Call the client method
-	result, err := client.Admonetizationproperty_get_adnetworkanalytics(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute admonetizationproperty_get_adnetworkanalytics: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdmonetizationproperty_post_adnetworkanalytics handles the admonetizationproperty_post_adnetworkanalytics tool with context-based auth
-func HandleContextAdmonetizationproperty_post_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdMonetizationPropertyClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: aggregation_period
-	if val := request.GetString("aggregation_period", ""); val != "" {
-		args["aggregation_period"] = val
-	}
-
-	// Optional: breakdowns
-	// array type - using string
-	if val := request.GetString("breakdowns", ""); val != "" {
-		args["breakdowns"] = val
-	}
-
-	// Optional: filters
-	// array type - using string
-	if val := request.GetString("filters", ""); val != "" {
-		args["filters"] = val
-	}
-
-	// Optional: limit
-	if val := request.GetInt("limit", 0); val != 0 {
-		args["limit"] = val
-	}
-
-	// Required: metrics
-	metrics, err := request.RequireString("metrics")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter metrics: %v", err)), nil
-	}
-	args["metrics"] = metrics
-
-	// Optional: ordering_column
-	if val := request.GetString("ordering_column", ""); val != "" {
-		args["ordering_column"] = val
-	}
-
-	// Optional: ordering_type
-	if val := request.GetString("ordering_type", ""); val != "" {
-		args["ordering_type"] = val
-	}
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Optional: until
-	if val := request.GetString("until", ""); val != "" {
-		args["until"] = val
-	}
-
-	// Call the client method
-	result, err := client.Admonetizationproperty_post_adnetworkanalytics(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute admonetizationproperty_post_adnetworkanalytics: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdmonetizationproperty_get_adnetworkanalytics_results handles the admonetizationproperty_get_adnetworkanalytics_results tool with context-based auth
-func HandleContextAdmonetizationproperty_get_adnetworkanalytics_results(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdMonetizationPropertyClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: query_ids
-	// array type - using string
-	if val := request.GetString("query_ids", ""); val != "" {
-		args["query_ids"] = val
-	}
-
-	// Call the client method
-	result, err := client.Admonetizationproperty_get_adnetworkanalytics_results(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute admonetizationproperty_get_adnetworkanalytics_results: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdmonetizationproperty_get_ handles the admonetizationproperty_get_ tool with context-based auth
-func HandleContextAdmonetizationproperty_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

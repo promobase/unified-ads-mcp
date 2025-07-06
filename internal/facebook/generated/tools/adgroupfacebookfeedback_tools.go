@@ -13,28 +13,7 @@ import (
 )
 
 // GetAdgroupFacebookFeedbackTools returns MCP tools for AdgroupFacebookFeedback
-func GetAdgroupFacebookFeedbackTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// adgroupfacebookfeedback_get_comments tool
-	adgroupfacebookfeedback_get_commentsTool := mcp.NewTool("adgroupfacebookfeedback_get_comments",
-		mcp.WithDescription("GET comments for AdgroupFacebookFeedback"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("order",
-			mcp.Description("order parameter for comments"),
-			mcp.Enum("chronological", "reverse_chronological"),
-		),
-	)
-	tools = append(tools, adgroupfacebookfeedback_get_commentsTool)
-
-	return tools
-}
-
-// GetAdgroupFacebookFeedbackToolsWithoutAuth returns MCP tools for AdgroupFacebookFeedback without access_token parameter
-func GetAdgroupFacebookFeedbackToolsWithoutAuth() []mcp.Tool {
+func GetAdgroupFacebookFeedbackTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adgroupfacebookfeedback_get_comments tool
@@ -52,44 +31,8 @@ func GetAdgroupFacebookFeedbackToolsWithoutAuth() []mcp.Tool {
 
 // AdgroupFacebookFeedback handlers
 
-// HandleAdgroupfacebookfeedback_get_comments handles the adgroupfacebookfeedback_get_comments tool
+// HandleAdgroupfacebookfeedback_get_comments handles the adgroupfacebookfeedback_get_comments tool with context-based auth
 func HandleAdgroupfacebookfeedback_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdgroupFacebookFeedbackClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: order
-	if val := request.GetString("order", ""); val != "" {
-		args["order"] = val
-	}
-
-	// Call the client method
-	result, err := client.Adgroupfacebookfeedback_get_comments(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adgroupfacebookfeedback_get_comments: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAdgroupfacebookfeedback_get_comments handles the adgroupfacebookfeedback_get_comments tool with context-based auth
-func HandleContextAdgroupfacebookfeedback_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

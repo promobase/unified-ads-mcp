@@ -13,65 +13,7 @@ import (
 )
 
 // GetAdsValueAdjustmentRuleCollectionTools returns MCP tools for AdsValueAdjustmentRuleCollection
-func GetAdsValueAdjustmentRuleCollectionTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// adsvalueadjustmentrulecollection_post_delete_rule_set tool
-	adsvalueadjustmentrulecollection_post_delete_rule_setTool := mcp.NewTool("adsvalueadjustmentrulecollection_post_delete_rule_set",
-		mcp.WithDescription("POST delete_rule_set for AdsValueAdjustmentRuleCollection"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adsvalueadjustmentrulecollection_post_delete_rule_setTool)
-
-	// adsvalueadjustmentrulecollection_get_rules tool
-	adsvalueadjustmentrulecollection_get_rulesTool := mcp.NewTool("adsvalueadjustmentrulecollection_get_rules",
-		mcp.WithDescription("GET rules for AdsValueAdjustmentRuleCollection"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adsvalueadjustmentrulecollection_get_rulesTool)
-
-	// adsvalueadjustmentrulecollection_get_ tool
-	adsvalueadjustmentrulecollection_get_Tool := mcp.NewTool("adsvalueadjustmentrulecollection_get_",
-		mcp.WithDescription("GET  for AdsValueAdjustmentRuleCollection"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adsvalueadjustmentrulecollection_get_Tool)
-
-	// adsvalueadjustmentrulecollection_post_ tool
-	adsvalueadjustmentrulecollection_post_Tool := mcp.NewTool("adsvalueadjustmentrulecollection_post_",
-		mcp.WithDescription("POST  for AdsValueAdjustmentRuleCollection"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithBoolean("is_default_setting",
-			mcp.Description("is_default_setting parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Required(),
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("rules",
-			mcp.Required(),
-			mcp.Description("rules parameter for "),
-		),
-	)
-	tools = append(tools, adsvalueadjustmentrulecollection_post_Tool)
-
-	return tools
-}
-
-// GetAdsValueAdjustmentRuleCollectionToolsWithoutAuth returns MCP tools for AdsValueAdjustmentRuleCollection without access_token parameter
-func GetAdsValueAdjustmentRuleCollectionToolsWithoutAuth() []mcp.Tool {
+func GetAdsValueAdjustmentRuleCollectionTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adsvalueadjustmentrulecollection_post_delete_rule_set tool
@@ -114,12 +56,12 @@ func GetAdsValueAdjustmentRuleCollectionToolsWithoutAuth() []mcp.Tool {
 
 // AdsValueAdjustmentRuleCollection handlers
 
-// HandleAdsvalueadjustmentrulecollection_post_delete_rule_set handles the adsvalueadjustmentrulecollection_post_delete_rule_set tool
+// HandleAdsvalueadjustmentrulecollection_post_delete_rule_set handles the adsvalueadjustmentrulecollection_post_delete_rule_set tool with context-based auth
 func HandleAdsvalueadjustmentrulecollection_post_delete_rule_set(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -143,12 +85,12 @@ func HandleAdsvalueadjustmentrulecollection_post_delete_rule_set(ctx context.Con
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdsvalueadjustmentrulecollection_get_rules handles the adsvalueadjustmentrulecollection_get_rules tool
+// HandleAdsvalueadjustmentrulecollection_get_rules handles the adsvalueadjustmentrulecollection_get_rules tool with context-based auth
 func HandleAdsvalueadjustmentrulecollection_get_rules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -172,12 +114,12 @@ func HandleAdsvalueadjustmentrulecollection_get_rules(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdsvalueadjustmentrulecollection_get_ handles the adsvalueadjustmentrulecollection_get_ tool
+// HandleAdsvalueadjustmentrulecollection_get_ handles the adsvalueadjustmentrulecollection_get_ tool with context-based auth
 func HandleAdsvalueadjustmentrulecollection_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -201,145 +143,8 @@ func HandleAdsvalueadjustmentrulecollection_get_(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdsvalueadjustmentrulecollection_post_ handles the adsvalueadjustmentrulecollection_post_ tool
+// HandleAdsvalueadjustmentrulecollection_post_ handles the adsvalueadjustmentrulecollection_post_ tool with context-based auth
 func HandleAdsvalueadjustmentrulecollection_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdsValueAdjustmentRuleCollectionClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: is_default_setting
-	if val := request.GetBool("is_default_setting", false); val {
-		args["is_default_setting"] = val
-	}
-
-	// Required: name
-	name, err := request.RequireString("name")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
-	}
-	args["name"] = name
-
-	// Required: rules
-	rules, err := request.RequireString("rules")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter rules: %v", err)), nil
-	}
-	args["rules"] = rules
-
-	// Call the client method
-	result, err := client.Adsvalueadjustmentrulecollection_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adsvalueadjustmentrulecollection_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAdsvalueadjustmentrulecollection_post_delete_rule_set handles the adsvalueadjustmentrulecollection_post_delete_rule_set tool with context-based auth
-func HandleContextAdsvalueadjustmentrulecollection_post_delete_rule_set(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdsValueAdjustmentRuleCollectionClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adsvalueadjustmentrulecollection_post_delete_rule_set(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adsvalueadjustmentrulecollection_post_delete_rule_set: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdsvalueadjustmentrulecollection_get_rules handles the adsvalueadjustmentrulecollection_get_rules tool with context-based auth
-func HandleContextAdsvalueadjustmentrulecollection_get_rules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdsValueAdjustmentRuleCollectionClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adsvalueadjustmentrulecollection_get_rules(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adsvalueadjustmentrulecollection_get_rules: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdsvalueadjustmentrulecollection_get_ handles the adsvalueadjustmentrulecollection_get_ tool with context-based auth
-func HandleContextAdsvalueadjustmentrulecollection_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdsValueAdjustmentRuleCollectionClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adsvalueadjustmentrulecollection_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adsvalueadjustmentrulecollection_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdsvalueadjustmentrulecollection_post_ handles the adsvalueadjustmentrulecollection_post_ tool with context-based auth
-func HandleContextAdsvalueadjustmentrulecollection_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

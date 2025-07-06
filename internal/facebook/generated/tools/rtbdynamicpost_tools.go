@@ -13,59 +13,7 @@ import (
 )
 
 // GetRTBDynamicPostTools returns MCP tools for RTBDynamicPost
-func GetRTBDynamicPostTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// rtbdynamicpost_get_comments tool
-	rtbdynamicpost_get_commentsTool := mcp.NewTool("rtbdynamicpost_get_comments",
-		mcp.WithDescription("GET comments for RTBDynamicPost"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("filter",
-			mcp.Description("filter parameter for comments"),
-			mcp.Enum("stream", "toplevel"),
-		),
-		mcp.WithString("live_filter",
-			mcp.Description("live_filter parameter for comments"),
-			mcp.Enum("filter_low_quality", "no_filter"),
-		),
-		mcp.WithString("order",
-			mcp.Description("order parameter for comments"),
-			mcp.Enum("chronological", "reverse_chronological"),
-		),
-		mcp.WithString("since",
-			mcp.Description("since parameter for comments"),
-		),
-	)
-	tools = append(tools, rtbdynamicpost_get_commentsTool)
-
-	// rtbdynamicpost_get_likes tool
-	rtbdynamicpost_get_likesTool := mcp.NewTool("rtbdynamicpost_get_likes",
-		mcp.WithDescription("GET likes for RTBDynamicPost"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, rtbdynamicpost_get_likesTool)
-
-	// rtbdynamicpost_get_ tool
-	rtbdynamicpost_get_Tool := mcp.NewTool("rtbdynamicpost_get_",
-		mcp.WithDescription("GET  for RTBDynamicPost"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, rtbdynamicpost_get_Tool)
-
-	return tools
-}
-
-// GetRTBDynamicPostToolsWithoutAuth returns MCP tools for RTBDynamicPost without access_token parameter
-func GetRTBDynamicPostToolsWithoutAuth() []mcp.Tool {
+func GetRTBDynamicPostTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// rtbdynamicpost_get_comments tool
@@ -106,12 +54,12 @@ func GetRTBDynamicPostToolsWithoutAuth() []mcp.Tool {
 
 // RTBDynamicPost handlers
 
-// HandleRtbdynamicpost_get_comments handles the rtbdynamicpost_get_comments tool
+// HandleRtbdynamicpost_get_comments handles the rtbdynamicpost_get_comments tool with context-based auth
 func HandleRtbdynamicpost_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -155,12 +103,12 @@ func HandleRtbdynamicpost_get_comments(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleRtbdynamicpost_get_likes handles the rtbdynamicpost_get_likes tool
+// HandleRtbdynamicpost_get_likes handles the rtbdynamicpost_get_likes tool with context-based auth
 func HandleRtbdynamicpost_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -184,117 +132,8 @@ func HandleRtbdynamicpost_get_likes(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleRtbdynamicpost_get_ handles the rtbdynamicpost_get_ tool
+// HandleRtbdynamicpost_get_ handles the rtbdynamicpost_get_ tool with context-based auth
 func HandleRtbdynamicpost_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewRTBDynamicPostClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Rtbdynamicpost_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute rtbdynamicpost_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextRtbdynamicpost_get_comments handles the rtbdynamicpost_get_comments tool with context-based auth
-func HandleContextRtbdynamicpost_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewRTBDynamicPostClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: filter
-	if val := request.GetString("filter", ""); val != "" {
-		args["filter"] = val
-	}
-
-	// Optional: live_filter
-	if val := request.GetString("live_filter", ""); val != "" {
-		args["live_filter"] = val
-	}
-
-	// Optional: order
-	if val := request.GetString("order", ""); val != "" {
-		args["order"] = val
-	}
-
-	// Optional: since
-	if val := request.GetString("since", ""); val != "" {
-		args["since"] = val
-	}
-
-	// Call the client method
-	result, err := client.Rtbdynamicpost_get_comments(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute rtbdynamicpost_get_comments: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextRtbdynamicpost_get_likes handles the rtbdynamicpost_get_likes tool with context-based auth
-func HandleContextRtbdynamicpost_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewRTBDynamicPostClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Rtbdynamicpost_get_likes(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute rtbdynamicpost_get_likes: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextRtbdynamicpost_get_ handles the rtbdynamicpost_get_ tool with context-based auth
-func HandleContextRtbdynamicpost_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

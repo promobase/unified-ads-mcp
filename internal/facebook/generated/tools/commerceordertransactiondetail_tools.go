@@ -13,34 +13,7 @@ import (
 )
 
 // GetCommerceOrderTransactionDetailTools returns MCP tools for CommerceOrderTransactionDetail
-func GetCommerceOrderTransactionDetailTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// commerceordertransactiondetail_get_items tool
-	commerceordertransactiondetail_get_itemsTool := mcp.NewTool("commerceordertransactiondetail_get_items",
-		mcp.WithDescription("GET items for CommerceOrderTransactionDetail"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, commerceordertransactiondetail_get_itemsTool)
-
-	// commerceordertransactiondetail_get_tax_details tool
-	commerceordertransactiondetail_get_tax_detailsTool := mcp.NewTool("commerceordertransactiondetail_get_tax_details",
-		mcp.WithDescription("GET tax_details for CommerceOrderTransactionDetail"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, commerceordertransactiondetail_get_tax_detailsTool)
-
-	return tools
-}
-
-// GetCommerceOrderTransactionDetailToolsWithoutAuth returns MCP tools for CommerceOrderTransactionDetail without access_token parameter
-func GetCommerceOrderTransactionDetailToolsWithoutAuth() []mcp.Tool {
+func GetCommerceOrderTransactionDetailTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// commerceordertransactiondetail_get_items tool
@@ -60,68 +33,8 @@ func GetCommerceOrderTransactionDetailToolsWithoutAuth() []mcp.Tool {
 
 // CommerceOrderTransactionDetail handlers
 
-// HandleCommerceordertransactiondetail_get_items handles the commerceordertransactiondetail_get_items tool
+// HandleCommerceordertransactiondetail_get_items handles the commerceordertransactiondetail_get_items tool with context-based auth
 func HandleCommerceordertransactiondetail_get_items(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewCommerceOrderTransactionDetailClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Commerceordertransactiondetail_get_items(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceordertransactiondetail_get_items: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleCommerceordertransactiondetail_get_tax_details handles the commerceordertransactiondetail_get_tax_details tool
-func HandleCommerceordertransactiondetail_get_tax_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewCommerceOrderTransactionDetailClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Commerceordertransactiondetail_get_tax_details(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceordertransactiondetail_get_tax_details: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextCommerceordertransactiondetail_get_items handles the commerceordertransactiondetail_get_items tool with context-based auth
-func HandleContextCommerceordertransactiondetail_get_items(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {
@@ -149,8 +62,8 @@ func HandleContextCommerceordertransactiondetail_get_items(ctx context.Context, 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleContextCommerceordertransactiondetail_get_tax_details handles the commerceordertransactiondetail_get_tax_details tool with context-based auth
-func HandleContextCommerceordertransactiondetail_get_tax_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleCommerceordertransactiondetail_get_tax_details handles the commerceordertransactiondetail_get_tax_details tool with context-based auth
+func HandleCommerceordertransactiondetail_get_tax_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

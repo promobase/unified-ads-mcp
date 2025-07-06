@@ -13,34 +13,7 @@ import (
 )
 
 // GetAdsConversionGoalTools returns MCP tools for AdsConversionGoal
-func GetAdsConversionGoalTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// adsconversiongoal_get_conversion_events tool
-	adsconversiongoal_get_conversion_eventsTool := mcp.NewTool("adsconversiongoal_get_conversion_events",
-		mcp.WithDescription("GET conversion_events for AdsConversionGoal"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adsconversiongoal_get_conversion_eventsTool)
-
-	// adsconversiongoal_get_ tool
-	adsconversiongoal_get_Tool := mcp.NewTool("adsconversiongoal_get_",
-		mcp.WithDescription("GET  for AdsConversionGoal"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adsconversiongoal_get_Tool)
-
-	return tools
-}
-
-// GetAdsConversionGoalToolsWithoutAuth returns MCP tools for AdsConversionGoal without access_token parameter
-func GetAdsConversionGoalToolsWithoutAuth() []mcp.Tool {
+func GetAdsConversionGoalTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adsconversiongoal_get_conversion_events tool
@@ -60,68 +33,8 @@ func GetAdsConversionGoalToolsWithoutAuth() []mcp.Tool {
 
 // AdsConversionGoal handlers
 
-// HandleAdsconversiongoal_get_conversion_events handles the adsconversiongoal_get_conversion_events tool
+// HandleAdsconversiongoal_get_conversion_events handles the adsconversiongoal_get_conversion_events tool with context-based auth
 func HandleAdsconversiongoal_get_conversion_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdsConversionGoalClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adsconversiongoal_get_conversion_events(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adsconversiongoal_get_conversion_events: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleAdsconversiongoal_get_ handles the adsconversiongoal_get_ tool
-func HandleAdsconversiongoal_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdsConversionGoalClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adsconversiongoal_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adsconversiongoal_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAdsconversiongoal_get_conversion_events handles the adsconversiongoal_get_conversion_events tool with context-based auth
-func HandleContextAdsconversiongoal_get_conversion_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {
@@ -149,8 +62,8 @@ func HandleContextAdsconversiongoal_get_conversion_events(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleContextAdsconversiongoal_get_ handles the adsconversiongoal_get_ tool with context-based auth
-func HandleContextAdsconversiongoal_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleAdsconversiongoal_get_ handles the adsconversiongoal_get_ tool with context-based auth
+func HandleAdsconversiongoal_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

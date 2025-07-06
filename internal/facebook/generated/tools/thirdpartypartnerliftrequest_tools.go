@@ -13,24 +13,7 @@ import (
 )
 
 // GetThirdPartyPartnerLiftRequestTools returns MCP tools for ThirdPartyPartnerLiftRequest
-func GetThirdPartyPartnerLiftRequestTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// thirdpartypartnerliftrequest_get_ tool
-	thirdpartypartnerliftrequest_get_Tool := mcp.NewTool("thirdpartypartnerliftrequest_get_",
-		mcp.WithDescription("GET  for ThirdPartyPartnerLiftRequest"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, thirdpartypartnerliftrequest_get_Tool)
-
-	return tools
-}
-
-// GetThirdPartyPartnerLiftRequestToolsWithoutAuth returns MCP tools for ThirdPartyPartnerLiftRequest without access_token parameter
-func GetThirdPartyPartnerLiftRequestToolsWithoutAuth() []mcp.Tool {
+func GetThirdPartyPartnerLiftRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// thirdpartypartnerliftrequest_get_ tool
@@ -44,39 +27,8 @@ func GetThirdPartyPartnerLiftRequestToolsWithoutAuth() []mcp.Tool {
 
 // ThirdPartyPartnerLiftRequest handlers
 
-// HandleThirdpartypartnerliftrequest_get_ handles the thirdpartypartnerliftrequest_get_ tool
+// HandleThirdpartypartnerliftrequest_get_ handles the thirdpartypartnerliftrequest_get_ tool with context-based auth
 func HandleThirdpartypartnerliftrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewThirdPartyPartnerLiftRequestClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Thirdpartypartnerliftrequest_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute thirdpartypartnerliftrequest_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextThirdpartypartnerliftrequest_get_ handles the thirdpartypartnerliftrequest_get_ tool with context-based auth
-func HandleContextThirdpartypartnerliftrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

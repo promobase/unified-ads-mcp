@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"os"
 
-	"unified-ads-mcp/internal/facebook/generated/tools"
-
 	"github.com/mark3labs/mcp-go/server"
 )
 
@@ -26,7 +24,8 @@ func CreateMCPServer() (*server.MCPServer, error) {
 	)
 
 	// Register all Facebook Business API tools
-	if err := tools.RegisterTools(s, accessToken); err != nil {
+	// Use the legacy function from the facebook package that accepts accessToken
+	if err := RegisterTools(s, accessToken); err != nil {
 		return nil, fmt.Errorf("failed to register tools: %w", err)
 	}
 
@@ -42,8 +41,8 @@ func RunServer() error {
 
 	// Get access token to count tools
 	accessToken := os.Getenv("FACEBOOK_ACCESS_TOKEN")
-	allTools := tools.GetAllTools(accessToken)
-	fmt.Fprintf(os.Stderr, "Facebook MCP Server started with %d tools\n", len(allTools))
+	allTools := GetAllTools(accessToken)
+	fmt.Fprintf(os.Stderr, "Facebook MCP Server started with %d tools available\n", len(allTools))
 
 	// Start the server using stdio transport
 	return server.ServeStdio(s)

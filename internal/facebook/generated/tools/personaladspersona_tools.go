@@ -13,24 +13,7 @@ import (
 )
 
 // GetPersonalAdsPersonaTools returns MCP tools for PersonalAdsPersona
-func GetPersonalAdsPersonaTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// personaladspersona_get_ tool
-	personaladspersona_get_Tool := mcp.NewTool("personaladspersona_get_",
-		mcp.WithDescription("GET  for PersonalAdsPersona"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, personaladspersona_get_Tool)
-
-	return tools
-}
-
-// GetPersonalAdsPersonaToolsWithoutAuth returns MCP tools for PersonalAdsPersona without access_token parameter
-func GetPersonalAdsPersonaToolsWithoutAuth() []mcp.Tool {
+func GetPersonalAdsPersonaTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// personaladspersona_get_ tool
@@ -44,39 +27,8 @@ func GetPersonalAdsPersonaToolsWithoutAuth() []mcp.Tool {
 
 // PersonalAdsPersona handlers
 
-// HandlePersonaladspersona_get_ handles the personaladspersona_get_ tool
+// HandlePersonaladspersona_get_ handles the personaladspersona_get_ tool with context-based auth
 func HandlePersonaladspersona_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewPersonalAdsPersonaClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Personaladspersona_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute personaladspersona_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextPersonaladspersona_get_ handles the personaladspersona_get_ tool with context-based auth
-func HandleContextPersonaladspersona_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

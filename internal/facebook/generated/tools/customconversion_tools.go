@@ -13,73 +13,7 @@ import (
 )
 
 // GetCustomConversionTools returns MCP tools for CustomConversion
-func GetCustomConversionTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// customconversion_get_stats tool
-	customconversion_get_statsTool := mcp.NewTool("customconversion_get_stats",
-		mcp.WithDescription("GET stats for CustomConversion"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("aggregation",
-			mcp.Description("aggregation parameter for stats"),
-			mcp.Enum("count", "device_type", "host", "pixel_fire", "unmatched_count", "unmatched_usd_amount", "url", "usd_amount"),
-		),
-		mcp.WithString("end_time",
-			mcp.Description("end_time parameter for stats"),
-		),
-		mcp.WithString("start_time",
-			mcp.Description("start_time parameter for stats"),
-		),
-	)
-	tools = append(tools, customconversion_get_statsTool)
-
-	// customconversion_delete_ tool
-	customconversion_delete_Tool := mcp.NewTool("customconversion_delete_",
-		mcp.WithDescription("DELETE  for CustomConversion"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, customconversion_delete_Tool)
-
-	// customconversion_get_ tool
-	customconversion_get_Tool := mcp.NewTool("customconversion_get_",
-		mcp.WithDescription("GET  for CustomConversion"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, customconversion_get_Tool)
-
-	// customconversion_post_ tool
-	customconversion_post_Tool := mcp.NewTool("customconversion_post_",
-		mcp.WithDescription("POST  for CustomConversion"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithNumber("default_conversion_value",
-			mcp.Description("default_conversion_value parameter for "),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-	)
-	tools = append(tools, customconversion_post_Tool)
-
-	return tools
-}
-
-// GetCustomConversionToolsWithoutAuth returns MCP tools for CustomConversion without access_token parameter
-func GetCustomConversionToolsWithoutAuth() []mcp.Tool {
+func GetCustomConversionTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// customconversion_get_stats tool
@@ -130,12 +64,12 @@ func GetCustomConversionToolsWithoutAuth() []mcp.Tool {
 
 // CustomConversion handlers
 
-// HandleCustomconversion_get_stats handles the customconversion_get_stats tool
+// HandleCustomconversion_get_stats handles the customconversion_get_stats tool with context-based auth
 func HandleCustomconversion_get_stats(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -174,12 +108,12 @@ func HandleCustomconversion_get_stats(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleCustomconversion_delete_ handles the customconversion_delete_ tool
+// HandleCustomconversion_delete_ handles the customconversion_delete_ tool with context-based auth
 func HandleCustomconversion_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -203,12 +137,12 @@ func HandleCustomconversion_delete_(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleCustomconversion_get_ handles the customconversion_get_ tool
+// HandleCustomconversion_get_ handles the customconversion_get_ tool with context-based auth
 func HandleCustomconversion_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -232,156 +166,8 @@ func HandleCustomconversion_get_(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleCustomconversion_post_ handles the customconversion_post_ tool
+// HandleCustomconversion_post_ handles the customconversion_post_ tool with context-based auth
 func HandleCustomconversion_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewCustomConversionClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: default_conversion_value
-	if val := request.GetFloat("default_conversion_value", 0); val != 0 {
-		args["default_conversion_value"] = val
-	}
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Call the client method
-	result, err := client.Customconversion_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customconversion_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextCustomconversion_get_stats handles the customconversion_get_stats tool with context-based auth
-func HandleContextCustomconversion_get_stats(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewCustomConversionClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: aggregation
-	if val := request.GetString("aggregation", ""); val != "" {
-		args["aggregation"] = val
-	}
-
-	// Optional: end_time
-	if val := request.GetString("end_time", ""); val != "" {
-		args["end_time"] = val
-	}
-
-	// Optional: start_time
-	if val := request.GetString("start_time", ""); val != "" {
-		args["start_time"] = val
-	}
-
-	// Call the client method
-	result, err := client.Customconversion_get_stats(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customconversion_get_stats: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextCustomconversion_delete_ handles the customconversion_delete_ tool with context-based auth
-func HandleContextCustomconversion_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewCustomConversionClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Customconversion_delete_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customconversion_delete_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextCustomconversion_get_ handles the customconversion_get_ tool with context-based auth
-func HandleContextCustomconversion_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewCustomConversionClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Customconversion_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute customconversion_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextCustomconversion_post_ handles the customconversion_post_ tool with context-based auth
-func HandleContextCustomconversion_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

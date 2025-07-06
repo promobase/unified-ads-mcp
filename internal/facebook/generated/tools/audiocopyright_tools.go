@@ -13,34 +13,7 @@ import (
 )
 
 // GetAudioCopyrightTools returns MCP tools for AudioCopyright
-func GetAudioCopyrightTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// audiocopyright_get_update_records tool
-	audiocopyright_get_update_recordsTool := mcp.NewTool("audiocopyright_get_update_records",
-		mcp.WithDescription("GET update_records for AudioCopyright"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, audiocopyright_get_update_recordsTool)
-
-	// audiocopyright_get_ tool
-	audiocopyright_get_Tool := mcp.NewTool("audiocopyright_get_",
-		mcp.WithDescription("GET  for AudioCopyright"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, audiocopyright_get_Tool)
-
-	return tools
-}
-
-// GetAudioCopyrightToolsWithoutAuth returns MCP tools for AudioCopyright without access_token parameter
-func GetAudioCopyrightToolsWithoutAuth() []mcp.Tool {
+func GetAudioCopyrightTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// audiocopyright_get_update_records tool
@@ -60,68 +33,8 @@ func GetAudioCopyrightToolsWithoutAuth() []mcp.Tool {
 
 // AudioCopyright handlers
 
-// HandleAudiocopyright_get_update_records handles the audiocopyright_get_update_records tool
+// HandleAudiocopyright_get_update_records handles the audiocopyright_get_update_records tool with context-based auth
 func HandleAudiocopyright_get_update_records(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAudioCopyrightClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Audiocopyright_get_update_records(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute audiocopyright_get_update_records: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleAudiocopyright_get_ handles the audiocopyright_get_ tool
-func HandleAudiocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAudioCopyrightClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Audiocopyright_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute audiocopyright_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAudiocopyright_get_update_records handles the audiocopyright_get_update_records tool with context-based auth
-func HandleContextAudiocopyright_get_update_records(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {
@@ -149,8 +62,8 @@ func HandleContextAudiocopyright_get_update_records(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleContextAudiocopyright_get_ handles the audiocopyright_get_ tool with context-based auth
-func HandleContextAudiocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleAudiocopyright_get_ handles the audiocopyright_get_ tool with context-based auth
+func HandleAudiocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

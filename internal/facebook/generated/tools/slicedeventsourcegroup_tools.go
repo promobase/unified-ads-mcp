@@ -13,24 +13,7 @@ import (
 )
 
 // GetSlicedEventSourceGroupTools returns MCP tools for SlicedEventSourceGroup
-func GetSlicedEventSourceGroupTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// slicedeventsourcegroup_get_ tool
-	slicedeventsourcegroup_get_Tool := mcp.NewTool("slicedeventsourcegroup_get_",
-		mcp.WithDescription("GET  for SlicedEventSourceGroup"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, slicedeventsourcegroup_get_Tool)
-
-	return tools
-}
-
-// GetSlicedEventSourceGroupToolsWithoutAuth returns MCP tools for SlicedEventSourceGroup without access_token parameter
-func GetSlicedEventSourceGroupToolsWithoutAuth() []mcp.Tool {
+func GetSlicedEventSourceGroupTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// slicedeventsourcegroup_get_ tool
@@ -44,39 +27,8 @@ func GetSlicedEventSourceGroupToolsWithoutAuth() []mcp.Tool {
 
 // SlicedEventSourceGroup handlers
 
-// HandleSlicedeventsourcegroup_get_ handles the slicedeventsourcegroup_get_ tool
+// HandleSlicedeventsourcegroup_get_ handles the slicedeventsourcegroup_get_ tool with context-based auth
 func HandleSlicedeventsourcegroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewSlicedEventSourceGroupClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Slicedeventsourcegroup_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute slicedeventsourcegroup_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextSlicedeventsourcegroup_get_ handles the slicedeventsourcegroup_get_ tool with context-based auth
-func HandleContextSlicedeventsourcegroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

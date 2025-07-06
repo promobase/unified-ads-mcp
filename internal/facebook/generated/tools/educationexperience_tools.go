@@ -13,24 +13,7 @@ import (
 )
 
 // GetEducationExperienceTools returns MCP tools for EducationExperience
-func GetEducationExperienceTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// educationexperience_get_ tool
-	educationexperience_get_Tool := mcp.NewTool("educationexperience_get_",
-		mcp.WithDescription("GET  for EducationExperience"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, educationexperience_get_Tool)
-
-	return tools
-}
-
-// GetEducationExperienceToolsWithoutAuth returns MCP tools for EducationExperience without access_token parameter
-func GetEducationExperienceToolsWithoutAuth() []mcp.Tool {
+func GetEducationExperienceTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// educationexperience_get_ tool
@@ -44,39 +27,8 @@ func GetEducationExperienceToolsWithoutAuth() []mcp.Tool {
 
 // EducationExperience handlers
 
-// HandleEducationexperience_get_ handles the educationexperience_get_ tool
+// HandleEducationexperience_get_ handles the educationexperience_get_ tool with context-based auth
 func HandleEducationexperience_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewEducationExperienceClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Educationexperience_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute educationexperience_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextEducationexperience_get_ handles the educationexperience_get_ tool with context-based auth
-func HandleContextEducationexperience_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

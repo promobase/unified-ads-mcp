@@ -13,100 +13,7 @@ import (
 )
 
 // GetAdRuleTools returns MCP tools for AdRule
-func GetAdRuleTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// adrule_post_execute tool
-	adrule_post_executeTool := mcp.NewTool("adrule_post_execute",
-		mcp.WithDescription("POST execute for AdRule"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adrule_post_executeTool)
-
-	// adrule_get_history tool
-	adrule_get_historyTool := mcp.NewTool("adrule_get_history",
-		mcp.WithDescription("GET history for AdRule"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("action",
-			mcp.Description("action parameter for history"),
-			mcp.Enum("BUDGET_NOT_REDISTRIBUTED", "CHANGED_BID", "CHANGED_BUDGET", "CONSOLIDATE_ASC_FRAGMENTATION", "CONSOLIDATE_FRAGMENTATION", "CONVERT_ASC_CP_SINGLE_INSTANCE", "EMAIL", "ENABLE_ADVANTAGE_CAMPAIGN_BUDGET", "ENABLE_ADVANTAGE_PLUS_AUDIENCE", "ENABLE_ADVANTAGE_PLUS_CREATIVE", "ENABLE_ADVANTAGE_PLUS_PLACEMENTS", "ENABLE_AUTOFLOW", "ENABLE_GEN_UNCROP", "ENABLE_LANDING_PAGE_VIEWS", "ENABLE_MUSIC", "ENABLE_REELS_PLACEMENTS", "ENABLE_SEMANTIC_BASED_AUDIENCE_EXPANSION", "ENABLE_SHOPS_ADS", "ENDPOINT_PINGED", "ERROR", "FACEBOOK_NOTIFICATION_SENT", "MESSAGE_SENT", "NOT_CHANGED", "PAUSED", "UNPAUSED"),
-		),
-		mcp.WithBoolean("hide_no_changes",
-			mcp.Description("hide_no_changes parameter for history"),
-		),
-		mcp.WithString("object_id",
-			mcp.Description("object_id parameter for history"),
-		),
-	)
-	tools = append(tools, adrule_get_historyTool)
-
-	// adrule_post_preview tool
-	adrule_post_previewTool := mcp.NewTool("adrule_post_preview",
-		mcp.WithDescription("POST preview for AdRule"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adrule_post_previewTool)
-
-	// adrule_delete_ tool
-	adrule_delete_Tool := mcp.NewTool("adrule_delete_",
-		mcp.WithDescription("DELETE  for AdRule"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adrule_delete_Tool)
-
-	// adrule_get_ tool
-	adrule_get_Tool := mcp.NewTool("adrule_get_",
-		mcp.WithDescription("GET  for AdRule"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, adrule_get_Tool)
-
-	// adrule_post_ tool
-	adrule_post_Tool := mcp.NewTool("adrule_post_",
-		mcp.WithDescription("POST  for AdRule"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("evaluation_spec",
-			mcp.Description("evaluation_spec parameter for "),
-		),
-		mcp.WithString("execution_spec",
-			mcp.Description("execution_spec parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithString("schedule_spec",
-			mcp.Description("schedule_spec parameter for "),
-		),
-		mcp.WithString("status",
-			mcp.Description("status parameter for "),
-			mcp.Enum("DELETED", "DISABLED", "ENABLED", "HAS_ISSUES"),
-		),
-	)
-	tools = append(tools, adrule_post_Tool)
-
-	return tools
-}
-
-// GetAdRuleToolsWithoutAuth returns MCP tools for AdRule without access_token parameter
-func GetAdRuleToolsWithoutAuth() []mcp.Tool {
+func GetAdRuleTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// adrule_post_execute tool
@@ -176,12 +83,12 @@ func GetAdRuleToolsWithoutAuth() []mcp.Tool {
 
 // AdRule handlers
 
-// HandleAdrule_post_execute handles the adrule_post_execute tool
+// HandleAdrule_post_execute handles the adrule_post_execute tool with context-based auth
 func HandleAdrule_post_execute(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -205,12 +112,12 @@ func HandleAdrule_post_execute(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdrule_get_history handles the adrule_get_history tool
+// HandleAdrule_get_history handles the adrule_get_history tool with context-based auth
 func HandleAdrule_get_history(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -249,12 +156,12 @@ func HandleAdrule_get_history(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdrule_post_preview handles the adrule_post_preview tool
+// HandleAdrule_post_preview handles the adrule_post_preview tool with context-based auth
 func HandleAdrule_post_preview(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -278,12 +185,12 @@ func HandleAdrule_post_preview(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdrule_delete_ handles the adrule_delete_ tool
+// HandleAdrule_delete_ handles the adrule_delete_ tool with context-based auth
 func HandleAdrule_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -307,12 +214,12 @@ func HandleAdrule_delete_(ctx context.Context, request mcp.CallToolRequest) (*mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdrule_get_ handles the adrule_get_ tool
+// HandleAdrule_get_ handles the adrule_get_ tool with context-based auth
 func HandleAdrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -336,227 +243,8 @@ func HandleAdrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleAdrule_post_ handles the adrule_post_ tool
+// HandleAdrule_post_ handles the adrule_post_ tool with context-based auth
 func HandleAdrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdRuleClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: evaluation_spec
-	// object type - using string
-	if val := request.GetString("evaluation_spec", ""); val != "" {
-		args["evaluation_spec"] = val
-	}
-
-	// Optional: execution_spec
-	// object type - using string
-	if val := request.GetString("execution_spec", ""); val != "" {
-		args["execution_spec"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: schedule_spec
-	// object type - using string
-	if val := request.GetString("schedule_spec", ""); val != "" {
-		args["schedule_spec"] = val
-	}
-
-	// Optional: status
-	if val := request.GetString("status", ""); val != "" {
-		args["status"] = val
-	}
-
-	// Call the client method
-	result, err := client.Adrule_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adrule_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAdrule_post_execute handles the adrule_post_execute tool with context-based auth
-func HandleContextAdrule_post_execute(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdRuleClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adrule_post_execute(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adrule_post_execute: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdrule_get_history handles the adrule_get_history tool with context-based auth
-func HandleContextAdrule_get_history(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdRuleClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: action
-	if val := request.GetString("action", ""); val != "" {
-		args["action"] = val
-	}
-
-	// Optional: hide_no_changes
-	if val := request.GetBool("hide_no_changes", false); val {
-		args["hide_no_changes"] = val
-	}
-
-	// Optional: object_id
-	if val := request.GetString("object_id", ""); val != "" {
-		args["object_id"] = val
-	}
-
-	// Call the client method
-	result, err := client.Adrule_get_history(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adrule_get_history: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdrule_post_preview handles the adrule_post_preview tool with context-based auth
-func HandleContextAdrule_post_preview(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdRuleClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adrule_post_preview(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adrule_post_preview: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdrule_delete_ handles the adrule_delete_ tool with context-based auth
-func HandleContextAdrule_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdRuleClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adrule_delete_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adrule_delete_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdrule_get_ handles the adrule_get_ tool with context-based auth
-func HandleContextAdrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewAdRuleClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Adrule_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adrule_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextAdrule_post_ handles the adrule_post_ tool with context-based auth
-func HandleContextAdrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

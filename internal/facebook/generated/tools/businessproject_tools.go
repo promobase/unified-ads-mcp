@@ -13,24 +13,7 @@ import (
 )
 
 // GetBusinessProjectTools returns MCP tools for BusinessProject
-func GetBusinessProjectTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// businessproject_get_ tool
-	businessproject_get_Tool := mcp.NewTool("businessproject_get_",
-		mcp.WithDescription("GET  for BusinessProject"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, businessproject_get_Tool)
-
-	return tools
-}
-
-// GetBusinessProjectToolsWithoutAuth returns MCP tools for BusinessProject without access_token parameter
-func GetBusinessProjectToolsWithoutAuth() []mcp.Tool {
+func GetBusinessProjectTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// businessproject_get_ tool
@@ -44,39 +27,8 @@ func GetBusinessProjectToolsWithoutAuth() []mcp.Tool {
 
 // BusinessProject handlers
 
-// HandleBusinessproject_get_ handles the businessproject_get_ tool
+// HandleBusinessproject_get_ handles the businessproject_get_ tool with context-based auth
 func HandleBusinessproject_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewBusinessProjectClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Businessproject_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessproject_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextBusinessproject_get_ handles the businessproject_get_ tool with context-based auth
-func HandleContextBusinessproject_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

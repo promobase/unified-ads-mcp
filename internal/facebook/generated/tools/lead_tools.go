@@ -13,34 +13,7 @@ import (
 )
 
 // GetLeadTools returns MCP tools for Lead
-func GetLeadTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// lead_delete_ tool
-	lead_delete_Tool := mcp.NewTool("lead_delete_",
-		mcp.WithDescription("DELETE  for Lead"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, lead_delete_Tool)
-
-	// lead_get_ tool
-	lead_get_Tool := mcp.NewTool("lead_get_",
-		mcp.WithDescription("GET  for Lead"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, lead_get_Tool)
-
-	return tools
-}
-
-// GetLeadToolsWithoutAuth returns MCP tools for Lead without access_token parameter
-func GetLeadToolsWithoutAuth() []mcp.Tool {
+func GetLeadTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// lead_delete_ tool
@@ -60,68 +33,8 @@ func GetLeadToolsWithoutAuth() []mcp.Tool {
 
 // Lead handlers
 
-// HandleLead_delete_ handles the lead_delete_ tool
+// HandleLead_delete_ handles the lead_delete_ tool with context-based auth
 func HandleLead_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewLeadClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Lead_delete_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute lead_delete_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleLead_get_ handles the lead_get_ tool
-func HandleLead_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewLeadClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Lead_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute lead_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextLead_delete_ handles the lead_delete_ tool with context-based auth
-func HandleContextLead_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {
@@ -149,8 +62,8 @@ func HandleContextLead_delete_(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleContextLead_get_ handles the lead_get_ tool with context-based auth
-func HandleContextLead_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleLead_get_ handles the lead_get_ tool with context-based auth
+func HandleLead_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

@@ -13,34 +13,7 @@ import (
 )
 
 // GetVideoListTools returns MCP tools for VideoList
-func GetVideoListTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// videolist_get_videos tool
-	videolist_get_videosTool := mcp.NewTool("videolist_get_videos",
-		mcp.WithDescription("GET videos for VideoList"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, videolist_get_videosTool)
-
-	// videolist_get_ tool
-	videolist_get_Tool := mcp.NewTool("videolist_get_",
-		mcp.WithDescription("GET  for VideoList"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, videolist_get_Tool)
-
-	return tools
-}
-
-// GetVideoListToolsWithoutAuth returns MCP tools for VideoList without access_token parameter
-func GetVideoListToolsWithoutAuth() []mcp.Tool {
+func GetVideoListTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// videolist_get_videos tool
@@ -60,68 +33,8 @@ func GetVideoListToolsWithoutAuth() []mcp.Tool {
 
 // VideoList handlers
 
-// HandleVideolist_get_videos handles the videolist_get_videos tool
+// HandleVideolist_get_videos handles the videolist_get_videos tool with context-based auth
 func HandleVideolist_get_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewVideoListClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Videolist_get_videos(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute videolist_get_videos: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleVideolist_get_ handles the videolist_get_ tool
-func HandleVideolist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewVideoListClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Videolist_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute videolist_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextVideolist_get_videos handles the videolist_get_videos tool with context-based auth
-func HandleContextVideolist_get_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {
@@ -149,8 +62,8 @@ func HandleContextVideolist_get_videos(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleContextVideolist_get_ handles the videolist_get_ tool with context-based auth
-func HandleContextVideolist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+// HandleVideolist_get_ handles the videolist_get_ tool with context-based auth
+func HandleVideolist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

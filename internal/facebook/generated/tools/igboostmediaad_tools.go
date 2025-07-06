@@ -13,24 +13,7 @@ import (
 )
 
 // GetIGBoostMediaAdTools returns MCP tools for IGBoostMediaAd
-func GetIGBoostMediaAdTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// igboostmediaad_get_ tool
-	igboostmediaad_get_Tool := mcp.NewTool("igboostmediaad_get_",
-		mcp.WithDescription("GET  for IGBoostMediaAd"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, igboostmediaad_get_Tool)
-
-	return tools
-}
-
-// GetIGBoostMediaAdToolsWithoutAuth returns MCP tools for IGBoostMediaAd without access_token parameter
-func GetIGBoostMediaAdToolsWithoutAuth() []mcp.Tool {
+func GetIGBoostMediaAdTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// igboostmediaad_get_ tool
@@ -44,39 +27,8 @@ func GetIGBoostMediaAdToolsWithoutAuth() []mcp.Tool {
 
 // IGBoostMediaAd handlers
 
-// HandleIgboostmediaad_get_ handles the igboostmediaad_get_ tool
+// HandleIgboostmediaad_get_ handles the igboostmediaad_get_ tool with context-based auth
 func HandleIgboostmediaad_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewIGBoostMediaAdClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Igboostmediaad_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igboostmediaad_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextIgboostmediaad_get_ handles the igboostmediaad_get_ tool with context-based auth
-func HandleContextIgboostmediaad_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

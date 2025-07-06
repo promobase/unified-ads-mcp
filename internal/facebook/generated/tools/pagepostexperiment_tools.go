@@ -13,44 +13,7 @@ import (
 )
 
 // GetPagePostExperimentTools returns MCP tools for PagePostExperiment
-func GetPagePostExperimentTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// pagepostexperiment_get_video_insights tool
-	pagepostexperiment_get_video_insightsTool := mcp.NewTool("pagepostexperiment_get_video_insights",
-		mcp.WithDescription("GET video_insights for PagePostExperiment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, pagepostexperiment_get_video_insightsTool)
-
-	// pagepostexperiment_delete_ tool
-	pagepostexperiment_delete_Tool := mcp.NewTool("pagepostexperiment_delete_",
-		mcp.WithDescription("DELETE  for PagePostExperiment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, pagepostexperiment_delete_Tool)
-
-	// pagepostexperiment_get_ tool
-	pagepostexperiment_get_Tool := mcp.NewTool("pagepostexperiment_get_",
-		mcp.WithDescription("GET  for PagePostExperiment"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, pagepostexperiment_get_Tool)
-
-	return tools
-}
-
-// GetPagePostExperimentToolsWithoutAuth returns MCP tools for PagePostExperiment without access_token parameter
-func GetPagePostExperimentToolsWithoutAuth() []mcp.Tool {
+func GetPagePostExperimentTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// pagepostexperiment_get_video_insights tool
@@ -76,12 +39,12 @@ func GetPagePostExperimentToolsWithoutAuth() []mcp.Tool {
 
 // PagePostExperiment handlers
 
-// HandlePagepostexperiment_get_video_insights handles the pagepostexperiment_get_video_insights tool
+// HandlePagepostexperiment_get_video_insights handles the pagepostexperiment_get_video_insights tool with context-based auth
 func HandlePagepostexperiment_get_video_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -105,12 +68,12 @@ func HandlePagepostexperiment_get_video_insights(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandlePagepostexperiment_delete_ handles the pagepostexperiment_delete_ tool
+// HandlePagepostexperiment_delete_ handles the pagepostexperiment_delete_ tool with context-based auth
 func HandlePagepostexperiment_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -134,97 +97,8 @@ func HandlePagepostexperiment_delete_(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandlePagepostexperiment_get_ handles the pagepostexperiment_get_ tool
+// HandlePagepostexperiment_get_ handles the pagepostexperiment_get_ tool with context-based auth
 func HandlePagepostexperiment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewPagePostExperimentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Pagepostexperiment_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pagepostexperiment_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextPagepostexperiment_get_video_insights handles the pagepostexperiment_get_video_insights tool with context-based auth
-func HandleContextPagepostexperiment_get_video_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewPagePostExperimentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Pagepostexperiment_get_video_insights(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pagepostexperiment_get_video_insights: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextPagepostexperiment_delete_ handles the pagepostexperiment_delete_ tool with context-based auth
-func HandleContextPagepostexperiment_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewPagePostExperimentClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Pagepostexperiment_delete_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pagepostexperiment_delete_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextPagepostexperiment_get_ handles the pagepostexperiment_get_ tool with context-based auth
-func HandleContextPagepostexperiment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

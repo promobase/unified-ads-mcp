@@ -13,24 +13,7 @@ import (
 )
 
 // GetLeadGenDirectCRMIntegrationConfigTools returns MCP tools for LeadGenDirectCRMIntegrationConfig
-func GetLeadGenDirectCRMIntegrationConfigTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// leadgendirectcrmintegrationconfig_get_ tool
-	leadgendirectcrmintegrationconfig_get_Tool := mcp.NewTool("leadgendirectcrmintegrationconfig_get_",
-		mcp.WithDescription("GET  for LeadGenDirectCRMIntegrationConfig"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, leadgendirectcrmintegrationconfig_get_Tool)
-
-	return tools
-}
-
-// GetLeadGenDirectCRMIntegrationConfigToolsWithoutAuth returns MCP tools for LeadGenDirectCRMIntegrationConfig without access_token parameter
-func GetLeadGenDirectCRMIntegrationConfigToolsWithoutAuth() []mcp.Tool {
+func GetLeadGenDirectCRMIntegrationConfigTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// leadgendirectcrmintegrationconfig_get_ tool
@@ -44,39 +27,8 @@ func GetLeadGenDirectCRMIntegrationConfigToolsWithoutAuth() []mcp.Tool {
 
 // LeadGenDirectCRMIntegrationConfig handlers
 
-// HandleLeadgendirectcrmintegrationconfig_get_ handles the leadgendirectcrmintegrationconfig_get_ tool
+// HandleLeadgendirectcrmintegrationconfig_get_ handles the leadgendirectcrmintegrationconfig_get_ tool with context-based auth
 func HandleLeadgendirectcrmintegrationconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewLeadGenDirectCRMIntegrationConfigClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Leadgendirectcrmintegrationconfig_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute leadgendirectcrmintegrationconfig_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextLeadgendirectcrmintegrationconfig_get_ handles the leadgendirectcrmintegrationconfig_get_ tool with context-based auth
-func HandleContextLeadgendirectcrmintegrationconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

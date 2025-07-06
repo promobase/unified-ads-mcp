@@ -13,24 +13,7 @@ import (
 )
 
 // GetAdvAInstanceTools returns MCP tools for AdvAInstance
-func GetAdvAInstanceTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// advainstance_get_ tool
-	advainstance_get_Tool := mcp.NewTool("advainstance_get_",
-		mcp.WithDescription("GET  for AdvAInstance"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, advainstance_get_Tool)
-
-	return tools
-}
-
-// GetAdvAInstanceToolsWithoutAuth returns MCP tools for AdvAInstance without access_token parameter
-func GetAdvAInstanceToolsWithoutAuth() []mcp.Tool {
+func GetAdvAInstanceTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// advainstance_get_ tool
@@ -44,39 +27,8 @@ func GetAdvAInstanceToolsWithoutAuth() []mcp.Tool {
 
 // AdvAInstance handlers
 
-// HandleAdvainstance_get_ handles the advainstance_get_ tool
+// HandleAdvainstance_get_ handles the advainstance_get_ tool with context-based auth
 func HandleAdvainstance_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewAdvAInstanceClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Advainstance_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute advainstance_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextAdvainstance_get_ handles the advainstance_get_ tool with context-based auth
-func HandleContextAdvainstance_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

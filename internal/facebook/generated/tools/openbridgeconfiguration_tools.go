@@ -13,92 +13,7 @@ import (
 )
 
 // GetOpenBridgeConfigurationTools returns MCP tools for OpenBridgeConfiguration
-func GetOpenBridgeConfigurationTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// openbridgeconfiguration_delete_ tool
-	openbridgeconfiguration_delete_Tool := mcp.NewTool("openbridgeconfiguration_delete_",
-		mcp.WithDescription("DELETE  for OpenBridgeConfiguration"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, openbridgeconfiguration_delete_Tool)
-
-	// openbridgeconfiguration_get_ tool
-	openbridgeconfiguration_get_Tool := mcp.NewTool("openbridgeconfiguration_get_",
-		mcp.WithDescription("GET  for OpenBridgeConfiguration"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, openbridgeconfiguration_get_Tool)
-
-	// openbridgeconfiguration_post_ tool
-	openbridgeconfiguration_post_Tool := mcp.NewTool("openbridgeconfiguration_post_",
-		mcp.WithDescription("POST  for OpenBridgeConfiguration"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithBoolean("active",
-			mcp.Description("active parameter for "),
-		),
-		mcp.WithString("cloud_provider",
-			mcp.Description("cloud_provider parameter for "),
-		),
-		mcp.WithString("cloud_region",
-			mcp.Description("cloud_region parameter for "),
-		),
-		mcp.WithString("destination_id",
-			mcp.Description("destination_id parameter for "),
-		),
-		mcp.WithString("endpoint",
-			mcp.Description("endpoint parameter for "),
-		),
-		mcp.WithString("fallback_domain",
-			mcp.Description("fallback_domain parameter for "),
-		),
-		mcp.WithString("first_party_domain",
-			mcp.Description("first_party_domain parameter for "),
-		),
-		mcp.WithNumber("host_business_id",
-			mcp.Description("host_business_id parameter for "),
-		),
-		mcp.WithString("instance_id",
-			mcp.Description("instance_id parameter for "),
-		),
-		mcp.WithString("instance_version",
-			mcp.Description("instance_version parameter for "),
-		),
-		mcp.WithBoolean("is_sgw_instance",
-			mcp.Description("is_sgw_instance parameter for "),
-		),
-		mcp.WithBoolean("is_sgw_pixel_from_meta_pixel",
-			mcp.Description("is_sgw_pixel_from_meta_pixel parameter for "),
-		),
-		mcp.WithString("partner_name",
-			mcp.Description("partner_name parameter for "),
-		),
-		mcp.WithString("sgw_account_id",
-			mcp.Description("sgw_account_id parameter for "),
-		),
-		mcp.WithString("sgw_instance_url",
-			mcp.Description("sgw_instance_url parameter for "),
-		),
-		mcp.WithNumber("sgw_pixel_id",
-			mcp.Description("sgw_pixel_id parameter for "),
-		),
-	)
-	tools = append(tools, openbridgeconfiguration_post_Tool)
-
-	return tools
-}
-
-// GetOpenBridgeConfigurationToolsWithoutAuth returns MCP tools for OpenBridgeConfiguration without access_token parameter
-func GetOpenBridgeConfigurationToolsWithoutAuth() []mcp.Tool {
+func GetOpenBridgeConfigurationTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// openbridgeconfiguration_delete_ tool
@@ -172,12 +87,12 @@ func GetOpenBridgeConfigurationToolsWithoutAuth() []mcp.Tool {
 
 // OpenBridgeConfiguration handlers
 
-// HandleOpenbridgeconfiguration_delete_ handles the openbridgeconfiguration_delete_ tool
+// HandleOpenbridgeconfiguration_delete_ handles the openbridgeconfiguration_delete_ tool with context-based auth
 func HandleOpenbridgeconfiguration_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -201,12 +116,12 @@ func HandleOpenbridgeconfiguration_delete_(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleOpenbridgeconfiguration_get_ handles the openbridgeconfiguration_get_ tool
+// HandleOpenbridgeconfiguration_get_ handles the openbridgeconfiguration_get_ tool with context-based auth
 func HandleOpenbridgeconfiguration_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -230,177 +145,8 @@ func HandleOpenbridgeconfiguration_get_(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleOpenbridgeconfiguration_post_ handles the openbridgeconfiguration_post_ tool
+// HandleOpenbridgeconfiguration_post_ handles the openbridgeconfiguration_post_ tool with context-based auth
 func HandleOpenbridgeconfiguration_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewOpenBridgeConfigurationClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: active
-	if val := request.GetBool("active", false); val {
-		args["active"] = val
-	}
-
-	// Optional: cloud_provider
-	if val := request.GetString("cloud_provider", ""); val != "" {
-		args["cloud_provider"] = val
-	}
-
-	// Optional: cloud_region
-	if val := request.GetString("cloud_region", ""); val != "" {
-		args["cloud_region"] = val
-	}
-
-	// Optional: destination_id
-	if val := request.GetString("destination_id", ""); val != "" {
-		args["destination_id"] = val
-	}
-
-	// Optional: endpoint
-	if val := request.GetString("endpoint", ""); val != "" {
-		args["endpoint"] = val
-	}
-
-	// Optional: fallback_domain
-	if val := request.GetString("fallback_domain", ""); val != "" {
-		args["fallback_domain"] = val
-	}
-
-	// Optional: first_party_domain
-	if val := request.GetString("first_party_domain", ""); val != "" {
-		args["first_party_domain"] = val
-	}
-
-	// Optional: host_business_id
-	if val := request.GetInt("host_business_id", 0); val != 0 {
-		args["host_business_id"] = val
-	}
-
-	// Optional: instance_id
-	if val := request.GetString("instance_id", ""); val != "" {
-		args["instance_id"] = val
-	}
-
-	// Optional: instance_version
-	if val := request.GetString("instance_version", ""); val != "" {
-		args["instance_version"] = val
-	}
-
-	// Optional: is_sgw_instance
-	if val := request.GetBool("is_sgw_instance", false); val {
-		args["is_sgw_instance"] = val
-	}
-
-	// Optional: is_sgw_pixel_from_meta_pixel
-	if val := request.GetBool("is_sgw_pixel_from_meta_pixel", false); val {
-		args["is_sgw_pixel_from_meta_pixel"] = val
-	}
-
-	// Optional: partner_name
-	if val := request.GetString("partner_name", ""); val != "" {
-		args["partner_name"] = val
-	}
-
-	// Optional: sgw_account_id
-	if val := request.GetString("sgw_account_id", ""); val != "" {
-		args["sgw_account_id"] = val
-	}
-
-	// Optional: sgw_instance_url
-	if val := request.GetString("sgw_instance_url", ""); val != "" {
-		args["sgw_instance_url"] = val
-	}
-
-	// Optional: sgw_pixel_id
-	if val := request.GetInt("sgw_pixel_id", 0); val != 0 {
-		args["sgw_pixel_id"] = val
-	}
-
-	// Call the client method
-	result, err := client.Openbridgeconfiguration_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute openbridgeconfiguration_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextOpenbridgeconfiguration_delete_ handles the openbridgeconfiguration_delete_ tool with context-based auth
-func HandleContextOpenbridgeconfiguration_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewOpenBridgeConfigurationClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Openbridgeconfiguration_delete_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute openbridgeconfiguration_delete_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextOpenbridgeconfiguration_get_ handles the openbridgeconfiguration_get_ tool with context-based auth
-func HandleContextOpenbridgeconfiguration_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewOpenBridgeConfigurationClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Openbridgeconfiguration_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute openbridgeconfiguration_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextOpenbridgeconfiguration_post_ handles the openbridgeconfiguration_post_ tool with context-based auth
-func HandleContextOpenbridgeconfiguration_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

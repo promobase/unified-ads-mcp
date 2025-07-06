@@ -13,24 +13,7 @@ import (
 )
 
 // GetStoreLocationTools returns MCP tools for StoreLocation
-func GetStoreLocationTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// storelocation_get_ tool
-	storelocation_get_Tool := mcp.NewTool("storelocation_get_",
-		mcp.WithDescription("GET  for StoreLocation"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, storelocation_get_Tool)
-
-	return tools
-}
-
-// GetStoreLocationToolsWithoutAuth returns MCP tools for StoreLocation without access_token parameter
-func GetStoreLocationToolsWithoutAuth() []mcp.Tool {
+func GetStoreLocationTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// storelocation_get_ tool
@@ -44,39 +27,8 @@ func GetStoreLocationToolsWithoutAuth() []mcp.Tool {
 
 // StoreLocation handlers
 
-// HandleStorelocation_get_ handles the storelocation_get_ tool
+// HandleStorelocation_get_ handles the storelocation_get_ tool with context-based auth
 func HandleStorelocation_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewStoreLocationClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Storelocation_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute storelocation_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextStorelocation_get_ handles the storelocation_get_ tool with context-based auth
-func HandleContextStorelocation_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

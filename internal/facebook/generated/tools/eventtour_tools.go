@@ -13,24 +13,7 @@ import (
 )
 
 // GetEventTourTools returns MCP tools for EventTour
-func GetEventTourTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// eventtour_get_ tool
-	eventtour_get_Tool := mcp.NewTool("eventtour_get_",
-		mcp.WithDescription("GET  for EventTour"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, eventtour_get_Tool)
-
-	return tools
-}
-
-// GetEventTourToolsWithoutAuth returns MCP tools for EventTour without access_token parameter
-func GetEventTourToolsWithoutAuth() []mcp.Tool {
+func GetEventTourTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// eventtour_get_ tool
@@ -44,39 +27,8 @@ func GetEventTourToolsWithoutAuth() []mcp.Tool {
 
 // EventTour handlers
 
-// HandleEventtour_get_ handles the eventtour_get_ tool
+// HandleEventtour_get_ handles the eventtour_get_ tool with context-based auth
 func HandleEventtour_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewEventTourClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Eventtour_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute eventtour_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextEventtour_get_ handles the eventtour_get_ tool with context-based auth
-func HandleContextEventtour_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

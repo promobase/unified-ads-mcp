@@ -13,84 +13,7 @@ import (
 )
 
 // GetPublisherBlockListTools returns MCP tools for PublisherBlockList
-func GetPublisherBlockListTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// publisherblocklist_post_append_publisher_urls tool
-	publisherblocklist_post_append_publisher_urlsTool := mcp.NewTool("publisherblocklist_post_append_publisher_urls",
-		mcp.WithDescription("POST append_publisher_urls for PublisherBlockList"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("publisher_urls",
-			mcp.Required(),
-			mcp.Description("publisher_urls parameter for append_publisher_urls"),
-		),
-	)
-	tools = append(tools, publisherblocklist_post_append_publisher_urlsTool)
-
-	// publisherblocklist_get_paged_web_publishers tool
-	publisherblocklist_get_paged_web_publishersTool := mcp.NewTool("publisherblocklist_get_paged_web_publishers",
-		mcp.WithDescription("GET paged_web_publishers for PublisherBlockList"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("draft_id",
-			mcp.Description("draft_id parameter for paged_web_publishers"),
-		),
-	)
-	tools = append(tools, publisherblocklist_get_paged_web_publishersTool)
-
-	// publisherblocklist_delete_ tool
-	publisherblocklist_delete_Tool := mcp.NewTool("publisherblocklist_delete_",
-		mcp.WithDescription("DELETE  for PublisherBlockList"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, publisherblocklist_delete_Tool)
-
-	// publisherblocklist_get_ tool
-	publisherblocklist_get_Tool := mcp.NewTool("publisherblocklist_get_",
-		mcp.WithDescription("GET  for PublisherBlockList"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithNumber("account_id",
-			mcp.Description("account_id parameter for "),
-		),
-		mcp.WithString("business_id",
-			mcp.Description("business_id parameter for "),
-		),
-		mcp.WithString("draft_id",
-			mcp.Description("draft_id parameter for "),
-		),
-	)
-	tools = append(tools, publisherblocklist_get_Tool)
-
-	// publisherblocklist_post_ tool
-	publisherblocklist_post_Tool := mcp.NewTool("publisherblocklist_post_",
-		mcp.WithDescription("POST  for PublisherBlockList"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("spec",
-			mcp.Required(),
-			mcp.Description("spec parameter for "),
-		),
-	)
-	tools = append(tools, publisherblocklist_post_Tool)
-
-	return tools
-}
-
-// GetPublisherBlockListToolsWithoutAuth returns MCP tools for PublisherBlockList without access_token parameter
-func GetPublisherBlockListToolsWithoutAuth() []mcp.Tool {
+func GetPublisherBlockListTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// publisherblocklist_post_append_publisher_urls tool
@@ -148,12 +71,12 @@ func GetPublisherBlockListToolsWithoutAuth() []mcp.Tool {
 
 // PublisherBlockList handlers
 
-// HandlePublisherblocklist_post_append_publisher_urls handles the publisherblocklist_post_append_publisher_urls tool
+// HandlePublisherblocklist_post_append_publisher_urls handles the publisherblocklist_post_append_publisher_urls tool with context-based auth
 func HandlePublisherblocklist_post_append_publisher_urls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -184,12 +107,12 @@ func HandlePublisherblocklist_post_append_publisher_urls(ctx context.Context, re
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandlePublisherblocklist_get_paged_web_publishers handles the publisherblocklist_get_paged_web_publishers tool
+// HandlePublisherblocklist_get_paged_web_publishers handles the publisherblocklist_get_paged_web_publishers tool with context-based auth
 func HandlePublisherblocklist_get_paged_web_publishers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -218,12 +141,12 @@ func HandlePublisherblocklist_get_paged_web_publishers(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandlePublisherblocklist_delete_ handles the publisherblocklist_delete_ tool
+// HandlePublisherblocklist_delete_ handles the publisherblocklist_delete_ tool with context-based auth
 func HandlePublisherblocklist_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -247,12 +170,12 @@ func HandlePublisherblocklist_delete_(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandlePublisherblocklist_get_ handles the publisherblocklist_get_ tool
+// HandlePublisherblocklist_get_ handles the publisherblocklist_get_ tool with context-based auth
 func HandlePublisherblocklist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -291,189 +214,8 @@ func HandlePublisherblocklist_get_(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandlePublisherblocklist_post_ handles the publisherblocklist_post_ tool
+// HandlePublisherblocklist_post_ handles the publisherblocklist_post_ tool with context-based auth
 func HandlePublisherblocklist_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewPublisherBlockListClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: spec
-	spec, err := request.RequireString("spec")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter spec: %v", err)), nil
-	}
-	args["spec"] = spec
-
-	// Call the client method
-	result, err := client.Publisherblocklist_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute publisherblocklist_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextPublisherblocklist_post_append_publisher_urls handles the publisherblocklist_post_append_publisher_urls tool with context-based auth
-func HandleContextPublisherblocklist_post_append_publisher_urls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewPublisherBlockListClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: publisher_urls
-	publisher_urls, err := request.RequireString("publisher_urls")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter publisher_urls: %v", err)), nil
-	}
-	args["publisher_urls"] = publisher_urls
-
-	// Call the client method
-	result, err := client.Publisherblocklist_post_append_publisher_urls(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute publisherblocklist_post_append_publisher_urls: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextPublisherblocklist_get_paged_web_publishers handles the publisherblocklist_get_paged_web_publishers tool with context-based auth
-func HandleContextPublisherblocklist_get_paged_web_publishers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewPublisherBlockListClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: draft_id
-	if val := request.GetString("draft_id", ""); val != "" {
-		args["draft_id"] = val
-	}
-
-	// Call the client method
-	result, err := client.Publisherblocklist_get_paged_web_publishers(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute publisherblocklist_get_paged_web_publishers: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextPublisherblocklist_delete_ handles the publisherblocklist_delete_ tool with context-based auth
-func HandleContextPublisherblocklist_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewPublisherBlockListClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Publisherblocklist_delete_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute publisherblocklist_delete_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextPublisherblocklist_get_ handles the publisherblocklist_get_ tool with context-based auth
-func HandleContextPublisherblocklist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewPublisherBlockListClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: account_id
-	if val := request.GetInt("account_id", 0); val != 0 {
-		args["account_id"] = val
-	}
-
-	// Optional: business_id
-	if val := request.GetString("business_id", ""); val != "" {
-		args["business_id"] = val
-	}
-
-	// Optional: draft_id
-	if val := request.GetString("draft_id", ""); val != "" {
-		args["draft_id"] = val
-	}
-
-	// Call the client method
-	result, err := client.Publisherblocklist_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute publisherblocklist_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextPublisherblocklist_post_ handles the publisherblocklist_post_ tool with context-based auth
-func HandleContextPublisherblocklist_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

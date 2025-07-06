@@ -13,123 +13,7 @@ import (
 )
 
 // GetHomeListingTools returns MCP tools for HomeListing
-func GetHomeListingTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// homelisting_get_channels_to_integrity_status tool
-	homelisting_get_channels_to_integrity_statusTool := mcp.NewTool("homelisting_get_channels_to_integrity_status",
-		mcp.WithDescription("GET channels_to_integrity_status for HomeListing"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, homelisting_get_channels_to_integrity_statusTool)
-
-	// homelisting_get_override_details tool
-	homelisting_get_override_detailsTool := mcp.NewTool("homelisting_get_override_details",
-		mcp.WithDescription("GET override_details for HomeListing"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("keys",
-			mcp.Description("keys parameter for override_details"),
-		),
-		mcp.WithString("type",
-			mcp.Description("type parameter for override_details"),
-			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
-		),
-	)
-	tools = append(tools, homelisting_get_override_detailsTool)
-
-	// homelisting_get_videos_metadata tool
-	homelisting_get_videos_metadataTool := mcp.NewTool("homelisting_get_videos_metadata",
-		mcp.WithDescription("GET videos_metadata for HomeListing"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, homelisting_get_videos_metadataTool)
-
-	// homelisting_delete_ tool
-	homelisting_delete_Tool := mcp.NewTool("homelisting_delete_",
-		mcp.WithDescription("DELETE  for HomeListing"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, homelisting_delete_Tool)
-
-	// homelisting_get_ tool
-	homelisting_get_Tool := mcp.NewTool("homelisting_get_",
-		mcp.WithDescription("GET  for HomeListing"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, homelisting_get_Tool)
-
-	// homelisting_post_ tool
-	homelisting_post_Tool := mcp.NewTool("homelisting_post_",
-		mcp.WithDescription("POST  for HomeListing"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithString("address",
-			mcp.Description("address parameter for "),
-		),
-		mcp.WithString("availability",
-			mcp.Description("availability parameter for "),
-		),
-		mcp.WithString("currency",
-			mcp.Description("currency parameter for "),
-		),
-		mcp.WithString("description",
-			mcp.Description("description parameter for "),
-		),
-		mcp.WithString("images",
-			mcp.Description("images parameter for "),
-		),
-		mcp.WithString("listing_type",
-			mcp.Description("listing_type parameter for "),
-		),
-		mcp.WithString("name",
-			mcp.Description("name parameter for "),
-		),
-		mcp.WithNumber("num_baths",
-			mcp.Description("num_baths parameter for "),
-		),
-		mcp.WithNumber("num_beds",
-			mcp.Description("num_beds parameter for "),
-		),
-		mcp.WithNumber("num_units",
-			mcp.Description("num_units parameter for "),
-		),
-		mcp.WithNumber("price",
-			mcp.Description("price parameter for "),
-		),
-		mcp.WithString("property_type",
-			mcp.Description("property_type parameter for "),
-		),
-		mcp.WithString("url",
-			mcp.Description("url parameter for "),
-		),
-		mcp.WithNumber("year_built",
-			mcp.Description("year_built parameter for "),
-		),
-	)
-	tools = append(tools, homelisting_post_Tool)
-
-	return tools
-}
-
-// GetHomeListingToolsWithoutAuth returns MCP tools for HomeListing without access_token parameter
-func GetHomeListingToolsWithoutAuth() []mcp.Tool {
+func GetHomeListingTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// homelisting_get_channels_to_integrity_status tool
@@ -222,12 +106,12 @@ func GetHomeListingToolsWithoutAuth() []mcp.Tool {
 
 // HomeListing handlers
 
-// HandleHomelisting_get_channels_to_integrity_status handles the homelisting_get_channels_to_integrity_status tool
+// HandleHomelisting_get_channels_to_integrity_status handles the homelisting_get_channels_to_integrity_status tool with context-based auth
 func HandleHomelisting_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -251,12 +135,12 @@ func HandleHomelisting_get_channels_to_integrity_status(ctx context.Context, req
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleHomelisting_get_override_details handles the homelisting_get_override_details tool
+// HandleHomelisting_get_override_details handles the homelisting_get_override_details tool with context-based auth
 func HandleHomelisting_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -291,12 +175,12 @@ func HandleHomelisting_get_override_details(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleHomelisting_get_videos_metadata handles the homelisting_get_videos_metadata tool
+// HandleHomelisting_get_videos_metadata handles the homelisting_get_videos_metadata tool with context-based auth
 func HandleHomelisting_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -320,12 +204,12 @@ func HandleHomelisting_get_videos_metadata(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleHomelisting_delete_ handles the homelisting_delete_ tool
+// HandleHomelisting_delete_ handles the homelisting_delete_ tool with context-based auth
 func HandleHomelisting_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -349,12 +233,12 @@ func HandleHomelisting_delete_(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleHomelisting_get_ handles the homelisting_get_ tool
+// HandleHomelisting_get_ handles the homelisting_get_ tool with context-based auth
 func HandleHomelisting_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -378,267 +262,8 @@ func HandleHomelisting_get_(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandleHomelisting_post_ handles the homelisting_post_ tool
+// HandleHomelisting_post_ handles the homelisting_post_ tool with context-based auth
 func HandleHomelisting_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewHomeListingClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: address
-	// object type - using string
-	if val := request.GetString("address", ""); val != "" {
-		args["address"] = val
-	}
-
-	// Optional: availability
-	if val := request.GetString("availability", ""); val != "" {
-		args["availability"] = val
-	}
-
-	// Optional: currency
-	if val := request.GetString("currency", ""); val != "" {
-		args["currency"] = val
-	}
-
-	// Optional: description
-	if val := request.GetString("description", ""); val != "" {
-		args["description"] = val
-	}
-
-	// Optional: images
-	// array type - using string
-	if val := request.GetString("images", ""); val != "" {
-		args["images"] = val
-	}
-
-	// Optional: listing_type
-	if val := request.GetString("listing_type", ""); val != "" {
-		args["listing_type"] = val
-	}
-
-	// Optional: name
-	if val := request.GetString("name", ""); val != "" {
-		args["name"] = val
-	}
-
-	// Optional: num_baths
-	if val := request.GetFloat("num_baths", 0); val != 0 {
-		args["num_baths"] = val
-	}
-
-	// Optional: num_beds
-	if val := request.GetFloat("num_beds", 0); val != 0 {
-		args["num_beds"] = val
-	}
-
-	// Optional: num_units
-	if val := request.GetFloat("num_units", 0); val != 0 {
-		args["num_units"] = val
-	}
-
-	// Optional: price
-	if val := request.GetFloat("price", 0); val != 0 {
-		args["price"] = val
-	}
-
-	// Optional: property_type
-	if val := request.GetString("property_type", ""); val != "" {
-		args["property_type"] = val
-	}
-
-	// Optional: url
-	if val := request.GetString("url", ""); val != "" {
-		args["url"] = val
-	}
-
-	// Optional: year_built
-	if val := request.GetInt("year_built", 0); val != 0 {
-		args["year_built"] = val
-	}
-
-	// Call the client method
-	result, err := client.Homelisting_post_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute homelisting_post_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextHomelisting_get_channels_to_integrity_status handles the homelisting_get_channels_to_integrity_status tool with context-based auth
-func HandleContextHomelisting_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewHomeListingClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Homelisting_get_channels_to_integrity_status(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute homelisting_get_channels_to_integrity_status: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextHomelisting_get_override_details handles the homelisting_get_override_details tool with context-based auth
-func HandleContextHomelisting_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewHomeListingClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Optional: keys
-	// array type - using string
-	if val := request.GetString("keys", ""); val != "" {
-		args["keys"] = val
-	}
-
-	// Optional: type
-	if val := request.GetString("type", ""); val != "" {
-		args["type"] = val
-	}
-
-	// Call the client method
-	result, err := client.Homelisting_get_override_details(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute homelisting_get_override_details: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextHomelisting_get_videos_metadata handles the homelisting_get_videos_metadata tool with context-based auth
-func HandleContextHomelisting_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewHomeListingClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Homelisting_get_videos_metadata(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute homelisting_get_videos_metadata: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextHomelisting_delete_ handles the homelisting_delete_ tool with context-based auth
-func HandleContextHomelisting_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewHomeListingClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Homelisting_delete_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute homelisting_delete_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextHomelisting_get_ handles the homelisting_get_ tool with context-based auth
-func HandleContextHomelisting_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewHomeListingClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Homelisting_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute homelisting_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextHomelisting_post_ handles the homelisting_post_ tool with context-based auth
-func HandleContextHomelisting_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {

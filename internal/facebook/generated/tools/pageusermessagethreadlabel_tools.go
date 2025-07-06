@@ -13,62 +13,7 @@ import (
 )
 
 // GetPageUserMessageThreadLabelTools returns MCP tools for PageUserMessageThreadLabel
-func GetPageUserMessageThreadLabelTools(accessToken string) []mcp.Tool {
-	var tools []mcp.Tool
-
-	// pageusermessagethreadlabel_delete_label tool
-	pageusermessagethreadlabel_delete_labelTool := mcp.NewTool("pageusermessagethreadlabel_delete_label",
-		mcp.WithDescription("DELETE label for PageUserMessageThreadLabel"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithNumber("user",
-			mcp.Required(),
-			mcp.Description("user parameter for label"),
-		),
-	)
-	tools = append(tools, pageusermessagethreadlabel_delete_labelTool)
-
-	// pageusermessagethreadlabel_post_label tool
-	pageusermessagethreadlabel_post_labelTool := mcp.NewTool("pageusermessagethreadlabel_post_label",
-		mcp.WithDescription("POST label for PageUserMessageThreadLabel"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-		mcp.WithNumber("user",
-			mcp.Required(),
-			mcp.Description("user parameter for label"),
-		),
-	)
-	tools = append(tools, pageusermessagethreadlabel_post_labelTool)
-
-	// pageusermessagethreadlabel_delete_ tool
-	pageusermessagethreadlabel_delete_Tool := mcp.NewTool("pageusermessagethreadlabel_delete_",
-		mcp.WithDescription("DELETE  for PageUserMessageThreadLabel"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, pageusermessagethreadlabel_delete_Tool)
-
-	// pageusermessagethreadlabel_get_ tool
-	pageusermessagethreadlabel_get_Tool := mcp.NewTool("pageusermessagethreadlabel_get_",
-		mcp.WithDescription("GET  for PageUserMessageThreadLabel"),
-		mcp.WithString("access_token",
-			mcp.Required(),
-			mcp.Description("Facebook access token for authentication"),
-		),
-	)
-	tools = append(tools, pageusermessagethreadlabel_get_Tool)
-
-	return tools
-}
-
-// GetPageUserMessageThreadLabelToolsWithoutAuth returns MCP tools for PageUserMessageThreadLabel without access_token parameter
-func GetPageUserMessageThreadLabelToolsWithoutAuth() []mcp.Tool {
+func GetPageUserMessageThreadLabelTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	// pageusermessagethreadlabel_delete_label tool
@@ -108,12 +53,12 @@ func GetPageUserMessageThreadLabelToolsWithoutAuth() []mcp.Tool {
 
 // PageUserMessageThreadLabel handlers
 
-// HandlePageusermessagethreadlabel_delete_label handles the pageusermessagethreadlabel_delete_label tool
+// HandlePageusermessagethreadlabel_delete_label handles the pageusermessagethreadlabel_delete_label tool with context-based auth
 func HandlePageusermessagethreadlabel_delete_label(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -144,12 +89,12 @@ func HandlePageusermessagethreadlabel_delete_label(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandlePageusermessagethreadlabel_post_label handles the pageusermessagethreadlabel_post_label tool
+// HandlePageusermessagethreadlabel_post_label handles the pageusermessagethreadlabel_post_label tool with context-based auth
 func HandlePageusermessagethreadlabel_post_label(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -180,12 +125,12 @@ func HandlePageusermessagethreadlabel_post_label(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandlePageusermessagethreadlabel_delete_ handles the pageusermessagethreadlabel_delete_ tool
+// HandlePageusermessagethreadlabel_delete_ handles the pageusermessagethreadlabel_delete_ tool with context-based auth
 func HandlePageusermessagethreadlabel_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
@@ -209,140 +154,8 @@ func HandlePageusermessagethreadlabel_delete_(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-// HandlePageusermessagethreadlabel_get_ handles the pageusermessagethreadlabel_get_ tool
+// HandlePageusermessagethreadlabel_get_ handles the pageusermessagethreadlabel_get_ tool with context-based auth
 func HandlePageusermessagethreadlabel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token
-	accessToken, err := request.RequireString("access_token")
-	if err != nil {
-		return mcp.NewToolResultError("missing required parameter: access_token"), nil
-	}
-
-	// Create client
-	client := client.NewPageUserMessageThreadLabelClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Pageusermessagethreadlabel_get_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pageusermessagethreadlabel_get_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// Context-aware handlers
-
-// HandleContextPageusermessagethreadlabel_delete_label handles the pageusermessagethreadlabel_delete_label tool with context-based auth
-func HandleContextPageusermessagethreadlabel_delete_label(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewPageUserMessageThreadLabelClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: user
-	user, err := request.RequireInt("user")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user: %v", err)), nil
-	}
-	args["user"] = user
-
-	// Call the client method
-	result, err := client.Pageusermessagethreadlabel_delete_label(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pageusermessagethreadlabel_delete_label: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextPageusermessagethreadlabel_post_label handles the pageusermessagethreadlabel_post_label tool with context-based auth
-func HandleContextPageusermessagethreadlabel_post_label(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewPageUserMessageThreadLabelClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Required: user
-	user, err := request.RequireInt("user")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user: %v", err)), nil
-	}
-	args["user"] = user
-
-	// Call the client method
-	result, err := client.Pageusermessagethreadlabel_post_label(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pageusermessagethreadlabel_post_label: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextPageusermessagethreadlabel_delete_ handles the pageusermessagethreadlabel_delete_ tool with context-based auth
-func HandleContextPageusermessagethreadlabel_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.NewPageUserMessageThreadLabelClient(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-	// Call the client method
-	result, err := client.Pageusermessagethreadlabel_delete_(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute pageusermessagethreadlabel_delete_: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-// HandleContextPageusermessagethreadlabel_get_ handles the pageusermessagethreadlabel_get_ tool with context-based auth
-func HandleContextPageusermessagethreadlabel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
 	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
 	if !ok {
