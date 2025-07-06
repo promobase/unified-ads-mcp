@@ -6,7 +6,7 @@ import "time"
 
 // AdsPixelStatsResult represents a Facebook AdsPixelStatsResult object
 type AdsPixelStatsResult struct {
-	Aggregation string `json:"aggregation"`
-	Data []AdsPixelStats `json:"data"`
-	Start_time time.Time `json:"start_time"`
+	Aggregation string          `json:"aggregation"`
+	Data        []AdsPixelStats `json:"data"`
+	Start_time  time.Time       `json:"start_time"`
 }

@@ -15,7 +15,6 @@ import (
 func GetBusinessAgreementTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// businessagreement_get_ tool
 	businessagreement_get_Tool := mcp.NewTool("businessagreement_get_",
 		mcp.WithDescription("GET  for BusinessAgreement"),
@@ -43,12 +42,10 @@ func GetBusinessAgreementTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, businessagreement_post_Tool)
 
-
 	return tools
 }
 
 // BusinessAgreement handlers
-
 
 // HandleBusinessagreement_get_ handles the businessagreement_get_ tool
 func HandleBusinessagreement_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -64,8 +61,6 @@ func HandleBusinessagreement_get_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Businessagreement_get_(args)
 	if err != nil {
@@ -80,7 +75,6 @@ func HandleBusinessagreement_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessagreement_post_ handles the businessagreement_post_ tool
 func HandleBusinessagreement_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -106,8 +100,6 @@ func HandleBusinessagreement_post_(ctx context.Context, request mcp.CallToolRequ
 		args["request_status"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessagreement_post_(args)
 	if err != nil {
@@ -122,4 +114,3 @@ func HandleBusinessagreement_post_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetCreatorAssetCreativeTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// creatorassetcreative_get_ tool
 	creatorassetcreative_get_Tool := mcp.NewTool("creatorassetcreative_get_",
 		mcp.WithDescription("GET  for CreatorAssetCreative"),
@@ -26,12 +25,10 @@ func GetCreatorAssetCreativeTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, creatorassetcreative_get_Tool)
 
-
 	return tools
 }
 
 // CreatorAssetCreative handlers
-
 
 // HandleCreatorassetcreative_get_ handles the creatorassetcreative_get_ tool
 func HandleCreatorassetcreative_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleCreatorassetcreative_get_(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Creatorassetcreative_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleCreatorassetcreative_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

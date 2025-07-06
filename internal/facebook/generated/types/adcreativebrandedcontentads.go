@@ -4,18 +4,18 @@ package types
 
 // AdCreativeBrandedContentAds represents a Facebook AdCreativeBrandedContentAds object
 type AdCreativeBrandedContentAds struct {
-	Ad_format int `json:"ad_format"`
-	Content_search_input string `json:"content_search_input"`
-	Creator_ad_permission_type string `json:"creator_ad_permission_type"`
-	Facebook_boost_post_access_token string `json:"facebook_boost_post_access_token"`
-	Instagram_boost_post_access_token string `json:"instagram_boost_post_access_token"`
-	Is_mca_internal bool `json:"is_mca_internal"`
-	Parent_source_facebook_post_id string `json:"parent_source_facebook_post_id"`
-	Parent_source_instagram_media_id string `json:"parent_source_instagram_media_id"`
-	Partners []AdCreativeBrandedContentAdsPartners `json:"partners"`
-	Product_set_partner_selection_status string `json:"product_set_partner_selection_status"`
-	Promoted_page_id string `json:"promoted_page_id"`
-	Testimonial string `json:"testimonial"`
-	Testimonial_locale string `json:"testimonial_locale"`
-	Ui_version int `json:"ui_version"`
+	Ad_format                            int                                   `json:"ad_format"`
+	Content_search_input                 string                                `json:"content_search_input"`
+	Creator_ad_permission_type           string                                `json:"creator_ad_permission_type"`
+	Facebook_boost_post_access_token     string                                `json:"facebook_boost_post_access_token"`
+	Instagram_boost_post_access_token    string                                `json:"instagram_boost_post_access_token"`
+	Is_mca_internal                      bool                                  `json:"is_mca_internal"`
+	Parent_source_facebook_post_id       string                                `json:"parent_source_facebook_post_id"`
+	Parent_source_instagram_media_id     string                                `json:"parent_source_instagram_media_id"`
+	Partners                             []AdCreativeBrandedContentAdsPartners `json:"partners"`
+	Product_set_partner_selection_status string                                `json:"product_set_partner_selection_status"`
+	Promoted_page_id                     string                                `json:"promoted_page_id"`
+	Testimonial                          string                                `json:"testimonial"`
+	Testimonial_locale                   string                                `json:"testimonial_locale"`
+	Ui_version                           int                                   `json:"ui_version"`
 }

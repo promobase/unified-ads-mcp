@@ -5,6 +5,6 @@ package types
 // ResearchPollStudy represents a Facebook ResearchPollStudy object
 type ResearchPollStudy struct {
 	Account *AdAccount `json:"account"`
-	Id string `json:"id"`
-	Name string `json:"name"`
+	Id      string     `json:"id"`
+	Name    string     `json:"name"`
 }

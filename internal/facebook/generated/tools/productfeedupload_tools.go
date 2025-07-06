@@ -15,7 +15,6 @@ import (
 func GetProductFeedUploadTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// productfeedupload_post_error_report tool
 	productfeedupload_post_error_reportTool := mcp.NewTool("productfeedupload_post_error_report",
 		mcp.WithDescription("POST error_report for ProductFeedUpload"),
@@ -50,12 +49,10 @@ func GetProductFeedUploadTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, productfeedupload_get_Tool)
 
-
 	return tools
 }
 
 // ProductFeedUpload handlers
-
 
 // HandleProductfeedupload_post_error_report handles the productfeedupload_post_error_report tool
 func HandleProductfeedupload_post_error_report(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -71,8 +68,6 @@ func HandleProductfeedupload_post_error_report(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Productfeedupload_post_error_report(args)
 	if err != nil {
@@ -87,7 +82,6 @@ func HandleProductfeedupload_post_error_report(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductfeedupload_get_errors handles the productfeedupload_get_errors tool
 func HandleProductfeedupload_get_errors(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -108,8 +102,6 @@ func HandleProductfeedupload_get_errors(ctx context.Context, request mcp.CallToo
 		args["error_priority"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productfeedupload_get_errors(args)
 	if err != nil {
@@ -125,7 +117,6 @@ func HandleProductfeedupload_get_errors(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleProductfeedupload_get_ handles the productfeedupload_get_ tool
 func HandleProductfeedupload_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -139,8 +130,6 @@ func HandleProductfeedupload_get_(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Productfeedupload_get_(args)
@@ -156,4 +145,3 @@ func HandleProductfeedupload_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

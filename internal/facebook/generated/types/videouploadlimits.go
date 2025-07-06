@@ -5,5 +5,5 @@ package types
 // VideoUploadLimits represents a Facebook VideoUploadLimits object
 type VideoUploadLimits struct {
 	Length int `json:"length"`
-	Size int `json:"size"`
+	Size   int `json:"size"`
 }

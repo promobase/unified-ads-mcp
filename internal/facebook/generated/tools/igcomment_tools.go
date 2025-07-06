@@ -15,7 +15,6 @@ import (
 func GetIGCommentTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// igcomment_get_replies tool
 	igcomment_get_repliesTool := mcp.NewTool("igcomment_get_replies",
 		mcp.WithDescription("GET replies for IGComment"),
@@ -79,12 +78,10 @@ func GetIGCommentTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, igcomment_post_Tool)
 
-
 	return tools
 }
 
 // IGComment handlers
-
 
 // HandleIgcomment_get_replies handles the igcomment_get_replies tool
 func HandleIgcomment_get_replies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -100,8 +97,6 @@ func HandleIgcomment_get_replies(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Igcomment_get_replies(args)
 	if err != nil {
@@ -116,7 +111,6 @@ func HandleIgcomment_get_replies(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgcomment_post_replies handles the igcomment_post_replies tool
 func HandleIgcomment_post_replies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -137,8 +131,6 @@ func HandleIgcomment_post_replies(ctx context.Context, request mcp.CallToolReque
 		args["message"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igcomment_post_replies(args)
 	if err != nil {
@@ -153,7 +145,6 @@ func HandleIgcomment_post_replies(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgcomment_delete_ handles the igcomment_delete_ tool
 func HandleIgcomment_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -174,8 +165,6 @@ func HandleIgcomment_delete_(ctx context.Context, request mcp.CallToolRequest) (
 		args["ad_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Igcomment_delete_(args)
 	if err != nil {
@@ -191,7 +180,6 @@ func HandleIgcomment_delete_(ctx context.Context, request mcp.CallToolRequest) (
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleIgcomment_get_ handles the igcomment_get_ tool
 func HandleIgcomment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -205,8 +193,6 @@ func HandleIgcomment_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Igcomment_get_(args)
@@ -222,7 +208,6 @@ func HandleIgcomment_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgcomment_post_ handles the igcomment_post_ tool
 func HandleIgcomment_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -250,8 +235,6 @@ func HandleIgcomment_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 	}
 	args["hide"] = hide
 
-
-
 	// Call the client method
 	result, err := client.Igcomment_post_(args)
 	if err != nil {
@@ -266,4 +249,3 @@ func HandleIgcomment_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

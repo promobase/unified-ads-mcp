@@ -4,9 +4,9 @@ package types
 
 // ProductCatalogDataSource represents a Facebook ProductCatalogDataSource object
 type ProductCatalogDataSource struct {
-	App_id string `json:"app_id"`
-	Id string `json:"id"`
+	App_id                string `json:"app_id"`
+	Id                    string `json:"id"`
 	Ingestion_source_type string `json:"ingestion_source_type"`
-	Name string `json:"name"`
-	Upload_type string `json:"upload_type"`
+	Name                  string `json:"name"`
+	Upload_type           string `json:"upload_type"`
 }

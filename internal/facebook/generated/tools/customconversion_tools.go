@@ -15,7 +15,6 @@ import (
 func GetCustomConversionTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// customconversion_get_stats tool
 	customconversion_get_statsTool := mcp.NewTool("customconversion_get_stats",
 		mcp.WithDescription("GET stats for CustomConversion"),
@@ -75,12 +74,10 @@ func GetCustomConversionTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, customconversion_post_Tool)
 
-
 	return tools
 }
 
 // CustomConversion handlers
-
 
 // HandleCustomconversion_get_stats handles the customconversion_get_stats tool
 func HandleCustomconversion_get_stats(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -111,8 +108,6 @@ func HandleCustomconversion_get_stats(ctx context.Context, request mcp.CallToolR
 		args["start_time"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Customconversion_get_stats(args)
 	if err != nil {
@@ -128,7 +123,6 @@ func HandleCustomconversion_get_stats(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleCustomconversion_delete_ handles the customconversion_delete_ tool
 func HandleCustomconversion_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -142,8 +136,6 @@ func HandleCustomconversion_delete_(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Customconversion_delete_(args)
@@ -160,7 +152,6 @@ func HandleCustomconversion_delete_(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleCustomconversion_get_ handles the customconversion_get_ tool
 func HandleCustomconversion_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -174,8 +165,6 @@ func HandleCustomconversion_get_(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Customconversion_get_(args)
@@ -191,7 +180,6 @@ func HandleCustomconversion_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCustomconversion_post_ handles the customconversion_post_ tool
 func HandleCustomconversion_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -222,8 +210,6 @@ func HandleCustomconversion_post_(ctx context.Context, request mcp.CallToolReque
 		args["name"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Customconversion_post_(args)
 	if err != nil {
@@ -238,4 +224,3 @@ func HandleCustomconversion_post_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

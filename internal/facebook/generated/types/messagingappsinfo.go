@@ -4,9 +4,9 @@ package types
 
 // MessagingAppsInfo represents a Facebook MessagingAppsInfo object
 type MessagingAppsInfo struct {
-	Ctd_support_only_for_ig_app bool `json:"ctd_support_only_for_ig_app"`
-	Has_instagram_messaging_permission bool `json:"has_instagram_messaging_permission"`
-	Has_messenger_messaging_permission bool `json:"has_messenger_messaging_permission"`
-	Id string `json:"id"`
-	Name string `json:"name"`
+	Ctd_support_only_for_ig_app        bool   `json:"ctd_support_only_for_ig_app"`
+	Has_instagram_messaging_permission bool   `json:"has_instagram_messaging_permission"`
+	Has_messenger_messaging_permission bool   `json:"has_messenger_messaging_permission"`
+	Id                                 string `json:"id"`
+	Name                               string `json:"name"`
 }

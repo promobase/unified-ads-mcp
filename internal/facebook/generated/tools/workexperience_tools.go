@@ -15,7 +15,6 @@ import (
 func GetWorkExperienceTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// workexperience_get_ tool
 	workexperience_get_Tool := mcp.NewTool("workexperience_get_",
 		mcp.WithDescription("GET  for WorkExperience"),
@@ -26,12 +25,10 @@ func GetWorkExperienceTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, workexperience_get_Tool)
 
-
 	return tools
 }
 
 // WorkExperience handlers
-
 
 // HandleWorkexperience_get_ handles the workexperience_get_ tool
 func HandleWorkexperience_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleWorkexperience_get_(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Workexperience_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleWorkexperience_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

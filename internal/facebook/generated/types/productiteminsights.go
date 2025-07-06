@@ -4,9 +4,9 @@ package types
 
 // ProductItemInsights represents a Facebook ProductItemInsights object
 type ProductItemInsights struct {
-	Ad_click_count int `json:"ad_click_count"`
+	Ad_click_count      int `json:"ad_click_count"`
 	Ad_impression_count int `json:"ad_impression_count"`
-	Add_to_cart_count int `json:"add_to_cart_count"`
-	Purchase_count int `json:"purchase_count"`
-	View_content_count int `json:"view_content_count"`
+	Add_to_cart_count   int `json:"add_to_cart_count"`
+	Purchase_count      int `json:"purchase_count"`
+	View_content_count  int `json:"view_content_count"`
 }

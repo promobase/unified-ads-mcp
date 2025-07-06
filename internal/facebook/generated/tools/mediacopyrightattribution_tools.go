@@ -15,7 +15,6 @@ import (
 func GetMediaCopyrightAttributionTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// mediacopyrightattribution_get_ tool
 	mediacopyrightattribution_get_Tool := mcp.NewTool("mediacopyrightattribution_get_",
 		mcp.WithDescription("GET  for MediaCopyrightAttribution"),
@@ -26,12 +25,10 @@ func GetMediaCopyrightAttributionTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, mediacopyrightattribution_get_Tool)
 
-
 	return tools
 }
 
 // MediaCopyrightAttribution handlers
-
 
 // HandleMediacopyrightattribution_get_ handles the mediacopyrightattribution_get_ tool
 func HandleMediacopyrightattribution_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleMediacopyrightattribution_get_(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Mediacopyrightattribution_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleMediacopyrightattribution_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

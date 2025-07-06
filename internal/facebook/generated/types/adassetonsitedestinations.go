@@ -4,9 +4,9 @@ package types
 
 // AdAssetOnsiteDestinations represents a Facebook AdAssetOnsiteDestinations object
 type AdAssetOnsiteDestinations struct {
-	Auto_optimization string `json:"auto_optimization"`
-	Details_page_product_id string `json:"details_page_product_id"`
+	Auto_optimization              string `json:"auto_optimization"`
+	Details_page_product_id        string `json:"details_page_product_id"`
 	Shop_collection_product_set_id string `json:"shop_collection_product_set_id"`
-	Source string `json:"source"`
-	Storefront_shop_id string `json:"storefront_shop_id"`
+	Source                         string `json:"source"`
+	Storefront_shop_id             string `json:"storefront_shop_id"`
 }

@@ -5,6 +5,6 @@ package types
 // LiveVideoRecommendedEncoderSettings represents a Facebook LiveVideoRecommendedEncoderSettings object
 type LiveVideoRecommendedEncoderSettings struct {
 	Audio_codec_settings map[string]interface{} `json:"audio_codec_settings"`
-	Streaming_protocol string `json:"streaming_protocol"`
+	Streaming_protocol   string                 `json:"streaming_protocol"`
 	Video_codec_settings map[string]interface{} `json:"video_codec_settings"`
 }

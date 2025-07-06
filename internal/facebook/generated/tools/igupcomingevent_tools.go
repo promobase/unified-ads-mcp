@@ -15,7 +15,6 @@ import (
 func GetIGUpcomingEventTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// igupcomingevent_get_ tool
 	igupcomingevent_get_Tool := mcp.NewTool("igupcomingevent_get_",
 		mcp.WithDescription("GET  for IGUpcomingEvent"),
@@ -55,12 +54,10 @@ func GetIGUpcomingEventTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, igupcomingevent_post_Tool)
 
-
 	return tools
 }
 
 // IGUpcomingEvent handlers
-
 
 // HandleIgupcomingevent_get_ handles the igupcomingevent_get_ tool
 func HandleIgupcomingevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -76,8 +73,6 @@ func HandleIgupcomingevent_get_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Igupcomingevent_get_(args)
 	if err != nil {
@@ -92,7 +87,6 @@ func HandleIgupcomingevent_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIgupcomingevent_post_ handles the igupcomingevent_post_ tool
 func HandleIgupcomingevent_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -138,8 +132,6 @@ func HandleIgupcomingevent_post_(ctx context.Context, request mcp.CallToolReques
 	}
 	args["title"] = title
 
-
-
 	// Call the client method
 	result, err := client.Igupcomingevent_post_(args)
 	if err != nil {
@@ -154,4 +146,3 @@ func HandleIgupcomingevent_post_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

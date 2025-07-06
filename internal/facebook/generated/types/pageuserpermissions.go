@@ -6,14 +6,14 @@ import "time"
 
 // PageUserPermissions represents a Facebook PageUserPermissions object
 type PageUserPermissions struct {
-	Business *Business `json:"business"`
-	Business_persona string `json:"business_persona"`
-	Created_by *Profile `json:"created_by"`
-	Created_time time.Time `json:"created_time"`
-	Email string `json:"email"`
-	Status string `json:"status"`
-	Tasks []string `json:"tasks"`
-	Updated_by *Profile `json:"updated_by"`
-	Updated_time time.Time `json:"updated_time"`
-	User *Profile `json:"user"`
+	Business         *Business `json:"business"`
+	Business_persona string    `json:"business_persona"`
+	Created_by       *Profile  `json:"created_by"`
+	Created_time     time.Time `json:"created_time"`
+	Email            string    `json:"email"`
+	Status           string    `json:"status"`
+	Tasks            []string  `json:"tasks"`
+	Updated_by       *Profile  `json:"updated_by"`
+	Updated_time     time.Time `json:"updated_time"`
+	User             *Profile  `json:"user"`
 }

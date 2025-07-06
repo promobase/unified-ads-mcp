@@ -15,7 +15,6 @@ import (
 func GetAudioReleaseTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// audiorelease_get_ tool
 	audiorelease_get_Tool := mcp.NewTool("audiorelease_get_",
 		mcp.WithDescription("GET  for AudioRelease"),
@@ -26,12 +25,10 @@ func GetAudioReleaseTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, audiorelease_get_Tool)
 
-
 	return tools
 }
 
 // AudioRelease handlers
-
 
 // HandleAudiorelease_get_ handles the audiorelease_get_ tool
 func HandleAudiorelease_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAudiorelease_get_(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Audiorelease_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAudiorelease_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

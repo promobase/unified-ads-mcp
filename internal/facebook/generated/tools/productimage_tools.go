@@ -15,7 +15,6 @@ import (
 func GetProductImageTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// productimage_get_ tool
 	productimage_get_Tool := mcp.NewTool("productimage_get_",
 		mcp.WithDescription("GET  for ProductImage"),
@@ -26,12 +25,10 @@ func GetProductImageTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, productimage_get_Tool)
 
-
 	return tools
 }
 
 // ProductImage handlers
-
 
 // HandleProductimage_get_ handles the productimage_get_ tool
 func HandleProductimage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleProductimage_get_(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Productimage_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleProductimage_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -21,18 +21,14 @@ func NewAdToplineClient(accessToken string) *AdToplineClient {
 	}
 }
 
-
 // adtopline_get_ GET  for AdTopline
 func (c *AdToplineClient) Adtopline_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -63,4 +59,3 @@ func (c *AdToplineClient) Adtopline_get_(args map[string]interface{}) (interface
 
 	return result, nil
 }
-

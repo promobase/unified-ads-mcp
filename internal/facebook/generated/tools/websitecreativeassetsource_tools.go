@@ -15,7 +15,6 @@ import (
 func GetWebsiteCreativeAssetSourceTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// websitecreativeassetsource_get_ tool
 	websitecreativeassetsource_get_Tool := mcp.NewTool("websitecreativeassetsource_get_",
 		mcp.WithDescription("GET  for WebsiteCreativeAssetSource"),
@@ -26,12 +25,10 @@ func GetWebsiteCreativeAssetSourceTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, websitecreativeassetsource_get_Tool)
 
-
 	return tools
 }
 
 // WebsiteCreativeAssetSource handlers
-
 
 // HandleWebsitecreativeassetsource_get_ handles the websitecreativeassetsource_get_ tool
 func HandleWebsitecreativeassetsource_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleWebsitecreativeassetsource_get_(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Websitecreativeassetsource_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleWebsitecreativeassetsource_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetProductSetUsageTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// productsetusage_get_ tool
 	productsetusage_get_Tool := mcp.NewTool("productsetusage_get_",
 		mcp.WithDescription("GET  for ProductSetUsage"),
@@ -26,12 +25,10 @@ func GetProductSetUsageTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, productsetusage_get_Tool)
 
-
 	return tools
 }
 
 // ProductSetUsage handlers
-
 
 // HandleProductsetusage_get_ handles the productsetusage_get_ tool
 func HandleProductsetusage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleProductsetusage_get_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Productsetusage_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleProductsetusage_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetTransactableItemTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// transactableitem_get_channels_to_integrity_status tool
 	transactableitem_get_channels_to_integrity_statusTool := mcp.NewTool("transactableitem_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for TransactableItem"),
@@ -53,12 +52,10 @@ func GetTransactableItemTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, transactableitem_get_Tool)
 
-
 	return tools
 }
 
 // TransactableItem handlers
-
 
 // HandleTransactableitem_get_channels_to_integrity_status handles the transactableitem_get_channels_to_integrity_status tool
 func HandleTransactableitem_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -74,8 +71,6 @@ func HandleTransactableitem_get_channels_to_integrity_status(ctx context.Context
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Transactableitem_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -90,7 +85,6 @@ func HandleTransactableitem_get_channels_to_integrity_status(ctx context.Context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleTransactableitem_get_override_details handles the transactableitem_get_override_details tool
 func HandleTransactableitem_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -117,8 +111,6 @@ func HandleTransactableitem_get_override_details(ctx context.Context, request mc
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Transactableitem_get_override_details(args)
 	if err != nil {
@@ -134,7 +126,6 @@ func HandleTransactableitem_get_override_details(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleTransactableitem_get_ handles the transactableitem_get_ tool
 func HandleTransactableitem_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -148,8 +139,6 @@ func HandleTransactableitem_get_(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Transactableitem_get_(args)
@@ -165,4 +154,3 @@ func HandleTransactableitem_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

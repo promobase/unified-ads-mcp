@@ -15,7 +15,6 @@ import (
 func GetDynamicPriceConfigByDateTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// dynamicpriceconfigbydate_get_ tool
 	dynamicpriceconfigbydate_get_Tool := mcp.NewTool("dynamicpriceconfigbydate_get_",
 		mcp.WithDescription("GET  for DynamicPriceConfigByDate"),
@@ -26,12 +25,10 @@ func GetDynamicPriceConfigByDateTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, dynamicpriceconfigbydate_get_Tool)
 
-
 	return tools
 }
 
 // DynamicPriceConfigByDate handlers
-
 
 // HandleDynamicpriceconfigbydate_get_ handles the dynamicpriceconfigbydate_get_ tool
 func HandleDynamicpriceconfigbydate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleDynamicpriceconfigbydate_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Dynamicpriceconfigbydate_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleDynamicpriceconfigbydate_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

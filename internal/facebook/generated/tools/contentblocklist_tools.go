@@ -15,7 +15,6 @@ import (
 func GetContentBlockListTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// contentblocklist_get_applied_ad_accounts tool
 	contentblocklist_get_applied_ad_accountsTool := mcp.NewTool("contentblocklist_get_applied_ad_accounts",
 		mcp.WithDescription("GET applied_ad_accounts for ContentBlockList"),
@@ -56,12 +55,10 @@ func GetContentBlockListTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, contentblocklist_get_Tool)
 
-
 	return tools
 }
 
 // ContentBlockList handlers
-
 
 // HandleContentblocklist_get_applied_ad_accounts handles the contentblocklist_get_applied_ad_accounts tool
 func HandleContentblocklist_get_applied_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -76,8 +73,6 @@ func HandleContentblocklist_get_applied_ad_accounts(ctx context.Context, request
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Contentblocklist_get_applied_ad_accounts(args)
@@ -94,7 +89,6 @@ func HandleContentblocklist_get_applied_ad_accounts(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleContentblocklist_get_facebook_content handles the contentblocklist_get_facebook_content tool
 func HandleContentblocklist_get_facebook_content(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -108,8 +102,6 @@ func HandleContentblocklist_get_facebook_content(ctx context.Context, request mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Contentblocklist_get_facebook_content(args)
@@ -126,7 +118,6 @@ func HandleContentblocklist_get_facebook_content(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleContentblocklist_get_instagram_content handles the contentblocklist_get_instagram_content tool
 func HandleContentblocklist_get_instagram_content(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -140,8 +131,6 @@ func HandleContentblocklist_get_instagram_content(ctx context.Context, request m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Contentblocklist_get_instagram_content(args)
@@ -158,7 +147,6 @@ func HandleContentblocklist_get_instagram_content(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleContentblocklist_get_ handles the contentblocklist_get_ tool
 func HandleContentblocklist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -172,8 +160,6 @@ func HandleContentblocklist_get_(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Contentblocklist_get_(args)
@@ -189,4 +175,3 @@ func HandleContentblocklist_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

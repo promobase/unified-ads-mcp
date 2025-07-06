@@ -15,7 +15,6 @@ import (
 func GetProductGroupTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// productgroup_get_products tool
 	productgroup_get_productsTool := mcp.NewTool("productgroup_get_products",
 		mcp.WithDescription("GET products for ProductGroup"),
@@ -301,12 +300,10 @@ func GetProductGroupTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, productgroup_post_Tool)
 
-
 	return tools
 }
 
 // ProductGroup handlers
-
 
 // HandleProductgroup_get_products handles the productgroup_get_products tool
 func HandleProductgroup_get_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -322,8 +319,6 @@ func HandleProductgroup_get_products(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Productgroup_get_products(args)
 	if err != nil {
@@ -338,7 +333,6 @@ func HandleProductgroup_get_products(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductgroup_post_products handles the productgroup_post_products tool
 func HandleProductgroup_post_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -720,8 +714,6 @@ func HandleProductgroup_post_products(ctx context.Context, request mcp.CallToolR
 		args["windows_phone_url"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productgroup_post_products(args)
 	if err != nil {
@@ -736,7 +728,6 @@ func HandleProductgroup_post_products(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductgroup_delete_ handles the productgroup_delete_ tool
 func HandleProductgroup_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -757,8 +748,6 @@ func HandleProductgroup_delete_(ctx context.Context, request mcp.CallToolRequest
 		args["deletion_method"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productgroup_delete_(args)
 	if err != nil {
@@ -774,7 +763,6 @@ func HandleProductgroup_delete_(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleProductgroup_get_ handles the productgroup_get_ tool
 func HandleProductgroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -788,8 +776,6 @@ func HandleProductgroup_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Productgroup_get_(args)
@@ -805,7 +791,6 @@ func HandleProductgroup_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductgroup_post_ handles the productgroup_post_ tool
 func HandleProductgroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -832,8 +817,6 @@ func HandleProductgroup_post_(ctx context.Context, request mcp.CallToolRequest) 
 		args["variants"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productgroup_post_(args)
 	if err != nil {
@@ -848,4 +831,3 @@ func HandleProductgroup_post_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

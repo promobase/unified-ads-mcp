@@ -4,9 +4,9 @@ package types
 
 // AdAccountLiveVideoAdvertiser represents a Facebook AdAccountLiveVideoAdvertiser object
 type AdAccountLiveVideoAdvertiser struct {
-	Is_lva_toggle_on bool `json:"is_lva_toggle_on"`
-	Lva_default_budget int `json:"lva_default_budget"`
-	Should_default_current_live bool `json:"should_default_current_live"`
+	Is_lva_toggle_on              bool `json:"is_lva_toggle_on"`
+	Lva_default_budget            int  `json:"lva_default_budget"`
+	Should_default_current_live   bool `json:"should_default_current_live"`
 	Should_default_scheduled_live bool `json:"should_default_scheduled_live"`
-	Should_show_lva_toggle bool `json:"should_show_lva_toggle"`
+	Should_show_lva_toggle        bool `json:"should_show_lva_toggle"`
 }

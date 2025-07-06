@@ -15,7 +15,6 @@ import (
 func GetVehicleTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// vehicle_get_channels_to_integrity_status tool
 	vehicle_get_channels_to_integrity_statusTool := mcp.NewTool("vehicle_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for Vehicle"),
@@ -168,12 +167,10 @@ func GetVehicleTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, vehicle_post_Tool)
 
-
 	return tools
 }
 
 // Vehicle handlers
-
 
 // HandleVehicle_get_channels_to_integrity_status handles the vehicle_get_channels_to_integrity_status tool
 func HandleVehicle_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -189,8 +186,6 @@ func HandleVehicle_get_channels_to_integrity_status(ctx context.Context, request
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Vehicle_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -205,7 +200,6 @@ func HandleVehicle_get_channels_to_integrity_status(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleVehicle_get_override_details handles the vehicle_get_override_details tool
 func HandleVehicle_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -232,8 +226,6 @@ func HandleVehicle_get_override_details(ctx context.Context, request mcp.CallToo
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Vehicle_get_override_details(args)
 	if err != nil {
@@ -249,7 +241,6 @@ func HandleVehicle_get_override_details(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleVehicle_get_videos_metadata handles the vehicle_get_videos_metadata tool
 func HandleVehicle_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -263,8 +254,6 @@ func HandleVehicle_get_videos_metadata(ctx context.Context, request mcp.CallTool
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Vehicle_get_videos_metadata(args)
@@ -281,7 +270,6 @@ func HandleVehicle_get_videos_metadata(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleVehicle_get_ handles the vehicle_get_ tool
 func HandleVehicle_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -295,8 +283,6 @@ func HandleVehicle_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Vehicle_get_(args)
@@ -312,7 +298,6 @@ func HandleVehicle_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleVehicle_post_ handles the vehicle_post_ tool
 func HandleVehicle_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -475,8 +460,6 @@ func HandleVehicle_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args["year"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Vehicle_post_(args)
 	if err != nil {
@@ -491,4 +474,3 @@ func HandleVehicle_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

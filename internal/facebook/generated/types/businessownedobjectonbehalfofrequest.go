@@ -4,9 +4,9 @@ package types
 
 // BusinessOwnedObjectOnBehalfOfRequest represents a Facebook BusinessOwnedObjectOnBehalfOfRequest object
 type BusinessOwnedObjectOnBehalfOfRequest struct {
-	Business_owned_object string `json:"business_owned_object"`
-	Id string `json:"id"`
-	Receiving_business *Business `json:"receiving_business"`
-	Requesting_business *Business `json:"requesting_business"`
-	Status string `json:"status"`
+	Business_owned_object string    `json:"business_owned_object"`
+	Id                    string    `json:"id"`
+	Receiving_business    *Business `json:"receiving_business"`
+	Requesting_business   *Business `json:"requesting_business"`
+	Status                string    `json:"status"`
 }

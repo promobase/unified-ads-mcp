@@ -15,7 +15,6 @@ import (
 func GetShopTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// shop_get_ tool
 	shop_get_Tool := mcp.NewTool("shop_get_",
 		mcp.WithDescription("GET  for Shop"),
@@ -26,12 +25,10 @@ func GetShopTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, shop_get_Tool)
 
-
 	return tools
 }
 
 // Shop handlers
-
 
 // HandleShop_get_ handles the shop_get_ tool
 func HandleShop_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleShop_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Shop_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleShop_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

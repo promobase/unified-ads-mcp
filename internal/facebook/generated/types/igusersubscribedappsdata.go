@@ -4,6 +4,6 @@ package types
 
 // IGUserSubscribedAppsData represents a Facebook IGUserSubscribedAppsData object
 type IGUserSubscribedAppsData struct {
-	App_id string `json:"app_id"`
+	App_id            string   `json:"app_id"`
 	Subscribed_fields []string `json:"subscribed_fields"`
 }

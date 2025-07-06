@@ -21,7 +21,6 @@ func NewAdsPixelClient(accessToken string) *AdsPixelClient {
 	}
 }
 
-
 // adspixel_get_adaccounts GET adaccounts for AdsPixel
 func (c *AdsPixelClient) Adspixel_get_adaccounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -31,7 +30,6 @@ func (c *AdsPixelClient) Adspixel_get_adaccounts(args map[string]interface{}) (i
 	}
 	_ = business // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
 	urlParams := url.Values{}
@@ -40,7 +38,6 @@ func (c *AdsPixelClient) Adspixel_get_adaccounts(args map[string]interface{}) (i
 	if val, ok := args["business"]; ok {
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -72,7 +69,6 @@ func (c *AdsPixelClient) Adspixel_get_adaccounts(args map[string]interface{}) (i
 	return result, nil
 }
 
-
 // adspixel_delete_agencies DELETE agencies for AdsPixel
 func (c *AdsPixelClient) Adspixel_delete_agencies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -82,7 +78,6 @@ func (c *AdsPixelClient) Adspixel_delete_agencies(args map[string]interface{}) (
 	}
 	_ = business // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
 	urlParams := url.Values{}
@@ -91,7 +86,6 @@ func (c *AdsPixelClient) Adspixel_delete_agencies(args map[string]interface{}) (
 	if val, ok := args["business"]; ok {
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -123,18 +117,14 @@ func (c *AdsPixelClient) Adspixel_delete_agencies(args map[string]interface{}) (
 	return result, nil
 }
 
-
 // adspixel_get_agencies GET agencies for AdsPixel
 func (c *AdsPixelClient) Adspixel_get_agencies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -165,7 +155,6 @@ func (c *AdsPixelClient) Adspixel_get_agencies(args map[string]interface{}) (int
 
 	return result, nil
 }
-
 
 // adspixel_post_agencies POST agencies for AdsPixel
 func (c *AdsPixelClient) Adspixel_post_agencies(args map[string]interface{}) (interface{}, error) {
@@ -181,7 +170,6 @@ func (c *AdsPixelClient) Adspixel_post_agencies(args map[string]interface{}) (in
 	}
 	_ = permitted_tasks // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
 	urlParams := url.Values{}
@@ -194,7 +182,6 @@ func (c *AdsPixelClient) Adspixel_post_agencies(args map[string]interface{}) (in
 		urlParams.Set("permitted_tasks", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -224,7 +211,6 @@ func (c *AdsPixelClient) Adspixel_post_agencies(args map[string]interface{}) (in
 
 	return result, nil
 }
-
 
 // adspixel_post_ahp_configs POST ahp_configs for AdsPixel
 func (c *AdsPixelClient) Adspixel_post_ahp_configs(args map[string]interface{}) (interface{}, error) {
@@ -235,7 +221,6 @@ func (c *AdsPixelClient) Adspixel_post_ahp_configs(args map[string]interface{}) 
 	}
 	_ = applink_autosetup // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ahp_configs")
 	urlParams := url.Values{}
@@ -244,7 +229,6 @@ func (c *AdsPixelClient) Adspixel_post_ahp_configs(args map[string]interface{}) 
 	if val, ok := args["applink_autosetup"]; ok {
 		urlParams.Set("applink_autosetup", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -276,7 +260,6 @@ func (c *AdsPixelClient) Adspixel_post_ahp_configs(args map[string]interface{}) 
 	return result, nil
 }
 
-
 // adspixel_get_assigned_users GET assigned_users for AdsPixel
 func (c *AdsPixelClient) Adspixel_get_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -286,7 +269,6 @@ func (c *AdsPixelClient) Adspixel_get_assigned_users(args map[string]interface{}
 	}
 	_ = business // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
 	urlParams := url.Values{}
@@ -295,7 +277,6 @@ func (c *AdsPixelClient) Adspixel_get_assigned_users(args map[string]interface{}
 	if val, ok := args["business"]; ok {
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -326,7 +307,6 @@ func (c *AdsPixelClient) Adspixel_get_assigned_users(args map[string]interface{}
 
 	return result, nil
 }
-
 
 // adspixel_post_assigned_users POST assigned_users for AdsPixel
 func (c *AdsPixelClient) Adspixel_post_assigned_users(args map[string]interface{}) (interface{}, error) {
@@ -342,7 +322,6 @@ func (c *AdsPixelClient) Adspixel_post_assigned_users(args map[string]interface{
 	}
 	_ = user // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
 	urlParams := url.Values{}
@@ -354,7 +333,6 @@ func (c *AdsPixelClient) Adspixel_post_assigned_users(args map[string]interface{
 	if val, ok := args["user"]; ok {
 		urlParams.Set("user", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -386,11 +364,9 @@ func (c *AdsPixelClient) Adspixel_post_assigned_users(args map[string]interface{
 	return result, nil
 }
 
-
 // adspixel_get_da_checks GET da_checks for AdsPixel
 func (c *AdsPixelClient) Adspixel_get_da_checks(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "da_checks")
@@ -403,7 +379,6 @@ func (c *AdsPixelClient) Adspixel_get_da_checks(args map[string]interface{}) (in
 	if val, ok := args["connection_method"]; ok {
 		urlParams.Set("connection_method", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -435,7 +410,6 @@ func (c *AdsPixelClient) Adspixel_get_da_checks(args map[string]interface{}) (in
 	return result, nil
 }
 
-
 // adspixel_post_events POST events for AdsPixel
 func (c *AdsPixelClient) Adspixel_post_events(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -444,7 +418,6 @@ func (c *AdsPixelClient) Adspixel_post_events(args map[string]interface{}) (inte
 		return nil, fmt.Errorf("missing required parameter: data")
 	}
 	_ = data // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "events")
@@ -482,7 +455,6 @@ func (c *AdsPixelClient) Adspixel_post_events(args map[string]interface{}) (inte
 		urlParams.Set("upload_tag", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -513,11 +485,9 @@ func (c *AdsPixelClient) Adspixel_post_events(args map[string]interface{}) (inte
 	return result, nil
 }
 
-
 // adspixel_get_offline_event_uploads GET offline_event_uploads for AdsPixel
 func (c *AdsPixelClient) Adspixel_get_offline_event_uploads(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "offline_event_uploads")
@@ -540,7 +510,6 @@ func (c *AdsPixelClient) Adspixel_get_offline_event_uploads(args map[string]inte
 		urlParams.Set("upload_tag", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -571,19 +540,15 @@ func (c *AdsPixelClient) Adspixel_get_offline_event_uploads(args map[string]inte
 	return result, nil
 }
 
-
 // adspixel_get_openbridge_configurations GET openbridge_configurations for AdsPixel
 func (c *AdsPixelClient) Adspixel_get_openbridge_configurations(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "openbridge_configurations")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -614,18 +579,14 @@ func (c *AdsPixelClient) Adspixel_get_openbridge_configurations(args map[string]
 	return result, nil
 }
 
-
 // adspixel_post_shadowtraffichelper POST shadowtraffichelper for AdsPixel
 func (c *AdsPixelClient) Adspixel_post_shadowtraffichelper(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shadowtraffichelper")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -657,7 +618,6 @@ func (c *AdsPixelClient) Adspixel_post_shadowtraffichelper(args map[string]inter
 	return result, nil
 }
 
-
 // adspixel_delete_shared_accounts DELETE shared_accounts for AdsPixel
 func (c *AdsPixelClient) Adspixel_delete_shared_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -672,7 +632,6 @@ func (c *AdsPixelClient) Adspixel_delete_shared_accounts(args map[string]interfa
 	}
 	_ = business // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_accounts")
 	urlParams := url.Values{}
@@ -684,7 +643,6 @@ func (c *AdsPixelClient) Adspixel_delete_shared_accounts(args map[string]interfa
 	if val, ok := args["business"]; ok {
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -716,7 +674,6 @@ func (c *AdsPixelClient) Adspixel_delete_shared_accounts(args map[string]interfa
 	return result, nil
 }
 
-
 // adspixel_get_shared_accounts GET shared_accounts for AdsPixel
 func (c *AdsPixelClient) Adspixel_get_shared_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -726,7 +683,6 @@ func (c *AdsPixelClient) Adspixel_get_shared_accounts(args map[string]interface{
 	}
 	_ = business // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_accounts")
 	urlParams := url.Values{}
@@ -735,7 +691,6 @@ func (c *AdsPixelClient) Adspixel_get_shared_accounts(args map[string]interface{
 	if val, ok := args["business"]; ok {
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -767,7 +722,6 @@ func (c *AdsPixelClient) Adspixel_get_shared_accounts(args map[string]interface{
 	return result, nil
 }
 
-
 // adspixel_post_shared_accounts POST shared_accounts for AdsPixel
 func (c *AdsPixelClient) Adspixel_post_shared_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -782,7 +736,6 @@ func (c *AdsPixelClient) Adspixel_post_shared_accounts(args map[string]interface
 	}
 	_ = business // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_accounts")
 	urlParams := url.Values{}
@@ -794,7 +747,6 @@ func (c *AdsPixelClient) Adspixel_post_shared_accounts(args map[string]interface
 	if val, ok := args["business"]; ok {
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -826,18 +778,14 @@ func (c *AdsPixelClient) Adspixel_post_shared_accounts(args map[string]interface
 	return result, nil
 }
 
-
 // adspixel_get_shared_agencies GET shared_agencies for AdsPixel
 func (c *AdsPixelClient) Adspixel_get_shared_agencies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_agencies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -869,11 +817,9 @@ func (c *AdsPixelClient) Adspixel_get_shared_agencies(args map[string]interface{
 	return result, nil
 }
 
-
 // adspixel_get_stats GET stats for AdsPixel
 func (c *AdsPixelClient) Adspixel_get_stats(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "stats")
@@ -896,7 +842,6 @@ func (c *AdsPixelClient) Adspixel_get_stats(args map[string]interface{}) (interf
 		urlParams.Set("start_time", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -927,19 +872,15 @@ func (c *AdsPixelClient) Adspixel_get_stats(args map[string]interface{}) (interf
 	return result, nil
 }
 
-
 // adspixel_get_ GET  for AdsPixel
 func (c *AdsPixelClient) Adspixel_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -970,11 +911,9 @@ func (c *AdsPixelClient) Adspixel_get_(args map[string]interface{}) (interface{}
 	return result, nil
 }
 
-
 // adspixel_post_ POST  for AdsPixel
 func (c *AdsPixelClient) Adspixel_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -1000,7 +939,6 @@ func (c *AdsPixelClient) Adspixel_post_(args map[string]interface{}) (interface{
 		urlParams.Set("server_events_business_ids", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1030,4 +968,3 @@ func (c *AdsPixelClient) Adspixel_post_(args map[string]interface{}) (interface{
 
 	return result, nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetAdAsyncRequestSetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adasyncrequestset_get_requests tool
 	adasyncrequestset_get_requestsTool := mcp.NewTool("adasyncrequestset_get_requests",
 		mcp.WithDescription("GET requests for AdAsyncRequestSet"),
@@ -70,12 +69,10 @@ func GetAdAsyncRequestSetTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adasyncrequestset_post_Tool)
 
-
 	return tools
 }
 
 // AdAsyncRequestSet handlers
-
 
 // HandleAdasyncrequestset_get_requests handles the adasyncrequestset_get_requests tool
 func HandleAdasyncrequestset_get_requests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -97,8 +94,6 @@ func HandleAdasyncrequestset_get_requests(ctx context.Context, request mcp.CallT
 		args["statuses"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adasyncrequestset_get_requests(args)
 	if err != nil {
@@ -114,7 +109,6 @@ func HandleAdasyncrequestset_get_requests(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdasyncrequestset_delete_ handles the adasyncrequestset_delete_ tool
 func HandleAdasyncrequestset_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -128,8 +122,6 @@ func HandleAdasyncrequestset_delete_(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adasyncrequestset_delete_(args)
@@ -146,7 +138,6 @@ func HandleAdasyncrequestset_delete_(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdasyncrequestset_get_ handles the adasyncrequestset_get_ tool
 func HandleAdasyncrequestset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -160,8 +151,6 @@ func HandleAdasyncrequestset_get_(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adasyncrequestset_get_(args)
@@ -177,7 +166,6 @@ func HandleAdasyncrequestset_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdasyncrequestset_post_ handles the adasyncrequestset_post_ tool
 func HandleAdasyncrequestset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -208,8 +196,6 @@ func HandleAdasyncrequestset_post_(ctx context.Context, request mcp.CallToolRequ
 		args["notification_uri"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adasyncrequestset_post_(args)
 	if err != nil {
@@ -224,4 +210,3 @@ func HandleAdasyncrequestset_post_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

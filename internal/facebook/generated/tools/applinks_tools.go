@@ -15,7 +15,6 @@ import (
 func GetAppLinksTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// applinks_get_ tool
 	applinks_get_Tool := mcp.NewTool("applinks_get_",
 		mcp.WithDescription("GET  for AppLinks"),
@@ -26,12 +25,10 @@ func GetAppLinksTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, applinks_get_Tool)
 
-
 	return tools
 }
 
 // AppLinks handlers
-
 
 // HandleApplinks_get_ handles the applinks_get_ tool
 func HandleApplinks_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleApplinks_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Applinks_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleApplinks_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

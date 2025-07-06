@@ -4,6 +4,6 @@ package types
 
 // AdCreativeWhatsAppChannelSpec represents a Facebook AdCreativeWhatsAppChannelSpec object
 type AdCreativeWhatsAppChannelSpec struct {
-	Channel_id string `json:"channel_id"`
+	Channel_id  string `json:"channel_id"`
 	Channel_url string `json:"channel_url"`
 }

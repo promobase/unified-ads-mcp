@@ -15,7 +15,6 @@ import (
 func GetImageCopyrightTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// imagecopyright_get_ tool
 	imagecopyright_get_Tool := mcp.NewTool("imagecopyright_get_",
 		mcp.WithDescription("GET  for ImageCopyright"),
@@ -58,12 +57,10 @@ func GetImageCopyrightTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, imagecopyright_post_Tool)
 
-
 	return tools
 }
 
 // ImageCopyright handlers
-
 
 // HandleImagecopyright_get_ handles the imagecopyright_get_ tool
 func HandleImagecopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -79,8 +76,6 @@ func HandleImagecopyright_get_(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Imagecopyright_get_(args)
 	if err != nil {
@@ -95,7 +90,6 @@ func HandleImagecopyright_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleImagecopyright_post_ handles the imagecopyright_post_ tool
 func HandleImagecopyright_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -147,8 +141,6 @@ func HandleImagecopyright_post_(ctx context.Context, request mcp.CallToolRequest
 		args["title"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Imagecopyright_post_(args)
 	if err != nil {
@@ -163,4 +155,3 @@ func HandleImagecopyright_post_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

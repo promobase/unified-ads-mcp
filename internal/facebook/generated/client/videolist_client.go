@@ -21,19 +21,15 @@ func NewVideoListClient(accessToken string) *VideoListClient {
 	}
 }
 
-
 // videolist_get_videos GET videos for VideoList
 func (c *VideoListClient) Videolist_get_videos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *VideoListClient) Videolist_get_videos(args map[string]interface{}) (int
 	return result, nil
 }
 
-
 // videolist_get_ GET  for VideoList
 func (c *VideoListClient) Videolist_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -106,4 +98,3 @@ func (c *VideoListClient) Videolist_get_(args map[string]interface{}) (interface
 
 	return result, nil
 }
-

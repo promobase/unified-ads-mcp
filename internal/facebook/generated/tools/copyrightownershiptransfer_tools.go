@@ -15,7 +15,6 @@ import (
 func GetCopyrightOwnershipTransferTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// copyrightownershiptransfer_get_ tool
 	copyrightownershiptransfer_get_Tool := mcp.NewTool("copyrightownershiptransfer_get_",
 		mcp.WithDescription("GET  for CopyrightOwnershipTransfer"),
@@ -26,12 +25,10 @@ func GetCopyrightOwnershipTransferTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, copyrightownershiptransfer_get_Tool)
 
-
 	return tools
 }
 
 // CopyrightOwnershipTransfer handlers
-
 
 // HandleCopyrightownershiptransfer_get_ handles the copyrightownershiptransfer_get_ tool
 func HandleCopyrightownershiptransfer_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleCopyrightownershiptransfer_get_(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Copyrightownershiptransfer_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleCopyrightownershiptransfer_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

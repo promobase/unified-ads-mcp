@@ -15,7 +15,6 @@ import (
 func GetCPASAdvertiserPartnershipRecommendationTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// cpasadvertiserpartnershiprecommendation_get_ tool
 	cpasadvertiserpartnershiprecommendation_get_Tool := mcp.NewTool("cpasadvertiserpartnershiprecommendation_get_",
 		mcp.WithDescription("GET  for CPASAdvertiserPartnershipRecommendation"),
@@ -26,12 +25,10 @@ func GetCPASAdvertiserPartnershipRecommendationTools(accessToken string) []mcp.T
 	)
 	tools = append(tools, cpasadvertiserpartnershiprecommendation_get_Tool)
 
-
 	return tools
 }
 
 // CPASAdvertiserPartnershipRecommendation handlers
-
 
 // HandleCpasadvertiserpartnershiprecommendation_get_ handles the cpasadvertiserpartnershiprecommendation_get_ tool
 func HandleCpasadvertiserpartnershiprecommendation_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleCpasadvertiserpartnershiprecommendation_get_(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Cpasadvertiserpartnershiprecommendation_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleCpasadvertiserpartnershiprecommendation_get_(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

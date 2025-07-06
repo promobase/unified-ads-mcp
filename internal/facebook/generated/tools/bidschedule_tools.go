@@ -15,7 +15,6 @@ import (
 func GetBidScheduleTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// bidschedule_get_ tool
 	bidschedule_get_Tool := mcp.NewTool("bidschedule_get_",
 		mcp.WithDescription("GET  for BidSchedule"),
@@ -26,12 +25,10 @@ func GetBidScheduleTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, bidschedule_get_Tool)
 
-
 	return tools
 }
 
 // BidSchedule handlers
-
 
 // HandleBidschedule_get_ handles the bidschedule_get_ tool
 func HandleBidschedule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleBidschedule_get_(ctx context.Context, request mcp.CallToolRequest) (*
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Bidschedule_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleBidschedule_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

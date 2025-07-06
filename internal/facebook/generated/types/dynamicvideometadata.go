@@ -4,8 +4,8 @@ package types
 
 // DynamicVideoMetadata represents a Facebook DynamicVideoMetadata object
 type DynamicVideoMetadata struct {
-	Id string `json:"id"`
-	Tags []string `json:"tags"`
-	Url string `json:"url"`
+	Id    string   `json:"id"`
+	Tags  []string `json:"tags"`
+	Url   string   `json:"url"`
 	Video *AdVideo `json:"video"`
 }

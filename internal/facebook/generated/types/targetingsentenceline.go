@@ -4,7 +4,7 @@ package types
 
 // TargetingSentenceLine represents a Facebook TargetingSentenceLine object
 type TargetingSentenceLine struct {
-	Id string `json:"id"`
-	Params *Targeting `json:"params"`
+	Id                     string        `json:"id"`
+	Params                 *Targeting    `json:"params"`
 	Targetingsentencelines []interface{} `json:"targetingsentencelines"`
 }

@@ -15,7 +15,6 @@ import (
 func GetAdSavedKeywordsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adsavedkeywords_get_ tool
 	adsavedkeywords_get_Tool := mcp.NewTool("adsavedkeywords_get_",
 		mcp.WithDescription("GET  for AdSavedKeywords"),
@@ -26,12 +25,10 @@ func GetAdSavedKeywordsTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adsavedkeywords_get_Tool)
 
-
 	return tools
 }
 
 // AdSavedKeywords handlers
-
 
 // HandleAdsavedkeywords_get_ handles the adsavedkeywords_get_ tool
 func HandleAdsavedkeywords_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAdsavedkeywords_get_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Adsavedkeywords_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAdsavedkeywords_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

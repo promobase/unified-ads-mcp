@@ -15,7 +15,6 @@ import (
 func GetGeoGatingPolicyTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// geogatingpolicy_get_ tool
 	geogatingpolicy_get_Tool := mcp.NewTool("geogatingpolicy_get_",
 		mcp.WithDescription("GET  for GeoGatingPolicy"),
@@ -26,12 +25,10 @@ func GetGeoGatingPolicyTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, geogatingpolicy_get_Tool)
 
-
 	return tools
 }
 
 // GeoGatingPolicy handlers
-
 
 // HandleGeogatingpolicy_get_ handles the geogatingpolicy_get_ tool
 func HandleGeogatingpolicy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleGeogatingpolicy_get_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Geogatingpolicy_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleGeogatingpolicy_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

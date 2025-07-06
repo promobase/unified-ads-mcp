@@ -15,7 +15,6 @@ import (
 func GetCommerceMerchantSettingsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// commercemerchantsettings_post_acknowledge_orders tool
 	commercemerchantsettings_post_acknowledge_ordersTool := mcp.NewTool("commercemerchantsettings_post_acknowledge_orders",
 		mcp.WithDescription("POST acknowledge_orders for CommerceMerchantSettings"),
@@ -229,12 +228,10 @@ func GetCommerceMerchantSettingsTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, commercemerchantsettings_get_Tool)
 
-
 	return tools
 }
 
 // CommerceMerchantSettings handlers
-
 
 // HandleCommercemerchantsettings_post_acknowledge_orders handles the commercemerchantsettings_post_acknowledge_orders tool
 func HandleCommercemerchantsettings_post_acknowledge_orders(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -264,8 +261,6 @@ func HandleCommercemerchantsettings_post_acknowledge_orders(ctx context.Context,
 	}
 	args["orders"] = orders
 
-
-
 	// Call the client method
 	result, err := client.Commercemerchantsettings_post_acknowledge_orders(args)
 	if err != nil {
@@ -280,7 +275,6 @@ func HandleCommercemerchantsettings_post_acknowledge_orders(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCommercemerchantsettings_get_commerce_orders handles the commercemerchantsettings_get_commerce_orders tool
 func HandleCommercemerchantsettings_get_commerce_orders(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -318,8 +312,6 @@ func HandleCommercemerchantsettings_get_commerce_orders(ctx context.Context, req
 		args["updated_before"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Commercemerchantsettings_get_commerce_orders(args)
 	if err != nil {
@@ -334,7 +326,6 @@ func HandleCommercemerchantsettings_get_commerce_orders(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCommercemerchantsettings_get_commerce_payouts handles the commercemerchantsettings_get_commerce_payouts tool
 func HandleCommercemerchantsettings_get_commerce_payouts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -360,8 +351,6 @@ func HandleCommercemerchantsettings_get_commerce_payouts(ctx context.Context, re
 		args["start_time"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Commercemerchantsettings_get_commerce_payouts(args)
 	if err != nil {
@@ -376,7 +365,6 @@ func HandleCommercemerchantsettings_get_commerce_payouts(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCommercemerchantsettings_get_commerce_transactions handles the commercemerchantsettings_get_commerce_transactions tool
 func HandleCommercemerchantsettings_get_commerce_transactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -407,8 +395,6 @@ func HandleCommercemerchantsettings_get_commerce_transactions(ctx context.Contex
 		args["start_time"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Commercemerchantsettings_get_commerce_transactions(args)
 	if err != nil {
@@ -424,7 +410,6 @@ func HandleCommercemerchantsettings_get_commerce_transactions(ctx context.Contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleCommercemerchantsettings_get_order_management_apps handles the commercemerchantsettings_get_order_management_apps tool
 func HandleCommercemerchantsettings_get_order_management_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -438,8 +423,6 @@ func HandleCommercemerchantsettings_get_order_management_apps(ctx context.Contex
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Commercemerchantsettings_get_order_management_apps(args)
@@ -456,7 +439,6 @@ func HandleCommercemerchantsettings_get_order_management_apps(ctx context.Contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleCommercemerchantsettings_post_order_management_apps handles the commercemerchantsettings_post_order_management_apps tool
 func HandleCommercemerchantsettings_post_order_management_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -470,8 +452,6 @@ func HandleCommercemerchantsettings_post_order_management_apps(ctx context.Conte
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Commercemerchantsettings_post_order_management_apps(args)
@@ -488,7 +468,6 @@ func HandleCommercemerchantsettings_post_order_management_apps(ctx context.Conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleCommercemerchantsettings_get_product_catalogs handles the commercemerchantsettings_get_product_catalogs tool
 func HandleCommercemerchantsettings_get_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -502,8 +481,6 @@ func HandleCommercemerchantsettings_get_product_catalogs(ctx context.Context, re
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Commercemerchantsettings_get_product_catalogs(args)
@@ -519,7 +496,6 @@ func HandleCommercemerchantsettings_get_product_catalogs(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCommercemerchantsettings_get_returns handles the commercemerchantsettings_get_returns tool
 func HandleCommercemerchantsettings_get_returns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -556,8 +532,6 @@ func HandleCommercemerchantsettings_get_returns(ctx context.Context, request mcp
 		args["statuses"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Commercemerchantsettings_get_returns(args)
 	if err != nil {
@@ -573,7 +547,6 @@ func HandleCommercemerchantsettings_get_returns(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleCommercemerchantsettings_get_setup_status handles the commercemerchantsettings_get_setup_status tool
 func HandleCommercemerchantsettings_get_setup_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -587,8 +560,6 @@ func HandleCommercemerchantsettings_get_setup_status(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Commercemerchantsettings_get_setup_status(args)
@@ -604,7 +575,6 @@ func HandleCommercemerchantsettings_get_setup_status(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCommercemerchantsettings_get_shipping_profiles handles the commercemerchantsettings_get_shipping_profiles tool
 func HandleCommercemerchantsettings_get_shipping_profiles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -625,8 +595,6 @@ func HandleCommercemerchantsettings_get_shipping_profiles(ctx context.Context, r
 		args["reference_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Commercemerchantsettings_get_shipping_profiles(args)
 	if err != nil {
@@ -641,7 +609,6 @@ func HandleCommercemerchantsettings_get_shipping_profiles(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCommercemerchantsettings_post_shipping_profiles handles the commercemerchantsettings_post_shipping_profiles tool
 func HandleCommercemerchantsettings_post_shipping_profiles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -691,8 +658,6 @@ func HandleCommercemerchantsettings_post_shipping_profiles(ctx context.Context, 
 	}
 	args["shipping_destinations"] = shipping_destinations
 
-
-
 	// Call the client method
 	result, err := client.Commercemerchantsettings_post_shipping_profiles(args)
 	if err != nil {
@@ -708,7 +673,6 @@ func HandleCommercemerchantsettings_post_shipping_profiles(ctx context.Context, 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleCommercemerchantsettings_get_shops handles the commercemerchantsettings_get_shops tool
 func HandleCommercemerchantsettings_get_shops(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -722,8 +686,6 @@ func HandleCommercemerchantsettings_get_shops(ctx context.Context, request mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Commercemerchantsettings_get_shops(args)
@@ -740,7 +702,6 @@ func HandleCommercemerchantsettings_get_shops(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleCommercemerchantsettings_get_tax_settings handles the commercemerchantsettings_get_tax_settings tool
 func HandleCommercemerchantsettings_get_tax_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -754,8 +715,6 @@ func HandleCommercemerchantsettings_get_tax_settings(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Commercemerchantsettings_get_tax_settings(args)
@@ -772,7 +731,6 @@ func HandleCommercemerchantsettings_get_tax_settings(ctx context.Context, reques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleCommercemerchantsettings_get_ handles the commercemerchantsettings_get_ tool
 func HandleCommercemerchantsettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -786,8 +744,6 @@ func HandleCommercemerchantsettings_get_(ctx context.Context, request mcp.CallTo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Commercemerchantsettings_get_(args)
@@ -803,4 +759,3 @@ func HandleCommercemerchantsettings_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

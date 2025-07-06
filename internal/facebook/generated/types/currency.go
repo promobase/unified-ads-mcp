@@ -4,8 +4,8 @@ package types
 
 // Currency represents a Facebook Currency object
 type Currency struct {
-	Currency_offset int `json:"currency_offset"`
-	Usd_exchange float64 `json:"usd_exchange"`
+	Currency_offset      int     `json:"currency_offset"`
+	Usd_exchange         float64 `json:"usd_exchange"`
 	Usd_exchange_inverse float64 `json:"usd_exchange_inverse"`
-	User_currency string `json:"user_currency"`
+	User_currency        string  `json:"user_currency"`
 }

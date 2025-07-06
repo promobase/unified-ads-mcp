@@ -4,7 +4,7 @@ package types
 
 // AdRuleHistoryResult represents a Facebook AdRuleHistoryResult object
 type AdRuleHistoryResult struct {
-	Actions []AdRuleHistoryResultAction `json:"actions"`
-	Object_id string `json:"object_id"`
-	Object_type string `json:"object_type"`
+	Actions     []AdRuleHistoryResultAction `json:"actions"`
+	Object_id   string                      `json:"object_id"`
+	Object_type string                      `json:"object_type"`
 }

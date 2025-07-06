@@ -15,7 +15,6 @@ import (
 func GetALMAdAccountInfoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// almadaccountinfo_get_ tool
 	almadaccountinfo_get_Tool := mcp.NewTool("almadaccountinfo_get_",
 		mcp.WithDescription("GET  for ALMAdAccountInfo"),
@@ -26,12 +25,10 @@ func GetALMAdAccountInfoTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, almadaccountinfo_get_Tool)
 
-
 	return tools
 }
 
 // ALMAdAccountInfo handlers
-
 
 // HandleAlmadaccountinfo_get_ handles the almadaccountinfo_get_ tool
 func HandleAlmadaccountinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAlmadaccountinfo_get_(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Almadaccountinfo_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAlmadaccountinfo_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

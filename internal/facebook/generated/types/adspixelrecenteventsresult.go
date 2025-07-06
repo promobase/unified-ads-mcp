@@ -4,6 +4,6 @@ package types
 
 // AdsPixelRecentEventsResult represents a Facebook AdsPixelRecentEventsResult object
 type AdsPixelRecentEventsResult struct {
-	Count int `json:"count"`
+	Count int    `json:"count"`
 	Event string `json:"event"`
 }

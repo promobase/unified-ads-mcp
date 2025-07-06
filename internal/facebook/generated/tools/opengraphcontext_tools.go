@@ -15,7 +15,6 @@ import (
 func GetOpenGraphContextTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// opengraphcontext_get_ tool
 	opengraphcontext_get_Tool := mcp.NewTool("opengraphcontext_get_",
 		mcp.WithDescription("GET  for OpenGraphContext"),
@@ -26,12 +25,10 @@ func GetOpenGraphContextTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, opengraphcontext_get_Tool)
 
-
 	return tools
 }
 
 // OpenGraphContext handlers
-
 
 // HandleOpengraphcontext_get_ handles the opengraphcontext_get_ tool
 func HandleOpengraphcontext_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleOpengraphcontext_get_(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Opengraphcontext_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleOpengraphcontext_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

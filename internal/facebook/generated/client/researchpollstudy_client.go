@@ -21,18 +21,14 @@ func NewResearchPollStudyClient(accessToken string) *ResearchPollStudyClient {
 	}
 }
 
-
 // researchpollstudy_get_ GET  for ResearchPollStudy
 func (c *ResearchPollStudyClient) Researchpollstudy_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -63,4 +59,3 @@ func (c *ResearchPollStudyClient) Researchpollstudy_get_(args map[string]interfa
 
 	return result, nil
 }
-

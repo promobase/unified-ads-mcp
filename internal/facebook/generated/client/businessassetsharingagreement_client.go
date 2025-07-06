@@ -21,18 +21,14 @@ func NewBusinessAssetSharingAgreementClient(accessToken string) *BusinessAssetSh
 	}
 }
 
-
 // businessassetsharingagreement_get_ GET  for BusinessAssetSharingAgreement
 func (c *BusinessAssetSharingAgreementClient) Businessassetsharingagreement_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,11 +60,9 @@ func (c *BusinessAssetSharingAgreementClient) Businessassetsharingagreement_get_
 	return result, nil
 }
 
-
 // businessassetsharingagreement_post_ POST  for BusinessAssetSharingAgreement
 func (c *BusinessAssetSharingAgreementClient) Businessassetsharingagreement_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -78,7 +72,6 @@ func (c *BusinessAssetSharingAgreementClient) Businessassetsharingagreement_post
 	if val, ok := args["request_response"]; ok {
 		urlParams.Set("request_response", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -109,4 +102,3 @@ func (c *BusinessAssetSharingAgreementClient) Businessassetsharingagreement_post
 
 	return result, nil
 }
-

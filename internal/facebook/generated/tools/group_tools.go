@@ -15,7 +15,6 @@ import (
 func GetGroupTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// group_delete_admins tool
 	group_delete_adminsTool := mcp.NewTool("group_delete_admins",
 		mcp.WithDescription("DELETE admins for Group"),
@@ -1146,12 +1145,10 @@ func GetGroupTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, group_post_Tool)
 
-
 	return tools
 }
 
 // Group handlers
-
 
 // HandleGroup_delete_admins handles the group_delete_admins tool
 func HandleGroup_delete_admins(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1174,8 +1171,6 @@ func HandleGroup_delete_admins(ctx context.Context, request mcp.CallToolRequest)
 	}
 	args["uid"] = uid
 
-
-
 	// Call the client method
 	result, err := client.Group_delete_admins(args)
 	if err != nil {
@@ -1190,7 +1185,6 @@ func HandleGroup_delete_admins(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_post_admins handles the group_post_admins tool
 func HandleGroup_post_admins(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1213,8 +1207,6 @@ func HandleGroup_post_admins(ctx context.Context, request mcp.CallToolRequest) (
 	}
 	args["uid"] = uid
 
-
-
 	// Call the client method
 	result, err := client.Group_post_admins(args)
 	if err != nil {
@@ -1230,7 +1222,6 @@ func HandleGroup_post_admins(ctx context.Context, request mcp.CallToolRequest) (
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleGroup_get_albums handles the group_get_albums tool
 func HandleGroup_get_albums(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1244,8 +1235,6 @@ func HandleGroup_get_albums(ctx context.Context, request mcp.CallToolRequest) (*
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Group_get_albums(args)
@@ -1262,7 +1251,6 @@ func HandleGroup_get_albums(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleGroup_get_docs handles the group_get_docs tool
 func HandleGroup_get_docs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1276,8 +1264,6 @@ func HandleGroup_get_docs(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Group_get_docs(args)
@@ -1294,7 +1280,6 @@ func HandleGroup_get_docs(ctx context.Context, request mcp.CallToolRequest) (*mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleGroup_get_events handles the group_get_events tool
 func HandleGroup_get_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1308,8 +1293,6 @@ func HandleGroup_get_events(ctx context.Context, request mcp.CallToolRequest) (*
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Group_get_events(args)
@@ -1325,7 +1308,6 @@ func HandleGroup_get_events(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_get_feed handles the group_get_feed tool
 func HandleGroup_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1371,8 +1353,6 @@ func HandleGroup_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["with"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_get_feed(args)
 	if err != nil {
@@ -1387,7 +1367,6 @@ func HandleGroup_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_post_feed handles the group_post_feed tool
 func HandleGroup_post_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1945,8 +1924,6 @@ func HandleGroup_post_feed(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["width"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_post_feed(args)
 	if err != nil {
@@ -1962,7 +1939,6 @@ func HandleGroup_post_feed(ctx context.Context, request mcp.CallToolRequest) (*m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleGroup_get_files handles the group_get_files tool
 func HandleGroup_get_files(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1976,8 +1952,6 @@ func HandleGroup_get_files(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Group_get_files(args)
@@ -1994,7 +1968,6 @@ func HandleGroup_get_files(ctx context.Context, request mcp.CallToolRequest) (*m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleGroup_get_groups handles the group_get_groups tool
 func HandleGroup_get_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2008,8 +1981,6 @@ func HandleGroup_get_groups(ctx context.Context, request mcp.CallToolRequest) (*
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Group_get_groups(args)
@@ -2025,7 +1996,6 @@ func HandleGroup_get_groups(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_post_groups handles the group_post_groups tool
 func HandleGroup_post_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2098,8 +2068,6 @@ func HandleGroup_post_groups(ctx context.Context, request mcp.CallToolRequest) (
 		args["ref"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_post_groups(args)
 	if err != nil {
@@ -2114,7 +2082,6 @@ func HandleGroup_post_groups(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_get_live_videos handles the group_get_live_videos tool
 func HandleGroup_get_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2141,8 +2108,6 @@ func HandleGroup_get_live_videos(ctx context.Context, request mcp.CallToolReques
 		args["source"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_get_live_videos(args)
 	if err != nil {
@@ -2157,7 +2122,6 @@ func HandleGroup_get_live_videos(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_post_live_videos handles the group_post_live_videos tool
 func HandleGroup_post_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2275,8 +2239,6 @@ func HandleGroup_post_live_videos(ctx context.Context, request mcp.CallToolReque
 		args["title"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_post_live_videos(args)
 	if err != nil {
@@ -2291,7 +2253,6 @@ func HandleGroup_post_live_videos(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_delete_members handles the group_delete_members tool
 func HandleGroup_delete_members(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2317,8 +2278,6 @@ func HandleGroup_delete_members(ctx context.Context, request mcp.CallToolRequest
 		args["member"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_delete_members(args)
 	if err != nil {
@@ -2333,7 +2292,6 @@ func HandleGroup_delete_members(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_post_members handles the group_post_members tool
 func HandleGroup_post_members(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2374,8 +2332,6 @@ func HandleGroup_post_members(ctx context.Context, request mcp.CallToolRequest) 
 		args["source"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_post_members(args)
 	if err != nil {
@@ -2391,7 +2347,6 @@ func HandleGroup_post_members(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleGroup_get_opted_in_members handles the group_get_opted_in_members tool
 func HandleGroup_get_opted_in_members(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2405,8 +2360,6 @@ func HandleGroup_get_opted_in_members(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Group_get_opted_in_members(args)
@@ -2422,7 +2375,6 @@ func HandleGroup_get_opted_in_members(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_post_photos handles the group_post_photos tool
 func HandleGroup_post_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2697,8 +2649,6 @@ func HandleGroup_post_photos(ctx context.Context, request mcp.CallToolRequest) (
 		args["vault_image_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_post_photos(args)
 	if err != nil {
@@ -2713,7 +2663,6 @@ func HandleGroup_post_photos(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_get_picture handles the group_get_picture tool
 func HandleGroup_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2749,8 +2698,6 @@ func HandleGroup_get_picture(ctx context.Context, request mcp.CallToolRequest) (
 		args["width"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_get_picture(args)
 	if err != nil {
@@ -2765,7 +2712,6 @@ func HandleGroup_get_picture(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_get_videos handles the group_get_videos tool
 func HandleGroup_get_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2786,8 +2732,6 @@ func HandleGroup_get_videos(ctx context.Context, request mcp.CallToolRequest) (*
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_get_videos(args)
 	if err != nil {
@@ -2802,7 +2746,6 @@ func HandleGroup_get_videos(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_post_videos handles the group_post_videos tool
 func HandleGroup_post_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3164,8 +3107,6 @@ func HandleGroup_post_videos(ctx context.Context, request mcp.CallToolRequest) (
 		args["waterfall_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_post_videos(args)
 	if err != nil {
@@ -3180,7 +3121,6 @@ func HandleGroup_post_videos(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_get_ handles the group_get_ tool
 func HandleGroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3201,8 +3141,6 @@ func HandleGroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 		args["icon_size"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_get_(args)
 	if err != nil {
@@ -3217,7 +3155,6 @@ func HandleGroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleGroup_post_ handles the group_post_ tool
 func HandleGroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3313,8 +3250,6 @@ func HandleGroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 		args["update_view_time"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Group_post_(args)
 	if err != nil {
@@ -3329,4 +3264,3 @@ func HandleGroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

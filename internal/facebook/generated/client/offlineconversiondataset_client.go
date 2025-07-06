@@ -21,7 +21,6 @@ func NewOfflineConversionDataSetClient(accessToken string) *OfflineConversionDat
 	}
 }
 
-
 // offlineconversiondataset_get_adaccounts GET adaccounts for OfflineConversionDataSet
 func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_adaccounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -30,7 +29,6 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_adaccounts
 		return nil, fmt.Errorf("missing required parameter: business")
 	}
 	_ = business // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
@@ -41,7 +39,6 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_adaccounts
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -72,19 +69,15 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_adaccounts
 	return result, nil
 }
 
-
 // offlineconversiondataset_get_agencies GET agencies for OfflineConversionDataSet
 func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_agencies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -115,11 +108,9 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_agencies(a
 	return result, nil
 }
 
-
 // offlineconversiondataset_get_audiences GET audiences for OfflineConversionDataSet
 func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_audiences(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "audiences")
@@ -133,7 +124,6 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_audiences(
 		urlParams.Set("ad_account", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -164,11 +154,9 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_audiences(
 	return result, nil
 }
 
-
 // offlineconversiondataset_get_customconversions GET customconversions for OfflineConversionDataSet
 func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_customconversions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "customconversions")
@@ -179,7 +167,6 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_customconv
 		urlParams.Set("ad_account", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -210,19 +197,15 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_customconv
 	return result, nil
 }
 
-
 // offlineconversiondataset_get_server_events_permitted_business GET server_events_permitted_business for OfflineConversionDataSet
 func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_server_events_permitted_business(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "server_events_permitted_business")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -252,7 +235,6 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_server_eve
 
 	return result, nil
 }
-
 
 // offlineconversiondataset_get_shared_accounts GET shared_accounts for OfflineConversionDataSet
 func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_shared_accounts(args map[string]interface{}) (interface{}, error) {
@@ -268,7 +250,6 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_shared_acc
 	}
 	_ = business // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_accounts")
 	urlParams := url.Values{}
@@ -281,7 +262,6 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_shared_acc
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -311,7 +291,6 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_shared_acc
 
 	return result, nil
 }
-
 
 // offlineconversiondataset_get_shared_agencies GET shared_agencies for OfflineConversionDataSet
 func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_shared_agencies(args map[string]interface{}) (interface{}, error) {
@@ -322,7 +301,6 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_shared_age
 	}
 	_ = action_source // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_agencies")
 	urlParams := url.Values{}
@@ -331,7 +309,6 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_shared_age
 	if val, ok := args["action_source"]; ok {
 		urlParams.Set("action_source", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -363,11 +340,9 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_shared_age
 	return result, nil
 }
 
-
 // offlineconversiondataset_get_stats GET stats for OfflineConversionDataSet
 func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_stats(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "stats")
@@ -393,7 +368,6 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_stats(args
 		urlParams.Set("user_timezone_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -424,11 +398,9 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_stats(args
 	return result, nil
 }
 
-
 // offlineconversiondataset_get_uploads GET uploads for OfflineConversionDataSet
 func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_uploads(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "uploads")
@@ -451,7 +423,6 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_uploads(ar
 		urlParams.Set("upload_tag", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -482,19 +453,15 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_uploads(ar
 	return result, nil
 }
 
-
 // offlineconversiondataset_get_ GET  for OfflineConversionDataSet
 func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -524,4 +491,3 @@ func (c *OfflineConversionDataSetClient) Offlineconversiondataset_get_(args map[
 
 	return result, nil
 }
-

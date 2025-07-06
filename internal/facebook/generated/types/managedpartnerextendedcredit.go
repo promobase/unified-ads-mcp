@@ -4,7 +4,7 @@ package types
 
 // ManagedPartnerExtendedCredit represents a Facebook ManagedPartnerExtendedCredit object
 type ManagedPartnerExtendedCredit struct {
-	Id string `json:"id"`
-	Max_balance *CurrencyAmount `json:"max_balance"`
+	Id                                 string                          `json:"id"`
+	Max_balance                        *CurrencyAmount                 `json:"max_balance"`
 	Receiving_credit_allocation_config *ExtendedCreditAllocationConfig `json:"receiving_credit_allocation_config"`
 }

@@ -4,6 +4,6 @@ package types
 
 // IPObject represents a Facebook IPObject object
 type IPObject struct {
-	Ip_permission string `json:"ip_permission"`
-	User map[string]interface{} `json:"user"`
+	Ip_permission string                 `json:"ip_permission"`
+	User          map[string]interface{} `json:"user"`
 }

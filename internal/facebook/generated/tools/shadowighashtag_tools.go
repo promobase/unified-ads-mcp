@@ -15,7 +15,6 @@ import (
 func GetShadowIGHashtagTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// shadowighashtag_get_recent_media tool
 	shadowighashtag_get_recent_mediaTool := mcp.NewTool("shadowighashtag_get_recent_media",
 		mcp.WithDescription("GET recent_media for ShadowIGHashtag"),
@@ -54,12 +53,10 @@ func GetShadowIGHashtagTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, shadowighashtag_get_Tool)
 
-
 	return tools
 }
 
 // ShadowIGHashtag handlers
-
 
 // HandleShadowighashtag_get_recent_media handles the shadowighashtag_get_recent_media tool
 func HandleShadowighashtag_get_recent_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -82,8 +79,6 @@ func HandleShadowighashtag_get_recent_media(ctx context.Context, request mcp.Cal
 	}
 	args["user_id"] = user_id
 
-
-
 	// Call the client method
 	result, err := client.Shadowighashtag_get_recent_media(args)
 	if err != nil {
@@ -98,7 +93,6 @@ func HandleShadowighashtag_get_recent_media(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleShadowighashtag_get_top_media handles the shadowighashtag_get_top_media tool
 func HandleShadowighashtag_get_top_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -121,8 +115,6 @@ func HandleShadowighashtag_get_top_media(ctx context.Context, request mcp.CallTo
 	}
 	args["user_id"] = user_id
 
-
-
 	// Call the client method
 	result, err := client.Shadowighashtag_get_top_media(args)
 	if err != nil {
@@ -138,7 +130,6 @@ func HandleShadowighashtag_get_top_media(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleShadowighashtag_get_ handles the shadowighashtag_get_ tool
 func HandleShadowighashtag_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -152,8 +143,6 @@ func HandleShadowighashtag_get_(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Shadowighashtag_get_(args)
@@ -169,4 +158,3 @@ func HandleShadowighashtag_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

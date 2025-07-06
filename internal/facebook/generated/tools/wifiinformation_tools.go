@@ -15,7 +15,6 @@ import (
 func GetWifiInformationTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// wifiinformation_get_ tool
 	wifiinformation_get_Tool := mcp.NewTool("wifiinformation_get_",
 		mcp.WithDescription("GET  for WifiInformation"),
@@ -26,12 +25,10 @@ func GetWifiInformationTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, wifiinformation_get_Tool)
 
-
 	return tools
 }
 
 // WifiInformation handlers
-
 
 // HandleWifiinformation_get_ handles the wifiinformation_get_ tool
 func HandleWifiinformation_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleWifiinformation_get_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Wifiinformation_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleWifiinformation_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

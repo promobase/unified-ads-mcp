@@ -15,7 +15,6 @@ import (
 func GetEventTourTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// eventtour_get_ tool
 	eventtour_get_Tool := mcp.NewTool("eventtour_get_",
 		mcp.WithDescription("GET  for EventTour"),
@@ -26,12 +25,10 @@ func GetEventTourTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, eventtour_get_Tool)
 
-
 	return tools
 }
 
 // EventTour handlers
-
 
 // HandleEventtour_get_ handles the eventtour_get_ tool
 func HandleEventtour_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleEventtour_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Eventtour_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleEventtour_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

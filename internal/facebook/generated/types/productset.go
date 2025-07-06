@@ -4,14 +4,14 @@ package types
 
 // ProductSet represents a Facebook ProductSet object
 type ProductSet struct {
-	Auto_creation_url string `json:"auto_creation_url"`
-	Filter string `json:"filter"`
-	Id string `json:"id"`
-	Latest_metadata *ProductSetMetadata `json:"latest_metadata"`
-	Live_metadata *ProductSetMetadata `json:"live_metadata"`
-	Name string `json:"name"`
-	Ordering_info []int `json:"ordering_info"`
-	Product_catalog *ProductCatalog `json:"product_catalog"`
-	Product_count int `json:"product_count"`
-	Retailer_id string `json:"retailer_id"`
+	Auto_creation_url string              `json:"auto_creation_url"`
+	Filter            string              `json:"filter"`
+	Id                string              `json:"id"`
+	Latest_metadata   *ProductSetMetadata `json:"latest_metadata"`
+	Live_metadata     *ProductSetMetadata `json:"live_metadata"`
+	Name              string              `json:"name"`
+	Ordering_info     []int               `json:"ordering_info"`
+	Product_catalog   *ProductCatalog     `json:"product_catalog"`
+	Product_count     int                 `json:"product_count"`
+	Retailer_id       string              `json:"retailer_id"`
 }

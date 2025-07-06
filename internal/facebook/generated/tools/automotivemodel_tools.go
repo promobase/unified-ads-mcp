@@ -15,7 +15,6 @@ import (
 func GetAutomotiveModelTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// automotivemodel_get_channels_to_integrity_status tool
 	automotivemodel_get_channels_to_integrity_statusTool := mcp.NewTool("automotivemodel_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for AutomotiveModel"),
@@ -63,12 +62,10 @@ func GetAutomotiveModelTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, automotivemodel_get_Tool)
 
-
 	return tools
 }
 
 // AutomotiveModel handlers
-
 
 // HandleAutomotivemodel_get_channels_to_integrity_status handles the automotivemodel_get_channels_to_integrity_status tool
 func HandleAutomotivemodel_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -84,8 +81,6 @@ func HandleAutomotivemodel_get_channels_to_integrity_status(ctx context.Context,
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Automotivemodel_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -100,7 +95,6 @@ func HandleAutomotivemodel_get_channels_to_integrity_status(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAutomotivemodel_get_override_details handles the automotivemodel_get_override_details tool
 func HandleAutomotivemodel_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -127,8 +121,6 @@ func HandleAutomotivemodel_get_override_details(ctx context.Context, request mcp
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Automotivemodel_get_override_details(args)
 	if err != nil {
@@ -144,7 +136,6 @@ func HandleAutomotivemodel_get_override_details(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAutomotivemodel_get_videos_metadata handles the automotivemodel_get_videos_metadata tool
 func HandleAutomotivemodel_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -158,8 +149,6 @@ func HandleAutomotivemodel_get_videos_metadata(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Automotivemodel_get_videos_metadata(args)
@@ -176,7 +165,6 @@ func HandleAutomotivemodel_get_videos_metadata(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAutomotivemodel_get_ handles the automotivemodel_get_ tool
 func HandleAutomotivemodel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -190,8 +178,6 @@ func HandleAutomotivemodel_get_(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Automotivemodel_get_(args)
@@ -207,4 +193,3 @@ func HandleAutomotivemodel_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -6,10 +6,10 @@ import "time"
 
 // AdsSignalDiagnosticIssue represents a Facebook AdsSignalDiagnosticIssue object
 type AdsSignalDiagnosticIssue struct {
-	Data_source_id *AdsPixel `json:"data_source_id"`
-	Data_source_type string `json:"data_source_type"`
-	Diagnostic_type string `json:"diagnostic_type"`
-	Event_name string `json:"event_name"`
-	Traffic_anomaly_drop_percentage float64 `json:"traffic_anomaly_drop_percentage"`
-	Traffic_anomaly_drop_timestamp time.Time `json:"traffic_anomaly_drop_timestamp"`
+	Data_source_id                  *AdsPixel `json:"data_source_id"`
+	Data_source_type                string    `json:"data_source_type"`
+	Diagnostic_type                 string    `json:"diagnostic_type"`
+	Event_name                      string    `json:"event_name"`
+	Traffic_anomaly_drop_percentage float64   `json:"traffic_anomaly_drop_percentage"`
+	Traffic_anomaly_drop_timestamp  time.Time `json:"traffic_anomaly_drop_timestamp"`
 }

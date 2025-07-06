@@ -5,6 +5,6 @@ package types
 // ContentBlockList represents a Facebook ContentBlockList object
 type ContentBlockList struct {
 	Business *Business `json:"business"`
-	Id string `json:"id"`
-	Name string `json:"name"`
+	Id       string    `json:"id"`
+	Name     string    `json:"name"`
 }

@@ -4,11 +4,11 @@ package types
 
 // OffsiteSignalContainerBusinessObject represents a Facebook OffsiteSignalContainerBusinessObject object
 type OffsiteSignalContainerBusinessObject struct {
-	Business *Business `json:"business"`
-	Id string `json:"id"`
-	Is_eligible_for_sharing_to_ad_account bool `json:"is_eligible_for_sharing_to_ad_account"`
-	Is_eligible_for_sharing_to_business bool `json:"is_eligible_for_sharing_to_business"`
-	Is_unavailable bool `json:"is_unavailable"`
-	Name string `json:"name"`
-	Primary_container_id string `json:"primary_container_id"`
+	Business                              *Business `json:"business"`
+	Id                                    string    `json:"id"`
+	Is_eligible_for_sharing_to_ad_account bool      `json:"is_eligible_for_sharing_to_ad_account"`
+	Is_eligible_for_sharing_to_business   bool      `json:"is_eligible_for_sharing_to_business"`
+	Is_unavailable                        bool      `json:"is_unavailable"`
+	Name                                  string    `json:"name"`
+	Primary_container_id                  string    `json:"primary_container_id"`
 }

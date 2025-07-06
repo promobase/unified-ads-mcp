@@ -15,7 +15,6 @@ import (
 func GetAdCustomDerivedMetricsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adcustomderivedmetrics_get_ tool
 	adcustomderivedmetrics_get_Tool := mcp.NewTool("adcustomderivedmetrics_get_",
 		mcp.WithDescription("GET  for AdCustomDerivedMetrics"),
@@ -26,12 +25,10 @@ func GetAdCustomDerivedMetricsTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adcustomderivedmetrics_get_Tool)
 
-
 	return tools
 }
 
 // AdCustomDerivedMetrics handlers
-
 
 // HandleAdcustomderivedmetrics_get_ handles the adcustomderivedmetrics_get_ tool
 func HandleAdcustomderivedmetrics_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAdcustomderivedmetrics_get_(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Adcustomderivedmetrics_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAdcustomderivedmetrics_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

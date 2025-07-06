@@ -5,5 +5,5 @@ package types
 // FavoriteCatalog represents a Facebook FavoriteCatalog object
 type FavoriteCatalog struct {
 	Catalog *ProductCatalog `json:"catalog"`
-	Id string `json:"id"`
+	Id      string          `json:"id"`
 }

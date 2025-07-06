@@ -15,7 +15,6 @@ import (
 func GetPhotoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// photo_get_comments tool
 	photo_get_commentsTool := mcp.NewTool("photo_get_comments",
 		mcp.WithDescription("GET comments for Photo"),
@@ -180,12 +179,10 @@ func GetPhotoTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, photo_get_Tool)
 
-
 	return tools
 }
 
 // Photo handlers
-
 
 // HandlePhoto_get_comments handles the photo_get_comments tool
 func HandlePhoto_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -221,8 +218,6 @@ func HandlePhoto_get_comments(ctx context.Context, request mcp.CallToolRequest) 
 		args["since"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Photo_get_comments(args)
 	if err != nil {
@@ -237,7 +232,6 @@ func HandlePhoto_get_comments(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePhoto_post_comments handles the photo_post_comments tool
 func HandlePhoto_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -320,8 +314,6 @@ func HandlePhoto_post_comments(ctx context.Context, request mcp.CallToolRequest)
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Photo_post_comments(args)
 	if err != nil {
@@ -336,7 +328,6 @@ func HandlePhoto_post_comments(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePhoto_get_insights handles the photo_get_insights tool
 func HandlePhoto_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -378,8 +369,6 @@ func HandlePhoto_get_insights(ctx context.Context, request mcp.CallToolRequest) 
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Photo_get_insights(args)
 	if err != nil {
@@ -395,7 +384,6 @@ func HandlePhoto_get_insights(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandlePhoto_get_likes handles the photo_get_likes tool
 func HandlePhoto_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -409,8 +397,6 @@ func HandlePhoto_get_likes(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Photo_get_likes(args)
@@ -426,7 +412,6 @@ func HandlePhoto_get_likes(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePhoto_post_likes handles the photo_post_likes tool
 func HandlePhoto_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -462,8 +447,6 @@ func HandlePhoto_post_likes(ctx context.Context, request mcp.CallToolRequest) (*
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Photo_post_likes(args)
 	if err != nil {
@@ -479,7 +462,6 @@ func HandlePhoto_post_likes(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandlePhoto_get_sponsor_tags handles the photo_get_sponsor_tags tool
 func HandlePhoto_get_sponsor_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -493,8 +475,6 @@ func HandlePhoto_get_sponsor_tags(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Photo_get_sponsor_tags(args)
@@ -511,7 +491,6 @@ func HandlePhoto_get_sponsor_tags(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandlePhoto_delete_ handles the photo_delete_ tool
 func HandlePhoto_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -525,8 +504,6 @@ func HandlePhoto_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Photo_delete_(args)
@@ -543,7 +520,6 @@ func HandlePhoto_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandlePhoto_get_ handles the photo_get_ tool
 func HandlePhoto_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -557,8 +533,6 @@ func HandlePhoto_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Photo_get_(args)
@@ -574,4 +548,3 @@ func HandlePhoto_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

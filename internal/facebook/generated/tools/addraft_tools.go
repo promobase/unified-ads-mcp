@@ -15,7 +15,6 @@ import (
 func GetAdDraftTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// addraft_get_ tool
 	addraft_get_Tool := mcp.NewTool("addraft_get_",
 		mcp.WithDescription("GET  for AdDraft"),
@@ -26,12 +25,10 @@ func GetAdDraftTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, addraft_get_Tool)
 
-
 	return tools
 }
 
 // AdDraft handlers
-
 
 // HandleAddraft_get_ handles the addraft_get_ tool
 func HandleAddraft_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAddraft_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Addraft_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAddraft_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

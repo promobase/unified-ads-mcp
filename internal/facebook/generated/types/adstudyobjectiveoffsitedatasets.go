@@ -5,5 +5,5 @@ package types
 // AdStudyObjectiveOffsiteDatasets represents a Facebook AdStudyObjectiveOffsiteDatasets object
 type AdStudyObjectiveOffsiteDatasets struct {
 	Event_names []string `json:"event_names"`
-	Id string `json:"id"`
+	Id          string   `json:"id"`
 }

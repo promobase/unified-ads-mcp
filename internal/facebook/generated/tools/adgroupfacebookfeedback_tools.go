@@ -15,7 +15,6 @@ import (
 func GetAdgroupFacebookFeedbackTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adgroupfacebookfeedback_get_comments tool
 	adgroupfacebookfeedback_get_commentsTool := mcp.NewTool("adgroupfacebookfeedback_get_comments",
 		mcp.WithDescription("GET comments for AdgroupFacebookFeedback"),
@@ -30,12 +29,10 @@ func GetAdgroupFacebookFeedbackTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adgroupfacebookfeedback_get_commentsTool)
 
-
 	return tools
 }
 
 // AdgroupFacebookFeedback handlers
-
 
 // HandleAdgroupfacebookfeedback_get_comments handles the adgroupfacebookfeedback_get_comments tool
 func HandleAdgroupfacebookfeedback_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleAdgroupfacebookfeedback_get_comments(ctx context.Context, request mcp
 		args["order"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adgroupfacebookfeedback_get_comments(args)
 	if err != nil {
@@ -72,4 +67,3 @@ func HandleAdgroupfacebookfeedback_get_comments(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

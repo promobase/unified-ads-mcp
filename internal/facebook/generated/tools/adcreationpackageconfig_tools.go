@@ -15,7 +15,6 @@ import (
 func GetAdCreationPackageConfigTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adcreationpackageconfig_get_ tool
 	adcreationpackageconfig_get_Tool := mcp.NewTool("adcreationpackageconfig_get_",
 		mcp.WithDescription("GET  for AdCreationPackageConfig"),
@@ -26,12 +25,10 @@ func GetAdCreationPackageConfigTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adcreationpackageconfig_get_Tool)
 
-
 	return tools
 }
 
 // AdCreationPackageConfig handlers
-
 
 // HandleAdcreationpackageconfig_get_ handles the adcreationpackageconfig_get_ tool
 func HandleAdcreationpackageconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAdcreationpackageconfig_get_(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Adcreationpackageconfig_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAdcreationpackageconfig_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

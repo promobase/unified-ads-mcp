@@ -15,7 +15,6 @@ import (
 func GetAdLabelTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adlabel_get_adcreatives tool
 	adlabel_get_adcreativesTool := mcp.NewTool("adlabel_get_adcreatives",
 		mcp.WithDescription("GET adcreatives for AdLabel"),
@@ -90,12 +89,10 @@ func GetAdLabelTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adlabel_post_Tool)
 
-
 	return tools
 }
 
 // AdLabel handlers
-
 
 // HandleAdlabel_get_adcreatives handles the adlabel_get_adcreatives tool
 func HandleAdlabel_get_adcreatives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -110,8 +107,6 @@ func HandleAdlabel_get_adcreatives(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adlabel_get_adcreatives(args)
@@ -128,7 +123,6 @@ func HandleAdlabel_get_adcreatives(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdlabel_get_ads handles the adlabel_get_ads tool
 func HandleAdlabel_get_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -142,8 +136,6 @@ func HandleAdlabel_get_ads(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adlabel_get_ads(args)
@@ -160,7 +152,6 @@ func HandleAdlabel_get_ads(ctx context.Context, request mcp.CallToolRequest) (*m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdlabel_get_adsets handles the adlabel_get_adsets tool
 func HandleAdlabel_get_adsets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -174,8 +165,6 @@ func HandleAdlabel_get_adsets(ctx context.Context, request mcp.CallToolRequest) 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adlabel_get_adsets(args)
@@ -192,7 +181,6 @@ func HandleAdlabel_get_adsets(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdlabel_get_campaigns handles the adlabel_get_campaigns tool
 func HandleAdlabel_get_campaigns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -206,8 +194,6 @@ func HandleAdlabel_get_campaigns(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adlabel_get_campaigns(args)
@@ -224,7 +210,6 @@ func HandleAdlabel_get_campaigns(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdlabel_delete_ handles the adlabel_delete_ tool
 func HandleAdlabel_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -238,8 +223,6 @@ func HandleAdlabel_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adlabel_delete_(args)
@@ -256,7 +239,6 @@ func HandleAdlabel_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdlabel_get_ handles the adlabel_get_ tool
 func HandleAdlabel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -270,8 +252,6 @@ func HandleAdlabel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adlabel_get_(args)
@@ -287,7 +267,6 @@ func HandleAdlabel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdlabel_post_ handles the adlabel_post_ tool
 func HandleAdlabel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -310,8 +289,6 @@ func HandleAdlabel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	}
 	args["name"] = name
 
-
-
 	// Call the client method
 	result, err := client.Adlabel_post_(args)
 	if err != nil {
@@ -326,4 +303,3 @@ func HandleAdlabel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

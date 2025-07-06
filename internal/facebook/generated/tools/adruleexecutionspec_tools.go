@@ -15,7 +15,6 @@ import (
 func GetAdRuleExecutionSpecTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adruleexecutionspec_get_ tool
 	adruleexecutionspec_get_Tool := mcp.NewTool("adruleexecutionspec_get_",
 		mcp.WithDescription("GET  for AdRuleExecutionSpec"),
@@ -26,12 +25,10 @@ func GetAdRuleExecutionSpecTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adruleexecutionspec_get_Tool)
 
-
 	return tools
 }
 
 // AdRuleExecutionSpec handlers
-
 
 // HandleAdruleexecutionspec_get_ handles the adruleexecutionspec_get_ tool
 func HandleAdruleexecutionspec_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAdruleexecutionspec_get_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Adruleexecutionspec_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAdruleexecutionspec_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

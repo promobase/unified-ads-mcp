@@ -15,7 +15,6 @@ import (
 func GetDynamicItemDisplayBundleFolderTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// dynamicitemdisplaybundlefolder_get_ tool
 	dynamicitemdisplaybundlefolder_get_Tool := mcp.NewTool("dynamicitemdisplaybundlefolder_get_",
 		mcp.WithDescription("GET  for DynamicItemDisplayBundleFolder"),
@@ -26,12 +25,10 @@ func GetDynamicItemDisplayBundleFolderTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, dynamicitemdisplaybundlefolder_get_Tool)
 
-
 	return tools
 }
 
 // DynamicItemDisplayBundleFolder handlers
-
 
 // HandleDynamicitemdisplaybundlefolder_get_ handles the dynamicitemdisplaybundlefolder_get_ tool
 func HandleDynamicitemdisplaybundlefolder_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleDynamicitemdisplaybundlefolder_get_(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Dynamicitemdisplaybundlefolder_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleDynamicitemdisplaybundlefolder_get_(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

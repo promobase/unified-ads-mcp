@@ -6,11 +6,11 @@ import "time"
 
 // AdSavedKeywords represents a Facebook AdSavedKeywords object
 type AdSavedKeywords struct {
-	Account *AdAccount `json:"account"`
-	Id string `json:"id"`
-	Keywords *AdKeywords `json:"keywords"`
-	Name string `json:"name"`
-	Run_status string `json:"run_status"`
-	Time_created time.Time `json:"time_created"`
-	Time_updated time.Time `json:"time_updated"`
+	Account      *AdAccount  `json:"account"`
+	Id           string      `json:"id"`
+	Keywords     *AdKeywords `json:"keywords"`
+	Name         string      `json:"name"`
+	Run_status   string      `json:"run_status"`
+	Time_created time.Time   `json:"time_created"`
+	Time_updated time.Time   `json:"time_updated"`
 }

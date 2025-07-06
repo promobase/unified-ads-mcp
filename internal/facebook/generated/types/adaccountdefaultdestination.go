@@ -4,6 +4,6 @@ package types
 
 // AdAccountDefaultDestination represents a Facebook AdAccountDefaultDestination object
 type AdAccountDefaultDestination struct {
-	Destination_id string `json:"destination_id"`
+	Destination_id  string `json:"destination_id"`
 	Destination_url string `json:"destination_url"`
 }

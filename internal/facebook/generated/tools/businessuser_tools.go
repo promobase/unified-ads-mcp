@@ -15,7 +15,6 @@ import (
 func GetBusinessUserTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// businessuser_get_assigned_ad_accounts tool
 	businessuser_get_assigned_ad_accountsTool := mcp.NewTool("businessuser_get_assigned_ad_accounts",
 		mcp.WithDescription("GET assigned_ad_accounts for BusinessUser"),
@@ -121,12 +120,10 @@ func GetBusinessUserTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, businessuser_post_Tool)
 
-
 	return tools
 }
 
 // BusinessUser handlers
-
 
 // HandleBusinessuser_get_assigned_ad_accounts handles the businessuser_get_assigned_ad_accounts tool
 func HandleBusinessuser_get_assigned_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -142,8 +139,6 @@ func HandleBusinessuser_get_assigned_ad_accounts(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Businessuser_get_assigned_ad_accounts(args)
 	if err != nil {
@@ -158,7 +153,6 @@ func HandleBusinessuser_get_assigned_ad_accounts(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessuser_get_assigned_business_asset_groups handles the businessuser_get_assigned_business_asset_groups tool
 func HandleBusinessuser_get_assigned_business_asset_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -179,8 +173,6 @@ func HandleBusinessuser_get_assigned_business_asset_groups(ctx context.Context, 
 		args["contained_asset_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessuser_get_assigned_business_asset_groups(args)
 	if err != nil {
@@ -195,7 +187,6 @@ func HandleBusinessuser_get_assigned_business_asset_groups(ctx context.Context, 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessuser_get_assigned_pages handles the businessuser_get_assigned_pages tool
 func HandleBusinessuser_get_assigned_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -217,8 +208,6 @@ func HandleBusinessuser_get_assigned_pages(ctx context.Context, request mcp.Call
 		args["pages"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessuser_get_assigned_pages(args)
 	if err != nil {
@@ -234,7 +223,6 @@ func HandleBusinessuser_get_assigned_pages(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleBusinessuser_get_assigned_product_catalogs handles the businessuser_get_assigned_product_catalogs tool
 func HandleBusinessuser_get_assigned_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -248,8 +236,6 @@ func HandleBusinessuser_get_assigned_product_catalogs(ctx context.Context, reque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Businessuser_get_assigned_product_catalogs(args)
@@ -266,7 +252,6 @@ func HandleBusinessuser_get_assigned_product_catalogs(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleBusinessuser_delete_ handles the businessuser_delete_ tool
 func HandleBusinessuser_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -280,8 +265,6 @@ func HandleBusinessuser_delete_(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Businessuser_delete_(args)
@@ -298,7 +281,6 @@ func HandleBusinessuser_delete_(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleBusinessuser_get_ handles the businessuser_get_ tool
 func HandleBusinessuser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -312,8 +294,6 @@ func HandleBusinessuser_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Businessuser_get_(args)
@@ -329,7 +309,6 @@ func HandleBusinessuser_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessuser_post_ handles the businessuser_post_ tool
 func HandleBusinessuser_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -391,8 +370,6 @@ func HandleBusinessuser_post_(ctx context.Context, request mcp.CallToolRequest) 
 		args["title"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessuser_post_(args)
 	if err != nil {
@@ -407,4 +384,3 @@ func HandleBusinessuser_post_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

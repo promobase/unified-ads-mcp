@@ -4,14 +4,14 @@ package types
 
 // RegionalRegulationIdentities represents a Facebook RegionalRegulationIdentities object
 type RegionalRegulationIdentities struct {
-	Australia_finserv_beneficiary string `json:"australia_finserv_beneficiary"`
-	Australia_finserv_payer string `json:"australia_finserv_payer"`
-	India_finserv_beneficiary string `json:"india_finserv_beneficiary"`
-	India_finserv_payer string `json:"india_finserv_payer"`
+	Australia_finserv_beneficiary   string `json:"australia_finserv_beneficiary"`
+	Australia_finserv_payer         string `json:"australia_finserv_payer"`
+	India_finserv_beneficiary       string `json:"india_finserv_beneficiary"`
+	India_finserv_payer             string `json:"india_finserv_payer"`
 	Singapore_universal_beneficiary string `json:"singapore_universal_beneficiary"`
-	Singapore_universal_payer string `json:"singapore_universal_payer"`
-	Taiwan_finserv_beneficiary string `json:"taiwan_finserv_beneficiary"`
-	Taiwan_finserv_payer string `json:"taiwan_finserv_payer"`
-	Taiwan_universal_beneficiary string `json:"taiwan_universal_beneficiary"`
-	Taiwan_universal_payer string `json:"taiwan_universal_payer"`
+	Singapore_universal_payer       string `json:"singapore_universal_payer"`
+	Taiwan_finserv_beneficiary      string `json:"taiwan_finserv_beneficiary"`
+	Taiwan_finserv_payer            string `json:"taiwan_finserv_payer"`
+	Taiwan_universal_beneficiary    string `json:"taiwan_universal_beneficiary"`
+	Taiwan_universal_payer          string `json:"taiwan_universal_payer"`
 }

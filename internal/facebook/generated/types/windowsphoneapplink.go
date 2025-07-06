@@ -4,7 +4,7 @@ package types
 
 // WindowsPhoneAppLink represents a Facebook WindowsPhoneAppLink object
 type WindowsPhoneAppLink struct {
-	App_id string `json:"app_id"`
+	App_id   string `json:"app_id"`
 	App_name string `json:"app_name"`
-	Url string `json:"url"`
+	Url      string `json:"url"`
 }

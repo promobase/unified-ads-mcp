@@ -15,7 +15,6 @@ import (
 func GetAppRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// apprequest_delete_ tool
 	apprequest_delete_Tool := mcp.NewTool("apprequest_delete_",
 		mcp.WithDescription("DELETE  for AppRequest"),
@@ -40,12 +39,10 @@ func GetAppRequestTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, apprequest_get_Tool)
 
-
 	return tools
 }
 
 // AppRequest handlers
-
 
 // HandleApprequest_delete_ handles the apprequest_delete_ tool
 func HandleApprequest_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -68,8 +65,6 @@ func HandleApprequest_delete_(ctx context.Context, request mcp.CallToolRequest) 
 	}
 	args["ids"] = ids
 
-
-
 	// Call the client method
 	result, err := client.Apprequest_delete_(args)
 	if err != nil {
@@ -85,7 +80,6 @@ func HandleApprequest_delete_(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleApprequest_get_ handles the apprequest_get_ tool
 func HandleApprequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -99,8 +93,6 @@ func HandleApprequest_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Apprequest_get_(args)
@@ -116,4 +108,3 @@ func HandleApprequest_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

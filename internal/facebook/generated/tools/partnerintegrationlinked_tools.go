@@ -15,7 +15,6 @@ import (
 func GetPartnerIntegrationLinkedTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// partnerintegrationlinked_get_ tool
 	partnerintegrationlinked_get_Tool := mcp.NewTool("partnerintegrationlinked_get_",
 		mcp.WithDescription("GET  for PartnerIntegrationLinked"),
@@ -26,12 +25,10 @@ func GetPartnerIntegrationLinkedTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, partnerintegrationlinked_get_Tool)
 
-
 	return tools
 }
 
 // PartnerIntegrationLinked handlers
-
 
 // HandlePartnerintegrationlinked_get_ handles the partnerintegrationlinked_get_ tool
 func HandlePartnerintegrationlinked_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandlePartnerintegrationlinked_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Partnerintegrationlinked_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandlePartnerintegrationlinked_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

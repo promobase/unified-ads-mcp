@@ -15,7 +15,6 @@ import (
 func GetSavedAudienceTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// savedaudience_get_ tool
 	savedaudience_get_Tool := mcp.NewTool("savedaudience_get_",
 		mcp.WithDescription("GET  for SavedAudience"),
@@ -26,12 +25,10 @@ func GetSavedAudienceTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, savedaudience_get_Tool)
 
-
 	return tools
 }
 
 // SavedAudience handlers
-
 
 // HandleSavedaudience_get_ handles the savedaudience_get_ tool
 func HandleSavedaudience_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleSavedaudience_get_(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Savedaudience_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleSavedaudience_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

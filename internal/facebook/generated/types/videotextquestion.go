@@ -4,8 +4,8 @@ package types
 
 // VideoTextQuestion represents a Facebook VideoTextQuestion object
 type VideoTextQuestion struct {
-	Id string `json:"id"`
+	Id                 string `json:"id"`
 	Question_target_id string `json:"question_target_id"`
-	Question_text string `json:"question_text"`
-	Status string `json:"status"`
+	Question_text      string `json:"question_text"`
+	Status             string `json:"status"`
 }

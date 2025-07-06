@@ -4,7 +4,7 @@ package types
 
 // AudiencePermission represents a Facebook AudiencePermission object
 type AudiencePermission struct {
-	Audience *CustomAudience `json:"audience"`
-	Share_account_id string `json:"share_account_id"`
-	Share_account_name string `json:"share_account_name"`
+	Audience           *CustomAudience `json:"audience"`
+	Share_account_id   string          `json:"share_account_id"`
+	Share_account_name string          `json:"share_account_name"`
 }

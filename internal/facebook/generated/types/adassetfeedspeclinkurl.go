@@ -4,11 +4,11 @@ package types
 
 // AdAssetFeedSpecLinkURL represents a Facebook AdAssetFeedSpecLinkURL object
 type AdAssetFeedSpecLinkURL struct {
-	Adlabels []AdAssetFeedSpecAssetLabel `json:"adlabels"`
-	Carousel_see_more_url string `json:"carousel_see_more_url"`
-	Deeplink_url string `json:"deeplink_url"`
-	Display_url string `json:"display_url"`
-	Object_store_urls []string `json:"object_store_urls"`
-	Url_tags string `json:"url_tags"`
-	Website_url string `json:"website_url"`
+	Adlabels              []AdAssetFeedSpecAssetLabel `json:"adlabels"`
+	Carousel_see_more_url string                      `json:"carousel_see_more_url"`
+	Deeplink_url          string                      `json:"deeplink_url"`
+	Display_url           string                      `json:"display_url"`
+	Object_store_urls     []string                    `json:"object_store_urls"`
+	Url_tags              string                      `json:"url_tags"`
+	Website_url           string                      `json:"website_url"`
 }

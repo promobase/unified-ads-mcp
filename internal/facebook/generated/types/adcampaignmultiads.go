@@ -5,5 +5,5 @@ package types
 // AdCampaignMultiAds represents a Facebook AdCampaignMultiAds object
 type AdCampaignMultiAds struct {
 	Enroll_status string `json:"enroll_status"`
-	Source_type string `json:"source_type"`
+	Source_type   string `json:"source_type"`
 }

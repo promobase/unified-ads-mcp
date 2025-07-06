@@ -5,5 +5,5 @@ package types
 // TimeSuggestion represents a Facebook TimeSuggestion object
 type TimeSuggestion struct {
 	High_demand_periods []map[string]interface{} `json:"high_demand_periods"`
-	Is_enabled bool `json:"is_enabled"`
+	Is_enabled          bool                     `json:"is_enabled"`
 }

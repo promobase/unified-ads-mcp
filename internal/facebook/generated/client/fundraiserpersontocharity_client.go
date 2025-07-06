@@ -21,18 +21,14 @@ func NewFundraiserPersonToCharityClient(accessToken string) *FundraiserPersonToC
 	}
 }
 
-
 // fundraiserpersontocharity_get_donations GET donations for FundraiserPersonToCharity
 func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_get_donations(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "donations")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,18 +60,14 @@ func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_get_donation
 	return result, nil
 }
 
-
 // fundraiserpersontocharity_post_end_fundraiser POST end_fundraiser for FundraiserPersonToCharity
 func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_post_end_fundraiser(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "end_fundraiser")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -107,18 +99,14 @@ func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_post_end_fun
 	return result, nil
 }
 
-
 // fundraiserpersontocharity_get_external_donations GET external_donations for FundraiserPersonToCharity
 func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_get_external_donations(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "external_donations")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -149,7 +137,6 @@ func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_get_external
 
 	return result, nil
 }
-
 
 // fundraiserpersontocharity_post_external_donations POST external_donations for FundraiserPersonToCharity
 func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_post_external_donations(args map[string]interface{}) (interface{}, error) {
@@ -180,7 +167,6 @@ func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_post_externa
 	}
 	_ = donor_id_hash // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "external_donations")
 	urlParams := url.Values{}
@@ -201,7 +187,6 @@ func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_post_externa
 	if val, ok := args["donor_id_hash"]; ok {
 		urlParams.Set("donor_id_hash", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -233,18 +218,14 @@ func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_post_externa
 	return result, nil
 }
 
-
 // fundraiserpersontocharity_get_ GET  for FundraiserPersonToCharity
 func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -276,11 +257,9 @@ func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_get_(args ma
 	return result, nil
 }
 
-
 // fundraiserpersontocharity_post_ POST  for FundraiserPersonToCharity
 func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -315,7 +294,6 @@ func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_post_(args m
 		urlParams.Set("name", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -345,4 +323,3 @@ func (c *FundraiserPersonToCharityClient) Fundraiserpersontocharity_post_(args m
 
 	return result, nil
 }
-

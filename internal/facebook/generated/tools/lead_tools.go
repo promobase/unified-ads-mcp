@@ -15,7 +15,6 @@ import (
 func GetLeadTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// lead_delete_ tool
 	lead_delete_Tool := mcp.NewTool("lead_delete_",
 		mcp.WithDescription("DELETE  for Lead"),
@@ -36,12 +35,10 @@ func GetLeadTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, lead_get_Tool)
 
-
 	return tools
 }
 
 // Lead handlers
-
 
 // HandleLead_delete_ handles the lead_delete_ tool
 func HandleLead_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleLead_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Lead_delete_(args)
@@ -74,7 +69,6 @@ func HandleLead_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleLead_get_ handles the lead_get_ tool
 func HandleLead_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleLead_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Lead_get_(args)
@@ -105,4 +97,3 @@ func HandleLead_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

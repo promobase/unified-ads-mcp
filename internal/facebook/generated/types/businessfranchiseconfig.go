@@ -4,17 +4,17 @@ package types
 
 // BusinessFranchiseConfig represents a Facebook BusinessFranchiseConfig object
 type BusinessFranchiseConfig struct {
-	Active_partner_count int `json:"active_partner_count"`
-	Agency_business *Business `json:"agency_business"`
-	Agency_business_asset_group *BusinessAssetGroup `json:"agency_business_asset_group"`
-	Brand_name string `json:"brand_name"`
-	Business *Business `json:"business"`
-	Business_vertical string `json:"business_vertical"`
-	Id string `json:"id"`
-	Partner_count int `json:"partner_count"`
-	Pending_agency_business string `json:"pending_agency_business"`
-	Program_count int `json:"program_count"`
-	Shared_business_asset_group *BusinessAssetGroup `json:"shared_business_asset_group"`
-	Shared_creative_folder_count int `json:"shared_creative_folder_count"`
-	Shared_custom_audience_count int `json:"shared_custom_audience_count"`
+	Active_partner_count         int                 `json:"active_partner_count"`
+	Agency_business              *Business           `json:"agency_business"`
+	Agency_business_asset_group  *BusinessAssetGroup `json:"agency_business_asset_group"`
+	Brand_name                   string              `json:"brand_name"`
+	Business                     *Business           `json:"business"`
+	Business_vertical            string              `json:"business_vertical"`
+	Id                           string              `json:"id"`
+	Partner_count                int                 `json:"partner_count"`
+	Pending_agency_business      string              `json:"pending_agency_business"`
+	Program_count                int                 `json:"program_count"`
+	Shared_business_asset_group  *BusinessAssetGroup `json:"shared_business_asset_group"`
+	Shared_creative_folder_count int                 `json:"shared_creative_folder_count"`
+	Shared_custom_audience_count int                 `json:"shared_custom_audience_count"`
 }

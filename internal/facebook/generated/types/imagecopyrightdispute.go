@@ -6,13 +6,13 @@ import "time"
 
 // ImageCopyrightDispute represents a Facebook ImageCopyrightDispute object
 type ImageCopyrightDispute struct {
-	Appeal_form_data string `json:"appeal_form_data"`
-	Dispute_form_data string `json:"dispute_form_data"`
-	Expiration_time time.Time `json:"expiration_time"`
-	Id string `json:"id"`
-	Match_id string `json:"match_id"`
-	Status string `json:"status"`
-	Time_appealed time.Time `json:"time_appealed"`
-	Time_created time.Time `json:"time_created"`
-	Time_updated time.Time `json:"time_updated"`
+	Appeal_form_data  string    `json:"appeal_form_data"`
+	Dispute_form_data string    `json:"dispute_form_data"`
+	Expiration_time   time.Time `json:"expiration_time"`
+	Id                string    `json:"id"`
+	Match_id          string    `json:"match_id"`
+	Status            string    `json:"status"`
+	Time_appealed     time.Time `json:"time_appealed"`
+	Time_created      time.Time `json:"time_created"`
+	Time_updated      time.Time `json:"time_updated"`
 }

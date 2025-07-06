@@ -15,7 +15,6 @@ import (
 func GetCPASBusinessSetupConfigTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// cpasbusinesssetupconfig_get_ad_accounts tool
 	cpasbusinesssetupconfig_get_ad_accountsTool := mcp.NewTool("cpasbusinesssetupconfig_get_ad_accounts",
 		mcp.WithDescription("GET ad_accounts for CPASBusinessSetupConfig"),
@@ -36,12 +35,10 @@ func GetCPASBusinessSetupConfigTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, cpasbusinesssetupconfig_get_Tool)
 
-
 	return tools
 }
 
 // CPASBusinessSetupConfig handlers
-
 
 // HandleCpasbusinesssetupconfig_get_ad_accounts handles the cpasbusinesssetupconfig_get_ad_accounts tool
 func HandleCpasbusinesssetupconfig_get_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleCpasbusinesssetupconfig_get_ad_accounts(ctx context.Context, request 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Cpasbusinesssetupconfig_get_ad_accounts(args)
@@ -74,7 +69,6 @@ func HandleCpasbusinesssetupconfig_get_ad_accounts(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleCpasbusinesssetupconfig_get_ handles the cpasbusinesssetupconfig_get_ tool
 func HandleCpasbusinesssetupconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleCpasbusinesssetupconfig_get_(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Cpasbusinesssetupconfig_get_(args)
@@ -105,4 +97,3 @@ func HandleCpasbusinesssetupconfig_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

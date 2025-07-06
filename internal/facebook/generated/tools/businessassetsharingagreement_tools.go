@@ -15,7 +15,6 @@ import (
 func GetBusinessAssetSharingAgreementTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// businessassetsharingagreement_get_ tool
 	businessassetsharingagreement_get_Tool := mcp.NewTool("businessassetsharingagreement_get_",
 		mcp.WithDescription("GET  for BusinessAssetSharingAgreement"),
@@ -39,12 +38,10 @@ func GetBusinessAssetSharingAgreementTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, businessassetsharingagreement_post_Tool)
 
-
 	return tools
 }
 
 // BusinessAssetSharingAgreement handlers
-
 
 // HandleBusinessassetsharingagreement_get_ handles the businessassetsharingagreement_get_ tool
 func HandleBusinessassetsharingagreement_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -60,8 +57,6 @@ func HandleBusinessassetsharingagreement_get_(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Businessassetsharingagreement_get_(args)
 	if err != nil {
@@ -76,7 +71,6 @@ func HandleBusinessassetsharingagreement_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessassetsharingagreement_post_ handles the businessassetsharingagreement_post_ tool
 func HandleBusinessassetsharingagreement_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -97,8 +91,6 @@ func HandleBusinessassetsharingagreement_post_(ctx context.Context, request mcp.
 		args["request_response"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessassetsharingagreement_post_(args)
 	if err != nil {
@@ -113,4 +105,3 @@ func HandleBusinessassetsharingagreement_post_(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetAdMonetizationPropertyTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// admonetizationproperty_get_adnetworkanalytics tool
 	admonetizationproperty_get_adnetworkanalyticsTool := mcp.NewTool("admonetizationproperty_get_adnetworkanalytics",
 		mcp.WithDescription("GET adnetworkanalytics for AdMonetizationProperty"),
@@ -128,12 +127,10 @@ func GetAdMonetizationPropertyTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, admonetizationproperty_get_Tool)
 
-
 	return tools
 }
 
 // AdMonetizationProperty handlers
-
 
 // HandleAdmonetizationproperty_get_adnetworkanalytics handles the admonetizationproperty_get_adnetworkanalytics tool
 func HandleAdmonetizationproperty_get_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -203,8 +200,6 @@ func HandleAdmonetizationproperty_get_adnetworkanalytics(ctx context.Context, re
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Admonetizationproperty_get_adnetworkanalytics(args)
 	if err != nil {
@@ -219,7 +214,6 @@ func HandleAdmonetizationproperty_get_adnetworkanalytics(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdmonetizationproperty_post_adnetworkanalytics handles the admonetizationproperty_post_adnetworkanalytics tool
 func HandleAdmonetizationproperty_post_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -284,8 +278,6 @@ func HandleAdmonetizationproperty_post_adnetworkanalytics(ctx context.Context, r
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Admonetizationproperty_post_adnetworkanalytics(args)
 	if err != nil {
@@ -300,7 +292,6 @@ func HandleAdmonetizationproperty_post_adnetworkanalytics(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdmonetizationproperty_get_adnetworkanalytics_results handles the admonetizationproperty_get_adnetworkanalytics_results tool
 func HandleAdmonetizationproperty_get_adnetworkanalytics_results(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -322,8 +313,6 @@ func HandleAdmonetizationproperty_get_adnetworkanalytics_results(ctx context.Con
 		args["query_ids"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Admonetizationproperty_get_adnetworkanalytics_results(args)
 	if err != nil {
@@ -339,7 +328,6 @@ func HandleAdmonetizationproperty_get_adnetworkanalytics_results(ctx context.Con
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdmonetizationproperty_get_ handles the admonetizationproperty_get_ tool
 func HandleAdmonetizationproperty_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -353,8 +341,6 @@ func HandleAdmonetizationproperty_get_(ctx context.Context, request mcp.CallTool
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Admonetizationproperty_get_(args)
@@ -370,4 +356,3 @@ func HandleAdmonetizationproperty_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

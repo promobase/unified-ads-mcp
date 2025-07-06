@@ -4,17 +4,17 @@ package types
 
 // EventTour represents a Facebook EventTour object
 type EventTour struct {
-	Description string `json:"description"`
-	Dominant_color string `json:"dominant_color"`
-	End_time string `json:"end_time"`
-	Id string `json:"id"`
-	Is_past bool `json:"is_past"`
-	Last_event_timestamp int `json:"last_event_timestamp"`
-	Name string `json:"name"`
-	Num_events int `json:"num_events"`
-	Photo *Photo `json:"photo"`
-	Scheduled_publish_timestamp int `json:"scheduled_publish_timestamp"`
-	Start_time string `json:"start_time"`
-	Ticketing_uri string `json:"ticketing_uri"`
-	Video *AdVideo `json:"video"`
+	Description                 string   `json:"description"`
+	Dominant_color              string   `json:"dominant_color"`
+	End_time                    string   `json:"end_time"`
+	Id                          string   `json:"id"`
+	Is_past                     bool     `json:"is_past"`
+	Last_event_timestamp        int      `json:"last_event_timestamp"`
+	Name                        string   `json:"name"`
+	Num_events                  int      `json:"num_events"`
+	Photo                       *Photo   `json:"photo"`
+	Scheduled_publish_timestamp int      `json:"scheduled_publish_timestamp"`
+	Start_time                  string   `json:"start_time"`
+	Ticketing_uri               string   `json:"ticketing_uri"`
+	Video                       *AdVideo `json:"video"`
 }

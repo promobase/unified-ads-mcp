@@ -15,7 +15,6 @@ import (
 func GetIGBCAdsPermissionTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// igbcadspermission_get_ tool
 	igbcadspermission_get_Tool := mcp.NewTool("igbcadspermission_get_",
 		mcp.WithDescription("GET  for IGBCAdsPermission"),
@@ -26,12 +25,10 @@ func GetIGBCAdsPermissionTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, igbcadspermission_get_Tool)
 
-
 	return tools
 }
 
 // IGBCAdsPermission handlers
-
 
 // HandleIgbcadspermission_get_ handles the igbcadspermission_get_ tool
 func HandleIgbcadspermission_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleIgbcadspermission_get_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Igbcadspermission_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleIgbcadspermission_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

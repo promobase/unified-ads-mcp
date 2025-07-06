@@ -4,7 +4,7 @@ package types
 
 // ProductCatalogLocalizationSettings represents a Facebook ProductCatalogLocalizationSettings object
 type ProductCatalogLocalizationSettings struct {
-	Default_country string `json:"default_country"`
+	Default_country  string `json:"default_country"`
 	Default_language string `json:"default_language"`
-	Id string `json:"id"`
+	Id               string `json:"id"`
 }

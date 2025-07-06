@@ -15,7 +15,6 @@ import (
 func GetThirdPartyPartnerPanelRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// thirdpartypartnerpanelrequest_get_ tool
 	thirdpartypartnerpanelrequest_get_Tool := mcp.NewTool("thirdpartypartnerpanelrequest_get_",
 		mcp.WithDescription("GET  for ThirdPartyPartnerPanelRequest"),
@@ -26,12 +25,10 @@ func GetThirdPartyPartnerPanelRequestTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, thirdpartypartnerpanelrequest_get_Tool)
 
-
 	return tools
 }
 
 // ThirdPartyPartnerPanelRequest handlers
-
 
 // HandleThirdpartypartnerpanelrequest_get_ handles the thirdpartypartnerpanelrequest_get_ tool
 func HandleThirdpartypartnerpanelrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleThirdpartypartnerpanelrequest_get_(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Thirdpartypartnerpanelrequest_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleThirdpartypartnerpanelrequest_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

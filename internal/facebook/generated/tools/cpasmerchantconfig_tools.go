@@ -15,7 +15,6 @@ import (
 func GetCPASMerchantConfigTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// cpasmerchantconfig_get_ tool
 	cpasmerchantconfig_get_Tool := mcp.NewTool("cpasmerchantconfig_get_",
 		mcp.WithDescription("GET  for CPASMerchantConfig"),
@@ -26,12 +25,10 @@ func GetCPASMerchantConfigTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, cpasmerchantconfig_get_Tool)
 
-
 	return tools
 }
 
 // CPASMerchantConfig handlers
-
 
 // HandleCpasmerchantconfig_get_ handles the cpasmerchantconfig_get_ tool
 func HandleCpasmerchantconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleCpasmerchantconfig_get_(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Cpasmerchantconfig_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleCpasmerchantconfig_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

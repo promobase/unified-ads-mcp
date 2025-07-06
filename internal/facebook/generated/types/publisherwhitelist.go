@@ -6,10 +6,10 @@ import "time"
 
 // PublisherWhiteList represents a Facebook PublisherWhiteList object
 type PublisherWhiteList struct {
-	Business_owner_id string `json:"business_owner_id"`
-	Id string `json:"id"`
+	Business_owner_id string    `json:"business_owner_id"`
+	Id                string    `json:"id"`
 	Last_updated_time time.Time `json:"last_updated_time"`
-	Last_updated_user string `json:"last_updated_user"`
-	Name string `json:"name"`
-	Placement_type string `json:"placement_type"`
+	Last_updated_user string    `json:"last_updated_user"`
+	Name              string    `json:"name"`
+	Placement_type    string    `json:"placement_type"`
 }

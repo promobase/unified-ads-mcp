@@ -15,7 +15,6 @@ import (
 func GetVideoTextQuestionTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// videotextquestion_get_ tool
 	videotextquestion_get_Tool := mcp.NewTool("videotextquestion_get_",
 		mcp.WithDescription("GET  for VideoTextQuestion"),
@@ -26,12 +25,10 @@ func GetVideoTextQuestionTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, videotextquestion_get_Tool)
 
-
 	return tools
 }
 
 // VideoTextQuestion handlers
-
 
 // HandleVideotextquestion_get_ handles the videotextquestion_get_ tool
 func HandleVideotextquestion_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleVideotextquestion_get_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Videotextquestion_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleVideotextquestion_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

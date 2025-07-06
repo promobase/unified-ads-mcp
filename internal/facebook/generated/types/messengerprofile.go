@@ -4,12 +4,12 @@ package types
 
 // MessengerProfile represents a Facebook MessengerProfile object
 type MessengerProfile struct {
-	Account_linking_url string `json:"account_linking_url"`
-	Commands []map[string]interface{} `json:"commands"`
-	Get_started map[string]interface{} `json:"get_started"`
-	Greeting []map[string]interface{} `json:"greeting"`
-	Ice_breakers []map[string]interface{} `json:"ice_breakers"`
-	Persistent_menu []map[string]interface{} `json:"persistent_menu"`
-	Subject_to_new_eu_privacy_rules bool `json:"subject_to_new_eu_privacy_rules"`
-	Whitelisted_domains []string `json:"whitelisted_domains"`
+	Account_linking_url             string                   `json:"account_linking_url"`
+	Commands                        []map[string]interface{} `json:"commands"`
+	Get_started                     map[string]interface{}   `json:"get_started"`
+	Greeting                        []map[string]interface{} `json:"greeting"`
+	Ice_breakers                    []map[string]interface{} `json:"ice_breakers"`
+	Persistent_menu                 []map[string]interface{} `json:"persistent_menu"`
+	Subject_to_new_eu_privacy_rules bool                     `json:"subject_to_new_eu_privacy_rules"`
+	Whitelisted_domains             []string                 `json:"whitelisted_domains"`
 }

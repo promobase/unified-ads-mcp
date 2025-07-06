@@ -15,7 +15,6 @@ import (
 func GetPartnerStudyTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// partnerstudy_get_ tool
 	partnerstudy_get_Tool := mcp.NewTool("partnerstudy_get_",
 		mcp.WithDescription("GET  for PartnerStudy"),
@@ -26,12 +25,10 @@ func GetPartnerStudyTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, partnerstudy_get_Tool)
 
-
 	return tools
 }
 
 // PartnerStudy handlers
-
 
 // HandlePartnerstudy_get_ handles the partnerstudy_get_ tool
 func HandlePartnerstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandlePartnerstudy_get_(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Partnerstudy_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandlePartnerstudy_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

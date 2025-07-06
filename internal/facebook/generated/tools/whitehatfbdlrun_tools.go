@@ -15,7 +15,6 @@ import (
 func GetWhitehatFBDLRunTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// whitehatfbdlrun_get_ tool
 	whitehatfbdlrun_get_Tool := mcp.NewTool("whitehatfbdlrun_get_",
 		mcp.WithDescription("GET  for WhitehatFBDLRun"),
@@ -26,12 +25,10 @@ func GetWhitehatFBDLRunTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, whitehatfbdlrun_get_Tool)
 
-
 	return tools
 }
 
 // WhitehatFBDLRun handlers
-
 
 // HandleWhitehatfbdlrun_get_ handles the whitehatfbdlrun_get_ tool
 func HandleWhitehatfbdlrun_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleWhitehatfbdlrun_get_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Whitehatfbdlrun_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleWhitehatfbdlrun_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

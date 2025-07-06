@@ -15,7 +15,6 @@ import (
 func GetDynamicARMetadataTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// dynamicarmetadata_get_ tool
 	dynamicarmetadata_get_Tool := mcp.NewTool("dynamicarmetadata_get_",
 		mcp.WithDescription("GET  for DynamicARMetadata"),
@@ -26,12 +25,10 @@ func GetDynamicARMetadataTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, dynamicarmetadata_get_Tool)
 
-
 	return tools
 }
 
 // DynamicARMetadata handlers
-
 
 // HandleDynamicarmetadata_get_ handles the dynamicarmetadata_get_ tool
 func HandleDynamicarmetadata_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleDynamicarmetadata_get_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Dynamicarmetadata_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleDynamicarmetadata_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

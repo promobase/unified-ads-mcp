@@ -21,18 +21,14 @@ func NewUserClient(accessToken string) *UserClient {
 	}
 }
 
-
 // user_delete_access_tokens DELETE access_tokens for User
 func (c *UserClient) User_delete_access_tokens(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "access_tokens")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,7 +60,6 @@ func (c *UserClient) User_delete_access_tokens(args map[string]interface{}) (int
 	return result, nil
 }
 
-
 // user_post_access_tokens POST access_tokens for User
 func (c *UserClient) User_post_access_tokens(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -73,7 +68,6 @@ func (c *UserClient) User_post_access_tokens(args map[string]interface{}) (inter
 		return nil, fmt.Errorf("missing required parameter: business_app")
 	}
 	_ = business_app // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "access_tokens")
@@ -92,7 +86,6 @@ func (c *UserClient) User_post_access_tokens(args map[string]interface{}) (inter
 	if val, ok := args["set_token_expires_in_60_days"]; ok {
 		urlParams.Set("set_token_expires_in_60_days", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -124,11 +117,9 @@ func (c *UserClient) User_post_access_tokens(args map[string]interface{}) (inter
 	return result, nil
 }
 
-
 // user_get_accounts GET accounts for User
 func (c *UserClient) User_get_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "accounts")
@@ -144,7 +135,6 @@ func (c *UserClient) User_get_accounts(args map[string]interface{}) (interface{}
 	if val, ok := args["is_promotable"]; ok {
 		urlParams.Set("is_promotable", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -176,7 +166,6 @@ func (c *UserClient) User_get_accounts(args map[string]interface{}) (interface{}
 	return result, nil
 }
 
-
 // user_post_accounts POST accounts for User
 func (c *UserClient) User_post_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -185,7 +174,6 @@ func (c *UserClient) User_post_accounts(args map[string]interface{}) (interface{
 		return nil, fmt.Errorf("missing required parameter: name")
 	}
 	_ = name // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "accounts")
@@ -241,7 +229,6 @@ func (c *UserClient) User_post_accounts(args map[string]interface{}) (interface{
 		urlParams.Set("zip", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -272,18 +259,14 @@ func (c *UserClient) User_post_accounts(args map[string]interface{}) (interface{
 	return result, nil
 }
 
-
 // user_get_ad_studies GET ad_studies for User
 func (c *UserClient) User_get_ad_studies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ad_studies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -315,11 +298,9 @@ func (c *UserClient) User_get_ad_studies(args map[string]interface{}) (interface
 	return result, nil
 }
 
-
 // user_post_ad_studies POST ad_studies for User
 func (c *UserClient) User_post_ad_studies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ad_studies")
@@ -363,7 +344,6 @@ func (c *UserClient) User_post_ad_studies(args map[string]interface{}) (interfac
 		urlParams.Set("viewers", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -394,19 +374,15 @@ func (c *UserClient) User_post_ad_studies(args map[string]interface{}) (interfac
 	return result, nil
 }
 
-
 // user_get_adaccounts GET adaccounts for User
 func (c *UserClient) User_get_adaccounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -437,19 +413,15 @@ func (c *UserClient) User_get_adaccounts(args map[string]interface{}) (interface
 	return result, nil
 }
 
-
 // user_get_albums GET albums for User
 func (c *UserClient) User_get_albums(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "albums")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -479,7 +451,6 @@ func (c *UserClient) User_get_albums(args map[string]interface{}) (interface{}, 
 
 	return result, nil
 }
-
 
 // user_post_applications POST applications for User
 func (c *UserClient) User_post_applications(args map[string]interface{}) (interface{}, error) {
@@ -490,7 +461,6 @@ func (c *UserClient) User_post_applications(args map[string]interface{}) (interf
 	}
 	_ = business_app // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "applications")
 	urlParams := url.Values{}
@@ -499,7 +469,6 @@ func (c *UserClient) User_post_applications(args map[string]interface{}) (interf
 	if val, ok := args["business_app"]; ok {
 		urlParams.Set("business_app", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -531,19 +500,15 @@ func (c *UserClient) User_post_applications(args map[string]interface{}) (interf
 	return result, nil
 }
 
-
 // user_get_apprequestformerrecipients GET apprequestformerrecipients for User
 func (c *UserClient) User_get_apprequestformerrecipients(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "apprequestformerrecipients")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -574,19 +539,15 @@ func (c *UserClient) User_get_apprequestformerrecipients(args map[string]interfa
 	return result, nil
 }
 
-
 // user_get_apprequests GET apprequests for User
 func (c *UserClient) User_get_apprequests(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "apprequests")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -617,19 +578,15 @@ func (c *UserClient) User_get_apprequests(args map[string]interface{}) (interfac
 	return result, nil
 }
 
-
 // user_get_assigned_ad_accounts GET assigned_ad_accounts for User
 func (c *UserClient) User_get_assigned_ad_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_ad_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -660,19 +617,15 @@ func (c *UserClient) User_get_assigned_ad_accounts(args map[string]interface{}) 
 	return result, nil
 }
 
-
 // user_get_assigned_applications GET assigned_applications for User
 func (c *UserClient) User_get_assigned_applications(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_applications")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -703,11 +656,9 @@ func (c *UserClient) User_get_assigned_applications(args map[string]interface{})
 	return result, nil
 }
 
-
 // user_get_assigned_business_asset_groups GET assigned_business_asset_groups for User
 func (c *UserClient) User_get_assigned_business_asset_groups(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_business_asset_groups")
@@ -718,7 +669,6 @@ func (c *UserClient) User_get_assigned_business_asset_groups(args map[string]int
 		urlParams.Set("contained_asset_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -749,11 +699,9 @@ func (c *UserClient) User_get_assigned_business_asset_groups(args map[string]int
 	return result, nil
 }
 
-
 // user_get_assigned_pages GET assigned_pages for User
 func (c *UserClient) User_get_assigned_pages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_pages")
@@ -764,7 +712,6 @@ func (c *UserClient) User_get_assigned_pages(args map[string]interface{}) (inter
 		urlParams.Set("pages", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -795,19 +742,15 @@ func (c *UserClient) User_get_assigned_pages(args map[string]interface{}) (inter
 	return result, nil
 }
 
-
 // user_get_assigned_product_catalogs GET assigned_product_catalogs for User
 func (c *UserClient) User_get_assigned_product_catalogs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_product_catalogs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -838,19 +781,15 @@ func (c *UserClient) User_get_assigned_product_catalogs(args map[string]interfac
 	return result, nil
 }
 
-
 // user_get_avatars GET avatars for User
 func (c *UserClient) User_get_avatars(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "avatars")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -881,19 +820,15 @@ func (c *UserClient) User_get_avatars(args map[string]interface{}) (interface{},
 	return result, nil
 }
 
-
 // user_get_business_users GET business_users for User
 func (c *UserClient) User_get_business_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "business_users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -924,11 +859,9 @@ func (c *UserClient) User_get_business_users(args map[string]interface{}) (inter
 	return result, nil
 }
 
-
 // user_delete_businesses DELETE businesses for User
 func (c *UserClient) User_delete_businesses(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "businesses")
@@ -938,7 +871,6 @@ func (c *UserClient) User_delete_businesses(args map[string]interface{}) (interf
 	if val, ok := args["business"]; ok {
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -970,18 +902,14 @@ func (c *UserClient) User_delete_businesses(args map[string]interface{}) (interf
 	return result, nil
 }
 
-
 // user_get_businesses GET businesses for User
 func (c *UserClient) User_get_businesses(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "businesses")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1013,7 +941,6 @@ func (c *UserClient) User_get_businesses(args map[string]interface{}) (interface
 	return result, nil
 }
 
-
 // user_post_businesses POST businesses for User
 func (c *UserClient) User_post_businesses(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -1027,7 +954,6 @@ func (c *UserClient) User_post_businesses(args map[string]interface{}) (interfac
 		return nil, fmt.Errorf("missing required parameter: vertical")
 	}
 	_ = vertical // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "businesses")
@@ -1065,7 +991,6 @@ func (c *UserClient) User_post_businesses(args map[string]interface{}) (interfac
 		urlParams.Set("vertical", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1096,11 +1021,9 @@ func (c *UserClient) User_post_businesses(args map[string]interface{}) (interfac
 	return result, nil
 }
 
-
 // user_get_conversations GET conversations for User
 func (c *UserClient) User_get_conversations(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "conversations")
@@ -1120,7 +1043,6 @@ func (c *UserClient) User_get_conversations(args map[string]interface{}) (interf
 		urlParams.Set("user_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1151,19 +1073,15 @@ func (c *UserClient) User_get_conversations(args map[string]interface{}) (interf
 	return result, nil
 }
 
-
 // user_get_custom_labels GET custom_labels for User
 func (c *UserClient) User_get_custom_labels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "custom_labels")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1194,11 +1112,9 @@ func (c *UserClient) User_get_custom_labels(args map[string]interface{}) (interf
 	return result, nil
 }
 
-
 // user_get_events GET events for User
 func (c *UserClient) User_get_events(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "events")
@@ -1212,7 +1128,6 @@ func (c *UserClient) User_get_events(args map[string]interface{}) (interface{}, 
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1243,11 +1158,9 @@ func (c *UserClient) User_get_events(args map[string]interface{}) (interface{}, 
 	return result, nil
 }
 
-
 // user_get_feed GET feed for User
 func (c *UserClient) User_get_feed(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "feed")
@@ -1273,7 +1186,6 @@ func (c *UserClient) User_get_feed(args map[string]interface{}) (interface{}, er
 		urlParams.Set("with", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1304,11 +1216,9 @@ func (c *UserClient) User_get_feed(args map[string]interface{}) (interface{}, er
 	return result, nil
 }
 
-
 // user_post_feed POST feed for User
 func (c *UserClient) User_post_feed(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "feed")
@@ -1631,7 +1541,6 @@ func (c *UserClient) User_post_feed(args map[string]interface{}) (interface{}, e
 		urlParams.Set("width", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1662,11 +1571,9 @@ func (c *UserClient) User_post_feed(args map[string]interface{}) (interface{}, e
 	return result, nil
 }
 
-
 // user_get_friends GET friends for User
 func (c *UserClient) User_get_friends(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "friends")
@@ -1677,7 +1584,6 @@ func (c *UserClient) User_get_friends(args map[string]interface{}) (interface{},
 		urlParams.Set("uid", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1708,19 +1614,15 @@ func (c *UserClient) User_get_friends(args map[string]interface{}) (interface{},
 	return result, nil
 }
 
-
 // user_get_fundraisers GET fundraisers for User
 func (c *UserClient) User_get_fundraisers(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "fundraisers")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1750,7 +1652,6 @@ func (c *UserClient) User_get_fundraisers(args map[string]interface{}) (interfac
 
 	return result, nil
 }
-
 
 // user_post_fundraisers POST fundraisers for User
 func (c *UserClient) User_post_fundraisers(args map[string]interface{}) (interface{}, error) {
@@ -1790,7 +1691,6 @@ func (c *UserClient) User_post_fundraisers(args map[string]interface{}) (interfa
 		return nil, fmt.Errorf("missing required parameter: name")
 	}
 	_ = name // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "fundraisers")
@@ -1840,7 +1740,6 @@ func (c *UserClient) User_post_fundraisers(args map[string]interface{}) (interfa
 		urlParams.Set("page_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1871,11 +1770,9 @@ func (c *UserClient) User_post_fundraisers(args map[string]interface{}) (interfa
 	return result, nil
 }
 
-
 // user_get_groups GET groups for User
 func (c *UserClient) User_get_groups(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "groups")
@@ -1889,7 +1786,6 @@ func (c *UserClient) User_get_groups(args map[string]interface{}) (interface{}, 
 		urlParams.Set("parent", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1920,11 +1816,9 @@ func (c *UserClient) User_get_groups(args map[string]interface{}) (interface{}, 
 	return result, nil
 }
 
-
 // user_get_ids_for_apps GET ids_for_apps for User
 func (c *UserClient) User_get_ids_for_apps(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ids_for_apps")
@@ -1935,7 +1829,6 @@ func (c *UserClient) User_get_ids_for_apps(args map[string]interface{}) (interfa
 		urlParams.Set("app", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1966,11 +1859,9 @@ func (c *UserClient) User_get_ids_for_apps(args map[string]interface{}) (interfa
 	return result, nil
 }
 
-
 // user_get_ids_for_business GET ids_for_business for User
 func (c *UserClient) User_get_ids_for_business(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ids_for_business")
@@ -1981,7 +1872,6 @@ func (c *UserClient) User_get_ids_for_business(args map[string]interface{}) (int
 		urlParams.Set("app", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2012,11 +1902,9 @@ func (c *UserClient) User_get_ids_for_business(args map[string]interface{}) (int
 	return result, nil
 }
 
-
 // user_get_ids_for_pages GET ids_for_pages for User
 func (c *UserClient) User_get_ids_for_pages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ids_for_pages")
@@ -2027,7 +1915,6 @@ func (c *UserClient) User_get_ids_for_pages(args map[string]interface{}) (interf
 		urlParams.Set("page", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2058,11 +1945,9 @@ func (c *UserClient) User_get_ids_for_pages(args map[string]interface{}) (interf
 	return result, nil
 }
 
-
 // user_get_likes GET likes for User
 func (c *UserClient) User_get_likes(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
@@ -2073,7 +1958,6 @@ func (c *UserClient) User_get_likes(args map[string]interface{}) (interface{}, e
 		urlParams.Set("target_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2104,11 +1988,9 @@ func (c *UserClient) User_get_likes(args map[string]interface{}) (interface{}, e
 	return result, nil
 }
 
-
 // user_get_live_videos GET live_videos for User
 func (c *UserClient) User_get_live_videos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "live_videos")
@@ -2122,7 +2004,6 @@ func (c *UserClient) User_get_live_videos(args map[string]interface{}) (interfac
 		urlParams.Set("source", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2153,11 +2034,9 @@ func (c *UserClient) User_get_live_videos(args map[string]interface{}) (interfac
 	return result, nil
 }
 
-
 // user_post_live_videos POST live_videos for User
 func (c *UserClient) User_post_live_videos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "live_videos")
@@ -2225,7 +2104,6 @@ func (c *UserClient) User_post_live_videos(args map[string]interface{}) (interfa
 		urlParams.Set("title", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2256,19 +2134,15 @@ func (c *UserClient) User_post_live_videos(args map[string]interface{}) (interfa
 	return result, nil
 }
 
-
 // user_post_messenger_desktop_performance_traces POST messenger_desktop_performance_traces for User
 func (c *UserClient) User_post_messenger_desktop_performance_traces(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messenger_desktop_performance_traces")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2298,7 +2172,6 @@ func (c *UserClient) User_post_messenger_desktop_performance_traces(args map[str
 
 	return result, nil
 }
-
 
 // user_post_messenger_kids_accounts_unread_badge POST messenger_kids_accounts_unread_badge for User
 func (c *UserClient) User_post_messenger_kids_accounts_unread_badge(args map[string]interface{}) (interface{}, error) {
@@ -2309,7 +2182,6 @@ func (c *UserClient) User_post_messenger_kids_accounts_unread_badge(args map[str
 	}
 	_ = proxied_app_id // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "messenger_kids_accounts_unread_badge")
 	urlParams := url.Values{}
@@ -2318,7 +2190,6 @@ func (c *UserClient) User_post_messenger_kids_accounts_unread_badge(args map[str
 	if val, ok := args["proxied_app_id"]; ok {
 		urlParams.Set("proxied_app_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2350,11 +2221,9 @@ func (c *UserClient) User_post_messenger_kids_accounts_unread_badge(args map[str
 	return result, nil
 }
 
-
 // user_get_music GET music for User
 func (c *UserClient) User_get_music(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "music")
@@ -2364,7 +2233,6 @@ func (c *UserClient) User_get_music(args map[string]interface{}) (interface{}, e
 	if val, ok := args["target_id"]; ok {
 		urlParams.Set("target_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2396,11 +2264,9 @@ func (c *UserClient) User_get_music(args map[string]interface{}) (interface{}, e
 	return result, nil
 }
 
-
 // user_post_notifications POST notifications for User
 func (c *UserClient) User_post_notifications(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "notifications")
@@ -2447,7 +2313,6 @@ func (c *UserClient) User_post_notifications(args map[string]interface{}) (inter
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2478,18 +2343,14 @@ func (c *UserClient) User_post_notifications(args map[string]interface{}) (inter
 	return result, nil
 }
 
-
 // user_get_payment_transactions GET payment_transactions for User
 func (c *UserClient) User_get_payment_transactions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "payment_transactions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2521,11 +2382,9 @@ func (c *UserClient) User_get_payment_transactions(args map[string]interface{}) 
 	return result, nil
 }
 
-
 // user_delete_permissions DELETE permissions for User
 func (c *UserClient) User_delete_permissions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "permissions")
@@ -2535,7 +2394,6 @@ func (c *UserClient) User_delete_permissions(args map[string]interface{}) (inter
 	if val, ok := args["permission"]; ok {
 		urlParams.Set("permission", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2567,11 +2425,9 @@ func (c *UserClient) User_delete_permissions(args map[string]interface{}) (inter
 	return result, nil
 }
 
-
 // user_get_permissions GET permissions for User
 func (c *UserClient) User_get_permissions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "permissions")
@@ -2585,7 +2441,6 @@ func (c *UserClient) User_get_permissions(args map[string]interface{}) (interfac
 		urlParams.Set("status", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2616,19 +2471,15 @@ func (c *UserClient) User_get_permissions(args map[string]interface{}) (interfac
 	return result, nil
 }
 
-
 // user_get_personal_ad_accounts GET personal_ad_accounts for User
 func (c *UserClient) User_get_personal_ad_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "personal_ad_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2659,11 +2510,9 @@ func (c *UserClient) User_get_personal_ad_accounts(args map[string]interface{}) 
 	return result, nil
 }
 
-
 // user_get_photos GET photos for User
 func (c *UserClient) User_get_photos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "photos")
@@ -2674,7 +2523,6 @@ func (c *UserClient) User_get_photos(args map[string]interface{}) (interface{}, 
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2705,11 +2553,9 @@ func (c *UserClient) User_get_photos(args map[string]interface{}) (interface{}, 
 	return result, nil
 }
 
-
 // user_post_photos POST photos for User
 func (c *UserClient) User_post_photos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "photos")
@@ -2873,7 +2719,6 @@ func (c *UserClient) User_post_photos(args map[string]interface{}) (interface{},
 		urlParams.Set("vault_image_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2904,11 +2749,9 @@ func (c *UserClient) User_post_photos(args map[string]interface{}) (interface{},
 	return result, nil
 }
 
-
 // user_get_picture GET picture for User
 func (c *UserClient) User_get_picture(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "picture")
@@ -2927,7 +2770,6 @@ func (c *UserClient) User_get_picture(args map[string]interface{}) (interface{},
 	if val, ok := args["width"]; ok {
 		urlParams.Set("width", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2959,11 +2801,9 @@ func (c *UserClient) User_get_picture(args map[string]interface{}) (interface{},
 	return result, nil
 }
 
-
 // user_get_posts GET posts for User
 func (c *UserClient) User_get_posts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "posts")
@@ -2989,7 +2829,6 @@ func (c *UserClient) User_get_posts(args map[string]interface{}) (interface{}, e
 		urlParams.Set("with", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -3020,11 +2859,9 @@ func (c *UserClient) User_get_posts(args map[string]interface{}) (interface{}, e
 	return result, nil
 }
 
-
 // user_get_rich_media_documents GET rich_media_documents for User
 func (c *UserClient) User_get_rich_media_documents(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "rich_media_documents")
@@ -3035,7 +2872,6 @@ func (c *UserClient) User_get_rich_media_documents(args map[string]interface{}) 
 		urlParams.Set("query", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -3066,11 +2902,9 @@ func (c *UserClient) User_get_rich_media_documents(args map[string]interface{}) 
 	return result, nil
 }
 
-
 // user_post_staging_resources POST staging_resources for User
 func (c *UserClient) User_post_staging_resources(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "staging_resources")
@@ -3080,7 +2914,6 @@ func (c *UserClient) User_post_staging_resources(args map[string]interface{}) (i
 	if val, ok := args["file"]; ok {
 		urlParams.Set("file", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3112,11 +2945,9 @@ func (c *UserClient) User_post_staging_resources(args map[string]interface{}) (i
 	return result, nil
 }
 
-
 // user_get_videos GET videos for User
 func (c *UserClient) User_get_videos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos")
@@ -3126,7 +2957,6 @@ func (c *UserClient) User_get_videos(args map[string]interface{}) (interface{}, 
 	if val, ok := args["type"]; ok {
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3158,11 +2988,9 @@ func (c *UserClient) User_get_videos(args map[string]interface{}) (interface{}, 
 	return result, nil
 }
 
-
 // user_post_videos POST videos for User
 func (c *UserClient) User_post_videos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos")
@@ -3383,7 +3211,6 @@ func (c *UserClient) User_post_videos(args map[string]interface{}) (interface{},
 		urlParams.Set("waterfall_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -3414,18 +3241,14 @@ func (c *UserClient) User_post_videos(args map[string]interface{}) (interface{},
 	return result, nil
 }
 
-
 // user_delete_ DELETE  for User
 func (c *UserClient) User_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3457,18 +3280,14 @@ func (c *UserClient) User_delete_(args map[string]interface{}) (interface{}, err
 	return result, nil
 }
 
-
 // user_get_ GET  for User
 func (c *UserClient) User_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3500,11 +3319,9 @@ func (c *UserClient) User_get_(args map[string]interface{}) (interface{}, error)
 	return result, nil
 }
 
-
 // user_post_ POST  for User
 func (c *UserClient) User_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -3532,7 +3349,6 @@ func (c *UserClient) User_post_(args map[string]interface{}) (interface{}, error
 	if val, ok := args["password"]; ok {
 		urlParams.Set("password", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3563,4 +3379,3 @@ func (c *UserClient) User_post_(args map[string]interface{}) (interface{}, error
 
 	return result, nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetHotelRoomTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// hotelroom_get_pricing_variables tool
 	hotelroom_get_pricing_variablesTool := mcp.NewTool("hotelroom_get_pricing_variables",
 		mcp.WithDescription("GET pricing_variables for HotelRoom"),
@@ -36,12 +35,10 @@ func GetHotelRoomTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, hotelroom_get_Tool)
 
-
 	return tools
 }
 
 // HotelRoom handlers
-
 
 // HandleHotelroom_get_pricing_variables handles the hotelroom_get_pricing_variables tool
 func HandleHotelroom_get_pricing_variables(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleHotelroom_get_pricing_variables(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Hotelroom_get_pricing_variables(args)
@@ -74,7 +69,6 @@ func HandleHotelroom_get_pricing_variables(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleHotelroom_get_ handles the hotelroom_get_ tool
 func HandleHotelroom_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleHotelroom_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Hotelroom_get_(args)
@@ -105,4 +97,3 @@ func HandleHotelroom_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

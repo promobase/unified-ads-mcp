@@ -4,7 +4,7 @@ package types
 
 // LeadGenCustomDisclaimer represents a Facebook LeadGenCustomDisclaimer object
 type LeadGenCustomDisclaimer struct {
-	Body *LeadGenCustomDisclaimerBody `json:"body"`
+	Body       *LeadGenCustomDisclaimerBody  `json:"body"`
 	Checkboxes []LeadGenLegalContentCheckbox `json:"checkboxes"`
-	Title string `json:"title"`
+	Title      string                        `json:"title"`
 }

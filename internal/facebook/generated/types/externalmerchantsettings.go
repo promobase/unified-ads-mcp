@@ -4,7 +4,7 @@ package types
 
 // ExternalMerchantSettings represents a Facebook ExternalMerchantSettings object
 type ExternalMerchantSettings struct {
-	Connect_woo string `json:"connect_woo"`
+	Connect_woo       string `json:"connect_woo"`
 	External_platform string `json:"external_platform"`
-	Id string `json:"id"`
+	Id                string `json:"id"`
 }

@@ -4,7 +4,7 @@ package types
 
 // AdRuleExecutionOptions represents a Facebook AdRuleExecutionOptions object
 type AdRuleExecutionOptions struct {
-	Field string `json:"field"`
-	Operator string `json:"operator"`
-	Value map[string]interface{} `json:"value"`
+	Field    string                 `json:"field"`
+	Operator string                 `json:"operator"`
+	Value    map[string]interface{} `json:"value"`
 }

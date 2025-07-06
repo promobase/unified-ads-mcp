@@ -15,7 +15,6 @@ import (
 func GetAdImageTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adimage_get_ tool
 	adimage_get_Tool := mcp.NewTool("adimage_get_",
 		mcp.WithDescription("GET  for AdImage"),
@@ -26,12 +25,10 @@ func GetAdImageTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adimage_get_Tool)
 
-
 	return tools
 }
 
 // AdImage handlers
-
 
 // HandleAdimage_get_ handles the adimage_get_ tool
 func HandleAdimage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAdimage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Adimage_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAdimage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

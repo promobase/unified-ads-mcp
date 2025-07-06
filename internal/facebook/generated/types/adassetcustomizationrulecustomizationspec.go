@@ -4,14 +4,14 @@ package types
 
 // AdAssetCustomizationRuleCustomizationSpec represents a Facebook AdAssetCustomizationRuleCustomizationSpec object
 type AdAssetCustomizationRuleCustomizationSpec struct {
-	Age_max int `json:"age_max"`
-	Age_min int `json:"age_min"`
-	Audience_network_positions []string `json:"audience_network_positions"`
-	Device_platforms []string `json:"device_platforms"`
-	Facebook_positions []string `json:"facebook_positions"`
-	Geo_locations *TargetingGeoLocation `json:"geo_locations"`
-	Instagram_positions []string `json:"instagram_positions"`
-	Locales []int `json:"locales"`
-	Messenger_positions []string `json:"messenger_positions"`
-	Publisher_platforms []string `json:"publisher_platforms"`
+	Age_max                    int                   `json:"age_max"`
+	Age_min                    int                   `json:"age_min"`
+	Audience_network_positions []string              `json:"audience_network_positions"`
+	Device_platforms           []string              `json:"device_platforms"`
+	Facebook_positions         []string              `json:"facebook_positions"`
+	Geo_locations              *TargetingGeoLocation `json:"geo_locations"`
+	Instagram_positions        []string              `json:"instagram_positions"`
+	Locales                    []int                 `json:"locales"`
+	Messenger_positions        []string              `json:"messenger_positions"`
+	Publisher_platforms        []string              `json:"publisher_platforms"`
 }

@@ -15,7 +15,6 @@ import (
 func GetOfflineProductItemTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// offlineproductitem_get_channels_to_integrity_status tool
 	offlineproductitem_get_channels_to_integrity_statusTool := mcp.NewTool("offlineproductitem_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for OfflineProductItem"),
@@ -53,12 +52,10 @@ func GetOfflineProductItemTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, offlineproductitem_get_Tool)
 
-
 	return tools
 }
 
 // OfflineProductItem handlers
-
 
 // HandleOfflineproductitem_get_channels_to_integrity_status handles the offlineproductitem_get_channels_to_integrity_status tool
 func HandleOfflineproductitem_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -74,8 +71,6 @@ func HandleOfflineproductitem_get_channels_to_integrity_status(ctx context.Conte
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Offlineproductitem_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -90,7 +85,6 @@ func HandleOfflineproductitem_get_channels_to_integrity_status(ctx context.Conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleOfflineproductitem_get_override_details handles the offlineproductitem_get_override_details tool
 func HandleOfflineproductitem_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -117,8 +111,6 @@ func HandleOfflineproductitem_get_override_details(ctx context.Context, request 
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Offlineproductitem_get_override_details(args)
 	if err != nil {
@@ -134,7 +126,6 @@ func HandleOfflineproductitem_get_override_details(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleOfflineproductitem_get_ handles the offlineproductitem_get_ tool
 func HandleOfflineproductitem_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -148,8 +139,6 @@ func HandleOfflineproductitem_get_(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Offlineproductitem_get_(args)
@@ -165,4 +154,3 @@ func HandleOfflineproductitem_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -21,7 +21,6 @@ func NewBusinessClient(accessToken string) *BusinessClient {
 	}
 }
 
-
 // business_post_access_token POST access_token for Business
 func (c *BusinessClient) Business_post_access_token(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -35,7 +34,6 @@ func (c *BusinessClient) Business_post_access_token(args map[string]interface{})
 		return nil, fmt.Errorf("missing required parameter: scope")
 	}
 	_ = scope // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "access_token")
@@ -54,7 +52,6 @@ func (c *BusinessClient) Business_post_access_token(args map[string]interface{})
 	if val, ok := args["system_user_name"]; ok {
 		urlParams.Set("system_user_name", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -86,11 +83,9 @@ func (c *BusinessClient) Business_post_access_token(args map[string]interface{})
 	return result, nil
 }
 
-
 // business_get_ad_account_infos GET ad_account_infos for Business
 func (c *BusinessClient) Business_get_ad_account_infos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ad_account_infos")
@@ -106,7 +101,6 @@ func (c *BusinessClient) Business_get_ad_account_infos(args map[string]interface
 	if val, ok := args["user_id"]; ok {
 		urlParams.Set("user_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -138,7 +132,6 @@ func (c *BusinessClient) Business_get_ad_account_infos(args map[string]interface
 	return result, nil
 }
 
-
 // business_delete_ad_accounts DELETE ad_accounts for Business
 func (c *BusinessClient) Business_delete_ad_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -148,7 +141,6 @@ func (c *BusinessClient) Business_delete_ad_accounts(args map[string]interface{}
 	}
 	_ = adaccount_id // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ad_accounts")
 	urlParams := url.Values{}
@@ -157,7 +149,6 @@ func (c *BusinessClient) Business_delete_ad_accounts(args map[string]interface{}
 	if val, ok := args["adaccount_id"]; ok {
 		urlParams.Set("adaccount_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -189,11 +180,9 @@ func (c *BusinessClient) Business_delete_ad_accounts(args map[string]interface{}
 	return result, nil
 }
 
-
 // business_post_ad_review_requests POST ad_review_requests for Business
 func (c *BusinessClient) Business_post_ad_review_requests(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ad_review_requests")
@@ -203,7 +192,6 @@ func (c *BusinessClient) Business_post_ad_review_requests(args map[string]interf
 	if val, ok := args["ad_account_ids"]; ok {
 		urlParams.Set("ad_account_ids", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -235,18 +223,14 @@ func (c *BusinessClient) Business_post_ad_review_requests(args map[string]interf
 	return result, nil
 }
 
-
 // business_get_ad_studies GET ad_studies for Business
 func (c *BusinessClient) Business_get_ad_studies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ad_studies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -278,7 +262,6 @@ func (c *BusinessClient) Business_get_ad_studies(args map[string]interface{}) (i
 	return result, nil
 }
 
-
 // business_post_ad_studies POST ad_studies for Business
 func (c *BusinessClient) Business_post_ad_studies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -302,7 +285,6 @@ func (c *BusinessClient) Business_post_ad_studies(args map[string]interface{}) (
 		return nil, fmt.Errorf("missing required parameter: start_time")
 	}
 	_ = start_time // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ad_studies")
@@ -346,7 +328,6 @@ func (c *BusinessClient) Business_post_ad_studies(args map[string]interface{}) (
 		urlParams.Set("viewers", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -376,7 +357,6 @@ func (c *BusinessClient) Business_post_ad_studies(args map[string]interface{}) (
 
 	return result, nil
 }
-
 
 // business_post_adaccount POST adaccount for Business
 func (c *BusinessClient) Business_post_adaccount(args map[string]interface{}) (interface{}, error) {
@@ -411,7 +391,6 @@ func (c *BusinessClient) Business_post_adaccount(args map[string]interface{}) (i
 		return nil, fmt.Errorf("missing required parameter: timezone_id")
 	}
 	_ = timezone_id // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccount")
@@ -458,7 +437,6 @@ func (c *BusinessClient) Business_post_adaccount(args map[string]interface{}) (i
 		urlParams.Set("timezone_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -488,7 +466,6 @@ func (c *BusinessClient) Business_post_adaccount(args map[string]interface{}) (i
 
 	return result, nil
 }
-
 
 // business_post_add_phone_numbers POST add_phone_numbers for Business
 func (c *BusinessClient) Business_post_add_phone_numbers(args map[string]interface{}) (interface{}, error) {
@@ -499,7 +476,6 @@ func (c *BusinessClient) Business_post_add_phone_numbers(args map[string]interfa
 	}
 	_ = phone_number // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "add_phone_numbers")
 	urlParams := url.Values{}
@@ -508,7 +484,6 @@ func (c *BusinessClient) Business_post_add_phone_numbers(args map[string]interfa
 	if val, ok := args["phone_number"]; ok {
 		urlParams.Set("phone_number", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -539,7 +514,6 @@ func (c *BusinessClient) Business_post_add_phone_numbers(args map[string]interfa
 
 	return result, nil
 }
-
 
 // business_post_adnetwork_applications POST adnetwork_applications for Business
 func (c *BusinessClient) Business_post_adnetwork_applications(args map[string]interface{}) (interface{}, error) {
@@ -550,7 +524,6 @@ func (c *BusinessClient) Business_post_adnetwork_applications(args map[string]in
 	}
 	_ = name // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adnetwork_applications")
 	urlParams := url.Values{}
@@ -559,7 +532,6 @@ func (c *BusinessClient) Business_post_adnetwork_applications(args map[string]in
 	if val, ok := args["name"]; ok {
 		urlParams.Set("name", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -591,7 +563,6 @@ func (c *BusinessClient) Business_post_adnetwork_applications(args map[string]in
 	return result, nil
 }
 
-
 // business_get_adnetworkanalytics GET adnetworkanalytics for Business
 func (c *BusinessClient) Business_get_adnetworkanalytics(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -600,7 +571,6 @@ func (c *BusinessClient) Business_get_adnetworkanalytics(args map[string]interfa
 		return nil, fmt.Errorf("missing required parameter: metrics")
 	}
 	_ = metrics // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adnetworkanalytics")
@@ -638,7 +608,6 @@ func (c *BusinessClient) Business_get_adnetworkanalytics(args map[string]interfa
 		urlParams.Set("until", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -669,7 +638,6 @@ func (c *BusinessClient) Business_get_adnetworkanalytics(args map[string]interfa
 	return result, nil
 }
 
-
 // business_post_adnetworkanalytics POST adnetworkanalytics for Business
 func (c *BusinessClient) Business_post_adnetworkanalytics(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -678,7 +646,6 @@ func (c *BusinessClient) Business_post_adnetworkanalytics(args map[string]interf
 		return nil, fmt.Errorf("missing required parameter: metrics")
 	}
 	_ = metrics // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adnetworkanalytics")
@@ -713,7 +680,6 @@ func (c *BusinessClient) Business_post_adnetworkanalytics(args map[string]interf
 		urlParams.Set("until", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -744,11 +710,9 @@ func (c *BusinessClient) Business_post_adnetworkanalytics(args map[string]interf
 	return result, nil
 }
 
-
 // business_get_adnetworkanalytics_results GET adnetworkanalytics_results for Business
 func (c *BusinessClient) Business_get_adnetworkanalytics_results(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adnetworkanalytics_results")
@@ -758,7 +722,6 @@ func (c *BusinessClient) Business_get_adnetworkanalytics_results(args map[string
 	if val, ok := args["query_ids"]; ok {
 		urlParams.Set("query_ids", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -790,11 +753,9 @@ func (c *BusinessClient) Business_get_adnetworkanalytics_results(args map[string
 	return result, nil
 }
 
-
 // business_get_ads_dataset GET ads_dataset for Business
 func (c *BusinessClient) Business_get_ads_dataset(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ads_dataset")
@@ -811,7 +772,6 @@ func (c *BusinessClient) Business_get_ads_dataset(args map[string]interface{}) (
 		urlParams.Set("sort_by", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -842,7 +802,6 @@ func (c *BusinessClient) Business_get_ads_dataset(args map[string]interface{}) (
 	return result, nil
 }
 
-
 // business_post_ads_dataset POST ads_dataset for Business
 func (c *BusinessClient) Business_post_ads_dataset(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -851,7 +810,6 @@ func (c *BusinessClient) Business_post_ads_dataset(args map[string]interface{}) 
 		return nil, fmt.Errorf("missing required parameter: name")
 	}
 	_ = name // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ads_dataset")
@@ -871,7 +829,6 @@ func (c *BusinessClient) Business_post_ads_dataset(args map[string]interface{}) 
 		urlParams.Set("name", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -902,11 +859,9 @@ func (c *BusinessClient) Business_post_ads_dataset(args map[string]interface{}) 
 	return result, nil
 }
 
-
 // business_get_ads_reporting_mmm_reports GET ads_reporting_mmm_reports for Business
 func (c *BusinessClient) Business_get_ads_reporting_mmm_reports(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ads_reporting_mmm_reports")
@@ -917,7 +872,6 @@ func (c *BusinessClient) Business_get_ads_reporting_mmm_reports(args map[string]
 		urlParams.Set("filtering", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -948,19 +902,15 @@ func (c *BusinessClient) Business_get_ads_reporting_mmm_reports(args map[string]
 	return result, nil
 }
 
-
 // business_get_ads_reporting_mmm_schedulers GET ads_reporting_mmm_schedulers for Business
 func (c *BusinessClient) Business_get_ads_reporting_mmm_schedulers(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ads_reporting_mmm_schedulers")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -991,11 +941,9 @@ func (c *BusinessClient) Business_get_ads_reporting_mmm_schedulers(args map[stri
 	return result, nil
 }
 
-
 // business_get_adspixels GET adspixels for Business
 func (c *BusinessClient) Business_get_adspixels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adspixels")
@@ -1012,7 +960,6 @@ func (c *BusinessClient) Business_get_adspixels(args map[string]interface{}) (in
 		urlParams.Set("sort_by", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1043,7 +990,6 @@ func (c *BusinessClient) Business_get_adspixels(args map[string]interface{}) (in
 	return result, nil
 }
 
-
 // business_post_adspixels POST adspixels for Business
 func (c *BusinessClient) Business_post_adspixels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -1052,7 +998,6 @@ func (c *BusinessClient) Business_post_adspixels(args map[string]interface{}) (i
 		return nil, fmt.Errorf("missing required parameter: name")
 	}
 	_ = name // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adspixels")
@@ -1065,7 +1010,6 @@ func (c *BusinessClient) Business_post_adspixels(args map[string]interface{}) (i
 	if val, ok := args["name"]; ok {
 		urlParams.Set("name", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1097,7 +1041,6 @@ func (c *BusinessClient) Business_post_adspixels(args map[string]interface{}) (i
 	return result, nil
 }
 
-
 // business_delete_agencies DELETE agencies for Business
 func (c *BusinessClient) Business_delete_agencies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -1107,7 +1050,6 @@ func (c *BusinessClient) Business_delete_agencies(args map[string]interface{}) (
 	}
 	_ = business // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
 	urlParams := url.Values{}
@@ -1116,7 +1058,6 @@ func (c *BusinessClient) Business_delete_agencies(args map[string]interface{}) (
 	if val, ok := args["business"]; ok {
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1148,19 +1089,15 @@ func (c *BusinessClient) Business_delete_agencies(args map[string]interface{}) (
 	return result, nil
 }
 
-
 // business_get_agencies GET agencies for Business
 func (c *BusinessClient) Business_get_agencies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1191,19 +1128,15 @@ func (c *BusinessClient) Business_get_agencies(args map[string]interface{}) (int
 	return result, nil
 }
 
-
 // business_get_an_placements GET an_placements for Business
 func (c *BusinessClient) Business_get_an_placements(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "an_placements")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1233,7 +1166,6 @@ func (c *BusinessClient) Business_get_an_placements(args map[string]interface{})
 
 	return result, nil
 }
-
 
 // business_post_block_list_drafts POST block_list_drafts for Business
 func (c *BusinessClient) Business_post_block_list_drafts(args map[string]interface{}) (interface{}, error) {
@@ -1244,7 +1176,6 @@ func (c *BusinessClient) Business_post_block_list_drafts(args map[string]interfa
 	}
 	_ = publisher_urls_file // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "block_list_drafts")
 	urlParams := url.Values{}
@@ -1253,7 +1184,6 @@ func (c *BusinessClient) Business_post_block_list_drafts(args map[string]interfa
 	if val, ok := args["publisher_urls_file"]; ok {
 		urlParams.Set("publisher_urls_file", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1284,7 +1214,6 @@ func (c *BusinessClient) Business_post_block_list_drafts(args map[string]interfa
 
 	return result, nil
 }
-
 
 // business_post_bm_review_requests POST bm_review_requests for Business
 func (c *BusinessClient) Business_post_bm_review_requests(args map[string]interface{}) (interface{}, error) {
@@ -1295,7 +1224,6 @@ func (c *BusinessClient) Business_post_bm_review_requests(args map[string]interf
 	}
 	_ = business_manager_ids // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "bm_review_requests")
 	urlParams := url.Values{}
@@ -1304,7 +1232,6 @@ func (c *BusinessClient) Business_post_bm_review_requests(args map[string]interf
 	if val, ok := args["business_manager_ids"]; ok {
 		urlParams.Set("business_manager_ids", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1336,18 +1263,14 @@ func (c *BusinessClient) Business_post_bm_review_requests(args map[string]interf
 	return result, nil
 }
 
-
 // business_get_business_asset_groups GET business_asset_groups for Business
 func (c *BusinessClient) Business_get_business_asset_groups(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "business_asset_groups")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1379,11 +1302,9 @@ func (c *BusinessClient) Business_get_business_asset_groups(args map[string]inte
 	return result, nil
 }
 
-
 // business_get_business_invoices GET business_invoices for Business
 func (c *BusinessClient) Business_get_business_invoices(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "business_invoices")
@@ -1412,7 +1333,6 @@ func (c *BusinessClient) Business_get_business_invoices(args map[string]interfac
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1443,19 +1363,15 @@ func (c *BusinessClient) Business_get_business_invoices(args map[string]interfac
 	return result, nil
 }
 
-
 // business_get_business_users GET business_users for Business
 func (c *BusinessClient) Business_get_business_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "business_users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1485,7 +1401,6 @@ func (c *BusinessClient) Business_get_business_users(args map[string]interface{}
 
 	return result, nil
 }
-
 
 // business_post_business_users POST business_users for Business
 func (c *BusinessClient) Business_post_business_users(args map[string]interface{}) (interface{}, error) {
@@ -1495,7 +1410,6 @@ func (c *BusinessClient) Business_post_business_users(args map[string]interface{
 		return nil, fmt.Errorf("missing required parameter: email")
 	}
 	_ = email // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "business_users")
@@ -1515,7 +1429,6 @@ func (c *BusinessClient) Business_post_business_users(args map[string]interface{
 		urlParams.Set("tasks", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1546,18 +1459,14 @@ func (c *BusinessClient) Business_post_business_users(args map[string]interface{
 	return result, nil
 }
 
-
 // business_get_businessprojects GET businessprojects for Business
 func (c *BusinessClient) Business_get_businessprojects(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "businessprojects")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1588,7 +1497,6 @@ func (c *BusinessClient) Business_get_businessprojects(args map[string]interface
 
 	return result, nil
 }
-
 
 // business_post_claim_custom_conversions POST claim_custom_conversions for Business
 func (c *BusinessClient) Business_post_claim_custom_conversions(args map[string]interface{}) (interface{}, error) {
@@ -1599,7 +1507,6 @@ func (c *BusinessClient) Business_post_claim_custom_conversions(args map[string]
 	}
 	_ = custom_conversion_id // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "claim_custom_conversions")
 	urlParams := url.Values{}
@@ -1608,7 +1515,6 @@ func (c *BusinessClient) Business_post_claim_custom_conversions(args map[string]
 	if val, ok := args["custom_conversion_id"]; ok {
 		urlParams.Set("custom_conversion_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1640,11 +1546,9 @@ func (c *BusinessClient) Business_post_claim_custom_conversions(args map[string]
 	return result, nil
 }
 
-
 // business_get_client_ad_accounts GET client_ad_accounts for Business
 func (c *BusinessClient) Business_get_client_ad_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "client_ad_accounts")
@@ -1655,7 +1559,6 @@ func (c *BusinessClient) Business_get_client_ad_accounts(args map[string]interfa
 		urlParams.Set("search_query", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1686,19 +1589,15 @@ func (c *BusinessClient) Business_get_client_ad_accounts(args map[string]interfa
 	return result, nil
 }
 
-
 // business_get_client_apps GET client_apps for Business
 func (c *BusinessClient) Business_get_client_apps(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "client_apps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1728,7 +1627,6 @@ func (c *BusinessClient) Business_get_client_apps(args map[string]interface{}) (
 
 	return result, nil
 }
-
 
 // business_post_client_apps POST client_apps for Business
 func (c *BusinessClient) Business_post_client_apps(args map[string]interface{}) (interface{}, error) {
@@ -1739,7 +1637,6 @@ func (c *BusinessClient) Business_post_client_apps(args map[string]interface{}) 
 	}
 	_ = app_id // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "client_apps")
 	urlParams := url.Values{}
@@ -1748,7 +1645,6 @@ func (c *BusinessClient) Business_post_client_apps(args map[string]interface{}) 
 	if val, ok := args["app_id"]; ok {
 		urlParams.Set("app_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1780,19 +1676,15 @@ func (c *BusinessClient) Business_post_client_apps(args map[string]interface{}) 
 	return result, nil
 }
 
-
 // business_get_client_offsite_signal_container_business_objects GET client_offsite_signal_container_business_objects for Business
 func (c *BusinessClient) Business_get_client_offsite_signal_container_business_objects(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "client_offsite_signal_container_business_objects")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1823,19 +1715,15 @@ func (c *BusinessClient) Business_get_client_offsite_signal_container_business_o
 	return result, nil
 }
 
-
 // business_get_client_pages GET client_pages for Business
 func (c *BusinessClient) Business_get_client_pages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "client_pages")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1865,7 +1753,6 @@ func (c *BusinessClient) Business_get_client_pages(args map[string]interface{}) 
 
 	return result, nil
 }
-
 
 // business_post_client_pages POST client_pages for Business
 func (c *BusinessClient) Business_post_client_pages(args map[string]interface{}) (interface{}, error) {
@@ -1875,7 +1762,6 @@ func (c *BusinessClient) Business_post_client_pages(args map[string]interface{})
 		return nil, fmt.Errorf("missing required parameter: page_id")
 	}
 	_ = page_id // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "client_pages")
@@ -1889,7 +1775,6 @@ func (c *BusinessClient) Business_post_client_pages(args map[string]interface{})
 		urlParams.Set("permitted_tasks", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1920,19 +1805,15 @@ func (c *BusinessClient) Business_post_client_pages(args map[string]interface{})
 	return result, nil
 }
 
-
 // business_get_client_pixels GET client_pixels for Business
 func (c *BusinessClient) Business_get_client_pixels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "client_pixels")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1963,19 +1844,15 @@ func (c *BusinessClient) Business_get_client_pixels(args map[string]interface{})
 	return result, nil
 }
 
-
 // business_get_client_product_catalogs GET client_product_catalogs for Business
 func (c *BusinessClient) Business_get_client_product_catalogs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "client_product_catalogs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2006,19 +1883,15 @@ func (c *BusinessClient) Business_get_client_product_catalogs(args map[string]in
 	return result, nil
 }
 
-
 // business_get_client_whatsapp_business_accounts GET client_whatsapp_business_accounts for Business
 func (c *BusinessClient) Business_get_client_whatsapp_business_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "client_whatsapp_business_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2048,7 +1921,6 @@ func (c *BusinessClient) Business_get_client_whatsapp_business_accounts(args map
 
 	return result, nil
 }
-
 
 // business_delete_clients DELETE clients for Business
 func (c *BusinessClient) Business_delete_clients(args map[string]interface{}) (interface{}, error) {
@@ -2059,7 +1931,6 @@ func (c *BusinessClient) Business_delete_clients(args map[string]interface{}) (i
 	}
 	_ = business // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "clients")
 	urlParams := url.Values{}
@@ -2068,7 +1939,6 @@ func (c *BusinessClient) Business_delete_clients(args map[string]interface{}) (i
 	if val, ok := args["business"]; ok {
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2100,18 +1970,14 @@ func (c *BusinessClient) Business_delete_clients(args map[string]interface{}) (i
 	return result, nil
 }
 
-
 // business_get_clients GET clients for Business
 func (c *BusinessClient) Business_get_clients(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "clients")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2143,11 +2009,9 @@ func (c *BusinessClient) Business_get_clients(args map[string]interface{}) (inte
 	return result, nil
 }
 
-
 // business_get_collaborative_ads_collaboration_requests GET collaborative_ads_collaboration_requests for Business
 func (c *BusinessClient) Business_get_collaborative_ads_collaboration_requests(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "collaborative_ads_collaboration_requests")
@@ -2158,7 +2022,6 @@ func (c *BusinessClient) Business_get_collaborative_ads_collaboration_requests(a
 		urlParams.Set("status", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2188,7 +2051,6 @@ func (c *BusinessClient) Business_get_collaborative_ads_collaboration_requests(a
 
 	return result, nil
 }
-
 
 // business_post_collaborative_ads_collaboration_requests POST collaborative_ads_collaboration_requests for Business
 func (c *BusinessClient) Business_post_collaborative_ads_collaboration_requests(args map[string]interface{}) (interface{}, error) {
@@ -2224,7 +2086,6 @@ func (c *BusinessClient) Business_post_collaborative_ads_collaboration_requests(
 	}
 	_ = requester_agency_or_brand // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "collaborative_ads_collaboration_requests")
 	urlParams := url.Values{}
@@ -2255,7 +2116,6 @@ func (c *BusinessClient) Business_post_collaborative_ads_collaboration_requests(
 		urlParams.Set("sender_client_business", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2286,19 +2146,15 @@ func (c *BusinessClient) Business_post_collaborative_ads_collaboration_requests(
 	return result, nil
 }
 
-
 // business_get_collaborative_ads_suggested_partners GET collaborative_ads_suggested_partners for Business
 func (c *BusinessClient) Business_get_collaborative_ads_suggested_partners(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "collaborative_ads_suggested_partners")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2329,19 +2185,15 @@ func (c *BusinessClient) Business_get_collaborative_ads_suggested_partners(args 
 	return result, nil
 }
 
-
 // business_get_commerce_merchant_settings GET commerce_merchant_settings for Business
 func (c *BusinessClient) Business_get_commerce_merchant_settings(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "commerce_merchant_settings")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2372,19 +2224,15 @@ func (c *BusinessClient) Business_get_commerce_merchant_settings(args map[string
 	return result, nil
 }
 
-
 // business_get_cpas_business_setup_config GET cpas_business_setup_config for Business
 func (c *BusinessClient) Business_get_cpas_business_setup_config(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "cpas_business_setup_config")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2415,11 +2263,9 @@ func (c *BusinessClient) Business_get_cpas_business_setup_config(args map[string
 	return result, nil
 }
 
-
 // business_post_cpas_business_setup_config POST cpas_business_setup_config for Business
 func (c *BusinessClient) Business_post_cpas_business_setup_config(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "cpas_business_setup_config")
@@ -2439,7 +2285,6 @@ func (c *BusinessClient) Business_post_cpas_business_setup_config(args map[strin
 		urlParams.Set("capabilities_compliance_status", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2470,18 +2315,14 @@ func (c *BusinessClient) Business_post_cpas_business_setup_config(args map[strin
 	return result, nil
 }
 
-
 // business_get_cpas_merchant_config GET cpas_merchant_config for Business
 func (c *BusinessClient) Business_get_cpas_merchant_config(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "cpas_merchant_config")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2513,7 +2354,6 @@ func (c *BusinessClient) Business_get_cpas_merchant_config(args map[string]inter
 	return result, nil
 }
 
-
 // business_post_creative_folders POST creative_folders for Business
 func (c *BusinessClient) Business_post_creative_folders(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -2522,7 +2362,6 @@ func (c *BusinessClient) Business_post_creative_folders(args map[string]interfac
 		return nil, fmt.Errorf("missing required parameter: name")
 	}
 	_ = name // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "creative_folders")
@@ -2539,7 +2378,6 @@ func (c *BusinessClient) Business_post_creative_folders(args map[string]interfac
 		urlParams.Set("parent_folder_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2570,18 +2408,14 @@ func (c *BusinessClient) Business_post_creative_folders(args map[string]interfac
 	return result, nil
 }
 
-
 // business_get_creditcards GET creditcards for Business
 func (c *BusinessClient) Business_get_creditcards(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "creditcards")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2613,7 +2447,6 @@ func (c *BusinessClient) Business_get_creditcards(args map[string]interface{}) (
 	return result, nil
 }
 
-
 // business_post_customconversions POST customconversions for Business
 func (c *BusinessClient) Business_post_customconversions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -2627,7 +2460,6 @@ func (c *BusinessClient) Business_post_customconversions(args map[string]interfa
 		return nil, fmt.Errorf("missing required parameter: name")
 	}
 	_ = name // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "customconversions")
@@ -2659,7 +2491,6 @@ func (c *BusinessClient) Business_post_customconversions(args map[string]interfa
 		urlParams.Set("rule", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2690,18 +2521,14 @@ func (c *BusinessClient) Business_post_customconversions(args map[string]interfa
 	return result, nil
 }
 
-
 // business_get_event_source_groups GET event_source_groups for Business
 func (c *BusinessClient) Business_get_event_source_groups(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "event_source_groups")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2732,7 +2559,6 @@ func (c *BusinessClient) Business_get_event_source_groups(args map[string]interf
 
 	return result, nil
 }
-
 
 // business_post_event_source_groups POST event_source_groups for Business
 func (c *BusinessClient) Business_post_event_source_groups(args map[string]interface{}) (interface{}, error) {
@@ -2748,7 +2574,6 @@ func (c *BusinessClient) Business_post_event_source_groups(args map[string]inter
 	}
 	_ = name // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "event_source_groups")
 	urlParams := url.Values{}
@@ -2760,7 +2585,6 @@ func (c *BusinessClient) Business_post_event_source_groups(args map[string]inter
 	if val, ok := args["name"]; ok {
 		urlParams.Set("name", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2792,11 +2616,9 @@ func (c *BusinessClient) Business_post_event_source_groups(args map[string]inter
 	return result, nil
 }
 
-
 // business_get_extendedcreditapplications GET extendedcreditapplications for Business
 func (c *BusinessClient) Business_get_extendedcreditapplications(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "extendedcreditapplications")
@@ -2807,7 +2629,6 @@ func (c *BusinessClient) Business_get_extendedcreditapplications(args map[string
 		urlParams.Set("only_show_pending", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2838,11 +2659,9 @@ func (c *BusinessClient) Business_get_extendedcreditapplications(args map[string
 	return result, nil
 }
 
-
 // business_get_extendedcredits GET extendedcredits for Business
 func (c *BusinessClient) Business_get_extendedcredits(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "extendedcredits")
@@ -2853,7 +2672,6 @@ func (c *BusinessClient) Business_get_extendedcredits(args map[string]interface{
 		urlParams.Set("order_by_is_owned_credential", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2884,7 +2702,6 @@ func (c *BusinessClient) Business_get_extendedcredits(args map[string]interface{
 	return result, nil
 }
 
-
 // business_post_images POST images for Business
 func (c *BusinessClient) Business_post_images(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -2893,7 +2710,6 @@ func (c *BusinessClient) Business_post_images(args map[string]interface{}) (inte
 		return nil, fmt.Errorf("missing required parameter: creative_folder_id")
 	}
 	_ = creative_folder_id // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "images")
@@ -2916,7 +2732,6 @@ func (c *BusinessClient) Business_post_images(args map[string]interface{}) (inte
 		urlParams.Set("validation_ad_placements", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2947,11 +2762,9 @@ func (c *BusinessClient) Business_post_images(args map[string]interface{}) (inte
 	return result, nil
 }
 
-
 // business_get_initiated_audience_sharing_requests GET initiated_audience_sharing_requests for Business
 func (c *BusinessClient) Business_get_initiated_audience_sharing_requests(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "initiated_audience_sharing_requests")
@@ -2965,7 +2778,6 @@ func (c *BusinessClient) Business_get_initiated_audience_sharing_requests(args m
 		urlParams.Set("request_status", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2995,7 +2807,6 @@ func (c *BusinessClient) Business_get_initiated_audience_sharing_requests(args m
 
 	return result, nil
 }
-
 
 // business_delete_instagram_accounts DELETE instagram_accounts for Business
 func (c *BusinessClient) Business_delete_instagram_accounts(args map[string]interface{}) (interface{}, error) {
@@ -3006,7 +2817,6 @@ func (c *BusinessClient) Business_delete_instagram_accounts(args map[string]inte
 	}
 	_ = instagram_account // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "instagram_accounts")
 	urlParams := url.Values{}
@@ -3015,7 +2825,6 @@ func (c *BusinessClient) Business_delete_instagram_accounts(args map[string]inte
 	if val, ok := args["instagram_account"]; ok {
 		urlParams.Set("instagram_account", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3047,19 +2856,15 @@ func (c *BusinessClient) Business_delete_instagram_accounts(args map[string]inte
 	return result, nil
 }
 
-
 // business_get_instagram_accounts GET instagram_accounts for Business
 func (c *BusinessClient) Business_get_instagram_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "instagram_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -3090,19 +2895,15 @@ func (c *BusinessClient) Business_get_instagram_accounts(args map[string]interfa
 	return result, nil
 }
 
-
 // business_get_instagram_business_accounts GET instagram_business_accounts for Business
 func (c *BusinessClient) Business_get_instagram_business_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "instagram_business_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -3132,7 +2933,6 @@ func (c *BusinessClient) Business_get_instagram_business_accounts(args map[strin
 
 	return result, nil
 }
-
 
 // business_delete_managed_businesses DELETE managed_businesses for Business
 func (c *BusinessClient) Business_delete_managed_businesses(args map[string]interface{}) (interface{}, error) {
@@ -3143,7 +2943,6 @@ func (c *BusinessClient) Business_delete_managed_businesses(args map[string]inte
 	}
 	_ = existing_client_business_id // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "managed_businesses")
 	urlParams := url.Values{}
@@ -3152,7 +2951,6 @@ func (c *BusinessClient) Business_delete_managed_businesses(args map[string]inte
 	if val, ok := args["existing_client_business_id"]; ok {
 		urlParams.Set("existing_client_business_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3184,11 +2982,9 @@ func (c *BusinessClient) Business_delete_managed_businesses(args map[string]inte
 	return result, nil
 }
 
-
 // business_post_managed_businesses POST managed_businesses for Business
 func (c *BusinessClient) Business_post_managed_businesses(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "managed_businesses")
@@ -3223,7 +3019,6 @@ func (c *BusinessClient) Business_post_managed_businesses(args map[string]interf
 		urlParams.Set("vertical", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -3254,11 +3049,9 @@ func (c *BusinessClient) Business_post_managed_businesses(args map[string]interf
 	return result, nil
 }
 
-
 // business_get_managed_partner_ads_funding_source_details GET managed_partner_ads_funding_source_details for Business
 func (c *BusinessClient) Business_get_managed_partner_ads_funding_source_details(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "managed_partner_ads_funding_source_details")
@@ -3268,7 +3061,6 @@ func (c *BusinessClient) Business_get_managed_partner_ads_funding_source_details
 	if val, ok := args["year_quarter"]; ok {
 		urlParams.Set("year_quarter", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3300,11 +3092,9 @@ func (c *BusinessClient) Business_get_managed_partner_ads_funding_source_details
 	return result, nil
 }
 
-
 // business_post_managed_partner_business_setup POST managed_partner_business_setup for Business
 func (c *BusinessClient) Business_post_managed_partner_business_setup(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "managed_partner_business_setup")
@@ -3332,7 +3122,6 @@ func (c *BusinessClient) Business_post_managed_partner_business_setup(args map[s
 	if val, ok := args["template"]; ok {
 		urlParams.Set("template", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3364,11 +3153,9 @@ func (c *BusinessClient) Business_post_managed_partner_business_setup(args map[s
 	return result, nil
 }
 
-
 // business_delete_managed_partner_businesses DELETE managed_partner_businesses for Business
 func (c *BusinessClient) Business_delete_managed_partner_businesses(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "managed_partner_businesses")
@@ -3381,7 +3168,6 @@ func (c *BusinessClient) Business_delete_managed_partner_businesses(args map[str
 	if val, ok := args["child_business_id"]; ok {
 		urlParams.Set("child_business_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3413,7 +3199,6 @@ func (c *BusinessClient) Business_delete_managed_partner_businesses(args map[str
 	return result, nil
 }
 
-
 // business_post_managed_partner_businesses POST managed_partner_businesses for Business
 func (c *BusinessClient) Business_post_managed_partner_businesses(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -3442,7 +3227,6 @@ func (c *BusinessClient) Business_post_managed_partner_businesses(args map[strin
 		return nil, fmt.Errorf("missing required parameter: vertical")
 	}
 	_ = vertical // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "managed_partner_businesses")
@@ -3513,7 +3297,6 @@ func (c *BusinessClient) Business_post_managed_partner_businesses(args map[strin
 		urlParams.Set("vertical", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -3544,11 +3327,9 @@ func (c *BusinessClient) Business_post_managed_partner_businesses(args map[strin
 	return result, nil
 }
 
-
 // business_post_onboard_partners_to_mm_lite POST onboard_partners_to_mm_lite for Business
 func (c *BusinessClient) Business_post_onboard_partners_to_mm_lite(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "onboard_partners_to_mm_lite")
@@ -3559,7 +3340,6 @@ func (c *BusinessClient) Business_post_onboard_partners_to_mm_lite(args map[stri
 		urlParams.Set("solution_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -3590,18 +3370,14 @@ func (c *BusinessClient) Business_post_onboard_partners_to_mm_lite(args map[stri
 	return result, nil
 }
 
-
 // business_get_openbridge_configurations GET openbridge_configurations for Business
 func (c *BusinessClient) Business_get_openbridge_configurations(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "openbridge_configurations")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3633,7 +3409,6 @@ func (c *BusinessClient) Business_get_openbridge_configurations(args map[string]
 	return result, nil
 }
 
-
 // business_post_openbridge_configurations POST openbridge_configurations for Business
 func (c *BusinessClient) Business_post_openbridge_configurations(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -3642,7 +3417,6 @@ func (c *BusinessClient) Business_post_openbridge_configurations(args map[string
 		return nil, fmt.Errorf("missing required parameter: pixel_id")
 	}
 	_ = pixel_id // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "openbridge_configurations")
@@ -3701,7 +3475,6 @@ func (c *BusinessClient) Business_post_openbridge_configurations(args map[string
 		urlParams.Set("sgw_pixel_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -3732,11 +3505,9 @@ func (c *BusinessClient) Business_post_openbridge_configurations(args map[string
 	return result, nil
 }
 
-
 // business_get_owned_ad_accounts GET owned_ad_accounts for Business
 func (c *BusinessClient) Business_get_owned_ad_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owned_ad_accounts")
@@ -3747,7 +3518,6 @@ func (c *BusinessClient) Business_get_owned_ad_accounts(args map[string]interfac
 		urlParams.Set("search_query", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -3777,7 +3547,6 @@ func (c *BusinessClient) Business_get_owned_ad_accounts(args map[string]interfac
 
 	return result, nil
 }
-
 
 // business_post_owned_ad_accounts POST owned_ad_accounts for Business
 func (c *BusinessClient) Business_post_owned_ad_accounts(args map[string]interface{}) (interface{}, error) {
@@ -3788,7 +3557,6 @@ func (c *BusinessClient) Business_post_owned_ad_accounts(args map[string]interfa
 	}
 	_ = adaccount_id // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owned_ad_accounts")
 	urlParams := url.Values{}
@@ -3797,7 +3565,6 @@ func (c *BusinessClient) Business_post_owned_ad_accounts(args map[string]interfa
 	if val, ok := args["adaccount_id"]; ok {
 		urlParams.Set("adaccount_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3829,18 +3596,14 @@ func (c *BusinessClient) Business_post_owned_ad_accounts(args map[string]interfa
 	return result, nil
 }
 
-
 // business_get_owned_apps GET owned_apps for Business
 func (c *BusinessClient) Business_get_owned_apps(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owned_apps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3872,7 +3635,6 @@ func (c *BusinessClient) Business_get_owned_apps(args map[string]interface{}) (i
 	return result, nil
 }
 
-
 // business_post_owned_apps POST owned_apps for Business
 func (c *BusinessClient) Business_post_owned_apps(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -3882,7 +3644,6 @@ func (c *BusinessClient) Business_post_owned_apps(args map[string]interface{}) (
 	}
 	_ = app_id // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owned_apps")
 	urlParams := url.Values{}
@@ -3891,7 +3652,6 @@ func (c *BusinessClient) Business_post_owned_apps(args map[string]interface{}) (
 	if val, ok := args["app_id"]; ok {
 		urlParams.Set("app_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3923,7 +3683,6 @@ func (c *BusinessClient) Business_post_owned_apps(args map[string]interface{}) (
 	return result, nil
 }
 
-
 // business_delete_owned_businesses DELETE owned_businesses for Business
 func (c *BusinessClient) Business_delete_owned_businesses(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -3933,7 +3692,6 @@ func (c *BusinessClient) Business_delete_owned_businesses(args map[string]interf
 	}
 	_ = client_id // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owned_businesses")
 	urlParams := url.Values{}
@@ -3942,7 +3700,6 @@ func (c *BusinessClient) Business_delete_owned_businesses(args map[string]interf
 	if val, ok := args["client_id"]; ok {
 		urlParams.Set("client_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3974,11 +3731,9 @@ func (c *BusinessClient) Business_delete_owned_businesses(args map[string]interf
 	return result, nil
 }
 
-
 // business_get_owned_businesses GET owned_businesses for Business
 func (c *BusinessClient) Business_get_owned_businesses(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owned_businesses")
@@ -3991,7 +3746,6 @@ func (c *BusinessClient) Business_get_owned_businesses(args map[string]interface
 	if val, ok := args["client_user_id"]; ok {
 		urlParams.Set("client_user_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -4023,7 +3777,6 @@ func (c *BusinessClient) Business_get_owned_businesses(args map[string]interface
 	return result, nil
 }
 
-
 // business_post_owned_businesses POST owned_businesses for Business
 func (c *BusinessClient) Business_post_owned_businesses(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -4037,7 +3790,6 @@ func (c *BusinessClient) Business_post_owned_businesses(args map[string]interfac
 		return nil, fmt.Errorf("missing required parameter: vertical")
 	}
 	_ = vertical // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owned_businesses")
@@ -4078,7 +3830,6 @@ func (c *BusinessClient) Business_post_owned_businesses(args map[string]interfac
 		urlParams.Set("vertical", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -4109,19 +3860,15 @@ func (c *BusinessClient) Business_post_owned_businesses(args map[string]interfac
 	return result, nil
 }
 
-
 // business_get_owned_instagram_accounts GET owned_instagram_accounts for Business
 func (c *BusinessClient) Business_get_owned_instagram_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owned_instagram_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -4152,19 +3899,15 @@ func (c *BusinessClient) Business_get_owned_instagram_accounts(args map[string]i
 	return result, nil
 }
 
-
 // business_get_owned_offsite_signal_container_business_objects GET owned_offsite_signal_container_business_objects for Business
 func (c *BusinessClient) Business_get_owned_offsite_signal_container_business_objects(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owned_offsite_signal_container_business_objects")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -4195,19 +3938,15 @@ func (c *BusinessClient) Business_get_owned_offsite_signal_container_business_ob
 	return result, nil
 }
 
-
 // business_get_owned_pages GET owned_pages for Business
 func (c *BusinessClient) Business_get_owned_pages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owned_pages")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -4237,7 +3976,6 @@ func (c *BusinessClient) Business_get_owned_pages(args map[string]interface{}) (
 
 	return result, nil
 }
-
 
 // business_post_owned_pages POST owned_pages for Business
 func (c *BusinessClient) Business_post_owned_pages(args map[string]interface{}) (interface{}, error) {
@@ -4247,7 +3985,6 @@ func (c *BusinessClient) Business_post_owned_pages(args map[string]interface{}) 
 		return nil, fmt.Errorf("missing required parameter: page_id")
 	}
 	_ = page_id // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owned_pages")
@@ -4264,7 +4001,6 @@ func (c *BusinessClient) Business_post_owned_pages(args map[string]interface{}) 
 		urlParams.Set("page_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -4295,19 +4031,15 @@ func (c *BusinessClient) Business_post_owned_pages(args map[string]interface{}) 
 	return result, nil
 }
 
-
 // business_get_owned_pixels GET owned_pixels for Business
 func (c *BusinessClient) Business_get_owned_pixels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owned_pixels")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -4338,19 +4070,15 @@ func (c *BusinessClient) Business_get_owned_pixels(args map[string]interface{}) 
 	return result, nil
 }
 
-
 // business_get_owned_product_catalogs GET owned_product_catalogs for Business
 func (c *BusinessClient) Business_get_owned_product_catalogs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owned_product_catalogs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -4380,7 +4108,6 @@ func (c *BusinessClient) Business_get_owned_product_catalogs(args map[string]int
 
 	return result, nil
 }
-
 
 // business_post_owned_product_catalogs POST owned_product_catalogs for Business
 func (c *BusinessClient) Business_post_owned_product_catalogs(args map[string]interface{}) (interface{}, error) {
@@ -4390,7 +4117,6 @@ func (c *BusinessClient) Business_post_owned_product_catalogs(args map[string]in
 		return nil, fmt.Errorf("missing required parameter: name")
 	}
 	_ = name // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owned_product_catalogs")
@@ -4434,7 +4160,6 @@ func (c *BusinessClient) Business_post_owned_product_catalogs(args map[string]in
 		urlParams.Set("vertical", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -4465,18 +4190,14 @@ func (c *BusinessClient) Business_post_owned_product_catalogs(args map[string]in
 	return result, nil
 }
 
-
 // business_get_owned_whatsapp_business_accounts GET owned_whatsapp_business_accounts for Business
 func (c *BusinessClient) Business_get_owned_whatsapp_business_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "owned_whatsapp_business_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -4508,7 +4229,6 @@ func (c *BusinessClient) Business_get_owned_whatsapp_business_accounts(args map[
 	return result, nil
 }
 
-
 // business_delete_pages DELETE pages for Business
 func (c *BusinessClient) Business_delete_pages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -4518,7 +4238,6 @@ func (c *BusinessClient) Business_delete_pages(args map[string]interface{}) (int
 	}
 	_ = page_id // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "pages")
 	urlParams := url.Values{}
@@ -4527,7 +4246,6 @@ func (c *BusinessClient) Business_delete_pages(args map[string]interface{}) (int
 	if val, ok := args["page_id"]; ok {
 		urlParams.Set("page_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -4559,18 +4277,14 @@ func (c *BusinessClient) Business_delete_pages(args map[string]interface{}) (int
 	return result, nil
 }
 
-
 // business_get_partner_account_linking GET partner_account_linking for Business
 func (c *BusinessClient) Business_get_partner_account_linking(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "partner_account_linking")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -4601,7 +4315,6 @@ func (c *BusinessClient) Business_get_partner_account_linking(args map[string]in
 
 	return result, nil
 }
-
 
 // business_post_partner_premium_options POST partner_premium_options for Business
 func (c *BusinessClient) Business_post_partner_premium_options(args map[string]interface{}) (interface{}, error) {
@@ -4627,7 +4340,6 @@ func (c *BusinessClient) Business_post_partner_premium_options(args map[string]i
 	}
 	_ = retailer_custom_audience_config // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "partner_premium_options")
 	urlParams := url.Values{}
@@ -4652,7 +4364,6 @@ func (c *BusinessClient) Business_post_partner_premium_options(args map[string]i
 		urlParams.Set("vendor_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -4683,19 +4394,15 @@ func (c *BusinessClient) Business_post_partner_premium_options(args map[string]i
 	return result, nil
 }
 
-
 // business_get_passback_attribution_metadata_configs GET passback_attribution_metadata_configs for Business
 func (c *BusinessClient) Business_get_passback_attribution_metadata_configs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "passback_attribution_metadata_configs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -4726,19 +4433,15 @@ func (c *BusinessClient) Business_get_passback_attribution_metadata_configs(args
 	return result, nil
 }
 
-
 // business_get_pending_client_ad_accounts GET pending_client_ad_accounts for Business
 func (c *BusinessClient) Business_get_pending_client_ad_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "pending_client_ad_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -4769,19 +4472,15 @@ func (c *BusinessClient) Business_get_pending_client_ad_accounts(args map[string
 	return result, nil
 }
 
-
 // business_get_pending_client_apps GET pending_client_apps for Business
 func (c *BusinessClient) Business_get_pending_client_apps(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "pending_client_apps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -4812,19 +4511,15 @@ func (c *BusinessClient) Business_get_pending_client_apps(args map[string]interf
 	return result, nil
 }
 
-
 // business_get_pending_client_pages GET pending_client_pages for Business
 func (c *BusinessClient) Business_get_pending_client_pages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "pending_client_pages")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -4855,19 +4550,15 @@ func (c *BusinessClient) Business_get_pending_client_pages(args map[string]inter
 	return result, nil
 }
 
-
 // business_get_pending_owned_ad_accounts GET pending_owned_ad_accounts for Business
 func (c *BusinessClient) Business_get_pending_owned_ad_accounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "pending_owned_ad_accounts")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -4898,19 +4589,15 @@ func (c *BusinessClient) Business_get_pending_owned_ad_accounts(args map[string]
 	return result, nil
 }
 
-
 // business_get_pending_owned_pages GET pending_owned_pages for Business
 func (c *BusinessClient) Business_get_pending_owned_pages(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "pending_owned_pages")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -4941,19 +4628,15 @@ func (c *BusinessClient) Business_get_pending_owned_pages(args map[string]interf
 	return result, nil
 }
 
-
 // business_get_pending_shared_offsite_signal_container_business_objects GET pending_shared_offsite_signal_container_business_objects for Business
 func (c *BusinessClient) Business_get_pending_shared_offsite_signal_container_business_objects(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "pending_shared_offsite_signal_container_business_objects")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -4984,11 +4667,9 @@ func (c *BusinessClient) Business_get_pending_shared_offsite_signal_container_bu
 	return result, nil
 }
 
-
 // business_get_pending_users GET pending_users for Business
 func (c *BusinessClient) Business_get_pending_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "pending_users")
@@ -4999,7 +4680,6 @@ func (c *BusinessClient) Business_get_pending_users(args map[string]interface{})
 		urlParams.Set("email", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -5030,11 +4710,9 @@ func (c *BusinessClient) Business_get_pending_users(args map[string]interface{})
 	return result, nil
 }
 
-
 // business_get_picture GET picture for Business
 func (c *BusinessClient) Business_get_picture(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "picture")
@@ -5054,7 +4732,6 @@ func (c *BusinessClient) Business_get_picture(args map[string]interface{}) (inte
 		urlParams.Set("width", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -5085,18 +4762,14 @@ func (c *BusinessClient) Business_get_picture(args map[string]interface{}) (inte
 	return result, nil
 }
 
-
 // business_post_pixel_tos POST pixel_tos for Business
 func (c *BusinessClient) Business_post_pixel_tos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "pixel_tos")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5128,11 +4801,9 @@ func (c *BusinessClient) Business_post_pixel_tos(args map[string]interface{}) (i
 	return result, nil
 }
 
-
 // business_get_preverified_numbers GET preverified_numbers for Business
 func (c *BusinessClient) Business_get_preverified_numbers(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "preverified_numbers")
@@ -5146,7 +4817,6 @@ func (c *BusinessClient) Business_get_preverified_numbers(args map[string]interf
 		urlParams.Set("phone_number", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -5177,11 +4847,9 @@ func (c *BusinessClient) Business_get_preverified_numbers(args map[string]interf
 	return result, nil
 }
 
-
 // business_get_received_audience_sharing_requests GET received_audience_sharing_requests for Business
 func (c *BusinessClient) Business_get_received_audience_sharing_requests(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "received_audience_sharing_requests")
@@ -5195,7 +4863,6 @@ func (c *BusinessClient) Business_get_received_audience_sharing_requests(args ma
 		urlParams.Set("request_status", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -5226,19 +4893,15 @@ func (c *BusinessClient) Business_get_received_audience_sharing_requests(args ma
 	return result, nil
 }
 
-
 // business_get_reseller_guidances GET reseller_guidances for Business
 func (c *BusinessClient) Business_get_reseller_guidances(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "reseller_guidances")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -5269,11 +4932,9 @@ func (c *BusinessClient) Business_get_reseller_guidances(args map[string]interfa
 	return result, nil
 }
 
-
 // business_get_self_certified_whatsapp_business_submissions GET self_certified_whatsapp_business_submissions for Business
 func (c *BusinessClient) Business_get_self_certified_whatsapp_business_submissions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "self_certified_whatsapp_business_submissions")
@@ -5284,7 +4945,6 @@ func (c *BusinessClient) Business_get_self_certified_whatsapp_business_submissio
 		urlParams.Set("end_business_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -5314,7 +4974,6 @@ func (c *BusinessClient) Business_get_self_certified_whatsapp_business_submissio
 
 	return result, nil
 }
-
 
 // business_post_self_certify_whatsapp_business POST self_certify_whatsapp_business for Business
 func (c *BusinessClient) Business_post_self_certify_whatsapp_business(args map[string]interface{}) (interface{}, error) {
@@ -5329,7 +4988,6 @@ func (c *BusinessClient) Business_post_self_certify_whatsapp_business(args map[s
 		return nil, fmt.Errorf("missing required parameter: end_business_id")
 	}
 	_ = end_business_id // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "self_certify_whatsapp_business")
@@ -5364,7 +5022,6 @@ func (c *BusinessClient) Business_post_self_certify_whatsapp_business(args map[s
 		urlParams.Set("num_billing_cycles_with_partner", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -5394,7 +5051,6 @@ func (c *BusinessClient) Business_post_self_certify_whatsapp_business(args map[s
 
 	return result, nil
 }
-
 
 // business_post_setup_managed_partner_adaccounts POST setup_managed_partner_adaccounts for Business
 func (c *BusinessClient) Business_post_setup_managed_partner_adaccounts(args map[string]interface{}) (interface{}, error) {
@@ -5425,7 +5081,6 @@ func (c *BusinessClient) Business_post_setup_managed_partner_adaccounts(args map
 	}
 	_ = vertical_v2 // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "setup_managed_partner_adaccounts")
 	urlParams := url.Values{}
@@ -5446,7 +5101,6 @@ func (c *BusinessClient) Business_post_setup_managed_partner_adaccounts(args map
 	if val, ok := args["vertical_v2"]; ok {
 		urlParams.Set("vertical_v2", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5478,7 +5132,6 @@ func (c *BusinessClient) Business_post_setup_managed_partner_adaccounts(args map
 	return result, nil
 }
 
-
 // business_delete_share_preverified_numbers DELETE share_preverified_numbers for Business
 func (c *BusinessClient) Business_delete_share_preverified_numbers(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -5493,7 +5146,6 @@ func (c *BusinessClient) Business_delete_share_preverified_numbers(args map[stri
 	}
 	_ = preverified_id // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "share_preverified_numbers")
 	urlParams := url.Values{}
@@ -5505,7 +5157,6 @@ func (c *BusinessClient) Business_delete_share_preverified_numbers(args map[stri
 	if val, ok := args["preverified_id"]; ok {
 		urlParams.Set("preverified_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5537,7 +5188,6 @@ func (c *BusinessClient) Business_delete_share_preverified_numbers(args map[stri
 	return result, nil
 }
 
-
 // business_post_share_preverified_numbers POST share_preverified_numbers for Business
 func (c *BusinessClient) Business_post_share_preverified_numbers(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -5552,7 +5202,6 @@ func (c *BusinessClient) Business_post_share_preverified_numbers(args map[string
 	}
 	_ = preverified_id // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "share_preverified_numbers")
 	urlParams := url.Values{}
@@ -5564,7 +5213,6 @@ func (c *BusinessClient) Business_post_share_preverified_numbers(args map[string
 	if val, ok := args["preverified_id"]; ok {
 		urlParams.Set("preverified_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5596,11 +5244,9 @@ func (c *BusinessClient) Business_post_share_preverified_numbers(args map[string
 	return result, nil
 }
 
-
 // business_post_system_user_access_tokens POST system_user_access_tokens for Business
 func (c *BusinessClient) Business_post_system_user_access_tokens(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "system_user_access_tokens")
@@ -5623,7 +5269,6 @@ func (c *BusinessClient) Business_post_system_user_access_tokens(args map[string
 		urlParams.Set("system_user_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -5654,18 +5299,14 @@ func (c *BusinessClient) Business_post_system_user_access_tokens(args map[string
 	return result, nil
 }
 
-
 // business_get_system_users GET system_users for Business
 func (c *BusinessClient) Business_get_system_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "system_users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5697,7 +5338,6 @@ func (c *BusinessClient) Business_get_system_users(args map[string]interface{}) 
 	return result, nil
 }
 
-
 // business_post_system_users POST system_users for Business
 func (c *BusinessClient) Business_post_system_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -5706,7 +5346,6 @@ func (c *BusinessClient) Business_post_system_users(args map[string]interface{})
 		return nil, fmt.Errorf("missing required parameter: name")
 	}
 	_ = name // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "system_users")
@@ -5723,7 +5362,6 @@ func (c *BusinessClient) Business_post_system_users(args map[string]interface{})
 		urlParams.Set("system_user_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -5754,18 +5392,14 @@ func (c *BusinessClient) Business_post_system_users(args map[string]interface{})
 	return result, nil
 }
 
-
 // business_get_third_party_measurement_report_dataset GET third_party_measurement_report_dataset for Business
 func (c *BusinessClient) Business_get_third_party_measurement_report_dataset(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "third_party_measurement_report_dataset")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5797,7 +5431,6 @@ func (c *BusinessClient) Business_get_third_party_measurement_report_dataset(arg
 	return result, nil
 }
 
-
 // business_post_videos POST videos for Business
 func (c *BusinessClient) Business_post_videos(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -5806,7 +5439,6 @@ func (c *BusinessClient) Business_post_videos(args map[string]interface{}) (inte
 		return nil, fmt.Errorf("missing required parameter: creative_folder_id")
 	}
 	_ = creative_folder_id // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos")
@@ -6021,7 +5653,6 @@ func (c *BusinessClient) Business_post_videos(args map[string]interface{}) (inte
 		urlParams.Set("waterfall_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -6052,18 +5683,14 @@ func (c *BusinessClient) Business_post_videos(args map[string]interface{}) (inte
 	return result, nil
 }
 
-
 // business_get_ GET  for Business
 func (c *BusinessClient) Business_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -6095,11 +5722,9 @@ func (c *BusinessClient) Business_get_(args map[string]interface{}) (interface{}
 	return result, nil
 }
 
-
 // business_post_ POST  for Business
 func (c *BusinessClient) Business_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -6124,7 +5749,6 @@ func (c *BusinessClient) Business_post_(args map[string]interface{}) (interface{
 	if val, ok := args["vertical"]; ok {
 		urlParams.Set("vertical", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -6155,4 +5779,3 @@ func (c *BusinessClient) Business_post_(args map[string]interface{}) (interface{
 
 	return result, nil
 }
-

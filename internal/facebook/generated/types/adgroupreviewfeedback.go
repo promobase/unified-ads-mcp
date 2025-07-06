@@ -4,6 +4,6 @@ package types
 
 // AdgroupReviewFeedback represents a Facebook AdgroupReviewFeedback object
 type AdgroupReviewFeedback struct {
-	Global interface{} `json:"global"`
+	Global             interface{}                             `json:"global"`
 	Placement_specific *AdgroupPlacementSpecificReviewFeedback `json:"placement_specific"`
 }

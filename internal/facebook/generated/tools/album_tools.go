@@ -15,7 +15,6 @@ import (
 func GetAlbumTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// album_get_comments tool
 	album_get_commentsTool := mcp.NewTool("album_get_comments",
 		mcp.WithDescription("GET comments for Album"),
@@ -325,12 +324,10 @@ func GetAlbumTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, album_get_Tool)
 
-
 	return tools
 }
 
 // Album handlers
-
 
 // HandleAlbum_get_comments handles the album_get_comments tool
 func HandleAlbum_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -366,8 +363,6 @@ func HandleAlbum_get_comments(ctx context.Context, request mcp.CallToolRequest) 
 		args["since"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Album_get_comments(args)
 	if err != nil {
@@ -382,7 +377,6 @@ func HandleAlbum_get_comments(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAlbum_post_comments handles the album_post_comments tool
 func HandleAlbum_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -465,8 +459,6 @@ func HandleAlbum_post_comments(ctx context.Context, request mcp.CallToolRequest)
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Album_post_comments(args)
 	if err != nil {
@@ -482,7 +474,6 @@ func HandleAlbum_post_comments(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAlbum_get_likes handles the album_get_likes tool
 func HandleAlbum_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -496,8 +487,6 @@ func HandleAlbum_get_likes(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Album_get_likes(args)
@@ -513,7 +502,6 @@ func HandleAlbum_get_likes(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAlbum_post_likes handles the album_post_likes tool
 func HandleAlbum_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -549,8 +537,6 @@ func HandleAlbum_post_likes(ctx context.Context, request mcp.CallToolRequest) (*
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Album_post_likes(args)
 	if err != nil {
@@ -566,7 +552,6 @@ func HandleAlbum_post_likes(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAlbum_get_photos handles the album_get_photos tool
 func HandleAlbum_get_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -580,8 +565,6 @@ func HandleAlbum_get_photos(ctx context.Context, request mcp.CallToolRequest) (*
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Album_get_photos(args)
@@ -597,7 +580,6 @@ func HandleAlbum_get_photos(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAlbum_post_photos handles the album_post_photos tool
 func HandleAlbum_post_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -872,8 +854,6 @@ func HandleAlbum_post_photos(ctx context.Context, request mcp.CallToolRequest) (
 		args["vault_image_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Album_post_photos(args)
 	if err != nil {
@@ -888,7 +868,6 @@ func HandleAlbum_post_photos(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAlbum_get_picture handles the album_get_picture tool
 func HandleAlbum_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -914,8 +893,6 @@ func HandleAlbum_get_picture(ctx context.Context, request mcp.CallToolRequest) (
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Album_get_picture(args)
 	if err != nil {
@@ -931,7 +908,6 @@ func HandleAlbum_get_picture(ctx context.Context, request mcp.CallToolRequest) (
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAlbum_get_ handles the album_get_ tool
 func HandleAlbum_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -945,8 +921,6 @@ func HandleAlbum_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Album_get_(args)
@@ -962,4 +936,3 @@ func HandleAlbum_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

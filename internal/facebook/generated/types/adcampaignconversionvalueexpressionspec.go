@@ -4,7 +4,7 @@ package types
 
 // AdCampaignConversionValueExpressionSpec represents a Facebook AdCampaignConversionValueExpressionSpec object
 type AdCampaignConversionValueExpressionSpec struct {
-	Adjustment_sign string `json:"adjustment_sign"`
-	Adjustment_weight int `json:"adjustment_weight"`
-	Destination_type string `json:"destination_type"`
+	Adjustment_sign   string `json:"adjustment_sign"`
+	Adjustment_weight int    `json:"adjustment_weight"`
+	Destination_type  string `json:"destination_type"`
 }

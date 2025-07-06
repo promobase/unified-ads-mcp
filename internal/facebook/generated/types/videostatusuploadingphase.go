@@ -4,8 +4,8 @@ package types
 
 // VideoStatusUploadingPhase represents a Facebook VideoStatusUploadingPhase object
 type VideoStatusUploadingPhase struct {
-	Bytes_transferred int `json:"bytes_transferred"`
-	Errors []VideoStatusError `json:"errors"`
-	Source_file_size int `json:"source_file_size"`
-	Status string `json:"status"`
+	Bytes_transferred int                `json:"bytes_transferred"`
+	Errors            []VideoStatusError `json:"errors"`
+	Source_file_size  int                `json:"source_file_size"`
+	Status            string             `json:"status"`
 }

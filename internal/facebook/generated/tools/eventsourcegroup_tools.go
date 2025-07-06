@@ -15,7 +15,6 @@ import (
 func GetEventSourceGroupTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// eventsourcegroup_get_shared_accounts tool
 	eventsourcegroup_get_shared_accountsTool := mcp.NewTool("eventsourcegroup_get_shared_accounts",
 		mcp.WithDescription("GET shared_accounts for EventSourceGroup"),
@@ -68,12 +67,10 @@ func GetEventSourceGroupTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, eventsourcegroup_post_Tool)
 
-
 	return tools
 }
 
 // EventSourceGroup handlers
-
 
 // HandleEventsourcegroup_get_shared_accounts handles the eventsourcegroup_get_shared_accounts tool
 func HandleEventsourcegroup_get_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -89,8 +86,6 @@ func HandleEventsourcegroup_get_shared_accounts(ctx context.Context, request mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Eventsourcegroup_get_shared_accounts(args)
 	if err != nil {
@@ -105,7 +100,6 @@ func HandleEventsourcegroup_get_shared_accounts(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleEventsourcegroup_post_shared_accounts handles the eventsourcegroup_post_shared_accounts tool
 func HandleEventsourcegroup_post_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -128,8 +122,6 @@ func HandleEventsourcegroup_post_shared_accounts(ctx context.Context, request mc
 	}
 	args["accounts"] = accounts
 
-
-
 	// Call the client method
 	result, err := client.Eventsourcegroup_post_shared_accounts(args)
 	if err != nil {
@@ -145,7 +137,6 @@ func HandleEventsourcegroup_post_shared_accounts(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleEventsourcegroup_get_ handles the eventsourcegroup_get_ tool
 func HandleEventsourcegroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -159,8 +150,6 @@ func HandleEventsourcegroup_get_(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Eventsourcegroup_get_(args)
@@ -176,7 +165,6 @@ func HandleEventsourcegroup_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleEventsourcegroup_post_ handles the eventsourcegroup_post_ tool
 func HandleEventsourcegroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -206,8 +194,6 @@ func HandleEventsourcegroup_post_(ctx context.Context, request mcp.CallToolReque
 	}
 	args["name"] = name
 
-
-
 	// Call the client method
 	result, err := client.Eventsourcegroup_post_(args)
 	if err != nil {
@@ -222,4 +208,3 @@ func HandleEventsourcegroup_post_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

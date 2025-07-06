@@ -15,7 +15,6 @@ import (
 func GetMailingAddressTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// mailingaddress_get_ tool
 	mailingaddress_get_Tool := mcp.NewTool("mailingaddress_get_",
 		mcp.WithDescription("GET  for MailingAddress"),
@@ -26,12 +25,10 @@ func GetMailingAddressTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, mailingaddress_get_Tool)
 
-
 	return tools
 }
 
 // MailingAddress handlers
-
 
 // HandleMailingaddress_get_ handles the mailingaddress_get_ tool
 func HandleMailingaddress_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleMailingaddress_get_(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Mailingaddress_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleMailingaddress_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

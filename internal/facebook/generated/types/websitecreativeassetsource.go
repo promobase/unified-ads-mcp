@@ -4,6 +4,6 @@ package types
 
 // WebsiteCreativeAssetSource represents a Facebook WebsiteCreativeAssetSource object
 type WebsiteCreativeAssetSource struct {
-	Id string `json:"id"`
+	Id         string `json:"id"`
 	Source_url string `json:"source_url"`
 }

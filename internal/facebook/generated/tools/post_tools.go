@@ -15,7 +15,6 @@ import (
 func GetPostTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// post_get_attachments tool
 	post_get_attachmentsTool := mcp.NewTool("post_get_attachments",
 		mcp.WithDescription("GET attachments for Post"),
@@ -343,12 +342,10 @@ func GetPostTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, post_post_Tool)
 
-
 	return tools
 }
 
 // Post handlers
-
 
 // HandlePost_get_attachments handles the post_get_attachments tool
 func HandlePost_get_attachments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -364,8 +361,6 @@ func HandlePost_get_attachments(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Post_get_attachments(args)
 	if err != nil {
@@ -380,7 +375,6 @@ func HandlePost_get_attachments(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePost_get_comments handles the post_get_comments tool
 func HandlePost_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -416,8 +410,6 @@ func HandlePost_get_comments(ctx context.Context, request mcp.CallToolRequest) (
 		args["since"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Post_get_comments(args)
 	if err != nil {
@@ -432,7 +424,6 @@ func HandlePost_get_comments(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePost_post_comments handles the post_post_comments tool
 func HandlePost_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -504,8 +495,6 @@ func HandlePost_post_comments(ctx context.Context, request mcp.CallToolRequest) 
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Post_post_comments(args)
 	if err != nil {
@@ -521,7 +510,6 @@ func HandlePost_post_comments(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandlePost_get_dynamic_posts handles the post_get_dynamic_posts tool
 func HandlePost_get_dynamic_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -535,8 +523,6 @@ func HandlePost_get_dynamic_posts(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Post_get_dynamic_posts(args)
@@ -552,7 +538,6 @@ func HandlePost_get_dynamic_posts(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePost_get_insights handles the post_get_insights tool
 func HandlePost_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -594,8 +579,6 @@ func HandlePost_get_insights(ctx context.Context, request mcp.CallToolRequest) (
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Post_get_insights(args)
 	if err != nil {
@@ -610,7 +593,6 @@ func HandlePost_get_insights(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePost_delete_likes handles the post_delete_likes tool
 func HandlePost_delete_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -636,8 +618,6 @@ func HandlePost_delete_likes(ctx context.Context, request mcp.CallToolRequest) (
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Post_delete_likes(args)
 	if err != nil {
@@ -652,7 +632,6 @@ func HandlePost_delete_likes(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePost_post_likes handles the post_post_likes tool
 func HandlePost_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -683,8 +662,6 @@ func HandlePost_post_likes(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Post_post_likes(args)
 	if err != nil {
@@ -699,7 +676,6 @@ func HandlePost_post_likes(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePost_get_reactions handles the post_get_reactions tool
 func HandlePost_get_reactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -720,8 +696,6 @@ func HandlePost_get_reactions(ctx context.Context, request mcp.CallToolRequest) 
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Post_get_reactions(args)
 	if err != nil {
@@ -737,7 +711,6 @@ func HandlePost_get_reactions(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandlePost_get_sharedposts handles the post_get_sharedposts tool
 func HandlePost_get_sharedposts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -751,8 +724,6 @@ func HandlePost_get_sharedposts(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Post_get_sharedposts(args)
@@ -769,7 +740,6 @@ func HandlePost_get_sharedposts(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandlePost_get_sponsor_tags handles the post_get_sponsor_tags tool
 func HandlePost_get_sponsor_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -783,8 +753,6 @@ func HandlePost_get_sponsor_tags(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Post_get_sponsor_tags(args)
@@ -801,7 +769,6 @@ func HandlePost_get_sponsor_tags(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandlePost_get_to handles the post_get_to tool
 func HandlePost_get_to(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -815,8 +782,6 @@ func HandlePost_get_to(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Post_get_to(args)
@@ -833,7 +798,6 @@ func HandlePost_get_to(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandlePost_delete_ handles the post_delete_ tool
 func HandlePost_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -847,8 +811,6 @@ func HandlePost_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Post_delete_(args)
@@ -864,7 +826,6 @@ func HandlePost_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePost_get_ handles the post_get_ tool
 func HandlePost_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -890,8 +851,6 @@ func HandlePost_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 		args["primary_ig_user_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Post_get_(args)
 	if err != nil {
@@ -906,7 +865,6 @@ func HandlePost_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePost_post_ handles the post_post_ tool
 func HandlePost_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1082,8 +1040,6 @@ func HandlePost_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Post_post_(args)
 	if err != nil {
@@ -1098,4 +1054,3 @@ func HandlePost_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

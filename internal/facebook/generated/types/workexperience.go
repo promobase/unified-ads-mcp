@@ -4,14 +4,14 @@ package types
 
 // WorkExperience represents a Facebook WorkExperience object
 type WorkExperience struct {
-	Description string `json:"description"`
-	Employer *Page `json:"employer"`
-	End_date string `json:"end_date"`
-	From *User `json:"from"`
-	Id string `json:"id"`
-	Location *Page `json:"location"`
-	Position *Page `json:"position"`
-	Projects []map[string]interface{} `json:"projects"`
-	Start_date string `json:"start_date"`
-	With []User `json:"with"`
+	Description string                   `json:"description"`
+	Employer    *Page                    `json:"employer"`
+	End_date    string                   `json:"end_date"`
+	From        *User                    `json:"from"`
+	Id          string                   `json:"id"`
+	Location    *Page                    `json:"location"`
+	Position    *Page                    `json:"position"`
+	Projects    []map[string]interface{} `json:"projects"`
+	Start_date  string                   `json:"start_date"`
+	With        []User                   `json:"with"`
 }

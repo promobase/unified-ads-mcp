@@ -6,27 +6,27 @@ import "time"
 
 // Comment represents a Facebook Comment object
 type Comment struct {
-	Admin_creator *User `json:"admin_creator"`
-	Application *Application `json:"application"`
-	Attachment map[string]interface{} `json:"attachment"`
-	Can_comment bool `json:"can_comment"`
-	Can_hide bool `json:"can_hide"`
-	Can_like bool `json:"can_like"`
-	Can_remove bool `json:"can_remove"`
-	Can_reply_privately bool `json:"can_reply_privately"`
-	Comment_count int `json:"comment_count"`
-	Created_time time.Time `json:"created_time"`
-	From map[string]interface{} `json:"from"`
-	Id string `json:"id"`
-	Is_hidden bool `json:"is_hidden"`
-	Is_private bool `json:"is_private"`
-	Like_count int `json:"like_count"`
-	Live_broadcast_timestamp int `json:"live_broadcast_timestamp"`
-	Message string `json:"message"`
-	Message_tags []EntityAtTextRange `json:"message_tags"`
-	Object map[string]interface{} `json:"object"`
-	Parent *Comment `json:"parent"`
-	Permalink_url string `json:"permalink_url"`
+	Admin_creator              *User                  `json:"admin_creator"`
+	Application                *Application           `json:"application"`
+	Attachment                 map[string]interface{} `json:"attachment"`
+	Can_comment                bool                   `json:"can_comment"`
+	Can_hide                   bool                   `json:"can_hide"`
+	Can_like                   bool                   `json:"can_like"`
+	Can_remove                 bool                   `json:"can_remove"`
+	Can_reply_privately        bool                   `json:"can_reply_privately"`
+	Comment_count              int                    `json:"comment_count"`
+	Created_time               time.Time              `json:"created_time"`
+	From                       map[string]interface{} `json:"from"`
+	Id                         string                 `json:"id"`
+	Is_hidden                  bool                   `json:"is_hidden"`
+	Is_private                 bool                   `json:"is_private"`
+	Like_count                 int                    `json:"like_count"`
+	Live_broadcast_timestamp   int                    `json:"live_broadcast_timestamp"`
+	Message                    string                 `json:"message"`
+	Message_tags               []EntityAtTextRange    `json:"message_tags"`
+	Object                     map[string]interface{} `json:"object"`
+	Parent                     *Comment               `json:"parent"`
+	Permalink_url              string                 `json:"permalink_url"`
 	Private_reply_conversation map[string]interface{} `json:"private_reply_conversation"`
-	User_likes bool `json:"user_likes"`
+	User_likes                 bool                   `json:"user_likes"`
 }

@@ -5,5 +5,5 @@ package types
 // AdAccountDefaultObjective represents a Facebook AdAccountDefaultObjective object
 type AdAccountDefaultObjective struct {
 	Default_objective_for_user string `json:"default_objective_for_user"`
-	Objective_for_level string `json:"objective_for_level"`
+	Objective_for_level        string `json:"objective_for_level"`
 }

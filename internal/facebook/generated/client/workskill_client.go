@@ -21,19 +21,15 @@ func NewWorkSkillClient(accessToken string) *WorkSkillClient {
 	}
 }
 
-
 // workskill_get_users GET users for WorkSkill
 func (c *WorkSkillClient) Workskill_get_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "users")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *WorkSkillClient) Workskill_get_users(args map[string]interface{}) (inte
 	return result, nil
 }
 
-
 // workskill_get_ GET  for WorkSkill
 func (c *WorkSkillClient) Workskill_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -106,4 +98,3 @@ func (c *WorkSkillClient) Workskill_get_(args map[string]interface{}) (interface
 
 	return result, nil
 }
-

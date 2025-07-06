@@ -15,7 +15,6 @@ import (
 func GetDestinationTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// destination_get_channels_to_integrity_status tool
 	destination_get_channels_to_integrity_statusTool := mcp.NewTool("destination_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for Destination"),
@@ -63,12 +62,10 @@ func GetDestinationTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, destination_get_Tool)
 
-
 	return tools
 }
 
 // Destination handlers
-
 
 // HandleDestination_get_channels_to_integrity_status handles the destination_get_channels_to_integrity_status tool
 func HandleDestination_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -84,8 +81,6 @@ func HandleDestination_get_channels_to_integrity_status(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Destination_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -100,7 +95,6 @@ func HandleDestination_get_channels_to_integrity_status(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleDestination_get_override_details handles the destination_get_override_details tool
 func HandleDestination_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -127,8 +121,6 @@ func HandleDestination_get_override_details(ctx context.Context, request mcp.Cal
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Destination_get_override_details(args)
 	if err != nil {
@@ -144,7 +136,6 @@ func HandleDestination_get_override_details(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleDestination_get_videos_metadata handles the destination_get_videos_metadata tool
 func HandleDestination_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -158,8 +149,6 @@ func HandleDestination_get_videos_metadata(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Destination_get_videos_metadata(args)
@@ -176,7 +165,6 @@ func HandleDestination_get_videos_metadata(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleDestination_get_ handles the destination_get_ tool
 func HandleDestination_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -190,8 +178,6 @@ func HandleDestination_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Destination_get_(args)
@@ -207,4 +193,3 @@ func HandleDestination_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

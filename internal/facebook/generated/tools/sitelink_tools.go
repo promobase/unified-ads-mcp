@@ -15,7 +15,6 @@ import (
 func GetSiteLinkTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// sitelink_get_ tool
 	sitelink_get_Tool := mcp.NewTool("sitelink_get_",
 		mcp.WithDescription("GET  for SiteLink"),
@@ -26,12 +25,10 @@ func GetSiteLinkTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, sitelink_get_Tool)
 
-
 	return tools
 }
 
 // SiteLink handlers
-
 
 // HandleSitelink_get_ handles the sitelink_get_ tool
 func HandleSitelink_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleSitelink_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Sitelink_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleSitelink_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

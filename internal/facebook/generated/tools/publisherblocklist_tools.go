@@ -15,7 +15,6 @@ import (
 func GetPublisherBlockListTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// publisherblocklist_post_append_publisher_urls tool
 	publisherblocklist_post_append_publisher_urlsTool := mcp.NewTool("publisherblocklist_post_append_publisher_urls",
 		mcp.WithDescription("POST append_publisher_urls for PublisherBlockList"),
@@ -86,12 +85,10 @@ func GetPublisherBlockListTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, publisherblocklist_post_Tool)
 
-
 	return tools
 }
 
 // PublisherBlockList handlers
-
 
 // HandlePublisherblocklist_post_append_publisher_urls handles the publisherblocklist_post_append_publisher_urls tool
 func HandlePublisherblocklist_post_append_publisher_urls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -114,8 +111,6 @@ func HandlePublisherblocklist_post_append_publisher_urls(ctx context.Context, re
 	}
 	args["publisher_urls"] = publisher_urls
 
-
-
 	// Call the client method
 	result, err := client.Publisherblocklist_post_append_publisher_urls(args)
 	if err != nil {
@@ -130,7 +125,6 @@ func HandlePublisherblocklist_post_append_publisher_urls(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePublisherblocklist_get_paged_web_publishers handles the publisherblocklist_get_paged_web_publishers tool
 func HandlePublisherblocklist_get_paged_web_publishers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -151,8 +145,6 @@ func HandlePublisherblocklist_get_paged_web_publishers(ctx context.Context, requ
 		args["draft_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Publisherblocklist_get_paged_web_publishers(args)
 	if err != nil {
@@ -168,7 +160,6 @@ func HandlePublisherblocklist_get_paged_web_publishers(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandlePublisherblocklist_delete_ handles the publisherblocklist_delete_ tool
 func HandlePublisherblocklist_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -182,8 +173,6 @@ func HandlePublisherblocklist_delete_(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Publisherblocklist_delete_(args)
@@ -199,7 +188,6 @@ func HandlePublisherblocklist_delete_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePublisherblocklist_get_ handles the publisherblocklist_get_ tool
 func HandlePublisherblocklist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -230,8 +218,6 @@ func HandlePublisherblocklist_get_(ctx context.Context, request mcp.CallToolRequ
 		args["draft_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Publisherblocklist_get_(args)
 	if err != nil {
@@ -246,7 +232,6 @@ func HandlePublisherblocklist_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePublisherblocklist_post_ handles the publisherblocklist_post_ tool
 func HandlePublisherblocklist_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -269,8 +254,6 @@ func HandlePublisherblocklist_post_(ctx context.Context, request mcp.CallToolReq
 	}
 	args["spec"] = spec
 
-
-
 	// Call the client method
 	result, err := client.Publisherblocklist_post_(args)
 	if err != nil {
@@ -285,4 +268,3 @@ func HandlePublisherblocklist_post_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

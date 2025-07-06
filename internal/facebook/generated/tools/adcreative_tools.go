@@ -15,7 +15,6 @@ import (
 func GetAdCreativeTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adcreative_post_adlabels tool
 	adcreative_post_adlabelsTool := mcp.NewTool("adcreative_post_adlabels",
 		mcp.WithDescription("POST adlabels for AdCreative"),
@@ -158,12 +157,10 @@ func GetAdCreativeTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adcreative_post_Tool)
 
-
 	return tools
 }
 
 // AdCreative handlers
-
 
 // HandleAdcreative_post_adlabels handles the adcreative_post_adlabels tool
 func HandleAdcreative_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -186,8 +183,6 @@ func HandleAdcreative_post_adlabels(ctx context.Context, request mcp.CallToolReq
 	}
 	args["adlabels"] = adlabels
 
-
-
 	// Call the client method
 	result, err := client.Adcreative_post_adlabels(args)
 	if err != nil {
@@ -203,7 +198,6 @@ func HandleAdcreative_post_adlabels(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdcreative_get_creative_insights handles the adcreative_get_creative_insights tool
 func HandleAdcreative_get_creative_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -217,8 +211,6 @@ func HandleAdcreative_get_creative_insights(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adcreative_get_creative_insights(args)
@@ -234,7 +226,6 @@ func HandleAdcreative_get_creative_insights(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdcreative_get_previews handles the adcreative_get_previews tool
 func HandleAdcreative_get_previews(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -326,8 +317,6 @@ func HandleAdcreative_get_previews(ctx context.Context, request mcp.CallToolRequ
 		args["width"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adcreative_get_previews(args)
 	if err != nil {
@@ -342,7 +331,6 @@ func HandleAdcreative_get_previews(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdcreative_delete_ handles the adcreative_delete_ tool
 func HandleAdcreative_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -379,8 +367,6 @@ func HandleAdcreative_delete_(ctx context.Context, request mcp.CallToolRequest) 
 		args["status"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adcreative_delete_(args)
 	if err != nil {
@@ -395,7 +381,6 @@ func HandleAdcreative_delete_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdcreative_get_ handles the adcreative_get_ tool
 func HandleAdcreative_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -421,8 +406,6 @@ func HandleAdcreative_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["thumbnail_width"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adcreative_get_(args)
 	if err != nil {
@@ -437,7 +420,6 @@ func HandleAdcreative_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdcreative_post_ handles the adcreative_post_ tool
 func HandleAdcreative_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -474,8 +456,6 @@ func HandleAdcreative_post_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["status"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adcreative_post_(args)
 	if err != nil {
@@ -490,4 +470,3 @@ func HandleAdcreative_post_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

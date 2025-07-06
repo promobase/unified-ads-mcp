@@ -15,7 +15,6 @@ import (
 func GetProductItemOfferTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// productitemoffer_get_ tool
 	productitemoffer_get_Tool := mcp.NewTool("productitemoffer_get_",
 		mcp.WithDescription("GET  for ProductItemOffer"),
@@ -26,12 +25,10 @@ func GetProductItemOfferTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, productitemoffer_get_Tool)
 
-
 	return tools
 }
 
 // ProductItemOffer handlers
-
 
 // HandleProductitemoffer_get_ handles the productitemoffer_get_ tool
 func HandleProductitemoffer_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleProductitemoffer_get_(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Productitemoffer_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleProductitemoffer_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

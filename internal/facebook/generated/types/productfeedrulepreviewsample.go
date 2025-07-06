@@ -4,6 +4,6 @@ package types
 
 // ProductFeedRulePreviewSample represents a Facebook ProductFeedRulePreviewSample object
 type ProductFeedRulePreviewSample struct {
-	Properties_after []interface{} `json:"properties_after"`
+	Properties_after  []interface{} `json:"properties_after"`
 	Properties_before []interface{} `json:"properties_before"`
 }

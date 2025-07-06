@@ -15,7 +15,6 @@ import (
 func GetCommentTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// comment_get_comments tool
 	comment_get_commentsTool := mcp.NewTool("comment_get_comments",
 		mcp.WithDescription("GET comments for Comment"),
@@ -198,12 +197,10 @@ func GetCommentTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, comment_post_Tool)
 
-
 	return tools
 }
 
 // Comment handlers
-
 
 // HandleComment_get_comments handles the comment_get_comments tool
 func HandleComment_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -239,8 +236,6 @@ func HandleComment_get_comments(ctx context.Context, request mcp.CallToolRequest
 		args["since"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Comment_get_comments(args)
 	if err != nil {
@@ -255,7 +250,6 @@ func HandleComment_get_comments(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleComment_post_comments handles the comment_post_comments tool
 func HandleComment_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -338,8 +332,6 @@ func HandleComment_post_comments(ctx context.Context, request mcp.CallToolReques
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Comment_post_comments(args)
 	if err != nil {
@@ -354,7 +346,6 @@ func HandleComment_post_comments(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleComment_delete_likes handles the comment_delete_likes tool
 func HandleComment_delete_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -385,8 +376,6 @@ func HandleComment_delete_likes(ctx context.Context, request mcp.CallToolRequest
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Comment_delete_likes(args)
 	if err != nil {
@@ -402,7 +391,6 @@ func HandleComment_delete_likes(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleComment_get_likes handles the comment_get_likes tool
 func HandleComment_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -416,8 +404,6 @@ func HandleComment_get_likes(ctx context.Context, request mcp.CallToolRequest) (
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Comment_get_likes(args)
@@ -433,7 +419,6 @@ func HandleComment_get_likes(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleComment_post_likes handles the comment_post_likes tool
 func HandleComment_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -464,8 +449,6 @@ func HandleComment_post_likes(ctx context.Context, request mcp.CallToolRequest) 
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Comment_post_likes(args)
 	if err != nil {
@@ -480,7 +463,6 @@ func HandleComment_post_likes(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleComment_get_reactions handles the comment_get_reactions tool
 func HandleComment_get_reactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -501,8 +483,6 @@ func HandleComment_get_reactions(ctx context.Context, request mcp.CallToolReques
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Comment_get_reactions(args)
 	if err != nil {
@@ -518,7 +498,6 @@ func HandleComment_get_reactions(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleComment_delete_ handles the comment_delete_ tool
 func HandleComment_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -532,8 +511,6 @@ func HandleComment_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Comment_delete_(args)
@@ -550,7 +527,6 @@ func HandleComment_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleComment_get_ handles the comment_get_ tool
 func HandleComment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -564,8 +540,6 @@ func HandleComment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Comment_get_(args)
@@ -581,7 +555,6 @@ func HandleComment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleComment_post_ handles the comment_post_ tool
 func HandleComment_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -622,8 +595,6 @@ func HandleComment_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args["message"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Comment_post_(args)
 	if err != nil {
@@ -638,4 +609,3 @@ func HandleComment_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

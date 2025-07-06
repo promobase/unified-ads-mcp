@@ -15,7 +15,6 @@ import (
 func GetExtendedCreditInvoiceGroupTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// extendedcreditinvoicegroup_delete_ad_accounts tool
 	extendedcreditinvoicegroup_delete_ad_accountsTool := mcp.NewTool("extendedcreditinvoicegroup_delete_ad_accounts",
 		mcp.WithDescription("DELETE ad_accounts for ExtendedCreditInvoiceGroup"),
@@ -90,12 +89,10 @@ func GetExtendedCreditInvoiceGroupTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, extendedcreditinvoicegroup_post_Tool)
 
-
 	return tools
 }
 
 // ExtendedCreditInvoiceGroup handlers
-
 
 // HandleExtendedcreditinvoicegroup_delete_ad_accounts handles the extendedcreditinvoicegroup_delete_ad_accounts tool
 func HandleExtendedcreditinvoicegroup_delete_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -118,8 +115,6 @@ func HandleExtendedcreditinvoicegroup_delete_ad_accounts(ctx context.Context, re
 	}
 	args["ad_account_id"] = ad_account_id
 
-
-
 	// Call the client method
 	result, err := client.Extendedcreditinvoicegroup_delete_ad_accounts(args)
 	if err != nil {
@@ -135,7 +130,6 @@ func HandleExtendedcreditinvoicegroup_delete_ad_accounts(ctx context.Context, re
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleExtendedcreditinvoicegroup_get_ad_accounts handles the extendedcreditinvoicegroup_get_ad_accounts tool
 func HandleExtendedcreditinvoicegroup_get_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -149,8 +143,6 @@ func HandleExtendedcreditinvoicegroup_get_ad_accounts(ctx context.Context, reque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Extendedcreditinvoicegroup_get_ad_accounts(args)
@@ -166,7 +158,6 @@ func HandleExtendedcreditinvoicegroup_get_ad_accounts(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleExtendedcreditinvoicegroup_post_ad_accounts handles the extendedcreditinvoicegroup_post_ad_accounts tool
 func HandleExtendedcreditinvoicegroup_post_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -189,8 +180,6 @@ func HandleExtendedcreditinvoicegroup_post_ad_accounts(ctx context.Context, requ
 	}
 	args["ad_account_id"] = ad_account_id
 
-
-
 	// Call the client method
 	result, err := client.Extendedcreditinvoicegroup_post_ad_accounts(args)
 	if err != nil {
@@ -206,7 +195,6 @@ func HandleExtendedcreditinvoicegroup_post_ad_accounts(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleExtendedcreditinvoicegroup_delete_ handles the extendedcreditinvoicegroup_delete_ tool
 func HandleExtendedcreditinvoicegroup_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -220,8 +208,6 @@ func HandleExtendedcreditinvoicegroup_delete_(ctx context.Context, request mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Extendedcreditinvoicegroup_delete_(args)
@@ -238,7 +224,6 @@ func HandleExtendedcreditinvoicegroup_delete_(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleExtendedcreditinvoicegroup_get_ handles the extendedcreditinvoicegroup_get_ tool
 func HandleExtendedcreditinvoicegroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -252,8 +237,6 @@ func HandleExtendedcreditinvoicegroup_get_(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Extendedcreditinvoicegroup_get_(args)
@@ -269,7 +252,6 @@ func HandleExtendedcreditinvoicegroup_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleExtendedcreditinvoicegroup_post_ handles the extendedcreditinvoicegroup_post_ tool
 func HandleExtendedcreditinvoicegroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -296,8 +278,6 @@ func HandleExtendedcreditinvoicegroup_post_(ctx context.Context, request mcp.Cal
 		args["name"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Extendedcreditinvoicegroup_post_(args)
 	if err != nil {
@@ -312,4 +292,3 @@ func HandleExtendedcreditinvoicegroup_post_(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

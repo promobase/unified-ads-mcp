@@ -15,7 +15,6 @@ import (
 func GetAnalyticsSegmentTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// analyticssegment_get_ tool
 	analyticssegment_get_Tool := mcp.NewTool("analyticssegment_get_",
 		mcp.WithDescription("GET  for AnalyticsSegment"),
@@ -35,12 +34,10 @@ func GetAnalyticsSegmentTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, analyticssegment_get_Tool)
 
-
 	return tools
 }
 
 // AnalyticsSegment handlers
-
 
 // HandleAnalyticssegment_get_ handles the analyticssegment_get_ tool
 func HandleAnalyticssegment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -71,8 +68,6 @@ func HandleAnalyticssegment_get_(ctx context.Context, request mcp.CallToolReques
 		args["start_date"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Analyticssegment_get_(args)
 	if err != nil {
@@ -87,4 +82,3 @@ func HandleAnalyticssegment_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

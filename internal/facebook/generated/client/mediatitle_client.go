@@ -21,18 +21,14 @@ func NewMediaTitleClient(accessToken string) *MediaTitleClient {
 	}
 }
 
-
 // mediatitle_get_channels_to_integrity_status GET channels_to_integrity_status for MediaTitle
 func (c *MediaTitleClient) Mediatitle_get_channels_to_integrity_status(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "channels_to_integrity_status")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,11 +60,9 @@ func (c *MediaTitleClient) Mediatitle_get_channels_to_integrity_status(args map[
 	return result, nil
 }
 
-
 // mediatitle_get_override_details GET override_details for MediaTitle
 func (c *MediaTitleClient) Mediatitle_get_override_details(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "override_details")
@@ -82,7 +76,6 @@ func (c *MediaTitleClient) Mediatitle_get_override_details(args map[string]inter
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -113,19 +106,15 @@ func (c *MediaTitleClient) Mediatitle_get_override_details(args map[string]inter
 	return result, nil
 }
 
-
 // mediatitle_get_videos_metadata GET videos_metadata for MediaTitle
 func (c *MediaTitleClient) Mediatitle_get_videos_metadata(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "videos_metadata")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -156,18 +145,14 @@ func (c *MediaTitleClient) Mediatitle_get_videos_metadata(args map[string]interf
 	return result, nil
 }
 
-
 // mediatitle_delete_ DELETE  for MediaTitle
 func (c *MediaTitleClient) Mediatitle_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -199,18 +184,14 @@ func (c *MediaTitleClient) Mediatitle_delete_(args map[string]interface{}) (inte
 	return result, nil
 }
 
-
 // mediatitle_get_ GET  for MediaTitle
 func (c *MediaTitleClient) Mediatitle_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -242,11 +223,9 @@ func (c *MediaTitleClient) Mediatitle_get_(args map[string]interface{}) (interfa
 	return result, nil
 }
 
-
 // mediatitle_post_ POST  for MediaTitle
 func (c *MediaTitleClient) Mediatitle_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -290,7 +269,6 @@ func (c *MediaTitleClient) Mediatitle_post_(args map[string]interface{}) (interf
 		urlParams.Set("url", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -320,4 +298,3 @@ func (c *MediaTitleClient) Mediatitle_post_(args map[string]interface{}) (interf
 
 	return result, nil
 }
-

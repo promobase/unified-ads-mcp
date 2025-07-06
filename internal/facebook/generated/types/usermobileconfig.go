@@ -4,6 +4,6 @@ package types
 
 // UserMobileConfig represents a Facebook UserMobileConfig object
 type UserMobileConfig struct {
-	Section_name string `json:"section_name"`
-	Value map[string]interface{} `json:"value"`
+	Section_name string                 `json:"section_name"`
+	Value        map[string]interface{} `json:"value"`
 }

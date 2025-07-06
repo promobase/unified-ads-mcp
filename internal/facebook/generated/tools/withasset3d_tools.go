@@ -15,7 +15,6 @@ import (
 func GetWithAsset3DTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// withasset3d_get_ tool
 	withasset3d_get_Tool := mcp.NewTool("withasset3d_get_",
 		mcp.WithDescription("GET  for WithAsset3D"),
@@ -26,12 +25,10 @@ func GetWithAsset3DTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, withasset3d_get_Tool)
 
-
 	return tools
 }
 
 // WithAsset3D handlers
-
 
 // HandleWithasset3d_get_ handles the withasset3d_get_ tool
 func HandleWithasset3d_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleWithasset3d_get_(ctx context.Context, request mcp.CallToolRequest) (*
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Withasset3d_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleWithasset3d_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

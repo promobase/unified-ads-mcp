@@ -4,8 +4,8 @@ package types
 
 // ShadowIGUserPartnershipAdsMediaErrors represents a Facebook ShadowIGUserPartnershipAdsMediaErrors object
 type ShadowIGUserPartnershipAdsMediaErrors struct {
-	Ad_code string `json:"ad_code"`
-	Error_codes string `json:"error_codes"`
-	Errors []string `json:"errors"`
-	Permalink string `json:"permalink"`
+	Ad_code     string   `json:"ad_code"`
+	Error_codes string   `json:"error_codes"`
+	Errors      []string `json:"errors"`
+	Permalink   string   `json:"permalink"`
 }

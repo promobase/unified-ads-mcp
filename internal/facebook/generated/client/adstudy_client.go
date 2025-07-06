@@ -21,18 +21,14 @@ func NewAdStudyClient(accessToken string) *AdStudyClient {
 	}
 }
 
-
 // adstudy_get_cells GET cells for AdStudy
 func (c *AdStudyClient) Adstudy_get_cells(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "cells")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,7 +60,6 @@ func (c *AdStudyClient) Adstudy_get_cells(args map[string]interface{}) (interfac
 	return result, nil
 }
 
-
 // adstudy_post_checkpoint POST checkpoint for AdStudy
 func (c *AdStudyClient) Adstudy_post_checkpoint(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -83,7 +78,6 @@ func (c *AdStudyClient) Adstudy_post_checkpoint(args map[string]interface{}) (in
 		return nil, fmt.Errorf("missing required parameter: component")
 	}
 	_ = component // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "checkpoint")
@@ -106,7 +100,6 @@ func (c *AdStudyClient) Adstudy_post_checkpoint(args map[string]interface{}) (in
 		urlParams.Set("run_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -137,18 +130,14 @@ func (c *AdStudyClient) Adstudy_post_checkpoint(args map[string]interface{}) (in
 	return result, nil
 }
 
-
 // adstudy_get_instances GET instances for AdStudy
 func (c *AdStudyClient) Adstudy_get_instances(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "instances")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -180,7 +169,6 @@ func (c *AdStudyClient) Adstudy_get_instances(args map[string]interface{}) (inte
 	return result, nil
 }
 
-
 // adstudy_post_instances POST instances for AdStudy
 func (c *AdStudyClient) Adstudy_post_instances(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -189,7 +177,6 @@ func (c *AdStudyClient) Adstudy_post_instances(args map[string]interface{}) (int
 		return nil, fmt.Errorf("missing required parameter: breakdown_key")
 	}
 	_ = breakdown_key // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "instances")
@@ -203,7 +190,6 @@ func (c *AdStudyClient) Adstudy_post_instances(args map[string]interface{}) (int
 		urlParams.Set("run_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -234,18 +220,14 @@ func (c *AdStudyClient) Adstudy_post_instances(args map[string]interface{}) (int
 	return result, nil
 }
 
-
 // adstudy_get_objectives GET objectives for AdStudy
 func (c *AdStudyClient) Adstudy_get_objectives(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "objectives")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -277,18 +259,14 @@ func (c *AdStudyClient) Adstudy_get_objectives(args map[string]interface{}) (int
 	return result, nil
 }
 
-
 // adstudy_delete_ DELETE  for AdStudy
 func (c *AdStudyClient) Adstudy_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -320,18 +298,14 @@ func (c *AdStudyClient) Adstudy_delete_(args map[string]interface{}) (interface{
 	return result, nil
 }
 
-
 // adstudy_get_ GET  for AdStudy
 func (c *AdStudyClient) Adstudy_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -363,11 +337,9 @@ func (c *AdStudyClient) Adstudy_get_(args map[string]interface{}) (interface{}, 
 	return result, nil
 }
 
-
 // adstudy_post_ POST  for AdStudy
 func (c *AdStudyClient) Adstudy_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -411,7 +383,6 @@ func (c *AdStudyClient) Adstudy_post_(args map[string]interface{}) (interface{},
 		urlParams.Set("viewers", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -441,4 +412,3 @@ func (c *AdStudyClient) Adstudy_post_(args map[string]interface{}) (interface{},
 
 	return result, nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetDynamicContentSetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// dynamiccontentset_get_ tool
 	dynamiccontentset_get_Tool := mcp.NewTool("dynamiccontentset_get_",
 		mcp.WithDescription("GET  for DynamicContentSet"),
@@ -26,12 +25,10 @@ func GetDynamicContentSetTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, dynamiccontentset_get_Tool)
 
-
 	return tools
 }
 
 // DynamicContentSet handlers
-
 
 // HandleDynamiccontentset_get_ handles the dynamiccontentset_get_ tool
 func HandleDynamiccontentset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleDynamiccontentset_get_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Dynamiccontentset_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleDynamiccontentset_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

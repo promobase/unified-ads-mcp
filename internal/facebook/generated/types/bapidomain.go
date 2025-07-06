@@ -4,8 +4,8 @@ package types
 
 // BAPIDomain represents a Facebook BAPIDomain object
 type BAPIDomain struct {
-	Domain string `json:"domain"`
-	In_cool_down_until int `json:"in_cool_down_until"`
-	Is_eligible_for_vo bool `json:"is_eligible_for_vo"`
-	Is_in_cool_down bool `json:"is_in_cool_down"`
+	Domain             string `json:"domain"`
+	In_cool_down_until int    `json:"in_cool_down_until"`
+	Is_eligible_for_vo bool   `json:"is_eligible_for_vo"`
+	Is_in_cool_down    bool   `json:"is_in_cool_down"`
 }

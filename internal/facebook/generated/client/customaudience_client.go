@@ -21,11 +21,9 @@ func NewCustomAudienceClient(accessToken string) *CustomAudienceClient {
 	}
 }
 
-
 // customaudience_delete_adaccounts DELETE adaccounts for CustomAudience
 func (c *CustomAudienceClient) Customaudience_delete_adaccounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
@@ -35,7 +33,6 @@ func (c *CustomAudienceClient) Customaudience_delete_adaccounts(args map[string]
 	if val, ok := args["adaccounts"]; ok {
 		urlParams.Set("adaccounts", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -67,11 +64,9 @@ func (c *CustomAudienceClient) Customaudience_delete_adaccounts(args map[string]
 	return result, nil
 }
 
-
 // customaudience_get_adaccounts GET adaccounts for CustomAudience
 func (c *CustomAudienceClient) Customaudience_get_adaccounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
@@ -81,7 +76,6 @@ func (c *CustomAudienceClient) Customaudience_get_adaccounts(args map[string]int
 	if val, ok := args["permissions"]; ok {
 		urlParams.Set("permissions", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -113,11 +107,9 @@ func (c *CustomAudienceClient) Customaudience_get_adaccounts(args map[string]int
 	return result, nil
 }
 
-
 // customaudience_post_adaccounts POST adaccounts for CustomAudience
 func (c *CustomAudienceClient) Customaudience_post_adaccounts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adaccounts")
@@ -136,7 +128,6 @@ func (c *CustomAudienceClient) Customaudience_post_adaccounts(args map[string]in
 	if val, ok := args["replace"]; ok {
 		urlParams.Set("replace", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -168,11 +159,9 @@ func (c *CustomAudienceClient) Customaudience_post_adaccounts(args map[string]in
 	return result, nil
 }
 
-
 // customaudience_get_ads GET ads for CustomAudience
 func (c *CustomAudienceClient) Customaudience_get_ads(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ads")
@@ -185,7 +174,6 @@ func (c *CustomAudienceClient) Customaudience_get_ads(args map[string]interface{
 	if val, ok := args["status"]; ok {
 		urlParams.Set("status", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -217,11 +205,9 @@ func (c *CustomAudienceClient) Customaudience_get_ads(args map[string]interface{
 	return result, nil
 }
 
-
 // customaudience_get_health GET health for CustomAudience
 func (c *CustomAudienceClient) Customaudience_get_health(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "health")
@@ -247,7 +233,6 @@ func (c *CustomAudienceClient) Customaudience_get_health(args map[string]interfa
 		urlParams.Set("value_version", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -278,11 +263,9 @@ func (c *CustomAudienceClient) Customaudience_get_health(args map[string]interfa
 	return result, nil
 }
 
-
 // customaudience_get_salts GET salts for CustomAudience
 func (c *CustomAudienceClient) Customaudience_get_salts(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "salts")
@@ -293,7 +276,6 @@ func (c *CustomAudienceClient) Customaudience_get_salts(args map[string]interfac
 		urlParams.Set("params", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -323,7 +305,6 @@ func (c *CustomAudienceClient) Customaudience_get_salts(args map[string]interfac
 
 	return result, nil
 }
-
 
 // customaudience_post_salts POST salts for CustomAudience
 func (c *CustomAudienceClient) Customaudience_post_salts(args map[string]interface{}) (interface{}, error) {
@@ -344,7 +325,6 @@ func (c *CustomAudienceClient) Customaudience_post_salts(args map[string]interfa
 	}
 	_ = valid_to // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "salts")
 	urlParams := url.Values{}
@@ -359,7 +339,6 @@ func (c *CustomAudienceClient) Customaudience_post_salts(args map[string]interfa
 	if val, ok := args["valid_to"]; ok {
 		urlParams.Set("valid_to", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -391,11 +370,9 @@ func (c *CustomAudienceClient) Customaudience_post_salts(args map[string]interfa
 	return result, nil
 }
 
-
 // customaudience_get_sessions GET sessions for CustomAudience
 func (c *CustomAudienceClient) Customaudience_get_sessions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "sessions")
@@ -406,7 +383,6 @@ func (c *CustomAudienceClient) Customaudience_get_sessions(args map[string]inter
 		urlParams.Set("session_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -437,19 +413,15 @@ func (c *CustomAudienceClient) Customaudience_get_sessions(args map[string]inter
 	return result, nil
 }
 
-
 // customaudience_get_shared_account_info GET shared_account_info for CustomAudience
 func (c *CustomAudienceClient) Customaudience_get_shared_account_info(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "shared_account_info")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -480,11 +452,9 @@ func (c *CustomAudienceClient) Customaudience_get_shared_account_info(args map[s
 	return result, nil
 }
 
-
 // customaudience_delete_users DELETE users for CustomAudience
 func (c *CustomAudienceClient) Customaudience_delete_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "users")
@@ -500,7 +470,6 @@ func (c *CustomAudienceClient) Customaudience_delete_users(args map[string]inter
 	if val, ok := args["session"]; ok {
 		urlParams.Set("session", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -532,11 +501,9 @@ func (c *CustomAudienceClient) Customaudience_delete_users(args map[string]inter
 	return result, nil
 }
 
-
 // customaudience_post_users POST users for CustomAudience
 func (c *CustomAudienceClient) Customaudience_post_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "users")
@@ -552,7 +519,6 @@ func (c *CustomAudienceClient) Customaudience_post_users(args map[string]interfa
 	if val, ok := args["session"]; ok {
 		urlParams.Set("session", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -584,7 +550,6 @@ func (c *CustomAudienceClient) Customaudience_post_users(args map[string]interfa
 	return result, nil
 }
 
-
 // customaudience_post_usersreplace POST usersreplace for CustomAudience
 func (c *CustomAudienceClient) Customaudience_post_usersreplace(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -598,7 +563,6 @@ func (c *CustomAudienceClient) Customaudience_post_usersreplace(args map[string]
 		return nil, fmt.Errorf("missing required parameter: session")
 	}
 	_ = session // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "usersreplace")
@@ -615,7 +579,6 @@ func (c *CustomAudienceClient) Customaudience_post_usersreplace(args map[string]
 		urlParams.Set("session", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -646,18 +609,14 @@ func (c *CustomAudienceClient) Customaudience_post_usersreplace(args map[string]
 	return result, nil
 }
 
-
 // customaudience_delete_ DELETE  for CustomAudience
 func (c *CustomAudienceClient) Customaudience_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -689,11 +648,9 @@ func (c *CustomAudienceClient) Customaudience_delete_(args map[string]interface{
 	return result, nil
 }
 
-
 // customaudience_get_ GET  for CustomAudience
 func (c *CustomAudienceClient) Customaudience_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -713,7 +670,6 @@ func (c *CustomAudienceClient) Customaudience_get_(args map[string]interface{}) 
 		urlParams.Set("target_countries", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -744,11 +700,9 @@ func (c *CustomAudienceClient) Customaudience_get_(args map[string]interface{}) 
 	return result, nil
 }
 
-
 // customaudience_post_ POST  for CustomAudience
 func (c *CustomAudienceClient) Customaudience_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -822,7 +776,6 @@ func (c *CustomAudienceClient) Customaudience_post_(args map[string]interface{})
 		urlParams.Set("use_in_campaigns", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -852,4 +805,3 @@ func (c *CustomAudienceClient) Customaudience_post_(args map[string]interface{})
 
 	return result, nil
 }
-

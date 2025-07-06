@@ -15,7 +15,6 @@ import (
 func GetCommerceOrderTransactionDetailTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// commerceordertransactiondetail_get_items tool
 	commerceordertransactiondetail_get_itemsTool := mcp.NewTool("commerceordertransactiondetail_get_items",
 		mcp.WithDescription("GET items for CommerceOrderTransactionDetail"),
@@ -36,12 +35,10 @@ func GetCommerceOrderTransactionDetailTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, commerceordertransactiondetail_get_tax_detailsTool)
 
-
 	return tools
 }
 
 // CommerceOrderTransactionDetail handlers
-
 
 // HandleCommerceordertransactiondetail_get_items handles the commerceordertransactiondetail_get_items tool
 func HandleCommerceordertransactiondetail_get_items(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleCommerceordertransactiondetail_get_items(ctx context.Context, request
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Commerceordertransactiondetail_get_items(args)
@@ -74,7 +69,6 @@ func HandleCommerceordertransactiondetail_get_items(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleCommerceordertransactiondetail_get_tax_details handles the commerceordertransactiondetail_get_tax_details tool
 func HandleCommerceordertransactiondetail_get_tax_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleCommerceordertransactiondetail_get_tax_details(ctx context.Context, r
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Commerceordertransactiondetail_get_tax_details(args)
@@ -105,4 +97,3 @@ func HandleCommerceordertransactiondetail_get_tax_details(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

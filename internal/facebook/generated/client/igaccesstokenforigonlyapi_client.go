@@ -21,7 +21,6 @@ func NewIGAccessTokenForIGOnlyAPIClient(accessToken string) *IGAccessTokenForIGO
 	}
 }
 
-
 // igaccesstokenforigonlyapi_get_ GET  for IGAccessTokenForIGOnlyAPI
 func (c *IGAccessTokenForIGOnlyAPIClient) Igaccesstokenforigonlyapi_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -41,7 +40,6 @@ func (c *IGAccessTokenForIGOnlyAPIClient) Igaccesstokenforigonlyapi_get_(args ma
 	}
 	_ = grant_type // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
@@ -56,7 +54,6 @@ func (c *IGAccessTokenForIGOnlyAPIClient) Igaccesstokenforigonlyapi_get_(args ma
 	if val, ok := args["grant_type"]; ok {
 		urlParams.Set("grant_type", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -87,4 +84,3 @@ func (c *IGAccessTokenForIGOnlyAPIClient) Igaccesstokenforigonlyapi_get_(args ma
 
 	return result, nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetLiveVideoErrorTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// livevideoerror_get_ tool
 	livevideoerror_get_Tool := mcp.NewTool("livevideoerror_get_",
 		mcp.WithDescription("GET  for LiveVideoError"),
@@ -26,12 +25,10 @@ func GetLiveVideoErrorTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, livevideoerror_get_Tool)
 
-
 	return tools
 }
 
 // LiveVideoError handlers
-
 
 // HandleLivevideoerror_get_ handles the livevideoerror_get_ tool
 func HandleLivevideoerror_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleLivevideoerror_get_(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Livevideoerror_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleLivevideoerror_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

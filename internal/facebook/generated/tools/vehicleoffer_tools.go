@@ -15,7 +15,6 @@ import (
 func GetVehicleOfferTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// vehicleoffer_get_channels_to_integrity_status tool
 	vehicleoffer_get_channels_to_integrity_statusTool := mcp.NewTool("vehicleoffer_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for VehicleOffer"),
@@ -63,12 +62,10 @@ func GetVehicleOfferTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, vehicleoffer_get_Tool)
 
-
 	return tools
 }
 
 // VehicleOffer handlers
-
 
 // HandleVehicleoffer_get_channels_to_integrity_status handles the vehicleoffer_get_channels_to_integrity_status tool
 func HandleVehicleoffer_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -84,8 +81,6 @@ func HandleVehicleoffer_get_channels_to_integrity_status(ctx context.Context, re
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Vehicleoffer_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -100,7 +95,6 @@ func HandleVehicleoffer_get_channels_to_integrity_status(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleVehicleoffer_get_override_details handles the vehicleoffer_get_override_details tool
 func HandleVehicleoffer_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -127,8 +121,6 @@ func HandleVehicleoffer_get_override_details(ctx context.Context, request mcp.Ca
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Vehicleoffer_get_override_details(args)
 	if err != nil {
@@ -144,7 +136,6 @@ func HandleVehicleoffer_get_override_details(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleVehicleoffer_get_videos_metadata handles the vehicleoffer_get_videos_metadata tool
 func HandleVehicleoffer_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -158,8 +149,6 @@ func HandleVehicleoffer_get_videos_metadata(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Vehicleoffer_get_videos_metadata(args)
@@ -176,7 +165,6 @@ func HandleVehicleoffer_get_videos_metadata(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleVehicleoffer_get_ handles the vehicleoffer_get_ tool
 func HandleVehicleoffer_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -190,8 +178,6 @@ func HandleVehicleoffer_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Vehicleoffer_get_(args)
@@ -207,4 +193,3 @@ func HandleVehicleoffer_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

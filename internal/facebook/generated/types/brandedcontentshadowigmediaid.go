@@ -4,10 +4,10 @@ package types
 
 // BrandedContentShadowIGMediaID represents a Facebook BrandedContentShadowIGMediaID object
 type BrandedContentShadowIGMediaID struct {
-	Eligibility_errors []string `json:"eligibility_errors"`
-	Has_permission_for_partnership_ad bool `json:"has_permission_for_partnership_ad"`
-	Id string `json:"id"`
-	Owner_id string `json:"owner_id"`
-	Permalink string `json:"permalink"`
-	Recommended_campaign_objectives []string `json:"recommended_campaign_objectives"`
+	Eligibility_errors                []string `json:"eligibility_errors"`
+	Has_permission_for_partnership_ad bool     `json:"has_permission_for_partnership_ad"`
+	Id                                string   `json:"id"`
+	Owner_id                          string   `json:"owner_id"`
+	Permalink                         string   `json:"permalink"`
+	Recommended_campaign_objectives   []string `json:"recommended_campaign_objectives"`
 }

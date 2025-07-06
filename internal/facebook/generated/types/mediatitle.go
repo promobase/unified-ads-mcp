@@ -4,25 +4,25 @@ package types
 
 // MediaTitle represents a Facebook MediaTitle object
 type MediaTitle struct {
-	Applinks *CatalogItemAppLinks `json:"applinks"`
+	Applinks                 *CatalogItemAppLinks    `json:"applinks"`
 	Category_specific_fields *CatalogSubVerticalList `json:"category_specific_fields"`
-	Content_category string `json:"content_category"`
-	Currency string `json:"currency"`
-	Description string `json:"description"`
-	Fb_page_alias string `json:"fb_page_alias"`
-	Fb_page_id *Page `json:"fb_page_id"`
-	Genres []string `json:"genres"`
-	Id string `json:"id"`
-	Image_fetch_status string `json:"image_fetch_status"`
-	Images []string `json:"images"`
-	Kg_fb_id string `json:"kg_fb_id"`
-	Media_title_id string `json:"media_title_id"`
-	Price string `json:"price"`
-	Sanitized_images []string `json:"sanitized_images"`
-	Title string `json:"title"`
-	Title_display_name string `json:"title_display_name"`
-	Unit_price map[string]interface{} `json:"unit_price"`
-	Url string `json:"url"`
-	Visibility string `json:"visibility"`
-	Wiki_data_item string `json:"wiki_data_item"`
+	Content_category         string                  `json:"content_category"`
+	Currency                 string                  `json:"currency"`
+	Description              string                  `json:"description"`
+	Fb_page_alias            string                  `json:"fb_page_alias"`
+	Fb_page_id               *Page                   `json:"fb_page_id"`
+	Genres                   []string                `json:"genres"`
+	Id                       string                  `json:"id"`
+	Image_fetch_status       string                  `json:"image_fetch_status"`
+	Images                   []string                `json:"images"`
+	Kg_fb_id                 string                  `json:"kg_fb_id"`
+	Media_title_id           string                  `json:"media_title_id"`
+	Price                    string                  `json:"price"`
+	Sanitized_images         []string                `json:"sanitized_images"`
+	Title                    string                  `json:"title"`
+	Title_display_name       string                  `json:"title_display_name"`
+	Unit_price               map[string]interface{}  `json:"unit_price"`
+	Url                      string                  `json:"url"`
+	Visibility               string                  `json:"visibility"`
+	Wiki_data_item           string                  `json:"wiki_data_item"`
 }

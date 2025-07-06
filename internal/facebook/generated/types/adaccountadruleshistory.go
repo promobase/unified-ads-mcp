@@ -6,13 +6,13 @@ import "time"
 
 // AdAccountAdRulesHistory represents a Facebook AdAccountAdRulesHistory object
 type AdAccountAdRulesHistory struct {
-	Evaluation_spec *AdRuleEvaluationSpec `json:"evaluation_spec"`
-	Exception_code int `json:"exception_code"`
-	Exception_message string `json:"exception_message"`
-	Execution_spec *AdRuleExecutionSpec `json:"execution_spec"`
-	Is_manual bool `json:"is_manual"`
-	Results []AdRuleHistoryResult `json:"results"`
-	Rule_id int `json:"rule_id"`
-	Schedule_spec *AdRuleScheduleSpec `json:"schedule_spec"`
-	Timestamp time.Time `json:"timestamp"`
+	Evaluation_spec   *AdRuleEvaluationSpec `json:"evaluation_spec"`
+	Exception_code    int                   `json:"exception_code"`
+	Exception_message string                `json:"exception_message"`
+	Execution_spec    *AdRuleExecutionSpec  `json:"execution_spec"`
+	Is_manual         bool                  `json:"is_manual"`
+	Results           []AdRuleHistoryResult `json:"results"`
+	Rule_id           int                   `json:"rule_id"`
+	Schedule_spec     *AdRuleScheduleSpec   `json:"schedule_spec"`
+	Timestamp         time.Time             `json:"timestamp"`
 }

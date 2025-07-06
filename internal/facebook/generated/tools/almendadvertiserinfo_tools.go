@@ -15,7 +15,6 @@ import (
 func GetALMEndAdvertiserInfoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// almendadvertiserinfo_get_ tool
 	almendadvertiserinfo_get_Tool := mcp.NewTool("almendadvertiserinfo_get_",
 		mcp.WithDescription("GET  for ALMEndAdvertiserInfo"),
@@ -26,12 +25,10 @@ func GetALMEndAdvertiserInfoTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, almendadvertiserinfo_get_Tool)
 
-
 	return tools
 }
 
 // ALMEndAdvertiserInfo handlers
-
 
 // HandleAlmendadvertiserinfo_get_ handles the almendadvertiserinfo_get_ tool
 func HandleAlmendadvertiserinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAlmendadvertiserinfo_get_(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Almendadvertiserinfo_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAlmendadvertiserinfo_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

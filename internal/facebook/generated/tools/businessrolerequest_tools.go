@@ -15,7 +15,6 @@ import (
 func GetBusinessRoleRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// businessrolerequest_delete_ tool
 	businessrolerequest_delete_Tool := mcp.NewTool("businessrolerequest_delete_",
 		mcp.WithDescription("DELETE  for BusinessRoleRequest"),
@@ -54,12 +53,10 @@ func GetBusinessRoleRequestTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, businessrolerequest_post_Tool)
 
-
 	return tools
 }
 
 // BusinessRoleRequest handlers
-
 
 // HandleBusinessrolerequest_delete_ handles the businessrolerequest_delete_ tool
 func HandleBusinessrolerequest_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -74,8 +71,6 @@ func HandleBusinessrolerequest_delete_(ctx context.Context, request mcp.CallTool
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Businessrolerequest_delete_(args)
@@ -92,7 +87,6 @@ func HandleBusinessrolerequest_delete_(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleBusinessrolerequest_get_ handles the businessrolerequest_get_ tool
 func HandleBusinessrolerequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -106,8 +100,6 @@ func HandleBusinessrolerequest_get_(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Businessrolerequest_get_(args)
@@ -123,7 +115,6 @@ func HandleBusinessrolerequest_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleBusinessrolerequest_post_ handles the businessrolerequest_post_ tool
 func HandleBusinessrolerequest_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -150,8 +141,6 @@ func HandleBusinessrolerequest_post_(ctx context.Context, request mcp.CallToolRe
 		args["tasks"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Businessrolerequest_post_(args)
 	if err != nil {
@@ -166,4 +155,3 @@ func HandleBusinessrolerequest_post_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

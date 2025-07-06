@@ -15,7 +15,6 @@ import (
 func GetSystemUserTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// systemuser_get_assigned_ad_accounts tool
 	systemuser_get_assigned_ad_accountsTool := mcp.NewTool("systemuser_get_assigned_ad_accounts",
 		mcp.WithDescription("GET assigned_ad_accounts for SystemUser"),
@@ -72,12 +71,10 @@ func GetSystemUserTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, systemuser_get_Tool)
 
-
 	return tools
 }
 
 // SystemUser handlers
-
 
 // HandleSystemuser_get_assigned_ad_accounts handles the systemuser_get_assigned_ad_accounts tool
 func HandleSystemuser_get_assigned_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -93,8 +90,6 @@ func HandleSystemuser_get_assigned_ad_accounts(ctx context.Context, request mcp.
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Systemuser_get_assigned_ad_accounts(args)
 	if err != nil {
@@ -109,7 +104,6 @@ func HandleSystemuser_get_assigned_ad_accounts(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleSystemuser_get_assigned_business_asset_groups handles the systemuser_get_assigned_business_asset_groups tool
 func HandleSystemuser_get_assigned_business_asset_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -130,8 +124,6 @@ func HandleSystemuser_get_assigned_business_asset_groups(ctx context.Context, re
 		args["contained_asset_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Systemuser_get_assigned_business_asset_groups(args)
 	if err != nil {
@@ -146,7 +138,6 @@ func HandleSystemuser_get_assigned_business_asset_groups(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleSystemuser_get_assigned_pages handles the systemuser_get_assigned_pages tool
 func HandleSystemuser_get_assigned_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -168,8 +159,6 @@ func HandleSystemuser_get_assigned_pages(ctx context.Context, request mcp.CallTo
 		args["pages"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Systemuser_get_assigned_pages(args)
 	if err != nil {
@@ -185,7 +174,6 @@ func HandleSystemuser_get_assigned_pages(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleSystemuser_get_assigned_product_catalogs handles the systemuser_get_assigned_product_catalogs tool
 func HandleSystemuser_get_assigned_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -199,8 +187,6 @@ func HandleSystemuser_get_assigned_product_catalogs(ctx context.Context, request
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Systemuser_get_assigned_product_catalogs(args)
@@ -217,7 +203,6 @@ func HandleSystemuser_get_assigned_product_catalogs(ctx context.Context, request
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleSystemuser_get_ handles the systemuser_get_ tool
 func HandleSystemuser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -231,8 +216,6 @@ func HandleSystemuser_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Systemuser_get_(args)
@@ -248,4 +231,3 @@ func HandleSystemuser_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

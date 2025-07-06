@@ -15,7 +15,6 @@ import (
 func GetAdsReportBuilderExportCoreTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adsreportbuilderexportcore_get_ tool
 	adsreportbuilderexportcore_get_Tool := mcp.NewTool("adsreportbuilderexportcore_get_",
 		mcp.WithDescription("GET  for AdsReportBuilderExportCore"),
@@ -26,12 +25,10 @@ func GetAdsReportBuilderExportCoreTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adsreportbuilderexportcore_get_Tool)
 
-
 	return tools
 }
 
 // AdsReportBuilderExportCore handlers
-
 
 // HandleAdsreportbuilderexportcore_get_ handles the adsreportbuilderexportcore_get_ tool
 func HandleAdsreportbuilderexportcore_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAdsreportbuilderexportcore_get_(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Adsreportbuilderexportcore_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAdsreportbuilderexportcore_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

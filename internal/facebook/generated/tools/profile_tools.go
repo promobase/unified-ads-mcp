@@ -15,7 +15,6 @@ import (
 func GetProfileTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// profile_get_picture tool
 	profile_get_pictureTool := mcp.NewTool("profile_get_picture",
 		mcp.WithDescription("GET picture for Profile"),
@@ -49,12 +48,10 @@ func GetProfileTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, profile_get_Tool)
 
-
 	return tools
 }
 
 // Profile handlers
-
 
 // HandleProfile_get_picture handles the profile_get_picture tool
 func HandleProfile_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -90,8 +87,6 @@ func HandleProfile_get_picture(ctx context.Context, request mcp.CallToolRequest)
 		args["width"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Profile_get_picture(args)
 	if err != nil {
@@ -107,7 +102,6 @@ func HandleProfile_get_picture(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleProfile_get_ handles the profile_get_ tool
 func HandleProfile_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -121,8 +115,6 @@ func HandleProfile_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Profile_get_(args)
@@ -138,4 +130,3 @@ func HandleProfile_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

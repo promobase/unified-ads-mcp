@@ -21,18 +21,14 @@ func NewLeadClient(accessToken string) *LeadClient {
 	}
 }
 
-
 // lead_delete_ DELETE  for Lead
 func (c *LeadClient) Lead_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,18 +60,14 @@ func (c *LeadClient) Lead_delete_(args map[string]interface{}) (interface{}, err
 	return result, nil
 }
 
-
 // lead_get_ GET  for Lead
 func (c *LeadClient) Lead_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -106,4 +98,3 @@ func (c *LeadClient) Lead_get_(args map[string]interface{}) (interface{}, error)
 
 	return result, nil
 }
-

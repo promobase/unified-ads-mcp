@@ -15,7 +15,6 @@ import (
 func GetPaymentSubscriptionTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// paymentsubscription_get_ tool
 	paymentsubscription_get_Tool := mcp.NewTool("paymentsubscription_get_",
 		mcp.WithDescription("GET  for PaymentSubscription"),
@@ -26,12 +25,10 @@ func GetPaymentSubscriptionTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, paymentsubscription_get_Tool)
 
-
 	return tools
 }
 
 // PaymentSubscription handlers
-
 
 // HandlePaymentsubscription_get_ handles the paymentsubscription_get_ tool
 func HandlePaymentsubscription_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandlePaymentsubscription_get_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Paymentsubscription_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandlePaymentsubscription_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

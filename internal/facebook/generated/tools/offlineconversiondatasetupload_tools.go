@@ -15,7 +15,6 @@ import (
 func GetOfflineConversionDataSetUploadTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// offlineconversiondatasetupload_get_progress tool
 	offlineconversiondatasetupload_get_progressTool := mcp.NewTool("offlineconversiondatasetupload_get_progress",
 		mcp.WithDescription("GET progress for OfflineConversionDataSetUpload"),
@@ -46,12 +45,10 @@ func GetOfflineConversionDataSetUploadTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, offlineconversiondatasetupload_get_Tool)
 
-
 	return tools
 }
 
 // OfflineConversionDataSetUpload handlers
-
 
 // HandleOfflineconversiondatasetupload_get_progress handles the offlineconversiondatasetupload_get_progress tool
 func HandleOfflineconversiondatasetupload_get_progress(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -66,8 +63,6 @@ func HandleOfflineconversiondatasetupload_get_progress(ctx context.Context, requ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Offlineconversiondatasetupload_get_progress(args)
@@ -84,7 +79,6 @@ func HandleOfflineconversiondatasetupload_get_progress(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleOfflineconversiondatasetupload_get_pull_sessions handles the offlineconversiondatasetupload_get_pull_sessions tool
 func HandleOfflineconversiondatasetupload_get_pull_sessions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -98,8 +92,6 @@ func HandleOfflineconversiondatasetupload_get_pull_sessions(ctx context.Context,
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Offlineconversiondatasetupload_get_pull_sessions(args)
@@ -116,7 +108,6 @@ func HandleOfflineconversiondatasetupload_get_pull_sessions(ctx context.Context,
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleOfflineconversiondatasetupload_get_ handles the offlineconversiondatasetupload_get_ tool
 func HandleOfflineconversiondatasetupload_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -130,8 +121,6 @@ func HandleOfflineconversiondatasetupload_get_(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Offlineconversiondatasetupload_get_(args)
@@ -147,4 +136,3 @@ func HandleOfflineconversiondatasetupload_get_(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

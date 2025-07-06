@@ -15,7 +15,6 @@ import (
 func GetImageReferenceMatchTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// imagereferencematch_get_ tool
 	imagereferencematch_get_Tool := mcp.NewTool("imagereferencematch_get_",
 		mcp.WithDescription("GET  for ImageReferenceMatch"),
@@ -26,12 +25,10 @@ func GetImageReferenceMatchTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, imagereferencematch_get_Tool)
 
-
 	return tools
 }
 
 // ImageReferenceMatch handlers
-
 
 // HandleImagereferencematch_get_ handles the imagereferencematch_get_ tool
 func HandleImagereferencematch_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleImagereferencematch_get_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Imagereferencematch_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleImagereferencematch_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

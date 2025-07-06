@@ -15,7 +15,6 @@ import (
 func GetAnalyticsUserConfigTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// analyticsuserconfig_get_ tool
 	analyticsuserconfig_get_Tool := mcp.NewTool("analyticsuserconfig_get_",
 		mcp.WithDescription("GET  for AnalyticsUserConfig"),
@@ -26,12 +25,10 @@ func GetAnalyticsUserConfigTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, analyticsuserconfig_get_Tool)
 
-
 	return tools
 }
 
 // AnalyticsUserConfig handlers
-
 
 // HandleAnalyticsuserconfig_get_ handles the analyticsuserconfig_get_ tool
 func HandleAnalyticsuserconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAnalyticsuserconfig_get_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Analyticsuserconfig_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAnalyticsuserconfig_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

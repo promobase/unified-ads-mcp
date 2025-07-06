@@ -15,7 +15,6 @@ import (
 func GetInstagramThreadTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// instagramthread_get_ tool
 	instagramthread_get_Tool := mcp.NewTool("instagramthread_get_",
 		mcp.WithDescription("GET  for InstagramThread"),
@@ -26,12 +25,10 @@ func GetInstagramThreadTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, instagramthread_get_Tool)
 
-
 	return tools
 }
 
 // InstagramThread handlers
-
 
 // HandleInstagramthread_get_ handles the instagramthread_get_ tool
 func HandleInstagramthread_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleInstagramthread_get_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Instagramthread_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleInstagramthread_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

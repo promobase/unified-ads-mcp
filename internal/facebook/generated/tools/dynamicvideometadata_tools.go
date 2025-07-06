@@ -15,7 +15,6 @@ import (
 func GetDynamicVideoMetadataTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// dynamicvideometadata_get_ tool
 	dynamicvideometadata_get_Tool := mcp.NewTool("dynamicvideometadata_get_",
 		mcp.WithDescription("GET  for DynamicVideoMetadata"),
@@ -26,12 +25,10 @@ func GetDynamicVideoMetadataTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, dynamicvideometadata_get_Tool)
 
-
 	return tools
 }
 
 // DynamicVideoMetadata handlers
-
 
 // HandleDynamicvideometadata_get_ handles the dynamicvideometadata_get_ tool
 func HandleDynamicvideometadata_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleDynamicvideometadata_get_(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Dynamicvideometadata_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleDynamicvideometadata_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

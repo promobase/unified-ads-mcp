@@ -15,7 +15,6 @@ import (
 func GetChinaBusinessOnboardingVettingRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// chinabusinessonboardingvettingrequest_get_ tool
 	chinabusinessonboardingvettingrequest_get_Tool := mcp.NewTool("chinabusinessonboardingvettingrequest_get_",
 		mcp.WithDescription("GET  for ChinaBusinessOnboardingVettingRequest"),
@@ -26,12 +25,10 @@ func GetChinaBusinessOnboardingVettingRequestTools(accessToken string) []mcp.Too
 	)
 	tools = append(tools, chinabusinessonboardingvettingrequest_get_Tool)
 
-
 	return tools
 }
 
 // ChinaBusinessOnboardingVettingRequest handlers
-
 
 // HandleChinabusinessonboardingvettingrequest_get_ handles the chinabusinessonboardingvettingrequest_get_ tool
 func HandleChinabusinessonboardingvettingrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleChinabusinessonboardingvettingrequest_get_(ctx context.Context, reque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Chinabusinessonboardingvettingrequest_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleChinabusinessonboardingvettingrequest_get_(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

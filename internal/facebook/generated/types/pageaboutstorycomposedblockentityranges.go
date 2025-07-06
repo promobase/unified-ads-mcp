@@ -4,7 +4,7 @@ package types
 
 // PageAboutStoryComposedBlockEntityRanges represents a Facebook PageAboutStoryComposedBlockEntityRanges object
 type PageAboutStoryComposedBlockEntityRanges struct {
-	Key string `json:"key"`
-	Length int `json:"length"`
-	Offset int `json:"offset"`
+	Key    string `json:"key"`
+	Length int    `json:"length"`
+	Offset int    `json:"offset"`
 }

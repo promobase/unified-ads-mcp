@@ -6,14 +6,14 @@ import "time"
 
 // AdCampaignGroupIncrementalConversionOptimizationConfig represents a Facebook AdCampaignGroupIncrementalConversionOptimizationConfig object
 type AdCampaignGroupIncrementalConversionOptimizationConfig struct {
-	Action_type string `json:"action_type"`
-	Ad_study_end_time time.Time `json:"ad_study_end_time"`
-	Ad_study_id string `json:"ad_study_id"`
-	Ad_study_name string `json:"ad_study_name"`
-	Ad_study_start_time time.Time `json:"ad_study_start_time"`
-	Cell_id string `json:"cell_id"`
-	Cell_name string `json:"cell_name"`
-	Holdout_size float64 `json:"holdout_size"`
-	Ico_type string `json:"ico_type"`
-	Objectives []map[string]interface{} `json:"objectives"`
+	Action_type         string                   `json:"action_type"`
+	Ad_study_end_time   time.Time                `json:"ad_study_end_time"`
+	Ad_study_id         string                   `json:"ad_study_id"`
+	Ad_study_name       string                   `json:"ad_study_name"`
+	Ad_study_start_time time.Time                `json:"ad_study_start_time"`
+	Cell_id             string                   `json:"cell_id"`
+	Cell_name           string                   `json:"cell_name"`
+	Holdout_size        float64                  `json:"holdout_size"`
+	Ico_type            string                   `json:"ico_type"`
+	Objectives          []map[string]interface{} `json:"objectives"`
 }

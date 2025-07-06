@@ -15,7 +15,6 @@ import (
 func GetAvatarTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// avatar_get_models tool
 	avatar_get_modelsTool := mcp.NewTool("avatar_get_models",
 		mcp.WithDescription("GET models for Avatar"),
@@ -58,12 +57,10 @@ func GetAvatarTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, avatar_get_Tool)
 
-
 	return tools
 }
 
 // Avatar handlers
-
 
 // HandleAvatar_get_models handles the avatar_get_models tool
 func HandleAvatar_get_models(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -116,8 +113,6 @@ func HandleAvatar_get_models(ctx context.Context, request mcp.CallToolRequest) (
 		args["sdk_version"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Avatar_get_models(args)
 	if err != nil {
@@ -133,7 +128,6 @@ func HandleAvatar_get_models(ctx context.Context, request mcp.CallToolRequest) (
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAvatar_get_ handles the avatar_get_ tool
 func HandleAvatar_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -147,8 +141,6 @@ func HandleAvatar_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Avatar_get_(args)
@@ -164,4 +156,3 @@ func HandleAvatar_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

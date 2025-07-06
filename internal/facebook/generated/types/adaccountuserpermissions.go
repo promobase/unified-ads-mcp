@@ -6,14 +6,14 @@ import "time"
 
 // AdAccountUserPermissions represents a Facebook AdAccountUserPermissions object
 type AdAccountUserPermissions struct {
-	Business *Business `json:"business"`
+	Business         *Business              `json:"business"`
 	Business_persona map[string]interface{} `json:"business_persona"`
-	Created_by *User `json:"created_by"`
-	Created_time time.Time `json:"created_time"`
-	Email string `json:"email"`
-	Status string `json:"status"`
-	Tasks []string `json:"tasks"`
-	Updated_by *User `json:"updated_by"`
-	Updated_time time.Time `json:"updated_time"`
-	User *User `json:"user"`
+	Created_by       *User                  `json:"created_by"`
+	Created_time     time.Time              `json:"created_time"`
+	Email            string                 `json:"email"`
+	Status           string                 `json:"status"`
+	Tasks            []string               `json:"tasks"`
+	Updated_by       *User                  `json:"updated_by"`
+	Updated_time     time.Time              `json:"updated_time"`
+	User             *User                  `json:"user"`
 }

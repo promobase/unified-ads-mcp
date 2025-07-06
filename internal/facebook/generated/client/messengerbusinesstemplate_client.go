@@ -21,18 +21,14 @@ func NewMessengerBusinessTemplateClient(accessToken string) *MessengerBusinessTe
 	}
 }
 
-
 // messengerbusinesstemplate_get_ GET  for MessengerBusinessTemplate
 func (c *MessengerBusinessTemplateClient) Messengerbusinesstemplate_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,11 +60,9 @@ func (c *MessengerBusinessTemplateClient) Messengerbusinesstemplate_get_(args ma
 	return result, nil
 }
 
-
 // messengerbusinesstemplate_post_ POST  for MessengerBusinessTemplate
 func (c *MessengerBusinessTemplateClient) Messengerbusinesstemplate_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -78,7 +72,6 @@ func (c *MessengerBusinessTemplateClient) Messengerbusinesstemplate_post_(args m
 	if val, ok := args["components"]; ok {
 		urlParams.Set("components", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -109,4 +102,3 @@ func (c *MessengerBusinessTemplateClient) Messengerbusinesstemplate_post_(args m
 
 	return result, nil
 }
-

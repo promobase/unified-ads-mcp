@@ -15,7 +15,6 @@ import (
 func GetAdsMcmeConversionTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adsmcmeconversion_get_ tool
 	adsmcmeconversion_get_Tool := mcp.NewTool("adsmcmeconversion_get_",
 		mcp.WithDescription("GET  for AdsMcmeConversion"),
@@ -26,12 +25,10 @@ func GetAdsMcmeConversionTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adsmcmeconversion_get_Tool)
 
-
 	return tools
 }
 
 // AdsMcmeConversion handlers
-
 
 // HandleAdsmcmeconversion_get_ handles the adsmcmeconversion_get_ tool
 func HandleAdsmcmeconversion_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAdsmcmeconversion_get_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Adsmcmeconversion_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAdsmcmeconversion_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

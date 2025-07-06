@@ -15,7 +15,6 @@ import (
 func GetCalibratorExistingRuleTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// calibratorexistingrule_get_ tool
 	calibratorexistingrule_get_Tool := mcp.NewTool("calibratorexistingrule_get_",
 		mcp.WithDescription("GET  for CalibratorExistingRule"),
@@ -26,12 +25,10 @@ func GetCalibratorExistingRuleTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, calibratorexistingrule_get_Tool)
 
-
 	return tools
 }
 
 // CalibratorExistingRule handlers
-
 
 // HandleCalibratorexistingrule_get_ handles the calibratorexistingrule_get_ tool
 func HandleCalibratorexistingrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleCalibratorexistingrule_get_(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Calibratorexistingrule_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleCalibratorexistingrule_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -21,18 +21,14 @@ func NewWhatsAppBusinessAccountClient(accessToken string) *WhatsAppBusinessAccou
 	}
 }
 
-
 // whatsappbusinessaccount_get_activities GET activities for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_activities(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "activities")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,7 +60,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_activities(a
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_delete_assigned_users DELETE assigned_users for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -74,7 +69,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_assigned_
 	}
 	_ = user // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
 	urlParams := url.Values{}
@@ -83,7 +77,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_assigned_
 	if val, ok := args["user"]; ok {
 		urlParams.Set("user", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -115,7 +108,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_assigned_
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_assigned_users GET assigned_users for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -125,7 +117,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_assigned_use
 	}
 	_ = business // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
 	urlParams := url.Values{}
@@ -134,7 +125,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_assigned_use
 	if val, ok := args["business"]; ok {
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -166,7 +156,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_assigned_use
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_post_assigned_users POST assigned_users for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_assigned_users(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -181,7 +170,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_assigned_us
 	}
 	_ = user // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "assigned_users")
 	urlParams := url.Values{}
@@ -193,7 +181,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_assigned_us
 	if val, ok := args["user"]; ok {
 		urlParams.Set("user", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -225,18 +212,14 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_assigned_us
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_audiences GET audiences for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_audiences(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "audiences")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -268,7 +251,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_audiences(ar
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_call_analytics GET call_analytics for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_call_analytics(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -287,7 +269,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_call_analyti
 		return nil, fmt.Errorf("missing required parameter: start")
 	}
 	_ = start // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "call_analytics")
@@ -319,7 +300,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_call_analyti
 		urlParams.Set("start", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -350,7 +330,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_call_analyti
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_conversation_analytics GET conversation_analytics for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_conversation_analytics(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -369,7 +348,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_conversation
 		return nil, fmt.Errorf("missing required parameter: start")
 	}
 	_ = start // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "conversation_analytics")
@@ -407,7 +385,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_conversation
 		urlParams.Set("start", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -438,19 +415,15 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_conversation
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_dataset GET dataset for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_dataset(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "dataset")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -481,11 +454,9 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_dataset(args
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_post_dataset POST dataset for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_dataset(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "dataset")
@@ -495,7 +466,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_dataset(arg
 	if val, ok := args["dataset_name"]; ok {
 		urlParams.Set("dataset_name", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -527,18 +497,14 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_dataset(arg
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_flows GET flows for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_flows(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "flows")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -570,7 +536,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_flows(args m
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_post_flows POST flows for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_flows(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -584,7 +549,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_flows(args 
 		return nil, fmt.Errorf("missing required parameter: name")
 	}
 	_ = name // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "flows")
@@ -610,7 +574,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_flows(args 
 		urlParams.Set("publish", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -641,7 +604,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_flows(args 
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_post_generate_payment_configuration_oauth_link POST generate_payment_configuration_oauth_link for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_generate_payment_configuration_oauth_link(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -650,7 +612,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_generate_pa
 		return nil, fmt.Errorf("missing required parameter: configuration_name")
 	}
 	_ = configuration_name // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "generate_payment_configuration_oauth_link")
@@ -664,7 +625,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_generate_pa
 		urlParams.Set("redirect_url", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -695,18 +655,14 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_generate_pa
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_message_campaigns GET message_campaigns for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_message_campaigns(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_campaigns")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -738,7 +694,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_message_camp
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_message_template_previews GET message_template_previews for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_message_template_previews(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -747,7 +702,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_message_temp
 		return nil, fmt.Errorf("missing required parameter: category")
 	}
 	_ = category // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_template_previews")
@@ -770,7 +724,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_message_temp
 		urlParams.Set("languages", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -801,7 +754,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_message_temp
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_delete_message_templates DELETE message_templates for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_message_templates(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -810,7 +762,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_message_t
 		return nil, fmt.Errorf("missing required parameter: name")
 	}
 	_ = name // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_templates")
@@ -823,7 +774,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_message_t
 	if val, ok := args["name"]; ok {
 		urlParams.Set("name", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -855,11 +805,9 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_message_t
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_message_templates GET message_templates for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_message_templates(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_templates")
@@ -887,7 +835,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_message_temp
 	if val, ok := args["status"]; ok {
 		urlParams.Set("status", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -919,7 +866,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_message_temp
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_post_message_templates POST message_templates for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_message_templates(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -938,7 +884,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_message_tem
 		return nil, fmt.Errorf("missing required parameter: name")
 	}
 	_ = name // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "message_templates")
@@ -988,7 +933,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_message_tem
 		urlParams.Set("sub_category", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1019,7 +963,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_message_tem
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_post_migrate_flows POST migrate_flows for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_migrate_flows(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -1028,7 +971,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_migrate_flo
 		return nil, fmt.Errorf("missing required parameter: source_waba_id")
 	}
 	_ = source_waba_id // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "migrate_flows")
@@ -1042,7 +984,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_migrate_flo
 		urlParams.Set("source_waba_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1073,7 +1014,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_migrate_flo
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_post_migrate_message_templates POST migrate_message_templates for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_migrate_message_templates(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -1082,7 +1022,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_migrate_mes
 		return nil, fmt.Errorf("missing required parameter: source_waba_id")
 	}
 	_ = source_waba_id // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "migrate_message_templates")
@@ -1096,7 +1035,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_migrate_mes
 		urlParams.Set("source_waba_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1127,7 +1065,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_migrate_mes
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_delete_payment_configuration DELETE payment_configuration for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_payment_configuration(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -1137,7 +1074,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_payment_c
 	}
 	_ = configuration_name // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "payment_configuration")
 	urlParams := url.Values{}
@@ -1146,7 +1082,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_payment_c
 	if val, ok := args["configuration_name"]; ok {
 		urlParams.Set("configuration_name", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1178,7 +1113,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_payment_c
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_payment_configuration GET payment_configuration for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_payment_configuration(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -1188,7 +1122,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_payment_conf
 	}
 	_ = configuration_name // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "payment_configuration")
 	urlParams := url.Values{}
@@ -1197,7 +1130,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_payment_conf
 	if val, ok := args["configuration_name"]; ok {
 		urlParams.Set("configuration_name", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1229,7 +1161,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_payment_conf
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_post_payment_configuration POST payment_configuration for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_payment_configuration(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -1238,7 +1169,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_payment_con
 		return nil, fmt.Errorf("missing required parameter: configuration_name")
 	}
 	_ = configuration_name // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "payment_configuration")
@@ -1267,7 +1197,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_payment_con
 		urlParams.Set("redirect_url", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1298,19 +1227,15 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_payment_con
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_payment_configurations GET payment_configurations for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_payment_configurations(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "payment_configurations")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1341,19 +1266,15 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_payment_conf
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_phone_numbers GET phone_numbers for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_phone_numbers(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "phone_numbers")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1384,11 +1305,9 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_phone_number
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_post_phone_numbers POST phone_numbers for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_phone_numbers(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "phone_numbers")
@@ -1411,7 +1330,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_phone_numbe
 		urlParams.Set("verified_name", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1442,7 +1360,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_phone_numbe
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_pricing_analytics GET pricing_analytics for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_pricing_analytics(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -1461,7 +1378,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_pricing_anal
 		return nil, fmt.Errorf("missing required parameter: start")
 	}
 	_ = start // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "pricing_analytics")
@@ -1499,7 +1415,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_pricing_anal
 		urlParams.Set("tiers", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1530,7 +1445,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_pricing_anal
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_delete_product_catalogs DELETE product_catalogs for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_product_catalogs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -1540,7 +1454,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_product_c
 	}
 	_ = catalog_id // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_catalogs")
 	urlParams := url.Values{}
@@ -1549,7 +1462,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_product_c
 	if val, ok := args["catalog_id"]; ok {
 		urlParams.Set("catalog_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1581,18 +1493,14 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_product_c
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_product_catalogs GET product_catalogs for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_product_catalogs(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_catalogs")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1623,7 +1531,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_product_cata
 
 	return result, nil
 }
-
 
 // whatsappbusinessaccount_post_product_catalogs POST product_catalogs for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_product_catalogs(args map[string]interface{}) (interface{}, error) {
@@ -1634,7 +1541,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_product_cat
 	}
 	_ = catalog_id // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_catalogs")
 	urlParams := url.Values{}
@@ -1643,7 +1549,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_product_cat
 	if val, ok := args["catalog_id"]; ok {
 		urlParams.Set("catalog_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1675,18 +1580,14 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_product_cat
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_schedules GET schedules for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_schedules(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "schedules")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1718,11 +1619,9 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_schedules(ar
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_post_set_obo_mobility_intent POST set_obo_mobility_intent for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_set_obo_mobility_intent(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "set_obo_mobility_intent")
@@ -1732,7 +1631,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_set_obo_mob
 	if val, ok := args["solution_id"]; ok {
 		urlParams.Set("solution_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1764,11 +1662,9 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_set_obo_mob
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_post_set_solution_migration_intent POST set_solution_migration_intent for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_set_solution_migration_intent(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "set_solution_migration_intent")
@@ -1782,7 +1678,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_set_solutio
 		urlParams.Set("solution_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -1813,18 +1708,14 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_set_solutio
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_solutions GET solutions for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_solutions(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "solutions")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1856,18 +1747,14 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_solutions(ar
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_delete_subscribed_apps DELETE subscribed_apps for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_subscribed_apps(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_apps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1899,18 +1786,14 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_delete_subscribe
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_subscribed_apps GET subscribed_apps for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_subscribed_apps(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_apps")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1942,11 +1825,9 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_subscribed_a
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_post_subscribed_apps POST subscribed_apps for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_subscribed_apps(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "subscribed_apps")
@@ -1959,7 +1840,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_subscribed_
 	if val, ok := args["verify_token"]; ok {
 		urlParams.Set("verify_token", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1990,7 +1870,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_subscribed_
 
 	return result, nil
 }
-
 
 // whatsappbusinessaccount_get_template_analytics GET template_analytics for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_analytics(args map[string]interface{}) (interface{}, error) {
@@ -2016,7 +1895,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_ana
 	}
 	_ = template_ids // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "template_analytics")
 	urlParams := url.Values{}
@@ -2040,7 +1918,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_ana
 	if val, ok := args["template_ids"]; ok {
 		urlParams.Set("template_ids", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2071,7 +1948,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_ana
 
 	return result, nil
 }
-
 
 // whatsappbusinessaccount_get_template_group_analytics GET template_group_analytics for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_group_analytics(args map[string]interface{}) (interface{}, error) {
@@ -2097,7 +1973,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_gro
 	}
 	_ = template_group_ids // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "template_group_analytics")
 	urlParams := url.Values{}
@@ -2119,7 +1994,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_gro
 		urlParams.Set("template_group_ids", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2150,19 +2024,15 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_gro
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_template_groups GET template_groups for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_groups(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "template_groups")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2192,7 +2062,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_gro
 
 	return result, nil
 }
-
 
 // whatsappbusinessaccount_post_template_groups POST template_groups for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_template_groups(args map[string]interface{}) (interface{}, error) {
@@ -2213,7 +2082,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_template_gr
 	}
 	_ = whatsapp_business_templates // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "template_groups")
 	urlParams := url.Values{}
@@ -2228,7 +2096,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_template_gr
 	if val, ok := args["whatsapp_business_templates"]; ok {
 		urlParams.Set("whatsapp_business_templates", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2260,11 +2127,9 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_template_gr
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_template_performance_metrics GET template_performance_metrics for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_performance_metrics(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "template_performance_metrics")
@@ -2277,7 +2142,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_per
 	if val, ok := args["template_id"]; ok {
 		urlParams.Set("template_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2308,7 +2172,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_template_per
 
 	return result, nil
 }
-
 
 // whatsappbusinessaccount_post_upsert_message_templates POST upsert_message_templates for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_upsert_message_templates(args map[string]interface{}) (interface{}, error) {
@@ -2334,7 +2197,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_upsert_mess
 	}
 	_ = name // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "upsert_message_templates")
 	urlParams := url.Values{}
@@ -2356,7 +2218,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_upsert_mess
 		urlParams.Set("name", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2387,11 +2248,9 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_upsert_mess
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_welcome_message_sequences GET welcome_message_sequences for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_welcome_message_sequences(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "welcome_message_sequences")
@@ -2405,7 +2264,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_welcome_mess
 		urlParams.Set("sequence_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2436,19 +2294,15 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_welcome_mess
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_get_ GET  for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -2479,11 +2333,9 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_get_(args map[st
 	return result, nil
 }
 
-
 // whatsappbusinessaccount_post_ POST  for WhatsAppBusinessAccount
 func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -2493,7 +2345,6 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_(args map[s
 	if val, ok := args["is_enabled_for_insights"]; ok {
 		urlParams.Set("is_enabled_for_insights", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2524,4 +2375,3 @@ func (c *WhatsAppBusinessAccountClient) Whatsappbusinessaccount_post_(args map[s
 
 	return result, nil
 }
-

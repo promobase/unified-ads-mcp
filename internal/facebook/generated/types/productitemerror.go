@@ -4,8 +4,8 @@ package types
 
 // ProductItemError represents a Facebook ProductItemError object
 type ProductItemError struct {
-	Description string `json:"description"`
+	Description    string `json:"description"`
 	Error_priority string `json:"error_priority"`
-	Error_type string `json:"error_type"`
-	Title string `json:"title"`
+	Error_type     string `json:"error_type"`
+	Title          string `json:"title"`
 }

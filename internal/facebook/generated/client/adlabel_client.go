@@ -21,19 +21,15 @@ func NewAdLabelClient(accessToken string) *AdLabelClient {
 	}
 }
 
-
 // adlabel_get_adcreatives GET adcreatives for AdLabel
 func (c *AdLabelClient) Adlabel_get_adcreatives(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adcreatives")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *AdLabelClient) Adlabel_get_adcreatives(args map[string]interface{}) (in
 	return result, nil
 }
 
-
 // adlabel_get_ads GET ads for AdLabel
 func (c *AdLabelClient) Adlabel_get_ads(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ads")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -107,19 +99,15 @@ func (c *AdLabelClient) Adlabel_get_ads(args map[string]interface{}) (interface{
 	return result, nil
 }
 
-
 // adlabel_get_adsets GET adsets for AdLabel
 func (c *AdLabelClient) Adlabel_get_adsets(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adsets")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -150,19 +138,15 @@ func (c *AdLabelClient) Adlabel_get_adsets(args map[string]interface{}) (interfa
 	return result, nil
 }
 
-
 // adlabel_get_campaigns GET campaigns for AdLabel
 func (c *AdLabelClient) Adlabel_get_campaigns(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "campaigns")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -193,18 +177,14 @@ func (c *AdLabelClient) Adlabel_get_campaigns(args map[string]interface{}) (inte
 	return result, nil
 }
 
-
 // adlabel_delete_ DELETE  for AdLabel
 func (c *AdLabelClient) Adlabel_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -236,18 +216,14 @@ func (c *AdLabelClient) Adlabel_delete_(args map[string]interface{}) (interface{
 	return result, nil
 }
 
-
 // adlabel_get_ GET  for AdLabel
 func (c *AdLabelClient) Adlabel_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -279,7 +255,6 @@ func (c *AdLabelClient) Adlabel_get_(args map[string]interface{}) (interface{}, 
 	return result, nil
 }
 
-
 // adlabel_post_ POST  for AdLabel
 func (c *AdLabelClient) Adlabel_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -289,7 +264,6 @@ func (c *AdLabelClient) Adlabel_post_(args map[string]interface{}) (interface{},
 	}
 	_ = name // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
@@ -298,7 +272,6 @@ func (c *AdLabelClient) Adlabel_post_(args map[string]interface{}) (interface{},
 	if val, ok := args["name"]; ok {
 		urlParams.Set("name", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -329,4 +302,3 @@ func (c *AdLabelClient) Adlabel_post_(args map[string]interface{}) (interface{},
 
 	return result, nil
 }
-

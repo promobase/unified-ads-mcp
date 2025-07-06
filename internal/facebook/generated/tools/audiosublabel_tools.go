@@ -15,7 +15,6 @@ import (
 func GetAudioSubLabelTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// audiosublabel_get_ tool
 	audiosublabel_get_Tool := mcp.NewTool("audiosublabel_get_",
 		mcp.WithDescription("GET  for AudioSubLabel"),
@@ -26,12 +25,10 @@ func GetAudioSubLabelTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, audiosublabel_get_Tool)
 
-
 	return tools
 }
 
 // AudioSubLabel handlers
-
 
 // HandleAudiosublabel_get_ handles the audiosublabel_get_ tool
 func HandleAudiosublabel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAudiosublabel_get_(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Audiosublabel_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAudiosublabel_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetRTBDynamicPostTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// rtbdynamicpost_get_comments tool
 	rtbdynamicpost_get_commentsTool := mcp.NewTool("rtbdynamicpost_get_comments",
 		mcp.WithDescription("GET comments for RTBDynamicPost"),
@@ -61,12 +60,10 @@ func GetRTBDynamicPostTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, rtbdynamicpost_get_Tool)
 
-
 	return tools
 }
 
 // RTBDynamicPost handlers
-
 
 // HandleRtbdynamicpost_get_comments handles the rtbdynamicpost_get_comments tool
 func HandleRtbdynamicpost_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -102,8 +99,6 @@ func HandleRtbdynamicpost_get_comments(ctx context.Context, request mcp.CallTool
 		args["since"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Rtbdynamicpost_get_comments(args)
 	if err != nil {
@@ -119,7 +114,6 @@ func HandleRtbdynamicpost_get_comments(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleRtbdynamicpost_get_likes handles the rtbdynamicpost_get_likes tool
 func HandleRtbdynamicpost_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -133,8 +127,6 @@ func HandleRtbdynamicpost_get_likes(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Rtbdynamicpost_get_likes(args)
@@ -151,7 +143,6 @@ func HandleRtbdynamicpost_get_likes(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleRtbdynamicpost_get_ handles the rtbdynamicpost_get_ tool
 func HandleRtbdynamicpost_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -165,8 +156,6 @@ func HandleRtbdynamicpost_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Rtbdynamicpost_get_(args)
@@ -182,4 +171,3 @@ func HandleRtbdynamicpost_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

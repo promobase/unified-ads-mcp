@@ -15,7 +15,6 @@ import (
 func GetHighDemandPeriodTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// highdemandperiod_delete_ tool
 	highdemandperiod_delete_Tool := mcp.NewTool("highdemandperiod_delete_",
 		mcp.WithDescription("DELETE  for HighDemandPeriod"),
@@ -59,12 +58,10 @@ func GetHighDemandPeriodTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, highdemandperiod_post_Tool)
 
-
 	return tools
 }
 
 // HighDemandPeriod handlers
-
 
 // HandleHighdemandperiod_delete_ handles the highdemandperiod_delete_ tool
 func HandleHighdemandperiod_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -79,8 +76,6 @@ func HandleHighdemandperiod_delete_(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Highdemandperiod_delete_(args)
@@ -97,7 +92,6 @@ func HandleHighdemandperiod_delete_(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleHighdemandperiod_get_ handles the highdemandperiod_get_ tool
 func HandleHighdemandperiod_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -111,8 +105,6 @@ func HandleHighdemandperiod_get_(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Highdemandperiod_get_(args)
@@ -128,7 +120,6 @@ func HandleHighdemandperiod_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleHighdemandperiod_post_ handles the highdemandperiod_post_ tool
 func HandleHighdemandperiod_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -164,8 +155,6 @@ func HandleHighdemandperiod_post_(ctx context.Context, request mcp.CallToolReque
 		args["time_start"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Highdemandperiod_post_(args)
 	if err != nil {
@@ -180,4 +169,3 @@ func HandleHighdemandperiod_post_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

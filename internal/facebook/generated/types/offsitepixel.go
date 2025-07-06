@@ -6,10 +6,10 @@ import "time"
 
 // OffsitePixel represents a Facebook OffsitePixel object
 type OffsitePixel struct {
-	Creator string `json:"creator"`
-	Id string `json:"id"`
-	Js_pixel string `json:"js_pixel"`
+	Creator          string    `json:"creator"`
+	Id               string    `json:"id"`
+	Js_pixel         string    `json:"js_pixel"`
 	Last_firing_time time.Time `json:"last_firing_time"`
-	Name string `json:"name"`
-	Tag string `json:"tag"`
+	Name             string    `json:"name"`
+	Tag              string    `json:"tag"`
 }

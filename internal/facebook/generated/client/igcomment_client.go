@@ -21,18 +21,14 @@ func NewIGCommentClient(accessToken string) *IGCommentClient {
 	}
 }
 
-
 // igcomment_get_replies GET replies for IGComment
 func (c *IGCommentClient) Igcomment_get_replies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "replies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,11 +60,9 @@ func (c *IGCommentClient) Igcomment_get_replies(args map[string]interface{}) (in
 	return result, nil
 }
 
-
 // igcomment_post_replies POST replies for IGComment
 func (c *IGCommentClient) Igcomment_post_replies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "replies")
@@ -78,7 +72,6 @@ func (c *IGCommentClient) Igcomment_post_replies(args map[string]interface{}) (i
 	if val, ok := args["message"]; ok {
 		urlParams.Set("message", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -110,11 +103,9 @@ func (c *IGCommentClient) Igcomment_post_replies(args map[string]interface{}) (i
 	return result, nil
 }
 
-
 // igcomment_delete_ DELETE  for IGComment
 func (c *IGCommentClient) Igcomment_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -124,7 +115,6 @@ func (c *IGCommentClient) Igcomment_delete_(args map[string]interface{}) (interf
 	if val, ok := args["ad_id"]; ok {
 		urlParams.Set("ad_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -156,18 +146,14 @@ func (c *IGCommentClient) Igcomment_delete_(args map[string]interface{}) (interf
 	return result, nil
 }
 
-
 // igcomment_get_ GET  for IGComment
 func (c *IGCommentClient) Igcomment_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -199,7 +185,6 @@ func (c *IGCommentClient) Igcomment_get_(args map[string]interface{}) (interface
 	return result, nil
 }
 
-
 // igcomment_post_ POST  for IGComment
 func (c *IGCommentClient) Igcomment_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -208,7 +193,6 @@ func (c *IGCommentClient) Igcomment_post_(args map[string]interface{}) (interfac
 		return nil, fmt.Errorf("missing required parameter: hide")
 	}
 	_ = hide // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -221,7 +205,6 @@ func (c *IGCommentClient) Igcomment_post_(args map[string]interface{}) (interfac
 	if val, ok := args["hide"]; ok {
 		urlParams.Set("hide", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -252,4 +235,3 @@ func (c *IGCommentClient) Igcomment_post_(args map[string]interface{}) (interfac
 
 	return result, nil
 }
-

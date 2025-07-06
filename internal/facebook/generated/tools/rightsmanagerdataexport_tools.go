@@ -15,7 +15,6 @@ import (
 func GetRightsManagerDataExportTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// rightsmanagerdataexport_get_ tool
 	rightsmanagerdataexport_get_Tool := mcp.NewTool("rightsmanagerdataexport_get_",
 		mcp.WithDescription("GET  for RightsManagerDataExport"),
@@ -26,12 +25,10 @@ func GetRightsManagerDataExportTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, rightsmanagerdataexport_get_Tool)
 
-
 	return tools
 }
 
 // RightsManagerDataExport handlers
-
 
 // HandleRightsmanagerdataexport_get_ handles the rightsmanagerdataexport_get_ tool
 func HandleRightsmanagerdataexport_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleRightsmanagerdataexport_get_(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Rightsmanagerdataexport_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleRightsmanagerdataexport_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

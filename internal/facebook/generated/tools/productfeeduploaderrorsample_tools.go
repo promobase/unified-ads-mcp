@@ -15,7 +15,6 @@ import (
 func GetProductFeedUploadErrorSampleTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// productfeeduploaderrorsample_get_ tool
 	productfeeduploaderrorsample_get_Tool := mcp.NewTool("productfeeduploaderrorsample_get_",
 		mcp.WithDescription("GET  for ProductFeedUploadErrorSample"),
@@ -26,12 +25,10 @@ func GetProductFeedUploadErrorSampleTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, productfeeduploaderrorsample_get_Tool)
 
-
 	return tools
 }
 
 // ProductFeedUploadErrorSample handlers
-
 
 // HandleProductfeeduploaderrorsample_get_ handles the productfeeduploaderrorsample_get_ tool
 func HandleProductfeeduploaderrorsample_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleProductfeeduploaderrorsample_get_(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Productfeeduploaderrorsample_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleProductfeeduploaderrorsample_get_(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

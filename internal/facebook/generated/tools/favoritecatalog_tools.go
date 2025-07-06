@@ -15,7 +15,6 @@ import (
 func GetFavoriteCatalogTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// favoritecatalog_get_ tool
 	favoritecatalog_get_Tool := mcp.NewTool("favoritecatalog_get_",
 		mcp.WithDescription("GET  for FavoriteCatalog"),
@@ -26,12 +25,10 @@ func GetFavoriteCatalogTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, favoritecatalog_get_Tool)
 
-
 	return tools
 }
 
 // FavoriteCatalog handlers
-
 
 // HandleFavoritecatalog_get_ handles the favoritecatalog_get_ tool
 func HandleFavoritecatalog_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFavoritecatalog_get_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Favoritecatalog_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFavoritecatalog_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetInstagramBusinessAssetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// instagrambusinessasset_get_ tool
 	instagrambusinessasset_get_Tool := mcp.NewTool("instagrambusinessasset_get_",
 		mcp.WithDescription("GET  for InstagramBusinessAsset"),
@@ -26,12 +25,10 @@ func GetInstagramBusinessAssetTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, instagrambusinessasset_get_Tool)
 
-
 	return tools
 }
 
 // InstagramBusinessAsset handlers
-
 
 // HandleInstagrambusinessasset_get_ handles the instagrambusinessasset_get_ tool
 func HandleInstagrambusinessasset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleInstagrambusinessasset_get_(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Instagrambusinessasset_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleInstagrambusinessasset_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

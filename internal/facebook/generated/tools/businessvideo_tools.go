@@ -15,7 +15,6 @@ import (
 func GetBusinessVideoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// businessvideo_get_ tool
 	businessvideo_get_Tool := mcp.NewTool("businessvideo_get_",
 		mcp.WithDescription("GET  for BusinessVideo"),
@@ -26,12 +25,10 @@ func GetBusinessVideoTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, businessvideo_get_Tool)
 
-
 	return tools
 }
 
 // BusinessVideo handlers
-
 
 // HandleBusinessvideo_get_ handles the businessvideo_get_ tool
 func HandleBusinessvideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleBusinessvideo_get_(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Businessvideo_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleBusinessvideo_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

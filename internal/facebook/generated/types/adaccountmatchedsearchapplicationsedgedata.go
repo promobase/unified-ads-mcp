@@ -4,12 +4,12 @@ package types
 
 // AdAccountMatchedSearchApplicationsEdgeData represents a Facebook AdAccountMatchedSearchApplicationsEdgeData object
 type AdAccountMatchedSearchApplicationsEdgeData struct {
-	App_id string `json:"app_id"`
-	Are_app_events_unavailable bool `json:"are_app_events_unavailable"`
-	Icon_url string `json:"icon_url"`
-	Name string `json:"name"`
-	Search_source_store string `json:"search_source_store"`
-	Store string `json:"store"`
-	Unique_id string `json:"unique_id"`
-	Url string `json:"url"`
+	App_id                     string `json:"app_id"`
+	Are_app_events_unavailable bool   `json:"are_app_events_unavailable"`
+	Icon_url                   string `json:"icon_url"`
+	Name                       string `json:"name"`
+	Search_source_store        string `json:"search_source_store"`
+	Store                      string `json:"store"`
+	Unique_id                  string `json:"unique_id"`
+	Url                        string `json:"url"`
 }

@@ -21,11 +21,9 @@ func NewStatusClient(accessToken string) *StatusClient {
 	}
 }
 
-
 // status_post_likes POST likes for Status
 func (c *StatusClient) Status_post_likes(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
@@ -44,7 +42,6 @@ func (c *StatusClient) Status_post_likes(args map[string]interface{}) (interface
 	if val, ok := args["tracking"]; ok {
 		urlParams.Set("tracking", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -76,18 +73,14 @@ func (c *StatusClient) Status_post_likes(args map[string]interface{}) (interface
 	return result, nil
 }
 
-
 // status_get_ GET  for Status
 func (c *StatusClient) Status_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -118,4 +111,3 @@ func (c *StatusClient) Status_get_(args map[string]interface{}) (interface{}, er
 
 	return result, nil
 }
-

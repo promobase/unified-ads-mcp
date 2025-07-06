@@ -15,7 +15,6 @@ import (
 func GetVideoCopyrightTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// videocopyright_get_update_records tool
 	videocopyright_get_update_recordsTool := mcp.NewTool("videocopyright_get_update_records",
 		mcp.WithDescription("GET update_records for VideoCopyright"),
@@ -81,12 +80,10 @@ func GetVideoCopyrightTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, videocopyright_post_Tool)
 
-
 	return tools
 }
 
 // VideoCopyright handlers
-
 
 // HandleVideocopyright_get_update_records handles the videocopyright_get_update_records tool
 func HandleVideocopyright_get_update_records(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -101,8 +98,6 @@ func HandleVideocopyright_get_update_records(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Videocopyright_get_update_records(args)
@@ -119,7 +114,6 @@ func HandleVideocopyright_get_update_records(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleVideocopyright_get_ handles the videocopyright_get_ tool
 func HandleVideocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -133,8 +127,6 @@ func HandleVideocopyright_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Videocopyright_get_(args)
@@ -150,7 +142,6 @@ func HandleVideocopyright_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleVideocopyright_post_ handles the videocopyright_post_ tool
 func HandleVideocopyright_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -226,8 +217,6 @@ func HandleVideocopyright_post_(ctx context.Context, request mcp.CallToolRequest
 		args["whitelisted_ig_user_ids"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Videocopyright_post_(args)
 	if err != nil {
@@ -242,4 +231,3 @@ func HandleVideocopyright_post_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -4,7 +4,7 @@ package types
 
 // IosAppLink represents a Facebook IosAppLink object
 type IosAppLink struct {
-	App_name string `json:"app_name"`
+	App_name     string `json:"app_name"`
 	App_store_id string `json:"app_store_id"`
-	Url string `json:"url"`
+	Url          string `json:"url"`
 }

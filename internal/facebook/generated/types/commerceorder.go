@@ -4,19 +4,19 @@ package types
 
 // CommerceOrder represents a Facebook CommerceOrder object
 type CommerceOrder struct {
-	Buyer_details map[string]interface{} `json:"buyer_details"`
-	Channel string `json:"channel"`
-	Contains_bopis_items bool `json:"contains_bopis_items"`
-	Created string `json:"created"`
+	Buyer_details             map[string]interface{} `json:"buyer_details"`
+	Channel                   string                 `json:"channel"`
+	Contains_bopis_items      bool                   `json:"contains_bopis_items"`
+	Created                   string                 `json:"created"`
 	Estimated_payment_details map[string]interface{} `json:"estimated_payment_details"`
-	Id string `json:"id"`
-	Is_group_buy bool `json:"is_group_buy"`
-	Is_test_order bool `json:"is_test_order"`
-	Last_updated string `json:"last_updated"`
-	Merchant_order_id string `json:"merchant_order_id"`
-	Order_status map[string]interface{} `json:"order_status"`
-	Pre_order_details map[string]interface{} `json:"pre_order_details"`
-	Selected_shipping_option map[string]interface{} `json:"selected_shipping_option"`
-	Ship_by_date string `json:"ship_by_date"`
-	Shipping_address map[string]interface{} `json:"shipping_address"`
+	Id                        string                 `json:"id"`
+	Is_group_buy              bool                   `json:"is_group_buy"`
+	Is_test_order             bool                   `json:"is_test_order"`
+	Last_updated              string                 `json:"last_updated"`
+	Merchant_order_id         string                 `json:"merchant_order_id"`
+	Order_status              map[string]interface{} `json:"order_status"`
+	Pre_order_details         map[string]interface{} `json:"pre_order_details"`
+	Selected_shipping_option  map[string]interface{} `json:"selected_shipping_option"`
+	Ship_by_date              string                 `json:"ship_by_date"`
+	Shipping_address          map[string]interface{} `json:"shipping_address"`
 }

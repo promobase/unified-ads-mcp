@@ -15,7 +15,6 @@ import (
 func GetMusicVideoCopyrightTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// musicvideocopyright_get_ tool
 	musicvideocopyright_get_Tool := mcp.NewTool("musicvideocopyright_get_",
 		mcp.WithDescription("GET  for MusicVideoCopyright"),
@@ -26,12 +25,10 @@ func GetMusicVideoCopyrightTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, musicvideocopyright_get_Tool)
 
-
 	return tools
 }
 
 // MusicVideoCopyright handlers
-
 
 // HandleMusicvideocopyright_get_ handles the musicvideocopyright_get_ tool
 func HandleMusicvideocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleMusicvideocopyright_get_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Musicvideocopyright_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleMusicvideocopyright_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

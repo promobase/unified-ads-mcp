@@ -15,7 +15,6 @@ import (
 func GetProductItemLocalInfoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// productitemlocalinfo_get_ tool
 	productitemlocalinfo_get_Tool := mcp.NewTool("productitemlocalinfo_get_",
 		mcp.WithDescription("GET  for ProductItemLocalInfo"),
@@ -26,12 +25,10 @@ func GetProductItemLocalInfoTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, productitemlocalinfo_get_Tool)
 
-
 	return tools
 }
 
 // ProductItemLocalInfo handlers
-
 
 // HandleProductitemlocalinfo_get_ handles the productitemlocalinfo_get_ tool
 func HandleProductitemlocalinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleProductitemlocalinfo_get_(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Productitemlocalinfo_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleProductitemlocalinfo_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

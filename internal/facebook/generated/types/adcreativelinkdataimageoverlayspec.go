@@ -4,12 +4,12 @@ package types
 
 // AdCreativeLinkDataImageOverlaySpec represents a Facebook AdCreativeLinkDataImageOverlaySpec object
 type AdCreativeLinkDataImageOverlaySpec struct {
-	Custom_text_type string `json:"custom_text_type"`
-	Float_with_margin bool `json:"float_with_margin"`
-	Overlay_template string `json:"overlay_template"`
-	Position string `json:"position"`
-	Text_font string `json:"text_font"`
+	Custom_text_type   string   `json:"custom_text_type"`
+	Float_with_margin  bool     `json:"float_with_margin"`
+	Overlay_template   string   `json:"overlay_template"`
+	Position           string   `json:"position"`
+	Text_font          string   `json:"text_font"`
 	Text_template_tags []string `json:"text_template_tags"`
-	Text_type string `json:"text_type"`
-	Theme_color string `json:"theme_color"`
+	Text_type          string   `json:"text_type"`
+	Theme_color        string   `json:"theme_color"`
 }

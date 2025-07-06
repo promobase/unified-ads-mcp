@@ -4,9 +4,9 @@ package types
 
 // TargetingGeoLocationZip represents a Facebook TargetingGeoLocationZip object
 type TargetingGeoLocationZip struct {
-	Country string `json:"country"`
-	Key string `json:"key"`
-	Name string `json:"name"`
-	Primary_city_id int `json:"primary_city_id"`
-	Region_id int `json:"region_id"`
+	Country         string `json:"country"`
+	Key             string `json:"key"`
+	Name            string `json:"name"`
+	Primary_city_id int    `json:"primary_city_id"`
+	Region_id       int    `json:"region_id"`
 }

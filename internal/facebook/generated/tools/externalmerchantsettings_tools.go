@@ -15,7 +15,6 @@ import (
 func GetExternalMerchantSettingsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// externalmerchantsettings_get_ tool
 	externalmerchantsettings_get_Tool := mcp.NewTool("externalmerchantsettings_get_",
 		mcp.WithDescription("GET  for ExternalMerchantSettings"),
@@ -26,12 +25,10 @@ func GetExternalMerchantSettingsTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, externalmerchantsettings_get_Tool)
 
-
 	return tools
 }
 
 // ExternalMerchantSettings handlers
-
 
 // HandleExternalmerchantsettings_get_ handles the externalmerchantsettings_get_ tool
 func HandleExternalmerchantsettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleExternalmerchantsettings_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Externalmerchantsettings_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleExternalmerchantsettings_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

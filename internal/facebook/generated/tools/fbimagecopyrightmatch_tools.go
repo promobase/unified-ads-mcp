@@ -15,7 +15,6 @@ import (
 func GetFBImageCopyrightMatchTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// fbimagecopyrightmatch_get_ tool
 	fbimagecopyrightmatch_get_Tool := mcp.NewTool("fbimagecopyrightmatch_get_",
 		mcp.WithDescription("GET  for FBImageCopyrightMatch"),
@@ -26,12 +25,10 @@ func GetFBImageCopyrightMatchTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, fbimagecopyrightmatch_get_Tool)
 
-
 	return tools
 }
 
 // FBImageCopyrightMatch handlers
-
 
 // HandleFbimagecopyrightmatch_get_ handles the fbimagecopyrightmatch_get_ tool
 func HandleFbimagecopyrightmatch_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFbimagecopyrightmatch_get_(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Fbimagecopyrightmatch_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFbimagecopyrightmatch_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

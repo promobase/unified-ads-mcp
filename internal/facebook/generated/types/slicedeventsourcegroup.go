@@ -5,7 +5,7 @@ package types
 // SlicedEventSourceGroup represents a Facebook SlicedEventSourceGroup object
 type SlicedEventSourceGroup struct {
 	Event_source_group *EventSourceGroup `json:"event_source_group"`
-	Filter string `json:"filter"`
-	Id string `json:"id"`
-	Name string `json:"name"`
+	Filter             string            `json:"filter"`
+	Id                 string            `json:"id"`
+	Name               string            `json:"name"`
 }

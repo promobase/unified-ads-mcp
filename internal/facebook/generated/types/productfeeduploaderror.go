@@ -5,10 +5,10 @@ package types
 // ProductFeedUploadError represents a Facebook ProductFeedUploadError object
 type ProductFeedUploadError struct {
 	Affected_surfaces []string `json:"affected_surfaces"`
-	Description string `json:"description"`
-	Error_type string `json:"error_type"`
-	Id string `json:"id"`
-	Severity string `json:"severity"`
-	Summary string `json:"summary"`
-	Total_count int `json:"total_count"`
+	Description       string   `json:"description"`
+	Error_type        string   `json:"error_type"`
+	Id                string   `json:"id"`
+	Severity          string   `json:"severity"`
+	Summary           string   `json:"summary"`
+	Total_count       int      `json:"total_count"`
 }

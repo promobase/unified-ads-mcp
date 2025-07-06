@@ -15,7 +15,6 @@ import (
 func GetJobOpeningTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// jobopening_get_ tool
 	jobopening_get_Tool := mcp.NewTool("jobopening_get_",
 		mcp.WithDescription("GET  for JobOpening"),
@@ -26,12 +25,10 @@ func GetJobOpeningTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, jobopening_get_Tool)
 
-
 	return tools
 }
 
 // JobOpening handlers
-
 
 // HandleJobopening_get_ handles the jobopening_get_ tool
 func HandleJobopening_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleJobopening_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Jobopening_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleJobopening_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

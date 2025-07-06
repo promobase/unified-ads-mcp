@@ -15,7 +15,6 @@ import (
 func GetWorkSkillTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// workskill_get_users tool
 	workskill_get_usersTool := mcp.NewTool("workskill_get_users",
 		mcp.WithDescription("GET users for WorkSkill"),
@@ -36,12 +35,10 @@ func GetWorkSkillTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, workskill_get_Tool)
 
-
 	return tools
 }
 
 // WorkSkill handlers
-
 
 // HandleWorkskill_get_users handles the workskill_get_users tool
 func HandleWorkskill_get_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleWorkskill_get_users(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Workskill_get_users(args)
@@ -74,7 +69,6 @@ func HandleWorkskill_get_users(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleWorkskill_get_ handles the workskill_get_ tool
 func HandleWorkskill_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleWorkskill_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Workskill_get_(args)
@@ -105,4 +97,3 @@ func HandleWorkskill_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

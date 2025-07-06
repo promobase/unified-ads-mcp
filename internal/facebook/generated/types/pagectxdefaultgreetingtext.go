@@ -4,7 +4,7 @@ package types
 
 // PageCTXDefaultGreetingText represents a Facebook PageCTXDefaultGreetingText object
 type PageCTXDefaultGreetingText struct {
-	Ctd string `json:"ctd"`
-	Ctm string `json:"ctm"`
+	Ctd  string `json:"ctd"`
+	Ctm  string `json:"ctm"`
 	Ctwa string `json:"ctwa"`
 }

@@ -5,5 +5,5 @@ package types
 // TargetingRelaxation represents a Facebook TargetingRelaxation object
 type TargetingRelaxation struct {
 	Custom_audience int `json:"custom_audience"`
-	Lookalike int `json:"lookalike"`
+	Lookalike       int `json:"lookalike"`
 }

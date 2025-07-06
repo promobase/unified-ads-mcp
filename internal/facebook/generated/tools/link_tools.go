@@ -15,7 +15,6 @@ import (
 func GetLinkTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// link_post_comments tool
 	link_post_commentsTool := mcp.NewTool("link_post_comments",
 		mcp.WithDescription("POST comments for Link"),
@@ -86,12 +85,10 @@ func GetLinkTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, link_get_Tool)
 
-
 	return tools
 }
 
 // Link handlers
-
 
 // HandleLink_post_comments handles the link_post_comments tool
 func HandleLink_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -174,8 +171,6 @@ func HandleLink_post_comments(ctx context.Context, request mcp.CallToolRequest) 
 		args["tracking"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Link_post_comments(args)
 	if err != nil {
@@ -191,7 +186,6 @@ func HandleLink_post_comments(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleLink_get_likes handles the link_get_likes tool
 func HandleLink_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -205,8 +199,6 @@ func HandleLink_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Link_get_likes(args)
@@ -223,7 +215,6 @@ func HandleLink_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleLink_get_ handles the link_get_ tool
 func HandleLink_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -237,8 +228,6 @@ func HandleLink_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Link_get_(args)
@@ -254,4 +243,3 @@ func HandleLink_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

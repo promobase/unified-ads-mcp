@@ -6,10 +6,10 @@ import "time"
 
 // AREffect represents a Facebook AREffect object
 type AREffect struct {
-	Creation_time time.Time `json:"creation_time"`
-	Id string `json:"id"`
+	Creation_time      time.Time `json:"creation_time"`
+	Id                 string    `json:"id"`
 	Last_modified_time time.Time `json:"last_modified_time"`
-	Name string `json:"name"`
-	Status string `json:"status"`
-	Surfaces []string `json:"surfaces"`
+	Name               string    `json:"name"`
+	Status             string    `json:"status"`
+	Surfaces           []string  `json:"surfaces"`
 }

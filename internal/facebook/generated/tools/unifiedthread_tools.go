@@ -15,7 +15,6 @@ import (
 func GetUnifiedThreadTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// unifiedthread_get_messages tool
 	unifiedthread_get_messagesTool := mcp.NewTool("unifiedthread_get_messages",
 		mcp.WithDescription("GET messages for UnifiedThread"),
@@ -40,12 +39,10 @@ func GetUnifiedThreadTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, unifiedthread_get_Tool)
 
-
 	return tools
 }
 
 // UnifiedThread handlers
-
 
 // HandleUnifiedthread_get_messages handles the unifiedthread_get_messages tool
 func HandleUnifiedthread_get_messages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -66,8 +63,6 @@ func HandleUnifiedthread_get_messages(ctx context.Context, request mcp.CallToolR
 		args["source"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Unifiedthread_get_messages(args)
 	if err != nil {
@@ -83,7 +78,6 @@ func HandleUnifiedthread_get_messages(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUnifiedthread_get_ handles the unifiedthread_get_ tool
 func HandleUnifiedthread_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -97,8 +91,6 @@ func HandleUnifiedthread_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Unifiedthread_get_(args)
@@ -114,4 +106,3 @@ func HandleUnifiedthread_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

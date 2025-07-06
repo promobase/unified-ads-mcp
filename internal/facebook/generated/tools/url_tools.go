@@ -15,7 +15,6 @@ import (
 func GetURLTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// url_get_ tool
 	url_get_Tool := mcp.NewTool("url_get_",
 		mcp.WithDescription("GET  for URL"),
@@ -55,12 +54,10 @@ func GetURLTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, url_post_Tool)
 
-
 	return tools
 }
 
 // URL handlers
-
 
 // HandleUrl_get_ handles the url_get_ tool
 func HandleUrl_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -76,8 +73,6 @@ func HandleUrl_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Url_get_(args)
 	if err != nil {
@@ -92,7 +87,6 @@ func HandleUrl_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUrl_post_ handles the url_post_ tool
 func HandleUrl_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -140,8 +134,6 @@ func HandleUrl_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 		args["ts"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Url_post_(args)
 	if err != nil {
@@ -156,4 +148,3 @@ func HandleUrl_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

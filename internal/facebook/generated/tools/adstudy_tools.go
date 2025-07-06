@@ -15,7 +15,6 @@ import (
 func GetAdStudyTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adstudy_get_cells tool
 	adstudy_get_cellsTool := mcp.NewTool("adstudy_get_cells",
 		mcp.WithDescription("GET cells for AdStudy"),
@@ -158,12 +157,10 @@ func GetAdStudyTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adstudy_post_Tool)
 
-
 	return tools
 }
 
 // AdStudy handlers
-
 
 // HandleAdstudy_get_cells handles the adstudy_get_cells tool
 func HandleAdstudy_get_cells(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -179,8 +176,6 @@ func HandleAdstudy_get_cells(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Adstudy_get_cells(args)
 	if err != nil {
@@ -195,7 +190,6 @@ func HandleAdstudy_get_cells(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdstudy_post_checkpoint handles the adstudy_post_checkpoint tool
 func HandleAdstudy_post_checkpoint(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -242,8 +236,6 @@ func HandleAdstudy_post_checkpoint(ctx context.Context, request mcp.CallToolRequ
 		args["run_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adstudy_post_checkpoint(args)
 	if err != nil {
@@ -259,7 +251,6 @@ func HandleAdstudy_post_checkpoint(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdstudy_get_instances handles the adstudy_get_instances tool
 func HandleAdstudy_get_instances(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -273,8 +264,6 @@ func HandleAdstudy_get_instances(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adstudy_get_instances(args)
@@ -290,7 +279,6 @@ func HandleAdstudy_get_instances(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdstudy_post_instances handles the adstudy_post_instances tool
 func HandleAdstudy_post_instances(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -318,8 +306,6 @@ func HandleAdstudy_post_instances(ctx context.Context, request mcp.CallToolReque
 		args["run_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adstudy_post_instances(args)
 	if err != nil {
@@ -335,7 +321,6 @@ func HandleAdstudy_post_instances(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdstudy_get_objectives handles the adstudy_get_objectives tool
 func HandleAdstudy_get_objectives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -349,8 +334,6 @@ func HandleAdstudy_get_objectives(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adstudy_get_objectives(args)
@@ -367,7 +350,6 @@ func HandleAdstudy_get_objectives(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdstudy_delete_ handles the adstudy_delete_ tool
 func HandleAdstudy_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -381,8 +363,6 @@ func HandleAdstudy_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adstudy_delete_(args)
@@ -399,7 +379,6 @@ func HandleAdstudy_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdstudy_get_ handles the adstudy_get_ tool
 func HandleAdstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -413,8 +392,6 @@ func HandleAdstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adstudy_get_(args)
@@ -430,7 +407,6 @@ func HandleAdstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdstudy_post_ handles the adstudy_post_ tool
 func HandleAdstudy_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -509,8 +485,6 @@ func HandleAdstudy_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args["viewers"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adstudy_post_(args)
 	if err != nil {
@@ -525,4 +499,3 @@ func HandleAdstudy_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

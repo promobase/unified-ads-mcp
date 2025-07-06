@@ -15,7 +15,6 @@ import (
 func GetWoodhengePurchasedPAYGReceiptTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// woodhengepurchasedpaygreceipt_get_ tool
 	woodhengepurchasedpaygreceipt_get_Tool := mcp.NewTool("woodhengepurchasedpaygreceipt_get_",
 		mcp.WithDescription("GET  for WoodhengePurchasedPAYGReceipt"),
@@ -26,12 +25,10 @@ func GetWoodhengePurchasedPAYGReceiptTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, woodhengepurchasedpaygreceipt_get_Tool)
 
-
 	return tools
 }
 
 // WoodhengePurchasedPAYGReceipt handlers
-
 
 // HandleWoodhengepurchasedpaygreceipt_get_ handles the woodhengepurchasedpaygreceipt_get_ tool
 func HandleWoodhengepurchasedpaygreceipt_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleWoodhengepurchasedpaygreceipt_get_(ctx context.Context, request mcp.C
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Woodhengepurchasedpaygreceipt_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleWoodhengepurchasedpaygreceipt_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

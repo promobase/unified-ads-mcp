@@ -15,7 +15,6 @@ import (
 func GetAdStudyObjectiveTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adstudyobjective_get_adspixels tool
 	adstudyobjective_get_adspixelsTool := mcp.NewTool("adstudyobjective_get_adspixels",
 		mcp.WithDescription("GET adspixels for AdStudyObjective"),
@@ -144,12 +143,10 @@ func GetAdStudyObjectiveTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adstudyobjective_post_Tool)
 
-
 	return tools
 }
 
 // AdStudyObjective handlers
-
 
 // HandleAdstudyobjective_get_adspixels handles the adstudyobjective_get_adspixels tool
 func HandleAdstudyobjective_get_adspixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -164,8 +161,6 @@ func HandleAdstudyobjective_get_adspixels(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adstudyobjective_get_adspixels(args)
@@ -182,7 +177,6 @@ func HandleAdstudyobjective_get_adspixels(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdstudyobjective_get_applications handles the adstudyobjective_get_applications tool
 func HandleAdstudyobjective_get_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -196,8 +190,6 @@ func HandleAdstudyobjective_get_applications(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adstudyobjective_get_applications(args)
@@ -214,7 +206,6 @@ func HandleAdstudyobjective_get_applications(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdstudyobjective_get_brand_requests handles the adstudyobjective_get_brand_requests tool
 func HandleAdstudyobjective_get_brand_requests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -228,8 +219,6 @@ func HandleAdstudyobjective_get_brand_requests(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adstudyobjective_get_brand_requests(args)
@@ -246,7 +235,6 @@ func HandleAdstudyobjective_get_brand_requests(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdstudyobjective_get_customconversions handles the adstudyobjective_get_customconversions tool
 func HandleAdstudyobjective_get_customconversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -260,8 +248,6 @@ func HandleAdstudyobjective_get_customconversions(ctx context.Context, request m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adstudyobjective_get_customconversions(args)
@@ -278,7 +264,6 @@ func HandleAdstudyobjective_get_customconversions(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdstudyobjective_get_offline_conversion_data_sets handles the adstudyobjective_get_offline_conversion_data_sets tool
 func HandleAdstudyobjective_get_offline_conversion_data_sets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -292,8 +277,6 @@ func HandleAdstudyobjective_get_offline_conversion_data_sets(ctx context.Context
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adstudyobjective_get_offline_conversion_data_sets(args)
@@ -310,7 +293,6 @@ func HandleAdstudyobjective_get_offline_conversion_data_sets(ctx context.Context
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdstudyobjective_get_partner_private_studies handles the adstudyobjective_get_partner_private_studies tool
 func HandleAdstudyobjective_get_partner_private_studies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -324,8 +306,6 @@ func HandleAdstudyobjective_get_partner_private_studies(ctx context.Context, req
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adstudyobjective_get_partner_private_studies(args)
@@ -342,7 +322,6 @@ func HandleAdstudyobjective_get_partner_private_studies(ctx context.Context, req
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdstudyobjective_get_partnerstudies handles the adstudyobjective_get_partnerstudies tool
 func HandleAdstudyobjective_get_partnerstudies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -356,8 +335,6 @@ func HandleAdstudyobjective_get_partnerstudies(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adstudyobjective_get_partnerstudies(args)
@@ -373,7 +350,6 @@ func HandleAdstudyobjective_get_partnerstudies(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdstudyobjective_get_ handles the adstudyobjective_get_ tool
 func HandleAdstudyobjective_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -400,8 +376,6 @@ func HandleAdstudyobjective_get_(ctx context.Context, request mcp.CallToolReques
 		args["ds"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adstudyobjective_get_(args)
 	if err != nil {
@@ -416,7 +390,6 @@ func HandleAdstudyobjective_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdstudyobjective_post_ handles the adstudyobjective_post_ tool
 func HandleAdstudyobjective_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -489,8 +462,6 @@ func HandleAdstudyobjective_post_(ctx context.Context, request mcp.CallToolReque
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adstudyobjective_post_(args)
 	if err != nil {
@@ -505,4 +476,3 @@ func HandleAdstudyobjective_post_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetCopyrightMediaMisuseTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// copyrightmediamisuse_get_ tool
 	copyrightmediamisuse_get_Tool := mcp.NewTool("copyrightmediamisuse_get_",
 		mcp.WithDescription("GET  for CopyrightMediaMisuse"),
@@ -26,12 +25,10 @@ func GetCopyrightMediaMisuseTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, copyrightmediamisuse_get_Tool)
 
-
 	return tools
 }
 
 // CopyrightMediaMisuse handlers
-
 
 // HandleCopyrightmediamisuse_get_ handles the copyrightmediamisuse_get_ tool
 func HandleCopyrightmediamisuse_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleCopyrightmediamisuse_get_(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Copyrightmediamisuse_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleCopyrightmediamisuse_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetCreditCardTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// creditcard_get_ tool
 	creditcard_get_Tool := mcp.NewTool("creditcard_get_",
 		mcp.WithDescription("GET  for CreditCard"),
@@ -26,12 +25,10 @@ func GetCreditCardTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, creditcard_get_Tool)
 
-
 	return tools
 }
 
 // CreditCard handlers
-
 
 // HandleCreditcard_get_ handles the creditcard_get_ tool
 func HandleCreditcard_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleCreditcard_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Creditcard_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleCreditcard_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

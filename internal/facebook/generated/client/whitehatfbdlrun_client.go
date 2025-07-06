@@ -21,18 +21,14 @@ func NewWhitehatFBDLRunClient(accessToken string) *WhitehatFBDLRunClient {
 	}
 }
 
-
 // whitehatfbdlrun_get_ GET  for WhitehatFBDLRun
 func (c *WhitehatFBDLRunClient) Whitehatfbdlrun_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -63,4 +59,3 @@ func (c *WhitehatFBDLRunClient) Whitehatfbdlrun_get_(args map[string]interface{}
 
 	return result, nil
 }
-

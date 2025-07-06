@@ -15,7 +15,6 @@ import (
 func GetAdRuleTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adrule_post_execute tool
 	adrule_post_executeTool := mcp.NewTool("adrule_post_execute",
 		mcp.WithDescription("POST execute for AdRule"),
@@ -102,12 +101,10 @@ func GetAdRuleTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adrule_post_Tool)
 
-
 	return tools
 }
 
 // AdRule handlers
-
 
 // HandleAdrule_post_execute handles the adrule_post_execute tool
 func HandleAdrule_post_execute(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -123,8 +120,6 @@ func HandleAdrule_post_execute(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Adrule_post_execute(args)
 	if err != nil {
@@ -139,7 +134,6 @@ func HandleAdrule_post_execute(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdrule_get_history handles the adrule_get_history tool
 func HandleAdrule_get_history(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -170,8 +164,6 @@ func HandleAdrule_get_history(ctx context.Context, request mcp.CallToolRequest) 
 		args["object_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adrule_get_history(args)
 	if err != nil {
@@ -187,7 +179,6 @@ func HandleAdrule_get_history(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdrule_post_preview handles the adrule_post_preview tool
 func HandleAdrule_post_preview(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -201,8 +192,6 @@ func HandleAdrule_post_preview(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adrule_post_preview(args)
@@ -219,7 +208,6 @@ func HandleAdrule_post_preview(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdrule_delete_ handles the adrule_delete_ tool
 func HandleAdrule_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -233,8 +221,6 @@ func HandleAdrule_delete_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adrule_delete_(args)
@@ -251,7 +237,6 @@ func HandleAdrule_delete_(ctx context.Context, request mcp.CallToolRequest) (*mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdrule_get_ handles the adrule_get_ tool
 func HandleAdrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -265,8 +250,6 @@ func HandleAdrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adrule_get_(args)
@@ -282,7 +265,6 @@ func HandleAdrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdrule_post_ handles the adrule_post_ tool
 func HandleAdrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -326,8 +308,6 @@ func HandleAdrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		args["status"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adrule_post_(args)
 	if err != nil {
@@ -342,4 +322,3 @@ func HandleAdrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

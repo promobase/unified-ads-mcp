@@ -4,10 +4,10 @@ package types
 
 // AdLimitsEnforcementData represents a Facebook AdLimitsEnforcementData object
 type AdLimitsEnforcementData struct {
-	Ad_limit_on_page int `json:"ad_limit_on_page"`
-	Ad_limit_on_scope int `json:"ad_limit_on_scope"`
-	Ad_volume_on_page int `json:"ad_volume_on_page"`
-	Ad_volume_on_scope int `json:"ad_volume_on_scope"`
-	Is_admin bool `json:"is_admin"`
-	Page_name string `json:"page_name"`
+	Ad_limit_on_page   int    `json:"ad_limit_on_page"`
+	Ad_limit_on_scope  int    `json:"ad_limit_on_scope"`
+	Ad_volume_on_page  int    `json:"ad_volume_on_page"`
+	Ad_volume_on_scope int    `json:"ad_volume_on_scope"`
+	Is_admin           bool   `json:"is_admin"`
+	Page_name          string `json:"page_name"`
 }

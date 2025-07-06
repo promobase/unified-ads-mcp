@@ -15,7 +15,6 @@ import (
 func GetAdPlacePageSetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adplacepageset_get_ tool
 	adplacepageset_get_Tool := mcp.NewTool("adplacepageset_get_",
 		mcp.WithDescription("GET  for AdPlacePageSet"),
@@ -26,12 +25,10 @@ func GetAdPlacePageSetTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adplacepageset_get_Tool)
 
-
 	return tools
 }
 
 // AdPlacePageSet handlers
-
 
 // HandleAdplacepageset_get_ handles the adplacepageset_get_ tool
 func HandleAdplacepageset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAdplacepageset_get_(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Adplacepageset_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAdplacepageset_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

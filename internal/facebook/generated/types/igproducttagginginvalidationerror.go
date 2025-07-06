@@ -4,7 +4,7 @@ package types
 
 // IGProductTaggingInvalidationError represents a Facebook IGProductTaggingInvalidationError object
 type IGProductTaggingInvalidationError struct {
-	Description string `json:"description"`
+	Description       string `json:"description"`
 	Taggability_state string `json:"taggability_state"`
-	Title string `json:"title"`
+	Title             string `json:"title"`
 }

@@ -15,7 +15,6 @@ import (
 func GetAREffectTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// areffect_get_ tool
 	areffect_get_Tool := mcp.NewTool("areffect_get_",
 		mcp.WithDescription("GET  for AREffect"),
@@ -26,12 +25,10 @@ func GetAREffectTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, areffect_get_Tool)
 
-
 	return tools
 }
 
 // AREffect handlers
-
 
 // HandleAreffect_get_ handles the areffect_get_ tool
 func HandleAreffect_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAreffect_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Areffect_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAreffect_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

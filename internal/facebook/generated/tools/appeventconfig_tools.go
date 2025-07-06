@@ -15,7 +15,6 @@ import (
 func GetAppEventConfigTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// appeventconfig_get_ tool
 	appeventconfig_get_Tool := mcp.NewTool("appeventconfig_get_",
 		mcp.WithDescription("GET  for AppEventConfig"),
@@ -29,12 +28,10 @@ func GetAppEventConfigTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, appeventconfig_get_Tool)
 
-
 	return tools
 }
 
 // AppEventConfig handlers
-
 
 // HandleAppeventconfig_get_ handles the appeventconfig_get_ tool
 func HandleAppeventconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -55,8 +52,6 @@ func HandleAppeventconfig_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["event_name"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Appeventconfig_get_(args)
 	if err != nil {
@@ -71,4 +66,3 @@ func HandleAppeventconfig_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

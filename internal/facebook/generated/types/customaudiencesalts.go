@@ -4,8 +4,8 @@ package types
 
 // CustomAudienceSalts represents a Facebook CustomAudienceSalts object
 type CustomAudienceSalts struct {
-	App_id int `json:"app_id"`
-	Public_key string `json:"public_key"`
-	Salts []map[string]interface{} `json:"salts"`
-	User_id int `json:"user_id"`
+	App_id     int                      `json:"app_id"`
+	Public_key string                   `json:"public_key"`
+	Salts      []map[string]interface{} `json:"salts"`
+	User_id    int                      `json:"user_id"`
 }

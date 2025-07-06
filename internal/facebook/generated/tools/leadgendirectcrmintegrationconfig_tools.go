@@ -15,7 +15,6 @@ import (
 func GetLeadGenDirectCRMIntegrationConfigTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// leadgendirectcrmintegrationconfig_get_ tool
 	leadgendirectcrmintegrationconfig_get_Tool := mcp.NewTool("leadgendirectcrmintegrationconfig_get_",
 		mcp.WithDescription("GET  for LeadGenDirectCRMIntegrationConfig"),
@@ -26,12 +25,10 @@ func GetLeadGenDirectCRMIntegrationConfigTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, leadgendirectcrmintegrationconfig_get_Tool)
 
-
 	return tools
 }
 
 // LeadGenDirectCRMIntegrationConfig handlers
-
 
 // HandleLeadgendirectcrmintegrationconfig_get_ handles the leadgendirectcrmintegrationconfig_get_ tool
 func HandleLeadgendirectcrmintegrationconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleLeadgendirectcrmintegrationconfig_get_(ctx context.Context, request m
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Leadgendirectcrmintegrationconfig_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleLeadgendirectcrmintegrationconfig_get_(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

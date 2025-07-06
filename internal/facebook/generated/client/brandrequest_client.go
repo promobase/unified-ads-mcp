@@ -21,18 +21,14 @@ func NewBrandRequestClient(accessToken string) *BrandRequestClient {
 	}
 }
 
-
 // brandrequest_get_ GET  for BrandRequest
 func (c *BrandRequestClient) Brandrequest_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -63,4 +59,3 @@ func (c *BrandRequestClient) Brandrequest_get_(args map[string]interface{}) (int
 
 	return result, nil
 }
-

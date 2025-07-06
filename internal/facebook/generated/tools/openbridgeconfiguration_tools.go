@@ -15,7 +15,6 @@ import (
 func GetOpenBridgeConfigurationTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// openbridgeconfiguration_delete_ tool
 	openbridgeconfiguration_delete_Tool := mcp.NewTool("openbridgeconfiguration_delete_",
 		mcp.WithDescription("DELETE  for OpenBridgeConfiguration"),
@@ -94,12 +93,10 @@ func GetOpenBridgeConfigurationTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, openbridgeconfiguration_post_Tool)
 
-
 	return tools
 }
 
 // OpenBridgeConfiguration handlers
-
 
 // HandleOpenbridgeconfiguration_delete_ handles the openbridgeconfiguration_delete_ tool
 func HandleOpenbridgeconfiguration_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -114,8 +111,6 @@ func HandleOpenbridgeconfiguration_delete_(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Openbridgeconfiguration_delete_(args)
@@ -132,7 +127,6 @@ func HandleOpenbridgeconfiguration_delete_(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleOpenbridgeconfiguration_get_ handles the openbridgeconfiguration_get_ tool
 func HandleOpenbridgeconfiguration_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -146,8 +140,6 @@ func HandleOpenbridgeconfiguration_get_(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Openbridgeconfiguration_get_(args)
@@ -163,7 +155,6 @@ func HandleOpenbridgeconfiguration_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleOpenbridgeconfiguration_post_ handles the openbridgeconfiguration_post_ tool
 func HandleOpenbridgeconfiguration_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -259,8 +250,6 @@ func HandleOpenbridgeconfiguration_post_(ctx context.Context, request mcp.CallTo
 		args["sgw_pixel_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Openbridgeconfiguration_post_(args)
 	if err != nil {
@@ -275,4 +264,3 @@ func HandleOpenbridgeconfiguration_post_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

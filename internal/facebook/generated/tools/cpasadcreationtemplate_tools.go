@@ -15,7 +15,6 @@ import (
 func GetCPASAdCreationTemplateTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// cpasadcreationtemplate_get_ tool
 	cpasadcreationtemplate_get_Tool := mcp.NewTool("cpasadcreationtemplate_get_",
 		mcp.WithDescription("GET  for CPASAdCreationTemplate"),
@@ -26,12 +25,10 @@ func GetCPASAdCreationTemplateTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, cpasadcreationtemplate_get_Tool)
 
-
 	return tools
 }
 
 // CPASAdCreationTemplate handlers
-
 
 // HandleCpasadcreationtemplate_get_ handles the cpasadcreationtemplate_get_ tool
 func HandleCpasadcreationtemplate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleCpasadcreationtemplate_get_(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Cpasadcreationtemplate_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleCpasadcreationtemplate_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetWoodhengeSupporterTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// woodhengesupporter_get_ tool
 	woodhengesupporter_get_Tool := mcp.NewTool("woodhengesupporter_get_",
 		mcp.WithDescription("GET  for WoodhengeSupporter"),
@@ -26,12 +25,10 @@ func GetWoodhengeSupporterTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, woodhengesupporter_get_Tool)
 
-
 	return tools
 }
 
 // WoodhengeSupporter handlers
-
 
 // HandleWoodhengesupporter_get_ handles the woodhengesupporter_get_ tool
 func HandleWoodhengesupporter_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleWoodhengesupporter_get_(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Woodhengesupporter_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleWoodhengesupporter_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

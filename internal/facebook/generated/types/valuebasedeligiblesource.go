@@ -4,7 +4,7 @@ package types
 
 // ValueBasedEligibleSource represents a Facebook ValueBasedEligibleSource object
 type ValueBasedEligibleSource struct {
-	Id string `json:"id"`
+	Id    string `json:"id"`
 	Title string `json:"title"`
 	Type_ string `json:"type"`
 }

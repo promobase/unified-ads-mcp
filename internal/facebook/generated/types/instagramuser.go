@@ -4,16 +4,16 @@ package types
 
 // InstagramUser represents a Facebook InstagramUser object
 type InstagramUser struct {
-	Follow_count int `json:"follow_count"`
-	Followed_by_count int `json:"followed_by_count"`
-	Has_profile_picture bool `json:"has_profile_picture"`
-	Id string `json:"id"`
-	Ig_user_id string `json:"ig_user_id"`
-	Is_private bool `json:"is_private"`
-	Is_published bool `json:"is_published"`
-	Media_count int `json:"media_count"`
-	Mini_shop_storefront *Shop `json:"mini_shop_storefront"`
-	Owner_business *Business `json:"owner_business"`
-	Profile_pic string `json:"profile_pic"`
-	Username string `json:"username"`
+	Follow_count         int       `json:"follow_count"`
+	Followed_by_count    int       `json:"followed_by_count"`
+	Has_profile_picture  bool      `json:"has_profile_picture"`
+	Id                   string    `json:"id"`
+	Ig_user_id           string    `json:"ig_user_id"`
+	Is_private           bool      `json:"is_private"`
+	Is_published         bool      `json:"is_published"`
+	Media_count          int       `json:"media_count"`
+	Mini_shop_storefront *Shop     `json:"mini_shop_storefront"`
+	Owner_business       *Business `json:"owner_business"`
+	Profile_pic          string    `json:"profile_pic"`
+	Username             string    `json:"username"`
 }

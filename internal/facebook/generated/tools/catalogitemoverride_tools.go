@@ -15,7 +15,6 @@ import (
 func GetCatalogItemOverrideTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// catalogitemoverride_get_ tool
 	catalogitemoverride_get_Tool := mcp.NewTool("catalogitemoverride_get_",
 		mcp.WithDescription("GET  for CatalogItemOverride"),
@@ -26,12 +25,10 @@ func GetCatalogItemOverrideTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, catalogitemoverride_get_Tool)
 
-
 	return tools
 }
 
 // CatalogItemOverride handlers
-
 
 // HandleCatalogitemoverride_get_ handles the catalogitemoverride_get_ tool
 func HandleCatalogitemoverride_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleCatalogitemoverride_get_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Catalogitemoverride_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleCatalogitemoverride_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetHotelTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// hotel_get_channels_to_integrity_status tool
 	hotel_get_channels_to_integrity_statusTool := mcp.NewTool("hotel_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for Hotel"),
@@ -129,12 +128,10 @@ func GetHotelTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, hotel_post_Tool)
 
-
 	return tools
 }
 
 // Hotel handlers
-
 
 // HandleHotel_get_channels_to_integrity_status handles the hotel_get_channels_to_integrity_status tool
 func HandleHotel_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -149,8 +146,6 @@ func HandleHotel_get_channels_to_integrity_status(ctx context.Context, request m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Hotel_get_channels_to_integrity_status(args)
@@ -167,7 +162,6 @@ func HandleHotel_get_channels_to_integrity_status(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleHotel_get_hotel_rooms handles the hotel_get_hotel_rooms tool
 func HandleHotel_get_hotel_rooms(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -181,8 +175,6 @@ func HandleHotel_get_hotel_rooms(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Hotel_get_hotel_rooms(args)
@@ -198,7 +190,6 @@ func HandleHotel_get_hotel_rooms(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleHotel_get_override_details handles the hotel_get_override_details tool
 func HandleHotel_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -225,8 +216,6 @@ func HandleHotel_get_override_details(ctx context.Context, request mcp.CallToolR
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Hotel_get_override_details(args)
 	if err != nil {
@@ -242,7 +231,6 @@ func HandleHotel_get_override_details(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleHotel_get_videos_metadata handles the hotel_get_videos_metadata tool
 func HandleHotel_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -256,8 +244,6 @@ func HandleHotel_get_videos_metadata(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Hotel_get_videos_metadata(args)
@@ -274,7 +260,6 @@ func HandleHotel_get_videos_metadata(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleHotel_delete_ handles the hotel_delete_ tool
 func HandleHotel_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -288,8 +273,6 @@ func HandleHotel_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Hotel_delete_(args)
@@ -306,7 +289,6 @@ func HandleHotel_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleHotel_get_ handles the hotel_get_ tool
 func HandleHotel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -320,8 +302,6 @@ func HandleHotel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Hotel_get_(args)
@@ -337,7 +317,6 @@ func HandleHotel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleHotel_post_ handles the hotel_post_ tool
 func HandleHotel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -417,8 +396,6 @@ func HandleHotel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 		args["url"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Hotel_post_(args)
 	if err != nil {
@@ -433,4 +410,3 @@ func HandleHotel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

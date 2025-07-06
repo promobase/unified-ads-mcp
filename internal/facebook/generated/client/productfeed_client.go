@@ -21,11 +21,9 @@ func NewProductFeedClient(accessToken string) *ProductFeedClient {
 	}
 }
 
-
 // productfeed_get_automotive_models GET automotive_models for ProductFeed
 func (c *ProductFeedClient) Productfeed_get_automotive_models(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "automotive_models")
@@ -39,7 +37,6 @@ func (c *ProductFeedClient) Productfeed_get_automotive_models(args map[string]in
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -70,11 +67,9 @@ func (c *ProductFeedClient) Productfeed_get_automotive_models(args map[string]in
 	return result, nil
 }
 
-
 // productfeed_get_destinations GET destinations for ProductFeed
 func (c *ProductFeedClient) Productfeed_get_destinations(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "destinations")
@@ -88,7 +83,6 @@ func (c *ProductFeedClient) Productfeed_get_destinations(args map[string]interfa
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -119,11 +113,9 @@ func (c *ProductFeedClient) Productfeed_get_destinations(args map[string]interfa
 	return result, nil
 }
 
-
 // productfeed_get_flights GET flights for ProductFeed
 func (c *ProductFeedClient) Productfeed_get_flights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "flights")
@@ -137,7 +129,6 @@ func (c *ProductFeedClient) Productfeed_get_flights(args map[string]interface{})
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -168,11 +159,9 @@ func (c *ProductFeedClient) Productfeed_get_flights(args map[string]interface{})
 	return result, nil
 }
 
-
 // productfeed_get_home_listings GET home_listings for ProductFeed
 func (c *ProductFeedClient) Productfeed_get_home_listings(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "home_listings")
@@ -186,7 +175,6 @@ func (c *ProductFeedClient) Productfeed_get_home_listings(args map[string]interf
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -217,11 +205,9 @@ func (c *ProductFeedClient) Productfeed_get_home_listings(args map[string]interf
 	return result, nil
 }
 
-
 // productfeed_get_hotels GET hotels for ProductFeed
 func (c *ProductFeedClient) Productfeed_get_hotels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "hotels")
@@ -235,7 +221,6 @@ func (c *ProductFeedClient) Productfeed_get_hotels(args map[string]interface{}) 
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -266,11 +251,9 @@ func (c *ProductFeedClient) Productfeed_get_hotels(args map[string]interface{}) 
 	return result, nil
 }
 
-
 // productfeed_get_media_titles GET media_titles for ProductFeed
 func (c *ProductFeedClient) Productfeed_get_media_titles(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "media_titles")
@@ -284,7 +267,6 @@ func (c *ProductFeedClient) Productfeed_get_media_titles(args map[string]interfa
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -315,11 +297,9 @@ func (c *ProductFeedClient) Productfeed_get_media_titles(args map[string]interfa
 	return result, nil
 }
 
-
 // productfeed_get_products GET products for ProductFeed
 func (c *ProductFeedClient) Productfeed_get_products(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "products")
@@ -339,7 +319,6 @@ func (c *ProductFeedClient) Productfeed_get_products(args map[string]interface{}
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -370,19 +349,15 @@ func (c *ProductFeedClient) Productfeed_get_products(args map[string]interface{}
 	return result, nil
 }
 
-
 // productfeed_get_rules GET rules for ProductFeed
 func (c *ProductFeedClient) Productfeed_get_rules(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "rules")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -412,7 +387,6 @@ func (c *ProductFeedClient) Productfeed_get_rules(args map[string]interface{}) (
 
 	return result, nil
 }
-
 
 // productfeed_post_rules POST rules for ProductFeed
 func (c *ProductFeedClient) Productfeed_post_rules(args map[string]interface{}) (interface{}, error) {
@@ -427,7 +401,6 @@ func (c *ProductFeedClient) Productfeed_post_rules(args map[string]interface{}) 
 		return nil, fmt.Errorf("missing required parameter: rule_type")
 	}
 	_ = rule_type // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "rules")
@@ -444,7 +417,6 @@ func (c *ProductFeedClient) Productfeed_post_rules(args map[string]interface{}) 
 		urlParams.Set("rule_type", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -474,7 +446,6 @@ func (c *ProductFeedClient) Productfeed_post_rules(args map[string]interface{}) 
 
 	return result, nil
 }
-
 
 // productfeed_post_supplementary_feed_assocs POST supplementary_feed_assocs for ProductFeed
 func (c *ProductFeedClient) Productfeed_post_supplementary_feed_assocs(args map[string]interface{}) (interface{}, error) {
@@ -485,7 +456,6 @@ func (c *ProductFeedClient) Productfeed_post_supplementary_feed_assocs(args map[
 	}
 	_ = assoc_data // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "supplementary_feed_assocs")
 	urlParams := url.Values{}
@@ -494,7 +464,6 @@ func (c *ProductFeedClient) Productfeed_post_supplementary_feed_assocs(args map[
 	if val, ok := args["assoc_data"]; ok {
 		urlParams.Set("assoc_data", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -526,18 +495,14 @@ func (c *ProductFeedClient) Productfeed_post_supplementary_feed_assocs(args map[
 	return result, nil
 }
 
-
 // productfeed_get_upload_schedules GET upload_schedules for ProductFeed
 func (c *ProductFeedClient) Productfeed_get_upload_schedules(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "upload_schedules")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -569,11 +534,9 @@ func (c *ProductFeedClient) Productfeed_get_upload_schedules(args map[string]int
 	return result, nil
 }
 
-
 // productfeed_post_upload_schedules POST upload_schedules for ProductFeed
 func (c *ProductFeedClient) Productfeed_post_upload_schedules(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "upload_schedules")
@@ -584,7 +547,6 @@ func (c *ProductFeedClient) Productfeed_post_upload_schedules(args map[string]in
 		urlParams.Set("upload_schedule", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -615,18 +577,14 @@ func (c *ProductFeedClient) Productfeed_post_upload_schedules(args map[string]in
 	return result, nil
 }
 
-
 // productfeed_get_uploads GET uploads for ProductFeed
 func (c *ProductFeedClient) Productfeed_get_uploads(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "uploads")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -658,11 +616,9 @@ func (c *ProductFeedClient) Productfeed_get_uploads(args map[string]interface{})
 	return result, nil
 }
 
-
 // productfeed_post_uploads POST uploads for ProductFeed
 func (c *ProductFeedClient) Productfeed_post_uploads(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "uploads")
@@ -688,7 +644,6 @@ func (c *ProductFeedClient) Productfeed_post_uploads(args map[string]interface{}
 		urlParams.Set("username", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -719,11 +674,9 @@ func (c *ProductFeedClient) Productfeed_post_uploads(args map[string]interface{}
 	return result, nil
 }
 
-
 // productfeed_get_vehicle_offers GET vehicle_offers for ProductFeed
 func (c *ProductFeedClient) Productfeed_get_vehicle_offers(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "vehicle_offers")
@@ -737,7 +690,6 @@ func (c *ProductFeedClient) Productfeed_get_vehicle_offers(args map[string]inter
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -768,11 +720,9 @@ func (c *ProductFeedClient) Productfeed_get_vehicle_offers(args map[string]inter
 	return result, nil
 }
 
-
 // productfeed_get_vehicles GET vehicles for ProductFeed
 func (c *ProductFeedClient) Productfeed_get_vehicles(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "vehicles")
@@ -786,7 +736,6 @@ func (c *ProductFeedClient) Productfeed_get_vehicles(args map[string]interface{}
 		urlParams.Set("filter", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -817,18 +766,14 @@ func (c *ProductFeedClient) Productfeed_get_vehicles(args map[string]interface{}
 	return result, nil
 }
 
-
 // productfeed_delete_ DELETE  for ProductFeed
 func (c *ProductFeedClient) Productfeed_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -860,18 +805,14 @@ func (c *ProductFeedClient) Productfeed_delete_(args map[string]interface{}) (in
 	return result, nil
 }
 
-
 // productfeed_get_ GET  for ProductFeed
 func (c *ProductFeedClient) Productfeed_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -903,11 +844,9 @@ func (c *ProductFeedClient) Productfeed_get_(args map[string]interface{}) (inter
 	return result, nil
 }
 
-
 // productfeed_post_ POST  for ProductFeed
 func (c *ProductFeedClient) Productfeed_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -942,7 +881,6 @@ func (c *ProductFeedClient) Productfeed_post_(args map[string]interface{}) (inte
 		urlParams.Set("update_schedule", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -972,4 +910,3 @@ func (c *ProductFeedClient) Productfeed_post_(args map[string]interface{}) (inte
 
 	return result, nil
 }
-

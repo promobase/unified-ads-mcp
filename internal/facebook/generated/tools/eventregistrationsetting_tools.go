@@ -15,7 +15,6 @@ import (
 func GetEventRegistrationSettingTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// eventregistrationsetting_get_ tool
 	eventregistrationsetting_get_Tool := mcp.NewTool("eventregistrationsetting_get_",
 		mcp.WithDescription("GET  for EventRegistrationSetting"),
@@ -26,12 +25,10 @@ func GetEventRegistrationSettingTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, eventregistrationsetting_get_Tool)
 
-
 	return tools
 }
 
 // EventRegistrationSetting handlers
-
 
 // HandleEventregistrationsetting_get_ handles the eventregistrationsetting_get_ tool
 func HandleEventregistrationsetting_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleEventregistrationsetting_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Eventregistrationsetting_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleEventregistrationsetting_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -5,5 +5,5 @@ package types
 // VideoStatusProcessingPhase represents a Facebook VideoStatusProcessingPhase object
 type VideoStatusProcessingPhase struct {
 	Errors []VideoStatusError `json:"errors"`
-	Status string `json:"status"`
+	Status string             `json:"status"`
 }

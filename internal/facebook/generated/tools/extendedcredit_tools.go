@@ -15,7 +15,6 @@ import (
 func GetExtendedCreditTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// extendedcredit_get_extended_credit_invoice_groups tool
 	extendedcredit_get_extended_credit_invoice_groupsTool := mcp.NewTool("extendedcredit_get_extended_credit_invoice_groups",
 		mcp.WithDescription("GET extended_credit_invoice_groups for ExtendedCredit"),
@@ -146,12 +145,10 @@ func GetExtendedCreditTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, extendedcredit_get_Tool)
 
-
 	return tools
 }
 
 // ExtendedCredit handlers
-
 
 // HandleExtendedcredit_get_extended_credit_invoice_groups handles the extendedcredit_get_extended_credit_invoice_groups tool
 func HandleExtendedcredit_get_extended_credit_invoice_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -167,8 +164,6 @@ func HandleExtendedcredit_get_extended_credit_invoice_groups(ctx context.Context
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Extendedcredit_get_extended_credit_invoice_groups(args)
 	if err != nil {
@@ -183,7 +178,6 @@ func HandleExtendedcredit_get_extended_credit_invoice_groups(ctx context.Context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleExtendedcredit_post_extended_credit_invoice_groups handles the extendedcredit_post_extended_credit_invoice_groups tool
 func HandleExtendedcredit_post_extended_credit_invoice_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -213,8 +207,6 @@ func HandleExtendedcredit_post_extended_credit_invoice_groups(ctx context.Contex
 	}
 	args["name"] = name
 
-
-
 	// Call the client method
 	result, err := client.Extendedcredit_post_extended_credit_invoice_groups(args)
 	if err != nil {
@@ -229,7 +221,6 @@ func HandleExtendedcredit_post_extended_credit_invoice_groups(ctx context.Contex
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleExtendedcredit_get_owning_credit_allocation_configs handles the extendedcredit_get_owning_credit_allocation_configs tool
 func HandleExtendedcredit_get_owning_credit_allocation_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -250,8 +241,6 @@ func HandleExtendedcredit_get_owning_credit_allocation_configs(ctx context.Conte
 		args["receiving_business_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Extendedcredit_get_owning_credit_allocation_configs(args)
 	if err != nil {
@@ -266,7 +255,6 @@ func HandleExtendedcredit_get_owning_credit_allocation_configs(ctx context.Conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleExtendedcredit_post_owning_credit_allocation_configs handles the extendedcredit_post_owning_credit_allocation_configs tool
 func HandleExtendedcredit_post_owning_credit_allocation_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -310,8 +298,6 @@ func HandleExtendedcredit_post_owning_credit_allocation_configs(ctx context.Cont
 		args["send_bill_to"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Extendedcredit_post_owning_credit_allocation_configs(args)
 	if err != nil {
@@ -326,7 +312,6 @@ func HandleExtendedcredit_post_owning_credit_allocation_configs(ctx context.Cont
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleExtendedcredit_post_whatsapp_credit_attach handles the extendedcredit_post_whatsapp_credit_attach tool
 func HandleExtendedcredit_post_whatsapp_credit_attach(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -356,8 +341,6 @@ func HandleExtendedcredit_post_whatsapp_credit_attach(ctx context.Context, reque
 	}
 	args["waba_id"] = waba_id
 
-
-
 	// Call the client method
 	result, err := client.Extendedcredit_post_whatsapp_credit_attach(args)
 	if err != nil {
@@ -372,7 +355,6 @@ func HandleExtendedcredit_post_whatsapp_credit_attach(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleExtendedcredit_post_whatsapp_credit_sharing handles the extendedcredit_post_whatsapp_credit_sharing tool
 func HandleExtendedcredit_post_whatsapp_credit_sharing(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -395,8 +377,6 @@ func HandleExtendedcredit_post_whatsapp_credit_sharing(ctx context.Context, requ
 	}
 	args["receiving_business_id"] = receiving_business_id
 
-
-
 	// Call the client method
 	result, err := client.Extendedcredit_post_whatsapp_credit_sharing(args)
 	if err != nil {
@@ -411,7 +391,6 @@ func HandleExtendedcredit_post_whatsapp_credit_sharing(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleExtendedcredit_post_whatsapp_credit_sharing_and_attach handles the extendedcredit_post_whatsapp_credit_sharing_and_attach tool
 func HandleExtendedcredit_post_whatsapp_credit_sharing_and_attach(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -441,8 +420,6 @@ func HandleExtendedcredit_post_whatsapp_credit_sharing_and_attach(ctx context.Co
 	}
 	args["waba_id"] = waba_id
 
-
-
 	// Call the client method
 	result, err := client.Extendedcredit_post_whatsapp_credit_sharing_and_attach(args)
 	if err != nil {
@@ -458,7 +435,6 @@ func HandleExtendedcredit_post_whatsapp_credit_sharing_and_attach(ctx context.Co
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleExtendedcredit_get_ handles the extendedcredit_get_ tool
 func HandleExtendedcredit_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -472,8 +448,6 @@ func HandleExtendedcredit_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Extendedcredit_get_(args)
@@ -489,4 +463,3 @@ func HandleExtendedcredit_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

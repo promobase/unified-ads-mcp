@@ -6,9 +6,9 @@ import "time"
 
 // AdLabel represents a Facebook AdLabel object
 type AdLabel struct {
-	Account *AdAccount `json:"account"`
-	Created_time time.Time `json:"created_time"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Updated_time time.Time `json:"updated_time"`
+	Account      *AdAccount `json:"account"`
+	Created_time time.Time  `json:"created_time"`
+	Id           string     `json:"id"`
+	Name         string     `json:"name"`
+	Updated_time time.Time  `json:"updated_time"`
 }

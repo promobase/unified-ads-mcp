@@ -15,7 +15,6 @@ import (
 func GetIGMediaBoostEligibilityInfoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// igmediaboosteligibilityinfo_get_ tool
 	igmediaboosteligibilityinfo_get_Tool := mcp.NewTool("igmediaboosteligibilityinfo_get_",
 		mcp.WithDescription("GET  for IGMediaBoostEligibilityInfo"),
@@ -26,12 +25,10 @@ func GetIGMediaBoostEligibilityInfoTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, igmediaboosteligibilityinfo_get_Tool)
 
-
 	return tools
 }
 
 // IGMediaBoostEligibilityInfo handlers
-
 
 // HandleIgmediaboosteligibilityinfo_get_ handles the igmediaboosteligibilityinfo_get_ tool
 func HandleIgmediaboosteligibilityinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleIgmediaboosteligibilityinfo_get_(ctx context.Context, request mcp.Cal
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Igmediaboosteligibilityinfo_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleIgmediaboosteligibilityinfo_get_(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

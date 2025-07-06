@@ -15,7 +15,6 @@ import (
 func GetWhatsAppBusinessAccountTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// whatsappbusinessaccount_get_activities tool
 	whatsappbusinessaccount_get_activitiesTool := mcp.NewTool("whatsappbusinessaccount_get_activities",
 		mcp.WithDescription("GET activities for WhatsAppBusinessAccount"),
@@ -896,12 +895,10 @@ func GetWhatsAppBusinessAccountTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, whatsappbusinessaccount_post_Tool)
 
-
 	return tools
 }
 
 // WhatsAppBusinessAccount handlers
-
 
 // HandleWhatsappbusinessaccount_get_activities handles the whatsappbusinessaccount_get_activities tool
 func HandleWhatsappbusinessaccount_get_activities(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -917,8 +914,6 @@ func HandleWhatsappbusinessaccount_get_activities(ctx context.Context, request m
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_activities(args)
 	if err != nil {
@@ -933,7 +928,6 @@ func HandleWhatsappbusinessaccount_get_activities(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_delete_assigned_users handles the whatsappbusinessaccount_delete_assigned_users tool
 func HandleWhatsappbusinessaccount_delete_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -956,8 +950,6 @@ func HandleWhatsappbusinessaccount_delete_assigned_users(ctx context.Context, re
 	}
 	args["user"] = user
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_delete_assigned_users(args)
 	if err != nil {
@@ -972,7 +964,6 @@ func HandleWhatsappbusinessaccount_delete_assigned_users(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_assigned_users handles the whatsappbusinessaccount_get_assigned_users tool
 func HandleWhatsappbusinessaccount_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -995,8 +986,6 @@ func HandleWhatsappbusinessaccount_get_assigned_users(ctx context.Context, reque
 	}
 	args["business"] = business
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_assigned_users(args)
 	if err != nil {
@@ -1011,7 +1000,6 @@ func HandleWhatsappbusinessaccount_get_assigned_users(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_assigned_users handles the whatsappbusinessaccount_post_assigned_users tool
 func HandleWhatsappbusinessaccount_post_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1041,8 +1029,6 @@ func HandleWhatsappbusinessaccount_post_assigned_users(ctx context.Context, requ
 	}
 	args["user"] = user
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_assigned_users(args)
 	if err != nil {
@@ -1058,7 +1044,6 @@ func HandleWhatsappbusinessaccount_post_assigned_users(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleWhatsappbusinessaccount_get_audiences handles the whatsappbusinessaccount_get_audiences tool
 func HandleWhatsappbusinessaccount_get_audiences(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1072,8 +1057,6 @@ func HandleWhatsappbusinessaccount_get_audiences(ctx context.Context, request mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_audiences(args)
@@ -1089,7 +1072,6 @@ func HandleWhatsappbusinessaccount_get_audiences(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_call_analytics handles the whatsappbusinessaccount_get_call_analytics tool
 func HandleWhatsappbusinessaccount_get_call_analytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1156,8 +1138,6 @@ func HandleWhatsappbusinessaccount_get_call_analytics(ctx context.Context, reque
 	}
 	args["start"] = start
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_call_analytics(args)
 	if err != nil {
@@ -1172,7 +1152,6 @@ func HandleWhatsappbusinessaccount_get_call_analytics(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_conversation_analytics handles the whatsappbusinessaccount_get_conversation_analytics tool
 func HandleWhatsappbusinessaccount_get_conversation_analytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1251,8 +1230,6 @@ func HandleWhatsappbusinessaccount_get_conversation_analytics(ctx context.Contex
 	}
 	args["start"] = start
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_conversation_analytics(args)
 	if err != nil {
@@ -1268,7 +1245,6 @@ func HandleWhatsappbusinessaccount_get_conversation_analytics(ctx context.Contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleWhatsappbusinessaccount_get_dataset handles the whatsappbusinessaccount_get_dataset tool
 func HandleWhatsappbusinessaccount_get_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1282,8 +1258,6 @@ func HandleWhatsappbusinessaccount_get_dataset(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_dataset(args)
@@ -1299,7 +1273,6 @@ func HandleWhatsappbusinessaccount_get_dataset(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_dataset handles the whatsappbusinessaccount_post_dataset tool
 func HandleWhatsappbusinessaccount_post_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1320,8 +1293,6 @@ func HandleWhatsappbusinessaccount_post_dataset(ctx context.Context, request mcp
 		args["dataset_name"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_dataset(args)
 	if err != nil {
@@ -1337,7 +1308,6 @@ func HandleWhatsappbusinessaccount_post_dataset(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleWhatsappbusinessaccount_get_flows handles the whatsappbusinessaccount_get_flows tool
 func HandleWhatsappbusinessaccount_get_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1351,8 +1321,6 @@ func HandleWhatsappbusinessaccount_get_flows(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_flows(args)
@@ -1368,7 +1336,6 @@ func HandleWhatsappbusinessaccount_get_flows(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_flows handles the whatsappbusinessaccount_post_flows tool
 func HandleWhatsappbusinessaccount_post_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1418,8 +1385,6 @@ func HandleWhatsappbusinessaccount_post_flows(ctx context.Context, request mcp.C
 		args["publish"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_flows(args)
 	if err != nil {
@@ -1434,7 +1399,6 @@ func HandleWhatsappbusinessaccount_post_flows(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_generate_payment_configuration_oauth_link handles the whatsappbusinessaccount_post_generate_payment_configuration_oauth_link tool
 func HandleWhatsappbusinessaccount_post_generate_payment_configuration_oauth_link(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1462,8 +1426,6 @@ func HandleWhatsappbusinessaccount_post_generate_payment_configuration_oauth_lin
 		args["redirect_url"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_generate_payment_configuration_oauth_link(args)
 	if err != nil {
@@ -1479,7 +1441,6 @@ func HandleWhatsappbusinessaccount_post_generate_payment_configuration_oauth_lin
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleWhatsappbusinessaccount_get_message_campaigns handles the whatsappbusinessaccount_get_message_campaigns tool
 func HandleWhatsappbusinessaccount_get_message_campaigns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1493,8 +1454,6 @@ func HandleWhatsappbusinessaccount_get_message_campaigns(ctx context.Context, re
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_message_campaigns(args)
@@ -1510,7 +1469,6 @@ func HandleWhatsappbusinessaccount_get_message_campaigns(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_message_template_previews handles the whatsappbusinessaccount_get_message_template_previews tool
 func HandleWhatsappbusinessaccount_get_message_template_previews(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1555,8 +1513,6 @@ func HandleWhatsappbusinessaccount_get_message_template_previews(ctx context.Con
 		args["languages"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_message_template_previews(args)
 	if err != nil {
@@ -1571,7 +1527,6 @@ func HandleWhatsappbusinessaccount_get_message_template_previews(ctx context.Con
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_delete_message_templates handles the whatsappbusinessaccount_delete_message_templates tool
 func HandleWhatsappbusinessaccount_delete_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1599,8 +1554,6 @@ func HandleWhatsappbusinessaccount_delete_message_templates(ctx context.Context,
 	}
 	args["name"] = name
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_delete_message_templates(args)
 	if err != nil {
@@ -1615,7 +1568,6 @@ func HandleWhatsappbusinessaccount_delete_message_templates(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_message_templates handles the whatsappbusinessaccount_get_message_templates tool
 func HandleWhatsappbusinessaccount_get_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1670,8 +1622,6 @@ func HandleWhatsappbusinessaccount_get_message_templates(ctx context.Context, re
 		args["status"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_message_templates(args)
 	if err != nil {
@@ -1686,7 +1636,6 @@ func HandleWhatsappbusinessaccount_get_message_templates(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_message_templates handles the whatsappbusinessaccount_post_message_templates tool
 func HandleWhatsappbusinessaccount_post_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1780,8 +1729,6 @@ func HandleWhatsappbusinessaccount_post_message_templates(ctx context.Context, r
 		args["sub_category"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_message_templates(args)
 	if err != nil {
@@ -1796,7 +1743,6 @@ func HandleWhatsappbusinessaccount_post_message_templates(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_migrate_flows handles the whatsappbusinessaccount_post_migrate_flows tool
 func HandleWhatsappbusinessaccount_post_migrate_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1825,8 +1771,6 @@ func HandleWhatsappbusinessaccount_post_migrate_flows(ctx context.Context, reque
 	}
 	args["source_waba_id"] = source_waba_id
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_migrate_flows(args)
 	if err != nil {
@@ -1841,7 +1785,6 @@ func HandleWhatsappbusinessaccount_post_migrate_flows(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_migrate_message_templates handles the whatsappbusinessaccount_post_migrate_message_templates tool
 func HandleWhatsappbusinessaccount_post_migrate_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1869,8 +1812,6 @@ func HandleWhatsappbusinessaccount_post_migrate_message_templates(ctx context.Co
 	}
 	args["source_waba_id"] = source_waba_id
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_migrate_message_templates(args)
 	if err != nil {
@@ -1885,7 +1826,6 @@ func HandleWhatsappbusinessaccount_post_migrate_message_templates(ctx context.Co
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_delete_payment_configuration handles the whatsappbusinessaccount_delete_payment_configuration tool
 func HandleWhatsappbusinessaccount_delete_payment_configuration(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1908,8 +1848,6 @@ func HandleWhatsappbusinessaccount_delete_payment_configuration(ctx context.Cont
 	}
 	args["configuration_name"] = configuration_name
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_delete_payment_configuration(args)
 	if err != nil {
@@ -1924,7 +1862,6 @@ func HandleWhatsappbusinessaccount_delete_payment_configuration(ctx context.Cont
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_payment_configuration handles the whatsappbusinessaccount_get_payment_configuration tool
 func HandleWhatsappbusinessaccount_get_payment_configuration(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1947,8 +1884,6 @@ func HandleWhatsappbusinessaccount_get_payment_configuration(ctx context.Context
 	}
 	args["configuration_name"] = configuration_name
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_payment_configuration(args)
 	if err != nil {
@@ -1963,7 +1898,6 @@ func HandleWhatsappbusinessaccount_get_payment_configuration(ctx context.Context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_payment_configuration handles the whatsappbusinessaccount_post_payment_configuration tool
 func HandleWhatsappbusinessaccount_post_payment_configuration(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2016,8 +1950,6 @@ func HandleWhatsappbusinessaccount_post_payment_configuration(ctx context.Contex
 		args["redirect_url"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_payment_configuration(args)
 	if err != nil {
@@ -2033,7 +1965,6 @@ func HandleWhatsappbusinessaccount_post_payment_configuration(ctx context.Contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleWhatsappbusinessaccount_get_payment_configurations handles the whatsappbusinessaccount_get_payment_configurations tool
 func HandleWhatsappbusinessaccount_get_payment_configurations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2047,8 +1978,6 @@ func HandleWhatsappbusinessaccount_get_payment_configurations(ctx context.Contex
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_payment_configurations(args)
@@ -2065,7 +1994,6 @@ func HandleWhatsappbusinessaccount_get_payment_configurations(ctx context.Contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleWhatsappbusinessaccount_get_phone_numbers handles the whatsappbusinessaccount_get_phone_numbers tool
 func HandleWhatsappbusinessaccount_get_phone_numbers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2079,8 +2007,6 @@ func HandleWhatsappbusinessaccount_get_phone_numbers(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_phone_numbers(args)
@@ -2096,7 +2022,6 @@ func HandleWhatsappbusinessaccount_get_phone_numbers(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_phone_numbers handles the whatsappbusinessaccount_post_phone_numbers tool
 func HandleWhatsappbusinessaccount_post_phone_numbers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2137,8 +2062,6 @@ func HandleWhatsappbusinessaccount_post_phone_numbers(ctx context.Context, reque
 		args["verified_name"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_phone_numbers(args)
 	if err != nil {
@@ -2153,7 +2076,6 @@ func HandleWhatsappbusinessaccount_post_phone_numbers(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_pricing_analytics handles the whatsappbusinessaccount_get_pricing_analytics tool
 func HandleWhatsappbusinessaccount_get_pricing_analytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2232,8 +2154,6 @@ func HandleWhatsappbusinessaccount_get_pricing_analytics(ctx context.Context, re
 		args["tiers"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_pricing_analytics(args)
 	if err != nil {
@@ -2248,7 +2168,6 @@ func HandleWhatsappbusinessaccount_get_pricing_analytics(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_delete_product_catalogs handles the whatsappbusinessaccount_delete_product_catalogs tool
 func HandleWhatsappbusinessaccount_delete_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2271,8 +2190,6 @@ func HandleWhatsappbusinessaccount_delete_product_catalogs(ctx context.Context, 
 	}
 	args["catalog_id"] = catalog_id
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_delete_product_catalogs(args)
 	if err != nil {
@@ -2288,7 +2205,6 @@ func HandleWhatsappbusinessaccount_delete_product_catalogs(ctx context.Context, 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleWhatsappbusinessaccount_get_product_catalogs handles the whatsappbusinessaccount_get_product_catalogs tool
 func HandleWhatsappbusinessaccount_get_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2302,8 +2218,6 @@ func HandleWhatsappbusinessaccount_get_product_catalogs(ctx context.Context, req
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_product_catalogs(args)
@@ -2319,7 +2233,6 @@ func HandleWhatsappbusinessaccount_get_product_catalogs(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_product_catalogs handles the whatsappbusinessaccount_post_product_catalogs tool
 func HandleWhatsappbusinessaccount_post_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2342,8 +2255,6 @@ func HandleWhatsappbusinessaccount_post_product_catalogs(ctx context.Context, re
 	}
 	args["catalog_id"] = catalog_id
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_product_catalogs(args)
 	if err != nil {
@@ -2359,7 +2270,6 @@ func HandleWhatsappbusinessaccount_post_product_catalogs(ctx context.Context, re
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleWhatsappbusinessaccount_get_schedules handles the whatsappbusinessaccount_get_schedules tool
 func HandleWhatsappbusinessaccount_get_schedules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2373,8 +2283,6 @@ func HandleWhatsappbusinessaccount_get_schedules(ctx context.Context, request mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_schedules(args)
@@ -2390,7 +2298,6 @@ func HandleWhatsappbusinessaccount_get_schedules(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_set_obo_mobility_intent handles the whatsappbusinessaccount_post_set_obo_mobility_intent tool
 func HandleWhatsappbusinessaccount_post_set_obo_mobility_intent(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2411,8 +2318,6 @@ func HandleWhatsappbusinessaccount_post_set_obo_mobility_intent(ctx context.Cont
 		args["solution_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_set_obo_mobility_intent(args)
 	if err != nil {
@@ -2427,7 +2332,6 @@ func HandleWhatsappbusinessaccount_post_set_obo_mobility_intent(ctx context.Cont
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_set_solution_migration_intent handles the whatsappbusinessaccount_post_set_solution_migration_intent tool
 func HandleWhatsappbusinessaccount_post_set_solution_migration_intent(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2453,8 +2357,6 @@ func HandleWhatsappbusinessaccount_post_set_solution_migration_intent(ctx contex
 		args["solution_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_set_solution_migration_intent(args)
 	if err != nil {
@@ -2470,7 +2372,6 @@ func HandleWhatsappbusinessaccount_post_set_solution_migration_intent(ctx contex
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleWhatsappbusinessaccount_get_solutions handles the whatsappbusinessaccount_get_solutions tool
 func HandleWhatsappbusinessaccount_get_solutions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2484,8 +2385,6 @@ func HandleWhatsappbusinessaccount_get_solutions(ctx context.Context, request mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_solutions(args)
@@ -2502,7 +2401,6 @@ func HandleWhatsappbusinessaccount_get_solutions(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleWhatsappbusinessaccount_delete_subscribed_apps handles the whatsappbusinessaccount_delete_subscribed_apps tool
 func HandleWhatsappbusinessaccount_delete_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2516,8 +2414,6 @@ func HandleWhatsappbusinessaccount_delete_subscribed_apps(ctx context.Context, r
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_delete_subscribed_apps(args)
@@ -2534,7 +2430,6 @@ func HandleWhatsappbusinessaccount_delete_subscribed_apps(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleWhatsappbusinessaccount_get_subscribed_apps handles the whatsappbusinessaccount_get_subscribed_apps tool
 func HandleWhatsappbusinessaccount_get_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2548,8 +2443,6 @@ func HandleWhatsappbusinessaccount_get_subscribed_apps(ctx context.Context, requ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_subscribed_apps(args)
@@ -2565,7 +2458,6 @@ func HandleWhatsappbusinessaccount_get_subscribed_apps(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_subscribed_apps handles the whatsappbusinessaccount_post_subscribed_apps tool
 func HandleWhatsappbusinessaccount_post_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2591,8 +2483,6 @@ func HandleWhatsappbusinessaccount_post_subscribed_apps(ctx context.Context, req
 		args["verify_token"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_subscribed_apps(args)
 	if err != nil {
@@ -2607,7 +2497,6 @@ func HandleWhatsappbusinessaccount_post_subscribed_apps(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_template_analytics handles the whatsappbusinessaccount_get_template_analytics tool
 func HandleWhatsappbusinessaccount_get_template_analytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2662,8 +2551,6 @@ func HandleWhatsappbusinessaccount_get_template_analytics(ctx context.Context, r
 	}
 	args["template_ids"] = template_ids
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_template_analytics(args)
 	if err != nil {
@@ -2678,7 +2565,6 @@ func HandleWhatsappbusinessaccount_get_template_analytics(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_template_group_analytics handles the whatsappbusinessaccount_get_template_group_analytics tool
 func HandleWhatsappbusinessaccount_get_template_group_analytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2728,8 +2614,6 @@ func HandleWhatsappbusinessaccount_get_template_group_analytics(ctx context.Cont
 	}
 	args["template_group_ids"] = template_group_ids
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_template_group_analytics(args)
 	if err != nil {
@@ -2745,7 +2629,6 @@ func HandleWhatsappbusinessaccount_get_template_group_analytics(ctx context.Cont
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleWhatsappbusinessaccount_get_template_groups handles the whatsappbusinessaccount_get_template_groups tool
 func HandleWhatsappbusinessaccount_get_template_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2759,8 +2642,6 @@ func HandleWhatsappbusinessaccount_get_template_groups(ctx context.Context, requ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_template_groups(args)
@@ -2776,7 +2657,6 @@ func HandleWhatsappbusinessaccount_get_template_groups(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_template_groups handles the whatsappbusinessaccount_post_template_groups tool
 func HandleWhatsappbusinessaccount_post_template_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2813,8 +2693,6 @@ func HandleWhatsappbusinessaccount_post_template_groups(ctx context.Context, req
 	}
 	args["whatsapp_business_templates"] = whatsapp_business_templates
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_template_groups(args)
 	if err != nil {
@@ -2829,7 +2707,6 @@ func HandleWhatsappbusinessaccount_post_template_groups(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_template_performance_metrics handles the whatsappbusinessaccount_get_template_performance_metrics tool
 func HandleWhatsappbusinessaccount_get_template_performance_metrics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2855,8 +2732,6 @@ func HandleWhatsappbusinessaccount_get_template_performance_metrics(ctx context.
 		args["template_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_template_performance_metrics(args)
 	if err != nil {
@@ -2871,7 +2746,6 @@ func HandleWhatsappbusinessaccount_get_template_performance_metrics(ctx context.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_upsert_message_templates handles the whatsappbusinessaccount_post_upsert_message_templates tool
 func HandleWhatsappbusinessaccount_post_upsert_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2920,8 +2794,6 @@ func HandleWhatsappbusinessaccount_post_upsert_message_templates(ctx context.Con
 	}
 	args["name"] = name
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_upsert_message_templates(args)
 	if err != nil {
@@ -2936,7 +2808,6 @@ func HandleWhatsappbusinessaccount_post_upsert_message_templates(ctx context.Con
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_get_welcome_message_sequences handles the whatsappbusinessaccount_get_welcome_message_sequences tool
 func HandleWhatsappbusinessaccount_get_welcome_message_sequences(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2962,8 +2833,6 @@ func HandleWhatsappbusinessaccount_get_welcome_message_sequences(ctx context.Con
 		args["sequence_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_welcome_message_sequences(args)
 	if err != nil {
@@ -2979,7 +2848,6 @@ func HandleWhatsappbusinessaccount_get_welcome_message_sequences(ctx context.Con
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleWhatsappbusinessaccount_get_ handles the whatsappbusinessaccount_get_ tool
 func HandleWhatsappbusinessaccount_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2993,8 +2861,6 @@ func HandleWhatsappbusinessaccount_get_(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_get_(args)
@@ -3010,7 +2876,6 @@ func HandleWhatsappbusinessaccount_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleWhatsappbusinessaccount_post_ handles the whatsappbusinessaccount_post_ tool
 func HandleWhatsappbusinessaccount_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3031,8 +2896,6 @@ func HandleWhatsappbusinessaccount_post_(ctx context.Context, request mcp.CallTo
 		args["is_enabled_for_insights"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Whatsappbusinessaccount_post_(args)
 	if err != nil {
@@ -3047,4 +2910,3 @@ func HandleWhatsappbusinessaccount_post_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

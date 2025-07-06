@@ -4,8 +4,8 @@ package types
 
 // AdCreativeImageDataMediaElements represents a Facebook AdCreativeImageDataMediaElements object
 type AdCreativeImageDataMediaElements struct {
-	Element_id string `json:"element_id"`
-	Element_type string `json:"element_type"`
-	X float64 `json:"x"`
-	Y float64 `json:"y"`
+	Element_id   string  `json:"element_id"`
+	Element_type string  `json:"element_type"`
+	X            float64 `json:"x"`
+	Y            float64 `json:"y"`
 }

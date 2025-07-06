@@ -21,18 +21,14 @@ func NewIGUserExportForCAMClient(accessToken string) *IGUserExportForCAMClient {
 	}
 }
 
-
 // iguserexportforcam_get_branded_content_media GET branded_content_media for IGUserExportForCAM
 func (c *IGUserExportForCAMClient) Iguserexportforcam_get_branded_content_media(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_media")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,11 +60,9 @@ func (c *IGUserExportForCAMClient) Iguserexportforcam_get_branded_content_media(
 	return result, nil
 }
 
-
 // iguserexportforcam_get_insights GET insights for IGUserExportForCAM
 func (c *IGUserExportForCAMClient) Iguserexportforcam_get_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
@@ -88,7 +82,6 @@ func (c *IGUserExportForCAMClient) Iguserexportforcam_get_insights(args map[stri
 		urlParams.Set("time_range", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -119,19 +112,15 @@ func (c *IGUserExportForCAMClient) Iguserexportforcam_get_insights(args map[stri
 	return result, nil
 }
 
-
 // iguserexportforcam_get_recent_media GET recent_media for IGUserExportForCAM
 func (c *IGUserExportForCAMClient) Iguserexportforcam_get_recent_media(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "recent_media")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -162,19 +151,15 @@ func (c *IGUserExportForCAMClient) Iguserexportforcam_get_recent_media(args map[
 	return result, nil
 }
 
-
 // iguserexportforcam_get_ GET  for IGUserExportForCAM
 func (c *IGUserExportForCAMClient) Iguserexportforcam_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -204,4 +189,3 @@ func (c *IGUserExportForCAMClient) Iguserexportforcam_get_(args map[string]inter
 
 	return result, nil
 }
-

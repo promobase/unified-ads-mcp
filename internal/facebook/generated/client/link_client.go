@@ -21,11 +21,9 @@ func NewLinkClient(accessToken string) *LinkClient {
 	}
 }
 
-
 // link_post_comments POST comments for Link
 func (c *LinkClient) Link_post_comments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
@@ -72,7 +70,6 @@ func (c *LinkClient) Link_post_comments(args map[string]interface{}) (interface{
 		urlParams.Set("tracking", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -103,19 +100,15 @@ func (c *LinkClient) Link_post_comments(args map[string]interface{}) (interface{
 	return result, nil
 }
 
-
 // link_get_likes GET likes for Link
 func (c *LinkClient) Link_get_likes(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -146,19 +139,15 @@ func (c *LinkClient) Link_get_likes(args map[string]interface{}) (interface{}, e
 	return result, nil
 }
 
-
 // link_get_ GET  for Link
 func (c *LinkClient) Link_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -188,4 +177,3 @@ func (c *LinkClient) Link_get_(args map[string]interface{}) (interface{}, error)
 
 	return result, nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetOffsiteSignalContainerBusinessObjectTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// offsitesignalcontainerbusinessobject_get_linked_application tool
 	offsitesignalcontainerbusinessobject_get_linked_applicationTool := mcp.NewTool("offsitesignalcontainerbusinessobject_get_linked_application",
 		mcp.WithDescription("GET linked_application for OffsiteSignalContainerBusinessObject"),
@@ -46,12 +45,10 @@ func GetOffsiteSignalContainerBusinessObjectTools(accessToken string) []mcp.Tool
 	)
 	tools = append(tools, offsitesignalcontainerbusinessobject_get_Tool)
 
-
 	return tools
 }
 
 // OffsiteSignalContainerBusinessObject handlers
-
 
 // HandleOffsitesignalcontainerbusinessobject_get_linked_application handles the offsitesignalcontainerbusinessobject_get_linked_application tool
 func HandleOffsitesignalcontainerbusinessobject_get_linked_application(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -66,8 +63,6 @@ func HandleOffsitesignalcontainerbusinessobject_get_linked_application(ctx conte
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Offsitesignalcontainerbusinessobject_get_linked_application(args)
@@ -84,7 +79,6 @@ func HandleOffsitesignalcontainerbusinessobject_get_linked_application(ctx conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleOffsitesignalcontainerbusinessobject_get_linked_page handles the offsitesignalcontainerbusinessobject_get_linked_page tool
 func HandleOffsitesignalcontainerbusinessobject_get_linked_page(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -98,8 +92,6 @@ func HandleOffsitesignalcontainerbusinessobject_get_linked_page(ctx context.Cont
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Offsitesignalcontainerbusinessobject_get_linked_page(args)
@@ -116,7 +108,6 @@ func HandleOffsitesignalcontainerbusinessobject_get_linked_page(ctx context.Cont
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleOffsitesignalcontainerbusinessobject_get_ handles the offsitesignalcontainerbusinessobject_get_ tool
 func HandleOffsitesignalcontainerbusinessobject_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -130,8 +121,6 @@ func HandleOffsitesignalcontainerbusinessobject_get_(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Offsitesignalcontainerbusinessobject_get_(args)
@@ -147,4 +136,3 @@ func HandleOffsitesignalcontainerbusinessobject_get_(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

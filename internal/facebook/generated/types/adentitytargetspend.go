@@ -4,9 +4,9 @@ package types
 
 // AdEntityTargetSpend represents a Facebook AdEntityTargetSpend object
 type AdEntityTargetSpend struct {
-	Amount string `json:"amount"`
-	Has_error bool `json:"has_error"`
-	Is_accurate bool `json:"is_accurate"`
-	Is_prorated bool `json:"is_prorated"`
-	Is_updating bool `json:"is_updating"`
+	Amount      string `json:"amount"`
+	Has_error   bool   `json:"has_error"`
+	Is_accurate bool   `json:"is_accurate"`
+	Is_prorated bool   `json:"is_prorated"`
+	Is_updating bool   `json:"is_updating"`
 }

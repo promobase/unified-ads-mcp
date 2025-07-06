@@ -15,7 +15,6 @@ import (
 func GetResearchPollStudyTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// researchpollstudy_get_ tool
 	researchpollstudy_get_Tool := mcp.NewTool("researchpollstudy_get_",
 		mcp.WithDescription("GET  for ResearchPollStudy"),
@@ -26,12 +25,10 @@ func GetResearchPollStudyTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, researchpollstudy_get_Tool)
 
-
 	return tools
 }
 
 // ResearchPollStudy handlers
-
 
 // HandleResearchpollstudy_get_ handles the researchpollstudy_get_ tool
 func HandleResearchpollstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleResearchpollstudy_get_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Researchpollstudy_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleResearchpollstudy_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

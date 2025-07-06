@@ -15,7 +15,6 @@ import (
 func GetBusinessFranchiseConfigTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// businessfranchiseconfig_get_ tool
 	businessfranchiseconfig_get_Tool := mcp.NewTool("businessfranchiseconfig_get_",
 		mcp.WithDescription("GET  for BusinessFranchiseConfig"),
@@ -26,12 +25,10 @@ func GetBusinessFranchiseConfigTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, businessfranchiseconfig_get_Tool)
 
-
 	return tools
 }
 
 // BusinessFranchiseConfig handlers
-
 
 // HandleBusinessfranchiseconfig_get_ handles the businessfranchiseconfig_get_ tool
 func HandleBusinessfranchiseconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleBusinessfranchiseconfig_get_(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Businessfranchiseconfig_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleBusinessfranchiseconfig_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

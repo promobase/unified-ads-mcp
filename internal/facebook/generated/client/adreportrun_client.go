@@ -21,19 +21,15 @@ func NewAdReportRunClient(accessToken string) *AdReportRunClient {
 	}
 }
 
-
 // adreportrun_get_insights GET insights for AdReportRun
 func (c *AdReportRunClient) Adreportrun_get_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *AdReportRunClient) Adreportrun_get_insights(args map[string]interface{}
 	return result, nil
 }
 
-
 // adreportrun_get_ GET  for AdReportRun
 func (c *AdReportRunClient) Adreportrun_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -106,4 +98,3 @@ func (c *AdReportRunClient) Adreportrun_get_(args map[string]interface{}) (inter
 
 	return result, nil
 }
-

@@ -21,19 +21,15 @@ func NewInstagramUserClient(accessToken string) *InstagramUserClient {
 	}
 }
 
-
 // instagramuser_get_agencies GET agencies for InstagramUser
 func (c *InstagramUserClient) Instagramuser_get_agencies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "agencies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *InstagramUserClient) Instagramuser_get_agencies(args map[string]interfa
 	return result, nil
 }
 
-
 // instagramuser_get_ar_effects GET ar_effects for InstagramUser
 func (c *InstagramUserClient) Instagramuser_get_ar_effects(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ar_effects")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -106,7 +98,6 @@ func (c *InstagramUserClient) Instagramuser_get_ar_effects(args map[string]inter
 
 	return result, nil
 }
-
 
 // instagramuser_get_authorized_adaccounts GET authorized_adaccounts for InstagramUser
 func (c *InstagramUserClient) Instagramuser_get_authorized_adaccounts(args map[string]interface{}) (interface{}, error) {
@@ -117,7 +108,6 @@ func (c *InstagramUserClient) Instagramuser_get_authorized_adaccounts(args map[s
 	}
 	_ = business // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "authorized_adaccounts")
 	urlParams := url.Values{}
@@ -127,7 +117,6 @@ func (c *InstagramUserClient) Instagramuser_get_authorized_adaccounts(args map[s
 		urlParams.Set("business", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -158,19 +147,15 @@ func (c *InstagramUserClient) Instagramuser_get_authorized_adaccounts(args map[s
 	return result, nil
 }
 
-
 // instagramuser_get_upcoming_events GET upcoming_events for InstagramUser
 func (c *InstagramUserClient) Instagramuser_get_upcoming_events(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "upcoming_events")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -201,11 +186,9 @@ func (c *InstagramUserClient) Instagramuser_get_upcoming_events(args map[string]
 	return result, nil
 }
 
-
 // instagramuser_get_ GET  for InstagramUser
 func (c *InstagramUserClient) Instagramuser_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -216,7 +199,6 @@ func (c *InstagramUserClient) Instagramuser_get_(args map[string]interface{}) (i
 		urlParams.Set("adgroup_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -246,4 +228,3 @@ func (c *InstagramUserClient) Instagramuser_get_(args map[string]interface{}) (i
 
 	return result, nil
 }
-

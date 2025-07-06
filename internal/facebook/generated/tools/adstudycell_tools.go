@@ -15,7 +15,6 @@ import (
 func GetAdStudyCellTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adstudycell_get_adaccounts tool
 	adstudycell_get_adaccountsTool := mcp.NewTool("adstudycell_get_adaccounts",
 		mcp.WithDescription("GET adaccounts for AdStudyCell"),
@@ -85,12 +84,10 @@ func GetAdStudyCellTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adstudycell_post_Tool)
 
-
 	return tools
 }
 
 // AdStudyCell handlers
-
 
 // HandleAdstudycell_get_adaccounts handles the adstudycell_get_adaccounts tool
 func HandleAdstudycell_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -105,8 +102,6 @@ func HandleAdstudycell_get_adaccounts(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adstudycell_get_adaccounts(args)
@@ -123,7 +118,6 @@ func HandleAdstudycell_get_adaccounts(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdstudycell_get_adsets handles the adstudycell_get_adsets tool
 func HandleAdstudycell_get_adsets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -137,8 +131,6 @@ func HandleAdstudycell_get_adsets(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adstudycell_get_adsets(args)
@@ -155,7 +147,6 @@ func HandleAdstudycell_get_adsets(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdstudycell_get_campaigns handles the adstudycell_get_campaigns tool
 func HandleAdstudycell_get_campaigns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -169,8 +160,6 @@ func HandleAdstudycell_get_campaigns(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adstudycell_get_campaigns(args)
@@ -187,7 +176,6 @@ func HandleAdstudycell_get_campaigns(ctx context.Context, request mcp.CallToolRe
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdstudycell_get_ handles the adstudycell_get_ tool
 func HandleAdstudycell_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -201,8 +189,6 @@ func HandleAdstudycell_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adstudycell_get_(args)
@@ -218,7 +204,6 @@ func HandleAdstudycell_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdstudycell_post_ handles the adstudycell_post_ tool
 func HandleAdstudycell_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -267,8 +252,6 @@ func HandleAdstudycell_post_(ctx context.Context, request mcp.CallToolRequest) (
 		args["name"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adstudycell_post_(args)
 	if err != nil {
@@ -283,4 +266,3 @@ func HandleAdstudycell_post_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetVideoCopyrightRuleTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// videocopyrightrule_get_ tool
 	videocopyrightrule_get_Tool := mcp.NewTool("videocopyrightrule_get_",
 		mcp.WithDescription("GET  for VideoCopyrightRule"),
@@ -26,12 +25,10 @@ func GetVideoCopyrightRuleTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, videocopyrightrule_get_Tool)
 
-
 	return tools
 }
 
 // VideoCopyrightRule handlers
-
 
 // HandleVideocopyrightrule_get_ handles the videocopyrightrule_get_ tool
 func HandleVideocopyrightrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleVideocopyrightrule_get_(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Videocopyrightrule_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleVideocopyrightrule_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

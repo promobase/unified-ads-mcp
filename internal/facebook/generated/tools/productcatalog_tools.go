@@ -15,7 +15,6 @@ import (
 func GetProductCatalogTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// productcatalog_delete_agencies tool
 	productcatalog_delete_agenciesTool := mcp.NewTool("productcatalog_delete_agencies",
 		mcp.WithDescription("DELETE agencies for ProductCatalog"),
@@ -1500,12 +1499,10 @@ func GetProductCatalogTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, productcatalog_post_Tool)
 
-
 	return tools
 }
 
 // ProductCatalog handlers
-
 
 // HandleProductcatalog_delete_agencies handles the productcatalog_delete_agencies tool
 func HandleProductcatalog_delete_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1528,8 +1525,6 @@ func HandleProductcatalog_delete_agencies(ctx context.Context, request mcp.CallT
 	}
 	args["business"] = business
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_delete_agencies(args)
 	if err != nil {
@@ -1545,7 +1540,6 @@ func HandleProductcatalog_delete_agencies(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleProductcatalog_get_agencies handles the productcatalog_get_agencies tool
 func HandleProductcatalog_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1559,8 +1553,6 @@ func HandleProductcatalog_get_agencies(ctx context.Context, request mcp.CallTool
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Productcatalog_get_agencies(args)
@@ -1576,7 +1568,6 @@ func HandleProductcatalog_get_agencies(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_agencies handles the productcatalog_post_agencies tool
 func HandleProductcatalog_post_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1621,8 +1612,6 @@ func HandleProductcatalog_post_agencies(ctx context.Context, request mcp.CallToo
 		args["utm_settings"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_agencies(args)
 	if err != nil {
@@ -1637,7 +1626,6 @@ func HandleProductcatalog_post_agencies(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_delete_assigned_users handles the productcatalog_delete_assigned_users tool
 func HandleProductcatalog_delete_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1660,8 +1648,6 @@ func HandleProductcatalog_delete_assigned_users(ctx context.Context, request mcp
 	}
 	args["user"] = user
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_delete_assigned_users(args)
 	if err != nil {
@@ -1676,7 +1662,6 @@ func HandleProductcatalog_delete_assigned_users(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_assigned_users handles the productcatalog_get_assigned_users tool
 func HandleProductcatalog_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1699,8 +1684,6 @@ func HandleProductcatalog_get_assigned_users(ctx context.Context, request mcp.Ca
 	}
 	args["business"] = business
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_assigned_users(args)
 	if err != nil {
@@ -1715,7 +1698,6 @@ func HandleProductcatalog_get_assigned_users(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_assigned_users handles the productcatalog_post_assigned_users tool
 func HandleProductcatalog_post_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1745,8 +1727,6 @@ func HandleProductcatalog_post_assigned_users(ctx context.Context, request mcp.C
 	}
 	args["user"] = user
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_assigned_users(args)
 	if err != nil {
@@ -1761,7 +1741,6 @@ func HandleProductcatalog_post_assigned_users(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_automotive_models handles the productcatalog_get_automotive_models tool
 func HandleProductcatalog_get_automotive_models(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1788,8 +1767,6 @@ func HandleProductcatalog_get_automotive_models(ctx context.Context, request mcp
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_automotive_models(args)
 	if err != nil {
@@ -1804,7 +1781,6 @@ func HandleProductcatalog_get_automotive_models(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_batch handles the productcatalog_post_batch tool
 func HandleProductcatalog_post_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1842,8 +1818,6 @@ func HandleProductcatalog_post_batch(ctx context.Context, request mcp.CallToolRe
 		args["version"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_batch(args)
 	if err != nil {
@@ -1858,7 +1832,6 @@ func HandleProductcatalog_post_batch(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_catalog_store handles the productcatalog_post_catalog_store tool
 func HandleProductcatalog_post_catalog_store(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1881,8 +1854,6 @@ func HandleProductcatalog_post_catalog_store(ctx context.Context, request mcp.Ca
 	}
 	args["page"] = page
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_catalog_store(args)
 	if err != nil {
@@ -1897,7 +1868,6 @@ func HandleProductcatalog_post_catalog_store(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_categories handles the productcatalog_get_categories tool
 func HandleProductcatalog_get_categories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1926,8 +1896,6 @@ func HandleProductcatalog_get_categories(ctx context.Context, request mcp.CallTo
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_categories(args)
 	if err != nil {
@@ -1942,7 +1910,6 @@ func HandleProductcatalog_get_categories(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_categories handles the productcatalog_post_categories tool
 func HandleProductcatalog_post_categories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1965,8 +1932,6 @@ func HandleProductcatalog_post_categories(ctx context.Context, request mcp.CallT
 	}
 	args["data"] = data
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_categories(args)
 	if err != nil {
@@ -1981,7 +1946,6 @@ func HandleProductcatalog_post_categories(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_check_batch_request_status handles the productcatalog_get_check_batch_request_status tool
 func HandleProductcatalog_get_check_batch_request_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2014,8 +1978,6 @@ func HandleProductcatalog_get_check_batch_request_status(ctx context.Context, re
 		args["load_ids_of_invalid_requests"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_check_batch_request_status(args)
 	if err != nil {
@@ -2030,7 +1992,6 @@ func HandleProductcatalog_get_check_batch_request_status(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_check_marketplace_partner_sellers_status handles the productcatalog_get_check_marketplace_partner_sellers_status tool
 func HandleProductcatalog_get_check_marketplace_partner_sellers_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2053,8 +2014,6 @@ func HandleProductcatalog_get_check_marketplace_partner_sellers_status(ctx conte
 	}
 	args["session_id"] = session_id
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_check_marketplace_partner_sellers_status(args)
 	if err != nil {
@@ -2070,7 +2029,6 @@ func HandleProductcatalog_get_check_marketplace_partner_sellers_status(ctx conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleProductcatalog_get_collaborative_ads_lsb_image_bank handles the productcatalog_get_collaborative_ads_lsb_image_bank tool
 func HandleProductcatalog_get_collaborative_ads_lsb_image_bank(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2084,8 +2042,6 @@ func HandleProductcatalog_get_collaborative_ads_lsb_image_bank(ctx context.Conte
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Productcatalog_get_collaborative_ads_lsb_image_bank(args)
@@ -2102,7 +2058,6 @@ func HandleProductcatalog_get_collaborative_ads_lsb_image_bank(ctx context.Conte
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleProductcatalog_get_collaborative_ads_share_settings handles the productcatalog_get_collaborative_ads_share_settings tool
 func HandleProductcatalog_get_collaborative_ads_share_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2116,8 +2071,6 @@ func HandleProductcatalog_get_collaborative_ads_share_settings(ctx context.Conte
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Productcatalog_get_collaborative_ads_share_settings(args)
@@ -2133,7 +2086,6 @@ func HandleProductcatalog_get_collaborative_ads_share_settings(ctx context.Conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_cpas_lsb_image_bank handles the productcatalog_post_cpas_lsb_image_bank tool
 func HandleProductcatalog_post_cpas_lsb_image_bank(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2166,8 +2118,6 @@ func HandleProductcatalog_post_cpas_lsb_image_bank(ctx context.Context, request 
 	}
 	args["backup_image_urls"] = backup_image_urls
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_cpas_lsb_image_bank(args)
 	if err != nil {
@@ -2182,7 +2132,6 @@ func HandleProductcatalog_post_cpas_lsb_image_bank(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_creator_asset_creatives handles the productcatalog_get_creator_asset_creatives tool
 func HandleProductcatalog_get_creator_asset_creatives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2203,8 +2152,6 @@ func HandleProductcatalog_get_creator_asset_creatives(ctx context.Context, reque
 		args["moderation_status"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_creator_asset_creatives(args)
 	if err != nil {
@@ -2219,7 +2166,6 @@ func HandleProductcatalog_get_creator_asset_creatives(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_data_sources handles the productcatalog_get_data_sources tool
 func HandleProductcatalog_get_data_sources(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2240,8 +2186,6 @@ func HandleProductcatalog_get_data_sources(ctx context.Context, request mcp.Call
 		args["ingestion_source_type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_data_sources(args)
 	if err != nil {
@@ -2256,7 +2200,6 @@ func HandleProductcatalog_get_data_sources(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_destinations handles the productcatalog_get_destinations tool
 func HandleProductcatalog_get_destinations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2283,8 +2226,6 @@ func HandleProductcatalog_get_destinations(ctx context.Context, request mcp.Call
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_destinations(args)
 	if err != nil {
@@ -2299,7 +2240,6 @@ func HandleProductcatalog_get_destinations(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_diagnostics handles the productcatalog_get_diagnostics tool
 func HandleProductcatalog_get_diagnostics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2345,8 +2285,6 @@ func HandleProductcatalog_get_diagnostics(ctx context.Context, request mcp.CallT
 		args["types"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_diagnostics(args)
 	if err != nil {
@@ -2361,7 +2299,6 @@ func HandleProductcatalog_get_diagnostics(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_event_stats handles the productcatalog_get_event_stats tool
 func HandleProductcatalog_get_event_stats(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2383,8 +2320,6 @@ func HandleProductcatalog_get_event_stats(ctx context.Context, request mcp.CallT
 		args["breakdowns"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_event_stats(args)
 	if err != nil {
@@ -2399,7 +2334,6 @@ func HandleProductcatalog_get_event_stats(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_delete_external_event_sources handles the productcatalog_delete_external_event_sources tool
 func HandleProductcatalog_delete_external_event_sources(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2421,8 +2355,6 @@ func HandleProductcatalog_delete_external_event_sources(ctx context.Context, req
 		args["external_event_sources"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_delete_external_event_sources(args)
 	if err != nil {
@@ -2438,7 +2370,6 @@ func HandleProductcatalog_delete_external_event_sources(ctx context.Context, req
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleProductcatalog_get_external_event_sources handles the productcatalog_get_external_event_sources tool
 func HandleProductcatalog_get_external_event_sources(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2452,8 +2383,6 @@ func HandleProductcatalog_get_external_event_sources(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Productcatalog_get_external_event_sources(args)
@@ -2469,7 +2398,6 @@ func HandleProductcatalog_get_external_event_sources(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_external_event_sources handles the productcatalog_post_external_event_sources tool
 func HandleProductcatalog_post_external_event_sources(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2491,8 +2419,6 @@ func HandleProductcatalog_post_external_event_sources(ctx context.Context, reque
 		args["external_event_sources"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_external_event_sources(args)
 	if err != nil {
@@ -2507,7 +2433,6 @@ func HandleProductcatalog_post_external_event_sources(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_flights handles the productcatalog_get_flights tool
 func HandleProductcatalog_get_flights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2534,8 +2459,6 @@ func HandleProductcatalog_get_flights(ctx context.Context, request mcp.CallToolR
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_flights(args)
 	if err != nil {
@@ -2550,7 +2473,6 @@ func HandleProductcatalog_get_flights(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_geolocated_items_batch handles the productcatalog_post_geolocated_items_batch tool
 func HandleProductcatalog_post_geolocated_items_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2585,8 +2507,6 @@ func HandleProductcatalog_post_geolocated_items_batch(ctx context.Context, reque
 	}
 	args["requests"] = requests
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_geolocated_items_batch(args)
 	if err != nil {
@@ -2601,7 +2521,6 @@ func HandleProductcatalog_post_geolocated_items_batch(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_home_listings handles the productcatalog_get_home_listings tool
 func HandleProductcatalog_get_home_listings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2628,8 +2547,6 @@ func HandleProductcatalog_get_home_listings(ctx context.Context, request mcp.Cal
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_home_listings(args)
 	if err != nil {
@@ -2644,7 +2561,6 @@ func HandleProductcatalog_get_home_listings(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_home_listings handles the productcatalog_post_home_listings tool
 func HandleProductcatalog_post_home_listings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2753,8 +2669,6 @@ func HandleProductcatalog_post_home_listings(ctx context.Context, request mcp.Ca
 	}
 	args["year_built"] = year_built
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_home_listings(args)
 	if err != nil {
@@ -2769,7 +2683,6 @@ func HandleProductcatalog_post_home_listings(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_hotel_rooms_batch handles the productcatalog_get_hotel_rooms_batch tool
 func HandleProductcatalog_get_hotel_rooms_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2792,8 +2705,6 @@ func HandleProductcatalog_get_hotel_rooms_batch(ctx context.Context, request mcp
 	}
 	args["handle"] = handle
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_hotel_rooms_batch(args)
 	if err != nil {
@@ -2808,7 +2719,6 @@ func HandleProductcatalog_get_hotel_rooms_batch(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_hotel_rooms_batch handles the productcatalog_post_hotel_rooms_batch tool
 func HandleProductcatalog_post_hotel_rooms_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2856,8 +2766,6 @@ func HandleProductcatalog_post_hotel_rooms_batch(ctx context.Context, request mc
 		args["username"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_hotel_rooms_batch(args)
 	if err != nil {
@@ -2872,7 +2780,6 @@ func HandleProductcatalog_post_hotel_rooms_batch(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_hotels handles the productcatalog_get_hotels tool
 func HandleProductcatalog_get_hotels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2899,8 +2806,6 @@ func HandleProductcatalog_get_hotels(ctx context.Context, request mcp.CallToolRe
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_hotels(args)
 	if err != nil {
@@ -2915,7 +2820,6 @@ func HandleProductcatalog_get_hotels(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_hotels handles the productcatalog_post_hotels tool
 func HandleProductcatalog_post_hotels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3008,8 +2912,6 @@ func HandleProductcatalog_post_hotels(ctx context.Context, request mcp.CallToolR
 	}
 	args["url"] = url_
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_hotels(args)
 	if err != nil {
@@ -3024,7 +2926,6 @@ func HandleProductcatalog_post_hotels(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_items_batch handles the productcatalog_post_items_batch tool
 func HandleProductcatalog_post_items_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3069,8 +2970,6 @@ func HandleProductcatalog_post_items_batch(ctx context.Context, request mcp.Call
 		args["version"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_items_batch(args)
 	if err != nil {
@@ -3085,7 +2984,6 @@ func HandleProductcatalog_post_items_batch(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_localized_items_batch handles the productcatalog_post_localized_items_batch tool
 func HandleProductcatalog_post_localized_items_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3125,8 +3023,6 @@ func HandleProductcatalog_post_localized_items_batch(ctx context.Context, reques
 		args["version"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_localized_items_batch(args)
 	if err != nil {
@@ -3141,7 +3037,6 @@ func HandleProductcatalog_post_localized_items_batch(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_marketplace_partner_sellers_details handles the productcatalog_post_marketplace_partner_sellers_details tool
 func HandleProductcatalog_post_marketplace_partner_sellers_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3164,8 +3059,6 @@ func HandleProductcatalog_post_marketplace_partner_sellers_details(ctx context.C
 	}
 	args["requests"] = requests
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_marketplace_partner_sellers_details(args)
 	if err != nil {
@@ -3180,7 +3073,6 @@ func HandleProductcatalog_post_marketplace_partner_sellers_details(ctx context.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_marketplace_partner_signals handles the productcatalog_post_marketplace_partner_signals tool
 func HandleProductcatalog_post_marketplace_partner_signals(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3227,8 +3119,6 @@ func HandleProductcatalog_post_marketplace_partner_signals(ctx context.Context, 
 	}
 	args["user_data"] = user_data
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_marketplace_partner_signals(args)
 	if err != nil {
@@ -3243,7 +3133,6 @@ func HandleProductcatalog_post_marketplace_partner_signals(ctx context.Context, 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_pricing_variables_batch handles the productcatalog_get_pricing_variables_batch tool
 func HandleProductcatalog_get_pricing_variables_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3266,8 +3155,6 @@ func HandleProductcatalog_get_pricing_variables_batch(ctx context.Context, reque
 	}
 	args["handle"] = handle
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_pricing_variables_batch(args)
 	if err != nil {
@@ -3282,7 +3169,6 @@ func HandleProductcatalog_get_pricing_variables_batch(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_pricing_variables_batch handles the productcatalog_post_pricing_variables_batch tool
 func HandleProductcatalog_post_pricing_variables_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3330,8 +3216,6 @@ func HandleProductcatalog_post_pricing_variables_batch(ctx context.Context, requ
 		args["username"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_pricing_variables_batch(args)
 	if err != nil {
@@ -3347,7 +3231,6 @@ func HandleProductcatalog_post_pricing_variables_batch(ctx context.Context, requ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleProductcatalog_get_product_feeds handles the productcatalog_get_product_feeds tool
 func HandleProductcatalog_get_product_feeds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -3361,8 +3244,6 @@ func HandleProductcatalog_get_product_feeds(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Productcatalog_get_product_feeds(args)
@@ -3378,7 +3259,6 @@ func HandleProductcatalog_get_product_feeds(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_product_feeds handles the productcatalog_post_product_feeds tool
 func HandleProductcatalog_post_product_feeds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3492,8 +3372,6 @@ func HandleProductcatalog_post_product_feeds(ctx context.Context, request mcp.Ca
 		args["update_schedule"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_product_feeds(args)
 	if err != nil {
@@ -3509,7 +3387,6 @@ func HandleProductcatalog_post_product_feeds(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleProductcatalog_get_product_groups handles the productcatalog_get_product_groups tool
 func HandleProductcatalog_get_product_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -3523,8 +3400,6 @@ func HandleProductcatalog_get_product_groups(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Productcatalog_get_product_groups(args)
@@ -3540,7 +3415,6 @@ func HandleProductcatalog_get_product_groups(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_product_groups handles the productcatalog_post_product_groups tool
 func HandleProductcatalog_post_product_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3567,8 +3441,6 @@ func HandleProductcatalog_post_product_groups(ctx context.Context, request mcp.C
 		args["variants"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_product_groups(args)
 	if err != nil {
@@ -3583,7 +3455,6 @@ func HandleProductcatalog_post_product_groups(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_product_sets handles the productcatalog_get_product_sets tool
 func HandleProductcatalog_get_product_sets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3619,8 +3490,6 @@ func HandleProductcatalog_get_product_sets(ctx context.Context, request mcp.Call
 		args["retailer_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_product_sets(args)
 	if err != nil {
@@ -3635,7 +3504,6 @@ func HandleProductcatalog_get_product_sets(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_product_sets handles the productcatalog_post_product_sets tool
 func HandleProductcatalog_post_product_sets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3686,8 +3554,6 @@ func HandleProductcatalog_post_product_sets(ctx context.Context, request mcp.Cal
 		args["retailer_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_product_sets(args)
 	if err != nil {
@@ -3702,7 +3568,6 @@ func HandleProductcatalog_post_product_sets(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_product_sets_batch handles the productcatalog_get_product_sets_batch tool
 func HandleProductcatalog_get_product_sets_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3725,8 +3590,6 @@ func HandleProductcatalog_get_product_sets_batch(ctx context.Context, request mc
 	}
 	args["handle"] = handle
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_product_sets_batch(args)
 	if err != nil {
@@ -3741,7 +3604,6 @@ func HandleProductcatalog_get_product_sets_batch(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_products handles the productcatalog_get_products tool
 func HandleProductcatalog_get_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3783,8 +3645,6 @@ func HandleProductcatalog_get_products(ctx context.Context, request mcp.CallTool
 		args["return_only_approved_products"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_products(args)
 	if err != nil {
@@ -3799,7 +3659,6 @@ func HandleProductcatalog_get_products(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_products handles the productcatalog_post_products tool
 func HandleProductcatalog_post_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4212,8 +4071,6 @@ func HandleProductcatalog_post_products(ctx context.Context, request mcp.CallToo
 		args["windows_phone_url"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_products(args)
 	if err != nil {
@@ -4228,7 +4085,6 @@ func HandleProductcatalog_post_products(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_update_generated_image_config handles the productcatalog_post_update_generated_image_config tool
 func HandleProductcatalog_post_update_generated_image_config(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4251,8 +4107,6 @@ func HandleProductcatalog_post_update_generated_image_config(ctx context.Context
 	}
 	args["data"] = data
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_update_generated_image_config(args)
 	if err != nil {
@@ -4267,7 +4121,6 @@ func HandleProductcatalog_post_update_generated_image_config(ctx context.Context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_vehicle_offers handles the productcatalog_get_vehicle_offers tool
 func HandleProductcatalog_get_vehicle_offers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4294,8 +4147,6 @@ func HandleProductcatalog_get_vehicle_offers(ctx context.Context, request mcp.Ca
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_vehicle_offers(args)
 	if err != nil {
@@ -4310,7 +4161,6 @@ func HandleProductcatalog_get_vehicle_offers(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_vehicles handles the productcatalog_get_vehicles tool
 func HandleProductcatalog_get_vehicles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4337,8 +4187,6 @@ func HandleProductcatalog_get_vehicles(ctx context.Context, request mcp.CallTool
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_vehicles(args)
 	if err != nil {
@@ -4353,7 +4201,6 @@ func HandleProductcatalog_get_vehicles(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_vehicles handles the productcatalog_post_vehicles tool
 func HandleProductcatalog_post_vehicles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4552,8 +4399,6 @@ func HandleProductcatalog_post_vehicles(ctx context.Context, request mcp.CallToo
 	}
 	args["year"] = year
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_vehicles(args)
 	if err != nil {
@@ -4569,7 +4414,6 @@ func HandleProductcatalog_post_vehicles(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleProductcatalog_get_version_configs handles the productcatalog_get_version_configs tool
 func HandleProductcatalog_get_version_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -4583,8 +4427,6 @@ func HandleProductcatalog_get_version_configs(ctx context.Context, request mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Productcatalog_get_version_configs(args)
@@ -4600,7 +4442,6 @@ func HandleProductcatalog_get_version_configs(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_version_items_batch handles the productcatalog_post_version_items_batch tool
 func HandleProductcatalog_post_version_items_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4647,8 +4488,6 @@ func HandleProductcatalog_post_version_items_batch(ctx context.Context, request 
 		args["version"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_version_items_batch(args)
 	if err != nil {
@@ -4663,7 +4502,6 @@ func HandleProductcatalog_post_version_items_batch(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_delete_ handles the productcatalog_delete_ tool
 func HandleProductcatalog_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4684,8 +4522,6 @@ func HandleProductcatalog_delete_(ctx context.Context, request mcp.CallToolReque
 		args["allow_delete_catalog_with_live_product_set"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_delete_(args)
 	if err != nil {
@@ -4700,7 +4536,6 @@ func HandleProductcatalog_delete_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_get_ handles the productcatalog_get_ tool
 func HandleProductcatalog_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4722,8 +4557,6 @@ func HandleProductcatalog_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["segment_use_cases"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_get_(args)
 	if err != nil {
@@ -4738,7 +4571,6 @@ func HandleProductcatalog_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductcatalog_post_ handles the productcatalog_post_ tool
 func HandleProductcatalog_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4800,8 +4632,6 @@ func HandleProductcatalog_post_(ctx context.Context, request mcp.CallToolRequest
 		args["store_catalog_settings"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productcatalog_post_(args)
 	if err != nil {
@@ -4816,4 +4646,3 @@ func HandleProductcatalog_post_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

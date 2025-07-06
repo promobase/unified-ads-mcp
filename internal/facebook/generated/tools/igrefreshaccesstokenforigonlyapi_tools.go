@@ -15,7 +15,6 @@ import (
 func GetIGRefreshAccessTokenForIGOnlyAPITools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// igrefreshaccesstokenforigonlyapi_get_ tool
 	igrefreshaccesstokenforigonlyapi_get_Tool := mcp.NewTool("igrefreshaccesstokenforigonlyapi_get_",
 		mcp.WithDescription("GET  for IGRefreshAccessTokenForIGOnlyAPI"),
@@ -34,12 +33,10 @@ func GetIGRefreshAccessTokenForIGOnlyAPITools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, igrefreshaccesstokenforigonlyapi_get_Tool)
 
-
 	return tools
 }
 
 // IGRefreshAccessTokenForIGOnlyAPI handlers
-
 
 // HandleIgrefreshaccesstokenforigonlyapi_get_ handles the igrefreshaccesstokenforigonlyapi_get_ tool
 func HandleIgrefreshaccesstokenforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -69,8 +66,6 @@ func HandleIgrefreshaccesstokenforigonlyapi_get_(ctx context.Context, request mc
 	}
 	args["grant_type"] = grant_type
 
-
-
 	// Call the client method
 	result, err := client.Igrefreshaccesstokenforigonlyapi_get_(args)
 	if err != nil {
@@ -85,4 +80,3 @@ func HandleIgrefreshaccesstokenforigonlyapi_get_(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

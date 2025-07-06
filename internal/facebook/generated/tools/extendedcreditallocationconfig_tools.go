@@ -15,7 +15,6 @@ import (
 func GetExtendedCreditAllocationConfigTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// extendedcreditallocationconfig_delete_ tool
 	extendedcreditallocationconfig_delete_Tool := mcp.NewTool("extendedcreditallocationconfig_delete_",
 		mcp.WithDescription("DELETE  for ExtendedCreditAllocationConfig"),
@@ -49,12 +48,10 @@ func GetExtendedCreditAllocationConfigTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, extendedcreditallocationconfig_post_Tool)
 
-
 	return tools
 }
 
 // ExtendedCreditAllocationConfig handlers
-
 
 // HandleExtendedcreditallocationconfig_delete_ handles the extendedcreditallocationconfig_delete_ tool
 func HandleExtendedcreditallocationconfig_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -69,8 +66,6 @@ func HandleExtendedcreditallocationconfig_delete_(ctx context.Context, request m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Extendedcreditallocationconfig_delete_(args)
@@ -87,7 +82,6 @@ func HandleExtendedcreditallocationconfig_delete_(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleExtendedcreditallocationconfig_get_ handles the extendedcreditallocationconfig_get_ tool
 func HandleExtendedcreditallocationconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -101,8 +95,6 @@ func HandleExtendedcreditallocationconfig_get_(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Extendedcreditallocationconfig_get_(args)
@@ -118,7 +110,6 @@ func HandleExtendedcreditallocationconfig_get_(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleExtendedcreditallocationconfig_post_ handles the extendedcreditallocationconfig_post_ tool
 func HandleExtendedcreditallocationconfig_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -140,8 +131,6 @@ func HandleExtendedcreditallocationconfig_post_(ctx context.Context, request mcp
 		args["amount"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Extendedcreditallocationconfig_post_(args)
 	if err != nil {
@@ -156,4 +145,3 @@ func HandleExtendedcreditallocationconfig_post_(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetCRMAddressTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// crmaddress_get_ tool
 	crmaddress_get_Tool := mcp.NewTool("crmaddress_get_",
 		mcp.WithDescription("GET  for CRMAddress"),
@@ -26,12 +25,10 @@ func GetCRMAddressTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, crmaddress_get_Tool)
 
-
 	return tools
 }
 
 // CRMAddress handlers
-
 
 // HandleCrmaddress_get_ handles the crmaddress_get_ tool
 func HandleCrmaddress_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleCrmaddress_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Crmaddress_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleCrmaddress_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -5,5 +5,5 @@ package types
 // AdCreativeAssetGroupsSpec represents a Facebook AdCreativeAssetGroupsSpec object
 type AdCreativeAssetGroupsSpec struct {
 	Groups []map[string]interface{} `json:"groups"`
-	Origin string `json:"origin"`
+	Origin string                   `json:"origin"`
 }

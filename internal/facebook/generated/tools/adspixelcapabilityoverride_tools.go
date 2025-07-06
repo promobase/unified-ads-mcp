@@ -15,7 +15,6 @@ import (
 func GetAdsPixelCapabilityOverrideTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adspixelcapabilityoverride_get_ tool
 	adspixelcapabilityoverride_get_Tool := mcp.NewTool("adspixelcapabilityoverride_get_",
 		mcp.WithDescription("GET  for AdsPixelCapabilityOverride"),
@@ -26,12 +25,10 @@ func GetAdsPixelCapabilityOverrideTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adspixelcapabilityoverride_get_Tool)
 
-
 	return tools
 }
 
 // AdsPixelCapabilityOverride handlers
-
 
 // HandleAdspixelcapabilityoverride_get_ handles the adspixelcapabilityoverride_get_ tool
 func HandleAdspixelcapabilityoverride_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAdspixelcapabilityoverride_get_(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Adspixelcapabilityoverride_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAdspixelcapabilityoverride_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

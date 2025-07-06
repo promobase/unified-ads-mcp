@@ -15,7 +15,6 @@ import (
 func GetProductFeedScheduleTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// productfeedschedule_get_ tool
 	productfeedschedule_get_Tool := mcp.NewTool("productfeedschedule_get_",
 		mcp.WithDescription("GET  for ProductFeedSchedule"),
@@ -26,12 +25,10 @@ func GetProductFeedScheduleTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, productfeedschedule_get_Tool)
 
-
 	return tools
 }
 
 // ProductFeedSchedule handlers
-
 
 // HandleProductfeedschedule_get_ handles the productfeedschedule_get_ tool
 func HandleProductfeedschedule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleProductfeedschedule_get_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Productfeedschedule_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleProductfeedschedule_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

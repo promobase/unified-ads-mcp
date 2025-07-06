@@ -21,7 +21,6 @@ func NewPageUserMessageThreadLabelClient(accessToken string) *PageUserMessageThr
 	}
 }
 
-
 // pageusermessagethreadlabel_delete_label DELETE label for PageUserMessageThreadLabel
 func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_delete_label(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -31,7 +30,6 @@ func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_delete_lab
 	}
 	_ = user // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "label")
 	urlParams := url.Values{}
@@ -40,7 +38,6 @@ func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_delete_lab
 	if val, ok := args["user"]; ok {
 		urlParams.Set("user", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -72,7 +69,6 @@ func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_delete_lab
 	return result, nil
 }
 
-
 // pageusermessagethreadlabel_post_label POST label for PageUserMessageThreadLabel
 func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_post_label(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -82,7 +78,6 @@ func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_post_label
 	}
 	_ = user // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "label")
 	urlParams := url.Values{}
@@ -91,7 +86,6 @@ func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_post_label
 	if val, ok := args["user"]; ok {
 		urlParams.Set("user", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -123,18 +117,14 @@ func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_post_label
 	return result, nil
 }
 
-
 // pageusermessagethreadlabel_delete_ DELETE  for PageUserMessageThreadLabel
 func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -166,18 +156,14 @@ func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_delete_(ar
 	return result, nil
 }
 
-
 // pageusermessagethreadlabel_get_ GET  for PageUserMessageThreadLabel
 func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -208,4 +194,3 @@ func (c *PageUserMessageThreadLabelClient) Pageusermessagethreadlabel_get_(args 
 
 	return result, nil
 }
-

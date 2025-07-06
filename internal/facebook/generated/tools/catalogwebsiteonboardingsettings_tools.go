@@ -15,7 +15,6 @@ import (
 func GetCatalogWebsiteOnboardingSettingsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// catalogwebsiteonboardingsettings_get_ tool
 	catalogwebsiteonboardingsettings_get_Tool := mcp.NewTool("catalogwebsiteonboardingsettings_get_",
 		mcp.WithDescription("GET  for CatalogWebsiteOnboardingSettings"),
@@ -26,12 +25,10 @@ func GetCatalogWebsiteOnboardingSettingsTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, catalogwebsiteonboardingsettings_get_Tool)
 
-
 	return tools
 }
 
 // CatalogWebsiteOnboardingSettings handlers
-
 
 // HandleCatalogwebsiteonboardingsettings_get_ handles the catalogwebsiteonboardingsettings_get_ tool
 func HandleCatalogwebsiteonboardingsettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleCatalogwebsiteonboardingsettings_get_(ctx context.Context, request mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Catalogwebsiteonboardingsettings_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleCatalogwebsiteonboardingsettings_get_(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

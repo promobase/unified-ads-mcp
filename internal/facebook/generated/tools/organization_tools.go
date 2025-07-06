@@ -15,7 +15,6 @@ import (
 func GetOrganizationTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// organization_get_ tool
 	organization_get_Tool := mcp.NewTool("organization_get_",
 		mcp.WithDescription("GET  for Organization"),
@@ -26,12 +25,10 @@ func GetOrganizationTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, organization_get_Tool)
 
-
 	return tools
 }
 
 // Organization handlers
-
 
 // HandleOrganization_get_ handles the organization_get_ tool
 func HandleOrganization_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleOrganization_get_(ctx context.Context, request mcp.CallToolRequest) (
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Organization_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleOrganization_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

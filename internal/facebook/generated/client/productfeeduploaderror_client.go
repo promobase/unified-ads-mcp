@@ -21,19 +21,15 @@ func NewProductFeedUploadErrorClient(accessToken string) *ProductFeedUploadError
 	}
 }
 
-
 // productfeeduploaderror_get_samples GET samples for ProductFeedUploadError
 func (c *ProductFeedUploadErrorClient) Productfeeduploaderror_get_samples(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "samples")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *ProductFeedUploadErrorClient) Productfeeduploaderror_get_samples(args m
 	return result, nil
 }
 
-
 // productfeeduploaderror_get_suggested_rules GET suggested_rules for ProductFeedUploadError
 func (c *ProductFeedUploadErrorClient) Productfeeduploaderror_get_suggested_rules(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "suggested_rules")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -107,19 +99,15 @@ func (c *ProductFeedUploadErrorClient) Productfeeduploaderror_get_suggested_rule
 	return result, nil
 }
 
-
 // productfeeduploaderror_get_ GET  for ProductFeedUploadError
 func (c *ProductFeedUploadErrorClient) Productfeeduploaderror_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -149,4 +137,3 @@ func (c *ProductFeedUploadErrorClient) Productfeeduploaderror_get_(args map[stri
 
 	return result, nil
 }
-

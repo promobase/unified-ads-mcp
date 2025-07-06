@@ -15,7 +15,6 @@ import (
 func GetInstagramUserTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// instagramuser_get_agencies tool
 	instagramuser_get_agenciesTool := mcp.NewTool("instagramuser_get_agencies",
 		mcp.WithDescription("GET agencies for InstagramUser"),
@@ -73,12 +72,10 @@ func GetInstagramUserTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, instagramuser_get_Tool)
 
-
 	return tools
 }
 
 // InstagramUser handlers
-
 
 // HandleInstagramuser_get_agencies handles the instagramuser_get_agencies tool
 func HandleInstagramuser_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -93,8 +90,6 @@ func HandleInstagramuser_get_agencies(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Instagramuser_get_agencies(args)
@@ -111,7 +106,6 @@ func HandleInstagramuser_get_agencies(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleInstagramuser_get_ar_effects handles the instagramuser_get_ar_effects tool
 func HandleInstagramuser_get_ar_effects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -125,8 +119,6 @@ func HandleInstagramuser_get_ar_effects(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Instagramuser_get_ar_effects(args)
@@ -142,7 +134,6 @@ func HandleInstagramuser_get_ar_effects(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleInstagramuser_get_authorized_adaccounts handles the instagramuser_get_authorized_adaccounts tool
 func HandleInstagramuser_get_authorized_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -165,8 +156,6 @@ func HandleInstagramuser_get_authorized_adaccounts(ctx context.Context, request 
 	}
 	args["business"] = business
 
-
-
 	// Call the client method
 	result, err := client.Instagramuser_get_authorized_adaccounts(args)
 	if err != nil {
@@ -182,7 +171,6 @@ func HandleInstagramuser_get_authorized_adaccounts(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleInstagramuser_get_upcoming_events handles the instagramuser_get_upcoming_events tool
 func HandleInstagramuser_get_upcoming_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -196,8 +184,6 @@ func HandleInstagramuser_get_upcoming_events(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Instagramuser_get_upcoming_events(args)
@@ -213,7 +199,6 @@ func HandleInstagramuser_get_upcoming_events(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleInstagramuser_get_ handles the instagramuser_get_ tool
 func HandleInstagramuser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -234,8 +219,6 @@ func HandleInstagramuser_get_(ctx context.Context, request mcp.CallToolRequest) 
 		args["adgroup_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Instagramuser_get_(args)
 	if err != nil {
@@ -250,4 +233,3 @@ func HandleInstagramuser_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

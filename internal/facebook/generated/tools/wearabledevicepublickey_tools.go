@@ -15,7 +15,6 @@ import (
 func GetWearableDevicePublicKeyTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// wearabledevicepublickey_get_ tool
 	wearabledevicepublickey_get_Tool := mcp.NewTool("wearabledevicepublickey_get_",
 		mcp.WithDescription("GET  for WearableDevicePublicKey"),
@@ -26,12 +25,10 @@ func GetWearableDevicePublicKeyTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, wearabledevicepublickey_get_Tool)
 
-
 	return tools
 }
 
 // WearableDevicePublicKey handlers
-
 
 // HandleWearabledevicepublickey_get_ handles the wearabledevicepublickey_get_ tool
 func HandleWearabledevicepublickey_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleWearabledevicepublickey_get_(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Wearabledevicepublickey_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleWearabledevicepublickey_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

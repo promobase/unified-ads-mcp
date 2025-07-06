@@ -15,7 +15,6 @@ import (
 func GetProductItemTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// productitem_get_channels_to_integrity_status tool
 	productitem_get_channels_to_integrity_statusTool := mcp.NewTool("productitem_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for ProductItem"),
@@ -348,12 +347,10 @@ func GetProductItemTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, productitem_post_Tool)
 
-
 	return tools
 }
 
 // ProductItem handlers
-
 
 // HandleProductitem_get_channels_to_integrity_status handles the productitem_get_channels_to_integrity_status tool
 func HandleProductitem_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -369,8 +366,6 @@ func HandleProductitem_get_channels_to_integrity_status(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Productitem_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -385,7 +380,6 @@ func HandleProductitem_get_channels_to_integrity_status(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductitem_get_override_details handles the productitem_get_override_details tool
 func HandleProductitem_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -412,8 +406,6 @@ func HandleProductitem_get_override_details(ctx context.Context, request mcp.Cal
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productitem_get_override_details(args)
 	if err != nil {
@@ -429,7 +421,6 @@ func HandleProductitem_get_override_details(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleProductitem_get_product_sets handles the productitem_get_product_sets tool
 func HandleProductitem_get_product_sets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -443,8 +434,6 @@ func HandleProductitem_get_product_sets(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Productitem_get_product_sets(args)
@@ -461,7 +450,6 @@ func HandleProductitem_get_product_sets(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleProductitem_get_videos_metadata handles the productitem_get_videos_metadata tool
 func HandleProductitem_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -475,8 +463,6 @@ func HandleProductitem_get_videos_metadata(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Productitem_get_videos_metadata(args)
@@ -493,7 +479,6 @@ func HandleProductitem_get_videos_metadata(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleProductitem_delete_ handles the productitem_delete_ tool
 func HandleProductitem_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -507,8 +492,6 @@ func HandleProductitem_delete_(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Productitem_delete_(args)
@@ -524,7 +507,6 @@ func HandleProductitem_delete_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductitem_get_ handles the productitem_get_ tool
 func HandleProductitem_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -565,8 +547,6 @@ func HandleProductitem_get_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["override_language"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productitem_get_(args)
 	if err != nil {
@@ -581,7 +561,6 @@ func HandleProductitem_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductitem_post_ handles the productitem_post_ tool
 func HandleProductitem_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -983,8 +962,6 @@ func HandleProductitem_post_(ctx context.Context, request mcp.CallToolRequest) (
 		args["windows_phone_url"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productitem_post_(args)
 	if err != nil {
@@ -999,4 +976,3 @@ func HandleProductitem_post_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

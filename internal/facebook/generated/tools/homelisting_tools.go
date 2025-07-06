@@ -15,7 +15,6 @@ import (
 func GetHomeListingTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// homelisting_get_channels_to_integrity_status tool
 	homelisting_get_channels_to_integrity_statusTool := mcp.NewTool("homelisting_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for HomeListing"),
@@ -125,12 +124,10 @@ func GetHomeListingTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, homelisting_post_Tool)
 
-
 	return tools
 }
 
 // HomeListing handlers
-
 
 // HandleHomelisting_get_channels_to_integrity_status handles the homelisting_get_channels_to_integrity_status tool
 func HandleHomelisting_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -146,8 +143,6 @@ func HandleHomelisting_get_channels_to_integrity_status(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Homelisting_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -162,7 +157,6 @@ func HandleHomelisting_get_channels_to_integrity_status(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleHomelisting_get_override_details handles the homelisting_get_override_details tool
 func HandleHomelisting_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -189,8 +183,6 @@ func HandleHomelisting_get_override_details(ctx context.Context, request mcp.Cal
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Homelisting_get_override_details(args)
 	if err != nil {
@@ -206,7 +198,6 @@ func HandleHomelisting_get_override_details(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleHomelisting_get_videos_metadata handles the homelisting_get_videos_metadata tool
 func HandleHomelisting_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -220,8 +211,6 @@ func HandleHomelisting_get_videos_metadata(ctx context.Context, request mcp.Call
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Homelisting_get_videos_metadata(args)
@@ -238,7 +227,6 @@ func HandleHomelisting_get_videos_metadata(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleHomelisting_delete_ handles the homelisting_delete_ tool
 func HandleHomelisting_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -252,8 +240,6 @@ func HandleHomelisting_delete_(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Homelisting_delete_(args)
@@ -270,7 +256,6 @@ func HandleHomelisting_delete_(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleHomelisting_get_ handles the homelisting_get_ tool
 func HandleHomelisting_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -284,8 +269,6 @@ func HandleHomelisting_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Homelisting_get_(args)
@@ -301,7 +284,6 @@ func HandleHomelisting_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleHomelisting_post_ handles the homelisting_post_ tool
 func HandleHomelisting_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -389,8 +371,6 @@ func HandleHomelisting_post_(ctx context.Context, request mcp.CallToolRequest) (
 		args["year_built"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Homelisting_post_(args)
 	if err != nil {
@@ -405,4 +385,3 @@ func HandleHomelisting_post_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

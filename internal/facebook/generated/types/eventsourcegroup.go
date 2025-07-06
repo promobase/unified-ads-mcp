@@ -4,9 +4,9 @@ package types
 
 // EventSourceGroup represents a Facebook EventSourceGroup object
 type EventSourceGroup struct {
-	Business *Business `json:"business"`
-	Event_sources []ExternalEventSource `json:"event_sources"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Owner_business *Business `json:"owner_business"`
+	Business       *Business             `json:"business"`
+	Event_sources  []ExternalEventSource `json:"event_sources"`
+	Id             string                `json:"id"`
+	Name           string                `json:"name"`
+	Owner_business *Business             `json:"owner_business"`
 }

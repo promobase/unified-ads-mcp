@@ -15,7 +15,6 @@ import (
 func GetOfflineConversionDataSetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// offlineconversiondataset_get_adaccounts tool
 	offlineconversiondataset_get_adaccountsTool := mcp.NewTool("offlineconversiondataset_get_adaccounts",
 		mcp.WithDescription("GET adaccounts for OfflineConversionDataSet"),
@@ -181,12 +180,10 @@ func GetOfflineConversionDataSetTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, offlineconversiondataset_get_Tool)
 
-
 	return tools
 }
 
 // OfflineConversionDataSet handlers
-
 
 // HandleOfflineconversiondataset_get_adaccounts handles the offlineconversiondataset_get_adaccounts tool
 func HandleOfflineconversiondataset_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -209,8 +206,6 @@ func HandleOfflineconversiondataset_get_adaccounts(ctx context.Context, request 
 	}
 	args["business"] = business
 
-
-
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_adaccounts(args)
 	if err != nil {
@@ -226,7 +221,6 @@ func HandleOfflineconversiondataset_get_adaccounts(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleOfflineconversiondataset_get_agencies handles the offlineconversiondataset_get_agencies tool
 func HandleOfflineconversiondataset_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -240,8 +234,6 @@ func HandleOfflineconversiondataset_get_agencies(ctx context.Context, request mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_agencies(args)
@@ -257,7 +249,6 @@ func HandleOfflineconversiondataset_get_agencies(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleOfflineconversiondataset_get_audiences handles the offlineconversiondataset_get_audiences tool
 func HandleOfflineconversiondataset_get_audiences(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -283,8 +274,6 @@ func HandleOfflineconversiondataset_get_audiences(ctx context.Context, request m
 		args["ad_account"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_audiences(args)
 	if err != nil {
@@ -299,7 +288,6 @@ func HandleOfflineconversiondataset_get_audiences(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleOfflineconversiondataset_get_customconversions handles the offlineconversiondataset_get_customconversions tool
 func HandleOfflineconversiondataset_get_customconversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -320,8 +308,6 @@ func HandleOfflineconversiondataset_get_customconversions(ctx context.Context, r
 		args["ad_account"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_customconversions(args)
 	if err != nil {
@@ -337,7 +323,6 @@ func HandleOfflineconversiondataset_get_customconversions(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleOfflineconversiondataset_get_server_events_permitted_business handles the offlineconversiondataset_get_server_events_permitted_business tool
 func HandleOfflineconversiondataset_get_server_events_permitted_business(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -351,8 +336,6 @@ func HandleOfflineconversiondataset_get_server_events_permitted_business(ctx con
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_server_events_permitted_business(args)
@@ -368,7 +351,6 @@ func HandleOfflineconversiondataset_get_server_events_permitted_business(ctx con
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleOfflineconversiondataset_get_shared_accounts handles the offlineconversiondataset_get_shared_accounts tool
 func HandleOfflineconversiondataset_get_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -398,8 +380,6 @@ func HandleOfflineconversiondataset_get_shared_accounts(ctx context.Context, req
 	}
 	args["business"] = business
 
-
-
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_shared_accounts(args)
 	if err != nil {
@@ -414,7 +394,6 @@ func HandleOfflineconversiondataset_get_shared_accounts(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleOfflineconversiondataset_get_shared_agencies handles the offlineconversiondataset_get_shared_agencies tool
 func HandleOfflineconversiondataset_get_shared_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -437,8 +416,6 @@ func HandleOfflineconversiondataset_get_shared_agencies(ctx context.Context, req
 	}
 	args["action_source"] = action_source
 
-
-
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_shared_agencies(args)
 	if err != nil {
@@ -453,7 +430,6 @@ func HandleOfflineconversiondataset_get_shared_agencies(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleOfflineconversiondataset_get_stats handles the offlineconversiondataset_get_stats tool
 func HandleOfflineconversiondataset_get_stats(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -499,8 +475,6 @@ func HandleOfflineconversiondataset_get_stats(ctx context.Context, request mcp.C
 		args["user_timezone_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_stats(args)
 	if err != nil {
@@ -515,7 +489,6 @@ func HandleOfflineconversiondataset_get_stats(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleOfflineconversiondataset_get_uploads handles the offlineconversiondataset_get_uploads tool
 func HandleOfflineconversiondataset_get_uploads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -556,8 +529,6 @@ func HandleOfflineconversiondataset_get_uploads(ctx context.Context, request mcp
 		args["upload_tag"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_uploads(args)
 	if err != nil {
@@ -573,7 +544,6 @@ func HandleOfflineconversiondataset_get_uploads(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleOfflineconversiondataset_get_ handles the offlineconversiondataset_get_ tool
 func HandleOfflineconversiondataset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -587,8 +557,6 @@ func HandleOfflineconversiondataset_get_(ctx context.Context, request mcp.CallTo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_(args)
@@ -604,4 +572,3 @@ func HandleOfflineconversiondataset_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

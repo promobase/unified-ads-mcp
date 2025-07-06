@@ -15,7 +15,6 @@ import (
 func GetAdsPixelTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adspixel_get_adaccounts tool
 	adspixel_get_adaccountsTool := mcp.NewTool("adspixel_get_adaccounts",
 		mcp.WithDescription("GET adaccounts for AdsPixel"),
@@ -352,12 +351,10 @@ func GetAdsPixelTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adspixel_post_Tool)
 
-
 	return tools
 }
 
 // AdsPixel handlers
-
 
 // HandleAdspixel_get_adaccounts handles the adspixel_get_adaccounts tool
 func HandleAdspixel_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -380,8 +377,6 @@ func HandleAdspixel_get_adaccounts(ctx context.Context, request mcp.CallToolRequ
 	}
 	args["business"] = business
 
-
-
 	// Call the client method
 	result, err := client.Adspixel_get_adaccounts(args)
 	if err != nil {
@@ -396,7 +391,6 @@ func HandleAdspixel_get_adaccounts(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdspixel_delete_agencies handles the adspixel_delete_agencies tool
 func HandleAdspixel_delete_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -419,8 +413,6 @@ func HandleAdspixel_delete_agencies(ctx context.Context, request mcp.CallToolReq
 	}
 	args["business"] = business
 
-
-
 	// Call the client method
 	result, err := client.Adspixel_delete_agencies(args)
 	if err != nil {
@@ -436,7 +428,6 @@ func HandleAdspixel_delete_agencies(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdspixel_get_agencies handles the adspixel_get_agencies tool
 func HandleAdspixel_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -450,8 +441,6 @@ func HandleAdspixel_get_agencies(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adspixel_get_agencies(args)
@@ -467,7 +456,6 @@ func HandleAdspixel_get_agencies(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdspixel_post_agencies handles the adspixel_post_agencies tool
 func HandleAdspixel_post_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -497,8 +485,6 @@ func HandleAdspixel_post_agencies(ctx context.Context, request mcp.CallToolReque
 	}
 	args["permitted_tasks"] = permitted_tasks
 
-
-
 	// Call the client method
 	result, err := client.Adspixel_post_agencies(args)
 	if err != nil {
@@ -513,7 +499,6 @@ func HandleAdspixel_post_agencies(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdspixel_post_ahp_configs handles the adspixel_post_ahp_configs tool
 func HandleAdspixel_post_ahp_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -536,8 +521,6 @@ func HandleAdspixel_post_ahp_configs(ctx context.Context, request mcp.CallToolRe
 	}
 	args["applink_autosetup"] = applink_autosetup
 
-
-
 	// Call the client method
 	result, err := client.Adspixel_post_ahp_configs(args)
 	if err != nil {
@@ -552,7 +535,6 @@ func HandleAdspixel_post_ahp_configs(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdspixel_get_assigned_users handles the adspixel_get_assigned_users tool
 func HandleAdspixel_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -575,8 +557,6 @@ func HandleAdspixel_get_assigned_users(ctx context.Context, request mcp.CallTool
 	}
 	args["business"] = business
 
-
-
 	// Call the client method
 	result, err := client.Adspixel_get_assigned_users(args)
 	if err != nil {
@@ -591,7 +571,6 @@ func HandleAdspixel_get_assigned_users(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdspixel_post_assigned_users handles the adspixel_post_assigned_users tool
 func HandleAdspixel_post_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -621,8 +600,6 @@ func HandleAdspixel_post_assigned_users(ctx context.Context, request mcp.CallToo
 	}
 	args["user"] = user
 
-
-
 	// Call the client method
 	result, err := client.Adspixel_post_assigned_users(args)
 	if err != nil {
@@ -637,7 +614,6 @@ func HandleAdspixel_post_assigned_users(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdspixel_get_da_checks handles the adspixel_get_da_checks tool
 func HandleAdspixel_get_da_checks(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -664,8 +640,6 @@ func HandleAdspixel_get_da_checks(ctx context.Context, request mcp.CallToolReque
 		args["connection_method"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adspixel_get_da_checks(args)
 	if err != nil {
@@ -680,7 +654,6 @@ func HandleAdspixel_get_da_checks(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdspixel_post_events handles the adspixel_post_events tool
 func HandleAdspixel_post_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -750,8 +723,6 @@ func HandleAdspixel_post_events(ctx context.Context, request mcp.CallToolRequest
 		args["upload_tag"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adspixel_post_events(args)
 	if err != nil {
@@ -766,7 +737,6 @@ func HandleAdspixel_post_events(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdspixel_get_offline_event_uploads handles the adspixel_get_offline_event_uploads tool
 func HandleAdspixel_get_offline_event_uploads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -807,8 +777,6 @@ func HandleAdspixel_get_offline_event_uploads(ctx context.Context, request mcp.C
 		args["upload_tag"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adspixel_get_offline_event_uploads(args)
 	if err != nil {
@@ -824,7 +792,6 @@ func HandleAdspixel_get_offline_event_uploads(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdspixel_get_openbridge_configurations handles the adspixel_get_openbridge_configurations tool
 func HandleAdspixel_get_openbridge_configurations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -838,8 +805,6 @@ func HandleAdspixel_get_openbridge_configurations(ctx context.Context, request m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adspixel_get_openbridge_configurations(args)
@@ -856,7 +821,6 @@ func HandleAdspixel_get_openbridge_configurations(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdspixel_post_shadowtraffichelper handles the adspixel_post_shadowtraffichelper tool
 func HandleAdspixel_post_shadowtraffichelper(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -870,8 +834,6 @@ func HandleAdspixel_post_shadowtraffichelper(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adspixel_post_shadowtraffichelper(args)
@@ -887,7 +849,6 @@ func HandleAdspixel_post_shadowtraffichelper(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdspixel_delete_shared_accounts handles the adspixel_delete_shared_accounts tool
 func HandleAdspixel_delete_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -917,8 +878,6 @@ func HandleAdspixel_delete_shared_accounts(ctx context.Context, request mcp.Call
 	}
 	args["business"] = business
 
-
-
 	// Call the client method
 	result, err := client.Adspixel_delete_shared_accounts(args)
 	if err != nil {
@@ -933,7 +892,6 @@ func HandleAdspixel_delete_shared_accounts(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdspixel_get_shared_accounts handles the adspixel_get_shared_accounts tool
 func HandleAdspixel_get_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -956,8 +914,6 @@ func HandleAdspixel_get_shared_accounts(ctx context.Context, request mcp.CallToo
 	}
 	args["business"] = business
 
-
-
 	// Call the client method
 	result, err := client.Adspixel_get_shared_accounts(args)
 	if err != nil {
@@ -972,7 +928,6 @@ func HandleAdspixel_get_shared_accounts(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdspixel_post_shared_accounts handles the adspixel_post_shared_accounts tool
 func HandleAdspixel_post_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1002,8 +957,6 @@ func HandleAdspixel_post_shared_accounts(ctx context.Context, request mcp.CallTo
 	}
 	args["business"] = business
 
-
-
 	// Call the client method
 	result, err := client.Adspixel_post_shared_accounts(args)
 	if err != nil {
@@ -1019,7 +972,6 @@ func HandleAdspixel_post_shared_accounts(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdspixel_get_shared_agencies handles the adspixel_get_shared_agencies tool
 func HandleAdspixel_get_shared_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1033,8 +985,6 @@ func HandleAdspixel_get_shared_agencies(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adspixel_get_shared_agencies(args)
@@ -1050,7 +1000,6 @@ func HandleAdspixel_get_shared_agencies(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdspixel_get_stats handles the adspixel_get_stats tool
 func HandleAdspixel_get_stats(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1091,8 +1040,6 @@ func HandleAdspixel_get_stats(ctx context.Context, request mcp.CallToolRequest) 
 		args["start_time"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adspixel_get_stats(args)
 	if err != nil {
@@ -1108,7 +1055,6 @@ func HandleAdspixel_get_stats(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdspixel_get_ handles the adspixel_get_ tool
 func HandleAdspixel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1122,8 +1068,6 @@ func HandleAdspixel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adspixel_get_(args)
@@ -1139,7 +1083,6 @@ func HandleAdspixel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdspixel_post_ handles the adspixel_post_ tool
 func HandleAdspixel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1187,8 +1130,6 @@ func HandleAdspixel_post_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["server_events_business_ids"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adspixel_post_(args)
 	if err != nil {
@@ -1203,4 +1144,3 @@ func HandleAdspixel_post_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

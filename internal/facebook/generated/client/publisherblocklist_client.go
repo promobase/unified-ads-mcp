@@ -21,7 +21,6 @@ func NewPublisherBlockListClient(accessToken string) *PublisherBlockListClient {
 	}
 }
 
-
 // publisherblocklist_post_append_publisher_urls POST append_publisher_urls for PublisherBlockList
 func (c *PublisherBlockListClient) Publisherblocklist_post_append_publisher_urls(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -31,7 +30,6 @@ func (c *PublisherBlockListClient) Publisherblocklist_post_append_publisher_urls
 	}
 	_ = publisher_urls // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "append_publisher_urls")
 	urlParams := url.Values{}
@@ -40,7 +38,6 @@ func (c *PublisherBlockListClient) Publisherblocklist_post_append_publisher_urls
 	if val, ok := args["publisher_urls"]; ok {
 		urlParams.Set("publisher_urls", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -72,11 +69,9 @@ func (c *PublisherBlockListClient) Publisherblocklist_post_append_publisher_urls
 	return result, nil
 }
 
-
 // publisherblocklist_get_paged_web_publishers GET paged_web_publishers for PublisherBlockList
 func (c *PublisherBlockListClient) Publisherblocklist_get_paged_web_publishers(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "paged_web_publishers")
@@ -86,7 +81,6 @@ func (c *PublisherBlockListClient) Publisherblocklist_get_paged_web_publishers(a
 	if val, ok := args["draft_id"]; ok {
 		urlParams.Set("draft_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -118,18 +112,14 @@ func (c *PublisherBlockListClient) Publisherblocklist_get_paged_web_publishers(a
 	return result, nil
 }
 
-
 // publisherblocklist_delete_ DELETE  for PublisherBlockList
 func (c *PublisherBlockListClient) Publisherblocklist_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -161,11 +151,9 @@ func (c *PublisherBlockListClient) Publisherblocklist_delete_(args map[string]in
 	return result, nil
 }
 
-
 // publisherblocklist_get_ GET  for PublisherBlockList
 func (c *PublisherBlockListClient) Publisherblocklist_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -181,7 +169,6 @@ func (c *PublisherBlockListClient) Publisherblocklist_get_(args map[string]inter
 	if val, ok := args["draft_id"]; ok {
 		urlParams.Set("draft_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -213,7 +200,6 @@ func (c *PublisherBlockListClient) Publisherblocklist_get_(args map[string]inter
 	return result, nil
 }
 
-
 // publisherblocklist_post_ POST  for PublisherBlockList
 func (c *PublisherBlockListClient) Publisherblocklist_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -223,7 +209,6 @@ func (c *PublisherBlockListClient) Publisherblocklist_post_(args map[string]inte
 	}
 	_ = spec // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
@@ -232,7 +217,6 @@ func (c *PublisherBlockListClient) Publisherblocklist_post_(args map[string]inte
 	if val, ok := args["spec"]; ok {
 		urlParams.Set("spec", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -263,4 +247,3 @@ func (c *PublisherBlockListClient) Publisherblocklist_post_(args map[string]inte
 
 	return result, nil
 }
-

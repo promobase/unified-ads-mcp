@@ -15,7 +15,6 @@ import (
 func GetVideoPollTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// videopoll_get_poll_options tool
 	videopoll_get_poll_optionsTool := mcp.NewTool("videopoll_get_poll_options",
 		mcp.WithDescription("GET poll_options for VideoPoll"),
@@ -63,12 +62,10 @@ func GetVideoPollTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, videopoll_post_Tool)
 
-
 	return tools
 }
 
 // VideoPoll handlers
-
 
 // HandleVideopoll_get_poll_options handles the videopoll_get_poll_options tool
 func HandleVideopoll_get_poll_options(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -83,8 +80,6 @@ func HandleVideopoll_get_poll_options(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Videopoll_get_poll_options(args)
@@ -101,7 +96,6 @@ func HandleVideopoll_get_poll_options(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleVideopoll_get_ handles the videopoll_get_ tool
 func HandleVideopoll_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -115,8 +109,6 @@ func HandleVideopoll_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Videopoll_get_(args)
@@ -132,7 +124,6 @@ func HandleVideopoll_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleVideopoll_post_ handles the videopoll_post_ tool
 func HandleVideopoll_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -175,8 +166,6 @@ func HandleVideopoll_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["show_results"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Videopoll_post_(args)
 	if err != nil {
@@ -191,4 +180,3 @@ func HandleVideopoll_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetCanvasTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// canvas_get_preview tool
 	canvas_get_previewTool := mcp.NewTool("canvas_get_preview",
 		mcp.WithDescription("GET preview for Canvas"),
@@ -80,12 +79,10 @@ func GetCanvasTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, canvas_post_Tool)
 
-
 	return tools
 }
 
 // Canvas handlers
-
 
 // HandleCanvas_get_preview handles the canvas_get_preview tool
 func HandleCanvas_get_preview(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -101,8 +98,6 @@ func HandleCanvas_get_preview(ctx context.Context, request mcp.CallToolRequest) 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Canvas_get_preview(args)
 	if err != nil {
@@ -117,7 +112,6 @@ func HandleCanvas_get_preview(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCanvas_get_previews handles the canvas_get_previews tool
 func HandleCanvas_get_previews(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -139,8 +133,6 @@ func HandleCanvas_get_previews(ctx context.Context, request mcp.CallToolRequest)
 		args["user_ids"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Canvas_get_previews(args)
 	if err != nil {
@@ -156,7 +148,6 @@ func HandleCanvas_get_previews(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleCanvas_get_ handles the canvas_get_ tool
 func HandleCanvas_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -170,8 +161,6 @@ func HandleCanvas_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Canvas_get_(args)
@@ -187,7 +176,6 @@ func HandleCanvas_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCanvas_post_ handles the canvas_post_ tool
 func HandleCanvas_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -239,8 +227,6 @@ func HandleCanvas_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		args["source_template_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Canvas_post_(args)
 	if err != nil {
@@ -255,4 +241,3 @@ func HandleCanvas_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

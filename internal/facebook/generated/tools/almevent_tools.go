@@ -15,7 +15,6 @@ import (
 func GetALMEventTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// almevent_get_ tool
 	almevent_get_Tool := mcp.NewTool("almevent_get_",
 		mcp.WithDescription("GET  for ALMEvent"),
@@ -26,12 +25,10 @@ func GetALMEventTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, almevent_get_Tool)
 
-
 	return tools
 }
 
 // ALMEvent handlers
-
 
 // HandleAlmevent_get_ handles the almevent_get_ tool
 func HandleAlmevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAlmevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Almevent_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAlmevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

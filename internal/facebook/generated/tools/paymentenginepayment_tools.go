@@ -15,7 +15,6 @@ import (
 func GetPaymentEnginePaymentTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// paymentenginepayment_post_dispute tool
 	paymentenginepayment_post_disputeTool := mcp.NewTool("paymentenginepayment_post_dispute",
 		mcp.WithDescription("POST dispute for PaymentEnginePayment"),
@@ -63,12 +62,10 @@ func GetPaymentEnginePaymentTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, paymentenginepayment_get_Tool)
 
-
 	return tools
 }
 
 // PaymentEnginePayment handlers
-
 
 // HandlePaymentenginepayment_post_dispute handles the paymentenginepayment_post_dispute tool
 func HandlePaymentenginepayment_post_dispute(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -91,8 +88,6 @@ func HandlePaymentenginepayment_post_dispute(ctx context.Context, request mcp.Ca
 	}
 	args["reason"] = reason
 
-
-
 	// Call the client method
 	result, err := client.Paymentenginepayment_post_dispute(args)
 	if err != nil {
@@ -107,7 +102,6 @@ func HandlePaymentenginepayment_post_dispute(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePaymentenginepayment_post_refunds handles the paymentenginepayment_post_refunds tool
 func HandlePaymentenginepayment_post_refunds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -142,8 +136,6 @@ func HandlePaymentenginepayment_post_refunds(ctx context.Context, request mcp.Ca
 		args["reason"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Paymentenginepayment_post_refunds(args)
 	if err != nil {
@@ -159,7 +151,6 @@ func HandlePaymentenginepayment_post_refunds(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandlePaymentenginepayment_get_ handles the paymentenginepayment_get_ tool
 func HandlePaymentenginepayment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -173,8 +164,6 @@ func HandlePaymentenginepayment_get_(ctx context.Context, request mcp.CallToolRe
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Paymentenginepayment_get_(args)
@@ -190,4 +179,3 @@ func HandlePaymentenginepayment_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

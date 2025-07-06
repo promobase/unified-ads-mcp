@@ -15,7 +15,6 @@ import (
 func GetAudioCopyrightTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// audiocopyright_get_update_records tool
 	audiocopyright_get_update_recordsTool := mcp.NewTool("audiocopyright_get_update_records",
 		mcp.WithDescription("GET update_records for AudioCopyright"),
@@ -36,12 +35,10 @@ func GetAudioCopyrightTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, audiocopyright_get_Tool)
 
-
 	return tools
 }
 
 // AudioCopyright handlers
-
 
 // HandleAudiocopyright_get_update_records handles the audiocopyright_get_update_records tool
 func HandleAudiocopyright_get_update_records(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleAudiocopyright_get_update_records(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Audiocopyright_get_update_records(args)
@@ -74,7 +69,6 @@ func HandleAudiocopyright_get_update_records(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAudiocopyright_get_ handles the audiocopyright_get_ tool
 func HandleAudiocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleAudiocopyright_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Audiocopyright_get_(args)
@@ -105,4 +97,3 @@ func HandleAudiocopyright_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

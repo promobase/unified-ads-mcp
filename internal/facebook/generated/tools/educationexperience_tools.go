@@ -15,7 +15,6 @@ import (
 func GetEducationExperienceTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// educationexperience_get_ tool
 	educationexperience_get_Tool := mcp.NewTool("educationexperience_get_",
 		mcp.WithDescription("GET  for EducationExperience"),
@@ -26,12 +25,10 @@ func GetEducationExperienceTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, educationexperience_get_Tool)
 
-
 	return tools
 }
 
 // EducationExperience handlers
-
 
 // HandleEducationexperience_get_ handles the educationexperience_get_ tool
 func HandleEducationexperience_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleEducationexperience_get_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Educationexperience_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleEducationexperience_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

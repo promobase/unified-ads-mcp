@@ -21,11 +21,9 @@ func NewAdAsyncRequestSetClient(accessToken string) *AdAsyncRequestSetClient {
 	}
 }
 
-
 // adasyncrequestset_get_requests GET requests for AdAsyncRequestSet
 func (c *AdAsyncRequestSetClient) Adasyncrequestset_get_requests(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "requests")
@@ -35,7 +33,6 @@ func (c *AdAsyncRequestSetClient) Adasyncrequestset_get_requests(args map[string
 	if val, ok := args["statuses"]; ok {
 		urlParams.Set("statuses", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -67,18 +64,14 @@ func (c *AdAsyncRequestSetClient) Adasyncrequestset_get_requests(args map[string
 	return result, nil
 }
 
-
 // adasyncrequestset_delete_ DELETE  for AdAsyncRequestSet
 func (c *AdAsyncRequestSetClient) Adasyncrequestset_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -110,18 +103,14 @@ func (c *AdAsyncRequestSetClient) Adasyncrequestset_delete_(args map[string]inte
 	return result, nil
 }
 
-
 // adasyncrequestset_get_ GET  for AdAsyncRequestSet
 func (c *AdAsyncRequestSetClient) Adasyncrequestset_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -153,11 +142,9 @@ func (c *AdAsyncRequestSetClient) Adasyncrequestset_get_(args map[string]interfa
 	return result, nil
 }
 
-
 // adasyncrequestset_post_ POST  for AdAsyncRequestSet
 func (c *AdAsyncRequestSetClient) Adasyncrequestset_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -173,7 +160,6 @@ func (c *AdAsyncRequestSetClient) Adasyncrequestset_post_(args map[string]interf
 	if val, ok := args["notification_uri"]; ok {
 		urlParams.Set("notification_uri", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -204,4 +190,3 @@ func (c *AdAsyncRequestSetClient) Adasyncrequestset_post_(args map[string]interf
 
 	return result, nil
 }
-

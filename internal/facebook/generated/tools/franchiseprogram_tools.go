@@ -15,7 +15,6 @@ import (
 func GetFranchiseProgramTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// franchiseprogram_get_ tool
 	franchiseprogram_get_Tool := mcp.NewTool("franchiseprogram_get_",
 		mcp.WithDescription("GET  for FranchiseProgram"),
@@ -26,12 +25,10 @@ func GetFranchiseProgramTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, franchiseprogram_get_Tool)
 
-
 	return tools
 }
 
 // FranchiseProgram handlers
-
 
 // HandleFranchiseprogram_get_ handles the franchiseprogram_get_ tool
 func HandleFranchiseprogram_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFranchiseprogram_get_(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Franchiseprogram_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFranchiseprogram_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

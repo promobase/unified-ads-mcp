@@ -21,11 +21,9 @@ func NewPhotoClient(accessToken string) *PhotoClient {
 	}
 }
 
-
 // photo_get_comments GET comments for Photo
 func (c *PhotoClient) Photo_get_comments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
@@ -44,7 +42,6 @@ func (c *PhotoClient) Photo_get_comments(args map[string]interface{}) (interface
 	if val, ok := args["since"]; ok {
 		urlParams.Set("since", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -76,11 +73,9 @@ func (c *PhotoClient) Photo_get_comments(args map[string]interface{}) (interface
 	return result, nil
 }
 
-
 // photo_post_comments POST comments for Photo
 func (c *PhotoClient) Photo_post_comments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
@@ -127,7 +122,6 @@ func (c *PhotoClient) Photo_post_comments(args map[string]interface{}) (interfac
 		urlParams.Set("tracking", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -158,11 +152,9 @@ func (c *PhotoClient) Photo_post_comments(args map[string]interface{}) (interfac
 	return result, nil
 }
 
-
 // photo_get_insights GET insights for Photo
 func (c *PhotoClient) Photo_get_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
@@ -185,7 +177,6 @@ func (c *PhotoClient) Photo_get_insights(args map[string]interface{}) (interface
 		urlParams.Set("until", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -216,19 +207,15 @@ func (c *PhotoClient) Photo_get_insights(args map[string]interface{}) (interface
 	return result, nil
 }
 
-
 // photo_get_likes GET likes for Photo
 func (c *PhotoClient) Photo_get_likes(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -259,11 +246,9 @@ func (c *PhotoClient) Photo_get_likes(args map[string]interface{}) (interface{},
 	return result, nil
 }
 
-
 // photo_post_likes POST likes for Photo
 func (c *PhotoClient) Photo_post_likes(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "likes")
@@ -282,7 +267,6 @@ func (c *PhotoClient) Photo_post_likes(args map[string]interface{}) (interface{}
 	if val, ok := args["tracking"]; ok {
 		urlParams.Set("tracking", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -314,18 +298,14 @@ func (c *PhotoClient) Photo_post_likes(args map[string]interface{}) (interface{}
 	return result, nil
 }
 
-
 // photo_get_sponsor_tags GET sponsor_tags for Photo
 func (c *PhotoClient) Photo_get_sponsor_tags(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "sponsor_tags")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -357,18 +337,14 @@ func (c *PhotoClient) Photo_get_sponsor_tags(args map[string]interface{}) (inter
 	return result, nil
 }
 
-
 // photo_delete_ DELETE  for Photo
 func (c *PhotoClient) Photo_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -400,18 +376,14 @@ func (c *PhotoClient) Photo_delete_(args map[string]interface{}) (interface{}, e
 	return result, nil
 }
 
-
 // photo_get_ GET  for Photo
 func (c *PhotoClient) Photo_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -442,4 +414,3 @@ func (c *PhotoClient) Photo_get_(args map[string]interface{}) (interface{}, erro
 
 	return result, nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetLifeEventTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// lifeevent_get_likes tool
 	lifeevent_get_likesTool := mcp.NewTool("lifeevent_get_likes",
 		mcp.WithDescription("GET likes for LifeEvent"),
@@ -36,12 +35,10 @@ func GetLifeEventTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, lifeevent_get_Tool)
 
-
 	return tools
 }
 
 // LifeEvent handlers
-
 
 // HandleLifeevent_get_likes handles the lifeevent_get_likes tool
 func HandleLifeevent_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleLifeevent_get_likes(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Lifeevent_get_likes(args)
@@ -74,7 +69,6 @@ func HandleLifeevent_get_likes(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleLifeevent_get_ handles the lifeevent_get_ tool
 func HandleLifeevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleLifeevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Lifeevent_get_(args)
@@ -105,4 +97,3 @@ func HandleLifeevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

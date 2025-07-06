@@ -21,18 +21,14 @@ func NewBusinessFranchiseConfigClient(accessToken string) *BusinessFranchiseConf
 	}
 }
 
-
 // businessfranchiseconfig_get_ GET  for BusinessFranchiseConfig
 func (c *BusinessFranchiseConfigClient) Businessfranchiseconfig_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -63,4 +59,3 @@ func (c *BusinessFranchiseConfigClient) Businessfranchiseconfig_get_(args map[st
 
 	return result, nil
 }
-

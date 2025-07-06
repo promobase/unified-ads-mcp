@@ -15,7 +15,6 @@ import (
 func GetProductFeedTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// productfeed_get_automotive_models tool
 	productfeed_get_automotive_modelsTool := mcp.NewTool("productfeed_get_automotive_models",
 		mcp.WithDescription("GET automotive_models for ProductFeed"),
@@ -335,12 +334,10 @@ func GetProductFeedTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, productfeed_post_Tool)
 
-
 	return tools
 }
 
 // ProductFeed handlers
-
 
 // HandleProductfeed_get_automotive_models handles the productfeed_get_automotive_models tool
 func HandleProductfeed_get_automotive_models(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -367,8 +364,6 @@ func HandleProductfeed_get_automotive_models(ctx context.Context, request mcp.Ca
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productfeed_get_automotive_models(args)
 	if err != nil {
@@ -383,7 +378,6 @@ func HandleProductfeed_get_automotive_models(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductfeed_get_destinations handles the productfeed_get_destinations tool
 func HandleProductfeed_get_destinations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -410,8 +404,6 @@ func HandleProductfeed_get_destinations(ctx context.Context, request mcp.CallToo
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productfeed_get_destinations(args)
 	if err != nil {
@@ -426,7 +418,6 @@ func HandleProductfeed_get_destinations(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductfeed_get_flights handles the productfeed_get_flights tool
 func HandleProductfeed_get_flights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -453,8 +444,6 @@ func HandleProductfeed_get_flights(ctx context.Context, request mcp.CallToolRequ
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productfeed_get_flights(args)
 	if err != nil {
@@ -469,7 +458,6 @@ func HandleProductfeed_get_flights(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductfeed_get_home_listings handles the productfeed_get_home_listings tool
 func HandleProductfeed_get_home_listings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -496,8 +484,6 @@ func HandleProductfeed_get_home_listings(ctx context.Context, request mcp.CallTo
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productfeed_get_home_listings(args)
 	if err != nil {
@@ -512,7 +498,6 @@ func HandleProductfeed_get_home_listings(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductfeed_get_hotels handles the productfeed_get_hotels tool
 func HandleProductfeed_get_hotels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -539,8 +524,6 @@ func HandleProductfeed_get_hotels(ctx context.Context, request mcp.CallToolReque
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productfeed_get_hotels(args)
 	if err != nil {
@@ -555,7 +538,6 @@ func HandleProductfeed_get_hotels(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductfeed_get_media_titles handles the productfeed_get_media_titles tool
 func HandleProductfeed_get_media_titles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -582,8 +564,6 @@ func HandleProductfeed_get_media_titles(ctx context.Context, request mcp.CallToo
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productfeed_get_media_titles(args)
 	if err != nil {
@@ -598,7 +578,6 @@ func HandleProductfeed_get_media_titles(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductfeed_get_products handles the productfeed_get_products tool
 func HandleProductfeed_get_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -635,8 +614,6 @@ func HandleProductfeed_get_products(ctx context.Context, request mcp.CallToolReq
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productfeed_get_products(args)
 	if err != nil {
@@ -652,7 +629,6 @@ func HandleProductfeed_get_products(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleProductfeed_get_rules handles the productfeed_get_rules tool
 func HandleProductfeed_get_rules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -666,8 +642,6 @@ func HandleProductfeed_get_rules(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Productfeed_get_rules(args)
@@ -683,7 +657,6 @@ func HandleProductfeed_get_rules(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductfeed_post_rules handles the productfeed_post_rules tool
 func HandleProductfeed_post_rules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -718,8 +691,6 @@ func HandleProductfeed_post_rules(ctx context.Context, request mcp.CallToolReque
 	}
 	args["rule_type"] = rule_type
 
-
-
 	// Call the client method
 	result, err := client.Productfeed_post_rules(args)
 	if err != nil {
@@ -734,7 +705,6 @@ func HandleProductfeed_post_rules(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductfeed_post_supplementary_feed_assocs handles the productfeed_post_supplementary_feed_assocs tool
 func HandleProductfeed_post_supplementary_feed_assocs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -757,8 +727,6 @@ func HandleProductfeed_post_supplementary_feed_assocs(ctx context.Context, reque
 	}
 	args["assoc_data"] = assoc_data
 
-
-
 	// Call the client method
 	result, err := client.Productfeed_post_supplementary_feed_assocs(args)
 	if err != nil {
@@ -774,7 +742,6 @@ func HandleProductfeed_post_supplementary_feed_assocs(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleProductfeed_get_upload_schedules handles the productfeed_get_upload_schedules tool
 func HandleProductfeed_get_upload_schedules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -788,8 +755,6 @@ func HandleProductfeed_get_upload_schedules(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Productfeed_get_upload_schedules(args)
@@ -805,7 +770,6 @@ func HandleProductfeed_get_upload_schedules(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductfeed_post_upload_schedules handles the productfeed_post_upload_schedules tool
 func HandleProductfeed_post_upload_schedules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -826,8 +790,6 @@ func HandleProductfeed_post_upload_schedules(ctx context.Context, request mcp.Ca
 		args["upload_schedule"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productfeed_post_upload_schedules(args)
 	if err != nil {
@@ -843,7 +805,6 @@ func HandleProductfeed_post_upload_schedules(ctx context.Context, request mcp.Ca
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleProductfeed_get_uploads handles the productfeed_get_uploads tool
 func HandleProductfeed_get_uploads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -857,8 +818,6 @@ func HandleProductfeed_get_uploads(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Productfeed_get_uploads(args)
@@ -874,7 +833,6 @@ func HandleProductfeed_get_uploads(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductfeed_post_uploads handles the productfeed_post_uploads tool
 func HandleProductfeed_post_uploads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -920,8 +878,6 @@ func HandleProductfeed_post_uploads(ctx context.Context, request mcp.CallToolReq
 		args["username"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productfeed_post_uploads(args)
 	if err != nil {
@@ -936,7 +892,6 @@ func HandleProductfeed_post_uploads(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductfeed_get_vehicle_offers handles the productfeed_get_vehicle_offers tool
 func HandleProductfeed_get_vehicle_offers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -963,8 +918,6 @@ func HandleProductfeed_get_vehicle_offers(ctx context.Context, request mcp.CallT
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productfeed_get_vehicle_offers(args)
 	if err != nil {
@@ -979,7 +932,6 @@ func HandleProductfeed_get_vehicle_offers(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductfeed_get_vehicles handles the productfeed_get_vehicles tool
 func HandleProductfeed_get_vehicles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1006,8 +958,6 @@ func HandleProductfeed_get_vehicles(ctx context.Context, request mcp.CallToolReq
 		args["filter"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productfeed_get_vehicles(args)
 	if err != nil {
@@ -1023,7 +973,6 @@ func HandleProductfeed_get_vehicles(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleProductfeed_delete_ handles the productfeed_delete_ tool
 func HandleProductfeed_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1037,8 +986,6 @@ func HandleProductfeed_delete_(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Productfeed_delete_(args)
@@ -1055,7 +1002,6 @@ func HandleProductfeed_delete_(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleProductfeed_get_ handles the productfeed_get_ tool
 func HandleProductfeed_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1069,8 +1015,6 @@ func HandleProductfeed_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Productfeed_get_(args)
@@ -1086,7 +1030,6 @@ func HandleProductfeed_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleProductfeed_post_ handles the productfeed_post_ tool
 func HandleProductfeed_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1147,8 +1090,6 @@ func HandleProductfeed_post_(ctx context.Context, request mcp.CallToolRequest) (
 		args["update_schedule"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Productfeed_post_(args)
 	if err != nil {
@@ -1163,4 +1104,3 @@ func HandleProductfeed_post_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetCPASCollaborationRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// cpascollaborationrequest_get_ tool
 	cpascollaborationrequest_get_Tool := mcp.NewTool("cpascollaborationrequest_get_",
 		mcp.WithDescription("GET  for CPASCollaborationRequest"),
@@ -26,12 +25,10 @@ func GetCPASCollaborationRequestTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, cpascollaborationrequest_get_Tool)
 
-
 	return tools
 }
 
 // CPASCollaborationRequest handlers
-
 
 // HandleCpascollaborationrequest_get_ handles the cpascollaborationrequest_get_ tool
 func HandleCpascollaborationrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleCpascollaborationrequest_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Cpascollaborationrequest_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleCpascollaborationrequest_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

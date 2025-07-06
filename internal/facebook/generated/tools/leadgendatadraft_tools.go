@@ -15,7 +15,6 @@ import (
 func GetLeadGenDataDraftTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// leadgendatadraft_get_ tool
 	leadgendatadraft_get_Tool := mcp.NewTool("leadgendatadraft_get_",
 		mcp.WithDescription("GET  for LeadGenDataDraft"),
@@ -26,12 +25,10 @@ func GetLeadGenDataDraftTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, leadgendatadraft_get_Tool)
 
-
 	return tools
 }
 
 // LeadGenDataDraft handlers
-
 
 // HandleLeadgendatadraft_get_ handles the leadgendatadraft_get_ tool
 func HandleLeadgendatadraft_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleLeadgendatadraft_get_(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Leadgendatadraft_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleLeadgendatadraft_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

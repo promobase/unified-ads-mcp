@@ -15,7 +15,6 @@ import (
 func GetHoursTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// hours_get_ tool
 	hours_get_Tool := mcp.NewTool("hours_get_",
 		mcp.WithDescription("GET  for Hours"),
@@ -26,12 +25,10 @@ func GetHoursTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, hours_get_Tool)
 
-
 	return tools
 }
 
 // Hours handlers
-
 
 // HandleHours_get_ handles the hours_get_ tool
 func HandleHours_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleHours_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Hours_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleHours_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

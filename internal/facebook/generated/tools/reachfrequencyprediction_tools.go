@@ -15,7 +15,6 @@ import (
 func GetReachFrequencyPredictionTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// reachfrequencyprediction_get_ tool
 	reachfrequencyprediction_get_Tool := mcp.NewTool("reachfrequencyprediction_get_",
 		mcp.WithDescription("GET  for ReachFrequencyPrediction"),
@@ -26,12 +25,10 @@ func GetReachFrequencyPredictionTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, reachfrequencyprediction_get_Tool)
 
-
 	return tools
 }
 
 // ReachFrequencyPrediction handlers
-
 
 // HandleReachfrequencyprediction_get_ handles the reachfrequencyprediction_get_ tool
 func HandleReachfrequencyprediction_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleReachfrequencyprediction_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Reachfrequencyprediction_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleReachfrequencyprediction_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

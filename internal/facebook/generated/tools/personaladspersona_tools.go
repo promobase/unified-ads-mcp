@@ -15,7 +15,6 @@ import (
 func GetPersonalAdsPersonaTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// personaladspersona_get_ tool
 	personaladspersona_get_Tool := mcp.NewTool("personaladspersona_get_",
 		mcp.WithDescription("GET  for PersonalAdsPersona"),
@@ -26,12 +25,10 @@ func GetPersonalAdsPersonaTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, personaladspersona_get_Tool)
 
-
 	return tools
 }
 
 // PersonalAdsPersona handlers
-
 
 // HandlePersonaladspersona_get_ handles the personaladspersona_get_ tool
 func HandlePersonaladspersona_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandlePersonaladspersona_get_(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Personaladspersona_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandlePersonaladspersona_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetPlaceTagTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// placetag_get_ tool
 	placetag_get_Tool := mcp.NewTool("placetag_get_",
 		mcp.WithDescription("GET  for PlaceTag"),
@@ -26,12 +25,10 @@ func GetPlaceTagTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, placetag_get_Tool)
 
-
 	return tools
 }
 
 // PlaceTag handlers
-
 
 // HandlePlacetag_get_ handles the placetag_get_ tool
 func HandlePlacetag_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandlePlacetag_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Placetag_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandlePlacetag_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

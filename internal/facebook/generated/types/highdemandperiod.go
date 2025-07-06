@@ -6,12 +6,12 @@ import "time"
 
 // HighDemandPeriod represents a Facebook HighDemandPeriod object
 type HighDemandPeriod struct {
-	Ad_object_id string `json:"ad_object_id"`
-	Budget_value int `json:"budget_value"`
-	Budget_value_type string `json:"budget_value_type"`
-	Id string `json:"id"`
-	Recurrence_type string `json:"recurrence_type"`
-	Time_end time.Time `json:"time_end"`
-	Time_start time.Time `json:"time_start"`
-	Weekly_schedule []HighDemandPeriodTimeSuggestionWeeklySegment `json:"weekly_schedule"`
+	Ad_object_id      string                                        `json:"ad_object_id"`
+	Budget_value      int                                           `json:"budget_value"`
+	Budget_value_type string                                        `json:"budget_value_type"`
+	Id                string                                        `json:"id"`
+	Recurrence_type   string                                        `json:"recurrence_type"`
+	Time_end          time.Time                                     `json:"time_end"`
+	Time_start        time.Time                                     `json:"time_start"`
+	Weekly_schedule   []HighDemandPeriodTimeSuggestionWeeklySegment `json:"weekly_schedule"`
 }

@@ -15,7 +15,6 @@ import (
 func GetCallAdsPhoneDataTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// calladsphonedata_get_ tool
 	calladsphonedata_get_Tool := mcp.NewTool("calladsphonedata_get_",
 		mcp.WithDescription("GET  for CallAdsPhoneData"),
@@ -26,12 +25,10 @@ func GetCallAdsPhoneDataTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, calladsphonedata_get_Tool)
 
-
 	return tools
 }
 
 // CallAdsPhoneData handlers
-
 
 // HandleCalladsphonedata_get_ handles the calladsphonedata_get_ tool
 func HandleCalladsphonedata_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleCalladsphonedata_get_(ctx context.Context, request mcp.CallToolReques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Calladsphonedata_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleCalladsphonedata_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

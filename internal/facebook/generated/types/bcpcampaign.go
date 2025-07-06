@@ -4,21 +4,21 @@ package types
 
 // BCPCampaign represents a Facebook BCPCampaign object
 type BCPCampaign struct {
-	Ads_permission_required bool `json:"ads_permission_required"`
-	Application_deadline string `json:"application_deadline"`
-	Campaign_goal string `json:"campaign_goal"`
-	Campaign_goal_other string `json:"campaign_goal_other"`
-	Content_delivery_deadline string `json:"content_delivery_deadline"`
-	Content_delivery_start_date string `json:"content_delivery_start_date"`
-	Content_requirements []interface{} `json:"content_requirements"`
-	Content_requirements_description string `json:"content_requirements_description"`
-	Currency string `json:"currency"`
-	Deal_negotiation_type string `json:"deal_negotiation_type"`
-	Description string `json:"description"`
-	Has_free_product bool `json:"has_free_product"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Payment_amount_for_ads int `json:"payment_amount_for_ads"`
-	Payment_amount_for_content int `json:"payment_amount_for_content"`
-	Payment_description string `json:"payment_description"`
+	Ads_permission_required          bool          `json:"ads_permission_required"`
+	Application_deadline             string        `json:"application_deadline"`
+	Campaign_goal                    string        `json:"campaign_goal"`
+	Campaign_goal_other              string        `json:"campaign_goal_other"`
+	Content_delivery_deadline        string        `json:"content_delivery_deadline"`
+	Content_delivery_start_date      string        `json:"content_delivery_start_date"`
+	Content_requirements             []interface{} `json:"content_requirements"`
+	Content_requirements_description string        `json:"content_requirements_description"`
+	Currency                         string        `json:"currency"`
+	Deal_negotiation_type            string        `json:"deal_negotiation_type"`
+	Description                      string        `json:"description"`
+	Has_free_product                 bool          `json:"has_free_product"`
+	Id                               string        `json:"id"`
+	Name                             string        `json:"name"`
+	Payment_amount_for_ads           int           `json:"payment_amount_for_ads"`
+	Payment_amount_for_content       int           `json:"payment_amount_for_content"`
+	Payment_description              string        `json:"payment_description"`
 }

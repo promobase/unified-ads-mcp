@@ -15,7 +15,6 @@ import (
 func GetBusinessOwnedObjectOnBehalfOfRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// businessownedobjectonbehalfofrequest_get_ tool
 	businessownedobjectonbehalfofrequest_get_Tool := mcp.NewTool("businessownedobjectonbehalfofrequest_get_",
 		mcp.WithDescription("GET  for BusinessOwnedObjectOnBehalfOfRequest"),
@@ -26,12 +25,10 @@ func GetBusinessOwnedObjectOnBehalfOfRequestTools(accessToken string) []mcp.Tool
 	)
 	tools = append(tools, businessownedobjectonbehalfofrequest_get_Tool)
 
-
 	return tools
 }
 
 // BusinessOwnedObjectOnBehalfOfRequest handlers
-
 
 // HandleBusinessownedobjectonbehalfofrequest_get_ handles the businessownedobjectonbehalfofrequest_get_ tool
 func HandleBusinessownedobjectonbehalfofrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleBusinessownedobjectonbehalfofrequest_get_(ctx context.Context, reques
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Businessownedobjectonbehalfofrequest_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleBusinessownedobjectonbehalfofrequest_get_(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

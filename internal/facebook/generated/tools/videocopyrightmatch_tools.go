@@ -15,7 +15,6 @@ import (
 func GetVideoCopyrightMatchTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// videocopyrightmatch_get_ tool
 	videocopyrightmatch_get_Tool := mcp.NewTool("videocopyrightmatch_get_",
 		mcp.WithDescription("GET  for VideoCopyrightMatch"),
@@ -26,12 +25,10 @@ func GetVideoCopyrightMatchTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, videocopyrightmatch_get_Tool)
 
-
 	return tools
 }
 
 // VideoCopyrightMatch handlers
-
 
 // HandleVideocopyrightmatch_get_ handles the videocopyrightmatch_get_ tool
 func HandleVideocopyrightmatch_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleVideocopyrightmatch_get_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Videocopyrightmatch_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleVideocopyrightmatch_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

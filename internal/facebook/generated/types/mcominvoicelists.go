@@ -5,6 +5,6 @@ package types
 // McomInvoiceLists represents a Facebook McomInvoiceLists object
 type McomInvoiceLists struct {
 	Invoice_details []McomInvoiceDetails `json:"invoice_details"`
-	Invoice_ids []string `json:"invoice_ids"`
-	Page_id string `json:"page_id"`
+	Invoice_ids     []string             `json:"invoice_ids"`
+	Page_id         string               `json:"page_id"`
 }

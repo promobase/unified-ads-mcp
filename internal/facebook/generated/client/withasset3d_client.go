@@ -21,18 +21,14 @@ func NewWithAsset3DClient(accessToken string) *WithAsset3DClient {
 	}
 }
 
-
 // withasset3d_get_ GET  for WithAsset3D
 func (c *WithAsset3DClient) Withasset3d_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -63,4 +59,3 @@ func (c *WithAsset3DClient) Withasset3d_get_(args map[string]interface{}) (inter
 
 	return result, nil
 }
-

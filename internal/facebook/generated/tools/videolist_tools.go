@@ -15,7 +15,6 @@ import (
 func GetVideoListTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// videolist_get_videos tool
 	videolist_get_videosTool := mcp.NewTool("videolist_get_videos",
 		mcp.WithDescription("GET videos for VideoList"),
@@ -36,12 +35,10 @@ func GetVideoListTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, videolist_get_Tool)
 
-
 	return tools
 }
 
 // VideoList handlers
-
 
 // HandleVideolist_get_videos handles the videolist_get_videos tool
 func HandleVideolist_get_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleVideolist_get_videos(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Videolist_get_videos(args)
@@ -74,7 +69,6 @@ func HandleVideolist_get_videos(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleVideolist_get_ handles the videolist_get_ tool
 func HandleVideolist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleVideolist_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Videolist_get_(args)
@@ -105,4 +97,3 @@ func HandleVideolist_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

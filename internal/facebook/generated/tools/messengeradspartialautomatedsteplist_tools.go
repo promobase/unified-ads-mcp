@@ -15,7 +15,6 @@ import (
 func GetMessengerAdsPartialAutomatedStepListTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// messengeradspartialautomatedsteplist_get_steps tool
 	messengeradspartialautomatedsteplist_get_stepsTool := mcp.NewTool("messengeradspartialautomatedsteplist_get_steps",
 		mcp.WithDescription("GET steps for MessengerAdsPartialAutomatedStepList"),
@@ -36,12 +35,10 @@ func GetMessengerAdsPartialAutomatedStepListTools(accessToken string) []mcp.Tool
 	)
 	tools = append(tools, messengeradspartialautomatedsteplist_get_Tool)
 
-
 	return tools
 }
 
 // MessengerAdsPartialAutomatedStepList handlers
-
 
 // HandleMessengeradspartialautomatedsteplist_get_steps handles the messengeradspartialautomatedsteplist_get_steps tool
 func HandleMessengeradspartialautomatedsteplist_get_steps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleMessengeradspartialautomatedsteplist_get_steps(ctx context.Context, r
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Messengeradspartialautomatedsteplist_get_steps(args)
@@ -74,7 +69,6 @@ func HandleMessengeradspartialautomatedsteplist_get_steps(ctx context.Context, r
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleMessengeradspartialautomatedsteplist_get_ handles the messengeradspartialautomatedsteplist_get_ tool
 func HandleMessengeradspartialautomatedsteplist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleMessengeradspartialautomatedsteplist_get_(ctx context.Context, reques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Messengeradspartialautomatedsteplist_get_(args)
@@ -105,4 +97,3 @@ func HandleMessengeradspartialautomatedsteplist_get_(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetAdsConversionGoalTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adsconversiongoal_get_conversion_events tool
 	adsconversiongoal_get_conversion_eventsTool := mcp.NewTool("adsconversiongoal_get_conversion_events",
 		mcp.WithDescription("GET conversion_events for AdsConversionGoal"),
@@ -36,12 +35,10 @@ func GetAdsConversionGoalTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adsconversiongoal_get_Tool)
 
-
 	return tools
 }
 
 // AdsConversionGoal handlers
-
 
 // HandleAdsconversiongoal_get_conversion_events handles the adsconversiongoal_get_conversion_events tool
 func HandleAdsconversiongoal_get_conversion_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleAdsconversiongoal_get_conversion_events(ctx context.Context, request 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adsconversiongoal_get_conversion_events(args)
@@ -74,7 +69,6 @@ func HandleAdsconversiongoal_get_conversion_events(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdsconversiongoal_get_ handles the adsconversiongoal_get_ tool
 func HandleAdsconversiongoal_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleAdsconversiongoal_get_(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adsconversiongoal_get_(args)
@@ -105,4 +97,3 @@ func HandleAdsconversiongoal_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

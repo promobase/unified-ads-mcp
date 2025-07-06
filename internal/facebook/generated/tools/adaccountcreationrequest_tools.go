@@ -15,7 +15,6 @@ import (
 func GetAdAccountCreationRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adaccountcreationrequest_get_adaccounts tool
 	adaccountcreationrequest_get_adaccountsTool := mcp.NewTool("adaccountcreationrequest_get_adaccounts",
 		mcp.WithDescription("GET adaccounts for AdAccountCreationRequest"),
@@ -36,12 +35,10 @@ func GetAdAccountCreationRequestTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adaccountcreationrequest_get_Tool)
 
-
 	return tools
 }
 
 // AdAccountCreationRequest handlers
-
 
 // HandleAdaccountcreationrequest_get_adaccounts handles the adaccountcreationrequest_get_adaccounts tool
 func HandleAdaccountcreationrequest_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -56,8 +53,6 @@ func HandleAdaccountcreationrequest_get_adaccounts(ctx context.Context, request 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adaccountcreationrequest_get_adaccounts(args)
@@ -74,7 +69,6 @@ func HandleAdaccountcreationrequest_get_adaccounts(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdaccountcreationrequest_get_ handles the adaccountcreationrequest_get_ tool
 func HandleAdaccountcreationrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -88,8 +82,6 @@ func HandleAdaccountcreationrequest_get_(ctx context.Context, request mcp.CallTo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adaccountcreationrequest_get_(args)
@@ -105,4 +97,3 @@ func HandleAdaccountcreationrequest_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

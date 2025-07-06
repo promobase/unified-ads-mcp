@@ -7,6 +7,6 @@ import "time"
 // PlaceTag represents a Facebook PlaceTag object
 type PlaceTag struct {
 	Created_time time.Time `json:"created_time"`
-	Id string `json:"id"`
-	Place *Page `json:"place"`
+	Id           string    `json:"id"`
+	Place        *Page     `json:"place"`
 }

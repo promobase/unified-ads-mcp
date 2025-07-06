@@ -15,7 +15,6 @@ import (
 func GetMediaCopyrightUpdateRecordTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// mediacopyrightupdaterecord_get_ tool
 	mediacopyrightupdaterecord_get_Tool := mcp.NewTool("mediacopyrightupdaterecord_get_",
 		mcp.WithDescription("GET  for MediaCopyrightUpdateRecord"),
@@ -26,12 +25,10 @@ func GetMediaCopyrightUpdateRecordTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, mediacopyrightupdaterecord_get_Tool)
 
-
 	return tools
 }
 
 // MediaCopyrightUpdateRecord handlers
-
 
 // HandleMediacopyrightupdaterecord_get_ handles the mediacopyrightupdaterecord_get_ tool
 func HandleMediacopyrightupdaterecord_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleMediacopyrightupdaterecord_get_(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Mediacopyrightupdaterecord_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleMediacopyrightupdaterecord_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

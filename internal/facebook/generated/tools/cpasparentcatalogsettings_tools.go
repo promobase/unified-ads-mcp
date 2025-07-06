@@ -15,7 +15,6 @@ import (
 func GetCPASParentCatalogSettingsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// cpasparentcatalogsettings_get_ tool
 	cpasparentcatalogsettings_get_Tool := mcp.NewTool("cpasparentcatalogsettings_get_",
 		mcp.WithDescription("GET  for CPASParentCatalogSettings"),
@@ -26,12 +25,10 @@ func GetCPASParentCatalogSettingsTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, cpasparentcatalogsettings_get_Tool)
 
-
 	return tools
 }
 
 // CPASParentCatalogSettings handlers
-
 
 // HandleCpasparentcatalogsettings_get_ handles the cpasparentcatalogsettings_get_ tool
 func HandleCpasparentcatalogsettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleCpasparentcatalogsettings_get_(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Cpasparentcatalogsettings_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleCpasparentcatalogsettings_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

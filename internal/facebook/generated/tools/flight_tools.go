@@ -15,7 +15,6 @@ import (
 func GetFlightTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// flight_get_channels_to_integrity_status tool
 	flight_get_channels_to_integrity_statusTool := mcp.NewTool("flight_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for Flight"),
@@ -100,12 +99,10 @@ func GetFlightTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, flight_post_Tool)
 
-
 	return tools
 }
 
 // Flight handlers
-
 
 // HandleFlight_get_channels_to_integrity_status handles the flight_get_channels_to_integrity_status tool
 func HandleFlight_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -121,8 +118,6 @@ func HandleFlight_get_channels_to_integrity_status(ctx context.Context, request 
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Flight_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -137,7 +132,6 @@ func HandleFlight_get_channels_to_integrity_status(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFlight_get_override_details handles the flight_get_override_details tool
 func HandleFlight_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -164,8 +158,6 @@ func HandleFlight_get_override_details(ctx context.Context, request mcp.CallTool
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Flight_get_override_details(args)
 	if err != nil {
@@ -181,7 +173,6 @@ func HandleFlight_get_override_details(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFlight_get_videos_metadata handles the flight_get_videos_metadata tool
 func HandleFlight_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -195,8 +186,6 @@ func HandleFlight_get_videos_metadata(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Flight_get_videos_metadata(args)
@@ -213,7 +202,6 @@ func HandleFlight_get_videos_metadata(ctx context.Context, request mcp.CallToolR
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleFlight_get_ handles the flight_get_ tool
 func HandleFlight_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -227,8 +215,6 @@ func HandleFlight_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Flight_get_(args)
@@ -244,7 +230,6 @@ func HandleFlight_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleFlight_post_ handles the flight_post_ tool
 func HandleFlight_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -306,8 +291,6 @@ func HandleFlight_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		args["url"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Flight_post_(args)
 	if err != nil {
@@ -322,4 +305,3 @@ func HandleFlight_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

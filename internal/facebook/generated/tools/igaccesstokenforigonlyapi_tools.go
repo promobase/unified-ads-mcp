@@ -15,7 +15,6 @@ import (
 func GetIGAccessTokenForIGOnlyAPITools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// igaccesstokenforigonlyapi_get_ tool
 	igaccesstokenforigonlyapi_get_Tool := mcp.NewTool("igaccesstokenforigonlyapi_get_",
 		mcp.WithDescription("GET  for IGAccessTokenForIGOnlyAPI"),
@@ -38,12 +37,10 @@ func GetIGAccessTokenForIGOnlyAPITools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, igaccesstokenforigonlyapi_get_Tool)
 
-
 	return tools
 }
 
 // IGAccessTokenForIGOnlyAPI handlers
-
 
 // HandleIgaccesstokenforigonlyapi_get_ handles the igaccesstokenforigonlyapi_get_ tool
 func HandleIgaccesstokenforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,8 +77,6 @@ func HandleIgaccesstokenforigonlyapi_get_(ctx context.Context, request mcp.CallT
 	}
 	args["grant_type"] = grant_type
 
-
-
 	// Call the client method
 	result, err := client.Igaccesstokenforigonlyapi_get_(args)
 	if err != nil {
@@ -96,4 +91,3 @@ func HandleIgaccesstokenforigonlyapi_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

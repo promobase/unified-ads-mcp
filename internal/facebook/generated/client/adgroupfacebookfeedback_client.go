@@ -21,11 +21,9 @@ func NewAdgroupFacebookFeedbackClient(accessToken string) *AdgroupFacebookFeedba
 	}
 }
 
-
 // adgroupfacebookfeedback_get_comments GET comments for AdgroupFacebookFeedback
 func (c *AdgroupFacebookFeedbackClient) Adgroupfacebookfeedback_get_comments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
@@ -35,7 +33,6 @@ func (c *AdgroupFacebookFeedbackClient) Adgroupfacebookfeedback_get_comments(arg
 	if val, ok := args["order"]; ok {
 		urlParams.Set("order", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -66,4 +63,3 @@ func (c *AdgroupFacebookFeedbackClient) Adgroupfacebookfeedback_get_comments(arg
 
 	return result, nil
 }
-

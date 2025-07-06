@@ -21,19 +21,15 @@ func NewIGMediaClient(accessToken string) *IGMediaClient {
 	}
 }
 
-
 // igmedia_get_boost_ads_list GET boost_ads_list for IGMedia
 func (c *IGMediaClient) Igmedia_get_boost_ads_list(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "boost_ads_list")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *IGMediaClient) Igmedia_get_boost_ads_list(args map[string]interface{}) 
 	return result, nil
 }
 
-
 // igmedia_get_branded_content_partner_promote GET branded_content_partner_promote for IGMedia
 func (c *IGMediaClient) Igmedia_get_branded_content_partner_promote(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_partner_promote")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -106,7 +98,6 @@ func (c *IGMediaClient) Igmedia_get_branded_content_partner_promote(args map[str
 
 	return result, nil
 }
-
 
 // igmedia_post_branded_content_partner_promote POST branded_content_partner_promote for IGMedia
 func (c *IGMediaClient) Igmedia_post_branded_content_partner_promote(args map[string]interface{}) (interface{}, error) {
@@ -122,7 +113,6 @@ func (c *IGMediaClient) Igmedia_post_branded_content_partner_promote(args map[st
 	}
 	_ = sponsor_id // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "branded_content_partner_promote")
 	urlParams := url.Values{}
@@ -134,7 +124,6 @@ func (c *IGMediaClient) Igmedia_post_branded_content_partner_promote(args map[st
 	if val, ok := args["sponsor_id"]; ok {
 		urlParams.Set("sponsor_id", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -166,19 +155,15 @@ func (c *IGMediaClient) Igmedia_post_branded_content_partner_promote(args map[st
 	return result, nil
 }
 
-
 // igmedia_get_children GET children for IGMedia
 func (c *IGMediaClient) Igmedia_get_children(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "children")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -209,19 +194,15 @@ func (c *IGMediaClient) Igmedia_get_children(args map[string]interface{}) (inter
 	return result, nil
 }
 
-
 // igmedia_get_collaborators GET collaborators for IGMedia
 func (c *IGMediaClient) Igmedia_get_collaborators(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "collaborators")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -252,19 +233,15 @@ func (c *IGMediaClient) Igmedia_get_collaborators(args map[string]interface{}) (
 	return result, nil
 }
 
-
 // igmedia_get_comments GET comments for IGMedia
 func (c *IGMediaClient) Igmedia_get_comments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -295,11 +272,9 @@ func (c *IGMediaClient) Igmedia_get_comments(args map[string]interface{}) (inter
 	return result, nil
 }
 
-
 // igmedia_post_comments POST comments for IGMedia
 func (c *IGMediaClient) Igmedia_post_comments(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "comments")
@@ -313,7 +288,6 @@ func (c *IGMediaClient) Igmedia_post_comments(args map[string]interface{}) (inte
 		urlParams.Set("message", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -344,7 +318,6 @@ func (c *IGMediaClient) Igmedia_post_comments(args map[string]interface{}) (inte
 	return result, nil
 }
 
-
 // igmedia_get_insights GET insights for IGMedia
 func (c *IGMediaClient) Igmedia_get_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -353,7 +326,6 @@ func (c *IGMediaClient) Igmedia_get_insights(args map[string]interface{}) (inter
 		return nil, fmt.Errorf("missing required parameter: metric")
 	}
 	_ = metric // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
@@ -370,7 +342,6 @@ func (c *IGMediaClient) Igmedia_get_insights(args map[string]interface{}) (inter
 		urlParams.Set("period", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -401,18 +372,14 @@ func (c *IGMediaClient) Igmedia_get_insights(args map[string]interface{}) (inter
 	return result, nil
 }
 
-
 // igmedia_delete_partnership_ad_code DELETE partnership_ad_code for IGMedia
 func (c *IGMediaClient) Igmedia_delete_partnership_ad_code(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "partnership_ad_code")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -444,18 +411,14 @@ func (c *IGMediaClient) Igmedia_delete_partnership_ad_code(args map[string]inter
 	return result, nil
 }
 
-
 // igmedia_post_partnership_ad_code POST partnership_ad_code for IGMedia
 func (c *IGMediaClient) Igmedia_post_partnership_ad_code(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "partnership_ad_code")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -487,18 +450,14 @@ func (c *IGMediaClient) Igmedia_post_partnership_ad_code(args map[string]interfa
 	return result, nil
 }
 
-
 // igmedia_get_product_tags GET product_tags for IGMedia
 func (c *IGMediaClient) Igmedia_get_product_tags(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_tags")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -530,7 +489,6 @@ func (c *IGMediaClient) Igmedia_get_product_tags(args map[string]interface{}) (i
 	return result, nil
 }
 
-
 // igmedia_post_product_tags POST product_tags for IGMedia
 func (c *IGMediaClient) Igmedia_post_product_tags(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -539,7 +497,6 @@ func (c *IGMediaClient) Igmedia_post_product_tags(args map[string]interface{}) (
 		return nil, fmt.Errorf("missing required parameter: updated_tags")
 	}
 	_ = updated_tags // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "product_tags")
@@ -552,7 +509,6 @@ func (c *IGMediaClient) Igmedia_post_product_tags(args map[string]interface{}) (
 	if val, ok := args["updated_tags"]; ok {
 		urlParams.Set("updated_tags", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -584,11 +540,9 @@ func (c *IGMediaClient) Igmedia_post_product_tags(args map[string]interface{}) (
 	return result, nil
 }
 
-
 // igmedia_get_ GET  for IGMedia
 func (c *IGMediaClient) Igmedia_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -617,7 +571,6 @@ func (c *IGMediaClient) Igmedia_get_(args map[string]interface{}) (interface{}, 
 		urlParams.Set("secondary_ig_user_id", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -648,7 +601,6 @@ func (c *IGMediaClient) Igmedia_get_(args map[string]interface{}) (interface{}, 
 	return result, nil
 }
 
-
 // igmedia_post_ POST  for IGMedia
 func (c *IGMediaClient) Igmedia_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -658,7 +610,6 @@ func (c *IGMediaClient) Igmedia_post_(args map[string]interface{}) (interface{},
 	}
 	_ = comment_enabled // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
@@ -667,7 +618,6 @@ func (c *IGMediaClient) Igmedia_post_(args map[string]interface{}) (interface{},
 	if val, ok := args["comment_enabled"]; ok {
 		urlParams.Set("comment_enabled", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -698,4 +648,3 @@ func (c *IGMediaClient) Igmedia_post_(args map[string]interface{}) (interface{},
 
 	return result, nil
 }
-

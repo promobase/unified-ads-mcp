@@ -6,11 +6,11 @@ import "time"
 
 // AudioSubLabel represents a Facebook AudioSubLabel object
 type AudioSubLabel struct {
-	Expiration_timestamp time.Time `json:"expiration_timestamp"`
-	Flagged_timestamp time.Time `json:"flagged_timestamp"`
-	Id string `json:"id"`
-	Label_name string `json:"label_name"`
+	Expiration_timestamp  time.Time `json:"expiration_timestamp"`
+	Flagged_timestamp     time.Time `json:"flagged_timestamp"`
+	Id                    string    `json:"id"`
+	Label_name            string    `json:"label_name"`
 	Last_update_timestamp time.Time `json:"last_update_timestamp"`
-	Num_audio_tracks int `json:"num_audio_tracks"`
-	State string `json:"state"`
+	Num_audio_tracks      int       `json:"num_audio_tracks"`
+	State                 string    `json:"state"`
 }

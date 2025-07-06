@@ -21,18 +21,14 @@ func NewOfflineProductItemClient(accessToken string) *OfflineProductItemClient {
 	}
 }
 
-
 // offlineproductitem_get_channels_to_integrity_status GET channels_to_integrity_status for OfflineProductItem
 func (c *OfflineProductItemClient) Offlineproductitem_get_channels_to_integrity_status(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "channels_to_integrity_status")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,11 +60,9 @@ func (c *OfflineProductItemClient) Offlineproductitem_get_channels_to_integrity_
 	return result, nil
 }
 
-
 // offlineproductitem_get_override_details GET override_details for OfflineProductItem
 func (c *OfflineProductItemClient) Offlineproductitem_get_override_details(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "override_details")
@@ -82,7 +76,6 @@ func (c *OfflineProductItemClient) Offlineproductitem_get_override_details(args 
 		urlParams.Set("type", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -113,19 +106,15 @@ func (c *OfflineProductItemClient) Offlineproductitem_get_override_details(args 
 	return result, nil
 }
 
-
 // offlineproductitem_get_ GET  for OfflineProductItem
 func (c *OfflineProductItemClient) Offlineproductitem_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -155,4 +144,3 @@ func (c *OfflineProductItemClient) Offlineproductitem_get_(args map[string]inter
 
 	return result, nil
 }
-

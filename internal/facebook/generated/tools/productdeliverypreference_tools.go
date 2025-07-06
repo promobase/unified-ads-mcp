@@ -15,7 +15,6 @@ import (
 func GetProductDeliveryPreferenceTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// productdeliverypreference_get_ tool
 	productdeliverypreference_get_Tool := mcp.NewTool("productdeliverypreference_get_",
 		mcp.WithDescription("GET  for ProductDeliveryPreference"),
@@ -26,12 +25,10 @@ func GetProductDeliveryPreferenceTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, productdeliverypreference_get_Tool)
 
-
 	return tools
 }
 
 // ProductDeliveryPreference handlers
-
 
 // HandleProductdeliverypreference_get_ handles the productdeliverypreference_get_ tool
 func HandleProductdeliverypreference_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleProductdeliverypreference_get_(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Productdeliverypreference_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleProductdeliverypreference_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

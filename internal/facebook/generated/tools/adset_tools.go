@@ -15,7 +15,6 @@ import (
 func GetAdSetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adset_get_activities tool
 	adset_get_activitiesTool := mcp.NewTool("adset_get_activities",
 		mcp.WithDescription("GET activities for AdSet"),
@@ -683,12 +682,10 @@ func GetAdSetTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adset_post_Tool)
 
-
 	return tools
 }
 
 // AdSet handlers
-
 
 // HandleAdset_get_activities handles the adset_get_activities tool
 func HandleAdset_get_activities(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -739,8 +736,6 @@ func HandleAdset_get_activities(ctx context.Context, request mcp.CallToolRequest
 		args["until"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_activities(args)
 	if err != nil {
@@ -756,7 +751,6 @@ func HandleAdset_get_activities(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdset_get_ad_studies handles the adset_get_ad_studies tool
 func HandleAdset_get_ad_studies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -770,8 +764,6 @@ func HandleAdset_get_ad_studies(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adset_get_ad_studies(args)
@@ -788,7 +780,6 @@ func HandleAdset_get_ad_studies(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdset_get_adcreatives handles the adset_get_adcreatives tool
 func HandleAdset_get_adcreatives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -802,8 +793,6 @@ func HandleAdset_get_adcreatives(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adset_get_adcreatives(args)
@@ -819,7 +808,6 @@ func HandleAdset_get_adcreatives(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_delete_adlabels handles the adset_delete_adlabels tool
 func HandleAdset_delete_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -848,8 +836,6 @@ func HandleAdset_delete_adlabels(ctx context.Context, request mcp.CallToolReques
 		args["execution_options"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_delete_adlabels(args)
 	if err != nil {
@@ -864,7 +850,6 @@ func HandleAdset_delete_adlabels(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_post_adlabels handles the adset_post_adlabels tool
 func HandleAdset_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -893,8 +878,6 @@ func HandleAdset_post_adlabels(ctx context.Context, request mcp.CallToolRequest)
 		args["execution_options"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_post_adlabels(args)
 	if err != nil {
@@ -909,7 +892,6 @@ func HandleAdset_post_adlabels(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_adrules_governed handles the adset_get_adrules_governed tool
 func HandleAdset_get_adrules_governed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -930,8 +912,6 @@ func HandleAdset_get_adrules_governed(ctx context.Context, request mcp.CallToolR
 		args["pass_evaluation"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_adrules_governed(args)
 	if err != nil {
@@ -946,7 +926,6 @@ func HandleAdset_get_adrules_governed(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_ads handles the adset_get_ads tool
 func HandleAdset_get_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -983,8 +962,6 @@ func HandleAdset_get_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args["updated_since"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_ads(args)
 	if err != nil {
@@ -999,7 +976,6 @@ func HandleAdset_get_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_asyncadrequests handles the adset_get_asyncadrequests tool
 func HandleAdset_get_asyncadrequests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1021,8 +997,6 @@ func HandleAdset_get_asyncadrequests(ctx context.Context, request mcp.CallToolRe
 		args["statuses"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_asyncadrequests(args)
 	if err != nil {
@@ -1037,7 +1011,6 @@ func HandleAdset_get_asyncadrequests(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_post_budget_schedules handles the adset_post_budget_schedules tool
 func HandleAdset_post_budget_schedules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1081,8 +1054,6 @@ func HandleAdset_post_budget_schedules(ctx context.Context, request mcp.CallTool
 	}
 	args["time_start"] = time_start
 
-
-
 	// Call the client method
 	result, err := client.Adset_post_budget_schedules(args)
 	if err != nil {
@@ -1097,7 +1068,6 @@ func HandleAdset_post_budget_schedules(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_copies handles the adset_get_copies tool
 func HandleAdset_get_copies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1134,8 +1104,6 @@ func HandleAdset_get_copies(ctx context.Context, request mcp.CallToolRequest) (*
 		args["time_range"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_copies(args)
 	if err != nil {
@@ -1150,7 +1118,6 @@ func HandleAdset_get_copies(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_post_copies handles the adset_post_copies tool
 func HandleAdset_post_copies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1202,8 +1169,6 @@ func HandleAdset_post_copies(ctx context.Context, request mcp.CallToolRequest) (
 		args["status_option"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_post_copies(args)
 	if err != nil {
@@ -1218,7 +1183,6 @@ func HandleAdset_post_copies(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_delivery_estimate handles the adset_get_delivery_estimate tool
 func HandleAdset_get_delivery_estimate(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1250,8 +1214,6 @@ func HandleAdset_get_delivery_estimate(ctx context.Context, request mcp.CallTool
 		args["targeting_spec"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_delivery_estimate(args)
 	if err != nil {
@@ -1266,7 +1228,6 @@ func HandleAdset_get_delivery_estimate(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_insights handles the adset_get_insights tool
 func HandleAdset_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1402,8 +1363,6 @@ func HandleAdset_get_insights(ctx context.Context, request mcp.CallToolRequest) 
 		args["use_unified_attribution_setting"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_insights(args)
 	if err != nil {
@@ -1418,7 +1377,6 @@ func HandleAdset_get_insights(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_post_insights handles the adset_post_insights tool
 func HandleAdset_post_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1554,8 +1512,6 @@ func HandleAdset_post_insights(ctx context.Context, request mcp.CallToolRequest)
 		args["use_unified_attribution_setting"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_post_insights(args)
 	if err != nil {
@@ -1570,7 +1526,6 @@ func HandleAdset_post_insights(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_message_delivery_estimate handles the adset_get_message_delivery_estimate tool
 func HandleAdset_get_message_delivery_estimate(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1632,8 +1587,6 @@ func HandleAdset_get_message_delivery_estimate(ctx context.Context, request mcp.
 		args["targeting_spec"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_message_delivery_estimate(args)
 	if err != nil {
@@ -1649,7 +1602,6 @@ func HandleAdset_get_message_delivery_estimate(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdset_get_targetingsentencelines handles the adset_get_targetingsentencelines tool
 func HandleAdset_get_targetingsentencelines(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1663,8 +1615,6 @@ func HandleAdset_get_targetingsentencelines(ctx context.Context, request mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adset_get_targetingsentencelines(args)
@@ -1681,7 +1631,6 @@ func HandleAdset_get_targetingsentencelines(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleAdset_delete_ handles the adset_delete_ tool
 func HandleAdset_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1695,8 +1644,6 @@ func HandleAdset_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Adset_delete_(args)
@@ -1712,7 +1659,6 @@ func HandleAdset_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_get_ handles the adset_get_ tool
 func HandleAdset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1748,8 +1694,6 @@ func HandleAdset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 		args["time_range"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_get_(args)
 	if err != nil {
@@ -1764,7 +1708,6 @@ func HandleAdset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleAdset_post_ handles the adset_post_ tool
 func HandleAdset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2053,8 +1996,6 @@ func HandleAdset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 		args["tune_for_category"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Adset_post_(args)
 	if err != nil {
@@ -2069,4 +2010,3 @@ func HandleAdset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetPublisherWhiteListTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// publisherwhitelist_get_ tool
 	publisherwhitelist_get_Tool := mcp.NewTool("publisherwhitelist_get_",
 		mcp.WithDescription("GET  for PublisherWhiteList"),
@@ -26,12 +25,10 @@ func GetPublisherWhiteListTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, publisherwhitelist_get_Tool)
 
-
 	return tools
 }
 
 // PublisherWhiteList handlers
-
 
 // HandlePublisherwhitelist_get_ handles the publisherwhitelist_get_ tool
 func HandlePublisherwhitelist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandlePublisherwhitelist_get_(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Publisherwhitelist_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandlePublisherwhitelist_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

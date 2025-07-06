@@ -4,9 +4,9 @@ package types
 
 // CoverPhoto represents a Facebook CoverPhoto object
 type CoverPhoto struct {
-	Cover_id string `json:"cover_id"`
-	Id string `json:"id"`
+	Cover_id string  `json:"cover_id"`
+	Id       string  `json:"id"`
 	Offset_x float64 `json:"offset_x"`
 	Offset_y float64 `json:"offset_y"`
-	Source string `json:"source"`
+	Source   string  `json:"source"`
 }

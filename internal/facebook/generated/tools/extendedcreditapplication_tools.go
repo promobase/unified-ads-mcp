@@ -15,7 +15,6 @@ import (
 func GetExtendedCreditApplicationTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// extendedcreditapplication_get_ tool
 	extendedcreditapplication_get_Tool := mcp.NewTool("extendedcreditapplication_get_",
 		mcp.WithDescription("GET  for ExtendedCreditApplication"),
@@ -26,12 +25,10 @@ func GetExtendedCreditApplicationTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, extendedcreditapplication_get_Tool)
 
-
 	return tools
 }
 
 // ExtendedCreditApplication handlers
-
 
 // HandleExtendedcreditapplication_get_ handles the extendedcreditapplication_get_ tool
 func HandleExtendedcreditapplication_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleExtendedcreditapplication_get_(ctx context.Context, request mcp.CallT
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Extendedcreditapplication_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleExtendedcreditapplication_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

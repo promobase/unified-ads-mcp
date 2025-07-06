@@ -15,7 +15,6 @@ import (
 func GetAdsCreationSavedStateTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adscreationsavedstate_get_ tool
 	adscreationsavedstate_get_Tool := mcp.NewTool("adscreationsavedstate_get_",
 		mcp.WithDescription("GET  for AdsCreationSavedState"),
@@ -26,12 +25,10 @@ func GetAdsCreationSavedStateTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adscreationsavedstate_get_Tool)
 
-
 	return tools
 }
 
 // AdsCreationSavedState handlers
-
 
 // HandleAdscreationsavedstate_get_ handles the adscreationsavedstate_get_ tool
 func HandleAdscreationsavedstate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAdscreationsavedstate_get_(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Adscreationsavedstate_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAdscreationsavedstate_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetSlicedEventSourceGroupTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// slicedeventsourcegroup_get_ tool
 	slicedeventsourcegroup_get_Tool := mcp.NewTool("slicedeventsourcegroup_get_",
 		mcp.WithDescription("GET  for SlicedEventSourceGroup"),
@@ -26,12 +25,10 @@ func GetSlicedEventSourceGroupTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, slicedeventsourcegroup_get_Tool)
 
-
 	return tools
 }
 
 // SlicedEventSourceGroup handlers
-
 
 // HandleSlicedeventsourcegroup_get_ handles the slicedeventsourcegroup_get_ tool
 func HandleSlicedeventsourcegroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleSlicedeventsourcegroup_get_(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Slicedeventsourcegroup_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleSlicedeventsourcegroup_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

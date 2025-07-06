@@ -4,10 +4,10 @@ package types
 
 // AdStudyObjective represents a Facebook AdStudyObjective object
 type AdStudyObjective struct {
-	Id string `json:"id"`
-	Is_primary bool `json:"is_primary"`
-	Last_updated_results string `json:"last_updated_results"`
-	Name string `json:"name"`
-	Results []string `json:"results"`
-	Type_ string `json:"type"`
+	Id                   string   `json:"id"`
+	Is_primary           bool     `json:"is_primary"`
+	Last_updated_results string   `json:"last_updated_results"`
+	Name                 string   `json:"name"`
+	Results              []string `json:"results"`
+	Type_                string   `json:"type"`
 }

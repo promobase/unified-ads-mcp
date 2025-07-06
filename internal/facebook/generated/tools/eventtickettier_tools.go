@@ -15,7 +15,6 @@ import (
 func GetEventTicketTierTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// eventtickettier_get_ tool
 	eventtickettier_get_Tool := mcp.NewTool("eventtickettier_get_",
 		mcp.WithDescription("GET  for EventTicketTier"),
@@ -26,12 +25,10 @@ func GetEventTicketTierTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, eventtickettier_get_Tool)
 
-
 	return tools
 }
 
 // EventTicketTier handlers
-
 
 // HandleEventtickettier_get_ handles the eventtickettier_get_ tool
 func HandleEventtickettier_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleEventtickettier_get_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Eventtickettier_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleEventtickettier_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

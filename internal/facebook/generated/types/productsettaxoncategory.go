@@ -4,7 +4,7 @@ package types
 
 // ProductSetTaxonCategory represents a Facebook ProductSetTaxonCategory object
 type ProductSetTaxonCategory struct {
-	Category_id int `json:"category_id"`
+	Category_id   int    `json:"category_id"`
 	Category_name string `json:"category_name"`
-	Image_url string `json:"image_url"`
+	Image_url     string `json:"image_url"`
 }

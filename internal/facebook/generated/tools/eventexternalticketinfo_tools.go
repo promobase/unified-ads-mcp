@@ -15,7 +15,6 @@ import (
 func GetEventExternalTicketInfoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// eventexternalticketinfo_get_ tool
 	eventexternalticketinfo_get_Tool := mcp.NewTool("eventexternalticketinfo_get_",
 		mcp.WithDescription("GET  for EventExternalTicketInfo"),
@@ -26,12 +25,10 @@ func GetEventExternalTicketInfoTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, eventexternalticketinfo_get_Tool)
 
-
 	return tools
 }
 
 // EventExternalTicketInfo handlers
-
 
 // HandleEventexternalticketinfo_get_ handles the eventexternalticketinfo_get_ tool
 func HandleEventexternalticketinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleEventexternalticketinfo_get_(ctx context.Context, request mcp.CallToo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Eventexternalticketinfo_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleEventexternalticketinfo_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

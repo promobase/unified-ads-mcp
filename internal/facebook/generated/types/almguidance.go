@@ -4,9 +4,9 @@ package types
 
 // ALMGuidance represents a Facebook ALMGuidance object
 type ALMGuidance struct {
-	Ad_account_id string `json:"ad_account_id"`
-	Guidances []map[string]interface{} `json:"guidances"`
-	Opportunity_score float64 `json:"opportunity_score"`
-	Parent_advertiser_id string `json:"parent_advertiser_id"`
-	Parent_advertiser_name string `json:"parent_advertiser_name"`
+	Ad_account_id          string                   `json:"ad_account_id"`
+	Guidances              []map[string]interface{} `json:"guidances"`
+	Opportunity_score      float64                  `json:"opportunity_score"`
+	Parent_advertiser_id   string                   `json:"parent_advertiser_id"`
+	Parent_advertiser_name string                   `json:"parent_advertiser_name"`
 }

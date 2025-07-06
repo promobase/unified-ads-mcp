@@ -6,14 +6,14 @@ import "time"
 
 // AdsPivotRules represents a Facebook AdsPivotRules object
 type AdsPivotRules struct {
-	Creation_time time.Time `json:"creation_time"`
-	Creator *Profile `json:"creator"`
-	Description string `json:"description"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Permission string `json:"permission"`
-	Rules []map[string]interface{} `json:"rules"`
-	Scope string `json:"scope"`
-	Update_by *Profile `json:"update_by"`
-	Update_time time.Time `json:"update_time"`
+	Creation_time time.Time                `json:"creation_time"`
+	Creator       *Profile                 `json:"creator"`
+	Description   string                   `json:"description"`
+	Id            string                   `json:"id"`
+	Name          string                   `json:"name"`
+	Permission    string                   `json:"permission"`
+	Rules         []map[string]interface{} `json:"rules"`
+	Scope         string                   `json:"scope"`
+	Update_by     *Profile                 `json:"update_by"`
+	Update_time   time.Time                `json:"update_time"`
 }

@@ -15,7 +15,6 @@ import (
 func GetAdsUserSettingsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adsusersettings_get_ tool
 	adsusersettings_get_Tool := mcp.NewTool("adsusersettings_get_",
 		mcp.WithDescription("GET  for AdsUserSettings"),
@@ -26,12 +25,10 @@ func GetAdsUserSettingsTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adsusersettings_get_Tool)
 
-
 	return tools
 }
 
 // AdsUserSettings handlers
-
 
 // HandleAdsusersettings_get_ handles the adsusersettings_get_ tool
 func HandleAdsusersettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAdsusersettings_get_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Adsusersettings_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAdsusersettings_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

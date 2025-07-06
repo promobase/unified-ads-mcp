@@ -15,7 +15,6 @@ import (
 func GetStoriesTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// stories_get_insights tool
 	stories_get_insightsTool := mcp.NewTool("stories_get_insights",
 		mcp.WithDescription("GET insights for Stories"),
@@ -40,12 +39,10 @@ func GetStoriesTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, stories_get_Tool)
 
-
 	return tools
 }
 
 // Stories handlers
-
 
 // HandleStories_get_insights handles the stories_get_insights tool
 func HandleStories_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -67,8 +64,6 @@ func HandleStories_get_insights(ctx context.Context, request mcp.CallToolRequest
 		args["metric"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Stories_get_insights(args)
 	if err != nil {
@@ -84,7 +79,6 @@ func HandleStories_get_insights(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleStories_get_ handles the stories_get_ tool
 func HandleStories_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -98,8 +92,6 @@ func HandleStories_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Stories_get_(args)
@@ -115,4 +107,3 @@ func HandleStories_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

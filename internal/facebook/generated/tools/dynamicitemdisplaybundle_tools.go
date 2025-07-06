@@ -15,7 +15,6 @@ import (
 func GetDynamicItemDisplayBundleTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// dynamicitemdisplaybundle_get_ tool
 	dynamicitemdisplaybundle_get_Tool := mcp.NewTool("dynamicitemdisplaybundle_get_",
 		mcp.WithDescription("GET  for DynamicItemDisplayBundle"),
@@ -26,12 +25,10 @@ func GetDynamicItemDisplayBundleTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, dynamicitemdisplaybundle_get_Tool)
 
-
 	return tools
 }
 
 // DynamicItemDisplayBundle handlers
-
 
 // HandleDynamicitemdisplaybundle_get_ handles the dynamicitemdisplaybundle_get_ tool
 func HandleDynamicitemdisplaybundle_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleDynamicitemdisplaybundle_get_(ctx context.Context, request mcp.CallTo
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Dynamicitemdisplaybundle_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleDynamicitemdisplaybundle_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

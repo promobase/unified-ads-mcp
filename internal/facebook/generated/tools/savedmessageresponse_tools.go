@@ -15,7 +15,6 @@ import (
 func GetSavedMessageResponseTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// savedmessageresponse_get_ tool
 	savedmessageresponse_get_Tool := mcp.NewTool("savedmessageresponse_get_",
 		mcp.WithDescription("GET  for SavedMessageResponse"),
@@ -26,12 +25,10 @@ func GetSavedMessageResponseTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, savedmessageresponse_get_Tool)
 
-
 	return tools
 }
 
 // SavedMessageResponse handlers
-
 
 // HandleSavedmessageresponse_get_ handles the savedmessageresponse_get_ tool
 func HandleSavedmessageresponse_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleSavedmessageresponse_get_(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Savedmessageresponse_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleSavedmessageresponse_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

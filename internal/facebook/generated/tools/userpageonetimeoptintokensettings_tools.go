@@ -15,7 +15,6 @@ import (
 func GetUserPageOneTimeOptInTokenSettingsTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// userpageonetimeoptintokensettings_get_ tool
 	userpageonetimeoptintokensettings_get_Tool := mcp.NewTool("userpageonetimeoptintokensettings_get_",
 		mcp.WithDescription("GET  for UserPageOneTimeOptInTokenSettings"),
@@ -26,12 +25,10 @@ func GetUserPageOneTimeOptInTokenSettingsTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, userpageonetimeoptintokensettings_get_Tool)
 
-
 	return tools
 }
 
 // UserPageOneTimeOptInTokenSettings handlers
-
 
 // HandleUserpageonetimeoptintokensettings_get_ handles the userpageonetimeoptintokensettings_get_ tool
 func HandleUserpageonetimeoptintokensettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleUserpageonetimeoptintokensettings_get_(ctx context.Context, request m
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Userpageonetimeoptintokensettings_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleUserpageonetimeoptintokensettings_get_(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

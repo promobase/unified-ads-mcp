@@ -15,7 +15,6 @@ import (
 func GetFAMEKumoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// famekumo_get_ tool
 	famekumo_get_Tool := mcp.NewTool("famekumo_get_",
 		mcp.WithDescription("GET  for FAMEKumo"),
@@ -26,12 +25,10 @@ func GetFAMEKumoTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, famekumo_get_Tool)
 
-
 	return tools
 }
 
 // FAMEKumo handlers
-
 
 // HandleFamekumo_get_ handles the famekumo_get_ tool
 func HandleFamekumo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleFamekumo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Famekumo_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleFamekumo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

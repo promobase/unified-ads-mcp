@@ -15,7 +15,6 @@ import (
 func GetAdProposalTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adproposal_get_ tool
 	adproposal_get_Tool := mcp.NewTool("adproposal_get_",
 		mcp.WithDescription("GET  for AdProposal"),
@@ -26,12 +25,10 @@ func GetAdProposalTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adproposal_get_Tool)
 
-
 	return tools
 }
 
 // AdProposal handlers
-
 
 // HandleAdproposal_get_ handles the adproposal_get_ tool
 func HandleAdproposal_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAdproposal_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Adproposal_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAdproposal_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

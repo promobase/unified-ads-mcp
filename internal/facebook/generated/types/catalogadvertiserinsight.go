@@ -5,5 +5,5 @@ package types
 // CatalogAdvertiserInsight represents a Facebook CatalogAdvertiserInsight object
 type CatalogAdvertiserInsight struct {
 	Category string `json:"category"`
-	Country string `json:"country"`
+	Country  string `json:"country"`
 }

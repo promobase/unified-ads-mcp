@@ -15,7 +15,6 @@ import (
 func GetThirdPartyPartnerLiftRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// thirdpartypartnerliftrequest_get_ tool
 	thirdpartypartnerliftrequest_get_Tool := mcp.NewTool("thirdpartypartnerliftrequest_get_",
 		mcp.WithDescription("GET  for ThirdPartyPartnerLiftRequest"),
@@ -26,12 +25,10 @@ func GetThirdPartyPartnerLiftRequestTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, thirdpartypartnerliftrequest_get_Tool)
 
-
 	return tools
 }
 
 // ThirdPartyPartnerLiftRequest handlers
-
 
 // HandleThirdpartypartnerliftrequest_get_ handles the thirdpartypartnerliftrequest_get_ tool
 func HandleThirdpartypartnerliftrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleThirdpartypartnerliftrequest_get_(ctx context.Context, request mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Thirdpartypartnerliftrequest_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleThirdpartypartnerliftrequest_get_(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

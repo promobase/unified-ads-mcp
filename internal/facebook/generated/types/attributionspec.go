@@ -4,6 +4,6 @@ package types
 
 // AttributionSpec represents a Facebook AttributionSpec object
 type AttributionSpec struct {
-	Event_type string `json:"event_type"`
-	Window_days int `json:"window_days"`
+	Event_type  string `json:"event_type"`
+	Window_days int    `json:"window_days"`
 }

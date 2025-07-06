@@ -4,12 +4,12 @@ package types
 
 // CatalogItemAppLinks represents a Facebook CatalogItemAppLinks object
 type CatalogItemAppLinks struct {
-	Android []AndroidAppLink `json:"android"`
-	Ios []IosAppLink `json:"ios"`
-	Ipad []IosAppLink `json:"ipad"`
-	Iphone []IosAppLink `json:"iphone"`
-	Web *WebAppLink `json:"web"`
-	Windows []WindowsAppLink `json:"windows"`
-	Windows_phone []WindowsPhoneAppLink `json:"windows_phone"`
-	Windows_universal []WindowsAppLink `json:"windows_universal"`
+	Android           []AndroidAppLink      `json:"android"`
+	Ios               []IosAppLink          `json:"ios"`
+	Ipad              []IosAppLink          `json:"ipad"`
+	Iphone            []IosAppLink          `json:"iphone"`
+	Web               *WebAppLink           `json:"web"`
+	Windows           []WindowsAppLink      `json:"windows"`
+	Windows_phone     []WindowsPhoneAppLink `json:"windows_phone"`
+	Windows_universal []WindowsAppLink      `json:"windows_universal"`
 }

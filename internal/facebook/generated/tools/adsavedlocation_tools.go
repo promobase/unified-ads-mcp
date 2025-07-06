@@ -15,7 +15,6 @@ import (
 func GetAdSavedLocationTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adsavedlocation_get_ tool
 	adsavedlocation_get_Tool := mcp.NewTool("adsavedlocation_get_",
 		mcp.WithDescription("GET  for AdSavedLocation"),
@@ -26,12 +25,10 @@ func GetAdSavedLocationTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adsavedlocation_get_Tool)
 
-
 	return tools
 }
 
 // AdSavedLocation handlers
-
 
 // HandleAdsavedlocation_get_ handles the adsavedlocation_get_ tool
 func HandleAdsavedlocation_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAdsavedlocation_get_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Adsavedlocation_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAdsavedlocation_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

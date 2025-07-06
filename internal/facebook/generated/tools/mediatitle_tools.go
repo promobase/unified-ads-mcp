@@ -15,7 +15,6 @@ import (
 func GetMediaTitleTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// mediatitle_get_channels_to_integrity_status tool
 	mediatitle_get_channels_to_integrity_statusTool := mcp.NewTool("mediatitle_get_channels_to_integrity_status",
 		mcp.WithDescription("GET channels_to_integrity_status for MediaTitle"),
@@ -120,12 +119,10 @@ func GetMediaTitleTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, mediatitle_post_Tool)
 
-
 	return tools
 }
 
 // MediaTitle handlers
-
 
 // HandleMediatitle_get_channels_to_integrity_status handles the mediatitle_get_channels_to_integrity_status tool
 func HandleMediatitle_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -141,8 +138,6 @@ func HandleMediatitle_get_channels_to_integrity_status(ctx context.Context, requ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Mediatitle_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -157,7 +152,6 @@ func HandleMediatitle_get_channels_to_integrity_status(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleMediatitle_get_override_details handles the mediatitle_get_override_details tool
 func HandleMediatitle_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -184,8 +178,6 @@ func HandleMediatitle_get_override_details(ctx context.Context, request mcp.Call
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Mediatitle_get_override_details(args)
 	if err != nil {
@@ -201,7 +193,6 @@ func HandleMediatitle_get_override_details(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleMediatitle_get_videos_metadata handles the mediatitle_get_videos_metadata tool
 func HandleMediatitle_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -215,8 +206,6 @@ func HandleMediatitle_get_videos_metadata(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Mediatitle_get_videos_metadata(args)
@@ -233,7 +222,6 @@ func HandleMediatitle_get_videos_metadata(ctx context.Context, request mcp.CallT
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleMediatitle_delete_ handles the mediatitle_delete_ tool
 func HandleMediatitle_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -247,8 +235,6 @@ func HandleMediatitle_delete_(ctx context.Context, request mcp.CallToolRequest) 
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Mediatitle_delete_(args)
@@ -265,7 +251,6 @@ func HandleMediatitle_delete_(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleMediatitle_get_ handles the mediatitle_get_ tool
 func HandleMediatitle_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -279,8 +264,6 @@ func HandleMediatitle_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Mediatitle_get_(args)
@@ -296,7 +279,6 @@ func HandleMediatitle_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleMediatitle_post_ handles the mediatitle_post_ tool
 func HandleMediatitle_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -375,8 +357,6 @@ func HandleMediatitle_post_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["url"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Mediatitle_post_(args)
 	if err != nil {
@@ -391,4 +371,3 @@ func HandleMediatitle_post_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

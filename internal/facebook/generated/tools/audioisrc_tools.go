@@ -15,7 +15,6 @@ import (
 func GetAudioIsrcTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// audioisrc_get_ tool
 	audioisrc_get_Tool := mcp.NewTool("audioisrc_get_",
 		mcp.WithDescription("GET  for AudioIsrc"),
@@ -26,12 +25,10 @@ func GetAudioIsrcTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, audioisrc_get_Tool)
 
-
 	return tools
 }
 
 // AudioIsrc handlers
-
 
 // HandleAudioisrc_get_ handles the audioisrc_get_ tool
 func HandleAudioisrc_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAudioisrc_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Audioisrc_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAudioisrc_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

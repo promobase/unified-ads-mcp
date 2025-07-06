@@ -15,7 +15,6 @@ import (
 func GetAudioAssetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// audioasset_get_ tool
 	audioasset_get_Tool := mcp.NewTool("audioasset_get_",
 		mcp.WithDescription("GET  for AudioAsset"),
@@ -26,12 +25,10 @@ func GetAudioAssetTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, audioasset_get_Tool)
 
-
 	return tools
 }
 
 // AudioAsset handlers
-
 
 // HandleAudioasset_get_ handles the audioasset_get_ tool
 func HandleAudioasset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAudioasset_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Audioasset_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAudioasset_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -15,7 +15,6 @@ import (
 func GetRobotTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// robot_get_ tool
 	robot_get_Tool := mcp.NewTool("robot_get_",
 		mcp.WithDescription("GET  for Robot"),
@@ -26,12 +25,10 @@ func GetRobotTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, robot_get_Tool)
 
-
 	return tools
 }
 
 // Robot handlers
-
 
 // HandleRobot_get_ handles the robot_get_ tool
 func HandleRobot_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleRobot_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Robot_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleRobot_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

@@ -6,16 +6,16 @@ import "time"
 
 // FranchiseProgram represents a Facebook FranchiseProgram object
 type FranchiseProgram struct {
-	Business_asset_group *BusinessAssetGroup `json:"business_asset_group"`
-	Creator_business *Business `json:"creator_business"`
-	Description string `json:"description"`
-	End_date time.Time `json:"end_date"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Program_access_type string `json:"program_access_type"`
-	Program_approval_type string `json:"program_approval_type"`
-	Program_image_link string `json:"program_image_link"`
-	Program_url string `json:"program_url"`
-	Shared_custom_audience *CustomAudience `json:"shared_custom_audience"`
-	Start_date time.Time `json:"start_date"`
+	Business_asset_group   *BusinessAssetGroup `json:"business_asset_group"`
+	Creator_business       *Business           `json:"creator_business"`
+	Description            string              `json:"description"`
+	End_date               time.Time           `json:"end_date"`
+	Id                     string              `json:"id"`
+	Name                   string              `json:"name"`
+	Program_access_type    string              `json:"program_access_type"`
+	Program_approval_type  string              `json:"program_approval_type"`
+	Program_image_link     string              `json:"program_image_link"`
+	Program_url            string              `json:"program_url"`
+	Shared_custom_audience *CustomAudience     `json:"shared_custom_audience"`
+	Start_date             time.Time           `json:"start_date"`
 }

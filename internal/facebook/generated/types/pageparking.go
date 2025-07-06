@@ -4,7 +4,7 @@ package types
 
 // PageParking represents a Facebook PageParking object
 type PageParking struct {
-	Lot int `json:"lot"`
+	Lot    int `json:"lot"`
 	Street int `json:"street"`
-	Valet int `json:"valet"`
+	Valet  int `json:"valet"`
 }

@@ -4,7 +4,7 @@ package types
 
 // AdsPixelEventPrediction represents a Facebook AdsPixelEventPrediction object
 type AdsPixelEventPrediction struct {
-	Dismissed bool `json:"dismissed"`
+	Dismissed  bool   `json:"dismissed"`
 	Event_type string `json:"event_type"`
-	Rule string `json:"rule"`
+	Rule       string `json:"rule"`
 }

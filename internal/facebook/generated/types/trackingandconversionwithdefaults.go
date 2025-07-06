@@ -4,8 +4,8 @@ package types
 
 // TrackingAndConversionWithDefaults represents a Facebook TrackingAndConversionWithDefaults object
 type TrackingAndConversionWithDefaults struct {
-	Custom_conversion []map[string]interface{} `json:"custom_conversion"`
-	Custom_tracking []map[string]interface{} `json:"custom_tracking"`
+	Custom_conversion  []map[string]interface{} `json:"custom_conversion"`
+	Custom_tracking    []map[string]interface{} `json:"custom_tracking"`
 	Default_conversion []map[string]interface{} `json:"default_conversion"`
-	Default_tracking []map[string]interface{} `json:"default_tracking"`
+	Default_tracking   []map[string]interface{} `json:"default_tracking"`
 }

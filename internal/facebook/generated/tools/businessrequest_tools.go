@@ -15,7 +15,6 @@ import (
 func GetBusinessRequestTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// businessrequest_get_ tool
 	businessrequest_get_Tool := mcp.NewTool("businessrequest_get_",
 		mcp.WithDescription("GET  for BusinessRequest"),
@@ -26,12 +25,10 @@ func GetBusinessRequestTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, businessrequest_get_Tool)
 
-
 	return tools
 }
 
 // BusinessRequest handlers
-
 
 // HandleBusinessrequest_get_ handles the businessrequest_get_ tool
 func HandleBusinessrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleBusinessrequest_get_(ctx context.Context, request mcp.CallToolRequest
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Businessrequest_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleBusinessrequest_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

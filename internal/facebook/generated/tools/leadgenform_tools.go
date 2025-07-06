@@ -15,7 +15,6 @@ import (
 func GetLeadgenFormTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// leadgenform_get_leads tool
 	leadgenform_get_leadsTool := mcp.NewTool("leadgenform_get_leads",
 		mcp.WithDescription("GET leads for LeadgenForm"),
@@ -76,12 +75,10 @@ func GetLeadgenFormTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, leadgenform_post_Tool)
 
-
 	return tools
 }
 
 // LeadgenForm handlers
-
 
 // HandleLeadgenform_get_leads handles the leadgenform_get_leads tool
 func HandleLeadgenform_get_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -96,8 +93,6 @@ func HandleLeadgenform_get_leads(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Leadgenform_get_leads(args)
@@ -114,7 +109,6 @@ func HandleLeadgenform_get_leads(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleLeadgenform_get_test_leads handles the leadgenform_get_test_leads tool
 func HandleLeadgenform_get_test_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -128,8 +122,6 @@ func HandleLeadgenform_get_test_leads(ctx context.Context, request mcp.CallToolR
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Leadgenform_get_test_leads(args)
@@ -145,7 +137,6 @@ func HandleLeadgenform_get_test_leads(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleLeadgenform_post_test_leads handles the leadgenform_post_test_leads tool
 func HandleLeadgenform_post_test_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -173,8 +164,6 @@ func HandleLeadgenform_post_test_leads(ctx context.Context, request mcp.CallTool
 		args["field_data"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Leadgenform_post_test_leads(args)
 	if err != nil {
@@ -190,7 +179,6 @@ func HandleLeadgenform_post_test_leads(ctx context.Context, request mcp.CallTool
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleLeadgenform_get_ handles the leadgenform_get_ tool
 func HandleLeadgenform_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -204,8 +192,6 @@ func HandleLeadgenform_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Leadgenform_get_(args)
@@ -221,7 +207,6 @@ func HandleLeadgenform_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleLeadgenform_post_ handles the leadgenform_post_ tool
 func HandleLeadgenform_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -242,8 +227,6 @@ func HandleLeadgenform_post_(ctx context.Context, request mcp.CallToolRequest) (
 		args["status"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Leadgenform_post_(args)
 	if err != nil {
@@ -258,4 +241,3 @@ func HandleLeadgenform_post_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

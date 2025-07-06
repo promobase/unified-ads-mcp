@@ -21,18 +21,14 @@ func NewCampaignClient(accessToken string) *CampaignClient {
 	}
 }
 
-
 // campaign_get_ad_studies GET ad_studies for Campaign
 func (c *CampaignClient) Campaign_get_ad_studies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ad_studies")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -64,7 +60,6 @@ func (c *CampaignClient) Campaign_get_ad_studies(args map[string]interface{}) (i
 	return result, nil
 }
 
-
 // campaign_post_adlabels POST adlabels for Campaign
 func (c *CampaignClient) Campaign_post_adlabels(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
@@ -73,7 +68,6 @@ func (c *CampaignClient) Campaign_post_adlabels(args map[string]interface{}) (in
 		return nil, fmt.Errorf("missing required parameter: adlabels")
 	}
 	_ = adlabels // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adlabels")
@@ -86,7 +80,6 @@ func (c *CampaignClient) Campaign_post_adlabels(args map[string]interface{}) (in
 	if val, ok := args["execution_options"]; ok {
 		urlParams.Set("execution_options", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -118,11 +111,9 @@ func (c *CampaignClient) Campaign_post_adlabels(args map[string]interface{}) (in
 	return result, nil
 }
 
-
 // campaign_get_adrules_governed GET adrules_governed for Campaign
 func (c *CampaignClient) Campaign_get_adrules_governed(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adrules_governed")
@@ -132,7 +123,6 @@ func (c *CampaignClient) Campaign_get_adrules_governed(args map[string]interface
 	if val, ok := args["pass_evaluation"]; ok {
 		urlParams.Set("pass_evaluation", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -164,11 +154,9 @@ func (c *CampaignClient) Campaign_get_adrules_governed(args map[string]interface
 	return result, nil
 }
 
-
 // campaign_get_ads GET ads for Campaign
 func (c *CampaignClient) Campaign_get_ads(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "ads")
@@ -188,7 +176,6 @@ func (c *CampaignClient) Campaign_get_ads(args map[string]interface{}) (interfac
 		urlParams.Set("updated_since", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -219,11 +206,9 @@ func (c *CampaignClient) Campaign_get_ads(args map[string]interface{}) (interfac
 	return result, nil
 }
 
-
 // campaign_get_adsets GET adsets for Campaign
 func (c *CampaignClient) Campaign_get_adsets(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "adsets")
@@ -243,7 +228,6 @@ func (c *CampaignClient) Campaign_get_adsets(args map[string]interface{}) (inter
 		urlParams.Set("time_range", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -273,7 +257,6 @@ func (c *CampaignClient) Campaign_get_adsets(args map[string]interface{}) (inter
 
 	return result, nil
 }
-
 
 // campaign_post_budget_schedules POST budget_schedules for Campaign
 func (c *CampaignClient) Campaign_post_budget_schedules(args map[string]interface{}) (interface{}, error) {
@@ -299,7 +282,6 @@ func (c *CampaignClient) Campaign_post_budget_schedules(args map[string]interfac
 	}
 	_ = time_start // Suppress unused variable warning
 
-
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "budget_schedules")
 	urlParams := url.Values{}
@@ -317,7 +299,6 @@ func (c *CampaignClient) Campaign_post_budget_schedules(args map[string]interfac
 	if val, ok := args["time_start"]; ok {
 		urlParams.Set("time_start", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -349,11 +330,9 @@ func (c *CampaignClient) Campaign_post_budget_schedules(args map[string]interfac
 	return result, nil
 }
 
-
 // campaign_get_copies GET copies for Campaign
 func (c *CampaignClient) Campaign_get_copies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "copies")
@@ -372,7 +351,6 @@ func (c *CampaignClient) Campaign_get_copies(args map[string]interface{}) (inter
 	if val, ok := args["time_range"]; ok {
 		urlParams.Set("time_range", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -404,11 +382,9 @@ func (c *CampaignClient) Campaign_get_copies(args map[string]interface{}) (inter
 	return result, nil
 }
 
-
 // campaign_post_copies POST copies for Campaign
 func (c *CampaignClient) Campaign_post_copies(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "copies")
@@ -431,7 +407,6 @@ func (c *CampaignClient) Campaign_post_copies(args map[string]interface{}) (inte
 		urlParams.Set("status_option", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -462,11 +437,9 @@ func (c *CampaignClient) Campaign_post_copies(args map[string]interface{}) (inte
 	return result, nil
 }
 
-
 // campaign_get_insights GET insights for Campaign
 func (c *CampaignClient) Campaign_get_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
@@ -539,7 +512,6 @@ func (c *CampaignClient) Campaign_get_insights(args map[string]interface{}) (int
 	if val, ok := args["use_unified_attribution_setting"]; ok {
 		urlParams.Set("use_unified_attribution_setting", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -571,11 +543,9 @@ func (c *CampaignClient) Campaign_get_insights(args map[string]interface{}) (int
 	return result, nil
 }
 
-
 // campaign_post_insights POST insights for Campaign
 func (c *CampaignClient) Campaign_post_insights(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "insights")
@@ -649,7 +619,6 @@ func (c *CampaignClient) Campaign_post_insights(args map[string]interface{}) (in
 		urlParams.Set("use_unified_attribution_setting", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -680,18 +649,14 @@ func (c *CampaignClient) Campaign_post_insights(args map[string]interface{}) (in
 	return result, nil
 }
 
-
 // campaign_delete_ DELETE  for Campaign
 func (c *CampaignClient) Campaign_delete_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
-
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -723,11 +688,9 @@ func (c *CampaignClient) Campaign_delete_(args map[string]interface{}) (interfac
 	return result, nil
 }
 
-
 // campaign_get_ GET  for Campaign
 func (c *CampaignClient) Campaign_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -746,7 +709,6 @@ func (c *CampaignClient) Campaign_get_(args map[string]interface{}) (interface{}
 	if val, ok := args["time_range"]; ok {
 		urlParams.Set("time_range", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -778,11 +740,9 @@ func (c *CampaignClient) Campaign_get_(args map[string]interface{}) (interface{}
 	return result, nil
 }
 
-
 // campaign_post_ POST  for Campaign
 func (c *CampaignClient) Campaign_post_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -856,7 +816,6 @@ func (c *CampaignClient) Campaign_post_(args map[string]interface{}) (interface{
 		urlParams.Set("stop_time", fmt.Sprintf("%v", val))
 	}
 
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -886,4 +845,3 @@ func (c *CampaignClient) Campaign_post_(args map[string]interface{}) (interface{
 
 	return result, nil
 }
-

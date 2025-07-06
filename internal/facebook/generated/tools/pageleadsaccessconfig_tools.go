@@ -15,7 +15,6 @@ import (
 func GetPageLeadsAccessConfigTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// pageleadsaccessconfig_get_ tool
 	pageleadsaccessconfig_get_Tool := mcp.NewTool("pageleadsaccessconfig_get_",
 		mcp.WithDescription("GET  for PageLeadsAccessConfig"),
@@ -26,12 +25,10 @@ func GetPageLeadsAccessConfigTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, pageleadsaccessconfig_get_Tool)
 
-
 	return tools
 }
 
 // PageLeadsAccessConfig handlers
-
 
 // HandlePageleadsaccessconfig_get_ handles the pageleadsaccessconfig_get_ tool
 func HandlePageleadsaccessconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandlePageleadsaccessconfig_get_(ctx context.Context, request mcp.CallToolR
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Pageleadsaccessconfig_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandlePageleadsaccessconfig_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

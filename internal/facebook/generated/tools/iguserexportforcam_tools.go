@@ -15,7 +15,6 @@ import (
 func GetIGUserExportForCAMTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// iguserexportforcam_get_branded_content_media tool
 	iguserexportforcam_get_branded_content_mediaTool := mcp.NewTool("iguserexportforcam_get_branded_content_media",
 		mcp.WithDescription("GET branded_content_media for IGUserExportForCAM"),
@@ -72,12 +71,10 @@ func GetIGUserExportForCAMTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, iguserexportforcam_get_Tool)
 
-
 	return tools
 }
 
 // IGUserExportForCAM handlers
-
 
 // HandleIguserexportforcam_get_branded_content_media handles the iguserexportforcam_get_branded_content_media tool
 func HandleIguserexportforcam_get_branded_content_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -93,8 +90,6 @@ func HandleIguserexportforcam_get_branded_content_media(ctx context.Context, req
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Iguserexportforcam_get_branded_content_media(args)
 	if err != nil {
@@ -109,7 +104,6 @@ func HandleIguserexportforcam_get_branded_content_media(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleIguserexportforcam_get_insights handles the iguserexportforcam_get_insights tool
 func HandleIguserexportforcam_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -146,8 +140,6 @@ func HandleIguserexportforcam_get_insights(ctx context.Context, request mcp.Call
 		args["time_range"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Iguserexportforcam_get_insights(args)
 	if err != nil {
@@ -163,7 +155,6 @@ func HandleIguserexportforcam_get_insights(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleIguserexportforcam_get_recent_media handles the iguserexportforcam_get_recent_media tool
 func HandleIguserexportforcam_get_recent_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -177,8 +168,6 @@ func HandleIguserexportforcam_get_recent_media(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Iguserexportforcam_get_recent_media(args)
@@ -195,7 +184,6 @@ func HandleIguserexportforcam_get_recent_media(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleIguserexportforcam_get_ handles the iguserexportforcam_get_ tool
 func HandleIguserexportforcam_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -209,8 +197,6 @@ func HandleIguserexportforcam_get_(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Iguserexportforcam_get_(args)
@@ -226,4 +212,3 @@ func HandleIguserexportforcam_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

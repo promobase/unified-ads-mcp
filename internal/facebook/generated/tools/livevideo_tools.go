@@ -15,7 +15,6 @@ import (
 func GetLiveVideoTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// livevideo_get_blocked_users tool
 	livevideo_get_blocked_usersTool := mcp.NewTool("livevideo_get_blocked_users",
 		mcp.WithDescription("GET blocked_users for LiveVideo"),
@@ -278,12 +277,10 @@ func GetLiveVideoTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, livevideo_post_Tool)
 
-
 	return tools
 }
 
 // LiveVideo handlers
-
 
 // HandleLivevideo_get_blocked_users handles the livevideo_get_blocked_users tool
 func HandleLivevideo_get_blocked_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -304,8 +301,6 @@ func HandleLivevideo_get_blocked_users(ctx context.Context, request mcp.CallTool
 		args["uid"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Livevideo_get_blocked_users(args)
 	if err != nil {
@@ -320,7 +315,6 @@ func HandleLivevideo_get_blocked_users(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleLivevideo_get_comments handles the livevideo_get_comments tool
 func HandleLivevideo_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -356,8 +350,6 @@ func HandleLivevideo_get_comments(ctx context.Context, request mcp.CallToolReque
 		args["since"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Livevideo_get_comments(args)
 	if err != nil {
@@ -373,7 +365,6 @@ func HandleLivevideo_get_comments(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleLivevideo_get_crosspost_shared_pages handles the livevideo_get_crosspost_shared_pages tool
 func HandleLivevideo_get_crosspost_shared_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -387,8 +378,6 @@ func HandleLivevideo_get_crosspost_shared_pages(ctx context.Context, request mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Livevideo_get_crosspost_shared_pages(args)
@@ -405,7 +394,6 @@ func HandleLivevideo_get_crosspost_shared_pages(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleLivevideo_get_crossposted_broadcasts handles the livevideo_get_crossposted_broadcasts tool
 func HandleLivevideo_get_crossposted_broadcasts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -419,8 +407,6 @@ func HandleLivevideo_get_crossposted_broadcasts(ctx context.Context, request mcp
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Livevideo_get_crossposted_broadcasts(args)
@@ -437,7 +423,6 @@ func HandleLivevideo_get_crossposted_broadcasts(ctx context.Context, request mcp
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleLivevideo_get_errors handles the livevideo_get_errors tool
 func HandleLivevideo_get_errors(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -451,8 +436,6 @@ func HandleLivevideo_get_errors(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Livevideo_get_errors(args)
@@ -469,7 +452,6 @@ func HandleLivevideo_get_errors(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleLivevideo_post_input_streams handles the livevideo_post_input_streams tool
 func HandleLivevideo_post_input_streams(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -483,8 +465,6 @@ func HandleLivevideo_post_input_streams(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Livevideo_post_input_streams(args)
@@ -501,7 +481,6 @@ func HandleLivevideo_post_input_streams(ctx context.Context, request mcp.CallToo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleLivevideo_get_polls handles the livevideo_get_polls tool
 func HandleLivevideo_get_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -515,8 +494,6 @@ func HandleLivevideo_get_polls(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Livevideo_get_polls(args)
@@ -532,7 +509,6 @@ func HandleLivevideo_get_polls(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleLivevideo_post_polls handles the livevideo_post_polls tool
 func HandleLivevideo_post_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -587,8 +563,6 @@ func HandleLivevideo_post_polls(ctx context.Context, request mcp.CallToolRequest
 		args["show_results"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Livevideo_post_polls(args)
 	if err != nil {
@@ -603,7 +577,6 @@ func HandleLivevideo_post_polls(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleLivevideo_get_reactions handles the livevideo_get_reactions tool
 func HandleLivevideo_get_reactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -624,8 +597,6 @@ func HandleLivevideo_get_reactions(ctx context.Context, request mcp.CallToolRequ
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Livevideo_get_reactions(args)
 	if err != nil {
@@ -641,7 +612,6 @@ func HandleLivevideo_get_reactions(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleLivevideo_delete_ handles the livevideo_delete_ tool
 func HandleLivevideo_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -655,8 +625,6 @@ func HandleLivevideo_delete_(ctx context.Context, request mcp.CallToolRequest) (
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Livevideo_delete_(args)
@@ -672,7 +640,6 @@ func HandleLivevideo_delete_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleLivevideo_get_ handles the livevideo_get_ tool
 func HandleLivevideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -693,8 +660,6 @@ func HandleLivevideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["target_token"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Livevideo_get_(args)
 	if err != nil {
@@ -709,7 +674,6 @@ func HandleLivevideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleLivevideo_post_ handles the livevideo_post_ tool
 func HandleLivevideo_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -884,8 +848,6 @@ func HandleLivevideo_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["title"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Livevideo_post_(args)
 	if err != nil {
@@ -900,4 +862,3 @@ func HandleLivevideo_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

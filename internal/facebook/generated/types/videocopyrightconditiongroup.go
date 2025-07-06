@@ -4,7 +4,7 @@ package types
 
 // VideoCopyrightConditionGroup represents a Facebook VideoCopyrightConditionGroup object
 type VideoCopyrightConditionGroup struct {
-	Action string `json:"action"`
-	Conditions []map[string]interface{} `json:"conditions"`
-	Validity_status string `json:"validity_status"`
+	Action          string                   `json:"action"`
+	Conditions      []map[string]interface{} `json:"conditions"`
+	Validity_status string                   `json:"validity_status"`
 }

@@ -15,7 +15,6 @@ import (
 func GetCampaignTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// campaign_get_ad_studies tool
 	campaign_get_ad_studiesTool := mcp.NewTool("campaign_get_ad_studies",
 		mcp.WithDescription("GET ad_studies for Campaign"),
@@ -464,12 +463,10 @@ func GetCampaignTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, campaign_post_Tool)
 
-
 	return tools
 }
 
 // Campaign handlers
-
 
 // HandleCampaign_get_ad_studies handles the campaign_get_ad_studies tool
 func HandleCampaign_get_ad_studies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -485,8 +482,6 @@ func HandleCampaign_get_ad_studies(ctx context.Context, request mcp.CallToolRequ
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Campaign_get_ad_studies(args)
 	if err != nil {
@@ -501,7 +496,6 @@ func HandleCampaign_get_ad_studies(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCampaign_post_adlabels handles the campaign_post_adlabels tool
 func HandleCampaign_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -530,8 +524,6 @@ func HandleCampaign_post_adlabels(ctx context.Context, request mcp.CallToolReque
 		args["execution_options"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Campaign_post_adlabels(args)
 	if err != nil {
@@ -546,7 +538,6 @@ func HandleCampaign_post_adlabels(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCampaign_get_adrules_governed handles the campaign_get_adrules_governed tool
 func HandleCampaign_get_adrules_governed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -567,8 +558,6 @@ func HandleCampaign_get_adrules_governed(ctx context.Context, request mcp.CallTo
 		args["pass_evaluation"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Campaign_get_adrules_governed(args)
 	if err != nil {
@@ -583,7 +572,6 @@ func HandleCampaign_get_adrules_governed(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCampaign_get_ads handles the campaign_get_ads tool
 func HandleCampaign_get_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -620,8 +608,6 @@ func HandleCampaign_get_ads(ctx context.Context, request mcp.CallToolRequest) (*
 		args["updated_since"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Campaign_get_ads(args)
 	if err != nil {
@@ -636,7 +622,6 @@ func HandleCampaign_get_ads(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCampaign_get_adsets handles the campaign_get_adsets tool
 func HandleCampaign_get_adsets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -673,8 +658,6 @@ func HandleCampaign_get_adsets(ctx context.Context, request mcp.CallToolRequest)
 		args["time_range"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Campaign_get_adsets(args)
 	if err != nil {
@@ -689,7 +672,6 @@ func HandleCampaign_get_adsets(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCampaign_post_budget_schedules handles the campaign_post_budget_schedules tool
 func HandleCampaign_post_budget_schedules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -733,8 +715,6 @@ func HandleCampaign_post_budget_schedules(ctx context.Context, request mcp.CallT
 	}
 	args["time_start"] = time_start
 
-
-
 	// Call the client method
 	result, err := client.Campaign_post_budget_schedules(args)
 	if err != nil {
@@ -749,7 +729,6 @@ func HandleCampaign_post_budget_schedules(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCampaign_get_copies handles the campaign_get_copies tool
 func HandleCampaign_get_copies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -786,8 +765,6 @@ func HandleCampaign_get_copies(ctx context.Context, request mcp.CallToolRequest)
 		args["time_range"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Campaign_get_copies(args)
 	if err != nil {
@@ -802,7 +779,6 @@ func HandleCampaign_get_copies(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCampaign_post_copies handles the campaign_post_copies tool
 func HandleCampaign_post_copies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -844,8 +820,6 @@ func HandleCampaign_post_copies(ctx context.Context, request mcp.CallToolRequest
 		args["status_option"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Campaign_post_copies(args)
 	if err != nil {
@@ -860,7 +834,6 @@ func HandleCampaign_post_copies(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCampaign_get_insights handles the campaign_get_insights tool
 func HandleCampaign_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -996,8 +969,6 @@ func HandleCampaign_get_insights(ctx context.Context, request mcp.CallToolReques
 		args["use_unified_attribution_setting"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Campaign_get_insights(args)
 	if err != nil {
@@ -1012,7 +983,6 @@ func HandleCampaign_get_insights(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCampaign_post_insights handles the campaign_post_insights tool
 func HandleCampaign_post_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1148,8 +1118,6 @@ func HandleCampaign_post_insights(ctx context.Context, request mcp.CallToolReque
 		args["use_unified_attribution_setting"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Campaign_post_insights(args)
 	if err != nil {
@@ -1165,7 +1133,6 @@ func HandleCampaign_post_insights(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleCampaign_delete_ handles the campaign_delete_ tool
 func HandleCampaign_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -1179,8 +1146,6 @@ func HandleCampaign_delete_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Campaign_delete_(args)
@@ -1196,7 +1161,6 @@ func HandleCampaign_delete_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCampaign_get_ handles the campaign_get_ tool
 func HandleCampaign_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1232,8 +1196,6 @@ func HandleCampaign_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args["time_range"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Campaign_get_(args)
 	if err != nil {
@@ -1248,7 +1210,6 @@ func HandleCampaign_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleCampaign_post_ handles the campaign_post_ tool
 func HandleCampaign_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1382,8 +1343,6 @@ func HandleCampaign_post_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["stop_time"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Campaign_post_(args)
 	if err != nil {
@@ -1398,4 +1357,3 @@ func HandleCampaign_post_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

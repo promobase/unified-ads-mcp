@@ -4,7 +4,7 @@ package types
 
 // ProductDaEventSamplesBatch represents a Facebook ProductDaEventSamplesBatch object
 type ProductDaEventSamplesBatch struct {
-	Samples []map[string]interface{} `json:"samples"`
-	Time_start int `json:"time_start"`
-	Time_stop int `json:"time_stop"`
+	Samples    []map[string]interface{} `json:"samples"`
+	Time_start int                      `json:"time_start"`
+	Time_stop  int                      `json:"time_stop"`
 }

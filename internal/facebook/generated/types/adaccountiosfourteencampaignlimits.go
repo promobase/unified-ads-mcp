@@ -4,7 +4,7 @@ package types
 
 // AdAccountIosFourteenCampaignLimits represents a Facebook AdAccountIosFourteenCampaignLimits object
 type AdAccountIosFourteenCampaignLimits struct {
-	Campaign_group_limit int `json:"campaign_group_limit"`
+	Campaign_group_limit          int                      `json:"campaign_group_limit"`
 	Campaign_group_limits_details []map[string]interface{} `json:"campaign_group_limits_details"`
-	Campaign_limit int `json:"campaign_limit"`
+	Campaign_limit                int                      `json:"campaign_limit"`
 }

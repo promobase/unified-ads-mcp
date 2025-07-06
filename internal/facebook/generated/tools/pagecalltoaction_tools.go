@@ -15,7 +15,6 @@ import (
 func GetPageCallToActionTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// pagecalltoaction_delete_ tool
 	pagecalltoaction_delete_Tool := mcp.NewTool("pagecalltoaction_delete_",
 		mcp.WithDescription("DELETE  for PageCallToAction"),
@@ -86,12 +85,10 @@ func GetPageCallToActionTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, pagecalltoaction_post_Tool)
 
-
 	return tools
 }
 
 // PageCallToAction handlers
-
 
 // HandlePagecalltoaction_delete_ handles the pagecalltoaction_delete_ tool
 func HandlePagecalltoaction_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -106,8 +103,6 @@ func HandlePagecalltoaction_delete_(ctx context.Context, request mcp.CallToolReq
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Pagecalltoaction_delete_(args)
@@ -124,7 +119,6 @@ func HandlePagecalltoaction_delete_(ctx context.Context, request mcp.CallToolReq
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandlePagecalltoaction_get_ handles the pagecalltoaction_get_ tool
 func HandlePagecalltoaction_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -138,8 +132,6 @@ func HandlePagecalltoaction_get_(ctx context.Context, request mcp.CallToolReques
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.Pagecalltoaction_get_(args)
@@ -155,7 +147,6 @@ func HandlePagecalltoaction_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandlePagecalltoaction_post_ handles the pagecalltoaction_post_ tool
 func HandlePagecalltoaction_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -231,8 +222,6 @@ func HandlePagecalltoaction_post_(ctx context.Context, request mcp.CallToolReque
 		args["web_url"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.Pagecalltoaction_post_(args)
 	if err != nil {
@@ -247,4 +236,3 @@ func HandlePagecalltoaction_post_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

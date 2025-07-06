@@ -15,7 +15,6 @@ import (
 func GetUserContextTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// usercontext_get_ tool
 	usercontext_get_Tool := mcp.NewTool("usercontext_get_",
 		mcp.WithDescription("GET  for UserContext"),
@@ -26,12 +25,10 @@ func GetUserContextTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, usercontext_get_Tool)
 
-
 	return tools
 }
 
 // UserContext handlers
-
 
 // HandleUsercontext_get_ handles the usercontext_get_ tool
 func HandleUsercontext_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleUsercontext_get_(ctx context.Context, request mcp.CallToolRequest) (*
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Usercontext_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleUsercontext_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

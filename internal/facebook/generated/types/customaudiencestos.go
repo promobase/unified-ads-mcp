@@ -5,6 +5,6 @@ package types
 // CustomAudiencesTOS represents a Facebook CustomAudiencesTOS object
 type CustomAudiencesTOS struct {
 	Content string `json:"content"`
-	Id string `json:"id"`
-	Type_ string `json:"type"`
+	Id      string `json:"id"`
+	Type_   string `json:"type"`
 }

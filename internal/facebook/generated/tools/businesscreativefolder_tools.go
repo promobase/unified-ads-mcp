@@ -15,7 +15,6 @@ import (
 func GetBusinessCreativeFolderTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// businesscreativefolder_get_ tool
 	businesscreativefolder_get_Tool := mcp.NewTool("businesscreativefolder_get_",
 		mcp.WithDescription("GET  for BusinessCreativeFolder"),
@@ -26,12 +25,10 @@ func GetBusinessCreativeFolderTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, businesscreativefolder_get_Tool)
 
-
 	return tools
 }
 
 // BusinessCreativeFolder handlers
-
 
 // HandleBusinesscreativefolder_get_ handles the businesscreativefolder_get_ tool
 func HandleBusinesscreativefolder_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleBusinesscreativefolder_get_(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Businesscreativefolder_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleBusinesscreativefolder_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

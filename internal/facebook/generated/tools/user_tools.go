@@ -15,7 +15,6 @@ import (
 func GetUserTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// user_delete_access_tokens tool
 	user_delete_access_tokensTool := mcp.NewTool("user_delete_access_tokens",
 		mcp.WithDescription("DELETE access_tokens for User"),
@@ -1730,12 +1729,10 @@ func GetUserTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, user_post_Tool)
 
-
 	return tools
 }
 
 // User handlers
-
 
 // HandleUser_delete_access_tokens handles the user_delete_access_tokens tool
 func HandleUser_delete_access_tokens(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1751,8 +1748,6 @@ func HandleUser_delete_access_tokens(ctx context.Context, request mcp.CallToolRe
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.User_delete_access_tokens(args)
 	if err != nil {
@@ -1767,7 +1762,6 @@ func HandleUser_delete_access_tokens(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_post_access_tokens handles the user_post_access_tokens tool
 func HandleUser_post_access_tokens(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1806,8 +1800,6 @@ func HandleUser_post_access_tokens(ctx context.Context, request mcp.CallToolRequ
 		args["set_token_expires_in_60_days"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_post_access_tokens(args)
 	if err != nil {
@@ -1822,7 +1814,6 @@ func HandleUser_post_access_tokens(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_accounts handles the user_get_accounts tool
 func HandleUser_get_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1853,8 +1844,6 @@ func HandleUser_get_accounts(ctx context.Context, request mcp.CallToolRequest) (
 		args["is_promotable"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_accounts(args)
 	if err != nil {
@@ -1869,7 +1858,6 @@ func HandleUser_get_accounts(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_post_accounts handles the user_post_accounts tool
 func HandleUser_post_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1971,8 +1959,6 @@ func HandleUser_post_accounts(ctx context.Context, request mcp.CallToolRequest) 
 		args["zip"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_post_accounts(args)
 	if err != nil {
@@ -1988,7 +1974,6 @@ func HandleUser_post_accounts(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUser_get_ad_studies handles the user_get_ad_studies tool
 func HandleUser_get_ad_studies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2002,8 +1987,6 @@ func HandleUser_get_ad_studies(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.User_get_ad_studies(args)
@@ -2019,7 +2002,6 @@ func HandleUser_get_ad_studies(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_post_ad_studies handles the user_post_ad_studies tool
 func HandleUser_post_ad_studies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2098,8 +2080,6 @@ func HandleUser_post_ad_studies(ctx context.Context, request mcp.CallToolRequest
 		args["viewers"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_post_ad_studies(args)
 	if err != nil {
@@ -2115,7 +2095,6 @@ func HandleUser_post_ad_studies(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUser_get_adaccounts handles the user_get_adaccounts tool
 func HandleUser_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2129,8 +2108,6 @@ func HandleUser_get_adaccounts(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.User_get_adaccounts(args)
@@ -2147,7 +2124,6 @@ func HandleUser_get_adaccounts(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUser_get_albums handles the user_get_albums tool
 func HandleUser_get_albums(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2161,8 +2137,6 @@ func HandleUser_get_albums(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.User_get_albums(args)
@@ -2178,7 +2152,6 @@ func HandleUser_get_albums(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_post_applications handles the user_post_applications tool
 func HandleUser_post_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2201,8 +2174,6 @@ func HandleUser_post_applications(ctx context.Context, request mcp.CallToolReque
 	}
 	args["business_app"] = business_app
 
-
-
 	// Call the client method
 	result, err := client.User_post_applications(args)
 	if err != nil {
@@ -2218,7 +2189,6 @@ func HandleUser_post_applications(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUser_get_apprequestformerrecipients handles the user_get_apprequestformerrecipients tool
 func HandleUser_get_apprequestformerrecipients(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2232,8 +2202,6 @@ func HandleUser_get_apprequestformerrecipients(ctx context.Context, request mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.User_get_apprequestformerrecipients(args)
@@ -2250,7 +2218,6 @@ func HandleUser_get_apprequestformerrecipients(ctx context.Context, request mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUser_get_apprequests handles the user_get_apprequests tool
 func HandleUser_get_apprequests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2264,8 +2231,6 @@ func HandleUser_get_apprequests(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.User_get_apprequests(args)
@@ -2282,7 +2247,6 @@ func HandleUser_get_apprequests(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUser_get_assigned_ad_accounts handles the user_get_assigned_ad_accounts tool
 func HandleUser_get_assigned_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2296,8 +2260,6 @@ func HandleUser_get_assigned_ad_accounts(ctx context.Context, request mcp.CallTo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.User_get_assigned_ad_accounts(args)
@@ -2314,7 +2276,6 @@ func HandleUser_get_assigned_ad_accounts(ctx context.Context, request mcp.CallTo
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUser_get_assigned_applications handles the user_get_assigned_applications tool
 func HandleUser_get_assigned_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2328,8 +2289,6 @@ func HandleUser_get_assigned_applications(ctx context.Context, request mcp.CallT
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.User_get_assigned_applications(args)
@@ -2345,7 +2304,6 @@ func HandleUser_get_assigned_applications(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_assigned_business_asset_groups handles the user_get_assigned_business_asset_groups tool
 func HandleUser_get_assigned_business_asset_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2366,8 +2324,6 @@ func HandleUser_get_assigned_business_asset_groups(ctx context.Context, request 
 		args["contained_asset_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_assigned_business_asset_groups(args)
 	if err != nil {
@@ -2382,7 +2338,6 @@ func HandleUser_get_assigned_business_asset_groups(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_assigned_pages handles the user_get_assigned_pages tool
 func HandleUser_get_assigned_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2404,8 +2359,6 @@ func HandleUser_get_assigned_pages(ctx context.Context, request mcp.CallToolRequ
 		args["pages"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_assigned_pages(args)
 	if err != nil {
@@ -2421,7 +2374,6 @@ func HandleUser_get_assigned_pages(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUser_get_assigned_product_catalogs handles the user_get_assigned_product_catalogs tool
 func HandleUser_get_assigned_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2435,8 +2387,6 @@ func HandleUser_get_assigned_product_catalogs(ctx context.Context, request mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.User_get_assigned_product_catalogs(args)
@@ -2453,7 +2403,6 @@ func HandleUser_get_assigned_product_catalogs(ctx context.Context, request mcp.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUser_get_avatars handles the user_get_avatars tool
 func HandleUser_get_avatars(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2467,8 +2416,6 @@ func HandleUser_get_avatars(ctx context.Context, request mcp.CallToolRequest) (*
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.User_get_avatars(args)
@@ -2485,7 +2432,6 @@ func HandleUser_get_avatars(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUser_get_business_users handles the user_get_business_users tool
 func HandleUser_get_business_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2499,8 +2445,6 @@ func HandleUser_get_business_users(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.User_get_business_users(args)
@@ -2516,7 +2460,6 @@ func HandleUser_get_business_users(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_delete_businesses handles the user_delete_businesses tool
 func HandleUser_delete_businesses(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2537,8 +2480,6 @@ func HandleUser_delete_businesses(ctx context.Context, request mcp.CallToolReque
 		args["business"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_delete_businesses(args)
 	if err != nil {
@@ -2554,7 +2495,6 @@ func HandleUser_delete_businesses(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUser_get_businesses handles the user_get_businesses tool
 func HandleUser_get_businesses(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2568,8 +2508,6 @@ func HandleUser_get_businesses(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.User_get_businesses(args)
@@ -2585,7 +2523,6 @@ func HandleUser_get_businesses(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_post_businesses handles the user_post_businesses tool
 func HandleUser_post_businesses(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2655,8 +2592,6 @@ func HandleUser_post_businesses(ctx context.Context, request mcp.CallToolRequest
 	}
 	args["vertical"] = vertical
 
-
-
 	// Call the client method
 	result, err := client.User_post_businesses(args)
 	if err != nil {
@@ -2671,7 +2606,6 @@ func HandleUser_post_businesses(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_conversations handles the user_get_conversations tool
 func HandleUser_get_conversations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2708,8 +2642,6 @@ func HandleUser_get_conversations(ctx context.Context, request mcp.CallToolReque
 		args["user_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_conversations(args)
 	if err != nil {
@@ -2725,7 +2657,6 @@ func HandleUser_get_conversations(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUser_get_custom_labels handles the user_get_custom_labels tool
 func HandleUser_get_custom_labels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -2739,8 +2670,6 @@ func HandleUser_get_custom_labels(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.User_get_custom_labels(args)
@@ -2756,7 +2685,6 @@ func HandleUser_get_custom_labels(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_events handles the user_get_events tool
 func HandleUser_get_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2782,8 +2710,6 @@ func HandleUser_get_events(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_events(args)
 	if err != nil {
@@ -2798,7 +2724,6 @@ func HandleUser_get_events(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_feed handles the user_get_feed tool
 func HandleUser_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2844,8 +2769,6 @@ func HandleUser_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args["with"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_feed(args)
 	if err != nil {
@@ -2860,7 +2783,6 @@ func HandleUser_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_post_feed handles the user_post_feed tool
 func HandleUser_post_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3418,8 +3340,6 @@ func HandleUser_post_feed(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["width"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_post_feed(args)
 	if err != nil {
@@ -3434,7 +3354,6 @@ func HandleUser_post_feed(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_friends handles the user_get_friends tool
 func HandleUser_get_friends(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3455,8 +3374,6 @@ func HandleUser_get_friends(ctx context.Context, request mcp.CallToolRequest) (*
 		args["uid"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_friends(args)
 	if err != nil {
@@ -3472,7 +3389,6 @@ func HandleUser_get_friends(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUser_get_fundraisers handles the user_get_fundraisers tool
 func HandleUser_get_fundraisers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -3486,8 +3402,6 @@ func HandleUser_get_fundraisers(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.User_get_fundraisers(args)
@@ -3503,7 +3417,6 @@ func HandleUser_get_fundraisers(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_post_fundraisers handles the user_post_fundraisers tool
 func HandleUser_post_fundraisers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3603,8 +3516,6 @@ func HandleUser_post_fundraisers(ctx context.Context, request mcp.CallToolReques
 		args["page_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_post_fundraisers(args)
 	if err != nil {
@@ -3619,7 +3530,6 @@ func HandleUser_post_fundraisers(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_groups handles the user_get_groups tool
 func HandleUser_get_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3645,8 +3555,6 @@ func HandleUser_get_groups(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["parent"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_groups(args)
 	if err != nil {
@@ -3661,7 +3569,6 @@ func HandleUser_get_groups(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_ids_for_apps handles the user_get_ids_for_apps tool
 func HandleUser_get_ids_for_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3682,8 +3589,6 @@ func HandleUser_get_ids_for_apps(ctx context.Context, request mcp.CallToolReques
 		args["app"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_ids_for_apps(args)
 	if err != nil {
@@ -3698,7 +3603,6 @@ func HandleUser_get_ids_for_apps(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_ids_for_business handles the user_get_ids_for_business tool
 func HandleUser_get_ids_for_business(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3719,8 +3623,6 @@ func HandleUser_get_ids_for_business(ctx context.Context, request mcp.CallToolRe
 		args["app"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_ids_for_business(args)
 	if err != nil {
@@ -3735,7 +3637,6 @@ func HandleUser_get_ids_for_business(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_ids_for_pages handles the user_get_ids_for_pages tool
 func HandleUser_get_ids_for_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3756,8 +3657,6 @@ func HandleUser_get_ids_for_pages(ctx context.Context, request mcp.CallToolReque
 		args["page"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_ids_for_pages(args)
 	if err != nil {
@@ -3772,7 +3671,6 @@ func HandleUser_get_ids_for_pages(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_likes handles the user_get_likes tool
 func HandleUser_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3793,8 +3691,6 @@ func HandleUser_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["target_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_likes(args)
 	if err != nil {
@@ -3809,7 +3705,6 @@ func HandleUser_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_live_videos handles the user_get_live_videos tool
 func HandleUser_get_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3836,8 +3731,6 @@ func HandleUser_get_live_videos(ctx context.Context, request mcp.CallToolRequest
 		args["source"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_live_videos(args)
 	if err != nil {
@@ -3852,7 +3745,6 @@ func HandleUser_get_live_videos(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_post_live_videos handles the user_post_live_videos tool
 func HandleUser_post_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3970,8 +3862,6 @@ func HandleUser_post_live_videos(ctx context.Context, request mcp.CallToolReques
 		args["title"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_post_live_videos(args)
 	if err != nil {
@@ -3987,7 +3877,6 @@ func HandleUser_post_live_videos(ctx context.Context, request mcp.CallToolReques
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUser_post_messenger_desktop_performance_traces handles the user_post_messenger_desktop_performance_traces tool
 func HandleUser_post_messenger_desktop_performance_traces(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -4001,8 +3890,6 @@ func HandleUser_post_messenger_desktop_performance_traces(ctx context.Context, r
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.User_post_messenger_desktop_performance_traces(args)
@@ -4018,7 +3905,6 @@ func HandleUser_post_messenger_desktop_performance_traces(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_post_messenger_kids_accounts_unread_badge handles the user_post_messenger_kids_accounts_unread_badge tool
 func HandleUser_post_messenger_kids_accounts_unread_badge(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4041,8 +3927,6 @@ func HandleUser_post_messenger_kids_accounts_unread_badge(ctx context.Context, r
 	}
 	args["proxied_app_id"] = proxied_app_id
 
-
-
 	// Call the client method
 	result, err := client.User_post_messenger_kids_accounts_unread_badge(args)
 	if err != nil {
@@ -4057,7 +3941,6 @@ func HandleUser_post_messenger_kids_accounts_unread_badge(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_music handles the user_get_music tool
 func HandleUser_get_music(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4078,8 +3961,6 @@ func HandleUser_get_music(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["target_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_music(args)
 	if err != nil {
@@ -4094,7 +3975,6 @@ func HandleUser_get_music(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_post_notifications handles the user_post_notifications tool
 func HandleUser_post_notifications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4179,8 +4059,6 @@ func HandleUser_post_notifications(ctx context.Context, request mcp.CallToolRequ
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_post_notifications(args)
 	if err != nil {
@@ -4196,7 +4074,6 @@ func HandleUser_post_notifications(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUser_get_payment_transactions handles the user_get_payment_transactions tool
 func HandleUser_get_payment_transactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -4210,8 +4087,6 @@ func HandleUser_get_payment_transactions(ctx context.Context, request mcp.CallTo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.User_get_payment_transactions(args)
@@ -4227,7 +4102,6 @@ func HandleUser_get_payment_transactions(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_delete_permissions handles the user_delete_permissions tool
 func HandleUser_delete_permissions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4248,8 +4122,6 @@ func HandleUser_delete_permissions(ctx context.Context, request mcp.CallToolRequ
 		args["permission"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_delete_permissions(args)
 	if err != nil {
@@ -4264,7 +4136,6 @@ func HandleUser_delete_permissions(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_permissions handles the user_get_permissions tool
 func HandleUser_get_permissions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4290,8 +4161,6 @@ func HandleUser_get_permissions(ctx context.Context, request mcp.CallToolRequest
 		args["status"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_permissions(args)
 	if err != nil {
@@ -4307,7 +4176,6 @@ func HandleUser_get_permissions(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUser_get_personal_ad_accounts handles the user_get_personal_ad_accounts tool
 func HandleUser_get_personal_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -4321,8 +4189,6 @@ func HandleUser_get_personal_ad_accounts(ctx context.Context, request mcp.CallTo
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.User_get_personal_ad_accounts(args)
@@ -4338,7 +4204,6 @@ func HandleUser_get_personal_ad_accounts(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_photos handles the user_get_photos tool
 func HandleUser_get_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4359,8 +4224,6 @@ func HandleUser_get_photos(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_photos(args)
 	if err != nil {
@@ -4375,7 +4238,6 @@ func HandleUser_get_photos(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_post_photos handles the user_post_photos tool
 func HandleUser_post_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4655,8 +4517,6 @@ func HandleUser_post_photos(ctx context.Context, request mcp.CallToolRequest) (*
 		args["vault_image_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_post_photos(args)
 	if err != nil {
@@ -4671,7 +4531,6 @@ func HandleUser_post_photos(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_picture handles the user_get_picture tool
 func HandleUser_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4707,8 +4566,6 @@ func HandleUser_get_picture(ctx context.Context, request mcp.CallToolRequest) (*
 		args["width"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_picture(args)
 	if err != nil {
@@ -4723,7 +4580,6 @@ func HandleUser_get_picture(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_posts handles the user_get_posts tool
 func HandleUser_get_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4769,8 +4625,6 @@ func HandleUser_get_posts(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["with"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_posts(args)
 	if err != nil {
@@ -4785,7 +4639,6 @@ func HandleUser_get_posts(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_rich_media_documents handles the user_get_rich_media_documents tool
 func HandleUser_get_rich_media_documents(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4806,8 +4659,6 @@ func HandleUser_get_rich_media_documents(ctx context.Context, request mcp.CallTo
 		args["query"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_rich_media_documents(args)
 	if err != nil {
@@ -4822,7 +4673,6 @@ func HandleUser_get_rich_media_documents(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_post_staging_resources handles the user_post_staging_resources tool
 func HandleUser_post_staging_resources(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4843,8 +4693,6 @@ func HandleUser_post_staging_resources(ctx context.Context, request mcp.CallTool
 		args["file"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_post_staging_resources(args)
 	if err != nil {
@@ -4859,7 +4707,6 @@ func HandleUser_post_staging_resources(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_get_videos handles the user_get_videos tool
 func HandleUser_get_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4880,8 +4727,6 @@ func HandleUser_get_videos(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["type"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_get_videos(args)
 	if err != nil {
@@ -4896,7 +4741,6 @@ func HandleUser_get_videos(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_post_videos handles the user_post_videos tool
 func HandleUser_post_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5268,8 +5112,6 @@ func HandleUser_post_videos(ctx context.Context, request mcp.CallToolRequest) (*
 		args["waterfall_id"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_post_videos(args)
 	if err != nil {
@@ -5285,7 +5127,6 @@ func HandleUser_post_videos(ctx context.Context, request mcp.CallToolRequest) (*
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUser_delete_ handles the user_delete_ tool
 func HandleUser_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -5299,8 +5140,6 @@ func HandleUser_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.User_delete_(args)
@@ -5317,7 +5156,6 @@ func HandleUser_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
-
 // HandleUser_get_ handles the user_get_ tool
 func HandleUser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token
@@ -5331,8 +5169,6 @@ func HandleUser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 
 	// Build arguments map
 	args := make(map[string]interface{})
-
-
 
 	// Call the client method
 	result, err := client.User_get_(args)
@@ -5348,7 +5184,6 @@ func HandleUser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-
 
 // HandleUser_post_ handles the user_post_ tool
 func HandleUser_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5399,8 +5234,6 @@ func HandleUser_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 		args["password"] = val
 	}
 
-
-
 	// Call the client method
 	result, err := client.User_post_(args)
 	if err != nil {
@@ -5415,4 +5248,3 @@ func HandleUser_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

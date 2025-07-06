@@ -15,7 +15,6 @@ import (
 func GetAdExportPresetTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// adexportpreset_get_ tool
 	adexportpreset_get_Tool := mcp.NewTool("adexportpreset_get_",
 		mcp.WithDescription("GET  for AdExportPreset"),
@@ -26,12 +25,10 @@ func GetAdExportPresetTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, adexportpreset_get_Tool)
 
-
 	return tools
 }
 
 // AdExportPreset handlers
-
 
 // HandleAdexportpreset_get_ handles the adexportpreset_get_ tool
 func HandleAdexportpreset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandleAdexportpreset_get_(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Adexportpreset_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandleAdexportpreset_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

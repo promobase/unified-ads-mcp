@@ -15,7 +15,6 @@ import (
 func GetPageInsightsAsyncExportRunTools(accessToken string) []mcp.Tool {
 	var tools []mcp.Tool
 
-
 	// pageinsightsasyncexportrun_get_ tool
 	pageinsightsasyncexportrun_get_Tool := mcp.NewTool("pageinsightsasyncexportrun_get_",
 		mcp.WithDescription("GET  for PageInsightsAsyncExportRun"),
@@ -26,12 +25,10 @@ func GetPageInsightsAsyncExportRunTools(accessToken string) []mcp.Tool {
 	)
 	tools = append(tools, pageinsightsasyncexportrun_get_Tool)
 
-
 	return tools
 }
 
 // PageInsightsAsyncExportRun handlers
-
 
 // HandlePageinsightsasyncexportrun_get_ handles the pageinsightsasyncexportrun_get_ tool
 func HandlePageinsightsasyncexportrun_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -47,8 +44,6 @@ func HandlePageinsightsasyncexportrun_get_(ctx context.Context, request mcp.Call
 	// Build arguments map
 	args := make(map[string]interface{})
 
-
-
 	// Call the client method
 	result, err := client.Pageinsightsasyncexportrun_get_(args)
 	if err != nil {
@@ -63,4 +58,3 @@ func HandlePageinsightsasyncexportrun_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
-

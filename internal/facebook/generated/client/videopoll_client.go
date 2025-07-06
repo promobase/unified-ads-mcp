@@ -21,19 +21,15 @@ func NewVideoPollClient(accessToken string) *VideoPollClient {
 	}
 }
 
-
 // videopoll_get_poll_options GET poll_options for VideoPoll
 func (c *VideoPollClient) Videopoll_get_poll_options(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "poll_options")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -64,19 +60,15 @@ func (c *VideoPollClient) Videopoll_get_poll_options(args map[string]interface{}
 	return result, nil
 }
 
-
 // videopoll_get_ GET  for VideoPoll
 func (c *VideoPollClient) Videopoll_get_(args map[string]interface{}) (interface{}, error) {
 	// Extract parameters
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
-
-
 	// Make HTTP request
 	var resp *http.Response
 	var err error
@@ -106,7 +98,6 @@ func (c *VideoPollClient) Videopoll_get_(args map[string]interface{}) (interface
 
 	return result, nil
 }
-
 
 // videopoll_post_ POST  for VideoPoll
 func (c *VideoPollClient) Videopoll_post_(args map[string]interface{}) (interface{}, error) {
@@ -116,7 +107,6 @@ func (c *VideoPollClient) Videopoll_post_(args map[string]interface{}) (interfac
 		return nil, fmt.Errorf("missing required parameter: action")
 	}
 	_ = action // Suppress unused variable warning
-
 
 	// Build request URL and parameters
 	baseURL := fmt.Sprintf("https://graph.facebook.com/%s/%s", "v23.0", "")
@@ -138,7 +128,6 @@ func (c *VideoPollClient) Videopoll_post_(args map[string]interface{}) (interfac
 	if val, ok := args["show_results"]; ok {
 		urlParams.Set("show_results", fmt.Sprintf("%v", val))
 	}
-
 
 	// Make HTTP request
 	var resp *http.Response
@@ -169,4 +158,3 @@ func (c *VideoPollClient) Videopoll_post_(args map[string]interface{}) (interfac
 
 	return result, nil
 }
-

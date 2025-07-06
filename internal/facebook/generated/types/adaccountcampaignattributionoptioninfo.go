@@ -4,6 +4,6 @@ package types
 
 // AdAccountCampaignAttributionOptionInfo represents a Facebook AdAccountCampaignAttributionOptionInfo object
 type AdAccountCampaignAttributionOptionInfo struct {
-	Is_eligible bool `json:"is_eligible"`
-	Value string `json:"value"`
+	Is_eligible bool   `json:"is_eligible"`
+	Value       string `json:"value"`
 }
