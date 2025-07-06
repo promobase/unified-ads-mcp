@@ -2,24 +2,43 @@ package main
 
 import (
 	"log"
+	"os"
+	"strings"
 
 	"unified-ads-mcp/internal/config"
 	"unified-ads-mcp/internal/mcp"
+	"unified-ads-mcp/internal/utils"
 )
 
 func main() {
-	cfg, err := config.Load()
-	if err != nil {
-		log.Fatalf("Failed to load configuration: %v", err)
+	// Load .env file
+	utils.LoadEnv()
+
+	// Load configuration
+	cfg := &config.Config{
+		Facebook: &config.FacebookConfig{
+			AccessToken: os.Getenv("FACEBOOK_ACCESS_TOKEN"),
+		},
 	}
 
-	server, err := mcp.NewMCPServer(cfg)
-	if err != nil {
-		log.Fatalf("Failed to create server: %v", err)
+	// Parse enabled categories from environment variable
+	// Example: ENABLED_CATEGORIES="core_ads,reporting" or ENABLED_CATEGORIES="all"
+	enabledCategories := []string{"core_ads"} // default to all
+	if categories := os.Getenv("ENABLED_CATEGORIES"); categories != "" {
+		enabledCategories = strings.Split(categories, ",")
+		for i := range enabledCategories {
+			enabledCategories[i] = strings.TrimSpace(enabledCategories[i])
+		}
 	}
 
-	// The mcp-go ServeStdio handles signals internally
+	// Create MCP server with context support
+	server, err := mcp.InitMCPServer(cfg, enabledCategories)
+	if err != nil {
+		log.Fatalf("Failed to create MCP server: %v", err)
+	}
+
+	// Start the server
 	if err := server.Start(); err != nil {
-		log.Fatalf("Server failed to start: %v", err)
+		log.Fatalf("Server error: %v", err)
 	}
 }

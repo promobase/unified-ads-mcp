@@ -2,201 +2,188 @@ package mcp
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
-	"io"
 	"log"
-	"os"
+	"strings"
 
 	"unified-ads-mcp/internal/config"
 	"unified-ads-mcp/internal/facebook"
-	"unified-ads-mcp/internal/google"
-	"unified-ads-mcp/internal/tiktok"
-	"unified-ads-mcp/pkg/types"
+	"unified-ads-mcp/internal/shared"
+
+	"github.com/mark3labs/mcp-go/mcp"
+	"github.com/mark3labs/mcp-go/server"
 )
 
-type Server struct {
+// ObjectCategory represents a category of Facebook objects
+type ObjectCategory string
+
+const (
+	// CategoryCoreAds is the default category for core advertising objects
+	CategoryCoreAds ObjectCategory = "core_ads"
+	// CategoryTargeting includes targeting-related objects
+	CategoryTargeting ObjectCategory = "targeting"
+	// CategoryReporting includes reporting and insights objects
+	CategoryReporting ObjectCategory = "reporting"
+	// CategoryCreativeAssets includes creative assets like images and videos
+	CategoryCreativeAssets ObjectCategory = "creative_assets"
+	// CategoryBusiness includes business management objects
+	CategoryBusiness ObjectCategory = "business"
+	// CategoryPage includes page-related objects
+	CategoryPage ObjectCategory = "page"
+	// CategoryAll is a special category that includes all objects
+	CategoryAll ObjectCategory = "all"
+)
+
+// WrappedMCPServer wraps the mcp-go server with context support
+type WrappedMCPServer struct {
+	server         *server.MCPServer
 	config         *config.Config
-	googleClient   *google.Client
-	facebookClient *facebook.Client
-	tiktokClient   *tiktok.Client
+	facebookToken  string
+	enabledObjects map[string]bool
 }
 
-func NewServer(cfg *config.Config) *Server {
-	return &Server{
-		config:         cfg,
-		googleClient:   google.NewClient(cfg.Google),
-		facebookClient: facebook.NewClient(cfg.Facebook),
-		tiktokClient:   tiktok.NewClient(cfg.TikTok),
+// ObjectCategories defines categories of Facebook objects
+var ObjectCategories = map[ObjectCategory][]string{
+	CategoryCoreAds: {
+		"Ad", "AdAccount", "AdSet", "Campaign", "AdCreative",
+	},
+	CategoryTargeting: {
+		"AdSavedLocation", "AdSavedKeywords", "SavedAudience", "CustomAudience",
+	},
+	CategoryReporting: {
+		"AdReportRun", "AdsInsights", "AdStudy", "AdSavedReport",
+	},
+	CategoryCreativeAssets: {
+		"AdImage", "AdVideo", "AdCreativeAssetGroup", "AdCreativeTemplate",
+	},
+	CategoryBusiness: {
+		"Business", "BusinessAssetGroup", "BusinessProject", "BusinessUser",
+	},
+	CategoryPage: {
+		"Page", "PagePost", "PageInsights", "PageVideos",
+	},
+}
+
+// GetValidCategories returns a list of all valid category names
+func GetValidCategories() []string {
+	return []string{
+		string(CategoryCoreAds),
+		string(CategoryTargeting),
+		string(CategoryReporting),
+		string(CategoryCreativeAssets),
+		string(CategoryBusiness),
+		string(CategoryPage),
+		string(CategoryAll),
 	}
 }
 
-func (s *Server) Start(ctx context.Context) error {
-	log.Println("Starting MCP server...")
+// InitMCPServer creates a new MCP server with context handling
+func InitMCPServer(cfg *config.Config, enabledCategories []string) (*WrappedMCPServer, error) {
+	// Create enabled objects map
+	enabledObjects := make(map[string]bool)
+	if len(enabledCategories) == 0 {
+		// If no categories specified, enable core_ads by default
+		enabledCategories = []string{string(CategoryCoreAds)}
+	}
 
-	for {
-		select {
-		case <-ctx.Done():
-			return nil
-		default:
-			if err := s.handleRequest(); err != nil {
-				if err == io.EOF {
-					return nil
+	// Build enabled objects map from categories
+	for _, categoryStr := range enabledCategories {
+		category := ObjectCategory(categoryStr)
+		
+		if category == CategoryAll {
+			// Enable all objects
+			for _, objects := range ObjectCategories {
+				for _, obj := range objects {
+					enabledObjects[strings.ToLower(obj)] = true
 				}
-				log.Printf("Error handling request: %v", err)
 			}
-		}
-	}
-}
-
-func (s *Server) handleRequest() error {
-	var request types.MCPRequest
-	decoder := json.NewDecoder(os.Stdin)
-
-	if err := decoder.Decode(&request); err != nil {
-		return err
-	}
-
-	response, err := s.processRequest(&request)
-	if err != nil {
-		response = &types.MCPResponse{
-			ID: request.ID,
-			Error: &types.MCPError{
-				Code:    -1,
-				Message: err.Error(),
-			},
+		} else if objects, ok := ObjectCategories[category]; ok {
+			for _, obj := range objects {
+				enabledObjects[strings.ToLower(obj)] = true
+			}
+		} else {
+			return nil, fmt.Errorf("unsupported category: '%s'. Valid categories are: %v", categoryStr, GetValidCategories())
 		}
 	}
 
-	encoder := json.NewEncoder(os.Stdout)
-	return encoder.Encode(response)
+	// Create the mcp-go server with session support
+	mcpServer := server.NewMCPServer(
+		"unified-ads-mcp",
+		"0.0.1",
+		server.WithToolCapabilities(true),
+		server.WithRecovery(),
+	)
+
+	s := &WrappedMCPServer{
+		server:         mcpServer,
+		config:         cfg,
+		facebookToken:  cfg.Facebook.AccessToken,
+		enabledObjects: enabledObjects,
+	}
+
+	// Log initialization
+	log.Printf("Initializing MCP server with enabled categories: %v", enabledCategories)
+
+	// Register Facebook tools if token is available
+	if cfg.Facebook.AccessToken != "" {
+		if err := s.registerFacebookTools(mcpServer); err != nil {
+			return nil, fmt.Errorf("failed to register Facebook tools: %w", err)
+		}
+		log.Printf("Facebook Business API tools registered for objects: %v", s.getEnabledObjectsList())
+	}
+
+	return s, nil
 }
 
-func (s *Server) processRequest(request *types.MCPRequest) (*types.MCPResponse, error) {
-	switch request.Method {
-	case "initialize":
-		return s.handleInitialize(request)
-	case "tools/list":
-		return s.handleToolsList(request)
-	case "tools/call":
-		return s.handleToolsCall(request)
-	default:
-		return nil, fmt.Errorf("unknown method: %s", request.Method)
+// registerFacebookTools registers Facebook tools with context-aware handlers
+func (s *WrappedMCPServer) registerFacebookTools(mcpServer *server.MCPServer) error {
+	// Get all tools but filter based on enabled objects
+	allTools := facebook.GetFilteredMCPTools(s.enabledObjects)
+	handlers := facebook.GetContextAwareHandlers(s.facebookToken)
+
+	// Count registered tools
+	registeredCount := 0
+
+	// Register each tool with its context-aware handler
+	for _, tool := range allTools {
+		if handler, ok := handlers[tool.Name]; ok {
+			// Wrap handler to inject context
+			wrappedHandler := s.wrapHandlerWithContext(handler)
+			mcpServer.AddTool(tool, wrappedHandler)
+			registeredCount++
+		}
+	}
+
+	log.Printf("Registered %d tools (filtered from total available tools)", registeredCount)
+	return nil
+}
+
+// wrapHandlerWithContext wraps a handler to inject access token into context
+func (s *WrappedMCPServer) wrapHandlerWithContext(handler func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error)) func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	return func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Add access token to context
+		ctx = shared.WithFacebookAccessToken(ctx, s.facebookToken)
+		// Add enabled objects to context
+		ctx = shared.WithEnabledObjectTypes(ctx, s.enabledObjects)
+
+		// Call the original handler
+		return handler(ctx, request)
 	}
 }
 
-func (s *Server) handleInitialize(request *types.MCPRequest) (*types.MCPResponse, error) {
-	return &types.MCPResponse{
-		ID: request.ID,
-		Result: map[string]interface{}{
-			"protocolVersion": "2024-11-05",
-			"capabilities": map[string]interface{}{
-				"tools": map[string]interface{}{},
-			},
-			"serverInfo": map[string]interface{}{
-				"name":    "unified-ads-mcp",
-				"version": "1.0.0",
-			},
-		},
-	}, nil
+// getEnabledObjectsList returns a list of enabled object names
+func (s *WrappedMCPServer) getEnabledObjectsList() []string {
+	var enabled []string
+	for obj, isEnabled := range s.enabledObjects {
+		if isEnabled {
+			enabled = append(enabled, obj)
+		}
+	}
+	return enabled
 }
 
-func (s *Server) handleToolsList(request *types.MCPRequest) (*types.MCPResponse, error) {
-	var tools []map[string]interface{}
-
-	// Add Google Ads tools (placeholder for now)
-	googleTools := []map[string]interface{}{
-		{
-			"name":        "google_ads_create_campaign",
-			"description": "Create a new Google Ads campaign",
-			"inputSchema": map[string]interface{}{
-				"type": "object",
-				"properties": map[string]interface{}{
-					"name":   map[string]interface{}{"type": "string"},
-					"budget": map[string]interface{}{"type": "number"},
-					"type":   map[string]interface{}{"type": "string"},
-				},
-				"required": []string{"name", "budget", "type"},
-			},
-		},
-	}
-
-	// Add Facebook Business API tools (generated)
-	facebookTools := s.facebookClient.GetMCPTools()
-
-	// Add TikTok Ads tools (placeholder for now)
-	tiktokTools := []map[string]interface{}{
-		{
-			"name":        "tiktok_ads_create_campaign",
-			"description": "Create a new TikTok Ads campaign",
-			"inputSchema": map[string]interface{}{
-				"type": "object",
-				"properties": map[string]interface{}{
-					"name":      map[string]interface{}{"type": "string"},
-					"objective": map[string]interface{}{"type": "string"},
-					"budget":    map[string]interface{}{"type": "number"},
-				},
-				"required": []string{"name", "objective", "budget"},
-			},
-		},
-	}
-
-	// Combine all tools
-	tools = append(tools, googleTools...)
-	tools = append(tools, facebookTools...)
-	tools = append(tools, tiktokTools...)
-
-	return &types.MCPResponse{
-		ID: request.ID,
-		Result: map[string]interface{}{
-			"tools": tools,
-		},
-	}, nil
-}
-
-func (s *Server) handleToolsCall(request *types.MCPRequest) (*types.MCPResponse, error) {
-	params, ok := request.Params.(map[string]interface{})
-	if !ok {
-		return nil, fmt.Errorf("invalid params")
-	}
-
-	name, ok := params["name"].(string)
-	if !ok {
-		return nil, fmt.Errorf("missing tool name")
-	}
-
-	arguments, ok := params["arguments"].(map[string]interface{})
-	if !ok {
-		return nil, fmt.Errorf("missing tool arguments")
-	}
-
-	var result interface{}
-	var err error
-
-	switch name {
-	case "google_ads_create_campaign":
-		result, err = s.googleClient.CreateCampaign(arguments)
-	case "facebook_ads_create_campaign":
-		result, err = s.facebookClient.CreateCampaign(arguments)
-	case "tiktok_ads_create_campaign":
-		result, err = s.tiktokClient.CreateCampaign(arguments)
-	default:
-		return nil, fmt.Errorf("unknown tool: %s", name)
-	}
-
-	if err != nil {
-		return nil, err
-	}
-
-	return &types.MCPResponse{
-		ID: request.ID,
-		Result: map[string]interface{}{
-			"content": []map[string]interface{}{
-				{
-					"type": "text",
-					"text": fmt.Sprintf("Tool %s executed successfully: %v", name, result),
-				},
-			},
-		},
-	}, nil
+// Start runs the MCP server
+func (s *WrappedMCPServer) Start() error {
+	log.Println("Starting MCP server with context support...")
+	return server.ServeStdio(s.server)
 }
