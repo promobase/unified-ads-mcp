@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetAnalyticsSegmentTools returns MCP tools for AnalyticsSegment
@@ -37,6 +38,28 @@ func GetAnalyticsSegmentTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetAnalyticsSegmentToolsWithoutAuth returns MCP tools for AnalyticsSegment without access_token parameter
+func GetAnalyticsSegmentToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// analyticssegment_get_ tool
+	analyticssegment_get_Tool := mcp.NewTool("analyticssegment_get_",
+		mcp.WithDescription("GET  for AnalyticsSegment"),
+		mcp.WithString("async_task_id",
+			mcp.Description("async_task_id parameter for "),
+		),
+		mcp.WithNumber("end_date",
+			mcp.Description("end_date parameter for "),
+		),
+		mcp.WithNumber("start_date",
+			mcp.Description("start_date parameter for "),
+		),
+	)
+	tools = append(tools, analyticssegment_get_Tool)
+
+	return tools
+}
+
 // AnalyticsSegment handlers
 
 // HandleAnalyticssegment_get_ handles the analyticssegment_get_ tool
@@ -45,6 +68,52 @@ func HandleAnalyticssegment_get_(ctx context.Context, request mcp.CallToolReques
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewAnalyticsSegmentClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: async_task_id
+	if val := request.GetString("async_task_id", ""); val != "" {
+		args["async_task_id"] = val
+	}
+
+	// Optional: end_date
+	if val := request.GetInt("end_date", 0); val != 0 {
+		args["end_date"] = val
+	}
+
+	// Optional: start_date
+	if val := request.GetInt("start_date", 0); val != 0 {
+		args["start_date"] = val
+	}
+
+	// Call the client method
+	result, err := client.Analyticssegment_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute analyticssegment_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextAnalyticssegment_get_ handles the analyticssegment_get_ tool with context-based auth
+func HandleContextAnalyticssegment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetAudioSubLabelTools returns MCP tools for AudioSubLabel
@@ -28,6 +29,19 @@ func GetAudioSubLabelTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetAudioSubLabelToolsWithoutAuth returns MCP tools for AudioSubLabel without access_token parameter
+func GetAudioSubLabelToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// audiosublabel_get_ tool
+	audiosublabel_get_Tool := mcp.NewTool("audiosublabel_get_",
+		mcp.WithDescription("GET  for AudioSubLabel"),
+	)
+	tools = append(tools, audiosublabel_get_Tool)
+
+	return tools
+}
+
 // AudioSubLabel handlers
 
 // HandleAudiosublabel_get_ handles the audiosublabel_get_ tool
@@ -36,6 +50,37 @@ func HandleAudiosublabel_get_(ctx context.Context, request mcp.CallToolRequest) 
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewAudioSubLabelClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Audiosublabel_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute audiosublabel_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextAudiosublabel_get_ handles the audiosublabel_get_ tool with context-based auth
+func HandleContextAudiosublabel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetIGMediaTools returns MCP tools for IGMedia
@@ -208,6 +209,157 @@ func GetIGMediaTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithBoolean("comment_enabled",
+			mcp.Required(),
+			mcp.Description("comment_enabled parameter for "),
+		),
+	)
+	tools = append(tools, igmedia_post_Tool)
+
+	return tools
+}
+
+// GetIGMediaToolsWithoutAuth returns MCP tools for IGMedia without access_token parameter
+func GetIGMediaToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// igmedia_get_boost_ads_list tool
+	igmedia_get_boost_ads_listTool := mcp.NewTool("igmedia_get_boost_ads_list",
+		mcp.WithDescription("GET boost_ads_list for IGMedia"),
+	)
+	tools = append(tools, igmedia_get_boost_ads_listTool)
+
+	// igmedia_get_branded_content_partner_promote tool
+	igmedia_get_branded_content_partner_promoteTool := mcp.NewTool("igmedia_get_branded_content_partner_promote",
+		mcp.WithDescription("GET branded_content_partner_promote for IGMedia"),
+	)
+	tools = append(tools, igmedia_get_branded_content_partner_promoteTool)
+
+	// igmedia_post_branded_content_partner_promote tool
+	igmedia_post_branded_content_partner_promoteTool := mcp.NewTool("igmedia_post_branded_content_partner_promote",
+		mcp.WithDescription("POST branded_content_partner_promote for IGMedia"),
+		mcp.WithBoolean("permission",
+			mcp.Required(),
+			mcp.Description("permission parameter for branded_content_partner_promote"),
+		),
+		mcp.WithNumber("sponsor_id",
+			mcp.Required(),
+			mcp.Description("sponsor_id parameter for branded_content_partner_promote"),
+		),
+	)
+	tools = append(tools, igmedia_post_branded_content_partner_promoteTool)
+
+	// igmedia_get_children tool
+	igmedia_get_childrenTool := mcp.NewTool("igmedia_get_children",
+		mcp.WithDescription("GET children for IGMedia"),
+	)
+	tools = append(tools, igmedia_get_childrenTool)
+
+	// igmedia_get_collaborators tool
+	igmedia_get_collaboratorsTool := mcp.NewTool("igmedia_get_collaborators",
+		mcp.WithDescription("GET collaborators for IGMedia"),
+	)
+	tools = append(tools, igmedia_get_collaboratorsTool)
+
+	// igmedia_get_comments tool
+	igmedia_get_commentsTool := mcp.NewTool("igmedia_get_comments",
+		mcp.WithDescription("GET comments for IGMedia"),
+	)
+	tools = append(tools, igmedia_get_commentsTool)
+
+	// igmedia_post_comments tool
+	igmedia_post_commentsTool := mcp.NewTool("igmedia_post_comments",
+		mcp.WithDescription("POST comments for IGMedia"),
+		mcp.WithString("ad_id",
+			mcp.Description("ad_id parameter for comments"),
+		),
+		mcp.WithString("message",
+			mcp.Description("message parameter for comments"),
+		),
+	)
+	tools = append(tools, igmedia_post_commentsTool)
+
+	// igmedia_get_insights tool
+	igmedia_get_insightsTool := mcp.NewTool("igmedia_get_insights",
+		mcp.WithDescription("GET insights for IGMedia"),
+		mcp.WithString("breakdown",
+			mcp.Description("breakdown parameter for insights"),
+			mcp.Enum("action_type", "follow_type", "story_navigation_action_type", "surface_type"),
+		),
+		mcp.WithString("metric",
+			mcp.Required(),
+			mcp.Description("metric parameter for insights"),
+			mcp.Enum("clips_replays_count", "comments", "content_views", "follows", "ig_reels_aggregated_all_plays_count", "ig_reels_avg_watch_time", "ig_reels_video_view_total_time", "impressions", "likes", "navigation", "plays", "profile_activity", "profile_visits", "quotes", "reach", "replies", "reposts", "saved", "shares", "thread_replies", "thread_shares", "threads_media_clicks", "threads_views", "total_interactions", "views"),
+		),
+		mcp.WithString("period",
+			mcp.Description("period parameter for insights"),
+			mcp.Enum("day", "days_28", "lifetime", "month", "total_over_range", "week"),
+		),
+	)
+	tools = append(tools, igmedia_get_insightsTool)
+
+	// igmedia_delete_partnership_ad_code tool
+	igmedia_delete_partnership_ad_codeTool := mcp.NewTool("igmedia_delete_partnership_ad_code",
+		mcp.WithDescription("DELETE partnership_ad_code for IGMedia"),
+	)
+	tools = append(tools, igmedia_delete_partnership_ad_codeTool)
+
+	// igmedia_post_partnership_ad_code tool
+	igmedia_post_partnership_ad_codeTool := mcp.NewTool("igmedia_post_partnership_ad_code",
+		mcp.WithDescription("POST partnership_ad_code for IGMedia"),
+	)
+	tools = append(tools, igmedia_post_partnership_ad_codeTool)
+
+	// igmedia_get_product_tags tool
+	igmedia_get_product_tagsTool := mcp.NewTool("igmedia_get_product_tags",
+		mcp.WithDescription("GET product_tags for IGMedia"),
+	)
+	tools = append(tools, igmedia_get_product_tagsTool)
+
+	// igmedia_post_product_tags tool
+	igmedia_post_product_tagsTool := mcp.NewTool("igmedia_post_product_tags",
+		mcp.WithDescription("POST product_tags for IGMedia"),
+		mcp.WithNumber("child_index",
+			mcp.Description("child_index parameter for product_tags"),
+		),
+		mcp.WithString("updated_tags",
+			mcp.Required(),
+			mcp.Description("updated_tags parameter for product_tags"),
+		),
+	)
+	tools = append(tools, igmedia_post_product_tagsTool)
+
+	// igmedia_get_ tool
+	igmedia_get_Tool := mcp.NewTool("igmedia_get_",
+		mcp.WithDescription("GET  for IGMedia"),
+		mcp.WithNumber("ad_account_id",
+			mcp.Description("ad_account_id parameter for "),
+		),
+		mcp.WithString("boostable_media_callsite",
+			mcp.Description("boostable_media_callsite parameter for "),
+			mcp.Enum("ADS_MANAGER_L1_EDITOR_DYNAMIC_ADS_WITH_EXISTING_POST"),
+		),
+		mcp.WithString("business_id",
+			mcp.Description("business_id parameter for "),
+		),
+		mcp.WithString("primary_fb_page_id",
+			mcp.Description("primary_fb_page_id parameter for "),
+		),
+		mcp.WithString("primary_ig_user_id",
+			mcp.Description("primary_ig_user_id parameter for "),
+		),
+		mcp.WithString("secondary_fb_page_id",
+			mcp.Description("secondary_fb_page_id parameter for "),
+		),
+		mcp.WithString("secondary_ig_user_id",
+			mcp.Description("secondary_ig_user_id parameter for "),
+		),
+	)
+	tools = append(tools, igmedia_get_Tool)
+
+	// igmedia_post_ tool
+	igmedia_post_Tool := mcp.NewTool("igmedia_post_",
+		mcp.WithDescription("POST  for IGMedia"),
 		mcp.WithBoolean("comment_enabled",
 			mcp.Required(),
 			mcp.Description("comment_enabled parameter for "),
@@ -693,6 +845,511 @@ func HandleIgmedia_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewIGMediaClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: comment_enabled
+	comment_enabled, err := request.RequireBool("comment_enabled")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter comment_enabled: %v", err)), nil
+	}
+	args["comment_enabled"] = comment_enabled
+
+	// Call the client method
+	result, err := client.Igmedia_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmedia_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextIgmedia_get_boost_ads_list handles the igmedia_get_boost_ads_list tool with context-based auth
+func HandleContextIgmedia_get_boost_ads_list(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewIGMediaClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Igmedia_get_boost_ads_list(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmedia_get_boost_ads_list: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextIgmedia_get_branded_content_partner_promote handles the igmedia_get_branded_content_partner_promote tool with context-based auth
+func HandleContextIgmedia_get_branded_content_partner_promote(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewIGMediaClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Igmedia_get_branded_content_partner_promote(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmedia_get_branded_content_partner_promote: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextIgmedia_post_branded_content_partner_promote handles the igmedia_post_branded_content_partner_promote tool with context-based auth
+func HandleContextIgmedia_post_branded_content_partner_promote(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewIGMediaClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: permission
+	permission, err := request.RequireBool("permission")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter permission: %v", err)), nil
+	}
+	args["permission"] = permission
+
+	// Required: sponsor_id
+	sponsor_id, err := request.RequireInt("sponsor_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter sponsor_id: %v", err)), nil
+	}
+	args["sponsor_id"] = sponsor_id
+
+	// Call the client method
+	result, err := client.Igmedia_post_branded_content_partner_promote(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmedia_post_branded_content_partner_promote: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextIgmedia_get_children handles the igmedia_get_children tool with context-based auth
+func HandleContextIgmedia_get_children(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewIGMediaClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Igmedia_get_children(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmedia_get_children: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextIgmedia_get_collaborators handles the igmedia_get_collaborators tool with context-based auth
+func HandleContextIgmedia_get_collaborators(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewIGMediaClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Igmedia_get_collaborators(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmedia_get_collaborators: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextIgmedia_get_comments handles the igmedia_get_comments tool with context-based auth
+func HandleContextIgmedia_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewIGMediaClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Igmedia_get_comments(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmedia_get_comments: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextIgmedia_post_comments handles the igmedia_post_comments tool with context-based auth
+func HandleContextIgmedia_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewIGMediaClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: ad_id
+	if val := request.GetString("ad_id", ""); val != "" {
+		args["ad_id"] = val
+	}
+
+	// Optional: message
+	if val := request.GetString("message", ""); val != "" {
+		args["message"] = val
+	}
+
+	// Call the client method
+	result, err := client.Igmedia_post_comments(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmedia_post_comments: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextIgmedia_get_insights handles the igmedia_get_insights tool with context-based auth
+func HandleContextIgmedia_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewIGMediaClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: breakdown
+	// array type - using string
+	if val := request.GetString("breakdown", ""); val != "" {
+		args["breakdown"] = val
+	}
+
+	// Required: metric
+	metric, err := request.RequireString("metric")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter metric: %v", err)), nil
+	}
+	args["metric"] = metric
+
+	// Optional: period
+	// array type - using string
+	if val := request.GetString("period", ""); val != "" {
+		args["period"] = val
+	}
+
+	// Call the client method
+	result, err := client.Igmedia_get_insights(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmedia_get_insights: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextIgmedia_delete_partnership_ad_code handles the igmedia_delete_partnership_ad_code tool with context-based auth
+func HandleContextIgmedia_delete_partnership_ad_code(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewIGMediaClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Igmedia_delete_partnership_ad_code(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmedia_delete_partnership_ad_code: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextIgmedia_post_partnership_ad_code handles the igmedia_post_partnership_ad_code tool with context-based auth
+func HandleContextIgmedia_post_partnership_ad_code(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewIGMediaClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Igmedia_post_partnership_ad_code(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmedia_post_partnership_ad_code: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextIgmedia_get_product_tags handles the igmedia_get_product_tags tool with context-based auth
+func HandleContextIgmedia_get_product_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewIGMediaClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Igmedia_get_product_tags(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmedia_get_product_tags: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextIgmedia_post_product_tags handles the igmedia_post_product_tags tool with context-based auth
+func HandleContextIgmedia_post_product_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewIGMediaClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: child_index
+	if val := request.GetInt("child_index", 0); val != 0 {
+		args["child_index"] = val
+	}
+
+	// Required: updated_tags
+	updated_tags, err := request.RequireString("updated_tags")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter updated_tags: %v", err)), nil
+	}
+	args["updated_tags"] = updated_tags
+
+	// Call the client method
+	result, err := client.Igmedia_post_product_tags(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmedia_post_product_tags: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextIgmedia_get_ handles the igmedia_get_ tool with context-based auth
+func HandleContextIgmedia_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewIGMediaClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: ad_account_id
+	if val := request.GetInt("ad_account_id", 0); val != 0 {
+		args["ad_account_id"] = val
+	}
+
+	// Optional: boostable_media_callsite
+	if val := request.GetString("boostable_media_callsite", ""); val != "" {
+		args["boostable_media_callsite"] = val
+	}
+
+	// Optional: business_id
+	if val := request.GetString("business_id", ""); val != "" {
+		args["business_id"] = val
+	}
+
+	// Optional: primary_fb_page_id
+	if val := request.GetString("primary_fb_page_id", ""); val != "" {
+		args["primary_fb_page_id"] = val
+	}
+
+	// Optional: primary_ig_user_id
+	if val := request.GetString("primary_ig_user_id", ""); val != "" {
+		args["primary_ig_user_id"] = val
+	}
+
+	// Optional: secondary_fb_page_id
+	if val := request.GetString("secondary_fb_page_id", ""); val != "" {
+		args["secondary_fb_page_id"] = val
+	}
+
+	// Optional: secondary_ig_user_id
+	if val := request.GetString("secondary_ig_user_id", ""); val != "" {
+		args["secondary_ig_user_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Igmedia_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igmedia_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextIgmedia_post_ handles the igmedia_post_ tool with context-based auth
+func HandleContextIgmedia_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

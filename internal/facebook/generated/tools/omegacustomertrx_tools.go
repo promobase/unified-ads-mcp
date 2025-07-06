@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetOmegaCustomerTrxTools returns MCP tools for OmegaCustomerTrx
@@ -32,6 +33,25 @@ func GetOmegaCustomerTrxTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, omegacustomertrx_get_Tool)
+
+	return tools
+}
+
+// GetOmegaCustomerTrxToolsWithoutAuth returns MCP tools for OmegaCustomerTrx without access_token parameter
+func GetOmegaCustomerTrxToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// omegacustomertrx_get_campaigns tool
+	omegacustomertrx_get_campaignsTool := mcp.NewTool("omegacustomertrx_get_campaigns",
+		mcp.WithDescription("GET campaigns for OmegaCustomerTrx"),
+	)
+	tools = append(tools, omegacustomertrx_get_campaignsTool)
+
+	// omegacustomertrx_get_ tool
+	omegacustomertrx_get_Tool := mcp.NewTool("omegacustomertrx_get_",
+		mcp.WithDescription("GET  for OmegaCustomerTrx"),
 	)
 	tools = append(tools, omegacustomertrx_get_Tool)
 
@@ -75,6 +95,66 @@ func HandleOmegacustomertrx_get_(ctx context.Context, request mcp.CallToolReques
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewOmegaCustomerTrxClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Omegacustomertrx_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute omegacustomertrx_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextOmegacustomertrx_get_campaigns handles the omegacustomertrx_get_campaigns tool with context-based auth
+func HandleContextOmegacustomertrx_get_campaigns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewOmegaCustomerTrxClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Omegacustomertrx_get_campaigns(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute omegacustomertrx_get_campaigns: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextOmegacustomertrx_get_ handles the omegacustomertrx_get_ tool with context-based auth
+func HandleContextOmegacustomertrx_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

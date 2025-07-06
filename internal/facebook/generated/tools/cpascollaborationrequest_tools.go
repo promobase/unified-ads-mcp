@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetCPASCollaborationRequestTools returns MCP tools for CPASCollaborationRequest
@@ -28,6 +29,19 @@ func GetCPASCollaborationRequestTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetCPASCollaborationRequestToolsWithoutAuth returns MCP tools for CPASCollaborationRequest without access_token parameter
+func GetCPASCollaborationRequestToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// cpascollaborationrequest_get_ tool
+	cpascollaborationrequest_get_Tool := mcp.NewTool("cpascollaborationrequest_get_",
+		mcp.WithDescription("GET  for CPASCollaborationRequest"),
+	)
+	tools = append(tools, cpascollaborationrequest_get_Tool)
+
+	return tools
+}
+
 // CPASCollaborationRequest handlers
 
 // HandleCpascollaborationrequest_get_ handles the cpascollaborationrequest_get_ tool
@@ -36,6 +50,37 @@ func HandleCpascollaborationrequest_get_(ctx context.Context, request mcp.CallTo
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewCPASCollaborationRequestClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Cpascollaborationrequest_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute cpascollaborationrequest_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextCpascollaborationrequest_get_ handles the cpascollaborationrequest_get_ tool with context-based auth
+func HandleContextCpascollaborationrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

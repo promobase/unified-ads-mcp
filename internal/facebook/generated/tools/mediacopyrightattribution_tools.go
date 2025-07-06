@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetMediaCopyrightAttributionTools returns MCP tools for MediaCopyrightAttribution
@@ -28,6 +29,19 @@ func GetMediaCopyrightAttributionTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetMediaCopyrightAttributionToolsWithoutAuth returns MCP tools for MediaCopyrightAttribution without access_token parameter
+func GetMediaCopyrightAttributionToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// mediacopyrightattribution_get_ tool
+	mediacopyrightattribution_get_Tool := mcp.NewTool("mediacopyrightattribution_get_",
+		mcp.WithDescription("GET  for MediaCopyrightAttribution"),
+	)
+	tools = append(tools, mediacopyrightattribution_get_Tool)
+
+	return tools
+}
+
 // MediaCopyrightAttribution handlers
 
 // HandleMediacopyrightattribution_get_ handles the mediacopyrightattribution_get_ tool
@@ -36,6 +50,37 @@ func HandleMediacopyrightattribution_get_(ctx context.Context, request mcp.CallT
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewMediaCopyrightAttributionClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Mediacopyrightattribution_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute mediacopyrightattribution_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextMediacopyrightattribution_get_ handles the mediacopyrightattribution_get_ tool with context-based auth
+func HandleContextMediacopyrightattribution_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

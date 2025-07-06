@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetHotelRoomTools returns MCP tools for HotelRoom
@@ -32,6 +33,25 @@ func GetHotelRoomTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, hotelroom_get_Tool)
+
+	return tools
+}
+
+// GetHotelRoomToolsWithoutAuth returns MCP tools for HotelRoom without access_token parameter
+func GetHotelRoomToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// hotelroom_get_pricing_variables tool
+	hotelroom_get_pricing_variablesTool := mcp.NewTool("hotelroom_get_pricing_variables",
+		mcp.WithDescription("GET pricing_variables for HotelRoom"),
+	)
+	tools = append(tools, hotelroom_get_pricing_variablesTool)
+
+	// hotelroom_get_ tool
+	hotelroom_get_Tool := mcp.NewTool("hotelroom_get_",
+		mcp.WithDescription("GET  for HotelRoom"),
 	)
 	tools = append(tools, hotelroom_get_Tool)
 
@@ -75,6 +95,66 @@ func HandleHotelroom_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewHotelRoomClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Hotelroom_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute hotelroom_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextHotelroom_get_pricing_variables handles the hotelroom_get_pricing_variables tool with context-based auth
+func HandleContextHotelroom_get_pricing_variables(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewHotelRoomClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Hotelroom_get_pricing_variables(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute hotelroom_get_pricing_variables: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextHotelroom_get_ handles the hotelroom_get_ tool with context-based auth
+func HandleContextHotelroom_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

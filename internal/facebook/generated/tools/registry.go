@@ -4,6 +4,7 @@ package tools
 
 import (
 	"context"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
@@ -326,6 +327,2193 @@ func GetAllTools(accessToken string) []mcp.Tool {
 	return allTools
 }
 
+// GetAllToolsWithoutAuth returns all available MCP tools without access_token parameter
+func GetAllToolsWithoutAuth() []mcp.Tool {
+	var allTools []mcp.Tool
+
+	allTools = append(allTools, GetALMAdAccountInfoToolsWithoutAuth()...)
+	allTools = append(allTools, GetALMEndAdvertiserInfoToolsWithoutAuth()...)
+	allTools = append(allTools, GetALMEventToolsWithoutAuth()...)
+	allTools = append(allTools, GetAREffectToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdAccountToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdAccountAgencyFeeConfigToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdAccountCreationRequestToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdAccountUserSettingsToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdAsyncRequestToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdAsyncRequestSetToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdColumnSizesToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdCreationPackageConfigToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdCreativeToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdCustomDerivedMetricsToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdDraftToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdExportPresetToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdImageToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdLabelToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdLightAdgroupToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdLightCampaignToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdLightCampaignGroupToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdMonetizationPropertyToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdPlacePageSetToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdPlacementToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdProposalToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdReportRunToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdRuleToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdRuleEvaluationSpecToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdRuleExecutionSpecToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdSavedKeywordsToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdSavedLocationToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdSavedReportToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdSetToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdStudyToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdStudyCellToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdStudyObjectiveToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdToplineToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdToplineDetailToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdVideoToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdgroupFacebookFeedbackToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdsConversionGoalToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdsCreationSavedStateToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdsMcmeConversionToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdsNamingTemplateToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdsPivotRulesToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdsPixelToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdsPixelCapabilityOverrideToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdsQuickViewsToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdsReportBuilderExportCoreToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdsReportBuilderMMMReportToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdsReportBuilderMMMReportSchedulerToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdsReportBuilderSavedReportToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdsStartYourDayWidgetToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdsUserSettingsToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdsValueAdjustmentRuleCollectionToolsWithoutAuth()...)
+	allTools = append(allTools, GetAdvAInstanceToolsWithoutAuth()...)
+	allTools = append(allTools, GetAlbumToolsWithoutAuth()...)
+	allTools = append(allTools, GetAnalyticsSegmentToolsWithoutAuth()...)
+	allTools = append(allTools, GetAnalyticsUserConfigToolsWithoutAuth()...)
+	allTools = append(allTools, GetAppEventConfigToolsWithoutAuth()...)
+	allTools = append(allTools, GetAppLinksToolsWithoutAuth()...)
+	allTools = append(allTools, GetAppRequestToolsWithoutAuth()...)
+	allTools = append(allTools, GetApplicationToolsWithoutAuth()...)
+	allTools = append(allTools, GetArAdsDataContainerToolsWithoutAuth()...)
+	allTools = append(allTools, GetAsyncSessionToolsWithoutAuth()...)
+	allTools = append(allTools, GetAudioAssetToolsWithoutAuth()...)
+	allTools = append(allTools, GetAudioCopyrightToolsWithoutAuth()...)
+	allTools = append(allTools, GetAudioIsrcToolsWithoutAuth()...)
+	allTools = append(allTools, GetAudioReleaseToolsWithoutAuth()...)
+	allTools = append(allTools, GetAudioSubLabelToolsWithoutAuth()...)
+	allTools = append(allTools, GetAutomotiveModelToolsWithoutAuth()...)
+	allTools = append(allTools, GetAvatarToolsWithoutAuth()...)
+	allTools = append(allTools, GetAvatarProfilePictureToolsWithoutAuth()...)
+	allTools = append(allTools, GetBCPCampaignToolsWithoutAuth()...)
+	allTools = append(allTools, GetBidScheduleToolsWithoutAuth()...)
+	allTools = append(allTools, GetBizInboxOffsiteEmailAccountToolsWithoutAuth()...)
+	allTools = append(allTools, GetBlindPigToolsWithoutAuth()...)
+	allTools = append(allTools, GetBrandRequestToolsWithoutAuth()...)
+	allTools = append(allTools, GetBrandSafetyDownloadableToolsWithoutAuth()...)
+	allTools = append(allTools, GetBusinessToolsWithoutAuth()...)
+	allTools = append(allTools, GetBusinessAgreementToolsWithoutAuth()...)
+	allTools = append(allTools, GetBusinessAssetGroupToolsWithoutAuth()...)
+	allTools = append(allTools, GetBusinessAssetSharingAgreementToolsWithoutAuth()...)
+	allTools = append(allTools, GetBusinessCreativeFolderToolsWithoutAuth()...)
+	allTools = append(allTools, GetBusinessFranchiseConfigToolsWithoutAuth()...)
+	allTools = append(allTools, GetBusinessImageToolsWithoutAuth()...)
+	allTools = append(allTools, GetBusinessObjectTransferOwnershipAgreementToolsWithoutAuth()...)
+	allTools = append(allTools, GetBusinessOwnedObjectOnBehalfOfRequestToolsWithoutAuth()...)
+	allTools = append(allTools, GetBusinessProjectToolsWithoutAuth()...)
+	allTools = append(allTools, GetBusinessRequestToolsWithoutAuth()...)
+	allTools = append(allTools, GetBusinessRoleRequestToolsWithoutAuth()...)
+	allTools = append(allTools, GetBusinessTagToolsWithoutAuth()...)
+	allTools = append(allTools, GetBusinessUserToolsWithoutAuth()...)
+	allTools = append(allTools, GetBusinessVideoToolsWithoutAuth()...)
+	allTools = append(allTools, GetCPASAdCreationTemplateToolsWithoutAuth()...)
+	allTools = append(allTools, GetCPASAdvertiserPartnershipRecommendationToolsWithoutAuth()...)
+	allTools = append(allTools, GetCPASBusinessSetupConfigToolsWithoutAuth()...)
+	allTools = append(allTools, GetCPASCollaborationRequestToolsWithoutAuth()...)
+	allTools = append(allTools, GetCPASLsbImageBankToolsWithoutAuth()...)
+	allTools = append(allTools, GetCPASMerchantConfigToolsWithoutAuth()...)
+	allTools = append(allTools, GetCPASParentCatalogSettingsToolsWithoutAuth()...)
+	allTools = append(allTools, GetCRMAddressToolsWithoutAuth()...)
+	allTools = append(allTools, GetCTXPartnerAppWelcomeMessageFlowToolsWithoutAuth()...)
+	allTools = append(allTools, GetCalibratorExistingRuleToolsWithoutAuth()...)
+	allTools = append(allTools, GetCallAdsPhoneDataToolsWithoutAuth()...)
+	allTools = append(allTools, GetCampaignToolsWithoutAuth()...)
+	allTools = append(allTools, GetCanvasToolsWithoutAuth()...)
+	allTools = append(allTools, GetCanvasDynamicSettingToolsWithoutAuth()...)
+	allTools = append(allTools, GetCanvasTemplateToolsWithoutAuth()...)
+	allTools = append(allTools, GetCatalogContentVersionConfigToolsWithoutAuth()...)
+	allTools = append(allTools, GetCatalogItemOverrideToolsWithoutAuth()...)
+	allTools = append(allTools, GetCatalogSmartPixelSettingsToolsWithoutAuth()...)
+	allTools = append(allTools, GetCatalogWebsiteOnboardingSettingsToolsWithoutAuth()...)
+	allTools = append(allTools, GetCatalogWebsiteSettingsToolsWithoutAuth()...)
+	allTools = append(allTools, GetChinaBusinessOnboardingVettingRequestToolsWithoutAuth()...)
+	allTools = append(allTools, GetCloudGameToolsWithoutAuth()...)
+	allTools = append(allTools, GetCollaborativeAdsShareSettingsToolsWithoutAuth()...)
+	allTools = append(allTools, GetCommentToolsWithoutAuth()...)
+	allTools = append(allTools, GetCommerceMerchantSettingsToolsWithoutAuth()...)
+	allTools = append(allTools, GetCommerceOrderToolsWithoutAuth()...)
+	allTools = append(allTools, GetCommerceOrderTransactionDetailToolsWithoutAuth()...)
+	allTools = append(allTools, GetContentBlockListToolsWithoutAuth()...)
+	allTools = append(allTools, GetCopyrightMediaMisuseToolsWithoutAuth()...)
+	allTools = append(allTools, GetCopyrightOwnershipTransferToolsWithoutAuth()...)
+	allTools = append(allTools, GetCreatorAssetCreativeToolsWithoutAuth()...)
+	allTools = append(allTools, GetCreditCardToolsWithoutAuth()...)
+	allTools = append(allTools, GetCustomAudienceToolsWithoutAuth()...)
+	allTools = append(allTools, GetCustomConversionToolsWithoutAuth()...)
+	allTools = append(allTools, GetDestinationToolsWithoutAuth()...)
+	allTools = append(allTools, GetDynamicARMetadataToolsWithoutAuth()...)
+	allTools = append(allTools, GetDynamicContentSetToolsWithoutAuth()...)
+	allTools = append(allTools, GetDynamicItemDisplayBundleToolsWithoutAuth()...)
+	allTools = append(allTools, GetDynamicItemDisplayBundleFolderToolsWithoutAuth()...)
+	allTools = append(allTools, GetDynamicPriceConfigByDateToolsWithoutAuth()...)
+	allTools = append(allTools, GetDynamicVideoMetadataToolsWithoutAuth()...)
+	allTools = append(allTools, GetEducationExperienceToolsWithoutAuth()...)
+	allTools = append(allTools, GetEventToolsWithoutAuth()...)
+	allTools = append(allTools, GetEventExternalTicketInfoToolsWithoutAuth()...)
+	allTools = append(allTools, GetEventRegistrationSettingToolsWithoutAuth()...)
+	allTools = append(allTools, GetEventSourceGroupToolsWithoutAuth()...)
+	allTools = append(allTools, GetEventTicketSettingToolsWithoutAuth()...)
+	allTools = append(allTools, GetEventTicketTierToolsWithoutAuth()...)
+	allTools = append(allTools, GetEventTourToolsWithoutAuth()...)
+	allTools = append(allTools, GetExtendedCreditToolsWithoutAuth()...)
+	allTools = append(allTools, GetExtendedCreditAllocationConfigToolsWithoutAuth()...)
+	allTools = append(allTools, GetExtendedCreditApplicationToolsWithoutAuth()...)
+	allTools = append(allTools, GetExtendedCreditInvoiceGroupToolsWithoutAuth()...)
+	allTools = append(allTools, GetExternalMerchantSettingsToolsWithoutAuth()...)
+	allTools = append(allTools, GetFAMEKumoToolsWithoutAuth()...)
+	allTools = append(allTools, GetFBImageCopyrightMatchToolsWithoutAuth()...)
+	allTools = append(allTools, GetFantasyGameToolsWithoutAuth()...)
+	allTools = append(allTools, GetFavoriteCatalogToolsWithoutAuth()...)
+	allTools = append(allTools, GetFlightToolsWithoutAuth()...)
+	allTools = append(allTools, GetFranchiseProgramToolsWithoutAuth()...)
+	allTools = append(allTools, GetFranchiseProgramMemberToolsWithoutAuth()...)
+	allTools = append(allTools, GetFundraiserPersonToCharityToolsWithoutAuth()...)
+	allTools = append(allTools, GetGeoGatingPolicyToolsWithoutAuth()...)
+	allTools = append(allTools, GetGroupToolsWithoutAuth()...)
+	allTools = append(allTools, GetHighDemandPeriodToolsWithoutAuth()...)
+	allTools = append(allTools, GetHomeListingToolsWithoutAuth()...)
+	allTools = append(allTools, GetHotelToolsWithoutAuth()...)
+	allTools = append(allTools, GetHotelRoomToolsWithoutAuth()...)
+	allTools = append(allTools, GetHoursToolsWithoutAuth()...)
+	allTools = append(allTools, GetIGAccessTokenForIGOnlyAPIToolsWithoutAuth()...)
+	allTools = append(allTools, GetIGBCAdsPermissionToolsWithoutAuth()...)
+	allTools = append(allTools, GetIGBoostMediaAdToolsWithoutAuth()...)
+	allTools = append(allTools, GetIGCommentToolsWithoutAuth()...)
+	allTools = append(allTools, GetIGMediaToolsWithoutAuth()...)
+	allTools = append(allTools, GetIGMediaBoostEligibilityInfoToolsWithoutAuth()...)
+	allTools = append(allTools, GetIGMediaForIGOnlyAPIToolsWithoutAuth()...)
+	allTools = append(allTools, GetIGRefreshAccessTokenForIGOnlyAPIToolsWithoutAuth()...)
+	allTools = append(allTools, GetIGUpcomingEventToolsWithoutAuth()...)
+	allTools = append(allTools, GetIGUserToolsWithoutAuth()...)
+	allTools = append(allTools, GetIGUserExportForCAMToolsWithoutAuth()...)
+	allTools = append(allTools, GetIGUserForIGOnlyAPIToolsWithoutAuth()...)
+	allTools = append(allTools, GetImageCopyrightToolsWithoutAuth()...)
+	allTools = append(allTools, GetImageCopyrightDisputeToolsWithoutAuth()...)
+	allTools = append(allTools, GetImageReferenceMatchToolsWithoutAuth()...)
+	allTools = append(allTools, GetInstagramBusinessAssetToolsWithoutAuth()...)
+	allTools = append(allTools, GetInstagramThreadToolsWithoutAuth()...)
+	allTools = append(allTools, GetInstagramUserToolsWithoutAuth()...)
+	allTools = append(allTools, GetJobOpeningToolsWithoutAuth()...)
+	allTools = append(allTools, GetLeadToolsWithoutAuth()...)
+	allTools = append(allTools, GetLeadGenDataDraftToolsWithoutAuth()...)
+	allTools = append(allTools, GetLeadGenDirectCRMIntegrationConfigToolsWithoutAuth()...)
+	allTools = append(allTools, GetLeadgenFormToolsWithoutAuth()...)
+	allTools = append(allTools, GetLifeEventToolsWithoutAuth()...)
+	allTools = append(allTools, GetLinkToolsWithoutAuth()...)
+	allTools = append(allTools, GetLiveVideoToolsWithoutAuth()...)
+	allTools = append(allTools, GetLiveVideoAdCampaignConfigToolsWithoutAuth()...)
+	allTools = append(allTools, GetLiveVideoErrorToolsWithoutAuth()...)
+	allTools = append(allTools, GetLiveVideoInputStreamToolsWithoutAuth()...)
+	allTools = append(allTools, GetLocalServiceBusinessToolsWithoutAuth()...)
+	allTools = append(allTools, GetMailingAddressToolsWithoutAuth()...)
+	allTools = append(allTools, GetManagementSiteLinkToolsWithoutAuth()...)
+	allTools = append(allTools, GetMeasurementReportToolsWithoutAuth()...)
+	allTools = append(allTools, GetMediaCopyrightAttributionToolsWithoutAuth()...)
+	allTools = append(allTools, GetMediaCopyrightUpdateRecordToolsWithoutAuth()...)
+	allTools = append(allTools, GetMediaFingerprintToolsWithoutAuth()...)
+	allTools = append(allTools, GetMediaTitleToolsWithoutAuth()...)
+	allTools = append(allTools, GetMessengerAdsPartialAutomatedStepListToolsWithoutAuth()...)
+	allTools = append(allTools, GetMessengerBusinessTemplateToolsWithoutAuth()...)
+	allTools = append(allTools, GetMusicVideoCopyrightToolsWithoutAuth()...)
+	allTools = append(allTools, GetMusicWorkCopyrightToolsWithoutAuth()...)
+	allTools = append(allTools, GetOfflineConversionDataSetToolsWithoutAuth()...)
+	allTools = append(allTools, GetOfflineConversionDataSetUploadToolsWithoutAuth()...)
+	allTools = append(allTools, GetOfflineProductItemToolsWithoutAuth()...)
+	allTools = append(allTools, GetOfflineTermsOfServiceToolsWithoutAuth()...)
+	allTools = append(allTools, GetOffsitePixelToolsWithoutAuth()...)
+	allTools = append(allTools, GetOffsiteSignalContainerBusinessObjectToolsWithoutAuth()...)
+	allTools = append(allTools, GetOmegaCustomerTrxToolsWithoutAuth()...)
+	allTools = append(allTools, GetOpenBridgeConfigurationToolsWithoutAuth()...)
+	allTools = append(allTools, GetOpenGraphContextToolsWithoutAuth()...)
+	allTools = append(allTools, GetOrganizationToolsWithoutAuth()...)
+	allTools = append(allTools, GetOwnedDomainToolsWithoutAuth()...)
+	allTools = append(allTools, GetPageToolsWithoutAuth()...)
+	allTools = append(allTools, GetPageBroadcastToolsWithoutAuth()...)
+	allTools = append(allTools, GetPageCallToActionToolsWithoutAuth()...)
+	allTools = append(allTools, GetPageInsightsAsyncExportRunToolsWithoutAuth()...)
+	allTools = append(allTools, GetPageLeadsAccessConfigToolsWithoutAuth()...)
+	allTools = append(allTools, GetPagePostToolsWithoutAuth()...)
+	allTools = append(allTools, GetPagePostExperimentToolsWithoutAuth()...)
+	allTools = append(allTools, GetPageUpcomingChangeToolsWithoutAuth()...)
+	allTools = append(allTools, GetPageUserMessageThreadLabelToolsWithoutAuth()...)
+	allTools = append(allTools, GetPartnerAccountLinkingToolsWithoutAuth()...)
+	allTools = append(allTools, GetPartnerIntegrationLinkedToolsWithoutAuth()...)
+	allTools = append(allTools, GetPartnerStudyToolsWithoutAuth()...)
+	allTools = append(allTools, GetPaymentEnginePaymentToolsWithoutAuth()...)
+	allTools = append(allTools, GetPaymentSubscriptionToolsWithoutAuth()...)
+	allTools = append(allTools, GetPersonaToolsWithoutAuth()...)
+	allTools = append(allTools, GetPersonalAdsPersonaToolsWithoutAuth()...)
+	allTools = append(allTools, GetPhotoToolsWithoutAuth()...)
+	allTools = append(allTools, GetPlaceToolsWithoutAuth()...)
+	allTools = append(allTools, GetPlaceTagToolsWithoutAuth()...)
+	allTools = append(allTools, GetPlaceTopicToolsWithoutAuth()...)
+	allTools = append(allTools, GetPlayableContentToolsWithoutAuth()...)
+	allTools = append(allTools, GetPostToolsWithoutAuth()...)
+	allTools = append(allTools, GetPrivateLiftStudyInstanceToolsWithoutAuth()...)
+	allTools = append(allTools, GetProductCatalogToolsWithoutAuth()...)
+	allTools = append(allTools, GetProductCatalogLocalizationSettingsToolsWithoutAuth()...)
+	allTools = append(allTools, GetProductDeliveryPreferenceToolsWithoutAuth()...)
+	allTools = append(allTools, GetProductFeedToolsWithoutAuth()...)
+	allTools = append(allTools, GetProductFeedRuleToolsWithoutAuth()...)
+	allTools = append(allTools, GetProductFeedScheduleToolsWithoutAuth()...)
+	allTools = append(allTools, GetProductFeedUploadToolsWithoutAuth()...)
+	allTools = append(allTools, GetProductFeedUploadErrorToolsWithoutAuth()...)
+	allTools = append(allTools, GetProductFeedUploadErrorSampleToolsWithoutAuth()...)
+	allTools = append(allTools, GetProductGroupToolsWithoutAuth()...)
+	allTools = append(allTools, GetProductImageToolsWithoutAuth()...)
+	allTools = append(allTools, GetProductItemToolsWithoutAuth()...)
+	allTools = append(allTools, GetProductItemLocalInfoToolsWithoutAuth()...)
+	allTools = append(allTools, GetProductItemOfferToolsWithoutAuth()...)
+	allTools = append(allTools, GetProductSetToolsWithoutAuth()...)
+	allTools = append(allTools, GetProductSetUsageToolsWithoutAuth()...)
+	allTools = append(allTools, GetProfileToolsWithoutAuth()...)
+	allTools = append(allTools, GetPublisherBlockListToolsWithoutAuth()...)
+	allTools = append(allTools, GetPublisherWhiteListToolsWithoutAuth()...)
+	allTools = append(allTools, GetRTBDynamicPostToolsWithoutAuth()...)
+	allTools = append(allTools, GetReachFrequencyPredictionToolsWithoutAuth()...)
+	allTools = append(allTools, GetResearchPollStudyToolsWithoutAuth()...)
+	allTools = append(allTools, GetRightsManagerDataExportToolsWithoutAuth()...)
+	allTools = append(allTools, GetRobotToolsWithoutAuth()...)
+	allTools = append(allTools, GetSavedAudienceToolsWithoutAuth()...)
+	allTools = append(allTools, GetSavedMessageResponseToolsWithoutAuth()...)
+	allTools = append(allTools, GetShadowIGHashtagToolsWithoutAuth()...)
+	allTools = append(allTools, GetShadowIGMediaBuilderToolsWithoutAuth()...)
+	allTools = append(allTools, GetShopToolsWithoutAuth()...)
+	allTools = append(allTools, GetSignalsIWLExtractorToolsWithoutAuth()...)
+	allTools = append(allTools, GetSiteLinkToolsWithoutAuth()...)
+	allTools = append(allTools, GetSlicedEventSourceGroupToolsWithoutAuth()...)
+	allTools = append(allTools, GetStatusToolsWithoutAuth()...)
+	allTools = append(allTools, GetStoreCatalogSettingsToolsWithoutAuth()...)
+	allTools = append(allTools, GetStoreLocationToolsWithoutAuth()...)
+	allTools = append(allTools, GetStoriesToolsWithoutAuth()...)
+	allTools = append(allTools, GetSystemUserToolsWithoutAuth()...)
+	allTools = append(allTools, GetThirdPartyMeasurementReportDatasetToolsWithoutAuth()...)
+	allTools = append(allTools, GetThirdPartyPartnerLiftRequestToolsWithoutAuth()...)
+	allTools = append(allTools, GetThirdPartyPartnerPanelRequestToolsWithoutAuth()...)
+	allTools = append(allTools, GetThirdPartyPartnerPanelScheduledToolsWithoutAuth()...)
+	allTools = append(allTools, GetThirdPartyPartnerViewabilityRequestToolsWithoutAuth()...)
+	allTools = append(allTools, GetTransactableItemToolsWithoutAuth()...)
+	allTools = append(allTools, GetURLToolsWithoutAuth()...)
+	allTools = append(allTools, GetUnifiedThreadToolsWithoutAuth()...)
+	allTools = append(allTools, GetUserToolsWithoutAuth()...)
+	allTools = append(allTools, GetUserContextToolsWithoutAuth()...)
+	allTools = append(allTools, GetUserPageOneTimeOptInTokenSettingsToolsWithoutAuth()...)
+	allTools = append(allTools, GetVehicleToolsWithoutAuth()...)
+	allTools = append(allTools, GetVehicleOfferToolsWithoutAuth()...)
+	allTools = append(allTools, GetVideoCopyrightToolsWithoutAuth()...)
+	allTools = append(allTools, GetVideoCopyrightMatchToolsWithoutAuth()...)
+	allTools = append(allTools, GetVideoCopyrightRuleToolsWithoutAuth()...)
+	allTools = append(allTools, GetVideoListToolsWithoutAuth()...)
+	allTools = append(allTools, GetVideoPollToolsWithoutAuth()...)
+	allTools = append(allTools, GetVideoTextQuestionToolsWithoutAuth()...)
+	allTools = append(allTools, GetWearableDevicePublicKeyToolsWithoutAuth()...)
+	allTools = append(allTools, GetWebsiteCreativeAssetSourceToolsWithoutAuth()...)
+	allTools = append(allTools, GetWebsiteCreativeAssetSuggestionsToolsWithoutAuth()...)
+	allTools = append(allTools, GetWebsiteCreativeInfoToolsWithoutAuth()...)
+	allTools = append(allTools, GetWhatsAppBusinessAccountToolsWithoutAuth()...)
+	allTools = append(allTools, GetWhatsAppBusinessPreVerifiedPhoneNumberToolsWithoutAuth()...)
+	allTools = append(allTools, GetWhatsAppBusinessProfileToolsWithoutAuth()...)
+	allTools = append(allTools, GetWhitehatFBDLRunToolsWithoutAuth()...)
+	allTools = append(allTools, GetWifiInformationToolsWithoutAuth()...)
+	allTools = append(allTools, GetWithAsset3DToolsWithoutAuth()...)
+	allTools = append(allTools, GetWoodhengePurchasedPAYGReceiptToolsWithoutAuth()...)
+	allTools = append(allTools, GetWoodhengeSupporterToolsWithoutAuth()...)
+	allTools = append(allTools, GetWorkExperienceToolsWithoutAuth()...)
+	allTools = append(allTools, GetWorkSkillToolsWithoutAuth()...)
+
+	return allTools
+}
+
+// GetFilteredTools returns tools filtered by object type
+func GetFilteredTools(accessToken string, enabledObjects map[string]bool) []mcp.Tool {
+	var filteredTools []mcp.Tool
+
+	if enabled, ok := enabledObjects[strings.ToLower("ALMAdAccountInfo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetALMAdAccountInfoTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ALMEndAdvertiserInfo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetALMEndAdvertiserInfoTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ALMEvent")]; ok && enabled {
+		filteredTools = append(filteredTools, GetALMEventTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AREffect")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAREffectTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Ad")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdAccount")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdAccountTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdAccountAgencyFeeConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdAccountAgencyFeeConfigTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdAccountCreationRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdAccountCreationRequestTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdAccountUserSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdAccountUserSettingsTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdAsyncRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdAsyncRequestTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdAsyncRequestSet")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdAsyncRequestSetTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdColumnSizes")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdColumnSizesTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdCreationPackageConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdCreationPackageConfigTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdCreative")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdCreativeTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdCustomDerivedMetrics")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdCustomDerivedMetricsTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdDraft")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdDraftTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdExportPreset")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdExportPresetTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdImage")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdImageTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdLabel")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdLabelTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdLightAdgroup")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdLightAdgroupTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdLightCampaign")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdLightCampaignTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdLightCampaignGroup")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdLightCampaignGroupTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdMonetizationProperty")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdMonetizationPropertyTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdPlacePageSet")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdPlacePageSetTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdPlacement")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdPlacementTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdProposal")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdProposalTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdReportRun")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdReportRunTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdRule")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdRuleTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdRuleEvaluationSpec")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdRuleEvaluationSpecTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdRuleExecutionSpec")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdRuleExecutionSpecTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdSavedKeywords")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdSavedKeywordsTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdSavedLocation")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdSavedLocationTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdSavedReport")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdSavedReportTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdSet")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdSetTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdStudy")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdStudyTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdStudyCell")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdStudyCellTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdStudyObjective")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdStudyObjectiveTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdTopline")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdToplineTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdToplineDetail")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdToplineDetailTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdVideo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdVideoTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdgroupFacebookFeedback")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdgroupFacebookFeedbackTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsConversionGoal")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsConversionGoalTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsCreationSavedState")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsCreationSavedStateTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsMcmeConversion")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsMcmeConversionTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsNamingTemplate")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsNamingTemplateTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsPivotRules")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsPivotRulesTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsPixel")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsPixelTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsPixelCapabilityOverride")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsPixelCapabilityOverrideTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsQuickViews")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsQuickViewsTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsReportBuilderExportCore")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsReportBuilderExportCoreTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsReportBuilderMMMReport")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsReportBuilderMMMReportTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsReportBuilderMMMReportScheduler")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsReportBuilderMMMReportSchedulerTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsReportBuilderSavedReport")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsReportBuilderSavedReportTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsStartYourDayWidget")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsStartYourDayWidgetTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsUserSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsUserSettingsTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsValueAdjustmentRuleCollection")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsValueAdjustmentRuleCollectionTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdvAInstance")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdvAInstanceTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Album")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAlbumTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AnalyticsSegment")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAnalyticsSegmentTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AnalyticsUserConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAnalyticsUserConfigTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AppEventConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAppEventConfigTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AppLinks")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAppLinksTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AppRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAppRequestTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Application")]; ok && enabled {
+		filteredTools = append(filteredTools, GetApplicationTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ArAdsDataContainer")]; ok && enabled {
+		filteredTools = append(filteredTools, GetArAdsDataContainerTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AsyncSession")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAsyncSessionTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AudioAsset")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAudioAssetTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AudioCopyright")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAudioCopyrightTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AudioIsrc")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAudioIsrcTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AudioRelease")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAudioReleaseTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AudioSubLabel")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAudioSubLabelTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AutomotiveModel")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAutomotiveModelTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Avatar")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAvatarTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AvatarProfilePicture")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAvatarProfilePictureTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BCPCampaign")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBCPCampaignTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BidSchedule")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBidScheduleTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BizInboxOffsiteEmailAccount")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBizInboxOffsiteEmailAccountTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BlindPig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBlindPigTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BrandRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBrandRequestTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BrandSafetyDownloadable")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBrandSafetyDownloadableTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Business")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessAgreement")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessAgreementTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessAssetGroup")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessAssetGroupTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessAssetSharingAgreement")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessAssetSharingAgreementTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessCreativeFolder")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessCreativeFolderTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessFranchiseConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessFranchiseConfigTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessImage")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessImageTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessObjectTransferOwnershipAgreement")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessObjectTransferOwnershipAgreementTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessOwnedObjectOnBehalfOfRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessOwnedObjectOnBehalfOfRequestTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessProject")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessProjectTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessRequestTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessRoleRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessRoleRequestTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessTag")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessTagTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessUser")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessUserTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessVideo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessVideoTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CPASAdCreationTemplate")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCPASAdCreationTemplateTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CPASAdvertiserPartnershipRecommendation")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCPASAdvertiserPartnershipRecommendationTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CPASBusinessSetupConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCPASBusinessSetupConfigTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CPASCollaborationRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCPASCollaborationRequestTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CPASLsbImageBank")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCPASLsbImageBankTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CPASMerchantConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCPASMerchantConfigTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CPASParentCatalogSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCPASParentCatalogSettingsTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CRMAddress")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCRMAddressTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CTXPartnerAppWelcomeMessageFlow")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCTXPartnerAppWelcomeMessageFlowTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CalibratorExistingRule")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCalibratorExistingRuleTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CallAdsPhoneData")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCallAdsPhoneDataTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Campaign")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCampaignTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Canvas")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCanvasTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CanvasDynamicSetting")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCanvasDynamicSettingTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CanvasTemplate")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCanvasTemplateTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CatalogContentVersionConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCatalogContentVersionConfigTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CatalogItemOverride")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCatalogItemOverrideTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CatalogSmartPixelSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCatalogSmartPixelSettingsTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CatalogWebsiteOnboardingSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCatalogWebsiteOnboardingSettingsTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CatalogWebsiteSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCatalogWebsiteSettingsTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ChinaBusinessOnboardingVettingRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetChinaBusinessOnboardingVettingRequestTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CloudGame")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCloudGameTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CollaborativeAdsShareSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCollaborativeAdsShareSettingsTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Comment")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCommentTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CommerceMerchantSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCommerceMerchantSettingsTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CommerceOrder")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCommerceOrderTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CommerceOrderTransactionDetail")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCommerceOrderTransactionDetailTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ContentBlockList")]; ok && enabled {
+		filteredTools = append(filteredTools, GetContentBlockListTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CopyrightMediaMisuse")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCopyrightMediaMisuseTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CopyrightOwnershipTransfer")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCopyrightOwnershipTransferTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CreatorAssetCreative")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCreatorAssetCreativeTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CreditCard")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCreditCardTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CustomAudience")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCustomAudienceTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CustomConversion")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCustomConversionTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Destination")]; ok && enabled {
+		filteredTools = append(filteredTools, GetDestinationTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("DynamicARMetadata")]; ok && enabled {
+		filteredTools = append(filteredTools, GetDynamicARMetadataTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("DynamicContentSet")]; ok && enabled {
+		filteredTools = append(filteredTools, GetDynamicContentSetTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("DynamicItemDisplayBundle")]; ok && enabled {
+		filteredTools = append(filteredTools, GetDynamicItemDisplayBundleTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("DynamicItemDisplayBundleFolder")]; ok && enabled {
+		filteredTools = append(filteredTools, GetDynamicItemDisplayBundleFolderTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("DynamicPriceConfigByDate")]; ok && enabled {
+		filteredTools = append(filteredTools, GetDynamicPriceConfigByDateTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("DynamicVideoMetadata")]; ok && enabled {
+		filteredTools = append(filteredTools, GetDynamicVideoMetadataTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("EducationExperience")]; ok && enabled {
+		filteredTools = append(filteredTools, GetEducationExperienceTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Event")]; ok && enabled {
+		filteredTools = append(filteredTools, GetEventTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("EventExternalTicketInfo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetEventExternalTicketInfoTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("EventRegistrationSetting")]; ok && enabled {
+		filteredTools = append(filteredTools, GetEventRegistrationSettingTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("EventSourceGroup")]; ok && enabled {
+		filteredTools = append(filteredTools, GetEventSourceGroupTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("EventTicketSetting")]; ok && enabled {
+		filteredTools = append(filteredTools, GetEventTicketSettingTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("EventTicketTier")]; ok && enabled {
+		filteredTools = append(filteredTools, GetEventTicketTierTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("EventTour")]; ok && enabled {
+		filteredTools = append(filteredTools, GetEventTourTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ExtendedCredit")]; ok && enabled {
+		filteredTools = append(filteredTools, GetExtendedCreditTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ExtendedCreditAllocationConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetExtendedCreditAllocationConfigTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ExtendedCreditApplication")]; ok && enabled {
+		filteredTools = append(filteredTools, GetExtendedCreditApplicationTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ExtendedCreditInvoiceGroup")]; ok && enabled {
+		filteredTools = append(filteredTools, GetExtendedCreditInvoiceGroupTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ExternalMerchantSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetExternalMerchantSettingsTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("FAMEKumo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetFAMEKumoTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("FBImageCopyrightMatch")]; ok && enabled {
+		filteredTools = append(filteredTools, GetFBImageCopyrightMatchTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("FantasyGame")]; ok && enabled {
+		filteredTools = append(filteredTools, GetFantasyGameTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("FavoriteCatalog")]; ok && enabled {
+		filteredTools = append(filteredTools, GetFavoriteCatalogTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Flight")]; ok && enabled {
+		filteredTools = append(filteredTools, GetFlightTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("FranchiseProgram")]; ok && enabled {
+		filteredTools = append(filteredTools, GetFranchiseProgramTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("FranchiseProgramMember")]; ok && enabled {
+		filteredTools = append(filteredTools, GetFranchiseProgramMemberTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("FundraiserPersonToCharity")]; ok && enabled {
+		filteredTools = append(filteredTools, GetFundraiserPersonToCharityTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("GeoGatingPolicy")]; ok && enabled {
+		filteredTools = append(filteredTools, GetGeoGatingPolicyTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Group")]; ok && enabled {
+		filteredTools = append(filteredTools, GetGroupTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("HighDemandPeriod")]; ok && enabled {
+		filteredTools = append(filteredTools, GetHighDemandPeriodTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("HomeListing")]; ok && enabled {
+		filteredTools = append(filteredTools, GetHomeListingTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Hotel")]; ok && enabled {
+		filteredTools = append(filteredTools, GetHotelTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("HotelRoom")]; ok && enabled {
+		filteredTools = append(filteredTools, GetHotelRoomTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Hours")]; ok && enabled {
+		filteredTools = append(filteredTools, GetHoursTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGAccessTokenForIGOnlyAPI")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGAccessTokenForIGOnlyAPITools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGBCAdsPermission")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGBCAdsPermissionTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGBoostMediaAd")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGBoostMediaAdTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGComment")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGCommentTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGMedia")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGMediaTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGMediaBoostEligibilityInfo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGMediaBoostEligibilityInfoTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGMediaForIGOnlyAPI")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGMediaForIGOnlyAPITools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGRefreshAccessTokenForIGOnlyAPI")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGRefreshAccessTokenForIGOnlyAPITools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGUpcomingEvent")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGUpcomingEventTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGUser")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGUserTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGUserExportForCAM")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGUserExportForCAMTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGUserForIGOnlyAPI")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGUserForIGOnlyAPITools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ImageCopyright")]; ok && enabled {
+		filteredTools = append(filteredTools, GetImageCopyrightTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ImageCopyrightDispute")]; ok && enabled {
+		filteredTools = append(filteredTools, GetImageCopyrightDisputeTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ImageReferenceMatch")]; ok && enabled {
+		filteredTools = append(filteredTools, GetImageReferenceMatchTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("InstagramBusinessAsset")]; ok && enabled {
+		filteredTools = append(filteredTools, GetInstagramBusinessAssetTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("InstagramThread")]; ok && enabled {
+		filteredTools = append(filteredTools, GetInstagramThreadTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("InstagramUser")]; ok && enabled {
+		filteredTools = append(filteredTools, GetInstagramUserTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("JobOpening")]; ok && enabled {
+		filteredTools = append(filteredTools, GetJobOpeningTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Lead")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLeadTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("LeadGenDataDraft")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLeadGenDataDraftTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("LeadGenDirectCRMIntegrationConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLeadGenDirectCRMIntegrationConfigTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("LeadgenForm")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLeadgenFormTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("LifeEvent")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLifeEventTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Link")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLinkTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("LiveVideo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLiveVideoTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("LiveVideoAdCampaignConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLiveVideoAdCampaignConfigTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("LiveVideoError")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLiveVideoErrorTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("LiveVideoInputStream")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLiveVideoInputStreamTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("LocalServiceBusiness")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLocalServiceBusinessTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MailingAddress")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMailingAddressTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ManagementSiteLink")]; ok && enabled {
+		filteredTools = append(filteredTools, GetManagementSiteLinkTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MeasurementReport")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMeasurementReportTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MediaCopyrightAttribution")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMediaCopyrightAttributionTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MediaCopyrightUpdateRecord")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMediaCopyrightUpdateRecordTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MediaFingerprint")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMediaFingerprintTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MediaTitle")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMediaTitleTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MessengerAdsPartialAutomatedStepList")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMessengerAdsPartialAutomatedStepListTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MessengerBusinessTemplate")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMessengerBusinessTemplateTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MusicVideoCopyright")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMusicVideoCopyrightTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MusicWorkCopyright")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMusicWorkCopyrightTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OfflineConversionDataSet")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOfflineConversionDataSetTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OfflineConversionDataSetUpload")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOfflineConversionDataSetUploadTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OfflineProductItem")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOfflineProductItemTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OfflineTermsOfService")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOfflineTermsOfServiceTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OffsitePixel")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOffsitePixelTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OffsiteSignalContainerBusinessObject")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOffsiteSignalContainerBusinessObjectTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OmegaCustomerTrx")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOmegaCustomerTrxTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OpenBridgeConfiguration")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOpenBridgeConfigurationTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OpenGraphContext")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOpenGraphContextTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Organization")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOrganizationTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OwnedDomain")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOwnedDomainTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Page")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPageTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PageBroadcast")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPageBroadcastTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PageCallToAction")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPageCallToActionTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PageInsightsAsyncExportRun")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPageInsightsAsyncExportRunTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PageLeadsAccessConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPageLeadsAccessConfigTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PagePost")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPagePostTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PagePostExperiment")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPagePostExperimentTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PageUpcomingChange")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPageUpcomingChangeTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PageUserMessageThreadLabel")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPageUserMessageThreadLabelTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PartnerAccountLinking")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPartnerAccountLinkingTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PartnerIntegrationLinked")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPartnerIntegrationLinkedTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PartnerStudy")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPartnerStudyTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PaymentEnginePayment")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPaymentEnginePaymentTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PaymentSubscription")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPaymentSubscriptionTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Persona")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPersonaTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PersonalAdsPersona")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPersonalAdsPersonaTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Photo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPhotoTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Place")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPlaceTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PlaceTag")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPlaceTagTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PlaceTopic")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPlaceTopicTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PlayableContent")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPlayableContentTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Post")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPostTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PrivateLiftStudyInstance")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPrivateLiftStudyInstanceTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductCatalog")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductCatalogTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductCatalogLocalizationSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductCatalogLocalizationSettingsTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductDeliveryPreference")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductDeliveryPreferenceTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductFeed")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductFeedTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductFeedRule")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductFeedRuleTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductFeedSchedule")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductFeedScheduleTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductFeedUpload")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductFeedUploadTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductFeedUploadError")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductFeedUploadErrorTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductFeedUploadErrorSample")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductFeedUploadErrorSampleTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductGroup")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductGroupTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductImage")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductImageTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductItem")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductItemTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductItemLocalInfo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductItemLocalInfoTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductItemOffer")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductItemOfferTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductSet")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductSetTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductSetUsage")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductSetUsageTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Profile")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProfileTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PublisherBlockList")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPublisherBlockListTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PublisherWhiteList")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPublisherWhiteListTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("RTBDynamicPost")]; ok && enabled {
+		filteredTools = append(filteredTools, GetRTBDynamicPostTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ReachFrequencyPrediction")]; ok && enabled {
+		filteredTools = append(filteredTools, GetReachFrequencyPredictionTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ResearchPollStudy")]; ok && enabled {
+		filteredTools = append(filteredTools, GetResearchPollStudyTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("RightsManagerDataExport")]; ok && enabled {
+		filteredTools = append(filteredTools, GetRightsManagerDataExportTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Robot")]; ok && enabled {
+		filteredTools = append(filteredTools, GetRobotTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("SavedAudience")]; ok && enabled {
+		filteredTools = append(filteredTools, GetSavedAudienceTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("SavedMessageResponse")]; ok && enabled {
+		filteredTools = append(filteredTools, GetSavedMessageResponseTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ShadowIGHashtag")]; ok && enabled {
+		filteredTools = append(filteredTools, GetShadowIGHashtagTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ShadowIGMediaBuilder")]; ok && enabled {
+		filteredTools = append(filteredTools, GetShadowIGMediaBuilderTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Shop")]; ok && enabled {
+		filteredTools = append(filteredTools, GetShopTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("SignalsIWLExtractor")]; ok && enabled {
+		filteredTools = append(filteredTools, GetSignalsIWLExtractorTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("SiteLink")]; ok && enabled {
+		filteredTools = append(filteredTools, GetSiteLinkTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("SlicedEventSourceGroup")]; ok && enabled {
+		filteredTools = append(filteredTools, GetSlicedEventSourceGroupTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Status")]; ok && enabled {
+		filteredTools = append(filteredTools, GetStatusTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("StoreCatalogSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetStoreCatalogSettingsTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("StoreLocation")]; ok && enabled {
+		filteredTools = append(filteredTools, GetStoreLocationTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Stories")]; ok && enabled {
+		filteredTools = append(filteredTools, GetStoriesTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("SystemUser")]; ok && enabled {
+		filteredTools = append(filteredTools, GetSystemUserTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ThirdPartyMeasurementReportDataset")]; ok && enabled {
+		filteredTools = append(filteredTools, GetThirdPartyMeasurementReportDatasetTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ThirdPartyPartnerLiftRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetThirdPartyPartnerLiftRequestTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ThirdPartyPartnerPanelRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetThirdPartyPartnerPanelRequestTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ThirdPartyPartnerPanelScheduled")]; ok && enabled {
+		filteredTools = append(filteredTools, GetThirdPartyPartnerPanelScheduledTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ThirdPartyPartnerViewabilityRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetThirdPartyPartnerViewabilityRequestTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("TransactableItem")]; ok && enabled {
+		filteredTools = append(filteredTools, GetTransactableItemTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("URL")]; ok && enabled {
+		filteredTools = append(filteredTools, GetURLTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("UnifiedThread")]; ok && enabled {
+		filteredTools = append(filteredTools, GetUnifiedThreadTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("User")]; ok && enabled {
+		filteredTools = append(filteredTools, GetUserTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("UserContext")]; ok && enabled {
+		filteredTools = append(filteredTools, GetUserContextTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("UserPageOneTimeOptInTokenSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetUserPageOneTimeOptInTokenSettingsTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Vehicle")]; ok && enabled {
+		filteredTools = append(filteredTools, GetVehicleTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("VehicleOffer")]; ok && enabled {
+		filteredTools = append(filteredTools, GetVehicleOfferTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("VideoCopyright")]; ok && enabled {
+		filteredTools = append(filteredTools, GetVideoCopyrightTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("VideoCopyrightMatch")]; ok && enabled {
+		filteredTools = append(filteredTools, GetVideoCopyrightMatchTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("VideoCopyrightRule")]; ok && enabled {
+		filteredTools = append(filteredTools, GetVideoCopyrightRuleTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("VideoList")]; ok && enabled {
+		filteredTools = append(filteredTools, GetVideoListTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("VideoPoll")]; ok && enabled {
+		filteredTools = append(filteredTools, GetVideoPollTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("VideoTextQuestion")]; ok && enabled {
+		filteredTools = append(filteredTools, GetVideoTextQuestionTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WearableDevicePublicKey")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWearableDevicePublicKeyTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WebsiteCreativeAssetSource")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWebsiteCreativeAssetSourceTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WebsiteCreativeAssetSuggestions")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWebsiteCreativeAssetSuggestionsTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WebsiteCreativeInfo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWebsiteCreativeInfoTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WhatsAppBusinessAccount")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWhatsAppBusinessAccountTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WhatsAppBusinessPreVerifiedPhoneNumber")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWhatsAppBusinessPreVerifiedPhoneNumberTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WhatsAppBusinessProfile")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWhatsAppBusinessProfileTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WhitehatFBDLRun")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWhitehatFBDLRunTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WifiInformation")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWifiInformationTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WithAsset3D")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWithAsset3DTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WoodhengePurchasedPAYGReceipt")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWoodhengePurchasedPAYGReceiptTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WoodhengeSupporter")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWoodhengeSupporterTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WorkExperience")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWorkExperienceTools(accessToken)...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WorkSkill")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWorkSkillTools(accessToken)...)
+	}
+
+	return filteredTools
+}
+
+// GetFilteredToolsWithoutAuth returns tools filtered by object type without auth
+func GetFilteredToolsWithoutAuth(enabledObjects map[string]bool) []mcp.Tool {
+	var filteredTools []mcp.Tool
+
+	if enabled, ok := enabledObjects[strings.ToLower("ALMAdAccountInfo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetALMAdAccountInfoToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ALMEndAdvertiserInfo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetALMEndAdvertiserInfoToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ALMEvent")]; ok && enabled {
+		filteredTools = append(filteredTools, GetALMEventToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AREffect")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAREffectToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Ad")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdAccount")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdAccountToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdAccountAgencyFeeConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdAccountAgencyFeeConfigToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdAccountCreationRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdAccountCreationRequestToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdAccountUserSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdAccountUserSettingsToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdAsyncRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdAsyncRequestToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdAsyncRequestSet")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdAsyncRequestSetToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdColumnSizes")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdColumnSizesToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdCreationPackageConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdCreationPackageConfigToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdCreative")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdCreativeToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdCustomDerivedMetrics")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdCustomDerivedMetricsToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdDraft")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdDraftToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdExportPreset")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdExportPresetToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdImage")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdImageToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdLabel")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdLabelToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdLightAdgroup")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdLightAdgroupToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdLightCampaign")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdLightCampaignToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdLightCampaignGroup")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdLightCampaignGroupToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdMonetizationProperty")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdMonetizationPropertyToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdPlacePageSet")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdPlacePageSetToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdPlacement")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdPlacementToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdProposal")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdProposalToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdReportRun")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdReportRunToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdRule")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdRuleToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdRuleEvaluationSpec")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdRuleEvaluationSpecToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdRuleExecutionSpec")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdRuleExecutionSpecToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdSavedKeywords")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdSavedKeywordsToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdSavedLocation")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdSavedLocationToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdSavedReport")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdSavedReportToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdSet")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdSetToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdStudy")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdStudyToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdStudyCell")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdStudyCellToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdStudyObjective")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdStudyObjectiveToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdTopline")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdToplineToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdToplineDetail")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdToplineDetailToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdVideo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdVideoToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdgroupFacebookFeedback")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdgroupFacebookFeedbackToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsConversionGoal")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsConversionGoalToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsCreationSavedState")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsCreationSavedStateToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsMcmeConversion")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsMcmeConversionToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsNamingTemplate")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsNamingTemplateToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsPivotRules")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsPivotRulesToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsPixel")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsPixelToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsPixelCapabilityOverride")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsPixelCapabilityOverrideToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsQuickViews")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsQuickViewsToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsReportBuilderExportCore")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsReportBuilderExportCoreToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsReportBuilderMMMReport")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsReportBuilderMMMReportToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsReportBuilderMMMReportScheduler")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsReportBuilderMMMReportSchedulerToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsReportBuilderSavedReport")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsReportBuilderSavedReportToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsStartYourDayWidget")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsStartYourDayWidgetToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsUserSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsUserSettingsToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdsValueAdjustmentRuleCollection")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdsValueAdjustmentRuleCollectionToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AdvAInstance")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAdvAInstanceToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Album")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAlbumToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AnalyticsSegment")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAnalyticsSegmentToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AnalyticsUserConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAnalyticsUserConfigToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AppEventConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAppEventConfigToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AppLinks")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAppLinksToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AppRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAppRequestToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Application")]; ok && enabled {
+		filteredTools = append(filteredTools, GetApplicationToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ArAdsDataContainer")]; ok && enabled {
+		filteredTools = append(filteredTools, GetArAdsDataContainerToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AsyncSession")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAsyncSessionToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AudioAsset")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAudioAssetToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AudioCopyright")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAudioCopyrightToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AudioIsrc")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAudioIsrcToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AudioRelease")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAudioReleaseToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AudioSubLabel")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAudioSubLabelToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AutomotiveModel")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAutomotiveModelToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Avatar")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAvatarToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("AvatarProfilePicture")]; ok && enabled {
+		filteredTools = append(filteredTools, GetAvatarProfilePictureToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BCPCampaign")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBCPCampaignToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BidSchedule")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBidScheduleToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BizInboxOffsiteEmailAccount")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBizInboxOffsiteEmailAccountToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BlindPig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBlindPigToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BrandRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBrandRequestToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BrandSafetyDownloadable")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBrandSafetyDownloadableToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Business")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessAgreement")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessAgreementToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessAssetGroup")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessAssetGroupToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessAssetSharingAgreement")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessAssetSharingAgreementToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessCreativeFolder")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessCreativeFolderToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessFranchiseConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessFranchiseConfigToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessImage")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessImageToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessObjectTransferOwnershipAgreement")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessObjectTransferOwnershipAgreementToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessOwnedObjectOnBehalfOfRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessOwnedObjectOnBehalfOfRequestToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessProject")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessProjectToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessRequestToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessRoleRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessRoleRequestToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessTag")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessTagToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessUser")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessUserToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("BusinessVideo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetBusinessVideoToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CPASAdCreationTemplate")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCPASAdCreationTemplateToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CPASAdvertiserPartnershipRecommendation")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCPASAdvertiserPartnershipRecommendationToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CPASBusinessSetupConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCPASBusinessSetupConfigToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CPASCollaborationRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCPASCollaborationRequestToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CPASLsbImageBank")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCPASLsbImageBankToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CPASMerchantConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCPASMerchantConfigToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CPASParentCatalogSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCPASParentCatalogSettingsToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CRMAddress")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCRMAddressToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CTXPartnerAppWelcomeMessageFlow")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCTXPartnerAppWelcomeMessageFlowToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CalibratorExistingRule")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCalibratorExistingRuleToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CallAdsPhoneData")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCallAdsPhoneDataToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Campaign")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCampaignToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Canvas")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCanvasToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CanvasDynamicSetting")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCanvasDynamicSettingToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CanvasTemplate")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCanvasTemplateToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CatalogContentVersionConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCatalogContentVersionConfigToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CatalogItemOverride")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCatalogItemOverrideToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CatalogSmartPixelSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCatalogSmartPixelSettingsToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CatalogWebsiteOnboardingSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCatalogWebsiteOnboardingSettingsToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CatalogWebsiteSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCatalogWebsiteSettingsToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ChinaBusinessOnboardingVettingRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetChinaBusinessOnboardingVettingRequestToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CloudGame")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCloudGameToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CollaborativeAdsShareSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCollaborativeAdsShareSettingsToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Comment")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCommentToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CommerceMerchantSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCommerceMerchantSettingsToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CommerceOrder")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCommerceOrderToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CommerceOrderTransactionDetail")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCommerceOrderTransactionDetailToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ContentBlockList")]; ok && enabled {
+		filteredTools = append(filteredTools, GetContentBlockListToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CopyrightMediaMisuse")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCopyrightMediaMisuseToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CopyrightOwnershipTransfer")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCopyrightOwnershipTransferToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CreatorAssetCreative")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCreatorAssetCreativeToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CreditCard")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCreditCardToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CustomAudience")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCustomAudienceToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("CustomConversion")]; ok && enabled {
+		filteredTools = append(filteredTools, GetCustomConversionToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Destination")]; ok && enabled {
+		filteredTools = append(filteredTools, GetDestinationToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("DynamicARMetadata")]; ok && enabled {
+		filteredTools = append(filteredTools, GetDynamicARMetadataToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("DynamicContentSet")]; ok && enabled {
+		filteredTools = append(filteredTools, GetDynamicContentSetToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("DynamicItemDisplayBundle")]; ok && enabled {
+		filteredTools = append(filteredTools, GetDynamicItemDisplayBundleToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("DynamicItemDisplayBundleFolder")]; ok && enabled {
+		filteredTools = append(filteredTools, GetDynamicItemDisplayBundleFolderToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("DynamicPriceConfigByDate")]; ok && enabled {
+		filteredTools = append(filteredTools, GetDynamicPriceConfigByDateToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("DynamicVideoMetadata")]; ok && enabled {
+		filteredTools = append(filteredTools, GetDynamicVideoMetadataToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("EducationExperience")]; ok && enabled {
+		filteredTools = append(filteredTools, GetEducationExperienceToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Event")]; ok && enabled {
+		filteredTools = append(filteredTools, GetEventToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("EventExternalTicketInfo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetEventExternalTicketInfoToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("EventRegistrationSetting")]; ok && enabled {
+		filteredTools = append(filteredTools, GetEventRegistrationSettingToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("EventSourceGroup")]; ok && enabled {
+		filteredTools = append(filteredTools, GetEventSourceGroupToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("EventTicketSetting")]; ok && enabled {
+		filteredTools = append(filteredTools, GetEventTicketSettingToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("EventTicketTier")]; ok && enabled {
+		filteredTools = append(filteredTools, GetEventTicketTierToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("EventTour")]; ok && enabled {
+		filteredTools = append(filteredTools, GetEventTourToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ExtendedCredit")]; ok && enabled {
+		filteredTools = append(filteredTools, GetExtendedCreditToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ExtendedCreditAllocationConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetExtendedCreditAllocationConfigToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ExtendedCreditApplication")]; ok && enabled {
+		filteredTools = append(filteredTools, GetExtendedCreditApplicationToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ExtendedCreditInvoiceGroup")]; ok && enabled {
+		filteredTools = append(filteredTools, GetExtendedCreditInvoiceGroupToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ExternalMerchantSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetExternalMerchantSettingsToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("FAMEKumo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetFAMEKumoToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("FBImageCopyrightMatch")]; ok && enabled {
+		filteredTools = append(filteredTools, GetFBImageCopyrightMatchToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("FantasyGame")]; ok && enabled {
+		filteredTools = append(filteredTools, GetFantasyGameToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("FavoriteCatalog")]; ok && enabled {
+		filteredTools = append(filteredTools, GetFavoriteCatalogToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Flight")]; ok && enabled {
+		filteredTools = append(filteredTools, GetFlightToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("FranchiseProgram")]; ok && enabled {
+		filteredTools = append(filteredTools, GetFranchiseProgramToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("FranchiseProgramMember")]; ok && enabled {
+		filteredTools = append(filteredTools, GetFranchiseProgramMemberToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("FundraiserPersonToCharity")]; ok && enabled {
+		filteredTools = append(filteredTools, GetFundraiserPersonToCharityToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("GeoGatingPolicy")]; ok && enabled {
+		filteredTools = append(filteredTools, GetGeoGatingPolicyToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Group")]; ok && enabled {
+		filteredTools = append(filteredTools, GetGroupToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("HighDemandPeriod")]; ok && enabled {
+		filteredTools = append(filteredTools, GetHighDemandPeriodToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("HomeListing")]; ok && enabled {
+		filteredTools = append(filteredTools, GetHomeListingToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Hotel")]; ok && enabled {
+		filteredTools = append(filteredTools, GetHotelToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("HotelRoom")]; ok && enabled {
+		filteredTools = append(filteredTools, GetHotelRoomToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Hours")]; ok && enabled {
+		filteredTools = append(filteredTools, GetHoursToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGAccessTokenForIGOnlyAPI")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGAccessTokenForIGOnlyAPIToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGBCAdsPermission")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGBCAdsPermissionToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGBoostMediaAd")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGBoostMediaAdToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGComment")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGCommentToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGMedia")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGMediaToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGMediaBoostEligibilityInfo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGMediaBoostEligibilityInfoToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGMediaForIGOnlyAPI")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGMediaForIGOnlyAPIToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGRefreshAccessTokenForIGOnlyAPI")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGRefreshAccessTokenForIGOnlyAPIToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGUpcomingEvent")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGUpcomingEventToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGUser")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGUserToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGUserExportForCAM")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGUserExportForCAMToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("IGUserForIGOnlyAPI")]; ok && enabled {
+		filteredTools = append(filteredTools, GetIGUserForIGOnlyAPIToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ImageCopyright")]; ok && enabled {
+		filteredTools = append(filteredTools, GetImageCopyrightToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ImageCopyrightDispute")]; ok && enabled {
+		filteredTools = append(filteredTools, GetImageCopyrightDisputeToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ImageReferenceMatch")]; ok && enabled {
+		filteredTools = append(filteredTools, GetImageReferenceMatchToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("InstagramBusinessAsset")]; ok && enabled {
+		filteredTools = append(filteredTools, GetInstagramBusinessAssetToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("InstagramThread")]; ok && enabled {
+		filteredTools = append(filteredTools, GetInstagramThreadToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("InstagramUser")]; ok && enabled {
+		filteredTools = append(filteredTools, GetInstagramUserToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("JobOpening")]; ok && enabled {
+		filteredTools = append(filteredTools, GetJobOpeningToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Lead")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLeadToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("LeadGenDataDraft")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLeadGenDataDraftToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("LeadGenDirectCRMIntegrationConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLeadGenDirectCRMIntegrationConfigToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("LeadgenForm")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLeadgenFormToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("LifeEvent")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLifeEventToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Link")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLinkToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("LiveVideo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLiveVideoToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("LiveVideoAdCampaignConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLiveVideoAdCampaignConfigToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("LiveVideoError")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLiveVideoErrorToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("LiveVideoInputStream")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLiveVideoInputStreamToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("LocalServiceBusiness")]; ok && enabled {
+		filteredTools = append(filteredTools, GetLocalServiceBusinessToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MailingAddress")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMailingAddressToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ManagementSiteLink")]; ok && enabled {
+		filteredTools = append(filteredTools, GetManagementSiteLinkToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MeasurementReport")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMeasurementReportToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MediaCopyrightAttribution")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMediaCopyrightAttributionToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MediaCopyrightUpdateRecord")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMediaCopyrightUpdateRecordToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MediaFingerprint")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMediaFingerprintToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MediaTitle")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMediaTitleToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MessengerAdsPartialAutomatedStepList")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMessengerAdsPartialAutomatedStepListToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MessengerBusinessTemplate")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMessengerBusinessTemplateToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MusicVideoCopyright")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMusicVideoCopyrightToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("MusicWorkCopyright")]; ok && enabled {
+		filteredTools = append(filteredTools, GetMusicWorkCopyrightToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OfflineConversionDataSet")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOfflineConversionDataSetToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OfflineConversionDataSetUpload")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOfflineConversionDataSetUploadToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OfflineProductItem")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOfflineProductItemToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OfflineTermsOfService")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOfflineTermsOfServiceToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OffsitePixel")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOffsitePixelToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OffsiteSignalContainerBusinessObject")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOffsiteSignalContainerBusinessObjectToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OmegaCustomerTrx")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOmegaCustomerTrxToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OpenBridgeConfiguration")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOpenBridgeConfigurationToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OpenGraphContext")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOpenGraphContextToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Organization")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOrganizationToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("OwnedDomain")]; ok && enabled {
+		filteredTools = append(filteredTools, GetOwnedDomainToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Page")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPageToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PageBroadcast")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPageBroadcastToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PageCallToAction")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPageCallToActionToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PageInsightsAsyncExportRun")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPageInsightsAsyncExportRunToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PageLeadsAccessConfig")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPageLeadsAccessConfigToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PagePost")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPagePostToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PagePostExperiment")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPagePostExperimentToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PageUpcomingChange")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPageUpcomingChangeToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PageUserMessageThreadLabel")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPageUserMessageThreadLabelToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PartnerAccountLinking")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPartnerAccountLinkingToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PartnerIntegrationLinked")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPartnerIntegrationLinkedToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PartnerStudy")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPartnerStudyToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PaymentEnginePayment")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPaymentEnginePaymentToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PaymentSubscription")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPaymentSubscriptionToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Persona")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPersonaToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PersonalAdsPersona")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPersonalAdsPersonaToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Photo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPhotoToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Place")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPlaceToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PlaceTag")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPlaceTagToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PlaceTopic")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPlaceTopicToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PlayableContent")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPlayableContentToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Post")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPostToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PrivateLiftStudyInstance")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPrivateLiftStudyInstanceToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductCatalog")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductCatalogToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductCatalogLocalizationSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductCatalogLocalizationSettingsToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductDeliveryPreference")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductDeliveryPreferenceToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductFeed")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductFeedToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductFeedRule")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductFeedRuleToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductFeedSchedule")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductFeedScheduleToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductFeedUpload")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductFeedUploadToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductFeedUploadError")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductFeedUploadErrorToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductFeedUploadErrorSample")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductFeedUploadErrorSampleToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductGroup")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductGroupToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductImage")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductImageToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductItem")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductItemToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductItemLocalInfo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductItemLocalInfoToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductItemOffer")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductItemOfferToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductSet")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductSetToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ProductSetUsage")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProductSetUsageToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Profile")]; ok && enabled {
+		filteredTools = append(filteredTools, GetProfileToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PublisherBlockList")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPublisherBlockListToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("PublisherWhiteList")]; ok && enabled {
+		filteredTools = append(filteredTools, GetPublisherWhiteListToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("RTBDynamicPost")]; ok && enabled {
+		filteredTools = append(filteredTools, GetRTBDynamicPostToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ReachFrequencyPrediction")]; ok && enabled {
+		filteredTools = append(filteredTools, GetReachFrequencyPredictionToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ResearchPollStudy")]; ok && enabled {
+		filteredTools = append(filteredTools, GetResearchPollStudyToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("RightsManagerDataExport")]; ok && enabled {
+		filteredTools = append(filteredTools, GetRightsManagerDataExportToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Robot")]; ok && enabled {
+		filteredTools = append(filteredTools, GetRobotToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("SavedAudience")]; ok && enabled {
+		filteredTools = append(filteredTools, GetSavedAudienceToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("SavedMessageResponse")]; ok && enabled {
+		filteredTools = append(filteredTools, GetSavedMessageResponseToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ShadowIGHashtag")]; ok && enabled {
+		filteredTools = append(filteredTools, GetShadowIGHashtagToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ShadowIGMediaBuilder")]; ok && enabled {
+		filteredTools = append(filteredTools, GetShadowIGMediaBuilderToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Shop")]; ok && enabled {
+		filteredTools = append(filteredTools, GetShopToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("SignalsIWLExtractor")]; ok && enabled {
+		filteredTools = append(filteredTools, GetSignalsIWLExtractorToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("SiteLink")]; ok && enabled {
+		filteredTools = append(filteredTools, GetSiteLinkToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("SlicedEventSourceGroup")]; ok && enabled {
+		filteredTools = append(filteredTools, GetSlicedEventSourceGroupToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Status")]; ok && enabled {
+		filteredTools = append(filteredTools, GetStatusToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("StoreCatalogSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetStoreCatalogSettingsToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("StoreLocation")]; ok && enabled {
+		filteredTools = append(filteredTools, GetStoreLocationToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Stories")]; ok && enabled {
+		filteredTools = append(filteredTools, GetStoriesToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("SystemUser")]; ok && enabled {
+		filteredTools = append(filteredTools, GetSystemUserToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ThirdPartyMeasurementReportDataset")]; ok && enabled {
+		filteredTools = append(filteredTools, GetThirdPartyMeasurementReportDatasetToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ThirdPartyPartnerLiftRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetThirdPartyPartnerLiftRequestToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ThirdPartyPartnerPanelRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetThirdPartyPartnerPanelRequestToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ThirdPartyPartnerPanelScheduled")]; ok && enabled {
+		filteredTools = append(filteredTools, GetThirdPartyPartnerPanelScheduledToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("ThirdPartyPartnerViewabilityRequest")]; ok && enabled {
+		filteredTools = append(filteredTools, GetThirdPartyPartnerViewabilityRequestToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("TransactableItem")]; ok && enabled {
+		filteredTools = append(filteredTools, GetTransactableItemToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("URL")]; ok && enabled {
+		filteredTools = append(filteredTools, GetURLToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("UnifiedThread")]; ok && enabled {
+		filteredTools = append(filteredTools, GetUnifiedThreadToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("User")]; ok && enabled {
+		filteredTools = append(filteredTools, GetUserToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("UserContext")]; ok && enabled {
+		filteredTools = append(filteredTools, GetUserContextToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("UserPageOneTimeOptInTokenSettings")]; ok && enabled {
+		filteredTools = append(filteredTools, GetUserPageOneTimeOptInTokenSettingsToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("Vehicle")]; ok && enabled {
+		filteredTools = append(filteredTools, GetVehicleToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("VehicleOffer")]; ok && enabled {
+		filteredTools = append(filteredTools, GetVehicleOfferToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("VideoCopyright")]; ok && enabled {
+		filteredTools = append(filteredTools, GetVideoCopyrightToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("VideoCopyrightMatch")]; ok && enabled {
+		filteredTools = append(filteredTools, GetVideoCopyrightMatchToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("VideoCopyrightRule")]; ok && enabled {
+		filteredTools = append(filteredTools, GetVideoCopyrightRuleToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("VideoList")]; ok && enabled {
+		filteredTools = append(filteredTools, GetVideoListToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("VideoPoll")]; ok && enabled {
+		filteredTools = append(filteredTools, GetVideoPollToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("VideoTextQuestion")]; ok && enabled {
+		filteredTools = append(filteredTools, GetVideoTextQuestionToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WearableDevicePublicKey")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWearableDevicePublicKeyToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WebsiteCreativeAssetSource")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWebsiteCreativeAssetSourceToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WebsiteCreativeAssetSuggestions")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWebsiteCreativeAssetSuggestionsToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WebsiteCreativeInfo")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWebsiteCreativeInfoToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WhatsAppBusinessAccount")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWhatsAppBusinessAccountToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WhatsAppBusinessPreVerifiedPhoneNumber")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWhatsAppBusinessPreVerifiedPhoneNumberToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WhatsAppBusinessProfile")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWhatsAppBusinessProfileToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WhitehatFBDLRun")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWhitehatFBDLRunToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WifiInformation")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWifiInformationToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WithAsset3D")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWithAsset3DToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WoodhengePurchasedPAYGReceipt")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWoodhengePurchasedPAYGReceiptToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WoodhengeSupporter")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWoodhengeSupporterToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WorkExperience")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWorkExperienceToolsWithoutAuth()...)
+	}
+	if enabled, ok := enabledObjects[strings.ToLower("WorkSkill")]; ok && enabled {
+		filteredTools = append(filteredTools, GetWorkSkillToolsWithoutAuth()...)
+	}
+
+	return filteredTools
+}
+
 // RegisterTools registers all Facebook Business API tools with the MCP server
 func RegisterTools(s *server.MCPServer, accessToken string) error {
 	// Get all tools
@@ -346,236 +2534,54 @@ func RegisterTools(s *server.MCPServer, accessToken string) error {
 	return nil
 }
 
+// RegisterFilteredTools registers filtered Facebook Business API tools with the MCP server
+func RegisterFilteredTools(s *server.MCPServer, accessToken string, enabledObjects map[string]bool) error {
+	// Get filtered tools
+	tools := GetFilteredTools(accessToken, enabledObjects)
+
+	// Create a map of handlers
+	handlers := GetAllHandlers()
+
+	// Register each tool with its handler
+	for i := range tools {
+		handler, ok := handlers[tools[i].Name]
+		if !ok {
+			continue // Skip if no handler found
+		}
+		s.AddTool(tools[i], handler)
+	}
+
+	return nil
+}
+
+// RegisterFilteredToolsWithContextAuth registers filtered tools with context-aware handlers
+func RegisterFilteredToolsWithContextAuth(s *server.MCPServer, enabledObjects map[string]bool) error {
+	// Get filtered tools without auth param
+	tools := GetFilteredToolsWithoutAuth(enabledObjects)
+
+	// Create a map of context-aware handlers
+	handlers := GetContextAwareHandlers()
+
+	// Register each tool with its context-aware handler
+	for i := range tools {
+		handler, ok := handlers[tools[i].Name]
+		if !ok {
+			continue // Skip if no handler found
+		}
+		s.AddTool(tools[i], handler)
+	}
+
+	return nil
+}
+
 // GetAllHandlers returns a map of tool name to handler function
 func GetAllHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["iguser_get_agencies"] = HandleIguser_get_agencies
-	handlers["iguser_get_authorized_adaccounts"] = HandleIguser_get_authorized_adaccounts
-	handlers["iguser_post_authorized_adaccounts"] = HandleIguser_post_authorized_adaccounts
-	handlers["iguser_get_available_catalogs"] = HandleIguser_get_available_catalogs
-	handlers["iguser_get_branded_content_ad_permissions"] = HandleIguser_get_branded_content_ad_permissions
-	handlers["iguser_post_branded_content_ad_permissions"] = HandleIguser_post_branded_content_ad_permissions
-	handlers["iguser_get_branded_content_advertisable_medias"] = HandleIguser_get_branded_content_advertisable_medias
-	handlers["iguser_delete_branded_content_tag_approval"] = HandleIguser_delete_branded_content_tag_approval
-	handlers["iguser_get_branded_content_tag_approval"] = HandleIguser_get_branded_content_tag_approval
-	handlers["iguser_post_branded_content_tag_approval"] = HandleIguser_post_branded_content_tag_approval
-	handlers["iguser_get_catalog_product_search"] = HandleIguser_get_catalog_product_search
-	handlers["iguser_get_connected_threads_user"] = HandleIguser_get_connected_threads_user
-	handlers["iguser_get_content_publishing_limit"] = HandleIguser_get_content_publishing_limit
-	handlers["iguser_get_dataset"] = HandleIguser_get_dataset
-	handlers["iguser_post_dataset"] = HandleIguser_post_dataset
-	handlers["iguser_get_insights"] = HandleIguser_get_insights
-	handlers["iguser_get_instagram_backed_threads_user"] = HandleIguser_get_instagram_backed_threads_user
-	handlers["iguser_get_live_media"] = HandleIguser_get_live_media
-	handlers["iguser_get_media"] = HandleIguser_get_media
-	handlers["iguser_post_media"] = HandleIguser_post_media
-	handlers["iguser_post_media_publish"] = HandleIguser_post_media_publish
-	handlers["iguser_post_mentions"] = HandleIguser_post_mentions
-	handlers["iguser_get_notification_message_tokens"] = HandleIguser_get_notification_message_tokens
-	handlers["iguser_get_product_appeal"] = HandleIguser_get_product_appeal
-	handlers["iguser_post_product_appeal"] = HandleIguser_post_product_appeal
-	handlers["iguser_get_recently_searched_hashtags"] = HandleIguser_get_recently_searched_hashtags
-	handlers["iguser_get_stories"] = HandleIguser_get_stories
-	handlers["iguser_get_tags"] = HandleIguser_get_tags
-	handlers["iguser_get_upcoming_events"] = HandleIguser_get_upcoming_events
-	handlers["iguser_post_upcoming_events"] = HandleIguser_post_upcoming_events
-	handlers["iguser_get_welcome_message_flows"] = HandleIguser_get_welcome_message_flows
-	handlers["iguser_get_"] = HandleIguser_get_
-	handlers["videotextquestion_get_"] = HandleVideotextquestion_get_
-	handlers["calibratorexistingrule_get_"] = HandleCalibratorexistingrule_get_
-	handlers["businesstag_get_"] = HandleBusinesstag_get_
-	handlers["productset_get_automotive_models"] = HandleProductset_get_automotive_models
-	handlers["productset_get_destinations"] = HandleProductset_get_destinations
-	handlers["productset_get_flights"] = HandleProductset_get_flights
-	handlers["productset_get_home_listings"] = HandleProductset_get_home_listings
-	handlers["productset_get_hotels"] = HandleProductset_get_hotels
-	handlers["productset_get_media_titles"] = HandleProductset_get_media_titles
-	handlers["productset_get_products"] = HandleProductset_get_products
-	handlers["productset_get_vehicle_offers"] = HandleProductset_get_vehicle_offers
-	handlers["productset_get_vehicles"] = HandleProductset_get_vehicles
-	handlers["productset_delete_"] = HandleProductset_delete_
-	handlers["productset_get_"] = HandleProductset_get_
-	handlers["productset_post_"] = HandleProductset_post_
-	handlers["stories_get_insights"] = HandleStories_get_insights
-	handlers["stories_get_"] = HandleStories_get_
-	handlers["wearabledevicepublickey_get_"] = HandleWearabledevicepublickey_get_
-	handlers["almendadvertiserinfo_get_"] = HandleAlmendadvertiserinfo_get_
-	handlers["fantasygame_get_"] = HandleFantasygame_get_
-	handlers["blindpig_get_"] = HandleBlindpig_get_
-	handlers["musicworkcopyright_get_"] = HandleMusicworkcopyright_get_
-	handlers["reachfrequencyprediction_get_"] = HandleReachfrequencyprediction_get_
-	handlers["eventticketsetting_get_"] = HandleEventticketsetting_get_
-	handlers["adsreportbuildermmmreportscheduler_get_"] = HandleAdsreportbuildermmmreportscheduler_get_
-	handlers["pageleadsaccessconfig_get_"] = HandlePageleadsaccessconfig_get_
-	handlers["adstudy_get_cells"] = HandleAdstudy_get_cells
-	handlers["adstudy_post_checkpoint"] = HandleAdstudy_post_checkpoint
-	handlers["adstudy_get_instances"] = HandleAdstudy_get_instances
-	handlers["adstudy_post_instances"] = HandleAdstudy_post_instances
-	handlers["adstudy_get_objectives"] = HandleAdstudy_get_objectives
-	handlers["adstudy_delete_"] = HandleAdstudy_delete_
-	handlers["adstudy_get_"] = HandleAdstudy_get_
-	handlers["adstudy_post_"] = HandleAdstudy_post_
-	handlers["audiosublabel_get_"] = HandleAudiosublabel_get_
-	handlers["extendedcredit_get_extended_credit_invoice_groups"] = HandleExtendedcredit_get_extended_credit_invoice_groups
-	handlers["extendedcredit_post_extended_credit_invoice_groups"] = HandleExtendedcredit_post_extended_credit_invoice_groups
-	handlers["extendedcredit_get_owning_credit_allocation_configs"] = HandleExtendedcredit_get_owning_credit_allocation_configs
-	handlers["extendedcredit_post_owning_credit_allocation_configs"] = HandleExtendedcredit_post_owning_credit_allocation_configs
-	handlers["extendedcredit_post_whatsapp_credit_attach"] = HandleExtendedcredit_post_whatsapp_credit_attach
-	handlers["extendedcredit_post_whatsapp_credit_sharing"] = HandleExtendedcredit_post_whatsapp_credit_sharing
-	handlers["extendedcredit_post_whatsapp_credit_sharing_and_attach"] = HandleExtendedcredit_post_whatsapp_credit_sharing_and_attach
-	handlers["extendedcredit_get_"] = HandleExtendedcredit_get_
-	handlers["adaccountcreationrequest_get_adaccounts"] = HandleAdaccountcreationrequest_get_adaccounts
-	handlers["adaccountcreationrequest_get_"] = HandleAdaccountcreationrequest_get_
-	handlers["adsavedkeywords_get_"] = HandleAdsavedkeywords_get_
-	handlers["brandrequest_get_"] = HandleBrandrequest_get_
-	handlers["leadgendatadraft_get_"] = HandleLeadgendatadraft_get_
-	handlers["localservicebusiness_get_channels_to_integrity_status"] = HandleLocalservicebusiness_get_channels_to_integrity_status
-	handlers["localservicebusiness_get_override_details"] = HandleLocalservicebusiness_get_override_details
-	handlers["localservicebusiness_get_"] = HandleLocalservicebusiness_get_
-	handlers["whitehatfbdlrun_get_"] = HandleWhitehatfbdlrun_get_
-	handlers["businessownedobjectonbehalfofrequest_get_"] = HandleBusinessownedobjectonbehalfofrequest_get_
-	handlers["chinabusinessonboardingvettingrequest_get_"] = HandleChinabusinessonboardingvettingrequest_get_
-	handlers["thirdpartypartnerliftrequest_get_"] = HandleThirdpartypartnerliftrequest_get_
-	handlers["adreportrun_get_insights"] = HandleAdreportrun_get_insights
-	handlers["adreportrun_get_"] = HandleAdreportrun_get_
-	handlers["adsnamingtemplate_get_"] = HandleAdsnamingtemplate_get_
-	handlers["businesscreativefolder_get_"] = HandleBusinesscreativefolder_get_
-	handlers["thirdpartypartnerpanelrequest_get_"] = HandleThirdpartypartnerpanelrequest_get_
-	handlers["adsstartyourdaywidget_get_"] = HandleAdsstartyourdaywidget_get_
-	handlers["cpasadcreationtemplate_get_"] = HandleCpasadcreationtemplate_get_
-	handlers["post_get_attachments"] = HandlePost_get_attachments
-	handlers["post_get_comments"] = HandlePost_get_comments
-	handlers["post_post_comments"] = HandlePost_post_comments
-	handlers["post_get_dynamic_posts"] = HandlePost_get_dynamic_posts
-	handlers["post_get_insights"] = HandlePost_get_insights
-	handlers["post_delete_likes"] = HandlePost_delete_likes
-	handlers["post_post_likes"] = HandlePost_post_likes
-	handlers["post_get_reactions"] = HandlePost_get_reactions
-	handlers["post_get_sharedposts"] = HandlePost_get_sharedposts
-	handlers["post_get_sponsor_tags"] = HandlePost_get_sponsor_tags
-	handlers["post_get_to"] = HandlePost_get_to
-	handlers["post_delete_"] = HandlePost_delete_
-	handlers["post_get_"] = HandlePost_get_
-	handlers["post_post_"] = HandlePost_post_
-	handlers["adsvalueadjustmentrulecollection_post_delete_rule_set"] = HandleAdsvalueadjustmentrulecollection_post_delete_rule_set
-	handlers["adsvalueadjustmentrulecollection_get_rules"] = HandleAdsvalueadjustmentrulecollection_get_rules
-	handlers["adsvalueadjustmentrulecollection_get_"] = HandleAdsvalueadjustmentrulecollection_get_
-	handlers["adsvalueadjustmentrulecollection_post_"] = HandleAdsvalueadjustmentrulecollection_post_
-	handlers["adsreportbuildermmmreport_get_"] = HandleAdsreportbuildermmmreport_get_
-	handlers["admonetizationproperty_get_adnetworkanalytics"] = HandleAdmonetizationproperty_get_adnetworkanalytics
-	handlers["admonetizationproperty_post_adnetworkanalytics"] = HandleAdmonetizationproperty_post_adnetworkanalytics
-	handlers["admonetizationproperty_get_adnetworkanalytics_results"] = HandleAdmonetizationproperty_get_adnetworkanalytics_results
-	handlers["admonetizationproperty_get_"] = HandleAdmonetizationproperty_get_
-	handlers["adspixelcapabilityoverride_get_"] = HandleAdspixelcapabilityoverride_get_
-	handlers["unifiedthread_get_messages"] = HandleUnifiedthread_get_messages
-	handlers["unifiedthread_get_"] = HandleUnifiedthread_get_
-	handlers["videocopyrightmatch_get_"] = HandleVideocopyrightmatch_get_
-	handlers["automotivemodel_get_channels_to_integrity_status"] = HandleAutomotivemodel_get_channels_to_integrity_status
-	handlers["automotivemodel_get_override_details"] = HandleAutomotivemodel_get_override_details
-	handlers["automotivemodel_get_videos_metadata"] = HandleAutomotivemodel_get_videos_metadata
-	handlers["automotivemodel_get_"] = HandleAutomotivemodel_get_
-	handlers["igaccesstokenforigonlyapi_get_"] = HandleIgaccesstokenforigonlyapi_get_
-	handlers["mailingaddress_get_"] = HandleMailingaddress_get_
-	handlers["advainstance_get_"] = HandleAdvainstance_get_
-	handlers["bizinboxoffsiteemailaccount_get_assigned_users"] = HandleBizinboxoffsiteemailaccount_get_assigned_users
-	handlers["bizinboxoffsiteemailaccount_get_"] = HandleBizinboxoffsiteemailaccount_get_
-	handlers["adsavedlocation_get_"] = HandleAdsavedlocation_get_
-	handlers["messengerbusinesstemplate_get_"] = HandleMessengerbusinesstemplate_get_
-	handlers["messengerbusinesstemplate_post_"] = HandleMessengerbusinesstemplate_post_
-	handlers["campaign_get_ad_studies"] = HandleCampaign_get_ad_studies
-	handlers["campaign_post_adlabels"] = HandleCampaign_post_adlabels
-	handlers["campaign_get_adrules_governed"] = HandleCampaign_get_adrules_governed
-	handlers["campaign_get_ads"] = HandleCampaign_get_ads
-	handlers["campaign_get_adsets"] = HandleCampaign_get_adsets
-	handlers["campaign_post_budget_schedules"] = HandleCampaign_post_budget_schedules
-	handlers["campaign_get_copies"] = HandleCampaign_get_copies
-	handlers["campaign_post_copies"] = HandleCampaign_post_copies
-	handlers["campaign_get_insights"] = HandleCampaign_get_insights
-	handlers["campaign_post_insights"] = HandleCampaign_post_insights
-	handlers["campaign_delete_"] = HandleCampaign_delete_
-	handlers["campaign_get_"] = HandleCampaign_get_
-	handlers["campaign_post_"] = HandleCampaign_post_
-	handlers["dynamiccontentset_get_"] = HandleDynamiccontentset_get_
-	handlers["educationexperience_get_"] = HandleEducationexperience_get_
-	handlers["cpasmerchantconfig_get_"] = HandleCpasmerchantconfig_get_
-	handlers["measurementreport_get_"] = HandleMeasurementreport_get_
-	handlers["adsreportbuildersavedreport_get_"] = HandleAdsreportbuildersavedreport_get_
-	handlers["dynamicitemdisplaybundle_get_"] = HandleDynamicitemdisplaybundle_get_
-	handlers["adplacepageset_get_"] = HandleAdplacepageset_get_
-	handlers["franchiseprogrammember_get_"] = HandleFranchiseprogrammember_get_
-	handlers["lifeevent_get_likes"] = HandleLifeevent_get_likes
-	handlers["lifeevent_get_"] = HandleLifeevent_get_
-	handlers["offlineproductitem_get_channels_to_integrity_status"] = HandleOfflineproductitem_get_channels_to_integrity_status
-	handlers["offlineproductitem_get_override_details"] = HandleOfflineproductitem_get_override_details
-	handlers["offlineproductitem_get_"] = HandleOfflineproductitem_get_
-	handlers["productfeeduploaderror_get_samples"] = HandleProductfeeduploaderror_get_samples
-	handlers["productfeeduploaderror_get_suggested_rules"] = HandleProductfeeduploaderror_get_suggested_rules
-	handlers["productfeeduploaderror_get_"] = HandleProductfeeduploaderror_get_
-	handlers["adspixel_get_adaccounts"] = HandleAdspixel_get_adaccounts
-	handlers["adspixel_delete_agencies"] = HandleAdspixel_delete_agencies
-	handlers["adspixel_get_agencies"] = HandleAdspixel_get_agencies
-	handlers["adspixel_post_agencies"] = HandleAdspixel_post_agencies
-	handlers["adspixel_post_ahp_configs"] = HandleAdspixel_post_ahp_configs
-	handlers["adspixel_get_assigned_users"] = HandleAdspixel_get_assigned_users
-	handlers["adspixel_post_assigned_users"] = HandleAdspixel_post_assigned_users
-	handlers["adspixel_get_da_checks"] = HandleAdspixel_get_da_checks
-	handlers["adspixel_post_events"] = HandleAdspixel_post_events
-	handlers["adspixel_get_offline_event_uploads"] = HandleAdspixel_get_offline_event_uploads
-	handlers["adspixel_get_openbridge_configurations"] = HandleAdspixel_get_openbridge_configurations
-	handlers["adspixel_post_shadowtraffichelper"] = HandleAdspixel_post_shadowtraffichelper
-	handlers["adspixel_delete_shared_accounts"] = HandleAdspixel_delete_shared_accounts
-	handlers["adspixel_get_shared_accounts"] = HandleAdspixel_get_shared_accounts
-	handlers["adspixel_post_shared_accounts"] = HandleAdspixel_post_shared_accounts
-	handlers["adspixel_get_shared_agencies"] = HandleAdspixel_get_shared_agencies
-	handlers["adspixel_get_stats"] = HandleAdspixel_get_stats
-	handlers["adspixel_get_"] = HandleAdspixel_get_
-	handlers["adspixel_post_"] = HandleAdspixel_post_
-	handlers["businessassetgroup_delete_assigned_users"] = HandleBusinessassetgroup_delete_assigned_users
-	handlers["businessassetgroup_get_assigned_users"] = HandleBusinessassetgroup_get_assigned_users
-	handlers["businessassetgroup_post_assigned_users"] = HandleBusinessassetgroup_post_assigned_users
-	handlers["businessassetgroup_delete_contained_adaccounts"] = HandleBusinessassetgroup_delete_contained_adaccounts
-	handlers["businessassetgroup_get_contained_adaccounts"] = HandleBusinessassetgroup_get_contained_adaccounts
-	handlers["businessassetgroup_post_contained_adaccounts"] = HandleBusinessassetgroup_post_contained_adaccounts
-	handlers["businessassetgroup_delete_contained_applications"] = HandleBusinessassetgroup_delete_contained_applications
-	handlers["businessassetgroup_get_contained_applications"] = HandleBusinessassetgroup_get_contained_applications
-	handlers["businessassetgroup_post_contained_applications"] = HandleBusinessassetgroup_post_contained_applications
-	handlers["businessassetgroup_delete_contained_custom_conversions"] = HandleBusinessassetgroup_delete_contained_custom_conversions
-	handlers["businessassetgroup_get_contained_custom_conversions"] = HandleBusinessassetgroup_get_contained_custom_conversions
-	handlers["businessassetgroup_post_contained_custom_conversions"] = HandleBusinessassetgroup_post_contained_custom_conversions
-	handlers["businessassetgroup_delete_contained_instagram_accounts"] = HandleBusinessassetgroup_delete_contained_instagram_accounts
-	handlers["businessassetgroup_get_contained_instagram_accounts"] = HandleBusinessassetgroup_get_contained_instagram_accounts
-	handlers["businessassetgroup_post_contained_instagram_accounts"] = HandleBusinessassetgroup_post_contained_instagram_accounts
-	handlers["businessassetgroup_delete_contained_pages"] = HandleBusinessassetgroup_delete_contained_pages
-	handlers["businessassetgroup_get_contained_pages"] = HandleBusinessassetgroup_get_contained_pages
-	handlers["businessassetgroup_post_contained_pages"] = HandleBusinessassetgroup_post_contained_pages
-	handlers["businessassetgroup_delete_contained_pixels"] = HandleBusinessassetgroup_delete_contained_pixels
-	handlers["businessassetgroup_get_contained_pixels"] = HandleBusinessassetgroup_get_contained_pixels
-	handlers["businessassetgroup_post_contained_pixels"] = HandleBusinessassetgroup_post_contained_pixels
-	handlers["businessassetgroup_delete_contained_product_catalogs"] = HandleBusinessassetgroup_delete_contained_product_catalogs
-	handlers["businessassetgroup_get_contained_product_catalogs"] = HandleBusinessassetgroup_get_contained_product_catalogs
-	handlers["businessassetgroup_post_contained_product_catalogs"] = HandleBusinessassetgroup_post_contained_product_catalogs
-	handlers["businessassetgroup_get_"] = HandleBusinessassetgroup_get_
-	handlers["businessassetgroup_post_"] = HandleBusinessassetgroup_post_
-	handlers["imagecopyrightdispute_get_"] = HandleImagecopyrightdispute_get_
-	handlers["paymentenginepayment_post_dispute"] = HandlePaymentenginepayment_post_dispute
-	handlers["paymentenginepayment_post_refunds"] = HandlePaymentenginepayment_post_refunds
-	handlers["paymentenginepayment_get_"] = HandlePaymentenginepayment_get_
-	handlers["productitemoffer_get_"] = HandleProductitemoffer_get_
-	handlers["thirdpartypartnerviewabilityrequest_get_"] = HandleThirdpartypartnerviewabilityrequest_get_
-	handlers["catalogitemoverride_get_"] = HandleCatalogitemoverride_get_
-	handlers["businessimage_get_"] = HandleBusinessimage_get_
-	handlers["homelisting_get_channels_to_integrity_status"] = HandleHomelisting_get_channels_to_integrity_status
-	handlers["homelisting_get_override_details"] = HandleHomelisting_get_override_details
-	handlers["homelisting_get_videos_metadata"] = HandleHomelisting_get_videos_metadata
-	handlers["homelisting_delete_"] = HandleHomelisting_delete_
-	handlers["homelisting_get_"] = HandleHomelisting_get_
-	handlers["homelisting_post_"] = HandleHomelisting_post_
-	handlers["storecatalogsettings_delete_"] = HandleStorecatalogsettings_delete_
-	handlers["storecatalogsettings_get_"] = HandleStorecatalogsettings_get_
-	handlers["link_post_comments"] = HandleLink_post_comments
-	handlers["link_get_likes"] = HandleLink_get_likes
-	handlers["link_get_"] = HandleLink_get_
+	handlers["adasyncrequestset_get_requests"] = HandleAdasyncrequestset_get_requests
+	handlers["adasyncrequestset_delete_"] = HandleAdasyncrequestset_delete_
+	handlers["adasyncrequestset_get_"] = HandleAdasyncrequestset_get_
+	handlers["adasyncrequestset_post_"] = HandleAdasyncrequestset_post_
 	handlers["adset_get_activities"] = HandleAdset_get_activities
 	handlers["adset_get_ad_studies"] = HandleAdset_get_ad_studies
 	handlers["adset_get_adcreatives"] = HandleAdset_get_adcreatives
@@ -595,767 +2601,16 @@ func GetAllHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mc
 	handlers["adset_delete_"] = HandleAdset_delete_
 	handlers["adset_get_"] = HandleAdset_get_
 	handlers["adset_post_"] = HandleAdset_post_
-	handlers["extendedcreditallocationconfig_delete_"] = HandleExtendedcreditallocationconfig_delete_
-	handlers["extendedcreditallocationconfig_get_"] = HandleExtendedcreditallocationconfig_get_
-	handlers["extendedcreditallocationconfig_post_"] = HandleExtendedcreditallocationconfig_post_
-	handlers["messengeradspartialautomatedsteplist_get_steps"] = HandleMessengeradspartialautomatedsteplist_get_steps
-	handlers["messengeradspartialautomatedsteplist_get_"] = HandleMessengeradspartialautomatedsteplist_get_
-	handlers["calladsphonedata_get_"] = HandleCalladsphonedata_get_
-	handlers["mediacopyrightupdaterecord_get_"] = HandleMediacopyrightupdaterecord_get_
-	handlers["signalsiwlextractor_get_"] = HandleSignalsiwlextractor_get_
-	handlers["commerceorder_post_acknowledge_order"] = HandleCommerceorder_post_acknowledge_order
-	handlers["commerceorder_get_cancellations"] = HandleCommerceorder_get_cancellations
-	handlers["commerceorder_post_cancellations"] = HandleCommerceorder_post_cancellations
-	handlers["commerceorder_post_item_updates"] = HandleCommerceorder_post_item_updates
-	handlers["commerceorder_get_items"] = HandleCommerceorder_get_items
-	handlers["commerceorder_get_payments"] = HandleCommerceorder_get_payments
-	handlers["commerceorder_get_promotion_details"] = HandleCommerceorder_get_promotion_details
-	handlers["commerceorder_get_promotions"] = HandleCommerceorder_get_promotions
-	handlers["commerceorder_get_refunds"] = HandleCommerceorder_get_refunds
-	handlers["commerceorder_post_refunds"] = HandleCommerceorder_post_refunds
-	handlers["commerceorder_get_returns"] = HandleCommerceorder_get_returns
-	handlers["commerceorder_post_returns"] = HandleCommerceorder_post_returns
-	handlers["commerceorder_get_shipments"] = HandleCommerceorder_get_shipments
-	handlers["commerceorder_post_shipments"] = HandleCommerceorder_post_shipments
-	handlers["commerceorder_post_update_shipment"] = HandleCommerceorder_post_update_shipment
-	handlers["commerceorder_get_"] = HandleCommerceorder_get_
-	handlers["user_delete_access_tokens"] = HandleUser_delete_access_tokens
-	handlers["user_post_access_tokens"] = HandleUser_post_access_tokens
-	handlers["user_get_accounts"] = HandleUser_get_accounts
-	handlers["user_post_accounts"] = HandleUser_post_accounts
-	handlers["user_get_ad_studies"] = HandleUser_get_ad_studies
-	handlers["user_post_ad_studies"] = HandleUser_post_ad_studies
-	handlers["user_get_adaccounts"] = HandleUser_get_adaccounts
-	handlers["user_get_albums"] = HandleUser_get_albums
-	handlers["user_post_applications"] = HandleUser_post_applications
-	handlers["user_get_apprequestformerrecipients"] = HandleUser_get_apprequestformerrecipients
-	handlers["user_get_apprequests"] = HandleUser_get_apprequests
-	handlers["user_get_assigned_ad_accounts"] = HandleUser_get_assigned_ad_accounts
-	handlers["user_get_assigned_applications"] = HandleUser_get_assigned_applications
-	handlers["user_get_assigned_business_asset_groups"] = HandleUser_get_assigned_business_asset_groups
-	handlers["user_get_assigned_pages"] = HandleUser_get_assigned_pages
-	handlers["user_get_assigned_product_catalogs"] = HandleUser_get_assigned_product_catalogs
-	handlers["user_get_avatars"] = HandleUser_get_avatars
-	handlers["user_get_business_users"] = HandleUser_get_business_users
-	handlers["user_delete_businesses"] = HandleUser_delete_businesses
-	handlers["user_get_businesses"] = HandleUser_get_businesses
-	handlers["user_post_businesses"] = HandleUser_post_businesses
-	handlers["user_get_conversations"] = HandleUser_get_conversations
-	handlers["user_get_custom_labels"] = HandleUser_get_custom_labels
-	handlers["user_get_events"] = HandleUser_get_events
-	handlers["user_get_feed"] = HandleUser_get_feed
-	handlers["user_post_feed"] = HandleUser_post_feed
-	handlers["user_get_friends"] = HandleUser_get_friends
-	handlers["user_get_fundraisers"] = HandleUser_get_fundraisers
-	handlers["user_post_fundraisers"] = HandleUser_post_fundraisers
-	handlers["user_get_groups"] = HandleUser_get_groups
-	handlers["user_get_ids_for_apps"] = HandleUser_get_ids_for_apps
-	handlers["user_get_ids_for_business"] = HandleUser_get_ids_for_business
-	handlers["user_get_ids_for_pages"] = HandleUser_get_ids_for_pages
-	handlers["user_get_likes"] = HandleUser_get_likes
-	handlers["user_get_live_videos"] = HandleUser_get_live_videos
-	handlers["user_post_live_videos"] = HandleUser_post_live_videos
-	handlers["user_post_messenger_desktop_performance_traces"] = HandleUser_post_messenger_desktop_performance_traces
-	handlers["user_post_messenger_kids_accounts_unread_badge"] = HandleUser_post_messenger_kids_accounts_unread_badge
-	handlers["user_get_music"] = HandleUser_get_music
-	handlers["user_post_notifications"] = HandleUser_post_notifications
-	handlers["user_get_payment_transactions"] = HandleUser_get_payment_transactions
-	handlers["user_delete_permissions"] = HandleUser_delete_permissions
-	handlers["user_get_permissions"] = HandleUser_get_permissions
-	handlers["user_get_personal_ad_accounts"] = HandleUser_get_personal_ad_accounts
-	handlers["user_get_photos"] = HandleUser_get_photos
-	handlers["user_post_photos"] = HandleUser_post_photos
-	handlers["user_get_picture"] = HandleUser_get_picture
-	handlers["user_get_posts"] = HandleUser_get_posts
-	handlers["user_get_rich_media_documents"] = HandleUser_get_rich_media_documents
-	handlers["user_post_staging_resources"] = HandleUser_post_staging_resources
-	handlers["user_get_videos"] = HandleUser_get_videos
-	handlers["user_post_videos"] = HandleUser_post_videos
-	handlers["user_delete_"] = HandleUser_delete_
-	handlers["user_get_"] = HandleUser_get_
-	handlers["user_post_"] = HandleUser_post_
-	handlers["group_delete_admins"] = HandleGroup_delete_admins
-	handlers["group_post_admins"] = HandleGroup_post_admins
-	handlers["group_get_albums"] = HandleGroup_get_albums
-	handlers["group_get_docs"] = HandleGroup_get_docs
-	handlers["group_get_events"] = HandleGroup_get_events
-	handlers["group_get_feed"] = HandleGroup_get_feed
-	handlers["group_post_feed"] = HandleGroup_post_feed
-	handlers["group_get_files"] = HandleGroup_get_files
-	handlers["group_get_groups"] = HandleGroup_get_groups
-	handlers["group_post_groups"] = HandleGroup_post_groups
-	handlers["group_get_live_videos"] = HandleGroup_get_live_videos
-	handlers["group_post_live_videos"] = HandleGroup_post_live_videos
-	handlers["group_delete_members"] = HandleGroup_delete_members
-	handlers["group_post_members"] = HandleGroup_post_members
-	handlers["group_get_opted_in_members"] = HandleGroup_get_opted_in_members
-	handlers["group_post_photos"] = HandleGroup_post_photos
-	handlers["group_get_picture"] = HandleGroup_get_picture
-	handlers["group_get_videos"] = HandleGroup_get_videos
-	handlers["group_post_videos"] = HandleGroup_post_videos
-	handlers["group_get_"] = HandleGroup_get_
-	handlers["group_post_"] = HandleGroup_post_
-	handlers["adsmcmeconversion_get_"] = HandleAdsmcmeconversion_get_
-	handlers["audioisrc_get_"] = HandleAudioisrc_get_
-	handlers["igcomment_get_replies"] = HandleIgcomment_get_replies
-	handlers["igcomment_post_replies"] = HandleIgcomment_post_replies
-	handlers["igcomment_delete_"] = HandleIgcomment_delete_
-	handlers["igcomment_get_"] = HandleIgcomment_get_
-	handlers["igcomment_post_"] = HandleIgcomment_post_
-	handlers["cpasbusinesssetupconfig_get_ad_accounts"] = HandleCpasbusinesssetupconfig_get_ad_accounts
-	handlers["cpasbusinesssetupconfig_get_"] = HandleCpasbusinesssetupconfig_get_
-	handlers["highdemandperiod_delete_"] = HandleHighdemandperiod_delete_
-	handlers["highdemandperiod_get_"] = HandleHighdemandperiod_get_
-	handlers["highdemandperiod_post_"] = HandleHighdemandperiod_post_
-	handlers["adlightadgroup_get_"] = HandleAdlightadgroup_get_
-	handlers["slicedeventsourcegroup_get_"] = HandleSlicedeventsourcegroup_get_
-	handlers["analyticsuserconfig_get_"] = HandleAnalyticsuserconfig_get_
-	handlers["applinks_get_"] = HandleApplinks_get_
-	handlers["productfeedupload_post_error_report"] = HandleProductfeedupload_post_error_report
-	handlers["productfeedupload_get_errors"] = HandleProductfeedupload_get_errors
-	handlers["productfeedupload_get_"] = HandleProductfeedupload_get_
-	handlers["robot_get_"] = HandleRobot_get_
-	handlers["offlineconversiondataset_get_adaccounts"] = HandleOfflineconversiondataset_get_adaccounts
-	handlers["offlineconversiondataset_get_agencies"] = HandleOfflineconversiondataset_get_agencies
-	handlers["offlineconversiondataset_get_audiences"] = HandleOfflineconversiondataset_get_audiences
-	handlers["offlineconversiondataset_get_customconversions"] = HandleOfflineconversiondataset_get_customconversions
-	handlers["offlineconversiondataset_get_server_events_permitted_business"] = HandleOfflineconversiondataset_get_server_events_permitted_business
-	handlers["offlineconversiondataset_get_shared_accounts"] = HandleOfflineconversiondataset_get_shared_accounts
-	handlers["offlineconversiondataset_get_shared_agencies"] = HandleOfflineconversiondataset_get_shared_agencies
-	handlers["offlineconversiondataset_get_stats"] = HandleOfflineconversiondataset_get_stats
-	handlers["offlineconversiondataset_get_uploads"] = HandleOfflineconversiondataset_get_uploads
-	handlers["offlineconversiondataset_get_"] = HandleOfflineconversiondataset_get_
-	handlers["pagecalltoaction_delete_"] = HandlePagecalltoaction_delete_
-	handlers["pagecalltoaction_get_"] = HandlePagecalltoaction_get_
-	handlers["pagecalltoaction_post_"] = HandlePagecalltoaction_post_
-	handlers["igmediaboosteligibilityinfo_get_"] = HandleIgmediaboosteligibilityinfo_get_
-	handlers["dynamicitemdisplaybundlefolder_get_"] = HandleDynamicitemdisplaybundlefolder_get_
-	handlers["persona_delete_"] = HandlePersona_delete_
-	handlers["persona_get_"] = HandlePersona_get_
-	handlers["adscreationsavedstate_get_"] = HandleAdscreationsavedstate_get_
-	handlers["business_post_access_token"] = HandleBusiness_post_access_token
-	handlers["business_get_ad_account_infos"] = HandleBusiness_get_ad_account_infos
-	handlers["business_delete_ad_accounts"] = HandleBusiness_delete_ad_accounts
-	handlers["business_post_ad_review_requests"] = HandleBusiness_post_ad_review_requests
-	handlers["business_get_ad_studies"] = HandleBusiness_get_ad_studies
-	handlers["business_post_ad_studies"] = HandleBusiness_post_ad_studies
-	handlers["business_post_adaccount"] = HandleBusiness_post_adaccount
-	handlers["business_post_add_phone_numbers"] = HandleBusiness_post_add_phone_numbers
-	handlers["business_post_adnetwork_applications"] = HandleBusiness_post_adnetwork_applications
-	handlers["business_get_adnetworkanalytics"] = HandleBusiness_get_adnetworkanalytics
-	handlers["business_post_adnetworkanalytics"] = HandleBusiness_post_adnetworkanalytics
-	handlers["business_get_adnetworkanalytics_results"] = HandleBusiness_get_adnetworkanalytics_results
-	handlers["business_get_ads_dataset"] = HandleBusiness_get_ads_dataset
-	handlers["business_post_ads_dataset"] = HandleBusiness_post_ads_dataset
-	handlers["business_get_ads_reporting_mmm_reports"] = HandleBusiness_get_ads_reporting_mmm_reports
-	handlers["business_get_ads_reporting_mmm_schedulers"] = HandleBusiness_get_ads_reporting_mmm_schedulers
-	handlers["business_get_adspixels"] = HandleBusiness_get_adspixels
-	handlers["business_post_adspixels"] = HandleBusiness_post_adspixels
-	handlers["business_delete_agencies"] = HandleBusiness_delete_agencies
-	handlers["business_get_agencies"] = HandleBusiness_get_agencies
-	handlers["business_get_an_placements"] = HandleBusiness_get_an_placements
-	handlers["business_post_block_list_drafts"] = HandleBusiness_post_block_list_drafts
-	handlers["business_post_bm_review_requests"] = HandleBusiness_post_bm_review_requests
-	handlers["business_get_business_asset_groups"] = HandleBusiness_get_business_asset_groups
-	handlers["business_get_business_invoices"] = HandleBusiness_get_business_invoices
-	handlers["business_get_business_users"] = HandleBusiness_get_business_users
-	handlers["business_post_business_users"] = HandleBusiness_post_business_users
-	handlers["business_get_businessprojects"] = HandleBusiness_get_businessprojects
-	handlers["business_post_claim_custom_conversions"] = HandleBusiness_post_claim_custom_conversions
-	handlers["business_get_client_ad_accounts"] = HandleBusiness_get_client_ad_accounts
-	handlers["business_get_client_apps"] = HandleBusiness_get_client_apps
-	handlers["business_post_client_apps"] = HandleBusiness_post_client_apps
-	handlers["business_get_client_offsite_signal_container_business_objects"] = HandleBusiness_get_client_offsite_signal_container_business_objects
-	handlers["business_get_client_pages"] = HandleBusiness_get_client_pages
-	handlers["business_post_client_pages"] = HandleBusiness_post_client_pages
-	handlers["business_get_client_pixels"] = HandleBusiness_get_client_pixels
-	handlers["business_get_client_product_catalogs"] = HandleBusiness_get_client_product_catalogs
-	handlers["business_get_client_whatsapp_business_accounts"] = HandleBusiness_get_client_whatsapp_business_accounts
-	handlers["business_delete_clients"] = HandleBusiness_delete_clients
-	handlers["business_get_clients"] = HandleBusiness_get_clients
-	handlers["business_get_collaborative_ads_collaboration_requests"] = HandleBusiness_get_collaborative_ads_collaboration_requests
-	handlers["business_post_collaborative_ads_collaboration_requests"] = HandleBusiness_post_collaborative_ads_collaboration_requests
-	handlers["business_get_collaborative_ads_suggested_partners"] = HandleBusiness_get_collaborative_ads_suggested_partners
-	handlers["business_get_commerce_merchant_settings"] = HandleBusiness_get_commerce_merchant_settings
-	handlers["business_get_cpas_business_setup_config"] = HandleBusiness_get_cpas_business_setup_config
-	handlers["business_post_cpas_business_setup_config"] = HandleBusiness_post_cpas_business_setup_config
-	handlers["business_get_cpas_merchant_config"] = HandleBusiness_get_cpas_merchant_config
-	handlers["business_post_creative_folders"] = HandleBusiness_post_creative_folders
-	handlers["business_get_creditcards"] = HandleBusiness_get_creditcards
-	handlers["business_post_customconversions"] = HandleBusiness_post_customconversions
-	handlers["business_get_event_source_groups"] = HandleBusiness_get_event_source_groups
-	handlers["business_post_event_source_groups"] = HandleBusiness_post_event_source_groups
-	handlers["business_get_extendedcreditapplications"] = HandleBusiness_get_extendedcreditapplications
-	handlers["business_get_extendedcredits"] = HandleBusiness_get_extendedcredits
-	handlers["business_post_images"] = HandleBusiness_post_images
-	handlers["business_get_initiated_audience_sharing_requests"] = HandleBusiness_get_initiated_audience_sharing_requests
-	handlers["business_delete_instagram_accounts"] = HandleBusiness_delete_instagram_accounts
-	handlers["business_get_instagram_accounts"] = HandleBusiness_get_instagram_accounts
-	handlers["business_get_instagram_business_accounts"] = HandleBusiness_get_instagram_business_accounts
-	handlers["business_delete_managed_businesses"] = HandleBusiness_delete_managed_businesses
-	handlers["business_post_managed_businesses"] = HandleBusiness_post_managed_businesses
-	handlers["business_get_managed_partner_ads_funding_source_details"] = HandleBusiness_get_managed_partner_ads_funding_source_details
-	handlers["business_post_managed_partner_business_setup"] = HandleBusiness_post_managed_partner_business_setup
-	handlers["business_delete_managed_partner_businesses"] = HandleBusiness_delete_managed_partner_businesses
-	handlers["business_post_managed_partner_businesses"] = HandleBusiness_post_managed_partner_businesses
-	handlers["business_post_onboard_partners_to_mm_lite"] = HandleBusiness_post_onboard_partners_to_mm_lite
-	handlers["business_get_openbridge_configurations"] = HandleBusiness_get_openbridge_configurations
-	handlers["business_post_openbridge_configurations"] = HandleBusiness_post_openbridge_configurations
-	handlers["business_get_owned_ad_accounts"] = HandleBusiness_get_owned_ad_accounts
-	handlers["business_post_owned_ad_accounts"] = HandleBusiness_post_owned_ad_accounts
-	handlers["business_get_owned_apps"] = HandleBusiness_get_owned_apps
-	handlers["business_post_owned_apps"] = HandleBusiness_post_owned_apps
-	handlers["business_delete_owned_businesses"] = HandleBusiness_delete_owned_businesses
-	handlers["business_get_owned_businesses"] = HandleBusiness_get_owned_businesses
-	handlers["business_post_owned_businesses"] = HandleBusiness_post_owned_businesses
-	handlers["business_get_owned_instagram_accounts"] = HandleBusiness_get_owned_instagram_accounts
-	handlers["business_get_owned_offsite_signal_container_business_objects"] = HandleBusiness_get_owned_offsite_signal_container_business_objects
-	handlers["business_get_owned_pages"] = HandleBusiness_get_owned_pages
-	handlers["business_post_owned_pages"] = HandleBusiness_post_owned_pages
-	handlers["business_get_owned_pixels"] = HandleBusiness_get_owned_pixels
-	handlers["business_get_owned_product_catalogs"] = HandleBusiness_get_owned_product_catalogs
-	handlers["business_post_owned_product_catalogs"] = HandleBusiness_post_owned_product_catalogs
-	handlers["business_get_owned_whatsapp_business_accounts"] = HandleBusiness_get_owned_whatsapp_business_accounts
-	handlers["business_delete_pages"] = HandleBusiness_delete_pages
-	handlers["business_get_partner_account_linking"] = HandleBusiness_get_partner_account_linking
-	handlers["business_post_partner_premium_options"] = HandleBusiness_post_partner_premium_options
-	handlers["business_get_passback_attribution_metadata_configs"] = HandleBusiness_get_passback_attribution_metadata_configs
-	handlers["business_get_pending_client_ad_accounts"] = HandleBusiness_get_pending_client_ad_accounts
-	handlers["business_get_pending_client_apps"] = HandleBusiness_get_pending_client_apps
-	handlers["business_get_pending_client_pages"] = HandleBusiness_get_pending_client_pages
-	handlers["business_get_pending_owned_ad_accounts"] = HandleBusiness_get_pending_owned_ad_accounts
-	handlers["business_get_pending_owned_pages"] = HandleBusiness_get_pending_owned_pages
-	handlers["business_get_pending_shared_offsite_signal_container_business_objects"] = HandleBusiness_get_pending_shared_offsite_signal_container_business_objects
-	handlers["business_get_pending_users"] = HandleBusiness_get_pending_users
-	handlers["business_get_picture"] = HandleBusiness_get_picture
-	handlers["business_post_pixel_tos"] = HandleBusiness_post_pixel_tos
-	handlers["business_get_preverified_numbers"] = HandleBusiness_get_preverified_numbers
-	handlers["business_get_received_audience_sharing_requests"] = HandleBusiness_get_received_audience_sharing_requests
-	handlers["business_get_reseller_guidances"] = HandleBusiness_get_reseller_guidances
-	handlers["business_get_self_certified_whatsapp_business_submissions"] = HandleBusiness_get_self_certified_whatsapp_business_submissions
-	handlers["business_post_self_certify_whatsapp_business"] = HandleBusiness_post_self_certify_whatsapp_business
-	handlers["business_post_setup_managed_partner_adaccounts"] = HandleBusiness_post_setup_managed_partner_adaccounts
-	handlers["business_delete_share_preverified_numbers"] = HandleBusiness_delete_share_preverified_numbers
-	handlers["business_post_share_preverified_numbers"] = HandleBusiness_post_share_preverified_numbers
-	handlers["business_post_system_user_access_tokens"] = HandleBusiness_post_system_user_access_tokens
-	handlers["business_get_system_users"] = HandleBusiness_get_system_users
-	handlers["business_post_system_users"] = HandleBusiness_post_system_users
-	handlers["business_get_third_party_measurement_report_dataset"] = HandleBusiness_get_third_party_measurement_report_dataset
-	handlers["business_post_videos"] = HandleBusiness_post_videos
-	handlers["business_get_"] = HandleBusiness_get_
-	handlers["business_post_"] = HandleBusiness_post_
-	handlers["pageinsightsasyncexportrun_get_"] = HandlePageinsightsasyncexportrun_get_
-	handlers["eventregistrationsetting_get_"] = HandleEventregistrationsetting_get_
-	handlers["creditcard_get_"] = HandleCreditcard_get_
-	handlers["adproposal_get_"] = HandleAdproposal_get_
-	handlers["imagecopyright_get_"] = HandleImagecopyright_get_
-	handlers["imagecopyright_post_"] = HandleImagecopyright_post_
-	handlers["woodhengesupporter_get_"] = HandleWoodhengesupporter_get_
-	handlers["businessassetsharingagreement_get_"] = HandleBusinessassetsharingagreement_get_
-	handlers["businessassetsharingagreement_post_"] = HandleBusinessassetsharingagreement_post_
-	handlers["geogatingpolicy_get_"] = HandleGeogatingpolicy_get_
-	handlers["offlinetermsofservice_get_"] = HandleOfflinetermsofservice_get_
-	handlers["productitem_get_channels_to_integrity_status"] = HandleProductitem_get_channels_to_integrity_status
-	handlers["productitem_get_override_details"] = HandleProductitem_get_override_details
-	handlers["productitem_get_product_sets"] = HandleProductitem_get_product_sets
-	handlers["productitem_get_videos_metadata"] = HandleProductitem_get_videos_metadata
-	handlers["productitem_delete_"] = HandleProductitem_delete_
-	handlers["productitem_get_"] = HandleProductitem_get_
-	handlers["productitem_post_"] = HandleProductitem_post_
-	handlers["album_get_comments"] = HandleAlbum_get_comments
-	handlers["album_post_comments"] = HandleAlbum_post_comments
-	handlers["album_get_likes"] = HandleAlbum_get_likes
-	handlers["album_post_likes"] = HandleAlbum_post_likes
-	handlers["album_get_photos"] = HandleAlbum_get_photos
-	handlers["album_post_photos"] = HandleAlbum_post_photos
-	handlers["album_get_picture"] = HandleAlbum_get_picture
-	handlers["album_get_"] = HandleAlbum_get_
-	handlers["bcpcampaign_get_"] = HandleBcpcampaign_get_
-	handlers["partnerintegrationlinked_get_"] = HandlePartnerintegrationlinked_get_
+	handlers["adplacement_get_"] = HandleAdplacement_get_
+	handlers["adreportrun_get_insights"] = HandleAdreportrun_get_insights
+	handlers["adreportrun_get_"] = HandleAdreportrun_get_
 	handlers["adtoplinedetail_get_"] = HandleAdtoplinedetail_get_
-	handlers["catalogwebsiteonboardingsettings_get_"] = HandleCatalogwebsiteonboardingsettings_get_
-	handlers["hotelroom_get_pricing_variables"] = HandleHotelroom_get_pricing_variables
-	handlers["hotelroom_get_"] = HandleHotelroom_get_
-	handlers["adlabel_get_adcreatives"] = HandleAdlabel_get_adcreatives
-	handlers["adlabel_get_ads"] = HandleAdlabel_get_ads
-	handlers["adlabel_get_adsets"] = HandleAdlabel_get_adsets
-	handlers["adlabel_get_campaigns"] = HandleAdlabel_get_campaigns
-	handlers["adlabel_delete_"] = HandleAdlabel_delete_
-	handlers["adlabel_get_"] = HandleAdlabel_get_
-	handlers["adlabel_post_"] = HandleAdlabel_post_
-	handlers["igupcomingevent_get_"] = HandleIgupcomingevent_get_
-	handlers["igupcomingevent_post_"] = HandleIgupcomingevent_post_
-	handlers["livevideoinputstream_get_"] = HandleLivevideoinputstream_get_
-	handlers["extendedcreditinvoicegroup_delete_ad_accounts"] = HandleExtendedcreditinvoicegroup_delete_ad_accounts
-	handlers["extendedcreditinvoicegroup_get_ad_accounts"] = HandleExtendedcreditinvoicegroup_get_ad_accounts
-	handlers["extendedcreditinvoicegroup_post_ad_accounts"] = HandleExtendedcreditinvoicegroup_post_ad_accounts
-	handlers["extendedcreditinvoicegroup_delete_"] = HandleExtendedcreditinvoicegroup_delete_
-	handlers["extendedcreditinvoicegroup_get_"] = HandleExtendedcreditinvoicegroup_get_
-	handlers["extendedcreditinvoicegroup_post_"] = HandleExtendedcreditinvoicegroup_post_
-	handlers["status_post_likes"] = HandleStatus_post_likes
-	handlers["status_get_"] = HandleStatus_get_
-	handlers["igrefreshaccesstokenforigonlyapi_get_"] = HandleIgrefreshaccesstokenforigonlyapi_get_
-	handlers["shop_get_"] = HandleShop_get_
-	handlers["event_get_comments"] = HandleEvent_get_comments
-	handlers["event_get_feed"] = HandleEvent_get_feed
-	handlers["event_get_live_videos"] = HandleEvent_get_live_videos
-	handlers["event_post_live_videos"] = HandleEvent_post_live_videos
-	handlers["event_get_photos"] = HandleEvent_get_photos
-	handlers["event_get_picture"] = HandleEvent_get_picture
-	handlers["event_get_posts"] = HandleEvent_get_posts
-	handlers["event_get_roles"] = HandleEvent_get_roles
-	handlers["event_get_ticket_tiers"] = HandleEvent_get_ticket_tiers
-	handlers["event_get_videos"] = HandleEvent_get_videos
-	handlers["event_get_"] = HandleEvent_get_
-	handlers["collaborativeadssharesettings_get_"] = HandleCollaborativeadssharesettings_get_
-	handlers["cloudgame_get_"] = HandleCloudgame_get_
-	handlers["analyticssegment_get_"] = HandleAnalyticssegment_get_
-	handlers["adcustomderivedmetrics_get_"] = HandleAdcustomderivedmetrics_get_
-	handlers["adlightcampaign_get_"] = HandleAdlightcampaign_get_
-	handlers["extendedcreditapplication_get_"] = HandleExtendedcreditapplication_get_
-	handlers["mediatitle_get_channels_to_integrity_status"] = HandleMediatitle_get_channels_to_integrity_status
-	handlers["mediatitle_get_override_details"] = HandleMediatitle_get_override_details
-	handlers["mediatitle_get_videos_metadata"] = HandleMediatitle_get_videos_metadata
-	handlers["mediatitle_delete_"] = HandleMediatitle_delete_
-	handlers["mediatitle_get_"] = HandleMediatitle_get_
-	handlers["mediatitle_post_"] = HandleMediatitle_post_
-	handlers["researchpollstudy_get_"] = HandleResearchpollstudy_get_
-	handlers["videopoll_get_poll_options"] = HandleVideopoll_get_poll_options
-	handlers["videopoll_get_"] = HandleVideopoll_get_
-	handlers["videopoll_post_"] = HandleVideopoll_post_
-	handlers["withasset3d_get_"] = HandleWithasset3d_get_
-	handlers["adsusersettings_get_"] = HandleAdsusersettings_get_
-	handlers["asyncsession_get_"] = HandleAsyncsession_get_
-	handlers["productfeed_get_automotive_models"] = HandleProductfeed_get_automotive_models
-	handlers["productfeed_get_destinations"] = HandleProductfeed_get_destinations
-	handlers["productfeed_get_flights"] = HandleProductfeed_get_flights
-	handlers["productfeed_get_home_listings"] = HandleProductfeed_get_home_listings
-	handlers["productfeed_get_hotels"] = HandleProductfeed_get_hotels
-	handlers["productfeed_get_media_titles"] = HandleProductfeed_get_media_titles
-	handlers["productfeed_get_products"] = HandleProductfeed_get_products
-	handlers["productfeed_get_rules"] = HandleProductfeed_get_rules
-	handlers["productfeed_post_rules"] = HandleProductfeed_post_rules
-	handlers["productfeed_post_supplementary_feed_assocs"] = HandleProductfeed_post_supplementary_feed_assocs
-	handlers["productfeed_get_upload_schedules"] = HandleProductfeed_get_upload_schedules
-	handlers["productfeed_post_upload_schedules"] = HandleProductfeed_post_upload_schedules
-	handlers["productfeed_get_uploads"] = HandleProductfeed_get_uploads
-	handlers["productfeed_post_uploads"] = HandleProductfeed_post_uploads
-	handlers["productfeed_get_vehicle_offers"] = HandleProductfeed_get_vehicle_offers
-	handlers["productfeed_get_vehicles"] = HandleProductfeed_get_vehicles
-	handlers["productfeed_delete_"] = HandleProductfeed_delete_
-	handlers["productfeed_get_"] = HandleProductfeed_get_
-	handlers["productfeed_post_"] = HandleProductfeed_post_
-	handlers["adasyncrequestset_get_requests"] = HandleAdasyncrequestset_get_requests
-	handlers["adasyncrequestset_delete_"] = HandleAdasyncrequestset_delete_
-	handlers["adasyncrequestset_get_"] = HandleAdasyncrequestset_get_
-	handlers["adasyncrequestset_post_"] = HandleAdasyncrequestset_post_
-	handlers["apprequest_delete_"] = HandleApprequest_delete_
-	handlers["apprequest_get_"] = HandleApprequest_get_
-	handlers["businessagreement_get_"] = HandleBusinessagreement_get_
-	handlers["businessagreement_post_"] = HandleBusinessagreement_post_
-	handlers["igboostmediaad_get_"] = HandleIgboostmediaad_get_
-	handlers["creatorassetcreative_get_"] = HandleCreatorassetcreative_get_
-	handlers["businessrequest_get_"] = HandleBusinessrequest_get_
-	handlers["dynamicvideometadata_get_"] = HandleDynamicvideometadata_get_
-	handlers["shadowighashtag_get_recent_media"] = HandleShadowighashtag_get_recent_media
-	handlers["shadowighashtag_get_top_media"] = HandleShadowighashtag_get_top_media
-	handlers["shadowighashtag_get_"] = HandleShadowighashtag_get_
-	handlers["adsreportbuilderexportcore_get_"] = HandleAdsreportbuilderexportcore_get_
-	handlers["pageupcomingchange_get_"] = HandlePageupcomingchange_get_
-	handlers["fbimagecopyrightmatch_get_"] = HandleFbimagecopyrightmatch_get_
-	handlers["adcreative_post_adlabels"] = HandleAdcreative_post_adlabels
-	handlers["adcreative_get_creative_insights"] = HandleAdcreative_get_creative_insights
-	handlers["adcreative_get_previews"] = HandleAdcreative_get_previews
-	handlers["adcreative_delete_"] = HandleAdcreative_delete_
-	handlers["adcreative_get_"] = HandleAdcreative_get_
-	handlers["adcreative_post_"] = HandleAdcreative_post_
-	handlers["usercontext_get_"] = HandleUsercontext_get_
-	handlers["livevideo_get_blocked_users"] = HandleLivevideo_get_blocked_users
-	handlers["livevideo_get_comments"] = HandleLivevideo_get_comments
-	handlers["livevideo_get_crosspost_shared_pages"] = HandleLivevideo_get_crosspost_shared_pages
-	handlers["livevideo_get_crossposted_broadcasts"] = HandleLivevideo_get_crossposted_broadcasts
-	handlers["livevideo_get_errors"] = HandleLivevideo_get_errors
-	handlers["livevideo_post_input_streams"] = HandleLivevideo_post_input_streams
-	handlers["livevideo_get_polls"] = HandleLivevideo_get_polls
-	handlers["livevideo_post_polls"] = HandleLivevideo_post_polls
-	handlers["livevideo_get_reactions"] = HandleLivevideo_get_reactions
-	handlers["livevideo_delete_"] = HandleLivevideo_delete_
-	handlers["livevideo_get_"] = HandleLivevideo_get_
-	handlers["livevideo_post_"] = HandleLivevideo_post_
-	handlers["businessobjecttransferownershipagreement_get_"] = HandleBusinessobjecttransferownershipagreement_get_
-	handlers["lead_delete_"] = HandleLead_delete_
-	handlers["lead_get_"] = HandleLead_get_
-	handlers["productfeedrule_delete_"] = HandleProductfeedrule_delete_
-	handlers["productfeedrule_get_"] = HandleProductfeedrule_get_
-	handlers["productfeedrule_post_"] = HandleProductfeedrule_post_
-	handlers["bidschedule_get_"] = HandleBidschedule_get_
-	handlers["fundraiserpersontocharity_get_donations"] = HandleFundraiserpersontocharity_get_donations
-	handlers["fundraiserpersontocharity_post_end_fundraiser"] = HandleFundraiserpersontocharity_post_end_fundraiser
-	handlers["fundraiserpersontocharity_get_external_donations"] = HandleFundraiserpersontocharity_get_external_donations
-	handlers["fundraiserpersontocharity_post_external_donations"] = HandleFundraiserpersontocharity_post_external_donations
-	handlers["fundraiserpersontocharity_get_"] = HandleFundraiserpersontocharity_get_
-	handlers["fundraiserpersontocharity_post_"] = HandleFundraiserpersontocharity_post_
-	handlers["mediacopyrightattribution_get_"] = HandleMediacopyrightattribution_get_
-	handlers["contentblocklist_get_applied_ad_accounts"] = HandleContentblocklist_get_applied_ad_accounts
-	handlers["contentblocklist_get_facebook_content"] = HandleContentblocklist_get_facebook_content
-	handlers["contentblocklist_get_instagram_content"] = HandleContentblocklist_get_instagram_content
-	handlers["contentblocklist_get_"] = HandleContentblocklist_get_
-	handlers["instagramuser_get_agencies"] = HandleInstagramuser_get_agencies
-	handlers["instagramuser_get_ar_effects"] = HandleInstagramuser_get_ar_effects
-	handlers["instagramuser_get_authorized_adaccounts"] = HandleInstagramuser_get_authorized_adaccounts
-	handlers["instagramuser_get_upcoming_events"] = HandleInstagramuser_get_upcoming_events
-	handlers["instagramuser_get_"] = HandleInstagramuser_get_
-	handlers["adrule_post_execute"] = HandleAdrule_post_execute
-	handlers["adrule_get_history"] = HandleAdrule_get_history
-	handlers["adrule_post_preview"] = HandleAdrule_post_preview
-	handlers["adrule_delete_"] = HandleAdrule_delete_
-	handlers["adrule_get_"] = HandleAdrule_get_
-	handlers["adrule_post_"] = HandleAdrule_post_
-	handlers["userpageonetimeoptintokensettings_get_"] = HandleUserpageonetimeoptintokensettings_get_
-	handlers["canvas_get_preview"] = HandleCanvas_get_preview
-	handlers["canvas_get_previews"] = HandleCanvas_get_previews
-	handlers["canvas_get_"] = HandleCanvas_get_
-	handlers["canvas_post_"] = HandleCanvas_post_
-	handlers["favoritecatalog_get_"] = HandleFavoritecatalog_get_
-	handlers["leadgenform_get_leads"] = HandleLeadgenform_get_leads
-	handlers["leadgenform_get_test_leads"] = HandleLeadgenform_get_test_leads
-	handlers["leadgenform_post_test_leads"] = HandleLeadgenform_post_test_leads
-	handlers["leadgenform_get_"] = HandleLeadgenform_get_
-	handlers["leadgenform_post_"] = HandleLeadgenform_post_
-	handlers["thirdpartypartnerpanelscheduled_get_"] = HandleThirdpartypartnerpanelscheduled_get_
-	handlers["websitecreativeassetsource_get_"] = HandleWebsitecreativeassetsource_get_
-	handlers["appeventconfig_get_"] = HandleAppeventconfig_get_
-	handlers["adlightcampaigngroup_get_"] = HandleAdlightcampaigngroup_get_
-	handlers["adsquickviews_get_"] = HandleAdsquickviews_get_
-	handlers["customconversion_get_stats"] = HandleCustomconversion_get_stats
-	handlers["customconversion_delete_"] = HandleCustomconversion_delete_
-	handlers["customconversion_get_"] = HandleCustomconversion_get_
-	handlers["customconversion_post_"] = HandleCustomconversion_post_
-	handlers["hours_get_"] = HandleHours_get_
-	handlers["businessuser_get_assigned_ad_accounts"] = HandleBusinessuser_get_assigned_ad_accounts
-	handlers["businessuser_get_assigned_business_asset_groups"] = HandleBusinessuser_get_assigned_business_asset_groups
-	handlers["businessuser_get_assigned_pages"] = HandleBusinessuser_get_assigned_pages
-	handlers["businessuser_get_assigned_product_catalogs"] = HandleBusinessuser_get_assigned_product_catalogs
-	handlers["businessuser_delete_"] = HandleBusinessuser_delete_
-	handlers["businessuser_get_"] = HandleBusinessuser_get_
-	handlers["businessuser_post_"] = HandleBusinessuser_post_
-	handlers["videocopyright_get_update_records"] = HandleVideocopyright_get_update_records
-	handlers["videocopyright_get_"] = HandleVideocopyright_get_
-	handlers["videocopyright_post_"] = HandleVideocopyright_post_
-	handlers["productimage_get_"] = HandleProductimage_get_
-	handlers["canvasdynamicsetting_get_"] = HandleCanvasdynamicsetting_get_
-	handlers["adcreationpackageconfig_get_"] = HandleAdcreationpackageconfig_get_
-	handlers["productcatalog_delete_agencies"] = HandleProductcatalog_delete_agencies
-	handlers["productcatalog_get_agencies"] = HandleProductcatalog_get_agencies
-	handlers["productcatalog_post_agencies"] = HandleProductcatalog_post_agencies
-	handlers["productcatalog_delete_assigned_users"] = HandleProductcatalog_delete_assigned_users
-	handlers["productcatalog_get_assigned_users"] = HandleProductcatalog_get_assigned_users
-	handlers["productcatalog_post_assigned_users"] = HandleProductcatalog_post_assigned_users
-	handlers["productcatalog_get_automotive_models"] = HandleProductcatalog_get_automotive_models
-	handlers["productcatalog_post_batch"] = HandleProductcatalog_post_batch
-	handlers["productcatalog_post_catalog_store"] = HandleProductcatalog_post_catalog_store
-	handlers["productcatalog_get_categories"] = HandleProductcatalog_get_categories
-	handlers["productcatalog_post_categories"] = HandleProductcatalog_post_categories
-	handlers["productcatalog_get_check_batch_request_status"] = HandleProductcatalog_get_check_batch_request_status
-	handlers["productcatalog_get_check_marketplace_partner_sellers_status"] = HandleProductcatalog_get_check_marketplace_partner_sellers_status
-	handlers["productcatalog_get_collaborative_ads_lsb_image_bank"] = HandleProductcatalog_get_collaborative_ads_lsb_image_bank
-	handlers["productcatalog_get_collaborative_ads_share_settings"] = HandleProductcatalog_get_collaborative_ads_share_settings
-	handlers["productcatalog_post_cpas_lsb_image_bank"] = HandleProductcatalog_post_cpas_lsb_image_bank
-	handlers["productcatalog_get_creator_asset_creatives"] = HandleProductcatalog_get_creator_asset_creatives
-	handlers["productcatalog_get_data_sources"] = HandleProductcatalog_get_data_sources
-	handlers["productcatalog_get_destinations"] = HandleProductcatalog_get_destinations
-	handlers["productcatalog_get_diagnostics"] = HandleProductcatalog_get_diagnostics
-	handlers["productcatalog_get_event_stats"] = HandleProductcatalog_get_event_stats
-	handlers["productcatalog_delete_external_event_sources"] = HandleProductcatalog_delete_external_event_sources
-	handlers["productcatalog_get_external_event_sources"] = HandleProductcatalog_get_external_event_sources
-	handlers["productcatalog_post_external_event_sources"] = HandleProductcatalog_post_external_event_sources
-	handlers["productcatalog_get_flights"] = HandleProductcatalog_get_flights
-	handlers["productcatalog_post_geolocated_items_batch"] = HandleProductcatalog_post_geolocated_items_batch
-	handlers["productcatalog_get_home_listings"] = HandleProductcatalog_get_home_listings
-	handlers["productcatalog_post_home_listings"] = HandleProductcatalog_post_home_listings
-	handlers["productcatalog_get_hotel_rooms_batch"] = HandleProductcatalog_get_hotel_rooms_batch
-	handlers["productcatalog_post_hotel_rooms_batch"] = HandleProductcatalog_post_hotel_rooms_batch
-	handlers["productcatalog_get_hotels"] = HandleProductcatalog_get_hotels
-	handlers["productcatalog_post_hotels"] = HandleProductcatalog_post_hotels
-	handlers["productcatalog_post_items_batch"] = HandleProductcatalog_post_items_batch
-	handlers["productcatalog_post_localized_items_batch"] = HandleProductcatalog_post_localized_items_batch
-	handlers["productcatalog_post_marketplace_partner_sellers_details"] = HandleProductcatalog_post_marketplace_partner_sellers_details
-	handlers["productcatalog_post_marketplace_partner_signals"] = HandleProductcatalog_post_marketplace_partner_signals
-	handlers["productcatalog_get_pricing_variables_batch"] = HandleProductcatalog_get_pricing_variables_batch
-	handlers["productcatalog_post_pricing_variables_batch"] = HandleProductcatalog_post_pricing_variables_batch
-	handlers["productcatalog_get_product_feeds"] = HandleProductcatalog_get_product_feeds
-	handlers["productcatalog_post_product_feeds"] = HandleProductcatalog_post_product_feeds
-	handlers["productcatalog_get_product_groups"] = HandleProductcatalog_get_product_groups
-	handlers["productcatalog_post_product_groups"] = HandleProductcatalog_post_product_groups
-	handlers["productcatalog_get_product_sets"] = HandleProductcatalog_get_product_sets
-	handlers["productcatalog_post_product_sets"] = HandleProductcatalog_post_product_sets
-	handlers["productcatalog_get_product_sets_batch"] = HandleProductcatalog_get_product_sets_batch
-	handlers["productcatalog_get_products"] = HandleProductcatalog_get_products
-	handlers["productcatalog_post_products"] = HandleProductcatalog_post_products
-	handlers["productcatalog_post_update_generated_image_config"] = HandleProductcatalog_post_update_generated_image_config
-	handlers["productcatalog_get_vehicle_offers"] = HandleProductcatalog_get_vehicle_offers
-	handlers["productcatalog_get_vehicles"] = HandleProductcatalog_get_vehicles
-	handlers["productcatalog_post_vehicles"] = HandleProductcatalog_post_vehicles
-	handlers["productcatalog_get_version_configs"] = HandleProductcatalog_get_version_configs
-	handlers["productcatalog_post_version_items_batch"] = HandleProductcatalog_post_version_items_batch
-	handlers["productcatalog_delete_"] = HandleProductcatalog_delete_
-	handlers["productcatalog_get_"] = HandleProductcatalog_get_
-	handlers["productcatalog_post_"] = HandleProductcatalog_post_
-	handlers["adsavedreport_get_"] = HandleAdsavedreport_get_
-	handlers["audiocopyright_get_update_records"] = HandleAudiocopyright_get_update_records
-	handlers["audiocopyright_get_"] = HandleAudiocopyright_get_
-	handlers["offlineconversiondatasetupload_get_progress"] = HandleOfflineconversiondatasetupload_get_progress
-	handlers["offlineconversiondatasetupload_get_pull_sessions"] = HandleOfflineconversiondatasetupload_get_pull_sessions
-	handlers["offlineconversiondatasetupload_get_"] = HandleOfflineconversiondatasetupload_get_
-	handlers["catalogcontentversionconfig_get_"] = HandleCatalogcontentversionconfig_get_
-	handlers["famekumo_get_"] = HandleFamekumo_get_
-	handlers["wifiinformation_get_"] = HandleWifiinformation_get_
-	handlers["imagereferencematch_get_"] = HandleImagereferencematch_get_
-	handlers["almevent_get_"] = HandleAlmevent_get_
-	handlers["omegacustomertrx_get_campaigns"] = HandleOmegacustomertrx_get_campaigns
-	handlers["omegacustomertrx_get_"] = HandleOmegacustomertrx_get_
 	handlers["productgroup_get_products"] = HandleProductgroup_get_products
 	handlers["productgroup_post_products"] = HandleProductgroup_post_products
 	handlers["productgroup_delete_"] = HandleProductgroup_delete_
 	handlers["productgroup_get_"] = HandleProductgroup_get_
 	handlers["productgroup_post_"] = HandleProductgroup_post_
-	handlers["copyrightownershiptransfer_get_"] = HandleCopyrightownershiptransfer_get_
-	handlers["musicvideocopyright_get_"] = HandleMusicvideocopyright_get_
-	handlers["organization_get_"] = HandleOrganization_get_
-	handlers["catalogsmartpixelsettings_get_"] = HandleCatalogsmartpixelsettings_get_
-	handlers["destination_get_channels_to_integrity_status"] = HandleDestination_get_channels_to_integrity_status
-	handlers["destination_get_override_details"] = HandleDestination_get_override_details
-	handlers["destination_get_videos_metadata"] = HandleDestination_get_videos_metadata
-	handlers["destination_get_"] = HandleDestination_get_
-	handlers["instagrambusinessasset_get_"] = HandleInstagrambusinessasset_get_
-	handlers["websitecreativeassetsuggestions_get_"] = HandleWebsitecreativeassetsuggestions_get_
-	handlers["cpasadvertiserpartnershiprecommendation_get_"] = HandleCpasadvertiserpartnershiprecommendation_get_
-	handlers["sitelink_get_"] = HandleSitelink_get_
-	handlers["almadaccountinfo_get_"] = HandleAlmadaccountinfo_get_
-	handlers["brandsafetydownloadable_get_"] = HandleBrandsafetydownloadable_get_
-	handlers["advideo_get_boost_ads_list"] = HandleAdvideo_get_boost_ads_list
-	handlers["advideo_get_captions"] = HandleAdvideo_get_captions
-	handlers["advideo_post_captions"] = HandleAdvideo_post_captions
-	handlers["advideo_get_collaborators"] = HandleAdvideo_get_collaborators
-	handlers["advideo_post_collaborators"] = HandleAdvideo_post_collaborators
-	handlers["advideo_get_comments"] = HandleAdvideo_get_comments
-	handlers["advideo_post_comments"] = HandleAdvideo_post_comments
-	handlers["advideo_get_crosspost_shared_pages"] = HandleAdvideo_get_crosspost_shared_pages
-	handlers["advideo_post_gaming_clip_create"] = HandleAdvideo_post_gaming_clip_create
-	handlers["advideo_get_likes"] = HandleAdvideo_get_likes
-	handlers["advideo_post_likes"] = HandleAdvideo_post_likes
-	handlers["advideo_get_poll_settings"] = HandleAdvideo_get_poll_settings
-	handlers["advideo_get_polls"] = HandleAdvideo_get_polls
-	handlers["advideo_post_polls"] = HandleAdvideo_post_polls
-	handlers["advideo_get_sponsor_tags"] = HandleAdvideo_get_sponsor_tags
-	handlers["advideo_get_tags"] = HandleAdvideo_get_tags
-	handlers["advideo_get_thumbnails"] = HandleAdvideo_get_thumbnails
-	handlers["advideo_post_thumbnails"] = HandleAdvideo_post_thumbnails
-	handlers["advideo_get_video_insights"] = HandleAdvideo_get_video_insights
-	handlers["advideo_delete_"] = HandleAdvideo_delete_
-	handlers["advideo_get_"] = HandleAdvideo_get_
-	handlers["advideo_post_"] = HandleAdvideo_post_
-	handlers["opengraphcontext_get_"] = HandleOpengraphcontext_get_
-	handlers["photo_get_comments"] = HandlePhoto_get_comments
-	handlers["photo_post_comments"] = HandlePhoto_post_comments
-	handlers["photo_get_insights"] = HandlePhoto_get_insights
-	handlers["photo_get_likes"] = HandlePhoto_get_likes
-	handlers["photo_post_likes"] = HandlePhoto_post_likes
-	handlers["photo_get_sponsor_tags"] = HandlePhoto_get_sponsor_tags
-	handlers["photo_delete_"] = HandlePhoto_delete_
-	handlers["photo_get_"] = HandlePhoto_get_
-	handlers["vehicle_get_channels_to_integrity_status"] = HandleVehicle_get_channels_to_integrity_status
-	handlers["vehicle_get_override_details"] = HandleVehicle_get_override_details
-	handlers["vehicle_get_videos_metadata"] = HandleVehicle_get_videos_metadata
-	handlers["vehicle_get_"] = HandleVehicle_get_
-	handlers["vehicle_post_"] = HandleVehicle_post_
-	handlers["videolist_get_videos"] = HandleVideolist_get_videos
-	handlers["videolist_get_"] = HandleVideolist_get_
-	handlers["catalogwebsitesettings_get_"] = HandleCatalogwebsitesettings_get_
-	handlers["adplacement_get_"] = HandleAdplacement_get_
-	handlers["franchiseprogram_get_"] = HandleFranchiseprogram_get_
-	handlers["managementsitelink_get_"] = HandleManagementsitelink_get_
-	handlers["playablecontent_get_"] = HandlePlayablecontent_get_
-	handlers["adruleexecutionspec_get_"] = HandleAdruleexecutionspec_get_
-	handlers["adsconversiongoal_get_conversion_events"] = HandleAdsconversiongoal_get_conversion_events
-	handlers["adsconversiongoal_get_"] = HandleAdsconversiongoal_get_
-	handlers["igmediaforigonlyapi_get_children"] = HandleIgmediaforigonlyapi_get_children
-	handlers["igmediaforigonlyapi_get_comments"] = HandleIgmediaforigonlyapi_get_comments
-	handlers["igmediaforigonlyapi_post_comments"] = HandleIgmediaforigonlyapi_post_comments
-	handlers["igmediaforigonlyapi_get_insights"] = HandleIgmediaforigonlyapi_get_insights
-	handlers["igmediaforigonlyapi_get_"] = HandleIgmediaforigonlyapi_get_
-	handlers["igmediaforigonlyapi_post_"] = HandleIgmediaforigonlyapi_post_
-	handlers["offsitepixel_get_"] = HandleOffsitepixel_get_
-	handlers["pagepostexperiment_get_video_insights"] = HandlePagepostexperiment_get_video_insights
-	handlers["pagepostexperiment_delete_"] = HandlePagepostexperiment_delete_
-	handlers["pagepostexperiment_get_"] = HandlePagepostexperiment_get_
-	handlers["transactableitem_get_channels_to_integrity_status"] = HandleTransactableitem_get_channels_to_integrity_status
-	handlers["transactableitem_get_override_details"] = HandleTransactableitem_get_override_details
-	handlers["transactableitem_get_"] = HandleTransactableitem_get_
-	handlers["pagepost_get_attachments"] = HandlePagepost_get_attachments
-	handlers["pagepost_get_comments"] = HandlePagepost_get_comments
-	handlers["pagepost_post_comments"] = HandlePagepost_post_comments
-	handlers["pagepost_get_dynamic_posts"] = HandlePagepost_get_dynamic_posts
-	handlers["pagepost_get_insights"] = HandlePagepost_get_insights
-	handlers["pagepost_delete_likes"] = HandlePagepost_delete_likes
-	handlers["pagepost_get_likes"] = HandlePagepost_get_likes
-	handlers["pagepost_post_likes"] = HandlePagepost_post_likes
-	handlers["pagepost_get_reactions"] = HandlePagepost_get_reactions
-	handlers["pagepost_get_sharedposts"] = HandlePagepost_get_sharedposts
-	handlers["pagepost_get_sponsor_tags"] = HandlePagepost_get_sponsor_tags
-	handlers["pagepost_get_to"] = HandlePagepost_get_to
-	handlers["pagepost_delete_"] = HandlePagepost_delete_
-	handlers["pagepost_get_"] = HandlePagepost_get_
-	handlers["pagepost_post_"] = HandlePagepost_post_
-	handlers["placetag_get_"] = HandlePlacetag_get_
-	handlers["customaudience_delete_adaccounts"] = HandleCustomaudience_delete_adaccounts
-	handlers["customaudience_get_adaccounts"] = HandleCustomaudience_get_adaccounts
-	handlers["customaudience_post_adaccounts"] = HandleCustomaudience_post_adaccounts
-	handlers["customaudience_get_ads"] = HandleCustomaudience_get_ads
-	handlers["customaudience_get_health"] = HandleCustomaudience_get_health
-	handlers["customaudience_get_salts"] = HandleCustomaudience_get_salts
-	handlers["customaudience_post_salts"] = HandleCustomaudience_post_salts
-	handlers["customaudience_get_sessions"] = HandleCustomaudience_get_sessions
-	handlers["customaudience_get_shared_account_info"] = HandleCustomaudience_get_shared_account_info
-	handlers["customaudience_delete_users"] = HandleCustomaudience_delete_users
-	handlers["customaudience_post_users"] = HandleCustomaudience_post_users
-	handlers["customaudience_post_usersreplace"] = HandleCustomaudience_post_usersreplace
-	handlers["customaudience_delete_"] = HandleCustomaudience_delete_
-	handlers["customaudience_get_"] = HandleCustomaudience_get_
-	handlers["customaudience_post_"] = HandleCustomaudience_post_
-	handlers["audioasset_get_"] = HandleAudioasset_get_
-	handlers["igmedia_get_boost_ads_list"] = HandleIgmedia_get_boost_ads_list
-	handlers["igmedia_get_branded_content_partner_promote"] = HandleIgmedia_get_branded_content_partner_promote
-	handlers["igmedia_post_branded_content_partner_promote"] = HandleIgmedia_post_branded_content_partner_promote
-	handlers["igmedia_get_children"] = HandleIgmedia_get_children
-	handlers["igmedia_get_collaborators"] = HandleIgmedia_get_collaborators
-	handlers["igmedia_get_comments"] = HandleIgmedia_get_comments
-	handlers["igmedia_post_comments"] = HandleIgmedia_post_comments
-	handlers["igmedia_get_insights"] = HandleIgmedia_get_insights
-	handlers["igmedia_delete_partnership_ad_code"] = HandleIgmedia_delete_partnership_ad_code
-	handlers["igmedia_post_partnership_ad_code"] = HandleIgmedia_post_partnership_ad_code
-	handlers["igmedia_get_product_tags"] = HandleIgmedia_get_product_tags
-	handlers["igmedia_post_product_tags"] = HandleIgmedia_post_product_tags
-	handlers["igmedia_get_"] = HandleIgmedia_get_
-	handlers["igmedia_post_"] = HandleIgmedia_post_
-	handlers["rtbdynamicpost_get_comments"] = HandleRtbdynamicpost_get_comments
-	handlers["rtbdynamicpost_get_likes"] = HandleRtbdynamicpost_get_likes
-	handlers["rtbdynamicpost_get_"] = HandleRtbdynamicpost_get_
-	handlers["dynamicpriceconfigbydate_get_"] = HandleDynamicpriceconfigbydate_get_
-	handlers["openbridgeconfiguration_delete_"] = HandleOpenbridgeconfiguration_delete_
-	handlers["openbridgeconfiguration_get_"] = HandleOpenbridgeconfiguration_get_
-	handlers["openbridgeconfiguration_post_"] = HandleOpenbridgeconfiguration_post_
-	handlers["adgroupfacebookfeedback_get_comments"] = HandleAdgroupfacebookfeedback_get_comments
-	handlers["application_delete_accounts"] = HandleApplication_delete_accounts
-	handlers["application_get_accounts"] = HandleApplication_get_accounts
-	handlers["application_post_accounts"] = HandleApplication_post_accounts
-	handlers["application_post_activities"] = HandleApplication_post_activities
-	handlers["application_get_ad_placement_groups"] = HandleApplication_get_ad_placement_groups
-	handlers["application_get_adnetwork_placements"] = HandleApplication_get_adnetwork_placements
-	handlers["application_get_adnetworkanalytics"] = HandleApplication_get_adnetworkanalytics
-	handlers["application_post_adnetworkanalytics"] = HandleApplication_post_adnetworkanalytics
-	handlers["application_get_adnetworkanalytics_results"] = HandleApplication_get_adnetworkanalytics_results
-	handlers["application_get_aem_attribution"] = HandleApplication_get_aem_attribution
-	handlers["application_get_aem_conversion_configs"] = HandleApplication_get_aem_conversion_configs
-	handlers["application_get_aem_conversion_filter"] = HandleApplication_get_aem_conversion_filter
-	handlers["application_post_aem_conversions"] = HandleApplication_post_aem_conversions
-	handlers["application_post_aem_skan_readiness"] = HandleApplication_post_aem_skan_readiness
-	handlers["application_get_agencies"] = HandleApplication_get_agencies
-	handlers["application_post_aggregate_revenue"] = HandleApplication_post_aggregate_revenue
-	handlers["application_get_android_dialog_configs"] = HandleApplication_get_android_dialog_configs
-	handlers["application_get_app_capi_settings"] = HandleApplication_get_app_capi_settings
-	handlers["application_get_app_event_types"] = HandleApplication_get_app_event_types
-	handlers["application_post_app_indexing"] = HandleApplication_post_app_indexing
-	handlers["application_post_app_indexing_session"] = HandleApplication_post_app_indexing_session
-	handlers["application_get_app_installed_groups"] = HandleApplication_get_app_installed_groups
-	handlers["application_post_app_push_device_token"] = HandleApplication_post_app_push_device_token
-	handlers["application_get_appassets"] = HandleApplication_get_appassets
-	handlers["application_post_assets"] = HandleApplication_post_assets
-	handlers["application_get_authorized_adaccounts"] = HandleApplication_get_authorized_adaccounts
-	handlers["application_get_button_auto_detection_device_selection"] = HandleApplication_get_button_auto_detection_device_selection
-	handlers["application_get_cloudbridge_settings"] = HandleApplication_get_cloudbridge_settings
-	handlers["application_post_codeless_event_mappings"] = HandleApplication_post_codeless_event_mappings
-	handlers["application_get_connected_client_businesses"] = HandleApplication_get_connected_client_businesses
-	handlers["application_get_da_checks"] = HandleApplication_get_da_checks
-	handlers["application_post_domain_reports"] = HandleApplication_post_domain_reports
-	handlers["application_get_iap_purchases"] = HandleApplication_get_iap_purchases
-	handlers["application_get_ios_dialog_configs"] = HandleApplication_get_ios_dialog_configs
-	handlers["application_get_linked_dataset"] = HandleApplication_get_linked_dataset
-	handlers["application_get_message_templates"] = HandleApplication_get_message_templates
-	handlers["application_post_mmp_auditing"] = HandleApplication_post_mmp_auditing
-	handlers["application_get_mobile_sdk_gk"] = HandleApplication_get_mobile_sdk_gk
-	handlers["application_get_monetized_digital_store_objects"] = HandleApplication_get_monetized_digital_store_objects
-	handlers["application_post_monetized_digital_store_objects"] = HandleApplication_post_monetized_digital_store_objects
-	handlers["application_get_object_types"] = HandleApplication_get_object_types
-	handlers["application_get_objects"] = HandleApplication_get_objects
-	handlers["application_post_occludespopups"] = HandleApplication_post_occludespopups
-	handlers["application_get_permissions"] = HandleApplication_get_permissions
-	handlers["application_get_products"] = HandleApplication_get_products
-	handlers["application_get_purchases"] = HandleApplication_get_purchases
-	handlers["application_get_roles"] = HandleApplication_get_roles
-	handlers["application_get_server_domain_infos"] = HandleApplication_get_server_domain_infos
-	handlers["application_get_sgw_dataset_status"] = HandleApplication_get_sgw_dataset_status
-	handlers["application_get_sgw_install_deferral_link"] = HandleApplication_get_sgw_install_deferral_link
-	handlers["application_get_subscribed_domains"] = HandleApplication_get_subscribed_domains
-	handlers["application_post_subscribed_domains"] = HandleApplication_post_subscribed_domains
-	handlers["application_get_subscribed_domains_phishing"] = HandleApplication_get_subscribed_domains_phishing
-	handlers["application_post_subscribed_domains_phishing"] = HandleApplication_post_subscribed_domains_phishing
-	handlers["application_delete_subscriptions"] = HandleApplication_delete_subscriptions
-	handlers["application_get_subscriptions"] = HandleApplication_get_subscriptions
-	handlers["application_post_subscriptions"] = HandleApplication_post_subscriptions
-	handlers["application_post_uploads"] = HandleApplication_post_uploads
-	handlers["application_post_whatsapp_business_solution"] = HandleApplication_post_whatsapp_business_solution
-	handlers["application_get_whatsapp_business_solutions"] = HandleApplication_get_whatsapp_business_solutions
-	handlers["application_get_"] = HandleApplication_get_
-	handlers["application_post_"] = HandleApplication_post_
-	handlers["productsetusage_get_"] = HandleProductsetusage_get_
-	handlers["copyrightmediamisuse_get_"] = HandleCopyrightmediamisuse_get_
-	handlers["adstudycell_get_adaccounts"] = HandleAdstudycell_get_adaccounts
-	handlers["adstudycell_get_adsets"] = HandleAdstudycell_get_adsets
-	handlers["adstudycell_get_campaigns"] = HandleAdstudycell_get_campaigns
-	handlers["adstudycell_get_"] = HandleAdstudycell_get_
-	handlers["adstudycell_post_"] = HandleAdstudycell_post_
-	handlers["cpasparentcatalogsettings_get_"] = HandleCpasparentcatalogsettings_get_
-	handlers["adspivotrules_get_"] = HandleAdspivotrules_get_
-	handlers["avatarprofilepicture_get_"] = HandleAvatarprofilepicture_get_
-	handlers["publisherwhitelist_get_"] = HandlePublisherwhitelist_get_
-	handlers["businessrolerequest_delete_"] = HandleBusinessrolerequest_delete_
-	handlers["businessrolerequest_get_"] = HandleBusinessrolerequest_get_
-	handlers["businessrolerequest_post_"] = HandleBusinessrolerequest_post_
-	handlers["commercemerchantsettings_post_acknowledge_orders"] = HandleCommercemerchantsettings_post_acknowledge_orders
-	handlers["commercemerchantsettings_get_commerce_orders"] = HandleCommercemerchantsettings_get_commerce_orders
-	handlers["commercemerchantsettings_get_commerce_payouts"] = HandleCommercemerchantsettings_get_commerce_payouts
-	handlers["commercemerchantsettings_get_commerce_transactions"] = HandleCommercemerchantsettings_get_commerce_transactions
-	handlers["commercemerchantsettings_get_order_management_apps"] = HandleCommercemerchantsettings_get_order_management_apps
-	handlers["commercemerchantsettings_post_order_management_apps"] = HandleCommercemerchantsettings_post_order_management_apps
-	handlers["commercemerchantsettings_get_product_catalogs"] = HandleCommercemerchantsettings_get_product_catalogs
-	handlers["commercemerchantsettings_get_returns"] = HandleCommercemerchantsettings_get_returns
-	handlers["commercemerchantsettings_get_setup_status"] = HandleCommercemerchantsettings_get_setup_status
-	handlers["commercemerchantsettings_get_shipping_profiles"] = HandleCommercemerchantsettings_get_shipping_profiles
-	handlers["commercemerchantsettings_post_shipping_profiles"] = HandleCommercemerchantsettings_post_shipping_profiles
-	handlers["commercemerchantsettings_get_shops"] = HandleCommercemerchantsettings_get_shops
-	handlers["commercemerchantsettings_get_tax_settings"] = HandleCommercemerchantsettings_get_tax_settings
-	handlers["commercemerchantsettings_get_"] = HandleCommercemerchantsettings_get_
-	handlers["adruleevaluationspec_get_"] = HandleAdruleevaluationspec_get_
-	handlers["livevideoadcampaignconfig_get_"] = HandleLivevideoadcampaignconfig_get_
-	handlers["pagebroadcast_get_"] = HandlePagebroadcast_get_
-	handlers["livevideoerror_get_"] = HandleLivevideoerror_get_
-	handlers["workskill_get_users"] = HandleWorkskill_get_users
-	handlers["workskill_get_"] = HandleWorkskill_get_
-	handlers["ctxpartnerappwelcomemessageflow_get_"] = HandleCtxpartnerappwelcomemessageflow_get_
-	handlers["instagramthread_get_"] = HandleInstagramthread_get_
-	handlers["thirdpartymeasurementreportdataset_get_"] = HandleThirdpartymeasurementreportdataset_get_
-	handlers["avatar_get_models"] = HandleAvatar_get_models
-	handlers["avatar_get_"] = HandleAvatar_get_
-	handlers["publisherblocklist_post_append_publisher_urls"] = HandlePublisherblocklist_post_append_publisher_urls
-	handlers["publisherblocklist_get_paged_web_publishers"] = HandlePublisherblocklist_get_paged_web_publishers
-	handlers["publisherblocklist_delete_"] = HandlePublisherblocklist_delete_
-	handlers["publisherblocklist_get_"] = HandlePublisherblocklist_get_
-	handlers["publisherblocklist_post_"] = HandlePublisherblocklist_post_
-	handlers["areffect_get_"] = HandleAreffect_get_
-	handlers["cpascollaborationrequest_get_"] = HandleCpascollaborationrequest_get_
-	handlers["profile_get_picture"] = HandleProfile_get_picture
-	handlers["profile_get_"] = HandleProfile_get_
+	handlers["partnerintegrationlinked_get_"] = HandlePartnerintegrationlinked_get_
 	handlers["adaccount_get_account_controls"] = HandleAdaccount_get_account_controls
 	handlers["adaccount_post_account_controls"] = HandleAdaccount_post_account_controls
 	handlers["adaccount_get_activities"] = HandleAdaccount_get_activities
@@ -1467,64 +2722,666 @@ func GetAllHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mc
 	handlers["adaccount_post_video_ads"] = HandleAdaccount_post_video_ads
 	handlers["adaccount_get_"] = HandleAdaccount_get_
 	handlers["adaccount_post_"] = HandleAdaccount_post_
-	handlers["personaladspersona_get_"] = HandlePersonaladspersona_get_
-	handlers["productcataloglocalizationsettings_get_"] = HandleProductcataloglocalizationsettings_get_
-	handlers["adexportpreset_get_"] = HandleAdexportpreset_get_
-	handlers["canvastemplate_get_"] = HandleCanvastemplate_get_
-	handlers["comment_get_comments"] = HandleComment_get_comments
-	handlers["comment_post_comments"] = HandleComment_post_comments
-	handlers["comment_delete_likes"] = HandleComment_delete_likes
-	handlers["comment_get_likes"] = HandleComment_get_likes
-	handlers["comment_post_likes"] = HandleComment_post_likes
-	handlers["comment_get_reactions"] = HandleComment_get_reactions
-	handlers["comment_delete_"] = HandleComment_delete_
-	handlers["comment_get_"] = HandleComment_get_
-	handlers["comment_post_"] = HandleComment_post_
-	handlers["productdeliverypreference_get_"] = HandleProductdeliverypreference_get_
-	handlers["productfeeduploaderrorsample_get_"] = HandleProductfeeduploaderrorsample_get_
-	handlers["audiorelease_get_"] = HandleAudiorelease_get_
-	handlers["url_get_"] = HandleUrl_get_
-	handlers["url_post_"] = HandleUrl_post_
-	handlers["hotel_get_channels_to_integrity_status"] = HandleHotel_get_channels_to_integrity_status
-	handlers["hotel_get_hotel_rooms"] = HandleHotel_get_hotel_rooms
-	handlers["hotel_get_override_details"] = HandleHotel_get_override_details
-	handlers["hotel_get_videos_metadata"] = HandleHotel_get_videos_metadata
-	handlers["hotel_delete_"] = HandleHotel_delete_
-	handlers["hotel_get_"] = HandleHotel_get_
-	handlers["hotel_post_"] = HandleHotel_post_
-	handlers["adcolumnsizes_get_"] = HandleAdcolumnsizes_get_
-	handlers["systemuser_get_assigned_ad_accounts"] = HandleSystemuser_get_assigned_ad_accounts
-	handlers["systemuser_get_assigned_business_asset_groups"] = HandleSystemuser_get_assigned_business_asset_groups
-	handlers["systemuser_get_assigned_pages"] = HandleSystemuser_get_assigned_pages
-	handlers["systemuser_get_assigned_product_catalogs"] = HandleSystemuser_get_assigned_product_catalogs
-	handlers["systemuser_get_"] = HandleSystemuser_get_
-	handlers["mediafingerprint_get_"] = HandleMediafingerprint_get_
-	handlers["mediafingerprint_post_"] = HandleMediafingerprint_post_
-	handlers["savedaudience_get_"] = HandleSavedaudience_get_
-	handlers["storelocation_get_"] = HandleStorelocation_get_
-	handlers["eventtickettier_get_"] = HandleEventtickettier_get_
+	handlers["adspixel_get_adaccounts"] = HandleAdspixel_get_adaccounts
+	handlers["adspixel_delete_agencies"] = HandleAdspixel_delete_agencies
+	handlers["adspixel_get_agencies"] = HandleAdspixel_get_agencies
+	handlers["adspixel_post_agencies"] = HandleAdspixel_post_agencies
+	handlers["adspixel_post_ahp_configs"] = HandleAdspixel_post_ahp_configs
+	handlers["adspixel_get_assigned_users"] = HandleAdspixel_get_assigned_users
+	handlers["adspixel_post_assigned_users"] = HandleAdspixel_post_assigned_users
+	handlers["adspixel_get_da_checks"] = HandleAdspixel_get_da_checks
+	handlers["adspixel_post_events"] = HandleAdspixel_post_events
+	handlers["adspixel_get_offline_event_uploads"] = HandleAdspixel_get_offline_event_uploads
+	handlers["adspixel_get_openbridge_configurations"] = HandleAdspixel_get_openbridge_configurations
+	handlers["adspixel_post_shadowtraffichelper"] = HandleAdspixel_post_shadowtraffichelper
+	handlers["adspixel_delete_shared_accounts"] = HandleAdspixel_delete_shared_accounts
+	handlers["adspixel_get_shared_accounts"] = HandleAdspixel_get_shared_accounts
+	handlers["adspixel_post_shared_accounts"] = HandleAdspixel_post_shared_accounts
+	handlers["adspixel_get_shared_agencies"] = HandleAdspixel_get_shared_agencies
+	handlers["adspixel_get_stats"] = HandleAdspixel_get_stats
+	handlers["adspixel_get_"] = HandleAdspixel_get_
+	handlers["adspixel_post_"] = HandleAdspixel_post_
+	handlers["eventtour_get_"] = HandleEventtour_get_
+	handlers["placetag_get_"] = HandlePlacetag_get_
+	handlers["productfeedschedule_get_"] = HandleProductfeedschedule_get_
+	handlers["mediatitle_get_channels_to_integrity_status"] = HandleMediatitle_get_channels_to_integrity_status
+	handlers["mediatitle_get_override_details"] = HandleMediatitle_get_override_details
+	handlers["mediatitle_get_videos_metadata"] = HandleMediatitle_get_videos_metadata
+	handlers["mediatitle_delete_"] = HandleMediatitle_delete_
+	handlers["mediatitle_get_"] = HandleMediatitle_get_
+	handlers["mediatitle_post_"] = HandleMediatitle_post_
 	handlers["owneddomain_get_"] = HandleOwneddomain_get_
-	handlers["externalmerchantsettings_get_"] = HandleExternalmerchantsettings_get_
+	handlers["storelocation_get_"] = HandleStorelocation_get_
+	handlers["analyticssegment_get_"] = HandleAnalyticssegment_get_
+	handlers["productdeliverypreference_get_"] = HandleProductdeliverypreference_get_
+	handlers["instagramthread_get_"] = HandleInstagramthread_get_
+	handlers["leadgendirectcrmintegrationconfig_get_"] = HandleLeadgendirectcrmintegrationconfig_get_
+	handlers["album_get_comments"] = HandleAlbum_get_comments
+	handlers["album_post_comments"] = HandleAlbum_post_comments
+	handlers["album_get_likes"] = HandleAlbum_get_likes
+	handlers["album_post_likes"] = HandleAlbum_post_likes
+	handlers["album_get_photos"] = HandleAlbum_get_photos
+	handlers["album_post_photos"] = HandleAlbum_post_photos
+	handlers["album_get_picture"] = HandleAlbum_get_picture
+	handlers["album_get_"] = HandleAlbum_get_
+	handlers["adsreportbuildersavedreport_get_"] = HandleAdsreportbuildersavedreport_get_
+	handlers["adsusersettings_get_"] = HandleAdsusersettings_get_
+	handlers["unifiedthread_get_messages"] = HandleUnifiedthread_get_messages
+	handlers["unifiedthread_get_"] = HandleUnifiedthread_get_
+	handlers["thirdpartypartnerpanelrequest_get_"] = HandleThirdpartypartnerpanelrequest_get_
+	handlers["cpasbusinesssetupconfig_get_ad_accounts"] = HandleCpasbusinesssetupconfig_get_ad_accounts
+	handlers["cpasbusinesssetupconfig_get_"] = HandleCpasbusinesssetupconfig_get_
+	handlers["automotivemodel_get_channels_to_integrity_status"] = HandleAutomotivemodel_get_channels_to_integrity_status
+	handlers["automotivemodel_get_override_details"] = HandleAutomotivemodel_get_override_details
+	handlers["automotivemodel_get_videos_metadata"] = HandleAutomotivemodel_get_videos_metadata
+	handlers["automotivemodel_get_"] = HandleAutomotivemodel_get_
+	handlers["offsitepixel_get_"] = HandleOffsitepixel_get_
+	handlers["profile_get_picture"] = HandleProfile_get_picture
+	handlers["profile_get_"] = HandleProfile_get_
+	handlers["videocopyrightmatch_get_"] = HandleVideocopyrightmatch_get_
+	handlers["hours_get_"] = HandleHours_get_
+	handlers["businessvideo_get_"] = HandleBusinessvideo_get_
+	handlers["adaccountusersettings_get_"] = HandleAdaccountusersettings_get_
+	handlers["commerceorder_post_acknowledge_order"] = HandleCommerceorder_post_acknowledge_order
+	handlers["commerceorder_get_cancellations"] = HandleCommerceorder_get_cancellations
+	handlers["commerceorder_post_cancellations"] = HandleCommerceorder_post_cancellations
+	handlers["commerceorder_post_item_updates"] = HandleCommerceorder_post_item_updates
+	handlers["commerceorder_get_items"] = HandleCommerceorder_get_items
+	handlers["commerceorder_get_payments"] = HandleCommerceorder_get_payments
+	handlers["commerceorder_get_promotion_details"] = HandleCommerceorder_get_promotion_details
+	handlers["commerceorder_get_promotions"] = HandleCommerceorder_get_promotions
+	handlers["commerceorder_get_refunds"] = HandleCommerceorder_get_refunds
+	handlers["commerceorder_post_refunds"] = HandleCommerceorder_post_refunds
+	handlers["commerceorder_get_returns"] = HandleCommerceorder_get_returns
+	handlers["commerceorder_post_returns"] = HandleCommerceorder_post_returns
+	handlers["commerceorder_get_shipments"] = HandleCommerceorder_get_shipments
+	handlers["commerceorder_post_shipments"] = HandleCommerceorder_post_shipments
+	handlers["commerceorder_post_update_shipment"] = HandleCommerceorder_post_update_shipment
+	handlers["commerceorder_get_"] = HandleCommerceorder_get_
+	handlers["group_delete_admins"] = HandleGroup_delete_admins
+	handlers["group_post_admins"] = HandleGroup_post_admins
+	handlers["group_get_albums"] = HandleGroup_get_albums
+	handlers["group_get_docs"] = HandleGroup_get_docs
+	handlers["group_get_events"] = HandleGroup_get_events
+	handlers["group_get_feed"] = HandleGroup_get_feed
+	handlers["group_post_feed"] = HandleGroup_post_feed
+	handlers["group_get_files"] = HandleGroup_get_files
+	handlers["group_get_groups"] = HandleGroup_get_groups
+	handlers["group_post_groups"] = HandleGroup_post_groups
+	handlers["group_get_live_videos"] = HandleGroup_get_live_videos
+	handlers["group_post_live_videos"] = HandleGroup_post_live_videos
+	handlers["group_delete_members"] = HandleGroup_delete_members
+	handlers["group_post_members"] = HandleGroup_post_members
+	handlers["group_get_opted_in_members"] = HandleGroup_get_opted_in_members
+	handlers["group_post_photos"] = HandleGroup_post_photos
+	handlers["group_get_picture"] = HandleGroup_get_picture
+	handlers["group_get_videos"] = HandleGroup_get_videos
+	handlers["group_post_videos"] = HandleGroup_post_videos
+	handlers["group_get_"] = HandleGroup_get_
+	handlers["group_post_"] = HandleGroup_post_
+	handlers["adcreationpackageconfig_get_"] = HandleAdcreationpackageconfig_get_
+	handlers["contentblocklist_get_applied_ad_accounts"] = HandleContentblocklist_get_applied_ad_accounts
+	handlers["contentblocklist_get_facebook_content"] = HandleContentblocklist_get_facebook_content
+	handlers["contentblocklist_get_instagram_content"] = HandleContentblocklist_get_instagram_content
+	handlers["contentblocklist_get_"] = HandleContentblocklist_get_
+	handlers["videocopyrightrule_get_"] = HandleVideocopyrightrule_get_
+	handlers["collaborativeadssharesettings_get_"] = HandleCollaborativeadssharesettings_get_
+	handlers["publisherblocklist_post_append_publisher_urls"] = HandlePublisherblocklist_post_append_publisher_urls
+	handlers["publisherblocklist_get_paged_web_publishers"] = HandlePublisherblocklist_get_paged_web_publishers
+	handlers["publisherblocklist_delete_"] = HandlePublisherblocklist_delete_
+	handlers["publisherblocklist_get_"] = HandlePublisherblocklist_get_
+	handlers["publisherblocklist_post_"] = HandlePublisherblocklist_post_
+	handlers["personaladspersona_get_"] = HandlePersonaladspersona_get_
+	handlers["fundraiserpersontocharity_get_donations"] = HandleFundraiserpersontocharity_get_donations
+	handlers["fundraiserpersontocharity_post_end_fundraiser"] = HandleFundraiserpersontocharity_post_end_fundraiser
+	handlers["fundraiserpersontocharity_get_external_donations"] = HandleFundraiserpersontocharity_get_external_donations
+	handlers["fundraiserpersontocharity_post_external_donations"] = HandleFundraiserpersontocharity_post_external_donations
+	handlers["fundraiserpersontocharity_get_"] = HandleFundraiserpersontocharity_get_
+	handlers["fundraiserpersontocharity_post_"] = HandleFundraiserpersontocharity_post_
+	handlers["cpasparentcatalogsettings_get_"] = HandleCpasparentcatalogsettings_get_
+	handlers["catalogitemoverride_get_"] = HandleCatalogitemoverride_get_
+	handlers["thirdpartypartnerpanelscheduled_get_"] = HandleThirdpartypartnerpanelscheduled_get_
+	handlers["jobopening_get_"] = HandleJobopening_get_
+	handlers["adsvalueadjustmentrulecollection_post_delete_rule_set"] = HandleAdsvalueadjustmentrulecollection_post_delete_rule_set
+	handlers["adsvalueadjustmentrulecollection_get_rules"] = HandleAdsvalueadjustmentrulecollection_get_rules
+	handlers["adsvalueadjustmentrulecollection_get_"] = HandleAdsvalueadjustmentrulecollection_get_
+	handlers["adsvalueadjustmentrulecollection_post_"] = HandleAdsvalueadjustmentrulecollection_post_
+	handlers["catalogwebsiteonboardingsettings_get_"] = HandleCatalogwebsiteonboardingsettings_get_
+	handlers["productitemoffer_get_"] = HandleProductitemoffer_get_
+	handlers["highdemandperiod_delete_"] = HandleHighdemandperiod_delete_
+	handlers["highdemandperiod_get_"] = HandleHighdemandperiod_get_
+	handlers["highdemandperiod_post_"] = HandleHighdemandperiod_post_
+	handlers["homelisting_get_channels_to_integrity_status"] = HandleHomelisting_get_channels_to_integrity_status
+	handlers["homelisting_get_override_details"] = HandleHomelisting_get_override_details
+	handlers["homelisting_get_videos_metadata"] = HandleHomelisting_get_videos_metadata
+	handlers["homelisting_delete_"] = HandleHomelisting_delete_
+	handlers["homelisting_get_"] = HandleHomelisting_get_
+	handlers["homelisting_post_"] = HandleHomelisting_post_
+	handlers["destination_get_channels_to_integrity_status"] = HandleDestination_get_channels_to_integrity_status
+	handlers["destination_get_override_details"] = HandleDestination_get_override_details
+	handlers["destination_get_videos_metadata"] = HandleDestination_get_videos_metadata
+	handlers["destination_get_"] = HandleDestination_get_
+	handlers["adproposal_get_"] = HandleAdproposal_get_
+	handlers["adruleexecutionspec_get_"] = HandleAdruleexecutionspec_get_
+	handlers["bcpcampaign_get_"] = HandleBcpcampaign_get_
+	handlers["chinabusinessonboardingvettingrequest_get_"] = HandleChinabusinessonboardingvettingrequest_get_
+	handlers["openbridgeconfiguration_delete_"] = HandleOpenbridgeconfiguration_delete_
+	handlers["openbridgeconfiguration_get_"] = HandleOpenbridgeconfiguration_get_
+	handlers["openbridgeconfiguration_post_"] = HandleOpenbridgeconfiguration_post_
+	handlers["savedaudience_get_"] = HandleSavedaudience_get_
+	handlers["eventregistrationsetting_get_"] = HandleEventregistrationsetting_get_
+	handlers["status_post_likes"] = HandleStatus_post_likes
+	handlers["status_get_"] = HandleStatus_get_
+	handlers["usercontext_get_"] = HandleUsercontext_get_
+	handlers["apprequest_delete_"] = HandleApprequest_delete_
+	handlers["apprequest_get_"] = HandleApprequest_get_
+	handlers["eventticketsetting_get_"] = HandleEventticketsetting_get_
+	handlers["adasyncrequest_delete_"] = HandleAdasyncrequest_delete_
+	handlers["adasyncrequest_get_"] = HandleAdasyncrequest_get_
+	handlers["bizinboxoffsiteemailaccount_get_assigned_users"] = HandleBizinboxoffsiteemailaccount_get_assigned_users
+	handlers["bizinboxoffsiteemailaccount_get_"] = HandleBizinboxoffsiteemailaccount_get_
+	handlers["brandrequest_get_"] = HandleBrandrequest_get_
+	handlers["livevideoerror_get_"] = HandleLivevideoerror_get_
+	handlers["commercemerchantsettings_post_acknowledge_orders"] = HandleCommercemerchantsettings_post_acknowledge_orders
+	handlers["commercemerchantsettings_get_commerce_orders"] = HandleCommercemerchantsettings_get_commerce_orders
+	handlers["commercemerchantsettings_get_commerce_payouts"] = HandleCommercemerchantsettings_get_commerce_payouts
+	handlers["commercemerchantsettings_get_commerce_transactions"] = HandleCommercemerchantsettings_get_commerce_transactions
+	handlers["commercemerchantsettings_get_order_management_apps"] = HandleCommercemerchantsettings_get_order_management_apps
+	handlers["commercemerchantsettings_post_order_management_apps"] = HandleCommercemerchantsettings_post_order_management_apps
+	handlers["commercemerchantsettings_get_product_catalogs"] = HandleCommercemerchantsettings_get_product_catalogs
+	handlers["commercemerchantsettings_get_returns"] = HandleCommercemerchantsettings_get_returns
+	handlers["commercemerchantsettings_get_setup_status"] = HandleCommercemerchantsettings_get_setup_status
+	handlers["commercemerchantsettings_get_shipping_profiles"] = HandleCommercemerchantsettings_get_shipping_profiles
+	handlers["commercemerchantsettings_post_shipping_profiles"] = HandleCommercemerchantsettings_post_shipping_profiles
+	handlers["commercemerchantsettings_get_shops"] = HandleCommercemerchantsettings_get_shops
+	handlers["commercemerchantsettings_get_tax_settings"] = HandleCommercemerchantsettings_get_tax_settings
+	handlers["commercemerchantsettings_get_"] = HandleCommercemerchantsettings_get_
+	handlers["extendedcredit_get_extended_credit_invoice_groups"] = HandleExtendedcredit_get_extended_credit_invoice_groups
+	handlers["extendedcredit_post_extended_credit_invoice_groups"] = HandleExtendedcredit_post_extended_credit_invoice_groups
+	handlers["extendedcredit_get_owning_credit_allocation_configs"] = HandleExtendedcredit_get_owning_credit_allocation_configs
+	handlers["extendedcredit_post_owning_credit_allocation_configs"] = HandleExtendedcredit_post_owning_credit_allocation_configs
+	handlers["extendedcredit_post_whatsapp_credit_attach"] = HandleExtendedcredit_post_whatsapp_credit_attach
+	handlers["extendedcredit_post_whatsapp_credit_sharing"] = HandleExtendedcredit_post_whatsapp_credit_sharing
+	handlers["extendedcredit_post_whatsapp_credit_sharing_and_attach"] = HandleExtendedcredit_post_whatsapp_credit_sharing_and_attach
+	handlers["extendedcredit_get_"] = HandleExtendedcredit_get_
+	handlers["adlightadgroup_get_"] = HandleAdlightadgroup_get_
+	handlers["measurementreport_get_"] = HandleMeasurementreport_get_
+	handlers["ctxpartnerappwelcomemessageflow_get_"] = HandleCtxpartnerappwelcomemessageflow_get_
+	handlers["fbimagecopyrightmatch_get_"] = HandleFbimagecopyrightmatch_get_
+	handlers["placetopic_get_"] = HandlePlacetopic_get_
+	handlers["pageinsightsasyncexportrun_get_"] = HandlePageinsightsasyncexportrun_get_
+	handlers["businessuser_get_assigned_ad_accounts"] = HandleBusinessuser_get_assigned_ad_accounts
+	handlers["businessuser_get_assigned_business_asset_groups"] = HandleBusinessuser_get_assigned_business_asset_groups
+	handlers["businessuser_get_assigned_pages"] = HandleBusinessuser_get_assigned_pages
+	handlers["businessuser_get_assigned_product_catalogs"] = HandleBusinessuser_get_assigned_product_catalogs
+	handlers["businessuser_delete_"] = HandleBusinessuser_delete_
+	handlers["businessuser_get_"] = HandleBusinessuser_get_
+	handlers["businessuser_post_"] = HandleBusinessuser_post_
+	handlers["igupcomingevent_get_"] = HandleIgupcomingevent_get_
+	handlers["igupcomingevent_post_"] = HandleIgupcomingevent_post_
+	handlers["wifiinformation_get_"] = HandleWifiinformation_get_
+	handlers["businessproject_get_"] = HandleBusinessproject_get_
+	handlers["thirdpartypartnerliftrequest_get_"] = HandleThirdpartypartnerliftrequest_get_
+	handlers["adsavedlocation_get_"] = HandleAdsavedlocation_get_
+	handlers["crmaddress_get_"] = HandleCrmaddress_get_
+	handlers["reachfrequencyprediction_get_"] = HandleReachfrequencyprediction_get_
+	handlers["user_delete_access_tokens"] = HandleUser_delete_access_tokens
+	handlers["user_post_access_tokens"] = HandleUser_post_access_tokens
+	handlers["user_get_accounts"] = HandleUser_get_accounts
+	handlers["user_post_accounts"] = HandleUser_post_accounts
+	handlers["user_get_ad_studies"] = HandleUser_get_ad_studies
+	handlers["user_post_ad_studies"] = HandleUser_post_ad_studies
+	handlers["user_get_adaccounts"] = HandleUser_get_adaccounts
+	handlers["user_get_albums"] = HandleUser_get_albums
+	handlers["user_post_applications"] = HandleUser_post_applications
+	handlers["user_get_apprequestformerrecipients"] = HandleUser_get_apprequestformerrecipients
+	handlers["user_get_apprequests"] = HandleUser_get_apprequests
+	handlers["user_get_assigned_ad_accounts"] = HandleUser_get_assigned_ad_accounts
+	handlers["user_get_assigned_applications"] = HandleUser_get_assigned_applications
+	handlers["user_get_assigned_business_asset_groups"] = HandleUser_get_assigned_business_asset_groups
+	handlers["user_get_assigned_pages"] = HandleUser_get_assigned_pages
+	handlers["user_get_assigned_product_catalogs"] = HandleUser_get_assigned_product_catalogs
+	handlers["user_get_avatars"] = HandleUser_get_avatars
+	handlers["user_get_business_users"] = HandleUser_get_business_users
+	handlers["user_delete_businesses"] = HandleUser_delete_businesses
+	handlers["user_get_businesses"] = HandleUser_get_businesses
+	handlers["user_post_businesses"] = HandleUser_post_businesses
+	handlers["user_get_conversations"] = HandleUser_get_conversations
+	handlers["user_get_custom_labels"] = HandleUser_get_custom_labels
+	handlers["user_get_events"] = HandleUser_get_events
+	handlers["user_get_feed"] = HandleUser_get_feed
+	handlers["user_post_feed"] = HandleUser_post_feed
+	handlers["user_get_friends"] = HandleUser_get_friends
+	handlers["user_get_fundraisers"] = HandleUser_get_fundraisers
+	handlers["user_post_fundraisers"] = HandleUser_post_fundraisers
+	handlers["user_get_groups"] = HandleUser_get_groups
+	handlers["user_get_ids_for_apps"] = HandleUser_get_ids_for_apps
+	handlers["user_get_ids_for_business"] = HandleUser_get_ids_for_business
+	handlers["user_get_ids_for_pages"] = HandleUser_get_ids_for_pages
+	handlers["user_get_likes"] = HandleUser_get_likes
+	handlers["user_get_live_videos"] = HandleUser_get_live_videos
+	handlers["user_post_live_videos"] = HandleUser_post_live_videos
+	handlers["user_post_messenger_desktop_performance_traces"] = HandleUser_post_messenger_desktop_performance_traces
+	handlers["user_post_messenger_kids_accounts_unread_badge"] = HandleUser_post_messenger_kids_accounts_unread_badge
+	handlers["user_get_music"] = HandleUser_get_music
+	handlers["user_post_notifications"] = HandleUser_post_notifications
+	handlers["user_get_payment_transactions"] = HandleUser_get_payment_transactions
+	handlers["user_delete_permissions"] = HandleUser_delete_permissions
+	handlers["user_get_permissions"] = HandleUser_get_permissions
+	handlers["user_get_personal_ad_accounts"] = HandleUser_get_personal_ad_accounts
+	handlers["user_get_photos"] = HandleUser_get_photos
+	handlers["user_post_photos"] = HandleUser_post_photos
+	handlers["user_get_picture"] = HandleUser_get_picture
+	handlers["user_get_posts"] = HandleUser_get_posts
+	handlers["user_get_rich_media_documents"] = HandleUser_get_rich_media_documents
+	handlers["user_post_staging_resources"] = HandleUser_post_staging_resources
+	handlers["user_get_videos"] = HandleUser_get_videos
+	handlers["user_post_videos"] = HandleUser_post_videos
+	handlers["user_delete_"] = HandleUser_delete_
+	handlers["user_get_"] = HandleUser_get_
+	handlers["user_post_"] = HandleUser_post_
+	handlers["audioisrc_get_"] = HandleAudioisrc_get_
+	handlers["bidschedule_get_"] = HandleBidschedule_get_
+	handlers["creditcard_get_"] = HandleCreditcard_get_
+	handlers["businessrolerequest_delete_"] = HandleBusinessrolerequest_delete_
+	handlers["businessrolerequest_get_"] = HandleBusinessrolerequest_get_
+	handlers["businessrolerequest_post_"] = HandleBusinessrolerequest_post_
+	handlers["cpasmerchantconfig_get_"] = HandleCpasmerchantconfig_get_
+	handlers["extendedcreditinvoicegroup_delete_ad_accounts"] = HandleExtendedcreditinvoicegroup_delete_ad_accounts
+	handlers["extendedcreditinvoicegroup_get_ad_accounts"] = HandleExtendedcreditinvoicegroup_get_ad_accounts
+	handlers["extendedcreditinvoicegroup_post_ad_accounts"] = HandleExtendedcreditinvoicegroup_post_ad_accounts
+	handlers["extendedcreditinvoicegroup_delete_"] = HandleExtendedcreditinvoicegroup_delete_
+	handlers["extendedcreditinvoicegroup_get_"] = HandleExtendedcreditinvoicegroup_get_
+	handlers["extendedcreditinvoicegroup_post_"] = HandleExtendedcreditinvoicegroup_post_
+	handlers["productfeedrule_delete_"] = HandleProductfeedrule_delete_
+	handlers["productfeedrule_get_"] = HandleProductfeedrule_get_
+	handlers["productfeedrule_post_"] = HandleProductfeedrule_post_
+	handlers["almadaccountinfo_get_"] = HandleAlmadaccountinfo_get_
+	handlers["areffect_get_"] = HandleAreffect_get_
+	handlers["dynamicpriceconfigbydate_get_"] = HandleDynamicpriceconfigbydate_get_
+	handlers["messengeradspartialautomatedsteplist_get_steps"] = HandleMessengeradspartialautomatedsteplist_get_steps
+	handlers["messengeradspartialautomatedsteplist_get_"] = HandleMessengeradspartialautomatedsteplist_get_
+	handlers["adstudy_get_cells"] = HandleAdstudy_get_cells
+	handlers["adstudy_post_checkpoint"] = HandleAdstudy_post_checkpoint
+	handlers["adstudy_get_instances"] = HandleAdstudy_get_instances
+	handlers["adstudy_post_instances"] = HandleAdstudy_post_instances
+	handlers["adstudy_get_objectives"] = HandleAdstudy_get_objectives
+	handlers["adstudy_delete_"] = HandleAdstudy_delete_
+	handlers["adstudy_get_"] = HandleAdstudy_get_
+	handlers["adstudy_post_"] = HandleAdstudy_post_
+	handlers["asyncsession_get_"] = HandleAsyncsession_get_
+	handlers["audiocopyright_get_update_records"] = HandleAudiocopyright_get_update_records
+	handlers["audiocopyright_get_"] = HandleAudiocopyright_get_
+	handlers["businessrequest_get_"] = HandleBusinessrequest_get_
+	handlers["productcataloglocalizationsettings_get_"] = HandleProductcataloglocalizationsettings_get_
+	handlers["almendadvertiserinfo_get_"] = HandleAlmendadvertiserinfo_get_
 	handlers["iguserexportforcam_get_branded_content_media"] = HandleIguserexportforcam_get_branded_content_media
 	handlers["iguserexportforcam_get_insights"] = HandleIguserexportforcam_get_insights
 	handlers["iguserexportforcam_get_recent_media"] = HandleIguserexportforcam_get_recent_media
 	handlers["iguserexportforcam_get_"] = HandleIguserexportforcam_get_
-	handlers["jobopening_get_"] = HandleJobopening_get_
-	handlers["place_get_"] = HandlePlace_get_
-	handlers["eventexternalticketinfo_get_"] = HandleEventexternalticketinfo_get_
-	handlers["rightsmanagerdataexport_get_"] = HandleRightsmanagerdataexport_get_
-	handlers["adimage_get_"] = HandleAdimage_get_
+	handlers["livevideo_get_blocked_users"] = HandleLivevideo_get_blocked_users
+	handlers["livevideo_get_comments"] = HandleLivevideo_get_comments
+	handlers["livevideo_get_crosspost_shared_pages"] = HandleLivevideo_get_crosspost_shared_pages
+	handlers["livevideo_get_crossposted_broadcasts"] = HandleLivevideo_get_crossposted_broadcasts
+	handlers["livevideo_get_errors"] = HandleLivevideo_get_errors
+	handlers["livevideo_post_input_streams"] = HandleLivevideo_post_input_streams
+	handlers["livevideo_get_polls"] = HandleLivevideo_get_polls
+	handlers["livevideo_post_polls"] = HandleLivevideo_post_polls
+	handlers["livevideo_get_reactions"] = HandleLivevideo_get_reactions
+	handlers["livevideo_delete_"] = HandleLivevideo_delete_
+	handlers["livevideo_get_"] = HandleLivevideo_get_
+	handlers["livevideo_post_"] = HandleLivevideo_post_
+	handlers["organization_get_"] = HandleOrganization_get_
+	handlers["igmediaboosteligibilityinfo_get_"] = HandleIgmediaboosteligibilityinfo_get_
+	handlers["imagecopyright_get_"] = HandleImagecopyright_get_
+	handlers["imagecopyright_post_"] = HandleImagecopyright_post_
+	handlers["link_post_comments"] = HandleLink_post_comments
+	handlers["link_get_likes"] = HandleLink_get_likes
+	handlers["link_get_"] = HandleLink_get_
+	handlers["shop_get_"] = HandleShop_get_
+	handlers["cpasadvertiserpartnershiprecommendation_get_"] = HandleCpasadvertiserpartnershiprecommendation_get_
 	handlers["productitemlocalinfo_get_"] = HandleProductitemlocalinfo_get_
-	handlers["commerceordertransactiondetail_get_items"] = HandleCommerceordertransactiondetail_get_items
-	handlers["commerceordertransactiondetail_get_tax_details"] = HandleCommerceordertransactiondetail_get_tax_details
-	handlers["flight_get_channels_to_integrity_status"] = HandleFlight_get_channels_to_integrity_status
-	handlers["flight_get_override_details"] = HandleFlight_get_override_details
-	handlers["flight_get_videos_metadata"] = HandleFlight_get_videos_metadata
-	handlers["flight_get_"] = HandleFlight_get_
-	handlers["flight_post_"] = HandleFlight_post_
-	handlers["savedmessageresponse_get_"] = HandleSavedmessageresponse_get_
+	handlers["adimage_get_"] = HandleAdimage_get_
+	handlers["lifeevent_get_likes"] = HandleLifeevent_get_likes
+	handlers["lifeevent_get_"] = HandleLifeevent_get_
+	handlers["storecatalogsettings_delete_"] = HandleStorecatalogsettings_delete_
+	handlers["storecatalogsettings_get_"] = HandleStorecatalogsettings_get_
+	handlers["igaccesstokenforigonlyapi_get_"] = HandleIgaccesstokenforigonlyapi_get_
+	handlers["videopoll_get_poll_options"] = HandleVideopoll_get_poll_options
+	handlers["videopoll_get_"] = HandleVideopoll_get_
+	handlers["videopoll_post_"] = HandleVideopoll_post_
+	handlers["shadowighashtag_get_recent_media"] = HandleShadowighashtag_get_recent_media
+	handlers["shadowighashtag_get_top_media"] = HandleShadowighashtag_get_top_media
+	handlers["shadowighashtag_get_"] = HandleShadowighashtag_get_
+	handlers["adsavedreport_get_"] = HandleAdsavedreport_get_
+	handlers["catalogsmartpixelsettings_get_"] = HandleCatalogsmartpixelsettings_get_
+	handlers["ad_get_adcreatives"] = HandleAd_get_adcreatives
+	handlers["ad_post_adlabels"] = HandleAd_post_adlabels
+	handlers["ad_get_adrules_governed"] = HandleAd_get_adrules_governed
+	handlers["ad_get_copies"] = HandleAd_get_copies
+	handlers["ad_post_copies"] = HandleAd_post_copies
+	handlers["ad_get_insights"] = HandleAd_get_insights
+	handlers["ad_post_insights"] = HandleAd_post_insights
+	handlers["ad_get_leads"] = HandleAd_get_leads
+	handlers["ad_get_previews"] = HandleAd_get_previews
+	handlers["ad_get_targetingsentencelines"] = HandleAd_get_targetingsentencelines
+	handlers["ad_delete_"] = HandleAd_delete_
+	handlers["ad_get_"] = HandleAd_get_
+	handlers["ad_post_"] = HandleAd_post_
+	handlers["cpasadcreationtemplate_get_"] = HandleCpasadcreationtemplate_get_
+	handlers["vehicle_get_channels_to_integrity_status"] = HandleVehicle_get_channels_to_integrity_status
+	handlers["vehicle_get_override_details"] = HandleVehicle_get_override_details
+	handlers["vehicle_get_videos_metadata"] = HandleVehicle_get_videos_metadata
+	handlers["vehicle_get_"] = HandleVehicle_get_
+	handlers["vehicle_post_"] = HandleVehicle_post_
+	handlers["adsavedkeywords_get_"] = HandleAdsavedkeywords_get_
+	handlers["audiorelease_get_"] = HandleAudiorelease_get_
+	handlers["igmedia_get_boost_ads_list"] = HandleIgmedia_get_boost_ads_list
+	handlers["igmedia_get_branded_content_partner_promote"] = HandleIgmedia_get_branded_content_partner_promote
+	handlers["igmedia_post_branded_content_partner_promote"] = HandleIgmedia_post_branded_content_partner_promote
+	handlers["igmedia_get_children"] = HandleIgmedia_get_children
+	handlers["igmedia_get_collaborators"] = HandleIgmedia_get_collaborators
+	handlers["igmedia_get_comments"] = HandleIgmedia_get_comments
+	handlers["igmedia_post_comments"] = HandleIgmedia_post_comments
+	handlers["igmedia_get_insights"] = HandleIgmedia_get_insights
+	handlers["igmedia_delete_partnership_ad_code"] = HandleIgmedia_delete_partnership_ad_code
+	handlers["igmedia_post_partnership_ad_code"] = HandleIgmedia_post_partnership_ad_code
+	handlers["igmedia_get_product_tags"] = HandleIgmedia_get_product_tags
+	handlers["igmedia_post_product_tags"] = HandleIgmedia_post_product_tags
+	handlers["igmedia_get_"] = HandleIgmedia_get_
+	handlers["igmedia_post_"] = HandleIgmedia_post_
+	handlers["customaudience_delete_adaccounts"] = HandleCustomaudience_delete_adaccounts
+	handlers["customaudience_get_adaccounts"] = HandleCustomaudience_get_adaccounts
+	handlers["customaudience_post_adaccounts"] = HandleCustomaudience_post_adaccounts
+	handlers["customaudience_get_ads"] = HandleCustomaudience_get_ads
+	handlers["customaudience_get_health"] = HandleCustomaudience_get_health
+	handlers["customaudience_get_salts"] = HandleCustomaudience_get_salts
+	handlers["customaudience_post_salts"] = HandleCustomaudience_post_salts
+	handlers["customaudience_get_sessions"] = HandleCustomaudience_get_sessions
+	handlers["customaudience_get_shared_account_info"] = HandleCustomaudience_get_shared_account_info
+	handlers["customaudience_delete_users"] = HandleCustomaudience_delete_users
+	handlers["customaudience_post_users"] = HandleCustomaudience_post_users
+	handlers["customaudience_post_usersreplace"] = HandleCustomaudience_post_usersreplace
+	handlers["customaudience_delete_"] = HandleCustomaudience_delete_
+	handlers["customaudience_get_"] = HandleCustomaudience_get_
+	handlers["customaudience_post_"] = HandleCustomaudience_post_
+	handlers["pageleadsaccessconfig_get_"] = HandlePageleadsaccessconfig_get_
+	handlers["researchpollstudy_get_"] = HandleResearchpollstudy_get_
+	handlers["franchiseprogrammember_get_"] = HandleFranchiseprogrammember_get_
+	handlers["productfeeduploaderror_get_samples"] = HandleProductfeeduploaderror_get_samples
+	handlers["productfeeduploaderror_get_suggested_rules"] = HandleProductfeeduploaderror_get_suggested_rules
+	handlers["productfeeduploaderror_get_"] = HandleProductfeeduploaderror_get_
+	handlers["mediacopyrightupdaterecord_get_"] = HandleMediacopyrightupdaterecord_get_
+	handlers["adcolumnsizes_get_"] = HandleAdcolumnsizes_get_
+	handlers["analyticsuserconfig_get_"] = HandleAnalyticsuserconfig_get_
+	handlers["pagebroadcast_get_"] = HandlePagebroadcast_get_
+	handlers["partnerstudy_get_"] = HandlePartnerstudy_get_
+	handlers["canvasdynamicsetting_get_"] = HandleCanvasdynamicsetting_get_
+	handlers["adlightcampaign_get_"] = HandleAdlightcampaign_get_
+	handlers["videolist_get_videos"] = HandleVideolist_get_videos
+	handlers["videolist_get_"] = HandleVideolist_get_
+	handlers["whitehatfbdlrun_get_"] = HandleWhitehatfbdlrun_get_
+	handlers["offlineproductitem_get_channels_to_integrity_status"] = HandleOfflineproductitem_get_channels_to_integrity_status
+	handlers["offlineproductitem_get_override_details"] = HandleOfflineproductitem_get_override_details
+	handlers["offlineproductitem_get_"] = HandleOfflineproductitem_get_
+	handlers["websitecreativeassetsource_get_"] = HandleWebsitecreativeassetsource_get_
+	handlers["business_post_access_token"] = HandleBusiness_post_access_token
+	handlers["business_get_ad_account_infos"] = HandleBusiness_get_ad_account_infos
+	handlers["business_delete_ad_accounts"] = HandleBusiness_delete_ad_accounts
+	handlers["business_post_ad_review_requests"] = HandleBusiness_post_ad_review_requests
+	handlers["business_get_ad_studies"] = HandleBusiness_get_ad_studies
+	handlers["business_post_ad_studies"] = HandleBusiness_post_ad_studies
+	handlers["business_post_adaccount"] = HandleBusiness_post_adaccount
+	handlers["business_post_add_phone_numbers"] = HandleBusiness_post_add_phone_numbers
+	handlers["business_post_adnetwork_applications"] = HandleBusiness_post_adnetwork_applications
+	handlers["business_get_adnetworkanalytics"] = HandleBusiness_get_adnetworkanalytics
+	handlers["business_post_adnetworkanalytics"] = HandleBusiness_post_adnetworkanalytics
+	handlers["business_get_adnetworkanalytics_results"] = HandleBusiness_get_adnetworkanalytics_results
+	handlers["business_get_ads_dataset"] = HandleBusiness_get_ads_dataset
+	handlers["business_post_ads_dataset"] = HandleBusiness_post_ads_dataset
+	handlers["business_get_ads_reporting_mmm_reports"] = HandleBusiness_get_ads_reporting_mmm_reports
+	handlers["business_get_ads_reporting_mmm_schedulers"] = HandleBusiness_get_ads_reporting_mmm_schedulers
+	handlers["business_get_adspixels"] = HandleBusiness_get_adspixels
+	handlers["business_post_adspixels"] = HandleBusiness_post_adspixels
+	handlers["business_delete_agencies"] = HandleBusiness_delete_agencies
+	handlers["business_get_agencies"] = HandleBusiness_get_agencies
+	handlers["business_get_an_placements"] = HandleBusiness_get_an_placements
+	handlers["business_post_block_list_drafts"] = HandleBusiness_post_block_list_drafts
+	handlers["business_post_bm_review_requests"] = HandleBusiness_post_bm_review_requests
+	handlers["business_get_business_asset_groups"] = HandleBusiness_get_business_asset_groups
+	handlers["business_get_business_invoices"] = HandleBusiness_get_business_invoices
+	handlers["business_get_business_users"] = HandleBusiness_get_business_users
+	handlers["business_post_business_users"] = HandleBusiness_post_business_users
+	handlers["business_get_businessprojects"] = HandleBusiness_get_businessprojects
+	handlers["business_post_claim_custom_conversions"] = HandleBusiness_post_claim_custom_conversions
+	handlers["business_get_client_ad_accounts"] = HandleBusiness_get_client_ad_accounts
+	handlers["business_get_client_apps"] = HandleBusiness_get_client_apps
+	handlers["business_post_client_apps"] = HandleBusiness_post_client_apps
+	handlers["business_get_client_offsite_signal_container_business_objects"] = HandleBusiness_get_client_offsite_signal_container_business_objects
+	handlers["business_get_client_pages"] = HandleBusiness_get_client_pages
+	handlers["business_post_client_pages"] = HandleBusiness_post_client_pages
+	handlers["business_get_client_pixels"] = HandleBusiness_get_client_pixels
+	handlers["business_get_client_product_catalogs"] = HandleBusiness_get_client_product_catalogs
+	handlers["business_get_client_whatsapp_business_accounts"] = HandleBusiness_get_client_whatsapp_business_accounts
+	handlers["business_delete_clients"] = HandleBusiness_delete_clients
+	handlers["business_get_clients"] = HandleBusiness_get_clients
+	handlers["business_get_collaborative_ads_collaboration_requests"] = HandleBusiness_get_collaborative_ads_collaboration_requests
+	handlers["business_post_collaborative_ads_collaboration_requests"] = HandleBusiness_post_collaborative_ads_collaboration_requests
+	handlers["business_get_collaborative_ads_suggested_partners"] = HandleBusiness_get_collaborative_ads_suggested_partners
+	handlers["business_get_commerce_merchant_settings"] = HandleBusiness_get_commerce_merchant_settings
+	handlers["business_get_cpas_business_setup_config"] = HandleBusiness_get_cpas_business_setup_config
+	handlers["business_post_cpas_business_setup_config"] = HandleBusiness_post_cpas_business_setup_config
+	handlers["business_get_cpas_merchant_config"] = HandleBusiness_get_cpas_merchant_config
+	handlers["business_post_creative_folders"] = HandleBusiness_post_creative_folders
+	handlers["business_get_creditcards"] = HandleBusiness_get_creditcards
+	handlers["business_post_customconversions"] = HandleBusiness_post_customconversions
+	handlers["business_get_event_source_groups"] = HandleBusiness_get_event_source_groups
+	handlers["business_post_event_source_groups"] = HandleBusiness_post_event_source_groups
+	handlers["business_get_extendedcreditapplications"] = HandleBusiness_get_extendedcreditapplications
+	handlers["business_get_extendedcredits"] = HandleBusiness_get_extendedcredits
+	handlers["business_post_images"] = HandleBusiness_post_images
+	handlers["business_get_initiated_audience_sharing_requests"] = HandleBusiness_get_initiated_audience_sharing_requests
+	handlers["business_delete_instagram_accounts"] = HandleBusiness_delete_instagram_accounts
+	handlers["business_get_instagram_accounts"] = HandleBusiness_get_instagram_accounts
+	handlers["business_get_instagram_business_accounts"] = HandleBusiness_get_instagram_business_accounts
+	handlers["business_delete_managed_businesses"] = HandleBusiness_delete_managed_businesses
+	handlers["business_post_managed_businesses"] = HandleBusiness_post_managed_businesses
+	handlers["business_get_managed_partner_ads_funding_source_details"] = HandleBusiness_get_managed_partner_ads_funding_source_details
+	handlers["business_post_managed_partner_business_setup"] = HandleBusiness_post_managed_partner_business_setup
+	handlers["business_delete_managed_partner_businesses"] = HandleBusiness_delete_managed_partner_businesses
+	handlers["business_post_managed_partner_businesses"] = HandleBusiness_post_managed_partner_businesses
+	handlers["business_post_onboard_partners_to_mm_lite"] = HandleBusiness_post_onboard_partners_to_mm_lite
+	handlers["business_get_openbridge_configurations"] = HandleBusiness_get_openbridge_configurations
+	handlers["business_post_openbridge_configurations"] = HandleBusiness_post_openbridge_configurations
+	handlers["business_get_owned_ad_accounts"] = HandleBusiness_get_owned_ad_accounts
+	handlers["business_post_owned_ad_accounts"] = HandleBusiness_post_owned_ad_accounts
+	handlers["business_get_owned_apps"] = HandleBusiness_get_owned_apps
+	handlers["business_post_owned_apps"] = HandleBusiness_post_owned_apps
+	handlers["business_delete_owned_businesses"] = HandleBusiness_delete_owned_businesses
+	handlers["business_get_owned_businesses"] = HandleBusiness_get_owned_businesses
+	handlers["business_post_owned_businesses"] = HandleBusiness_post_owned_businesses
+	handlers["business_get_owned_instagram_accounts"] = HandleBusiness_get_owned_instagram_accounts
+	handlers["business_get_owned_offsite_signal_container_business_objects"] = HandleBusiness_get_owned_offsite_signal_container_business_objects
+	handlers["business_get_owned_pages"] = HandleBusiness_get_owned_pages
+	handlers["business_post_owned_pages"] = HandleBusiness_post_owned_pages
+	handlers["business_get_owned_pixels"] = HandleBusiness_get_owned_pixels
+	handlers["business_get_owned_product_catalogs"] = HandleBusiness_get_owned_product_catalogs
+	handlers["business_post_owned_product_catalogs"] = HandleBusiness_post_owned_product_catalogs
+	handlers["business_get_owned_whatsapp_business_accounts"] = HandleBusiness_get_owned_whatsapp_business_accounts
+	handlers["business_delete_pages"] = HandleBusiness_delete_pages
+	handlers["business_get_partner_account_linking"] = HandleBusiness_get_partner_account_linking
+	handlers["business_post_partner_premium_options"] = HandleBusiness_post_partner_premium_options
+	handlers["business_get_passback_attribution_metadata_configs"] = HandleBusiness_get_passback_attribution_metadata_configs
+	handlers["business_get_pending_client_ad_accounts"] = HandleBusiness_get_pending_client_ad_accounts
+	handlers["business_get_pending_client_apps"] = HandleBusiness_get_pending_client_apps
+	handlers["business_get_pending_client_pages"] = HandleBusiness_get_pending_client_pages
+	handlers["business_get_pending_owned_ad_accounts"] = HandleBusiness_get_pending_owned_ad_accounts
+	handlers["business_get_pending_owned_pages"] = HandleBusiness_get_pending_owned_pages
+	handlers["business_get_pending_shared_offsite_signal_container_business_objects"] = HandleBusiness_get_pending_shared_offsite_signal_container_business_objects
+	handlers["business_get_pending_users"] = HandleBusiness_get_pending_users
+	handlers["business_get_picture"] = HandleBusiness_get_picture
+	handlers["business_post_pixel_tos"] = HandleBusiness_post_pixel_tos
+	handlers["business_get_preverified_numbers"] = HandleBusiness_get_preverified_numbers
+	handlers["business_get_received_audience_sharing_requests"] = HandleBusiness_get_received_audience_sharing_requests
+	handlers["business_get_reseller_guidances"] = HandleBusiness_get_reseller_guidances
+	handlers["business_get_self_certified_whatsapp_business_submissions"] = HandleBusiness_get_self_certified_whatsapp_business_submissions
+	handlers["business_post_self_certify_whatsapp_business"] = HandleBusiness_post_self_certify_whatsapp_business
+	handlers["business_post_setup_managed_partner_adaccounts"] = HandleBusiness_post_setup_managed_partner_adaccounts
+	handlers["business_delete_share_preverified_numbers"] = HandleBusiness_delete_share_preverified_numbers
+	handlers["business_post_share_preverified_numbers"] = HandleBusiness_post_share_preverified_numbers
+	handlers["business_post_system_user_access_tokens"] = HandleBusiness_post_system_user_access_tokens
+	handlers["business_get_system_users"] = HandleBusiness_get_system_users
+	handlers["business_post_system_users"] = HandleBusiness_post_system_users
+	handlers["business_get_third_party_measurement_report_dataset"] = HandleBusiness_get_third_party_measurement_report_dataset
+	handlers["business_post_videos"] = HandleBusiness_post_videos
+	handlers["business_get_"] = HandleBusiness_get_
+	handlers["business_post_"] = HandleBusiness_post_
+	handlers["adsstartyourdaywidget_get_"] = HandleAdsstartyourdaywidget_get_
+	handlers["eventtickettier_get_"] = HandleEventtickettier_get_
+	handlers["imagecopyrightdispute_get_"] = HandleImagecopyrightdispute_get_
+	handlers["withasset3d_get_"] = HandleWithasset3d_get_
+	handlers["eventexternalticketinfo_get_"] = HandleEventexternalticketinfo_get_
+	handlers["adscreationsavedstate_get_"] = HandleAdscreationsavedstate_get_
+	handlers["campaign_get_ad_studies"] = HandleCampaign_get_ad_studies
+	handlers["campaign_post_adlabels"] = HandleCampaign_post_adlabels
+	handlers["campaign_get_adrules_governed"] = HandleCampaign_get_adrules_governed
+	handlers["campaign_get_ads"] = HandleCampaign_get_ads
+	handlers["campaign_get_adsets"] = HandleCampaign_get_adsets
+	handlers["campaign_post_budget_schedules"] = HandleCampaign_post_budget_schedules
+	handlers["campaign_get_copies"] = HandleCampaign_get_copies
+	handlers["campaign_post_copies"] = HandleCampaign_post_copies
+	handlers["campaign_get_insights"] = HandleCampaign_get_insights
+	handlers["campaign_post_insights"] = HandleCampaign_post_insights
+	handlers["campaign_delete_"] = HandleCampaign_delete_
+	handlers["campaign_get_"] = HandleCampaign_get_
+	handlers["campaign_post_"] = HandleCampaign_post_
 	handlers["dynamicarmetadata_get_"] = HandleDynamicarmetadata_get_
-	handlers["businessfranchiseconfig_get_"] = HandleBusinessfranchiseconfig_get_
+	handlers["woodhengesupporter_get_"] = HandleWoodhengesupporter_get_
+	handlers["adspivotrules_get_"] = HandleAdspivotrules_get_
+	handlers["pageupcomingchange_get_"] = HandlePageupcomingchange_get_
+	handlers["productfeedupload_post_error_report"] = HandleProductfeedupload_post_error_report
+	handlers["productfeedupload_get_errors"] = HandleProductfeedupload_get_errors
+	handlers["productfeedupload_get_"] = HandleProductfeedupload_get_
+	handlers["managementsitelink_get_"] = HandleManagementsitelink_get_
+	handlers["productsetusage_get_"] = HandleProductsetusage_get_
+	handlers["adaccountagencyfeeconfig_get_"] = HandleAdaccountagencyfeeconfig_get_
+	handlers["businessownedobjectonbehalfofrequest_get_"] = HandleBusinessownedobjectonbehalfofrequest_get_
+	handlers["sitelink_get_"] = HandleSitelink_get_
+	handlers["adruleevaluationspec_get_"] = HandleAdruleevaluationspec_get_
+	handlers["iguserforigonlyapi_get_business_messaging_feature_status"] = HandleIguserforigonlyapi_get_business_messaging_feature_status
+	handlers["iguserforigonlyapi_get_content_publishing_limit"] = HandleIguserforigonlyapi_get_content_publishing_limit
+	handlers["iguserforigonlyapi_get_conversations"] = HandleIguserforigonlyapi_get_conversations
+	handlers["iguserforigonlyapi_get_insights"] = HandleIguserforigonlyapi_get_insights
+	handlers["iguserforigonlyapi_get_live_media"] = HandleIguserforigonlyapi_get_live_media
+	handlers["iguserforigonlyapi_get_media"] = HandleIguserforigonlyapi_get_media
+	handlers["iguserforigonlyapi_post_media"] = HandleIguserforigonlyapi_post_media
+	handlers["iguserforigonlyapi_post_mediapublish"] = HandleIguserforigonlyapi_post_mediapublish
+	handlers["iguserforigonlyapi_post_mentions"] = HandleIguserforigonlyapi_post_mentions
+	handlers["iguserforigonlyapi_post_messageattachments"] = HandleIguserforigonlyapi_post_messageattachments
+	handlers["iguserforigonlyapi_post_messages"] = HandleIguserforigonlyapi_post_messages
+	handlers["iguserforigonlyapi_delete_messenger_profile"] = HandleIguserforigonlyapi_delete_messenger_profile
+	handlers["iguserforigonlyapi_get_messenger_profile"] = HandleIguserforigonlyapi_get_messenger_profile
+	handlers["iguserforigonlyapi_post_messenger_profile"] = HandleIguserforigonlyapi_post_messenger_profile
+	handlers["iguserforigonlyapi_get_stories"] = HandleIguserforigonlyapi_get_stories
+	handlers["iguserforigonlyapi_delete_subscribed_apps"] = HandleIguserforigonlyapi_delete_subscribed_apps
+	handlers["iguserforigonlyapi_get_subscribed_apps"] = HandleIguserforigonlyapi_get_subscribed_apps
+	handlers["iguserforigonlyapi_post_subscribed_apps"] = HandleIguserforigonlyapi_post_subscribed_apps
+	handlers["iguserforigonlyapi_get_tags"] = HandleIguserforigonlyapi_get_tags
+	handlers["iguserforigonlyapi_delete_welcome_message_flows"] = HandleIguserforigonlyapi_delete_welcome_message_flows
+	handlers["iguserforigonlyapi_get_welcome_message_flows"] = HandleIguserforigonlyapi_get_welcome_message_flows
+	handlers["iguserforigonlyapi_post_welcome_message_flows"] = HandleIguserforigonlyapi_post_welcome_message_flows
+	handlers["iguserforigonlyapi_get_"] = HandleIguserforigonlyapi_get_
+	handlers["adspixelcapabilityoverride_get_"] = HandleAdspixelcapabilityoverride_get_
+	handlers["audiosublabel_get_"] = HandleAudiosublabel_get_
+	handlers["adsconversiongoal_get_conversion_events"] = HandleAdsconversiongoal_get_conversion_events
+	handlers["adsconversiongoal_get_"] = HandleAdsconversiongoal_get_
+	handlers["canvas_get_preview"] = HandleCanvas_get_preview
+	handlers["canvas_get_previews"] = HandleCanvas_get_previews
+	handlers["canvas_get_"] = HandleCanvas_get_
+	handlers["canvas_post_"] = HandleCanvas_post_
+	handlers["signalsiwlextractor_get_"] = HandleSignalsiwlextractor_get_
+	handlers["slicedeventsourcegroup_get_"] = HandleSlicedeventsourcegroup_get_
+	handlers["almevent_get_"] = HandleAlmevent_get_
+	handlers["externalmerchantsettings_get_"] = HandleExternalmerchantsettings_get_
+	handlers["advideo_get_boost_ads_list"] = HandleAdvideo_get_boost_ads_list
+	handlers["advideo_get_captions"] = HandleAdvideo_get_captions
+	handlers["advideo_post_captions"] = HandleAdvideo_post_captions
+	handlers["advideo_get_collaborators"] = HandleAdvideo_get_collaborators
+	handlers["advideo_post_collaborators"] = HandleAdvideo_post_collaborators
+	handlers["advideo_get_comments"] = HandleAdvideo_get_comments
+	handlers["advideo_post_comments"] = HandleAdvideo_post_comments
+	handlers["advideo_get_crosspost_shared_pages"] = HandleAdvideo_get_crosspost_shared_pages
+	handlers["advideo_post_gaming_clip_create"] = HandleAdvideo_post_gaming_clip_create
+	handlers["advideo_get_likes"] = HandleAdvideo_get_likes
+	handlers["advideo_post_likes"] = HandleAdvideo_post_likes
+	handlers["advideo_get_poll_settings"] = HandleAdvideo_get_poll_settings
+	handlers["advideo_get_polls"] = HandleAdvideo_get_polls
+	handlers["advideo_post_polls"] = HandleAdvideo_post_polls
+	handlers["advideo_get_sponsor_tags"] = HandleAdvideo_get_sponsor_tags
+	handlers["advideo_get_tags"] = HandleAdvideo_get_tags
+	handlers["advideo_get_thumbnails"] = HandleAdvideo_get_thumbnails
+	handlers["advideo_post_thumbnails"] = HandleAdvideo_post_thumbnails
+	handlers["advideo_get_video_insights"] = HandleAdvideo_get_video_insights
+	handlers["advideo_delete_"] = HandleAdvideo_delete_
+	handlers["advideo_get_"] = HandleAdvideo_get_
+	handlers["advideo_post_"] = HandleAdvideo_post_
+	handlers["catalogwebsitesettings_get_"] = HandleCatalogwebsitesettings_get_
+	handlers["paymentenginepayment_post_dispute"] = HandlePaymentenginepayment_post_dispute
+	handlers["paymentenginepayment_post_refunds"] = HandlePaymentenginepayment_post_refunds
+	handlers["paymentenginepayment_get_"] = HandlePaymentenginepayment_get_
+	handlers["shadowigmediabuilder_get_"] = HandleShadowigmediabuilder_get_
+	handlers["whatsappbusinessaccount_get_activities"] = HandleWhatsappbusinessaccount_get_activities
+	handlers["whatsappbusinessaccount_delete_assigned_users"] = HandleWhatsappbusinessaccount_delete_assigned_users
+	handlers["whatsappbusinessaccount_get_assigned_users"] = HandleWhatsappbusinessaccount_get_assigned_users
+	handlers["whatsappbusinessaccount_post_assigned_users"] = HandleWhatsappbusinessaccount_post_assigned_users
+	handlers["whatsappbusinessaccount_get_audiences"] = HandleWhatsappbusinessaccount_get_audiences
+	handlers["whatsappbusinessaccount_get_call_analytics"] = HandleWhatsappbusinessaccount_get_call_analytics
+	handlers["whatsappbusinessaccount_get_conversation_analytics"] = HandleWhatsappbusinessaccount_get_conversation_analytics
+	handlers["whatsappbusinessaccount_get_dataset"] = HandleWhatsappbusinessaccount_get_dataset
+	handlers["whatsappbusinessaccount_post_dataset"] = HandleWhatsappbusinessaccount_post_dataset
+	handlers["whatsappbusinessaccount_get_flows"] = HandleWhatsappbusinessaccount_get_flows
+	handlers["whatsappbusinessaccount_post_flows"] = HandleWhatsappbusinessaccount_post_flows
+	handlers["whatsappbusinessaccount_post_generate_payment_configuration_oauth_link"] = HandleWhatsappbusinessaccount_post_generate_payment_configuration_oauth_link
+	handlers["whatsappbusinessaccount_get_message_campaigns"] = HandleWhatsappbusinessaccount_get_message_campaigns
+	handlers["whatsappbusinessaccount_get_message_template_previews"] = HandleWhatsappbusinessaccount_get_message_template_previews
+	handlers["whatsappbusinessaccount_delete_message_templates"] = HandleWhatsappbusinessaccount_delete_message_templates
+	handlers["whatsappbusinessaccount_get_message_templates"] = HandleWhatsappbusinessaccount_get_message_templates
+	handlers["whatsappbusinessaccount_post_message_templates"] = HandleWhatsappbusinessaccount_post_message_templates
+	handlers["whatsappbusinessaccount_post_migrate_flows"] = HandleWhatsappbusinessaccount_post_migrate_flows
+	handlers["whatsappbusinessaccount_post_migrate_message_templates"] = HandleWhatsappbusinessaccount_post_migrate_message_templates
+	handlers["whatsappbusinessaccount_delete_payment_configuration"] = HandleWhatsappbusinessaccount_delete_payment_configuration
+	handlers["whatsappbusinessaccount_get_payment_configuration"] = HandleWhatsappbusinessaccount_get_payment_configuration
+	handlers["whatsappbusinessaccount_post_payment_configuration"] = HandleWhatsappbusinessaccount_post_payment_configuration
+	handlers["whatsappbusinessaccount_get_payment_configurations"] = HandleWhatsappbusinessaccount_get_payment_configurations
+	handlers["whatsappbusinessaccount_get_phone_numbers"] = HandleWhatsappbusinessaccount_get_phone_numbers
+	handlers["whatsappbusinessaccount_post_phone_numbers"] = HandleWhatsappbusinessaccount_post_phone_numbers
+	handlers["whatsappbusinessaccount_get_pricing_analytics"] = HandleWhatsappbusinessaccount_get_pricing_analytics
+	handlers["whatsappbusinessaccount_delete_product_catalogs"] = HandleWhatsappbusinessaccount_delete_product_catalogs
+	handlers["whatsappbusinessaccount_get_product_catalogs"] = HandleWhatsappbusinessaccount_get_product_catalogs
+	handlers["whatsappbusinessaccount_post_product_catalogs"] = HandleWhatsappbusinessaccount_post_product_catalogs
+	handlers["whatsappbusinessaccount_get_schedules"] = HandleWhatsappbusinessaccount_get_schedules
+	handlers["whatsappbusinessaccount_post_set_obo_mobility_intent"] = HandleWhatsappbusinessaccount_post_set_obo_mobility_intent
+	handlers["whatsappbusinessaccount_post_set_solution_migration_intent"] = HandleWhatsappbusinessaccount_post_set_solution_migration_intent
+	handlers["whatsappbusinessaccount_get_solutions"] = HandleWhatsappbusinessaccount_get_solutions
+	handlers["whatsappbusinessaccount_delete_subscribed_apps"] = HandleWhatsappbusinessaccount_delete_subscribed_apps
+	handlers["whatsappbusinessaccount_get_subscribed_apps"] = HandleWhatsappbusinessaccount_get_subscribed_apps
+	handlers["whatsappbusinessaccount_post_subscribed_apps"] = HandleWhatsappbusinessaccount_post_subscribed_apps
+	handlers["whatsappbusinessaccount_get_template_analytics"] = HandleWhatsappbusinessaccount_get_template_analytics
+	handlers["whatsappbusinessaccount_get_template_group_analytics"] = HandleWhatsappbusinessaccount_get_template_group_analytics
+	handlers["whatsappbusinessaccount_get_template_groups"] = HandleWhatsappbusinessaccount_get_template_groups
+	handlers["whatsappbusinessaccount_post_template_groups"] = HandleWhatsappbusinessaccount_post_template_groups
+	handlers["whatsappbusinessaccount_get_template_performance_metrics"] = HandleWhatsappbusinessaccount_get_template_performance_metrics
+	handlers["whatsappbusinessaccount_post_upsert_message_templates"] = HandleWhatsappbusinessaccount_post_upsert_message_templates
+	handlers["whatsappbusinessaccount_get_welcome_message_sequences"] = HandleWhatsappbusinessaccount_get_welcome_message_sequences
+	handlers["whatsappbusinessaccount_get_"] = HandleWhatsappbusinessaccount_get_
+	handlers["whatsappbusinessaccount_post_"] = HandleWhatsappbusinessaccount_post_
+	handlers["adrule_post_execute"] = HandleAdrule_post_execute
+	handlers["adrule_get_history"] = HandleAdrule_get_history
+	handlers["adrule_post_preview"] = HandleAdrule_post_preview
+	handlers["adrule_delete_"] = HandleAdrule_delete_
+	handlers["adrule_get_"] = HandleAdrule_get_
+	handlers["adrule_post_"] = HandleAdrule_post_
+	handlers["adsmcmeconversion_get_"] = HandleAdsmcmeconversion_get_
 	handlers["page_get_ab_tests"] = HandlePage_get_ab_tests
 	handlers["page_post_ab_tests"] = HandlePage_post_ab_tests
 	handlers["page_post_acknowledge_orders"] = HandlePage_post_acknowledge_orders
@@ -1651,37 +3508,181 @@ func GetAllHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mc
 	handlers["page_post_welcome_message_flows"] = HandlePage_post_welcome_message_flows
 	handlers["page_get_"] = HandlePage_get_
 	handlers["page_post_"] = HandlePage_post_
-	handlers["websitecreativeinfo_get_"] = HandleWebsitecreativeinfo_get_
-	handlers["productfeedschedule_get_"] = HandleProductfeedschedule_get_
-	handlers["adasyncrequest_delete_"] = HandleAdasyncrequest_delete_
-	handlers["adasyncrequest_get_"] = HandleAdasyncrequest_get_
-	handlers["privateliftstudyinstance_get_"] = HandlePrivateliftstudyinstance_get_
-	handlers["privateliftstudyinstance_post_"] = HandlePrivateliftstudyinstance_post_
-	handlers["adtopline_get_"] = HandleAdtopline_get_
-	handlers["iguserforigonlyapi_get_business_messaging_feature_status"] = HandleIguserforigonlyapi_get_business_messaging_feature_status
-	handlers["iguserforigonlyapi_get_content_publishing_limit"] = HandleIguserforigonlyapi_get_content_publishing_limit
-	handlers["iguserforigonlyapi_get_conversations"] = HandleIguserforigonlyapi_get_conversations
-	handlers["iguserforigonlyapi_get_insights"] = HandleIguserforigonlyapi_get_insights
-	handlers["iguserforigonlyapi_get_live_media"] = HandleIguserforigonlyapi_get_live_media
-	handlers["iguserforigonlyapi_get_media"] = HandleIguserforigonlyapi_get_media
-	handlers["iguserforigonlyapi_post_media"] = HandleIguserforigonlyapi_post_media
-	handlers["iguserforigonlyapi_post_mediapublish"] = HandleIguserforigonlyapi_post_mediapublish
-	handlers["iguserforigonlyapi_post_mentions"] = HandleIguserforigonlyapi_post_mentions
-	handlers["iguserforigonlyapi_post_messageattachments"] = HandleIguserforigonlyapi_post_messageattachments
-	handlers["iguserforigonlyapi_post_messages"] = HandleIguserforigonlyapi_post_messages
-	handlers["iguserforigonlyapi_delete_messenger_profile"] = HandleIguserforigonlyapi_delete_messenger_profile
-	handlers["iguserforigonlyapi_get_messenger_profile"] = HandleIguserforigonlyapi_get_messenger_profile
-	handlers["iguserforigonlyapi_post_messenger_profile"] = HandleIguserforigonlyapi_post_messenger_profile
-	handlers["iguserforigonlyapi_get_stories"] = HandleIguserforigonlyapi_get_stories
-	handlers["iguserforigonlyapi_delete_subscribed_apps"] = HandleIguserforigonlyapi_delete_subscribed_apps
-	handlers["iguserforigonlyapi_get_subscribed_apps"] = HandleIguserforigonlyapi_get_subscribed_apps
-	handlers["iguserforigonlyapi_post_subscribed_apps"] = HandleIguserforigonlyapi_post_subscribed_apps
-	handlers["iguserforigonlyapi_get_tags"] = HandleIguserforigonlyapi_get_tags
-	handlers["iguserforigonlyapi_delete_welcome_message_flows"] = HandleIguserforigonlyapi_delete_welcome_message_flows
-	handlers["iguserforigonlyapi_get_welcome_message_flows"] = HandleIguserforigonlyapi_get_welcome_message_flows
-	handlers["iguserforigonlyapi_post_welcome_message_flows"] = HandleIguserforigonlyapi_post_welcome_message_flows
-	handlers["iguserforigonlyapi_get_"] = HandleIguserforigonlyapi_get_
 	handlers["addraft_get_"] = HandleAddraft_get_
+	handlers["adgroupfacebookfeedback_get_comments"] = HandleAdgroupfacebookfeedback_get_comments
+	handlers["audioasset_get_"] = HandleAudioasset_get_
+	handlers["businesscreativefolder_get_"] = HandleBusinesscreativefolder_get_
+	handlers["igcomment_get_replies"] = HandleIgcomment_get_replies
+	handlers["igcomment_post_replies"] = HandleIgcomment_post_replies
+	handlers["igcomment_delete_"] = HandleIgcomment_delete_
+	handlers["igcomment_get_"] = HandleIgcomment_get_
+	handlers["igcomment_post_"] = HandleIgcomment_post_
+	handlers["photo_get_comments"] = HandlePhoto_get_comments
+	handlers["photo_post_comments"] = HandlePhoto_post_comments
+	handlers["photo_get_insights"] = HandlePhoto_get_insights
+	handlers["photo_get_likes"] = HandlePhoto_get_likes
+	handlers["photo_post_likes"] = HandlePhoto_post_likes
+	handlers["photo_get_sponsor_tags"] = HandlePhoto_get_sponsor_tags
+	handlers["photo_delete_"] = HandlePhoto_delete_
+	handlers["photo_get_"] = HandlePhoto_get_
+	handlers["livevideoinputstream_get_"] = HandleLivevideoinputstream_get_
+	handlers["mailingaddress_get_"] = HandleMailingaddress_get_
+	handlers["instagramuser_get_agencies"] = HandleInstagramuser_get_agencies
+	handlers["instagramuser_get_ar_effects"] = HandleInstagramuser_get_ar_effects
+	handlers["instagramuser_get_authorized_adaccounts"] = HandleInstagramuser_get_authorized_adaccounts
+	handlers["instagramuser_get_upcoming_events"] = HandleInstagramuser_get_upcoming_events
+	handlers["instagramuser_get_"] = HandleInstagramuser_get_
+	handlers["robot_get_"] = HandleRobot_get_
+	handlers["userpageonetimeoptintokensettings_get_"] = HandleUserpageonetimeoptintokensettings_get_
+	handlers["offsitesignalcontainerbusinessobject_get_linked_application"] = HandleOffsitesignalcontainerbusinessobject_get_linked_application
+	handlers["offsitesignalcontainerbusinessobject_get_linked_page"] = HandleOffsitesignalcontainerbusinessobject_get_linked_page
+	handlers["offsitesignalcontainerbusinessobject_get_"] = HandleOffsitesignalcontainerbusinessobject_get_
+	handlers["leadgenform_get_leads"] = HandleLeadgenform_get_leads
+	handlers["leadgenform_get_test_leads"] = HandleLeadgenform_get_test_leads
+	handlers["leadgenform_post_test_leads"] = HandleLeadgenform_post_test_leads
+	handlers["leadgenform_get_"] = HandleLeadgenform_get_
+	handlers["leadgenform_post_"] = HandleLeadgenform_post_
+	handlers["adstudycell_get_adaccounts"] = HandleAdstudycell_get_adaccounts
+	handlers["adstudycell_get_adsets"] = HandleAdstudycell_get_adsets
+	handlers["adstudycell_get_campaigns"] = HandleAdstudycell_get_campaigns
+	handlers["adstudycell_get_"] = HandleAdstudycell_get_
+	handlers["adstudycell_post_"] = HandleAdstudycell_post_
+	handlers["localservicebusiness_get_channels_to_integrity_status"] = HandleLocalservicebusiness_get_channels_to_integrity_status
+	handlers["localservicebusiness_get_override_details"] = HandleLocalservicebusiness_get_override_details
+	handlers["localservicebusiness_get_"] = HandleLocalservicebusiness_get_
+	handlers["savedmessageresponse_get_"] = HandleSavedmessageresponse_get_
+	handlers["rtbdynamicpost_get_comments"] = HandleRtbdynamicpost_get_comments
+	handlers["rtbdynamicpost_get_likes"] = HandleRtbdynamicpost_get_likes
+	handlers["rtbdynamicpost_get_"] = HandleRtbdynamicpost_get_
+	handlers["copyrightownershiptransfer_get_"] = HandleCopyrightownershiptransfer_get_
+	handlers["websitecreativeassetsuggestions_get_"] = HandleWebsitecreativeassetsuggestions_get_
+	handlers["businessfranchiseconfig_get_"] = HandleBusinessfranchiseconfig_get_
+	handlers["extendedcreditallocationconfig_delete_"] = HandleExtendedcreditallocationconfig_delete_
+	handlers["extendedcreditallocationconfig_get_"] = HandleExtendedcreditallocationconfig_get_
+	handlers["extendedcreditallocationconfig_post_"] = HandleExtendedcreditallocationconfig_post_
+	handlers["rightsmanagerdataexport_get_"] = HandleRightsmanagerdataexport_get_
+	handlers["adplacepageset_get_"] = HandleAdplacepageset_get_
+	handlers["copyrightmediamisuse_get_"] = HandleCopyrightmediamisuse_get_
+	handlers["livevideoadcampaignconfig_get_"] = HandleLivevideoadcampaignconfig_get_
+	handlers["admonetizationproperty_get_adnetworkanalytics"] = HandleAdmonetizationproperty_get_adnetworkanalytics
+	handlers["admonetizationproperty_post_adnetworkanalytics"] = HandleAdmonetizationproperty_post_adnetworkanalytics
+	handlers["admonetizationproperty_get_adnetworkanalytics_results"] = HandleAdmonetizationproperty_get_adnetworkanalytics_results
+	handlers["admonetizationproperty_get_"] = HandleAdmonetizationproperty_get_
+	handlers["businessimage_get_"] = HandleBusinessimage_get_
+	handlers["canvastemplate_get_"] = HandleCanvastemplate_get_
+	handlers["commerceordertransactiondetail_get_items"] = HandleCommerceordertransactiondetail_get_items
+	handlers["commerceordertransactiondetail_get_tax_details"] = HandleCommerceordertransactiondetail_get_tax_details
+	handlers["businessobjecttransferownershipagreement_get_"] = HandleBusinessobjecttransferownershipagreement_get_
+	handlers["mediacopyrightattribution_get_"] = HandleMediacopyrightattribution_get_
+	handlers["adexportpreset_get_"] = HandleAdexportpreset_get_
+	handlers["leadgendatadraft_get_"] = HandleLeadgendatadraft_get_
+	handlers["application_delete_accounts"] = HandleApplication_delete_accounts
+	handlers["application_get_accounts"] = HandleApplication_get_accounts
+	handlers["application_post_accounts"] = HandleApplication_post_accounts
+	handlers["application_post_activities"] = HandleApplication_post_activities
+	handlers["application_get_ad_placement_groups"] = HandleApplication_get_ad_placement_groups
+	handlers["application_get_adnetwork_placements"] = HandleApplication_get_adnetwork_placements
+	handlers["application_get_adnetworkanalytics"] = HandleApplication_get_adnetworkanalytics
+	handlers["application_post_adnetworkanalytics"] = HandleApplication_post_adnetworkanalytics
+	handlers["application_get_adnetworkanalytics_results"] = HandleApplication_get_adnetworkanalytics_results
+	handlers["application_get_aem_attribution"] = HandleApplication_get_aem_attribution
+	handlers["application_get_aem_conversion_configs"] = HandleApplication_get_aem_conversion_configs
+	handlers["application_get_aem_conversion_filter"] = HandleApplication_get_aem_conversion_filter
+	handlers["application_post_aem_conversions"] = HandleApplication_post_aem_conversions
+	handlers["application_post_aem_skan_readiness"] = HandleApplication_post_aem_skan_readiness
+	handlers["application_get_agencies"] = HandleApplication_get_agencies
+	handlers["application_post_aggregate_revenue"] = HandleApplication_post_aggregate_revenue
+	handlers["application_get_android_dialog_configs"] = HandleApplication_get_android_dialog_configs
+	handlers["application_get_app_capi_settings"] = HandleApplication_get_app_capi_settings
+	handlers["application_get_app_event_types"] = HandleApplication_get_app_event_types
+	handlers["application_post_app_indexing"] = HandleApplication_post_app_indexing
+	handlers["application_post_app_indexing_session"] = HandleApplication_post_app_indexing_session
+	handlers["application_get_app_installed_groups"] = HandleApplication_get_app_installed_groups
+	handlers["application_post_app_push_device_token"] = HandleApplication_post_app_push_device_token
+	handlers["application_get_appassets"] = HandleApplication_get_appassets
+	handlers["application_post_assets"] = HandleApplication_post_assets
+	handlers["application_get_authorized_adaccounts"] = HandleApplication_get_authorized_adaccounts
+	handlers["application_get_button_auto_detection_device_selection"] = HandleApplication_get_button_auto_detection_device_selection
+	handlers["application_get_cloudbridge_settings"] = HandleApplication_get_cloudbridge_settings
+	handlers["application_post_codeless_event_mappings"] = HandleApplication_post_codeless_event_mappings
+	handlers["application_get_connected_client_businesses"] = HandleApplication_get_connected_client_businesses
+	handlers["application_get_da_checks"] = HandleApplication_get_da_checks
+	handlers["application_post_domain_reports"] = HandleApplication_post_domain_reports
+	handlers["application_get_iap_purchases"] = HandleApplication_get_iap_purchases
+	handlers["application_get_ios_dialog_configs"] = HandleApplication_get_ios_dialog_configs
+	handlers["application_get_linked_dataset"] = HandleApplication_get_linked_dataset
+	handlers["application_get_message_templates"] = HandleApplication_get_message_templates
+	handlers["application_post_mmp_auditing"] = HandleApplication_post_mmp_auditing
+	handlers["application_get_mobile_sdk_gk"] = HandleApplication_get_mobile_sdk_gk
+	handlers["application_get_monetized_digital_store_objects"] = HandleApplication_get_monetized_digital_store_objects
+	handlers["application_post_monetized_digital_store_objects"] = HandleApplication_post_monetized_digital_store_objects
+	handlers["application_get_object_types"] = HandleApplication_get_object_types
+	handlers["application_get_objects"] = HandleApplication_get_objects
+	handlers["application_post_occludespopups"] = HandleApplication_post_occludespopups
+	handlers["application_get_permissions"] = HandleApplication_get_permissions
+	handlers["application_get_products"] = HandleApplication_get_products
+	handlers["application_get_purchases"] = HandleApplication_get_purchases
+	handlers["application_get_roles"] = HandleApplication_get_roles
+	handlers["application_get_server_domain_infos"] = HandleApplication_get_server_domain_infos
+	handlers["application_get_sgw_dataset_status"] = HandleApplication_get_sgw_dataset_status
+	handlers["application_get_sgw_install_deferral_link"] = HandleApplication_get_sgw_install_deferral_link
+	handlers["application_get_subscribed_domains"] = HandleApplication_get_subscribed_domains
+	handlers["application_post_subscribed_domains"] = HandleApplication_post_subscribed_domains
+	handlers["application_get_subscribed_domains_phishing"] = HandleApplication_get_subscribed_domains_phishing
+	handlers["application_post_subscribed_domains_phishing"] = HandleApplication_post_subscribed_domains_phishing
+	handlers["application_delete_subscriptions"] = HandleApplication_delete_subscriptions
+	handlers["application_get_subscriptions"] = HandleApplication_get_subscriptions
+	handlers["application_post_subscriptions"] = HandleApplication_post_subscriptions
+	handlers["application_post_uploads"] = HandleApplication_post_uploads
+	handlers["application_post_whatsapp_business_solution"] = HandleApplication_post_whatsapp_business_solution
+	handlers["application_get_whatsapp_business_solutions"] = HandleApplication_get_whatsapp_business_solutions
+	handlers["application_get_"] = HandleApplication_get_
+	handlers["application_post_"] = HandleApplication_post_
+	handlers["paymentsubscription_get_"] = HandlePaymentsubscription_get_
+	handlers["imagereferencematch_get_"] = HandleImagereferencematch_get_
+	handlers["systemuser_get_assigned_ad_accounts"] = HandleSystemuser_get_assigned_ad_accounts
+	handlers["systemuser_get_assigned_business_asset_groups"] = HandleSystemuser_get_assigned_business_asset_groups
+	handlers["systemuser_get_assigned_pages"] = HandleSystemuser_get_assigned_pages
+	handlers["systemuser_get_assigned_product_catalogs"] = HandleSystemuser_get_assigned_product_catalogs
+	handlers["systemuser_get_"] = HandleSystemuser_get_
+	handlers["stories_get_insights"] = HandleStories_get_insights
+	handlers["stories_get_"] = HandleStories_get_
+	handlers["advainstance_get_"] = HandleAdvainstance_get_
+	handlers["creatorassetcreative_get_"] = HandleCreatorassetcreative_get_
+	handlers["educationexperience_get_"] = HandleEducationexperience_get_
+	handlers["videotextquestion_get_"] = HandleVideotextquestion_get_
+	handlers["workexperience_get_"] = HandleWorkexperience_get_
+	handlers["persona_delete_"] = HandlePersona_delete_
+	handlers["persona_get_"] = HandlePersona_get_
+	handlers["offlinetermsofservice_get_"] = HandleOfflinetermsofservice_get_
+	handlers["pagecalltoaction_delete_"] = HandlePagecalltoaction_delete_
+	handlers["pagecalltoaction_get_"] = HandlePagecalltoaction_get_
+	handlers["pagecalltoaction_post_"] = HandlePagecalltoaction_post_
+	handlers["url_get_"] = HandleUrl_get_
+	handlers["url_post_"] = HandleUrl_post_
+	handlers["adsreportbuildermmmreport_get_"] = HandleAdsreportbuildermmmreport_get_
+	handlers["musicvideocopyright_get_"] = HandleMusicvideocopyright_get_
+	handlers["websitecreativeinfo_get_"] = HandleWebsitecreativeinfo_get_
+	handlers["brandsafetydownloadable_get_"] = HandleBrandsafetydownloadable_get_
+	handlers["messengerbusinesstemplate_get_"] = HandleMessengerbusinesstemplate_get_
+	handlers["messengerbusinesstemplate_post_"] = HandleMessengerbusinesstemplate_post_
+	handlers["geogatingpolicy_get_"] = HandleGeogatingpolicy_get_
+	handlers["publisherwhitelist_get_"] = HandlePublisherwhitelist_get_
+	handlers["workskill_get_users"] = HandleWorkskill_get_users
+	handlers["workskill_get_"] = HandleWorkskill_get_
+	handlers["pageusermessagethreadlabel_delete_label"] = HandlePageusermessagethreadlabel_delete_label
+	handlers["pageusermessagethreadlabel_post_label"] = HandlePageusermessagethreadlabel_post_label
+	handlers["pageusermessagethreadlabel_delete_"] = HandlePageusermessagethreadlabel_delete_
+	handlers["pageusermessagethreadlabel_get_"] = HandlePageusermessagethreadlabel_get_
+	handlers["adtopline_get_"] = HandleAdtopline_get_
+	handlers["offlineconversiondatasetupload_get_progress"] = HandleOfflineconversiondatasetupload_get_progress
+	handlers["offlineconversiondatasetupload_get_pull_sessions"] = HandleOfflineconversiondatasetupload_get_pull_sessions
+	handlers["offlineconversiondatasetupload_get_"] = HandleOfflineconversiondatasetupload_get_
+	handlers["partneraccountlinking_get_"] = HandlePartneraccountlinking_get_
+	handlers["vehicleoffer_get_channels_to_integrity_status"] = HandleVehicleoffer_get_channels_to_integrity_status
+	handlers["vehicleoffer_get_override_details"] = HandleVehicleoffer_get_override_details
+	handlers["vehicleoffer_get_videos_metadata"] = HandleVehicleoffer_get_videos_metadata
+	handlers["vehicleoffer_get_"] = HandleVehicleoffer_get_
 	handlers["adstudyobjective_get_adspixels"] = HandleAdstudyobjective_get_adspixels
 	handlers["adstudyobjective_get_applications"] = HandleAdstudyobjective_get_applications
 	handlers["adstudyobjective_get_brand_requests"] = HandleAdstudyobjective_get_brand_requests
@@ -1691,106 +3692,1782 @@ func GetAllHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mc
 	handlers["adstudyobjective_get_partnerstudies"] = HandleAdstudyobjective_get_partnerstudies
 	handlers["adstudyobjective_get_"] = HandleAdstudyobjective_get_
 	handlers["adstudyobjective_post_"] = HandleAdstudyobjective_post_
+	handlers["dynamiccontentset_get_"] = HandleDynamiccontentset_get_
+	handlers["adlabel_get_adcreatives"] = HandleAdlabel_get_adcreatives
+	handlers["adlabel_get_ads"] = HandleAdlabel_get_ads
+	handlers["adlabel_get_adsets"] = HandleAdlabel_get_adsets
+	handlers["adlabel_get_campaigns"] = HandleAdlabel_get_campaigns
+	handlers["adlabel_delete_"] = HandleAdlabel_delete_
+	handlers["adlabel_get_"] = HandleAdlabel_get_
+	handlers["adlabel_post_"] = HandleAdlabel_post_
 	handlers["aradsdatacontainer_get_"] = HandleAradsdatacontainer_get_
-	handlers["workexperience_get_"] = HandleWorkexperience_get_
-	handlers["igbcadspermission_get_"] = HandleIgbcadspermission_get_
-	handlers["leadgendirectcrmintegrationconfig_get_"] = HandleLeadgendirectcrmintegrationconfig_get_
+	handlers["comment_get_comments"] = HandleComment_get_comments
+	handlers["comment_post_comments"] = HandleComment_post_comments
+	handlers["comment_delete_likes"] = HandleComment_delete_likes
+	handlers["comment_get_likes"] = HandleComment_get_likes
+	handlers["comment_post_likes"] = HandleComment_post_likes
+	handlers["comment_get_reactions"] = HandleComment_get_reactions
+	handlers["comment_delete_"] = HandleComment_delete_
+	handlers["comment_get_"] = HandleComment_get_
+	handlers["comment_post_"] = HandleComment_post_
+	handlers["mediafingerprint_get_"] = HandleMediafingerprint_get_
+	handlers["mediafingerprint_post_"] = HandleMediafingerprint_post_
+	handlers["opengraphcontext_get_"] = HandleOpengraphcontext_get_
+	handlers["event_get_comments"] = HandleEvent_get_comments
+	handlers["event_get_feed"] = HandleEvent_get_feed
+	handlers["event_get_live_videos"] = HandleEvent_get_live_videos
+	handlers["event_post_live_videos"] = HandleEvent_post_live_videos
+	handlers["event_get_photos"] = HandleEvent_get_photos
+	handlers["event_get_picture"] = HandleEvent_get_picture
+	handlers["event_get_posts"] = HandleEvent_get_posts
+	handlers["event_get_roles"] = HandleEvent_get_roles
+	handlers["event_get_ticket_tiers"] = HandleEvent_get_ticket_tiers
+	handlers["event_get_videos"] = HandleEvent_get_videos
+	handlers["event_get_"] = HandleEvent_get_
+	handlers["hotel_get_channels_to_integrity_status"] = HandleHotel_get_channels_to_integrity_status
+	handlers["hotel_get_hotel_rooms"] = HandleHotel_get_hotel_rooms
+	handlers["hotel_get_override_details"] = HandleHotel_get_override_details
+	handlers["hotel_get_videos_metadata"] = HandleHotel_get_videos_metadata
+	handlers["hotel_delete_"] = HandleHotel_delete_
+	handlers["hotel_get_"] = HandleHotel_get_
+	handlers["hotel_post_"] = HandleHotel_post_
+	handlers["productimage_get_"] = HandleProductimage_get_
+	handlers["productfeeduploaderrorsample_get_"] = HandleProductfeeduploaderrorsample_get_
 	handlers["woodhengepurchasedpaygreceipt_get_"] = HandleWoodhengepurchasedpaygreceipt_get_
+	handlers["instagrambusinessasset_get_"] = HandleInstagrambusinessasset_get_
+	handlers["productfeed_get_automotive_models"] = HandleProductfeed_get_automotive_models
+	handlers["productfeed_get_destinations"] = HandleProductfeed_get_destinations
+	handlers["productfeed_get_flights"] = HandleProductfeed_get_flights
+	handlers["productfeed_get_home_listings"] = HandleProductfeed_get_home_listings
+	handlers["productfeed_get_hotels"] = HandleProductfeed_get_hotels
+	handlers["productfeed_get_media_titles"] = HandleProductfeed_get_media_titles
+	handlers["productfeed_get_products"] = HandleProductfeed_get_products
+	handlers["productfeed_get_rules"] = HandleProductfeed_get_rules
+	handlers["productfeed_post_rules"] = HandleProductfeed_post_rules
+	handlers["productfeed_post_supplementary_feed_assocs"] = HandleProductfeed_post_supplementary_feed_assocs
+	handlers["productfeed_get_upload_schedules"] = HandleProductfeed_get_upload_schedules
+	handlers["productfeed_post_upload_schedules"] = HandleProductfeed_post_upload_schedules
+	handlers["productfeed_get_uploads"] = HandleProductfeed_get_uploads
+	handlers["productfeed_post_uploads"] = HandleProductfeed_post_uploads
+	handlers["productfeed_get_vehicle_offers"] = HandleProductfeed_get_vehicle_offers
+	handlers["productfeed_get_vehicles"] = HandleProductfeed_get_vehicles
+	handlers["productfeed_delete_"] = HandleProductfeed_delete_
+	handlers["productfeed_get_"] = HandleProductfeed_get_
+	handlers["productfeed_post_"] = HandleProductfeed_post_
+	handlers["businesstag_get_"] = HandleBusinesstag_get_
+	handlers["thirdpartypartnerviewabilityrequest_get_"] = HandleThirdpartypartnerviewabilityrequest_get_
+	handlers["cloudgame_get_"] = HandleCloudgame_get_
+	handlers["businessassetsharingagreement_get_"] = HandleBusinessassetsharingagreement_get_
+	handlers["businessassetsharingagreement_post_"] = HandleBusinessassetsharingagreement_post_
+	handlers["hotelroom_get_pricing_variables"] = HandleHotelroom_get_pricing_variables
+	handlers["hotelroom_get_"] = HandleHotelroom_get_
+	handlers["igrefreshaccesstokenforigonlyapi_get_"] = HandleIgrefreshaccesstokenforigonlyapi_get_
+	handlers["omegacustomertrx_get_campaigns"] = HandleOmegacustomertrx_get_campaigns
+	handlers["omegacustomertrx_get_"] = HandleOmegacustomertrx_get_
+	handlers["adcreative_post_adlabels"] = HandleAdcreative_post_adlabels
+	handlers["adcreative_get_creative_insights"] = HandleAdcreative_get_creative_insights
+	handlers["adcreative_get_previews"] = HandleAdcreative_get_previews
+	handlers["adcreative_delete_"] = HandleAdcreative_delete_
+	handlers["adcreative_get_"] = HandleAdcreative_get_
+	handlers["adcreative_post_"] = HandleAdcreative_post_
+	handlers["adsnamingtemplate_get_"] = HandleAdsnamingtemplate_get_
+	handlers["famekumo_get_"] = HandleFamekumo_get_
+	handlers["whatsappbusinessprofile_get_"] = HandleWhatsappbusinessprofile_get_
+	handlers["whatsappbusinessprofile_post_"] = HandleWhatsappbusinessprofile_post_
+	handlers["adsquickviews_get_"] = HandleAdsquickviews_get_
+	handlers["catalogcontentversionconfig_get_"] = HandleCatalogcontentversionconfig_get_
+	handlers["dynamicitemdisplaybundlefolder_get_"] = HandleDynamicitemdisplaybundlefolder_get_
+	handlers["transactableitem_get_channels_to_integrity_status"] = HandleTransactableitem_get_channels_to_integrity_status
+	handlers["transactableitem_get_override_details"] = HandleTransactableitem_get_override_details
+	handlers["transactableitem_get_"] = HandleTransactableitem_get_
+	handlers["igmediaforigonlyapi_get_children"] = HandleIgmediaforigonlyapi_get_children
+	handlers["igmediaforigonlyapi_get_comments"] = HandleIgmediaforigonlyapi_get_comments
+	handlers["igmediaforigonlyapi_post_comments"] = HandleIgmediaforigonlyapi_post_comments
+	handlers["igmediaforigonlyapi_get_insights"] = HandleIgmediaforigonlyapi_get_insights
+	handlers["igmediaforigonlyapi_get_"] = HandleIgmediaforigonlyapi_get_
+	handlers["igmediaforigonlyapi_post_"] = HandleIgmediaforigonlyapi_post_
+	handlers["customconversion_get_stats"] = HandleCustomconversion_get_stats
+	handlers["customconversion_delete_"] = HandleCustomconversion_delete_
+	handlers["customconversion_get_"] = HandleCustomconversion_get_
+	handlers["customconversion_post_"] = HandleCustomconversion_post_
+	handlers["pagepost_get_attachments"] = HandlePagepost_get_attachments
+	handlers["pagepost_get_comments"] = HandlePagepost_get_comments
+	handlers["pagepost_post_comments"] = HandlePagepost_post_comments
+	handlers["pagepost_get_dynamic_posts"] = HandlePagepost_get_dynamic_posts
+	handlers["pagepost_get_insights"] = HandlePagepost_get_insights
+	handlers["pagepost_delete_likes"] = HandlePagepost_delete_likes
+	handlers["pagepost_get_likes"] = HandlePagepost_get_likes
+	handlers["pagepost_post_likes"] = HandlePagepost_post_likes
+	handlers["pagepost_get_reactions"] = HandlePagepost_get_reactions
+	handlers["pagepost_get_sharedposts"] = HandlePagepost_get_sharedposts
+	handlers["pagepost_get_sponsor_tags"] = HandlePagepost_get_sponsor_tags
+	handlers["pagepost_get_to"] = HandlePagepost_get_to
+	handlers["pagepost_delete_"] = HandlePagepost_delete_
+	handlers["pagepost_get_"] = HandlePagepost_get_
+	handlers["pagepost_post_"] = HandlePagepost_post_
+	handlers["cpaslsbimagebank_get_backup_images"] = HandleCpaslsbimagebank_get_backup_images
+	handlers["cpaslsbimagebank_get_"] = HandleCpaslsbimagebank_get_
+	handlers["cpaslsbimagebank_post_"] = HandleCpaslsbimagebank_post_
+	handlers["calladsphonedata_get_"] = HandleCalladsphonedata_get_
+	handlers["dynamicitemdisplaybundle_get_"] = HandleDynamicitemdisplaybundle_get_
+	handlers["pagepostexperiment_get_video_insights"] = HandlePagepostexperiment_get_video_insights
+	handlers["pagepostexperiment_delete_"] = HandlePagepostexperiment_delete_
+	handlers["pagepostexperiment_get_"] = HandlePagepostexperiment_get_
+	handlers["lead_delete_"] = HandleLead_delete_
+	handlers["lead_get_"] = HandleLead_get_
+	handlers["cpascollaborationrequest_get_"] = HandleCpascollaborationrequest_get_
+	handlers["flight_get_channels_to_integrity_status"] = HandleFlight_get_channels_to_integrity_status
+	handlers["flight_get_override_details"] = HandleFlight_get_override_details
+	handlers["flight_get_videos_metadata"] = HandleFlight_get_videos_metadata
+	handlers["flight_get_"] = HandleFlight_get_
+	handlers["flight_post_"] = HandleFlight_post_
+	handlers["adsreportbuildermmmreportscheduler_get_"] = HandleAdsreportbuildermmmreportscheduler_get_
 	handlers["eventsourcegroup_get_shared_accounts"] = HandleEventsourcegroup_get_shared_accounts
 	handlers["eventsourcegroup_post_shared_accounts"] = HandleEventsourcegroup_post_shared_accounts
 	handlers["eventsourcegroup_get_"] = HandleEventsourcegroup_get_
 	handlers["eventsourcegroup_post_"] = HandleEventsourcegroup_post_
-	handlers["eventtour_get_"] = HandleEventtour_get_
-	handlers["adaccountusersettings_get_"] = HandleAdaccountusersettings_get_
-	handlers["crmaddress_get_"] = HandleCrmaddress_get_
-	handlers["pageusermessagethreadlabel_delete_label"] = HandlePageusermessagethreadlabel_delete_label
-	handlers["pageusermessagethreadlabel_post_label"] = HandlePageusermessagethreadlabel_post_label
-	handlers["pageusermessagethreadlabel_delete_"] = HandlePageusermessagethreadlabel_delete_
-	handlers["pageusermessagethreadlabel_get_"] = HandlePageusermessagethreadlabel_get_
-	handlers["paymentsubscription_get_"] = HandlePaymentsubscription_get_
-	handlers["vehicleoffer_get_channels_to_integrity_status"] = HandleVehicleoffer_get_channels_to_integrity_status
-	handlers["vehicleoffer_get_override_details"] = HandleVehicleoffer_get_override_details
-	handlers["vehicleoffer_get_videos_metadata"] = HandleVehicleoffer_get_videos_metadata
-	handlers["vehicleoffer_get_"] = HandleVehicleoffer_get_
-	handlers["shadowigmediabuilder_get_"] = HandleShadowigmediabuilder_get_
-	handlers["offsitesignalcontainerbusinessobject_get_linked_application"] = HandleOffsitesignalcontainerbusinessobject_get_linked_application
-	handlers["offsitesignalcontainerbusinessobject_get_linked_page"] = HandleOffsitesignalcontainerbusinessobject_get_linked_page
-	handlers["offsitesignalcontainerbusinessobject_get_"] = HandleOffsitesignalcontainerbusinessobject_get_
-	handlers["placetopic_get_"] = HandlePlacetopic_get_
-	handlers["adaccountagencyfeeconfig_get_"] = HandleAdaccountagencyfeeconfig_get_
-	handlers["partneraccountlinking_get_"] = HandlePartneraccountlinking_get_
-	handlers["whatsappbusinessprofile_get_"] = HandleWhatsappbusinessprofile_get_
-	handlers["whatsappbusinessprofile_post_"] = HandleWhatsappbusinessprofile_post_
-	handlers["businessvideo_get_"] = HandleBusinessvideo_get_
-	handlers["partnerstudy_get_"] = HandlePartnerstudy_get_
-	handlers["videocopyrightrule_get_"] = HandleVideocopyrightrule_get_
-	handlers["whatsappbusinessaccount_get_activities"] = HandleWhatsappbusinessaccount_get_activities
-	handlers["whatsappbusinessaccount_delete_assigned_users"] = HandleWhatsappbusinessaccount_delete_assigned_users
-	handlers["whatsappbusinessaccount_get_assigned_users"] = HandleWhatsappbusinessaccount_get_assigned_users
-	handlers["whatsappbusinessaccount_post_assigned_users"] = HandleWhatsappbusinessaccount_post_assigned_users
-	handlers["whatsappbusinessaccount_get_audiences"] = HandleWhatsappbusinessaccount_get_audiences
-	handlers["whatsappbusinessaccount_get_call_analytics"] = HandleWhatsappbusinessaccount_get_call_analytics
-	handlers["whatsappbusinessaccount_get_conversation_analytics"] = HandleWhatsappbusinessaccount_get_conversation_analytics
-	handlers["whatsappbusinessaccount_get_dataset"] = HandleWhatsappbusinessaccount_get_dataset
-	handlers["whatsappbusinessaccount_post_dataset"] = HandleWhatsappbusinessaccount_post_dataset
-	handlers["whatsappbusinessaccount_get_flows"] = HandleWhatsappbusinessaccount_get_flows
-	handlers["whatsappbusinessaccount_post_flows"] = HandleWhatsappbusinessaccount_post_flows
-	handlers["whatsappbusinessaccount_post_generate_payment_configuration_oauth_link"] = HandleWhatsappbusinessaccount_post_generate_payment_configuration_oauth_link
-	handlers["whatsappbusinessaccount_get_message_campaigns"] = HandleWhatsappbusinessaccount_get_message_campaigns
-	handlers["whatsappbusinessaccount_get_message_template_previews"] = HandleWhatsappbusinessaccount_get_message_template_previews
-	handlers["whatsappbusinessaccount_delete_message_templates"] = HandleWhatsappbusinessaccount_delete_message_templates
-	handlers["whatsappbusinessaccount_get_message_templates"] = HandleWhatsappbusinessaccount_get_message_templates
-	handlers["whatsappbusinessaccount_post_message_templates"] = HandleWhatsappbusinessaccount_post_message_templates
-	handlers["whatsappbusinessaccount_post_migrate_flows"] = HandleWhatsappbusinessaccount_post_migrate_flows
-	handlers["whatsappbusinessaccount_post_migrate_message_templates"] = HandleWhatsappbusinessaccount_post_migrate_message_templates
-	handlers["whatsappbusinessaccount_delete_payment_configuration"] = HandleWhatsappbusinessaccount_delete_payment_configuration
-	handlers["whatsappbusinessaccount_get_payment_configuration"] = HandleWhatsappbusinessaccount_get_payment_configuration
-	handlers["whatsappbusinessaccount_post_payment_configuration"] = HandleWhatsappbusinessaccount_post_payment_configuration
-	handlers["whatsappbusinessaccount_get_payment_configurations"] = HandleWhatsappbusinessaccount_get_payment_configurations
-	handlers["whatsappbusinessaccount_get_phone_numbers"] = HandleWhatsappbusinessaccount_get_phone_numbers
-	handlers["whatsappbusinessaccount_post_phone_numbers"] = HandleWhatsappbusinessaccount_post_phone_numbers
-	handlers["whatsappbusinessaccount_get_pricing_analytics"] = HandleWhatsappbusinessaccount_get_pricing_analytics
-	handlers["whatsappbusinessaccount_delete_product_catalogs"] = HandleWhatsappbusinessaccount_delete_product_catalogs
-	handlers["whatsappbusinessaccount_get_product_catalogs"] = HandleWhatsappbusinessaccount_get_product_catalogs
-	handlers["whatsappbusinessaccount_post_product_catalogs"] = HandleWhatsappbusinessaccount_post_product_catalogs
-	handlers["whatsappbusinessaccount_get_schedules"] = HandleWhatsappbusinessaccount_get_schedules
-	handlers["whatsappbusinessaccount_post_set_obo_mobility_intent"] = HandleWhatsappbusinessaccount_post_set_obo_mobility_intent
-	handlers["whatsappbusinessaccount_post_set_solution_migration_intent"] = HandleWhatsappbusinessaccount_post_set_solution_migration_intent
-	handlers["whatsappbusinessaccount_get_solutions"] = HandleWhatsappbusinessaccount_get_solutions
-	handlers["whatsappbusinessaccount_delete_subscribed_apps"] = HandleWhatsappbusinessaccount_delete_subscribed_apps
-	handlers["whatsappbusinessaccount_get_subscribed_apps"] = HandleWhatsappbusinessaccount_get_subscribed_apps
-	handlers["whatsappbusinessaccount_post_subscribed_apps"] = HandleWhatsappbusinessaccount_post_subscribed_apps
-	handlers["whatsappbusinessaccount_get_template_analytics"] = HandleWhatsappbusinessaccount_get_template_analytics
-	handlers["whatsappbusinessaccount_get_template_group_analytics"] = HandleWhatsappbusinessaccount_get_template_group_analytics
-	handlers["whatsappbusinessaccount_get_template_groups"] = HandleWhatsappbusinessaccount_get_template_groups
-	handlers["whatsappbusinessaccount_post_template_groups"] = HandleWhatsappbusinessaccount_post_template_groups
-	handlers["whatsappbusinessaccount_get_template_performance_metrics"] = HandleWhatsappbusinessaccount_get_template_performance_metrics
-	handlers["whatsappbusinessaccount_post_upsert_message_templates"] = HandleWhatsappbusinessaccount_post_upsert_message_templates
-	handlers["whatsappbusinessaccount_get_welcome_message_sequences"] = HandleWhatsappbusinessaccount_get_welcome_message_sequences
-	handlers["whatsappbusinessaccount_get_"] = HandleWhatsappbusinessaccount_get_
-	handlers["whatsappbusinessaccount_post_"] = HandleWhatsappbusinessaccount_post_
+	handlers["favoritecatalog_get_"] = HandleFavoritecatalog_get_
+	handlers["playablecontent_get_"] = HandlePlayablecontent_get_
+	handlers["avatarprofilepicture_get_"] = HandleAvatarprofilepicture_get_
+	handlers["businessassetgroup_delete_assigned_users"] = HandleBusinessassetgroup_delete_assigned_users
+	handlers["businessassetgroup_get_assigned_users"] = HandleBusinessassetgroup_get_assigned_users
+	handlers["businessassetgroup_post_assigned_users"] = HandleBusinessassetgroup_post_assigned_users
+	handlers["businessassetgroup_delete_contained_adaccounts"] = HandleBusinessassetgroup_delete_contained_adaccounts
+	handlers["businessassetgroup_get_contained_adaccounts"] = HandleBusinessassetgroup_get_contained_adaccounts
+	handlers["businessassetgroup_post_contained_adaccounts"] = HandleBusinessassetgroup_post_contained_adaccounts
+	handlers["businessassetgroup_delete_contained_applications"] = HandleBusinessassetgroup_delete_contained_applications
+	handlers["businessassetgroup_get_contained_applications"] = HandleBusinessassetgroup_get_contained_applications
+	handlers["businessassetgroup_post_contained_applications"] = HandleBusinessassetgroup_post_contained_applications
+	handlers["businessassetgroup_delete_contained_custom_conversions"] = HandleBusinessassetgroup_delete_contained_custom_conversions
+	handlers["businessassetgroup_get_contained_custom_conversions"] = HandleBusinessassetgroup_get_contained_custom_conversions
+	handlers["businessassetgroup_post_contained_custom_conversions"] = HandleBusinessassetgroup_post_contained_custom_conversions
+	handlers["businessassetgroup_delete_contained_instagram_accounts"] = HandleBusinessassetgroup_delete_contained_instagram_accounts
+	handlers["businessassetgroup_get_contained_instagram_accounts"] = HandleBusinessassetgroup_get_contained_instagram_accounts
+	handlers["businessassetgroup_post_contained_instagram_accounts"] = HandleBusinessassetgroup_post_contained_instagram_accounts
+	handlers["businessassetgroup_delete_contained_pages"] = HandleBusinessassetgroup_delete_contained_pages
+	handlers["businessassetgroup_get_contained_pages"] = HandleBusinessassetgroup_get_contained_pages
+	handlers["businessassetgroup_post_contained_pages"] = HandleBusinessassetgroup_post_contained_pages
+	handlers["businessassetgroup_delete_contained_pixels"] = HandleBusinessassetgroup_delete_contained_pixels
+	handlers["businessassetgroup_get_contained_pixels"] = HandleBusinessassetgroup_get_contained_pixels
+	handlers["businessassetgroup_post_contained_pixels"] = HandleBusinessassetgroup_post_contained_pixels
+	handlers["businessassetgroup_delete_contained_product_catalogs"] = HandleBusinessassetgroup_delete_contained_product_catalogs
+	handlers["businessassetgroup_get_contained_product_catalogs"] = HandleBusinessassetgroup_get_contained_product_catalogs
+	handlers["businessassetgroup_post_contained_product_catalogs"] = HandleBusinessassetgroup_post_contained_product_catalogs
+	handlers["businessassetgroup_get_"] = HandleBusinessassetgroup_get_
+	handlers["businessassetgroup_post_"] = HandleBusinessassetgroup_post_
+	handlers["adcustomderivedmetrics_get_"] = HandleAdcustomderivedmetrics_get_
+	handlers["igboostmediaad_get_"] = HandleIgboostmediaad_get_
+	handlers["iguser_get_agencies"] = HandleIguser_get_agencies
+	handlers["iguser_get_authorized_adaccounts"] = HandleIguser_get_authorized_adaccounts
+	handlers["iguser_post_authorized_adaccounts"] = HandleIguser_post_authorized_adaccounts
+	handlers["iguser_get_available_catalogs"] = HandleIguser_get_available_catalogs
+	handlers["iguser_get_branded_content_ad_permissions"] = HandleIguser_get_branded_content_ad_permissions
+	handlers["iguser_post_branded_content_ad_permissions"] = HandleIguser_post_branded_content_ad_permissions
+	handlers["iguser_get_branded_content_advertisable_medias"] = HandleIguser_get_branded_content_advertisable_medias
+	handlers["iguser_delete_branded_content_tag_approval"] = HandleIguser_delete_branded_content_tag_approval
+	handlers["iguser_get_branded_content_tag_approval"] = HandleIguser_get_branded_content_tag_approval
+	handlers["iguser_post_branded_content_tag_approval"] = HandleIguser_post_branded_content_tag_approval
+	handlers["iguser_get_catalog_product_search"] = HandleIguser_get_catalog_product_search
+	handlers["iguser_get_connected_threads_user"] = HandleIguser_get_connected_threads_user
+	handlers["iguser_get_content_publishing_limit"] = HandleIguser_get_content_publishing_limit
+	handlers["iguser_get_dataset"] = HandleIguser_get_dataset
+	handlers["iguser_post_dataset"] = HandleIguser_post_dataset
+	handlers["iguser_get_insights"] = HandleIguser_get_insights
+	handlers["iguser_get_instagram_backed_threads_user"] = HandleIguser_get_instagram_backed_threads_user
+	handlers["iguser_get_live_media"] = HandleIguser_get_live_media
+	handlers["iguser_get_media"] = HandleIguser_get_media
+	handlers["iguser_post_media"] = HandleIguser_post_media
+	handlers["iguser_post_media_publish"] = HandleIguser_post_media_publish
+	handlers["iguser_post_mentions"] = HandleIguser_post_mentions
+	handlers["iguser_get_notification_message_tokens"] = HandleIguser_get_notification_message_tokens
+	handlers["iguser_get_product_appeal"] = HandleIguser_get_product_appeal
+	handlers["iguser_post_product_appeal"] = HandleIguser_post_product_appeal
+	handlers["iguser_get_recently_searched_hashtags"] = HandleIguser_get_recently_searched_hashtags
+	handlers["iguser_get_stories"] = HandleIguser_get_stories
+	handlers["iguser_get_tags"] = HandleIguser_get_tags
+	handlers["iguser_get_upcoming_events"] = HandleIguser_get_upcoming_events
+	handlers["iguser_post_upcoming_events"] = HandleIguser_post_upcoming_events
+	handlers["iguser_get_welcome_message_flows"] = HandleIguser_get_welcome_message_flows
+	handlers["iguser_get_"] = HandleIguser_get_
+	handlers["productset_get_automotive_models"] = HandleProductset_get_automotive_models
+	handlers["productset_get_destinations"] = HandleProductset_get_destinations
+	handlers["productset_get_flights"] = HandleProductset_get_flights
+	handlers["productset_get_home_listings"] = HandleProductset_get_home_listings
+	handlers["productset_get_hotels"] = HandleProductset_get_hotels
+	handlers["productset_get_media_titles"] = HandleProductset_get_media_titles
+	handlers["productset_get_products"] = HandleProductset_get_products
+	handlers["productset_get_vehicle_offers"] = HandleProductset_get_vehicle_offers
+	handlers["productset_get_vehicles"] = HandleProductset_get_vehicles
+	handlers["productset_delete_"] = HandleProductset_delete_
+	handlers["productset_get_"] = HandleProductset_get_
+	handlers["productset_post_"] = HandleProductset_post_
+	handlers["musicworkcopyright_get_"] = HandleMusicworkcopyright_get_
+	handlers["thirdpartymeasurementreportdataset_get_"] = HandleThirdpartymeasurementreportdataset_get_
+	handlers["dynamicvideometadata_get_"] = HandleDynamicvideometadata_get_
+	handlers["fantasygame_get_"] = HandleFantasygame_get_
+	handlers["businessagreement_get_"] = HandleBusinessagreement_get_
+	handlers["businessagreement_post_"] = HandleBusinessagreement_post_
+	handlers["place_get_"] = HandlePlace_get_
+	handlers["productcatalog_delete_agencies"] = HandleProductcatalog_delete_agencies
+	handlers["productcatalog_get_agencies"] = HandleProductcatalog_get_agencies
+	handlers["productcatalog_post_agencies"] = HandleProductcatalog_post_agencies
+	handlers["productcatalog_delete_assigned_users"] = HandleProductcatalog_delete_assigned_users
+	handlers["productcatalog_get_assigned_users"] = HandleProductcatalog_get_assigned_users
+	handlers["productcatalog_post_assigned_users"] = HandleProductcatalog_post_assigned_users
+	handlers["productcatalog_get_automotive_models"] = HandleProductcatalog_get_automotive_models
+	handlers["productcatalog_post_batch"] = HandleProductcatalog_post_batch
+	handlers["productcatalog_post_catalog_store"] = HandleProductcatalog_post_catalog_store
+	handlers["productcatalog_get_categories"] = HandleProductcatalog_get_categories
+	handlers["productcatalog_post_categories"] = HandleProductcatalog_post_categories
+	handlers["productcatalog_get_check_batch_request_status"] = HandleProductcatalog_get_check_batch_request_status
+	handlers["productcatalog_get_check_marketplace_partner_sellers_status"] = HandleProductcatalog_get_check_marketplace_partner_sellers_status
+	handlers["productcatalog_get_collaborative_ads_lsb_image_bank"] = HandleProductcatalog_get_collaborative_ads_lsb_image_bank
+	handlers["productcatalog_get_collaborative_ads_share_settings"] = HandleProductcatalog_get_collaborative_ads_share_settings
+	handlers["productcatalog_post_cpas_lsb_image_bank"] = HandleProductcatalog_post_cpas_lsb_image_bank
+	handlers["productcatalog_get_creator_asset_creatives"] = HandleProductcatalog_get_creator_asset_creatives
+	handlers["productcatalog_get_data_sources"] = HandleProductcatalog_get_data_sources
+	handlers["productcatalog_get_destinations"] = HandleProductcatalog_get_destinations
+	handlers["productcatalog_get_diagnostics"] = HandleProductcatalog_get_diagnostics
+	handlers["productcatalog_get_event_stats"] = HandleProductcatalog_get_event_stats
+	handlers["productcatalog_delete_external_event_sources"] = HandleProductcatalog_delete_external_event_sources
+	handlers["productcatalog_get_external_event_sources"] = HandleProductcatalog_get_external_event_sources
+	handlers["productcatalog_post_external_event_sources"] = HandleProductcatalog_post_external_event_sources
+	handlers["productcatalog_get_flights"] = HandleProductcatalog_get_flights
+	handlers["productcatalog_post_geolocated_items_batch"] = HandleProductcatalog_post_geolocated_items_batch
+	handlers["productcatalog_get_home_listings"] = HandleProductcatalog_get_home_listings
+	handlers["productcatalog_post_home_listings"] = HandleProductcatalog_post_home_listings
+	handlers["productcatalog_get_hotel_rooms_batch"] = HandleProductcatalog_get_hotel_rooms_batch
+	handlers["productcatalog_post_hotel_rooms_batch"] = HandleProductcatalog_post_hotel_rooms_batch
+	handlers["productcatalog_get_hotels"] = HandleProductcatalog_get_hotels
+	handlers["productcatalog_post_hotels"] = HandleProductcatalog_post_hotels
+	handlers["productcatalog_post_items_batch"] = HandleProductcatalog_post_items_batch
+	handlers["productcatalog_post_localized_items_batch"] = HandleProductcatalog_post_localized_items_batch
+	handlers["productcatalog_post_marketplace_partner_sellers_details"] = HandleProductcatalog_post_marketplace_partner_sellers_details
+	handlers["productcatalog_post_marketplace_partner_signals"] = HandleProductcatalog_post_marketplace_partner_signals
+	handlers["productcatalog_get_pricing_variables_batch"] = HandleProductcatalog_get_pricing_variables_batch
+	handlers["productcatalog_post_pricing_variables_batch"] = HandleProductcatalog_post_pricing_variables_batch
+	handlers["productcatalog_get_product_feeds"] = HandleProductcatalog_get_product_feeds
+	handlers["productcatalog_post_product_feeds"] = HandleProductcatalog_post_product_feeds
+	handlers["productcatalog_get_product_groups"] = HandleProductcatalog_get_product_groups
+	handlers["productcatalog_post_product_groups"] = HandleProductcatalog_post_product_groups
+	handlers["productcatalog_get_product_sets"] = HandleProductcatalog_get_product_sets
+	handlers["productcatalog_post_product_sets"] = HandleProductcatalog_post_product_sets
+	handlers["productcatalog_get_product_sets_batch"] = HandleProductcatalog_get_product_sets_batch
+	handlers["productcatalog_get_products"] = HandleProductcatalog_get_products
+	handlers["productcatalog_post_products"] = HandleProductcatalog_post_products
+	handlers["productcatalog_post_update_generated_image_config"] = HandleProductcatalog_post_update_generated_image_config
+	handlers["productcatalog_get_vehicle_offers"] = HandleProductcatalog_get_vehicle_offers
+	handlers["productcatalog_get_vehicles"] = HandleProductcatalog_get_vehicles
+	handlers["productcatalog_post_vehicles"] = HandleProductcatalog_post_vehicles
+	handlers["productcatalog_get_version_configs"] = HandleProductcatalog_get_version_configs
+	handlers["productcatalog_post_version_items_batch"] = HandleProductcatalog_post_version_items_batch
+	handlers["productcatalog_delete_"] = HandleProductcatalog_delete_
+	handlers["productcatalog_get_"] = HandleProductcatalog_get_
+	handlers["productcatalog_post_"] = HandleProductcatalog_post_
+	handlers["videocopyright_get_update_records"] = HandleVideocopyright_get_update_records
+	handlers["videocopyright_get_"] = HandleVideocopyright_get_
+	handlers["videocopyright_post_"] = HandleVideocopyright_post_
+	handlers["franchiseprogram_get_"] = HandleFranchiseprogram_get_
+	handlers["adaccountcreationrequest_get_adaccounts"] = HandleAdaccountcreationrequest_get_adaccounts
+	handlers["adaccountcreationrequest_get_"] = HandleAdaccountcreationrequest_get_
+	handlers["adlightcampaigngroup_get_"] = HandleAdlightcampaigngroup_get_
+	handlers["offlineconversiondataset_get_adaccounts"] = HandleOfflineconversiondataset_get_adaccounts
+	handlers["offlineconversiondataset_get_agencies"] = HandleOfflineconversiondataset_get_agencies
+	handlers["offlineconversiondataset_get_audiences"] = HandleOfflineconversiondataset_get_audiences
+	handlers["offlineconversiondataset_get_customconversions"] = HandleOfflineconversiondataset_get_customconversions
+	handlers["offlineconversiondataset_get_server_events_permitted_business"] = HandleOfflineconversiondataset_get_server_events_permitted_business
+	handlers["offlineconversiondataset_get_shared_accounts"] = HandleOfflineconversiondataset_get_shared_accounts
+	handlers["offlineconversiondataset_get_shared_agencies"] = HandleOfflineconversiondataset_get_shared_agencies
+	handlers["offlineconversiondataset_get_stats"] = HandleOfflineconversiondataset_get_stats
+	handlers["offlineconversiondataset_get_uploads"] = HandleOfflineconversiondataset_get_uploads
+	handlers["offlineconversiondataset_get_"] = HandleOfflineconversiondataset_get_
+	handlers["blindpig_get_"] = HandleBlindpig_get_
+	handlers["igbcadspermission_get_"] = HandleIgbcadspermission_get_
+	handlers["applinks_get_"] = HandleApplinks_get_
+	handlers["extendedcreditapplication_get_"] = HandleExtendedcreditapplication_get_
 	handlers["whatsappbusinesspreverifiedphonenumber_get_partners"] = HandleWhatsappbusinesspreverifiedphonenumber_get_partners
 	handlers["whatsappbusinesspreverifiedphonenumber_post_request_code"] = HandleWhatsappbusinesspreverifiedphonenumber_post_request_code
 	handlers["whatsappbusinesspreverifiedphonenumber_post_verify_code"] = HandleWhatsappbusinesspreverifiedphonenumber_post_verify_code
 	handlers["whatsappbusinesspreverifiedphonenumber_delete_"] = HandleWhatsappbusinesspreverifiedphonenumber_delete_
 	handlers["whatsappbusinesspreverifiedphonenumber_get_"] = HandleWhatsappbusinesspreverifiedphonenumber_get_
-	handlers["ad_get_adcreatives"] = HandleAd_get_adcreatives
-	handlers["ad_post_adlabels"] = HandleAd_post_adlabels
-	handlers["ad_get_adrules_governed"] = HandleAd_get_adrules_governed
-	handlers["ad_get_copies"] = HandleAd_get_copies
-	handlers["ad_post_copies"] = HandleAd_post_copies
-	handlers["ad_get_insights"] = HandleAd_get_insights
-	handlers["ad_post_insights"] = HandleAd_post_insights
-	handlers["ad_get_leads"] = HandleAd_get_leads
-	handlers["ad_get_previews"] = HandleAd_get_previews
-	handlers["ad_get_targetingsentencelines"] = HandleAd_get_targetingsentencelines
-	handlers["ad_delete_"] = HandleAd_delete_
-	handlers["ad_get_"] = HandleAd_get_
-	handlers["ad_post_"] = HandleAd_post_
-	handlers["businessproject_get_"] = HandleBusinessproject_get_
-	handlers["cpaslsbimagebank_get_backup_images"] = HandleCpaslsbimagebank_get_backup_images
-	handlers["cpaslsbimagebank_get_"] = HandleCpaslsbimagebank_get_
-	handlers["cpaslsbimagebank_post_"] = HandleCpaslsbimagebank_post_
+	handlers["privateliftstudyinstance_get_"] = HandlePrivateliftstudyinstance_get_
+	handlers["privateliftstudyinstance_post_"] = HandlePrivateliftstudyinstance_post_
+	handlers["appeventconfig_get_"] = HandleAppeventconfig_get_
+	handlers["productitem_get_channels_to_integrity_status"] = HandleProductitem_get_channels_to_integrity_status
+	handlers["productitem_get_override_details"] = HandleProductitem_get_override_details
+	handlers["productitem_get_product_sets"] = HandleProductitem_get_product_sets
+	handlers["productitem_get_videos_metadata"] = HandleProductitem_get_videos_metadata
+	handlers["productitem_delete_"] = HandleProductitem_delete_
+	handlers["productitem_get_"] = HandleProductitem_get_
+	handlers["productitem_post_"] = HandleProductitem_post_
+	handlers["adsreportbuilderexportcore_get_"] = HandleAdsreportbuilderexportcore_get_
+	handlers["post_get_attachments"] = HandlePost_get_attachments
+	handlers["post_get_comments"] = HandlePost_get_comments
+	handlers["post_post_comments"] = HandlePost_post_comments
+	handlers["post_get_dynamic_posts"] = HandlePost_get_dynamic_posts
+	handlers["post_get_insights"] = HandlePost_get_insights
+	handlers["post_delete_likes"] = HandlePost_delete_likes
+	handlers["post_post_likes"] = HandlePost_post_likes
+	handlers["post_get_reactions"] = HandlePost_get_reactions
+	handlers["post_get_sharedposts"] = HandlePost_get_sharedposts
+	handlers["post_get_sponsor_tags"] = HandlePost_get_sponsor_tags
+	handlers["post_get_to"] = HandlePost_get_to
+	handlers["post_delete_"] = HandlePost_delete_
+	handlers["post_get_"] = HandlePost_get_
+	handlers["post_post_"] = HandlePost_post_
+	handlers["avatar_get_models"] = HandleAvatar_get_models
+	handlers["avatar_get_"] = HandleAvatar_get_
+	handlers["calibratorexistingrule_get_"] = HandleCalibratorexistingrule_get_
+	handlers["wearabledevicepublickey_get_"] = HandleWearabledevicepublickey_get_
+
+	return handlers
+}
+
+// GetContextAwareHandlers returns a map of tool name to context-aware handler function
+func GetContextAwareHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
+
+	handlers["adasyncrequestset_get_requests"] = HandleContextAdasyncrequestset_get_requests
+	handlers["adasyncrequestset_delete_"] = HandleContextAdasyncrequestset_delete_
+	handlers["adasyncrequestset_get_"] = HandleContextAdasyncrequestset_get_
+	handlers["adasyncrequestset_post_"] = HandleContextAdasyncrequestset_post_
+	handlers["adset_get_activities"] = HandleContextAdset_get_activities
+	handlers["adset_get_ad_studies"] = HandleContextAdset_get_ad_studies
+	handlers["adset_get_adcreatives"] = HandleContextAdset_get_adcreatives
+	handlers["adset_delete_adlabels"] = HandleContextAdset_delete_adlabels
+	handlers["adset_post_adlabels"] = HandleContextAdset_post_adlabels
+	handlers["adset_get_adrules_governed"] = HandleContextAdset_get_adrules_governed
+	handlers["adset_get_ads"] = HandleContextAdset_get_ads
+	handlers["adset_get_asyncadrequests"] = HandleContextAdset_get_asyncadrequests
+	handlers["adset_post_budget_schedules"] = HandleContextAdset_post_budget_schedules
+	handlers["adset_get_copies"] = HandleContextAdset_get_copies
+	handlers["adset_post_copies"] = HandleContextAdset_post_copies
+	handlers["adset_get_delivery_estimate"] = HandleContextAdset_get_delivery_estimate
+	handlers["adset_get_insights"] = HandleContextAdset_get_insights
+	handlers["adset_post_insights"] = HandleContextAdset_post_insights
+	handlers["adset_get_message_delivery_estimate"] = HandleContextAdset_get_message_delivery_estimate
+	handlers["adset_get_targetingsentencelines"] = HandleContextAdset_get_targetingsentencelines
+	handlers["adset_delete_"] = HandleContextAdset_delete_
+	handlers["adset_get_"] = HandleContextAdset_get_
+	handlers["adset_post_"] = HandleContextAdset_post_
+	handlers["adplacement_get_"] = HandleContextAdplacement_get_
+	handlers["adreportrun_get_insights"] = HandleContextAdreportrun_get_insights
+	handlers["adreportrun_get_"] = HandleContextAdreportrun_get_
+	handlers["adtoplinedetail_get_"] = HandleContextAdtoplinedetail_get_
+	handlers["productgroup_get_products"] = HandleContextProductgroup_get_products
+	handlers["productgroup_post_products"] = HandleContextProductgroup_post_products
+	handlers["productgroup_delete_"] = HandleContextProductgroup_delete_
+	handlers["productgroup_get_"] = HandleContextProductgroup_get_
+	handlers["productgroup_post_"] = HandleContextProductgroup_post_
+	handlers["partnerintegrationlinked_get_"] = HandleContextPartnerintegrationlinked_get_
+	handlers["adaccount_get_account_controls"] = HandleContextAdaccount_get_account_controls
+	handlers["adaccount_post_account_controls"] = HandleContextAdaccount_post_account_controls
+	handlers["adaccount_get_activities"] = HandleContextAdaccount_get_activities
+	handlers["adaccount_get_ad_place_page_sets"] = HandleContextAdaccount_get_ad_place_page_sets
+	handlers["adaccount_post_ad_place_page_sets"] = HandleContextAdaccount_post_ad_place_page_sets
+	handlers["adaccount_post_ad_place_page_sets_async"] = HandleContextAdaccount_post_ad_place_page_sets_async
+	handlers["adaccount_get_ad_saved_keywords"] = HandleContextAdaccount_get_ad_saved_keywords
+	handlers["adaccount_get_ad_studies"] = HandleContextAdaccount_get_ad_studies
+	handlers["adaccount_get_adcloudplayables"] = HandleContextAdaccount_get_adcloudplayables
+	handlers["adaccount_get_adcreatives"] = HandleContextAdaccount_get_adcreatives
+	handlers["adaccount_post_adcreatives"] = HandleContextAdaccount_post_adcreatives
+	handlers["adaccount_get_adcreativesbylabels"] = HandleContextAdaccount_get_adcreativesbylabels
+	handlers["adaccount_delete_adimages"] = HandleContextAdaccount_delete_adimages
+	handlers["adaccount_get_adimages"] = HandleContextAdaccount_get_adimages
+	handlers["adaccount_post_adimages"] = HandleContextAdaccount_post_adimages
+	handlers["adaccount_get_adlabels"] = HandleContextAdaccount_get_adlabels
+	handlers["adaccount_post_adlabels"] = HandleContextAdaccount_post_adlabels
+	handlers["adaccount_get_adplayables"] = HandleContextAdaccount_get_adplayables
+	handlers["adaccount_post_adplayables"] = HandleContextAdaccount_post_adplayables
+	handlers["adaccount_get_adrules_history"] = HandleContextAdaccount_get_adrules_history
+	handlers["adaccount_get_adrules_library"] = HandleContextAdaccount_get_adrules_library
+	handlers["adaccount_post_adrules_library"] = HandleContextAdaccount_post_adrules_library
+	handlers["adaccount_get_ads"] = HandleContextAdaccount_get_ads
+	handlers["adaccount_post_ads"] = HandleContextAdaccount_post_ads
+	handlers["adaccount_get_ads_reporting_mmm_reports"] = HandleContextAdaccount_get_ads_reporting_mmm_reports
+	handlers["adaccount_get_ads_reporting_mmm_schedulers"] = HandleContextAdaccount_get_ads_reporting_mmm_schedulers
+	handlers["adaccount_get_ads_volume"] = HandleContextAdaccount_get_ads_volume
+	handlers["adaccount_get_adsbylabels"] = HandleContextAdaccount_get_adsbylabels
+	handlers["adaccount_get_adsets"] = HandleContextAdaccount_get_adsets
+	handlers["adaccount_post_adsets"] = HandleContextAdaccount_post_adsets
+	handlers["adaccount_get_adsetsbylabels"] = HandleContextAdaccount_get_adsetsbylabels
+	handlers["adaccount_get_adspixels"] = HandleContextAdaccount_get_adspixels
+	handlers["adaccount_post_adspixels"] = HandleContextAdaccount_post_adspixels
+	handlers["adaccount_get_advertisable_applications"] = HandleContextAdaccount_get_advertisable_applications
+	handlers["adaccount_delete_advideos"] = HandleContextAdaccount_delete_advideos
+	handlers["adaccount_get_advideos"] = HandleContextAdaccount_get_advideos
+	handlers["adaccount_post_advideos"] = HandleContextAdaccount_post_advideos
+	handlers["adaccount_get_affectedadsets"] = HandleContextAdaccount_get_affectedadsets
+	handlers["adaccount_delete_agencies"] = HandleContextAdaccount_delete_agencies
+	handlers["adaccount_get_agencies"] = HandleContextAdaccount_get_agencies
+	handlers["adaccount_post_agencies"] = HandleContextAdaccount_post_agencies
+	handlers["adaccount_get_applications"] = HandleContextAdaccount_get_applications
+	handlers["adaccount_delete_assigned_users"] = HandleContextAdaccount_delete_assigned_users
+	handlers["adaccount_get_assigned_users"] = HandleContextAdaccount_get_assigned_users
+	handlers["adaccount_post_assigned_users"] = HandleContextAdaccount_post_assigned_users
+	handlers["adaccount_post_async_batch_requests"] = HandleContextAdaccount_post_async_batch_requests
+	handlers["adaccount_get_async_requests"] = HandleContextAdaccount_get_async_requests
+	handlers["adaccount_get_asyncadcreatives"] = HandleContextAdaccount_get_asyncadcreatives
+	handlers["adaccount_post_asyncadcreatives"] = HandleContextAdaccount_post_asyncadcreatives
+	handlers["adaccount_get_asyncadrequestsets"] = HandleContextAdaccount_get_asyncadrequestsets
+	handlers["adaccount_post_asyncadrequestsets"] = HandleContextAdaccount_post_asyncadrequestsets
+	handlers["adaccount_get_audience_funnel"] = HandleContextAdaccount_get_audience_funnel
+	handlers["adaccount_post_block_list_drafts"] = HandleContextAdaccount_post_block_list_drafts
+	handlers["adaccount_post_brand_safety_content_filter_levels"] = HandleContextAdaccount_post_brand_safety_content_filter_levels
+	handlers["adaccount_get_broadtargetingcategories"] = HandleContextAdaccount_get_broadtargetingcategories
+	handlers["adaccount_get_businessprojects"] = HandleContextAdaccount_get_businessprojects
+	handlers["adaccount_delete_campaigns"] = HandleContextAdaccount_delete_campaigns
+	handlers["adaccount_get_campaigns"] = HandleContextAdaccount_get_campaigns
+	handlers["adaccount_post_campaigns"] = HandleContextAdaccount_post_campaigns
+	handlers["adaccount_get_campaignsbylabels"] = HandleContextAdaccount_get_campaignsbylabels
+	handlers["adaccount_get_connected_instagram_accounts"] = HandleContextAdaccount_get_connected_instagram_accounts
+	handlers["adaccount_get_connected_instagram_accounts_with_iabp"] = HandleContextAdaccount_get_connected_instagram_accounts_with_iabp
+	handlers["adaccount_get_conversion_goals"] = HandleContextAdaccount_get_conversion_goals
+	handlers["adaccount_get_customaudiences"] = HandleContextAdaccount_get_customaudiences
+	handlers["adaccount_post_customaudiences"] = HandleContextAdaccount_post_customaudiences
+	handlers["adaccount_get_customaudiencestos"] = HandleContextAdaccount_get_customaudiencestos
+	handlers["adaccount_post_customaudiencestos"] = HandleContextAdaccount_post_customaudiencestos
+	handlers["adaccount_get_customconversions"] = HandleContextAdaccount_get_customconversions
+	handlers["adaccount_post_customconversions"] = HandleContextAdaccount_post_customconversions
+	handlers["adaccount_get_delivery_estimate"] = HandleContextAdaccount_get_delivery_estimate
+	handlers["adaccount_get_deprecatedtargetingadsets"] = HandleContextAdaccount_get_deprecatedtargetingadsets
+	handlers["adaccount_get_dsa_recommendations"] = HandleContextAdaccount_get_dsa_recommendations
+	handlers["adaccount_get_generatepreviews"] = HandleContextAdaccount_get_generatepreviews
+	handlers["adaccount_get_impacting_ad_studies"] = HandleContextAdaccount_get_impacting_ad_studies
+	handlers["adaccount_get_insights"] = HandleContextAdaccount_get_insights
+	handlers["adaccount_post_insights"] = HandleContextAdaccount_post_insights
+	handlers["adaccount_get_instagram_accounts"] = HandleContextAdaccount_get_instagram_accounts
+	handlers["adaccount_get_ios_fourteen_campaign_limits"] = HandleContextAdaccount_get_ios_fourteen_campaign_limits
+	handlers["adaccount_get_matched_search_applications"] = HandleContextAdaccount_get_matched_search_applications
+	handlers["adaccount_get_max_bid"] = HandleContextAdaccount_get_max_bid
+	handlers["adaccount_get_mcmeconversions"] = HandleContextAdaccount_get_mcmeconversions
+	handlers["adaccount_get_minimum_budgets"] = HandleContextAdaccount_get_minimum_budgets
+	handlers["adaccount_get_onbehalf_requests"] = HandleContextAdaccount_get_onbehalf_requests
+	handlers["adaccount_post_product_audiences"] = HandleContextAdaccount_post_product_audiences
+	handlers["adaccount_get_promote_pages"] = HandleContextAdaccount_get_promote_pages
+	handlers["adaccount_get_publisher_block_lists"] = HandleContextAdaccount_get_publisher_block_lists
+	handlers["adaccount_post_publisher_block_lists"] = HandleContextAdaccount_post_publisher_block_lists
+	handlers["adaccount_get_reachestimate"] = HandleContextAdaccount_get_reachestimate
+	handlers["adaccount_get_reachfrequencypredictions"] = HandleContextAdaccount_get_reachfrequencypredictions
+	handlers["adaccount_post_reachfrequencypredictions"] = HandleContextAdaccount_post_reachfrequencypredictions
+	handlers["adaccount_get_recommendations"] = HandleContextAdaccount_get_recommendations
+	handlers["adaccount_post_recommendations"] = HandleContextAdaccount_post_recommendations
+	handlers["adaccount_get_saved_audiences"] = HandleContextAdaccount_get_saved_audiences
+	handlers["adaccount_delete_subscribed_apps"] = HandleContextAdaccount_delete_subscribed_apps
+	handlers["adaccount_get_subscribed_apps"] = HandleContextAdaccount_get_subscribed_apps
+	handlers["adaccount_post_subscribed_apps"] = HandleContextAdaccount_post_subscribed_apps
+	handlers["adaccount_get_targetingbrowse"] = HandleContextAdaccount_get_targetingbrowse
+	handlers["adaccount_get_targetingsearch"] = HandleContextAdaccount_get_targetingsearch
+	handlers["adaccount_get_targetingsentencelines"] = HandleContextAdaccount_get_targetingsentencelines
+	handlers["adaccount_get_targetingsuggestions"] = HandleContextAdaccount_get_targetingsuggestions
+	handlers["adaccount_get_targetingvalidation"] = HandleContextAdaccount_get_targetingvalidation
+	handlers["adaccount_get_tracking"] = HandleContextAdaccount_get_tracking
+	handlers["adaccount_post_tracking"] = HandleContextAdaccount_post_tracking
+	handlers["adaccount_get_users"] = HandleContextAdaccount_get_users
+	handlers["adaccount_delete_usersofanyaudience"] = HandleContextAdaccount_delete_usersofanyaudience
+	handlers["adaccount_get_value_rule_set"] = HandleContextAdaccount_get_value_rule_set
+	handlers["adaccount_post_value_rule_set"] = HandleContextAdaccount_post_value_rule_set
+	handlers["adaccount_get_video_ads"] = HandleContextAdaccount_get_video_ads
+	handlers["adaccount_post_video_ads"] = HandleContextAdaccount_post_video_ads
+	handlers["adaccount_get_"] = HandleContextAdaccount_get_
+	handlers["adaccount_post_"] = HandleContextAdaccount_post_
+	handlers["adspixel_get_adaccounts"] = HandleContextAdspixel_get_adaccounts
+	handlers["adspixel_delete_agencies"] = HandleContextAdspixel_delete_agencies
+	handlers["adspixel_get_agencies"] = HandleContextAdspixel_get_agencies
+	handlers["adspixel_post_agencies"] = HandleContextAdspixel_post_agencies
+	handlers["adspixel_post_ahp_configs"] = HandleContextAdspixel_post_ahp_configs
+	handlers["adspixel_get_assigned_users"] = HandleContextAdspixel_get_assigned_users
+	handlers["adspixel_post_assigned_users"] = HandleContextAdspixel_post_assigned_users
+	handlers["adspixel_get_da_checks"] = HandleContextAdspixel_get_da_checks
+	handlers["adspixel_post_events"] = HandleContextAdspixel_post_events
+	handlers["adspixel_get_offline_event_uploads"] = HandleContextAdspixel_get_offline_event_uploads
+	handlers["adspixel_get_openbridge_configurations"] = HandleContextAdspixel_get_openbridge_configurations
+	handlers["adspixel_post_shadowtraffichelper"] = HandleContextAdspixel_post_shadowtraffichelper
+	handlers["adspixel_delete_shared_accounts"] = HandleContextAdspixel_delete_shared_accounts
+	handlers["adspixel_get_shared_accounts"] = HandleContextAdspixel_get_shared_accounts
+	handlers["adspixel_post_shared_accounts"] = HandleContextAdspixel_post_shared_accounts
+	handlers["adspixel_get_shared_agencies"] = HandleContextAdspixel_get_shared_agencies
+	handlers["adspixel_get_stats"] = HandleContextAdspixel_get_stats
+	handlers["adspixel_get_"] = HandleContextAdspixel_get_
+	handlers["adspixel_post_"] = HandleContextAdspixel_post_
+	handlers["eventtour_get_"] = HandleContextEventtour_get_
+	handlers["placetag_get_"] = HandleContextPlacetag_get_
+	handlers["productfeedschedule_get_"] = HandleContextProductfeedschedule_get_
+	handlers["mediatitle_get_channels_to_integrity_status"] = HandleContextMediatitle_get_channels_to_integrity_status
+	handlers["mediatitle_get_override_details"] = HandleContextMediatitle_get_override_details
+	handlers["mediatitle_get_videos_metadata"] = HandleContextMediatitle_get_videos_metadata
+	handlers["mediatitle_delete_"] = HandleContextMediatitle_delete_
+	handlers["mediatitle_get_"] = HandleContextMediatitle_get_
+	handlers["mediatitle_post_"] = HandleContextMediatitle_post_
+	handlers["owneddomain_get_"] = HandleContextOwneddomain_get_
+	handlers["storelocation_get_"] = HandleContextStorelocation_get_
+	handlers["analyticssegment_get_"] = HandleContextAnalyticssegment_get_
+	handlers["productdeliverypreference_get_"] = HandleContextProductdeliverypreference_get_
+	handlers["instagramthread_get_"] = HandleContextInstagramthread_get_
+	handlers["leadgendirectcrmintegrationconfig_get_"] = HandleContextLeadgendirectcrmintegrationconfig_get_
+	handlers["album_get_comments"] = HandleContextAlbum_get_comments
+	handlers["album_post_comments"] = HandleContextAlbum_post_comments
+	handlers["album_get_likes"] = HandleContextAlbum_get_likes
+	handlers["album_post_likes"] = HandleContextAlbum_post_likes
+	handlers["album_get_photos"] = HandleContextAlbum_get_photos
+	handlers["album_post_photos"] = HandleContextAlbum_post_photos
+	handlers["album_get_picture"] = HandleContextAlbum_get_picture
+	handlers["album_get_"] = HandleContextAlbum_get_
+	handlers["adsreportbuildersavedreport_get_"] = HandleContextAdsreportbuildersavedreport_get_
+	handlers["adsusersettings_get_"] = HandleContextAdsusersettings_get_
+	handlers["unifiedthread_get_messages"] = HandleContextUnifiedthread_get_messages
+	handlers["unifiedthread_get_"] = HandleContextUnifiedthread_get_
+	handlers["thirdpartypartnerpanelrequest_get_"] = HandleContextThirdpartypartnerpanelrequest_get_
+	handlers["cpasbusinesssetupconfig_get_ad_accounts"] = HandleContextCpasbusinesssetupconfig_get_ad_accounts
+	handlers["cpasbusinesssetupconfig_get_"] = HandleContextCpasbusinesssetupconfig_get_
+	handlers["automotivemodel_get_channels_to_integrity_status"] = HandleContextAutomotivemodel_get_channels_to_integrity_status
+	handlers["automotivemodel_get_override_details"] = HandleContextAutomotivemodel_get_override_details
+	handlers["automotivemodel_get_videos_metadata"] = HandleContextAutomotivemodel_get_videos_metadata
+	handlers["automotivemodel_get_"] = HandleContextAutomotivemodel_get_
+	handlers["offsitepixel_get_"] = HandleContextOffsitepixel_get_
+	handlers["profile_get_picture"] = HandleContextProfile_get_picture
+	handlers["profile_get_"] = HandleContextProfile_get_
+	handlers["videocopyrightmatch_get_"] = HandleContextVideocopyrightmatch_get_
+	handlers["hours_get_"] = HandleContextHours_get_
+	handlers["businessvideo_get_"] = HandleContextBusinessvideo_get_
+	handlers["adaccountusersettings_get_"] = HandleContextAdaccountusersettings_get_
+	handlers["commerceorder_post_acknowledge_order"] = HandleContextCommerceorder_post_acknowledge_order
+	handlers["commerceorder_get_cancellations"] = HandleContextCommerceorder_get_cancellations
+	handlers["commerceorder_post_cancellations"] = HandleContextCommerceorder_post_cancellations
+	handlers["commerceorder_post_item_updates"] = HandleContextCommerceorder_post_item_updates
+	handlers["commerceorder_get_items"] = HandleContextCommerceorder_get_items
+	handlers["commerceorder_get_payments"] = HandleContextCommerceorder_get_payments
+	handlers["commerceorder_get_promotion_details"] = HandleContextCommerceorder_get_promotion_details
+	handlers["commerceorder_get_promotions"] = HandleContextCommerceorder_get_promotions
+	handlers["commerceorder_get_refunds"] = HandleContextCommerceorder_get_refunds
+	handlers["commerceorder_post_refunds"] = HandleContextCommerceorder_post_refunds
+	handlers["commerceorder_get_returns"] = HandleContextCommerceorder_get_returns
+	handlers["commerceorder_post_returns"] = HandleContextCommerceorder_post_returns
+	handlers["commerceorder_get_shipments"] = HandleContextCommerceorder_get_shipments
+	handlers["commerceorder_post_shipments"] = HandleContextCommerceorder_post_shipments
+	handlers["commerceorder_post_update_shipment"] = HandleContextCommerceorder_post_update_shipment
+	handlers["commerceorder_get_"] = HandleContextCommerceorder_get_
+	handlers["group_delete_admins"] = HandleContextGroup_delete_admins
+	handlers["group_post_admins"] = HandleContextGroup_post_admins
+	handlers["group_get_albums"] = HandleContextGroup_get_albums
+	handlers["group_get_docs"] = HandleContextGroup_get_docs
+	handlers["group_get_events"] = HandleContextGroup_get_events
+	handlers["group_get_feed"] = HandleContextGroup_get_feed
+	handlers["group_post_feed"] = HandleContextGroup_post_feed
+	handlers["group_get_files"] = HandleContextGroup_get_files
+	handlers["group_get_groups"] = HandleContextGroup_get_groups
+	handlers["group_post_groups"] = HandleContextGroup_post_groups
+	handlers["group_get_live_videos"] = HandleContextGroup_get_live_videos
+	handlers["group_post_live_videos"] = HandleContextGroup_post_live_videos
+	handlers["group_delete_members"] = HandleContextGroup_delete_members
+	handlers["group_post_members"] = HandleContextGroup_post_members
+	handlers["group_get_opted_in_members"] = HandleContextGroup_get_opted_in_members
+	handlers["group_post_photos"] = HandleContextGroup_post_photos
+	handlers["group_get_picture"] = HandleContextGroup_get_picture
+	handlers["group_get_videos"] = HandleContextGroup_get_videos
+	handlers["group_post_videos"] = HandleContextGroup_post_videos
+	handlers["group_get_"] = HandleContextGroup_get_
+	handlers["group_post_"] = HandleContextGroup_post_
+	handlers["adcreationpackageconfig_get_"] = HandleContextAdcreationpackageconfig_get_
+	handlers["contentblocklist_get_applied_ad_accounts"] = HandleContextContentblocklist_get_applied_ad_accounts
+	handlers["contentblocklist_get_facebook_content"] = HandleContextContentblocklist_get_facebook_content
+	handlers["contentblocklist_get_instagram_content"] = HandleContextContentblocklist_get_instagram_content
+	handlers["contentblocklist_get_"] = HandleContextContentblocklist_get_
+	handlers["videocopyrightrule_get_"] = HandleContextVideocopyrightrule_get_
+	handlers["collaborativeadssharesettings_get_"] = HandleContextCollaborativeadssharesettings_get_
+	handlers["publisherblocklist_post_append_publisher_urls"] = HandleContextPublisherblocklist_post_append_publisher_urls
+	handlers["publisherblocklist_get_paged_web_publishers"] = HandleContextPublisherblocklist_get_paged_web_publishers
+	handlers["publisherblocklist_delete_"] = HandleContextPublisherblocklist_delete_
+	handlers["publisherblocklist_get_"] = HandleContextPublisherblocklist_get_
+	handlers["publisherblocklist_post_"] = HandleContextPublisherblocklist_post_
+	handlers["personaladspersona_get_"] = HandleContextPersonaladspersona_get_
+	handlers["fundraiserpersontocharity_get_donations"] = HandleContextFundraiserpersontocharity_get_donations
+	handlers["fundraiserpersontocharity_post_end_fundraiser"] = HandleContextFundraiserpersontocharity_post_end_fundraiser
+	handlers["fundraiserpersontocharity_get_external_donations"] = HandleContextFundraiserpersontocharity_get_external_donations
+	handlers["fundraiserpersontocharity_post_external_donations"] = HandleContextFundraiserpersontocharity_post_external_donations
+	handlers["fundraiserpersontocharity_get_"] = HandleContextFundraiserpersontocharity_get_
+	handlers["fundraiserpersontocharity_post_"] = HandleContextFundraiserpersontocharity_post_
+	handlers["cpasparentcatalogsettings_get_"] = HandleContextCpasparentcatalogsettings_get_
+	handlers["catalogitemoverride_get_"] = HandleContextCatalogitemoverride_get_
+	handlers["thirdpartypartnerpanelscheduled_get_"] = HandleContextThirdpartypartnerpanelscheduled_get_
+	handlers["jobopening_get_"] = HandleContextJobopening_get_
+	handlers["adsvalueadjustmentrulecollection_post_delete_rule_set"] = HandleContextAdsvalueadjustmentrulecollection_post_delete_rule_set
+	handlers["adsvalueadjustmentrulecollection_get_rules"] = HandleContextAdsvalueadjustmentrulecollection_get_rules
+	handlers["adsvalueadjustmentrulecollection_get_"] = HandleContextAdsvalueadjustmentrulecollection_get_
+	handlers["adsvalueadjustmentrulecollection_post_"] = HandleContextAdsvalueadjustmentrulecollection_post_
+	handlers["catalogwebsiteonboardingsettings_get_"] = HandleContextCatalogwebsiteonboardingsettings_get_
+	handlers["productitemoffer_get_"] = HandleContextProductitemoffer_get_
+	handlers["highdemandperiod_delete_"] = HandleContextHighdemandperiod_delete_
+	handlers["highdemandperiod_get_"] = HandleContextHighdemandperiod_get_
+	handlers["highdemandperiod_post_"] = HandleContextHighdemandperiod_post_
+	handlers["homelisting_get_channels_to_integrity_status"] = HandleContextHomelisting_get_channels_to_integrity_status
+	handlers["homelisting_get_override_details"] = HandleContextHomelisting_get_override_details
+	handlers["homelisting_get_videos_metadata"] = HandleContextHomelisting_get_videos_metadata
+	handlers["homelisting_delete_"] = HandleContextHomelisting_delete_
+	handlers["homelisting_get_"] = HandleContextHomelisting_get_
+	handlers["homelisting_post_"] = HandleContextHomelisting_post_
+	handlers["destination_get_channels_to_integrity_status"] = HandleContextDestination_get_channels_to_integrity_status
+	handlers["destination_get_override_details"] = HandleContextDestination_get_override_details
+	handlers["destination_get_videos_metadata"] = HandleContextDestination_get_videos_metadata
+	handlers["destination_get_"] = HandleContextDestination_get_
+	handlers["adproposal_get_"] = HandleContextAdproposal_get_
+	handlers["adruleexecutionspec_get_"] = HandleContextAdruleexecutionspec_get_
+	handlers["bcpcampaign_get_"] = HandleContextBcpcampaign_get_
+	handlers["chinabusinessonboardingvettingrequest_get_"] = HandleContextChinabusinessonboardingvettingrequest_get_
+	handlers["openbridgeconfiguration_delete_"] = HandleContextOpenbridgeconfiguration_delete_
+	handlers["openbridgeconfiguration_get_"] = HandleContextOpenbridgeconfiguration_get_
+	handlers["openbridgeconfiguration_post_"] = HandleContextOpenbridgeconfiguration_post_
+	handlers["savedaudience_get_"] = HandleContextSavedaudience_get_
+	handlers["eventregistrationsetting_get_"] = HandleContextEventregistrationsetting_get_
+	handlers["status_post_likes"] = HandleContextStatus_post_likes
+	handlers["status_get_"] = HandleContextStatus_get_
+	handlers["usercontext_get_"] = HandleContextUsercontext_get_
+	handlers["apprequest_delete_"] = HandleContextApprequest_delete_
+	handlers["apprequest_get_"] = HandleContextApprequest_get_
+	handlers["eventticketsetting_get_"] = HandleContextEventticketsetting_get_
+	handlers["adasyncrequest_delete_"] = HandleContextAdasyncrequest_delete_
+	handlers["adasyncrequest_get_"] = HandleContextAdasyncrequest_get_
+	handlers["bizinboxoffsiteemailaccount_get_assigned_users"] = HandleContextBizinboxoffsiteemailaccount_get_assigned_users
+	handlers["bizinboxoffsiteemailaccount_get_"] = HandleContextBizinboxoffsiteemailaccount_get_
+	handlers["brandrequest_get_"] = HandleContextBrandrequest_get_
+	handlers["livevideoerror_get_"] = HandleContextLivevideoerror_get_
+	handlers["commercemerchantsettings_post_acknowledge_orders"] = HandleContextCommercemerchantsettings_post_acknowledge_orders
+	handlers["commercemerchantsettings_get_commerce_orders"] = HandleContextCommercemerchantsettings_get_commerce_orders
+	handlers["commercemerchantsettings_get_commerce_payouts"] = HandleContextCommercemerchantsettings_get_commerce_payouts
+	handlers["commercemerchantsettings_get_commerce_transactions"] = HandleContextCommercemerchantsettings_get_commerce_transactions
+	handlers["commercemerchantsettings_get_order_management_apps"] = HandleContextCommercemerchantsettings_get_order_management_apps
+	handlers["commercemerchantsettings_post_order_management_apps"] = HandleContextCommercemerchantsettings_post_order_management_apps
+	handlers["commercemerchantsettings_get_product_catalogs"] = HandleContextCommercemerchantsettings_get_product_catalogs
+	handlers["commercemerchantsettings_get_returns"] = HandleContextCommercemerchantsettings_get_returns
+	handlers["commercemerchantsettings_get_setup_status"] = HandleContextCommercemerchantsettings_get_setup_status
+	handlers["commercemerchantsettings_get_shipping_profiles"] = HandleContextCommercemerchantsettings_get_shipping_profiles
+	handlers["commercemerchantsettings_post_shipping_profiles"] = HandleContextCommercemerchantsettings_post_shipping_profiles
+	handlers["commercemerchantsettings_get_shops"] = HandleContextCommercemerchantsettings_get_shops
+	handlers["commercemerchantsettings_get_tax_settings"] = HandleContextCommercemerchantsettings_get_tax_settings
+	handlers["commercemerchantsettings_get_"] = HandleContextCommercemerchantsettings_get_
+	handlers["extendedcredit_get_extended_credit_invoice_groups"] = HandleContextExtendedcredit_get_extended_credit_invoice_groups
+	handlers["extendedcredit_post_extended_credit_invoice_groups"] = HandleContextExtendedcredit_post_extended_credit_invoice_groups
+	handlers["extendedcredit_get_owning_credit_allocation_configs"] = HandleContextExtendedcredit_get_owning_credit_allocation_configs
+	handlers["extendedcredit_post_owning_credit_allocation_configs"] = HandleContextExtendedcredit_post_owning_credit_allocation_configs
+	handlers["extendedcredit_post_whatsapp_credit_attach"] = HandleContextExtendedcredit_post_whatsapp_credit_attach
+	handlers["extendedcredit_post_whatsapp_credit_sharing"] = HandleContextExtendedcredit_post_whatsapp_credit_sharing
+	handlers["extendedcredit_post_whatsapp_credit_sharing_and_attach"] = HandleContextExtendedcredit_post_whatsapp_credit_sharing_and_attach
+	handlers["extendedcredit_get_"] = HandleContextExtendedcredit_get_
+	handlers["adlightadgroup_get_"] = HandleContextAdlightadgroup_get_
+	handlers["measurementreport_get_"] = HandleContextMeasurementreport_get_
+	handlers["ctxpartnerappwelcomemessageflow_get_"] = HandleContextCtxpartnerappwelcomemessageflow_get_
+	handlers["fbimagecopyrightmatch_get_"] = HandleContextFbimagecopyrightmatch_get_
+	handlers["placetopic_get_"] = HandleContextPlacetopic_get_
+	handlers["pageinsightsasyncexportrun_get_"] = HandleContextPageinsightsasyncexportrun_get_
+	handlers["businessuser_get_assigned_ad_accounts"] = HandleContextBusinessuser_get_assigned_ad_accounts
+	handlers["businessuser_get_assigned_business_asset_groups"] = HandleContextBusinessuser_get_assigned_business_asset_groups
+	handlers["businessuser_get_assigned_pages"] = HandleContextBusinessuser_get_assigned_pages
+	handlers["businessuser_get_assigned_product_catalogs"] = HandleContextBusinessuser_get_assigned_product_catalogs
+	handlers["businessuser_delete_"] = HandleContextBusinessuser_delete_
+	handlers["businessuser_get_"] = HandleContextBusinessuser_get_
+	handlers["businessuser_post_"] = HandleContextBusinessuser_post_
+	handlers["igupcomingevent_get_"] = HandleContextIgupcomingevent_get_
+	handlers["igupcomingevent_post_"] = HandleContextIgupcomingevent_post_
+	handlers["wifiinformation_get_"] = HandleContextWifiinformation_get_
+	handlers["businessproject_get_"] = HandleContextBusinessproject_get_
+	handlers["thirdpartypartnerliftrequest_get_"] = HandleContextThirdpartypartnerliftrequest_get_
+	handlers["adsavedlocation_get_"] = HandleContextAdsavedlocation_get_
+	handlers["crmaddress_get_"] = HandleContextCrmaddress_get_
+	handlers["reachfrequencyprediction_get_"] = HandleContextReachfrequencyprediction_get_
+	handlers["user_delete_access_tokens"] = HandleContextUser_delete_access_tokens
+	handlers["user_post_access_tokens"] = HandleContextUser_post_access_tokens
+	handlers["user_get_accounts"] = HandleContextUser_get_accounts
+	handlers["user_post_accounts"] = HandleContextUser_post_accounts
+	handlers["user_get_ad_studies"] = HandleContextUser_get_ad_studies
+	handlers["user_post_ad_studies"] = HandleContextUser_post_ad_studies
+	handlers["user_get_adaccounts"] = HandleContextUser_get_adaccounts
+	handlers["user_get_albums"] = HandleContextUser_get_albums
+	handlers["user_post_applications"] = HandleContextUser_post_applications
+	handlers["user_get_apprequestformerrecipients"] = HandleContextUser_get_apprequestformerrecipients
+	handlers["user_get_apprequests"] = HandleContextUser_get_apprequests
+	handlers["user_get_assigned_ad_accounts"] = HandleContextUser_get_assigned_ad_accounts
+	handlers["user_get_assigned_applications"] = HandleContextUser_get_assigned_applications
+	handlers["user_get_assigned_business_asset_groups"] = HandleContextUser_get_assigned_business_asset_groups
+	handlers["user_get_assigned_pages"] = HandleContextUser_get_assigned_pages
+	handlers["user_get_assigned_product_catalogs"] = HandleContextUser_get_assigned_product_catalogs
+	handlers["user_get_avatars"] = HandleContextUser_get_avatars
+	handlers["user_get_business_users"] = HandleContextUser_get_business_users
+	handlers["user_delete_businesses"] = HandleContextUser_delete_businesses
+	handlers["user_get_businesses"] = HandleContextUser_get_businesses
+	handlers["user_post_businesses"] = HandleContextUser_post_businesses
+	handlers["user_get_conversations"] = HandleContextUser_get_conversations
+	handlers["user_get_custom_labels"] = HandleContextUser_get_custom_labels
+	handlers["user_get_events"] = HandleContextUser_get_events
+	handlers["user_get_feed"] = HandleContextUser_get_feed
+	handlers["user_post_feed"] = HandleContextUser_post_feed
+	handlers["user_get_friends"] = HandleContextUser_get_friends
+	handlers["user_get_fundraisers"] = HandleContextUser_get_fundraisers
+	handlers["user_post_fundraisers"] = HandleContextUser_post_fundraisers
+	handlers["user_get_groups"] = HandleContextUser_get_groups
+	handlers["user_get_ids_for_apps"] = HandleContextUser_get_ids_for_apps
+	handlers["user_get_ids_for_business"] = HandleContextUser_get_ids_for_business
+	handlers["user_get_ids_for_pages"] = HandleContextUser_get_ids_for_pages
+	handlers["user_get_likes"] = HandleContextUser_get_likes
+	handlers["user_get_live_videos"] = HandleContextUser_get_live_videos
+	handlers["user_post_live_videos"] = HandleContextUser_post_live_videos
+	handlers["user_post_messenger_desktop_performance_traces"] = HandleContextUser_post_messenger_desktop_performance_traces
+	handlers["user_post_messenger_kids_accounts_unread_badge"] = HandleContextUser_post_messenger_kids_accounts_unread_badge
+	handlers["user_get_music"] = HandleContextUser_get_music
+	handlers["user_post_notifications"] = HandleContextUser_post_notifications
+	handlers["user_get_payment_transactions"] = HandleContextUser_get_payment_transactions
+	handlers["user_delete_permissions"] = HandleContextUser_delete_permissions
+	handlers["user_get_permissions"] = HandleContextUser_get_permissions
+	handlers["user_get_personal_ad_accounts"] = HandleContextUser_get_personal_ad_accounts
+	handlers["user_get_photos"] = HandleContextUser_get_photos
+	handlers["user_post_photos"] = HandleContextUser_post_photos
+	handlers["user_get_picture"] = HandleContextUser_get_picture
+	handlers["user_get_posts"] = HandleContextUser_get_posts
+	handlers["user_get_rich_media_documents"] = HandleContextUser_get_rich_media_documents
+	handlers["user_post_staging_resources"] = HandleContextUser_post_staging_resources
+	handlers["user_get_videos"] = HandleContextUser_get_videos
+	handlers["user_post_videos"] = HandleContextUser_post_videos
+	handlers["user_delete_"] = HandleContextUser_delete_
+	handlers["user_get_"] = HandleContextUser_get_
+	handlers["user_post_"] = HandleContextUser_post_
+	handlers["audioisrc_get_"] = HandleContextAudioisrc_get_
+	handlers["bidschedule_get_"] = HandleContextBidschedule_get_
+	handlers["creditcard_get_"] = HandleContextCreditcard_get_
+	handlers["businessrolerequest_delete_"] = HandleContextBusinessrolerequest_delete_
+	handlers["businessrolerequest_get_"] = HandleContextBusinessrolerequest_get_
+	handlers["businessrolerequest_post_"] = HandleContextBusinessrolerequest_post_
+	handlers["cpasmerchantconfig_get_"] = HandleContextCpasmerchantconfig_get_
+	handlers["extendedcreditinvoicegroup_delete_ad_accounts"] = HandleContextExtendedcreditinvoicegroup_delete_ad_accounts
+	handlers["extendedcreditinvoicegroup_get_ad_accounts"] = HandleContextExtendedcreditinvoicegroup_get_ad_accounts
+	handlers["extendedcreditinvoicegroup_post_ad_accounts"] = HandleContextExtendedcreditinvoicegroup_post_ad_accounts
+	handlers["extendedcreditinvoicegroup_delete_"] = HandleContextExtendedcreditinvoicegroup_delete_
+	handlers["extendedcreditinvoicegroup_get_"] = HandleContextExtendedcreditinvoicegroup_get_
+	handlers["extendedcreditinvoicegroup_post_"] = HandleContextExtendedcreditinvoicegroup_post_
+	handlers["productfeedrule_delete_"] = HandleContextProductfeedrule_delete_
+	handlers["productfeedrule_get_"] = HandleContextProductfeedrule_get_
+	handlers["productfeedrule_post_"] = HandleContextProductfeedrule_post_
+	handlers["almadaccountinfo_get_"] = HandleContextAlmadaccountinfo_get_
+	handlers["areffect_get_"] = HandleContextAreffect_get_
+	handlers["dynamicpriceconfigbydate_get_"] = HandleContextDynamicpriceconfigbydate_get_
+	handlers["messengeradspartialautomatedsteplist_get_steps"] = HandleContextMessengeradspartialautomatedsteplist_get_steps
+	handlers["messengeradspartialautomatedsteplist_get_"] = HandleContextMessengeradspartialautomatedsteplist_get_
+	handlers["adstudy_get_cells"] = HandleContextAdstudy_get_cells
+	handlers["adstudy_post_checkpoint"] = HandleContextAdstudy_post_checkpoint
+	handlers["adstudy_get_instances"] = HandleContextAdstudy_get_instances
+	handlers["adstudy_post_instances"] = HandleContextAdstudy_post_instances
+	handlers["adstudy_get_objectives"] = HandleContextAdstudy_get_objectives
+	handlers["adstudy_delete_"] = HandleContextAdstudy_delete_
+	handlers["adstudy_get_"] = HandleContextAdstudy_get_
+	handlers["adstudy_post_"] = HandleContextAdstudy_post_
+	handlers["asyncsession_get_"] = HandleContextAsyncsession_get_
+	handlers["audiocopyright_get_update_records"] = HandleContextAudiocopyright_get_update_records
+	handlers["audiocopyright_get_"] = HandleContextAudiocopyright_get_
+	handlers["businessrequest_get_"] = HandleContextBusinessrequest_get_
+	handlers["productcataloglocalizationsettings_get_"] = HandleContextProductcataloglocalizationsettings_get_
+	handlers["almendadvertiserinfo_get_"] = HandleContextAlmendadvertiserinfo_get_
+	handlers["iguserexportforcam_get_branded_content_media"] = HandleContextIguserexportforcam_get_branded_content_media
+	handlers["iguserexportforcam_get_insights"] = HandleContextIguserexportforcam_get_insights
+	handlers["iguserexportforcam_get_recent_media"] = HandleContextIguserexportforcam_get_recent_media
+	handlers["iguserexportforcam_get_"] = HandleContextIguserexportforcam_get_
+	handlers["livevideo_get_blocked_users"] = HandleContextLivevideo_get_blocked_users
+	handlers["livevideo_get_comments"] = HandleContextLivevideo_get_comments
+	handlers["livevideo_get_crosspost_shared_pages"] = HandleContextLivevideo_get_crosspost_shared_pages
+	handlers["livevideo_get_crossposted_broadcasts"] = HandleContextLivevideo_get_crossposted_broadcasts
+	handlers["livevideo_get_errors"] = HandleContextLivevideo_get_errors
+	handlers["livevideo_post_input_streams"] = HandleContextLivevideo_post_input_streams
+	handlers["livevideo_get_polls"] = HandleContextLivevideo_get_polls
+	handlers["livevideo_post_polls"] = HandleContextLivevideo_post_polls
+	handlers["livevideo_get_reactions"] = HandleContextLivevideo_get_reactions
+	handlers["livevideo_delete_"] = HandleContextLivevideo_delete_
+	handlers["livevideo_get_"] = HandleContextLivevideo_get_
+	handlers["livevideo_post_"] = HandleContextLivevideo_post_
+	handlers["organization_get_"] = HandleContextOrganization_get_
+	handlers["igmediaboosteligibilityinfo_get_"] = HandleContextIgmediaboosteligibilityinfo_get_
+	handlers["imagecopyright_get_"] = HandleContextImagecopyright_get_
+	handlers["imagecopyright_post_"] = HandleContextImagecopyright_post_
+	handlers["link_post_comments"] = HandleContextLink_post_comments
+	handlers["link_get_likes"] = HandleContextLink_get_likes
+	handlers["link_get_"] = HandleContextLink_get_
+	handlers["shop_get_"] = HandleContextShop_get_
+	handlers["cpasadvertiserpartnershiprecommendation_get_"] = HandleContextCpasadvertiserpartnershiprecommendation_get_
+	handlers["productitemlocalinfo_get_"] = HandleContextProductitemlocalinfo_get_
+	handlers["adimage_get_"] = HandleContextAdimage_get_
+	handlers["lifeevent_get_likes"] = HandleContextLifeevent_get_likes
+	handlers["lifeevent_get_"] = HandleContextLifeevent_get_
+	handlers["storecatalogsettings_delete_"] = HandleContextStorecatalogsettings_delete_
+	handlers["storecatalogsettings_get_"] = HandleContextStorecatalogsettings_get_
+	handlers["igaccesstokenforigonlyapi_get_"] = HandleContextIgaccesstokenforigonlyapi_get_
+	handlers["videopoll_get_poll_options"] = HandleContextVideopoll_get_poll_options
+	handlers["videopoll_get_"] = HandleContextVideopoll_get_
+	handlers["videopoll_post_"] = HandleContextVideopoll_post_
+	handlers["shadowighashtag_get_recent_media"] = HandleContextShadowighashtag_get_recent_media
+	handlers["shadowighashtag_get_top_media"] = HandleContextShadowighashtag_get_top_media
+	handlers["shadowighashtag_get_"] = HandleContextShadowighashtag_get_
+	handlers["adsavedreport_get_"] = HandleContextAdsavedreport_get_
+	handlers["catalogsmartpixelsettings_get_"] = HandleContextCatalogsmartpixelsettings_get_
+	handlers["ad_get_adcreatives"] = HandleContextAd_get_adcreatives
+	handlers["ad_post_adlabels"] = HandleContextAd_post_adlabels
+	handlers["ad_get_adrules_governed"] = HandleContextAd_get_adrules_governed
+	handlers["ad_get_copies"] = HandleContextAd_get_copies
+	handlers["ad_post_copies"] = HandleContextAd_post_copies
+	handlers["ad_get_insights"] = HandleContextAd_get_insights
+	handlers["ad_post_insights"] = HandleContextAd_post_insights
+	handlers["ad_get_leads"] = HandleContextAd_get_leads
+	handlers["ad_get_previews"] = HandleContextAd_get_previews
+	handlers["ad_get_targetingsentencelines"] = HandleContextAd_get_targetingsentencelines
+	handlers["ad_delete_"] = HandleContextAd_delete_
+	handlers["ad_get_"] = HandleContextAd_get_
+	handlers["ad_post_"] = HandleContextAd_post_
+	handlers["cpasadcreationtemplate_get_"] = HandleContextCpasadcreationtemplate_get_
+	handlers["vehicle_get_channels_to_integrity_status"] = HandleContextVehicle_get_channels_to_integrity_status
+	handlers["vehicle_get_override_details"] = HandleContextVehicle_get_override_details
+	handlers["vehicle_get_videos_metadata"] = HandleContextVehicle_get_videos_metadata
+	handlers["vehicle_get_"] = HandleContextVehicle_get_
+	handlers["vehicle_post_"] = HandleContextVehicle_post_
+	handlers["adsavedkeywords_get_"] = HandleContextAdsavedkeywords_get_
+	handlers["audiorelease_get_"] = HandleContextAudiorelease_get_
+	handlers["igmedia_get_boost_ads_list"] = HandleContextIgmedia_get_boost_ads_list
+	handlers["igmedia_get_branded_content_partner_promote"] = HandleContextIgmedia_get_branded_content_partner_promote
+	handlers["igmedia_post_branded_content_partner_promote"] = HandleContextIgmedia_post_branded_content_partner_promote
+	handlers["igmedia_get_children"] = HandleContextIgmedia_get_children
+	handlers["igmedia_get_collaborators"] = HandleContextIgmedia_get_collaborators
+	handlers["igmedia_get_comments"] = HandleContextIgmedia_get_comments
+	handlers["igmedia_post_comments"] = HandleContextIgmedia_post_comments
+	handlers["igmedia_get_insights"] = HandleContextIgmedia_get_insights
+	handlers["igmedia_delete_partnership_ad_code"] = HandleContextIgmedia_delete_partnership_ad_code
+	handlers["igmedia_post_partnership_ad_code"] = HandleContextIgmedia_post_partnership_ad_code
+	handlers["igmedia_get_product_tags"] = HandleContextIgmedia_get_product_tags
+	handlers["igmedia_post_product_tags"] = HandleContextIgmedia_post_product_tags
+	handlers["igmedia_get_"] = HandleContextIgmedia_get_
+	handlers["igmedia_post_"] = HandleContextIgmedia_post_
+	handlers["customaudience_delete_adaccounts"] = HandleContextCustomaudience_delete_adaccounts
+	handlers["customaudience_get_adaccounts"] = HandleContextCustomaudience_get_adaccounts
+	handlers["customaudience_post_adaccounts"] = HandleContextCustomaudience_post_adaccounts
+	handlers["customaudience_get_ads"] = HandleContextCustomaudience_get_ads
+	handlers["customaudience_get_health"] = HandleContextCustomaudience_get_health
+	handlers["customaudience_get_salts"] = HandleContextCustomaudience_get_salts
+	handlers["customaudience_post_salts"] = HandleContextCustomaudience_post_salts
+	handlers["customaudience_get_sessions"] = HandleContextCustomaudience_get_sessions
+	handlers["customaudience_get_shared_account_info"] = HandleContextCustomaudience_get_shared_account_info
+	handlers["customaudience_delete_users"] = HandleContextCustomaudience_delete_users
+	handlers["customaudience_post_users"] = HandleContextCustomaudience_post_users
+	handlers["customaudience_post_usersreplace"] = HandleContextCustomaudience_post_usersreplace
+	handlers["customaudience_delete_"] = HandleContextCustomaudience_delete_
+	handlers["customaudience_get_"] = HandleContextCustomaudience_get_
+	handlers["customaudience_post_"] = HandleContextCustomaudience_post_
+	handlers["pageleadsaccessconfig_get_"] = HandleContextPageleadsaccessconfig_get_
+	handlers["researchpollstudy_get_"] = HandleContextResearchpollstudy_get_
+	handlers["franchiseprogrammember_get_"] = HandleContextFranchiseprogrammember_get_
+	handlers["productfeeduploaderror_get_samples"] = HandleContextProductfeeduploaderror_get_samples
+	handlers["productfeeduploaderror_get_suggested_rules"] = HandleContextProductfeeduploaderror_get_suggested_rules
+	handlers["productfeeduploaderror_get_"] = HandleContextProductfeeduploaderror_get_
+	handlers["mediacopyrightupdaterecord_get_"] = HandleContextMediacopyrightupdaterecord_get_
+	handlers["adcolumnsizes_get_"] = HandleContextAdcolumnsizes_get_
+	handlers["analyticsuserconfig_get_"] = HandleContextAnalyticsuserconfig_get_
+	handlers["pagebroadcast_get_"] = HandleContextPagebroadcast_get_
+	handlers["partnerstudy_get_"] = HandleContextPartnerstudy_get_
+	handlers["canvasdynamicsetting_get_"] = HandleContextCanvasdynamicsetting_get_
+	handlers["adlightcampaign_get_"] = HandleContextAdlightcampaign_get_
+	handlers["videolist_get_videos"] = HandleContextVideolist_get_videos
+	handlers["videolist_get_"] = HandleContextVideolist_get_
+	handlers["whitehatfbdlrun_get_"] = HandleContextWhitehatfbdlrun_get_
+	handlers["offlineproductitem_get_channels_to_integrity_status"] = HandleContextOfflineproductitem_get_channels_to_integrity_status
+	handlers["offlineproductitem_get_override_details"] = HandleContextOfflineproductitem_get_override_details
+	handlers["offlineproductitem_get_"] = HandleContextOfflineproductitem_get_
+	handlers["websitecreativeassetsource_get_"] = HandleContextWebsitecreativeassetsource_get_
+	handlers["business_post_access_token"] = HandleContextBusiness_post_access_token
+	handlers["business_get_ad_account_infos"] = HandleContextBusiness_get_ad_account_infos
+	handlers["business_delete_ad_accounts"] = HandleContextBusiness_delete_ad_accounts
+	handlers["business_post_ad_review_requests"] = HandleContextBusiness_post_ad_review_requests
+	handlers["business_get_ad_studies"] = HandleContextBusiness_get_ad_studies
+	handlers["business_post_ad_studies"] = HandleContextBusiness_post_ad_studies
+	handlers["business_post_adaccount"] = HandleContextBusiness_post_adaccount
+	handlers["business_post_add_phone_numbers"] = HandleContextBusiness_post_add_phone_numbers
+	handlers["business_post_adnetwork_applications"] = HandleContextBusiness_post_adnetwork_applications
+	handlers["business_get_adnetworkanalytics"] = HandleContextBusiness_get_adnetworkanalytics
+	handlers["business_post_adnetworkanalytics"] = HandleContextBusiness_post_adnetworkanalytics
+	handlers["business_get_adnetworkanalytics_results"] = HandleContextBusiness_get_adnetworkanalytics_results
+	handlers["business_get_ads_dataset"] = HandleContextBusiness_get_ads_dataset
+	handlers["business_post_ads_dataset"] = HandleContextBusiness_post_ads_dataset
+	handlers["business_get_ads_reporting_mmm_reports"] = HandleContextBusiness_get_ads_reporting_mmm_reports
+	handlers["business_get_ads_reporting_mmm_schedulers"] = HandleContextBusiness_get_ads_reporting_mmm_schedulers
+	handlers["business_get_adspixels"] = HandleContextBusiness_get_adspixels
+	handlers["business_post_adspixels"] = HandleContextBusiness_post_adspixels
+	handlers["business_delete_agencies"] = HandleContextBusiness_delete_agencies
+	handlers["business_get_agencies"] = HandleContextBusiness_get_agencies
+	handlers["business_get_an_placements"] = HandleContextBusiness_get_an_placements
+	handlers["business_post_block_list_drafts"] = HandleContextBusiness_post_block_list_drafts
+	handlers["business_post_bm_review_requests"] = HandleContextBusiness_post_bm_review_requests
+	handlers["business_get_business_asset_groups"] = HandleContextBusiness_get_business_asset_groups
+	handlers["business_get_business_invoices"] = HandleContextBusiness_get_business_invoices
+	handlers["business_get_business_users"] = HandleContextBusiness_get_business_users
+	handlers["business_post_business_users"] = HandleContextBusiness_post_business_users
+	handlers["business_get_businessprojects"] = HandleContextBusiness_get_businessprojects
+	handlers["business_post_claim_custom_conversions"] = HandleContextBusiness_post_claim_custom_conversions
+	handlers["business_get_client_ad_accounts"] = HandleContextBusiness_get_client_ad_accounts
+	handlers["business_get_client_apps"] = HandleContextBusiness_get_client_apps
+	handlers["business_post_client_apps"] = HandleContextBusiness_post_client_apps
+	handlers["business_get_client_offsite_signal_container_business_objects"] = HandleContextBusiness_get_client_offsite_signal_container_business_objects
+	handlers["business_get_client_pages"] = HandleContextBusiness_get_client_pages
+	handlers["business_post_client_pages"] = HandleContextBusiness_post_client_pages
+	handlers["business_get_client_pixels"] = HandleContextBusiness_get_client_pixels
+	handlers["business_get_client_product_catalogs"] = HandleContextBusiness_get_client_product_catalogs
+	handlers["business_get_client_whatsapp_business_accounts"] = HandleContextBusiness_get_client_whatsapp_business_accounts
+	handlers["business_delete_clients"] = HandleContextBusiness_delete_clients
+	handlers["business_get_clients"] = HandleContextBusiness_get_clients
+	handlers["business_get_collaborative_ads_collaboration_requests"] = HandleContextBusiness_get_collaborative_ads_collaboration_requests
+	handlers["business_post_collaborative_ads_collaboration_requests"] = HandleContextBusiness_post_collaborative_ads_collaboration_requests
+	handlers["business_get_collaborative_ads_suggested_partners"] = HandleContextBusiness_get_collaborative_ads_suggested_partners
+	handlers["business_get_commerce_merchant_settings"] = HandleContextBusiness_get_commerce_merchant_settings
+	handlers["business_get_cpas_business_setup_config"] = HandleContextBusiness_get_cpas_business_setup_config
+	handlers["business_post_cpas_business_setup_config"] = HandleContextBusiness_post_cpas_business_setup_config
+	handlers["business_get_cpas_merchant_config"] = HandleContextBusiness_get_cpas_merchant_config
+	handlers["business_post_creative_folders"] = HandleContextBusiness_post_creative_folders
+	handlers["business_get_creditcards"] = HandleContextBusiness_get_creditcards
+	handlers["business_post_customconversions"] = HandleContextBusiness_post_customconversions
+	handlers["business_get_event_source_groups"] = HandleContextBusiness_get_event_source_groups
+	handlers["business_post_event_source_groups"] = HandleContextBusiness_post_event_source_groups
+	handlers["business_get_extendedcreditapplications"] = HandleContextBusiness_get_extendedcreditapplications
+	handlers["business_get_extendedcredits"] = HandleContextBusiness_get_extendedcredits
+	handlers["business_post_images"] = HandleContextBusiness_post_images
+	handlers["business_get_initiated_audience_sharing_requests"] = HandleContextBusiness_get_initiated_audience_sharing_requests
+	handlers["business_delete_instagram_accounts"] = HandleContextBusiness_delete_instagram_accounts
+	handlers["business_get_instagram_accounts"] = HandleContextBusiness_get_instagram_accounts
+	handlers["business_get_instagram_business_accounts"] = HandleContextBusiness_get_instagram_business_accounts
+	handlers["business_delete_managed_businesses"] = HandleContextBusiness_delete_managed_businesses
+	handlers["business_post_managed_businesses"] = HandleContextBusiness_post_managed_businesses
+	handlers["business_get_managed_partner_ads_funding_source_details"] = HandleContextBusiness_get_managed_partner_ads_funding_source_details
+	handlers["business_post_managed_partner_business_setup"] = HandleContextBusiness_post_managed_partner_business_setup
+	handlers["business_delete_managed_partner_businesses"] = HandleContextBusiness_delete_managed_partner_businesses
+	handlers["business_post_managed_partner_businesses"] = HandleContextBusiness_post_managed_partner_businesses
+	handlers["business_post_onboard_partners_to_mm_lite"] = HandleContextBusiness_post_onboard_partners_to_mm_lite
+	handlers["business_get_openbridge_configurations"] = HandleContextBusiness_get_openbridge_configurations
+	handlers["business_post_openbridge_configurations"] = HandleContextBusiness_post_openbridge_configurations
+	handlers["business_get_owned_ad_accounts"] = HandleContextBusiness_get_owned_ad_accounts
+	handlers["business_post_owned_ad_accounts"] = HandleContextBusiness_post_owned_ad_accounts
+	handlers["business_get_owned_apps"] = HandleContextBusiness_get_owned_apps
+	handlers["business_post_owned_apps"] = HandleContextBusiness_post_owned_apps
+	handlers["business_delete_owned_businesses"] = HandleContextBusiness_delete_owned_businesses
+	handlers["business_get_owned_businesses"] = HandleContextBusiness_get_owned_businesses
+	handlers["business_post_owned_businesses"] = HandleContextBusiness_post_owned_businesses
+	handlers["business_get_owned_instagram_accounts"] = HandleContextBusiness_get_owned_instagram_accounts
+	handlers["business_get_owned_offsite_signal_container_business_objects"] = HandleContextBusiness_get_owned_offsite_signal_container_business_objects
+	handlers["business_get_owned_pages"] = HandleContextBusiness_get_owned_pages
+	handlers["business_post_owned_pages"] = HandleContextBusiness_post_owned_pages
+	handlers["business_get_owned_pixels"] = HandleContextBusiness_get_owned_pixels
+	handlers["business_get_owned_product_catalogs"] = HandleContextBusiness_get_owned_product_catalogs
+	handlers["business_post_owned_product_catalogs"] = HandleContextBusiness_post_owned_product_catalogs
+	handlers["business_get_owned_whatsapp_business_accounts"] = HandleContextBusiness_get_owned_whatsapp_business_accounts
+	handlers["business_delete_pages"] = HandleContextBusiness_delete_pages
+	handlers["business_get_partner_account_linking"] = HandleContextBusiness_get_partner_account_linking
+	handlers["business_post_partner_premium_options"] = HandleContextBusiness_post_partner_premium_options
+	handlers["business_get_passback_attribution_metadata_configs"] = HandleContextBusiness_get_passback_attribution_metadata_configs
+	handlers["business_get_pending_client_ad_accounts"] = HandleContextBusiness_get_pending_client_ad_accounts
+	handlers["business_get_pending_client_apps"] = HandleContextBusiness_get_pending_client_apps
+	handlers["business_get_pending_client_pages"] = HandleContextBusiness_get_pending_client_pages
+	handlers["business_get_pending_owned_ad_accounts"] = HandleContextBusiness_get_pending_owned_ad_accounts
+	handlers["business_get_pending_owned_pages"] = HandleContextBusiness_get_pending_owned_pages
+	handlers["business_get_pending_shared_offsite_signal_container_business_objects"] = HandleContextBusiness_get_pending_shared_offsite_signal_container_business_objects
+	handlers["business_get_pending_users"] = HandleContextBusiness_get_pending_users
+	handlers["business_get_picture"] = HandleContextBusiness_get_picture
+	handlers["business_post_pixel_tos"] = HandleContextBusiness_post_pixel_tos
+	handlers["business_get_preverified_numbers"] = HandleContextBusiness_get_preverified_numbers
+	handlers["business_get_received_audience_sharing_requests"] = HandleContextBusiness_get_received_audience_sharing_requests
+	handlers["business_get_reseller_guidances"] = HandleContextBusiness_get_reseller_guidances
+	handlers["business_get_self_certified_whatsapp_business_submissions"] = HandleContextBusiness_get_self_certified_whatsapp_business_submissions
+	handlers["business_post_self_certify_whatsapp_business"] = HandleContextBusiness_post_self_certify_whatsapp_business
+	handlers["business_post_setup_managed_partner_adaccounts"] = HandleContextBusiness_post_setup_managed_partner_adaccounts
+	handlers["business_delete_share_preverified_numbers"] = HandleContextBusiness_delete_share_preverified_numbers
+	handlers["business_post_share_preverified_numbers"] = HandleContextBusiness_post_share_preverified_numbers
+	handlers["business_post_system_user_access_tokens"] = HandleContextBusiness_post_system_user_access_tokens
+	handlers["business_get_system_users"] = HandleContextBusiness_get_system_users
+	handlers["business_post_system_users"] = HandleContextBusiness_post_system_users
+	handlers["business_get_third_party_measurement_report_dataset"] = HandleContextBusiness_get_third_party_measurement_report_dataset
+	handlers["business_post_videos"] = HandleContextBusiness_post_videos
+	handlers["business_get_"] = HandleContextBusiness_get_
+	handlers["business_post_"] = HandleContextBusiness_post_
+	handlers["adsstartyourdaywidget_get_"] = HandleContextAdsstartyourdaywidget_get_
+	handlers["eventtickettier_get_"] = HandleContextEventtickettier_get_
+	handlers["imagecopyrightdispute_get_"] = HandleContextImagecopyrightdispute_get_
+	handlers["withasset3d_get_"] = HandleContextWithasset3d_get_
+	handlers["eventexternalticketinfo_get_"] = HandleContextEventexternalticketinfo_get_
+	handlers["adscreationsavedstate_get_"] = HandleContextAdscreationsavedstate_get_
+	handlers["campaign_get_ad_studies"] = HandleContextCampaign_get_ad_studies
+	handlers["campaign_post_adlabels"] = HandleContextCampaign_post_adlabels
+	handlers["campaign_get_adrules_governed"] = HandleContextCampaign_get_adrules_governed
+	handlers["campaign_get_ads"] = HandleContextCampaign_get_ads
+	handlers["campaign_get_adsets"] = HandleContextCampaign_get_adsets
+	handlers["campaign_post_budget_schedules"] = HandleContextCampaign_post_budget_schedules
+	handlers["campaign_get_copies"] = HandleContextCampaign_get_copies
+	handlers["campaign_post_copies"] = HandleContextCampaign_post_copies
+	handlers["campaign_get_insights"] = HandleContextCampaign_get_insights
+	handlers["campaign_post_insights"] = HandleContextCampaign_post_insights
+	handlers["campaign_delete_"] = HandleContextCampaign_delete_
+	handlers["campaign_get_"] = HandleContextCampaign_get_
+	handlers["campaign_post_"] = HandleContextCampaign_post_
+	handlers["dynamicarmetadata_get_"] = HandleContextDynamicarmetadata_get_
+	handlers["woodhengesupporter_get_"] = HandleContextWoodhengesupporter_get_
+	handlers["adspivotrules_get_"] = HandleContextAdspivotrules_get_
+	handlers["pageupcomingchange_get_"] = HandleContextPageupcomingchange_get_
+	handlers["productfeedupload_post_error_report"] = HandleContextProductfeedupload_post_error_report
+	handlers["productfeedupload_get_errors"] = HandleContextProductfeedupload_get_errors
+	handlers["productfeedupload_get_"] = HandleContextProductfeedupload_get_
+	handlers["managementsitelink_get_"] = HandleContextManagementsitelink_get_
+	handlers["productsetusage_get_"] = HandleContextProductsetusage_get_
+	handlers["adaccountagencyfeeconfig_get_"] = HandleContextAdaccountagencyfeeconfig_get_
+	handlers["businessownedobjectonbehalfofrequest_get_"] = HandleContextBusinessownedobjectonbehalfofrequest_get_
+	handlers["sitelink_get_"] = HandleContextSitelink_get_
+	handlers["adruleevaluationspec_get_"] = HandleContextAdruleevaluationspec_get_
+	handlers["iguserforigonlyapi_get_business_messaging_feature_status"] = HandleContextIguserforigonlyapi_get_business_messaging_feature_status
+	handlers["iguserforigonlyapi_get_content_publishing_limit"] = HandleContextIguserforigonlyapi_get_content_publishing_limit
+	handlers["iguserforigonlyapi_get_conversations"] = HandleContextIguserforigonlyapi_get_conversations
+	handlers["iguserforigonlyapi_get_insights"] = HandleContextIguserforigonlyapi_get_insights
+	handlers["iguserforigonlyapi_get_live_media"] = HandleContextIguserforigonlyapi_get_live_media
+	handlers["iguserforigonlyapi_get_media"] = HandleContextIguserforigonlyapi_get_media
+	handlers["iguserforigonlyapi_post_media"] = HandleContextIguserforigonlyapi_post_media
+	handlers["iguserforigonlyapi_post_mediapublish"] = HandleContextIguserforigonlyapi_post_mediapublish
+	handlers["iguserforigonlyapi_post_mentions"] = HandleContextIguserforigonlyapi_post_mentions
+	handlers["iguserforigonlyapi_post_messageattachments"] = HandleContextIguserforigonlyapi_post_messageattachments
+	handlers["iguserforigonlyapi_post_messages"] = HandleContextIguserforigonlyapi_post_messages
+	handlers["iguserforigonlyapi_delete_messenger_profile"] = HandleContextIguserforigonlyapi_delete_messenger_profile
+	handlers["iguserforigonlyapi_get_messenger_profile"] = HandleContextIguserforigonlyapi_get_messenger_profile
+	handlers["iguserforigonlyapi_post_messenger_profile"] = HandleContextIguserforigonlyapi_post_messenger_profile
+	handlers["iguserforigonlyapi_get_stories"] = HandleContextIguserforigonlyapi_get_stories
+	handlers["iguserforigonlyapi_delete_subscribed_apps"] = HandleContextIguserforigonlyapi_delete_subscribed_apps
+	handlers["iguserforigonlyapi_get_subscribed_apps"] = HandleContextIguserforigonlyapi_get_subscribed_apps
+	handlers["iguserforigonlyapi_post_subscribed_apps"] = HandleContextIguserforigonlyapi_post_subscribed_apps
+	handlers["iguserforigonlyapi_get_tags"] = HandleContextIguserforigonlyapi_get_tags
+	handlers["iguserforigonlyapi_delete_welcome_message_flows"] = HandleContextIguserforigonlyapi_delete_welcome_message_flows
+	handlers["iguserforigonlyapi_get_welcome_message_flows"] = HandleContextIguserforigonlyapi_get_welcome_message_flows
+	handlers["iguserforigonlyapi_post_welcome_message_flows"] = HandleContextIguserforigonlyapi_post_welcome_message_flows
+	handlers["iguserforigonlyapi_get_"] = HandleContextIguserforigonlyapi_get_
+	handlers["adspixelcapabilityoverride_get_"] = HandleContextAdspixelcapabilityoverride_get_
+	handlers["audiosublabel_get_"] = HandleContextAudiosublabel_get_
+	handlers["adsconversiongoal_get_conversion_events"] = HandleContextAdsconversiongoal_get_conversion_events
+	handlers["adsconversiongoal_get_"] = HandleContextAdsconversiongoal_get_
+	handlers["canvas_get_preview"] = HandleContextCanvas_get_preview
+	handlers["canvas_get_previews"] = HandleContextCanvas_get_previews
+	handlers["canvas_get_"] = HandleContextCanvas_get_
+	handlers["canvas_post_"] = HandleContextCanvas_post_
+	handlers["signalsiwlextractor_get_"] = HandleContextSignalsiwlextractor_get_
+	handlers["slicedeventsourcegroup_get_"] = HandleContextSlicedeventsourcegroup_get_
+	handlers["almevent_get_"] = HandleContextAlmevent_get_
+	handlers["externalmerchantsettings_get_"] = HandleContextExternalmerchantsettings_get_
+	handlers["advideo_get_boost_ads_list"] = HandleContextAdvideo_get_boost_ads_list
+	handlers["advideo_get_captions"] = HandleContextAdvideo_get_captions
+	handlers["advideo_post_captions"] = HandleContextAdvideo_post_captions
+	handlers["advideo_get_collaborators"] = HandleContextAdvideo_get_collaborators
+	handlers["advideo_post_collaborators"] = HandleContextAdvideo_post_collaborators
+	handlers["advideo_get_comments"] = HandleContextAdvideo_get_comments
+	handlers["advideo_post_comments"] = HandleContextAdvideo_post_comments
+	handlers["advideo_get_crosspost_shared_pages"] = HandleContextAdvideo_get_crosspost_shared_pages
+	handlers["advideo_post_gaming_clip_create"] = HandleContextAdvideo_post_gaming_clip_create
+	handlers["advideo_get_likes"] = HandleContextAdvideo_get_likes
+	handlers["advideo_post_likes"] = HandleContextAdvideo_post_likes
+	handlers["advideo_get_poll_settings"] = HandleContextAdvideo_get_poll_settings
+	handlers["advideo_get_polls"] = HandleContextAdvideo_get_polls
+	handlers["advideo_post_polls"] = HandleContextAdvideo_post_polls
+	handlers["advideo_get_sponsor_tags"] = HandleContextAdvideo_get_sponsor_tags
+	handlers["advideo_get_tags"] = HandleContextAdvideo_get_tags
+	handlers["advideo_get_thumbnails"] = HandleContextAdvideo_get_thumbnails
+	handlers["advideo_post_thumbnails"] = HandleContextAdvideo_post_thumbnails
+	handlers["advideo_get_video_insights"] = HandleContextAdvideo_get_video_insights
+	handlers["advideo_delete_"] = HandleContextAdvideo_delete_
+	handlers["advideo_get_"] = HandleContextAdvideo_get_
+	handlers["advideo_post_"] = HandleContextAdvideo_post_
+	handlers["catalogwebsitesettings_get_"] = HandleContextCatalogwebsitesettings_get_
+	handlers["paymentenginepayment_post_dispute"] = HandleContextPaymentenginepayment_post_dispute
+	handlers["paymentenginepayment_post_refunds"] = HandleContextPaymentenginepayment_post_refunds
+	handlers["paymentenginepayment_get_"] = HandleContextPaymentenginepayment_get_
+	handlers["shadowigmediabuilder_get_"] = HandleContextShadowigmediabuilder_get_
+	handlers["whatsappbusinessaccount_get_activities"] = HandleContextWhatsappbusinessaccount_get_activities
+	handlers["whatsappbusinessaccount_delete_assigned_users"] = HandleContextWhatsappbusinessaccount_delete_assigned_users
+	handlers["whatsappbusinessaccount_get_assigned_users"] = HandleContextWhatsappbusinessaccount_get_assigned_users
+	handlers["whatsappbusinessaccount_post_assigned_users"] = HandleContextWhatsappbusinessaccount_post_assigned_users
+	handlers["whatsappbusinessaccount_get_audiences"] = HandleContextWhatsappbusinessaccount_get_audiences
+	handlers["whatsappbusinessaccount_get_call_analytics"] = HandleContextWhatsappbusinessaccount_get_call_analytics
+	handlers["whatsappbusinessaccount_get_conversation_analytics"] = HandleContextWhatsappbusinessaccount_get_conversation_analytics
+	handlers["whatsappbusinessaccount_get_dataset"] = HandleContextWhatsappbusinessaccount_get_dataset
+	handlers["whatsappbusinessaccount_post_dataset"] = HandleContextWhatsappbusinessaccount_post_dataset
+	handlers["whatsappbusinessaccount_get_flows"] = HandleContextWhatsappbusinessaccount_get_flows
+	handlers["whatsappbusinessaccount_post_flows"] = HandleContextWhatsappbusinessaccount_post_flows
+	handlers["whatsappbusinessaccount_post_generate_payment_configuration_oauth_link"] = HandleContextWhatsappbusinessaccount_post_generate_payment_configuration_oauth_link
+	handlers["whatsappbusinessaccount_get_message_campaigns"] = HandleContextWhatsappbusinessaccount_get_message_campaigns
+	handlers["whatsappbusinessaccount_get_message_template_previews"] = HandleContextWhatsappbusinessaccount_get_message_template_previews
+	handlers["whatsappbusinessaccount_delete_message_templates"] = HandleContextWhatsappbusinessaccount_delete_message_templates
+	handlers["whatsappbusinessaccount_get_message_templates"] = HandleContextWhatsappbusinessaccount_get_message_templates
+	handlers["whatsappbusinessaccount_post_message_templates"] = HandleContextWhatsappbusinessaccount_post_message_templates
+	handlers["whatsappbusinessaccount_post_migrate_flows"] = HandleContextWhatsappbusinessaccount_post_migrate_flows
+	handlers["whatsappbusinessaccount_post_migrate_message_templates"] = HandleContextWhatsappbusinessaccount_post_migrate_message_templates
+	handlers["whatsappbusinessaccount_delete_payment_configuration"] = HandleContextWhatsappbusinessaccount_delete_payment_configuration
+	handlers["whatsappbusinessaccount_get_payment_configuration"] = HandleContextWhatsappbusinessaccount_get_payment_configuration
+	handlers["whatsappbusinessaccount_post_payment_configuration"] = HandleContextWhatsappbusinessaccount_post_payment_configuration
+	handlers["whatsappbusinessaccount_get_payment_configurations"] = HandleContextWhatsappbusinessaccount_get_payment_configurations
+	handlers["whatsappbusinessaccount_get_phone_numbers"] = HandleContextWhatsappbusinessaccount_get_phone_numbers
+	handlers["whatsappbusinessaccount_post_phone_numbers"] = HandleContextWhatsappbusinessaccount_post_phone_numbers
+	handlers["whatsappbusinessaccount_get_pricing_analytics"] = HandleContextWhatsappbusinessaccount_get_pricing_analytics
+	handlers["whatsappbusinessaccount_delete_product_catalogs"] = HandleContextWhatsappbusinessaccount_delete_product_catalogs
+	handlers["whatsappbusinessaccount_get_product_catalogs"] = HandleContextWhatsappbusinessaccount_get_product_catalogs
+	handlers["whatsappbusinessaccount_post_product_catalogs"] = HandleContextWhatsappbusinessaccount_post_product_catalogs
+	handlers["whatsappbusinessaccount_get_schedules"] = HandleContextWhatsappbusinessaccount_get_schedules
+	handlers["whatsappbusinessaccount_post_set_obo_mobility_intent"] = HandleContextWhatsappbusinessaccount_post_set_obo_mobility_intent
+	handlers["whatsappbusinessaccount_post_set_solution_migration_intent"] = HandleContextWhatsappbusinessaccount_post_set_solution_migration_intent
+	handlers["whatsappbusinessaccount_get_solutions"] = HandleContextWhatsappbusinessaccount_get_solutions
+	handlers["whatsappbusinessaccount_delete_subscribed_apps"] = HandleContextWhatsappbusinessaccount_delete_subscribed_apps
+	handlers["whatsappbusinessaccount_get_subscribed_apps"] = HandleContextWhatsappbusinessaccount_get_subscribed_apps
+	handlers["whatsappbusinessaccount_post_subscribed_apps"] = HandleContextWhatsappbusinessaccount_post_subscribed_apps
+	handlers["whatsappbusinessaccount_get_template_analytics"] = HandleContextWhatsappbusinessaccount_get_template_analytics
+	handlers["whatsappbusinessaccount_get_template_group_analytics"] = HandleContextWhatsappbusinessaccount_get_template_group_analytics
+	handlers["whatsappbusinessaccount_get_template_groups"] = HandleContextWhatsappbusinessaccount_get_template_groups
+	handlers["whatsappbusinessaccount_post_template_groups"] = HandleContextWhatsappbusinessaccount_post_template_groups
+	handlers["whatsappbusinessaccount_get_template_performance_metrics"] = HandleContextWhatsappbusinessaccount_get_template_performance_metrics
+	handlers["whatsappbusinessaccount_post_upsert_message_templates"] = HandleContextWhatsappbusinessaccount_post_upsert_message_templates
+	handlers["whatsappbusinessaccount_get_welcome_message_sequences"] = HandleContextWhatsappbusinessaccount_get_welcome_message_sequences
+	handlers["whatsappbusinessaccount_get_"] = HandleContextWhatsappbusinessaccount_get_
+	handlers["whatsappbusinessaccount_post_"] = HandleContextWhatsappbusinessaccount_post_
+	handlers["adrule_post_execute"] = HandleContextAdrule_post_execute
+	handlers["adrule_get_history"] = HandleContextAdrule_get_history
+	handlers["adrule_post_preview"] = HandleContextAdrule_post_preview
+	handlers["adrule_delete_"] = HandleContextAdrule_delete_
+	handlers["adrule_get_"] = HandleContextAdrule_get_
+	handlers["adrule_post_"] = HandleContextAdrule_post_
+	handlers["adsmcmeconversion_get_"] = HandleContextAdsmcmeconversion_get_
+	handlers["page_get_ab_tests"] = HandleContextPage_get_ab_tests
+	handlers["page_post_ab_tests"] = HandleContextPage_post_ab_tests
+	handlers["page_post_acknowledge_orders"] = HandleContextPage_post_acknowledge_orders
+	handlers["page_get_ads_posts"] = HandleContextPage_get_ads_posts
+	handlers["page_delete_agencies"] = HandleContextPage_delete_agencies
+	handlers["page_get_agencies"] = HandleContextPage_get_agencies
+	handlers["page_post_agencies"] = HandleContextPage_post_agencies
+	handlers["page_get_albums"] = HandleContextPage_get_albums
+	handlers["page_get_ar_experience"] = HandleContextPage_get_ar_experience
+	handlers["page_delete_assigned_users"] = HandleContextPage_delete_assigned_users
+	handlers["page_get_assigned_users"] = HandleContextPage_get_assigned_users
+	handlers["page_post_assigned_users"] = HandleContextPage_post_assigned_users
+	handlers["page_delete_blocked"] = HandleContextPage_delete_blocked
+	handlers["page_get_blocked"] = HandleContextPage_get_blocked
+	handlers["page_post_blocked"] = HandleContextPage_post_blocked
+	handlers["page_post_business_data"] = HandleContextPage_post_business_data
+	handlers["page_get_businessprojects"] = HandleContextPage_get_businessprojects
+	handlers["page_get_call_to_actions"] = HandleContextPage_get_call_to_actions
+	handlers["page_post_calls"] = HandleContextPage_post_calls
+	handlers["page_get_canvas_elements"] = HandleContextPage_get_canvas_elements
+	handlers["page_post_canvas_elements"] = HandleContextPage_post_canvas_elements
+	handlers["page_get_canvases"] = HandleContextPage_get_canvases
+	handlers["page_post_canvases"] = HandleContextPage_post_canvases
+	handlers["page_get_chat_plugin"] = HandleContextPage_get_chat_plugin
+	handlers["page_get_commerce_merchant_settings"] = HandleContextPage_get_commerce_merchant_settings
+	handlers["page_get_commerce_orders"] = HandleContextPage_get_commerce_orders
+	handlers["page_get_commerce_payouts"] = HandleContextPage_get_commerce_payouts
+	handlers["page_get_commerce_transactions"] = HandleContextPage_get_commerce_transactions
+	handlers["page_get_conversations"] = HandleContextPage_get_conversations
+	handlers["page_post_copyright_manual_claims"] = HandleContextPage_post_copyright_manual_claims
+	handlers["page_get_crosspost_whitelisted_pages"] = HandleContextPage_get_crosspost_whitelisted_pages
+	handlers["page_get_ctx_optimization_eligibility"] = HandleContextPage_get_ctx_optimization_eligibility
+	handlers["page_get_custom_labels"] = HandleContextPage_get_custom_labels
+	handlers["page_post_custom_labels"] = HandleContextPage_post_custom_labels
+	handlers["page_delete_custom_user_settings"] = HandleContextPage_delete_custom_user_settings
+	handlers["page_get_custom_user_settings"] = HandleContextPage_get_custom_user_settings
+	handlers["page_post_custom_user_settings"] = HandleContextPage_post_custom_user_settings
+	handlers["page_get_dataset"] = HandleContextPage_get_dataset
+	handlers["page_post_dataset"] = HandleContextPage_post_dataset
+	handlers["page_get_events"] = HandleContextPage_get_events
+	handlers["page_post_extend_thread_control"] = HandleContextPage_post_extend_thread_control
+	handlers["page_get_fantasy_games"] = HandleContextPage_get_fantasy_games
+	handlers["page_get_feed"] = HandleContextPage_get_feed
+	handlers["page_post_feed"] = HandleContextPage_post_feed
+	handlers["page_get_global_brand_children"] = HandleContextPage_get_global_brand_children
+	handlers["page_get_image_copyrights"] = HandleContextPage_get_image_copyrights
+	handlers["page_post_image_copyrights"] = HandleContextPage_post_image_copyrights
+	handlers["page_get_indexed_videos"] = HandleContextPage_get_indexed_videos
+	handlers["page_get_insights"] = HandleContextPage_get_insights
+	handlers["page_get_instagram_accounts"] = HandleContextPage_get_instagram_accounts
+	handlers["page_get_leadgen_forms"] = HandleContextPage_get_leadgen_forms
+	handlers["page_post_leadgen_forms"] = HandleContextPage_post_leadgen_forms
+	handlers["page_get_likes"] = HandleContextPage_get_likes
+	handlers["page_get_live_videos"] = HandleContextPage_get_live_videos
+	handlers["page_post_live_videos"] = HandleContextPage_post_live_videos
+	handlers["page_delete_locations"] = HandleContextPage_delete_locations
+	handlers["page_get_locations"] = HandleContextPage_get_locations
+	handlers["page_post_locations"] = HandleContextPage_post_locations
+	handlers["page_get_media_fingerprints"] = HandleContextPage_get_media_fingerprints
+	handlers["page_post_media_fingerprints"] = HandleContextPage_post_media_fingerprints
+	handlers["page_post_message_attachments"] = HandleContextPage_post_message_attachments
+	handlers["page_delete_message_templates"] = HandleContextPage_delete_message_templates
+	handlers["page_get_message_templates"] = HandleContextPage_get_message_templates
+	handlers["page_post_message_templates"] = HandleContextPage_post_message_templates
+	handlers["page_post_messages"] = HandleContextPage_post_messages
+	handlers["page_get_messaging_feature_review"] = HandleContextPage_get_messaging_feature_review
+	handlers["page_get_messenger_call_settings"] = HandleContextPage_get_messenger_call_settings
+	handlers["page_post_messenger_call_settings"] = HandleContextPage_post_messenger_call_settings
+	handlers["page_get_messenger_lead_forms"] = HandleContextPage_get_messenger_lead_forms
+	handlers["page_post_messenger_lead_forms"] = HandleContextPage_post_messenger_lead_forms
+	handlers["page_delete_messenger_profile"] = HandleContextPage_delete_messenger_profile
+	handlers["page_get_messenger_profile"] = HandleContextPage_get_messenger_profile
+	handlers["page_post_messenger_profile"] = HandleContextPage_post_messenger_profile
+	handlers["page_post_moderate_conversations"] = HandleContextPage_post_moderate_conversations
+	handlers["page_post_nlp_configs"] = HandleContextPage_post_nlp_configs
+	handlers["page_get_notification_message_tokens"] = HandleContextPage_get_notification_message_tokens
+	handlers["page_post_notification_messages_dev_support"] = HandleContextPage_post_notification_messages_dev_support
+	handlers["page_get_page_backed_instagram_accounts"] = HandleContextPage_get_page_backed_instagram_accounts
+	handlers["page_post_page_backed_instagram_accounts"] = HandleContextPage_post_page_backed_instagram_accounts
+	handlers["page_post_page_whatsapp_number_verification"] = HandleContextPage_post_page_whatsapp_number_verification
+	handlers["page_post_pass_thread_control"] = HandleContextPage_post_pass_thread_control
+	handlers["page_get_personas"] = HandleContextPage_get_personas
+	handlers["page_post_personas"] = HandleContextPage_post_personas
+	handlers["page_post_photo_stories"] = HandleContextPage_post_photo_stories
+	handlers["page_get_photos"] = HandleContextPage_get_photos
+	handlers["page_post_photos"] = HandleContextPage_post_photos
+	handlers["page_get_picture"] = HandleContextPage_get_picture
+	handlers["page_post_picture"] = HandleContextPage_post_picture
+	handlers["page_get_posts"] = HandleContextPage_get_posts
+	handlers["page_get_product_catalogs"] = HandleContextPage_get_product_catalogs
+	handlers["page_get_published_posts"] = HandleContextPage_get_published_posts
+	handlers["page_post_release_thread_control"] = HandleContextPage_post_release_thread_control
+	handlers["page_post_request_thread_control"] = HandleContextPage_post_request_thread_control
+	handlers["page_get_roles"] = HandleContextPage_get_roles
+	handlers["page_get_rtb_dynamic_posts"] = HandleContextPage_get_rtb_dynamic_posts
+	handlers["page_get_scheduled_posts"] = HandleContextPage_get_scheduled_posts
+	handlers["page_get_secondary_receivers"] = HandleContextPage_get_secondary_receivers
+	handlers["page_get_settings"] = HandleContextPage_get_settings
+	handlers["page_post_settings"] = HandleContextPage_post_settings
+	handlers["page_get_shop_setup_status"] = HandleContextPage_get_shop_setup_status
+	handlers["page_get_store_locations"] = HandleContextPage_get_store_locations
+	handlers["page_get_stories"] = HandleContextPage_get_stories
+	handlers["page_delete_subscribed_apps"] = HandleContextPage_delete_subscribed_apps
+	handlers["page_get_subscribed_apps"] = HandleContextPage_get_subscribed_apps
+	handlers["page_post_subscribed_apps"] = HandleContextPage_post_subscribed_apps
+	handlers["page_get_tabs"] = HandleContextPage_get_tabs
+	handlers["page_get_tagged"] = HandleContextPage_get_tagged
+	handlers["page_post_take_thread_control"] = HandleContextPage_post_take_thread_control
+	handlers["page_get_thread_owner"] = HandleContextPage_get_thread_owner
+	handlers["page_get_threads"] = HandleContextPage_get_threads
+	handlers["page_post_unlink_accounts"] = HandleContextPage_post_unlink_accounts
+	handlers["page_get_video_copyright_rules"] = HandleContextPage_get_video_copyright_rules
+	handlers["page_post_video_copyright_rules"] = HandleContextPage_post_video_copyright_rules
+	handlers["page_post_video_copyrights"] = HandleContextPage_post_video_copyrights
+	handlers["page_get_video_lists"] = HandleContextPage_get_video_lists
+	handlers["page_get_video_reels"] = HandleContextPage_get_video_reels
+	handlers["page_post_video_reels"] = HandleContextPage_post_video_reels
+	handlers["page_post_video_stories"] = HandleContextPage_post_video_stories
+	handlers["page_get_videos"] = HandleContextPage_get_videos
+	handlers["page_post_videos"] = HandleContextPage_post_videos
+	handlers["page_get_visitor_posts"] = HandleContextPage_get_visitor_posts
+	handlers["page_delete_welcome_message_flows"] = HandleContextPage_delete_welcome_message_flows
+	handlers["page_get_welcome_message_flows"] = HandleContextPage_get_welcome_message_flows
+	handlers["page_post_welcome_message_flows"] = HandleContextPage_post_welcome_message_flows
+	handlers["page_get_"] = HandleContextPage_get_
+	handlers["page_post_"] = HandleContextPage_post_
+	handlers["addraft_get_"] = HandleContextAddraft_get_
+	handlers["adgroupfacebookfeedback_get_comments"] = HandleContextAdgroupfacebookfeedback_get_comments
+	handlers["audioasset_get_"] = HandleContextAudioasset_get_
+	handlers["businesscreativefolder_get_"] = HandleContextBusinesscreativefolder_get_
+	handlers["igcomment_get_replies"] = HandleContextIgcomment_get_replies
+	handlers["igcomment_post_replies"] = HandleContextIgcomment_post_replies
+	handlers["igcomment_delete_"] = HandleContextIgcomment_delete_
+	handlers["igcomment_get_"] = HandleContextIgcomment_get_
+	handlers["igcomment_post_"] = HandleContextIgcomment_post_
+	handlers["photo_get_comments"] = HandleContextPhoto_get_comments
+	handlers["photo_post_comments"] = HandleContextPhoto_post_comments
+	handlers["photo_get_insights"] = HandleContextPhoto_get_insights
+	handlers["photo_get_likes"] = HandleContextPhoto_get_likes
+	handlers["photo_post_likes"] = HandleContextPhoto_post_likes
+	handlers["photo_get_sponsor_tags"] = HandleContextPhoto_get_sponsor_tags
+	handlers["photo_delete_"] = HandleContextPhoto_delete_
+	handlers["photo_get_"] = HandleContextPhoto_get_
+	handlers["livevideoinputstream_get_"] = HandleContextLivevideoinputstream_get_
+	handlers["mailingaddress_get_"] = HandleContextMailingaddress_get_
+	handlers["instagramuser_get_agencies"] = HandleContextInstagramuser_get_agencies
+	handlers["instagramuser_get_ar_effects"] = HandleContextInstagramuser_get_ar_effects
+	handlers["instagramuser_get_authorized_adaccounts"] = HandleContextInstagramuser_get_authorized_adaccounts
+	handlers["instagramuser_get_upcoming_events"] = HandleContextInstagramuser_get_upcoming_events
+	handlers["instagramuser_get_"] = HandleContextInstagramuser_get_
+	handlers["robot_get_"] = HandleContextRobot_get_
+	handlers["userpageonetimeoptintokensettings_get_"] = HandleContextUserpageonetimeoptintokensettings_get_
+	handlers["offsitesignalcontainerbusinessobject_get_linked_application"] = HandleContextOffsitesignalcontainerbusinessobject_get_linked_application
+	handlers["offsitesignalcontainerbusinessobject_get_linked_page"] = HandleContextOffsitesignalcontainerbusinessobject_get_linked_page
+	handlers["offsitesignalcontainerbusinessobject_get_"] = HandleContextOffsitesignalcontainerbusinessobject_get_
+	handlers["leadgenform_get_leads"] = HandleContextLeadgenform_get_leads
+	handlers["leadgenform_get_test_leads"] = HandleContextLeadgenform_get_test_leads
+	handlers["leadgenform_post_test_leads"] = HandleContextLeadgenform_post_test_leads
+	handlers["leadgenform_get_"] = HandleContextLeadgenform_get_
+	handlers["leadgenform_post_"] = HandleContextLeadgenform_post_
+	handlers["adstudycell_get_adaccounts"] = HandleContextAdstudycell_get_adaccounts
+	handlers["adstudycell_get_adsets"] = HandleContextAdstudycell_get_adsets
+	handlers["adstudycell_get_campaigns"] = HandleContextAdstudycell_get_campaigns
+	handlers["adstudycell_get_"] = HandleContextAdstudycell_get_
+	handlers["adstudycell_post_"] = HandleContextAdstudycell_post_
+	handlers["localservicebusiness_get_channels_to_integrity_status"] = HandleContextLocalservicebusiness_get_channels_to_integrity_status
+	handlers["localservicebusiness_get_override_details"] = HandleContextLocalservicebusiness_get_override_details
+	handlers["localservicebusiness_get_"] = HandleContextLocalservicebusiness_get_
+	handlers["savedmessageresponse_get_"] = HandleContextSavedmessageresponse_get_
+	handlers["rtbdynamicpost_get_comments"] = HandleContextRtbdynamicpost_get_comments
+	handlers["rtbdynamicpost_get_likes"] = HandleContextRtbdynamicpost_get_likes
+	handlers["rtbdynamicpost_get_"] = HandleContextRtbdynamicpost_get_
+	handlers["copyrightownershiptransfer_get_"] = HandleContextCopyrightownershiptransfer_get_
+	handlers["websitecreativeassetsuggestions_get_"] = HandleContextWebsitecreativeassetsuggestions_get_
+	handlers["businessfranchiseconfig_get_"] = HandleContextBusinessfranchiseconfig_get_
+	handlers["extendedcreditallocationconfig_delete_"] = HandleContextExtendedcreditallocationconfig_delete_
+	handlers["extendedcreditallocationconfig_get_"] = HandleContextExtendedcreditallocationconfig_get_
+	handlers["extendedcreditallocationconfig_post_"] = HandleContextExtendedcreditallocationconfig_post_
+	handlers["rightsmanagerdataexport_get_"] = HandleContextRightsmanagerdataexport_get_
+	handlers["adplacepageset_get_"] = HandleContextAdplacepageset_get_
+	handlers["copyrightmediamisuse_get_"] = HandleContextCopyrightmediamisuse_get_
+	handlers["livevideoadcampaignconfig_get_"] = HandleContextLivevideoadcampaignconfig_get_
+	handlers["admonetizationproperty_get_adnetworkanalytics"] = HandleContextAdmonetizationproperty_get_adnetworkanalytics
+	handlers["admonetizationproperty_post_adnetworkanalytics"] = HandleContextAdmonetizationproperty_post_adnetworkanalytics
+	handlers["admonetizationproperty_get_adnetworkanalytics_results"] = HandleContextAdmonetizationproperty_get_adnetworkanalytics_results
+	handlers["admonetizationproperty_get_"] = HandleContextAdmonetizationproperty_get_
+	handlers["businessimage_get_"] = HandleContextBusinessimage_get_
+	handlers["canvastemplate_get_"] = HandleContextCanvastemplate_get_
+	handlers["commerceordertransactiondetail_get_items"] = HandleContextCommerceordertransactiondetail_get_items
+	handlers["commerceordertransactiondetail_get_tax_details"] = HandleContextCommerceordertransactiondetail_get_tax_details
+	handlers["businessobjecttransferownershipagreement_get_"] = HandleContextBusinessobjecttransferownershipagreement_get_
+	handlers["mediacopyrightattribution_get_"] = HandleContextMediacopyrightattribution_get_
+	handlers["adexportpreset_get_"] = HandleContextAdexportpreset_get_
+	handlers["leadgendatadraft_get_"] = HandleContextLeadgendatadraft_get_
+	handlers["application_delete_accounts"] = HandleContextApplication_delete_accounts
+	handlers["application_get_accounts"] = HandleContextApplication_get_accounts
+	handlers["application_post_accounts"] = HandleContextApplication_post_accounts
+	handlers["application_post_activities"] = HandleContextApplication_post_activities
+	handlers["application_get_ad_placement_groups"] = HandleContextApplication_get_ad_placement_groups
+	handlers["application_get_adnetwork_placements"] = HandleContextApplication_get_adnetwork_placements
+	handlers["application_get_adnetworkanalytics"] = HandleContextApplication_get_adnetworkanalytics
+	handlers["application_post_adnetworkanalytics"] = HandleContextApplication_post_adnetworkanalytics
+	handlers["application_get_adnetworkanalytics_results"] = HandleContextApplication_get_adnetworkanalytics_results
+	handlers["application_get_aem_attribution"] = HandleContextApplication_get_aem_attribution
+	handlers["application_get_aem_conversion_configs"] = HandleContextApplication_get_aem_conversion_configs
+	handlers["application_get_aem_conversion_filter"] = HandleContextApplication_get_aem_conversion_filter
+	handlers["application_post_aem_conversions"] = HandleContextApplication_post_aem_conversions
+	handlers["application_post_aem_skan_readiness"] = HandleContextApplication_post_aem_skan_readiness
+	handlers["application_get_agencies"] = HandleContextApplication_get_agencies
+	handlers["application_post_aggregate_revenue"] = HandleContextApplication_post_aggregate_revenue
+	handlers["application_get_android_dialog_configs"] = HandleContextApplication_get_android_dialog_configs
+	handlers["application_get_app_capi_settings"] = HandleContextApplication_get_app_capi_settings
+	handlers["application_get_app_event_types"] = HandleContextApplication_get_app_event_types
+	handlers["application_post_app_indexing"] = HandleContextApplication_post_app_indexing
+	handlers["application_post_app_indexing_session"] = HandleContextApplication_post_app_indexing_session
+	handlers["application_get_app_installed_groups"] = HandleContextApplication_get_app_installed_groups
+	handlers["application_post_app_push_device_token"] = HandleContextApplication_post_app_push_device_token
+	handlers["application_get_appassets"] = HandleContextApplication_get_appassets
+	handlers["application_post_assets"] = HandleContextApplication_post_assets
+	handlers["application_get_authorized_adaccounts"] = HandleContextApplication_get_authorized_adaccounts
+	handlers["application_get_button_auto_detection_device_selection"] = HandleContextApplication_get_button_auto_detection_device_selection
+	handlers["application_get_cloudbridge_settings"] = HandleContextApplication_get_cloudbridge_settings
+	handlers["application_post_codeless_event_mappings"] = HandleContextApplication_post_codeless_event_mappings
+	handlers["application_get_connected_client_businesses"] = HandleContextApplication_get_connected_client_businesses
+	handlers["application_get_da_checks"] = HandleContextApplication_get_da_checks
+	handlers["application_post_domain_reports"] = HandleContextApplication_post_domain_reports
+	handlers["application_get_iap_purchases"] = HandleContextApplication_get_iap_purchases
+	handlers["application_get_ios_dialog_configs"] = HandleContextApplication_get_ios_dialog_configs
+	handlers["application_get_linked_dataset"] = HandleContextApplication_get_linked_dataset
+	handlers["application_get_message_templates"] = HandleContextApplication_get_message_templates
+	handlers["application_post_mmp_auditing"] = HandleContextApplication_post_mmp_auditing
+	handlers["application_get_mobile_sdk_gk"] = HandleContextApplication_get_mobile_sdk_gk
+	handlers["application_get_monetized_digital_store_objects"] = HandleContextApplication_get_monetized_digital_store_objects
+	handlers["application_post_monetized_digital_store_objects"] = HandleContextApplication_post_monetized_digital_store_objects
+	handlers["application_get_object_types"] = HandleContextApplication_get_object_types
+	handlers["application_get_objects"] = HandleContextApplication_get_objects
+	handlers["application_post_occludespopups"] = HandleContextApplication_post_occludespopups
+	handlers["application_get_permissions"] = HandleContextApplication_get_permissions
+	handlers["application_get_products"] = HandleContextApplication_get_products
+	handlers["application_get_purchases"] = HandleContextApplication_get_purchases
+	handlers["application_get_roles"] = HandleContextApplication_get_roles
+	handlers["application_get_server_domain_infos"] = HandleContextApplication_get_server_domain_infos
+	handlers["application_get_sgw_dataset_status"] = HandleContextApplication_get_sgw_dataset_status
+	handlers["application_get_sgw_install_deferral_link"] = HandleContextApplication_get_sgw_install_deferral_link
+	handlers["application_get_subscribed_domains"] = HandleContextApplication_get_subscribed_domains
+	handlers["application_post_subscribed_domains"] = HandleContextApplication_post_subscribed_domains
+	handlers["application_get_subscribed_domains_phishing"] = HandleContextApplication_get_subscribed_domains_phishing
+	handlers["application_post_subscribed_domains_phishing"] = HandleContextApplication_post_subscribed_domains_phishing
+	handlers["application_delete_subscriptions"] = HandleContextApplication_delete_subscriptions
+	handlers["application_get_subscriptions"] = HandleContextApplication_get_subscriptions
+	handlers["application_post_subscriptions"] = HandleContextApplication_post_subscriptions
+	handlers["application_post_uploads"] = HandleContextApplication_post_uploads
+	handlers["application_post_whatsapp_business_solution"] = HandleContextApplication_post_whatsapp_business_solution
+	handlers["application_get_whatsapp_business_solutions"] = HandleContextApplication_get_whatsapp_business_solutions
+	handlers["application_get_"] = HandleContextApplication_get_
+	handlers["application_post_"] = HandleContextApplication_post_
+	handlers["paymentsubscription_get_"] = HandleContextPaymentsubscription_get_
+	handlers["imagereferencematch_get_"] = HandleContextImagereferencematch_get_
+	handlers["systemuser_get_assigned_ad_accounts"] = HandleContextSystemuser_get_assigned_ad_accounts
+	handlers["systemuser_get_assigned_business_asset_groups"] = HandleContextSystemuser_get_assigned_business_asset_groups
+	handlers["systemuser_get_assigned_pages"] = HandleContextSystemuser_get_assigned_pages
+	handlers["systemuser_get_assigned_product_catalogs"] = HandleContextSystemuser_get_assigned_product_catalogs
+	handlers["systemuser_get_"] = HandleContextSystemuser_get_
+	handlers["stories_get_insights"] = HandleContextStories_get_insights
+	handlers["stories_get_"] = HandleContextStories_get_
+	handlers["advainstance_get_"] = HandleContextAdvainstance_get_
+	handlers["creatorassetcreative_get_"] = HandleContextCreatorassetcreative_get_
+	handlers["educationexperience_get_"] = HandleContextEducationexperience_get_
+	handlers["videotextquestion_get_"] = HandleContextVideotextquestion_get_
+	handlers["workexperience_get_"] = HandleContextWorkexperience_get_
+	handlers["persona_delete_"] = HandleContextPersona_delete_
+	handlers["persona_get_"] = HandleContextPersona_get_
+	handlers["offlinetermsofservice_get_"] = HandleContextOfflinetermsofservice_get_
+	handlers["pagecalltoaction_delete_"] = HandleContextPagecalltoaction_delete_
+	handlers["pagecalltoaction_get_"] = HandleContextPagecalltoaction_get_
+	handlers["pagecalltoaction_post_"] = HandleContextPagecalltoaction_post_
+	handlers["url_get_"] = HandleContextUrl_get_
+	handlers["url_post_"] = HandleContextUrl_post_
+	handlers["adsreportbuildermmmreport_get_"] = HandleContextAdsreportbuildermmmreport_get_
+	handlers["musicvideocopyright_get_"] = HandleContextMusicvideocopyright_get_
+	handlers["websitecreativeinfo_get_"] = HandleContextWebsitecreativeinfo_get_
+	handlers["brandsafetydownloadable_get_"] = HandleContextBrandsafetydownloadable_get_
+	handlers["messengerbusinesstemplate_get_"] = HandleContextMessengerbusinesstemplate_get_
+	handlers["messengerbusinesstemplate_post_"] = HandleContextMessengerbusinesstemplate_post_
+	handlers["geogatingpolicy_get_"] = HandleContextGeogatingpolicy_get_
+	handlers["publisherwhitelist_get_"] = HandleContextPublisherwhitelist_get_
+	handlers["workskill_get_users"] = HandleContextWorkskill_get_users
+	handlers["workskill_get_"] = HandleContextWorkskill_get_
+	handlers["pageusermessagethreadlabel_delete_label"] = HandleContextPageusermessagethreadlabel_delete_label
+	handlers["pageusermessagethreadlabel_post_label"] = HandleContextPageusermessagethreadlabel_post_label
+	handlers["pageusermessagethreadlabel_delete_"] = HandleContextPageusermessagethreadlabel_delete_
+	handlers["pageusermessagethreadlabel_get_"] = HandleContextPageusermessagethreadlabel_get_
+	handlers["adtopline_get_"] = HandleContextAdtopline_get_
+	handlers["offlineconversiondatasetupload_get_progress"] = HandleContextOfflineconversiondatasetupload_get_progress
+	handlers["offlineconversiondatasetupload_get_pull_sessions"] = HandleContextOfflineconversiondatasetupload_get_pull_sessions
+	handlers["offlineconversiondatasetupload_get_"] = HandleContextOfflineconversiondatasetupload_get_
+	handlers["partneraccountlinking_get_"] = HandleContextPartneraccountlinking_get_
+	handlers["vehicleoffer_get_channels_to_integrity_status"] = HandleContextVehicleoffer_get_channels_to_integrity_status
+	handlers["vehicleoffer_get_override_details"] = HandleContextVehicleoffer_get_override_details
+	handlers["vehicleoffer_get_videos_metadata"] = HandleContextVehicleoffer_get_videos_metadata
+	handlers["vehicleoffer_get_"] = HandleContextVehicleoffer_get_
+	handlers["adstudyobjective_get_adspixels"] = HandleContextAdstudyobjective_get_adspixels
+	handlers["adstudyobjective_get_applications"] = HandleContextAdstudyobjective_get_applications
+	handlers["adstudyobjective_get_brand_requests"] = HandleContextAdstudyobjective_get_brand_requests
+	handlers["adstudyobjective_get_customconversions"] = HandleContextAdstudyobjective_get_customconversions
+	handlers["adstudyobjective_get_offline_conversion_data_sets"] = HandleContextAdstudyobjective_get_offline_conversion_data_sets
+	handlers["adstudyobjective_get_partner_private_studies"] = HandleContextAdstudyobjective_get_partner_private_studies
+	handlers["adstudyobjective_get_partnerstudies"] = HandleContextAdstudyobjective_get_partnerstudies
+	handlers["adstudyobjective_get_"] = HandleContextAdstudyobjective_get_
+	handlers["adstudyobjective_post_"] = HandleContextAdstudyobjective_post_
+	handlers["dynamiccontentset_get_"] = HandleContextDynamiccontentset_get_
+	handlers["adlabel_get_adcreatives"] = HandleContextAdlabel_get_adcreatives
+	handlers["adlabel_get_ads"] = HandleContextAdlabel_get_ads
+	handlers["adlabel_get_adsets"] = HandleContextAdlabel_get_adsets
+	handlers["adlabel_get_campaigns"] = HandleContextAdlabel_get_campaigns
+	handlers["adlabel_delete_"] = HandleContextAdlabel_delete_
+	handlers["adlabel_get_"] = HandleContextAdlabel_get_
+	handlers["adlabel_post_"] = HandleContextAdlabel_post_
+	handlers["aradsdatacontainer_get_"] = HandleContextAradsdatacontainer_get_
+	handlers["comment_get_comments"] = HandleContextComment_get_comments
+	handlers["comment_post_comments"] = HandleContextComment_post_comments
+	handlers["comment_delete_likes"] = HandleContextComment_delete_likes
+	handlers["comment_get_likes"] = HandleContextComment_get_likes
+	handlers["comment_post_likes"] = HandleContextComment_post_likes
+	handlers["comment_get_reactions"] = HandleContextComment_get_reactions
+	handlers["comment_delete_"] = HandleContextComment_delete_
+	handlers["comment_get_"] = HandleContextComment_get_
+	handlers["comment_post_"] = HandleContextComment_post_
+	handlers["mediafingerprint_get_"] = HandleContextMediafingerprint_get_
+	handlers["mediafingerprint_post_"] = HandleContextMediafingerprint_post_
+	handlers["opengraphcontext_get_"] = HandleContextOpengraphcontext_get_
+	handlers["event_get_comments"] = HandleContextEvent_get_comments
+	handlers["event_get_feed"] = HandleContextEvent_get_feed
+	handlers["event_get_live_videos"] = HandleContextEvent_get_live_videos
+	handlers["event_post_live_videos"] = HandleContextEvent_post_live_videos
+	handlers["event_get_photos"] = HandleContextEvent_get_photos
+	handlers["event_get_picture"] = HandleContextEvent_get_picture
+	handlers["event_get_posts"] = HandleContextEvent_get_posts
+	handlers["event_get_roles"] = HandleContextEvent_get_roles
+	handlers["event_get_ticket_tiers"] = HandleContextEvent_get_ticket_tiers
+	handlers["event_get_videos"] = HandleContextEvent_get_videos
+	handlers["event_get_"] = HandleContextEvent_get_
+	handlers["hotel_get_channels_to_integrity_status"] = HandleContextHotel_get_channels_to_integrity_status
+	handlers["hotel_get_hotel_rooms"] = HandleContextHotel_get_hotel_rooms
+	handlers["hotel_get_override_details"] = HandleContextHotel_get_override_details
+	handlers["hotel_get_videos_metadata"] = HandleContextHotel_get_videos_metadata
+	handlers["hotel_delete_"] = HandleContextHotel_delete_
+	handlers["hotel_get_"] = HandleContextHotel_get_
+	handlers["hotel_post_"] = HandleContextHotel_post_
+	handlers["productimage_get_"] = HandleContextProductimage_get_
+	handlers["productfeeduploaderrorsample_get_"] = HandleContextProductfeeduploaderrorsample_get_
+	handlers["woodhengepurchasedpaygreceipt_get_"] = HandleContextWoodhengepurchasedpaygreceipt_get_
+	handlers["instagrambusinessasset_get_"] = HandleContextInstagrambusinessasset_get_
+	handlers["productfeed_get_automotive_models"] = HandleContextProductfeed_get_automotive_models
+	handlers["productfeed_get_destinations"] = HandleContextProductfeed_get_destinations
+	handlers["productfeed_get_flights"] = HandleContextProductfeed_get_flights
+	handlers["productfeed_get_home_listings"] = HandleContextProductfeed_get_home_listings
+	handlers["productfeed_get_hotels"] = HandleContextProductfeed_get_hotels
+	handlers["productfeed_get_media_titles"] = HandleContextProductfeed_get_media_titles
+	handlers["productfeed_get_products"] = HandleContextProductfeed_get_products
+	handlers["productfeed_get_rules"] = HandleContextProductfeed_get_rules
+	handlers["productfeed_post_rules"] = HandleContextProductfeed_post_rules
+	handlers["productfeed_post_supplementary_feed_assocs"] = HandleContextProductfeed_post_supplementary_feed_assocs
+	handlers["productfeed_get_upload_schedules"] = HandleContextProductfeed_get_upload_schedules
+	handlers["productfeed_post_upload_schedules"] = HandleContextProductfeed_post_upload_schedules
+	handlers["productfeed_get_uploads"] = HandleContextProductfeed_get_uploads
+	handlers["productfeed_post_uploads"] = HandleContextProductfeed_post_uploads
+	handlers["productfeed_get_vehicle_offers"] = HandleContextProductfeed_get_vehicle_offers
+	handlers["productfeed_get_vehicles"] = HandleContextProductfeed_get_vehicles
+	handlers["productfeed_delete_"] = HandleContextProductfeed_delete_
+	handlers["productfeed_get_"] = HandleContextProductfeed_get_
+	handlers["productfeed_post_"] = HandleContextProductfeed_post_
+	handlers["businesstag_get_"] = HandleContextBusinesstag_get_
+	handlers["thirdpartypartnerviewabilityrequest_get_"] = HandleContextThirdpartypartnerviewabilityrequest_get_
+	handlers["cloudgame_get_"] = HandleContextCloudgame_get_
+	handlers["businessassetsharingagreement_get_"] = HandleContextBusinessassetsharingagreement_get_
+	handlers["businessassetsharingagreement_post_"] = HandleContextBusinessassetsharingagreement_post_
+	handlers["hotelroom_get_pricing_variables"] = HandleContextHotelroom_get_pricing_variables
+	handlers["hotelroom_get_"] = HandleContextHotelroom_get_
+	handlers["igrefreshaccesstokenforigonlyapi_get_"] = HandleContextIgrefreshaccesstokenforigonlyapi_get_
+	handlers["omegacustomertrx_get_campaigns"] = HandleContextOmegacustomertrx_get_campaigns
+	handlers["omegacustomertrx_get_"] = HandleContextOmegacustomertrx_get_
+	handlers["adcreative_post_adlabels"] = HandleContextAdcreative_post_adlabels
+	handlers["adcreative_get_creative_insights"] = HandleContextAdcreative_get_creative_insights
+	handlers["adcreative_get_previews"] = HandleContextAdcreative_get_previews
+	handlers["adcreative_delete_"] = HandleContextAdcreative_delete_
+	handlers["adcreative_get_"] = HandleContextAdcreative_get_
+	handlers["adcreative_post_"] = HandleContextAdcreative_post_
+	handlers["adsnamingtemplate_get_"] = HandleContextAdsnamingtemplate_get_
+	handlers["famekumo_get_"] = HandleContextFamekumo_get_
+	handlers["whatsappbusinessprofile_get_"] = HandleContextWhatsappbusinessprofile_get_
+	handlers["whatsappbusinessprofile_post_"] = HandleContextWhatsappbusinessprofile_post_
+	handlers["adsquickviews_get_"] = HandleContextAdsquickviews_get_
+	handlers["catalogcontentversionconfig_get_"] = HandleContextCatalogcontentversionconfig_get_
+	handlers["dynamicitemdisplaybundlefolder_get_"] = HandleContextDynamicitemdisplaybundlefolder_get_
+	handlers["transactableitem_get_channels_to_integrity_status"] = HandleContextTransactableitem_get_channels_to_integrity_status
+	handlers["transactableitem_get_override_details"] = HandleContextTransactableitem_get_override_details
+	handlers["transactableitem_get_"] = HandleContextTransactableitem_get_
+	handlers["igmediaforigonlyapi_get_children"] = HandleContextIgmediaforigonlyapi_get_children
+	handlers["igmediaforigonlyapi_get_comments"] = HandleContextIgmediaforigonlyapi_get_comments
+	handlers["igmediaforigonlyapi_post_comments"] = HandleContextIgmediaforigonlyapi_post_comments
+	handlers["igmediaforigonlyapi_get_insights"] = HandleContextIgmediaforigonlyapi_get_insights
+	handlers["igmediaforigonlyapi_get_"] = HandleContextIgmediaforigonlyapi_get_
+	handlers["igmediaforigonlyapi_post_"] = HandleContextIgmediaforigonlyapi_post_
+	handlers["customconversion_get_stats"] = HandleContextCustomconversion_get_stats
+	handlers["customconversion_delete_"] = HandleContextCustomconversion_delete_
+	handlers["customconversion_get_"] = HandleContextCustomconversion_get_
+	handlers["customconversion_post_"] = HandleContextCustomconversion_post_
+	handlers["pagepost_get_attachments"] = HandleContextPagepost_get_attachments
+	handlers["pagepost_get_comments"] = HandleContextPagepost_get_comments
+	handlers["pagepost_post_comments"] = HandleContextPagepost_post_comments
+	handlers["pagepost_get_dynamic_posts"] = HandleContextPagepost_get_dynamic_posts
+	handlers["pagepost_get_insights"] = HandleContextPagepost_get_insights
+	handlers["pagepost_delete_likes"] = HandleContextPagepost_delete_likes
+	handlers["pagepost_get_likes"] = HandleContextPagepost_get_likes
+	handlers["pagepost_post_likes"] = HandleContextPagepost_post_likes
+	handlers["pagepost_get_reactions"] = HandleContextPagepost_get_reactions
+	handlers["pagepost_get_sharedposts"] = HandleContextPagepost_get_sharedposts
+	handlers["pagepost_get_sponsor_tags"] = HandleContextPagepost_get_sponsor_tags
+	handlers["pagepost_get_to"] = HandleContextPagepost_get_to
+	handlers["pagepost_delete_"] = HandleContextPagepost_delete_
+	handlers["pagepost_get_"] = HandleContextPagepost_get_
+	handlers["pagepost_post_"] = HandleContextPagepost_post_
+	handlers["cpaslsbimagebank_get_backup_images"] = HandleContextCpaslsbimagebank_get_backup_images
+	handlers["cpaslsbimagebank_get_"] = HandleContextCpaslsbimagebank_get_
+	handlers["cpaslsbimagebank_post_"] = HandleContextCpaslsbimagebank_post_
+	handlers["calladsphonedata_get_"] = HandleContextCalladsphonedata_get_
+	handlers["dynamicitemdisplaybundle_get_"] = HandleContextDynamicitemdisplaybundle_get_
+	handlers["pagepostexperiment_get_video_insights"] = HandleContextPagepostexperiment_get_video_insights
+	handlers["pagepostexperiment_delete_"] = HandleContextPagepostexperiment_delete_
+	handlers["pagepostexperiment_get_"] = HandleContextPagepostexperiment_get_
+	handlers["lead_delete_"] = HandleContextLead_delete_
+	handlers["lead_get_"] = HandleContextLead_get_
+	handlers["cpascollaborationrequest_get_"] = HandleContextCpascollaborationrequest_get_
+	handlers["flight_get_channels_to_integrity_status"] = HandleContextFlight_get_channels_to_integrity_status
+	handlers["flight_get_override_details"] = HandleContextFlight_get_override_details
+	handlers["flight_get_videos_metadata"] = HandleContextFlight_get_videos_metadata
+	handlers["flight_get_"] = HandleContextFlight_get_
+	handlers["flight_post_"] = HandleContextFlight_post_
+	handlers["adsreportbuildermmmreportscheduler_get_"] = HandleContextAdsreportbuildermmmreportscheduler_get_
+	handlers["eventsourcegroup_get_shared_accounts"] = HandleContextEventsourcegroup_get_shared_accounts
+	handlers["eventsourcegroup_post_shared_accounts"] = HandleContextEventsourcegroup_post_shared_accounts
+	handlers["eventsourcegroup_get_"] = HandleContextEventsourcegroup_get_
+	handlers["eventsourcegroup_post_"] = HandleContextEventsourcegroup_post_
+	handlers["favoritecatalog_get_"] = HandleContextFavoritecatalog_get_
+	handlers["playablecontent_get_"] = HandleContextPlayablecontent_get_
+	handlers["avatarprofilepicture_get_"] = HandleContextAvatarprofilepicture_get_
+	handlers["businessassetgroup_delete_assigned_users"] = HandleContextBusinessassetgroup_delete_assigned_users
+	handlers["businessassetgroup_get_assigned_users"] = HandleContextBusinessassetgroup_get_assigned_users
+	handlers["businessassetgroup_post_assigned_users"] = HandleContextBusinessassetgroup_post_assigned_users
+	handlers["businessassetgroup_delete_contained_adaccounts"] = HandleContextBusinessassetgroup_delete_contained_adaccounts
+	handlers["businessassetgroup_get_contained_adaccounts"] = HandleContextBusinessassetgroup_get_contained_adaccounts
+	handlers["businessassetgroup_post_contained_adaccounts"] = HandleContextBusinessassetgroup_post_contained_adaccounts
+	handlers["businessassetgroup_delete_contained_applications"] = HandleContextBusinessassetgroup_delete_contained_applications
+	handlers["businessassetgroup_get_contained_applications"] = HandleContextBusinessassetgroup_get_contained_applications
+	handlers["businessassetgroup_post_contained_applications"] = HandleContextBusinessassetgroup_post_contained_applications
+	handlers["businessassetgroup_delete_contained_custom_conversions"] = HandleContextBusinessassetgroup_delete_contained_custom_conversions
+	handlers["businessassetgroup_get_contained_custom_conversions"] = HandleContextBusinessassetgroup_get_contained_custom_conversions
+	handlers["businessassetgroup_post_contained_custom_conversions"] = HandleContextBusinessassetgroup_post_contained_custom_conversions
+	handlers["businessassetgroup_delete_contained_instagram_accounts"] = HandleContextBusinessassetgroup_delete_contained_instagram_accounts
+	handlers["businessassetgroup_get_contained_instagram_accounts"] = HandleContextBusinessassetgroup_get_contained_instagram_accounts
+	handlers["businessassetgroup_post_contained_instagram_accounts"] = HandleContextBusinessassetgroup_post_contained_instagram_accounts
+	handlers["businessassetgroup_delete_contained_pages"] = HandleContextBusinessassetgroup_delete_contained_pages
+	handlers["businessassetgroup_get_contained_pages"] = HandleContextBusinessassetgroup_get_contained_pages
+	handlers["businessassetgroup_post_contained_pages"] = HandleContextBusinessassetgroup_post_contained_pages
+	handlers["businessassetgroup_delete_contained_pixels"] = HandleContextBusinessassetgroup_delete_contained_pixels
+	handlers["businessassetgroup_get_contained_pixels"] = HandleContextBusinessassetgroup_get_contained_pixels
+	handlers["businessassetgroup_post_contained_pixels"] = HandleContextBusinessassetgroup_post_contained_pixels
+	handlers["businessassetgroup_delete_contained_product_catalogs"] = HandleContextBusinessassetgroup_delete_contained_product_catalogs
+	handlers["businessassetgroup_get_contained_product_catalogs"] = HandleContextBusinessassetgroup_get_contained_product_catalogs
+	handlers["businessassetgroup_post_contained_product_catalogs"] = HandleContextBusinessassetgroup_post_contained_product_catalogs
+	handlers["businessassetgroup_get_"] = HandleContextBusinessassetgroup_get_
+	handlers["businessassetgroup_post_"] = HandleContextBusinessassetgroup_post_
+	handlers["adcustomderivedmetrics_get_"] = HandleContextAdcustomderivedmetrics_get_
+	handlers["igboostmediaad_get_"] = HandleContextIgboostmediaad_get_
+	handlers["iguser_get_agencies"] = HandleContextIguser_get_agencies
+	handlers["iguser_get_authorized_adaccounts"] = HandleContextIguser_get_authorized_adaccounts
+	handlers["iguser_post_authorized_adaccounts"] = HandleContextIguser_post_authorized_adaccounts
+	handlers["iguser_get_available_catalogs"] = HandleContextIguser_get_available_catalogs
+	handlers["iguser_get_branded_content_ad_permissions"] = HandleContextIguser_get_branded_content_ad_permissions
+	handlers["iguser_post_branded_content_ad_permissions"] = HandleContextIguser_post_branded_content_ad_permissions
+	handlers["iguser_get_branded_content_advertisable_medias"] = HandleContextIguser_get_branded_content_advertisable_medias
+	handlers["iguser_delete_branded_content_tag_approval"] = HandleContextIguser_delete_branded_content_tag_approval
+	handlers["iguser_get_branded_content_tag_approval"] = HandleContextIguser_get_branded_content_tag_approval
+	handlers["iguser_post_branded_content_tag_approval"] = HandleContextIguser_post_branded_content_tag_approval
+	handlers["iguser_get_catalog_product_search"] = HandleContextIguser_get_catalog_product_search
+	handlers["iguser_get_connected_threads_user"] = HandleContextIguser_get_connected_threads_user
+	handlers["iguser_get_content_publishing_limit"] = HandleContextIguser_get_content_publishing_limit
+	handlers["iguser_get_dataset"] = HandleContextIguser_get_dataset
+	handlers["iguser_post_dataset"] = HandleContextIguser_post_dataset
+	handlers["iguser_get_insights"] = HandleContextIguser_get_insights
+	handlers["iguser_get_instagram_backed_threads_user"] = HandleContextIguser_get_instagram_backed_threads_user
+	handlers["iguser_get_live_media"] = HandleContextIguser_get_live_media
+	handlers["iguser_get_media"] = HandleContextIguser_get_media
+	handlers["iguser_post_media"] = HandleContextIguser_post_media
+	handlers["iguser_post_media_publish"] = HandleContextIguser_post_media_publish
+	handlers["iguser_post_mentions"] = HandleContextIguser_post_mentions
+	handlers["iguser_get_notification_message_tokens"] = HandleContextIguser_get_notification_message_tokens
+	handlers["iguser_get_product_appeal"] = HandleContextIguser_get_product_appeal
+	handlers["iguser_post_product_appeal"] = HandleContextIguser_post_product_appeal
+	handlers["iguser_get_recently_searched_hashtags"] = HandleContextIguser_get_recently_searched_hashtags
+	handlers["iguser_get_stories"] = HandleContextIguser_get_stories
+	handlers["iguser_get_tags"] = HandleContextIguser_get_tags
+	handlers["iguser_get_upcoming_events"] = HandleContextIguser_get_upcoming_events
+	handlers["iguser_post_upcoming_events"] = HandleContextIguser_post_upcoming_events
+	handlers["iguser_get_welcome_message_flows"] = HandleContextIguser_get_welcome_message_flows
+	handlers["iguser_get_"] = HandleContextIguser_get_
+	handlers["productset_get_automotive_models"] = HandleContextProductset_get_automotive_models
+	handlers["productset_get_destinations"] = HandleContextProductset_get_destinations
+	handlers["productset_get_flights"] = HandleContextProductset_get_flights
+	handlers["productset_get_home_listings"] = HandleContextProductset_get_home_listings
+	handlers["productset_get_hotels"] = HandleContextProductset_get_hotels
+	handlers["productset_get_media_titles"] = HandleContextProductset_get_media_titles
+	handlers["productset_get_products"] = HandleContextProductset_get_products
+	handlers["productset_get_vehicle_offers"] = HandleContextProductset_get_vehicle_offers
+	handlers["productset_get_vehicles"] = HandleContextProductset_get_vehicles
+	handlers["productset_delete_"] = HandleContextProductset_delete_
+	handlers["productset_get_"] = HandleContextProductset_get_
+	handlers["productset_post_"] = HandleContextProductset_post_
+	handlers["musicworkcopyright_get_"] = HandleContextMusicworkcopyright_get_
+	handlers["thirdpartymeasurementreportdataset_get_"] = HandleContextThirdpartymeasurementreportdataset_get_
+	handlers["dynamicvideometadata_get_"] = HandleContextDynamicvideometadata_get_
+	handlers["fantasygame_get_"] = HandleContextFantasygame_get_
+	handlers["businessagreement_get_"] = HandleContextBusinessagreement_get_
+	handlers["businessagreement_post_"] = HandleContextBusinessagreement_post_
+	handlers["place_get_"] = HandleContextPlace_get_
+	handlers["productcatalog_delete_agencies"] = HandleContextProductcatalog_delete_agencies
+	handlers["productcatalog_get_agencies"] = HandleContextProductcatalog_get_agencies
+	handlers["productcatalog_post_agencies"] = HandleContextProductcatalog_post_agencies
+	handlers["productcatalog_delete_assigned_users"] = HandleContextProductcatalog_delete_assigned_users
+	handlers["productcatalog_get_assigned_users"] = HandleContextProductcatalog_get_assigned_users
+	handlers["productcatalog_post_assigned_users"] = HandleContextProductcatalog_post_assigned_users
+	handlers["productcatalog_get_automotive_models"] = HandleContextProductcatalog_get_automotive_models
+	handlers["productcatalog_post_batch"] = HandleContextProductcatalog_post_batch
+	handlers["productcatalog_post_catalog_store"] = HandleContextProductcatalog_post_catalog_store
+	handlers["productcatalog_get_categories"] = HandleContextProductcatalog_get_categories
+	handlers["productcatalog_post_categories"] = HandleContextProductcatalog_post_categories
+	handlers["productcatalog_get_check_batch_request_status"] = HandleContextProductcatalog_get_check_batch_request_status
+	handlers["productcatalog_get_check_marketplace_partner_sellers_status"] = HandleContextProductcatalog_get_check_marketplace_partner_sellers_status
+	handlers["productcatalog_get_collaborative_ads_lsb_image_bank"] = HandleContextProductcatalog_get_collaborative_ads_lsb_image_bank
+	handlers["productcatalog_get_collaborative_ads_share_settings"] = HandleContextProductcatalog_get_collaborative_ads_share_settings
+	handlers["productcatalog_post_cpas_lsb_image_bank"] = HandleContextProductcatalog_post_cpas_lsb_image_bank
+	handlers["productcatalog_get_creator_asset_creatives"] = HandleContextProductcatalog_get_creator_asset_creatives
+	handlers["productcatalog_get_data_sources"] = HandleContextProductcatalog_get_data_sources
+	handlers["productcatalog_get_destinations"] = HandleContextProductcatalog_get_destinations
+	handlers["productcatalog_get_diagnostics"] = HandleContextProductcatalog_get_diagnostics
+	handlers["productcatalog_get_event_stats"] = HandleContextProductcatalog_get_event_stats
+	handlers["productcatalog_delete_external_event_sources"] = HandleContextProductcatalog_delete_external_event_sources
+	handlers["productcatalog_get_external_event_sources"] = HandleContextProductcatalog_get_external_event_sources
+	handlers["productcatalog_post_external_event_sources"] = HandleContextProductcatalog_post_external_event_sources
+	handlers["productcatalog_get_flights"] = HandleContextProductcatalog_get_flights
+	handlers["productcatalog_post_geolocated_items_batch"] = HandleContextProductcatalog_post_geolocated_items_batch
+	handlers["productcatalog_get_home_listings"] = HandleContextProductcatalog_get_home_listings
+	handlers["productcatalog_post_home_listings"] = HandleContextProductcatalog_post_home_listings
+	handlers["productcatalog_get_hotel_rooms_batch"] = HandleContextProductcatalog_get_hotel_rooms_batch
+	handlers["productcatalog_post_hotel_rooms_batch"] = HandleContextProductcatalog_post_hotel_rooms_batch
+	handlers["productcatalog_get_hotels"] = HandleContextProductcatalog_get_hotels
+	handlers["productcatalog_post_hotels"] = HandleContextProductcatalog_post_hotels
+	handlers["productcatalog_post_items_batch"] = HandleContextProductcatalog_post_items_batch
+	handlers["productcatalog_post_localized_items_batch"] = HandleContextProductcatalog_post_localized_items_batch
+	handlers["productcatalog_post_marketplace_partner_sellers_details"] = HandleContextProductcatalog_post_marketplace_partner_sellers_details
+	handlers["productcatalog_post_marketplace_partner_signals"] = HandleContextProductcatalog_post_marketplace_partner_signals
+	handlers["productcatalog_get_pricing_variables_batch"] = HandleContextProductcatalog_get_pricing_variables_batch
+	handlers["productcatalog_post_pricing_variables_batch"] = HandleContextProductcatalog_post_pricing_variables_batch
+	handlers["productcatalog_get_product_feeds"] = HandleContextProductcatalog_get_product_feeds
+	handlers["productcatalog_post_product_feeds"] = HandleContextProductcatalog_post_product_feeds
+	handlers["productcatalog_get_product_groups"] = HandleContextProductcatalog_get_product_groups
+	handlers["productcatalog_post_product_groups"] = HandleContextProductcatalog_post_product_groups
+	handlers["productcatalog_get_product_sets"] = HandleContextProductcatalog_get_product_sets
+	handlers["productcatalog_post_product_sets"] = HandleContextProductcatalog_post_product_sets
+	handlers["productcatalog_get_product_sets_batch"] = HandleContextProductcatalog_get_product_sets_batch
+	handlers["productcatalog_get_products"] = HandleContextProductcatalog_get_products
+	handlers["productcatalog_post_products"] = HandleContextProductcatalog_post_products
+	handlers["productcatalog_post_update_generated_image_config"] = HandleContextProductcatalog_post_update_generated_image_config
+	handlers["productcatalog_get_vehicle_offers"] = HandleContextProductcatalog_get_vehicle_offers
+	handlers["productcatalog_get_vehicles"] = HandleContextProductcatalog_get_vehicles
+	handlers["productcatalog_post_vehicles"] = HandleContextProductcatalog_post_vehicles
+	handlers["productcatalog_get_version_configs"] = HandleContextProductcatalog_get_version_configs
+	handlers["productcatalog_post_version_items_batch"] = HandleContextProductcatalog_post_version_items_batch
+	handlers["productcatalog_delete_"] = HandleContextProductcatalog_delete_
+	handlers["productcatalog_get_"] = HandleContextProductcatalog_get_
+	handlers["productcatalog_post_"] = HandleContextProductcatalog_post_
+	handlers["videocopyright_get_update_records"] = HandleContextVideocopyright_get_update_records
+	handlers["videocopyright_get_"] = HandleContextVideocopyright_get_
+	handlers["videocopyright_post_"] = HandleContextVideocopyright_post_
+	handlers["franchiseprogram_get_"] = HandleContextFranchiseprogram_get_
+	handlers["adaccountcreationrequest_get_adaccounts"] = HandleContextAdaccountcreationrequest_get_adaccounts
+	handlers["adaccountcreationrequest_get_"] = HandleContextAdaccountcreationrequest_get_
+	handlers["adlightcampaigngroup_get_"] = HandleContextAdlightcampaigngroup_get_
+	handlers["offlineconversiondataset_get_adaccounts"] = HandleContextOfflineconversiondataset_get_adaccounts
+	handlers["offlineconversiondataset_get_agencies"] = HandleContextOfflineconversiondataset_get_agencies
+	handlers["offlineconversiondataset_get_audiences"] = HandleContextOfflineconversiondataset_get_audiences
+	handlers["offlineconversiondataset_get_customconversions"] = HandleContextOfflineconversiondataset_get_customconversions
+	handlers["offlineconversiondataset_get_server_events_permitted_business"] = HandleContextOfflineconversiondataset_get_server_events_permitted_business
+	handlers["offlineconversiondataset_get_shared_accounts"] = HandleContextOfflineconversiondataset_get_shared_accounts
+	handlers["offlineconversiondataset_get_shared_agencies"] = HandleContextOfflineconversiondataset_get_shared_agencies
+	handlers["offlineconversiondataset_get_stats"] = HandleContextOfflineconversiondataset_get_stats
+	handlers["offlineconversiondataset_get_uploads"] = HandleContextOfflineconversiondataset_get_uploads
+	handlers["offlineconversiondataset_get_"] = HandleContextOfflineconversiondataset_get_
+	handlers["blindpig_get_"] = HandleContextBlindpig_get_
+	handlers["igbcadspermission_get_"] = HandleContextIgbcadspermission_get_
+	handlers["applinks_get_"] = HandleContextApplinks_get_
+	handlers["extendedcreditapplication_get_"] = HandleContextExtendedcreditapplication_get_
+	handlers["whatsappbusinesspreverifiedphonenumber_get_partners"] = HandleContextWhatsappbusinesspreverifiedphonenumber_get_partners
+	handlers["whatsappbusinesspreverifiedphonenumber_post_request_code"] = HandleContextWhatsappbusinesspreverifiedphonenumber_post_request_code
+	handlers["whatsappbusinesspreverifiedphonenumber_post_verify_code"] = HandleContextWhatsappbusinesspreverifiedphonenumber_post_verify_code
+	handlers["whatsappbusinesspreverifiedphonenumber_delete_"] = HandleContextWhatsappbusinesspreverifiedphonenumber_delete_
+	handlers["whatsappbusinesspreverifiedphonenumber_get_"] = HandleContextWhatsappbusinesspreverifiedphonenumber_get_
+	handlers["privateliftstudyinstance_get_"] = HandleContextPrivateliftstudyinstance_get_
+	handlers["privateliftstudyinstance_post_"] = HandleContextPrivateliftstudyinstance_post_
+	handlers["appeventconfig_get_"] = HandleContextAppeventconfig_get_
+	handlers["productitem_get_channels_to_integrity_status"] = HandleContextProductitem_get_channels_to_integrity_status
+	handlers["productitem_get_override_details"] = HandleContextProductitem_get_override_details
+	handlers["productitem_get_product_sets"] = HandleContextProductitem_get_product_sets
+	handlers["productitem_get_videos_metadata"] = HandleContextProductitem_get_videos_metadata
+	handlers["productitem_delete_"] = HandleContextProductitem_delete_
+	handlers["productitem_get_"] = HandleContextProductitem_get_
+	handlers["productitem_post_"] = HandleContextProductitem_post_
+	handlers["adsreportbuilderexportcore_get_"] = HandleContextAdsreportbuilderexportcore_get_
+	handlers["post_get_attachments"] = HandleContextPost_get_attachments
+	handlers["post_get_comments"] = HandleContextPost_get_comments
+	handlers["post_post_comments"] = HandleContextPost_post_comments
+	handlers["post_get_dynamic_posts"] = HandleContextPost_get_dynamic_posts
+	handlers["post_get_insights"] = HandleContextPost_get_insights
+	handlers["post_delete_likes"] = HandleContextPost_delete_likes
+	handlers["post_post_likes"] = HandleContextPost_post_likes
+	handlers["post_get_reactions"] = HandleContextPost_get_reactions
+	handlers["post_get_sharedposts"] = HandleContextPost_get_sharedposts
+	handlers["post_get_sponsor_tags"] = HandleContextPost_get_sponsor_tags
+	handlers["post_get_to"] = HandleContextPost_get_to
+	handlers["post_delete_"] = HandleContextPost_delete_
+	handlers["post_get_"] = HandleContextPost_get_
+	handlers["post_post_"] = HandleContextPost_post_
+	handlers["avatar_get_models"] = HandleContextAvatar_get_models
+	handlers["avatar_get_"] = HandleContextAvatar_get_
+	handlers["calibratorexistingrule_get_"] = HandleContextCalibratorexistingrule_get_
+	handlers["wearabledevicepublickey_get_"] = HandleContextWearabledevicepublickey_get_
 
 	return handlers
 }

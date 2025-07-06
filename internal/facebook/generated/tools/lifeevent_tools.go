@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetLifeEventTools returns MCP tools for LifeEvent
@@ -32,6 +33,25 @@ func GetLifeEventTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, lifeevent_get_Tool)
+
+	return tools
+}
+
+// GetLifeEventToolsWithoutAuth returns MCP tools for LifeEvent without access_token parameter
+func GetLifeEventToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// lifeevent_get_likes tool
+	lifeevent_get_likesTool := mcp.NewTool("lifeevent_get_likes",
+		mcp.WithDescription("GET likes for LifeEvent"),
+	)
+	tools = append(tools, lifeevent_get_likesTool)
+
+	// lifeevent_get_ tool
+	lifeevent_get_Tool := mcp.NewTool("lifeevent_get_",
+		mcp.WithDescription("GET  for LifeEvent"),
 	)
 	tools = append(tools, lifeevent_get_Tool)
 
@@ -75,6 +95,66 @@ func HandleLifeevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewLifeEventClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Lifeevent_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute lifeevent_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextLifeevent_get_likes handles the lifeevent_get_likes tool with context-based auth
+func HandleContextLifeevent_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewLifeEventClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Lifeevent_get_likes(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute lifeevent_get_likes: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextLifeevent_get_ handles the lifeevent_get_ tool with context-based auth
+func HandleContextLifeevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

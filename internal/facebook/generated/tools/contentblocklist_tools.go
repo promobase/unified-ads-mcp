@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetContentBlockListTools returns MCP tools for ContentBlockList
@@ -52,6 +53,37 @@ func GetContentBlockListTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, contentblocklist_get_Tool)
+
+	return tools
+}
+
+// GetContentBlockListToolsWithoutAuth returns MCP tools for ContentBlockList without access_token parameter
+func GetContentBlockListToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// contentblocklist_get_applied_ad_accounts tool
+	contentblocklist_get_applied_ad_accountsTool := mcp.NewTool("contentblocklist_get_applied_ad_accounts",
+		mcp.WithDescription("GET applied_ad_accounts for ContentBlockList"),
+	)
+	tools = append(tools, contentblocklist_get_applied_ad_accountsTool)
+
+	// contentblocklist_get_facebook_content tool
+	contentblocklist_get_facebook_contentTool := mcp.NewTool("contentblocklist_get_facebook_content",
+		mcp.WithDescription("GET facebook_content for ContentBlockList"),
+	)
+	tools = append(tools, contentblocklist_get_facebook_contentTool)
+
+	// contentblocklist_get_instagram_content tool
+	contentblocklist_get_instagram_contentTool := mcp.NewTool("contentblocklist_get_instagram_content",
+		mcp.WithDescription("GET instagram_content for ContentBlockList"),
+	)
+	tools = append(tools, contentblocklist_get_instagram_contentTool)
+
+	// contentblocklist_get_ tool
+	contentblocklist_get_Tool := mcp.NewTool("contentblocklist_get_",
+		mcp.WithDescription("GET  for ContentBlockList"),
 	)
 	tools = append(tools, contentblocklist_get_Tool)
 
@@ -153,6 +185,124 @@ func HandleContentblocklist_get_(ctx context.Context, request mcp.CallToolReques
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewContentBlockListClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Contentblocklist_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute contentblocklist_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextContentblocklist_get_applied_ad_accounts handles the contentblocklist_get_applied_ad_accounts tool with context-based auth
+func HandleContextContentblocklist_get_applied_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewContentBlockListClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Contentblocklist_get_applied_ad_accounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute contentblocklist_get_applied_ad_accounts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextContentblocklist_get_facebook_content handles the contentblocklist_get_facebook_content tool with context-based auth
+func HandleContextContentblocklist_get_facebook_content(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewContentBlockListClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Contentblocklist_get_facebook_content(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute contentblocklist_get_facebook_content: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextContentblocklist_get_instagram_content handles the contentblocklist_get_instagram_content tool with context-based auth
+func HandleContextContentblocklist_get_instagram_content(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewContentBlockListClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Contentblocklist_get_instagram_content(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute contentblocklist_get_instagram_content: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextContentblocklist_get_ handles the contentblocklist_get_ tool with context-based auth
+func HandleContextContentblocklist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

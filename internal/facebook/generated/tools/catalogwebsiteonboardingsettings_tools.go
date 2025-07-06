@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetCatalogWebsiteOnboardingSettingsTools returns MCP tools for CatalogWebsiteOnboardingSettings
@@ -28,6 +29,19 @@ func GetCatalogWebsiteOnboardingSettingsTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetCatalogWebsiteOnboardingSettingsToolsWithoutAuth returns MCP tools for CatalogWebsiteOnboardingSettings without access_token parameter
+func GetCatalogWebsiteOnboardingSettingsToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// catalogwebsiteonboardingsettings_get_ tool
+	catalogwebsiteonboardingsettings_get_Tool := mcp.NewTool("catalogwebsiteonboardingsettings_get_",
+		mcp.WithDescription("GET  for CatalogWebsiteOnboardingSettings"),
+	)
+	tools = append(tools, catalogwebsiteonboardingsettings_get_Tool)
+
+	return tools
+}
+
 // CatalogWebsiteOnboardingSettings handlers
 
 // HandleCatalogwebsiteonboardingsettings_get_ handles the catalogwebsiteonboardingsettings_get_ tool
@@ -36,6 +50,37 @@ func HandleCatalogwebsiteonboardingsettings_get_(ctx context.Context, request mc
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewCatalogWebsiteOnboardingSettingsClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Catalogwebsiteonboardingsettings_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute catalogwebsiteonboardingsettings_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextCatalogwebsiteonboardingsettings_get_ handles the catalogwebsiteonboardingsettings_get_ tool with context-based auth
+func HandleContextCatalogwebsiteonboardingsettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

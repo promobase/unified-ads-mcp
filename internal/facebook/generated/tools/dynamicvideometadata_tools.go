@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetDynamicVideoMetadataTools returns MCP tools for DynamicVideoMetadata
@@ -28,6 +29,19 @@ func GetDynamicVideoMetadataTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetDynamicVideoMetadataToolsWithoutAuth returns MCP tools for DynamicVideoMetadata without access_token parameter
+func GetDynamicVideoMetadataToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// dynamicvideometadata_get_ tool
+	dynamicvideometadata_get_Tool := mcp.NewTool("dynamicvideometadata_get_",
+		mcp.WithDescription("GET  for DynamicVideoMetadata"),
+	)
+	tools = append(tools, dynamicvideometadata_get_Tool)
+
+	return tools
+}
+
 // DynamicVideoMetadata handlers
 
 // HandleDynamicvideometadata_get_ handles the dynamicvideometadata_get_ tool
@@ -36,6 +50,37 @@ func HandleDynamicvideometadata_get_(ctx context.Context, request mcp.CallToolRe
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewDynamicVideoMetadataClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Dynamicvideometadata_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute dynamicvideometadata_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextDynamicvideometadata_get_ handles the dynamicvideometadata_get_ tool with context-based auth
+func HandleContextDynamicvideometadata_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

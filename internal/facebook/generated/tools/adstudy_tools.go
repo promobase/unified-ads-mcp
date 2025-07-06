@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetAdStudyTools returns MCP tools for AdStudy
@@ -117,6 +118,123 @@ func GetAdStudyTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithString("cells",
+			mcp.Description("cells parameter for "),
+		),
+		mcp.WithString("client_business",
+			mcp.Description("client_business parameter for "),
+		),
+		mcp.WithNumber("confidence_level",
+			mcp.Description("confidence_level parameter for "),
+		),
+		mcp.WithNumber("cooldown_start_time",
+			mcp.Description("cooldown_start_time parameter for "),
+		),
+		mcp.WithString("description",
+			mcp.Description("description parameter for "),
+		),
+		mcp.WithNumber("end_time",
+			mcp.Description("end_time parameter for "),
+		),
+		mcp.WithString("name",
+			mcp.Description("name parameter for "),
+		),
+		mcp.WithString("objectives",
+			mcp.Description("objectives parameter for "),
+		),
+		mcp.WithNumber("observation_end_time",
+			mcp.Description("observation_end_time parameter for "),
+		),
+		mcp.WithNumber("start_time",
+			mcp.Description("start_time parameter for "),
+		),
+		mcp.WithString("type",
+			mcp.Description("type parameter for "),
+			mcp.Enum("BACKEND_AB_TESTING", "CONTINUOUS_LIFT_CONFIG", "GEO_LIFT", "LIFT", "SPLIT_TEST"),
+		),
+		mcp.WithString("viewers",
+			mcp.Description("viewers parameter for "),
+		),
+	)
+	tools = append(tools, adstudy_post_Tool)
+
+	return tools
+}
+
+// GetAdStudyToolsWithoutAuth returns MCP tools for AdStudy without access_token parameter
+func GetAdStudyToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// adstudy_get_cells tool
+	adstudy_get_cellsTool := mcp.NewTool("adstudy_get_cells",
+		mcp.WithDescription("GET cells for AdStudy"),
+	)
+	tools = append(tools, adstudy_get_cellsTool)
+
+	// adstudy_post_checkpoint tool
+	adstudy_post_checkpointTool := mcp.NewTool("adstudy_post_checkpoint",
+		mcp.WithDescription("POST checkpoint for AdStudy"),
+		mcp.WithString("checkpoint_data",
+			mcp.Required(),
+			mcp.Description("checkpoint_data parameter for checkpoint"),
+		),
+		mcp.WithString("checkpoint_name",
+			mcp.Required(),
+			mcp.Description("checkpoint_name parameter for checkpoint"),
+		),
+		mcp.WithString("component",
+			mcp.Required(),
+			mcp.Description("component parameter for checkpoint"),
+		),
+		mcp.WithString("instance_id",
+			mcp.Description("instance_id parameter for checkpoint"),
+		),
+		mcp.WithString("run_id",
+			mcp.Description("run_id parameter for checkpoint"),
+		),
+	)
+	tools = append(tools, adstudy_post_checkpointTool)
+
+	// adstudy_get_instances tool
+	adstudy_get_instancesTool := mcp.NewTool("adstudy_get_instances",
+		mcp.WithDescription("GET instances for AdStudy"),
+	)
+	tools = append(tools, adstudy_get_instancesTool)
+
+	// adstudy_post_instances tool
+	adstudy_post_instancesTool := mcp.NewTool("adstudy_post_instances",
+		mcp.WithDescription("POST instances for AdStudy"),
+		mcp.WithString("breakdown_key",
+			mcp.Required(),
+			mcp.Description("breakdown_key parameter for instances"),
+		),
+		mcp.WithString("run_id",
+			mcp.Description("run_id parameter for instances"),
+		),
+	)
+	tools = append(tools, adstudy_post_instancesTool)
+
+	// adstudy_get_objectives tool
+	adstudy_get_objectivesTool := mcp.NewTool("adstudy_get_objectives",
+		mcp.WithDescription("GET objectives for AdStudy"),
+	)
+	tools = append(tools, adstudy_get_objectivesTool)
+
+	// adstudy_delete_ tool
+	adstudy_delete_Tool := mcp.NewTool("adstudy_delete_",
+		mcp.WithDescription("DELETE  for AdStudy"),
+	)
+	tools = append(tools, adstudy_delete_Tool)
+
+	// adstudy_get_ tool
+	adstudy_get_Tool := mcp.NewTool("adstudy_get_",
+		mcp.WithDescription("GET  for AdStudy"),
+	)
+	tools = append(tools, adstudy_get_Tool)
+
+	// adstudy_post_ tool
+	adstudy_post_Tool := mcp.NewTool("adstudy_post_",
+		mcp.WithDescription("POST  for AdStudy"),
 		mcp.WithString("cells",
 			mcp.Description("cells parameter for "),
 		),
@@ -414,6 +532,346 @@ func HandleAdstudy_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewAdStudyClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: cells
+	// array type - using string
+	if val := request.GetString("cells", ""); val != "" {
+		args["cells"] = val
+	}
+
+	// Optional: client_business
+	if val := request.GetString("client_business", ""); val != "" {
+		args["client_business"] = val
+	}
+
+	// Optional: confidence_level
+	if val := request.GetFloat("confidence_level", 0); val != 0 {
+		args["confidence_level"] = val
+	}
+
+	// Optional: cooldown_start_time
+	if val := request.GetInt("cooldown_start_time", 0); val != 0 {
+		args["cooldown_start_time"] = val
+	}
+
+	// Optional: description
+	if val := request.GetString("description", ""); val != "" {
+		args["description"] = val
+	}
+
+	// Optional: end_time
+	if val := request.GetInt("end_time", 0); val != 0 {
+		args["end_time"] = val
+	}
+
+	// Optional: name
+	if val := request.GetString("name", ""); val != "" {
+		args["name"] = val
+	}
+
+	// Optional: objectives
+	// array type - using string
+	if val := request.GetString("objectives", ""); val != "" {
+		args["objectives"] = val
+	}
+
+	// Optional: observation_end_time
+	if val := request.GetInt("observation_end_time", 0); val != 0 {
+		args["observation_end_time"] = val
+	}
+
+	// Optional: start_time
+	if val := request.GetInt("start_time", 0); val != 0 {
+		args["start_time"] = val
+	}
+
+	// Optional: type
+	if val := request.GetString("type", ""); val != "" {
+		args["type"] = val
+	}
+
+	// Optional: viewers
+	// array type - using string
+	if val := request.GetString("viewers", ""); val != "" {
+		args["viewers"] = val
+	}
+
+	// Call the client method
+	result, err := client.Adstudy_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudy_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextAdstudy_get_cells handles the adstudy_get_cells tool with context-based auth
+func HandleContextAdstudy_get_cells(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdStudyClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Adstudy_get_cells(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudy_get_cells: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdstudy_post_checkpoint handles the adstudy_post_checkpoint tool with context-based auth
+func HandleContextAdstudy_post_checkpoint(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdStudyClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: checkpoint_data
+	checkpoint_data, err := request.RequireString("checkpoint_data")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter checkpoint_data: %v", err)), nil
+	}
+	args["checkpoint_data"] = checkpoint_data
+
+	// Required: checkpoint_name
+	checkpoint_name, err := request.RequireString("checkpoint_name")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter checkpoint_name: %v", err)), nil
+	}
+	args["checkpoint_name"] = checkpoint_name
+
+	// Required: component
+	component, err := request.RequireString("component")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter component: %v", err)), nil
+	}
+	args["component"] = component
+
+	// Optional: instance_id
+	if val := request.GetString("instance_id", ""); val != "" {
+		args["instance_id"] = val
+	}
+
+	// Optional: run_id
+	if val := request.GetString("run_id", ""); val != "" {
+		args["run_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Adstudy_post_checkpoint(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudy_post_checkpoint: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdstudy_get_instances handles the adstudy_get_instances tool with context-based auth
+func HandleContextAdstudy_get_instances(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdStudyClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Adstudy_get_instances(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudy_get_instances: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdstudy_post_instances handles the adstudy_post_instances tool with context-based auth
+func HandleContextAdstudy_post_instances(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdStudyClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: breakdown_key
+	breakdown_key, err := request.RequireString("breakdown_key")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter breakdown_key: %v", err)), nil
+	}
+	args["breakdown_key"] = breakdown_key
+
+	// Optional: run_id
+	if val := request.GetString("run_id", ""); val != "" {
+		args["run_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Adstudy_post_instances(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudy_post_instances: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdstudy_get_objectives handles the adstudy_get_objectives tool with context-based auth
+func HandleContextAdstudy_get_objectives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdStudyClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Adstudy_get_objectives(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudy_get_objectives: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdstudy_delete_ handles the adstudy_delete_ tool with context-based auth
+func HandleContextAdstudy_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdStudyClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Adstudy_delete_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudy_delete_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdstudy_get_ handles the adstudy_get_ tool with context-based auth
+func HandleContextAdstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdStudyClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Adstudy_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adstudy_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdstudy_post_ handles the adstudy_post_ tool with context-based auth
+func HandleContextAdstudy_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetCommerceOrderTools returns MCP tools for CommerceOrder
@@ -295,6 +296,232 @@ func GetCommerceOrderTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, commerceorder_get_Tool)
+
+	return tools
+}
+
+// GetCommerceOrderToolsWithoutAuth returns MCP tools for CommerceOrder without access_token parameter
+func GetCommerceOrderToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// commerceorder_post_acknowledge_order tool
+	commerceorder_post_acknowledge_orderTool := mcp.NewTool("commerceorder_post_acknowledge_order",
+		mcp.WithDescription("POST acknowledge_order for CommerceOrder"),
+		mcp.WithString("idempotency_key",
+			mcp.Required(),
+			mcp.Description("idempotency_key parameter for acknowledge_order"),
+		),
+		mcp.WithString("merchant_order_reference",
+			mcp.Description("merchant_order_reference parameter for acknowledge_order"),
+		),
+	)
+	tools = append(tools, commerceorder_post_acknowledge_orderTool)
+
+	// commerceorder_get_cancellations tool
+	commerceorder_get_cancellationsTool := mcp.NewTool("commerceorder_get_cancellations",
+		mcp.WithDescription("GET cancellations for CommerceOrder"),
+	)
+	tools = append(tools, commerceorder_get_cancellationsTool)
+
+	// commerceorder_post_cancellations tool
+	commerceorder_post_cancellationsTool := mcp.NewTool("commerceorder_post_cancellations",
+		mcp.WithDescription("POST cancellations for CommerceOrder"),
+		mcp.WithString("cancel_reason",
+			mcp.Description("cancel_reason parameter for cancellations"),
+		),
+		mcp.WithString("idempotency_key",
+			mcp.Required(),
+			mcp.Description("idempotency_key parameter for cancellations"),
+		),
+		mcp.WithString("items",
+			mcp.Description("items parameter for cancellations"),
+		),
+		mcp.WithBoolean("restock_items",
+			mcp.Description("restock_items parameter for cancellations"),
+		),
+	)
+	tools = append(tools, commerceorder_post_cancellationsTool)
+
+	// commerceorder_post_item_updates tool
+	commerceorder_post_item_updatesTool := mcp.NewTool("commerceorder_post_item_updates",
+		mcp.WithDescription("POST item_updates for CommerceOrder"),
+		mcp.WithString("items",
+			mcp.Required(),
+			mcp.Description("items parameter for item_updates"),
+		),
+		mcp.WithString("merchant_order_reference",
+			mcp.Required(),
+			mcp.Description("merchant_order_reference parameter for item_updates"),
+		),
+	)
+	tools = append(tools, commerceorder_post_item_updatesTool)
+
+	// commerceorder_get_items tool
+	commerceorder_get_itemsTool := mcp.NewTool("commerceorder_get_items",
+		mcp.WithDescription("GET items for CommerceOrder"),
+	)
+	tools = append(tools, commerceorder_get_itemsTool)
+
+	// commerceorder_get_payments tool
+	commerceorder_get_paymentsTool := mcp.NewTool("commerceorder_get_payments",
+		mcp.WithDescription("GET payments for CommerceOrder"),
+	)
+	tools = append(tools, commerceorder_get_paymentsTool)
+
+	// commerceorder_get_promotion_details tool
+	commerceorder_get_promotion_detailsTool := mcp.NewTool("commerceorder_get_promotion_details",
+		mcp.WithDescription("GET promotion_details for CommerceOrder"),
+	)
+	tools = append(tools, commerceorder_get_promotion_detailsTool)
+
+	// commerceorder_get_promotions tool
+	commerceorder_get_promotionsTool := mcp.NewTool("commerceorder_get_promotions",
+		mcp.WithDescription("GET promotions for CommerceOrder"),
+	)
+	tools = append(tools, commerceorder_get_promotionsTool)
+
+	// commerceorder_get_refunds tool
+	commerceorder_get_refundsTool := mcp.NewTool("commerceorder_get_refunds",
+		mcp.WithDescription("GET refunds for CommerceOrder"),
+	)
+	tools = append(tools, commerceorder_get_refundsTool)
+
+	// commerceorder_post_refunds tool
+	commerceorder_post_refundsTool := mcp.NewTool("commerceorder_post_refunds",
+		mcp.WithDescription("POST refunds for CommerceOrder"),
+		mcp.WithString("adjustment_amount",
+			mcp.Description("adjustment_amount parameter for refunds"),
+		),
+		mcp.WithString("deductions",
+			mcp.Description("deductions parameter for refunds"),
+		),
+		mcp.WithString("idempotency_key",
+			mcp.Required(),
+			mcp.Description("idempotency_key parameter for refunds"),
+		),
+		mcp.WithString("items",
+			mcp.Description("items parameter for refunds"),
+		),
+		mcp.WithString("reason_code",
+			mcp.Required(),
+			mcp.Description("reason_code parameter for refunds"),
+			mcp.Enum("BUYERS_REMORSE", "DAMAGED_GOODS", "FACEBOOK_INITIATED", "NOT_AS_DESCRIBED", "QUALITY_ISSUE", "REFUND_COMPROMISED", "REFUND_FOR_RETURN", "REFUND_REASON_OTHER", "REFUND_SFI_FAKE", "REFUND_SFI_REAL", "WRONG_ITEM"),
+		),
+		mcp.WithString("reason_text",
+			mcp.Description("reason_text parameter for refunds"),
+		),
+		mcp.WithString("return_id",
+			mcp.Description("return_id parameter for refunds"),
+		),
+		mcp.WithString("shipping",
+			mcp.Description("shipping parameter for refunds"),
+		),
+	)
+	tools = append(tools, commerceorder_post_refundsTool)
+
+	// commerceorder_get_returns tool
+	commerceorder_get_returnsTool := mcp.NewTool("commerceorder_get_returns",
+		mcp.WithDescription("GET returns for CommerceOrder"),
+		mcp.WithString("merchant_return_id",
+			mcp.Description("merchant_return_id parameter for returns"),
+		),
+		mcp.WithString("statuses",
+			mcp.Description("statuses parameter for returns"),
+			mcp.Enum("APPROVED", "DISAPPROVED", "MERCHANT_MARKED_COMPLETED", "REFUNDED", "REQUESTED"),
+		),
+	)
+	tools = append(tools, commerceorder_get_returnsTool)
+
+	// commerceorder_post_returns tool
+	commerceorder_post_returnsTool := mcp.NewTool("commerceorder_post_returns",
+		mcp.WithDescription("POST returns for CommerceOrder"),
+		mcp.WithString("items",
+			mcp.Required(),
+			mcp.Description("items parameter for returns"),
+		),
+		mcp.WithString("merchant_return_id",
+			mcp.Description("merchant_return_id parameter for returns"),
+		),
+		mcp.WithString("return_message",
+			mcp.Description("return_message parameter for returns"),
+		),
+		mcp.WithString("update",
+			mcp.Description("update parameter for returns"),
+		),
+	)
+	tools = append(tools, commerceorder_post_returnsTool)
+
+	// commerceorder_get_shipments tool
+	commerceorder_get_shipmentsTool := mcp.NewTool("commerceorder_get_shipments",
+		mcp.WithDescription("GET shipments for CommerceOrder"),
+	)
+	tools = append(tools, commerceorder_get_shipmentsTool)
+
+	// commerceorder_post_shipments tool
+	commerceorder_post_shipmentsTool := mcp.NewTool("commerceorder_post_shipments",
+		mcp.WithDescription("POST shipments for CommerceOrder"),
+		mcp.WithString("external_redemption_link",
+			mcp.Description("external_redemption_link parameter for shipments"),
+		),
+		mcp.WithString("external_shipment_id",
+			mcp.Description("external_shipment_id parameter for shipments"),
+		),
+		mcp.WithString("fulfillment",
+			mcp.Description("fulfillment parameter for shipments"),
+		),
+		mcp.WithString("idempotency_key",
+			mcp.Required(),
+			mcp.Description("idempotency_key parameter for shipments"),
+		),
+		mcp.WithString("items",
+			mcp.Description("items parameter for shipments"),
+		),
+		mcp.WithString("merchant_order_reference",
+			mcp.Description("merchant_order_reference parameter for shipments"),
+		),
+		mcp.WithString("shipment_origin_postal_code",
+			mcp.Description("shipment_origin_postal_code parameter for shipments"),
+		),
+		mcp.WithString("shipping_tax_details",
+			mcp.Description("shipping_tax_details parameter for shipments"),
+		),
+		mcp.WithBoolean("should_use_default_fulfillment_location",
+			mcp.Description("should_use_default_fulfillment_location parameter for shipments"),
+		),
+		mcp.WithString("tracking_info",
+			mcp.Description("tracking_info parameter for shipments"),
+		),
+	)
+	tools = append(tools, commerceorder_post_shipmentsTool)
+
+	// commerceorder_post_update_shipment tool
+	commerceorder_post_update_shipmentTool := mcp.NewTool("commerceorder_post_update_shipment",
+		mcp.WithDescription("POST update_shipment for CommerceOrder"),
+		mcp.WithString("external_shipment_id",
+			mcp.Description("external_shipment_id parameter for update_shipment"),
+		),
+		mcp.WithString("fulfillment_id",
+			mcp.Description("fulfillment_id parameter for update_shipment"),
+		),
+		mcp.WithString("idempotency_key",
+			mcp.Required(),
+			mcp.Description("idempotency_key parameter for update_shipment"),
+		),
+		mcp.WithString("shipment_id",
+			mcp.Description("shipment_id parameter for update_shipment"),
+		),
+		mcp.WithString("tracking_info",
+			mcp.Required(),
+			mcp.Description("tracking_info parameter for update_shipment"),
+		),
+	)
+	tools = append(tools, commerceorder_post_update_shipmentTool)
+
+	// commerceorder_get_ tool
+	commerceorder_get_Tool := mcp.NewTool("commerceorder_get_",
+		mcp.WithDescription("GET  for CommerceOrder"),
 	)
 	tools = append(tools, commerceorder_get_Tool)
 
@@ -954,6 +1181,682 @@ func HandleCommerceorder_get_(ctx context.Context, request mcp.CallToolRequest) 
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceOrderClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Commerceorder_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextCommerceorder_post_acknowledge_order handles the commerceorder_post_acknowledge_order tool with context-based auth
+func HandleContextCommerceorder_post_acknowledge_order(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceOrderClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: idempotency_key
+	idempotency_key, err := request.RequireString("idempotency_key")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter idempotency_key: %v", err)), nil
+	}
+	args["idempotency_key"] = idempotency_key
+
+	// Optional: merchant_order_reference
+	if val := request.GetString("merchant_order_reference", ""); val != "" {
+		args["merchant_order_reference"] = val
+	}
+
+	// Call the client method
+	result, err := client.Commerceorder_post_acknowledge_order(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_post_acknowledge_order: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommerceorder_get_cancellations handles the commerceorder_get_cancellations tool with context-based auth
+func HandleContextCommerceorder_get_cancellations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceOrderClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Commerceorder_get_cancellations(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_get_cancellations: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommerceorder_post_cancellations handles the commerceorder_post_cancellations tool with context-based auth
+func HandleContextCommerceorder_post_cancellations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceOrderClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: cancel_reason
+	if val := request.GetString("cancel_reason", ""); val != "" {
+		args["cancel_reason"] = val
+	}
+
+	// Required: idempotency_key
+	idempotency_key, err := request.RequireString("idempotency_key")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter idempotency_key: %v", err)), nil
+	}
+	args["idempotency_key"] = idempotency_key
+
+	// Optional: items
+	// array type - using string
+	if val := request.GetString("items", ""); val != "" {
+		args["items"] = val
+	}
+
+	// Optional: restock_items
+	if val := request.GetBool("restock_items", false); val {
+		args["restock_items"] = val
+	}
+
+	// Call the client method
+	result, err := client.Commerceorder_post_cancellations(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_post_cancellations: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommerceorder_post_item_updates handles the commerceorder_post_item_updates tool with context-based auth
+func HandleContextCommerceorder_post_item_updates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceOrderClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: items
+	items, err := request.RequireString("items")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter items: %v", err)), nil
+	}
+	args["items"] = items
+
+	// Required: merchant_order_reference
+	merchant_order_reference, err := request.RequireString("merchant_order_reference")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter merchant_order_reference: %v", err)), nil
+	}
+	args["merchant_order_reference"] = merchant_order_reference
+
+	// Call the client method
+	result, err := client.Commerceorder_post_item_updates(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_post_item_updates: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommerceorder_get_items handles the commerceorder_get_items tool with context-based auth
+func HandleContextCommerceorder_get_items(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceOrderClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Commerceorder_get_items(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_get_items: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommerceorder_get_payments handles the commerceorder_get_payments tool with context-based auth
+func HandleContextCommerceorder_get_payments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceOrderClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Commerceorder_get_payments(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_get_payments: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommerceorder_get_promotion_details handles the commerceorder_get_promotion_details tool with context-based auth
+func HandleContextCommerceorder_get_promotion_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceOrderClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Commerceorder_get_promotion_details(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_get_promotion_details: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommerceorder_get_promotions handles the commerceorder_get_promotions tool with context-based auth
+func HandleContextCommerceorder_get_promotions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceOrderClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Commerceorder_get_promotions(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_get_promotions: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommerceorder_get_refunds handles the commerceorder_get_refunds tool with context-based auth
+func HandleContextCommerceorder_get_refunds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceOrderClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Commerceorder_get_refunds(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_get_refunds: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommerceorder_post_refunds handles the commerceorder_post_refunds tool with context-based auth
+func HandleContextCommerceorder_post_refunds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceOrderClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: adjustment_amount
+	if val := request.GetString("adjustment_amount", ""); val != "" {
+		args["adjustment_amount"] = val
+	}
+
+	// Optional: deductions
+	// array type - using string
+	if val := request.GetString("deductions", ""); val != "" {
+		args["deductions"] = val
+	}
+
+	// Required: idempotency_key
+	idempotency_key, err := request.RequireString("idempotency_key")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter idempotency_key: %v", err)), nil
+	}
+	args["idempotency_key"] = idempotency_key
+
+	// Optional: items
+	// array type - using string
+	if val := request.GetString("items", ""); val != "" {
+		args["items"] = val
+	}
+
+	// Required: reason_code
+	reason_code, err := request.RequireString("reason_code")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter reason_code: %v", err)), nil
+	}
+	args["reason_code"] = reason_code
+
+	// Optional: reason_text
+	if val := request.GetString("reason_text", ""); val != "" {
+		args["reason_text"] = val
+	}
+
+	// Optional: return_id
+	if val := request.GetString("return_id", ""); val != "" {
+		args["return_id"] = val
+	}
+
+	// Optional: shipping
+	if val := request.GetString("shipping", ""); val != "" {
+		args["shipping"] = val
+	}
+
+	// Call the client method
+	result, err := client.Commerceorder_post_refunds(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_post_refunds: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommerceorder_get_returns handles the commerceorder_get_returns tool with context-based auth
+func HandleContextCommerceorder_get_returns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceOrderClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: merchant_return_id
+	if val := request.GetString("merchant_return_id", ""); val != "" {
+		args["merchant_return_id"] = val
+	}
+
+	// Optional: statuses
+	// array type - using string
+	if val := request.GetString("statuses", ""); val != "" {
+		args["statuses"] = val
+	}
+
+	// Call the client method
+	result, err := client.Commerceorder_get_returns(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_get_returns: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommerceorder_post_returns handles the commerceorder_post_returns tool with context-based auth
+func HandleContextCommerceorder_post_returns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceOrderClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: items
+	items, err := request.RequireString("items")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter items: %v", err)), nil
+	}
+	args["items"] = items
+
+	// Optional: merchant_return_id
+	if val := request.GetString("merchant_return_id", ""); val != "" {
+		args["merchant_return_id"] = val
+	}
+
+	// Optional: return_message
+	if val := request.GetString("return_message", ""); val != "" {
+		args["return_message"] = val
+	}
+
+	// Optional: update
+	if val := request.GetString("update", ""); val != "" {
+		args["update"] = val
+	}
+
+	// Call the client method
+	result, err := client.Commerceorder_post_returns(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_post_returns: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommerceorder_get_shipments handles the commerceorder_get_shipments tool with context-based auth
+func HandleContextCommerceorder_get_shipments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceOrderClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Commerceorder_get_shipments(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_get_shipments: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommerceorder_post_shipments handles the commerceorder_post_shipments tool with context-based auth
+func HandleContextCommerceorder_post_shipments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceOrderClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: external_redemption_link
+	if val := request.GetString("external_redemption_link", ""); val != "" {
+		args["external_redemption_link"] = val
+	}
+
+	// Optional: external_shipment_id
+	if val := request.GetString("external_shipment_id", ""); val != "" {
+		args["external_shipment_id"] = val
+	}
+
+	// Optional: fulfillment
+	if val := request.GetString("fulfillment", ""); val != "" {
+		args["fulfillment"] = val
+	}
+
+	// Required: idempotency_key
+	idempotency_key, err := request.RequireString("idempotency_key")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter idempotency_key: %v", err)), nil
+	}
+	args["idempotency_key"] = idempotency_key
+
+	// Optional: items
+	// array type - using string
+	if val := request.GetString("items", ""); val != "" {
+		args["items"] = val
+	}
+
+	// Optional: merchant_order_reference
+	if val := request.GetString("merchant_order_reference", ""); val != "" {
+		args["merchant_order_reference"] = val
+	}
+
+	// Optional: shipment_origin_postal_code
+	if val := request.GetString("shipment_origin_postal_code", ""); val != "" {
+		args["shipment_origin_postal_code"] = val
+	}
+
+	// Optional: shipping_tax_details
+	if val := request.GetString("shipping_tax_details", ""); val != "" {
+		args["shipping_tax_details"] = val
+	}
+
+	// Optional: should_use_default_fulfillment_location
+	if val := request.GetBool("should_use_default_fulfillment_location", false); val {
+		args["should_use_default_fulfillment_location"] = val
+	}
+
+	// Optional: tracking_info
+	if val := request.GetString("tracking_info", ""); val != "" {
+		args["tracking_info"] = val
+	}
+
+	// Call the client method
+	result, err := client.Commerceorder_post_shipments(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_post_shipments: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommerceorder_post_update_shipment handles the commerceorder_post_update_shipment tool with context-based auth
+func HandleContextCommerceorder_post_update_shipment(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceOrderClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: external_shipment_id
+	if val := request.GetString("external_shipment_id", ""); val != "" {
+		args["external_shipment_id"] = val
+	}
+
+	// Optional: fulfillment_id
+	if val := request.GetString("fulfillment_id", ""); val != "" {
+		args["fulfillment_id"] = val
+	}
+
+	// Required: idempotency_key
+	idempotency_key, err := request.RequireString("idempotency_key")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter idempotency_key: %v", err)), nil
+	}
+	args["idempotency_key"] = idempotency_key
+
+	// Optional: shipment_id
+	if val := request.GetString("shipment_id", ""); val != "" {
+		args["shipment_id"] = val
+	}
+
+	// Required: tracking_info
+	tracking_info, err := request.RequireString("tracking_info")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter tracking_info: %v", err)), nil
+	}
+	args["tracking_info"] = tracking_info
+
+	// Call the client method
+	result, err := client.Commerceorder_post_update_shipment(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commerceorder_post_update_shipment: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommerceorder_get_ handles the commerceorder_get_ tool with context-based auth
+func HandleContextCommerceorder_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

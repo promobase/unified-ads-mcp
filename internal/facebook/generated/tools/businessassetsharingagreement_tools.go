@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetBusinessAssetSharingAgreementTools returns MCP tools for BusinessAssetSharingAgreement
@@ -32,6 +33,28 @@ func GetBusinessAssetSharingAgreementTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithString("request_response",
+			mcp.Description("request_response parameter for "),
+		),
+	)
+	tools = append(tools, businessassetsharingagreement_post_Tool)
+
+	return tools
+}
+
+// GetBusinessAssetSharingAgreementToolsWithoutAuth returns MCP tools for BusinessAssetSharingAgreement without access_token parameter
+func GetBusinessAssetSharingAgreementToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// businessassetsharingagreement_get_ tool
+	businessassetsharingagreement_get_Tool := mcp.NewTool("businessassetsharingagreement_get_",
+		mcp.WithDescription("GET  for BusinessAssetSharingAgreement"),
+	)
+	tools = append(tools, businessassetsharingagreement_get_Tool)
+
+	// businessassetsharingagreement_post_ tool
+	businessassetsharingagreement_post_Tool := mcp.NewTool("businessassetsharingagreement_post_",
+		mcp.WithDescription("POST  for BusinessAssetSharingAgreement"),
 		mcp.WithString("request_response",
 			mcp.Description("request_response parameter for "),
 		),
@@ -78,6 +101,71 @@ func HandleBusinessassetsharingagreement_post_(ctx context.Context, request mcp.
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetSharingAgreementClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: request_response
+	if val := request.GetString("request_response", ""); val != "" {
+		args["request_response"] = val
+	}
+
+	// Call the client method
+	result, err := client.Businessassetsharingagreement_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetsharingagreement_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextBusinessassetsharingagreement_get_ handles the businessassetsharingagreement_get_ tool with context-based auth
+func HandleContextBusinessassetsharingagreement_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetSharingAgreementClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Businessassetsharingagreement_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetsharingagreement_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetsharingagreement_post_ handles the businessassetsharingagreement_post_ tool with context-based auth
+func HandleContextBusinessassetsharingagreement_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

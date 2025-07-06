@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetMeasurementReportTools returns MCP tools for MeasurementReport
@@ -28,6 +29,19 @@ func GetMeasurementReportTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetMeasurementReportToolsWithoutAuth returns MCP tools for MeasurementReport without access_token parameter
+func GetMeasurementReportToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// measurementreport_get_ tool
+	measurementreport_get_Tool := mcp.NewTool("measurementreport_get_",
+		mcp.WithDescription("GET  for MeasurementReport"),
+	)
+	tools = append(tools, measurementreport_get_Tool)
+
+	return tools
+}
+
 // MeasurementReport handlers
 
 // HandleMeasurementreport_get_ handles the measurementreport_get_ tool
@@ -36,6 +50,37 @@ func HandleMeasurementreport_get_(ctx context.Context, request mcp.CallToolReque
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewMeasurementReportClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Measurementreport_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute measurementreport_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextMeasurementreport_get_ handles the measurementreport_get_ tool with context-based auth
+func HandleContextMeasurementreport_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

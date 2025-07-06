@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetPageTools returns MCP tools for Page
@@ -3285,6 +3286,2955 @@ func GetPageTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithString("about",
+			mcp.Description("about parameter for "),
+		),
+		mcp.WithString("accept_crossposting_handshake",
+			mcp.Description("accept_crossposting_handshake parameter for "),
+		),
+		mcp.WithBoolean("allow_spherical_photo",
+			mcp.Description("allow_spherical_photo parameter for "),
+		),
+		mcp.WithString("attire",
+			mcp.Description("attire parameter for "),
+			mcp.Enum("Casual", "Dressy", "Unspecified"),
+		),
+		mcp.WithString("begin_crossposting_handshake",
+			mcp.Description("begin_crossposting_handshake parameter for "),
+		),
+		mcp.WithString("bio",
+			mcp.Description("bio parameter for "),
+		),
+		mcp.WithString("category_list",
+			mcp.Description("category_list parameter for "),
+		),
+		mcp.WithString("company_overview",
+			mcp.Description("company_overview parameter for "),
+		),
+		mcp.WithString("contact_address",
+			mcp.Description("contact_address parameter for "),
+		),
+		mcp.WithString("cover",
+			mcp.Description("cover parameter for "),
+		),
+		mcp.WithString("culinary_team",
+			mcp.Description("culinary_team parameter for "),
+		),
+		mcp.WithString("delivery_and_pickup_option_info",
+			mcp.Description("delivery_and_pickup_option_info parameter for "),
+		),
+		mcp.WithString("description",
+			mcp.Description("description parameter for "),
+		),
+		mcp.WithString("differently_open_offerings",
+			mcp.Description("differently_open_offerings parameter for "),
+		),
+		mcp.WithString("directed_by",
+			mcp.Description("directed_by parameter for "),
+		),
+		mcp.WithString("displayed_message_response_time",
+			mcp.Description("displayed_message_response_time parameter for "),
+		),
+		mcp.WithString("emails",
+			mcp.Description("emails parameter for "),
+		),
+		mcp.WithNumber("focus_x",
+			mcp.Description("focus_x parameter for "),
+		),
+		mcp.WithNumber("focus_y",
+			mcp.Description("focus_y parameter for "),
+		),
+		mcp.WithString("food_styles",
+			mcp.Description("food_styles parameter for "),
+			mcp.Enum("Afghani", "American (New)", "American (Traditional)", "Asian Fusion", "Barbeque", "Brazilian", "Breakfast", "British", "Brunch", "Buffets", "Burgers", "Burmese", "Cajun/Creole", "Caribbean", "Chinese", "Creperies", "Cuban", "Delis", "Diners", "Ethiopian", "Fast Food", "Filipino", "Fondue", "Food Stands", "French", "German", "Greek and Mediterranean", "Hawaiian", "Himalayan/Nepalese", "Hot Dogs", "Indian/Pakistani", "Irish", "Italian", "Japanese", "Korean", "Latin American", "Mexican", "Middle Eastern", "Moroccan", "Pizza", "Russian", "Sandwiches", "Seafood", "Singaporean", "Soul Food", "Southern", "Spanish/Basque", "Steakhouses", "Sushi Bars", "Taiwanese", "Tapas Bars", "Tex-Mex", "Thai", "Turkish", "Vegan", "Vegetarian", "Vietnamese"),
+		),
+		mcp.WithString("gen_ai_provenance_type",
+			mcp.Description("gen_ai_provenance_type parameter for "),
+			mcp.Enum("C2PA", "C2PA_METADATA_EDITED", "EXPLICIT", "EXPLICIT_IMAGINE", "EXPLICIT_IMAGINE_ME", "EXPLICIT_RESTYLE", "INVISIBLE_WATERMARK", "IPTC", "IPTC_METADATA_EDITED"),
+		),
+		mcp.WithString("general_info",
+			mcp.Description("general_info parameter for "),
+		),
+		mcp.WithString("general_manager",
+			mcp.Description("general_manager parameter for "),
+		),
+		mcp.WithString("genre",
+			mcp.Description("genre parameter for "),
+		),
+		mcp.WithString("hours",
+			mcp.Description("hours parameter for "),
+		),
+		mcp.WithBoolean("ignore_coordinate_warnings",
+			mcp.Description("ignore_coordinate_warnings parameter for "),
+		),
+		mcp.WithString("impressum",
+			mcp.Description("impressum parameter for "),
+		),
+		mcp.WithBoolean("is_always_open",
+			mcp.Description("is_always_open parameter for "),
+		),
+		mcp.WithBoolean("is_permanently_closed",
+			mcp.Description("is_permanently_closed parameter for "),
+		),
+		mcp.WithBoolean("is_published",
+			mcp.Description("is_published parameter for "),
+		),
+		mcp.WithBoolean("is_webhooks_subscribed",
+			mcp.Description("is_webhooks_subscribed parameter for "),
+		),
+		mcp.WithString("location",
+			mcp.Description("location parameter for "),
+		),
+		mcp.WithString("menu",
+			mcp.Description("menu parameter for "),
+		),
+		mcp.WithString("mission",
+			mcp.Description("mission parameter for "),
+		),
+		mcp.WithBoolean("no_feed_story",
+			mcp.Description("no_feed_story parameter for "),
+		),
+		mcp.WithBoolean("no_notification",
+			mcp.Description("no_notification parameter for "),
+		),
+		mcp.WithNumber("offset_x",
+			mcp.Description("offset_x parameter for "),
+		),
+		mcp.WithNumber("offset_y",
+			mcp.Description("offset_y parameter for "),
+		),
+		mcp.WithString("parking",
+			mcp.Description("parking parameter for "),
+		),
+		mcp.WithString("payment_options",
+			mcp.Description("payment_options parameter for "),
+		),
+		mcp.WithString("phone",
+			mcp.Description("phone parameter for "),
+		),
+		mcp.WithString("pickup_options",
+			mcp.Description("pickup_options parameter for "),
+			mcp.Enum("CURBSIDE", "IN_STORE", "OTHER"),
+		),
+		mcp.WithString("plot_outline",
+			mcp.Description("plot_outline parameter for "),
+		),
+		mcp.WithString("price_range",
+			mcp.Description("price_range parameter for "),
+		),
+		mcp.WithString("public_transit",
+			mcp.Description("public_transit parameter for "),
+		),
+		mcp.WithString("restaurant_services",
+			mcp.Description("restaurant_services parameter for "),
+		),
+		mcp.WithString("restaurant_specialties",
+			mcp.Description("restaurant_specialties parameter for "),
+		),
+		mcp.WithBoolean("scrape",
+			mcp.Description("scrape parameter for "),
+		),
+		mcp.WithString("service_details",
+			mcp.Description("service_details parameter for "),
+		),
+		mcp.WithString("spherical_metadata",
+			mcp.Description("spherical_metadata parameter for "),
+		),
+		mcp.WithString("start_info",
+			mcp.Description("start_info parameter for "),
+		),
+		mcp.WithString("store_location_descriptor",
+			mcp.Description("store_location_descriptor parameter for "),
+		),
+		mcp.WithString("temporary_status",
+			mcp.Description("temporary_status parameter for "),
+			mcp.Enum("DIFFERENTLY_OPEN", "NO_DATA", "OPERATING_AS_USUAL", "TEMPORARILY_CLOSED"),
+		),
+		mcp.WithString("website",
+			mcp.Description("website parameter for "),
+		),
+		mcp.WithNumber("zoom_scale_x",
+			mcp.Description("zoom_scale_x parameter for "),
+		),
+		mcp.WithNumber("zoom_scale_y",
+			mcp.Description("zoom_scale_y parameter for "),
+		),
+	)
+	tools = append(tools, page_post_Tool)
+
+	return tools
+}
+
+// GetPageToolsWithoutAuth returns MCP tools for Page without access_token parameter
+func GetPageToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// page_get_ab_tests tool
+	page_get_ab_testsTool := mcp.NewTool("page_get_ab_tests",
+		mcp.WithDescription("GET ab_tests for Page"),
+	)
+	tools = append(tools, page_get_ab_testsTool)
+
+	// page_post_ab_tests tool
+	page_post_ab_testsTool := mcp.NewTool("page_post_ab_tests",
+		mcp.WithDescription("POST ab_tests for Page"),
+		mcp.WithString("control_video_id",
+			mcp.Required(),
+			mcp.Description("control_video_id parameter for ab_tests"),
+		),
+		mcp.WithString("description",
+			mcp.Required(),
+			mcp.Description("description parameter for ab_tests"),
+		),
+		mcp.WithNumber("duration",
+			mcp.Required(),
+			mcp.Description("duration parameter for ab_tests"),
+		),
+		mcp.WithString("experiment_video_ids",
+			mcp.Required(),
+			mcp.Description("experiment_video_ids parameter for ab_tests"),
+		),
+		mcp.WithString("name",
+			mcp.Required(),
+			mcp.Description("name parameter for ab_tests"),
+		),
+		mcp.WithString("optimization_goal",
+			mcp.Required(),
+			mcp.Description("optimization_goal parameter for ab_tests"),
+			mcp.Enum("AUTO_RESOLVE_TO_CONTROL", "AVG_TIME_WATCHED", "COMMENTS", "IMPRESSIONS", "IMPRESSIONS_UNIQUE", "LINK_CLICKS", "OTHER", "REACTIONS", "REELS_PLAYS", "SHARES", "VIDEO_VIEWS_60S"),
+		),
+		mcp.WithNumber("scheduled_experiment_timestamp",
+			mcp.Description("scheduled_experiment_timestamp parameter for ab_tests"),
+		),
+	)
+	tools = append(tools, page_post_ab_testsTool)
+
+	// page_post_acknowledge_orders tool
+	page_post_acknowledge_ordersTool := mcp.NewTool("page_post_acknowledge_orders",
+		mcp.WithDescription("POST acknowledge_orders for Page"),
+		mcp.WithString("idempotency_key",
+			mcp.Required(),
+			mcp.Description("idempotency_key parameter for acknowledge_orders"),
+		),
+		mcp.WithString("orders",
+			mcp.Required(),
+			mcp.Description("orders parameter for acknowledge_orders"),
+		),
+	)
+	tools = append(tools, page_post_acknowledge_ordersTool)
+
+	// page_get_ads_posts tool
+	page_get_ads_postsTool := mcp.NewTool("page_get_ads_posts",
+		mcp.WithDescription("GET ads_posts for Page"),
+		mcp.WithBoolean("exclude_dynamic_ads",
+			mcp.Description("exclude_dynamic_ads parameter for ads_posts"),
+		),
+		mcp.WithBoolean("include_inline_create",
+			mcp.Description("include_inline_create parameter for ads_posts"),
+		),
+		mcp.WithString("since",
+			mcp.Description("since parameter for ads_posts"),
+		),
+		mcp.WithString("until",
+			mcp.Description("until parameter for ads_posts"),
+		),
+	)
+	tools = append(tools, page_get_ads_postsTool)
+
+	// page_delete_agencies tool
+	page_delete_agenciesTool := mcp.NewTool("page_delete_agencies",
+		mcp.WithDescription("DELETE agencies for Page"),
+		mcp.WithString("business",
+			mcp.Required(),
+			mcp.Description("business parameter for agencies"),
+		),
+	)
+	tools = append(tools, page_delete_agenciesTool)
+
+	// page_get_agencies tool
+	page_get_agenciesTool := mcp.NewTool("page_get_agencies",
+		mcp.WithDescription("GET agencies for Page"),
+	)
+	tools = append(tools, page_get_agenciesTool)
+
+	// page_post_agencies tool
+	page_post_agenciesTool := mcp.NewTool("page_post_agencies",
+		mcp.WithDescription("POST agencies for Page"),
+		mcp.WithString("business",
+			mcp.Required(),
+			mcp.Description("business parameter for agencies"),
+		),
+		mcp.WithString("permitted_tasks",
+			mcp.Description("permitted_tasks parameter for agencies"),
+			mcp.Enum("ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS"),
+		),
+	)
+	tools = append(tools, page_post_agenciesTool)
+
+	// page_get_albums tool
+	page_get_albumsTool := mcp.NewTool("page_get_albums",
+		mcp.WithDescription("GET albums for Page"),
+	)
+	tools = append(tools, page_get_albumsTool)
+
+	// page_get_ar_experience tool
+	page_get_ar_experienceTool := mcp.NewTool("page_get_ar_experience",
+		mcp.WithDescription("GET ar_experience for Page"),
+	)
+	tools = append(tools, page_get_ar_experienceTool)
+
+	// page_delete_assigned_users tool
+	page_delete_assigned_usersTool := mcp.NewTool("page_delete_assigned_users",
+		mcp.WithDescription("DELETE assigned_users for Page"),
+		mcp.WithNumber("user",
+			mcp.Required(),
+			mcp.Description("user parameter for assigned_users"),
+		),
+	)
+	tools = append(tools, page_delete_assigned_usersTool)
+
+	// page_get_assigned_users tool
+	page_get_assigned_usersTool := mcp.NewTool("page_get_assigned_users",
+		mcp.WithDescription("GET assigned_users for Page"),
+		mcp.WithString("business",
+			mcp.Required(),
+			mcp.Description("business parameter for assigned_users"),
+		),
+	)
+	tools = append(tools, page_get_assigned_usersTool)
+
+	// page_post_assigned_users tool
+	page_post_assigned_usersTool := mcp.NewTool("page_post_assigned_users",
+		mcp.WithDescription("POST assigned_users for Page"),
+		mcp.WithString("tasks",
+			mcp.Description("tasks parameter for assigned_users"),
+			mcp.Enum("ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS"),
+		),
+		mcp.WithNumber("user",
+			mcp.Required(),
+			mcp.Description("user parameter for assigned_users"),
+		),
+	)
+	tools = append(tools, page_post_assigned_usersTool)
+
+	// page_delete_blocked tool
+	page_delete_blockedTool := mcp.NewTool("page_delete_blocked",
+		mcp.WithDescription("DELETE blocked for Page"),
+		mcp.WithString("asid",
+			mcp.Description("asid parameter for blocked"),
+		),
+		mcp.WithNumber("psid",
+			mcp.Description("psid parameter for blocked"),
+		),
+		mcp.WithNumber("uid",
+			mcp.Description("uid parameter for blocked"),
+		),
+		mcp.WithNumber("user",
+			mcp.Description("user parameter for blocked"),
+		),
+	)
+	tools = append(tools, page_delete_blockedTool)
+
+	// page_get_blocked tool
+	page_get_blockedTool := mcp.NewTool("page_get_blocked",
+		mcp.WithDescription("GET blocked for Page"),
+		mcp.WithNumber("uid",
+			mcp.Description("uid parameter for blocked"),
+		),
+		mcp.WithNumber("user",
+			mcp.Description("user parameter for blocked"),
+		),
+	)
+	tools = append(tools, page_get_blockedTool)
+
+	// page_post_blocked tool
+	page_post_blockedTool := mcp.NewTool("page_post_blocked",
+		mcp.WithDescription("POST blocked for Page"),
+		mcp.WithString("asid",
+			mcp.Description("asid parameter for blocked"),
+		),
+		mcp.WithString("psid",
+			mcp.Description("psid parameter for blocked"),
+		),
+		mcp.WithString("uid",
+			mcp.Description("uid parameter for blocked"),
+		),
+		mcp.WithString("user",
+			mcp.Description("user parameter for blocked"),
+		),
+	)
+	tools = append(tools, page_post_blockedTool)
+
+	// page_post_business_data tool
+	page_post_business_dataTool := mcp.NewTool("page_post_business_data",
+		mcp.WithDescription("POST business_data for Page"),
+		mcp.WithString("data",
+			mcp.Required(),
+			mcp.Description("data parameter for business_data"),
+		),
+		mcp.WithString("partner_agent",
+			mcp.Required(),
+			mcp.Description("partner_agent parameter for business_data"),
+		),
+		mcp.WithString("processing_type",
+			mcp.Description("processing_type parameter for business_data"),
+		),
+	)
+	tools = append(tools, page_post_business_dataTool)
+
+	// page_get_businessprojects tool
+	page_get_businessprojectsTool := mcp.NewTool("page_get_businessprojects",
+		mcp.WithDescription("GET businessprojects for Page"),
+		mcp.WithString("business",
+			mcp.Description("business parameter for businessprojects"),
+		),
+	)
+	tools = append(tools, page_get_businessprojectsTool)
+
+	// page_get_call_to_actions tool
+	page_get_call_to_actionsTool := mcp.NewTool("page_get_call_to_actions",
+		mcp.WithDescription("GET call_to_actions for Page"),
+	)
+	tools = append(tools, page_get_call_to_actionsTool)
+
+	// page_post_calls tool
+	page_post_callsTool := mcp.NewTool("page_post_calls",
+		mcp.WithDescription("POST calls for Page"),
+		mcp.WithString("action",
+			mcp.Required(),
+			mcp.Description("action parameter for calls"),
+			mcp.Enum("ACCEPT", "CONNECT", "MEDIA_UPDATE", "REJECT", "TERMINATE"),
+		),
+		mcp.WithString("call_id",
+			mcp.Description("call_id parameter for calls"),
+		),
+		mcp.WithString("platform",
+			mcp.Description("platform parameter for calls"),
+			mcp.Enum("INSTAGRAM", "MESSENGER"),
+		),
+		mcp.WithString("session",
+			mcp.Description("session parameter for calls"),
+		),
+		mcp.WithString("to",
+			mcp.Description("to parameter for calls"),
+		),
+	)
+	tools = append(tools, page_post_callsTool)
+
+	// page_get_canvas_elements tool
+	page_get_canvas_elementsTool := mcp.NewTool("page_get_canvas_elements",
+		mcp.WithDescription("GET canvas_elements for Page"),
+	)
+	tools = append(tools, page_get_canvas_elementsTool)
+
+	// page_post_canvas_elements tool
+	page_post_canvas_elementsTool := mcp.NewTool("page_post_canvas_elements",
+		mcp.WithDescription("POST canvas_elements for Page"),
+		mcp.WithString("canvas_button",
+			mcp.Description("canvas_button parameter for canvas_elements"),
+		),
+		mcp.WithString("canvas_carousel",
+			mcp.Description("canvas_carousel parameter for canvas_elements"),
+		),
+		mcp.WithString("canvas_footer",
+			mcp.Description("canvas_footer parameter for canvas_elements"),
+		),
+		mcp.WithString("canvas_header",
+			mcp.Description("canvas_header parameter for canvas_elements"),
+		),
+		mcp.WithString("canvas_lead_form",
+			mcp.Description("canvas_lead_form parameter for canvas_elements"),
+		),
+		mcp.WithString("canvas_photo",
+			mcp.Description("canvas_photo parameter for canvas_elements"),
+		),
+		mcp.WithString("canvas_product_list",
+			mcp.Description("canvas_product_list parameter for canvas_elements"),
+		),
+		mcp.WithString("canvas_product_set",
+			mcp.Description("canvas_product_set parameter for canvas_elements"),
+		),
+		mcp.WithString("canvas_store_locator",
+			mcp.Description("canvas_store_locator parameter for canvas_elements"),
+		),
+		mcp.WithString("canvas_template_video",
+			mcp.Description("canvas_template_video parameter for canvas_elements"),
+		),
+		mcp.WithString("canvas_text",
+			mcp.Description("canvas_text parameter for canvas_elements"),
+		),
+		mcp.WithString("canvas_video",
+			mcp.Description("canvas_video parameter for canvas_elements"),
+		),
+	)
+	tools = append(tools, page_post_canvas_elementsTool)
+
+	// page_get_canvases tool
+	page_get_canvasesTool := mcp.NewTool("page_get_canvases",
+		mcp.WithDescription("GET canvases for Page"),
+		mcp.WithBoolean("is_hidden",
+			mcp.Description("is_hidden parameter for canvases"),
+		),
+		mcp.WithBoolean("is_published",
+			mcp.Description("is_published parameter for canvases"),
+		),
+	)
+	tools = append(tools, page_get_canvasesTool)
+
+	// page_post_canvases tool
+	page_post_canvasesTool := mcp.NewTool("page_post_canvases",
+		mcp.WithDescription("POST canvases for Page"),
+		mcp.WithString("background_color",
+			mcp.Description("background_color parameter for canvases"),
+		),
+		mcp.WithString("body_element_ids",
+			mcp.Description("body_element_ids parameter for canvases"),
+		),
+		mcp.WithBoolean("enable_swipe_to_open",
+			mcp.Description("enable_swipe_to_open parameter for canvases"),
+		),
+		mcp.WithBoolean("is_hidden",
+			mcp.Description("is_hidden parameter for canvases"),
+		),
+		mcp.WithBoolean("is_published",
+			mcp.Description("is_published parameter for canvases"),
+		),
+		mcp.WithString("name",
+			mcp.Description("name parameter for canvases"),
+		),
+		mcp.WithString("source_template_id",
+			mcp.Description("source_template_id parameter for canvases"),
+		),
+	)
+	tools = append(tools, page_post_canvasesTool)
+
+	// page_get_chat_plugin tool
+	page_get_chat_pluginTool := mcp.NewTool("page_get_chat_plugin",
+		mcp.WithDescription("GET chat_plugin for Page"),
+	)
+	tools = append(tools, page_get_chat_pluginTool)
+
+	// page_get_commerce_merchant_settings tool
+	page_get_commerce_merchant_settingsTool := mcp.NewTool("page_get_commerce_merchant_settings",
+		mcp.WithDescription("GET commerce_merchant_settings for Page"),
+	)
+	tools = append(tools, page_get_commerce_merchant_settingsTool)
+
+	// page_get_commerce_orders tool
+	page_get_commerce_ordersTool := mcp.NewTool("page_get_commerce_orders",
+		mcp.WithDescription("GET commerce_orders for Page"),
+		mcp.WithString("filters",
+			mcp.Description("filters parameter for commerce_orders"),
+			mcp.Enum("HAS_CANCELLATIONS", "HAS_FULFILLMENTS", "HAS_REFUNDS", "NO_CANCELLATIONS", "NO_REFUNDS", "NO_SHIPMENTS"),
+		),
+		mcp.WithString("state",
+			mcp.Description("state parameter for commerce_orders"),
+			mcp.Enum("COMPLETED", "CREATED", "FB_PROCESSING", "IN_PROGRESS"),
+		),
+		mcp.WithString("updated_after",
+			mcp.Description("updated_after parameter for commerce_orders"),
+		),
+		mcp.WithString("updated_before",
+			mcp.Description("updated_before parameter for commerce_orders"),
+		),
+	)
+	tools = append(tools, page_get_commerce_ordersTool)
+
+	// page_get_commerce_payouts tool
+	page_get_commerce_payoutsTool := mcp.NewTool("page_get_commerce_payouts",
+		mcp.WithDescription("GET commerce_payouts for Page"),
+		mcp.WithString("end_time",
+			mcp.Description("end_time parameter for commerce_payouts"),
+		),
+		mcp.WithString("start_time",
+			mcp.Description("start_time parameter for commerce_payouts"),
+		),
+	)
+	tools = append(tools, page_get_commerce_payoutsTool)
+
+	// page_get_commerce_transactions tool
+	page_get_commerce_transactionsTool := mcp.NewTool("page_get_commerce_transactions",
+		mcp.WithDescription("GET commerce_transactions for Page"),
+		mcp.WithString("end_time",
+			mcp.Description("end_time parameter for commerce_transactions"),
+		),
+		mcp.WithString("payout_reference_id",
+			mcp.Description("payout_reference_id parameter for commerce_transactions"),
+		),
+		mcp.WithString("start_time",
+			mcp.Description("start_time parameter for commerce_transactions"),
+		),
+	)
+	tools = append(tools, page_get_commerce_transactionsTool)
+
+	// page_get_conversations tool
+	page_get_conversationsTool := mcp.NewTool("page_get_conversations",
+		mcp.WithDescription("GET conversations for Page"),
+		mcp.WithString("folder",
+			mcp.Description("folder parameter for conversations"),
+		),
+		mcp.WithString("platform",
+			mcp.Description("platform parameter for conversations"),
+			mcp.Enum("INSTAGRAM", "MESSENGER"),
+		),
+		mcp.WithString("tags",
+			mcp.Description("tags parameter for conversations"),
+		),
+		mcp.WithString("user_id",
+			mcp.Description("user_id parameter for conversations"),
+		),
+	)
+	tools = append(tools, page_get_conversationsTool)
+
+	// page_post_copyright_manual_claims tool
+	page_post_copyright_manual_claimsTool := mcp.NewTool("page_post_copyright_manual_claims",
+		mcp.WithDescription("POST copyright_manual_claims for Page"),
+		mcp.WithString("action",
+			mcp.Description("action parameter for copyright_manual_claims"),
+			mcp.Enum("BLOCK", "CLAIM_AD_EARNINGS", "MANUAL_REVIEW", "MONITOR", "REQUEST_TAKEDOWN"),
+		),
+		mcp.WithString("action_reason",
+			mcp.Description("action_reason parameter for copyright_manual_claims"),
+			mcp.Enum("ARTICLE_17_PREFLAGGING", "ARTIST_OBJECTION", "OBJECTIONABLE_CONTENT", "PREMIUM_MUSIC_VIDEO", "PRERELEASE_CONTENT", "PRODUCT_PARAMETERS", "RESTRICTED_CONTENT", "UNAUTHORIZED_COMMERCIAL_USE"),
+		),
+		mcp.WithString("countries",
+			mcp.Description("countries parameter for copyright_manual_claims"),
+		),
+		mcp.WithString("match_content_type",
+			mcp.Required(),
+			mcp.Description("match_content_type parameter for copyright_manual_claims"),
+			mcp.Enum("AUDIO_ONLY", "VIDEO_AND_AUDIO", "VIDEO_ONLY"),
+		),
+		mcp.WithString("matched_asset_id",
+			mcp.Required(),
+			mcp.Description("matched_asset_id parameter for copyright_manual_claims"),
+		),
+		mcp.WithString("reference_asset_id",
+			mcp.Required(),
+			mcp.Description("reference_asset_id parameter for copyright_manual_claims"),
+		),
+		mcp.WithString("selected_segments",
+			mcp.Description("selected_segments parameter for copyright_manual_claims"),
+		),
+	)
+	tools = append(tools, page_post_copyright_manual_claimsTool)
+
+	// page_get_crosspost_whitelisted_pages tool
+	page_get_crosspost_whitelisted_pagesTool := mcp.NewTool("page_get_crosspost_whitelisted_pages",
+		mcp.WithDescription("GET crosspost_whitelisted_pages for Page"),
+	)
+	tools = append(tools, page_get_crosspost_whitelisted_pagesTool)
+
+	// page_get_ctx_optimization_eligibility tool
+	page_get_ctx_optimization_eligibilityTool := mcp.NewTool("page_get_ctx_optimization_eligibility",
+		mcp.WithDescription("GET ctx_optimization_eligibility for Page"),
+	)
+	tools = append(tools, page_get_ctx_optimization_eligibilityTool)
+
+	// page_get_custom_labels tool
+	page_get_custom_labelsTool := mcp.NewTool("page_get_custom_labels",
+		mcp.WithDescription("GET custom_labels for Page"),
+	)
+	tools = append(tools, page_get_custom_labelsTool)
+
+	// page_post_custom_labels tool
+	page_post_custom_labelsTool := mcp.NewTool("page_post_custom_labels",
+		mcp.WithDescription("POST custom_labels for Page"),
+		mcp.WithString("name",
+			mcp.Description("name parameter for custom_labels"),
+		),
+		mcp.WithString("page_label_name",
+			mcp.Required(),
+			mcp.Description("page_label_name parameter for custom_labels"),
+		),
+	)
+	tools = append(tools, page_post_custom_labelsTool)
+
+	// page_delete_custom_user_settings tool
+	page_delete_custom_user_settingsTool := mcp.NewTool("page_delete_custom_user_settings",
+		mcp.WithDescription("DELETE custom_user_settings for Page"),
+		mcp.WithString("params",
+			mcp.Required(),
+			mcp.Description("params parameter for custom_user_settings"),
+			mcp.Enum("PERSISTENT_MENU"),
+		),
+		mcp.WithString("psid",
+			mcp.Required(),
+			mcp.Description("psid parameter for custom_user_settings"),
+		),
+	)
+	tools = append(tools, page_delete_custom_user_settingsTool)
+
+	// page_get_custom_user_settings tool
+	page_get_custom_user_settingsTool := mcp.NewTool("page_get_custom_user_settings",
+		mcp.WithDescription("GET custom_user_settings for Page"),
+		mcp.WithString("psid",
+			mcp.Required(),
+			mcp.Description("psid parameter for custom_user_settings"),
+		),
+	)
+	tools = append(tools, page_get_custom_user_settingsTool)
+
+	// page_post_custom_user_settings tool
+	page_post_custom_user_settingsTool := mcp.NewTool("page_post_custom_user_settings",
+		mcp.WithDescription("POST custom_user_settings for Page"),
+		mcp.WithString("persistent_menu",
+			mcp.Description("persistent_menu parameter for custom_user_settings"),
+		),
+		mcp.WithString("psid",
+			mcp.Required(),
+			mcp.Description("psid parameter for custom_user_settings"),
+		),
+	)
+	tools = append(tools, page_post_custom_user_settingsTool)
+
+	// page_get_dataset tool
+	page_get_datasetTool := mcp.NewTool("page_get_dataset",
+		mcp.WithDescription("GET dataset for Page"),
+	)
+	tools = append(tools, page_get_datasetTool)
+
+	// page_post_dataset tool
+	page_post_datasetTool := mcp.NewTool("page_post_dataset",
+		mcp.WithDescription("POST dataset for Page"),
+		mcp.WithString("dataset_name",
+			mcp.Description("dataset_name parameter for dataset"),
+		),
+	)
+	tools = append(tools, page_post_datasetTool)
+
+	// page_get_events tool
+	page_get_eventsTool := mcp.NewTool("page_get_events",
+		mcp.WithDescription("GET events for Page"),
+		mcp.WithString("event_state_filter",
+			mcp.Description("event_state_filter parameter for events"),
+			mcp.Enum("canceled", "draft", "published", "scheduled_draft_for_publication"),
+		),
+		mcp.WithBoolean("include_canceled",
+			mcp.Description("include_canceled parameter for events"),
+		),
+		mcp.WithString("time_filter",
+			mcp.Description("time_filter parameter for events"),
+			mcp.Enum("past", "upcoming"),
+		),
+		mcp.WithString("type",
+			mcp.Description("type parameter for events"),
+			mcp.Enum("attending", "created", "declined", "maybe", "not_replied"),
+		),
+	)
+	tools = append(tools, page_get_eventsTool)
+
+	// page_post_extend_thread_control tool
+	page_post_extend_thread_controlTool := mcp.NewTool("page_post_extend_thread_control",
+		mcp.WithDescription("POST extend_thread_control for Page"),
+		mcp.WithNumber("duration",
+			mcp.Description("duration parameter for extend_thread_control"),
+		),
+		mcp.WithString("recipient",
+			mcp.Required(),
+			mcp.Description("recipient parameter for extend_thread_control"),
+		),
+	)
+	tools = append(tools, page_post_extend_thread_controlTool)
+
+	// page_get_fantasy_games tool
+	page_get_fantasy_gamesTool := mcp.NewTool("page_get_fantasy_games",
+		mcp.WithDescription("GET fantasy_games for Page"),
+	)
+	tools = append(tools, page_get_fantasy_gamesTool)
+
+	// page_get_feed tool
+	page_get_feedTool := mcp.NewTool("page_get_feed",
+		mcp.WithDescription("GET feed for Page"),
+		mcp.WithBoolean("include_hidden",
+			mcp.Description("include_hidden parameter for feed"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("limit parameter for feed"),
+		),
+		mcp.WithBoolean("show_expired",
+			mcp.Description("show_expired parameter for feed"),
+		),
+		mcp.WithString("with",
+			mcp.Description("with parameter for feed"),
+			mcp.Enum("LOCATION"),
+		),
+	)
+	tools = append(tools, page_get_feedTool)
+
+	// page_post_feed tool
+	page_post_feedTool := mcp.NewTool("page_post_feed",
+		mcp.WithDescription("POST feed for Page"),
+		mcp.WithString("actions",
+			mcp.Description("actions parameter for feed"),
+		),
+		mcp.WithString("album_id",
+			mcp.Description("album_id parameter for feed"),
+		),
+		mcp.WithString("android_key_hash",
+			mcp.Description("android_key_hash parameter for feed"),
+		),
+		mcp.WithString("application_id",
+			mcp.Description("application_id parameter for feed"),
+		),
+		mcp.WithNumber("asked_fun_fact_prompt_id",
+			mcp.Description("asked_fun_fact_prompt_id parameter for feed"),
+		),
+		mcp.WithString("asset3d_id",
+			mcp.Description("asset3d_id parameter for feed"),
+		),
+		mcp.WithString("associated_id",
+			mcp.Description("associated_id parameter for feed"),
+		),
+		mcp.WithBoolean("attach_place_suggestion",
+			mcp.Description("attach_place_suggestion parameter for feed"),
+		),
+		mcp.WithString("attached_media",
+			mcp.Description("attached_media parameter for feed"),
+		),
+		mcp.WithBoolean("audience_exp",
+			mcp.Description("audience_exp parameter for feed"),
+		),
+		mcp.WithString("backdated_time",
+			mcp.Description("backdated_time parameter for feed"),
+		),
+		mcp.WithString("backdated_time_granularity",
+			mcp.Description("backdated_time_granularity parameter for feed"),
+			mcp.Enum("day", "hour", "min", "month", "none", "year"),
+		),
+		mcp.WithBoolean("breaking_news",
+			mcp.Description("breaking_news parameter for feed"),
+		),
+		mcp.WithNumber("breaking_news_expiration",
+			mcp.Description("breaking_news_expiration parameter for feed"),
+		),
+		mcp.WithString("call_to_action",
+			mcp.Description("call_to_action parameter for feed"),
+		),
+		mcp.WithString("caption",
+			mcp.Description("caption parameter for feed"),
+		),
+		mcp.WithString("child_attachments",
+			mcp.Description("child_attachments parameter for feed"),
+		),
+		mcp.WithString("client_mutation_id",
+			mcp.Description("client_mutation_id parameter for feed"),
+		),
+		mcp.WithString("composer_entry_picker",
+			mcp.Description("composer_entry_picker parameter for feed"),
+		),
+		mcp.WithString("composer_entry_point",
+			mcp.Description("composer_entry_point parameter for feed"),
+		),
+		mcp.WithNumber("composer_entry_time",
+			mcp.Description("composer_entry_time parameter for feed"),
+		),
+		mcp.WithString("composer_session_events_log",
+			mcp.Description("composer_session_events_log parameter for feed"),
+		),
+		mcp.WithString("composer_session_id",
+			mcp.Description("composer_session_id parameter for feed"),
+		),
+		mcp.WithString("composer_source_surface",
+			mcp.Description("composer_source_surface parameter for feed"),
+		),
+		mcp.WithString("composer_type",
+			mcp.Description("composer_type parameter for feed"),
+		),
+		mcp.WithString("connection_class",
+			mcp.Description("connection_class parameter for feed"),
+		),
+		mcp.WithString("content_attachment",
+			mcp.Description("content_attachment parameter for feed"),
+		),
+		mcp.WithString("coordinates",
+			mcp.Description("coordinates parameter for feed"),
+		),
+		mcp.WithString("cta_link",
+			mcp.Description("cta_link parameter for feed"),
+		),
+		mcp.WithString("cta_type",
+			mcp.Description("cta_type parameter for feed"),
+		),
+		mcp.WithString("description",
+			mcp.Description("description parameter for feed"),
+		),
+		mcp.WithNumber("direct_share_status",
+			mcp.Description("direct_share_status parameter for feed"),
+		),
+		mcp.WithBoolean("enforce_link_ownership",
+			mcp.Description("enforce_link_ownership parameter for feed"),
+		),
+		mcp.WithNumber("expanded_height",
+			mcp.Description("expanded_height parameter for feed"),
+		),
+		mcp.WithNumber("expanded_width",
+			mcp.Description("expanded_width parameter for feed"),
+		),
+		mcp.WithString("feed_targeting",
+			mcp.Description("feed_targeting parameter for feed"),
+		),
+		mcp.WithString("formatting",
+			mcp.Description("formatting parameter for feed"),
+			mcp.Enum("MARKDOWN", "PLAINTEXT"),
+		),
+		mcp.WithString("fun_fact_prompt_id",
+			mcp.Description("fun_fact_prompt_id parameter for feed"),
+		),
+		mcp.WithNumber("fun_fact_toastee_id",
+			mcp.Description("fun_fact_toastee_id parameter for feed"),
+		),
+		mcp.WithNumber("height",
+			mcp.Description("height parameter for feed"),
+		),
+		mcp.WithString("home_checkin_city_id",
+			mcp.Description("home_checkin_city_id parameter for feed"),
+		),
+		mcp.WithString("image_crops",
+			mcp.Description("image_crops parameter for feed"),
+		),
+		mcp.WithString("implicit_with_tags",
+			mcp.Description("implicit_with_tags parameter for feed"),
+		),
+		mcp.WithString("instant_game_entry_point_data",
+			mcp.Description("instant_game_entry_point_data parameter for feed"),
+		),
+		mcp.WithString("ios_bundle_id",
+			mcp.Description("ios_bundle_id parameter for feed"),
+		),
+		mcp.WithBoolean("is_backout_draft",
+			mcp.Description("is_backout_draft parameter for feed"),
+		),
+		mcp.WithBoolean("is_boost_intended",
+			mcp.Description("is_boost_intended parameter for feed"),
+		),
+		mcp.WithBoolean("is_explicit_location",
+			mcp.Description("is_explicit_location parameter for feed"),
+		),
+		mcp.WithBoolean("is_explicit_share",
+			mcp.Description("is_explicit_share parameter for feed"),
+		),
+		mcp.WithBoolean("is_group_linking_post",
+			mcp.Description("is_group_linking_post parameter for feed"),
+		),
+		mcp.WithBoolean("is_photo_container",
+			mcp.Description("is_photo_container parameter for feed"),
+		),
+		mcp.WithString("link",
+			mcp.Description("link parameter for feed"),
+		),
+		mcp.WithString("location_source_id",
+			mcp.Description("location_source_id parameter for feed"),
+		),
+		mcp.WithBoolean("manual_privacy",
+			mcp.Description("manual_privacy parameter for feed"),
+		),
+		mcp.WithString("message",
+			mcp.Description("message parameter for feed"),
+		),
+		mcp.WithBoolean("multi_share_end_card",
+			mcp.Description("multi_share_end_card parameter for feed"),
+		),
+		mcp.WithBoolean("multi_share_optimized",
+			mcp.Description("multi_share_optimized parameter for feed"),
+		),
+		mcp.WithString("name",
+			mcp.Description("name parameter for feed"),
+		),
+		mcp.WithString("nectar_module",
+			mcp.Description("nectar_module parameter for feed"),
+		),
+		mcp.WithString("object_attachment",
+			mcp.Description("object_attachment parameter for feed"),
+		),
+		mcp.WithString("og_action_type_id",
+			mcp.Description("og_action_type_id parameter for feed"),
+		),
+		mcp.WithBoolean("og_hide_object_attachment",
+			mcp.Description("og_hide_object_attachment parameter for feed"),
+		),
+		mcp.WithString("og_icon_id",
+			mcp.Description("og_icon_id parameter for feed"),
+		),
+		mcp.WithString("og_object_id",
+			mcp.Description("og_object_id parameter for feed"),
+		),
+		mcp.WithString("og_phrase",
+			mcp.Description("og_phrase parameter for feed"),
+		),
+		mcp.WithBoolean("og_set_profile_badge",
+			mcp.Description("og_set_profile_badge parameter for feed"),
+		),
+		mcp.WithString("og_suggestion_mechanism",
+			mcp.Description("og_suggestion_mechanism parameter for feed"),
+		),
+		mcp.WithString("page_recommendation",
+			mcp.Description("page_recommendation parameter for feed"),
+		),
+		mcp.WithString("picture",
+			mcp.Description("picture parameter for feed"),
+		),
+		mcp.WithString("place",
+			mcp.Description("place parameter for feed"),
+		),
+		mcp.WithString("place_attachment_setting",
+			mcp.Description("place_attachment_setting parameter for feed"),
+			mcp.Enum("1", "2"),
+		),
+		mcp.WithString("place_list",
+			mcp.Description("place_list parameter for feed"),
+		),
+		mcp.WithString("place_list_data",
+			mcp.Description("place_list_data parameter for feed"),
+		),
+		mcp.WithString("post_surfaces_blacklist",
+			mcp.Description("post_surfaces_blacklist parameter for feed"),
+			mcp.Enum("1", "2", "3", "4", "5"),
+		),
+		mcp.WithString("posting_to_redspace",
+			mcp.Description("posting_to_redspace parameter for feed"),
+			mcp.Enum("disabled", "enabled"),
+		),
+		mcp.WithString("privacy",
+			mcp.Description("privacy parameter for feed"),
+		),
+		mcp.WithString("prompt_id",
+			mcp.Description("prompt_id parameter for feed"),
+		),
+		mcp.WithString("prompt_tracking_string",
+			mcp.Description("prompt_tracking_string parameter for feed"),
+		),
+		mcp.WithString("properties",
+			mcp.Description("properties parameter for feed"),
+		),
+		mcp.WithString("proxied_app_id",
+			mcp.Description("proxied_app_id parameter for feed"),
+		),
+		mcp.WithNumber("publish_event_id",
+			mcp.Description("publish_event_id parameter for feed"),
+		),
+		mcp.WithBoolean("published",
+			mcp.Description("published parameter for feed"),
+		),
+		mcp.WithString("quote",
+			mcp.Description("quote parameter for feed"),
+		),
+		mcp.WithString("ref",
+			mcp.Description("ref parameter for feed"),
+		),
+		mcp.WithString("referenceable_image_ids",
+			mcp.Description("referenceable_image_ids parameter for feed"),
+		),
+		mcp.WithString("referral_id",
+			mcp.Description("referral_id parameter for feed"),
+		),
+		mcp.WithString("scheduled_publish_time",
+			mcp.Description("scheduled_publish_time parameter for feed"),
+		),
+		mcp.WithString("source",
+			mcp.Description("source parameter for feed"),
+		),
+		mcp.WithString("sponsor_id",
+			mcp.Description("sponsor_id parameter for feed"),
+		),
+		mcp.WithNumber("sponsor_relationship",
+			mcp.Description("sponsor_relationship parameter for feed"),
+		),
+		mcp.WithString("suggested_place_id",
+			mcp.Description("suggested_place_id parameter for feed"),
+		),
+		mcp.WithString("tags",
+			mcp.Description("tags parameter for feed"),
+		),
+		mcp.WithString("target_surface",
+			mcp.Description("target_surface parameter for feed"),
+			mcp.Enum("STORY", "TIMELINE"),
+		),
+		mcp.WithString("targeting",
+			mcp.Description("targeting parameter for feed"),
+		),
+		mcp.WithString("text_format_metadata",
+			mcp.Description("text_format_metadata parameter for feed"),
+		),
+		mcp.WithString("text_format_preset_id",
+			mcp.Description("text_format_preset_id parameter for feed"),
+		),
+		mcp.WithString("text_only_place",
+			mcp.Description("text_only_place parameter for feed"),
+		),
+		mcp.WithString("thumbnail",
+			mcp.Description("thumbnail parameter for feed"),
+		),
+		mcp.WithNumber("time_since_original_post",
+			mcp.Description("time_since_original_post parameter for feed"),
+		),
+		mcp.WithString("title",
+			mcp.Description("title parameter for feed"),
+		),
+		mcp.WithString("tracking_info",
+			mcp.Description("tracking_info parameter for feed"),
+		),
+		mcp.WithString("unpublished_content_type",
+			mcp.Description("unpublished_content_type parameter for feed"),
+			mcp.Enum("ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING"),
+		),
+		mcp.WithBoolean("user_selected_tags",
+			mcp.Description("user_selected_tags parameter for feed"),
+		),
+		mcp.WithNumber("video_start_time_ms",
+			mcp.Description("video_start_time_ms parameter for feed"),
+		),
+		mcp.WithString("viewer_coordinates",
+			mcp.Description("viewer_coordinates parameter for feed"),
+		),
+		mcp.WithNumber("width",
+			mcp.Description("width parameter for feed"),
+		),
+	)
+	tools = append(tools, page_post_feedTool)
+
+	// page_get_global_brand_children tool
+	page_get_global_brand_childrenTool := mcp.NewTool("page_get_global_brand_children",
+		mcp.WithDescription("GET global_brand_children for Page"),
+	)
+	tools = append(tools, page_get_global_brand_childrenTool)
+
+	// page_get_image_copyrights tool
+	page_get_image_copyrightsTool := mcp.NewTool("page_get_image_copyrights",
+		mcp.WithDescription("GET image_copyrights for Page"),
+	)
+	tools = append(tools, page_get_image_copyrightsTool)
+
+	// page_post_image_copyrights tool
+	page_post_image_copyrightsTool := mcp.NewTool("page_post_image_copyrights",
+		mcp.WithDescription("POST image_copyrights for Page"),
+		mcp.WithString("artist",
+			mcp.Description("artist parameter for image_copyrights"),
+		),
+		mcp.WithString("attribution_link",
+			mcp.Description("attribution_link parameter for image_copyrights"),
+		),
+		mcp.WithString("creator",
+			mcp.Description("creator parameter for image_copyrights"),
+		),
+		mcp.WithString("custom_id",
+			mcp.Description("custom_id parameter for image_copyrights"),
+		),
+		mcp.WithString("description",
+			mcp.Description("description parameter for image_copyrights"),
+		),
+		mcp.WithString("filename",
+			mcp.Required(),
+			mcp.Description("filename parameter for image_copyrights"),
+		),
+		mcp.WithString("geo_ownership",
+			mcp.Required(),
+			mcp.Description("geo_ownership parameter for image_copyrights"),
+			mcp.Enum("AD", "AE", "AF", "AG", "AI", "AL", "AM", "AN", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TP", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "XK", "YE", "YT", "ZA", "ZM", "ZW"),
+		),
+		mcp.WithNumber("original_content_creation_date",
+			mcp.Description("original_content_creation_date parameter for image_copyrights"),
+		),
+		mcp.WithString("reference_photo",
+			mcp.Required(),
+			mcp.Description("reference_photo parameter for image_copyrights"),
+		),
+		mcp.WithString("title",
+			mcp.Description("title parameter for image_copyrights"),
+		),
+	)
+	tools = append(tools, page_post_image_copyrightsTool)
+
+	// page_get_indexed_videos tool
+	page_get_indexed_videosTool := mcp.NewTool("page_get_indexed_videos",
+		mcp.WithDescription("GET indexed_videos for Page"),
+	)
+	tools = append(tools, page_get_indexed_videosTool)
+
+	// page_get_insights tool
+	page_get_insightsTool := mcp.NewTool("page_get_insights",
+		mcp.WithDescription("GET insights for Page"),
+		mcp.WithString("breakdown",
+			mcp.Description("breakdown parameter for insights"),
+		),
+		mcp.WithString("date_preset",
+			mcp.Description("date_preset parameter for insights"),
+			mcp.Enum("data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"),
+		),
+		mcp.WithString("metric",
+			mcp.Description("metric parameter for insights"),
+		),
+		mcp.WithString("period",
+			mcp.Description("period parameter for insights"),
+			mcp.Enum("day", "days_28", "lifetime", "month", "total_over_range", "week"),
+		),
+		mcp.WithBoolean("show_description_from_api_doc",
+			mcp.Description("show_description_from_api_doc parameter for insights"),
+		),
+		mcp.WithString("since",
+			mcp.Description("since parameter for insights"),
+		),
+		mcp.WithString("until",
+			mcp.Description("until parameter for insights"),
+		),
+	)
+	tools = append(tools, page_get_insightsTool)
+
+	// page_get_instagram_accounts tool
+	page_get_instagram_accountsTool := mcp.NewTool("page_get_instagram_accounts",
+		mcp.WithDescription("GET instagram_accounts for Page"),
+	)
+	tools = append(tools, page_get_instagram_accountsTool)
+
+	// page_get_leadgen_forms tool
+	page_get_leadgen_formsTool := mcp.NewTool("page_get_leadgen_forms",
+		mcp.WithDescription("GET leadgen_forms for Page"),
+	)
+	tools = append(tools, page_get_leadgen_formsTool)
+
+	// page_post_leadgen_forms tool
+	page_post_leadgen_formsTool := mcp.NewTool("page_post_leadgen_forms",
+		mcp.WithDescription("POST leadgen_forms for Page"),
+		mcp.WithBoolean("allow_organic_lead_retrieval",
+			mcp.Description("allow_organic_lead_retrieval parameter for leadgen_forms"),
+		),
+		mcp.WithBoolean("block_display_for_non_targeted_viewer",
+			mcp.Description("block_display_for_non_targeted_viewer parameter for leadgen_forms"),
+		),
+		mcp.WithString("context_card",
+			mcp.Description("context_card parameter for leadgen_forms"),
+		),
+		mcp.WithString("cover_photo",
+			mcp.Description("cover_photo parameter for leadgen_forms"),
+		),
+		mcp.WithString("custom_disclaimer",
+			mcp.Description("custom_disclaimer parameter for leadgen_forms"),
+		),
+		mcp.WithString("follow_up_action_url",
+			mcp.Description("follow_up_action_url parameter for leadgen_forms"),
+		),
+		mcp.WithBoolean("is_for_canvas",
+			mcp.Description("is_for_canvas parameter for leadgen_forms"),
+		),
+		mcp.WithBoolean("is_optimized_for_quality",
+			mcp.Description("is_optimized_for_quality parameter for leadgen_forms"),
+		),
+		mcp.WithString("locale",
+			mcp.Description("locale parameter for leadgen_forms"),
+			mcp.Enum("AR_AR", "CS_CZ", "DA_DK", "DE_DE", "EL_GR", "EN_GB", "EN_US", "ES_ES", "ES_LA", "FI_FI", "FR_FR", "HE_IL", "HI_IN", "HU_HU", "ID_ID", "IT_IT", "JA_JP", "KO_KR", "NB_NO", "NL_NL", "PL_PL", "PT_BR", "PT_PT", "RO_RO", "RU_RU", "SV_SE", "TH_TH", "TR_TR", "VI_VN", "ZH_CN", "ZH_HK", "ZH_TW"),
+		),
+		mcp.WithString("name",
+			mcp.Required(),
+			mcp.Description("name parameter for leadgen_forms"),
+		),
+		mcp.WithString("privacy_policy",
+			mcp.Description("privacy_policy parameter for leadgen_forms"),
+		),
+		mcp.WithString("question_page_custom_headline",
+			mcp.Description("question_page_custom_headline parameter for leadgen_forms"),
+		),
+		mcp.WithString("questions",
+			mcp.Required(),
+			mcp.Description("questions parameter for leadgen_forms"),
+		),
+		mcp.WithString("thank_you_page",
+			mcp.Description("thank_you_page parameter for leadgen_forms"),
+		),
+		mcp.WithString("tracking_parameters",
+			mcp.Description("tracking_parameters parameter for leadgen_forms"),
+		),
+		mcp.WithString("upload_gated_file",
+			mcp.Description("upload_gated_file parameter for leadgen_forms"),
+		),
+	)
+	tools = append(tools, page_post_leadgen_formsTool)
+
+	// page_get_likes tool
+	page_get_likesTool := mcp.NewTool("page_get_likes",
+		mcp.WithDescription("GET likes for Page"),
+		mcp.WithString("target_id",
+			mcp.Description("target_id parameter for likes"),
+		),
+	)
+	tools = append(tools, page_get_likesTool)
+
+	// page_get_live_videos tool
+	page_get_live_videosTool := mcp.NewTool("page_get_live_videos",
+		mcp.WithDescription("GET live_videos for Page"),
+		mcp.WithString("broadcast_status",
+			mcp.Description("broadcast_status parameter for live_videos"),
+			mcp.Enum("LIVE", "LIVE_STOPPED", "PROCESSING", "SCHEDULED_CANCELED", "SCHEDULED_EXPIRED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED", "VOD"),
+		),
+		mcp.WithString("source",
+			mcp.Description("source parameter for live_videos"),
+			mcp.Enum("owner", "target"),
+		),
+	)
+	tools = append(tools, page_get_live_videosTool)
+
+	// page_post_live_videos tool
+	page_post_live_videosTool := mcp.NewTool("page_post_live_videos",
+		mcp.WithDescription("POST live_videos for Page"),
+		mcp.WithString("content_tags",
+			mcp.Description("content_tags parameter for live_videos"),
+		),
+		mcp.WithString("crossposting_actions",
+			mcp.Description("crossposting_actions parameter for live_videos"),
+		),
+		mcp.WithString("custom_labels",
+			mcp.Description("custom_labels parameter for live_videos"),
+		),
+		mcp.WithString("description",
+			mcp.Description("description parameter for live_videos"),
+		),
+		mcp.WithBoolean("enable_backup_ingest",
+			mcp.Description("enable_backup_ingest parameter for live_videos"),
+		),
+		mcp.WithString("encoding_settings",
+			mcp.Description("encoding_settings parameter for live_videos"),
+		),
+		mcp.WithString("event_params",
+			mcp.Description("event_params parameter for live_videos"),
+		),
+		mcp.WithBoolean("fisheye_video_cropped",
+			mcp.Description("fisheye_video_cropped parameter for live_videos"),
+		),
+		mcp.WithNumber("front_z_rotation",
+			mcp.Description("front_z_rotation parameter for live_videos"),
+		),
+		mcp.WithString("game_show",
+			mcp.Description("game_show parameter for live_videos"),
+		),
+		mcp.WithBoolean("is_audio_only",
+			mcp.Description("is_audio_only parameter for live_videos"),
+		),
+		mcp.WithBoolean("is_spherical",
+			mcp.Description("is_spherical parameter for live_videos"),
+		),
+		mcp.WithNumber("original_fov",
+			mcp.Description("original_fov parameter for live_videos"),
+		),
+		mcp.WithString("privacy",
+			mcp.Description("privacy parameter for live_videos"),
+		),
+		mcp.WithString("projection",
+			mcp.Description("projection parameter for live_videos"),
+			mcp.Enum("CUBEMAP", "EQUIRECTANGULAR", "HALF_EQUIRECTANGULAR"),
+		),
+		mcp.WithBoolean("published",
+			mcp.Description("published parameter for live_videos"),
+		),
+		mcp.WithString("schedule_custom_profile_image",
+			mcp.Description("schedule_custom_profile_image parameter for live_videos"),
+		),
+		mcp.WithString("spatial_audio_format",
+			mcp.Description("spatial_audio_format parameter for live_videos"),
+			mcp.Enum("ambiX_4"),
+		),
+		mcp.WithString("status",
+			mcp.Description("status parameter for live_videos"),
+			mcp.Enum("LIVE_NOW", "SCHEDULED_CANCELED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED"),
+		),
+		mcp.WithString("stereoscopic_mode",
+			mcp.Description("stereoscopic_mode parameter for live_videos"),
+			mcp.Enum("LEFT_RIGHT", "MONO", "TOP_BOTTOM"),
+		),
+		mcp.WithBoolean("stop_on_delete_stream",
+			mcp.Description("stop_on_delete_stream parameter for live_videos"),
+		),
+		mcp.WithString("stream_type",
+			mcp.Description("stream_type parameter for live_videos"),
+			mcp.Enum("AMBIENT", "REGULAR"),
+		),
+		mcp.WithString("targeting",
+			mcp.Description("targeting parameter for live_videos"),
+		),
+		mcp.WithString("title",
+			mcp.Description("title parameter for live_videos"),
+		),
+	)
+	tools = append(tools, page_post_live_videosTool)
+
+	// page_delete_locations tool
+	page_delete_locationsTool := mcp.NewTool("page_delete_locations",
+		mcp.WithDescription("DELETE locations for Page"),
+		mcp.WithString("location_page_ids",
+			mcp.Required(),
+			mcp.Description("location_page_ids parameter for locations"),
+		),
+		mcp.WithString("store_numbers",
+			mcp.Required(),
+			mcp.Description("store_numbers parameter for locations"),
+		),
+	)
+	tools = append(tools, page_delete_locationsTool)
+
+	// page_get_locations tool
+	page_get_locationsTool := mcp.NewTool("page_get_locations",
+		mcp.WithDescription("GET locations for Page"),
+	)
+	tools = append(tools, page_get_locationsTool)
+
+	// page_post_locations tool
+	page_post_locationsTool := mcp.NewTool("page_post_locations",
+		mcp.WithDescription("POST locations for Page"),
+		mcp.WithBoolean("always_open",
+			mcp.Description("always_open parameter for locations"),
+		),
+		mcp.WithString("delivery_and_pickup_option_info",
+			mcp.Description("delivery_and_pickup_option_info parameter for locations"),
+		),
+		mcp.WithString("differently_open_offerings",
+			mcp.Description("differently_open_offerings parameter for locations"),
+		),
+		mcp.WithString("hours",
+			mcp.Description("hours parameter for locations"),
+		),
+		mcp.WithBoolean("ignore_warnings",
+			mcp.Description("ignore_warnings parameter for locations"),
+		),
+		mcp.WithString("location",
+			mcp.Description("location parameter for locations"),
+		),
+		mcp.WithString("location_page_id",
+			mcp.Description("location_page_id parameter for locations"),
+		),
+		mcp.WithNumber("old_store_number",
+			mcp.Description("old_store_number parameter for locations"),
+		),
+		mcp.WithString("page_username",
+			mcp.Description("page_username parameter for locations"),
+		),
+		mcp.WithBoolean("permanently_closed",
+			mcp.Description("permanently_closed parameter for locations"),
+		),
+		mcp.WithString("phone",
+			mcp.Description("phone parameter for locations"),
+		),
+		mcp.WithString("pickup_options",
+			mcp.Description("pickup_options parameter for locations"),
+			mcp.Enum("CURBSIDE", "IN_STORE", "OTHER"),
+		),
+		mcp.WithString("place_topics",
+			mcp.Description("place_topics parameter for locations"),
+		),
+		mcp.WithString("price_range",
+			mcp.Description("price_range parameter for locations"),
+		),
+		mcp.WithString("store_code",
+			mcp.Description("store_code parameter for locations"),
+		),
+		mcp.WithString("store_location_descriptor",
+			mcp.Description("store_location_descriptor parameter for locations"),
+		),
+		mcp.WithString("store_name",
+			mcp.Description("store_name parameter for locations"),
+		),
+		mcp.WithNumber("store_number",
+			mcp.Required(),
+			mcp.Description("store_number parameter for locations"),
+		),
+		mcp.WithString("temporary_status",
+			mcp.Description("temporary_status parameter for locations"),
+			mcp.Enum("DIFFERENTLY_OPEN", "NO_DATA", "OPERATING_AS_USUAL", "TEMPORARILY_CLOSED"),
+		),
+		mcp.WithString("website",
+			mcp.Description("website parameter for locations"),
+		),
+	)
+	tools = append(tools, page_post_locationsTool)
+
+	// page_get_media_fingerprints tool
+	page_get_media_fingerprintsTool := mcp.NewTool("page_get_media_fingerprints",
+		mcp.WithDescription("GET media_fingerprints for Page"),
+		mcp.WithString("universal_content_id",
+			mcp.Description("universal_content_id parameter for media_fingerprints"),
+		),
+	)
+	tools = append(tools, page_get_media_fingerprintsTool)
+
+	// page_post_media_fingerprints tool
+	page_post_media_fingerprintsTool := mcp.NewTool("page_post_media_fingerprints",
+		mcp.WithDescription("POST media_fingerprints for Page"),
+		mcp.WithString("fingerprint_content_type",
+			mcp.Required(),
+			mcp.Description("fingerprint_content_type parameter for media_fingerprints"),
+			mcp.Enum("AM_SONGTRACK", "EPISODE", "MOVIE", "OTHER", "SONGTRACK"),
+		),
+		mcp.WithString("metadata",
+			mcp.Required(),
+			mcp.Description("metadata parameter for media_fingerprints"),
+		),
+		mcp.WithString("source",
+			mcp.Required(),
+			mcp.Description("source parameter for media_fingerprints"),
+		),
+		mcp.WithString("title",
+			mcp.Required(),
+			mcp.Description("title parameter for media_fingerprints"),
+		),
+		mcp.WithString("universal_content_id",
+			mcp.Description("universal_content_id parameter for media_fingerprints"),
+		),
+	)
+	tools = append(tools, page_post_media_fingerprintsTool)
+
+	// page_post_message_attachments tool
+	page_post_message_attachmentsTool := mcp.NewTool("page_post_message_attachments",
+		mcp.WithDescription("POST message_attachments for Page"),
+		mcp.WithString("message",
+			mcp.Required(),
+			mcp.Description("message parameter for message_attachments"),
+		),
+		mcp.WithString("platform",
+			mcp.Description("platform parameter for message_attachments"),
+			mcp.Enum("INSTAGRAM", "MESSENGER"),
+		),
+	)
+	tools = append(tools, page_post_message_attachmentsTool)
+
+	// page_delete_message_templates tool
+	page_delete_message_templatesTool := mcp.NewTool("page_delete_message_templates",
+		mcp.WithDescription("DELETE message_templates for Page"),
+		mcp.WithString("name",
+			mcp.Required(),
+			mcp.Description("name parameter for message_templates"),
+		),
+		mcp.WithString("template_id",
+			mcp.Description("template_id parameter for message_templates"),
+		),
+	)
+	tools = append(tools, page_delete_message_templatesTool)
+
+	// page_get_message_templates tool
+	page_get_message_templatesTool := mcp.NewTool("page_get_message_templates",
+		mcp.WithDescription("GET message_templates for Page"),
+		mcp.WithString("category",
+			mcp.Description("category parameter for message_templates"),
+			mcp.Enum("UTILITY"),
+		),
+		mcp.WithString("content",
+			mcp.Description("content parameter for message_templates"),
+		),
+		mcp.WithString("language",
+			mcp.Description("language parameter for message_templates"),
+		),
+		mcp.WithString("name",
+			mcp.Description("name parameter for message_templates"),
+		),
+		mcp.WithString("name_or_content",
+			mcp.Description("name_or_content parameter for message_templates"),
+		),
+		mcp.WithString("status",
+			mcp.Description("status parameter for message_templates"),
+			mcp.Enum("APPROVED", "ARCHIVED", "DELETED", "DISABLED", "IN_APPEAL", "LIMIT_EXCEEDED", "PAUSED", "PENDING", "PENDING_DELETION", "REJECTED"),
+		),
+	)
+	tools = append(tools, page_get_message_templatesTool)
+
+	// page_post_message_templates tool
+	page_post_message_templatesTool := mcp.NewTool("page_post_message_templates",
+		mcp.WithDescription("POST message_templates for Page"),
+		mcp.WithString("category",
+			mcp.Required(),
+			mcp.Description("category parameter for message_templates"),
+			mcp.Enum("UTILITY"),
+		),
+		mcp.WithString("components",
+			mcp.Description("components parameter for message_templates"),
+		),
+		mcp.WithString("language",
+			mcp.Required(),
+			mcp.Description("language parameter for message_templates"),
+		),
+		mcp.WithString("library_template_button_inputs",
+			mcp.Description("library_template_button_inputs parameter for message_templates"),
+		),
+		mcp.WithString("library_template_name",
+			mcp.Description("library_template_name parameter for message_templates"),
+		),
+		mcp.WithString("name",
+			mcp.Required(),
+			mcp.Description("name parameter for message_templates"),
+		),
+	)
+	tools = append(tools, page_post_message_templatesTool)
+
+	// page_post_messages tool
+	page_post_messagesTool := mcp.NewTool("page_post_messages",
+		mcp.WithDescription("POST messages for Page"),
+		mcp.WithString("message",
+			mcp.Description("message parameter for messages"),
+		),
+		mcp.WithString("messaging_type",
+			mcp.Description("messaging_type parameter for messages"),
+			mcp.Enum("MESSAGE_TAG", "RESPONSE", "UPDATE", "UTILITY"),
+		),
+		mcp.WithString("notification_type",
+			mcp.Description("notification_type parameter for messages"),
+			mcp.Enum("NO_PUSH", "REGULAR", "SILENT_PUSH"),
+		),
+		mcp.WithString("payload",
+			mcp.Description("payload parameter for messages"),
+		),
+		mcp.WithString("persona_id",
+			mcp.Description("persona_id parameter for messages"),
+		),
+		mcp.WithString("recipient",
+			mcp.Required(),
+			mcp.Description("recipient parameter for messages"),
+		),
+		mcp.WithString("reply_to",
+			mcp.Description("reply_to parameter for messages"),
+		),
+		mcp.WithString("sender_action",
+			mcp.Description("sender_action parameter for messages"),
+			mcp.Enum("MARK_SEEN", "REACT", "TYPING_OFF", "TYPING_ON", "UNREACT"),
+		),
+		mcp.WithString("suggestion_action",
+			mcp.Description("suggestion_action parameter for messages"),
+			mcp.Enum("ACCEPT", "DISMISS", "IMPRESSION"),
+		),
+		mcp.WithString("tag",
+			mcp.Description("tag parameter for messages"),
+		),
+		mcp.WithString("thread_control",
+			mcp.Description("thread_control parameter for messages"),
+		),
+	)
+	tools = append(tools, page_post_messagesTool)
+
+	// page_get_messaging_feature_review tool
+	page_get_messaging_feature_reviewTool := mcp.NewTool("page_get_messaging_feature_review",
+		mcp.WithDescription("GET messaging_feature_review for Page"),
+	)
+	tools = append(tools, page_get_messaging_feature_reviewTool)
+
+	// page_get_messenger_call_settings tool
+	page_get_messenger_call_settingsTool := mcp.NewTool("page_get_messenger_call_settings",
+		mcp.WithDescription("GET messenger_call_settings for Page"),
+	)
+	tools = append(tools, page_get_messenger_call_settingsTool)
+
+	// page_post_messenger_call_settings tool
+	page_post_messenger_call_settingsTool := mcp.NewTool("page_post_messenger_call_settings",
+		mcp.WithDescription("POST messenger_call_settings for Page"),
+		mcp.WithBoolean("audio_enabled",
+			mcp.Description("audio_enabled parameter for messenger_call_settings"),
+		),
+		mcp.WithString("call_hours",
+			mcp.Description("call_hours parameter for messenger_call_settings"),
+		),
+		mcp.WithString("call_routing",
+			mcp.Description("call_routing parameter for messenger_call_settings"),
+		),
+		mcp.WithBoolean("icon_enabled",
+			mcp.Description("icon_enabled parameter for messenger_call_settings"),
+		),
+	)
+	tools = append(tools, page_post_messenger_call_settingsTool)
+
+	// page_get_messenger_lead_forms tool
+	page_get_messenger_lead_formsTool := mcp.NewTool("page_get_messenger_lead_forms",
+		mcp.WithDescription("GET messenger_lead_forms for Page"),
+	)
+	tools = append(tools, page_get_messenger_lead_formsTool)
+
+	// page_post_messenger_lead_forms tool
+	page_post_messenger_lead_formsTool := mcp.NewTool("page_post_messenger_lead_forms",
+		mcp.WithDescription("POST messenger_lead_forms for Page"),
+		mcp.WithNumber("account_id",
+			mcp.Description("account_id parameter for messenger_lead_forms"),
+		),
+		mcp.WithBoolean("block_send_api",
+			mcp.Description("block_send_api parameter for messenger_lead_forms"),
+		),
+		mcp.WithString("exit_keyphrases",
+			mcp.Description("exit_keyphrases parameter for messenger_lead_forms"),
+		),
+		mcp.WithNumber("handover_app_id",
+			mcp.Description("handover_app_id parameter for messenger_lead_forms"),
+		),
+		mcp.WithBoolean("handover_summary",
+			mcp.Description("handover_summary parameter for messenger_lead_forms"),
+		),
+		mcp.WithString("privacy_url",
+			mcp.Description("privacy_url parameter for messenger_lead_forms"),
+		),
+		mcp.WithString("reminder_text",
+			mcp.Description("reminder_text parameter for messenger_lead_forms"),
+		),
+		mcp.WithString("step_list",
+			mcp.Required(),
+			mcp.Description("step_list parameter for messenger_lead_forms"),
+		),
+		mcp.WithString("stop_question_message",
+			mcp.Description("stop_question_message parameter for messenger_lead_forms"),
+		),
+		mcp.WithString("template_name",
+			mcp.Description("template_name parameter for messenger_lead_forms"),
+		),
+		mcp.WithString("tracking_parameters",
+			mcp.Description("tracking_parameters parameter for messenger_lead_forms"),
+		),
+	)
+	tools = append(tools, page_post_messenger_lead_formsTool)
+
+	// page_delete_messenger_profile tool
+	page_delete_messenger_profileTool := mcp.NewTool("page_delete_messenger_profile",
+		mcp.WithDescription("DELETE messenger_profile for Page"),
+		mcp.WithString("fields",
+			mcp.Required(),
+			mcp.Description("fields parameter for messenger_profile"),
+			mcp.Enum("ACCOUNT_LINKING_URL", "COMMANDS", "DESCRIPTION", "GET_STARTED", "GREETING", "HOME_URL", "ICE_BREAKERS", "PERSISTENT_MENU", "PLATFORM", "SUBJECT_TO_NEW_EU_PRIVACY_RULES", "TITLE", "WHITELISTED_DOMAINS"),
+		),
+		mcp.WithString("platform",
+			mcp.Description("platform parameter for messenger_profile"),
+			mcp.Enum("INSTAGRAM", "MESSENGER"),
+		),
+	)
+	tools = append(tools, page_delete_messenger_profileTool)
+
+	// page_get_messenger_profile tool
+	page_get_messenger_profileTool := mcp.NewTool("page_get_messenger_profile",
+		mcp.WithDescription("GET messenger_profile for Page"),
+		mcp.WithString("platform",
+			mcp.Description("platform parameter for messenger_profile"),
+			mcp.Enum("INSTAGRAM", "MESSENGER"),
+		),
+	)
+	tools = append(tools, page_get_messenger_profileTool)
+
+	// page_post_messenger_profile tool
+	page_post_messenger_profileTool := mcp.NewTool("page_post_messenger_profile",
+		mcp.WithDescription("POST messenger_profile for Page"),
+		mcp.WithString("account_linking_url",
+			mcp.Description("account_linking_url parameter for messenger_profile"),
+		),
+		mcp.WithString("commands",
+			mcp.Description("commands parameter for messenger_profile"),
+		),
+		mcp.WithString("description",
+			mcp.Description("description parameter for messenger_profile"),
+		),
+		mcp.WithString("get_started",
+			mcp.Description("get_started parameter for messenger_profile"),
+		),
+		mcp.WithString("greeting",
+			mcp.Description("greeting parameter for messenger_profile"),
+		),
+		mcp.WithString("ice_breakers",
+			mcp.Description("ice_breakers parameter for messenger_profile"),
+		),
+		mcp.WithString("persistent_menu",
+			mcp.Description("persistent_menu parameter for messenger_profile"),
+		),
+		mcp.WithString("platform",
+			mcp.Description("platform parameter for messenger_profile"),
+			mcp.Enum("INSTAGRAM", "MESSENGER"),
+		),
+		mcp.WithString("title",
+			mcp.Description("title parameter for messenger_profile"),
+		),
+		mcp.WithString("whitelisted_domains",
+			mcp.Description("whitelisted_domains parameter for messenger_profile"),
+		),
+	)
+	tools = append(tools, page_post_messenger_profileTool)
+
+	// page_post_moderate_conversations tool
+	page_post_moderate_conversationsTool := mcp.NewTool("page_post_moderate_conversations",
+		mcp.WithDescription("POST moderate_conversations for Page"),
+		mcp.WithString("actions",
+			mcp.Required(),
+			mcp.Description("actions parameter for moderate_conversations"),
+			mcp.Enum("BAN_USER", "BLOCK_USER", "MOVE_TO_SPAM", "UNBAN_USER", "UNBLOCK_USER"),
+		),
+		mcp.WithString("user_ids",
+			mcp.Required(),
+			mcp.Description("user_ids parameter for moderate_conversations"),
+		),
+	)
+	tools = append(tools, page_post_moderate_conversationsTool)
+
+	// page_post_nlp_configs tool
+	page_post_nlp_configsTool := mcp.NewTool("page_post_nlp_configs",
+		mcp.WithDescription("POST nlp_configs for Page"),
+		mcp.WithString("api_version",
+			mcp.Description("api_version parameter for nlp_configs"),
+		),
+		mcp.WithString("custom_token",
+			mcp.Description("custom_token parameter for nlp_configs"),
+		),
+		mcp.WithString("model",
+			mcp.Description("model parameter for nlp_configs"),
+			mcp.Enum("ARABIC", "CHINESE", "CROATIAN", "CUSTOM", "DANISH", "DUTCH", "ENGLISH", "FRENCH_STANDARD", "GEORGIAN", "GERMAN_STANDARD", "GREEK", "HEBREW", "HUNGARIAN", "IRISH", "ITALIAN_STANDARD", "KOREAN", "NORWEGIAN_BOKMAL", "POLISH", "PORTUGUESE", "ROMANIAN", "SPANISH", "SWEDISH", "VIETNAMESE"),
+		),
+		mcp.WithNumber("n_best",
+			mcp.Description("n_best parameter for nlp_configs"),
+		),
+		mcp.WithBoolean("nlp_enabled",
+			mcp.Description("nlp_enabled parameter for nlp_configs"),
+		),
+		mcp.WithString("other_language_support",
+			mcp.Description("other_language_support parameter for nlp_configs"),
+		),
+		mcp.WithBoolean("verbose",
+			mcp.Description("verbose parameter for nlp_configs"),
+		),
+	)
+	tools = append(tools, page_post_nlp_configsTool)
+
+	// page_get_notification_message_tokens tool
+	page_get_notification_message_tokensTool := mcp.NewTool("page_get_notification_message_tokens",
+		mcp.WithDescription("GET notification_message_tokens for Page"),
+	)
+	tools = append(tools, page_get_notification_message_tokensTool)
+
+	// page_post_notification_messages_dev_support tool
+	page_post_notification_messages_dev_supportTool := mcp.NewTool("page_post_notification_messages_dev_support",
+		mcp.WithDescription("POST notification_messages_dev_support for Page"),
+		mcp.WithString("developer_action",
+			mcp.Required(),
+			mcp.Description("developer_action parameter for notification_messages_dev_support"),
+			mcp.Enum("ENABLE_FOLLOWUP_MESSAGE"),
+		),
+		mcp.WithString("recipient",
+			mcp.Required(),
+			mcp.Description("recipient parameter for notification_messages_dev_support"),
+		),
+	)
+	tools = append(tools, page_post_notification_messages_dev_supportTool)
+
+	// page_get_page_backed_instagram_accounts tool
+	page_get_page_backed_instagram_accountsTool := mcp.NewTool("page_get_page_backed_instagram_accounts",
+		mcp.WithDescription("GET page_backed_instagram_accounts for Page"),
+	)
+	tools = append(tools, page_get_page_backed_instagram_accountsTool)
+
+	// page_post_page_backed_instagram_accounts tool
+	page_post_page_backed_instagram_accountsTool := mcp.NewTool("page_post_page_backed_instagram_accounts",
+		mcp.WithDescription("POST page_backed_instagram_accounts for Page"),
+	)
+	tools = append(tools, page_post_page_backed_instagram_accountsTool)
+
+	// page_post_page_whatsapp_number_verification tool
+	page_post_page_whatsapp_number_verificationTool := mcp.NewTool("page_post_page_whatsapp_number_verification",
+		mcp.WithDescription("POST page_whatsapp_number_verification for Page"),
+		mcp.WithString("verification_code",
+			mcp.Description("verification_code parameter for page_whatsapp_number_verification"),
+		),
+		mcp.WithString("whatsapp_number",
+			mcp.Required(),
+			mcp.Description("whatsapp_number parameter for page_whatsapp_number_verification"),
+		),
+	)
+	tools = append(tools, page_post_page_whatsapp_number_verificationTool)
+
+	// page_post_pass_thread_control tool
+	page_post_pass_thread_controlTool := mcp.NewTool("page_post_pass_thread_control",
+		mcp.WithDescription("POST pass_thread_control for Page"),
+		mcp.WithString("metadata",
+			mcp.Description("metadata parameter for pass_thread_control"),
+		),
+		mcp.WithString("recipient",
+			mcp.Required(),
+			mcp.Description("recipient parameter for pass_thread_control"),
+		),
+		mcp.WithString("target_app_id",
+			mcp.Description("target_app_id parameter for pass_thread_control"),
+		),
+	)
+	tools = append(tools, page_post_pass_thread_controlTool)
+
+	// page_get_personas tool
+	page_get_personasTool := mcp.NewTool("page_get_personas",
+		mcp.WithDescription("GET personas for Page"),
+	)
+	tools = append(tools, page_get_personasTool)
+
+	// page_post_personas tool
+	page_post_personasTool := mcp.NewTool("page_post_personas",
+		mcp.WithDescription("POST personas for Page"),
+		mcp.WithString("name",
+			mcp.Required(),
+			mcp.Description("name parameter for personas"),
+		),
+		mcp.WithString("profile_picture_url",
+			mcp.Required(),
+			mcp.Description("profile_picture_url parameter for personas"),
+		),
+	)
+	tools = append(tools, page_post_personasTool)
+
+	// page_post_photo_stories tool
+	page_post_photo_storiesTool := mcp.NewTool("page_post_photo_stories",
+		mcp.WithDescription("POST photo_stories for Page"),
+		mcp.WithString("photo_id",
+			mcp.Description("photo_id parameter for photo_stories"),
+		),
+	)
+	tools = append(tools, page_post_photo_storiesTool)
+
+	// page_get_photos tool
+	page_get_photosTool := mcp.NewTool("page_get_photos",
+		mcp.WithDescription("GET photos for Page"),
+		mcp.WithNumber("biz_tag_id",
+			mcp.Description("biz_tag_id parameter for photos"),
+		),
+		mcp.WithString("business_id",
+			mcp.Description("business_id parameter for photos"),
+		),
+		mcp.WithString("type",
+			mcp.Description("type parameter for photos"),
+			mcp.Enum("profile", "tagged", "uploaded"),
+		),
+	)
+	tools = append(tools, page_get_photosTool)
+
+	// page_post_photos tool
+	page_post_photosTool := mcp.NewTool("page_post_photos",
+		mcp.WithDescription("POST photos for Page"),
+		mcp.WithString("aid",
+			mcp.Description("aid parameter for photos"),
+		),
+		mcp.WithBoolean("allow_spherical_photo",
+			mcp.Description("allow_spherical_photo parameter for photos"),
+		),
+		mcp.WithString("alt_text_custom",
+			mcp.Description("alt_text_custom parameter for photos"),
+		),
+		mcp.WithString("android_key_hash",
+			mcp.Description("android_key_hash parameter for photos"),
+		),
+		mcp.WithString("application_id",
+			mcp.Description("application_id parameter for photos"),
+		),
+		mcp.WithNumber("attempt",
+			mcp.Description("attempt parameter for photos"),
+		),
+		mcp.WithBoolean("audience_exp",
+			mcp.Description("audience_exp parameter for photos"),
+		),
+		mcp.WithString("backdated_time",
+			mcp.Description("backdated_time parameter for photos"),
+		),
+		mcp.WithString("backdated_time_granularity",
+			mcp.Description("backdated_time_granularity parameter for photos"),
+			mcp.Enum("day", "hour", "min", "month", "none", "year"),
+		),
+		mcp.WithString("caption",
+			mcp.Description("caption parameter for photos"),
+		),
+		mcp.WithString("composer_session_id",
+			mcp.Description("composer_session_id parameter for photos"),
+		),
+		mcp.WithNumber("direct_share_status",
+			mcp.Description("direct_share_status parameter for photos"),
+		),
+		mcp.WithString("feed_targeting",
+			mcp.Description("feed_targeting parameter for photos"),
+		),
+		mcp.WithNumber("filter_type",
+			mcp.Description("filter_type parameter for photos"),
+		),
+		mcp.WithBoolean("full_res_is_coming_later",
+			mcp.Description("full_res_is_coming_later parameter for photos"),
+		),
+		mcp.WithNumber("initial_view_heading_override_degrees",
+			mcp.Description("initial_view_heading_override_degrees parameter for photos"),
+		),
+		mcp.WithNumber("initial_view_pitch_override_degrees",
+			mcp.Description("initial_view_pitch_override_degrees parameter for photos"),
+		),
+		mcp.WithNumber("initial_view_vertical_fov_override_degrees",
+			mcp.Description("initial_view_vertical_fov_override_degrees parameter for photos"),
+		),
+		mcp.WithString("ios_bundle_id",
+			mcp.Description("ios_bundle_id parameter for photos"),
+		),
+		mcp.WithBoolean("is_explicit_location",
+			mcp.Description("is_explicit_location parameter for photos"),
+		),
+		mcp.WithBoolean("is_explicit_place",
+			mcp.Description("is_explicit_place parameter for photos"),
+		),
+		mcp.WithString("location_source_id",
+			mcp.Description("location_source_id parameter for photos"),
+		),
+		mcp.WithBoolean("manual_privacy",
+			mcp.Description("manual_privacy parameter for photos"),
+		),
+		mcp.WithString("message",
+			mcp.Description("message parameter for photos"),
+		),
+		mcp.WithString("name",
+			mcp.Description("name parameter for photos"),
+		),
+		mcp.WithString("nectar_module",
+			mcp.Description("nectar_module parameter for photos"),
+		),
+		mcp.WithBoolean("no_story",
+			mcp.Description("no_story parameter for photos"),
+		),
+		mcp.WithNumber("offline_id",
+			mcp.Description("offline_id parameter for photos"),
+		),
+		mcp.WithString("og_action_type_id",
+			mcp.Description("og_action_type_id parameter for photos"),
+		),
+		mcp.WithString("og_icon_id",
+			mcp.Description("og_icon_id parameter for photos"),
+		),
+		mcp.WithString("og_object_id",
+			mcp.Description("og_object_id parameter for photos"),
+		),
+		mcp.WithString("og_phrase",
+			mcp.Description("og_phrase parameter for photos"),
+		),
+		mcp.WithBoolean("og_set_profile_badge",
+			mcp.Description("og_set_profile_badge parameter for photos"),
+		),
+		mcp.WithString("og_suggestion_mechanism",
+			mcp.Description("og_suggestion_mechanism parameter for photos"),
+		),
+		mcp.WithNumber("parent_media_id",
+			mcp.Description("parent_media_id parameter for photos"),
+		),
+		mcp.WithString("place",
+			mcp.Description("place parameter for photos"),
+		),
+		mcp.WithString("privacy",
+			mcp.Description("privacy parameter for photos"),
+		),
+		mcp.WithNumber("profile_id",
+			mcp.Description("profile_id parameter for photos"),
+		),
+		mcp.WithString("provenance_info",
+			mcp.Description("provenance_info parameter for photos"),
+		),
+		mcp.WithString("proxied_app_id",
+			mcp.Description("proxied_app_id parameter for photos"),
+		),
+		mcp.WithBoolean("published",
+			mcp.Description("published parameter for photos"),
+		),
+		mcp.WithString("qn",
+			mcp.Description("qn parameter for photos"),
+		),
+		mcp.WithNumber("scheduled_publish_time",
+			mcp.Description("scheduled_publish_time parameter for photos"),
+		),
+		mcp.WithString("spherical_metadata",
+			mcp.Description("spherical_metadata parameter for photos"),
+		),
+		mcp.WithString("sponsor_id",
+			mcp.Description("sponsor_id parameter for photos"),
+		),
+		mcp.WithNumber("sponsor_relationship",
+			mcp.Description("sponsor_relationship parameter for photos"),
+		),
+		mcp.WithString("tags",
+			mcp.Description("tags parameter for photos"),
+		),
+		mcp.WithNumber("target_id",
+			mcp.Description("target_id parameter for photos"),
+		),
+		mcp.WithString("targeting",
+			mcp.Description("targeting parameter for photos"),
+		),
+		mcp.WithBoolean("temporary",
+			mcp.Description("temporary parameter for photos"),
+		),
+		mcp.WithNumber("time_since_original_post",
+			mcp.Description("time_since_original_post parameter for photos"),
+		),
+		mcp.WithNumber("uid",
+			mcp.Description("uid parameter for photos"),
+		),
+		mcp.WithString("unpublished_content_type",
+			mcp.Description("unpublished_content_type parameter for photos"),
+			mcp.Enum("ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING"),
+		),
+		mcp.WithString("url",
+			mcp.Description("url parameter for photos"),
+		),
+		mcp.WithBoolean("user_selected_tags",
+			mcp.Description("user_selected_tags parameter for photos"),
+		),
+		mcp.WithString("vault_image_id",
+			mcp.Description("vault_image_id parameter for photos"),
+		),
+	)
+	tools = append(tools, page_post_photosTool)
+
+	// page_get_picture tool
+	page_get_pictureTool := mcp.NewTool("page_get_picture",
+		mcp.WithDescription("GET picture for Page"),
+		mcp.WithNumber("height",
+			mcp.Description("height parameter for picture"),
+		),
+		mcp.WithBoolean("redirect",
+			mcp.Description("redirect parameter for picture"),
+		),
+		mcp.WithString("type",
+			mcp.Description("type parameter for picture"),
+			mcp.Enum("album", "large", "normal", "small", "square"),
+		),
+		mcp.WithNumber("width",
+			mcp.Description("width parameter for picture"),
+		),
+	)
+	tools = append(tools, page_get_pictureTool)
+
+	// page_post_picture tool
+	page_post_pictureTool := mcp.NewTool("page_post_picture",
+		mcp.WithDescription("POST picture for Page"),
+		mcp.WithString("android_key_hash",
+			mcp.Description("android_key_hash parameter for picture"),
+		),
+		mcp.WithBoolean("burn_media_effect",
+			mcp.Description("burn_media_effect parameter for picture"),
+		),
+		mcp.WithString("caption",
+			mcp.Description("caption parameter for picture"),
+		),
+		mcp.WithString("composer_session_id",
+			mcp.Description("composer_session_id parameter for picture"),
+		),
+		mcp.WithString("frame_entrypoint",
+			mcp.Description("frame_entrypoint parameter for picture"),
+		),
+		mcp.WithBoolean("has_umg",
+			mcp.Description("has_umg parameter for picture"),
+		),
+		mcp.WithNumber("height",
+			mcp.Description("height parameter for picture"),
+		),
+		mcp.WithString("ios_bundle_id",
+			mcp.Description("ios_bundle_id parameter for picture"),
+		),
+		mcp.WithString("media_effect_ids",
+			mcp.Description("media_effect_ids parameter for picture"),
+		),
+		mcp.WithNumber("media_effect_source_object_id",
+			mcp.Description("media_effect_source_object_id parameter for picture"),
+		),
+		mcp.WithString("msqrd_mask_id",
+			mcp.Description("msqrd_mask_id parameter for picture"),
+		),
+		mcp.WithString("photo",
+			mcp.Description("photo parameter for picture"),
+		),
+		mcp.WithString("picture",
+			mcp.Description("picture parameter for picture"),
+		),
+		mcp.WithString("profile_pic_method",
+			mcp.Description("profile_pic_method parameter for picture"),
+		),
+		mcp.WithString("profile_pic_source",
+			mcp.Description("profile_pic_source parameter for picture"),
+		),
+		mcp.WithNumber("proxied_app_id",
+			mcp.Description("proxied_app_id parameter for picture"),
+		),
+		mcp.WithString("qn",
+			mcp.Description("qn parameter for picture"),
+		),
+		mcp.WithBoolean("reuse",
+			mcp.Description("reuse parameter for picture"),
+		),
+		mcp.WithString("scaled_crop_rect",
+			mcp.Description("scaled_crop_rect parameter for picture"),
+		),
+		mcp.WithString("set_profile_photo_shield",
+			mcp.Description("set_profile_photo_shield parameter for picture"),
+		),
+		mcp.WithNumber("sticker_id",
+			mcp.Description("sticker_id parameter for picture"),
+		),
+		mcp.WithNumber("sticker_source_object_id",
+			mcp.Description("sticker_source_object_id parameter for picture"),
+		),
+		mcp.WithBoolean("suppress_stories",
+			mcp.Description("suppress_stories parameter for picture"),
+		),
+		mcp.WithNumber("width",
+			mcp.Description("width parameter for picture"),
+		),
+		mcp.WithNumber("x",
+			mcp.Description("x parameter for picture"),
+		),
+		mcp.WithNumber("y",
+			mcp.Description("y parameter for picture"),
+		),
+	)
+	tools = append(tools, page_post_pictureTool)
+
+	// page_get_posts tool
+	page_get_postsTool := mcp.NewTool("page_get_posts",
+		mcp.WithDescription("GET posts for Page"),
+		mcp.WithBoolean("include_hidden",
+			mcp.Description("include_hidden parameter for posts"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("limit parameter for posts"),
+		),
+		mcp.WithString("q",
+			mcp.Description("q parameter for posts"),
+		),
+		mcp.WithBoolean("show_expired",
+			mcp.Description("show_expired parameter for posts"),
+		),
+		mcp.WithString("with",
+			mcp.Description("with parameter for posts"),
+			mcp.Enum("LOCATION"),
+		),
+	)
+	tools = append(tools, page_get_postsTool)
+
+	// page_get_product_catalogs tool
+	page_get_product_catalogsTool := mcp.NewTool("page_get_product_catalogs",
+		mcp.WithDescription("GET product_catalogs for Page"),
+	)
+	tools = append(tools, page_get_product_catalogsTool)
+
+	// page_get_published_posts tool
+	page_get_published_postsTool := mcp.NewTool("page_get_published_posts",
+		mcp.WithDescription("GET published_posts for Page"),
+		mcp.WithBoolean("include_hidden",
+			mcp.Description("include_hidden parameter for published_posts"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("limit parameter for published_posts"),
+		),
+		mcp.WithBoolean("show_expired",
+			mcp.Description("show_expired parameter for published_posts"),
+		),
+		mcp.WithString("with",
+			mcp.Description("with parameter for published_posts"),
+			mcp.Enum("LOCATION"),
+		),
+	)
+	tools = append(tools, page_get_published_postsTool)
+
+	// page_post_release_thread_control tool
+	page_post_release_thread_controlTool := mcp.NewTool("page_post_release_thread_control",
+		mcp.WithDescription("POST release_thread_control for Page"),
+		mcp.WithString("recipient",
+			mcp.Required(),
+			mcp.Description("recipient parameter for release_thread_control"),
+		),
+	)
+	tools = append(tools, page_post_release_thread_controlTool)
+
+	// page_post_request_thread_control tool
+	page_post_request_thread_controlTool := mcp.NewTool("page_post_request_thread_control",
+		mcp.WithDescription("POST request_thread_control for Page"),
+		mcp.WithString("metadata",
+			mcp.Description("metadata parameter for request_thread_control"),
+		),
+		mcp.WithString("recipient",
+			mcp.Required(),
+			mcp.Description("recipient parameter for request_thread_control"),
+		),
+	)
+	tools = append(tools, page_post_request_thread_controlTool)
+
+	// page_get_roles tool
+	page_get_rolesTool := mcp.NewTool("page_get_roles",
+		mcp.WithDescription("GET roles for Page"),
+		mcp.WithBoolean("include_deactivated",
+			mcp.Description("include_deactivated parameter for roles"),
+		),
+		mcp.WithNumber("uid",
+			mcp.Description("uid parameter for roles"),
+		),
+	)
+	tools = append(tools, page_get_rolesTool)
+
+	// page_get_rtb_dynamic_posts tool
+	page_get_rtb_dynamic_postsTool := mcp.NewTool("page_get_rtb_dynamic_posts",
+		mcp.WithDescription("GET rtb_dynamic_posts for Page"),
+	)
+	tools = append(tools, page_get_rtb_dynamic_postsTool)
+
+	// page_get_scheduled_posts tool
+	page_get_scheduled_postsTool := mcp.NewTool("page_get_scheduled_posts",
+		mcp.WithDescription("GET scheduled_posts for Page"),
+	)
+	tools = append(tools, page_get_scheduled_postsTool)
+
+	// page_get_secondary_receivers tool
+	page_get_secondary_receiversTool := mcp.NewTool("page_get_secondary_receivers",
+		mcp.WithDescription("GET secondary_receivers for Page"),
+		mcp.WithString("platform",
+			mcp.Description("platform parameter for secondary_receivers"),
+			mcp.Enum("INSTAGRAM", "MESSENGER"),
+		),
+	)
+	tools = append(tools, page_get_secondary_receiversTool)
+
+	// page_get_settings tool
+	page_get_settingsTool := mcp.NewTool("page_get_settings",
+		mcp.WithDescription("GET settings for Page"),
+	)
+	tools = append(tools, page_get_settingsTool)
+
+	// page_post_settings tool
+	page_post_settingsTool := mcp.NewTool("page_post_settings",
+		mcp.WithDescription("POST settings for Page"),
+		mcp.WithString("option",
+			mcp.Description("option parameter for settings"),
+		),
+	)
+	tools = append(tools, page_post_settingsTool)
+
+	// page_get_shop_setup_status tool
+	page_get_shop_setup_statusTool := mcp.NewTool("page_get_shop_setup_status",
+		mcp.WithDescription("GET shop_setup_status for Page"),
+	)
+	tools = append(tools, page_get_shop_setup_statusTool)
+
+	// page_get_store_locations tool
+	page_get_store_locationsTool := mcp.NewTool("page_get_store_locations",
+		mcp.WithDescription("GET store_locations for Page"),
+	)
+	tools = append(tools, page_get_store_locationsTool)
+
+	// page_get_stories tool
+	page_get_storiesTool := mcp.NewTool("page_get_stories",
+		mcp.WithDescription("GET stories for Page"),
+		mcp.WithString("since",
+			mcp.Description("since parameter for stories"),
+		),
+		mcp.WithString("status",
+			mcp.Description("status parameter for stories"),
+			mcp.Enum("ARCHIVED", "PUBLISHED"),
+		),
+		mcp.WithString("until",
+			mcp.Description("until parameter for stories"),
+		),
+	)
+	tools = append(tools, page_get_storiesTool)
+
+	// page_delete_subscribed_apps tool
+	page_delete_subscribed_appsTool := mcp.NewTool("page_delete_subscribed_apps",
+		mcp.WithDescription("DELETE subscribed_apps for Page"),
+	)
+	tools = append(tools, page_delete_subscribed_appsTool)
+
+	// page_get_subscribed_apps tool
+	page_get_subscribed_appsTool := mcp.NewTool("page_get_subscribed_apps",
+		mcp.WithDescription("GET subscribed_apps for Page"),
+	)
+	tools = append(tools, page_get_subscribed_appsTool)
+
+	// page_post_subscribed_apps tool
+	page_post_subscribed_appsTool := mcp.NewTool("page_post_subscribed_apps",
+		mcp.WithDescription("POST subscribed_apps for Page"),
+		mcp.WithString("subscribed_fields",
+			mcp.Required(),
+			mcp.Description("subscribed_fields parameter for subscribed_apps"),
+			mcp.Enum("affiliation", "attire", "awards", "bio", "birthday", "call_permission_reply", "calls", "category", "checkins", "company_overview", "conversations", "culinary_team", "current_location", "description", "email", "feature_access_list", "feed", "founded", "general_info", "general_manager", "group_feed", "hometown", "hours", "inbox_labels", "invalid_topic_placeholder", "invoice_access_bank_slip_events", "invoice_access_invoice_change", "invoice_access_invoice_draft_change", "invoice_access_onboarding_status_active", "leadgen", "leadgen_fat", "live_videos", "local_delivery", "location", "marketing_message_delivery_failed", "mcom_invoice_change", "members", "mention", "merchant_review", "message_context", "message_deliveries", "message_echoes", "message_edits", "message_mention", "message_reactions", "message_reads", "message_template_status_update", "messages", "messaging_account_linking", "messaging_appointments", "messaging_checkout_updates", "messaging_customer_information", "messaging_direct_sends", "messaging_fblogin_account_linking", "messaging_feedback", "messaging_game_plays", "messaging_handovers", "messaging_in_thread_lead_form_submit", "messaging_integrity", "messaging_optins", "messaging_optouts", "messaging_payments", "messaging_policy_enforcement", "messaging_postbacks", "messaging_pre_checkouts", "messaging_referrals", "mission", "name", "page_about_story", "page_change_proposal", "page_upcoming_change", "parking", "payment_options", "payment_request_update", "personal_info", "personal_interests", "phone", "picture", "price_range", "product_review", "products", "public_transit", "publisher_subscriptions", "ratings", "registration", "response_feedback", "send_cart", "standby", "user_action", "video_text_question_responses", "videos", "website"),
+		),
+	)
+	tools = append(tools, page_post_subscribed_appsTool)
+
+	// page_get_tabs tool
+	page_get_tabsTool := mcp.NewTool("page_get_tabs",
+		mcp.WithDescription("GET tabs for Page"),
+		mcp.WithString("tab",
+			mcp.Description("tab parameter for tabs"),
+		),
+	)
+	tools = append(tools, page_get_tabsTool)
+
+	// page_get_tagged tool
+	page_get_taggedTool := mcp.NewTool("page_get_tagged",
+		mcp.WithDescription("GET tagged for Page"),
+	)
+	tools = append(tools, page_get_taggedTool)
+
+	// page_post_take_thread_control tool
+	page_post_take_thread_controlTool := mcp.NewTool("page_post_take_thread_control",
+		mcp.WithDescription("POST take_thread_control for Page"),
+		mcp.WithString("metadata",
+			mcp.Description("metadata parameter for take_thread_control"),
+		),
+		mcp.WithString("recipient",
+			mcp.Required(),
+			mcp.Description("recipient parameter for take_thread_control"),
+		),
+	)
+	tools = append(tools, page_post_take_thread_controlTool)
+
+	// page_get_thread_owner tool
+	page_get_thread_ownerTool := mcp.NewTool("page_get_thread_owner",
+		mcp.WithDescription("GET thread_owner for Page"),
+		mcp.WithString("recipient",
+			mcp.Required(),
+			mcp.Description("recipient parameter for thread_owner"),
+		),
+	)
+	tools = append(tools, page_get_thread_ownerTool)
+
+	// page_get_threads tool
+	page_get_threadsTool := mcp.NewTool("page_get_threads",
+		mcp.WithDescription("GET threads for Page"),
+		mcp.WithString("folder",
+			mcp.Description("folder parameter for threads"),
+		),
+		mcp.WithString("platform",
+			mcp.Description("platform parameter for threads"),
+			mcp.Enum("INSTAGRAM", "MESSENGER"),
+		),
+		mcp.WithString("tags",
+			mcp.Description("tags parameter for threads"),
+		),
+		mcp.WithString("user_id",
+			mcp.Description("user_id parameter for threads"),
+		),
+	)
+	tools = append(tools, page_get_threadsTool)
+
+	// page_post_unlink_accounts tool
+	page_post_unlink_accountsTool := mcp.NewTool("page_post_unlink_accounts",
+		mcp.WithDescription("POST unlink_accounts for Page"),
+		mcp.WithString("psid",
+			mcp.Required(),
+			mcp.Description("psid parameter for unlink_accounts"),
+		),
+	)
+	tools = append(tools, page_post_unlink_accountsTool)
+
+	// page_get_video_copyright_rules tool
+	page_get_video_copyright_rulesTool := mcp.NewTool("page_get_video_copyright_rules",
+		mcp.WithDescription("GET video_copyright_rules for Page"),
+		mcp.WithString("selected_rule_id",
+			mcp.Description("selected_rule_id parameter for video_copyright_rules"),
+		),
+		mcp.WithString("source",
+			mcp.Description("source parameter for video_copyright_rules"),
+			mcp.Enum("MATCH_SETTINGS_DIALOG", "RULES_SELECTOR", "RULES_TAB"),
+		),
+	)
+	tools = append(tools, page_get_video_copyright_rulesTool)
+
+	// page_post_video_copyright_rules tool
+	page_post_video_copyright_rulesTool := mcp.NewTool("page_post_video_copyright_rules",
+		mcp.WithDescription("POST video_copyright_rules for Page"),
+		mcp.WithString("condition_groups",
+			mcp.Required(),
+			mcp.Description("condition_groups parameter for video_copyright_rules"),
+		),
+		mcp.WithString("name",
+			mcp.Required(),
+			mcp.Description("name parameter for video_copyright_rules"),
+		),
+	)
+	tools = append(tools, page_post_video_copyright_rulesTool)
+
+	// page_post_video_copyrights tool
+	page_post_video_copyrightsTool := mcp.NewTool("page_post_video_copyrights",
+		mcp.WithDescription("POST video_copyrights for Page"),
+		mcp.WithString("attribution_id",
+			mcp.Description("attribution_id parameter for video_copyrights"),
+		),
+		mcp.WithString("content_category",
+			mcp.Description("content_category parameter for video_copyrights"),
+			mcp.Enum("episode", "movie", "web"),
+		),
+		mcp.WithString("copyright_content_id",
+			mcp.Required(),
+			mcp.Description("copyright_content_id parameter for video_copyrights"),
+		),
+		mcp.WithString("excluded_ownership_countries",
+			mcp.Description("excluded_ownership_countries parameter for video_copyrights"),
+		),
+		mcp.WithString("excluded_ownership_segments",
+			mcp.Description("excluded_ownership_segments parameter for video_copyrights"),
+		),
+		mcp.WithBoolean("is_reference_disabled",
+			mcp.Description("is_reference_disabled parameter for video_copyrights"),
+		),
+		mcp.WithBoolean("is_reference_video",
+			mcp.Description("is_reference_video parameter for video_copyrights"),
+		),
+		mcp.WithString("monitoring_type",
+			mcp.Description("monitoring_type parameter for video_copyrights"),
+			mcp.Enum("AUDIO_ONLY", "VIDEO_AND_AUDIO", "VIDEO_ONLY"),
+		),
+		mcp.WithString("ownership_countries",
+			mcp.Description("ownership_countries parameter for video_copyrights"),
+		),
+		mcp.WithString("rule_id",
+			mcp.Description("rule_id parameter for video_copyrights"),
+		),
+		mcp.WithString("tags",
+			mcp.Description("tags parameter for video_copyrights"),
+		),
+		mcp.WithString("whitelisted_ids",
+			mcp.Description("whitelisted_ids parameter for video_copyrights"),
+		),
+		mcp.WithString("whitelisted_ig_user_ids",
+			mcp.Description("whitelisted_ig_user_ids parameter for video_copyrights"),
+		),
+	)
+	tools = append(tools, page_post_video_copyrightsTool)
+
+	// page_get_video_lists tool
+	page_get_video_listsTool := mcp.NewTool("page_get_video_lists",
+		mcp.WithDescription("GET video_lists for Page"),
+	)
+	tools = append(tools, page_get_video_listsTool)
+
+	// page_get_video_reels tool
+	page_get_video_reelsTool := mcp.NewTool("page_get_video_reels",
+		mcp.WithDescription("GET video_reels for Page"),
+		mcp.WithString("since",
+			mcp.Description("since parameter for video_reels"),
+		),
+		mcp.WithString("until",
+			mcp.Description("until parameter for video_reels"),
+		),
+	)
+	tools = append(tools, page_get_video_reelsTool)
+
+	// page_post_video_reels tool
+	page_post_video_reelsTool := mcp.NewTool("page_post_video_reels",
+		mcp.WithDescription("POST video_reels for Page"),
+		mcp.WithString("description",
+			mcp.Description("description parameter for video_reels"),
+		),
+		mcp.WithString("feed_targeting",
+			mcp.Description("feed_targeting parameter for video_reels"),
+		),
+		mcp.WithString("place",
+			mcp.Description("place parameter for video_reels"),
+		),
+		mcp.WithString("scheduled_publish_time",
+			mcp.Description("scheduled_publish_time parameter for video_reels"),
+		),
+		mcp.WithString("targeting",
+			mcp.Description("targeting parameter for video_reels"),
+		),
+		mcp.WithString("title",
+			mcp.Description("title parameter for video_reels"),
+		),
+		mcp.WithString("upload_phase",
+			mcp.Required(),
+			mcp.Description("upload_phase parameter for video_reels"),
+			mcp.Enum("FINISH", "START"),
+		),
+		mcp.WithString("video_id",
+			mcp.Description("video_id parameter for video_reels"),
+		),
+		mcp.WithString("video_state",
+			mcp.Description("video_state parameter for video_reels"),
+			mcp.Enum("DRAFT", "PUBLISHED", "SCHEDULED"),
+		),
+	)
+	tools = append(tools, page_post_video_reelsTool)
+
+	// page_post_video_stories tool
+	page_post_video_storiesTool := mcp.NewTool("page_post_video_stories",
+		mcp.WithDescription("POST video_stories for Page"),
+		mcp.WithString("description",
+			mcp.Description("description parameter for video_stories"),
+		),
+		mcp.WithString("feed_targeting",
+			mcp.Description("feed_targeting parameter for video_stories"),
+		),
+		mcp.WithString("place",
+			mcp.Description("place parameter for video_stories"),
+		),
+		mcp.WithString("scheduled_publish_time",
+			mcp.Description("scheduled_publish_time parameter for video_stories"),
+		),
+		mcp.WithString("targeting",
+			mcp.Description("targeting parameter for video_stories"),
+		),
+		mcp.WithString("title",
+			mcp.Description("title parameter for video_stories"),
+		),
+		mcp.WithString("upload_phase",
+			mcp.Required(),
+			mcp.Description("upload_phase parameter for video_stories"),
+			mcp.Enum("FINISH", "START"),
+		),
+		mcp.WithString("video_id",
+			mcp.Description("video_id parameter for video_stories"),
+		),
+		mcp.WithString("video_state",
+			mcp.Description("video_state parameter for video_stories"),
+			mcp.Enum("DRAFT", "PUBLISHED", "SCHEDULED"),
+		),
+	)
+	tools = append(tools, page_post_video_storiesTool)
+
+	// page_get_videos tool
+	page_get_videosTool := mcp.NewTool("page_get_videos",
+		mcp.WithDescription("GET videos for Page"),
+		mcp.WithString("type",
+			mcp.Description("type parameter for videos"),
+			mcp.Enum("TAGGED", "UPLOADED"),
+		),
+	)
+	tools = append(tools, page_get_videosTool)
+
+	// page_post_videos tool
+	page_post_videosTool := mcp.NewTool("page_post_videos",
+		mcp.WithDescription("POST videos for Page"),
+		mcp.WithString("ad_breaks",
+			mcp.Description("ad_breaks parameter for videos"),
+		),
+		mcp.WithString("application_id",
+			mcp.Description("application_id parameter for videos"),
+		),
+		mcp.WithNumber("asked_fun_fact_prompt_id",
+			mcp.Description("asked_fun_fact_prompt_id parameter for videos"),
+		),
+		mcp.WithString("audio_story_wave_animation_handle",
+			mcp.Description("audio_story_wave_animation_handle parameter for videos"),
+		),
+		mcp.WithString("backdated_post",
+			mcp.Description("backdated_post parameter for videos"),
+		),
+		mcp.WithString("call_to_action",
+			mcp.Description("call_to_action parameter for videos"),
+		),
+		mcp.WithString("composer_entry_picker",
+			mcp.Description("composer_entry_picker parameter for videos"),
+		),
+		mcp.WithString("composer_entry_point",
+			mcp.Description("composer_entry_point parameter for videos"),
+		),
+		mcp.WithNumber("composer_entry_time",
+			mcp.Description("composer_entry_time parameter for videos"),
+		),
+		mcp.WithString("composer_session_events_log",
+			mcp.Description("composer_session_events_log parameter for videos"),
+		),
+		mcp.WithString("composer_session_id",
+			mcp.Description("composer_session_id parameter for videos"),
+		),
+		mcp.WithString("composer_source_surface",
+			mcp.Description("composer_source_surface parameter for videos"),
+		),
+		mcp.WithString("composer_type",
+			mcp.Description("composer_type parameter for videos"),
+		),
+		mcp.WithString("container_type",
+			mcp.Description("container_type parameter for videos"),
+			mcp.Enum("ACO_VIDEO_VARIATION", "ADS_AI_GENERATED", "AD_BREAK_PREVIEW", "AD_DERIVATIVE", "AD_LIBRARY_WATERMARK", "ALBUM_MULTIMEDIA_POST", "ALOHA_SUPERFRAME", "APP_REREVIEW_SCREENCAST", "APP_REVIEW_SCREENCAST", "ASSET_MANAGER", "ATLAS_VIDEO", "AUDIO_BROADCAST", "AUDIO_COMMENT", "BROADCAST", "CANVAS", "CMS_MEDIA_MANAGER", "CONTAINED_POST_ATTACHMENT", "CONTAINED_POST_AUDIO_BROADCAST", "CONTAINED_POST_COPYRIGHT_REFERENCE_BROADCAST", "COPYRIGHT_REFERENCE_BROADCAST", "COPYRIGHT_REFERENCE_IG_XPOST_VIDEO", "COPYRIGHT_REFERENCE_VIDEO", "CREATION_ML_PRECREATION", "CREATOR_FAN_CHALLENGE", "CREATOR_STOREFRONT_PERSONALIZED_VIDEO", "DATAGENIX_VIDEO", "DCO_AD_ASSET_FEED", "DCO_AUTOGEN_VIDEO", "DCO_TRIMMED_VIDEO", "DIM_SUM", "DIRECTED_POST_ATTACHMENT", "DIRECT_INBOX", "DROPS_SHOPPING_EVENT_PAGE", "DYNAMIC_ITEM_VIDEO", "DYNAMIC_TEMPLATE_VIDEO", "EVENT_COVER_VIDEO", "EVENT_TOUR", "FACECAST_DVR", "FB_AVATAR_ANIMATED_SATP", "FB_COLLECTIBLE_VIDEO", "FB_SHORTS", "FB_SHORTS_CONTENT_REMIXABLE", "FB_SHORTS_GROUP_POST", "FB_SHORTS_LINKED_PRODUCT", "FB_SHORTS_PMV_POST", "FB_SHORTS_POST", "FB_SHORTS_REMIX_POST", "FUNDRAISER_COVER_VIDEO", "GAME_CLIP", "GIF_TO_VIDEO", "GOODWILL_ANNIVERSARY_DEPRECATED", "GOODWILL_ANNIVERSARY_PROMOTION_DEPRECATED", "GOODWILL_VIDEO_CONTAINED_SHARE", "GOODWILL_VIDEO_PROMOTION", "GOODWILL_VIDEO_SHARE", "GOODWILL_VIDEO_TOKEN_REQUIRED", "GROUP_POST", "HEURISTIC_CLUSTER_VIDEO", "HIGHLIGHT_CLIP_VIDEO", "HORIZON_WORLDS_TV", "HUDDLE_BROADCAST", "IG_REELS_XPV", "IG_STORIES_READER", "INJECTABLE", "INSPIRATION_VIDEO", "INSTAGRAM_VIDEO_COPY", "INSTANT_APPLICATION_PREVIEW", "INSTANT_ARTICLE", "ISSUE_MODULE", "LEARN", "LEGACY", "LEGACY_CONTAINED_POST_BROADCAST", "LIVE_AUDIO_ROOM_BROADCAST", "LIVE_CLIP_PREVIEW", "LIVE_CLIP_WORKCHAT", "LIVE_CREATIVE_KIT_VIDEO", "LIVE_PHOTO", "LOOK_NOW_DEPRECATED", "MARKETPLACE_LISTING_VIDEO", "MARKETPLACE_PRE_RECORDED_VIDEO", "MOMENTS_VIDEO", "MUSIC_CLIP", "MUSIC_CLIP_IN_COMMENT", "MUSIC_CLIP_IN_LIGHTWEIGHT_STATUS", "MUSIC_CLIP_IN_MSGR_NOTE", "MUSIC_CLIP_IN_POLL_OPTION", "MUSIC_CLIP_ON_DATING_PROFILE", "NEO_ASYNC_GAME_VIDEO", "NEW_CONTAINED_POST_BROADCAST", "NO_STORY", "OCULUS_CREATOR_PORTAL", "OCULUS_VENUES_BROADCAST", "ORIGINALITY_SELF_ADVOCACY", "PAGES_COVER_VIDEO", "PAGE_REVIEW_SCREENCAST", "PAGE_SLIDESHOW_VIDEO", "PAID_CONTENT_PREVIEW", "PAID_CONTENT_VIDEO", "PAID_CONTENT_VIDEO__POST", "PIXELCLOUD", "PODCAST_HIGHLIGHT", "PODCAST_ML_PREVIEW", "PODCAST_ML_PREVIEW_NO_NEWSFEED_STORY", "PODCAST_RSS", "PODCAST_RSS_EPHEMERAL", "PODCAST_RSS_NO_NEWSFEED_STORY", "PODCAST_VOICES", "PODCAST_VOICES_NO_NEWSFEED_STORY", "PREMIERE_SOURCE", "PREMIUM_MUSIC_VIDEO_CLIP", "PREMIUM_MUSIC_VIDEO_CROPPED_CLIP", "PREMIUM_MUSIC_VIDEO_NO_NEWSFEED_STORY", "PREMIUM_MUSIC_VIDEO_WITH_NEWSFEED_STORY", "PRIVATE_GALLERY_VIDEO", "PRODUCT_VIDEO", "PROFILE_COVER_VIDEO", "PROFILE_INTRO_CARD", "PROFILE_VIDEO", "PROTON", "QUICK_CLIP_WORKPLACE_POST", "QUICK_PROMOTION", "REPLACE_VIDEO", "SALES_CLIENT_INTERACTION", "SHOWREEL_NATIVE_DUMMY_VIDEO", "SLIDESHOW_ANIMOTO", "SLIDESHOW_SHAKR", "SLIDESHOW_VARIATION_VIDEO", "SOUND_PLATFORM_STREAM", "SRT_ATTACHMENT", "STORIES_VIDEO", "STORYLINE", "STORYLINE_WITH_EXTERNAL_MUSIC", "STORY_ARCHIVE_VIDEO", "STORY_CARD_TEMPLATE", "STREAM_HIGHLIGHTS_VIDEO", "TAROT_DIGEST", "TEMPORARY_UNLISTED", "TEMP_VIDEO_COPYRIGHT_SCAN", "UNLISTED", "UNLISTED_OCULUS", "VIDEO_COMMENT", "VIDEO_COMPOSITION_VARIATION", "VIDEO_CREATIVE_EDITOR_AUTOGEN_AD_VIDEO", "VIDEO_SUPERRES", "VOICES_ARTICLE_VIDEO", "VU_GENERATED_VIDEO", "WOODHENGE", "WORK_KNOWLEDGE_VIDEO", "YOUR_DAY"),
+		),
+		mcp.WithString("content_category",
+			mcp.Description("content_category parameter for videos"),
+			mcp.Enum("BEAUTY_FASHION", "BUSINESS", "CARS_TRUCKS", "COMEDY", "CUTE_ANIMALS", "ENTERTAINMENT", "FAMILY", "FOOD_HEALTH", "HOME", "LIFESTYLE", "MUSIC", "NEWS", "OTHER", "POLITICS", "SCIENCE", "SPORTS", "TECHNOLOGY", "VIDEO_GAMING"),
+		),
+		mcp.WithString("content_tags",
+			mcp.Description("content_tags parameter for videos"),
+		),
+		mcp.WithString("creative_tools",
+			mcp.Description("creative_tools parameter for videos"),
+		),
+		mcp.WithString("crossposted_video_id",
+			mcp.Description("crossposted_video_id parameter for videos"),
+		),
+		mcp.WithString("custom_labels",
+			mcp.Description("custom_labels parameter for videos"),
+		),
+		mcp.WithString("description",
+			mcp.Description("description parameter for videos"),
+		),
+		mcp.WithNumber("direct_share_status",
+			mcp.Description("direct_share_status parameter for videos"),
+		),
+		mcp.WithBoolean("embeddable",
+			mcp.Description("embeddable parameter for videos"),
+		),
+		mcp.WithNumber("end_offset",
+			mcp.Description("end_offset parameter for videos"),
+		),
+		mcp.WithString("expiration",
+			mcp.Description("expiration parameter for videos"),
+		),
+		mcp.WithString("fbuploader_video_file_chunk",
+			mcp.Description("fbuploader_video_file_chunk parameter for videos"),
+		),
+		mcp.WithString("feed_targeting",
+			mcp.Description("feed_targeting parameter for videos"),
+		),
+		mcp.WithNumber("file_size",
+			mcp.Description("file_size parameter for videos"),
+		),
+		mcp.WithString("file_url",
+			mcp.Description("file_url parameter for videos"),
+		),
+		mcp.WithBoolean("fisheye_video_cropped",
+			mcp.Description("fisheye_video_cropped parameter for videos"),
+		),
+		mcp.WithString("formatting",
+			mcp.Description("formatting parameter for videos"),
+			mcp.Enum("MARKDOWN", "PLAINTEXT"),
+		),
+		mcp.WithNumber("fov",
+			mcp.Description("fov parameter for videos"),
+		),
+		mcp.WithNumber("front_z_rotation",
+			mcp.Description("front_z_rotation parameter for videos"),
+		),
+		mcp.WithString("fun_fact_prompt_id",
+			mcp.Description("fun_fact_prompt_id parameter for videos"),
+		),
+		mcp.WithNumber("fun_fact_toastee_id",
+			mcp.Description("fun_fact_toastee_id parameter for videos"),
+		),
+		mcp.WithString("guide",
+			mcp.Description("guide parameter for videos"),
+		),
+		mcp.WithBoolean("guide_enabled",
+			mcp.Description("guide_enabled parameter for videos"),
+		),
+		mcp.WithNumber("initial_heading",
+			mcp.Description("initial_heading parameter for videos"),
+		),
+		mcp.WithNumber("initial_pitch",
+			mcp.Description("initial_pitch parameter for videos"),
+		),
+		mcp.WithString("instant_game_entry_point_data",
+			mcp.Description("instant_game_entry_point_data parameter for videos"),
+		),
+		mcp.WithBoolean("is_boost_intended",
+			mcp.Description("is_boost_intended parameter for videos"),
+		),
+		mcp.WithBoolean("is_explicit_share",
+			mcp.Description("is_explicit_share parameter for videos"),
+		),
+		mcp.WithBoolean("is_group_linking_post",
+			mcp.Description("is_group_linking_post parameter for videos"),
+		),
+		mcp.WithBoolean("is_partnership_ad",
+			mcp.Description("is_partnership_ad parameter for videos"),
+		),
+		mcp.WithBoolean("is_voice_clip",
+			mcp.Description("is_voice_clip parameter for videos"),
+		),
+		mcp.WithString("location_source_id",
+			mcp.Description("location_source_id parameter for videos"),
+		),
+		mcp.WithBoolean("manual_privacy",
+			mcp.Description("manual_privacy parameter for videos"),
+		),
+		mcp.WithString("multilingual_data",
+			mcp.Description("multilingual_data parameter for videos"),
+		),
+		mcp.WithBoolean("no_story",
+			mcp.Description("no_story parameter for videos"),
+		),
+		mcp.WithString("og_action_type_id",
+			mcp.Description("og_action_type_id parameter for videos"),
+		),
+		mcp.WithString("og_icon_id",
+			mcp.Description("og_icon_id parameter for videos"),
+		),
+		mcp.WithString("og_object_id",
+			mcp.Description("og_object_id parameter for videos"),
+		),
+		mcp.WithString("og_phrase",
+			mcp.Description("og_phrase parameter for videos"),
+		),
+		mcp.WithString("og_suggestion_mechanism",
+			mcp.Description("og_suggestion_mechanism parameter for videos"),
+		),
+		mcp.WithNumber("original_fov",
+			mcp.Description("original_fov parameter for videos"),
+		),
+		mcp.WithString("original_projection_type",
+			mcp.Description("original_projection_type parameter for videos"),
+			mcp.Enum("cubemap", "equirectangular", "half_equirectangular"),
+		),
+		mcp.WithString("partnership_ad_ad_code",
+			mcp.Description("partnership_ad_ad_code parameter for videos"),
+		),
+		mcp.WithNumber("publish_event_id",
+			mcp.Description("publish_event_id parameter for videos"),
+		),
+		mcp.WithBoolean("published",
+			mcp.Description("published parameter for videos"),
+		),
+		mcp.WithBoolean("reference_only",
+			mcp.Description("reference_only parameter for videos"),
+		),
+		mcp.WithString("referenced_sticker_id",
+			mcp.Description("referenced_sticker_id parameter for videos"),
+		),
+		mcp.WithString("replace_video_id",
+			mcp.Description("replace_video_id parameter for videos"),
+		),
+		mcp.WithNumber("scheduled_publish_time",
+			mcp.Description("scheduled_publish_time parameter for videos"),
+		),
+		mcp.WithBoolean("secret",
+			mcp.Description("secret parameter for videos"),
+		),
+		mcp.WithString("slideshow_spec",
+			mcp.Description("slideshow_spec parameter for videos"),
+		),
+		mcp.WithBoolean("social_actions",
+			mcp.Description("social_actions parameter for videos"),
+		),
+		mcp.WithString("source",
+			mcp.Description("source parameter for videos"),
+		),
+		mcp.WithString("source_instagram_media_id",
+			mcp.Description("source_instagram_media_id parameter for videos"),
+		),
+		mcp.WithString("specified_dialect",
+			mcp.Description("specified_dialect parameter for videos"),
+		),
+		mcp.WithBoolean("spherical",
+			mcp.Description("spherical parameter for videos"),
+		),
+		mcp.WithString("sponsor_id",
+			mcp.Description("sponsor_id parameter for videos"),
+		),
+		mcp.WithNumber("sponsor_relationship",
+			mcp.Description("sponsor_relationship parameter for videos"),
+		),
+		mcp.WithNumber("start_offset",
+			mcp.Description("start_offset parameter for videos"),
+		),
+		mcp.WithString("swap_mode",
+			mcp.Description("swap_mode parameter for videos"),
+			mcp.Enum("replace"),
+		),
+		mcp.WithString("targeting",
+			mcp.Description("targeting parameter for videos"),
+		),
+		mcp.WithString("text_format_metadata",
+			mcp.Description("text_format_metadata parameter for videos"),
+		),
+		mcp.WithString("thumb",
+			mcp.Description("thumb parameter for videos"),
+		),
+		mcp.WithNumber("time_since_original_post",
+			mcp.Description("time_since_original_post parameter for videos"),
+		),
+		mcp.WithString("title",
+			mcp.Description("title parameter for videos"),
+		),
+		mcp.WithString("transcode_setting_properties",
+			mcp.Description("transcode_setting_properties parameter for videos"),
+		),
+		mcp.WithString("universal_video_id",
+			mcp.Description("universal_video_id parameter for videos"),
+		),
+		mcp.WithString("unpublished_content_type",
+			mcp.Description("unpublished_content_type parameter for videos"),
+			mcp.Enum("ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING"),
+		),
+		mcp.WithString("upload_phase",
+			mcp.Description("upload_phase parameter for videos"),
+			mcp.Enum("cancel", "finish", "start", "transfer"),
+		),
+		mcp.WithString("upload_session_id",
+			mcp.Description("upload_session_id parameter for videos"),
+		),
+		mcp.WithString("upload_setting_properties",
+			mcp.Description("upload_setting_properties parameter for videos"),
+		),
+		mcp.WithString("video_asset_id",
+			mcp.Description("video_asset_id parameter for videos"),
+		),
+		mcp.WithString("video_file_chunk",
+			mcp.Description("video_file_chunk parameter for videos"),
+		),
+		mcp.WithString("video_id_original",
+			mcp.Description("video_id_original parameter for videos"),
+		),
+		mcp.WithNumber("video_start_time_ms",
+			mcp.Description("video_start_time_ms parameter for videos"),
+		),
+		mcp.WithString("waterfall_id",
+			mcp.Description("waterfall_id parameter for videos"),
+		),
+	)
+	tools = append(tools, page_post_videosTool)
+
+	// page_get_visitor_posts tool
+	page_get_visitor_postsTool := mcp.NewTool("page_get_visitor_posts",
+		mcp.WithDescription("GET visitor_posts for Page"),
+		mcp.WithBoolean("include_hidden",
+			mcp.Description("include_hidden parameter for visitor_posts"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("limit parameter for visitor_posts"),
+		),
+		mcp.WithBoolean("show_expired",
+			mcp.Description("show_expired parameter for visitor_posts"),
+		),
+		mcp.WithString("with",
+			mcp.Description("with parameter for visitor_posts"),
+			mcp.Enum("LOCATION"),
+		),
+	)
+	tools = append(tools, page_get_visitor_postsTool)
+
+	// page_delete_welcome_message_flows tool
+	page_delete_welcome_message_flowsTool := mcp.NewTool("page_delete_welcome_message_flows",
+		mcp.WithDescription("DELETE welcome_message_flows for Page"),
+		mcp.WithString("flow_id",
+			mcp.Required(),
+			mcp.Description("flow_id parameter for welcome_message_flows"),
+		),
+	)
+	tools = append(tools, page_delete_welcome_message_flowsTool)
+
+	// page_get_welcome_message_flows tool
+	page_get_welcome_message_flowsTool := mcp.NewTool("page_get_welcome_message_flows",
+		mcp.WithDescription("GET welcome_message_flows for Page"),
+		mcp.WithString("app_id",
+			mcp.Description("app_id parameter for welcome_message_flows"),
+		),
+		mcp.WithString("flow_id",
+			mcp.Description("flow_id parameter for welcome_message_flows"),
+		),
+	)
+	tools = append(tools, page_get_welcome_message_flowsTool)
+
+	// page_post_welcome_message_flows tool
+	page_post_welcome_message_flowsTool := mcp.NewTool("page_post_welcome_message_flows",
+		mcp.WithDescription("POST welcome_message_flows for Page"),
+		mcp.WithString("eligible_platforms",
+			mcp.Description("eligible_platforms parameter for welcome_message_flows"),
+			mcp.Enum("INSTAGRAM", "MESSENGER", "WHATSAPP"),
+		),
+		mcp.WithString("flow_id",
+			mcp.Description("flow_id parameter for welcome_message_flows"),
+		),
+		mcp.WithString("name",
+			mcp.Description("name parameter for welcome_message_flows"),
+		),
+		mcp.WithString("welcome_message_flow",
+			mcp.Description("welcome_message_flow parameter for welcome_message_flows"),
+		),
+	)
+	tools = append(tools, page_post_welcome_message_flowsTool)
+
+	// page_get_ tool
+	page_get_Tool := mcp.NewTool("page_get_",
+		mcp.WithDescription("GET  for Page"),
+		mcp.WithString("account_linking_token",
+			mcp.Description("account_linking_token parameter for "),
+		),
+	)
+	tools = append(tools, page_get_Tool)
+
+	// page_post_ tool
+	page_post_Tool := mcp.NewTool("page_post_",
+		mcp.WithDescription("POST  for Page"),
 		mcp.WithString("about",
 			mcp.Description("about parameter for "),
 		),
@@ -10448,6 +13398,7303 @@ func HandlePage_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: about
+	if val := request.GetString("about", ""); val != "" {
+		args["about"] = val
+	}
+
+	// Optional: accept_crossposting_handshake
+	// array type - using string
+	if val := request.GetString("accept_crossposting_handshake", ""); val != "" {
+		args["accept_crossposting_handshake"] = val
+	}
+
+	// Optional: allow_spherical_photo
+	if val := request.GetBool("allow_spherical_photo", false); val {
+		args["allow_spherical_photo"] = val
+	}
+
+	// Optional: attire
+	if val := request.GetString("attire", ""); val != "" {
+		args["attire"] = val
+	}
+
+	// Optional: begin_crossposting_handshake
+	// array type - using string
+	if val := request.GetString("begin_crossposting_handshake", ""); val != "" {
+		args["begin_crossposting_handshake"] = val
+	}
+
+	// Optional: bio
+	if val := request.GetString("bio", ""); val != "" {
+		args["bio"] = val
+	}
+
+	// Optional: category_list
+	// array type - using string
+	if val := request.GetString("category_list", ""); val != "" {
+		args["category_list"] = val
+	}
+
+	// Optional: company_overview
+	if val := request.GetString("company_overview", ""); val != "" {
+		args["company_overview"] = val
+	}
+
+	// Optional: contact_address
+	// object type - using string
+	if val := request.GetString("contact_address", ""); val != "" {
+		args["contact_address"] = val
+	}
+
+	// Optional: cover
+	if val := request.GetString("cover", ""); val != "" {
+		args["cover"] = val
+	}
+
+	// Optional: culinary_team
+	if val := request.GetString("culinary_team", ""); val != "" {
+		args["culinary_team"] = val
+	}
+
+	// Optional: delivery_and_pickup_option_info
+	// array type - using string
+	if val := request.GetString("delivery_and_pickup_option_info", ""); val != "" {
+		args["delivery_and_pickup_option_info"] = val
+	}
+
+	// Optional: description
+	if val := request.GetString("description", ""); val != "" {
+		args["description"] = val
+	}
+
+	// Optional: differently_open_offerings
+	if val := request.GetString("differently_open_offerings", ""); val != "" {
+		args["differently_open_offerings"] = val
+	}
+
+	// Optional: directed_by
+	if val := request.GetString("directed_by", ""); val != "" {
+		args["directed_by"] = val
+	}
+
+	// Optional: displayed_message_response_time
+	if val := request.GetString("displayed_message_response_time", ""); val != "" {
+		args["displayed_message_response_time"] = val
+	}
+
+	// Optional: emails
+	// array type - using string
+	if val := request.GetString("emails", ""); val != "" {
+		args["emails"] = val
+	}
+
+	// Optional: focus_x
+	if val := request.GetFloat("focus_x", 0); val != 0 {
+		args["focus_x"] = val
+	}
+
+	// Optional: focus_y
+	if val := request.GetFloat("focus_y", 0); val != 0 {
+		args["focus_y"] = val
+	}
+
+	// Optional: food_styles
+	// array type - using string
+	if val := request.GetString("food_styles", ""); val != "" {
+		args["food_styles"] = val
+	}
+
+	// Optional: gen_ai_provenance_type
+	if val := request.GetString("gen_ai_provenance_type", ""); val != "" {
+		args["gen_ai_provenance_type"] = val
+	}
+
+	// Optional: general_info
+	if val := request.GetString("general_info", ""); val != "" {
+		args["general_info"] = val
+	}
+
+	// Optional: general_manager
+	if val := request.GetString("general_manager", ""); val != "" {
+		args["general_manager"] = val
+	}
+
+	// Optional: genre
+	if val := request.GetString("genre", ""); val != "" {
+		args["genre"] = val
+	}
+
+	// Optional: hours
+	if val := request.GetString("hours", ""); val != "" {
+		args["hours"] = val
+	}
+
+	// Optional: ignore_coordinate_warnings
+	if val := request.GetBool("ignore_coordinate_warnings", false); val {
+		args["ignore_coordinate_warnings"] = val
+	}
+
+	// Optional: impressum
+	if val := request.GetString("impressum", ""); val != "" {
+		args["impressum"] = val
+	}
+
+	// Optional: is_always_open
+	if val := request.GetBool("is_always_open", false); val {
+		args["is_always_open"] = val
+	}
+
+	// Optional: is_permanently_closed
+	if val := request.GetBool("is_permanently_closed", false); val {
+		args["is_permanently_closed"] = val
+	}
+
+	// Optional: is_published
+	if val := request.GetBool("is_published", false); val {
+		args["is_published"] = val
+	}
+
+	// Optional: is_webhooks_subscribed
+	if val := request.GetBool("is_webhooks_subscribed", false); val {
+		args["is_webhooks_subscribed"] = val
+	}
+
+	// Optional: location
+	// object type - using string
+	if val := request.GetString("location", ""); val != "" {
+		args["location"] = val
+	}
+
+	// Optional: menu
+	if val := request.GetString("menu", ""); val != "" {
+		args["menu"] = val
+	}
+
+	// Optional: mission
+	if val := request.GetString("mission", ""); val != "" {
+		args["mission"] = val
+	}
+
+	// Optional: no_feed_story
+	if val := request.GetBool("no_feed_story", false); val {
+		args["no_feed_story"] = val
+	}
+
+	// Optional: no_notification
+	if val := request.GetBool("no_notification", false); val {
+		args["no_notification"] = val
+	}
+
+	// Optional: offset_x
+	if val := request.GetInt("offset_x", 0); val != 0 {
+		args["offset_x"] = val
+	}
+
+	// Optional: offset_y
+	if val := request.GetInt("offset_y", 0); val != 0 {
+		args["offset_y"] = val
+	}
+
+	// Optional: parking
+	if val := request.GetString("parking", ""); val != "" {
+		args["parking"] = val
+	}
+
+	// Optional: payment_options
+	if val := request.GetString("payment_options", ""); val != "" {
+		args["payment_options"] = val
+	}
+
+	// Optional: phone
+	if val := request.GetString("phone", ""); val != "" {
+		args["phone"] = val
+	}
+
+	// Optional: pickup_options
+	// array type - using string
+	if val := request.GetString("pickup_options", ""); val != "" {
+		args["pickup_options"] = val
+	}
+
+	// Optional: plot_outline
+	if val := request.GetString("plot_outline", ""); val != "" {
+		args["plot_outline"] = val
+	}
+
+	// Optional: price_range
+	if val := request.GetString("price_range", ""); val != "" {
+		args["price_range"] = val
+	}
+
+	// Optional: public_transit
+	if val := request.GetString("public_transit", ""); val != "" {
+		args["public_transit"] = val
+	}
+
+	// Optional: restaurant_services
+	if val := request.GetString("restaurant_services", ""); val != "" {
+		args["restaurant_services"] = val
+	}
+
+	// Optional: restaurant_specialties
+	if val := request.GetString("restaurant_specialties", ""); val != "" {
+		args["restaurant_specialties"] = val
+	}
+
+	// Optional: scrape
+	if val := request.GetBool("scrape", false); val {
+		args["scrape"] = val
+	}
+
+	// Optional: service_details
+	if val := request.GetString("service_details", ""); val != "" {
+		args["service_details"] = val
+	}
+
+	// Optional: spherical_metadata
+	if val := request.GetString("spherical_metadata", ""); val != "" {
+		args["spherical_metadata"] = val
+	}
+
+	// Optional: start_info
+	// object type - using string
+	if val := request.GetString("start_info", ""); val != "" {
+		args["start_info"] = val
+	}
+
+	// Optional: store_location_descriptor
+	if val := request.GetString("store_location_descriptor", ""); val != "" {
+		args["store_location_descriptor"] = val
+	}
+
+	// Optional: temporary_status
+	if val := request.GetString("temporary_status", ""); val != "" {
+		args["temporary_status"] = val
+	}
+
+	// Optional: website
+	if val := request.GetString("website", ""); val != "" {
+		args["website"] = val
+	}
+
+	// Optional: zoom_scale_x
+	if val := request.GetFloat("zoom_scale_x", 0); val != 0 {
+		args["zoom_scale_x"] = val
+	}
+
+	// Optional: zoom_scale_y
+	if val := request.GetFloat("zoom_scale_y", 0); val != 0 {
+		args["zoom_scale_y"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextPage_get_ab_tests handles the page_get_ab_tests tool with context-based auth
+func HandleContextPage_get_ab_tests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_ab_tests(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_ab_tests: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_ab_tests handles the page_post_ab_tests tool with context-based auth
+func HandleContextPage_post_ab_tests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: control_video_id
+	control_video_id, err := request.RequireString("control_video_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter control_video_id: %v", err)), nil
+	}
+	args["control_video_id"] = control_video_id
+
+	// Required: description
+	description, err := request.RequireString("description")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter description: %v", err)), nil
+	}
+	args["description"] = description
+
+	// Required: duration
+	duration, err := request.RequireInt("duration")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter duration: %v", err)), nil
+	}
+	args["duration"] = duration
+
+	// Required: experiment_video_ids
+	experiment_video_ids, err := request.RequireString("experiment_video_ids")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter experiment_video_ids: %v", err)), nil
+	}
+	args["experiment_video_ids"] = experiment_video_ids
+
+	// Required: name
+	name, err := request.RequireString("name")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
+	}
+	args["name"] = name
+
+	// Required: optimization_goal
+	optimization_goal, err := request.RequireString("optimization_goal")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter optimization_goal: %v", err)), nil
+	}
+	args["optimization_goal"] = optimization_goal
+
+	// Optional: scheduled_experiment_timestamp
+	if val := request.GetInt("scheduled_experiment_timestamp", 0); val != 0 {
+		args["scheduled_experiment_timestamp"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_ab_tests(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_ab_tests: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_acknowledge_orders handles the page_post_acknowledge_orders tool with context-based auth
+func HandleContextPage_post_acknowledge_orders(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: idempotency_key
+	idempotency_key, err := request.RequireString("idempotency_key")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter idempotency_key: %v", err)), nil
+	}
+	args["idempotency_key"] = idempotency_key
+
+	// Required: orders
+	orders, err := request.RequireString("orders")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter orders: %v", err)), nil
+	}
+	args["orders"] = orders
+
+	// Call the client method
+	result, err := client.Page_post_acknowledge_orders(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_acknowledge_orders: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_ads_posts handles the page_get_ads_posts tool with context-based auth
+func HandleContextPage_get_ads_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: exclude_dynamic_ads
+	if val := request.GetBool("exclude_dynamic_ads", false); val {
+		args["exclude_dynamic_ads"] = val
+	}
+
+	// Optional: include_inline_create
+	if val := request.GetBool("include_inline_create", false); val {
+		args["include_inline_create"] = val
+	}
+
+	// Optional: since
+	if val := request.GetString("since", ""); val != "" {
+		args["since"] = val
+	}
+
+	// Optional: until
+	if val := request.GetString("until", ""); val != "" {
+		args["until"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_ads_posts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_ads_posts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_delete_agencies handles the page_delete_agencies tool with context-based auth
+func HandleContextPage_delete_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: business
+	business, err := request.RequireString("business")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+	}
+	args["business"] = business
+
+	// Call the client method
+	result, err := client.Page_delete_agencies(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_delete_agencies: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_agencies handles the page_get_agencies tool with context-based auth
+func HandleContextPage_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_agencies(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_agencies: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_agencies handles the page_post_agencies tool with context-based auth
+func HandleContextPage_post_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: business
+	business, err := request.RequireString("business")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+	}
+	args["business"] = business
+
+	// Optional: permitted_tasks
+	// array type - using string
+	if val := request.GetString("permitted_tasks", ""); val != "" {
+		args["permitted_tasks"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_agencies(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_agencies: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_albums handles the page_get_albums tool with context-based auth
+func HandleContextPage_get_albums(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_albums(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_albums: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_ar_experience handles the page_get_ar_experience tool with context-based auth
+func HandleContextPage_get_ar_experience(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_ar_experience(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_ar_experience: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_delete_assigned_users handles the page_delete_assigned_users tool with context-based auth
+func HandleContextPage_delete_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: user
+	user, err := request.RequireInt("user")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user: %v", err)), nil
+	}
+	args["user"] = user
+
+	// Call the client method
+	result, err := client.Page_delete_assigned_users(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_delete_assigned_users: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_assigned_users handles the page_get_assigned_users tool with context-based auth
+func HandleContextPage_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: business
+	business, err := request.RequireString("business")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+	}
+	args["business"] = business
+
+	// Call the client method
+	result, err := client.Page_get_assigned_users(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_assigned_users: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_assigned_users handles the page_post_assigned_users tool with context-based auth
+func HandleContextPage_post_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: tasks
+	// array type - using string
+	if val := request.GetString("tasks", ""); val != "" {
+		args["tasks"] = val
+	}
+
+	// Required: user
+	user, err := request.RequireInt("user")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user: %v", err)), nil
+	}
+	args["user"] = user
+
+	// Call the client method
+	result, err := client.Page_post_assigned_users(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_assigned_users: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_delete_blocked handles the page_delete_blocked tool with context-based auth
+func HandleContextPage_delete_blocked(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: asid
+	if val := request.GetString("asid", ""); val != "" {
+		args["asid"] = val
+	}
+
+	// Optional: psid
+	if val := request.GetInt("psid", 0); val != 0 {
+		args["psid"] = val
+	}
+
+	// Optional: uid
+	if val := request.GetInt("uid", 0); val != 0 {
+		args["uid"] = val
+	}
+
+	// Optional: user
+	if val := request.GetInt("user", 0); val != 0 {
+		args["user"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_delete_blocked(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_delete_blocked: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_blocked handles the page_get_blocked tool with context-based auth
+func HandleContextPage_get_blocked(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: uid
+	if val := request.GetInt("uid", 0); val != 0 {
+		args["uid"] = val
+	}
+
+	// Optional: user
+	if val := request.GetInt("user", 0); val != 0 {
+		args["user"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_blocked(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_blocked: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_blocked handles the page_post_blocked tool with context-based auth
+func HandleContextPage_post_blocked(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: asid
+	// array type - using string
+	if val := request.GetString("asid", ""); val != "" {
+		args["asid"] = val
+	}
+
+	// Optional: psid
+	// array type - using string
+	if val := request.GetString("psid", ""); val != "" {
+		args["psid"] = val
+	}
+
+	// Optional: uid
+	// array type - using string
+	if val := request.GetString("uid", ""); val != "" {
+		args["uid"] = val
+	}
+
+	// Optional: user
+	// array type - using string
+	if val := request.GetString("user", ""); val != "" {
+		args["user"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_blocked(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_blocked: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_business_data handles the page_post_business_data tool with context-based auth
+func HandleContextPage_post_business_data(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: data
+	data, err := request.RequireString("data")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter data: %v", err)), nil
+	}
+	args["data"] = data
+
+	// Required: partner_agent
+	partner_agent, err := request.RequireString("partner_agent")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter partner_agent: %v", err)), nil
+	}
+	args["partner_agent"] = partner_agent
+
+	// Optional: processing_type
+	if val := request.GetString("processing_type", ""); val != "" {
+		args["processing_type"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_business_data(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_business_data: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_businessprojects handles the page_get_businessprojects tool with context-based auth
+func HandleContextPage_get_businessprojects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: business
+	if val := request.GetString("business", ""); val != "" {
+		args["business"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_businessprojects(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_businessprojects: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_call_to_actions handles the page_get_call_to_actions tool with context-based auth
+func HandleContextPage_get_call_to_actions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_call_to_actions(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_call_to_actions: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_calls handles the page_post_calls tool with context-based auth
+func HandleContextPage_post_calls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: action
+	action, err := request.RequireString("action")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter action: %v", err)), nil
+	}
+	args["action"] = action
+
+	// Optional: call_id
+	if val := request.GetString("call_id", ""); val != "" {
+		args["call_id"] = val
+	}
+
+	// Optional: platform
+	if val := request.GetString("platform", ""); val != "" {
+		args["platform"] = val
+	}
+
+	// Optional: session
+	if val := request.GetString("session", ""); val != "" {
+		args["session"] = val
+	}
+
+	// Optional: to
+	if val := request.GetString("to", ""); val != "" {
+		args["to"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_calls(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_calls: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_canvas_elements handles the page_get_canvas_elements tool with context-based auth
+func HandleContextPage_get_canvas_elements(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_canvas_elements(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_canvas_elements: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_canvas_elements handles the page_post_canvas_elements tool with context-based auth
+func HandleContextPage_post_canvas_elements(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: canvas_button
+	// object type - using string
+	if val := request.GetString("canvas_button", ""); val != "" {
+		args["canvas_button"] = val
+	}
+
+	// Optional: canvas_carousel
+	// object type - using string
+	if val := request.GetString("canvas_carousel", ""); val != "" {
+		args["canvas_carousel"] = val
+	}
+
+	// Optional: canvas_footer
+	// object type - using string
+	if val := request.GetString("canvas_footer", ""); val != "" {
+		args["canvas_footer"] = val
+	}
+
+	// Optional: canvas_header
+	// object type - using string
+	if val := request.GetString("canvas_header", ""); val != "" {
+		args["canvas_header"] = val
+	}
+
+	// Optional: canvas_lead_form
+	// object type - using string
+	if val := request.GetString("canvas_lead_form", ""); val != "" {
+		args["canvas_lead_form"] = val
+	}
+
+	// Optional: canvas_photo
+	// object type - using string
+	if val := request.GetString("canvas_photo", ""); val != "" {
+		args["canvas_photo"] = val
+	}
+
+	// Optional: canvas_product_list
+	// object type - using string
+	if val := request.GetString("canvas_product_list", ""); val != "" {
+		args["canvas_product_list"] = val
+	}
+
+	// Optional: canvas_product_set
+	// object type - using string
+	if val := request.GetString("canvas_product_set", ""); val != "" {
+		args["canvas_product_set"] = val
+	}
+
+	// Optional: canvas_store_locator
+	// object type - using string
+	if val := request.GetString("canvas_store_locator", ""); val != "" {
+		args["canvas_store_locator"] = val
+	}
+
+	// Optional: canvas_template_video
+	// object type - using string
+	if val := request.GetString("canvas_template_video", ""); val != "" {
+		args["canvas_template_video"] = val
+	}
+
+	// Optional: canvas_text
+	// object type - using string
+	if val := request.GetString("canvas_text", ""); val != "" {
+		args["canvas_text"] = val
+	}
+
+	// Optional: canvas_video
+	// object type - using string
+	if val := request.GetString("canvas_video", ""); val != "" {
+		args["canvas_video"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_canvas_elements(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_canvas_elements: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_canvases handles the page_get_canvases tool with context-based auth
+func HandleContextPage_get_canvases(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: is_hidden
+	if val := request.GetBool("is_hidden", false); val {
+		args["is_hidden"] = val
+	}
+
+	// Optional: is_published
+	if val := request.GetBool("is_published", false); val {
+		args["is_published"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_canvases(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_canvases: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_canvases handles the page_post_canvases tool with context-based auth
+func HandleContextPage_post_canvases(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: background_color
+	if val := request.GetString("background_color", ""); val != "" {
+		args["background_color"] = val
+	}
+
+	// Optional: body_element_ids
+	// array type - using string
+	if val := request.GetString("body_element_ids", ""); val != "" {
+		args["body_element_ids"] = val
+	}
+
+	// Optional: enable_swipe_to_open
+	if val := request.GetBool("enable_swipe_to_open", false); val {
+		args["enable_swipe_to_open"] = val
+	}
+
+	// Optional: is_hidden
+	if val := request.GetBool("is_hidden", false); val {
+		args["is_hidden"] = val
+	}
+
+	// Optional: is_published
+	if val := request.GetBool("is_published", false); val {
+		args["is_published"] = val
+	}
+
+	// Optional: name
+	if val := request.GetString("name", ""); val != "" {
+		args["name"] = val
+	}
+
+	// Optional: source_template_id
+	if val := request.GetString("source_template_id", ""); val != "" {
+		args["source_template_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_canvases(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_canvases: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_chat_plugin handles the page_get_chat_plugin tool with context-based auth
+func HandleContextPage_get_chat_plugin(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_chat_plugin(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_chat_plugin: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_commerce_merchant_settings handles the page_get_commerce_merchant_settings tool with context-based auth
+func HandleContextPage_get_commerce_merchant_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_commerce_merchant_settings(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_commerce_merchant_settings: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_commerce_orders handles the page_get_commerce_orders tool with context-based auth
+func HandleContextPage_get_commerce_orders(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: filters
+	// array type - using string
+	if val := request.GetString("filters", ""); val != "" {
+		args["filters"] = val
+	}
+
+	// Optional: state
+	// array type - using string
+	if val := request.GetString("state", ""); val != "" {
+		args["state"] = val
+	}
+
+	// Optional: updated_after
+	if val := request.GetString("updated_after", ""); val != "" {
+		args["updated_after"] = val
+	}
+
+	// Optional: updated_before
+	if val := request.GetString("updated_before", ""); val != "" {
+		args["updated_before"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_commerce_orders(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_commerce_orders: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_commerce_payouts handles the page_get_commerce_payouts tool with context-based auth
+func HandleContextPage_get_commerce_payouts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: end_time
+	if val := request.GetString("end_time", ""); val != "" {
+		args["end_time"] = val
+	}
+
+	// Optional: start_time
+	if val := request.GetString("start_time", ""); val != "" {
+		args["start_time"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_commerce_payouts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_commerce_payouts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_commerce_transactions handles the page_get_commerce_transactions tool with context-based auth
+func HandleContextPage_get_commerce_transactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: end_time
+	if val := request.GetString("end_time", ""); val != "" {
+		args["end_time"] = val
+	}
+
+	// Optional: payout_reference_id
+	if val := request.GetString("payout_reference_id", ""); val != "" {
+		args["payout_reference_id"] = val
+	}
+
+	// Optional: start_time
+	if val := request.GetString("start_time", ""); val != "" {
+		args["start_time"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_commerce_transactions(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_commerce_transactions: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_conversations handles the page_get_conversations tool with context-based auth
+func HandleContextPage_get_conversations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: folder
+	if val := request.GetString("folder", ""); val != "" {
+		args["folder"] = val
+	}
+
+	// Optional: platform
+	if val := request.GetString("platform", ""); val != "" {
+		args["platform"] = val
+	}
+
+	// Optional: tags
+	// array type - using string
+	if val := request.GetString("tags", ""); val != "" {
+		args["tags"] = val
+	}
+
+	// Optional: user_id
+	if val := request.GetString("user_id", ""); val != "" {
+		args["user_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_conversations(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_conversations: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_copyright_manual_claims handles the page_post_copyright_manual_claims tool with context-based auth
+func HandleContextPage_post_copyright_manual_claims(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: action
+	if val := request.GetString("action", ""); val != "" {
+		args["action"] = val
+	}
+
+	// Optional: action_reason
+	if val := request.GetString("action_reason", ""); val != "" {
+		args["action_reason"] = val
+	}
+
+	// Optional: countries
+	// object type - using string
+	if val := request.GetString("countries", ""); val != "" {
+		args["countries"] = val
+	}
+
+	// Required: match_content_type
+	match_content_type, err := request.RequireString("match_content_type")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter match_content_type: %v", err)), nil
+	}
+	args["match_content_type"] = match_content_type
+
+	// Required: matched_asset_id
+	matched_asset_id, err := request.RequireString("matched_asset_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter matched_asset_id: %v", err)), nil
+	}
+	args["matched_asset_id"] = matched_asset_id
+
+	// Required: reference_asset_id
+	reference_asset_id, err := request.RequireString("reference_asset_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter reference_asset_id: %v", err)), nil
+	}
+	args["reference_asset_id"] = reference_asset_id
+
+	// Optional: selected_segments
+	// array type - using string
+	if val := request.GetString("selected_segments", ""); val != "" {
+		args["selected_segments"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_copyright_manual_claims(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_copyright_manual_claims: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_crosspost_whitelisted_pages handles the page_get_crosspost_whitelisted_pages tool with context-based auth
+func HandleContextPage_get_crosspost_whitelisted_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_crosspost_whitelisted_pages(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_crosspost_whitelisted_pages: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_ctx_optimization_eligibility handles the page_get_ctx_optimization_eligibility tool with context-based auth
+func HandleContextPage_get_ctx_optimization_eligibility(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_ctx_optimization_eligibility(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_ctx_optimization_eligibility: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_custom_labels handles the page_get_custom_labels tool with context-based auth
+func HandleContextPage_get_custom_labels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_custom_labels(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_custom_labels: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_custom_labels handles the page_post_custom_labels tool with context-based auth
+func HandleContextPage_post_custom_labels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: name
+	if val := request.GetString("name", ""); val != "" {
+		args["name"] = val
+	}
+
+	// Required: page_label_name
+	page_label_name, err := request.RequireString("page_label_name")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter page_label_name: %v", err)), nil
+	}
+	args["page_label_name"] = page_label_name
+
+	// Call the client method
+	result, err := client.Page_post_custom_labels(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_custom_labels: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_delete_custom_user_settings handles the page_delete_custom_user_settings tool with context-based auth
+func HandleContextPage_delete_custom_user_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: params
+	params, err := request.RequireString("params")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
+	}
+	args["params"] = params
+
+	// Required: psid
+	psid, err := request.RequireString("psid")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter psid: %v", err)), nil
+	}
+	args["psid"] = psid
+
+	// Call the client method
+	result, err := client.Page_delete_custom_user_settings(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_delete_custom_user_settings: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_custom_user_settings handles the page_get_custom_user_settings tool with context-based auth
+func HandleContextPage_get_custom_user_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: psid
+	psid, err := request.RequireString("psid")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter psid: %v", err)), nil
+	}
+	args["psid"] = psid
+
+	// Call the client method
+	result, err := client.Page_get_custom_user_settings(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_custom_user_settings: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_custom_user_settings handles the page_post_custom_user_settings tool with context-based auth
+func HandleContextPage_post_custom_user_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: persistent_menu
+	// array type - using string
+	if val := request.GetString("persistent_menu", ""); val != "" {
+		args["persistent_menu"] = val
+	}
+
+	// Required: psid
+	psid, err := request.RequireString("psid")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter psid: %v", err)), nil
+	}
+	args["psid"] = psid
+
+	// Call the client method
+	result, err := client.Page_post_custom_user_settings(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_custom_user_settings: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_dataset handles the page_get_dataset tool with context-based auth
+func HandleContextPage_get_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_dataset(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_dataset: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_dataset handles the page_post_dataset tool with context-based auth
+func HandleContextPage_post_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: dataset_name
+	if val := request.GetString("dataset_name", ""); val != "" {
+		args["dataset_name"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_dataset(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_dataset: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_events handles the page_get_events tool with context-based auth
+func HandleContextPage_get_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: event_state_filter
+	// array type - using string
+	if val := request.GetString("event_state_filter", ""); val != "" {
+		args["event_state_filter"] = val
+	}
+
+	// Optional: include_canceled
+	if val := request.GetBool("include_canceled", false); val {
+		args["include_canceled"] = val
+	}
+
+	// Optional: time_filter
+	if val := request.GetString("time_filter", ""); val != "" {
+		args["time_filter"] = val
+	}
+
+	// Optional: type
+	if val := request.GetString("type", ""); val != "" {
+		args["type"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_events(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_events: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_extend_thread_control handles the page_post_extend_thread_control tool with context-based auth
+func HandleContextPage_post_extend_thread_control(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: duration
+	if val := request.GetInt("duration", 0); val != 0 {
+		args["duration"] = val
+	}
+
+	// Required: recipient
+	recipient, err := request.RequireString("recipient")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter recipient: %v", err)), nil
+	}
+	args["recipient"] = recipient
+
+	// Call the client method
+	result, err := client.Page_post_extend_thread_control(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_extend_thread_control: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_fantasy_games handles the page_get_fantasy_games tool with context-based auth
+func HandleContextPage_get_fantasy_games(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_fantasy_games(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_fantasy_games: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_feed handles the page_get_feed tool with context-based auth
+func HandleContextPage_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: include_hidden
+	if val := request.GetBool("include_hidden", false); val {
+		args["include_hidden"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: show_expired
+	if val := request.GetBool("show_expired", false); val {
+		args["show_expired"] = val
+	}
+
+	// Optional: with
+	if val := request.GetString("with", ""); val != "" {
+		args["with"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_feed(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_feed: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_feed handles the page_post_feed tool with context-based auth
+func HandleContextPage_post_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: actions
+	// object type - using string
+	if val := request.GetString("actions", ""); val != "" {
+		args["actions"] = val
+	}
+
+	// Optional: album_id
+	if val := request.GetString("album_id", ""); val != "" {
+		args["album_id"] = val
+	}
+
+	// Optional: android_key_hash
+	if val := request.GetString("android_key_hash", ""); val != "" {
+		args["android_key_hash"] = val
+	}
+
+	// Optional: application_id
+	if val := request.GetString("application_id", ""); val != "" {
+		args["application_id"] = val
+	}
+
+	// Optional: asked_fun_fact_prompt_id
+	if val := request.GetInt("asked_fun_fact_prompt_id", 0); val != 0 {
+		args["asked_fun_fact_prompt_id"] = val
+	}
+
+	// Optional: asset3d_id
+	if val := request.GetString("asset3d_id", ""); val != "" {
+		args["asset3d_id"] = val
+	}
+
+	// Optional: associated_id
+	if val := request.GetString("associated_id", ""); val != "" {
+		args["associated_id"] = val
+	}
+
+	// Optional: attach_place_suggestion
+	if val := request.GetBool("attach_place_suggestion", false); val {
+		args["attach_place_suggestion"] = val
+	}
+
+	// Optional: attached_media
+	// array type - using string
+	if val := request.GetString("attached_media", ""); val != "" {
+		args["attached_media"] = val
+	}
+
+	// Optional: audience_exp
+	if val := request.GetBool("audience_exp", false); val {
+		args["audience_exp"] = val
+	}
+
+	// Optional: backdated_time
+	if val := request.GetString("backdated_time", ""); val != "" {
+		args["backdated_time"] = val
+	}
+
+	// Optional: backdated_time_granularity
+	if val := request.GetString("backdated_time_granularity", ""); val != "" {
+		args["backdated_time_granularity"] = val
+	}
+
+	// Optional: breaking_news
+	if val := request.GetBool("breaking_news", false); val {
+		args["breaking_news"] = val
+	}
+
+	// Optional: breaking_news_expiration
+	if val := request.GetInt("breaking_news_expiration", 0); val != 0 {
+		args["breaking_news_expiration"] = val
+	}
+
+	// Optional: call_to_action
+	// object type - using string
+	if val := request.GetString("call_to_action", ""); val != "" {
+		args["call_to_action"] = val
+	}
+
+	// Optional: caption
+	if val := request.GetString("caption", ""); val != "" {
+		args["caption"] = val
+	}
+
+	// Optional: child_attachments
+	// array type - using string
+	if val := request.GetString("child_attachments", ""); val != "" {
+		args["child_attachments"] = val
+	}
+
+	// Optional: client_mutation_id
+	if val := request.GetString("client_mutation_id", ""); val != "" {
+		args["client_mutation_id"] = val
+	}
+
+	// Optional: composer_entry_picker
+	if val := request.GetString("composer_entry_picker", ""); val != "" {
+		args["composer_entry_picker"] = val
+	}
+
+	// Optional: composer_entry_point
+	if val := request.GetString("composer_entry_point", ""); val != "" {
+		args["composer_entry_point"] = val
+	}
+
+	// Optional: composer_entry_time
+	if val := request.GetInt("composer_entry_time", 0); val != 0 {
+		args["composer_entry_time"] = val
+	}
+
+	// Optional: composer_session_events_log
+	if val := request.GetString("composer_session_events_log", ""); val != "" {
+		args["composer_session_events_log"] = val
+	}
+
+	// Optional: composer_session_id
+	if val := request.GetString("composer_session_id", ""); val != "" {
+		args["composer_session_id"] = val
+	}
+
+	// Optional: composer_source_surface
+	if val := request.GetString("composer_source_surface", ""); val != "" {
+		args["composer_source_surface"] = val
+	}
+
+	// Optional: composer_type
+	if val := request.GetString("composer_type", ""); val != "" {
+		args["composer_type"] = val
+	}
+
+	// Optional: connection_class
+	if val := request.GetString("connection_class", ""); val != "" {
+		args["connection_class"] = val
+	}
+
+	// Optional: content_attachment
+	if val := request.GetString("content_attachment", ""); val != "" {
+		args["content_attachment"] = val
+	}
+
+	// Optional: coordinates
+	// object type - using string
+	if val := request.GetString("coordinates", ""); val != "" {
+		args["coordinates"] = val
+	}
+
+	// Optional: cta_link
+	if val := request.GetString("cta_link", ""); val != "" {
+		args["cta_link"] = val
+	}
+
+	// Optional: cta_type
+	if val := request.GetString("cta_type", ""); val != "" {
+		args["cta_type"] = val
+	}
+
+	// Optional: description
+	if val := request.GetString("description", ""); val != "" {
+		args["description"] = val
+	}
+
+	// Optional: direct_share_status
+	if val := request.GetInt("direct_share_status", 0); val != 0 {
+		args["direct_share_status"] = val
+	}
+
+	// Optional: enforce_link_ownership
+	if val := request.GetBool("enforce_link_ownership", false); val {
+		args["enforce_link_ownership"] = val
+	}
+
+	// Optional: expanded_height
+	if val := request.GetInt("expanded_height", 0); val != 0 {
+		args["expanded_height"] = val
+	}
+
+	// Optional: expanded_width
+	if val := request.GetInt("expanded_width", 0); val != 0 {
+		args["expanded_width"] = val
+	}
+
+	// Optional: feed_targeting
+	// object type - using string
+	if val := request.GetString("feed_targeting", ""); val != "" {
+		args["feed_targeting"] = val
+	}
+
+	// Optional: formatting
+	if val := request.GetString("formatting", ""); val != "" {
+		args["formatting"] = val
+	}
+
+	// Optional: fun_fact_prompt_id
+	if val := request.GetString("fun_fact_prompt_id", ""); val != "" {
+		args["fun_fact_prompt_id"] = val
+	}
+
+	// Optional: fun_fact_toastee_id
+	if val := request.GetInt("fun_fact_toastee_id", 0); val != 0 {
+		args["fun_fact_toastee_id"] = val
+	}
+
+	// Optional: height
+	if val := request.GetInt("height", 0); val != 0 {
+		args["height"] = val
+	}
+
+	// Optional: home_checkin_city_id
+	// object type - using string
+	if val := request.GetString("home_checkin_city_id", ""); val != "" {
+		args["home_checkin_city_id"] = val
+	}
+
+	// Optional: image_crops
+	if val := request.GetString("image_crops", ""); val != "" {
+		args["image_crops"] = val
+	}
+
+	// Optional: implicit_with_tags
+	// array type - using string
+	if val := request.GetString("implicit_with_tags", ""); val != "" {
+		args["implicit_with_tags"] = val
+	}
+
+	// Optional: instant_game_entry_point_data
+	if val := request.GetString("instant_game_entry_point_data", ""); val != "" {
+		args["instant_game_entry_point_data"] = val
+	}
+
+	// Optional: ios_bundle_id
+	if val := request.GetString("ios_bundle_id", ""); val != "" {
+		args["ios_bundle_id"] = val
+	}
+
+	// Optional: is_backout_draft
+	if val := request.GetBool("is_backout_draft", false); val {
+		args["is_backout_draft"] = val
+	}
+
+	// Optional: is_boost_intended
+	if val := request.GetBool("is_boost_intended", false); val {
+		args["is_boost_intended"] = val
+	}
+
+	// Optional: is_explicit_location
+	if val := request.GetBool("is_explicit_location", false); val {
+		args["is_explicit_location"] = val
+	}
+
+	// Optional: is_explicit_share
+	if val := request.GetBool("is_explicit_share", false); val {
+		args["is_explicit_share"] = val
+	}
+
+	// Optional: is_group_linking_post
+	if val := request.GetBool("is_group_linking_post", false); val {
+		args["is_group_linking_post"] = val
+	}
+
+	// Optional: is_photo_container
+	if val := request.GetBool("is_photo_container", false); val {
+		args["is_photo_container"] = val
+	}
+
+	// Optional: link
+	if val := request.GetString("link", ""); val != "" {
+		args["link"] = val
+	}
+
+	// Optional: location_source_id
+	if val := request.GetString("location_source_id", ""); val != "" {
+		args["location_source_id"] = val
+	}
+
+	// Optional: manual_privacy
+	if val := request.GetBool("manual_privacy", false); val {
+		args["manual_privacy"] = val
+	}
+
+	// Optional: message
+	if val := request.GetString("message", ""); val != "" {
+		args["message"] = val
+	}
+
+	// Optional: multi_share_end_card
+	if val := request.GetBool("multi_share_end_card", false); val {
+		args["multi_share_end_card"] = val
+	}
+
+	// Optional: multi_share_optimized
+	if val := request.GetBool("multi_share_optimized", false); val {
+		args["multi_share_optimized"] = val
+	}
+
+	// Optional: name
+	if val := request.GetString("name", ""); val != "" {
+		args["name"] = val
+	}
+
+	// Optional: nectar_module
+	if val := request.GetString("nectar_module", ""); val != "" {
+		args["nectar_module"] = val
+	}
+
+	// Optional: object_attachment
+	if val := request.GetString("object_attachment", ""); val != "" {
+		args["object_attachment"] = val
+	}
+
+	// Optional: og_action_type_id
+	if val := request.GetString("og_action_type_id", ""); val != "" {
+		args["og_action_type_id"] = val
+	}
+
+	// Optional: og_hide_object_attachment
+	if val := request.GetBool("og_hide_object_attachment", false); val {
+		args["og_hide_object_attachment"] = val
+	}
+
+	// Optional: og_icon_id
+	if val := request.GetString("og_icon_id", ""); val != "" {
+		args["og_icon_id"] = val
+	}
+
+	// Optional: og_object_id
+	if val := request.GetString("og_object_id", ""); val != "" {
+		args["og_object_id"] = val
+	}
+
+	// Optional: og_phrase
+	if val := request.GetString("og_phrase", ""); val != "" {
+		args["og_phrase"] = val
+	}
+
+	// Optional: og_set_profile_badge
+	if val := request.GetBool("og_set_profile_badge", false); val {
+		args["og_set_profile_badge"] = val
+	}
+
+	// Optional: og_suggestion_mechanism
+	if val := request.GetString("og_suggestion_mechanism", ""); val != "" {
+		args["og_suggestion_mechanism"] = val
+	}
+
+	// Optional: page_recommendation
+	if val := request.GetString("page_recommendation", ""); val != "" {
+		args["page_recommendation"] = val
+	}
+
+	// Optional: picture
+	if val := request.GetString("picture", ""); val != "" {
+		args["picture"] = val
+	}
+
+	// Optional: place
+	// object type - using string
+	if val := request.GetString("place", ""); val != "" {
+		args["place"] = val
+	}
+
+	// Optional: place_attachment_setting
+	if val := request.GetString("place_attachment_setting", ""); val != "" {
+		args["place_attachment_setting"] = val
+	}
+
+	// Optional: place_list
+	if val := request.GetString("place_list", ""); val != "" {
+		args["place_list"] = val
+	}
+
+	// Optional: place_list_data
+	if val := request.GetString("place_list_data", ""); val != "" {
+		args["place_list_data"] = val
+	}
+
+	// Optional: post_surfaces_blacklist
+	// array type - using string
+	if val := request.GetString("post_surfaces_blacklist", ""); val != "" {
+		args["post_surfaces_blacklist"] = val
+	}
+
+	// Optional: posting_to_redspace
+	if val := request.GetString("posting_to_redspace", ""); val != "" {
+		args["posting_to_redspace"] = val
+	}
+
+	// Optional: privacy
+	if val := request.GetString("privacy", ""); val != "" {
+		args["privacy"] = val
+	}
+
+	// Optional: prompt_id
+	if val := request.GetString("prompt_id", ""); val != "" {
+		args["prompt_id"] = val
+	}
+
+	// Optional: prompt_tracking_string
+	if val := request.GetString("prompt_tracking_string", ""); val != "" {
+		args["prompt_tracking_string"] = val
+	}
+
+	// Optional: properties
+	// object type - using string
+	if val := request.GetString("properties", ""); val != "" {
+		args["properties"] = val
+	}
+
+	// Optional: proxied_app_id
+	if val := request.GetString("proxied_app_id", ""); val != "" {
+		args["proxied_app_id"] = val
+	}
+
+	// Optional: publish_event_id
+	if val := request.GetInt("publish_event_id", 0); val != 0 {
+		args["publish_event_id"] = val
+	}
+
+	// Optional: published
+	if val := request.GetBool("published", false); val {
+		args["published"] = val
+	}
+
+	// Optional: quote
+	if val := request.GetString("quote", ""); val != "" {
+		args["quote"] = val
+	}
+
+	// Optional: ref
+	// array type - using string
+	if val := request.GetString("ref", ""); val != "" {
+		args["ref"] = val
+	}
+
+	// Optional: referenceable_image_ids
+	// array type - using string
+	if val := request.GetString("referenceable_image_ids", ""); val != "" {
+		args["referenceable_image_ids"] = val
+	}
+
+	// Optional: referral_id
+	if val := request.GetString("referral_id", ""); val != "" {
+		args["referral_id"] = val
+	}
+
+	// Optional: scheduled_publish_time
+	if val := request.GetString("scheduled_publish_time", ""); val != "" {
+		args["scheduled_publish_time"] = val
+	}
+
+	// Optional: source
+	if val := request.GetString("source", ""); val != "" {
+		args["source"] = val
+	}
+
+	// Optional: sponsor_id
+	if val := request.GetString("sponsor_id", ""); val != "" {
+		args["sponsor_id"] = val
+	}
+
+	// Optional: sponsor_relationship
+	if val := request.GetInt("sponsor_relationship", 0); val != 0 {
+		args["sponsor_relationship"] = val
+	}
+
+	// Optional: suggested_place_id
+	// object type - using string
+	if val := request.GetString("suggested_place_id", ""); val != "" {
+		args["suggested_place_id"] = val
+	}
+
+	// Optional: tags
+	// array type - using string
+	if val := request.GetString("tags", ""); val != "" {
+		args["tags"] = val
+	}
+
+	// Optional: target_surface
+	if val := request.GetString("target_surface", ""); val != "" {
+		args["target_surface"] = val
+	}
+
+	// Optional: targeting
+	// object type - using string
+	if val := request.GetString("targeting", ""); val != "" {
+		args["targeting"] = val
+	}
+
+	// Optional: text_format_metadata
+	if val := request.GetString("text_format_metadata", ""); val != "" {
+		args["text_format_metadata"] = val
+	}
+
+	// Optional: text_format_preset_id
+	if val := request.GetString("text_format_preset_id", ""); val != "" {
+		args["text_format_preset_id"] = val
+	}
+
+	// Optional: text_only_place
+	if val := request.GetString("text_only_place", ""); val != "" {
+		args["text_only_place"] = val
+	}
+
+	// Optional: thumbnail
+	if val := request.GetString("thumbnail", ""); val != "" {
+		args["thumbnail"] = val
+	}
+
+	// Optional: time_since_original_post
+	if val := request.GetInt("time_since_original_post", 0); val != 0 {
+		args["time_since_original_post"] = val
+	}
+
+	// Optional: title
+	if val := request.GetString("title", ""); val != "" {
+		args["title"] = val
+	}
+
+	// Optional: tracking_info
+	if val := request.GetString("tracking_info", ""); val != "" {
+		args["tracking_info"] = val
+	}
+
+	// Optional: unpublished_content_type
+	if val := request.GetString("unpublished_content_type", ""); val != "" {
+		args["unpublished_content_type"] = val
+	}
+
+	// Optional: user_selected_tags
+	if val := request.GetBool("user_selected_tags", false); val {
+		args["user_selected_tags"] = val
+	}
+
+	// Optional: video_start_time_ms
+	if val := request.GetInt("video_start_time_ms", 0); val != 0 {
+		args["video_start_time_ms"] = val
+	}
+
+	// Optional: viewer_coordinates
+	// object type - using string
+	if val := request.GetString("viewer_coordinates", ""); val != "" {
+		args["viewer_coordinates"] = val
+	}
+
+	// Optional: width
+	if val := request.GetInt("width", 0); val != 0 {
+		args["width"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_feed(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_feed: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_global_brand_children handles the page_get_global_brand_children tool with context-based auth
+func HandleContextPage_get_global_brand_children(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_global_brand_children(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_global_brand_children: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_image_copyrights handles the page_get_image_copyrights tool with context-based auth
+func HandleContextPage_get_image_copyrights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_image_copyrights(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_image_copyrights: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_image_copyrights handles the page_post_image_copyrights tool with context-based auth
+func HandleContextPage_post_image_copyrights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: artist
+	if val := request.GetString("artist", ""); val != "" {
+		args["artist"] = val
+	}
+
+	// Optional: attribution_link
+	if val := request.GetString("attribution_link", ""); val != "" {
+		args["attribution_link"] = val
+	}
+
+	// Optional: creator
+	if val := request.GetString("creator", ""); val != "" {
+		args["creator"] = val
+	}
+
+	// Optional: custom_id
+	if val := request.GetString("custom_id", ""); val != "" {
+		args["custom_id"] = val
+	}
+
+	// Optional: description
+	if val := request.GetString("description", ""); val != "" {
+		args["description"] = val
+	}
+
+	// Required: filename
+	filename, err := request.RequireString("filename")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter filename: %v", err)), nil
+	}
+	args["filename"] = filename
+
+	// Required: geo_ownership
+	geo_ownership, err := request.RequireString("geo_ownership")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter geo_ownership: %v", err)), nil
+	}
+	args["geo_ownership"] = geo_ownership
+
+	// Optional: original_content_creation_date
+	if val := request.GetInt("original_content_creation_date", 0); val != 0 {
+		args["original_content_creation_date"] = val
+	}
+
+	// Required: reference_photo
+	reference_photo, err := request.RequireString("reference_photo")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter reference_photo: %v", err)), nil
+	}
+	args["reference_photo"] = reference_photo
+
+	// Optional: title
+	if val := request.GetString("title", ""); val != "" {
+		args["title"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_image_copyrights(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_image_copyrights: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_indexed_videos handles the page_get_indexed_videos tool with context-based auth
+func HandleContextPage_get_indexed_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_indexed_videos(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_indexed_videos: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_insights handles the page_get_insights tool with context-based auth
+func HandleContextPage_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: breakdown
+	// array type - using string
+	if val := request.GetString("breakdown", ""); val != "" {
+		args["breakdown"] = val
+	}
+
+	// Optional: date_preset
+	if val := request.GetString("date_preset", ""); val != "" {
+		args["date_preset"] = val
+	}
+
+	// Optional: metric
+	// array type - using string
+	if val := request.GetString("metric", ""); val != "" {
+		args["metric"] = val
+	}
+
+	// Optional: period
+	if val := request.GetString("period", ""); val != "" {
+		args["period"] = val
+	}
+
+	// Optional: show_description_from_api_doc
+	if val := request.GetBool("show_description_from_api_doc", false); val {
+		args["show_description_from_api_doc"] = val
+	}
+
+	// Optional: since
+	if val := request.GetString("since", ""); val != "" {
+		args["since"] = val
+	}
+
+	// Optional: until
+	if val := request.GetString("until", ""); val != "" {
+		args["until"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_insights(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_insights: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_instagram_accounts handles the page_get_instagram_accounts tool with context-based auth
+func HandleContextPage_get_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_instagram_accounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_instagram_accounts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_leadgen_forms handles the page_get_leadgen_forms tool with context-based auth
+func HandleContextPage_get_leadgen_forms(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_leadgen_forms(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_leadgen_forms: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_leadgen_forms handles the page_post_leadgen_forms tool with context-based auth
+func HandleContextPage_post_leadgen_forms(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: allow_organic_lead_retrieval
+	if val := request.GetBool("allow_organic_lead_retrieval", false); val {
+		args["allow_organic_lead_retrieval"] = val
+	}
+
+	// Optional: block_display_for_non_targeted_viewer
+	if val := request.GetBool("block_display_for_non_targeted_viewer", false); val {
+		args["block_display_for_non_targeted_viewer"] = val
+	}
+
+	// Optional: context_card
+	// object type - using string
+	if val := request.GetString("context_card", ""); val != "" {
+		args["context_card"] = val
+	}
+
+	// Optional: cover_photo
+	if val := request.GetString("cover_photo", ""); val != "" {
+		args["cover_photo"] = val
+	}
+
+	// Optional: custom_disclaimer
+	// object type - using string
+	if val := request.GetString("custom_disclaimer", ""); val != "" {
+		args["custom_disclaimer"] = val
+	}
+
+	// Optional: follow_up_action_url
+	if val := request.GetString("follow_up_action_url", ""); val != "" {
+		args["follow_up_action_url"] = val
+	}
+
+	// Optional: is_for_canvas
+	if val := request.GetBool("is_for_canvas", false); val {
+		args["is_for_canvas"] = val
+	}
+
+	// Optional: is_optimized_for_quality
+	if val := request.GetBool("is_optimized_for_quality", false); val {
+		args["is_optimized_for_quality"] = val
+	}
+
+	// Optional: locale
+	if val := request.GetString("locale", ""); val != "" {
+		args["locale"] = val
+	}
+
+	// Required: name
+	name, err := request.RequireString("name")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
+	}
+	args["name"] = name
+
+	// Optional: privacy_policy
+	// object type - using string
+	if val := request.GetString("privacy_policy", ""); val != "" {
+		args["privacy_policy"] = val
+	}
+
+	// Optional: question_page_custom_headline
+	if val := request.GetString("question_page_custom_headline", ""); val != "" {
+		args["question_page_custom_headline"] = val
+	}
+
+	// Required: questions
+	questions, err := request.RequireString("questions")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter questions: %v", err)), nil
+	}
+	args["questions"] = questions
+
+	// Optional: thank_you_page
+	// object type - using string
+	if val := request.GetString("thank_you_page", ""); val != "" {
+		args["thank_you_page"] = val
+	}
+
+	// Optional: tracking_parameters
+	if val := request.GetString("tracking_parameters", ""); val != "" {
+		args["tracking_parameters"] = val
+	}
+
+	// Optional: upload_gated_file
+	if val := request.GetString("upload_gated_file", ""); val != "" {
+		args["upload_gated_file"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_leadgen_forms(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_leadgen_forms: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_likes handles the page_get_likes tool with context-based auth
+func HandleContextPage_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: target_id
+	if val := request.GetString("target_id", ""); val != "" {
+		args["target_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_likes(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_likes: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_live_videos handles the page_get_live_videos tool with context-based auth
+func HandleContextPage_get_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: broadcast_status
+	// array type - using string
+	if val := request.GetString("broadcast_status", ""); val != "" {
+		args["broadcast_status"] = val
+	}
+
+	// Optional: source
+	if val := request.GetString("source", ""); val != "" {
+		args["source"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_live_videos(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_live_videos: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_live_videos handles the page_post_live_videos tool with context-based auth
+func HandleContextPage_post_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: content_tags
+	// array type - using string
+	if val := request.GetString("content_tags", ""); val != "" {
+		args["content_tags"] = val
+	}
+
+	// Optional: crossposting_actions
+	// array type - using string
+	if val := request.GetString("crossposting_actions", ""); val != "" {
+		args["crossposting_actions"] = val
+	}
+
+	// Optional: custom_labels
+	// array type - using string
+	if val := request.GetString("custom_labels", ""); val != "" {
+		args["custom_labels"] = val
+	}
+
+	// Optional: description
+	if val := request.GetString("description", ""); val != "" {
+		args["description"] = val
+	}
+
+	// Optional: enable_backup_ingest
+	if val := request.GetBool("enable_backup_ingest", false); val {
+		args["enable_backup_ingest"] = val
+	}
+
+	// Optional: encoding_settings
+	if val := request.GetString("encoding_settings", ""); val != "" {
+		args["encoding_settings"] = val
+	}
+
+	// Optional: event_params
+	// object type - using string
+	if val := request.GetString("event_params", ""); val != "" {
+		args["event_params"] = val
+	}
+
+	// Optional: fisheye_video_cropped
+	if val := request.GetBool("fisheye_video_cropped", false); val {
+		args["fisheye_video_cropped"] = val
+	}
+
+	// Optional: front_z_rotation
+	if val := request.GetFloat("front_z_rotation", 0); val != 0 {
+		args["front_z_rotation"] = val
+	}
+
+	// Optional: game_show
+	if val := request.GetString("game_show", ""); val != "" {
+		args["game_show"] = val
+	}
+
+	// Optional: is_audio_only
+	if val := request.GetBool("is_audio_only", false); val {
+		args["is_audio_only"] = val
+	}
+
+	// Optional: is_spherical
+	if val := request.GetBool("is_spherical", false); val {
+		args["is_spherical"] = val
+	}
+
+	// Optional: original_fov
+	if val := request.GetInt("original_fov", 0); val != 0 {
+		args["original_fov"] = val
+	}
+
+	// Optional: privacy
+	if val := request.GetString("privacy", ""); val != "" {
+		args["privacy"] = val
+	}
+
+	// Optional: projection
+	if val := request.GetString("projection", ""); val != "" {
+		args["projection"] = val
+	}
+
+	// Optional: published
+	if val := request.GetBool("published", false); val {
+		args["published"] = val
+	}
+
+	// Optional: schedule_custom_profile_image
+	if val := request.GetString("schedule_custom_profile_image", ""); val != "" {
+		args["schedule_custom_profile_image"] = val
+	}
+
+	// Optional: spatial_audio_format
+	if val := request.GetString("spatial_audio_format", ""); val != "" {
+		args["spatial_audio_format"] = val
+	}
+
+	// Optional: status
+	if val := request.GetString("status", ""); val != "" {
+		args["status"] = val
+	}
+
+	// Optional: stereoscopic_mode
+	if val := request.GetString("stereoscopic_mode", ""); val != "" {
+		args["stereoscopic_mode"] = val
+	}
+
+	// Optional: stop_on_delete_stream
+	if val := request.GetBool("stop_on_delete_stream", false); val {
+		args["stop_on_delete_stream"] = val
+	}
+
+	// Optional: stream_type
+	if val := request.GetString("stream_type", ""); val != "" {
+		args["stream_type"] = val
+	}
+
+	// Optional: targeting
+	// object type - using string
+	if val := request.GetString("targeting", ""); val != "" {
+		args["targeting"] = val
+	}
+
+	// Optional: title
+	if val := request.GetString("title", ""); val != "" {
+		args["title"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_live_videos(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_live_videos: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_delete_locations handles the page_delete_locations tool with context-based auth
+func HandleContextPage_delete_locations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: location_page_ids
+	location_page_ids, err := request.RequireString("location_page_ids")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter location_page_ids: %v", err)), nil
+	}
+	args["location_page_ids"] = location_page_ids
+
+	// Required: store_numbers
+	store_numbers, err := request.RequireString("store_numbers")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter store_numbers: %v", err)), nil
+	}
+	args["store_numbers"] = store_numbers
+
+	// Call the client method
+	result, err := client.Page_delete_locations(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_delete_locations: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_locations handles the page_get_locations tool with context-based auth
+func HandleContextPage_get_locations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_locations(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_locations: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_locations handles the page_post_locations tool with context-based auth
+func HandleContextPage_post_locations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: always_open
+	if val := request.GetBool("always_open", false); val {
+		args["always_open"] = val
+	}
+
+	// Optional: delivery_and_pickup_option_info
+	// array type - using string
+	if val := request.GetString("delivery_and_pickup_option_info", ""); val != "" {
+		args["delivery_and_pickup_option_info"] = val
+	}
+
+	// Optional: differently_open_offerings
+	if val := request.GetString("differently_open_offerings", ""); val != "" {
+		args["differently_open_offerings"] = val
+	}
+
+	// Optional: hours
+	if val := request.GetString("hours", ""); val != "" {
+		args["hours"] = val
+	}
+
+	// Optional: ignore_warnings
+	if val := request.GetBool("ignore_warnings", false); val {
+		args["ignore_warnings"] = val
+	}
+
+	// Optional: location
+	// object type - using string
+	if val := request.GetString("location", ""); val != "" {
+		args["location"] = val
+	}
+
+	// Optional: location_page_id
+	if val := request.GetString("location_page_id", ""); val != "" {
+		args["location_page_id"] = val
+	}
+
+	// Optional: old_store_number
+	if val := request.GetInt("old_store_number", 0); val != 0 {
+		args["old_store_number"] = val
+	}
+
+	// Optional: page_username
+	if val := request.GetString("page_username", ""); val != "" {
+		args["page_username"] = val
+	}
+
+	// Optional: permanently_closed
+	if val := request.GetBool("permanently_closed", false); val {
+		args["permanently_closed"] = val
+	}
+
+	// Optional: phone
+	if val := request.GetString("phone", ""); val != "" {
+		args["phone"] = val
+	}
+
+	// Optional: pickup_options
+	// array type - using string
+	if val := request.GetString("pickup_options", ""); val != "" {
+		args["pickup_options"] = val
+	}
+
+	// Optional: place_topics
+	// array type - using string
+	if val := request.GetString("place_topics", ""); val != "" {
+		args["place_topics"] = val
+	}
+
+	// Optional: price_range
+	if val := request.GetString("price_range", ""); val != "" {
+		args["price_range"] = val
+	}
+
+	// Optional: store_code
+	if val := request.GetString("store_code", ""); val != "" {
+		args["store_code"] = val
+	}
+
+	// Optional: store_location_descriptor
+	if val := request.GetString("store_location_descriptor", ""); val != "" {
+		args["store_location_descriptor"] = val
+	}
+
+	// Optional: store_name
+	if val := request.GetString("store_name", ""); val != "" {
+		args["store_name"] = val
+	}
+
+	// Required: store_number
+	store_number, err := request.RequireInt("store_number")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter store_number: %v", err)), nil
+	}
+	args["store_number"] = store_number
+
+	// Optional: temporary_status
+	if val := request.GetString("temporary_status", ""); val != "" {
+		args["temporary_status"] = val
+	}
+
+	// Optional: website
+	if val := request.GetString("website", ""); val != "" {
+		args["website"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_locations(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_locations: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_media_fingerprints handles the page_get_media_fingerprints tool with context-based auth
+func HandleContextPage_get_media_fingerprints(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: universal_content_id
+	if val := request.GetString("universal_content_id", ""); val != "" {
+		args["universal_content_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_media_fingerprints(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_media_fingerprints: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_media_fingerprints handles the page_post_media_fingerprints tool with context-based auth
+func HandleContextPage_post_media_fingerprints(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: fingerprint_content_type
+	fingerprint_content_type, err := request.RequireString("fingerprint_content_type")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter fingerprint_content_type: %v", err)), nil
+	}
+	args["fingerprint_content_type"] = fingerprint_content_type
+
+	// Required: metadata
+	metadata, err := request.RequireString("metadata")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter metadata: %v", err)), nil
+	}
+	args["metadata"] = metadata
+
+	// Required: source
+	source, err := request.RequireString("source")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter source: %v", err)), nil
+	}
+	args["source"] = source
+
+	// Required: title
+	title, err := request.RequireString("title")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter title: %v", err)), nil
+	}
+	args["title"] = title
+
+	// Optional: universal_content_id
+	if val := request.GetString("universal_content_id", ""); val != "" {
+		args["universal_content_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_media_fingerprints(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_media_fingerprints: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_message_attachments handles the page_post_message_attachments tool with context-based auth
+func HandleContextPage_post_message_attachments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: message
+	message, err := request.RequireString("message")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter message: %v", err)), nil
+	}
+	args["message"] = message
+
+	// Optional: platform
+	if val := request.GetString("platform", ""); val != "" {
+		args["platform"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_message_attachments(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_message_attachments: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_delete_message_templates handles the page_delete_message_templates tool with context-based auth
+func HandleContextPage_delete_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: name
+	name, err := request.RequireString("name")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
+	}
+	args["name"] = name
+
+	// Optional: template_id
+	if val := request.GetString("template_id", ""); val != "" {
+		args["template_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_delete_message_templates(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_delete_message_templates: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_message_templates handles the page_get_message_templates tool with context-based auth
+func HandleContextPage_get_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: category
+	// array type - using string
+	if val := request.GetString("category", ""); val != "" {
+		args["category"] = val
+	}
+
+	// Optional: content
+	if val := request.GetString("content", ""); val != "" {
+		args["content"] = val
+	}
+
+	// Optional: language
+	// array type - using string
+	if val := request.GetString("language", ""); val != "" {
+		args["language"] = val
+	}
+
+	// Optional: name
+	if val := request.GetString("name", ""); val != "" {
+		args["name"] = val
+	}
+
+	// Optional: name_or_content
+	if val := request.GetString("name_or_content", ""); val != "" {
+		args["name_or_content"] = val
+	}
+
+	// Optional: status
+	// array type - using string
+	if val := request.GetString("status", ""); val != "" {
+		args["status"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_message_templates(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_message_templates: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_message_templates handles the page_post_message_templates tool with context-based auth
+func HandleContextPage_post_message_templates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: category
+	category, err := request.RequireString("category")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter category: %v", err)), nil
+	}
+	args["category"] = category
+
+	// Optional: components
+	// array type - using string
+	if val := request.GetString("components", ""); val != "" {
+		args["components"] = val
+	}
+
+	// Required: language
+	language, err := request.RequireString("language")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter language: %v", err)), nil
+	}
+	args["language"] = language
+
+	// Optional: library_template_button_inputs
+	// array type - using string
+	if val := request.GetString("library_template_button_inputs", ""); val != "" {
+		args["library_template_button_inputs"] = val
+	}
+
+	// Optional: library_template_name
+	if val := request.GetString("library_template_name", ""); val != "" {
+		args["library_template_name"] = val
+	}
+
+	// Required: name
+	name, err := request.RequireString("name")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
+	}
+	args["name"] = name
+
+	// Call the client method
+	result, err := client.Page_post_message_templates(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_message_templates: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_messages handles the page_post_messages tool with context-based auth
+func HandleContextPage_post_messages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: message
+	// object type - using string
+	if val := request.GetString("message", ""); val != "" {
+		args["message"] = val
+	}
+
+	// Optional: messaging_type
+	if val := request.GetString("messaging_type", ""); val != "" {
+		args["messaging_type"] = val
+	}
+
+	// Optional: notification_type
+	if val := request.GetString("notification_type", ""); val != "" {
+		args["notification_type"] = val
+	}
+
+	// Optional: payload
+	if val := request.GetString("payload", ""); val != "" {
+		args["payload"] = val
+	}
+
+	// Optional: persona_id
+	if val := request.GetString("persona_id", ""); val != "" {
+		args["persona_id"] = val
+	}
+
+	// Required: recipient
+	recipient, err := request.RequireString("recipient")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter recipient: %v", err)), nil
+	}
+	args["recipient"] = recipient
+
+	// Optional: reply_to
+	if val := request.GetString("reply_to", ""); val != "" {
+		args["reply_to"] = val
+	}
+
+	// Optional: sender_action
+	if val := request.GetString("sender_action", ""); val != "" {
+		args["sender_action"] = val
+	}
+
+	// Optional: suggestion_action
+	if val := request.GetString("suggestion_action", ""); val != "" {
+		args["suggestion_action"] = val
+	}
+
+	// Optional: tag
+	// object type - using string
+	if val := request.GetString("tag", ""); val != "" {
+		args["tag"] = val
+	}
+
+	// Optional: thread_control
+	// object type - using string
+	if val := request.GetString("thread_control", ""); val != "" {
+		args["thread_control"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_messages(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_messages: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_messaging_feature_review handles the page_get_messaging_feature_review tool with context-based auth
+func HandleContextPage_get_messaging_feature_review(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_messaging_feature_review(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_messaging_feature_review: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_messenger_call_settings handles the page_get_messenger_call_settings tool with context-based auth
+func HandleContextPage_get_messenger_call_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_messenger_call_settings(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_messenger_call_settings: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_messenger_call_settings handles the page_post_messenger_call_settings tool with context-based auth
+func HandleContextPage_post_messenger_call_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: audio_enabled
+	if val := request.GetBool("audio_enabled", false); val {
+		args["audio_enabled"] = val
+	}
+
+	// Optional: call_hours
+	if val := request.GetString("call_hours", ""); val != "" {
+		args["call_hours"] = val
+	}
+
+	// Optional: call_routing
+	if val := request.GetString("call_routing", ""); val != "" {
+		args["call_routing"] = val
+	}
+
+	// Optional: icon_enabled
+	if val := request.GetBool("icon_enabled", false); val {
+		args["icon_enabled"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_messenger_call_settings(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_messenger_call_settings: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_messenger_lead_forms handles the page_get_messenger_lead_forms tool with context-based auth
+func HandleContextPage_get_messenger_lead_forms(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_messenger_lead_forms(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_messenger_lead_forms: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_messenger_lead_forms handles the page_post_messenger_lead_forms tool with context-based auth
+func HandleContextPage_post_messenger_lead_forms(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: account_id
+	if val := request.GetInt("account_id", 0); val != 0 {
+		args["account_id"] = val
+	}
+
+	// Optional: block_send_api
+	if val := request.GetBool("block_send_api", false); val {
+		args["block_send_api"] = val
+	}
+
+	// Optional: exit_keyphrases
+	if val := request.GetString("exit_keyphrases", ""); val != "" {
+		args["exit_keyphrases"] = val
+	}
+
+	// Optional: handover_app_id
+	if val := request.GetInt("handover_app_id", 0); val != 0 {
+		args["handover_app_id"] = val
+	}
+
+	// Optional: handover_summary
+	if val := request.GetBool("handover_summary", false); val {
+		args["handover_summary"] = val
+	}
+
+	// Optional: privacy_url
+	if val := request.GetString("privacy_url", ""); val != "" {
+		args["privacy_url"] = val
+	}
+
+	// Optional: reminder_text
+	if val := request.GetString("reminder_text", ""); val != "" {
+		args["reminder_text"] = val
+	}
+
+	// Required: step_list
+	step_list, err := request.RequireString("step_list")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter step_list: %v", err)), nil
+	}
+	args["step_list"] = step_list
+
+	// Optional: stop_question_message
+	if val := request.GetString("stop_question_message", ""); val != "" {
+		args["stop_question_message"] = val
+	}
+
+	// Optional: template_name
+	if val := request.GetString("template_name", ""); val != "" {
+		args["template_name"] = val
+	}
+
+	// Optional: tracking_parameters
+	if val := request.GetString("tracking_parameters", ""); val != "" {
+		args["tracking_parameters"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_messenger_lead_forms(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_messenger_lead_forms: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_delete_messenger_profile handles the page_delete_messenger_profile tool with context-based auth
+func HandleContextPage_delete_messenger_profile(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: fields
+	fields, err := request.RequireString("fields")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter fields: %v", err)), nil
+	}
+	args["fields"] = fields
+
+	// Optional: platform
+	if val := request.GetString("platform", ""); val != "" {
+		args["platform"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_delete_messenger_profile(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_delete_messenger_profile: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_messenger_profile handles the page_get_messenger_profile tool with context-based auth
+func HandleContextPage_get_messenger_profile(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: platform
+	if val := request.GetString("platform", ""); val != "" {
+		args["platform"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_messenger_profile(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_messenger_profile: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_messenger_profile handles the page_post_messenger_profile tool with context-based auth
+func HandleContextPage_post_messenger_profile(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: account_linking_url
+	if val := request.GetString("account_linking_url", ""); val != "" {
+		args["account_linking_url"] = val
+	}
+
+	// Optional: commands
+	// array type - using string
+	if val := request.GetString("commands", ""); val != "" {
+		args["commands"] = val
+	}
+
+	// Optional: description
+	// array type - using string
+	if val := request.GetString("description", ""); val != "" {
+		args["description"] = val
+	}
+
+	// Optional: get_started
+	// object type - using string
+	if val := request.GetString("get_started", ""); val != "" {
+		args["get_started"] = val
+	}
+
+	// Optional: greeting
+	// array type - using string
+	if val := request.GetString("greeting", ""); val != "" {
+		args["greeting"] = val
+	}
+
+	// Optional: ice_breakers
+	// array type - using string
+	if val := request.GetString("ice_breakers", ""); val != "" {
+		args["ice_breakers"] = val
+	}
+
+	// Optional: persistent_menu
+	// array type - using string
+	if val := request.GetString("persistent_menu", ""); val != "" {
+		args["persistent_menu"] = val
+	}
+
+	// Optional: platform
+	if val := request.GetString("platform", ""); val != "" {
+		args["platform"] = val
+	}
+
+	// Optional: title
+	// array type - using string
+	if val := request.GetString("title", ""); val != "" {
+		args["title"] = val
+	}
+
+	// Optional: whitelisted_domains
+	// array type - using string
+	if val := request.GetString("whitelisted_domains", ""); val != "" {
+		args["whitelisted_domains"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_messenger_profile(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_messenger_profile: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_moderate_conversations handles the page_post_moderate_conversations tool with context-based auth
+func HandleContextPage_post_moderate_conversations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: actions
+	actions, err := request.RequireString("actions")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter actions: %v", err)), nil
+	}
+	args["actions"] = actions
+
+	// Required: user_ids
+	user_ids, err := request.RequireString("user_ids")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user_ids: %v", err)), nil
+	}
+	args["user_ids"] = user_ids
+
+	// Call the client method
+	result, err := client.Page_post_moderate_conversations(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_moderate_conversations: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_nlp_configs handles the page_post_nlp_configs tool with context-based auth
+func HandleContextPage_post_nlp_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: api_version
+	// object type - using string
+	if val := request.GetString("api_version", ""); val != "" {
+		args["api_version"] = val
+	}
+
+	// Optional: custom_token
+	if val := request.GetString("custom_token", ""); val != "" {
+		args["custom_token"] = val
+	}
+
+	// Optional: model
+	if val := request.GetString("model", ""); val != "" {
+		args["model"] = val
+	}
+
+	// Optional: n_best
+	if val := request.GetInt("n_best", 0); val != 0 {
+		args["n_best"] = val
+	}
+
+	// Optional: nlp_enabled
+	if val := request.GetBool("nlp_enabled", false); val {
+		args["nlp_enabled"] = val
+	}
+
+	// Optional: other_language_support
+	if val := request.GetString("other_language_support", ""); val != "" {
+		args["other_language_support"] = val
+	}
+
+	// Optional: verbose
+	if val := request.GetBool("verbose", false); val {
+		args["verbose"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_nlp_configs(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_nlp_configs: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_notification_message_tokens handles the page_get_notification_message_tokens tool with context-based auth
+func HandleContextPage_get_notification_message_tokens(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_notification_message_tokens(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_notification_message_tokens: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_notification_messages_dev_support handles the page_post_notification_messages_dev_support tool with context-based auth
+func HandleContextPage_post_notification_messages_dev_support(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: developer_action
+	developer_action, err := request.RequireString("developer_action")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter developer_action: %v", err)), nil
+	}
+	args["developer_action"] = developer_action
+
+	// Required: recipient
+	recipient, err := request.RequireString("recipient")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter recipient: %v", err)), nil
+	}
+	args["recipient"] = recipient
+
+	// Call the client method
+	result, err := client.Page_post_notification_messages_dev_support(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_notification_messages_dev_support: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_page_backed_instagram_accounts handles the page_get_page_backed_instagram_accounts tool with context-based auth
+func HandleContextPage_get_page_backed_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_page_backed_instagram_accounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_page_backed_instagram_accounts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_page_backed_instagram_accounts handles the page_post_page_backed_instagram_accounts tool with context-based auth
+func HandleContextPage_post_page_backed_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_post_page_backed_instagram_accounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_page_backed_instagram_accounts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_page_whatsapp_number_verification handles the page_post_page_whatsapp_number_verification tool with context-based auth
+func HandleContextPage_post_page_whatsapp_number_verification(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: verification_code
+	if val := request.GetString("verification_code", ""); val != "" {
+		args["verification_code"] = val
+	}
+
+	// Required: whatsapp_number
+	whatsapp_number, err := request.RequireString("whatsapp_number")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter whatsapp_number: %v", err)), nil
+	}
+	args["whatsapp_number"] = whatsapp_number
+
+	// Call the client method
+	result, err := client.Page_post_page_whatsapp_number_verification(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_page_whatsapp_number_verification: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_pass_thread_control handles the page_post_pass_thread_control tool with context-based auth
+func HandleContextPage_post_pass_thread_control(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: metadata
+	if val := request.GetString("metadata", ""); val != "" {
+		args["metadata"] = val
+	}
+
+	// Required: recipient
+	recipient, err := request.RequireString("recipient")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter recipient: %v", err)), nil
+	}
+	args["recipient"] = recipient
+
+	// Optional: target_app_id
+	if val := request.GetString("target_app_id", ""); val != "" {
+		args["target_app_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_pass_thread_control(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_pass_thread_control: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_personas handles the page_get_personas tool with context-based auth
+func HandleContextPage_get_personas(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_personas(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_personas: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_personas handles the page_post_personas tool with context-based auth
+func HandleContextPage_post_personas(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: name
+	name, err := request.RequireString("name")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
+	}
+	args["name"] = name
+
+	// Required: profile_picture_url
+	profile_picture_url, err := request.RequireString("profile_picture_url")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter profile_picture_url: %v", err)), nil
+	}
+	args["profile_picture_url"] = profile_picture_url
+
+	// Call the client method
+	result, err := client.Page_post_personas(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_personas: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_photo_stories handles the page_post_photo_stories tool with context-based auth
+func HandleContextPage_post_photo_stories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: photo_id
+	if val := request.GetString("photo_id", ""); val != "" {
+		args["photo_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_photo_stories(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_photo_stories: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_photos handles the page_get_photos tool with context-based auth
+func HandleContextPage_get_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: biz_tag_id
+	if val := request.GetInt("biz_tag_id", 0); val != 0 {
+		args["biz_tag_id"] = val
+	}
+
+	// Optional: business_id
+	if val := request.GetString("business_id", ""); val != "" {
+		args["business_id"] = val
+	}
+
+	// Optional: type
+	if val := request.GetString("type", ""); val != "" {
+		args["type"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_photos(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_photos: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_photos handles the page_post_photos tool with context-based auth
+func HandleContextPage_post_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: aid
+	if val := request.GetString("aid", ""); val != "" {
+		args["aid"] = val
+	}
+
+	// Optional: allow_spherical_photo
+	if val := request.GetBool("allow_spherical_photo", false); val {
+		args["allow_spherical_photo"] = val
+	}
+
+	// Optional: alt_text_custom
+	if val := request.GetString("alt_text_custom", ""); val != "" {
+		args["alt_text_custom"] = val
+	}
+
+	// Optional: android_key_hash
+	if val := request.GetString("android_key_hash", ""); val != "" {
+		args["android_key_hash"] = val
+	}
+
+	// Optional: application_id
+	if val := request.GetString("application_id", ""); val != "" {
+		args["application_id"] = val
+	}
+
+	// Optional: attempt
+	if val := request.GetInt("attempt", 0); val != 0 {
+		args["attempt"] = val
+	}
+
+	// Optional: audience_exp
+	if val := request.GetBool("audience_exp", false); val {
+		args["audience_exp"] = val
+	}
+
+	// Optional: backdated_time
+	if val := request.GetString("backdated_time", ""); val != "" {
+		args["backdated_time"] = val
+	}
+
+	// Optional: backdated_time_granularity
+	if val := request.GetString("backdated_time_granularity", ""); val != "" {
+		args["backdated_time_granularity"] = val
+	}
+
+	// Optional: caption
+	if val := request.GetString("caption", ""); val != "" {
+		args["caption"] = val
+	}
+
+	// Optional: composer_session_id
+	if val := request.GetString("composer_session_id", ""); val != "" {
+		args["composer_session_id"] = val
+	}
+
+	// Optional: direct_share_status
+	if val := request.GetInt("direct_share_status", 0); val != 0 {
+		args["direct_share_status"] = val
+	}
+
+	// Optional: feed_targeting
+	// object type - using string
+	if val := request.GetString("feed_targeting", ""); val != "" {
+		args["feed_targeting"] = val
+	}
+
+	// Optional: filter_type
+	if val := request.GetInt("filter_type", 0); val != 0 {
+		args["filter_type"] = val
+	}
+
+	// Optional: full_res_is_coming_later
+	if val := request.GetBool("full_res_is_coming_later", false); val {
+		args["full_res_is_coming_later"] = val
+	}
+
+	// Optional: initial_view_heading_override_degrees
+	if val := request.GetInt("initial_view_heading_override_degrees", 0); val != 0 {
+		args["initial_view_heading_override_degrees"] = val
+	}
+
+	// Optional: initial_view_pitch_override_degrees
+	if val := request.GetInt("initial_view_pitch_override_degrees", 0); val != 0 {
+		args["initial_view_pitch_override_degrees"] = val
+	}
+
+	// Optional: initial_view_vertical_fov_override_degrees
+	if val := request.GetInt("initial_view_vertical_fov_override_degrees", 0); val != 0 {
+		args["initial_view_vertical_fov_override_degrees"] = val
+	}
+
+	// Optional: ios_bundle_id
+	if val := request.GetString("ios_bundle_id", ""); val != "" {
+		args["ios_bundle_id"] = val
+	}
+
+	// Optional: is_explicit_location
+	if val := request.GetBool("is_explicit_location", false); val {
+		args["is_explicit_location"] = val
+	}
+
+	// Optional: is_explicit_place
+	if val := request.GetBool("is_explicit_place", false); val {
+		args["is_explicit_place"] = val
+	}
+
+	// Optional: location_source_id
+	if val := request.GetString("location_source_id", ""); val != "" {
+		args["location_source_id"] = val
+	}
+
+	// Optional: manual_privacy
+	if val := request.GetBool("manual_privacy", false); val {
+		args["manual_privacy"] = val
+	}
+
+	// Optional: message
+	if val := request.GetString("message", ""); val != "" {
+		args["message"] = val
+	}
+
+	// Optional: name
+	if val := request.GetString("name", ""); val != "" {
+		args["name"] = val
+	}
+
+	// Optional: nectar_module
+	if val := request.GetString("nectar_module", ""); val != "" {
+		args["nectar_module"] = val
+	}
+
+	// Optional: no_story
+	if val := request.GetBool("no_story", false); val {
+		args["no_story"] = val
+	}
+
+	// Optional: offline_id
+	if val := request.GetInt("offline_id", 0); val != 0 {
+		args["offline_id"] = val
+	}
+
+	// Optional: og_action_type_id
+	if val := request.GetString("og_action_type_id", ""); val != "" {
+		args["og_action_type_id"] = val
+	}
+
+	// Optional: og_icon_id
+	if val := request.GetString("og_icon_id", ""); val != "" {
+		args["og_icon_id"] = val
+	}
+
+	// Optional: og_object_id
+	if val := request.GetString("og_object_id", ""); val != "" {
+		args["og_object_id"] = val
+	}
+
+	// Optional: og_phrase
+	if val := request.GetString("og_phrase", ""); val != "" {
+		args["og_phrase"] = val
+	}
+
+	// Optional: og_set_profile_badge
+	if val := request.GetBool("og_set_profile_badge", false); val {
+		args["og_set_profile_badge"] = val
+	}
+
+	// Optional: og_suggestion_mechanism
+	if val := request.GetString("og_suggestion_mechanism", ""); val != "" {
+		args["og_suggestion_mechanism"] = val
+	}
+
+	// Optional: parent_media_id
+	if val := request.GetInt("parent_media_id", 0); val != 0 {
+		args["parent_media_id"] = val
+	}
+
+	// Optional: place
+	// object type - using string
+	if val := request.GetString("place", ""); val != "" {
+		args["place"] = val
+	}
+
+	// Optional: privacy
+	if val := request.GetString("privacy", ""); val != "" {
+		args["privacy"] = val
+	}
+
+	// Optional: profile_id
+	if val := request.GetInt("profile_id", 0); val != 0 {
+		args["profile_id"] = val
+	}
+
+	// Optional: provenance_info
+	if val := request.GetString("provenance_info", ""); val != "" {
+		args["provenance_info"] = val
+	}
+
+	// Optional: proxied_app_id
+	if val := request.GetString("proxied_app_id", ""); val != "" {
+		args["proxied_app_id"] = val
+	}
+
+	// Optional: published
+	if val := request.GetBool("published", false); val {
+		args["published"] = val
+	}
+
+	// Optional: qn
+	if val := request.GetString("qn", ""); val != "" {
+		args["qn"] = val
+	}
+
+	// Optional: scheduled_publish_time
+	if val := request.GetInt("scheduled_publish_time", 0); val != 0 {
+		args["scheduled_publish_time"] = val
+	}
+
+	// Optional: spherical_metadata
+	if val := request.GetString("spherical_metadata", ""); val != "" {
+		args["spherical_metadata"] = val
+	}
+
+	// Optional: sponsor_id
+	if val := request.GetString("sponsor_id", ""); val != "" {
+		args["sponsor_id"] = val
+	}
+
+	// Optional: sponsor_relationship
+	if val := request.GetInt("sponsor_relationship", 0); val != 0 {
+		args["sponsor_relationship"] = val
+	}
+
+	// Optional: tags
+	// array type - using string
+	if val := request.GetString("tags", ""); val != "" {
+		args["tags"] = val
+	}
+
+	// Optional: target_id
+	if val := request.GetInt("target_id", 0); val != 0 {
+		args["target_id"] = val
+	}
+
+	// Optional: targeting
+	// object type - using string
+	if val := request.GetString("targeting", ""); val != "" {
+		args["targeting"] = val
+	}
+
+	// Optional: temporary
+	if val := request.GetBool("temporary", false); val {
+		args["temporary"] = val
+	}
+
+	// Optional: time_since_original_post
+	if val := request.GetInt("time_since_original_post", 0); val != 0 {
+		args["time_since_original_post"] = val
+	}
+
+	// Optional: uid
+	if val := request.GetInt("uid", 0); val != 0 {
+		args["uid"] = val
+	}
+
+	// Optional: unpublished_content_type
+	if val := request.GetString("unpublished_content_type", ""); val != "" {
+		args["unpublished_content_type"] = val
+	}
+
+	// Optional: url
+	if val := request.GetString("url", ""); val != "" {
+		args["url"] = val
+	}
+
+	// Optional: user_selected_tags
+	if val := request.GetBool("user_selected_tags", false); val {
+		args["user_selected_tags"] = val
+	}
+
+	// Optional: vault_image_id
+	if val := request.GetString("vault_image_id", ""); val != "" {
+		args["vault_image_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_photos(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_photos: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_picture handles the page_get_picture tool with context-based auth
+func HandleContextPage_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: height
+	if val := request.GetInt("height", 0); val != 0 {
+		args["height"] = val
+	}
+
+	// Optional: redirect
+	if val := request.GetBool("redirect", false); val {
+		args["redirect"] = val
+	}
+
+	// Optional: type
+	if val := request.GetString("type", ""); val != "" {
+		args["type"] = val
+	}
+
+	// Optional: width
+	if val := request.GetInt("width", 0); val != 0 {
+		args["width"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_picture(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_picture: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_picture handles the page_post_picture tool with context-based auth
+func HandleContextPage_post_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: android_key_hash
+	if val := request.GetString("android_key_hash", ""); val != "" {
+		args["android_key_hash"] = val
+	}
+
+	// Optional: burn_media_effect
+	if val := request.GetBool("burn_media_effect", false); val {
+		args["burn_media_effect"] = val
+	}
+
+	// Optional: caption
+	if val := request.GetString("caption", ""); val != "" {
+		args["caption"] = val
+	}
+
+	// Optional: composer_session_id
+	if val := request.GetString("composer_session_id", ""); val != "" {
+		args["composer_session_id"] = val
+	}
+
+	// Optional: frame_entrypoint
+	if val := request.GetString("frame_entrypoint", ""); val != "" {
+		args["frame_entrypoint"] = val
+	}
+
+	// Optional: has_umg
+	if val := request.GetBool("has_umg", false); val {
+		args["has_umg"] = val
+	}
+
+	// Optional: height
+	if val := request.GetInt("height", 0); val != 0 {
+		args["height"] = val
+	}
+
+	// Optional: ios_bundle_id
+	if val := request.GetString("ios_bundle_id", ""); val != "" {
+		args["ios_bundle_id"] = val
+	}
+
+	// Optional: media_effect_ids
+	// array type - using string
+	if val := request.GetString("media_effect_ids", ""); val != "" {
+		args["media_effect_ids"] = val
+	}
+
+	// Optional: media_effect_source_object_id
+	if val := request.GetInt("media_effect_source_object_id", 0); val != 0 {
+		args["media_effect_source_object_id"] = val
+	}
+
+	// Optional: msqrd_mask_id
+	if val := request.GetString("msqrd_mask_id", ""); val != "" {
+		args["msqrd_mask_id"] = val
+	}
+
+	// Optional: photo
+	if val := request.GetString("photo", ""); val != "" {
+		args["photo"] = val
+	}
+
+	// Optional: picture
+	if val := request.GetString("picture", ""); val != "" {
+		args["picture"] = val
+	}
+
+	// Optional: profile_pic_method
+	if val := request.GetString("profile_pic_method", ""); val != "" {
+		args["profile_pic_method"] = val
+	}
+
+	// Optional: profile_pic_source
+	if val := request.GetString("profile_pic_source", ""); val != "" {
+		args["profile_pic_source"] = val
+	}
+
+	// Optional: proxied_app_id
+	if val := request.GetInt("proxied_app_id", 0); val != 0 {
+		args["proxied_app_id"] = val
+	}
+
+	// Optional: qn
+	if val := request.GetString("qn", ""); val != "" {
+		args["qn"] = val
+	}
+
+	// Optional: reuse
+	if val := request.GetBool("reuse", false); val {
+		args["reuse"] = val
+	}
+
+	// Optional: scaled_crop_rect
+	// object type - using string
+	if val := request.GetString("scaled_crop_rect", ""); val != "" {
+		args["scaled_crop_rect"] = val
+	}
+
+	// Optional: set_profile_photo_shield
+	if val := request.GetString("set_profile_photo_shield", ""); val != "" {
+		args["set_profile_photo_shield"] = val
+	}
+
+	// Optional: sticker_id
+	if val := request.GetInt("sticker_id", 0); val != 0 {
+		args["sticker_id"] = val
+	}
+
+	// Optional: sticker_source_object_id
+	if val := request.GetInt("sticker_source_object_id", 0); val != 0 {
+		args["sticker_source_object_id"] = val
+	}
+
+	// Optional: suppress_stories
+	if val := request.GetBool("suppress_stories", false); val {
+		args["suppress_stories"] = val
+	}
+
+	// Optional: width
+	if val := request.GetInt("width", 0); val != 0 {
+		args["width"] = val
+	}
+
+	// Optional: x
+	if val := request.GetInt("x", 0); val != 0 {
+		args["x"] = val
+	}
+
+	// Optional: y
+	if val := request.GetInt("y", 0); val != 0 {
+		args["y"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_picture(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_picture: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_posts handles the page_get_posts tool with context-based auth
+func HandleContextPage_get_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: include_hidden
+	if val := request.GetBool("include_hidden", false); val {
+		args["include_hidden"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: q
+	if val := request.GetString("q", ""); val != "" {
+		args["q"] = val
+	}
+
+	// Optional: show_expired
+	if val := request.GetBool("show_expired", false); val {
+		args["show_expired"] = val
+	}
+
+	// Optional: with
+	if val := request.GetString("with", ""); val != "" {
+		args["with"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_posts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_posts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_product_catalogs handles the page_get_product_catalogs tool with context-based auth
+func HandleContextPage_get_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_product_catalogs(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_product_catalogs: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_published_posts handles the page_get_published_posts tool with context-based auth
+func HandleContextPage_get_published_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: include_hidden
+	if val := request.GetBool("include_hidden", false); val {
+		args["include_hidden"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: show_expired
+	if val := request.GetBool("show_expired", false); val {
+		args["show_expired"] = val
+	}
+
+	// Optional: with
+	if val := request.GetString("with", ""); val != "" {
+		args["with"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_published_posts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_published_posts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_release_thread_control handles the page_post_release_thread_control tool with context-based auth
+func HandleContextPage_post_release_thread_control(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: recipient
+	recipient, err := request.RequireString("recipient")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter recipient: %v", err)), nil
+	}
+	args["recipient"] = recipient
+
+	// Call the client method
+	result, err := client.Page_post_release_thread_control(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_release_thread_control: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_request_thread_control handles the page_post_request_thread_control tool with context-based auth
+func HandleContextPage_post_request_thread_control(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: metadata
+	if val := request.GetString("metadata", ""); val != "" {
+		args["metadata"] = val
+	}
+
+	// Required: recipient
+	recipient, err := request.RequireString("recipient")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter recipient: %v", err)), nil
+	}
+	args["recipient"] = recipient
+
+	// Call the client method
+	result, err := client.Page_post_request_thread_control(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_request_thread_control: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_roles handles the page_get_roles tool with context-based auth
+func HandleContextPage_get_roles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: include_deactivated
+	if val := request.GetBool("include_deactivated", false); val {
+		args["include_deactivated"] = val
+	}
+
+	// Optional: uid
+	if val := request.GetInt("uid", 0); val != 0 {
+		args["uid"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_roles(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_roles: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_rtb_dynamic_posts handles the page_get_rtb_dynamic_posts tool with context-based auth
+func HandleContextPage_get_rtb_dynamic_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_rtb_dynamic_posts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_rtb_dynamic_posts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_scheduled_posts handles the page_get_scheduled_posts tool with context-based auth
+func HandleContextPage_get_scheduled_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_scheduled_posts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_scheduled_posts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_secondary_receivers handles the page_get_secondary_receivers tool with context-based auth
+func HandleContextPage_get_secondary_receivers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: platform
+	if val := request.GetString("platform", ""); val != "" {
+		args["platform"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_secondary_receivers(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_secondary_receivers: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_settings handles the page_get_settings tool with context-based auth
+func HandleContextPage_get_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_settings(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_settings: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_settings handles the page_post_settings tool with context-based auth
+func HandleContextPage_post_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: option
+	// object type - using string
+	if val := request.GetString("option", ""); val != "" {
+		args["option"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_settings(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_settings: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_shop_setup_status handles the page_get_shop_setup_status tool with context-based auth
+func HandleContextPage_get_shop_setup_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_shop_setup_status(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_shop_setup_status: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_store_locations handles the page_get_store_locations tool with context-based auth
+func HandleContextPage_get_store_locations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_store_locations(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_store_locations: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_stories handles the page_get_stories tool with context-based auth
+func HandleContextPage_get_stories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: since
+	if val := request.GetString("since", ""); val != "" {
+		args["since"] = val
+	}
+
+	// Optional: status
+	// array type - using string
+	if val := request.GetString("status", ""); val != "" {
+		args["status"] = val
+	}
+
+	// Optional: until
+	if val := request.GetString("until", ""); val != "" {
+		args["until"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_stories(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_stories: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_delete_subscribed_apps handles the page_delete_subscribed_apps tool with context-based auth
+func HandleContextPage_delete_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_delete_subscribed_apps(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_delete_subscribed_apps: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_subscribed_apps handles the page_get_subscribed_apps tool with context-based auth
+func HandleContextPage_get_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_subscribed_apps(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_subscribed_apps: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_subscribed_apps handles the page_post_subscribed_apps tool with context-based auth
+func HandleContextPage_post_subscribed_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: subscribed_fields
+	subscribed_fields, err := request.RequireString("subscribed_fields")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter subscribed_fields: %v", err)), nil
+	}
+	args["subscribed_fields"] = subscribed_fields
+
+	// Call the client method
+	result, err := client.Page_post_subscribed_apps(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_subscribed_apps: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_tabs handles the page_get_tabs tool with context-based auth
+func HandleContextPage_get_tabs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: tab
+	// array type - using string
+	if val := request.GetString("tab", ""); val != "" {
+		args["tab"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_tabs(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_tabs: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_tagged handles the page_get_tagged tool with context-based auth
+func HandleContextPage_get_tagged(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_tagged(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_tagged: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_take_thread_control handles the page_post_take_thread_control tool with context-based auth
+func HandleContextPage_post_take_thread_control(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: metadata
+	if val := request.GetString("metadata", ""); val != "" {
+		args["metadata"] = val
+	}
+
+	// Required: recipient
+	recipient, err := request.RequireString("recipient")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter recipient: %v", err)), nil
+	}
+	args["recipient"] = recipient
+
+	// Call the client method
+	result, err := client.Page_post_take_thread_control(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_take_thread_control: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_thread_owner handles the page_get_thread_owner tool with context-based auth
+func HandleContextPage_get_thread_owner(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: recipient
+	recipient, err := request.RequireString("recipient")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter recipient: %v", err)), nil
+	}
+	args["recipient"] = recipient
+
+	// Call the client method
+	result, err := client.Page_get_thread_owner(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_thread_owner: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_threads handles the page_get_threads tool with context-based auth
+func HandleContextPage_get_threads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: folder
+	if val := request.GetString("folder", ""); val != "" {
+		args["folder"] = val
+	}
+
+	// Optional: platform
+	if val := request.GetString("platform", ""); val != "" {
+		args["platform"] = val
+	}
+
+	// Optional: tags
+	// array type - using string
+	if val := request.GetString("tags", ""); val != "" {
+		args["tags"] = val
+	}
+
+	// Optional: user_id
+	if val := request.GetString("user_id", ""); val != "" {
+		args["user_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_threads(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_threads: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_unlink_accounts handles the page_post_unlink_accounts tool with context-based auth
+func HandleContextPage_post_unlink_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: psid
+	psid, err := request.RequireString("psid")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter psid: %v", err)), nil
+	}
+	args["psid"] = psid
+
+	// Call the client method
+	result, err := client.Page_post_unlink_accounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_unlink_accounts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_video_copyright_rules handles the page_get_video_copyright_rules tool with context-based auth
+func HandleContextPage_get_video_copyright_rules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: selected_rule_id
+	if val := request.GetString("selected_rule_id", ""); val != "" {
+		args["selected_rule_id"] = val
+	}
+
+	// Optional: source
+	if val := request.GetString("source", ""); val != "" {
+		args["source"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_video_copyright_rules(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_video_copyright_rules: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_video_copyright_rules handles the page_post_video_copyright_rules tool with context-based auth
+func HandleContextPage_post_video_copyright_rules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: condition_groups
+	condition_groups, err := request.RequireString("condition_groups")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter condition_groups: %v", err)), nil
+	}
+	args["condition_groups"] = condition_groups
+
+	// Required: name
+	name, err := request.RequireString("name")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
+	}
+	args["name"] = name
+
+	// Call the client method
+	result, err := client.Page_post_video_copyright_rules(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_video_copyright_rules: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_video_copyrights handles the page_post_video_copyrights tool with context-based auth
+func HandleContextPage_post_video_copyrights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: attribution_id
+	if val := request.GetString("attribution_id", ""); val != "" {
+		args["attribution_id"] = val
+	}
+
+	// Optional: content_category
+	if val := request.GetString("content_category", ""); val != "" {
+		args["content_category"] = val
+	}
+
+	// Required: copyright_content_id
+	copyright_content_id, err := request.RequireString("copyright_content_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter copyright_content_id: %v", err)), nil
+	}
+	args["copyright_content_id"] = copyright_content_id
+
+	// Optional: excluded_ownership_countries
+	// array type - using string
+	if val := request.GetString("excluded_ownership_countries", ""); val != "" {
+		args["excluded_ownership_countries"] = val
+	}
+
+	// Optional: excluded_ownership_segments
+	// array type - using string
+	if val := request.GetString("excluded_ownership_segments", ""); val != "" {
+		args["excluded_ownership_segments"] = val
+	}
+
+	// Optional: is_reference_disabled
+	if val := request.GetBool("is_reference_disabled", false); val {
+		args["is_reference_disabled"] = val
+	}
+
+	// Optional: is_reference_video
+	if val := request.GetBool("is_reference_video", false); val {
+		args["is_reference_video"] = val
+	}
+
+	// Optional: monitoring_type
+	if val := request.GetString("monitoring_type", ""); val != "" {
+		args["monitoring_type"] = val
+	}
+
+	// Optional: ownership_countries
+	// array type - using string
+	if val := request.GetString("ownership_countries", ""); val != "" {
+		args["ownership_countries"] = val
+	}
+
+	// Optional: rule_id
+	if val := request.GetString("rule_id", ""); val != "" {
+		args["rule_id"] = val
+	}
+
+	// Optional: tags
+	// array type - using string
+	if val := request.GetString("tags", ""); val != "" {
+		args["tags"] = val
+	}
+
+	// Optional: whitelisted_ids
+	// array type - using string
+	if val := request.GetString("whitelisted_ids", ""); val != "" {
+		args["whitelisted_ids"] = val
+	}
+
+	// Optional: whitelisted_ig_user_ids
+	// array type - using string
+	if val := request.GetString("whitelisted_ig_user_ids", ""); val != "" {
+		args["whitelisted_ig_user_ids"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_video_copyrights(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_video_copyrights: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_video_lists handles the page_get_video_lists tool with context-based auth
+func HandleContextPage_get_video_lists(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Page_get_video_lists(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_video_lists: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_video_reels handles the page_get_video_reels tool with context-based auth
+func HandleContextPage_get_video_reels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: since
+	if val := request.GetString("since", ""); val != "" {
+		args["since"] = val
+	}
+
+	// Optional: until
+	if val := request.GetString("until", ""); val != "" {
+		args["until"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_video_reels(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_video_reels: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_video_reels handles the page_post_video_reels tool with context-based auth
+func HandleContextPage_post_video_reels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: description
+	if val := request.GetString("description", ""); val != "" {
+		args["description"] = val
+	}
+
+	// Optional: feed_targeting
+	// object type - using string
+	if val := request.GetString("feed_targeting", ""); val != "" {
+		args["feed_targeting"] = val
+	}
+
+	// Optional: place
+	if val := request.GetString("place", ""); val != "" {
+		args["place"] = val
+	}
+
+	// Optional: scheduled_publish_time
+	if val := request.GetString("scheduled_publish_time", ""); val != "" {
+		args["scheduled_publish_time"] = val
+	}
+
+	// Optional: targeting
+	// object type - using string
+	if val := request.GetString("targeting", ""); val != "" {
+		args["targeting"] = val
+	}
+
+	// Optional: title
+	if val := request.GetString("title", ""); val != "" {
+		args["title"] = val
+	}
+
+	// Required: upload_phase
+	upload_phase, err := request.RequireString("upload_phase")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter upload_phase: %v", err)), nil
+	}
+	args["upload_phase"] = upload_phase
+
+	// Optional: video_id
+	if val := request.GetString("video_id", ""); val != "" {
+		args["video_id"] = val
+	}
+
+	// Optional: video_state
+	if val := request.GetString("video_state", ""); val != "" {
+		args["video_state"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_video_reels(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_video_reels: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_video_stories handles the page_post_video_stories tool with context-based auth
+func HandleContextPage_post_video_stories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: description
+	if val := request.GetString("description", ""); val != "" {
+		args["description"] = val
+	}
+
+	// Optional: feed_targeting
+	// object type - using string
+	if val := request.GetString("feed_targeting", ""); val != "" {
+		args["feed_targeting"] = val
+	}
+
+	// Optional: place
+	if val := request.GetString("place", ""); val != "" {
+		args["place"] = val
+	}
+
+	// Optional: scheduled_publish_time
+	if val := request.GetString("scheduled_publish_time", ""); val != "" {
+		args["scheduled_publish_time"] = val
+	}
+
+	// Optional: targeting
+	// object type - using string
+	if val := request.GetString("targeting", ""); val != "" {
+		args["targeting"] = val
+	}
+
+	// Optional: title
+	if val := request.GetString("title", ""); val != "" {
+		args["title"] = val
+	}
+
+	// Required: upload_phase
+	upload_phase, err := request.RequireString("upload_phase")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter upload_phase: %v", err)), nil
+	}
+	args["upload_phase"] = upload_phase
+
+	// Optional: video_id
+	if val := request.GetString("video_id", ""); val != "" {
+		args["video_id"] = val
+	}
+
+	// Optional: video_state
+	if val := request.GetString("video_state", ""); val != "" {
+		args["video_state"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_video_stories(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_video_stories: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_videos handles the page_get_videos tool with context-based auth
+func HandleContextPage_get_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: type
+	if val := request.GetString("type", ""); val != "" {
+		args["type"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_videos(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_videos: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_videos handles the page_post_videos tool with context-based auth
+func HandleContextPage_post_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: ad_breaks
+	if val := request.GetString("ad_breaks", ""); val != "" {
+		args["ad_breaks"] = val
+	}
+
+	// Optional: application_id
+	if val := request.GetString("application_id", ""); val != "" {
+		args["application_id"] = val
+	}
+
+	// Optional: asked_fun_fact_prompt_id
+	if val := request.GetInt("asked_fun_fact_prompt_id", 0); val != 0 {
+		args["asked_fun_fact_prompt_id"] = val
+	}
+
+	// Optional: audio_story_wave_animation_handle
+	if val := request.GetString("audio_story_wave_animation_handle", ""); val != "" {
+		args["audio_story_wave_animation_handle"] = val
+	}
+
+	// Optional: backdated_post
+	if val := request.GetString("backdated_post", ""); val != "" {
+		args["backdated_post"] = val
+	}
+
+	// Optional: call_to_action
+	// object type - using string
+	if val := request.GetString("call_to_action", ""); val != "" {
+		args["call_to_action"] = val
+	}
+
+	// Optional: composer_entry_picker
+	if val := request.GetString("composer_entry_picker", ""); val != "" {
+		args["composer_entry_picker"] = val
+	}
+
+	// Optional: composer_entry_point
+	if val := request.GetString("composer_entry_point", ""); val != "" {
+		args["composer_entry_point"] = val
+	}
+
+	// Optional: composer_entry_time
+	if val := request.GetInt("composer_entry_time", 0); val != 0 {
+		args["composer_entry_time"] = val
+	}
+
+	// Optional: composer_session_events_log
+	if val := request.GetString("composer_session_events_log", ""); val != "" {
+		args["composer_session_events_log"] = val
+	}
+
+	// Optional: composer_session_id
+	if val := request.GetString("composer_session_id", ""); val != "" {
+		args["composer_session_id"] = val
+	}
+
+	// Optional: composer_source_surface
+	if val := request.GetString("composer_source_surface", ""); val != "" {
+		args["composer_source_surface"] = val
+	}
+
+	// Optional: composer_type
+	if val := request.GetString("composer_type", ""); val != "" {
+		args["composer_type"] = val
+	}
+
+	// Optional: container_type
+	if val := request.GetString("container_type", ""); val != "" {
+		args["container_type"] = val
+	}
+
+	// Optional: content_category
+	if val := request.GetString("content_category", ""); val != "" {
+		args["content_category"] = val
+	}
+
+	// Optional: content_tags
+	// array type - using string
+	if val := request.GetString("content_tags", ""); val != "" {
+		args["content_tags"] = val
+	}
+
+	// Optional: creative_tools
+	if val := request.GetString("creative_tools", ""); val != "" {
+		args["creative_tools"] = val
+	}
+
+	// Optional: crossposted_video_id
+	if val := request.GetString("crossposted_video_id", ""); val != "" {
+		args["crossposted_video_id"] = val
+	}
+
+	// Optional: custom_labels
+	// array type - using string
+	if val := request.GetString("custom_labels", ""); val != "" {
+		args["custom_labels"] = val
+	}
+
+	// Optional: description
+	if val := request.GetString("description", ""); val != "" {
+		args["description"] = val
+	}
+
+	// Optional: direct_share_status
+	if val := request.GetInt("direct_share_status", 0); val != 0 {
+		args["direct_share_status"] = val
+	}
+
+	// Optional: embeddable
+	if val := request.GetBool("embeddable", false); val {
+		args["embeddable"] = val
+	}
+
+	// Optional: end_offset
+	if val := request.GetInt("end_offset", 0); val != 0 {
+		args["end_offset"] = val
+	}
+
+	// Optional: expiration
+	// object type - using string
+	if val := request.GetString("expiration", ""); val != "" {
+		args["expiration"] = val
+	}
+
+	// Optional: fbuploader_video_file_chunk
+	if val := request.GetString("fbuploader_video_file_chunk", ""); val != "" {
+		args["fbuploader_video_file_chunk"] = val
+	}
+
+	// Optional: feed_targeting
+	// object type - using string
+	if val := request.GetString("feed_targeting", ""); val != "" {
+		args["feed_targeting"] = val
+	}
+
+	// Optional: file_size
+	if val := request.GetInt("file_size", 0); val != 0 {
+		args["file_size"] = val
+	}
+
+	// Optional: file_url
+	if val := request.GetString("file_url", ""); val != "" {
+		args["file_url"] = val
+	}
+
+	// Optional: fisheye_video_cropped
+	if val := request.GetBool("fisheye_video_cropped", false); val {
+		args["fisheye_video_cropped"] = val
+	}
+
+	// Optional: formatting
+	if val := request.GetString("formatting", ""); val != "" {
+		args["formatting"] = val
+	}
+
+	// Optional: fov
+	if val := request.GetInt("fov", 0); val != 0 {
+		args["fov"] = val
+	}
+
+	// Optional: front_z_rotation
+	if val := request.GetFloat("front_z_rotation", 0); val != 0 {
+		args["front_z_rotation"] = val
+	}
+
+	// Optional: fun_fact_prompt_id
+	if val := request.GetString("fun_fact_prompt_id", ""); val != "" {
+		args["fun_fact_prompt_id"] = val
+	}
+
+	// Optional: fun_fact_toastee_id
+	if val := request.GetInt("fun_fact_toastee_id", 0); val != 0 {
+		args["fun_fact_toastee_id"] = val
+	}
+
+	// Optional: guide
+	// array type - using string
+	if val := request.GetString("guide", ""); val != "" {
+		args["guide"] = val
+	}
+
+	// Optional: guide_enabled
+	if val := request.GetBool("guide_enabled", false); val {
+		args["guide_enabled"] = val
+	}
+
+	// Optional: initial_heading
+	if val := request.GetInt("initial_heading", 0); val != 0 {
+		args["initial_heading"] = val
+	}
+
+	// Optional: initial_pitch
+	if val := request.GetInt("initial_pitch", 0); val != 0 {
+		args["initial_pitch"] = val
+	}
+
+	// Optional: instant_game_entry_point_data
+	if val := request.GetString("instant_game_entry_point_data", ""); val != "" {
+		args["instant_game_entry_point_data"] = val
+	}
+
+	// Optional: is_boost_intended
+	if val := request.GetBool("is_boost_intended", false); val {
+		args["is_boost_intended"] = val
+	}
+
+	// Optional: is_explicit_share
+	if val := request.GetBool("is_explicit_share", false); val {
+		args["is_explicit_share"] = val
+	}
+
+	// Optional: is_group_linking_post
+	if val := request.GetBool("is_group_linking_post", false); val {
+		args["is_group_linking_post"] = val
+	}
+
+	// Optional: is_partnership_ad
+	if val := request.GetBool("is_partnership_ad", false); val {
+		args["is_partnership_ad"] = val
+	}
+
+	// Optional: is_voice_clip
+	if val := request.GetBool("is_voice_clip", false); val {
+		args["is_voice_clip"] = val
+	}
+
+	// Optional: location_source_id
+	if val := request.GetString("location_source_id", ""); val != "" {
+		args["location_source_id"] = val
+	}
+
+	// Optional: manual_privacy
+	if val := request.GetBool("manual_privacy", false); val {
+		args["manual_privacy"] = val
+	}
+
+	// Optional: multilingual_data
+	// array type - using string
+	if val := request.GetString("multilingual_data", ""); val != "" {
+		args["multilingual_data"] = val
+	}
+
+	// Optional: no_story
+	if val := request.GetBool("no_story", false); val {
+		args["no_story"] = val
+	}
+
+	// Optional: og_action_type_id
+	if val := request.GetString("og_action_type_id", ""); val != "" {
+		args["og_action_type_id"] = val
+	}
+
+	// Optional: og_icon_id
+	if val := request.GetString("og_icon_id", ""); val != "" {
+		args["og_icon_id"] = val
+	}
+
+	// Optional: og_object_id
+	if val := request.GetString("og_object_id", ""); val != "" {
+		args["og_object_id"] = val
+	}
+
+	// Optional: og_phrase
+	if val := request.GetString("og_phrase", ""); val != "" {
+		args["og_phrase"] = val
+	}
+
+	// Optional: og_suggestion_mechanism
+	if val := request.GetString("og_suggestion_mechanism", ""); val != "" {
+		args["og_suggestion_mechanism"] = val
+	}
+
+	// Optional: original_fov
+	if val := request.GetInt("original_fov", 0); val != 0 {
+		args["original_fov"] = val
+	}
+
+	// Optional: original_projection_type
+	if val := request.GetString("original_projection_type", ""); val != "" {
+		args["original_projection_type"] = val
+	}
+
+	// Optional: partnership_ad_ad_code
+	if val := request.GetString("partnership_ad_ad_code", ""); val != "" {
+		args["partnership_ad_ad_code"] = val
+	}
+
+	// Optional: publish_event_id
+	if val := request.GetInt("publish_event_id", 0); val != 0 {
+		args["publish_event_id"] = val
+	}
+
+	// Optional: published
+	if val := request.GetBool("published", false); val {
+		args["published"] = val
+	}
+
+	// Optional: reference_only
+	if val := request.GetBool("reference_only", false); val {
+		args["reference_only"] = val
+	}
+
+	// Optional: referenced_sticker_id
+	if val := request.GetString("referenced_sticker_id", ""); val != "" {
+		args["referenced_sticker_id"] = val
+	}
+
+	// Optional: replace_video_id
+	if val := request.GetString("replace_video_id", ""); val != "" {
+		args["replace_video_id"] = val
+	}
+
+	// Optional: scheduled_publish_time
+	if val := request.GetInt("scheduled_publish_time", 0); val != 0 {
+		args["scheduled_publish_time"] = val
+	}
+
+	// Optional: secret
+	if val := request.GetBool("secret", false); val {
+		args["secret"] = val
+	}
+
+	// Optional: slideshow_spec
+	if val := request.GetString("slideshow_spec", ""); val != "" {
+		args["slideshow_spec"] = val
+	}
+
+	// Optional: social_actions
+	if val := request.GetBool("social_actions", false); val {
+		args["social_actions"] = val
+	}
+
+	// Optional: source
+	if val := request.GetString("source", ""); val != "" {
+		args["source"] = val
+	}
+
+	// Optional: source_instagram_media_id
+	if val := request.GetString("source_instagram_media_id", ""); val != "" {
+		args["source_instagram_media_id"] = val
+	}
+
+	// Optional: specified_dialect
+	if val := request.GetString("specified_dialect", ""); val != "" {
+		args["specified_dialect"] = val
+	}
+
+	// Optional: spherical
+	if val := request.GetBool("spherical", false); val {
+		args["spherical"] = val
+	}
+
+	// Optional: sponsor_id
+	if val := request.GetString("sponsor_id", ""); val != "" {
+		args["sponsor_id"] = val
+	}
+
+	// Optional: sponsor_relationship
+	if val := request.GetInt("sponsor_relationship", 0); val != 0 {
+		args["sponsor_relationship"] = val
+	}
+
+	// Optional: start_offset
+	if val := request.GetInt("start_offset", 0); val != 0 {
+		args["start_offset"] = val
+	}
+
+	// Optional: swap_mode
+	if val := request.GetString("swap_mode", ""); val != "" {
+		args["swap_mode"] = val
+	}
+
+	// Optional: targeting
+	// object type - using string
+	if val := request.GetString("targeting", ""); val != "" {
+		args["targeting"] = val
+	}
+
+	// Optional: text_format_metadata
+	if val := request.GetString("text_format_metadata", ""); val != "" {
+		args["text_format_metadata"] = val
+	}
+
+	// Optional: thumb
+	if val := request.GetString("thumb", ""); val != "" {
+		args["thumb"] = val
+	}
+
+	// Optional: time_since_original_post
+	if val := request.GetInt("time_since_original_post", 0); val != 0 {
+		args["time_since_original_post"] = val
+	}
+
+	// Optional: title
+	if val := request.GetString("title", ""); val != "" {
+		args["title"] = val
+	}
+
+	// Optional: transcode_setting_properties
+	if val := request.GetString("transcode_setting_properties", ""); val != "" {
+		args["transcode_setting_properties"] = val
+	}
+
+	// Optional: universal_video_id
+	if val := request.GetString("universal_video_id", ""); val != "" {
+		args["universal_video_id"] = val
+	}
+
+	// Optional: unpublished_content_type
+	if val := request.GetString("unpublished_content_type", ""); val != "" {
+		args["unpublished_content_type"] = val
+	}
+
+	// Optional: upload_phase
+	if val := request.GetString("upload_phase", ""); val != "" {
+		args["upload_phase"] = val
+	}
+
+	// Optional: upload_session_id
+	if val := request.GetString("upload_session_id", ""); val != "" {
+		args["upload_session_id"] = val
+	}
+
+	// Optional: upload_setting_properties
+	if val := request.GetString("upload_setting_properties", ""); val != "" {
+		args["upload_setting_properties"] = val
+	}
+
+	// Optional: video_asset_id
+	if val := request.GetString("video_asset_id", ""); val != "" {
+		args["video_asset_id"] = val
+	}
+
+	// Optional: video_file_chunk
+	if val := request.GetString("video_file_chunk", ""); val != "" {
+		args["video_file_chunk"] = val
+	}
+
+	// Optional: video_id_original
+	if val := request.GetString("video_id_original", ""); val != "" {
+		args["video_id_original"] = val
+	}
+
+	// Optional: video_start_time_ms
+	if val := request.GetInt("video_start_time_ms", 0); val != 0 {
+		args["video_start_time_ms"] = val
+	}
+
+	// Optional: waterfall_id
+	if val := request.GetString("waterfall_id", ""); val != "" {
+		args["waterfall_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_videos(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_videos: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_visitor_posts handles the page_get_visitor_posts tool with context-based auth
+func HandleContextPage_get_visitor_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: include_hidden
+	if val := request.GetBool("include_hidden", false); val {
+		args["include_hidden"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: show_expired
+	if val := request.GetBool("show_expired", false); val {
+		args["show_expired"] = val
+	}
+
+	// Optional: with
+	if val := request.GetString("with", ""); val != "" {
+		args["with"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_visitor_posts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_visitor_posts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_delete_welcome_message_flows handles the page_delete_welcome_message_flows tool with context-based auth
+func HandleContextPage_delete_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: flow_id
+	flow_id, err := request.RequireString("flow_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter flow_id: %v", err)), nil
+	}
+	args["flow_id"] = flow_id
+
+	// Call the client method
+	result, err := client.Page_delete_welcome_message_flows(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_delete_welcome_message_flows: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_welcome_message_flows handles the page_get_welcome_message_flows tool with context-based auth
+func HandleContextPage_get_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: app_id
+	if val := request.GetString("app_id", ""); val != "" {
+		args["app_id"] = val
+	}
+
+	// Optional: flow_id
+	if val := request.GetString("flow_id", ""); val != "" {
+		args["flow_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_welcome_message_flows(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_welcome_message_flows: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_welcome_message_flows handles the page_post_welcome_message_flows tool with context-based auth
+func HandleContextPage_post_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: eligible_platforms
+	// array type - using string
+	if val := request.GetString("eligible_platforms", ""); val != "" {
+		args["eligible_platforms"] = val
+	}
+
+	// Optional: flow_id
+	if val := request.GetString("flow_id", ""); val != "" {
+		args["flow_id"] = val
+	}
+
+	// Optional: name
+	if val := request.GetString("name", ""); val != "" {
+		args["name"] = val
+	}
+
+	// Optional: welcome_message_flow
+	// array type - using string
+	if val := request.GetString("welcome_message_flow", ""); val != "" {
+		args["welcome_message_flow"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_post_welcome_message_flows(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_post_welcome_message_flows: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_get_ handles the page_get_ tool with context-based auth
+func HandleContextPage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPageClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: account_linking_token
+	if val := request.GetString("account_linking_token", ""); val != "" {
+		args["account_linking_token"] = val
+	}
+
+	// Call the client method
+	result, err := client.Page_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute page_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPage_post_ handles the page_post_ tool with context-based auth
+func HandleContextPage_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

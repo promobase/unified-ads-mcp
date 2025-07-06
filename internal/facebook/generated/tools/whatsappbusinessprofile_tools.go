@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetWhatsAppBusinessProfileTools returns MCP tools for WhatsAppBusinessProfile
@@ -32,6 +33,25 @@ func GetWhatsAppBusinessProfileTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, whatsappbusinessprofile_post_Tool)
+
+	return tools
+}
+
+// GetWhatsAppBusinessProfileToolsWithoutAuth returns MCP tools for WhatsAppBusinessProfile without access_token parameter
+func GetWhatsAppBusinessProfileToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// whatsappbusinessprofile_get_ tool
+	whatsappbusinessprofile_get_Tool := mcp.NewTool("whatsappbusinessprofile_get_",
+		mcp.WithDescription("GET  for WhatsAppBusinessProfile"),
+	)
+	tools = append(tools, whatsappbusinessprofile_get_Tool)
+
+	// whatsappbusinessprofile_post_ tool
+	whatsappbusinessprofile_post_Tool := mcp.NewTool("whatsappbusinessprofile_post_",
+		mcp.WithDescription("POST  for WhatsAppBusinessProfile"),
 	)
 	tools = append(tools, whatsappbusinessprofile_post_Tool)
 
@@ -75,6 +95,66 @@ func HandleWhatsappbusinessprofile_post_(ctx context.Context, request mcp.CallTo
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewWhatsAppBusinessProfileClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Whatsappbusinessprofile_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute whatsappbusinessprofile_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextWhatsappbusinessprofile_get_ handles the whatsappbusinessprofile_get_ tool with context-based auth
+func HandleContextWhatsappbusinessprofile_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewWhatsAppBusinessProfileClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Whatsappbusinessprofile_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute whatsappbusinessprofile_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextWhatsappbusinessprofile_post_ handles the whatsappbusinessprofile_post_ tool with context-based auth
+func HandleContextWhatsappbusinessprofile_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

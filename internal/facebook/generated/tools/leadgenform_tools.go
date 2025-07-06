@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetLeadgenFormTools returns MCP tools for LeadgenForm
@@ -68,6 +69,53 @@ func GetLeadgenFormTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithString("status",
+			mcp.Description("status parameter for "),
+			mcp.Enum("ACTIVE", "ARCHIVED", "DELETED", "DRAFT"),
+		),
+	)
+	tools = append(tools, leadgenform_post_Tool)
+
+	return tools
+}
+
+// GetLeadgenFormToolsWithoutAuth returns MCP tools for LeadgenForm without access_token parameter
+func GetLeadgenFormToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// leadgenform_get_leads tool
+	leadgenform_get_leadsTool := mcp.NewTool("leadgenform_get_leads",
+		mcp.WithDescription("GET leads for LeadgenForm"),
+	)
+	tools = append(tools, leadgenform_get_leadsTool)
+
+	// leadgenform_get_test_leads tool
+	leadgenform_get_test_leadsTool := mcp.NewTool("leadgenform_get_test_leads",
+		mcp.WithDescription("GET test_leads for LeadgenForm"),
+	)
+	tools = append(tools, leadgenform_get_test_leadsTool)
+
+	// leadgenform_post_test_leads tool
+	leadgenform_post_test_leadsTool := mcp.NewTool("leadgenform_post_test_leads",
+		mcp.WithDescription("POST test_leads for LeadgenForm"),
+		mcp.WithString("custom_disclaimer_responses",
+			mcp.Description("custom_disclaimer_responses parameter for test_leads"),
+		),
+		mcp.WithString("field_data",
+			mcp.Description("field_data parameter for test_leads"),
+		),
+	)
+	tools = append(tools, leadgenform_post_test_leadsTool)
+
+	// leadgenform_get_ tool
+	leadgenform_get_Tool := mcp.NewTool("leadgenform_get_",
+		mcp.WithDescription("GET  for LeadgenForm"),
+	)
+	tools = append(tools, leadgenform_get_Tool)
+
+	// leadgenform_post_ tool
+	leadgenform_post_Tool := mcp.NewTool("leadgenform_post_",
+		mcp.WithDescription("POST  for LeadgenForm"),
 		mcp.WithString("status",
 			mcp.Description("status parameter for "),
 			mcp.Enum("ACTIVE", "ARCHIVED", "DELETED", "DRAFT"),
@@ -214,6 +262,170 @@ func HandleLeadgenform_post_(ctx context.Context, request mcp.CallToolRequest) (
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewLeadgenFormClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: status
+	if val := request.GetString("status", ""); val != "" {
+		args["status"] = val
+	}
+
+	// Call the client method
+	result, err := client.Leadgenform_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute leadgenform_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextLeadgenform_get_leads handles the leadgenform_get_leads tool with context-based auth
+func HandleContextLeadgenform_get_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewLeadgenFormClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Leadgenform_get_leads(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute leadgenform_get_leads: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextLeadgenform_get_test_leads handles the leadgenform_get_test_leads tool with context-based auth
+func HandleContextLeadgenform_get_test_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewLeadgenFormClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Leadgenform_get_test_leads(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute leadgenform_get_test_leads: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextLeadgenform_post_test_leads handles the leadgenform_post_test_leads tool with context-based auth
+func HandleContextLeadgenform_post_test_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewLeadgenFormClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: custom_disclaimer_responses
+	// array type - using string
+	if val := request.GetString("custom_disclaimer_responses", ""); val != "" {
+		args["custom_disclaimer_responses"] = val
+	}
+
+	// Optional: field_data
+	// array type - using string
+	if val := request.GetString("field_data", ""); val != "" {
+		args["field_data"] = val
+	}
+
+	// Call the client method
+	result, err := client.Leadgenform_post_test_leads(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute leadgenform_post_test_leads: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextLeadgenform_get_ handles the leadgenform_get_ tool with context-based auth
+func HandleContextLeadgenform_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewLeadgenFormClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Leadgenform_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute leadgenform_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextLeadgenform_post_ handles the leadgenform_post_ tool with context-based auth
+func HandleContextLeadgenform_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

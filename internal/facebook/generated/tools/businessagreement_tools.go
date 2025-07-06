@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetBusinessAgreementTools returns MCP tools for BusinessAgreement
@@ -32,6 +33,32 @@ func GetBusinessAgreementTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithNumber("asset_id",
+			mcp.Description("asset_id parameter for "),
+		),
+		mcp.WithString("request_status",
+			mcp.Description("request_status parameter for "),
+			mcp.Enum("APPROVE", "CANCELED", "DECLINE", "EXPIRED", "IN_PROGRESS", "PENDING", "PENDING_EMAIL_VERIFICATION", "PENDING_INTEGRITY_REVIEW"),
+		),
+	)
+	tools = append(tools, businessagreement_post_Tool)
+
+	return tools
+}
+
+// GetBusinessAgreementToolsWithoutAuth returns MCP tools for BusinessAgreement without access_token parameter
+func GetBusinessAgreementToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// businessagreement_get_ tool
+	businessagreement_get_Tool := mcp.NewTool("businessagreement_get_",
+		mcp.WithDescription("GET  for BusinessAgreement"),
+	)
+	tools = append(tools, businessagreement_get_Tool)
+
+	// businessagreement_post_ tool
+	businessagreement_post_Tool := mcp.NewTool("businessagreement_post_",
+		mcp.WithDescription("POST  for BusinessAgreement"),
 		mcp.WithNumber("asset_id",
 			mcp.Description("asset_id parameter for "),
 		),
@@ -82,6 +109,76 @@ func HandleBusinessagreement_post_(ctx context.Context, request mcp.CallToolRequ
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAgreementClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: asset_id
+	if val := request.GetInt("asset_id", 0); val != 0 {
+		args["asset_id"] = val
+	}
+
+	// Optional: request_status
+	if val := request.GetString("request_status", ""); val != "" {
+		args["request_status"] = val
+	}
+
+	// Call the client method
+	result, err := client.Businessagreement_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessagreement_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextBusinessagreement_get_ handles the businessagreement_get_ tool with context-based auth
+func HandleContextBusinessagreement_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAgreementClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Businessagreement_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessagreement_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessagreement_post_ handles the businessagreement_post_ tool with context-based auth
+func HandleContextBusinessagreement_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

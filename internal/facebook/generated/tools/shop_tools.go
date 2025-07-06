@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetShopTools returns MCP tools for Shop
@@ -28,6 +29,19 @@ func GetShopTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetShopToolsWithoutAuth returns MCP tools for Shop without access_token parameter
+func GetShopToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// shop_get_ tool
+	shop_get_Tool := mcp.NewTool("shop_get_",
+		mcp.WithDescription("GET  for Shop"),
+	)
+	tools = append(tools, shop_get_Tool)
+
+	return tools
+}
+
 // Shop handlers
 
 // HandleShop_get_ handles the shop_get_ tool
@@ -36,6 +50,37 @@ func HandleShop_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewShopClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Shop_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute shop_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextShop_get_ handles the shop_get_ tool with context-based auth
+func HandleContextShop_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

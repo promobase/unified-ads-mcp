@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetAppRequestTools returns MCP tools for AppRequest
@@ -36,6 +37,29 @@ func GetAppRequestTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, apprequest_get_Tool)
+
+	return tools
+}
+
+// GetAppRequestToolsWithoutAuth returns MCP tools for AppRequest without access_token parameter
+func GetAppRequestToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// apprequest_delete_ tool
+	apprequest_delete_Tool := mcp.NewTool("apprequest_delete_",
+		mcp.WithDescription("DELETE  for AppRequest"),
+		mcp.WithString("ids",
+			mcp.Required(),
+			mcp.Description("ids parameter for "),
+		),
+	)
+	tools = append(tools, apprequest_delete_Tool)
+
+	// apprequest_get_ tool
+	apprequest_get_Tool := mcp.NewTool("apprequest_get_",
+		mcp.WithDescription("GET  for AppRequest"),
 	)
 	tools = append(tools, apprequest_get_Tool)
 
@@ -86,6 +110,73 @@ func HandleApprequest_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewAppRequestClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Apprequest_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute apprequest_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextApprequest_delete_ handles the apprequest_delete_ tool with context-based auth
+func HandleContextApprequest_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAppRequestClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: ids
+	ids, err := request.RequireString("ids")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ids: %v", err)), nil
+	}
+	args["ids"] = ids
+
+	// Call the client method
+	result, err := client.Apprequest_delete_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute apprequest_delete_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextApprequest_get_ handles the apprequest_get_ tool with context-based auth
+func HandleContextApprequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

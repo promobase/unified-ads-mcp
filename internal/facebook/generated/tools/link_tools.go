@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetLinkTools returns MCP tools for Link
@@ -82,6 +83,71 @@ func GetLinkTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, link_get_Tool)
+
+	return tools
+}
+
+// GetLinkToolsWithoutAuth returns MCP tools for Link without access_token parameter
+func GetLinkToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// link_post_comments tool
+	link_post_commentsTool := mcp.NewTool("link_post_comments",
+		mcp.WithDescription("POST comments for Link"),
+		mcp.WithString("attachment_id",
+			mcp.Description("attachment_id parameter for comments"),
+		),
+		mcp.WithString("attachment_share_url",
+			mcp.Description("attachment_share_url parameter for comments"),
+		),
+		mcp.WithString("attachment_url",
+			mcp.Description("attachment_url parameter for comments"),
+		),
+		mcp.WithString("comment_privacy_value",
+			mcp.Description("comment_privacy_value parameter for comments"),
+			mcp.Enum("DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"),
+		),
+		mcp.WithString("facepile_mentioned_ids",
+			mcp.Description("facepile_mentioned_ids parameter for comments"),
+		),
+		mcp.WithString("feedback_source",
+			mcp.Description("feedback_source parameter for comments"),
+		),
+		mcp.WithBoolean("is_offline",
+			mcp.Description("is_offline parameter for comments"),
+		),
+		mcp.WithString("message",
+			mcp.Description("message parameter for comments"),
+		),
+		mcp.WithString("nectar_module",
+			mcp.Description("nectar_module parameter for comments"),
+		),
+		mcp.WithString("object_id",
+			mcp.Description("object_id parameter for comments"),
+		),
+		mcp.WithString("parent_comment_id",
+			mcp.Description("parent_comment_id parameter for comments"),
+		),
+		mcp.WithString("text",
+			mcp.Description("text parameter for comments"),
+		),
+		mcp.WithString("tracking",
+			mcp.Description("tracking parameter for comments"),
+		),
+	)
+	tools = append(tools, link_post_commentsTool)
+
+	// link_get_likes tool
+	link_get_likesTool := mcp.NewTool("link_get_likes",
+		mcp.WithDescription("GET likes for Link"),
+	)
+	tools = append(tools, link_get_likesTool)
+
+	// link_get_ tool
+	link_get_Tool := mcp.NewTool("link_get_",
+		mcp.WithDescription("GET  for Link"),
 	)
 	tools = append(tools, link_get_Tool)
 
@@ -221,6 +287,162 @@ func HandleLink_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewLinkClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Link_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute link_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextLink_post_comments handles the link_post_comments tool with context-based auth
+func HandleContextLink_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewLinkClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: attachment_id
+	if val := request.GetString("attachment_id", ""); val != "" {
+		args["attachment_id"] = val
+	}
+
+	// Optional: attachment_share_url
+	if val := request.GetString("attachment_share_url", ""); val != "" {
+		args["attachment_share_url"] = val
+	}
+
+	// Optional: attachment_url
+	if val := request.GetString("attachment_url", ""); val != "" {
+		args["attachment_url"] = val
+	}
+
+	// Optional: comment_privacy_value
+	if val := request.GetString("comment_privacy_value", ""); val != "" {
+		args["comment_privacy_value"] = val
+	}
+
+	// Optional: facepile_mentioned_ids
+	// array type - using string
+	if val := request.GetString("facepile_mentioned_ids", ""); val != "" {
+		args["facepile_mentioned_ids"] = val
+	}
+
+	// Optional: feedback_source
+	if val := request.GetString("feedback_source", ""); val != "" {
+		args["feedback_source"] = val
+	}
+
+	// Optional: is_offline
+	if val := request.GetBool("is_offline", false); val {
+		args["is_offline"] = val
+	}
+
+	// Optional: message
+	if val := request.GetString("message", ""); val != "" {
+		args["message"] = val
+	}
+
+	// Optional: nectar_module
+	if val := request.GetString("nectar_module", ""); val != "" {
+		args["nectar_module"] = val
+	}
+
+	// Optional: object_id
+	if val := request.GetString("object_id", ""); val != "" {
+		args["object_id"] = val
+	}
+
+	// Optional: parent_comment_id
+	// object type - using string
+	if val := request.GetString("parent_comment_id", ""); val != "" {
+		args["parent_comment_id"] = val
+	}
+
+	// Optional: text
+	if val := request.GetString("text", ""); val != "" {
+		args["text"] = val
+	}
+
+	// Optional: tracking
+	if val := request.GetString("tracking", ""); val != "" {
+		args["tracking"] = val
+	}
+
+	// Call the client method
+	result, err := client.Link_post_comments(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute link_post_comments: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextLink_get_likes handles the link_get_likes tool with context-based auth
+func HandleContextLink_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewLinkClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Link_get_likes(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute link_get_likes: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextLink_get_ handles the link_get_ tool with context-based auth
+func HandleContextLink_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetWoodhengePurchasedPAYGReceiptTools returns MCP tools for WoodhengePurchasedPAYGReceipt
@@ -28,6 +29,19 @@ func GetWoodhengePurchasedPAYGReceiptTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetWoodhengePurchasedPAYGReceiptToolsWithoutAuth returns MCP tools for WoodhengePurchasedPAYGReceipt without access_token parameter
+func GetWoodhengePurchasedPAYGReceiptToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// woodhengepurchasedpaygreceipt_get_ tool
+	woodhengepurchasedpaygreceipt_get_Tool := mcp.NewTool("woodhengepurchasedpaygreceipt_get_",
+		mcp.WithDescription("GET  for WoodhengePurchasedPAYGReceipt"),
+	)
+	tools = append(tools, woodhengepurchasedpaygreceipt_get_Tool)
+
+	return tools
+}
+
 // WoodhengePurchasedPAYGReceipt handlers
 
 // HandleWoodhengepurchasedpaygreceipt_get_ handles the woodhengepurchasedpaygreceipt_get_ tool
@@ -36,6 +50,37 @@ func HandleWoodhengepurchasedpaygreceipt_get_(ctx context.Context, request mcp.C
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewWoodhengePurchasedPAYGReceiptClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Woodhengepurchasedpaygreceipt_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute woodhengepurchasedpaygreceipt_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextWoodhengepurchasedpaygreceipt_get_ handles the woodhengepurchasedpaygreceipt_get_ tool with context-based auth
+func HandleContextWoodhengepurchasedpaygreceipt_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetAdSetTools returns MCP tools for AdSet
@@ -511,6 +512,604 @@ func GetAdSetTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithString("account_id",
+			mcp.Description("account_id parameter for "),
+		),
+		mcp.WithString("adlabels",
+			mcp.Description("adlabels parameter for "),
+		),
+		mcp.WithString("adset_schedule",
+			mcp.Description("adset_schedule parameter for "),
+		),
+		mcp.WithString("attribution_spec",
+			mcp.Description("attribution_spec parameter for "),
+		),
+		mcp.WithString("bid_adjustments",
+			mcp.Description("bid_adjustments parameter for "),
+		),
+		mcp.WithNumber("bid_amount",
+			mcp.Description("bid_amount parameter for "),
+		),
+		mcp.WithString("bid_constraints",
+			mcp.Description("bid_constraints parameter for "),
+		),
+		mcp.WithString("bid_strategy",
+			mcp.Description("bid_strategy parameter for "),
+			mcp.Enum("COST_CAP", "LOWEST_COST_WITHOUT_CAP", "LOWEST_COST_WITH_BID_CAP", "LOWEST_COST_WITH_MIN_ROAS"),
+		),
+		mcp.WithString("billing_event",
+			mcp.Description("billing_event parameter for "),
+			mcp.Enum("APP_INSTALLS", "CLICKS", "IMPRESSIONS", "LINK_CLICKS", "LISTING_INTERACTION", "NONE", "OFFER_CLAIMS", "PAGE_LIKES", "POST_ENGAGEMENT", "PURCHASE", "THRUPLAY"),
+		),
+		mcp.WithString("campaign_attribution",
+			mcp.Description("campaign_attribution parameter for "),
+		),
+		mcp.WithString("campaign_spec",
+			mcp.Description("campaign_spec parameter for "),
+		),
+		mcp.WithString("creative_sequence",
+			mcp.Description("creative_sequence parameter for "),
+		),
+		mcp.WithString("creative_sequence_repetition_pattern",
+			mcp.Description("creative_sequence_repetition_pattern parameter for "),
+			mcp.Enum("FULL_SEQUENCE", "LAST_AD"),
+		),
+		mcp.WithNumber("daily_budget",
+			mcp.Description("daily_budget parameter for "),
+		),
+		mcp.WithNumber("daily_imps",
+			mcp.Description("daily_imps parameter for "),
+		),
+		mcp.WithNumber("daily_min_spend_target",
+			mcp.Description("daily_min_spend_target parameter for "),
+		),
+		mcp.WithNumber("daily_spend_cap",
+			mcp.Description("daily_spend_cap parameter for "),
+		),
+		mcp.WithString("date_format",
+			mcp.Description("date_format parameter for "),
+		),
+		mcp.WithString("destination_type",
+			mcp.Description("destination_type parameter for "),
+			mcp.Enum("APP", "APPLINKS_AUTOMATIC", "FACEBOOK", "FACEBOOK_LIVE", "FACEBOOK_PAGE", "IMAGINE", "INSTAGRAM_DIRECT", "INSTAGRAM_LIVE", "INSTAGRAM_PROFILE", "INSTAGRAM_PROFILE_AND_FACEBOOK_PAGE", "MESSAGING_INSTAGRAM_DIRECT_MESSENGER", "MESSAGING_INSTAGRAM_DIRECT_MESSENGER_WHATSAPP", "MESSAGING_INSTAGRAM_DIRECT_WHATSAPP", "MESSAGING_MESSENGER_WHATSAPP", "MESSENGER", "ON_AD", "ON_EVENT", "ON_PAGE", "ON_POST", "ON_VIDEO", "SHOP_AUTOMATIC", "WEBSITE", "WHATSAPP"),
+		),
+		mcp.WithString("dsa_beneficiary",
+			mcp.Description("dsa_beneficiary parameter for "),
+		),
+		mcp.WithString("dsa_payor",
+			mcp.Description("dsa_payor parameter for "),
+		),
+		mcp.WithString("end_time",
+			mcp.Description("end_time parameter for "),
+		),
+		mcp.WithString("execution_options",
+			mcp.Description("execution_options parameter for "),
+			mcp.Enum("include_recommendations", "validate_only"),
+		),
+		mcp.WithNumber("existing_customer_budget_percentage",
+			mcp.Description("existing_customer_budget_percentage parameter for "),
+		),
+		mcp.WithString("full_funnel_exploration_mode",
+			mcp.Description("full_funnel_exploration_mode parameter for "),
+			mcp.Enum("EXTENDED_EXPLORATION", "LIMITED_EXPLORATION", "NONE_EXPLORATION"),
+		),
+		mcp.WithBoolean("is_ba_skip_delayed_eligible",
+			mcp.Description("is_ba_skip_delayed_eligible parameter for "),
+		),
+		mcp.WithBoolean("is_incremental_attribution_enabled",
+			mcp.Description("is_incremental_attribution_enabled parameter for "),
+		),
+		mcp.WithBoolean("is_sac_cfca_terms_certified",
+			mcp.Description("is_sac_cfca_terms_certified parameter for "),
+		),
+		mcp.WithNumber("lifetime_budget",
+			mcp.Description("lifetime_budget parameter for "),
+		),
+		mcp.WithNumber("lifetime_imps",
+			mcp.Description("lifetime_imps parameter for "),
+		),
+		mcp.WithNumber("lifetime_min_spend_target",
+			mcp.Description("lifetime_min_spend_target parameter for "),
+		),
+		mcp.WithNumber("lifetime_spend_cap",
+			mcp.Description("lifetime_spend_cap parameter for "),
+		),
+		mcp.WithNumber("max_budget_spend_percentage",
+			mcp.Description("max_budget_spend_percentage parameter for "),
+		),
+		mcp.WithNumber("min_budget_spend_percentage",
+			mcp.Description("min_budget_spend_percentage parameter for "),
+		),
+		mcp.WithString("multi_optimization_goal_weight",
+			mcp.Description("multi_optimization_goal_weight parameter for "),
+			mcp.Enum("BALANCED", "PREFER_EVENT", "PREFER_INSTALL", "UNDEFINED"),
+		),
+		mcp.WithString("name",
+			mcp.Description("name parameter for "),
+		),
+		mcp.WithString("optimization_goal",
+			mcp.Description("optimization_goal parameter for "),
+			mcp.Enum("ADVERTISER_SILOED_VALUE", "AD_RECALL_LIFT", "APP_INSTALLS", "APP_INSTALLS_AND_OFFSITE_CONVERSIONS", "CONVERSATIONS", "DERIVED_EVENTS", "ENGAGED_USERS", "EVENT_RESPONSES", "IMPRESSIONS", "IN_APP_VALUE", "LANDING_PAGE_VIEWS", "LEAD_GENERATION", "LINK_CLICKS", "MEANINGFUL_CALL_ATTEMPT", "MESSAGING_APPOINTMENT_CONVERSION", "MESSAGING_PURCHASE_CONVERSION", "NONE", "OFFSITE_CONVERSIONS", "PAGE_LIKES", "POST_ENGAGEMENT", "PROFILE_AND_PAGE_ENGAGEMENT", "PROFILE_VISIT", "QUALITY_CALL", "QUALITY_LEAD", "REACH", "REMINDERS_SET", "SUBSCRIBERS", "THRUPLAY", "VALUE", "VISIT_INSTAGRAM_PROFILE"),
+		),
+		mcp.WithString("optimization_sub_event",
+			mcp.Description("optimization_sub_event parameter for "),
+			mcp.Enum("NONE", "TRAVEL_INTENT", "TRAVEL_INTENT_BUCKET_01", "TRAVEL_INTENT_BUCKET_02", "TRAVEL_INTENT_BUCKET_03", "TRAVEL_INTENT_BUCKET_04", "TRAVEL_INTENT_BUCKET_05", "TRAVEL_INTENT_NO_DESTINATION_INTENT", "TRIP_CONSIDERATION", "VIDEO_SOUND_ON"),
+		),
+		mcp.WithString("pacing_type",
+			mcp.Description("pacing_type parameter for "),
+		),
+		mcp.WithString("promoted_object",
+			mcp.Description("promoted_object parameter for "),
+		),
+		mcp.WithString("rb_prediction_id",
+			mcp.Description("rb_prediction_id parameter for "),
+		),
+		mcp.WithString("regional_regulated_categories",
+			mcp.Description("regional_regulated_categories parameter for "),
+			mcp.Enum("0", "1", "2", "3", "4", "5", "6"),
+		),
+		mcp.WithString("regional_regulation_identities",
+			mcp.Description("regional_regulation_identities parameter for "),
+		),
+		mcp.WithString("rf_prediction_id",
+			mcp.Description("rf_prediction_id parameter for "),
+		),
+		mcp.WithString("start_time",
+			mcp.Description("start_time parameter for "),
+		),
+		mcp.WithString("status",
+			mcp.Description("status parameter for "),
+			mcp.Enum("ACTIVE", "ARCHIVED", "DELETED", "PAUSED"),
+		),
+		mcp.WithString("targeting",
+			mcp.Description("targeting parameter for "),
+		),
+		mcp.WithString("time_based_ad_rotation_id_blocks",
+			mcp.Description("time_based_ad_rotation_id_blocks parameter for "),
+		),
+		mcp.WithString("time_based_ad_rotation_intervals",
+			mcp.Description("time_based_ad_rotation_intervals parameter for "),
+		),
+		mcp.WithString("time_start",
+			mcp.Description("time_start parameter for "),
+		),
+		mcp.WithString("time_stop",
+			mcp.Description("time_stop parameter for "),
+		),
+		mcp.WithString("tune_for_category",
+			mcp.Description("tune_for_category parameter for "),
+			mcp.Enum("CREDIT", "EMPLOYMENT", "FINANCIAL_PRODUCTS_SERVICES", "HOUSING", "ISSUES_ELECTIONS_POLITICS", "NONE", "ONLINE_GAMBLING_AND_GAMING"),
+		),
+	)
+	tools = append(tools, adset_post_Tool)
+
+	return tools
+}
+
+// GetAdSetToolsWithoutAuth returns MCP tools for AdSet without access_token parameter
+func GetAdSetToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// adset_get_activities tool
+	adset_get_activitiesTool := mcp.NewTool("adset_get_activities",
+		mcp.WithDescription("GET activities for AdSet"),
+		mcp.WithString("after",
+			mcp.Description("after parameter for activities"),
+		),
+		mcp.WithString("business_id",
+			mcp.Description("business_id parameter for activities"),
+		),
+		mcp.WithString("category",
+			mcp.Description("category parameter for activities"),
+			mcp.Enum("ACCOUNT", "AD", "AD_KEYWORDS", "AD_SET", "AUDIENCE", "BID", "BUDGET", "CAMPAIGN", "DATE", "STATUS", "TARGETING"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("limit parameter for activities"),
+		),
+		mcp.WithString("since",
+			mcp.Description("since parameter for activities"),
+		),
+		mcp.WithNumber("uid",
+			mcp.Description("uid parameter for activities"),
+		),
+		mcp.WithString("until",
+			mcp.Description("until parameter for activities"),
+		),
+	)
+	tools = append(tools, adset_get_activitiesTool)
+
+	// adset_get_ad_studies tool
+	adset_get_ad_studiesTool := mcp.NewTool("adset_get_ad_studies",
+		mcp.WithDescription("GET ad_studies for AdSet"),
+	)
+	tools = append(tools, adset_get_ad_studiesTool)
+
+	// adset_get_adcreatives tool
+	adset_get_adcreativesTool := mcp.NewTool("adset_get_adcreatives",
+		mcp.WithDescription("GET adcreatives for AdSet"),
+	)
+	tools = append(tools, adset_get_adcreativesTool)
+
+	// adset_delete_adlabels tool
+	adset_delete_adlabelsTool := mcp.NewTool("adset_delete_adlabels",
+		mcp.WithDescription("DELETE adlabels for AdSet"),
+		mcp.WithString("adlabels",
+			mcp.Required(),
+			mcp.Description("adlabels parameter for adlabels"),
+		),
+		mcp.WithString("execution_options",
+			mcp.Description("execution_options parameter for adlabels"),
+			mcp.Enum("validate_only"),
+		),
+	)
+	tools = append(tools, adset_delete_adlabelsTool)
+
+	// adset_post_adlabels tool
+	adset_post_adlabelsTool := mcp.NewTool("adset_post_adlabels",
+		mcp.WithDescription("POST adlabels for AdSet"),
+		mcp.WithString("adlabels",
+			mcp.Required(),
+			mcp.Description("adlabels parameter for adlabels"),
+		),
+		mcp.WithString("execution_options",
+			mcp.Description("execution_options parameter for adlabels"),
+			mcp.Enum("validate_only"),
+		),
+	)
+	tools = append(tools, adset_post_adlabelsTool)
+
+	// adset_get_adrules_governed tool
+	adset_get_adrules_governedTool := mcp.NewTool("adset_get_adrules_governed",
+		mcp.WithDescription("GET adrules_governed for AdSet"),
+		mcp.WithBoolean("pass_evaluation",
+			mcp.Description("pass_evaluation parameter for adrules_governed"),
+		),
+	)
+	tools = append(tools, adset_get_adrules_governedTool)
+
+	// adset_get_ads tool
+	adset_get_adsTool := mcp.NewTool("adset_get_ads",
+		mcp.WithDescription("GET ads for AdSet"),
+		mcp.WithString("date_preset",
+			mcp.Description("date_preset parameter for ads"),
+			mcp.Enum("data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"),
+		),
+		mcp.WithString("effective_status",
+			mcp.Description("effective_status parameter for ads"),
+		),
+		mcp.WithString("time_range",
+			mcp.Description("time_range parameter for ads"),
+		),
+		mcp.WithNumber("updated_since",
+			mcp.Description("updated_since parameter for ads"),
+		),
+	)
+	tools = append(tools, adset_get_adsTool)
+
+	// adset_get_asyncadrequests tool
+	adset_get_asyncadrequestsTool := mcp.NewTool("adset_get_asyncadrequests",
+		mcp.WithDescription("GET asyncadrequests for AdSet"),
+		mcp.WithString("statuses",
+			mcp.Description("statuses parameter for asyncadrequests"),
+			mcp.Enum("CANCELED", "CANCELED_DEPENDENCY", "ERROR", "ERROR_CONFLICTS", "ERROR_DEPENDENCY", "INITIAL", "IN_PROGRESS", "PENDING_DEPENDENCY", "PROCESS_BY_AD_ASYNC_ENGINE", "PROCESS_BY_EVENT_PROCESSOR", "SUCCESS", "USER_CANCELED", "USER_CANCELED_DEPENDENCY"),
+		),
+	)
+	tools = append(tools, adset_get_asyncadrequestsTool)
+
+	// adset_post_budget_schedules tool
+	adset_post_budget_schedulesTool := mcp.NewTool("adset_post_budget_schedules",
+		mcp.WithDescription("POST budget_schedules for AdSet"),
+		mcp.WithNumber("budget_value",
+			mcp.Required(),
+			mcp.Description("budget_value parameter for budget_schedules"),
+		),
+		mcp.WithString("budget_value_type",
+			mcp.Required(),
+			mcp.Description("budget_value_type parameter for budget_schedules"),
+			mcp.Enum("ABSOLUTE", "MULTIPLIER"),
+		),
+		mcp.WithNumber("time_end",
+			mcp.Required(),
+			mcp.Description("time_end parameter for budget_schedules"),
+		),
+		mcp.WithNumber("time_start",
+			mcp.Required(),
+			mcp.Description("time_start parameter for budget_schedules"),
+		),
+	)
+	tools = append(tools, adset_post_budget_schedulesTool)
+
+	// adset_get_copies tool
+	adset_get_copiesTool := mcp.NewTool("adset_get_copies",
+		mcp.WithDescription("GET copies for AdSet"),
+		mcp.WithString("date_preset",
+			mcp.Description("date_preset parameter for copies"),
+			mcp.Enum("data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"),
+		),
+		mcp.WithString("effective_status",
+			mcp.Description("effective_status parameter for copies"),
+			mcp.Enum("ACTIVE", "ADSET_PAUSED", "ARCHIVED", "CAMPAIGN_PAUSED", "DELETED", "DISAPPROVED", "IN_PROCESS", "PAUSED", "PENDING_BILLING_INFO", "PENDING_REVIEW", "PREAPPROVED", "WITH_ISSUES"),
+		),
+		mcp.WithBoolean("is_completed",
+			mcp.Description("is_completed parameter for copies"),
+		),
+		mcp.WithString("time_range",
+			mcp.Description("time_range parameter for copies"),
+		),
+	)
+	tools = append(tools, adset_get_copiesTool)
+
+	// adset_post_copies tool
+	adset_post_copiesTool := mcp.NewTool("adset_post_copies",
+		mcp.WithDescription("POST copies for AdSet"),
+		mcp.WithString("campaign_id",
+			mcp.Description("campaign_id parameter for copies"),
+		),
+		mcp.WithBoolean("create_dco_adset",
+			mcp.Description("create_dco_adset parameter for copies"),
+		),
+		mcp.WithBoolean("deep_copy",
+			mcp.Description("deep_copy parameter for copies"),
+		),
+		mcp.WithString("end_time",
+			mcp.Description("end_time parameter for copies"),
+		),
+		mcp.WithString("rename_options",
+			mcp.Description("rename_options parameter for copies"),
+		),
+		mcp.WithString("start_time",
+			mcp.Description("start_time parameter for copies"),
+		),
+		mcp.WithString("status_option",
+			mcp.Description("status_option parameter for copies"),
+			mcp.Enum("ACTIVE", "INHERITED_FROM_SOURCE", "PAUSED"),
+		),
+	)
+	tools = append(tools, adset_post_copiesTool)
+
+	// adset_get_delivery_estimate tool
+	adset_get_delivery_estimateTool := mcp.NewTool("adset_get_delivery_estimate",
+		mcp.WithDescription("GET delivery_estimate for AdSet"),
+		mcp.WithString("optimization_goal",
+			mcp.Description("optimization_goal parameter for delivery_estimate"),
+			mcp.Enum("ADVERTISER_SILOED_VALUE", "AD_RECALL_LIFT", "APP_INSTALLS", "APP_INSTALLS_AND_OFFSITE_CONVERSIONS", "CONVERSATIONS", "DERIVED_EVENTS", "ENGAGED_USERS", "EVENT_RESPONSES", "IMPRESSIONS", "IN_APP_VALUE", "LANDING_PAGE_VIEWS", "LEAD_GENERATION", "LINK_CLICKS", "MEANINGFUL_CALL_ATTEMPT", "MESSAGING_APPOINTMENT_CONVERSION", "MESSAGING_PURCHASE_CONVERSION", "NONE", "OFFSITE_CONVERSIONS", "PAGE_LIKES", "POST_ENGAGEMENT", "PROFILE_AND_PAGE_ENGAGEMENT", "PROFILE_VISIT", "QUALITY_CALL", "QUALITY_LEAD", "REACH", "REMINDERS_SET", "SUBSCRIBERS", "THRUPLAY", "VALUE", "VISIT_INSTAGRAM_PROFILE"),
+		),
+		mcp.WithString("promoted_object",
+			mcp.Description("promoted_object parameter for delivery_estimate"),
+		),
+		mcp.WithString("targeting_spec",
+			mcp.Description("targeting_spec parameter for delivery_estimate"),
+		),
+	)
+	tools = append(tools, adset_get_delivery_estimateTool)
+
+	// adset_get_insights tool
+	adset_get_insightsTool := mcp.NewTool("adset_get_insights",
+		mcp.WithDescription("GET insights for AdSet"),
+		mcp.WithString("action_attribution_windows",
+			mcp.Description("action_attribution_windows parameter for insights"),
+			mcp.Enum("1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback"),
+		),
+		mcp.WithString("action_breakdowns",
+			mcp.Description("action_breakdowns parameter for insights"),
+			mcp.Enum("action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"),
+		),
+		mcp.WithString("action_report_time",
+			mcp.Description("action_report_time parameter for insights"),
+			mcp.Enum("conversion", "impression", "lifetime", "mixed"),
+		),
+		mcp.WithString("breakdowns",
+			mcp.Description("breakdowns parameter for insights"),
+			mcp.Enum("ad_extension_domain", "ad_extension_url", "ad_format_asset", "age", "app_id", "body_asset", "breakdown_ad_objective", "breakdown_reporting_ad_id", "call_to_action_asset", "coarse_conversion_value", "comscore_market", "comscore_market_code", "conversion_destination", "country", "creative_relaxation_asset_type", "description_asset", "device_platform", "dma", "fidelity_type", "flexible_format_asset_type", "frequency_value", "gen_ai_asset_type", "gender", "hourly_stats_aggregated_by_advertiser_time_zone", "hourly_stats_aggregated_by_audience_time_zone", "hsid", "image_asset", "impression_device", "impression_view_time_advertiser_hour_v2", "is_auto_advance", "is_conversion_id_modeled", "is_rendered_as_delayed_skip_ad", "landing_destination", "link_url_asset", "marketing_messages_btn_name", "mdsa_landing_destination", "media_asset_url", "media_creator", "media_destination_url", "media_format", "media_origin_url", "media_text_content", "media_type", "mmm", "place_page_id", "platform_position", "postback_sequence_index", "product_id", "publisher_platform", "redownload", "region", "signal_source_bucket", "skan_campaign_id", "skan_conversion_id", "skan_version", "sot_attribution_model_type", "sot_attribution_window", "sot_channel", "sot_event_type", "sot_source", "standard_event_content_type", "title_asset", "user_persona_id", "user_persona_name", "video_asset"),
+		),
+		mcp.WithString("date_preset",
+			mcp.Description("date_preset parameter for insights"),
+			mcp.Enum("data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"),
+		),
+		mcp.WithBoolean("default_summary",
+			mcp.Description("default_summary parameter for insights"),
+		),
+		mcp.WithString("export_columns",
+			mcp.Description("export_columns parameter for insights"),
+		),
+		mcp.WithString("export_format",
+			mcp.Description("export_format parameter for insights"),
+		),
+		mcp.WithString("export_name",
+			mcp.Description("export_name parameter for insights"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("fields parameter for insights"),
+		),
+		mcp.WithString("filtering",
+			mcp.Description("filtering parameter for insights"),
+		),
+		mcp.WithString("level",
+			mcp.Description("level parameter for insights"),
+			mcp.Enum("account", "ad", "adset", "campaign"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("limit parameter for insights"),
+		),
+		mcp.WithNumber("product_id_limit",
+			mcp.Description("product_id_limit parameter for insights"),
+		),
+		mcp.WithString("sort",
+			mcp.Description("sort parameter for insights"),
+		),
+		mcp.WithString("summary",
+			mcp.Description("summary parameter for insights"),
+		),
+		mcp.WithString("summary_action_breakdowns",
+			mcp.Description("summary_action_breakdowns parameter for insights"),
+			mcp.Enum("action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"),
+		),
+		mcp.WithString("time_increment",
+			mcp.Description("time_increment parameter for insights"),
+		),
+		mcp.WithString("time_range",
+			mcp.Description("time_range parameter for insights"),
+		),
+		mcp.WithString("time_ranges",
+			mcp.Description("time_ranges parameter for insights"),
+		),
+		mcp.WithBoolean("use_account_attribution_setting",
+			mcp.Description("use_account_attribution_setting parameter for insights"),
+		),
+		mcp.WithBoolean("use_unified_attribution_setting",
+			mcp.Description("use_unified_attribution_setting parameter for insights"),
+		),
+	)
+	tools = append(tools, adset_get_insightsTool)
+
+	// adset_post_insights tool
+	adset_post_insightsTool := mcp.NewTool("adset_post_insights",
+		mcp.WithDescription("POST insights for AdSet"),
+		mcp.WithString("action_attribution_windows",
+			mcp.Description("action_attribution_windows parameter for insights"),
+			mcp.Enum("1d_click", "1d_ev", "1d_view", "28d_click", "28d_view", "28d_view_all_conversions", "28d_view_first_conversion", "7d_click", "7d_view", "7d_view_all_conversions", "7d_view_first_conversion", "dda", "default", "skan_click", "skan_click_second_postback", "skan_click_third_postback", "skan_view", "skan_view_second_postback", "skan_view_third_postback"),
+		),
+		mcp.WithString("action_breakdowns",
+			mcp.Description("action_breakdowns parameter for insights"),
+			mcp.Enum("action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"),
+		),
+		mcp.WithString("action_report_time",
+			mcp.Description("action_report_time parameter for insights"),
+			mcp.Enum("conversion", "impression", "lifetime", "mixed"),
+		),
+		mcp.WithString("breakdowns",
+			mcp.Description("breakdowns parameter for insights"),
+			mcp.Enum("ad_extension_domain", "ad_extension_url", "ad_format_asset", "age", "app_id", "body_asset", "breakdown_ad_objective", "breakdown_reporting_ad_id", "call_to_action_asset", "coarse_conversion_value", "comscore_market", "comscore_market_code", "conversion_destination", "country", "creative_relaxation_asset_type", "description_asset", "device_platform", "dma", "fidelity_type", "flexible_format_asset_type", "frequency_value", "gen_ai_asset_type", "gender", "hourly_stats_aggregated_by_advertiser_time_zone", "hourly_stats_aggregated_by_audience_time_zone", "hsid", "image_asset", "impression_device", "impression_view_time_advertiser_hour_v2", "is_auto_advance", "is_conversion_id_modeled", "is_rendered_as_delayed_skip_ad", "landing_destination", "link_url_asset", "marketing_messages_btn_name", "mdsa_landing_destination", "media_asset_url", "media_creator", "media_destination_url", "media_format", "media_origin_url", "media_text_content", "media_type", "mmm", "place_page_id", "platform_position", "postback_sequence_index", "product_id", "publisher_platform", "redownload", "region", "signal_source_bucket", "skan_campaign_id", "skan_conversion_id", "skan_version", "sot_attribution_model_type", "sot_attribution_window", "sot_channel", "sot_event_type", "sot_source", "standard_event_content_type", "title_asset", "user_persona_id", "user_persona_name", "video_asset"),
+		),
+		mcp.WithString("date_preset",
+			mcp.Description("date_preset parameter for insights"),
+			mcp.Enum("data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"),
+		),
+		mcp.WithBoolean("default_summary",
+			mcp.Description("default_summary parameter for insights"),
+		),
+		mcp.WithString("export_columns",
+			mcp.Description("export_columns parameter for insights"),
+		),
+		mcp.WithString("export_format",
+			mcp.Description("export_format parameter for insights"),
+		),
+		mcp.WithString("export_name",
+			mcp.Description("export_name parameter for insights"),
+		),
+		mcp.WithString("fields",
+			mcp.Description("fields parameter for insights"),
+		),
+		mcp.WithString("filtering",
+			mcp.Description("filtering parameter for insights"),
+		),
+		mcp.WithString("level",
+			mcp.Description("level parameter for insights"),
+			mcp.Enum("account", "ad", "adset", "campaign"),
+		),
+		mcp.WithNumber("limit",
+			mcp.Description("limit parameter for insights"),
+		),
+		mcp.WithNumber("product_id_limit",
+			mcp.Description("product_id_limit parameter for insights"),
+		),
+		mcp.WithString("sort",
+			mcp.Description("sort parameter for insights"),
+		),
+		mcp.WithString("summary",
+			mcp.Description("summary parameter for insights"),
+		),
+		mcp.WithString("summary_action_breakdowns",
+			mcp.Description("summary_action_breakdowns parameter for insights"),
+			mcp.Enum("action_canvas_component_name", "action_carousel_card_id", "action_carousel_card_name", "action_destination", "action_device", "action_reaction", "action_target_id", "action_type", "action_video_sound", "action_video_type", "conversion_destination", "matched_persona_id", "matched_persona_name", "signal_source_bucket", "standard_event_content_type"),
+		),
+		mcp.WithString("time_increment",
+			mcp.Description("time_increment parameter for insights"),
+		),
+		mcp.WithString("time_range",
+			mcp.Description("time_range parameter for insights"),
+		),
+		mcp.WithString("time_ranges",
+			mcp.Description("time_ranges parameter for insights"),
+		),
+		mcp.WithBoolean("use_account_attribution_setting",
+			mcp.Description("use_account_attribution_setting parameter for insights"),
+		),
+		mcp.WithBoolean("use_unified_attribution_setting",
+			mcp.Description("use_unified_attribution_setting parameter for insights"),
+		),
+	)
+	tools = append(tools, adset_post_insightsTool)
+
+	// adset_get_message_delivery_estimate tool
+	adset_get_message_delivery_estimateTool := mcp.NewTool("adset_get_message_delivery_estimate",
+		mcp.WithDescription("GET message_delivery_estimate for AdSet"),
+		mcp.WithNumber("bid_amount",
+			mcp.Description("bid_amount parameter for message_delivery_estimate"),
+		),
+		mcp.WithNumber("daily_budget",
+			mcp.Description("daily_budget parameter for message_delivery_estimate"),
+		),
+		mcp.WithBoolean("is_direct_send_campaign",
+			mcp.Description("is_direct_send_campaign parameter for message_delivery_estimate"),
+		),
+		mcp.WithNumber("lifetime_budget",
+			mcp.Description("lifetime_budget parameter for message_delivery_estimate"),
+		),
+		mcp.WithNumber("lifetime_in_days",
+			mcp.Description("lifetime_in_days parameter for message_delivery_estimate"),
+		),
+		mcp.WithString("optimization_goal",
+			mcp.Description("optimization_goal parameter for message_delivery_estimate"),
+			mcp.Enum("ADVERTISER_SILOED_VALUE", "AD_RECALL_LIFT", "APP_INSTALLS", "APP_INSTALLS_AND_OFFSITE_CONVERSIONS", "CONVERSATIONS", "DERIVED_EVENTS", "ENGAGED_USERS", "EVENT_RESPONSES", "IMPRESSIONS", "IN_APP_VALUE", "LANDING_PAGE_VIEWS", "LEAD_GENERATION", "LINK_CLICKS", "MEANINGFUL_CALL_ATTEMPT", "MESSAGING_APPOINTMENT_CONVERSION", "MESSAGING_PURCHASE_CONVERSION", "NONE", "OFFSITE_CONVERSIONS", "PAGE_LIKES", "POST_ENGAGEMENT", "PROFILE_AND_PAGE_ENGAGEMENT", "PROFILE_VISIT", "QUALITY_CALL", "QUALITY_LEAD", "REACH", "REMINDERS_SET", "SUBSCRIBERS", "THRUPLAY", "VALUE", "VISIT_INSTAGRAM_PROFILE"),
+		),
+		mcp.WithString("pacing_type",
+			mcp.Description("pacing_type parameter for message_delivery_estimate"),
+			mcp.Enum("DAY_PARTING", "DISABLED", "NO_PACING", "PROBABILISTIC_PACING", "PROBABILISTIC_PACING_V2", "STANDARD"),
+		),
+		mcp.WithString("promoted_object",
+			mcp.Description("promoted_object parameter for message_delivery_estimate"),
+		),
+		mcp.WithString("targeting_spec",
+			mcp.Description("targeting_spec parameter for message_delivery_estimate"),
+		),
+	)
+	tools = append(tools, adset_get_message_delivery_estimateTool)
+
+	// adset_get_targetingsentencelines tool
+	adset_get_targetingsentencelinesTool := mcp.NewTool("adset_get_targetingsentencelines",
+		mcp.WithDescription("GET targetingsentencelines for AdSet"),
+	)
+	tools = append(tools, adset_get_targetingsentencelinesTool)
+
+	// adset_delete_ tool
+	adset_delete_Tool := mcp.NewTool("adset_delete_",
+		mcp.WithDescription("DELETE  for AdSet"),
+	)
+	tools = append(tools, adset_delete_Tool)
+
+	// adset_get_ tool
+	adset_get_Tool := mcp.NewTool("adset_get_",
+		mcp.WithDescription("GET  for AdSet"),
+		mcp.WithString("am_call_tags",
+			mcp.Description("am_call_tags parameter for "),
+		),
+		mcp.WithString("date_preset",
+			mcp.Description("date_preset parameter for "),
+			mcp.Enum("data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"),
+		),
+		mcp.WithBoolean("from_adtable",
+			mcp.Description("from_adtable parameter for "),
+		),
+		mcp.WithString("time_range",
+			mcp.Description("time_range parameter for "),
+		),
+	)
+	tools = append(tools, adset_get_Tool)
+
+	// adset_post_ tool
+	adset_post_Tool := mcp.NewTool("adset_post_",
+		mcp.WithDescription("POST  for AdSet"),
 		mcp.WithString("account_id",
 			mcp.Description("account_id parameter for "),
 		),
@@ -1715,6 +2314,1332 @@ func HandleAdset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: account_id
+	if val := request.GetString("account_id", ""); val != "" {
+		args["account_id"] = val
+	}
+
+	// Optional: adlabels
+	// array type - using string
+	if val := request.GetString("adlabels", ""); val != "" {
+		args["adlabels"] = val
+	}
+
+	// Optional: adset_schedule
+	// array type - using string
+	if val := request.GetString("adset_schedule", ""); val != "" {
+		args["adset_schedule"] = val
+	}
+
+	// Optional: attribution_spec
+	// array type - using string
+	if val := request.GetString("attribution_spec", ""); val != "" {
+		args["attribution_spec"] = val
+	}
+
+	// Optional: bid_adjustments
+	// object type - using string
+	if val := request.GetString("bid_adjustments", ""); val != "" {
+		args["bid_adjustments"] = val
+	}
+
+	// Optional: bid_amount
+	if val := request.GetInt("bid_amount", 0); val != 0 {
+		args["bid_amount"] = val
+	}
+
+	// Optional: bid_constraints
+	if val := request.GetString("bid_constraints", ""); val != "" {
+		args["bid_constraints"] = val
+	}
+
+	// Optional: bid_strategy
+	if val := request.GetString("bid_strategy", ""); val != "" {
+		args["bid_strategy"] = val
+	}
+
+	// Optional: billing_event
+	if val := request.GetString("billing_event", ""); val != "" {
+		args["billing_event"] = val
+	}
+
+	// Optional: campaign_attribution
+	// object type - using string
+	if val := request.GetString("campaign_attribution", ""); val != "" {
+		args["campaign_attribution"] = val
+	}
+
+	// Optional: campaign_spec
+	// object type - using string
+	if val := request.GetString("campaign_spec", ""); val != "" {
+		args["campaign_spec"] = val
+	}
+
+	// Optional: creative_sequence
+	// array type - using string
+	if val := request.GetString("creative_sequence", ""); val != "" {
+		args["creative_sequence"] = val
+	}
+
+	// Optional: creative_sequence_repetition_pattern
+	if val := request.GetString("creative_sequence_repetition_pattern", ""); val != "" {
+		args["creative_sequence_repetition_pattern"] = val
+	}
+
+	// Optional: daily_budget
+	if val := request.GetInt("daily_budget", 0); val != 0 {
+		args["daily_budget"] = val
+	}
+
+	// Optional: daily_imps
+	if val := request.GetInt("daily_imps", 0); val != 0 {
+		args["daily_imps"] = val
+	}
+
+	// Optional: daily_min_spend_target
+	if val := request.GetInt("daily_min_spend_target", 0); val != 0 {
+		args["daily_min_spend_target"] = val
+	}
+
+	// Optional: daily_spend_cap
+	if val := request.GetInt("daily_spend_cap", 0); val != 0 {
+		args["daily_spend_cap"] = val
+	}
+
+	// Optional: date_format
+	if val := request.GetString("date_format", ""); val != "" {
+		args["date_format"] = val
+	}
+
+	// Optional: destination_type
+	if val := request.GetString("destination_type", ""); val != "" {
+		args["destination_type"] = val
+	}
+
+	// Optional: dsa_beneficiary
+	if val := request.GetString("dsa_beneficiary", ""); val != "" {
+		args["dsa_beneficiary"] = val
+	}
+
+	// Optional: dsa_payor
+	if val := request.GetString("dsa_payor", ""); val != "" {
+		args["dsa_payor"] = val
+	}
+
+	// Optional: end_time
+	if val := request.GetString("end_time", ""); val != "" {
+		args["end_time"] = val
+	}
+
+	// Optional: execution_options
+	// array type - using string
+	if val := request.GetString("execution_options", ""); val != "" {
+		args["execution_options"] = val
+	}
+
+	// Optional: existing_customer_budget_percentage
+	if val := request.GetInt("existing_customer_budget_percentage", 0); val != 0 {
+		args["existing_customer_budget_percentage"] = val
+	}
+
+	// Optional: full_funnel_exploration_mode
+	if val := request.GetString("full_funnel_exploration_mode", ""); val != "" {
+		args["full_funnel_exploration_mode"] = val
+	}
+
+	// Optional: is_ba_skip_delayed_eligible
+	if val := request.GetBool("is_ba_skip_delayed_eligible", false); val {
+		args["is_ba_skip_delayed_eligible"] = val
+	}
+
+	// Optional: is_incremental_attribution_enabled
+	if val := request.GetBool("is_incremental_attribution_enabled", false); val {
+		args["is_incremental_attribution_enabled"] = val
+	}
+
+	// Optional: is_sac_cfca_terms_certified
+	if val := request.GetBool("is_sac_cfca_terms_certified", false); val {
+		args["is_sac_cfca_terms_certified"] = val
+	}
+
+	// Optional: lifetime_budget
+	if val := request.GetInt("lifetime_budget", 0); val != 0 {
+		args["lifetime_budget"] = val
+	}
+
+	// Optional: lifetime_imps
+	if val := request.GetInt("lifetime_imps", 0); val != 0 {
+		args["lifetime_imps"] = val
+	}
+
+	// Optional: lifetime_min_spend_target
+	if val := request.GetInt("lifetime_min_spend_target", 0); val != 0 {
+		args["lifetime_min_spend_target"] = val
+	}
+
+	// Optional: lifetime_spend_cap
+	if val := request.GetInt("lifetime_spend_cap", 0); val != 0 {
+		args["lifetime_spend_cap"] = val
+	}
+
+	// Optional: max_budget_spend_percentage
+	if val := request.GetInt("max_budget_spend_percentage", 0); val != 0 {
+		args["max_budget_spend_percentage"] = val
+	}
+
+	// Optional: min_budget_spend_percentage
+	if val := request.GetInt("min_budget_spend_percentage", 0); val != 0 {
+		args["min_budget_spend_percentage"] = val
+	}
+
+	// Optional: multi_optimization_goal_weight
+	if val := request.GetString("multi_optimization_goal_weight", ""); val != "" {
+		args["multi_optimization_goal_weight"] = val
+	}
+
+	// Optional: name
+	if val := request.GetString("name", ""); val != "" {
+		args["name"] = val
+	}
+
+	// Optional: optimization_goal
+	if val := request.GetString("optimization_goal", ""); val != "" {
+		args["optimization_goal"] = val
+	}
+
+	// Optional: optimization_sub_event
+	if val := request.GetString("optimization_sub_event", ""); val != "" {
+		args["optimization_sub_event"] = val
+	}
+
+	// Optional: pacing_type
+	// array type - using string
+	if val := request.GetString("pacing_type", ""); val != "" {
+		args["pacing_type"] = val
+	}
+
+	// Optional: promoted_object
+	// object type - using string
+	if val := request.GetString("promoted_object", ""); val != "" {
+		args["promoted_object"] = val
+	}
+
+	// Optional: rb_prediction_id
+	if val := request.GetString("rb_prediction_id", ""); val != "" {
+		args["rb_prediction_id"] = val
+	}
+
+	// Optional: regional_regulated_categories
+	// array type - using string
+	if val := request.GetString("regional_regulated_categories", ""); val != "" {
+		args["regional_regulated_categories"] = val
+	}
+
+	// Optional: regional_regulation_identities
+	if val := request.GetString("regional_regulation_identities", ""); val != "" {
+		args["regional_regulation_identities"] = val
+	}
+
+	// Optional: rf_prediction_id
+	if val := request.GetString("rf_prediction_id", ""); val != "" {
+		args["rf_prediction_id"] = val
+	}
+
+	// Optional: start_time
+	if val := request.GetString("start_time", ""); val != "" {
+		args["start_time"] = val
+	}
+
+	// Optional: status
+	if val := request.GetString("status", ""); val != "" {
+		args["status"] = val
+	}
+
+	// Optional: targeting
+	if val := request.GetString("targeting", ""); val != "" {
+		args["targeting"] = val
+	}
+
+	// Optional: time_based_ad_rotation_id_blocks
+	// array type - using string
+	if val := request.GetString("time_based_ad_rotation_id_blocks", ""); val != "" {
+		args["time_based_ad_rotation_id_blocks"] = val
+	}
+
+	// Optional: time_based_ad_rotation_intervals
+	// array type - using string
+	if val := request.GetString("time_based_ad_rotation_intervals", ""); val != "" {
+		args["time_based_ad_rotation_intervals"] = val
+	}
+
+	// Optional: time_start
+	if val := request.GetString("time_start", ""); val != "" {
+		args["time_start"] = val
+	}
+
+	// Optional: time_stop
+	if val := request.GetString("time_stop", ""); val != "" {
+		args["time_stop"] = val
+	}
+
+	// Optional: tune_for_category
+	if val := request.GetString("tune_for_category", ""); val != "" {
+		args["tune_for_category"] = val
+	}
+
+	// Call the client method
+	result, err := client.Adset_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextAdset_get_activities handles the adset_get_activities tool with context-based auth
+func HandleContextAdset_get_activities(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: after
+	if val := request.GetString("after", ""); val != "" {
+		args["after"] = val
+	}
+
+	// Optional: business_id
+	if val := request.GetString("business_id", ""); val != "" {
+		args["business_id"] = val
+	}
+
+	// Optional: category
+	if val := request.GetString("category", ""); val != "" {
+		args["category"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: since
+	if val := request.GetString("since", ""); val != "" {
+		args["since"] = val
+	}
+
+	// Optional: uid
+	if val := request.GetInt("uid", 0); val != 0 {
+		args["uid"] = val
+	}
+
+	// Optional: until
+	if val := request.GetString("until", ""); val != "" {
+		args["until"] = val
+	}
+
+	// Call the client method
+	result, err := client.Adset_get_activities(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_activities: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdset_get_ad_studies handles the adset_get_ad_studies tool with context-based auth
+func HandleContextAdset_get_ad_studies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Adset_get_ad_studies(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_ad_studies: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdset_get_adcreatives handles the adset_get_adcreatives tool with context-based auth
+func HandleContextAdset_get_adcreatives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Adset_get_adcreatives(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_adcreatives: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdset_delete_adlabels handles the adset_delete_adlabels tool with context-based auth
+func HandleContextAdset_delete_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: adlabels
+	adlabels, err := request.RequireString("adlabels")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter adlabels: %v", err)), nil
+	}
+	args["adlabels"] = adlabels
+
+	// Optional: execution_options
+	// array type - using string
+	if val := request.GetString("execution_options", ""); val != "" {
+		args["execution_options"] = val
+	}
+
+	// Call the client method
+	result, err := client.Adset_delete_adlabels(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_delete_adlabels: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdset_post_adlabels handles the adset_post_adlabels tool with context-based auth
+func HandleContextAdset_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: adlabels
+	adlabels, err := request.RequireString("adlabels")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter adlabels: %v", err)), nil
+	}
+	args["adlabels"] = adlabels
+
+	// Optional: execution_options
+	// array type - using string
+	if val := request.GetString("execution_options", ""); val != "" {
+		args["execution_options"] = val
+	}
+
+	// Call the client method
+	result, err := client.Adset_post_adlabels(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_post_adlabels: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdset_get_adrules_governed handles the adset_get_adrules_governed tool with context-based auth
+func HandleContextAdset_get_adrules_governed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: pass_evaluation
+	if val := request.GetBool("pass_evaluation", false); val {
+		args["pass_evaluation"] = val
+	}
+
+	// Call the client method
+	result, err := client.Adset_get_adrules_governed(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_adrules_governed: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdset_get_ads handles the adset_get_ads tool with context-based auth
+func HandleContextAdset_get_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: date_preset
+	if val := request.GetString("date_preset", ""); val != "" {
+		args["date_preset"] = val
+	}
+
+	// Optional: effective_status
+	// array type - using string
+	if val := request.GetString("effective_status", ""); val != "" {
+		args["effective_status"] = val
+	}
+
+	// Optional: time_range
+	if val := request.GetString("time_range", ""); val != "" {
+		args["time_range"] = val
+	}
+
+	// Optional: updated_since
+	if val := request.GetInt("updated_since", 0); val != 0 {
+		args["updated_since"] = val
+	}
+
+	// Call the client method
+	result, err := client.Adset_get_ads(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_ads: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdset_get_asyncadrequests handles the adset_get_asyncadrequests tool with context-based auth
+func HandleContextAdset_get_asyncadrequests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: statuses
+	// array type - using string
+	if val := request.GetString("statuses", ""); val != "" {
+		args["statuses"] = val
+	}
+
+	// Call the client method
+	result, err := client.Adset_get_asyncadrequests(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_asyncadrequests: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdset_post_budget_schedules handles the adset_post_budget_schedules tool with context-based auth
+func HandleContextAdset_post_budget_schedules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: budget_value
+	budget_value, err := request.RequireInt("budget_value")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter budget_value: %v", err)), nil
+	}
+	args["budget_value"] = budget_value
+
+	// Required: budget_value_type
+	budget_value_type, err := request.RequireString("budget_value_type")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter budget_value_type: %v", err)), nil
+	}
+	args["budget_value_type"] = budget_value_type
+
+	// Required: time_end
+	time_end, err := request.RequireInt("time_end")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter time_end: %v", err)), nil
+	}
+	args["time_end"] = time_end
+
+	// Required: time_start
+	time_start, err := request.RequireInt("time_start")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter time_start: %v", err)), nil
+	}
+	args["time_start"] = time_start
+
+	// Call the client method
+	result, err := client.Adset_post_budget_schedules(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_post_budget_schedules: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdset_get_copies handles the adset_get_copies tool with context-based auth
+func HandleContextAdset_get_copies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: date_preset
+	if val := request.GetString("date_preset", ""); val != "" {
+		args["date_preset"] = val
+	}
+
+	// Optional: effective_status
+	// array type - using string
+	if val := request.GetString("effective_status", ""); val != "" {
+		args["effective_status"] = val
+	}
+
+	// Optional: is_completed
+	if val := request.GetBool("is_completed", false); val {
+		args["is_completed"] = val
+	}
+
+	// Optional: time_range
+	if val := request.GetString("time_range", ""); val != "" {
+		args["time_range"] = val
+	}
+
+	// Call the client method
+	result, err := client.Adset_get_copies(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_copies: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdset_post_copies handles the adset_post_copies tool with context-based auth
+func HandleContextAdset_post_copies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: campaign_id
+	if val := request.GetString("campaign_id", ""); val != "" {
+		args["campaign_id"] = val
+	}
+
+	// Optional: create_dco_adset
+	if val := request.GetBool("create_dco_adset", false); val {
+		args["create_dco_adset"] = val
+	}
+
+	// Optional: deep_copy
+	if val := request.GetBool("deep_copy", false); val {
+		args["deep_copy"] = val
+	}
+
+	// Optional: end_time
+	if val := request.GetString("end_time", ""); val != "" {
+		args["end_time"] = val
+	}
+
+	// Optional: rename_options
+	// object type - using string
+	if val := request.GetString("rename_options", ""); val != "" {
+		args["rename_options"] = val
+	}
+
+	// Optional: start_time
+	if val := request.GetString("start_time", ""); val != "" {
+		args["start_time"] = val
+	}
+
+	// Optional: status_option
+	if val := request.GetString("status_option", ""); val != "" {
+		args["status_option"] = val
+	}
+
+	// Call the client method
+	result, err := client.Adset_post_copies(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_post_copies: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdset_get_delivery_estimate handles the adset_get_delivery_estimate tool with context-based auth
+func HandleContextAdset_get_delivery_estimate(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: optimization_goal
+	if val := request.GetString("optimization_goal", ""); val != "" {
+		args["optimization_goal"] = val
+	}
+
+	// Optional: promoted_object
+	// object type - using string
+	if val := request.GetString("promoted_object", ""); val != "" {
+		args["promoted_object"] = val
+	}
+
+	// Optional: targeting_spec
+	if val := request.GetString("targeting_spec", ""); val != "" {
+		args["targeting_spec"] = val
+	}
+
+	// Call the client method
+	result, err := client.Adset_get_delivery_estimate(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_delivery_estimate: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdset_get_insights handles the adset_get_insights tool with context-based auth
+func HandleContextAdset_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: action_attribution_windows
+	// array type - using string
+	if val := request.GetString("action_attribution_windows", ""); val != "" {
+		args["action_attribution_windows"] = val
+	}
+
+	// Optional: action_breakdowns
+	// array type - using string
+	if val := request.GetString("action_breakdowns", ""); val != "" {
+		args["action_breakdowns"] = val
+	}
+
+	// Optional: action_report_time
+	if val := request.GetString("action_report_time", ""); val != "" {
+		args["action_report_time"] = val
+	}
+
+	// Optional: breakdowns
+	// array type - using string
+	if val := request.GetString("breakdowns", ""); val != "" {
+		args["breakdowns"] = val
+	}
+
+	// Optional: date_preset
+	if val := request.GetString("date_preset", ""); val != "" {
+		args["date_preset"] = val
+	}
+
+	// Optional: default_summary
+	if val := request.GetBool("default_summary", false); val {
+		args["default_summary"] = val
+	}
+
+	// Optional: export_columns
+	// array type - using string
+	if val := request.GetString("export_columns", ""); val != "" {
+		args["export_columns"] = val
+	}
+
+	// Optional: export_format
+	if val := request.GetString("export_format", ""); val != "" {
+		args["export_format"] = val
+	}
+
+	// Optional: export_name
+	if val := request.GetString("export_name", ""); val != "" {
+		args["export_name"] = val
+	}
+
+	// Optional: fields
+	// array type - using string
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: filtering
+	// array type - using string
+	if val := request.GetString("filtering", ""); val != "" {
+		args["filtering"] = val
+	}
+
+	// Optional: level
+	if val := request.GetString("level", ""); val != "" {
+		args["level"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: product_id_limit
+	if val := request.GetInt("product_id_limit", 0); val != 0 {
+		args["product_id_limit"] = val
+	}
+
+	// Optional: sort
+	// array type - using string
+	if val := request.GetString("sort", ""); val != "" {
+		args["sort"] = val
+	}
+
+	// Optional: summary
+	// array type - using string
+	if val := request.GetString("summary", ""); val != "" {
+		args["summary"] = val
+	}
+
+	// Optional: summary_action_breakdowns
+	// array type - using string
+	if val := request.GetString("summary_action_breakdowns", ""); val != "" {
+		args["summary_action_breakdowns"] = val
+	}
+
+	// Optional: time_increment
+	if val := request.GetString("time_increment", ""); val != "" {
+		args["time_increment"] = val
+	}
+
+	// Optional: time_range
+	if val := request.GetString("time_range", ""); val != "" {
+		args["time_range"] = val
+	}
+
+	// Optional: time_ranges
+	// array type - using string
+	if val := request.GetString("time_ranges", ""); val != "" {
+		args["time_ranges"] = val
+	}
+
+	// Optional: use_account_attribution_setting
+	if val := request.GetBool("use_account_attribution_setting", false); val {
+		args["use_account_attribution_setting"] = val
+	}
+
+	// Optional: use_unified_attribution_setting
+	if val := request.GetBool("use_unified_attribution_setting", false); val {
+		args["use_unified_attribution_setting"] = val
+	}
+
+	// Call the client method
+	result, err := client.Adset_get_insights(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_insights: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdset_post_insights handles the adset_post_insights tool with context-based auth
+func HandleContextAdset_post_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: action_attribution_windows
+	// array type - using string
+	if val := request.GetString("action_attribution_windows", ""); val != "" {
+		args["action_attribution_windows"] = val
+	}
+
+	// Optional: action_breakdowns
+	// array type - using string
+	if val := request.GetString("action_breakdowns", ""); val != "" {
+		args["action_breakdowns"] = val
+	}
+
+	// Optional: action_report_time
+	if val := request.GetString("action_report_time", ""); val != "" {
+		args["action_report_time"] = val
+	}
+
+	// Optional: breakdowns
+	// array type - using string
+	if val := request.GetString("breakdowns", ""); val != "" {
+		args["breakdowns"] = val
+	}
+
+	// Optional: date_preset
+	if val := request.GetString("date_preset", ""); val != "" {
+		args["date_preset"] = val
+	}
+
+	// Optional: default_summary
+	if val := request.GetBool("default_summary", false); val {
+		args["default_summary"] = val
+	}
+
+	// Optional: export_columns
+	// array type - using string
+	if val := request.GetString("export_columns", ""); val != "" {
+		args["export_columns"] = val
+	}
+
+	// Optional: export_format
+	if val := request.GetString("export_format", ""); val != "" {
+		args["export_format"] = val
+	}
+
+	// Optional: export_name
+	if val := request.GetString("export_name", ""); val != "" {
+		args["export_name"] = val
+	}
+
+	// Optional: fields
+	// array type - using string
+	if val := request.GetString("fields", ""); val != "" {
+		args["fields"] = val
+	}
+
+	// Optional: filtering
+	// array type - using string
+	if val := request.GetString("filtering", ""); val != "" {
+		args["filtering"] = val
+	}
+
+	// Optional: level
+	if val := request.GetString("level", ""); val != "" {
+		args["level"] = val
+	}
+
+	// Optional: limit
+	if val := request.GetInt("limit", 0); val != 0 {
+		args["limit"] = val
+	}
+
+	// Optional: product_id_limit
+	if val := request.GetInt("product_id_limit", 0); val != 0 {
+		args["product_id_limit"] = val
+	}
+
+	// Optional: sort
+	// array type - using string
+	if val := request.GetString("sort", ""); val != "" {
+		args["sort"] = val
+	}
+
+	// Optional: summary
+	// array type - using string
+	if val := request.GetString("summary", ""); val != "" {
+		args["summary"] = val
+	}
+
+	// Optional: summary_action_breakdowns
+	// array type - using string
+	if val := request.GetString("summary_action_breakdowns", ""); val != "" {
+		args["summary_action_breakdowns"] = val
+	}
+
+	// Optional: time_increment
+	if val := request.GetString("time_increment", ""); val != "" {
+		args["time_increment"] = val
+	}
+
+	// Optional: time_range
+	if val := request.GetString("time_range", ""); val != "" {
+		args["time_range"] = val
+	}
+
+	// Optional: time_ranges
+	// array type - using string
+	if val := request.GetString("time_ranges", ""); val != "" {
+		args["time_ranges"] = val
+	}
+
+	// Optional: use_account_attribution_setting
+	if val := request.GetBool("use_account_attribution_setting", false); val {
+		args["use_account_attribution_setting"] = val
+	}
+
+	// Optional: use_unified_attribution_setting
+	if val := request.GetBool("use_unified_attribution_setting", false); val {
+		args["use_unified_attribution_setting"] = val
+	}
+
+	// Call the client method
+	result, err := client.Adset_post_insights(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_post_insights: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdset_get_message_delivery_estimate handles the adset_get_message_delivery_estimate tool with context-based auth
+func HandleContextAdset_get_message_delivery_estimate(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: bid_amount
+	if val := request.GetInt("bid_amount", 0); val != 0 {
+		args["bid_amount"] = val
+	}
+
+	// Optional: daily_budget
+	if val := request.GetInt("daily_budget", 0); val != 0 {
+		args["daily_budget"] = val
+	}
+
+	// Optional: is_direct_send_campaign
+	if val := request.GetBool("is_direct_send_campaign", false); val {
+		args["is_direct_send_campaign"] = val
+	}
+
+	// Optional: lifetime_budget
+	if val := request.GetInt("lifetime_budget", 0); val != 0 {
+		args["lifetime_budget"] = val
+	}
+
+	// Optional: lifetime_in_days
+	if val := request.GetInt("lifetime_in_days", 0); val != 0 {
+		args["lifetime_in_days"] = val
+	}
+
+	// Optional: optimization_goal
+	if val := request.GetString("optimization_goal", ""); val != "" {
+		args["optimization_goal"] = val
+	}
+
+	// Optional: pacing_type
+	if val := request.GetString("pacing_type", ""); val != "" {
+		args["pacing_type"] = val
+	}
+
+	// Optional: promoted_object
+	// object type - using string
+	if val := request.GetString("promoted_object", ""); val != "" {
+		args["promoted_object"] = val
+	}
+
+	// Optional: targeting_spec
+	if val := request.GetString("targeting_spec", ""); val != "" {
+		args["targeting_spec"] = val
+	}
+
+	// Call the client method
+	result, err := client.Adset_get_message_delivery_estimate(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_message_delivery_estimate: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdset_get_targetingsentencelines handles the adset_get_targetingsentencelines tool with context-based auth
+func HandleContextAdset_get_targetingsentencelines(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Adset_get_targetingsentencelines(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_targetingsentencelines: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdset_delete_ handles the adset_delete_ tool with context-based auth
+func HandleContextAdset_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Adset_delete_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_delete_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdset_get_ handles the adset_get_ tool with context-based auth
+func HandleContextAdset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdSetClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: am_call_tags
+	if val := request.GetString("am_call_tags", ""); val != "" {
+		args["am_call_tags"] = val
+	}
+
+	// Optional: date_preset
+	if val := request.GetString("date_preset", ""); val != "" {
+		args["date_preset"] = val
+	}
+
+	// Optional: from_adtable
+	if val := request.GetBool("from_adtable", false); val {
+		args["from_adtable"] = val
+	}
+
+	// Optional: time_range
+	if val := request.GetString("time_range", ""); val != "" {
+		args["time_range"] = val
+	}
+
+	// Call the client method
+	result, err := client.Adset_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adset_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdset_post_ handles the adset_post_ tool with context-based auth
+func HandleContextAdset_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

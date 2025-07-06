@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetEventTools returns MCP tools for Event
@@ -187,6 +188,144 @@ func GetEventTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, event_get_Tool)
+
+	return tools
+}
+
+// GetEventToolsWithoutAuth returns MCP tools for Event without access_token parameter
+func GetEventToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// event_get_comments tool
+	event_get_commentsTool := mcp.NewTool("event_get_comments",
+		mcp.WithDescription("GET comments for Event"),
+	)
+	tools = append(tools, event_get_commentsTool)
+
+	// event_get_feed tool
+	event_get_feedTool := mcp.NewTool("event_get_feed",
+		mcp.WithDescription("GET feed for Event"),
+	)
+	tools = append(tools, event_get_feedTool)
+
+	// event_get_live_videos tool
+	event_get_live_videosTool := mcp.NewTool("event_get_live_videos",
+		mcp.WithDescription("GET live_videos for Event"),
+	)
+	tools = append(tools, event_get_live_videosTool)
+
+	// event_post_live_videos tool
+	event_post_live_videosTool := mcp.NewTool("event_post_live_videos",
+		mcp.WithDescription("POST live_videos for Event"),
+		mcp.WithString("content_tags",
+			mcp.Description("content_tags parameter for live_videos"),
+		),
+		mcp.WithString("description",
+			mcp.Description("description parameter for live_videos"),
+		),
+		mcp.WithBoolean("enable_backup_ingest",
+			mcp.Description("enable_backup_ingest parameter for live_videos"),
+		),
+		mcp.WithString("encoding_settings",
+			mcp.Description("encoding_settings parameter for live_videos"),
+		),
+		mcp.WithString("event_params",
+			mcp.Description("event_params parameter for live_videos"),
+		),
+		mcp.WithBoolean("fisheye_video_cropped",
+			mcp.Description("fisheye_video_cropped parameter for live_videos"),
+		),
+		mcp.WithNumber("front_z_rotation",
+			mcp.Description("front_z_rotation parameter for live_videos"),
+		),
+		mcp.WithBoolean("is_audio_only",
+			mcp.Description("is_audio_only parameter for live_videos"),
+		),
+		mcp.WithBoolean("is_spherical",
+			mcp.Description("is_spherical parameter for live_videos"),
+		),
+		mcp.WithNumber("original_fov",
+			mcp.Description("original_fov parameter for live_videos"),
+		),
+		mcp.WithString("privacy",
+			mcp.Description("privacy parameter for live_videos"),
+		),
+		mcp.WithString("projection",
+			mcp.Description("projection parameter for live_videos"),
+			mcp.Enum("CUBEMAP", "EQUIRECTANGULAR", "HALF_EQUIRECTANGULAR"),
+		),
+		mcp.WithBoolean("published",
+			mcp.Description("published parameter for live_videos"),
+		),
+		mcp.WithString("schedule_custom_profile_image",
+			mcp.Description("schedule_custom_profile_image parameter for live_videos"),
+		),
+		mcp.WithString("spatial_audio_format",
+			mcp.Description("spatial_audio_format parameter for live_videos"),
+			mcp.Enum("ambiX_4"),
+		),
+		mcp.WithString("status",
+			mcp.Description("status parameter for live_videos"),
+			mcp.Enum("LIVE_NOW", "SCHEDULED_CANCELED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED"),
+		),
+		mcp.WithString("stereoscopic_mode",
+			mcp.Description("stereoscopic_mode parameter for live_videos"),
+			mcp.Enum("LEFT_RIGHT", "MONO", "TOP_BOTTOM"),
+		),
+		mcp.WithBoolean("stop_on_delete_stream",
+			mcp.Description("stop_on_delete_stream parameter for live_videos"),
+		),
+		mcp.WithString("stream_type",
+			mcp.Description("stream_type parameter for live_videos"),
+			mcp.Enum("AMBIENT", "REGULAR"),
+		),
+		mcp.WithString("title",
+			mcp.Description("title parameter for live_videos"),
+		),
+	)
+	tools = append(tools, event_post_live_videosTool)
+
+	// event_get_photos tool
+	event_get_photosTool := mcp.NewTool("event_get_photos",
+		mcp.WithDescription("GET photos for Event"),
+	)
+	tools = append(tools, event_get_photosTool)
+
+	// event_get_picture tool
+	event_get_pictureTool := mcp.NewTool("event_get_picture",
+		mcp.WithDescription("GET picture for Event"),
+	)
+	tools = append(tools, event_get_pictureTool)
+
+	// event_get_posts tool
+	event_get_postsTool := mcp.NewTool("event_get_posts",
+		mcp.WithDescription("GET posts for Event"),
+	)
+	tools = append(tools, event_get_postsTool)
+
+	// event_get_roles tool
+	event_get_rolesTool := mcp.NewTool("event_get_roles",
+		mcp.WithDescription("GET roles for Event"),
+	)
+	tools = append(tools, event_get_rolesTool)
+
+	// event_get_ticket_tiers tool
+	event_get_ticket_tiersTool := mcp.NewTool("event_get_ticket_tiers",
+		mcp.WithDescription("GET ticket_tiers for Event"),
+	)
+	tools = append(tools, event_get_ticket_tiersTool)
+
+	// event_get_videos tool
+	event_get_videosTool := mcp.NewTool("event_get_videos",
+		mcp.WithDescription("GET videos for Event"),
+	)
+	tools = append(tools, event_get_videosTool)
+
+	// event_get_ tool
+	event_get_Tool := mcp.NewTool("event_get_",
+		mcp.WithDescription("GET  for Event"),
 	)
 	tools = append(tools, event_get_Tool)
 
@@ -593,6 +732,429 @@ func HandleEvent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewEventClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Event_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute event_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextEvent_get_comments handles the event_get_comments tool with context-based auth
+func HandleContextEvent_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewEventClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Event_get_comments(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute event_get_comments: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextEvent_get_feed handles the event_get_feed tool with context-based auth
+func HandleContextEvent_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewEventClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Event_get_feed(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute event_get_feed: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextEvent_get_live_videos handles the event_get_live_videos tool with context-based auth
+func HandleContextEvent_get_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewEventClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Event_get_live_videos(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute event_get_live_videos: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextEvent_post_live_videos handles the event_post_live_videos tool with context-based auth
+func HandleContextEvent_post_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewEventClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: content_tags
+	// array type - using string
+	if val := request.GetString("content_tags", ""); val != "" {
+		args["content_tags"] = val
+	}
+
+	// Optional: description
+	if val := request.GetString("description", ""); val != "" {
+		args["description"] = val
+	}
+
+	// Optional: enable_backup_ingest
+	if val := request.GetBool("enable_backup_ingest", false); val {
+		args["enable_backup_ingest"] = val
+	}
+
+	// Optional: encoding_settings
+	if val := request.GetString("encoding_settings", ""); val != "" {
+		args["encoding_settings"] = val
+	}
+
+	// Optional: event_params
+	// object type - using string
+	if val := request.GetString("event_params", ""); val != "" {
+		args["event_params"] = val
+	}
+
+	// Optional: fisheye_video_cropped
+	if val := request.GetBool("fisheye_video_cropped", false); val {
+		args["fisheye_video_cropped"] = val
+	}
+
+	// Optional: front_z_rotation
+	if val := request.GetFloat("front_z_rotation", 0); val != 0 {
+		args["front_z_rotation"] = val
+	}
+
+	// Optional: is_audio_only
+	if val := request.GetBool("is_audio_only", false); val {
+		args["is_audio_only"] = val
+	}
+
+	// Optional: is_spherical
+	if val := request.GetBool("is_spherical", false); val {
+		args["is_spherical"] = val
+	}
+
+	// Optional: original_fov
+	if val := request.GetInt("original_fov", 0); val != 0 {
+		args["original_fov"] = val
+	}
+
+	// Optional: privacy
+	if val := request.GetString("privacy", ""); val != "" {
+		args["privacy"] = val
+	}
+
+	// Optional: projection
+	if val := request.GetString("projection", ""); val != "" {
+		args["projection"] = val
+	}
+
+	// Optional: published
+	if val := request.GetBool("published", false); val {
+		args["published"] = val
+	}
+
+	// Optional: schedule_custom_profile_image
+	if val := request.GetString("schedule_custom_profile_image", ""); val != "" {
+		args["schedule_custom_profile_image"] = val
+	}
+
+	// Optional: spatial_audio_format
+	if val := request.GetString("spatial_audio_format", ""); val != "" {
+		args["spatial_audio_format"] = val
+	}
+
+	// Optional: status
+	if val := request.GetString("status", ""); val != "" {
+		args["status"] = val
+	}
+
+	// Optional: stereoscopic_mode
+	if val := request.GetString("stereoscopic_mode", ""); val != "" {
+		args["stereoscopic_mode"] = val
+	}
+
+	// Optional: stop_on_delete_stream
+	if val := request.GetBool("stop_on_delete_stream", false); val {
+		args["stop_on_delete_stream"] = val
+	}
+
+	// Optional: stream_type
+	if val := request.GetString("stream_type", ""); val != "" {
+		args["stream_type"] = val
+	}
+
+	// Optional: title
+	if val := request.GetString("title", ""); val != "" {
+		args["title"] = val
+	}
+
+	// Call the client method
+	result, err := client.Event_post_live_videos(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute event_post_live_videos: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextEvent_get_photos handles the event_get_photos tool with context-based auth
+func HandleContextEvent_get_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewEventClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Event_get_photos(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute event_get_photos: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextEvent_get_picture handles the event_get_picture tool with context-based auth
+func HandleContextEvent_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewEventClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Event_get_picture(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute event_get_picture: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextEvent_get_posts handles the event_get_posts tool with context-based auth
+func HandleContextEvent_get_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewEventClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Event_get_posts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute event_get_posts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextEvent_get_roles handles the event_get_roles tool with context-based auth
+func HandleContextEvent_get_roles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewEventClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Event_get_roles(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute event_get_roles: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextEvent_get_ticket_tiers handles the event_get_ticket_tiers tool with context-based auth
+func HandleContextEvent_get_ticket_tiers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewEventClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Event_get_ticket_tiers(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute event_get_ticket_tiers: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextEvent_get_videos handles the event_get_videos tool with context-based auth
+func HandleContextEvent_get_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewEventClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Event_get_videos(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute event_get_videos: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextEvent_get_ handles the event_get_ tool with context-based auth
+func HandleContextEvent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

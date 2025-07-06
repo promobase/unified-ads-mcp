@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetVehicleTools returns MCP tools for Vehicle
@@ -69,6 +70,145 @@ func GetVehicleTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithString("address",
+			mcp.Description("address parameter for "),
+		),
+		mcp.WithString("applinks",
+			mcp.Description("applinks parameter for "),
+		),
+		mcp.WithString("availability",
+			mcp.Description("availability parameter for "),
+			mcp.Enum("AVAILABLE", "NOT_AVAILABLE", "PENDING", "UNKNOWN"),
+		),
+		mcp.WithString("body_style",
+			mcp.Description("body_style parameter for "),
+			mcp.Enum("CONVERTIBLE", "COUPE", "CROSSOVER", "ESTATE", "GRANDTOURER", "HATCHBACK", "MINIBUS", "MINIVAN", "MPV", "NONE", "OTHER", "PICKUP", "ROADSTER", "SALOON", "SEDAN", "SMALL_CAR", "SPORTSCAR", "SUPERCAR", "SUPERMINI", "SUV", "TRUCK", "VAN", "WAGON"),
+		),
+		mcp.WithString("condition",
+			mcp.Description("condition parameter for "),
+			mcp.Enum("EXCELLENT", "FAIR", "GOOD", "NONE", "OTHER", "POOR", "VERY_GOOD"),
+		),
+		mcp.WithString("currency",
+			mcp.Description("currency parameter for "),
+		),
+		mcp.WithString("date_first_on_lot",
+			mcp.Description("date_first_on_lot parameter for "),
+		),
+		mcp.WithString("dealer_id",
+			mcp.Description("dealer_id parameter for "),
+		),
+		mcp.WithString("dealer_name",
+			mcp.Description("dealer_name parameter for "),
+		),
+		mcp.WithString("dealer_phone",
+			mcp.Description("dealer_phone parameter for "),
+		),
+		mcp.WithString("description",
+			mcp.Description("description parameter for "),
+		),
+		mcp.WithString("drivetrain",
+			mcp.Description("drivetrain parameter for "),
+			mcp.Enum("AWD", "FOUR_WD", "FWD", "NONE", "OTHER", "RWD", "TWO_WD"),
+		),
+		mcp.WithString("exterior_color",
+			mcp.Description("exterior_color parameter for "),
+		),
+		mcp.WithString("fb_page_id",
+			mcp.Description("fb_page_id parameter for "),
+		),
+		mcp.WithString("fuel_type",
+			mcp.Description("fuel_type parameter for "),
+			mcp.Enum("DIESEL", "ELECTRIC", "FLEX", "GASOLINE", "HYBRID", "NONE", "OTHER", "PETROL", "PLUGIN_HYBRID"),
+		),
+		mcp.WithString("images",
+			mcp.Description("images parameter for "),
+		),
+		mcp.WithString("interior_color",
+			mcp.Description("interior_color parameter for "),
+		),
+		mcp.WithString("make",
+			mcp.Description("make parameter for "),
+		),
+		mcp.WithString("mileage",
+			mcp.Description("mileage parameter for "),
+		),
+		mcp.WithString("model",
+			mcp.Description("model parameter for "),
+		),
+		mcp.WithNumber("price",
+			mcp.Description("price parameter for "),
+		),
+		mcp.WithString("state_of_vehicle",
+			mcp.Description("state_of_vehicle parameter for "),
+			mcp.Enum("CPO", "NEW", "USED"),
+		),
+		mcp.WithString("title",
+			mcp.Description("title parameter for "),
+		),
+		mcp.WithString("transmission",
+			mcp.Description("transmission parameter for "),
+			mcp.Enum("AUTOMATIC", "MANUAL", "NONE", "OTHER"),
+		),
+		mcp.WithString("trim",
+			mcp.Description("trim parameter for "),
+		),
+		mcp.WithString("url",
+			mcp.Description("url parameter for "),
+		),
+		mcp.WithString("vehicle_type",
+			mcp.Description("vehicle_type parameter for "),
+			mcp.Enum("BOAT", "CAR_TRUCK", "COMMERCIAL", "MOTORCYCLE", "OTHER", "POWERSPORT", "RV_CAMPER", "TRAILER"),
+		),
+		mcp.WithString("vin",
+			mcp.Description("vin parameter for "),
+		),
+		mcp.WithNumber("year",
+			mcp.Description("year parameter for "),
+		),
+	)
+	tools = append(tools, vehicle_post_Tool)
+
+	return tools
+}
+
+// GetVehicleToolsWithoutAuth returns MCP tools for Vehicle without access_token parameter
+func GetVehicleToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// vehicle_get_channels_to_integrity_status tool
+	vehicle_get_channels_to_integrity_statusTool := mcp.NewTool("vehicle_get_channels_to_integrity_status",
+		mcp.WithDescription("GET channels_to_integrity_status for Vehicle"),
+	)
+	tools = append(tools, vehicle_get_channels_to_integrity_statusTool)
+
+	// vehicle_get_override_details tool
+	vehicle_get_override_detailsTool := mcp.NewTool("vehicle_get_override_details",
+		mcp.WithDescription("GET override_details for Vehicle"),
+		mcp.WithString("keys",
+			mcp.Description("keys parameter for override_details"),
+		),
+		mcp.WithString("type",
+			mcp.Description("type parameter for override_details"),
+			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
+		),
+	)
+	tools = append(tools, vehicle_get_override_detailsTool)
+
+	// vehicle_get_videos_metadata tool
+	vehicle_get_videos_metadataTool := mcp.NewTool("vehicle_get_videos_metadata",
+		mcp.WithDescription("GET videos_metadata for Vehicle"),
+	)
+	tools = append(tools, vehicle_get_videos_metadataTool)
+
+	// vehicle_get_ tool
+	vehicle_get_Tool := mcp.NewTool("vehicle_get_",
+		mcp.WithDescription("GET  for Vehicle"),
+	)
+	tools = append(tools, vehicle_get_Tool)
+
+	// vehicle_post_ tool
+	vehicle_post_Tool := mcp.NewTool("vehicle_post_",
+		mcp.WithDescription("POST  for Vehicle"),
 		mcp.WithString("address",
 			mcp.Description("address parameter for "),
 		),
@@ -305,6 +445,311 @@ func HandleVehicle_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewVehicleClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: address
+	if val := request.GetString("address", ""); val != "" {
+		args["address"] = val
+	}
+
+	// Optional: applinks
+	// object type - using string
+	if val := request.GetString("applinks", ""); val != "" {
+		args["applinks"] = val
+	}
+
+	// Optional: availability
+	if val := request.GetString("availability", ""); val != "" {
+		args["availability"] = val
+	}
+
+	// Optional: body_style
+	if val := request.GetString("body_style", ""); val != "" {
+		args["body_style"] = val
+	}
+
+	// Optional: condition
+	if val := request.GetString("condition", ""); val != "" {
+		args["condition"] = val
+	}
+
+	// Optional: currency
+	if val := request.GetString("currency", ""); val != "" {
+		args["currency"] = val
+	}
+
+	// Optional: date_first_on_lot
+	if val := request.GetString("date_first_on_lot", ""); val != "" {
+		args["date_first_on_lot"] = val
+	}
+
+	// Optional: dealer_id
+	if val := request.GetString("dealer_id", ""); val != "" {
+		args["dealer_id"] = val
+	}
+
+	// Optional: dealer_name
+	if val := request.GetString("dealer_name", ""); val != "" {
+		args["dealer_name"] = val
+	}
+
+	// Optional: dealer_phone
+	if val := request.GetString("dealer_phone", ""); val != "" {
+		args["dealer_phone"] = val
+	}
+
+	// Optional: description
+	if val := request.GetString("description", ""); val != "" {
+		args["description"] = val
+	}
+
+	// Optional: drivetrain
+	if val := request.GetString("drivetrain", ""); val != "" {
+		args["drivetrain"] = val
+	}
+
+	// Optional: exterior_color
+	if val := request.GetString("exterior_color", ""); val != "" {
+		args["exterior_color"] = val
+	}
+
+	// Optional: fb_page_id
+	if val := request.GetString("fb_page_id", ""); val != "" {
+		args["fb_page_id"] = val
+	}
+
+	// Optional: fuel_type
+	if val := request.GetString("fuel_type", ""); val != "" {
+		args["fuel_type"] = val
+	}
+
+	// Optional: images
+	// array type - using string
+	if val := request.GetString("images", ""); val != "" {
+		args["images"] = val
+	}
+
+	// Optional: interior_color
+	if val := request.GetString("interior_color", ""); val != "" {
+		args["interior_color"] = val
+	}
+
+	// Optional: make
+	if val := request.GetString("make", ""); val != "" {
+		args["make"] = val
+	}
+
+	// Optional: mileage
+	if val := request.GetString("mileage", ""); val != "" {
+		args["mileage"] = val
+	}
+
+	// Optional: model
+	if val := request.GetString("model", ""); val != "" {
+		args["model"] = val
+	}
+
+	// Optional: price
+	if val := request.GetInt("price", 0); val != 0 {
+		args["price"] = val
+	}
+
+	// Optional: state_of_vehicle
+	if val := request.GetString("state_of_vehicle", ""); val != "" {
+		args["state_of_vehicle"] = val
+	}
+
+	// Optional: title
+	if val := request.GetString("title", ""); val != "" {
+		args["title"] = val
+	}
+
+	// Optional: transmission
+	if val := request.GetString("transmission", ""); val != "" {
+		args["transmission"] = val
+	}
+
+	// Optional: trim
+	if val := request.GetString("trim", ""); val != "" {
+		args["trim"] = val
+	}
+
+	// Optional: url
+	if val := request.GetString("url", ""); val != "" {
+		args["url"] = val
+	}
+
+	// Optional: vehicle_type
+	if val := request.GetString("vehicle_type", ""); val != "" {
+		args["vehicle_type"] = val
+	}
+
+	// Optional: vin
+	if val := request.GetString("vin", ""); val != "" {
+		args["vin"] = val
+	}
+
+	// Optional: year
+	if val := request.GetInt("year", 0); val != 0 {
+		args["year"] = val
+	}
+
+	// Call the client method
+	result, err := client.Vehicle_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute vehicle_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextVehicle_get_channels_to_integrity_status handles the vehicle_get_channels_to_integrity_status tool with context-based auth
+func HandleContextVehicle_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewVehicleClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Vehicle_get_channels_to_integrity_status(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute vehicle_get_channels_to_integrity_status: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextVehicle_get_override_details handles the vehicle_get_override_details tool with context-based auth
+func HandleContextVehicle_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewVehicleClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: keys
+	// array type - using string
+	if val := request.GetString("keys", ""); val != "" {
+		args["keys"] = val
+	}
+
+	// Optional: type
+	if val := request.GetString("type", ""); val != "" {
+		args["type"] = val
+	}
+
+	// Call the client method
+	result, err := client.Vehicle_get_override_details(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute vehicle_get_override_details: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextVehicle_get_videos_metadata handles the vehicle_get_videos_metadata tool with context-based auth
+func HandleContextVehicle_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewVehicleClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Vehicle_get_videos_metadata(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute vehicle_get_videos_metadata: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextVehicle_get_ handles the vehicle_get_ tool with context-based auth
+func HandleContextVehicle_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewVehicleClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Vehicle_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute vehicle_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextVehicle_post_ handles the vehicle_post_ tool with context-based auth
+func HandleContextVehicle_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

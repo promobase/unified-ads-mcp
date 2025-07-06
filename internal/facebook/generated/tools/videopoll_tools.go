@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetVideoPollTools returns MCP tools for VideoPoll
@@ -42,6 +43,48 @@ func GetVideoPollTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithString("action",
+			mcp.Required(),
+			mcp.Description("action parameter for "),
+			mcp.Enum("ATTACH_TO_VIDEO", "CLOSE", "DELETE_POLL", "SHOW_RESULTS", "SHOW_VOTING"),
+		),
+		mcp.WithBoolean("close_after_voting",
+			mcp.Description("close_after_voting parameter for "),
+		),
+		mcp.WithBoolean("default_open",
+			mcp.Description("default_open parameter for "),
+		),
+		mcp.WithBoolean("show_gradient",
+			mcp.Description("show_gradient parameter for "),
+		),
+		mcp.WithBoolean("show_results",
+			mcp.Description("show_results parameter for "),
+		),
+	)
+	tools = append(tools, videopoll_post_Tool)
+
+	return tools
+}
+
+// GetVideoPollToolsWithoutAuth returns MCP tools for VideoPoll without access_token parameter
+func GetVideoPollToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// videopoll_get_poll_options tool
+	videopoll_get_poll_optionsTool := mcp.NewTool("videopoll_get_poll_options",
+		mcp.WithDescription("GET poll_options for VideoPoll"),
+	)
+	tools = append(tools, videopoll_get_poll_optionsTool)
+
+	// videopoll_get_ tool
+	videopoll_get_Tool := mcp.NewTool("videopoll_get_",
+		mcp.WithDescription("GET  for VideoPoll"),
+	)
+	tools = append(tools, videopoll_get_Tool)
+
+	// videopoll_post_ tool
+	videopoll_post_Tool := mcp.NewTool("videopoll_post_",
+		mcp.WithDescription("POST  for VideoPoll"),
 		mcp.WithString("action",
 			mcp.Required(),
 			mcp.Description("action parameter for "),
@@ -131,6 +174,122 @@ func HandleVideopoll_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewVideoPollClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: action
+	action, err := request.RequireString("action")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter action: %v", err)), nil
+	}
+	args["action"] = action
+
+	// Optional: close_after_voting
+	if val := request.GetBool("close_after_voting", false); val {
+		args["close_after_voting"] = val
+	}
+
+	// Optional: default_open
+	if val := request.GetBool("default_open", false); val {
+		args["default_open"] = val
+	}
+
+	// Optional: show_gradient
+	if val := request.GetBool("show_gradient", false); val {
+		args["show_gradient"] = val
+	}
+
+	// Optional: show_results
+	if val := request.GetBool("show_results", false); val {
+		args["show_results"] = val
+	}
+
+	// Call the client method
+	result, err := client.Videopoll_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute videopoll_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextVideopoll_get_poll_options handles the videopoll_get_poll_options tool with context-based auth
+func HandleContextVideopoll_get_poll_options(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewVideoPollClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Videopoll_get_poll_options(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute videopoll_get_poll_options: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextVideopoll_get_ handles the videopoll_get_ tool with context-based auth
+func HandleContextVideopoll_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewVideoPollClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Videopoll_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute videopoll_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextVideopoll_post_ handles the videopoll_post_ tool with context-based auth
+func HandleContextVideopoll_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

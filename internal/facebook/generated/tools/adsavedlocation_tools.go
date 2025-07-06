@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetAdSavedLocationTools returns MCP tools for AdSavedLocation
@@ -28,6 +29,19 @@ func GetAdSavedLocationTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetAdSavedLocationToolsWithoutAuth returns MCP tools for AdSavedLocation without access_token parameter
+func GetAdSavedLocationToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// adsavedlocation_get_ tool
+	adsavedlocation_get_Tool := mcp.NewTool("adsavedlocation_get_",
+		mcp.WithDescription("GET  for AdSavedLocation"),
+	)
+	tools = append(tools, adsavedlocation_get_Tool)
+
+	return tools
+}
+
 // AdSavedLocation handlers
 
 // HandleAdsavedlocation_get_ handles the adsavedlocation_get_ tool
@@ -36,6 +50,37 @@ func HandleAdsavedlocation_get_(ctx context.Context, request mcp.CallToolRequest
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewAdSavedLocationClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Adsavedlocation_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adsavedlocation_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextAdsavedlocation_get_ handles the adsavedlocation_get_ tool with context-based auth
+func HandleContextAdsavedlocation_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

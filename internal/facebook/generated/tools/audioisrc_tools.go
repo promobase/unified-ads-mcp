@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetAudioIsrcTools returns MCP tools for AudioIsrc
@@ -28,6 +29,19 @@ func GetAudioIsrcTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetAudioIsrcToolsWithoutAuth returns MCP tools for AudioIsrc without access_token parameter
+func GetAudioIsrcToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// audioisrc_get_ tool
+	audioisrc_get_Tool := mcp.NewTool("audioisrc_get_",
+		mcp.WithDescription("GET  for AudioIsrc"),
+	)
+	tools = append(tools, audioisrc_get_Tool)
+
+	return tools
+}
+
 // AudioIsrc handlers
 
 // HandleAudioisrc_get_ handles the audioisrc_get_ tool
@@ -36,6 +50,37 @@ func HandleAudioisrc_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewAudioIsrcClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Audioisrc_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute audioisrc_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextAudioisrc_get_ handles the audioisrc_get_ tool with context-based auth
+func HandleContextAudioisrc_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

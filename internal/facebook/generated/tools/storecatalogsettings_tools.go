@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetStoreCatalogSettingsTools returns MCP tools for StoreCatalogSettings
@@ -32,6 +33,25 @@ func GetStoreCatalogSettingsTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, storecatalogsettings_get_Tool)
+
+	return tools
+}
+
+// GetStoreCatalogSettingsToolsWithoutAuth returns MCP tools for StoreCatalogSettings without access_token parameter
+func GetStoreCatalogSettingsToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// storecatalogsettings_delete_ tool
+	storecatalogsettings_delete_Tool := mcp.NewTool("storecatalogsettings_delete_",
+		mcp.WithDescription("DELETE  for StoreCatalogSettings"),
+	)
+	tools = append(tools, storecatalogsettings_delete_Tool)
+
+	// storecatalogsettings_get_ tool
+	storecatalogsettings_get_Tool := mcp.NewTool("storecatalogsettings_get_",
+		mcp.WithDescription("GET  for StoreCatalogSettings"),
 	)
 	tools = append(tools, storecatalogsettings_get_Tool)
 
@@ -75,6 +95,66 @@ func HandleStorecatalogsettings_get_(ctx context.Context, request mcp.CallToolRe
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewStoreCatalogSettingsClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Storecatalogsettings_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute storecatalogsettings_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextStorecatalogsettings_delete_ handles the storecatalogsettings_delete_ tool with context-based auth
+func HandleContextStorecatalogsettings_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewStoreCatalogSettingsClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Storecatalogsettings_delete_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute storecatalogsettings_delete_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextStorecatalogsettings_get_ handles the storecatalogsettings_get_ tool with context-based auth
+func HandleContextStorecatalogsettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

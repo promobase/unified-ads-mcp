@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetCRMAddressTools returns MCP tools for CRMAddress
@@ -28,6 +29,19 @@ func GetCRMAddressTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetCRMAddressToolsWithoutAuth returns MCP tools for CRMAddress without access_token parameter
+func GetCRMAddressToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// crmaddress_get_ tool
+	crmaddress_get_Tool := mcp.NewTool("crmaddress_get_",
+		mcp.WithDescription("GET  for CRMAddress"),
+	)
+	tools = append(tools, crmaddress_get_Tool)
+
+	return tools
+}
+
 // CRMAddress handlers
 
 // HandleCrmaddress_get_ handles the crmaddress_get_ tool
@@ -36,6 +50,37 @@ func HandleCrmaddress_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewCRMAddressClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Crmaddress_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute crmaddress_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextCrmaddress_get_ handles the crmaddress_get_ tool with context-based auth
+func HandleContextCrmaddress_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetAppLinksTools returns MCP tools for AppLinks
@@ -28,6 +29,19 @@ func GetAppLinksTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetAppLinksToolsWithoutAuth returns MCP tools for AppLinks without access_token parameter
+func GetAppLinksToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// applinks_get_ tool
+	applinks_get_Tool := mcp.NewTool("applinks_get_",
+		mcp.WithDescription("GET  for AppLinks"),
+	)
+	tools = append(tools, applinks_get_Tool)
+
+	return tools
+}
+
 // AppLinks handlers
 
 // HandleApplinks_get_ handles the applinks_get_ tool
@@ -36,6 +50,37 @@ func HandleApplinks_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewAppLinksClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Applinks_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute applinks_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextApplinks_get_ handles the applinks_get_ tool with context-based auth
+func HandleContextApplinks_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

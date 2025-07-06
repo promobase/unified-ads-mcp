@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetCommerceMerchantSettingsTools returns MCP tools for CommerceMerchantSettings
@@ -225,6 +226,170 @@ func GetCommerceMerchantSettingsTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, commercemerchantsettings_get_Tool)
+
+	return tools
+}
+
+// GetCommerceMerchantSettingsToolsWithoutAuth returns MCP tools for CommerceMerchantSettings without access_token parameter
+func GetCommerceMerchantSettingsToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// commercemerchantsettings_post_acknowledge_orders tool
+	commercemerchantsettings_post_acknowledge_ordersTool := mcp.NewTool("commercemerchantsettings_post_acknowledge_orders",
+		mcp.WithDescription("POST acknowledge_orders for CommerceMerchantSettings"),
+		mcp.WithString("idempotency_key",
+			mcp.Required(),
+			mcp.Description("idempotency_key parameter for acknowledge_orders"),
+		),
+		mcp.WithString("orders",
+			mcp.Required(),
+			mcp.Description("orders parameter for acknowledge_orders"),
+		),
+	)
+	tools = append(tools, commercemerchantsettings_post_acknowledge_ordersTool)
+
+	// commercemerchantsettings_get_commerce_orders tool
+	commercemerchantsettings_get_commerce_ordersTool := mcp.NewTool("commercemerchantsettings_get_commerce_orders",
+		mcp.WithDescription("GET commerce_orders for CommerceMerchantSettings"),
+		mcp.WithString("filters",
+			mcp.Description("filters parameter for commerce_orders"),
+			mcp.Enum("HAS_CANCELLATIONS", "HAS_FULFILLMENTS", "HAS_REFUNDS", "NO_CANCELLATIONS", "NO_REFUNDS", "NO_SHIPMENTS"),
+		),
+		mcp.WithString("state",
+			mcp.Description("state parameter for commerce_orders"),
+			mcp.Enum("COMPLETED", "CREATED", "FB_PROCESSING", "IN_PROGRESS"),
+		),
+		mcp.WithString("updated_after",
+			mcp.Description("updated_after parameter for commerce_orders"),
+		),
+		mcp.WithString("updated_before",
+			mcp.Description("updated_before parameter for commerce_orders"),
+		),
+	)
+	tools = append(tools, commercemerchantsettings_get_commerce_ordersTool)
+
+	// commercemerchantsettings_get_commerce_payouts tool
+	commercemerchantsettings_get_commerce_payoutsTool := mcp.NewTool("commercemerchantsettings_get_commerce_payouts",
+		mcp.WithDescription("GET commerce_payouts for CommerceMerchantSettings"),
+		mcp.WithString("end_time",
+			mcp.Description("end_time parameter for commerce_payouts"),
+		),
+		mcp.WithString("start_time",
+			mcp.Description("start_time parameter for commerce_payouts"),
+		),
+	)
+	tools = append(tools, commercemerchantsettings_get_commerce_payoutsTool)
+
+	// commercemerchantsettings_get_commerce_transactions tool
+	commercemerchantsettings_get_commerce_transactionsTool := mcp.NewTool("commercemerchantsettings_get_commerce_transactions",
+		mcp.WithDescription("GET commerce_transactions for CommerceMerchantSettings"),
+		mcp.WithString("end_time",
+			mcp.Description("end_time parameter for commerce_transactions"),
+		),
+		mcp.WithString("payout_reference_id",
+			mcp.Description("payout_reference_id parameter for commerce_transactions"),
+		),
+		mcp.WithString("start_time",
+			mcp.Description("start_time parameter for commerce_transactions"),
+		),
+	)
+	tools = append(tools, commercemerchantsettings_get_commerce_transactionsTool)
+
+	// commercemerchantsettings_get_order_management_apps tool
+	commercemerchantsettings_get_order_management_appsTool := mcp.NewTool("commercemerchantsettings_get_order_management_apps",
+		mcp.WithDescription("GET order_management_apps for CommerceMerchantSettings"),
+	)
+	tools = append(tools, commercemerchantsettings_get_order_management_appsTool)
+
+	// commercemerchantsettings_post_order_management_apps tool
+	commercemerchantsettings_post_order_management_appsTool := mcp.NewTool("commercemerchantsettings_post_order_management_apps",
+		mcp.WithDescription("POST order_management_apps for CommerceMerchantSettings"),
+	)
+	tools = append(tools, commercemerchantsettings_post_order_management_appsTool)
+
+	// commercemerchantsettings_get_product_catalogs tool
+	commercemerchantsettings_get_product_catalogsTool := mcp.NewTool("commercemerchantsettings_get_product_catalogs",
+		mcp.WithDescription("GET product_catalogs for CommerceMerchantSettings"),
+	)
+	tools = append(tools, commercemerchantsettings_get_product_catalogsTool)
+
+	// commercemerchantsettings_get_returns tool
+	commercemerchantsettings_get_returnsTool := mcp.NewTool("commercemerchantsettings_get_returns",
+		mcp.WithDescription("GET returns for CommerceMerchantSettings"),
+		mcp.WithString("end_time_created",
+			mcp.Description("end_time_created parameter for returns"),
+		),
+		mcp.WithString("merchant_return_id",
+			mcp.Description("merchant_return_id parameter for returns"),
+		),
+		mcp.WithString("start_time_created",
+			mcp.Description("start_time_created parameter for returns"),
+		),
+		mcp.WithString("statuses",
+			mcp.Description("statuses parameter for returns"),
+			mcp.Enum("APPROVED", "DISAPPROVED", "MERCHANT_MARKED_COMPLETED", "REFUNDED", "REQUESTED"),
+		),
+	)
+	tools = append(tools, commercemerchantsettings_get_returnsTool)
+
+	// commercemerchantsettings_get_setup_status tool
+	commercemerchantsettings_get_setup_statusTool := mcp.NewTool("commercemerchantsettings_get_setup_status",
+		mcp.WithDescription("GET setup_status for CommerceMerchantSettings"),
+	)
+	tools = append(tools, commercemerchantsettings_get_setup_statusTool)
+
+	// commercemerchantsettings_get_shipping_profiles tool
+	commercemerchantsettings_get_shipping_profilesTool := mcp.NewTool("commercemerchantsettings_get_shipping_profiles",
+		mcp.WithDescription("GET shipping_profiles for CommerceMerchantSettings"),
+		mcp.WithString("reference_id",
+			mcp.Description("reference_id parameter for shipping_profiles"),
+		),
+	)
+	tools = append(tools, commercemerchantsettings_get_shipping_profilesTool)
+
+	// commercemerchantsettings_post_shipping_profiles tool
+	commercemerchantsettings_post_shipping_profilesTool := mcp.NewTool("commercemerchantsettings_post_shipping_profiles",
+		mcp.WithDescription("POST shipping_profiles for CommerceMerchantSettings"),
+		mcp.WithString("handling_time",
+			mcp.Description("handling_time parameter for shipping_profiles"),
+		),
+		mcp.WithBoolean("is_default",
+			mcp.Description("is_default parameter for shipping_profiles"),
+		),
+		mcp.WithBoolean("is_default_shipping_profile",
+			mcp.Description("is_default_shipping_profile parameter for shipping_profiles"),
+		),
+		mcp.WithString("name",
+			mcp.Required(),
+			mcp.Description("name parameter for shipping_profiles"),
+		),
+		mcp.WithString("reference_id",
+			mcp.Description("reference_id parameter for shipping_profiles"),
+		),
+		mcp.WithString("shipping_destinations",
+			mcp.Required(),
+			mcp.Description("shipping_destinations parameter for shipping_profiles"),
+		),
+	)
+	tools = append(tools, commercemerchantsettings_post_shipping_profilesTool)
+
+	// commercemerchantsettings_get_shops tool
+	commercemerchantsettings_get_shopsTool := mcp.NewTool("commercemerchantsettings_get_shops",
+		mcp.WithDescription("GET shops for CommerceMerchantSettings"),
+	)
+	tools = append(tools, commercemerchantsettings_get_shopsTool)
+
+	// commercemerchantsettings_get_tax_settings tool
+	commercemerchantsettings_get_tax_settingsTool := mcp.NewTool("commercemerchantsettings_get_tax_settings",
+		mcp.WithDescription("GET tax_settings for CommerceMerchantSettings"),
+	)
+	tools = append(tools, commercemerchantsettings_get_tax_settingsTool)
+
+	// commercemerchantsettings_get_ tool
+	commercemerchantsettings_get_Tool := mcp.NewTool("commercemerchantsettings_get_",
+		mcp.WithDescription("GET  for CommerceMerchantSettings"),
 	)
 	tools = append(tools, commercemerchantsettings_get_Tool)
 
@@ -737,6 +902,535 @@ func HandleCommercemerchantsettings_get_(ctx context.Context, request mcp.CallTo
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceMerchantSettingsClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Commercemerchantsettings_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commercemerchantsettings_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextCommercemerchantsettings_post_acknowledge_orders handles the commercemerchantsettings_post_acknowledge_orders tool with context-based auth
+func HandleContextCommercemerchantsettings_post_acknowledge_orders(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceMerchantSettingsClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: idempotency_key
+	idempotency_key, err := request.RequireString("idempotency_key")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter idempotency_key: %v", err)), nil
+	}
+	args["idempotency_key"] = idempotency_key
+
+	// Required: orders
+	orders, err := request.RequireString("orders")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter orders: %v", err)), nil
+	}
+	args["orders"] = orders
+
+	// Call the client method
+	result, err := client.Commercemerchantsettings_post_acknowledge_orders(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commercemerchantsettings_post_acknowledge_orders: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommercemerchantsettings_get_commerce_orders handles the commercemerchantsettings_get_commerce_orders tool with context-based auth
+func HandleContextCommercemerchantsettings_get_commerce_orders(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceMerchantSettingsClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: filters
+	// array type - using string
+	if val := request.GetString("filters", ""); val != "" {
+		args["filters"] = val
+	}
+
+	// Optional: state
+	// array type - using string
+	if val := request.GetString("state", ""); val != "" {
+		args["state"] = val
+	}
+
+	// Optional: updated_after
+	if val := request.GetString("updated_after", ""); val != "" {
+		args["updated_after"] = val
+	}
+
+	// Optional: updated_before
+	if val := request.GetString("updated_before", ""); val != "" {
+		args["updated_before"] = val
+	}
+
+	// Call the client method
+	result, err := client.Commercemerchantsettings_get_commerce_orders(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commercemerchantsettings_get_commerce_orders: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommercemerchantsettings_get_commerce_payouts handles the commercemerchantsettings_get_commerce_payouts tool with context-based auth
+func HandleContextCommercemerchantsettings_get_commerce_payouts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceMerchantSettingsClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: end_time
+	if val := request.GetString("end_time", ""); val != "" {
+		args["end_time"] = val
+	}
+
+	// Optional: start_time
+	if val := request.GetString("start_time", ""); val != "" {
+		args["start_time"] = val
+	}
+
+	// Call the client method
+	result, err := client.Commercemerchantsettings_get_commerce_payouts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commercemerchantsettings_get_commerce_payouts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommercemerchantsettings_get_commerce_transactions handles the commercemerchantsettings_get_commerce_transactions tool with context-based auth
+func HandleContextCommercemerchantsettings_get_commerce_transactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceMerchantSettingsClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: end_time
+	if val := request.GetString("end_time", ""); val != "" {
+		args["end_time"] = val
+	}
+
+	// Optional: payout_reference_id
+	if val := request.GetString("payout_reference_id", ""); val != "" {
+		args["payout_reference_id"] = val
+	}
+
+	// Optional: start_time
+	if val := request.GetString("start_time", ""); val != "" {
+		args["start_time"] = val
+	}
+
+	// Call the client method
+	result, err := client.Commercemerchantsettings_get_commerce_transactions(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commercemerchantsettings_get_commerce_transactions: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommercemerchantsettings_get_order_management_apps handles the commercemerchantsettings_get_order_management_apps tool with context-based auth
+func HandleContextCommercemerchantsettings_get_order_management_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceMerchantSettingsClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Commercemerchantsettings_get_order_management_apps(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commercemerchantsettings_get_order_management_apps: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommercemerchantsettings_post_order_management_apps handles the commercemerchantsettings_post_order_management_apps tool with context-based auth
+func HandleContextCommercemerchantsettings_post_order_management_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceMerchantSettingsClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Commercemerchantsettings_post_order_management_apps(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commercemerchantsettings_post_order_management_apps: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommercemerchantsettings_get_product_catalogs handles the commercemerchantsettings_get_product_catalogs tool with context-based auth
+func HandleContextCommercemerchantsettings_get_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceMerchantSettingsClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Commercemerchantsettings_get_product_catalogs(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commercemerchantsettings_get_product_catalogs: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommercemerchantsettings_get_returns handles the commercemerchantsettings_get_returns tool with context-based auth
+func HandleContextCommercemerchantsettings_get_returns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceMerchantSettingsClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: end_time_created
+	if val := request.GetString("end_time_created", ""); val != "" {
+		args["end_time_created"] = val
+	}
+
+	// Optional: merchant_return_id
+	if val := request.GetString("merchant_return_id", ""); val != "" {
+		args["merchant_return_id"] = val
+	}
+
+	// Optional: start_time_created
+	if val := request.GetString("start_time_created", ""); val != "" {
+		args["start_time_created"] = val
+	}
+
+	// Optional: statuses
+	// array type - using string
+	if val := request.GetString("statuses", ""); val != "" {
+		args["statuses"] = val
+	}
+
+	// Call the client method
+	result, err := client.Commercemerchantsettings_get_returns(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commercemerchantsettings_get_returns: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommercemerchantsettings_get_setup_status handles the commercemerchantsettings_get_setup_status tool with context-based auth
+func HandleContextCommercemerchantsettings_get_setup_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceMerchantSettingsClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Commercemerchantsettings_get_setup_status(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commercemerchantsettings_get_setup_status: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommercemerchantsettings_get_shipping_profiles handles the commercemerchantsettings_get_shipping_profiles tool with context-based auth
+func HandleContextCommercemerchantsettings_get_shipping_profiles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceMerchantSettingsClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: reference_id
+	if val := request.GetString("reference_id", ""); val != "" {
+		args["reference_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Commercemerchantsettings_get_shipping_profiles(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commercemerchantsettings_get_shipping_profiles: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommercemerchantsettings_post_shipping_profiles handles the commercemerchantsettings_post_shipping_profiles tool with context-based auth
+func HandleContextCommercemerchantsettings_post_shipping_profiles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceMerchantSettingsClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: handling_time
+	if val := request.GetString("handling_time", ""); val != "" {
+		args["handling_time"] = val
+	}
+
+	// Optional: is_default
+	if val := request.GetBool("is_default", false); val {
+		args["is_default"] = val
+	}
+
+	// Optional: is_default_shipping_profile
+	if val := request.GetBool("is_default_shipping_profile", false); val {
+		args["is_default_shipping_profile"] = val
+	}
+
+	// Required: name
+	name, err := request.RequireString("name")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
+	}
+	args["name"] = name
+
+	// Optional: reference_id
+	if val := request.GetString("reference_id", ""); val != "" {
+		args["reference_id"] = val
+	}
+
+	// Required: shipping_destinations
+	shipping_destinations, err := request.RequireString("shipping_destinations")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter shipping_destinations: %v", err)), nil
+	}
+	args["shipping_destinations"] = shipping_destinations
+
+	// Call the client method
+	result, err := client.Commercemerchantsettings_post_shipping_profiles(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commercemerchantsettings_post_shipping_profiles: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommercemerchantsettings_get_shops handles the commercemerchantsettings_get_shops tool with context-based auth
+func HandleContextCommercemerchantsettings_get_shops(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceMerchantSettingsClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Commercemerchantsettings_get_shops(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commercemerchantsettings_get_shops: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommercemerchantsettings_get_tax_settings handles the commercemerchantsettings_get_tax_settings tool with context-based auth
+func HandleContextCommercemerchantsettings_get_tax_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewCommerceMerchantSettingsClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Commercemerchantsettings_get_tax_settings(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute commercemerchantsettings_get_tax_settings: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextCommercemerchantsettings_get_ handles the commercemerchantsettings_get_ tool with context-based auth
+func HandleContextCommercemerchantsettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

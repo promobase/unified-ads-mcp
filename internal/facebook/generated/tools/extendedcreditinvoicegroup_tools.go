@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetExtendedCreditInvoiceGroupTools returns MCP tools for ExtendedCreditInvoiceGroup
@@ -80,6 +81,63 @@ func GetExtendedCreditInvoiceGroupTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithString("emails",
+			mcp.Description("emails parameter for "),
+		),
+		mcp.WithString("name",
+			mcp.Description("name parameter for "),
+		),
+	)
+	tools = append(tools, extendedcreditinvoicegroup_post_Tool)
+
+	return tools
+}
+
+// GetExtendedCreditInvoiceGroupToolsWithoutAuth returns MCP tools for ExtendedCreditInvoiceGroup without access_token parameter
+func GetExtendedCreditInvoiceGroupToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// extendedcreditinvoicegroup_delete_ad_accounts tool
+	extendedcreditinvoicegroup_delete_ad_accountsTool := mcp.NewTool("extendedcreditinvoicegroup_delete_ad_accounts",
+		mcp.WithDescription("DELETE ad_accounts for ExtendedCreditInvoiceGroup"),
+		mcp.WithString("ad_account_id",
+			mcp.Required(),
+			mcp.Description("ad_account_id parameter for ad_accounts"),
+		),
+	)
+	tools = append(tools, extendedcreditinvoicegroup_delete_ad_accountsTool)
+
+	// extendedcreditinvoicegroup_get_ad_accounts tool
+	extendedcreditinvoicegroup_get_ad_accountsTool := mcp.NewTool("extendedcreditinvoicegroup_get_ad_accounts",
+		mcp.WithDescription("GET ad_accounts for ExtendedCreditInvoiceGroup"),
+	)
+	tools = append(tools, extendedcreditinvoicegroup_get_ad_accountsTool)
+
+	// extendedcreditinvoicegroup_post_ad_accounts tool
+	extendedcreditinvoicegroup_post_ad_accountsTool := mcp.NewTool("extendedcreditinvoicegroup_post_ad_accounts",
+		mcp.WithDescription("POST ad_accounts for ExtendedCreditInvoiceGroup"),
+		mcp.WithString("ad_account_id",
+			mcp.Required(),
+			mcp.Description("ad_account_id parameter for ad_accounts"),
+		),
+	)
+	tools = append(tools, extendedcreditinvoicegroup_post_ad_accountsTool)
+
+	// extendedcreditinvoicegroup_delete_ tool
+	extendedcreditinvoicegroup_delete_Tool := mcp.NewTool("extendedcreditinvoicegroup_delete_",
+		mcp.WithDescription("DELETE  for ExtendedCreditInvoiceGroup"),
+	)
+	tools = append(tools, extendedcreditinvoicegroup_delete_Tool)
+
+	// extendedcreditinvoicegroup_get_ tool
+	extendedcreditinvoicegroup_get_Tool := mcp.NewTool("extendedcreditinvoicegroup_get_",
+		mcp.WithDescription("GET  for ExtendedCreditInvoiceGroup"),
+	)
+	tools = append(tools, extendedcreditinvoicegroup_get_Tool)
+
+	// extendedcreditinvoicegroup_post_ tool
+	extendedcreditinvoicegroup_post_Tool := mcp.NewTool("extendedcreditinvoicegroup_post_",
+		mcp.WithDescription("POST  for ExtendedCreditInvoiceGroup"),
 		mcp.WithString("emails",
 			mcp.Description("emails parameter for "),
 		),
@@ -259,6 +317,207 @@ func HandleExtendedcreditinvoicegroup_post_(ctx context.Context, request mcp.Cal
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewExtendedCreditInvoiceGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: emails
+	// array type - using string
+	if val := request.GetString("emails", ""); val != "" {
+		args["emails"] = val
+	}
+
+	// Optional: name
+	if val := request.GetString("name", ""); val != "" {
+		args["name"] = val
+	}
+
+	// Call the client method
+	result, err := client.Extendedcreditinvoicegroup_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcreditinvoicegroup_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextExtendedcreditinvoicegroup_delete_ad_accounts handles the extendedcreditinvoicegroup_delete_ad_accounts tool with context-based auth
+func HandleContextExtendedcreditinvoicegroup_delete_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewExtendedCreditInvoiceGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: ad_account_id
+	ad_account_id, err := request.RequireString("ad_account_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_account_id: %v", err)), nil
+	}
+	args["ad_account_id"] = ad_account_id
+
+	// Call the client method
+	result, err := client.Extendedcreditinvoicegroup_delete_ad_accounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcreditinvoicegroup_delete_ad_accounts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextExtendedcreditinvoicegroup_get_ad_accounts handles the extendedcreditinvoicegroup_get_ad_accounts tool with context-based auth
+func HandleContextExtendedcreditinvoicegroup_get_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewExtendedCreditInvoiceGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Extendedcreditinvoicegroup_get_ad_accounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcreditinvoicegroup_get_ad_accounts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextExtendedcreditinvoicegroup_post_ad_accounts handles the extendedcreditinvoicegroup_post_ad_accounts tool with context-based auth
+func HandleContextExtendedcreditinvoicegroup_post_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewExtendedCreditInvoiceGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: ad_account_id
+	ad_account_id, err := request.RequireString("ad_account_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter ad_account_id: %v", err)), nil
+	}
+	args["ad_account_id"] = ad_account_id
+
+	// Call the client method
+	result, err := client.Extendedcreditinvoicegroup_post_ad_accounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcreditinvoicegroup_post_ad_accounts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextExtendedcreditinvoicegroup_delete_ handles the extendedcreditinvoicegroup_delete_ tool with context-based auth
+func HandleContextExtendedcreditinvoicegroup_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewExtendedCreditInvoiceGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Extendedcreditinvoicegroup_delete_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcreditinvoicegroup_delete_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextExtendedcreditinvoicegroup_get_ handles the extendedcreditinvoicegroup_get_ tool with context-based auth
+func HandleContextExtendedcreditinvoicegroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewExtendedCreditInvoiceGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Extendedcreditinvoicegroup_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute extendedcreditinvoicegroup_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextExtendedcreditinvoicegroup_post_ handles the extendedcreditinvoicegroup_post_ tool with context-based auth
+func HandleContextExtendedcreditinvoicegroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

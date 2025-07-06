@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetBizInboxOffsiteEmailAccountTools returns MCP tools for BizInboxOffsiteEmailAccount
@@ -32,6 +33,25 @@ func GetBizInboxOffsiteEmailAccountTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, bizinboxoffsiteemailaccount_get_Tool)
+
+	return tools
+}
+
+// GetBizInboxOffsiteEmailAccountToolsWithoutAuth returns MCP tools for BizInboxOffsiteEmailAccount without access_token parameter
+func GetBizInboxOffsiteEmailAccountToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// bizinboxoffsiteemailaccount_get_assigned_users tool
+	bizinboxoffsiteemailaccount_get_assigned_usersTool := mcp.NewTool("bizinboxoffsiteemailaccount_get_assigned_users",
+		mcp.WithDescription("GET assigned_users for BizInboxOffsiteEmailAccount"),
+	)
+	tools = append(tools, bizinboxoffsiteemailaccount_get_assigned_usersTool)
+
+	// bizinboxoffsiteemailaccount_get_ tool
+	bizinboxoffsiteemailaccount_get_Tool := mcp.NewTool("bizinboxoffsiteemailaccount_get_",
+		mcp.WithDescription("GET  for BizInboxOffsiteEmailAccount"),
 	)
 	tools = append(tools, bizinboxoffsiteemailaccount_get_Tool)
 
@@ -75,6 +95,66 @@ func HandleBizinboxoffsiteemailaccount_get_(ctx context.Context, request mcp.Cal
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewBizInboxOffsiteEmailAccountClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Bizinboxoffsiteemailaccount_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute bizinboxoffsiteemailaccount_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextBizinboxoffsiteemailaccount_get_assigned_users handles the bizinboxoffsiteemailaccount_get_assigned_users tool with context-based auth
+func HandleContextBizinboxoffsiteemailaccount_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBizInboxOffsiteEmailAccountClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Bizinboxoffsiteemailaccount_get_assigned_users(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute bizinboxoffsiteemailaccount_get_assigned_users: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBizinboxoffsiteemailaccount_get_ handles the bizinboxoffsiteemailaccount_get_ tool with context-based auth
+func HandleContextBizinboxoffsiteemailaccount_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

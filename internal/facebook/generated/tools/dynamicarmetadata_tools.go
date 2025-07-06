@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetDynamicARMetadataTools returns MCP tools for DynamicARMetadata
@@ -28,6 +29,19 @@ func GetDynamicARMetadataTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetDynamicARMetadataToolsWithoutAuth returns MCP tools for DynamicARMetadata without access_token parameter
+func GetDynamicARMetadataToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// dynamicarmetadata_get_ tool
+	dynamicarmetadata_get_Tool := mcp.NewTool("dynamicarmetadata_get_",
+		mcp.WithDescription("GET  for DynamicARMetadata"),
+	)
+	tools = append(tools, dynamicarmetadata_get_Tool)
+
+	return tools
+}
+
 // DynamicARMetadata handlers
 
 // HandleDynamicarmetadata_get_ handles the dynamicarmetadata_get_ tool
@@ -36,6 +50,37 @@ func HandleDynamicarmetadata_get_(ctx context.Context, request mcp.CallToolReque
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewDynamicARMetadataClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Dynamicarmetadata_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute dynamicarmetadata_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextDynamicarmetadata_get_ handles the dynamicarmetadata_get_ tool with context-based auth
+func HandleContextDynamicarmetadata_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

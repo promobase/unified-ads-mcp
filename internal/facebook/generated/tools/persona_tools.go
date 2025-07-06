@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetPersonaTools returns MCP tools for Persona
@@ -32,6 +33,25 @@ func GetPersonaTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, persona_get_Tool)
+
+	return tools
+}
+
+// GetPersonaToolsWithoutAuth returns MCP tools for Persona without access_token parameter
+func GetPersonaToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// persona_delete_ tool
+	persona_delete_Tool := mcp.NewTool("persona_delete_",
+		mcp.WithDescription("DELETE  for Persona"),
+	)
+	tools = append(tools, persona_delete_Tool)
+
+	// persona_get_ tool
+	persona_get_Tool := mcp.NewTool("persona_get_",
+		mcp.WithDescription("GET  for Persona"),
 	)
 	tools = append(tools, persona_get_Tool)
 
@@ -75,6 +95,66 @@ func HandlePersona_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewPersonaClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Persona_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute persona_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextPersona_delete_ handles the persona_delete_ tool with context-based auth
+func HandleContextPersona_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPersonaClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Persona_delete_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute persona_delete_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPersona_get_ handles the persona_get_ tool with context-based auth
+func HandleContextPersona_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

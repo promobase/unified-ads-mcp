@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetAdLabelTools returns MCP tools for AdLabel
@@ -82,6 +83,59 @@ func GetAdLabelTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithString("name",
+			mcp.Required(),
+			mcp.Description("name parameter for "),
+		),
+	)
+	tools = append(tools, adlabel_post_Tool)
+
+	return tools
+}
+
+// GetAdLabelToolsWithoutAuth returns MCP tools for AdLabel without access_token parameter
+func GetAdLabelToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// adlabel_get_adcreatives tool
+	adlabel_get_adcreativesTool := mcp.NewTool("adlabel_get_adcreatives",
+		mcp.WithDescription("GET adcreatives for AdLabel"),
+	)
+	tools = append(tools, adlabel_get_adcreativesTool)
+
+	// adlabel_get_ads tool
+	adlabel_get_adsTool := mcp.NewTool("adlabel_get_ads",
+		mcp.WithDescription("GET ads for AdLabel"),
+	)
+	tools = append(tools, adlabel_get_adsTool)
+
+	// adlabel_get_adsets tool
+	adlabel_get_adsetsTool := mcp.NewTool("adlabel_get_adsets",
+		mcp.WithDescription("GET adsets for AdLabel"),
+	)
+	tools = append(tools, adlabel_get_adsetsTool)
+
+	// adlabel_get_campaigns tool
+	adlabel_get_campaignsTool := mcp.NewTool("adlabel_get_campaigns",
+		mcp.WithDescription("GET campaigns for AdLabel"),
+	)
+	tools = append(tools, adlabel_get_campaignsTool)
+
+	// adlabel_delete_ tool
+	adlabel_delete_Tool := mcp.NewTool("adlabel_delete_",
+		mcp.WithDescription("DELETE  for AdLabel"),
+	)
+	tools = append(tools, adlabel_delete_Tool)
+
+	// adlabel_get_ tool
+	adlabel_get_Tool := mcp.NewTool("adlabel_get_",
+		mcp.WithDescription("GET  for AdLabel"),
+	)
+	tools = append(tools, adlabel_get_Tool)
+
+	// adlabel_post_ tool
+	adlabel_post_Tool := mcp.NewTool("adlabel_post_",
+		mcp.WithDescription("POST  for AdLabel"),
 		mcp.WithString("name",
 			mcp.Required(),
 			mcp.Description("name parameter for "),
@@ -274,6 +328,218 @@ func HandleAdlabel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewAdLabelClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: name
+	name, err := request.RequireString("name")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter name: %v", err)), nil
+	}
+	args["name"] = name
+
+	// Call the client method
+	result, err := client.Adlabel_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adlabel_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextAdlabel_get_adcreatives handles the adlabel_get_adcreatives tool with context-based auth
+func HandleContextAdlabel_get_adcreatives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdLabelClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Adlabel_get_adcreatives(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adlabel_get_adcreatives: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdlabel_get_ads handles the adlabel_get_ads tool with context-based auth
+func HandleContextAdlabel_get_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdLabelClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Adlabel_get_ads(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adlabel_get_ads: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdlabel_get_adsets handles the adlabel_get_adsets tool with context-based auth
+func HandleContextAdlabel_get_adsets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdLabelClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Adlabel_get_adsets(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adlabel_get_adsets: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdlabel_get_campaigns handles the adlabel_get_campaigns tool with context-based auth
+func HandleContextAdlabel_get_campaigns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdLabelClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Adlabel_get_campaigns(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adlabel_get_campaigns: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdlabel_delete_ handles the adlabel_delete_ tool with context-based auth
+func HandleContextAdlabel_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdLabelClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Adlabel_delete_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adlabel_delete_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdlabel_get_ handles the adlabel_get_ tool with context-based auth
+func HandleContextAdlabel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdLabelClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Adlabel_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adlabel_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdlabel_post_ handles the adlabel_post_ tool with context-based auth
+func HandleContextAdlabel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetAdReportRunTools returns MCP tools for AdReportRun
@@ -32,6 +33,25 @@ func GetAdReportRunTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, adreportrun_get_Tool)
+
+	return tools
+}
+
+// GetAdReportRunToolsWithoutAuth returns MCP tools for AdReportRun without access_token parameter
+func GetAdReportRunToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// adreportrun_get_insights tool
+	adreportrun_get_insightsTool := mcp.NewTool("adreportrun_get_insights",
+		mcp.WithDescription("GET insights for AdReportRun"),
+	)
+	tools = append(tools, adreportrun_get_insightsTool)
+
+	// adreportrun_get_ tool
+	adreportrun_get_Tool := mcp.NewTool("adreportrun_get_",
+		mcp.WithDescription("GET  for AdReportRun"),
 	)
 	tools = append(tools, adreportrun_get_Tool)
 
@@ -75,6 +95,66 @@ func HandleAdreportrun_get_(ctx context.Context, request mcp.CallToolRequest) (*
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewAdReportRunClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Adreportrun_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adreportrun_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextAdreportrun_get_insights handles the adreportrun_get_insights tool with context-based auth
+func HandleContextAdreportrun_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAdReportRunClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Adreportrun_get_insights(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute adreportrun_get_insights: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAdreportrun_get_ handles the adreportrun_get_ tool with context-based auth
+func HandleContextAdreportrun_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

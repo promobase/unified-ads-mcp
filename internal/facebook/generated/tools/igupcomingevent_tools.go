@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetIGUpcomingEventTools returns MCP tools for IGUpcomingEvent
@@ -32,6 +33,44 @@ func GetIGUpcomingEventTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithString("end_time",
+			mcp.Description("end_time parameter for "),
+		),
+		mcp.WithString("notification_subtypes",
+			mcp.Description("notification_subtypes parameter for "),
+			mcp.Enum("AFTER_EVENT_1DAY", "AFTER_EVENT_2DAY", "AFTER_EVENT_3DAY", "AFTER_EVENT_4DAY", "AFTER_EVENT_5DAY", "AFTER_EVENT_6DAY", "AFTER_EVENT_7DAY", "BEFORE_EVENT_15MIN", "BEFORE_EVENT_1DAY", "BEFORE_EVENT_1HOUR", "BEFORE_EVENT_2DAY", "EVENT_START", "RESCHEDULED"),
+		),
+		mcp.WithString("notification_target_time",
+			mcp.Description("notification_target_time parameter for "),
+			mcp.Enum("EVENT_END", "EVENT_START"),
+		),
+		mcp.WithString("start_time",
+			mcp.Required(),
+			mcp.Description("start_time parameter for "),
+		),
+		mcp.WithString("title",
+			mcp.Required(),
+			mcp.Description("title parameter for "),
+		),
+	)
+	tools = append(tools, igupcomingevent_post_Tool)
+
+	return tools
+}
+
+// GetIGUpcomingEventToolsWithoutAuth returns MCP tools for IGUpcomingEvent without access_token parameter
+func GetIGUpcomingEventToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// igupcomingevent_get_ tool
+	igupcomingevent_get_Tool := mcp.NewTool("igupcomingevent_get_",
+		mcp.WithDescription("GET  for IGUpcomingEvent"),
+	)
+	tools = append(tools, igupcomingevent_get_Tool)
+
+	// igupcomingevent_post_ tool
+	igupcomingevent_post_Tool := mcp.NewTool("igupcomingevent_post_",
+		mcp.WithDescription("POST  for IGUpcomingEvent"),
 		mcp.WithString("end_time",
 			mcp.Description("end_time parameter for "),
 		),
@@ -94,6 +133,96 @@ func HandleIgupcomingevent_post_(ctx context.Context, request mcp.CallToolReques
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewIGUpcomingEventClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: end_time
+	if val := request.GetString("end_time", ""); val != "" {
+		args["end_time"] = val
+	}
+
+	// Optional: notification_subtypes
+	// array type - using string
+	if val := request.GetString("notification_subtypes", ""); val != "" {
+		args["notification_subtypes"] = val
+	}
+
+	// Optional: notification_target_time
+	if val := request.GetString("notification_target_time", ""); val != "" {
+		args["notification_target_time"] = val
+	}
+
+	// Required: start_time
+	start_time, err := request.RequireString("start_time")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter start_time: %v", err)), nil
+	}
+	args["start_time"] = start_time
+
+	// Required: title
+	title, err := request.RequireString("title")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter title: %v", err)), nil
+	}
+	args["title"] = title
+
+	// Call the client method
+	result, err := client.Igupcomingevent_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igupcomingevent_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextIgupcomingevent_get_ handles the igupcomingevent_get_ tool with context-based auth
+func HandleContextIgupcomingevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewIGUpcomingEventClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Igupcomingevent_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute igupcomingevent_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextIgupcomingevent_post_ handles the igupcomingevent_post_ tool with context-based auth
+func HandleContextIgupcomingevent_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

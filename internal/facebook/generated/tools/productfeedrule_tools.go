@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetProductFeedRuleTools returns MCP tools for ProductFeedRule
@@ -42,6 +43,35 @@ func GetProductFeedRuleTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithString("params",
+			mcp.Required(),
+			mcp.Description("params parameter for "),
+		),
+	)
+	tools = append(tools, productfeedrule_post_Tool)
+
+	return tools
+}
+
+// GetProductFeedRuleToolsWithoutAuth returns MCP tools for ProductFeedRule without access_token parameter
+func GetProductFeedRuleToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// productfeedrule_delete_ tool
+	productfeedrule_delete_Tool := mcp.NewTool("productfeedrule_delete_",
+		mcp.WithDescription("DELETE  for ProductFeedRule"),
+	)
+	tools = append(tools, productfeedrule_delete_Tool)
+
+	// productfeedrule_get_ tool
+	productfeedrule_get_Tool := mcp.NewTool("productfeedrule_get_",
+		mcp.WithDescription("GET  for ProductFeedRule"),
+	)
+	tools = append(tools, productfeedrule_get_Tool)
+
+	// productfeedrule_post_ tool
+	productfeedrule_post_Tool := mcp.NewTool("productfeedrule_post_",
+		mcp.WithDescription("POST  for ProductFeedRule"),
 		mcp.WithString("params",
 			mcp.Required(),
 			mcp.Description("params parameter for "),
@@ -118,6 +148,102 @@ func HandleProductfeedrule_post_(ctx context.Context, request mcp.CallToolReques
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewProductFeedRuleClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: params
+	params, err := request.RequireString("params")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter params: %v", err)), nil
+	}
+	args["params"] = params
+
+	// Call the client method
+	result, err := client.Productfeedrule_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productfeedrule_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextProductfeedrule_delete_ handles the productfeedrule_delete_ tool with context-based auth
+func HandleContextProductfeedrule_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewProductFeedRuleClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Productfeedrule_delete_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productfeedrule_delete_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextProductfeedrule_get_ handles the productfeedrule_get_ tool with context-based auth
+func HandleContextProductfeedrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewProductFeedRuleClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Productfeedrule_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute productfeedrule_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextProductfeedrule_post_ handles the productfeedrule_post_ tool with context-based auth
+func HandleContextProductfeedrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

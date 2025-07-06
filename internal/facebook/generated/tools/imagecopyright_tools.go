@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetImageCopyrightTools returns MCP tools for ImageCopyright
@@ -32,6 +33,47 @@ func GetImageCopyrightTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithString("artist",
+			mcp.Description("artist parameter for "),
+		),
+		mcp.WithString("creator",
+			mcp.Description("creator parameter for "),
+		),
+		mcp.WithString("custom_id",
+			mcp.Description("custom_id parameter for "),
+		),
+		mcp.WithString("description",
+			mcp.Description("description parameter for "),
+		),
+		mcp.WithString("geo_ownership",
+			mcp.Description("geo_ownership parameter for "),
+			mcp.Enum("AD", "AE", "AF", "AG", "AI", "AL", "AM", "AN", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TP", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "XK", "YE", "YT", "ZA", "ZM", "ZW"),
+		),
+		mcp.WithNumber("original_content_creation_date",
+			mcp.Description("original_content_creation_date parameter for "),
+		),
+		mcp.WithString("title",
+			mcp.Description("title parameter for "),
+		),
+	)
+	tools = append(tools, imagecopyright_post_Tool)
+
+	return tools
+}
+
+// GetImageCopyrightToolsWithoutAuth returns MCP tools for ImageCopyright without access_token parameter
+func GetImageCopyrightToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// imagecopyright_get_ tool
+	imagecopyright_get_Tool := mcp.NewTool("imagecopyright_get_",
+		mcp.WithDescription("GET  for ImageCopyright"),
+	)
+	tools = append(tools, imagecopyright_get_Tool)
+
+	// imagecopyright_post_ tool
+	imagecopyright_post_Tool := mcp.NewTool("imagecopyright_post_",
+		mcp.WithDescription("POST  for ImageCopyright"),
 		mcp.WithString("artist",
 			mcp.Description("artist parameter for "),
 		),
@@ -97,6 +139,102 @@ func HandleImagecopyright_post_(ctx context.Context, request mcp.CallToolRequest
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewImageCopyrightClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: artist
+	if val := request.GetString("artist", ""); val != "" {
+		args["artist"] = val
+	}
+
+	// Optional: creator
+	if val := request.GetString("creator", ""); val != "" {
+		args["creator"] = val
+	}
+
+	// Optional: custom_id
+	if val := request.GetString("custom_id", ""); val != "" {
+		args["custom_id"] = val
+	}
+
+	// Optional: description
+	if val := request.GetString("description", ""); val != "" {
+		args["description"] = val
+	}
+
+	// Optional: geo_ownership
+	// array type - using string
+	if val := request.GetString("geo_ownership", ""); val != "" {
+		args["geo_ownership"] = val
+	}
+
+	// Optional: original_content_creation_date
+	if val := request.GetInt("original_content_creation_date", 0); val != 0 {
+		args["original_content_creation_date"] = val
+	}
+
+	// Optional: title
+	if val := request.GetString("title", ""); val != "" {
+		args["title"] = val
+	}
+
+	// Call the client method
+	result, err := client.Imagecopyright_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute imagecopyright_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextImagecopyright_get_ handles the imagecopyright_get_ tool with context-based auth
+func HandleContextImagecopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewImageCopyrightClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Imagecopyright_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute imagecopyright_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextImagecopyright_post_ handles the imagecopyright_post_ tool with context-based auth
+func HandleContextImagecopyright_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

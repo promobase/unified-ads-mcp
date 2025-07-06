@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetStoreLocationTools returns MCP tools for StoreLocation
@@ -28,6 +29,19 @@ func GetStoreLocationTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetStoreLocationToolsWithoutAuth returns MCP tools for StoreLocation without access_token parameter
+func GetStoreLocationToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// storelocation_get_ tool
+	storelocation_get_Tool := mcp.NewTool("storelocation_get_",
+		mcp.WithDescription("GET  for StoreLocation"),
+	)
+	tools = append(tools, storelocation_get_Tool)
+
+	return tools
+}
+
 // StoreLocation handlers
 
 // HandleStorelocation_get_ handles the storelocation_get_ tool
@@ -36,6 +50,37 @@ func HandleStorelocation_get_(ctx context.Context, request mcp.CallToolRequest) 
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewStoreLocationClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Storelocation_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute storelocation_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextStorelocation_get_ handles the storelocation_get_ tool with context-based auth
+func HandleContextStorelocation_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

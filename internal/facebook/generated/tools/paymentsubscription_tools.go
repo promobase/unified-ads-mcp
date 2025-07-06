@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetPaymentSubscriptionTools returns MCP tools for PaymentSubscription
@@ -28,6 +29,19 @@ func GetPaymentSubscriptionTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetPaymentSubscriptionToolsWithoutAuth returns MCP tools for PaymentSubscription without access_token parameter
+func GetPaymentSubscriptionToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// paymentsubscription_get_ tool
+	paymentsubscription_get_Tool := mcp.NewTool("paymentsubscription_get_",
+		mcp.WithDescription("GET  for PaymentSubscription"),
+	)
+	tools = append(tools, paymentsubscription_get_Tool)
+
+	return tools
+}
+
 // PaymentSubscription handlers
 
 // HandlePaymentsubscription_get_ handles the paymentsubscription_get_ tool
@@ -36,6 +50,37 @@ func HandlePaymentsubscription_get_(ctx context.Context, request mcp.CallToolReq
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewPaymentSubscriptionClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Paymentsubscription_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute paymentsubscription_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextPaymentsubscription_get_ handles the paymentsubscription_get_ tool with context-based auth
+func HandleContextPaymentsubscription_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

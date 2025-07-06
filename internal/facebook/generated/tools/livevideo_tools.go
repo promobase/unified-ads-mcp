@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetLiveVideoTools returns MCP tools for LiveVideo
@@ -180,6 +181,227 @@ func GetLiveVideoTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithBoolean("allow_bm_crossposting",
+			mcp.Description("allow_bm_crossposting parameter for "),
+		),
+		mcp.WithString("content_tags",
+			mcp.Description("content_tags parameter for "),
+		),
+		mcp.WithString("cross_share_to_group_ids",
+			mcp.Description("cross_share_to_group_ids parameter for "),
+		),
+		mcp.WithString("crossposting_actions",
+			mcp.Description("crossposting_actions parameter for "),
+		),
+		mcp.WithString("custom_labels",
+			mcp.Description("custom_labels parameter for "),
+		),
+		mcp.WithString("description",
+			mcp.Description("description parameter for "),
+		),
+		mcp.WithNumber("direct_share_status",
+			mcp.Description("direct_share_status parameter for "),
+		),
+		mcp.WithBoolean("embeddable",
+			mcp.Description("embeddable parameter for "),
+		),
+		mcp.WithBoolean("end_live_video",
+			mcp.Description("end_live_video parameter for "),
+		),
+		mcp.WithString("event_params",
+			mcp.Description("event_params parameter for "),
+		),
+		mcp.WithBoolean("is_audio_only",
+			mcp.Description("is_audio_only parameter for "),
+		),
+		mcp.WithBoolean("is_manual_mode",
+			mcp.Description("is_manual_mode parameter for "),
+		),
+		mcp.WithString("live_comment_moderation_setting",
+			mcp.Description("live_comment_moderation_setting parameter for "),
+			mcp.Enum("DEFAULT", "DISCUSSION", "FOLLOWED", "FOLLOWER", "NO_HYPERLINK", "PROTECTED_MODE", "RESTRICTED", "SLOW", "SUPPORTER", "TAGGED"),
+		),
+		mcp.WithString("master_ingest_stream_id",
+			mcp.Description("master_ingest_stream_id parameter for "),
+		),
+		mcp.WithString("og_icon_id",
+			mcp.Description("og_icon_id parameter for "),
+		),
+		mcp.WithString("og_phrase",
+			mcp.Description("og_phrase parameter for "),
+		),
+		mcp.WithString("persistent_stream_key_status",
+			mcp.Description("persistent_stream_key_status parameter for "),
+			mcp.Enum("DISABLE", "ENABLE", "REGENERATE"),
+		),
+		mcp.WithString("place",
+			mcp.Description("place parameter for "),
+		),
+		mcp.WithString("planned_start_time",
+			mcp.Description("planned_start_time parameter for "),
+		),
+		mcp.WithString("privacy",
+			mcp.Description("privacy parameter for "),
+		),
+		mcp.WithBoolean("published",
+			mcp.Description("published parameter for "),
+		),
+		mcp.WithString("schedule_custom_profile_image",
+			mcp.Description("schedule_custom_profile_image parameter for "),
+		),
+		mcp.WithString("schedule_feed_background_image",
+			mcp.Description("schedule_feed_background_image parameter for "),
+		),
+		mcp.WithString("sponsor_id",
+			mcp.Description("sponsor_id parameter for "),
+		),
+		mcp.WithNumber("sponsor_relationship",
+			mcp.Description("sponsor_relationship parameter for "),
+		),
+		mcp.WithString("status",
+			mcp.Description("status parameter for "),
+			mcp.Enum("LIVE_NOW", "SCHEDULED_CANCELED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED"),
+		),
+		mcp.WithString("stream_type",
+			mcp.Description("stream_type parameter for "),
+			mcp.Enum("AMBIENT", "REGULAR"),
+		),
+		mcp.WithString("tags",
+			mcp.Description("tags parameter for "),
+		),
+		mcp.WithString("targeting",
+			mcp.Description("targeting parameter for "),
+		),
+		mcp.WithString("title",
+			mcp.Description("title parameter for "),
+		),
+	)
+	tools = append(tools, livevideo_post_Tool)
+
+	return tools
+}
+
+// GetLiveVideoToolsWithoutAuth returns MCP tools for LiveVideo without access_token parameter
+func GetLiveVideoToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// livevideo_get_blocked_users tool
+	livevideo_get_blocked_usersTool := mcp.NewTool("livevideo_get_blocked_users",
+		mcp.WithDescription("GET blocked_users for LiveVideo"),
+		mcp.WithString("uid",
+			mcp.Description("uid parameter for blocked_users"),
+		),
+	)
+	tools = append(tools, livevideo_get_blocked_usersTool)
+
+	// livevideo_get_comments tool
+	livevideo_get_commentsTool := mcp.NewTool("livevideo_get_comments",
+		mcp.WithDescription("GET comments for LiveVideo"),
+		mcp.WithString("filter",
+			mcp.Description("filter parameter for comments"),
+			mcp.Enum("stream", "toplevel"),
+		),
+		mcp.WithString("live_filter",
+			mcp.Description("live_filter parameter for comments"),
+			mcp.Enum("filter_low_quality", "no_filter"),
+		),
+		mcp.WithString("order",
+			mcp.Description("order parameter for comments"),
+			mcp.Enum("chronological", "reverse_chronological"),
+		),
+		mcp.WithString("since",
+			mcp.Description("since parameter for comments"),
+		),
+	)
+	tools = append(tools, livevideo_get_commentsTool)
+
+	// livevideo_get_crosspost_shared_pages tool
+	livevideo_get_crosspost_shared_pagesTool := mcp.NewTool("livevideo_get_crosspost_shared_pages",
+		mcp.WithDescription("GET crosspost_shared_pages for LiveVideo"),
+	)
+	tools = append(tools, livevideo_get_crosspost_shared_pagesTool)
+
+	// livevideo_get_crossposted_broadcasts tool
+	livevideo_get_crossposted_broadcastsTool := mcp.NewTool("livevideo_get_crossposted_broadcasts",
+		mcp.WithDescription("GET crossposted_broadcasts for LiveVideo"),
+	)
+	tools = append(tools, livevideo_get_crossposted_broadcastsTool)
+
+	// livevideo_get_errors tool
+	livevideo_get_errorsTool := mcp.NewTool("livevideo_get_errors",
+		mcp.WithDescription("GET errors for LiveVideo"),
+	)
+	tools = append(tools, livevideo_get_errorsTool)
+
+	// livevideo_post_input_streams tool
+	livevideo_post_input_streamsTool := mcp.NewTool("livevideo_post_input_streams",
+		mcp.WithDescription("POST input_streams for LiveVideo"),
+	)
+	tools = append(tools, livevideo_post_input_streamsTool)
+
+	// livevideo_get_polls tool
+	livevideo_get_pollsTool := mcp.NewTool("livevideo_get_polls",
+		mcp.WithDescription("GET polls for LiveVideo"),
+	)
+	tools = append(tools, livevideo_get_pollsTool)
+
+	// livevideo_post_polls tool
+	livevideo_post_pollsTool := mcp.NewTool("livevideo_post_polls",
+		mcp.WithDescription("POST polls for LiveVideo"),
+		mcp.WithBoolean("close_after_voting",
+			mcp.Description("close_after_voting parameter for polls"),
+		),
+		mcp.WithNumber("correct_option",
+			mcp.Description("correct_option parameter for polls"),
+		),
+		mcp.WithBoolean("default_open",
+			mcp.Description("default_open parameter for polls"),
+		),
+		mcp.WithString("options",
+			mcp.Required(),
+			mcp.Description("options parameter for polls"),
+		),
+		mcp.WithString("question",
+			mcp.Required(),
+			mcp.Description("question parameter for polls"),
+		),
+		mcp.WithBoolean("show_gradient",
+			mcp.Description("show_gradient parameter for polls"),
+		),
+		mcp.WithBoolean("show_results",
+			mcp.Description("show_results parameter for polls"),
+		),
+	)
+	tools = append(tools, livevideo_post_pollsTool)
+
+	// livevideo_get_reactions tool
+	livevideo_get_reactionsTool := mcp.NewTool("livevideo_get_reactions",
+		mcp.WithDescription("GET reactions for LiveVideo"),
+		mcp.WithString("type",
+			mcp.Description("type parameter for reactions"),
+			mcp.Enum("ANGRY", "CARE", "FIRE", "HAHA", "HUNDRED", "LIKE", "LOVE", "NONE", "PRIDE", "SAD", "THANKFUL", "WOW"),
+		),
+	)
+	tools = append(tools, livevideo_get_reactionsTool)
+
+	// livevideo_delete_ tool
+	livevideo_delete_Tool := mcp.NewTool("livevideo_delete_",
+		mcp.WithDescription("DELETE  for LiveVideo"),
+	)
+	tools = append(tools, livevideo_delete_Tool)
+
+	// livevideo_get_ tool
+	livevideo_get_Tool := mcp.NewTool("livevideo_get_",
+		mcp.WithDescription("GET  for LiveVideo"),
+		mcp.WithString("target_token",
+			mcp.Description("target_token parameter for "),
+		),
+	)
+	tools = append(tools, livevideo_get_Tool)
+
+	// livevideo_post_ tool
+	livevideo_post_Tool := mcp.NewTool("livevideo_post_",
+		mcp.WithDescription("POST  for LiveVideo"),
 		mcp.WithBoolean("allow_bm_crossposting",
 			mcp.Description("allow_bm_crossposting parameter for "),
 		),
@@ -681,6 +903,589 @@ func HandleLivevideo_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewLiveVideoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: allow_bm_crossposting
+	if val := request.GetBool("allow_bm_crossposting", false); val {
+		args["allow_bm_crossposting"] = val
+	}
+
+	// Optional: content_tags
+	// array type - using string
+	if val := request.GetString("content_tags", ""); val != "" {
+		args["content_tags"] = val
+	}
+
+	// Optional: cross_share_to_group_ids
+	// array type - using string
+	if val := request.GetString("cross_share_to_group_ids", ""); val != "" {
+		args["cross_share_to_group_ids"] = val
+	}
+
+	// Optional: crossposting_actions
+	// array type - using string
+	if val := request.GetString("crossposting_actions", ""); val != "" {
+		args["crossposting_actions"] = val
+	}
+
+	// Optional: custom_labels
+	// array type - using string
+	if val := request.GetString("custom_labels", ""); val != "" {
+		args["custom_labels"] = val
+	}
+
+	// Optional: description
+	if val := request.GetString("description", ""); val != "" {
+		args["description"] = val
+	}
+
+	// Optional: direct_share_status
+	if val := request.GetInt("direct_share_status", 0); val != 0 {
+		args["direct_share_status"] = val
+	}
+
+	// Optional: embeddable
+	if val := request.GetBool("embeddable", false); val {
+		args["embeddable"] = val
+	}
+
+	// Optional: end_live_video
+	if val := request.GetBool("end_live_video", false); val {
+		args["end_live_video"] = val
+	}
+
+	// Optional: event_params
+	// object type - using string
+	if val := request.GetString("event_params", ""); val != "" {
+		args["event_params"] = val
+	}
+
+	// Optional: is_audio_only
+	if val := request.GetBool("is_audio_only", false); val {
+		args["is_audio_only"] = val
+	}
+
+	// Optional: is_manual_mode
+	if val := request.GetBool("is_manual_mode", false); val {
+		args["is_manual_mode"] = val
+	}
+
+	// Optional: live_comment_moderation_setting
+	// array type - using string
+	if val := request.GetString("live_comment_moderation_setting", ""); val != "" {
+		args["live_comment_moderation_setting"] = val
+	}
+
+	// Optional: master_ingest_stream_id
+	if val := request.GetString("master_ingest_stream_id", ""); val != "" {
+		args["master_ingest_stream_id"] = val
+	}
+
+	// Optional: og_icon_id
+	if val := request.GetString("og_icon_id", ""); val != "" {
+		args["og_icon_id"] = val
+	}
+
+	// Optional: og_phrase
+	if val := request.GetString("og_phrase", ""); val != "" {
+		args["og_phrase"] = val
+	}
+
+	// Optional: persistent_stream_key_status
+	if val := request.GetString("persistent_stream_key_status", ""); val != "" {
+		args["persistent_stream_key_status"] = val
+	}
+
+	// Optional: place
+	// object type - using string
+	if val := request.GetString("place", ""); val != "" {
+		args["place"] = val
+	}
+
+	// Optional: planned_start_time
+	if val := request.GetString("planned_start_time", ""); val != "" {
+		args["planned_start_time"] = val
+	}
+
+	// Optional: privacy
+	if val := request.GetString("privacy", ""); val != "" {
+		args["privacy"] = val
+	}
+
+	// Optional: published
+	if val := request.GetBool("published", false); val {
+		args["published"] = val
+	}
+
+	// Optional: schedule_custom_profile_image
+	if val := request.GetString("schedule_custom_profile_image", ""); val != "" {
+		args["schedule_custom_profile_image"] = val
+	}
+
+	// Optional: schedule_feed_background_image
+	if val := request.GetString("schedule_feed_background_image", ""); val != "" {
+		args["schedule_feed_background_image"] = val
+	}
+
+	// Optional: sponsor_id
+	if val := request.GetString("sponsor_id", ""); val != "" {
+		args["sponsor_id"] = val
+	}
+
+	// Optional: sponsor_relationship
+	if val := request.GetInt("sponsor_relationship", 0); val != 0 {
+		args["sponsor_relationship"] = val
+	}
+
+	// Optional: status
+	if val := request.GetString("status", ""); val != "" {
+		args["status"] = val
+	}
+
+	// Optional: stream_type
+	if val := request.GetString("stream_type", ""); val != "" {
+		args["stream_type"] = val
+	}
+
+	// Optional: tags
+	// array type - using string
+	if val := request.GetString("tags", ""); val != "" {
+		args["tags"] = val
+	}
+
+	// Optional: targeting
+	// object type - using string
+	if val := request.GetString("targeting", ""); val != "" {
+		args["targeting"] = val
+	}
+
+	// Optional: title
+	if val := request.GetString("title", ""); val != "" {
+		args["title"] = val
+	}
+
+	// Call the client method
+	result, err := client.Livevideo_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextLivevideo_get_blocked_users handles the livevideo_get_blocked_users tool with context-based auth
+func HandleContextLivevideo_get_blocked_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewLiveVideoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: uid
+	if val := request.GetString("uid", ""); val != "" {
+		args["uid"] = val
+	}
+
+	// Call the client method
+	result, err := client.Livevideo_get_blocked_users(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_get_blocked_users: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextLivevideo_get_comments handles the livevideo_get_comments tool with context-based auth
+func HandleContextLivevideo_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewLiveVideoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: filter
+	if val := request.GetString("filter", ""); val != "" {
+		args["filter"] = val
+	}
+
+	// Optional: live_filter
+	if val := request.GetString("live_filter", ""); val != "" {
+		args["live_filter"] = val
+	}
+
+	// Optional: order
+	if val := request.GetString("order", ""); val != "" {
+		args["order"] = val
+	}
+
+	// Optional: since
+	if val := request.GetString("since", ""); val != "" {
+		args["since"] = val
+	}
+
+	// Call the client method
+	result, err := client.Livevideo_get_comments(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_get_comments: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextLivevideo_get_crosspost_shared_pages handles the livevideo_get_crosspost_shared_pages tool with context-based auth
+func HandleContextLivevideo_get_crosspost_shared_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewLiveVideoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Livevideo_get_crosspost_shared_pages(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_get_crosspost_shared_pages: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextLivevideo_get_crossposted_broadcasts handles the livevideo_get_crossposted_broadcasts tool with context-based auth
+func HandleContextLivevideo_get_crossposted_broadcasts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewLiveVideoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Livevideo_get_crossposted_broadcasts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_get_crossposted_broadcasts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextLivevideo_get_errors handles the livevideo_get_errors tool with context-based auth
+func HandleContextLivevideo_get_errors(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewLiveVideoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Livevideo_get_errors(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_get_errors: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextLivevideo_post_input_streams handles the livevideo_post_input_streams tool with context-based auth
+func HandleContextLivevideo_post_input_streams(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewLiveVideoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Livevideo_post_input_streams(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_post_input_streams: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextLivevideo_get_polls handles the livevideo_get_polls tool with context-based auth
+func HandleContextLivevideo_get_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewLiveVideoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Livevideo_get_polls(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_get_polls: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextLivevideo_post_polls handles the livevideo_post_polls tool with context-based auth
+func HandleContextLivevideo_post_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewLiveVideoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: close_after_voting
+	if val := request.GetBool("close_after_voting", false); val {
+		args["close_after_voting"] = val
+	}
+
+	// Optional: correct_option
+	if val := request.GetInt("correct_option", 0); val != 0 {
+		args["correct_option"] = val
+	}
+
+	// Optional: default_open
+	if val := request.GetBool("default_open", false); val {
+		args["default_open"] = val
+	}
+
+	// Required: options
+	options, err := request.RequireString("options")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter options: %v", err)), nil
+	}
+	args["options"] = options
+
+	// Required: question
+	question, err := request.RequireString("question")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter question: %v", err)), nil
+	}
+	args["question"] = question
+
+	// Optional: show_gradient
+	if val := request.GetBool("show_gradient", false); val {
+		args["show_gradient"] = val
+	}
+
+	// Optional: show_results
+	if val := request.GetBool("show_results", false); val {
+		args["show_results"] = val
+	}
+
+	// Call the client method
+	result, err := client.Livevideo_post_polls(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_post_polls: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextLivevideo_get_reactions handles the livevideo_get_reactions tool with context-based auth
+func HandleContextLivevideo_get_reactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewLiveVideoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: type
+	if val := request.GetString("type", ""); val != "" {
+		args["type"] = val
+	}
+
+	// Call the client method
+	result, err := client.Livevideo_get_reactions(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_get_reactions: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextLivevideo_delete_ handles the livevideo_delete_ tool with context-based auth
+func HandleContextLivevideo_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewLiveVideoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Livevideo_delete_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_delete_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextLivevideo_get_ handles the livevideo_get_ tool with context-based auth
+func HandleContextLivevideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewLiveVideoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: target_token
+	if val := request.GetString("target_token", ""); val != "" {
+		args["target_token"] = val
+	}
+
+	// Call the client method
+	result, err := client.Livevideo_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute livevideo_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextLivevideo_post_ handles the livevideo_post_ tool with context-based auth
+func HandleContextLivevideo_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

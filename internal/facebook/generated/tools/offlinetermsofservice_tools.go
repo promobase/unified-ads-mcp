@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetOfflineTermsOfServiceTools returns MCP tools for OfflineTermsOfService
@@ -28,6 +29,19 @@ func GetOfflineTermsOfServiceTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetOfflineTermsOfServiceToolsWithoutAuth returns MCP tools for OfflineTermsOfService without access_token parameter
+func GetOfflineTermsOfServiceToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// offlinetermsofservice_get_ tool
+	offlinetermsofservice_get_Tool := mcp.NewTool("offlinetermsofservice_get_",
+		mcp.WithDescription("GET  for OfflineTermsOfService"),
+	)
+	tools = append(tools, offlinetermsofservice_get_Tool)
+
+	return tools
+}
+
 // OfflineTermsOfService handlers
 
 // HandleOfflinetermsofservice_get_ handles the offlinetermsofservice_get_ tool
@@ -36,6 +50,37 @@ func HandleOfflinetermsofservice_get_(ctx context.Context, request mcp.CallToolR
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewOfflineTermsOfServiceClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Offlinetermsofservice_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute offlinetermsofservice_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextOfflinetermsofservice_get_ handles the offlinetermsofservice_get_ tool with context-based auth
+func HandleContextOfflinetermsofservice_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

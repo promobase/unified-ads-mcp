@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetDestinationTools returns MCP tools for Destination
@@ -59,6 +60,44 @@ func GetDestinationTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, destination_get_Tool)
+
+	return tools
+}
+
+// GetDestinationToolsWithoutAuth returns MCP tools for Destination without access_token parameter
+func GetDestinationToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// destination_get_channels_to_integrity_status tool
+	destination_get_channels_to_integrity_statusTool := mcp.NewTool("destination_get_channels_to_integrity_status",
+		mcp.WithDescription("GET channels_to_integrity_status for Destination"),
+	)
+	tools = append(tools, destination_get_channels_to_integrity_statusTool)
+
+	// destination_get_override_details tool
+	destination_get_override_detailsTool := mcp.NewTool("destination_get_override_details",
+		mcp.WithDescription("GET override_details for Destination"),
+		mcp.WithString("keys",
+			mcp.Description("keys parameter for override_details"),
+		),
+		mcp.WithString("type",
+			mcp.Description("type parameter for override_details"),
+			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
+		),
+	)
+	tools = append(tools, destination_get_override_detailsTool)
+
+	// destination_get_videos_metadata tool
+	destination_get_videos_metadataTool := mcp.NewTool("destination_get_videos_metadata",
+		mcp.WithDescription("GET videos_metadata for Destination"),
+	)
+	tools = append(tools, destination_get_videos_metadataTool)
+
+	// destination_get_ tool
+	destination_get_Tool := mcp.NewTool("destination_get_",
+		mcp.WithDescription("GET  for Destination"),
 	)
 	tools = append(tools, destination_get_Tool)
 
@@ -171,6 +210,135 @@ func HandleDestination_get_(ctx context.Context, request mcp.CallToolRequest) (*
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewDestinationClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Destination_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute destination_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextDestination_get_channels_to_integrity_status handles the destination_get_channels_to_integrity_status tool with context-based auth
+func HandleContextDestination_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewDestinationClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Destination_get_channels_to_integrity_status(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute destination_get_channels_to_integrity_status: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextDestination_get_override_details handles the destination_get_override_details tool with context-based auth
+func HandleContextDestination_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewDestinationClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: keys
+	// array type - using string
+	if val := request.GetString("keys", ""); val != "" {
+		args["keys"] = val
+	}
+
+	// Optional: type
+	if val := request.GetString("type", ""); val != "" {
+		args["type"] = val
+	}
+
+	// Call the client method
+	result, err := client.Destination_get_override_details(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute destination_get_override_details: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextDestination_get_videos_metadata handles the destination_get_videos_metadata tool with context-based auth
+func HandleContextDestination_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewDestinationClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Destination_get_videos_metadata(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute destination_get_videos_metadata: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextDestination_get_ handles the destination_get_ tool with context-based auth
+func HandleContextDestination_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

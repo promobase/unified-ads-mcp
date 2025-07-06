@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetCTXPartnerAppWelcomeMessageFlowTools returns MCP tools for CTXPartnerAppWelcomeMessageFlow
@@ -28,6 +29,19 @@ func GetCTXPartnerAppWelcomeMessageFlowTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetCTXPartnerAppWelcomeMessageFlowToolsWithoutAuth returns MCP tools for CTXPartnerAppWelcomeMessageFlow without access_token parameter
+func GetCTXPartnerAppWelcomeMessageFlowToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// ctxpartnerappwelcomemessageflow_get_ tool
+	ctxpartnerappwelcomemessageflow_get_Tool := mcp.NewTool("ctxpartnerappwelcomemessageflow_get_",
+		mcp.WithDescription("GET  for CTXPartnerAppWelcomeMessageFlow"),
+	)
+	tools = append(tools, ctxpartnerappwelcomemessageflow_get_Tool)
+
+	return tools
+}
+
 // CTXPartnerAppWelcomeMessageFlow handlers
 
 // HandleCtxpartnerappwelcomemessageflow_get_ handles the ctxpartnerappwelcomemessageflow_get_ tool
@@ -36,6 +50,37 @@ func HandleCtxpartnerappwelcomemessageflow_get_(ctx context.Context, request mcp
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewCTXPartnerAppWelcomeMessageFlowClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Ctxpartnerappwelcomemessageflow_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute ctxpartnerappwelcomemessageflow_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextCtxpartnerappwelcomemessageflow_get_ handles the ctxpartnerappwelcomemessageflow_get_ tool with context-based auth
+func HandleContextCtxpartnerappwelcomemessageflow_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

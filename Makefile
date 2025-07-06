@@ -3,6 +3,7 @@
 # Variables
 BINARY_NAME=unified-ads-mcp
 FACEBOOK_BINARY=facebook-mcp
+IMPROVED_BINARY=unified-ads-mcp-improved
 CODEGEN_DIR=internal/facebook/codegen
 API_SPECS_DIR=internal/facebook/api_specs/specs
 GENERATED_DIR=internal/facebook/generated
@@ -34,8 +35,13 @@ build-facebook:
 	@echo "Building Facebook MCP server..."
 	$(GOBUILD) $(LDFLAGS) -o $(FACEBOOK_BINARY) ./cmd/facebook-mcp
 
+# Build the improved server with context support
+build-improved:
+	@echo "Building improved MCP server with context support..."
+	$(GOBUILD) $(LDFLAGS) -o $(IMPROVED_BINARY) ./cmd/server-improved
+
 # Build all binaries
-build-all: build build-facebook
+build-all: build build-facebook build-improved
 
 # Run the main server
 run: build
@@ -53,6 +59,16 @@ run-facebook: build-facebook
 		exit 1; \
 	fi
 	./$(FACEBOOK_BINARY)
+
+# Run the improved server with context support
+run-improved: build-improved
+	@echo "Starting improved MCP server..."
+	@if [ -z "$(FACEBOOK_ACCESS_TOKEN)" ]; then \
+		echo "Error: FACEBOOK_ACCESS_TOKEN environment variable must be set"; \
+		exit 1; \
+	fi
+	@echo "Enabled categories: $(ENABLED_CATEGORIES)"
+	./$(IMPROVED_BINARY)
 
 # Run code generation
 codegen:
@@ -150,9 +166,11 @@ help:
 	@echo "Available targets:"
 	@echo "  make build          - Build the main server"
 	@echo "  make build-facebook - Build the Facebook-specific server"
+	@echo "  make build-improved - Build the improved server with context support"
 	@echo "  make build-all      - Build all binaries"
 	@echo "  make run            - Build and run the main server"
 	@echo "  make run-facebook   - Build and run the Facebook server"
+	@echo "  make run-improved   - Build and run the improved server (ENABLED_CATEGORIES=core_ads,reporting)"
 	@echo "  make codegen        - Run code generation with formatting"
 	@echo "  make regenerate     - Clean and regenerate code"
 	@echo "  make test           - Run tests"

@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetBusinessAssetGroupTools returns MCP tools for BusinessAssetGroup
@@ -356,6 +357,256 @@ func GetBusinessAssetGroupTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithString("name",
+			mcp.Description("name parameter for "),
+		),
+	)
+	tools = append(tools, businessassetgroup_post_Tool)
+
+	return tools
+}
+
+// GetBusinessAssetGroupToolsWithoutAuth returns MCP tools for BusinessAssetGroup without access_token parameter
+func GetBusinessAssetGroupToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// businessassetgroup_delete_assigned_users tool
+	businessassetgroup_delete_assigned_usersTool := mcp.NewTool("businessassetgroup_delete_assigned_users",
+		mcp.WithDescription("DELETE assigned_users for BusinessAssetGroup"),
+		mcp.WithNumber("user",
+			mcp.Required(),
+			mcp.Description("user parameter for assigned_users"),
+		),
+	)
+	tools = append(tools, businessassetgroup_delete_assigned_usersTool)
+
+	// businessassetgroup_get_assigned_users tool
+	businessassetgroup_get_assigned_usersTool := mcp.NewTool("businessassetgroup_get_assigned_users",
+		mcp.WithDescription("GET assigned_users for BusinessAssetGroup"),
+		mcp.WithString("business",
+			mcp.Required(),
+			mcp.Description("business parameter for assigned_users"),
+		),
+	)
+	tools = append(tools, businessassetgroup_get_assigned_usersTool)
+
+	// businessassetgroup_post_assigned_users tool
+	businessassetgroup_post_assigned_usersTool := mcp.NewTool("businessassetgroup_post_assigned_users",
+		mcp.WithDescription("POST assigned_users for BusinessAssetGroup"),
+		mcp.WithString("adaccount_tasks",
+			mcp.Description("adaccount_tasks parameter for assigned_users"),
+			mcp.Enum("AA_ANALYZE", "ADVERTISE", "ANALYZE", "DRAFT", "MANAGE"),
+		),
+		mcp.WithString("offline_conversion_data_set_tasks",
+			mcp.Description("offline_conversion_data_set_tasks parameter for assigned_users"),
+			mcp.Enum("AA_ANALYZE", "ADVERTISE", "MANAGE", "UPLOAD", "VIEW"),
+		),
+		mcp.WithString("page_tasks",
+			mcp.Description("page_tasks parameter for assigned_users"),
+			mcp.Enum("ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS"),
+		),
+		mcp.WithString("pixel_tasks",
+			mcp.Description("pixel_tasks parameter for assigned_users"),
+			mcp.Enum("AA_ANALYZE", "ADVERTISE", "ANALYZE", "EDIT", "UPLOAD"),
+		),
+		mcp.WithNumber("user",
+			mcp.Required(),
+			mcp.Description("user parameter for assigned_users"),
+		),
+	)
+	tools = append(tools, businessassetgroup_post_assigned_usersTool)
+
+	// businessassetgroup_delete_contained_adaccounts tool
+	businessassetgroup_delete_contained_adaccountsTool := mcp.NewTool("businessassetgroup_delete_contained_adaccounts",
+		mcp.WithDescription("DELETE contained_adaccounts for BusinessAssetGroup"),
+		mcp.WithString("asset_id",
+			mcp.Required(),
+			mcp.Description("asset_id parameter for contained_adaccounts"),
+		),
+	)
+	tools = append(tools, businessassetgroup_delete_contained_adaccountsTool)
+
+	// businessassetgroup_get_contained_adaccounts tool
+	businessassetgroup_get_contained_adaccountsTool := mcp.NewTool("businessassetgroup_get_contained_adaccounts",
+		mcp.WithDescription("GET contained_adaccounts for BusinessAssetGroup"),
+	)
+	tools = append(tools, businessassetgroup_get_contained_adaccountsTool)
+
+	// businessassetgroup_post_contained_adaccounts tool
+	businessassetgroup_post_contained_adaccountsTool := mcp.NewTool("businessassetgroup_post_contained_adaccounts",
+		mcp.WithDescription("POST contained_adaccounts for BusinessAssetGroup"),
+		mcp.WithString("asset_id",
+			mcp.Required(),
+			mcp.Description("asset_id parameter for contained_adaccounts"),
+		),
+	)
+	tools = append(tools, businessassetgroup_post_contained_adaccountsTool)
+
+	// businessassetgroup_delete_contained_applications tool
+	businessassetgroup_delete_contained_applicationsTool := mcp.NewTool("businessassetgroup_delete_contained_applications",
+		mcp.WithDescription("DELETE contained_applications for BusinessAssetGroup"),
+		mcp.WithString("asset_id",
+			mcp.Required(),
+			mcp.Description("asset_id parameter for contained_applications"),
+		),
+	)
+	tools = append(tools, businessassetgroup_delete_contained_applicationsTool)
+
+	// businessassetgroup_get_contained_applications tool
+	businessassetgroup_get_contained_applicationsTool := mcp.NewTool("businessassetgroup_get_contained_applications",
+		mcp.WithDescription("GET contained_applications for BusinessAssetGroup"),
+	)
+	tools = append(tools, businessassetgroup_get_contained_applicationsTool)
+
+	// businessassetgroup_post_contained_applications tool
+	businessassetgroup_post_contained_applicationsTool := mcp.NewTool("businessassetgroup_post_contained_applications",
+		mcp.WithDescription("POST contained_applications for BusinessAssetGroup"),
+		mcp.WithString("asset_id",
+			mcp.Required(),
+			mcp.Description("asset_id parameter for contained_applications"),
+		),
+	)
+	tools = append(tools, businessassetgroup_post_contained_applicationsTool)
+
+	// businessassetgroup_delete_contained_custom_conversions tool
+	businessassetgroup_delete_contained_custom_conversionsTool := mcp.NewTool("businessassetgroup_delete_contained_custom_conversions",
+		mcp.WithDescription("DELETE contained_custom_conversions for BusinessAssetGroup"),
+		mcp.WithString("asset_id",
+			mcp.Required(),
+			mcp.Description("asset_id parameter for contained_custom_conversions"),
+		),
+	)
+	tools = append(tools, businessassetgroup_delete_contained_custom_conversionsTool)
+
+	// businessassetgroup_get_contained_custom_conversions tool
+	businessassetgroup_get_contained_custom_conversionsTool := mcp.NewTool("businessassetgroup_get_contained_custom_conversions",
+		mcp.WithDescription("GET contained_custom_conversions for BusinessAssetGroup"),
+	)
+	tools = append(tools, businessassetgroup_get_contained_custom_conversionsTool)
+
+	// businessassetgroup_post_contained_custom_conversions tool
+	businessassetgroup_post_contained_custom_conversionsTool := mcp.NewTool("businessassetgroup_post_contained_custom_conversions",
+		mcp.WithDescription("POST contained_custom_conversions for BusinessAssetGroup"),
+		mcp.WithString("asset_id",
+			mcp.Required(),
+			mcp.Description("asset_id parameter for contained_custom_conversions"),
+		),
+	)
+	tools = append(tools, businessassetgroup_post_contained_custom_conversionsTool)
+
+	// businessassetgroup_delete_contained_instagram_accounts tool
+	businessassetgroup_delete_contained_instagram_accountsTool := mcp.NewTool("businessassetgroup_delete_contained_instagram_accounts",
+		mcp.WithDescription("DELETE contained_instagram_accounts for BusinessAssetGroup"),
+		mcp.WithString("asset_id",
+			mcp.Required(),
+			mcp.Description("asset_id parameter for contained_instagram_accounts"),
+		),
+	)
+	tools = append(tools, businessassetgroup_delete_contained_instagram_accountsTool)
+
+	// businessassetgroup_get_contained_instagram_accounts tool
+	businessassetgroup_get_contained_instagram_accountsTool := mcp.NewTool("businessassetgroup_get_contained_instagram_accounts",
+		mcp.WithDescription("GET contained_instagram_accounts for BusinessAssetGroup"),
+	)
+	tools = append(tools, businessassetgroup_get_contained_instagram_accountsTool)
+
+	// businessassetgroup_post_contained_instagram_accounts tool
+	businessassetgroup_post_contained_instagram_accountsTool := mcp.NewTool("businessassetgroup_post_contained_instagram_accounts",
+		mcp.WithDescription("POST contained_instagram_accounts for BusinessAssetGroup"),
+		mcp.WithString("asset_id",
+			mcp.Required(),
+			mcp.Description("asset_id parameter for contained_instagram_accounts"),
+		),
+	)
+	tools = append(tools, businessassetgroup_post_contained_instagram_accountsTool)
+
+	// businessassetgroup_delete_contained_pages tool
+	businessassetgroup_delete_contained_pagesTool := mcp.NewTool("businessassetgroup_delete_contained_pages",
+		mcp.WithDescription("DELETE contained_pages for BusinessAssetGroup"),
+		mcp.WithString("asset_id",
+			mcp.Required(),
+			mcp.Description("asset_id parameter for contained_pages"),
+		),
+	)
+	tools = append(tools, businessassetgroup_delete_contained_pagesTool)
+
+	// businessassetgroup_get_contained_pages tool
+	businessassetgroup_get_contained_pagesTool := mcp.NewTool("businessassetgroup_get_contained_pages",
+		mcp.WithDescription("GET contained_pages for BusinessAssetGroup"),
+	)
+	tools = append(tools, businessassetgroup_get_contained_pagesTool)
+
+	// businessassetgroup_post_contained_pages tool
+	businessassetgroup_post_contained_pagesTool := mcp.NewTool("businessassetgroup_post_contained_pages",
+		mcp.WithDescription("POST contained_pages for BusinessAssetGroup"),
+		mcp.WithString("asset_id",
+			mcp.Required(),
+			mcp.Description("asset_id parameter for contained_pages"),
+		),
+	)
+	tools = append(tools, businessassetgroup_post_contained_pagesTool)
+
+	// businessassetgroup_delete_contained_pixels tool
+	businessassetgroup_delete_contained_pixelsTool := mcp.NewTool("businessassetgroup_delete_contained_pixels",
+		mcp.WithDescription("DELETE contained_pixels for BusinessAssetGroup"),
+		mcp.WithString("asset_id",
+			mcp.Required(),
+			mcp.Description("asset_id parameter for contained_pixels"),
+		),
+	)
+	tools = append(tools, businessassetgroup_delete_contained_pixelsTool)
+
+	// businessassetgroup_get_contained_pixels tool
+	businessassetgroup_get_contained_pixelsTool := mcp.NewTool("businessassetgroup_get_contained_pixels",
+		mcp.WithDescription("GET contained_pixels for BusinessAssetGroup"),
+	)
+	tools = append(tools, businessassetgroup_get_contained_pixelsTool)
+
+	// businessassetgroup_post_contained_pixels tool
+	businessassetgroup_post_contained_pixelsTool := mcp.NewTool("businessassetgroup_post_contained_pixels",
+		mcp.WithDescription("POST contained_pixels for BusinessAssetGroup"),
+		mcp.WithString("asset_id",
+			mcp.Required(),
+			mcp.Description("asset_id parameter for contained_pixels"),
+		),
+	)
+	tools = append(tools, businessassetgroup_post_contained_pixelsTool)
+
+	// businessassetgroup_delete_contained_product_catalogs tool
+	businessassetgroup_delete_contained_product_catalogsTool := mcp.NewTool("businessassetgroup_delete_contained_product_catalogs",
+		mcp.WithDescription("DELETE contained_product_catalogs for BusinessAssetGroup"),
+		mcp.WithString("asset_id",
+			mcp.Required(),
+			mcp.Description("asset_id parameter for contained_product_catalogs"),
+		),
+	)
+	tools = append(tools, businessassetgroup_delete_contained_product_catalogsTool)
+
+	// businessassetgroup_get_contained_product_catalogs tool
+	businessassetgroup_get_contained_product_catalogsTool := mcp.NewTool("businessassetgroup_get_contained_product_catalogs",
+		mcp.WithDescription("GET contained_product_catalogs for BusinessAssetGroup"),
+	)
+	tools = append(tools, businessassetgroup_get_contained_product_catalogsTool)
+
+	// businessassetgroup_post_contained_product_catalogs tool
+	businessassetgroup_post_contained_product_catalogsTool := mcp.NewTool("businessassetgroup_post_contained_product_catalogs",
+		mcp.WithDescription("POST contained_product_catalogs for BusinessAssetGroup"),
+		mcp.WithString("asset_id",
+			mcp.Required(),
+			mcp.Description("asset_id parameter for contained_product_catalogs"),
+		),
+	)
+	tools = append(tools, businessassetgroup_post_contained_product_catalogsTool)
+
+	// businessassetgroup_get_ tool
+	businessassetgroup_get_Tool := mcp.NewTool("businessassetgroup_get_",
+		mcp.WithDescription("GET  for BusinessAssetGroup"),
+	)
+	tools = append(tools, businessassetgroup_get_Tool)
+
+	// businessassetgroup_post_ tool
+	businessassetgroup_post_Tool := mcp.NewTool("businessassetgroup_post_",
+		mcp.WithDescription("POST  for BusinessAssetGroup"),
 		mcp.WithString("name",
 			mcp.Description("name parameter for "),
 		),
@@ -1241,6 +1492,910 @@ func HandleBusinessassetgroup_post_(ctx context.Context, request mcp.CallToolReq
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: name
+	if val := request.GetString("name", ""); val != "" {
+		args["name"] = val
+	}
+
+	// Call the client method
+	result, err := client.Businessassetgroup_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextBusinessassetgroup_delete_assigned_users handles the businessassetgroup_delete_assigned_users tool with context-based auth
+func HandleContextBusinessassetgroup_delete_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: user
+	user, err := request.RequireInt("user")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user: %v", err)), nil
+	}
+	args["user"] = user
+
+	// Call the client method
+	result, err := client.Businessassetgroup_delete_assigned_users(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_delete_assigned_users: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_get_assigned_users handles the businessassetgroup_get_assigned_users tool with context-based auth
+func HandleContextBusinessassetgroup_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: business
+	business, err := request.RequireString("business")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter business: %v", err)), nil
+	}
+	args["business"] = business
+
+	// Call the client method
+	result, err := client.Businessassetgroup_get_assigned_users(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_get_assigned_users: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_post_assigned_users handles the businessassetgroup_post_assigned_users tool with context-based auth
+func HandleContextBusinessassetgroup_post_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: adaccount_tasks
+	// array type - using string
+	if val := request.GetString("adaccount_tasks", ""); val != "" {
+		args["adaccount_tasks"] = val
+	}
+
+	// Optional: offline_conversion_data_set_tasks
+	// array type - using string
+	if val := request.GetString("offline_conversion_data_set_tasks", ""); val != "" {
+		args["offline_conversion_data_set_tasks"] = val
+	}
+
+	// Optional: page_tasks
+	// array type - using string
+	if val := request.GetString("page_tasks", ""); val != "" {
+		args["page_tasks"] = val
+	}
+
+	// Optional: pixel_tasks
+	// array type - using string
+	if val := request.GetString("pixel_tasks", ""); val != "" {
+		args["pixel_tasks"] = val
+	}
+
+	// Required: user
+	user, err := request.RequireInt("user")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter user: %v", err)), nil
+	}
+	args["user"] = user
+
+	// Call the client method
+	result, err := client.Businessassetgroup_post_assigned_users(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_post_assigned_users: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_delete_contained_adaccounts handles the businessassetgroup_delete_contained_adaccounts tool with context-based auth
+func HandleContextBusinessassetgroup_delete_contained_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: asset_id
+	asset_id, err := request.RequireString("asset_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+	}
+	args["asset_id"] = asset_id
+
+	// Call the client method
+	result, err := client.Businessassetgroup_delete_contained_adaccounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_delete_contained_adaccounts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_get_contained_adaccounts handles the businessassetgroup_get_contained_adaccounts tool with context-based auth
+func HandleContextBusinessassetgroup_get_contained_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Businessassetgroup_get_contained_adaccounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_get_contained_adaccounts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_post_contained_adaccounts handles the businessassetgroup_post_contained_adaccounts tool with context-based auth
+func HandleContextBusinessassetgroup_post_contained_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: asset_id
+	asset_id, err := request.RequireString("asset_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+	}
+	args["asset_id"] = asset_id
+
+	// Call the client method
+	result, err := client.Businessassetgroup_post_contained_adaccounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_post_contained_adaccounts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_delete_contained_applications handles the businessassetgroup_delete_contained_applications tool with context-based auth
+func HandleContextBusinessassetgroup_delete_contained_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: asset_id
+	asset_id, err := request.RequireString("asset_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+	}
+	args["asset_id"] = asset_id
+
+	// Call the client method
+	result, err := client.Businessassetgroup_delete_contained_applications(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_delete_contained_applications: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_get_contained_applications handles the businessassetgroup_get_contained_applications tool with context-based auth
+func HandleContextBusinessassetgroup_get_contained_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Businessassetgroup_get_contained_applications(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_get_contained_applications: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_post_contained_applications handles the businessassetgroup_post_contained_applications tool with context-based auth
+func HandleContextBusinessassetgroup_post_contained_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: asset_id
+	asset_id, err := request.RequireString("asset_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+	}
+	args["asset_id"] = asset_id
+
+	// Call the client method
+	result, err := client.Businessassetgroup_post_contained_applications(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_post_contained_applications: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_delete_contained_custom_conversions handles the businessassetgroup_delete_contained_custom_conversions tool with context-based auth
+func HandleContextBusinessassetgroup_delete_contained_custom_conversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: asset_id
+	asset_id, err := request.RequireString("asset_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+	}
+	args["asset_id"] = asset_id
+
+	// Call the client method
+	result, err := client.Businessassetgroup_delete_contained_custom_conversions(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_delete_contained_custom_conversions: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_get_contained_custom_conversions handles the businessassetgroup_get_contained_custom_conversions tool with context-based auth
+func HandleContextBusinessassetgroup_get_contained_custom_conversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Businessassetgroup_get_contained_custom_conversions(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_get_contained_custom_conversions: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_post_contained_custom_conversions handles the businessassetgroup_post_contained_custom_conversions tool with context-based auth
+func HandleContextBusinessassetgroup_post_contained_custom_conversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: asset_id
+	asset_id, err := request.RequireString("asset_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+	}
+	args["asset_id"] = asset_id
+
+	// Call the client method
+	result, err := client.Businessassetgroup_post_contained_custom_conversions(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_post_contained_custom_conversions: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_delete_contained_instagram_accounts handles the businessassetgroup_delete_contained_instagram_accounts tool with context-based auth
+func HandleContextBusinessassetgroup_delete_contained_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: asset_id
+	asset_id, err := request.RequireString("asset_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+	}
+	args["asset_id"] = asset_id
+
+	// Call the client method
+	result, err := client.Businessassetgroup_delete_contained_instagram_accounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_delete_contained_instagram_accounts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_get_contained_instagram_accounts handles the businessassetgroup_get_contained_instagram_accounts tool with context-based auth
+func HandleContextBusinessassetgroup_get_contained_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Businessassetgroup_get_contained_instagram_accounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_get_contained_instagram_accounts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_post_contained_instagram_accounts handles the businessassetgroup_post_contained_instagram_accounts tool with context-based auth
+func HandleContextBusinessassetgroup_post_contained_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: asset_id
+	asset_id, err := request.RequireString("asset_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+	}
+	args["asset_id"] = asset_id
+
+	// Call the client method
+	result, err := client.Businessassetgroup_post_contained_instagram_accounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_post_contained_instagram_accounts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_delete_contained_pages handles the businessassetgroup_delete_contained_pages tool with context-based auth
+func HandleContextBusinessassetgroup_delete_contained_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: asset_id
+	asset_id, err := request.RequireString("asset_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+	}
+	args["asset_id"] = asset_id
+
+	// Call the client method
+	result, err := client.Businessassetgroup_delete_contained_pages(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_delete_contained_pages: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_get_contained_pages handles the businessassetgroup_get_contained_pages tool with context-based auth
+func HandleContextBusinessassetgroup_get_contained_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Businessassetgroup_get_contained_pages(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_get_contained_pages: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_post_contained_pages handles the businessassetgroup_post_contained_pages tool with context-based auth
+func HandleContextBusinessassetgroup_post_contained_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: asset_id
+	asset_id, err := request.RequireString("asset_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+	}
+	args["asset_id"] = asset_id
+
+	// Call the client method
+	result, err := client.Businessassetgroup_post_contained_pages(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_post_contained_pages: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_delete_contained_pixels handles the businessassetgroup_delete_contained_pixels tool with context-based auth
+func HandleContextBusinessassetgroup_delete_contained_pixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: asset_id
+	asset_id, err := request.RequireString("asset_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+	}
+	args["asset_id"] = asset_id
+
+	// Call the client method
+	result, err := client.Businessassetgroup_delete_contained_pixels(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_delete_contained_pixels: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_get_contained_pixels handles the businessassetgroup_get_contained_pixels tool with context-based auth
+func HandleContextBusinessassetgroup_get_contained_pixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Businessassetgroup_get_contained_pixels(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_get_contained_pixels: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_post_contained_pixels handles the businessassetgroup_post_contained_pixels tool with context-based auth
+func HandleContextBusinessassetgroup_post_contained_pixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: asset_id
+	asset_id, err := request.RequireString("asset_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+	}
+	args["asset_id"] = asset_id
+
+	// Call the client method
+	result, err := client.Businessassetgroup_post_contained_pixels(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_post_contained_pixels: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_delete_contained_product_catalogs handles the businessassetgroup_delete_contained_product_catalogs tool with context-based auth
+func HandleContextBusinessassetgroup_delete_contained_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: asset_id
+	asset_id, err := request.RequireString("asset_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+	}
+	args["asset_id"] = asset_id
+
+	// Call the client method
+	result, err := client.Businessassetgroup_delete_contained_product_catalogs(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_delete_contained_product_catalogs: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_get_contained_product_catalogs handles the businessassetgroup_get_contained_product_catalogs tool with context-based auth
+func HandleContextBusinessassetgroup_get_contained_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Businessassetgroup_get_contained_product_catalogs(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_get_contained_product_catalogs: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_post_contained_product_catalogs handles the businessassetgroup_post_contained_product_catalogs tool with context-based auth
+func HandleContextBusinessassetgroup_post_contained_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Required: asset_id
+	asset_id, err := request.RequireString("asset_id")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter asset_id: %v", err)), nil
+	}
+	args["asset_id"] = asset_id
+
+	// Call the client method
+	result, err := client.Businessassetgroup_post_contained_product_catalogs(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_post_contained_product_catalogs: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_get_ handles the businessassetgroup_get_ tool with context-based auth
+func HandleContextBusinessassetgroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessAssetGroupClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Businessassetgroup_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessassetgroup_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessassetgroup_post_ handles the businessassetgroup_post_ tool with context-based auth
+func HandleContextBusinessassetgroup_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

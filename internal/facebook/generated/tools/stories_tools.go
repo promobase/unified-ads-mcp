@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetStoriesTools returns MCP tools for Stories
@@ -36,6 +37,29 @@ func GetStoriesTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, stories_get_Tool)
+
+	return tools
+}
+
+// GetStoriesToolsWithoutAuth returns MCP tools for Stories without access_token parameter
+func GetStoriesToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// stories_get_insights tool
+	stories_get_insightsTool := mcp.NewTool("stories_get_insights",
+		mcp.WithDescription("GET insights for Stories"),
+		mcp.WithString("metric",
+			mcp.Description("metric parameter for insights"),
+			mcp.Enum("PAGES_FB_STORY_REPLIES", "PAGES_FB_STORY_SHARES", "PAGES_FB_STORY_STICKER_INTERACTIONS", "PAGES_FB_STORY_THREAD_LIGHTWEIGHT_REACTIONS", "PAGE_STORY_IMPRESSIONS_BY_STORY_ID", "PAGE_STORY_IMPRESSIONS_BY_STORY_ID_UNIQUE", "STORY_INTERACTION"),
+		),
+	)
+	tools = append(tools, stories_get_insightsTool)
+
+	// stories_get_ tool
+	stories_get_Tool := mcp.NewTool("stories_get_",
+		mcp.WithDescription("GET  for Stories"),
 	)
 	tools = append(tools, stories_get_Tool)
 
@@ -85,6 +109,72 @@ func HandleStories_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewStoriesClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Stories_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute stories_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextStories_get_insights handles the stories_get_insights tool with context-based auth
+func HandleContextStories_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewStoriesClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: metric
+	// array type - using string
+	if val := request.GetString("metric", ""); val != "" {
+		args["metric"] = val
+	}
+
+	// Call the client method
+	result, err := client.Stories_get_insights(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute stories_get_insights: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextStories_get_ handles the stories_get_ tool with context-based auth
+func HandleContextStories_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

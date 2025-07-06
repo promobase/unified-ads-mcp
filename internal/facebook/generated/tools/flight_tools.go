@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetFlightTools returns MCP tools for Flight
@@ -69,6 +70,77 @@ func GetFlightTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithString("currency",
+			mcp.Description("currency parameter for "),
+		),
+		mcp.WithString("description",
+			mcp.Description("description parameter for "),
+		),
+		mcp.WithString("destination_airport",
+			mcp.Description("destination_airport parameter for "),
+		),
+		mcp.WithString("destination_city",
+			mcp.Description("destination_city parameter for "),
+		),
+		mcp.WithString("images",
+			mcp.Description("images parameter for "),
+		),
+		mcp.WithString("origin_airport",
+			mcp.Description("origin_airport parameter for "),
+		),
+		mcp.WithString("origin_city",
+			mcp.Description("origin_city parameter for "),
+		),
+		mcp.WithNumber("price",
+			mcp.Description("price parameter for "),
+		),
+		mcp.WithString("url",
+			mcp.Description("url parameter for "),
+		),
+	)
+	tools = append(tools, flight_post_Tool)
+
+	return tools
+}
+
+// GetFlightToolsWithoutAuth returns MCP tools for Flight without access_token parameter
+func GetFlightToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// flight_get_channels_to_integrity_status tool
+	flight_get_channels_to_integrity_statusTool := mcp.NewTool("flight_get_channels_to_integrity_status",
+		mcp.WithDescription("GET channels_to_integrity_status for Flight"),
+	)
+	tools = append(tools, flight_get_channels_to_integrity_statusTool)
+
+	// flight_get_override_details tool
+	flight_get_override_detailsTool := mcp.NewTool("flight_get_override_details",
+		mcp.WithDescription("GET override_details for Flight"),
+		mcp.WithString("keys",
+			mcp.Description("keys parameter for override_details"),
+		),
+		mcp.WithString("type",
+			mcp.Description("type parameter for override_details"),
+			mcp.Enum("COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"),
+		),
+	)
+	tools = append(tools, flight_get_override_detailsTool)
+
+	// flight_get_videos_metadata tool
+	flight_get_videos_metadataTool := mcp.NewTool("flight_get_videos_metadata",
+		mcp.WithDescription("GET videos_metadata for Flight"),
+	)
+	tools = append(tools, flight_get_videos_metadataTool)
+
+	// flight_get_ tool
+	flight_get_Tool := mcp.NewTool("flight_get_",
+		mcp.WithDescription("GET  for Flight"),
+	)
+	tools = append(tools, flight_get_Tool)
+
+	// flight_post_ tool
+	flight_post_Tool := mcp.NewTool("flight_post_",
+		mcp.WithDescription("POST  for Flight"),
 		mcp.WithString("currency",
 			mcp.Description("currency parameter for "),
 		),
@@ -237,6 +309,210 @@ func HandleFlight_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewFlightClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: currency
+	if val := request.GetString("currency", ""); val != "" {
+		args["currency"] = val
+	}
+
+	// Optional: description
+	if val := request.GetString("description", ""); val != "" {
+		args["description"] = val
+	}
+
+	// Optional: destination_airport
+	if val := request.GetString("destination_airport", ""); val != "" {
+		args["destination_airport"] = val
+	}
+
+	// Optional: destination_city
+	if val := request.GetString("destination_city", ""); val != "" {
+		args["destination_city"] = val
+	}
+
+	// Optional: images
+	// array type - using string
+	if val := request.GetString("images", ""); val != "" {
+		args["images"] = val
+	}
+
+	// Optional: origin_airport
+	if val := request.GetString("origin_airport", ""); val != "" {
+		args["origin_airport"] = val
+	}
+
+	// Optional: origin_city
+	if val := request.GetString("origin_city", ""); val != "" {
+		args["origin_city"] = val
+	}
+
+	// Optional: price
+	if val := request.GetInt("price", 0); val != 0 {
+		args["price"] = val
+	}
+
+	// Optional: url
+	if val := request.GetString("url", ""); val != "" {
+		args["url"] = val
+	}
+
+	// Call the client method
+	result, err := client.Flight_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute flight_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextFlight_get_channels_to_integrity_status handles the flight_get_channels_to_integrity_status tool with context-based auth
+func HandleContextFlight_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewFlightClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Flight_get_channels_to_integrity_status(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute flight_get_channels_to_integrity_status: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextFlight_get_override_details handles the flight_get_override_details tool with context-based auth
+func HandleContextFlight_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewFlightClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: keys
+	// array type - using string
+	if val := request.GetString("keys", ""); val != "" {
+		args["keys"] = val
+	}
+
+	// Optional: type
+	if val := request.GetString("type", ""); val != "" {
+		args["type"] = val
+	}
+
+	// Call the client method
+	result, err := client.Flight_get_override_details(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute flight_get_override_details: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextFlight_get_videos_metadata handles the flight_get_videos_metadata tool with context-based auth
+func HandleContextFlight_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewFlightClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Flight_get_videos_metadata(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute flight_get_videos_metadata: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextFlight_get_ handles the flight_get_ tool with context-based auth
+func HandleContextFlight_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewFlightClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Flight_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute flight_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextFlight_post_ handles the flight_post_ tool with context-based auth
+func HandleContextFlight_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

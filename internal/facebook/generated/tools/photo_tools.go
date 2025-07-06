@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetPhotoTools returns MCP tools for Photo
@@ -176,6 +177,145 @@ func GetPhotoTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, photo_get_Tool)
+
+	return tools
+}
+
+// GetPhotoToolsWithoutAuth returns MCP tools for Photo without access_token parameter
+func GetPhotoToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// photo_get_comments tool
+	photo_get_commentsTool := mcp.NewTool("photo_get_comments",
+		mcp.WithDescription("GET comments for Photo"),
+		mcp.WithString("filter",
+			mcp.Description("filter parameter for comments"),
+			mcp.Enum("stream", "toplevel"),
+		),
+		mcp.WithString("live_filter",
+			mcp.Description("live_filter parameter for comments"),
+			mcp.Enum("filter_low_quality", "no_filter"),
+		),
+		mcp.WithString("order",
+			mcp.Description("order parameter for comments"),
+			mcp.Enum("chronological", "reverse_chronological"),
+		),
+		mcp.WithString("since",
+			mcp.Description("since parameter for comments"),
+		),
+	)
+	tools = append(tools, photo_get_commentsTool)
+
+	// photo_post_comments tool
+	photo_post_commentsTool := mcp.NewTool("photo_post_comments",
+		mcp.WithDescription("POST comments for Photo"),
+		mcp.WithString("attachment_id",
+			mcp.Description("attachment_id parameter for comments"),
+		),
+		mcp.WithString("attachment_share_url",
+			mcp.Description("attachment_share_url parameter for comments"),
+		),
+		mcp.WithString("attachment_url",
+			mcp.Description("attachment_url parameter for comments"),
+		),
+		mcp.WithString("comment_privacy_value",
+			mcp.Description("comment_privacy_value parameter for comments"),
+			mcp.Enum("DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"),
+		),
+		mcp.WithString("facepile_mentioned_ids",
+			mcp.Description("facepile_mentioned_ids parameter for comments"),
+		),
+		mcp.WithString("feedback_source",
+			mcp.Description("feedback_source parameter for comments"),
+		),
+		mcp.WithBoolean("is_offline",
+			mcp.Description("is_offline parameter for comments"),
+		),
+		mcp.WithString("message",
+			mcp.Description("message parameter for comments"),
+		),
+		mcp.WithString("nectar_module",
+			mcp.Description("nectar_module parameter for comments"),
+		),
+		mcp.WithString("object_id",
+			mcp.Description("object_id parameter for comments"),
+		),
+		mcp.WithString("parent_comment_id",
+			mcp.Description("parent_comment_id parameter for comments"),
+		),
+		mcp.WithString("text",
+			mcp.Description("text parameter for comments"),
+		),
+		mcp.WithString("tracking",
+			mcp.Description("tracking parameter for comments"),
+		),
+	)
+	tools = append(tools, photo_post_commentsTool)
+
+	// photo_get_insights tool
+	photo_get_insightsTool := mcp.NewTool("photo_get_insights",
+		mcp.WithDescription("GET insights for Photo"),
+		mcp.WithString("date_preset",
+			mcp.Description("date_preset parameter for insights"),
+			mcp.Enum("data_maximum", "last_14d", "last_28d", "last_30d", "last_3d", "last_7d", "last_90d", "last_month", "last_quarter", "last_week_mon_sun", "last_week_sun_sat", "last_year", "maximum", "this_month", "this_quarter", "this_week_mon_today", "this_week_sun_today", "this_year", "today", "yesterday"),
+		),
+		mcp.WithString("metric",
+			mcp.Description("metric parameter for insights"),
+		),
+		mcp.WithString("period",
+			mcp.Description("period parameter for insights"),
+			mcp.Enum("day", "days_28", "lifetime", "month", "total_over_range", "week"),
+		),
+		mcp.WithString("since",
+			mcp.Description("since parameter for insights"),
+		),
+		mcp.WithString("until",
+			mcp.Description("until parameter for insights"),
+		),
+	)
+	tools = append(tools, photo_get_insightsTool)
+
+	// photo_get_likes tool
+	photo_get_likesTool := mcp.NewTool("photo_get_likes",
+		mcp.WithDescription("GET likes for Photo"),
+	)
+	tools = append(tools, photo_get_likesTool)
+
+	// photo_post_likes tool
+	photo_post_likesTool := mcp.NewTool("photo_post_likes",
+		mcp.WithDescription("POST likes for Photo"),
+		mcp.WithString("feedback_source",
+			mcp.Description("feedback_source parameter for likes"),
+		),
+		mcp.WithString("nectar_module",
+			mcp.Description("nectar_module parameter for likes"),
+		),
+		mcp.WithBoolean("notify",
+			mcp.Description("notify parameter for likes"),
+		),
+		mcp.WithString("tracking",
+			mcp.Description("tracking parameter for likes"),
+		),
+	)
+	tools = append(tools, photo_post_likesTool)
+
+	// photo_get_sponsor_tags tool
+	photo_get_sponsor_tagsTool := mcp.NewTool("photo_get_sponsor_tags",
+		mcp.WithDescription("GET sponsor_tags for Photo"),
+	)
+	tools = append(tools, photo_get_sponsor_tagsTool)
+
+	// photo_delete_ tool
+	photo_delete_Tool := mcp.NewTool("photo_delete_",
+		mcp.WithDescription("DELETE  for Photo"),
+	)
+	tools = append(tools, photo_delete_Tool)
+
+	// photo_get_ tool
+	photo_get_Tool := mcp.NewTool("photo_get_",
+		mcp.WithDescription("GET  for Photo"),
 	)
 	tools = append(tools, photo_get_Tool)
 
@@ -526,6 +666,373 @@ func HandlePhoto_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewPhotoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Photo_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute photo_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextPhoto_get_comments handles the photo_get_comments tool with context-based auth
+func HandleContextPhoto_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPhotoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: filter
+	if val := request.GetString("filter", ""); val != "" {
+		args["filter"] = val
+	}
+
+	// Optional: live_filter
+	if val := request.GetString("live_filter", ""); val != "" {
+		args["live_filter"] = val
+	}
+
+	// Optional: order
+	if val := request.GetString("order", ""); val != "" {
+		args["order"] = val
+	}
+
+	// Optional: since
+	if val := request.GetString("since", ""); val != "" {
+		args["since"] = val
+	}
+
+	// Call the client method
+	result, err := client.Photo_get_comments(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute photo_get_comments: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPhoto_post_comments handles the photo_post_comments tool with context-based auth
+func HandleContextPhoto_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPhotoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: attachment_id
+	if val := request.GetString("attachment_id", ""); val != "" {
+		args["attachment_id"] = val
+	}
+
+	// Optional: attachment_share_url
+	if val := request.GetString("attachment_share_url", ""); val != "" {
+		args["attachment_share_url"] = val
+	}
+
+	// Optional: attachment_url
+	if val := request.GetString("attachment_url", ""); val != "" {
+		args["attachment_url"] = val
+	}
+
+	// Optional: comment_privacy_value
+	if val := request.GetString("comment_privacy_value", ""); val != "" {
+		args["comment_privacy_value"] = val
+	}
+
+	// Optional: facepile_mentioned_ids
+	// array type - using string
+	if val := request.GetString("facepile_mentioned_ids", ""); val != "" {
+		args["facepile_mentioned_ids"] = val
+	}
+
+	// Optional: feedback_source
+	if val := request.GetString("feedback_source", ""); val != "" {
+		args["feedback_source"] = val
+	}
+
+	// Optional: is_offline
+	if val := request.GetBool("is_offline", false); val {
+		args["is_offline"] = val
+	}
+
+	// Optional: message
+	if val := request.GetString("message", ""); val != "" {
+		args["message"] = val
+	}
+
+	// Optional: nectar_module
+	if val := request.GetString("nectar_module", ""); val != "" {
+		args["nectar_module"] = val
+	}
+
+	// Optional: object_id
+	if val := request.GetString("object_id", ""); val != "" {
+		args["object_id"] = val
+	}
+
+	// Optional: parent_comment_id
+	// object type - using string
+	if val := request.GetString("parent_comment_id", ""); val != "" {
+		args["parent_comment_id"] = val
+	}
+
+	// Optional: text
+	if val := request.GetString("text", ""); val != "" {
+		args["text"] = val
+	}
+
+	// Optional: tracking
+	if val := request.GetString("tracking", ""); val != "" {
+		args["tracking"] = val
+	}
+
+	// Call the client method
+	result, err := client.Photo_post_comments(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute photo_post_comments: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPhoto_get_insights handles the photo_get_insights tool with context-based auth
+func HandleContextPhoto_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPhotoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: date_preset
+	if val := request.GetString("date_preset", ""); val != "" {
+		args["date_preset"] = val
+	}
+
+	// Optional: metric
+	// array type - using string
+	if val := request.GetString("metric", ""); val != "" {
+		args["metric"] = val
+	}
+
+	// Optional: period
+	if val := request.GetString("period", ""); val != "" {
+		args["period"] = val
+	}
+
+	// Optional: since
+	if val := request.GetString("since", ""); val != "" {
+		args["since"] = val
+	}
+
+	// Optional: until
+	if val := request.GetString("until", ""); val != "" {
+		args["until"] = val
+	}
+
+	// Call the client method
+	result, err := client.Photo_get_insights(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute photo_get_insights: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPhoto_get_likes handles the photo_get_likes tool with context-based auth
+func HandleContextPhoto_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPhotoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Photo_get_likes(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute photo_get_likes: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPhoto_post_likes handles the photo_post_likes tool with context-based auth
+func HandleContextPhoto_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPhotoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: feedback_source
+	if val := request.GetString("feedback_source", ""); val != "" {
+		args["feedback_source"] = val
+	}
+
+	// Optional: nectar_module
+	if val := request.GetString("nectar_module", ""); val != "" {
+		args["nectar_module"] = val
+	}
+
+	// Optional: notify
+	if val := request.GetBool("notify", false); val {
+		args["notify"] = val
+	}
+
+	// Optional: tracking
+	if val := request.GetString("tracking", ""); val != "" {
+		args["tracking"] = val
+	}
+
+	// Call the client method
+	result, err := client.Photo_post_likes(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute photo_post_likes: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPhoto_get_sponsor_tags handles the photo_get_sponsor_tags tool with context-based auth
+func HandleContextPhoto_get_sponsor_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPhotoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Photo_get_sponsor_tags(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute photo_get_sponsor_tags: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPhoto_delete_ handles the photo_delete_ tool with context-based auth
+func HandleContextPhoto_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPhotoClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Photo_delete_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute photo_delete_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPhoto_get_ handles the photo_get_ tool with context-based auth
+func HandleContextPhoto_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

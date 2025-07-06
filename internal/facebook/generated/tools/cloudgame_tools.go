@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetCloudGameTools returns MCP tools for CloudGame
@@ -28,6 +29,19 @@ func GetCloudGameTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetCloudGameToolsWithoutAuth returns MCP tools for CloudGame without access_token parameter
+func GetCloudGameToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// cloudgame_get_ tool
+	cloudgame_get_Tool := mcp.NewTool("cloudgame_get_",
+		mcp.WithDescription("GET  for CloudGame"),
+	)
+	tools = append(tools, cloudgame_get_Tool)
+
+	return tools
+}
+
 // CloudGame handlers
 
 // HandleCloudgame_get_ handles the cloudgame_get_ tool
@@ -36,6 +50,37 @@ func HandleCloudgame_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewCloudGameClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Cloudgame_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute cloudgame_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextCloudgame_get_ handles the cloudgame_get_ tool with context-based auth
+func HandleContextCloudgame_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

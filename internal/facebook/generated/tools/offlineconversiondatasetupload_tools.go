@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetOfflineConversionDataSetUploadTools returns MCP tools for OfflineConversionDataSetUpload
@@ -42,6 +43,31 @@ func GetOfflineConversionDataSetUploadTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, offlineconversiondatasetupload_get_Tool)
+
+	return tools
+}
+
+// GetOfflineConversionDataSetUploadToolsWithoutAuth returns MCP tools for OfflineConversionDataSetUpload without access_token parameter
+func GetOfflineConversionDataSetUploadToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// offlineconversiondatasetupload_get_progress tool
+	offlineconversiondatasetupload_get_progressTool := mcp.NewTool("offlineconversiondatasetupload_get_progress",
+		mcp.WithDescription("GET progress for OfflineConversionDataSetUpload"),
+	)
+	tools = append(tools, offlineconversiondatasetupload_get_progressTool)
+
+	// offlineconversiondatasetupload_get_pull_sessions tool
+	offlineconversiondatasetupload_get_pull_sessionsTool := mcp.NewTool("offlineconversiondatasetupload_get_pull_sessions",
+		mcp.WithDescription("GET pull_sessions for OfflineConversionDataSetUpload"),
+	)
+	tools = append(tools, offlineconversiondatasetupload_get_pull_sessionsTool)
+
+	// offlineconversiondatasetupload_get_ tool
+	offlineconversiondatasetupload_get_Tool := mcp.NewTool("offlineconversiondatasetupload_get_",
+		mcp.WithDescription("GET  for OfflineConversionDataSetUpload"),
 	)
 	tools = append(tools, offlineconversiondatasetupload_get_Tool)
 
@@ -114,6 +140,95 @@ func HandleOfflineconversiondatasetupload_get_(ctx context.Context, request mcp.
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewOfflineConversionDataSetUploadClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Offlineconversiondatasetupload_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute offlineconversiondatasetupload_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextOfflineconversiondatasetupload_get_progress handles the offlineconversiondatasetupload_get_progress tool with context-based auth
+func HandleContextOfflineconversiondatasetupload_get_progress(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewOfflineConversionDataSetUploadClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Offlineconversiondatasetupload_get_progress(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute offlineconversiondatasetupload_get_progress: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextOfflineconversiondatasetupload_get_pull_sessions handles the offlineconversiondatasetupload_get_pull_sessions tool with context-based auth
+func HandleContextOfflineconversiondatasetupload_get_pull_sessions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewOfflineConversionDataSetUploadClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Offlineconversiondatasetupload_get_pull_sessions(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute offlineconversiondatasetupload_get_pull_sessions: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextOfflineconversiondatasetupload_get_ handles the offlineconversiondatasetupload_get_ tool with context-based auth
+func HandleContextOfflineconversiondatasetupload_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

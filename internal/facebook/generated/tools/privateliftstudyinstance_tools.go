@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetPrivateLiftStudyInstanceTools returns MCP tools for PrivateLiftStudyInstance
@@ -32,6 +33,32 @@ func GetPrivateLiftStudyInstanceTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithString("operation",
+			mcp.Description("operation parameter for "),
+			mcp.Enum("AGGREGATE", "CANCEL", "COMPUTE", "ID_MATCH", "NEXT", "NONE"),
+		),
+		mcp.WithString("run_id",
+			mcp.Description("run_id parameter for "),
+		),
+	)
+	tools = append(tools, privateliftstudyinstance_post_Tool)
+
+	return tools
+}
+
+// GetPrivateLiftStudyInstanceToolsWithoutAuth returns MCP tools for PrivateLiftStudyInstance without access_token parameter
+func GetPrivateLiftStudyInstanceToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// privateliftstudyinstance_get_ tool
+	privateliftstudyinstance_get_Tool := mcp.NewTool("privateliftstudyinstance_get_",
+		mcp.WithDescription("GET  for PrivateLiftStudyInstance"),
+	)
+	tools = append(tools, privateliftstudyinstance_get_Tool)
+
+	// privateliftstudyinstance_post_ tool
+	privateliftstudyinstance_post_Tool := mcp.NewTool("privateliftstudyinstance_post_",
+		mcp.WithDescription("POST  for PrivateLiftStudyInstance"),
 		mcp.WithString("operation",
 			mcp.Description("operation parameter for "),
 			mcp.Enum("AGGREGATE", "CANCEL", "COMPUTE", "ID_MATCH", "NEXT", "NONE"),
@@ -82,6 +109,76 @@ func HandlePrivateliftstudyinstance_post_(ctx context.Context, request mcp.CallT
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewPrivateLiftStudyInstanceClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: operation
+	if val := request.GetString("operation", ""); val != "" {
+		args["operation"] = val
+	}
+
+	// Optional: run_id
+	if val := request.GetString("run_id", ""); val != "" {
+		args["run_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Privateliftstudyinstance_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute privateliftstudyinstance_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextPrivateliftstudyinstance_get_ handles the privateliftstudyinstance_get_ tool with context-based auth
+func HandleContextPrivateliftstudyinstance_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewPrivateLiftStudyInstanceClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Privateliftstudyinstance_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute privateliftstudyinstance_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextPrivateliftstudyinstance_post_ handles the privateliftstudyinstance_post_ tool with context-based auth
+func HandleContextPrivateliftstudyinstance_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

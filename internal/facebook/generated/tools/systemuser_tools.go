@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetSystemUserTools returns MCP tools for SystemUser
@@ -68,6 +69,49 @@ func GetSystemUserTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, systemuser_get_Tool)
+
+	return tools
+}
+
+// GetSystemUserToolsWithoutAuth returns MCP tools for SystemUser without access_token parameter
+func GetSystemUserToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// systemuser_get_assigned_ad_accounts tool
+	systemuser_get_assigned_ad_accountsTool := mcp.NewTool("systemuser_get_assigned_ad_accounts",
+		mcp.WithDescription("GET assigned_ad_accounts for SystemUser"),
+	)
+	tools = append(tools, systemuser_get_assigned_ad_accountsTool)
+
+	// systemuser_get_assigned_business_asset_groups tool
+	systemuser_get_assigned_business_asset_groupsTool := mcp.NewTool("systemuser_get_assigned_business_asset_groups",
+		mcp.WithDescription("GET assigned_business_asset_groups for SystemUser"),
+		mcp.WithString("contained_asset_id",
+			mcp.Description("contained_asset_id parameter for assigned_business_asset_groups"),
+		),
+	)
+	tools = append(tools, systemuser_get_assigned_business_asset_groupsTool)
+
+	// systemuser_get_assigned_pages tool
+	systemuser_get_assigned_pagesTool := mcp.NewTool("systemuser_get_assigned_pages",
+		mcp.WithDescription("GET assigned_pages for SystemUser"),
+		mcp.WithString("pages",
+			mcp.Description("pages parameter for assigned_pages"),
+		),
+	)
+	tools = append(tools, systemuser_get_assigned_pagesTool)
+
+	// systemuser_get_assigned_product_catalogs tool
+	systemuser_get_assigned_product_catalogsTool := mcp.NewTool("systemuser_get_assigned_product_catalogs",
+		mcp.WithDescription("GET assigned_product_catalogs for SystemUser"),
+	)
+	tools = append(tools, systemuser_get_assigned_product_catalogsTool)
+
+	// systemuser_get_ tool
+	systemuser_get_Tool := mcp.NewTool("systemuser_get_",
+		mcp.WithDescription("GET  for SystemUser"),
 	)
 	tools = append(tools, systemuser_get_Tool)
 
@@ -209,6 +253,164 @@ func HandleSystemuser_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewSystemUserClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Systemuser_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute systemuser_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextSystemuser_get_assigned_ad_accounts handles the systemuser_get_assigned_ad_accounts tool with context-based auth
+func HandleContextSystemuser_get_assigned_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewSystemUserClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Systemuser_get_assigned_ad_accounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute systemuser_get_assigned_ad_accounts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextSystemuser_get_assigned_business_asset_groups handles the systemuser_get_assigned_business_asset_groups tool with context-based auth
+func HandleContextSystemuser_get_assigned_business_asset_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewSystemUserClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: contained_asset_id
+	if val := request.GetString("contained_asset_id", ""); val != "" {
+		args["contained_asset_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Systemuser_get_assigned_business_asset_groups(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute systemuser_get_assigned_business_asset_groups: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextSystemuser_get_assigned_pages handles the systemuser_get_assigned_pages tool with context-based auth
+func HandleContextSystemuser_get_assigned_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewSystemUserClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: pages
+	// array type - using string
+	if val := request.GetString("pages", ""); val != "" {
+		args["pages"] = val
+	}
+
+	// Call the client method
+	result, err := client.Systemuser_get_assigned_pages(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute systemuser_get_assigned_pages: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextSystemuser_get_assigned_product_catalogs handles the systemuser_get_assigned_product_catalogs tool with context-based auth
+func HandleContextSystemuser_get_assigned_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewSystemUserClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Systemuser_get_assigned_product_catalogs(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute systemuser_get_assigned_product_catalogs: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextSystemuser_get_ handles the systemuser_get_ tool with context-based auth
+func HandleContextSystemuser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

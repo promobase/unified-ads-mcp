@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetWithAsset3DTools returns MCP tools for WithAsset3D
@@ -28,6 +29,19 @@ func GetWithAsset3DTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetWithAsset3DToolsWithoutAuth returns MCP tools for WithAsset3D without access_token parameter
+func GetWithAsset3DToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// withasset3d_get_ tool
+	withasset3d_get_Tool := mcp.NewTool("withasset3d_get_",
+		mcp.WithDescription("GET  for WithAsset3D"),
+	)
+	tools = append(tools, withasset3d_get_Tool)
+
+	return tools
+}
+
 // WithAsset3D handlers
 
 // HandleWithasset3d_get_ handles the withasset3d_get_ tool
@@ -36,6 +50,37 @@ func HandleWithasset3d_get_(ctx context.Context, request mcp.CallToolRequest) (*
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewWithAsset3DClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Withasset3d_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute withasset3d_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextWithasset3d_get_ handles the withasset3d_get_ tool with context-based auth
+func HandleContextWithasset3d_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetBusinessOwnedObjectOnBehalfOfRequestTools returns MCP tools for BusinessOwnedObjectOnBehalfOfRequest
@@ -28,6 +29,19 @@ func GetBusinessOwnedObjectOnBehalfOfRequestTools(accessToken string) []mcp.Tool
 	return tools
 }
 
+// GetBusinessOwnedObjectOnBehalfOfRequestToolsWithoutAuth returns MCP tools for BusinessOwnedObjectOnBehalfOfRequest without access_token parameter
+func GetBusinessOwnedObjectOnBehalfOfRequestToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// businessownedobjectonbehalfofrequest_get_ tool
+	businessownedobjectonbehalfofrequest_get_Tool := mcp.NewTool("businessownedobjectonbehalfofrequest_get_",
+		mcp.WithDescription("GET  for BusinessOwnedObjectOnBehalfOfRequest"),
+	)
+	tools = append(tools, businessownedobjectonbehalfofrequest_get_Tool)
+
+	return tools
+}
+
 // BusinessOwnedObjectOnBehalfOfRequest handlers
 
 // HandleBusinessownedobjectonbehalfofrequest_get_ handles the businessownedobjectonbehalfofrequest_get_ tool
@@ -36,6 +50,37 @@ func HandleBusinessownedobjectonbehalfofrequest_get_(ctx context.Context, reques
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessOwnedObjectOnBehalfOfRequestClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Businessownedobjectonbehalfofrequest_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessownedobjectonbehalfofrequest_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextBusinessownedobjectonbehalfofrequest_get_ handles the businessownedobjectonbehalfofrequest_get_ tool with context-based auth
+func HandleContextBusinessownedobjectonbehalfofrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

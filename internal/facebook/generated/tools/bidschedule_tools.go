@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetBidScheduleTools returns MCP tools for BidSchedule
@@ -28,6 +29,19 @@ func GetBidScheduleTools(accessToken string) []mcp.Tool {
 	return tools
 }
 
+// GetBidScheduleToolsWithoutAuth returns MCP tools for BidSchedule without access_token parameter
+func GetBidScheduleToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// bidschedule_get_ tool
+	bidschedule_get_Tool := mcp.NewTool("bidschedule_get_",
+		mcp.WithDescription("GET  for BidSchedule"),
+	)
+	tools = append(tools, bidschedule_get_Tool)
+
+	return tools
+}
+
 // BidSchedule handlers
 
 // HandleBidschedule_get_ handles the bidschedule_get_ tool
@@ -36,6 +50,37 @@ func HandleBidschedule_get_(ctx context.Context, request mcp.CallToolRequest) (*
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewBidScheduleClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Bidschedule_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute bidschedule_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextBidschedule_get_ handles the bidschedule_get_ tool with context-based auth
+func HandleContextBidschedule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

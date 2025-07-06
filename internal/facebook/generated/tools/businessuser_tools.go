@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetBusinessUserTools returns MCP tools for BusinessUser
@@ -88,6 +89,90 @@ func GetBusinessUserTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithBoolean("clear_pending_email",
+			mcp.Description("clear_pending_email parameter for "),
+		),
+		mcp.WithString("email",
+			mcp.Description("email parameter for "),
+		),
+		mcp.WithString("first_name",
+			mcp.Description("first_name parameter for "),
+		),
+		mcp.WithString("last_name",
+			mcp.Description("last_name parameter for "),
+		),
+		mcp.WithString("pending_email",
+			mcp.Description("pending_email parameter for "),
+		),
+		mcp.WithString("role",
+			mcp.Description("role parameter for "),
+			mcp.Enum("ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"),
+		),
+		mcp.WithBoolean("skip_verification_email",
+			mcp.Description("skip_verification_email parameter for "),
+		),
+		mcp.WithString("tasks",
+			mcp.Description("tasks parameter for "),
+			mcp.Enum("ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"),
+		),
+		mcp.WithString("title",
+			mcp.Description("title parameter for "),
+		),
+	)
+	tools = append(tools, businessuser_post_Tool)
+
+	return tools
+}
+
+// GetBusinessUserToolsWithoutAuth returns MCP tools for BusinessUser without access_token parameter
+func GetBusinessUserToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// businessuser_get_assigned_ad_accounts tool
+	businessuser_get_assigned_ad_accountsTool := mcp.NewTool("businessuser_get_assigned_ad_accounts",
+		mcp.WithDescription("GET assigned_ad_accounts for BusinessUser"),
+	)
+	tools = append(tools, businessuser_get_assigned_ad_accountsTool)
+
+	// businessuser_get_assigned_business_asset_groups tool
+	businessuser_get_assigned_business_asset_groupsTool := mcp.NewTool("businessuser_get_assigned_business_asset_groups",
+		mcp.WithDescription("GET assigned_business_asset_groups for BusinessUser"),
+		mcp.WithString("contained_asset_id",
+			mcp.Description("contained_asset_id parameter for assigned_business_asset_groups"),
+		),
+	)
+	tools = append(tools, businessuser_get_assigned_business_asset_groupsTool)
+
+	// businessuser_get_assigned_pages tool
+	businessuser_get_assigned_pagesTool := mcp.NewTool("businessuser_get_assigned_pages",
+		mcp.WithDescription("GET assigned_pages for BusinessUser"),
+		mcp.WithString("pages",
+			mcp.Description("pages parameter for assigned_pages"),
+		),
+	)
+	tools = append(tools, businessuser_get_assigned_pagesTool)
+
+	// businessuser_get_assigned_product_catalogs tool
+	businessuser_get_assigned_product_catalogsTool := mcp.NewTool("businessuser_get_assigned_product_catalogs",
+		mcp.WithDescription("GET assigned_product_catalogs for BusinessUser"),
+	)
+	tools = append(tools, businessuser_get_assigned_product_catalogsTool)
+
+	// businessuser_delete_ tool
+	businessuser_delete_Tool := mcp.NewTool("businessuser_delete_",
+		mcp.WithDescription("DELETE  for BusinessUser"),
+	)
+	tools = append(tools, businessuser_delete_Tool)
+
+	// businessuser_get_ tool
+	businessuser_get_Tool := mcp.NewTool("businessuser_get_",
+		mcp.WithDescription("GET  for BusinessUser"),
+	)
+	tools = append(tools, businessuser_get_Tool)
+
+	// businessuser_post_ tool
+	businessuser_post_Tool := mcp.NewTool("businessuser_post_",
+		mcp.WithDescription("POST  for BusinessUser"),
 		mcp.WithBoolean("clear_pending_email",
 			mcp.Description("clear_pending_email parameter for "),
 		),
@@ -316,6 +401,268 @@ func HandleBusinessuser_post_(ctx context.Context, request mcp.CallToolRequest) 
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessUserClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: clear_pending_email
+	if val := request.GetBool("clear_pending_email", false); val {
+		args["clear_pending_email"] = val
+	}
+
+	// Optional: email
+	if val := request.GetString("email", ""); val != "" {
+		args["email"] = val
+	}
+
+	// Optional: first_name
+	if val := request.GetString("first_name", ""); val != "" {
+		args["first_name"] = val
+	}
+
+	// Optional: last_name
+	if val := request.GetString("last_name", ""); val != "" {
+		args["last_name"] = val
+	}
+
+	// Optional: pending_email
+	if val := request.GetString("pending_email", ""); val != "" {
+		args["pending_email"] = val
+	}
+
+	// Optional: role
+	if val := request.GetString("role", ""); val != "" {
+		args["role"] = val
+	}
+
+	// Optional: skip_verification_email
+	if val := request.GetBool("skip_verification_email", false); val {
+		args["skip_verification_email"] = val
+	}
+
+	// Optional: tasks
+	// array type - using string
+	if val := request.GetString("tasks", ""); val != "" {
+		args["tasks"] = val
+	}
+
+	// Optional: title
+	if val := request.GetString("title", ""); val != "" {
+		args["title"] = val
+	}
+
+	// Call the client method
+	result, err := client.Businessuser_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessuser_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextBusinessuser_get_assigned_ad_accounts handles the businessuser_get_assigned_ad_accounts tool with context-based auth
+func HandleContextBusinessuser_get_assigned_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessUserClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Businessuser_get_assigned_ad_accounts(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessuser_get_assigned_ad_accounts: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessuser_get_assigned_business_asset_groups handles the businessuser_get_assigned_business_asset_groups tool with context-based auth
+func HandleContextBusinessuser_get_assigned_business_asset_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessUserClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: contained_asset_id
+	if val := request.GetString("contained_asset_id", ""); val != "" {
+		args["contained_asset_id"] = val
+	}
+
+	// Call the client method
+	result, err := client.Businessuser_get_assigned_business_asset_groups(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessuser_get_assigned_business_asset_groups: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessuser_get_assigned_pages handles the businessuser_get_assigned_pages tool with context-based auth
+func HandleContextBusinessuser_get_assigned_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessUserClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: pages
+	// array type - using string
+	if val := request.GetString("pages", ""); val != "" {
+		args["pages"] = val
+	}
+
+	// Call the client method
+	result, err := client.Businessuser_get_assigned_pages(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessuser_get_assigned_pages: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessuser_get_assigned_product_catalogs handles the businessuser_get_assigned_product_catalogs tool with context-based auth
+func HandleContextBusinessuser_get_assigned_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessUserClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Businessuser_get_assigned_product_catalogs(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessuser_get_assigned_product_catalogs: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessuser_delete_ handles the businessuser_delete_ tool with context-based auth
+func HandleContextBusinessuser_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessUserClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Businessuser_delete_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessuser_delete_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessuser_get_ handles the businessuser_get_ tool with context-based auth
+func HandleContextBusinessuser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewBusinessUserClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Businessuser_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute businessuser_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextBusinessuser_post_ handles the businessuser_post_ tool with context-based auth
+func HandleContextBusinessuser_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

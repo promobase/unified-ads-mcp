@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetIGUserExportForCAMTools returns MCP tools for IGUserExportForCAM
@@ -68,6 +69,53 @@ func GetIGUserExportForCAMTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, iguserexportforcam_get_Tool)
+
+	return tools
+}
+
+// GetIGUserExportForCAMToolsWithoutAuth returns MCP tools for IGUserExportForCAM without access_token parameter
+func GetIGUserExportForCAMToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// iguserexportforcam_get_branded_content_media tool
+	iguserexportforcam_get_branded_content_mediaTool := mcp.NewTool("iguserexportforcam_get_branded_content_media",
+		mcp.WithDescription("GET branded_content_media for IGUserExportForCAM"),
+	)
+	tools = append(tools, iguserexportforcam_get_branded_content_mediaTool)
+
+	// iguserexportforcam_get_insights tool
+	iguserexportforcam_get_insightsTool := mcp.NewTool("iguserexportforcam_get_insights",
+		mcp.WithDescription("GET insights for IGUserExportForCAM"),
+		mcp.WithString("breakdown",
+			mcp.Description("breakdown parameter for insights"),
+			mcp.Enum("AGE", "FOLLOW_TYPE", "GENDER", "MEDIA_TYPE", "TOP_CITIES", "TOP_COUNTRIES"),
+		),
+		mcp.WithString("metrics",
+			mcp.Description("metrics parameter for insights"),
+			mcp.Enum("CREATOR_ENGAGED_ACCOUNTS", "CREATOR_REACH", "REELS_HOOK_RATE", "REELS_INTERACTION_RATE", "TOTAL_FOLLOWERS"),
+		),
+		mcp.WithString("period",
+			mcp.Description("period parameter for insights"),
+			mcp.Enum("DAY", "OVERALL"),
+		),
+		mcp.WithString("time_range",
+			mcp.Description("time_range parameter for insights"),
+			mcp.Enum("LAST_14_DAYS", "LAST_90_DAYS", "LIFETIME", "THIS_MONTH", "THIS_WEEK"),
+		),
+	)
+	tools = append(tools, iguserexportforcam_get_insightsTool)
+
+	// iguserexportforcam_get_recent_media tool
+	iguserexportforcam_get_recent_mediaTool := mcp.NewTool("iguserexportforcam_get_recent_media",
+		mcp.WithDescription("GET recent_media for IGUserExportForCAM"),
+	)
+	tools = append(tools, iguserexportforcam_get_recent_mediaTool)
+
+	// iguserexportforcam_get_ tool
+	iguserexportforcam_get_Tool := mcp.NewTool("iguserexportforcam_get_",
+		mcp.WithDescription("GET  for IGUserExportForCAM"),
 	)
 	tools = append(tools, iguserexportforcam_get_Tool)
 
@@ -190,6 +238,145 @@ func HandleIguserexportforcam_get_(ctx context.Context, request mcp.CallToolRequ
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewIGUserExportForCAMClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Iguserexportforcam_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguserexportforcam_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextIguserexportforcam_get_branded_content_media handles the iguserexportforcam_get_branded_content_media tool with context-based auth
+func HandleContextIguserexportforcam_get_branded_content_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewIGUserExportForCAMClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Iguserexportforcam_get_branded_content_media(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguserexportforcam_get_branded_content_media: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextIguserexportforcam_get_insights handles the iguserexportforcam_get_insights tool with context-based auth
+func HandleContextIguserexportforcam_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewIGUserExportForCAMClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: breakdown
+	if val := request.GetString("breakdown", ""); val != "" {
+		args["breakdown"] = val
+	}
+
+	// Optional: metrics
+	// array type - using string
+	if val := request.GetString("metrics", ""); val != "" {
+		args["metrics"] = val
+	}
+
+	// Optional: period
+	if val := request.GetString("period", ""); val != "" {
+		args["period"] = val
+	}
+
+	// Optional: time_range
+	if val := request.GetString("time_range", ""); val != "" {
+		args["time_range"] = val
+	}
+
+	// Call the client method
+	result, err := client.Iguserexportforcam_get_insights(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguserexportforcam_get_insights: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextIguserexportforcam_get_recent_media handles the iguserexportforcam_get_recent_media tool with context-based auth
+func HandleContextIguserexportforcam_get_recent_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewIGUserExportForCAMClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Iguserexportforcam_get_recent_media(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute iguserexportforcam_get_recent_media: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextIguserexportforcam_get_ handles the iguserexportforcam_get_ tool with context-based auth
+func HandleContextIguserexportforcam_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

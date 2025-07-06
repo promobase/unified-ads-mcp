@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetURLTools returns MCP tools for URL
@@ -32,6 +33,44 @@ func GetURLTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+		mcp.WithBoolean("blacklist",
+			mcp.Description("blacklist parameter for "),
+		),
+		mcp.WithBoolean("denylist",
+			mcp.Description("denylist parameter for "),
+		),
+		mcp.WithString("hmac",
+			mcp.Description("hmac parameter for "),
+		),
+		mcp.WithString("locale",
+			mcp.Description("locale parameter for "),
+		),
+		mcp.WithString("scopes",
+			mcp.Description("scopes parameter for "),
+			mcp.Enum("NEWS_TAB", "NEWS_TAB_DEV_ENV"),
+		),
+		mcp.WithString("ts",
+			mcp.Description("ts parameter for "),
+		),
+	)
+	tools = append(tools, url_post_Tool)
+
+	return tools
+}
+
+// GetURLToolsWithoutAuth returns MCP tools for URL without access_token parameter
+func GetURLToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// url_get_ tool
+	url_get_Tool := mcp.NewTool("url_get_",
+		mcp.WithDescription("GET  for URL"),
+	)
+	tools = append(tools, url_get_Tool)
+
+	// url_post_ tool
+	url_post_Tool := mcp.NewTool("url_post_",
+		mcp.WithDescription("POST  for URL"),
 		mcp.WithBoolean("blacklist",
 			mcp.Description("blacklist parameter for "),
 		),
@@ -94,6 +133,98 @@ func HandleUrl_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewURLClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: blacklist
+	if val := request.GetBool("blacklist", false); val {
+		args["blacklist"] = val
+	}
+
+	// Optional: denylist
+	if val := request.GetBool("denylist", false); val {
+		args["denylist"] = val
+	}
+
+	// Optional: hmac
+	if val := request.GetString("hmac", ""); val != "" {
+		args["hmac"] = val
+	}
+
+	// Optional: locale
+	// array type - using string
+	if val := request.GetString("locale", ""); val != "" {
+		args["locale"] = val
+	}
+
+	// Optional: scopes
+	// array type - using string
+	if val := request.GetString("scopes", ""); val != "" {
+		args["scopes"] = val
+	}
+
+	// Optional: ts
+	if val := request.GetString("ts", ""); val != "" {
+		args["ts"] = val
+	}
+
+	// Call the client method
+	result, err := client.Url_post_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute url_post_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextUrl_get_ handles the url_get_ tool with context-based auth
+func HandleContextUrl_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewURLClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Url_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute url_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextUrl_post_ handles the url_post_ tool with context-based auth
+func HandleContextUrl_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client

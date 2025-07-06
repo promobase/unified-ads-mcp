@@ -9,6 +9,7 @@ import (
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"unified-ads-mcp/internal/facebook/generated/client"
+	"unified-ads-mcp/internal/shared"
 )
 
 // GetAvatarTools returns MCP tools for Avatar
@@ -54,6 +55,47 @@ func GetAvatarTools(accessToken string) []mcp.Tool {
 			mcp.Required(),
 			mcp.Description("Facebook access token for authentication"),
 		),
+	)
+	tools = append(tools, avatar_get_Tool)
+
+	return tools
+}
+
+// GetAvatarToolsWithoutAuth returns MCP tools for Avatar without access_token parameter
+func GetAvatarToolsWithoutAuth() []mcp.Tool {
+	var tools []mcp.Tool
+
+	// avatar_get_models tool
+	avatar_get_modelsTool := mcp.NewTool("avatar_get_models",
+		mcp.WithDescription("GET models for Avatar"),
+		mcp.WithString("client_name",
+			mcp.Description("client_name parameter for models"),
+		),
+		mcp.WithString("client_version",
+			mcp.Description("client_version parameter for models"),
+		),
+		mcp.WithString("config_id",
+			mcp.Description("config_id parameter for models"),
+		),
+		mcp.WithBoolean("force_generate",
+			mcp.Description("force_generate parameter for models"),
+		),
+		mcp.WithString("platform",
+			mcp.Description("platform parameter for models"),
+		),
+		mcp.WithString("profile",
+			mcp.Required(),
+			mcp.Description("profile parameter for models"),
+		),
+		mcp.WithString("sdk_version",
+			mcp.Description("sdk_version parameter for models"),
+		),
+	)
+	tools = append(tools, avatar_get_modelsTool)
+
+	// avatar_get_ tool
+	avatar_get_Tool := mcp.NewTool("avatar_get_",
+		mcp.WithDescription("GET  for Avatar"),
 	)
 	tools = append(tools, avatar_get_Tool)
 
@@ -134,6 +176,103 @@ func HandleAvatar_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 	accessToken, err := request.RequireString("access_token")
 	if err != nil {
 		return mcp.NewToolResultError("missing required parameter: access_token"), nil
+	}
+
+	// Create client
+	client := client.NewAvatarClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Call the client method
+	result, err := client.Avatar_get_(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute avatar_get_: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// Context-aware handlers
+
+// HandleContextAvatar_get_models handles the avatar_get_models tool with context-based auth
+func HandleContextAvatar_get_models(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
+	}
+
+	// Create client
+	client := client.NewAvatarClient(accessToken)
+
+	// Build arguments map
+	args := make(map[string]interface{})
+
+	// Optional: client_name
+	if val := request.GetString("client_name", ""); val != "" {
+		args["client_name"] = val
+	}
+
+	// Optional: client_version
+	if val := request.GetString("client_version", ""); val != "" {
+		args["client_version"] = val
+	}
+
+	// Optional: config_id
+	if val := request.GetString("config_id", ""); val != "" {
+		args["config_id"] = val
+	}
+
+	// Optional: force_generate
+	if val := request.GetBool("force_generate", false); val {
+		args["force_generate"] = val
+	}
+
+	// Optional: platform
+	if val := request.GetString("platform", ""); val != "" {
+		args["platform"] = val
+	}
+
+	// Required: profile
+	profile, err := request.RequireString("profile")
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter profile: %v", err)), nil
+	}
+	args["profile"] = profile
+
+	// Optional: sdk_version
+	if val := request.GetString("sdk_version", ""); val != "" {
+		args["sdk_version"] = val
+	}
+
+	// Call the client method
+	result, err := client.Avatar_get_models(args)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to execute avatar_get_models: %v", err)), nil
+	}
+
+	// Return the result as JSON
+	resultJSON, err := json.Marshal(result)
+	if err != nil {
+		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
+	}
+
+	return mcp.NewToolResultText(string(resultJSON)), nil
+}
+
+// HandleContextAvatar_get_ handles the avatar_get_ tool with context-based auth
+func HandleContextAvatar_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	// Get access token from context
+	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
+	if !ok {
+		return mcp.NewToolResultError("Facebook access token not found in context"), nil
 	}
 
 	// Create client
