@@ -76,8 +76,8 @@ type MCPTool struct {
 	Return          string
 	Parameters      []MCPParameter
 	NodeType        string
-	AvailableFields []string     // For GET endpoints, the fields that can be requested
-	APIParams       []Parameter  // Original API parameters for params object generation
+	AvailableFields []string    // For GET endpoints, the fields that can be requested
+	APIParams       []Parameter // Original API parameters for params object generation
 }
 
 // MCPParameter represents a parameter for an MCP tool
@@ -116,7 +116,7 @@ func main() {
 		log.Fatalf("Failed to load specs: %v", err)
 	}
 
-	if err := generateCode(ctx); err != nil {
+	if err := generateCodeNew(ctx); err != nil {
 		log.Fatalf("Failed to generate code: %v", err)
 	}
 
@@ -293,7 +293,6 @@ func generateTools(ctx *CodegenContext) {
 				}
 				tool.Parameters = append(tool.Parameters, paramsParam)
 				
-				
 				// Store the API params for later use in handler generation
 				tool.APIParams = enhancedParams
 			}
@@ -309,16 +308,12 @@ func generateTools(ctx *CodegenContext) {
 				}
 				
 				// Get available fields from the return type spec
-				// For edge endpoints, api.Return contains the type being returned
-				// For non-edge endpoints (like GET /{id}), we might need to use the node type itself
 				var targetType string
 				if api.Return != "" && api.Return != "Object" {
 					targetType = api.Return
 				} else if api.Endpoint == "" || api.Endpoint == "/" {
-					// Non-edge endpoint, use the node type itself
 					targetType = nodeName
 				} else {
-					// Default to the return type
 					targetType = api.Return
 				}
 				
@@ -411,17 +406,292 @@ func generateTypes(ctx *CodegenContext) {
 	}
 }
 
-// Helper functions
+// generateCodeNew generates the new structure with individual endpoint files
+func generateCodeNew(ctx *CodegenContext) error {
+	// Create generated directory structure
+	generatedDir := "../generated"
+	
+	// Create base directories
+	dirs := []string{
+		generatedDir,
+		filepath.Join(generatedDir, "types"),
+		filepath.Join(generatedDir, "enums"),
+		filepath.Join(generatedDir, "constants"),
+	}
 
-func normalizeEndpoint(endpoint string) string {
-	return strings.ReplaceAll(endpoint, "/", "_")
+	for _, dir := range dirs {
+		if err := os.MkdirAll(dir, 0755); err != nil {
+			return fmt.Errorf("failed to create directory %s: %w", dir, err)
+		}
+	}
+
+	// Group tools by node type
+	toolsByNode := make(map[string][]MCPTool)
+	for _, tool := range ctx.Tools {
+		toolsByNode[tool.NodeType] = append(toolsByNode[tool.NodeType], tool)
+	}
+
+	// Generate endpoint files grouped by node type
+	for nodeName, tools := range toolsByNode {
+		// Create node directory
+		nodeDir := filepath.Join(generatedDir, strings.ToLower(nodeName))
+		if err := os.MkdirAll(nodeDir, 0755); err != nil {
+			return fmt.Errorf("failed to create node directory %s: %w", nodeDir, err)
+		}
+
+		// Generate individual endpoint files
+		for _, tool := range tools {
+			if err := generateEndpointFile(nodeDir, nodeName, tool, ctx); err != nil {
+				return fmt.Errorf("failed to generate endpoint %s: %w", tool.Name, err)
+			}
+		}
+
+		// Generate node registry file
+		if err := generateNodeRegistryFile(nodeDir, nodeName, tools); err != nil {
+			return fmt.Errorf("failed to generate registry for %s: %w", nodeName, err)
+		}
+	}
+
+	// Generate types (one file per type)
+	if err := generateTypesFiles(ctx, generatedDir); err != nil {
+		return fmt.Errorf("failed to generate types: %w", err)
+	}
+
+	// Generate enums
+	if err := generateEnumsFile(ctx, generatedDir); err != nil {
+		return fmt.Errorf("failed to generate enums: %w", err)
+	}
+
+	// Generate constants
+	if err := generateConstantsFile(ctx, generatedDir); err != nil {
+		return fmt.Errorf("failed to generate constants: %w", err)
+	}
+
+	// Generate main registry file
+	if err := generateMainRegistryFile(generatedDir, ctx); err != nil {
+		return fmt.Errorf("failed to generate main registry: %w", err)
+	}
+
+	// Generate backward compatibility file
+	if err := generateBackwardCompatibilityFile(generatedDir); err != nil {
+		return fmt.Errorf("failed to generate backward compatibility file: %w", err)
+	}
+
+	return nil
 }
 
-func min(a, b int) int {
-	if a < b {
-		return a
+// generateEndpointFile generates a single endpoint file
+func generateEndpointFile(nodeDir string, nodeName string, tool MCPTool, ctx *CodegenContext) error {
+	tmplData, err := templateFS.ReadFile("templates/endpoint.go.tmpl")
+	if err != nil {
+		return fmt.Errorf("failed to read endpoint template: %w", err)
 	}
-	return b
+
+	t, err := template.New("endpoint").Funcs(getTemplateFuncs()).Parse(string(tmplData))
+	if err != nil {
+		return fmt.Errorf("failed to parse endpoint template: %w", err)
+	}
+
+	// Create a safe filename from the tool name
+	filename := fmt.Sprintf("%s.go", strings.ReplaceAll(tool.Name, "_", "_"))
+	file, err := os.Create(filepath.Join(nodeDir, filename))
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	// Determine if strings import is needed
+	// We need strings.Join for fields array parameters
+	needsStrings := false
+	for _, param := range tool.Parameters {
+		if param.Name == "fields" && param.Type == "array" {
+			needsStrings = true
+			break
+		}
+	}
+
+	return t.Execute(file, map[string]interface{}{
+		"PackageName":  strings.ToLower(nodeName),
+		"NodeName":     nodeName,
+		"Tool":         tool,
+		"APIVersion":   APIVersion,
+		"NeedsStrings": needsStrings,
+	})
+}
+
+// generateNodeRegistryFile generates the registry file for a node
+func generateNodeRegistryFile(nodeDir string, nodeName string, tools []MCPTool) error {
+	tmplData, err := templateFS.ReadFile("templates/node_registry.go.tmpl")
+	if err != nil {
+		return fmt.Errorf("failed to read node registry template: %w", err)
+	}
+
+	t, err := template.New("node_registry").Funcs(getTemplateFuncs()).Parse(string(tmplData))
+	if err != nil {
+		return fmt.Errorf("failed to parse node registry template: %w", err)
+	}
+
+	file, err := os.Create(filepath.Join(nodeDir, "registry.go"))
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	// Extract endpoint names for imports
+	endpointNames := []string{}
+	for _, tool := range tools {
+		endpointNames = append(endpointNames, tool.Name)
+	}
+
+	return t.Execute(file, map[string]interface{}{
+		"PackageName": strings.ToLower(nodeName),
+		"NodeName":    nodeName,
+		"Tools":       tools,
+		"Endpoints":   endpointNames,
+	})
+}
+
+// generateMainRegistryFile generates the main registry that imports all nodes
+func generateMainRegistryFile(outputDir string, ctx *CodegenContext) error {
+	// Get unique node names
+	nodeTypes := []string{}
+	nodeTypesMap := make(map[string]bool)
+	for _, tool := range ctx.Tools {
+		if !nodeTypesMap[tool.NodeType] {
+			nodeTypesMap[tool.NodeType] = true
+			nodeTypes = append(nodeTypes, tool.NodeType)
+		}
+	}
+
+	tmpl := `// Code generated by Facebook Business API codegen. DO NOT EDIT.
+
+package generated
+
+import (
+	"context"
+
+	"github.com/mark3labs/mcp-go/mcp"
+	"github.com/mark3labs/mcp-go/server"
+{{range .NodeTypes}}	"unified-ads-mcp/internal/facebook/generated/{{. | lower}}"
+{{end}})
+
+// GetAllTools returns all available MCP tools
+func GetAllTools() []mcp.Tool {
+	var tools []mcp.Tool
+
+{{range .NodeTypes}}	tools = append(tools, {{. | lower}}.GetTools()...)
+{{end}}
+
+	return tools
+}
+
+// GetFilteredTools returns filtered MCP tools based on enabled objects
+func GetFilteredTools(enabledObjects map[string]bool) []mcp.Tool {
+	var tools []mcp.Tool
+
+{{range .NodeTypes}}	if enabled, ok := enabledObjects["{{.}}"]; !ok || enabled {
+		tools = append(tools, {{. | lower}}.GetTools()...)
+	}
+{{end}}
+
+	return tools
+}
+
+// GetHandlers returns all MCP handlers
+func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
+
+{{range .NodeTypes}}	for name, handler := range {{. | lower}}.GetHandlers() {
+		handlers[name] = handler
+	}
+{{end}}
+
+	return handlers
+}
+
+// RegisterTools registers all tools with the MCP server
+func RegisterTools(s *server.MCPServer) error {
+	tools := GetAllTools()
+	handlers := GetHandlers()
+
+	for _, tool := range tools {
+		s.AddTool(tool, handlers[tool.Name])
+	}
+
+	return nil
+}
+`
+
+	file, err := os.Create(filepath.Join(outputDir, "registry.go"))
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	t, err := template.New("main_registry").Funcs(template.FuncMap{
+		"lower": strings.ToLower,
+	}).Parse(tmpl)
+	if err != nil {
+		return err
+	}
+
+	return t.Execute(file, map[string]interface{}{
+		"NodeTypes": nodeTypes,
+	})
+}
+
+// generateBackwardCompatibilityFile generates the backward compatibility file
+func generateBackwardCompatibilityFile(outputDir string) error {
+	tmpl := `// Code generated by Facebook Business API codegen. DO NOT EDIT.
+
+package facebook
+
+import (
+	"context"
+
+	"unified-ads-mcp/internal/facebook/generated"
+
+	"github.com/mark3labs/mcp-go/mcp"
+	"github.com/mark3labs/mcp-go/server"
+)
+
+// GetMCPTools returns all available MCP tools for Facebook Business API
+// Deprecated: accessToken parameter is ignored, use context instead
+func GetMCPTools(accessToken string) []mcp.Tool {
+	return generated.GetAllTools()
+}
+
+// GetFilteredMCPTools returns filtered MCP tools based on enabled objects
+func GetFilteredMCPTools(enabledObjects map[string]bool) []mcp.Tool {
+	return generated.GetFilteredTools(enabledObjects)
+}
+
+// GetContextAwareHandlers returns handlers that get auth from context
+// Deprecated: accessToken parameter is ignored, use context instead
+func GetContextAwareHandlers(accessToken string) map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	return generated.GetHandlers()
+}
+
+// RegisterMCPTools registers all Facebook Business API tools with the MCP server
+// Deprecated: accessToken parameter is ignored, use context instead
+func RegisterMCPTools(s *server.MCPServer, accessToken string) error {
+	return generated.RegisterTools(s)
+}
+`
+
+	file, err := os.Create(filepath.Join("..", "generated_tools.go"))
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	_, err = file.WriteString(tmpl)
+	return err
+}
+
+// Helper functions (reuse from original)
+func normalizeEndpoint(endpoint string) string {
+	return strings.ReplaceAll(endpoint, "/", "_")
 }
 
 func convertType(fbType string) string {
@@ -464,44 +734,6 @@ func convertType(fbType string) string {
 		// Default to interface{} for unknown types
 		return "interface{}"
 	}
-}
-func convertTypeForMCP(fbType string) string {
-	// Handle list types for MCP schema
-	if strings.HasPrefix(fbType, "list<") && strings.HasSuffix(fbType, ">") {
-		return "array"
-	}
-
-	// Handle basic types for MCP
-	switch fbType {
-	case "string":
-		return "string"
-	case "int", "unsigned int":
-		return "integer"
-	case "float":
-		return "number"
-	case "bool":
-		return "boolean"
-	case "datetime":
-		return "string"
-	case "Object":
-		return "object"
-	default:
-		// Check if it's an enum type
-		if strings.Contains(fbType, "_enum_param") {
-			return "string"
-		}
-		// Default to string for unknown types
-		return "string"
-	}
-}
-
-func findEnumValues(ctx *CodegenContext, paramType string) []string {
-	for _, enum := range ctx.Enums {
-		if strings.Contains(paramType, enum.Name) {
-			return enum.Values
-		}
-	}
-	return nil
 }
 
 func convertTypeForDisplay(fbType string) string {
@@ -580,55 +812,13 @@ func extractItemType(listType string) string {
 	return "string"
 }
 
-// getTemplateFuncs returns common template functions
-func getTemplateFuncs() template.FuncMap {
-	return template.FuncMap{
-		"capitalizeFirst": capitalizeFirst,
-		"sanitizeVarName": sanitizeVarName,
-		"sanitizeEnumValue": sanitizeEnumValue,
-		"convertTypeToJSONSchema": convertTypeToJSONSchema,
-		"extractItemType": extractItemType,
-		"hasPrefix": strings.HasPrefix,
-		"paramType": func(t string) string {
-			switch t {
-			case "string":
-				return "String"
-			case "integer":
-				return "Number"
-			case "number":
-				return "Number"
-			case "boolean":
-				return "Boolean"
-			case "array":
-				return "Array"
-			case "object":
-				return "Object"
-			default:
-				return "String"
-			}
-		},
-		"requireMethod": func(t string) string {
-			switch t {
-			case "string":
-				return "RequireString"
-			case "integer":
-				return "RequireInt"
-			case "number":
-				return "RequireFloat"
-			case "boolean":
-				return "RequireBool"
-			case "array":
-				return "RequireString" // Arrays passed as JSON strings
-			case "object":
-				return "RequireString" // Objects passed as JSON strings
-			default:
-				return "RequireString"
-			}
-		},
-		"varName": func(name string) string {
-			return sanitizeVarName(name)
-		},
+func findEnumValues(ctx *CodegenContext, paramType string) []string {
+	for _, enum := range ctx.Enums {
+		if strings.Contains(paramType, enum.Name) {
+			return enum.Values
+		}
 	}
+	return nil
 }
 
 func capitalizeFirst(s string) string {
@@ -792,62 +982,58 @@ func sanitizeEnumValue(value string) string {
 	return value
 }
 
-// generateCode generates the actual Go code files
-func generateCode(ctx *CodegenContext) error {
-	// Create generated directory structure
-	generatedDir := "../generated"
-	dirs := []string{
-		generatedDir,
-		filepath.Join(generatedDir, "types"),
-		filepath.Join(generatedDir, "client"),
-		filepath.Join(generatedDir, "tools"),
-		filepath.Join(generatedDir, "enums"),
+// getTemplateFuncs returns common template functions
+func getTemplateFuncs() template.FuncMap {
+	return template.FuncMap{
+		"capitalizeFirst":         capitalizeFirst,
+		"sanitizeVarName":         sanitizeVarName,
+		"sanitizeEnumValue":       sanitizeEnumValue,
+		"convertTypeToJSONSchema": convertTypeToJSONSchema,
+		"extractItemType":         extractItemType,
+		"hasPrefix":               strings.HasPrefix,
+		"paramType": func(t string) string {
+			switch t {
+			case "string":
+				return "String"
+			case "integer":
+				return "Number"
+			case "number":
+				return "Number"
+			case "boolean":
+				return "Boolean"
+			case "array":
+				return "Array"
+			case "object":
+				return "Object"
+			default:
+				return "String"
+			}
+		},
+		"requireMethod": func(t string) string {
+			switch t {
+			case "string":
+				return "RequireString"
+			case "integer":
+				return "RequireInt"
+			case "number":
+				return "RequireFloat"
+			case "boolean":
+				return "RequireBool"
+			case "array":
+				return "RequireString" // Arrays passed as JSON strings
+			case "object":
+				return "RequireString" // Objects passed as JSON strings
+			default:
+				return "RequireString"
+			}
+		},
+		"varName": func(name string) string {
+			return sanitizeVarName(name)
+		},
 	}
-
-	for _, dir := range dirs {
-		if err := os.MkdirAll(dir, 0755); err != nil {
-			return fmt.Errorf("failed to create directory %s: %w", dir, err)
-		}
-	}
-
-	// Generate types (one file per type)
-	if err := generateTypesFiles(ctx, generatedDir); err != nil {
-		return fmt.Errorf("failed to generate types: %w", err)
-	}
-
-	// Generate client methods (grouped by node type)
-	if err := generateClientFiles(ctx, generatedDir); err != nil {
-		return fmt.Errorf("failed to generate client: %w", err)
-	}
-
-	// Generate MCP tools (split into multiple files)
-	if err := generateMCPToolsFiles(ctx, generatedDir); err != nil {
-		return fmt.Errorf("failed to generate MCP tools: %w", err)
-	}
-
-	// Generate enums
-	if err := generateEnumsFile(ctx, generatedDir); err != nil {
-		return fmt.Errorf("failed to generate enums: %w", err)
-	}
-
-	// Generate constants
-	if err := generateConstantsFile(ctx, generatedDir); err != nil {
-		return fmt.Errorf("failed to generate constants: %w", err)
-	}
-
-	// Generate index files
-	if err := generateIndexFiles(ctx, generatedDir); err != nil {
-		return fmt.Errorf("failed to generate index files: %w", err)
-	}
-
-	// Generate main tools file for backward compatibility
-	if err := generateLegacyToolsFile(ctx, generatedDir); err != nil {
-		return fmt.Errorf("failed to generate legacy tools file: %w", err)
-	}
-
-	return nil
 }
 
+// Reuse existing helper functions for types, enums, and constants generation
 func generateTypesFiles(ctx *CodegenContext, outputDir string) error {
 	typesDir := filepath.Join(outputDir, "types")
 
@@ -900,436 +1086,6 @@ func generateSingleTypeFile(typesDir string, typeName string, typeDef *TypeDefin
 	return t.Execute(file, data)
 }
 
-// generateLegacyToolsFile generates the main tools file for backward compatibility
-func generateLegacyToolsFile(ctx *CodegenContext, outputDir string) error {
-	// Generate main tools file
-	toolsTmpl := `// Code generated by Facebook Business API codegen. DO NOT EDIT.
-
-package facebook
-
-import (
-	"context"
-
-	"unified-ads-mcp/internal/facebook/generated/tools"
-
-	"github.com/mark3labs/mcp-go/mcp"
-	"github.com/mark3labs/mcp-go/server"
-)
-
-// GetMCPTools returns all available MCP tools for Facebook Business API
-func GetMCPTools(accessToken string) []mcp.Tool {
-	// Deprecated: accessToken parameter is ignored, use context instead
-	return tools.GetAllTools()
-}
-
-// GetFilteredMCPTools returns filtered MCP tools based on enabled objects
-func GetFilteredMCPTools(enabledObjects map[string]bool) []mcp.Tool {
-	return tools.GetFilteredTools(enabledObjects)
-}
-
-// GetContextAwareHandlers returns handlers that get auth from context
-func GetContextAwareHandlers(accessToken string) map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Deprecated: accessToken parameter is ignored, use context instead
-	return tools.GetHandlers()
-}
-
-// RegisterMCPTools registers all Facebook Business API tools with the MCP server
-func RegisterMCPTools(s *server.MCPServer, accessToken string) error {
-	// Deprecated: accessToken parameter is ignored, use context instead
-	return tools.RegisterTools(s)
-}
-
-// Legacy compatibility functions that match the old tools package signatures
-
-// GetAllTools with accessToken parameter (for backward compatibility)
-func GetAllTools(accessToken string) []mcp.Tool {
-	return tools.GetAllTools()
-}
-
-// RegisterTools with accessToken parameter (for backward compatibility)  
-func RegisterTools(s *server.MCPServer, accessToken string) error {
-	return tools.RegisterTools(s)
-}
-`
-
-	toolsFile, err := os.Create(filepath.Join("..", "generated_tools.go"))
-	if err != nil {
-		return err
-	}
-	defer toolsFile.Close()
-
-	_, err = toolsFile.WriteString(toolsTmpl)
-	return err
-}
-
-func generateClientFiles(ctx *CodegenContext, outputDir string) error {
-	clientDir := filepath.Join(outputDir, "client")
-
-	// Group tools by node type
-	toolsByNode := make(map[string][]MCPTool)
-	for _, tool := range ctx.Tools {
-		toolsByNode[tool.NodeType] = append(toolsByNode[tool.NodeType], tool)
-	}
-
-	// Generate client method files grouped by node type
-	for nodeName, tools := range toolsByNode {
-		if err := generateNodeClientFile(clientDir, nodeName, tools); err != nil {
-			return fmt.Errorf("failed to generate client for %s: %w", nodeName, err)
-		}
-	}
-
-	return nil
-}
-
-func generateNodeClientFile(clientDir string, nodeName string, tools []MCPTool) error {
-	tmplData, err := templateFS.ReadFile("templates/client.go.tmpl")
-	if err != nil {
-		return fmt.Errorf("failed to read client template: %w", err)
-	}
-
-	t, err := template.New("client").Funcs(getTemplateFuncs()).Parse(string(tmplData))
-	if err != nil {
-		return fmt.Errorf("failed to parse client template: %w", err)
-	}
-
-	filename := fmt.Sprintf("%s_client.go", strings.ToLower(nodeName))
-	file, err := os.Create(filepath.Join(clientDir, filename))
-	if err != nil {
-		return err
-	}
-	defer file.Close()
-
-	return t.Execute(file, map[string]interface{}{
-		"NodeName":   nodeName,
-		"Tools":      tools,
-		"APIVersion": APIVersion,
-	})
-}
-
-func generateMCPToolsFiles(ctx *CodegenContext, outputDir string) error {
-	toolsDir := filepath.Join(outputDir, "tools")
-
-	// Group tools by node type
-	toolsByNode := make(map[string][]MCPTool)
-	for _, tool := range ctx.Tools {
-		toolsByNode[tool.NodeType] = append(toolsByNode[tool.NodeType], tool)
-	}
-
-	// Generate tool definition files grouped by node type
-	for nodeName, tools := range toolsByNode {
-		if err := generateNodeToolsFile(toolsDir, nodeName, tools, ctx); err != nil {
-			return fmt.Errorf("failed to generate tools for %s: %w", nodeName, err)
-		}
-	}
-
-	// Generate main tools registry file
-	if err := generateToolsRegistryFile(toolsDir, ctx); err != nil {
-		return fmt.Errorf("failed to generate tools registry: %w", err)
-	}
-
-	return nil
-}
-
-func generateNodeToolsFile(toolsDir string, nodeName string, tools []MCPTool, ctx *CodegenContext) error {
-	tmplData, err := templateFS.ReadFile("templates/tools.go.tmpl")
-	if err != nil {
-		return fmt.Errorf("failed to read tools template: %w", err)
-	}
-
-	t, err := template.New("tools").Funcs(getTemplateFuncs()).Parse(string(tmplData))
-	if err != nil {
-		return fmt.Errorf("failed to parse tools template: %w", err)
-	}
-
-	filename := fmt.Sprintf("%s_tools.go", strings.ToLower(nodeName))
-	file, err := os.Create(filepath.Join(toolsDir, filename))
-	if err != nil {
-		return err
-	}
-	defer file.Close()
-
-	return t.Execute(file, map[string]interface{}{
-		"NodeName":   nodeName,
-		"Tools":      tools,
-		"APIVersion": APIVersion,
-	})
-}
-
-// OLD generateNodeToolsFile - remove after verification
-func generateNodeToolsFileOLD(toolsDir string, nodeName string, tools []MCPTool, ctx *CodegenContext) error {
-	tmpl := `// Code generated by Facebook Business API codegen. DO NOT EDIT.
-
-package tools
-
-import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"strings"
-
-	"github.com/mark3labs/mcp-go/mcp"
-	"unified-ads-mcp/internal/facebook/generated/client"
-	"unified-ads-mcp/internal/shared"
-)
-
-// Get{{.NodeName}}Tools returns MCP tools for {{.NodeName}}
-func Get{{.NodeName}}Tools() []mcp.Tool {
-	var tools []mcp.Tool
-
-{{range $tool := .Tools}}
-	// {{$tool.Name}} tool{{if $tool.AvailableFields}}
-	// Available fields for {{$tool.Return}}: {{range $i, $field := $tool.AvailableFields}}{{if $i}}, {{end}}{{$field}}{{end}}{{end}}{{if $tool.APIParams}}
-	// Params object accepts: {{range $i, $param := $tool.APIParams}}{{if $i}}, {{end}}{{$param.Name}} ({{$param.Type}}){{end}}{{end}}
-	{{sanitizeVarName $tool.Name}}Tool := mcp.NewTool("{{$tool.Name}}",
-		mcp.WithDescription("{{$tool.Description}}"),
-{{range $param := $tool.Parameters}}{{if eq $param.Name "params"}}{{if gt (len $param.APIParams) 0}}		mcp.WithObject("{{$param.Name}}",
-{{if $param.Required}}			mcp.Required(),
-{{end}}			mcp.Properties(map[string]any{
-{{range $apiParam := $param.APIParams}}				"{{$apiParam.Name}}": map[string]any{
-					"type": "{{convertTypeToJSONSchema $apiParam.Type}}",
-					"description": "{{$apiParam.Description}}",
-{{if $apiParam.Required}}					"required": true,
-{{end}}{{if $apiParam.EnumValues}}					"enum": []string{ {{range $i, $val := $apiParam.EnumValues}}{{if $i}}, {{end}}"{{$val}}"{{end}} },
-{{end}}{{if hasPrefix $apiParam.Type "list<"}}					"items": map[string]any{"type": "{{extractItemType $apiParam.Type}}"},
-{{end}}				},
-{{end}}			}),
-			mcp.Description("{{$param.Description}}"),
-		),
-{{else}}		mcp.WithObject("{{$param.Name}}",
-{{if $param.Required}}			mcp.Required(),
-{{end}}			mcp.Description("{{$param.Description}}"),
-		),
-{{end}}{{else}}		mcp.With{{paramType $param.Type}}("{{$param.Name}}",
-{{if $param.Required}}			mcp.Required(),
-{{end}}			mcp.Description("{{$param.Description}}"),
-{{if $param.EnumValues}}			mcp.Enum({{range $i, $val := $param.EnumValues}}{{if $i}}, {{end}}"{{$val}}"{{end}}),
-{{end}}		),
-{{end}}{{end}}	)
-	tools = append(tools, {{sanitizeVarName $tool.Name}}Tool)
-{{end}}
-
-	return tools
-}
-
-// {{.NodeName}} handlers
-
-{{range $tool := .Tools}}
-// Handle{{capitalizeFirst $tool.Name}} handles the {{$tool.Name}} tool with context-based auth
-func Handle{{capitalizeFirst $tool.Name}}(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// Get access token from context
-	accessToken, ok := shared.FacebookAccessTokenFromContext(ctx)
-	if !ok {
-		return mcp.NewToolResultError("Facebook access token not found in context"), nil
-	}
-
-	// Create client
-	client := client.New{{$.NodeName}}Client(accessToken)
-
-	// Build arguments map
-	args := make(map[string]interface{})
-
-{{range $param := $tool.Parameters}}{{if $param.Required}}	// Required: {{$param.Name}}
-	{{sanitizeVarName $param.Name}}, err := request.{{requireMethod $param.Type}}("{{$param.Name}}")
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("missing required parameter {{$param.Name}}: %v", err)), nil
-	}
-	{{if eq $param.Type "object"}}{{if eq $param.Name "params"}}// Parse required params object and extract parameters
-	var paramsObj map[string]interface{}
-	if err := json.Unmarshal([]byte({{sanitizeVarName $param.Name}}), &paramsObj); err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("invalid params object: %v", err)), nil
-	}
-	for key, value := range paramsObj {
-		args[key] = value
-	}{{else}}// Parse as JSON object
-	var obj map[string]interface{}
-	if err := json.Unmarshal([]byte({{sanitizeVarName $param.Name}}), &obj); err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("invalid {{$param.Name}} object: %v", err)), nil
-	}
-	args["{{$param.Name}}"] = obj{{end}}{{else if eq $param.Type "array"}}{{if eq $param.Name "fields"}}// Parse required fields array
-	var fields []string
-	if err := json.Unmarshal([]byte({{sanitizeVarName $param.Name}}), &fields); err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("invalid fields array: %v", err)), nil
-	}
-	args["{{$param.Name}}"] = strings.Join(fields, ","){{else}}// Parse as JSON array
-	var arr []interface{}
-	if err := json.Unmarshal([]byte({{sanitizeVarName $param.Name}}), &arr); err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("invalid {{$param.Name}} array: %v", err)), nil
-	}
-	args["{{$param.Name}}"] = arr{{end}}{{else}}args["{{$param.Name}}"] = {{sanitizeVarName $param.Name}}{{end}}
-{{else}}	// Optional: {{$param.Name}}
-{{if eq $param.Type "string"}}	if val := request.GetString("{{$param.Name}}", ""); val != "" {
-		args["{{$param.Name}}"] = val
-	}
-{{else if eq $param.Type "integer"}}	if val := request.GetInt("{{$param.Name}}", 0); val != 0 {
-		args["{{$param.Name}}"] = val
-	}
-{{else if eq $param.Type "number"}}	if val := request.GetFloat("{{$param.Name}}", 0); val != 0 {
-		args["{{$param.Name}}"] = val
-	}
-{{else if eq $param.Type "boolean"}}	if val := request.GetBool("{{$param.Name}}", false); val {
-		args["{{$param.Name}}"] = val
-	}
-{{else if eq $param.Type "array"}}	// Array parameter - expecting JSON string
-	if val := request.GetString("{{$param.Name}}", ""); val != "" {
-		{{if eq $param.Name "fields"}}// Parse array of fields and convert to comma-separated string
-		var fields []string
-		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
-			args["{{$param.Name}}"] = strings.Join(fields, ",")
-		}{{else}}// Parse as JSON array
-		var arr []interface{}
-		if err := json.Unmarshal([]byte(val), &arr); err == nil {
-			args["{{$param.Name}}"] = arr
-		}{{end}}
-	}
-{{else if eq $param.Type "object"}}	// Object parameter - expecting JSON string
-	if val := request.GetString("{{$param.Name}}", ""); val != "" {
-		{{if eq $param.Name "params"}}// Parse params object and extract individual parameters
-		var params map[string]interface{}
-		if err := json.Unmarshal([]byte(val), &params); err == nil {
-			for key, value := range params {
-				args[key] = value
-			}
-		}{{else}}// Parse as JSON object
-		var obj map[string]interface{}
-		if err := json.Unmarshal([]byte(val), &obj); err == nil {
-			args["{{$param.Name}}"] = obj
-		}{{end}}
-	}
-{{else}}	// {{$param.Type}} type - using string
-	if val := request.GetString("{{$param.Name}}", ""); val != "" {
-		args["{{$param.Name}}"] = val
-	}
-{{end}}{{end}}
-{{end}}
-
-	// Call the client method
-	result, err := client.{{capitalizeFirst $tool.Name}}(args)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to execute {{$tool.Name}}: %v", err)), nil
-	}
-
-	// Return the result as JSON
-	resultJSON, err := json.Marshal(result)
-	if err != nil {
-		return mcp.NewToolResultError(fmt.Sprintf("failed to marshal result: %v", err)), nil
-	}
-
-	return mcp.NewToolResultText(string(resultJSON)), nil
-}
-
-{{end}}`
-
-	t, err := template.New("tools").Funcs(template.FuncMap{
-		"capitalizeFirst": capitalizeFirst,
-		"sanitizeVarName": sanitizeVarName,
-		"paramType": func(t string) string {
-			switch t {
-			case "string":
-				return "String"
-			case "integer":
-				return "Number"
-			case "number":
-				return "Number"
-			case "boolean":
-				return "Boolean"
-			case "array":
-				return "Array"
-			case "object":
-				return "Object"
-			default:
-				return "String"
-			}
-		},
-		"requireMethod": func(t string) string {
-			switch t {
-			case "string":
-				return "RequireString"
-			case "integer":
-				return "RequireInt"
-			case "number":
-				return "RequireFloat"
-			case "boolean":
-				return "RequireBool"
-			case "array":
-				return "RequireString" // Arrays passed as JSON strings
-			case "object":
-				return "RequireString" // Objects passed as JSON strings
-			default:
-				return "RequireString"
-			}
-		},
-		"convertTypeToJSONSchema": convertTypeToJSONSchema,
-		"extractItemType": extractItemType,
-		"hasPrefix": strings.HasPrefix,
-		"varName": func(name string) string {
-			return sanitizeVarName(name)
-		},
-	}).Parse(tmpl)
-	if err != nil {
-		return err
-	}
-
-	filename := fmt.Sprintf("%s_tools.go", strings.ToLower(nodeName))
-	file, err := os.Create(filepath.Join(toolsDir, filename))
-	if err != nil {
-		return err
-	}
-	defer file.Close()
-
-	return t.Execute(file, map[string]interface{}{
-		"NodeName": nodeName,
-		"Tools":    tools,
-	})
-}
-
-func generateToolsRegistryFile(toolsDir string, ctx *CodegenContext) error {
-	tmplData, err := templateFS.ReadFile("templates/tools_registry.go.tmpl")
-	if err != nil {
-		return fmt.Errorf("failed to read tools registry template: %w", err)
-	}
-
-	// Get unique node names
-	nodeTypes := []string{}
-	nodeTypesMap := make(map[string]bool)
-	for _, tool := range ctx.Tools {
-		if !nodeTypesMap[tool.NodeType] {
-			nodeTypesMap[tool.NodeType] = true
-			nodeTypes = append(nodeTypes, tool.NodeType)
-		}
-	}
-
-	// Prepare handler list
-	handlers := []struct {
-		ToolName    string
-		HandlerFunc string
-	}{}
-	for _, tool := range ctx.Tools {
-		handlers = append(handlers, struct {
-			ToolName    string
-			HandlerFunc string
-		}{
-			ToolName:    tool.Name,
-			HandlerFunc: fmt.Sprintf("Handle%s", capitalizeFirst(tool.Name)),
-		})
-	}
-
-	t, err := template.New("registry").Funcs(getTemplateFuncs()).Parse(string(tmplData))
-	if err != nil {
-		return fmt.Errorf("failed to parse tools registry template: %w", err)
-	}
-
-	file, err := os.Create(filepath.Join(toolsDir, "registry.go"))
-	if err != nil {
-		return err
-	}
-	defer file.Close()
-
-	return t.Execute(file, map[string]interface{}{
-		"NodeTypes": nodeTypes,
-		"Handlers":  handlers,
-	})
-}
-
 func generateEnumsFile(ctx *CodegenContext, outputDir string) error {
 	enumDir := filepath.Join(outputDir, "enums")
 
@@ -1350,52 +1106,6 @@ func generateEnumsFile(ctx *CodegenContext, outputDir string) error {
 	defer file.Close()
 
 	return t.Execute(file, ctx)
-}
-
-func generateIndexFiles(ctx *CodegenContext, outputDir string) error {
-	// Generate package documentation files for each subdirectory
-	packages := map[string]string{
-		"types":  "Package types contains generated type definitions for Facebook Business API objects.",
-		"client": "Package client contains generated client methods for Facebook Business API operations.",
-		"tools":  "Package tools contains generated MCP tool definitions and handlers for Facebook Business API.",
-		"enums":  "Package enums contains generated enum type definitions from Facebook Business API specifications.",
-	}
-
-	for pkg, description := range packages {
-		docContent := fmt.Sprintf(`// Code generated by Facebook Business API codegen. DO NOT EDIT.
-
-// %s
-package %s
-`, description, pkg)
-
-		docFile, err := os.Create(filepath.Join(outputDir, pkg, "doc.go"))
-		if err != nil {
-			return fmt.Errorf("failed to create doc.go for package %s: %w", pkg, err)
-		}
-		if _, err := docFile.WriteString(docContent); err != nil {
-			docFile.Close()
-			return fmt.Errorf("failed to write doc.go for package %s: %w", pkg, err)
-		}
-		docFile.Close()
-	}
-
-	// Generate main index file
-	tmpl := `// Code generated by Facebook Business API codegen. DO NOT EDIT.
-
-// Package generated contains all generated code for Facebook Business API
-package generated
-
-// Re-export all types, tools, and client methods from subdirectories
-`
-
-	file, err := os.Create(filepath.Join(outputDir, "doc.go"))
-	if err != nil {
-		return err
-	}
-	defer file.Close()
-
-	_, err = file.WriteString(tmpl)
-	return err
 }
 
 func generateConstantsFile(ctx *CodegenContext, outputDir string) error {

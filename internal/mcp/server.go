@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"strings"
 
 	"unified-ads-mcp/internal/config"
 	"unified-ads-mcp/internal/facebook"
@@ -94,12 +93,12 @@ func InitMCPServer(cfg *config.Config, enabledCategories []string) (*WrappedMCPS
 			// Enable all objects
 			for _, objects := range ObjectCategories {
 				for _, obj := range objects {
-					enabledObjects[strings.ToLower(obj)] = true
+					enabledObjects[obj] = true
 				}
 			}
 		} else if objects, ok := ObjectCategories[category]; ok {
 			for _, obj := range objects {
-				enabledObjects[strings.ToLower(obj)] = true
+				enabledObjects[obj] = true
 			}
 		} else {
 			return nil, fmt.Errorf("unsupported category: '%s'. Valid categories are: %v", categoryStr, GetValidCategories())

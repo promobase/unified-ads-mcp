@@ -25,7 +25,7 @@ func CreateMCPServer() (*server.MCPServer, error) {
 
 	// Register all Facebook Business API tools
 	// Use the legacy function from the facebook package that accepts accessToken
-	if err := RegisterTools(s, accessToken); err != nil {
+	if err := RegisterMCPTools(s, accessToken); err != nil {
 		return nil, fmt.Errorf("failed to register tools: %w", err)
 	}
 
@@ -41,7 +41,7 @@ func RunServer() error {
 
 	// Get access token to count tools
 	accessToken := os.Getenv("FACEBOOK_ACCESS_TOKEN")
-	allTools := GetAllTools(accessToken)
+	allTools := GetMCPTools(accessToken)
 	fmt.Fprintf(os.Stderr, "Facebook MCP Server started with %d tools available\n", len(allTools))
 
 	// Start the server using stdio transport
