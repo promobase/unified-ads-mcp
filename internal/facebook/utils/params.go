@@ -49,9 +49,13 @@ func ParseOptionalBool(request mcp.CallToolRequest, paramName string, args map[s
 // ParseFieldsArray parses a fields array parameter and converts to comma-separated string
 func ParseFieldsArray(request mcp.CallToolRequest, args map[string]interface{}) {
 	if val := request.GetString("fields", ""); val != "" {
+		// Try to parse as JSON array first
 		var fields []string
 		if err := json.Unmarshal([]byte(val), &fields); err == nil && len(fields) > 0 {
 			args["fields"] = strings.Join(fields, ",")
+		} else {
+			// If not JSON, assume it's already a string (could be comma-separated)
+			args["fields"] = val
 		}
 	}
 }

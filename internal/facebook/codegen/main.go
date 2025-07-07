@@ -461,6 +461,10 @@ func generateCodeNew(ctx *CodegenContext) error {
 			if err := generateEndpointTestFile(nodeDir, nodeName, tool, ctx); err != nil {
 				return fmt.Errorf("failed to generate test for endpoint %s: %w", tool.Name, err)
 			}
+			// Generate MCP test file for the endpoint
+			if err := generateEndpointMCPTestFile(nodeDir, nodeName, tool, ctx); err != nil {
+				return fmt.Errorf("failed to generate MCP test for endpoint %s: %w", tool.Name, err)
+			}
 		}
 
 		// Generate node registry file
@@ -550,6 +554,34 @@ func generateEndpointTestFile(nodeDir string, nodeName string, tool MCPTool, ctx
 
 	// Create a safe filename from the tool name
 	filename := fmt.Sprintf("%s_test.go", strings.ReplaceAll(tool.Name, "_", "_"))
+	file, err := os.Create(filepath.Join(nodeDir, filename))
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	return t.Execute(file, map[string]interface{}{
+		"PackageName": strings.ToLower(nodeName),
+		"NodeName":    nodeName,
+		"Tool":        tool,
+		"APIVersion":  APIVersion,
+	})
+}
+
+// generateEndpointMCPTestFile generates an MCP test file for an endpoint
+func generateEndpointMCPTestFile(nodeDir string, nodeName string, tool MCPTool, ctx *CodegenContext) error {
+	tmplData, err := templateFS.ReadFile("templates/endpoint_mcp_test.go.tmpl")
+	if err != nil {
+		return fmt.Errorf("failed to read endpoint MCP test template: %w", err)
+	}
+
+	t, err := template.New("endpoint_mcp_test").Funcs(getTemplateFuncs()).Parse(string(tmplData))
+	if err != nil {
+		return fmt.Errorf("failed to parse endpoint MCP test template: %w", err)
+	}
+
+	// Create a safe filename from the tool name
+	filename := fmt.Sprintf("%s_mcp_test.go", strings.ReplaceAll(tool.Name, "_", "_"))
 	file, err := os.Create(filepath.Join(nodeDir, filename))
 	if err != nil {
 		return err
