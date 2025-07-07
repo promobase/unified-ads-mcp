@@ -50,7 +50,7 @@ func HandleLivevideo_post_input_streams(ctx context.Context, request mcp.CallToo
 func Livevideo_post_input_streams(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "input_streams"
+	baseURL = FacebookGraphAPIBaseURL + "/input_streams"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -128,7 +128,7 @@ func HandleWhatsappbusinessaccount_get_template_analytics(ctx context.Context, r
 func Whatsappbusinessaccount_get_template_analytics(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "template_analytics"
+	baseURL = FacebookGraphAPIBaseURL + "/template_analytics"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

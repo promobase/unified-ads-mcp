@@ -75,7 +75,7 @@ func HandlePage_get_fantasy_games(ctx context.Context, request mcp.CallToolReque
 func Page_get_fantasy_games(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "fantasy_games"
+	baseURL = FacebookGraphAPIBaseURL + "/fantasy_games"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

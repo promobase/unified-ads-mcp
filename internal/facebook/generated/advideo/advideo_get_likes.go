@@ -75,7 +75,7 @@ func HandleAdvideo_get_likes(ctx context.Context, request mcp.CallToolRequest) (
 func Advideo_get_likes(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "likes"
+	baseURL = FacebookGraphAPIBaseURL + "/likes"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

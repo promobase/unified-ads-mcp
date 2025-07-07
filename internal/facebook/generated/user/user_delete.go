@@ -50,7 +50,7 @@ func HandleUser_delete(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 func User_delete(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + ""
+	baseURL = FacebookGraphAPIBaseURL
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -102,7 +102,8 @@ func Adaccount_get_ad_saved_keywords(accessToken string, args map[string]interfa
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_ad_saved_keywords")
 	}
-	baseURL = fmt.Sprintf("%s/act_%sad_saved_keywords", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/ad_saved_keywords", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

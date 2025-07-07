@@ -94,7 +94,7 @@ func HandlePage_post_calls(ctx context.Context, request mcp.CallToolRequest) (*m
 func Page_post_calls(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "calls"
+	baseURL = FacebookGraphAPIBaseURL + "/calls"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

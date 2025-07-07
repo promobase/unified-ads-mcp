@@ -75,7 +75,7 @@ func HandleIguser_get_recently_searched_hashtags(ctx context.Context, request mc
 func Iguser_get_recently_searched_hashtags(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "recently_searched_hashtags"
+	baseURL = FacebookGraphAPIBaseURL + "/recently_searched_hashtags"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

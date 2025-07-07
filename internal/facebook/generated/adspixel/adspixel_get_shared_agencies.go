@@ -75,7 +75,7 @@ func HandleAdspixel_get_shared_agencies(ctx context.Context, request mcp.CallToo
 func Adspixel_get_shared_agencies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "shared_agencies"
+	baseURL = FacebookGraphAPIBaseURL + "/shared_agencies"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

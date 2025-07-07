@@ -50,7 +50,7 @@ func HandleProductfeedupload_post_error_report(ctx context.Context, request mcp.
 func Productfeedupload_post_error_report(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "error_report"
+	baseURL = FacebookGraphAPIBaseURL + "/error_report"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -64,6 +64,7 @@ func Adset_delete(accessToken string, args map[string]interface{}) (interface{},
 	if !ok {
 		return nil, fmt.Errorf("ad_set_id is required for adset_delete")
 	}
+
 	baseURL = fmt.Sprintf("%s/%s", FacebookGraphAPIBaseURL, adSetId)
 
 	// Build URL parameters, skipping ID parameters that are in the path

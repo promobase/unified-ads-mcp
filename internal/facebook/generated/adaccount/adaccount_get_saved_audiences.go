@@ -111,7 +111,8 @@ func Adaccount_get_saved_audiences(accessToken string, args map[string]interface
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_saved_audiences")
 	}
-	baseURL = fmt.Sprintf("%s/act_%ssaved_audiences", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/saved_audiences", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

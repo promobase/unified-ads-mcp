@@ -77,7 +77,7 @@ func HandleApplication_post_domain_reports(ctx context.Context, request mcp.Call
 func Application_post_domain_reports(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "domain_reports"
+	baseURL = FacebookGraphAPIBaseURL + "/domain_reports"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

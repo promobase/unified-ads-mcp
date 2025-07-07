@@ -75,7 +75,7 @@ func HandleInstagramuser_get_upcoming_events(ctx context.Context, request mcp.Ca
 func Instagramuser_get_upcoming_events(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "upcoming_events"
+	baseURL = FacebookGraphAPIBaseURL + "/upcoming_events"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

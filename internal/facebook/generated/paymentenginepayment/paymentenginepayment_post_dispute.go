@@ -77,7 +77,7 @@ func HandlePaymentenginepayment_post_dispute(ctx context.Context, request mcp.Ca
 func Paymentenginepayment_post_dispute(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "dispute"
+	baseURL = FacebookGraphAPIBaseURL + "/dispute"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

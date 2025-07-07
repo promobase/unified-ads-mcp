@@ -110,7 +110,8 @@ func Adaccount_get_ads_volume(accessToken string, args map[string]interface{}) (
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_ads_volume")
 	}
-	baseURL = fmt.Sprintf("%s/act_%sads_volume", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/ads_volume", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

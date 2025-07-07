@@ -75,7 +75,7 @@ func HandleBusiness_get_clients(ctx context.Context, request mcp.CallToolRequest
 func Business_get_clients(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "clients"
+	baseURL = FacebookGraphAPIBaseURL + "/clients"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

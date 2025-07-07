@@ -75,7 +75,7 @@ func HandleHomelisting_get_videos_metadata(ctx context.Context, request mcp.Call
 func Homelisting_get_videos_metadata(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "videos_metadata"
+	baseURL = FacebookGraphAPIBaseURL + "/videos_metadata"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

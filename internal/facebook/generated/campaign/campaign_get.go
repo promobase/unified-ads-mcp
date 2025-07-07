@@ -114,6 +114,7 @@ func Campaign_get(accessToken string, args map[string]interface{}) (interface{},
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_get")
 	}
+
 	baseURL = fmt.Sprintf("%s/%s", FacebookGraphAPIBaseURL, campaignId)
 
 	// Build URL parameters, skipping ID parameters that are in the path

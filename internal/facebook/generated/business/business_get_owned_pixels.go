@@ -75,7 +75,7 @@ func HandleBusiness_get_owned_pixels(ctx context.Context, request mcp.CallToolRe
 func Business_get_owned_pixels(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "owned_pixels"
+	baseURL = FacebookGraphAPIBaseURL + "/owned_pixels"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

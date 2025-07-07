@@ -124,7 +124,8 @@ func Adaccount_get_delivery_estimate(accessToken string, args map[string]interfa
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_delivery_estimate")
 	}
-	baseURL = fmt.Sprintf("%s/act_%sdelivery_estimate", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/delivery_estimate", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

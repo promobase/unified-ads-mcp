@@ -110,7 +110,8 @@ func Adaccount_post_adplayables(accessToken string, args map[string]interface{})
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_adplayables")
 	}
-	baseURL = fmt.Sprintf("%s/act_%sadplayables", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/adplayables", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

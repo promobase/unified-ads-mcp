@@ -74,7 +74,7 @@ func HandleCommerceorder_get_refunds(ctx context.Context, request mcp.CallToolRe
 func Commerceorder_get_refunds(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "refunds"
+	baseURL = FacebookGraphAPIBaseURL + "/refunds"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

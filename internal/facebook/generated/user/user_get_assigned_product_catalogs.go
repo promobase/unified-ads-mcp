@@ -75,7 +75,7 @@ func HandleUser_get_assigned_product_catalogs(ctx context.Context, request mcp.C
 func User_get_assigned_product_catalogs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "assigned_product_catalogs"
+	baseURL = FacebookGraphAPIBaseURL + "/assigned_product_catalogs"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

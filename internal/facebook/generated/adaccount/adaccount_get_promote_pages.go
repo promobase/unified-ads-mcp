@@ -89,7 +89,8 @@ func Adaccount_get_promote_pages(accessToken string, args map[string]interface{}
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_promote_pages")
 	}
-	baseURL = fmt.Sprintf("%s/act_%spromote_pages", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/promote_pages", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

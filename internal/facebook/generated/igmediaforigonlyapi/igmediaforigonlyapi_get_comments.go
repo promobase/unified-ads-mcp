@@ -75,7 +75,7 @@ func HandleIgmediaforigonlyapi_get_comments(ctx context.Context, request mcp.Cal
 func Igmediaforigonlyapi_get_comments(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "comments"
+	baseURL = FacebookGraphAPIBaseURL + "/comments"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

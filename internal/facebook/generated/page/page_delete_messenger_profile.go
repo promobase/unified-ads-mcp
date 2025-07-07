@@ -83,7 +83,7 @@ func HandlePage_delete_messenger_profile(ctx context.Context, request mcp.CallTo
 func Page_delete_messenger_profile(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "messenger_profile"
+	baseURL = FacebookGraphAPIBaseURL + "/messenger_profile"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -12,7 +12,7 @@ GENERATED_DIR=internal/facebook/generated
 all: build
 
 # Build the unified server
-build: codegen
+build:
 	@echo "Building unified-ads-mcp server..."
 	$(GOCMD) build -ldflags "-s -w" -o $(BINARY_NAME) ./cmd/server
 	$(GOCMD) fmt ./...

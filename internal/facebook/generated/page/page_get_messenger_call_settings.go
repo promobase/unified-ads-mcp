@@ -75,7 +75,7 @@ func HandlePage_get_messenger_call_settings(ctx context.Context, request mcp.Cal
 func Page_get_messenger_call_settings(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "messenger_call_settings"
+	baseURL = FacebookGraphAPIBaseURL + "/messenger_call_settings"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

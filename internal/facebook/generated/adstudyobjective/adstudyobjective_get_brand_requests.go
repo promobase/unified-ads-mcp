@@ -75,7 +75,7 @@ func HandleAdstudyobjective_get_brand_requests(ctx context.Context, request mcp.
 func Adstudyobjective_get_brand_requests(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "brand_requests"
+	baseURL = FacebookGraphAPIBaseURL + "/brand_requests"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

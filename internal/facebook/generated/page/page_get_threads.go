@@ -101,7 +101,7 @@ func HandlePage_get_threads(ctx context.Context, request mcp.CallToolRequest) (*
 func Page_get_threads(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "threads"
+	baseURL = FacebookGraphAPIBaseURL + "/threads"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

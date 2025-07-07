@@ -74,7 +74,7 @@ func HandleWhatsappbusinessaccount_get_schedules(ctx context.Context, request mc
 func Whatsappbusinessaccount_get_schedules(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "schedules"
+	baseURL = FacebookGraphAPIBaseURL + "/schedules"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

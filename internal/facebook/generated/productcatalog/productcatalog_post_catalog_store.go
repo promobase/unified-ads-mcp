@@ -76,7 +76,7 @@ func HandleProductcatalog_post_catalog_store(ctx context.Context, request mcp.Ca
 func Productcatalog_post_catalog_store(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "catalog_store"
+	baseURL = FacebookGraphAPIBaseURL + "/catalog_store"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

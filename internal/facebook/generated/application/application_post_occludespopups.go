@@ -67,7 +67,7 @@ func HandleApplication_post_occludespopups(ctx context.Context, request mcp.Call
 func Application_post_occludespopups(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "occludespopups"
+	baseURL = FacebookGraphAPIBaseURL + "/occludespopups"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

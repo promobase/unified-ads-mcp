@@ -76,7 +76,7 @@ func HandleWhatsappbusinessaccount_post_product_catalogs(ctx context.Context, re
 func Whatsappbusinessaccount_post_product_catalogs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "product_catalogs"
+	baseURL = FacebookGraphAPIBaseURL + "/product_catalogs"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

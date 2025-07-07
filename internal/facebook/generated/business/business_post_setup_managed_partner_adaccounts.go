@@ -98,7 +98,7 @@ func HandleBusiness_post_setup_managed_partner_adaccounts(ctx context.Context, r
 func Business_post_setup_managed_partner_adaccounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "setup_managed_partner_adaccounts"
+	baseURL = FacebookGraphAPIBaseURL + "/setup_managed_partner_adaccounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

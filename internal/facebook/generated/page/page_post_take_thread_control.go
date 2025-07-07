@@ -80,7 +80,7 @@ func HandlePage_post_take_thread_control(ctx context.Context, request mcp.CallTo
 func Page_post_take_thread_control(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "take_thread_control"
+	baseURL = FacebookGraphAPIBaseURL + "/take_thread_control"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

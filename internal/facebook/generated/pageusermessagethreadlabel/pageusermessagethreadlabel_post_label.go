@@ -76,7 +76,7 @@ func HandlePageusermessagethreadlabel_post_label(ctx context.Context, request mc
 func Pageusermessagethreadlabel_post_label(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "label"
+	baseURL = FacebookGraphAPIBaseURL + "/label"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

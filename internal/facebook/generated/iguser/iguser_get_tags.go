@@ -75,7 +75,7 @@ func HandleIguser_get_tags(ctx context.Context, request mcp.CallToolRequest) (*m
 func Iguser_get_tags(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "tags"
+	baseURL = FacebookGraphAPIBaseURL + "/tags"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

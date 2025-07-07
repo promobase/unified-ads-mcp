@@ -75,7 +75,7 @@ func HandleAdstudyobjective_get_offline_conversion_data_sets(ctx context.Context
 func Adstudyobjective_get_offline_conversion_data_sets(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "offline_conversion_data_sets"
+	baseURL = FacebookGraphAPIBaseURL + "/offline_conversion_data_sets"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

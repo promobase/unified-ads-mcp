@@ -74,7 +74,7 @@ func HandleApplication_get_subscriptions(ctx context.Context, request mcp.CallTo
 func Application_get_subscriptions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "subscriptions"
+	baseURL = FacebookGraphAPIBaseURL + "/subscriptions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

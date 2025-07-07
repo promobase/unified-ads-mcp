@@ -99,7 +99,7 @@ func HandleProductcatalog_get_product_sets(ctx context.Context, request mcp.Call
 func Productcatalog_get_product_sets(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "product_sets"
+	baseURL = FacebookGraphAPIBaseURL + "/product_sets"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

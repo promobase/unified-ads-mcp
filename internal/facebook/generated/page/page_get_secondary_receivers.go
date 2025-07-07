@@ -88,7 +88,7 @@ func HandlePage_get_secondary_receivers(ctx context.Context, request mcp.CallToo
 func Page_get_secondary_receivers(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "secondary_receivers"
+	baseURL = FacebookGraphAPIBaseURL + "/secondary_receivers"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

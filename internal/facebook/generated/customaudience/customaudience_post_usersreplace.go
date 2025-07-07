@@ -85,7 +85,7 @@ func HandleCustomaudience_post_usersreplace(ctx context.Context, request mcp.Cal
 func Customaudience_post_usersreplace(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "usersreplace"
+	baseURL = FacebookGraphAPIBaseURL + "/usersreplace"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

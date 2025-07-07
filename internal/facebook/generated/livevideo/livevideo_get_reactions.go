@@ -88,7 +88,7 @@ func HandleLivevideo_get_reactions(ctx context.Context, request mcp.CallToolRequ
 func Livevideo_get_reactions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "reactions"
+	baseURL = FacebookGraphAPIBaseURL + "/reactions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

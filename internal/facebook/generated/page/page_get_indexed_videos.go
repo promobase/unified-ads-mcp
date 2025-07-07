@@ -75,7 +75,7 @@ func HandlePage_get_indexed_videos(ctx context.Context, request mcp.CallToolRequ
 func Page_get_indexed_videos(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "indexed_videos"
+	baseURL = FacebookGraphAPIBaseURL + "/indexed_videos"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -75,7 +75,7 @@ func HandleBusiness_get_ad_studies(ctx context.Context, request mcp.CallToolRequ
 func Business_get_ad_studies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "ad_studies"
+	baseURL = FacebookGraphAPIBaseURL + "/ad_studies"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

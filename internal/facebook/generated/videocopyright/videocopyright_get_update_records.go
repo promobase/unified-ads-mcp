@@ -75,7 +75,7 @@ func HandleVideocopyright_get_update_records(ctx context.Context, request mcp.Ca
 func Videocopyright_get_update_records(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "update_records"
+	baseURL = FacebookGraphAPIBaseURL + "/update_records"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

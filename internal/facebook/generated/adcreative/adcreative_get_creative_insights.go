@@ -89,7 +89,8 @@ func Adcreative_get_creative_insights(accessToken string, args map[string]interf
 	if !ok {
 		return nil, fmt.Errorf("ad_creative_id is required for adcreative_get_creative_insights")
 	}
-	baseURL = fmt.Sprintf("%s/%screative_insights", FacebookGraphAPIBaseURL, adCreativeId)
+
+	baseURL = fmt.Sprintf("%s/%s/creative_insights", FacebookGraphAPIBaseURL, adCreativeId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

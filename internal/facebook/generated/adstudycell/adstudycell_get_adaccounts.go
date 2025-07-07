@@ -75,7 +75,7 @@ func HandleAdstudycell_get_adaccounts(ctx context.Context, request mcp.CallToolR
 func Adstudycell_get_adaccounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "adaccounts"
+	baseURL = FacebookGraphAPIBaseURL + "/adaccounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

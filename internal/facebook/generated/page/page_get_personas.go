@@ -75,7 +75,7 @@ func HandlePage_get_personas(ctx context.Context, request mcp.CallToolRequest) (
 func Page_get_personas(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "personas"
+	baseURL = FacebookGraphAPIBaseURL + "/personas"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -87,7 +87,7 @@ func HandleBusinessuser_get_assigned_business_asset_groups(ctx context.Context, 
 func Businessuser_get_assigned_business_asset_groups(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "assigned_business_asset_groups"
+	baseURL = FacebookGraphAPIBaseURL + "/assigned_business_asset_groups"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

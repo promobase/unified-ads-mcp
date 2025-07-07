@@ -87,7 +87,7 @@ func HandleBusiness_get_extendedcreditapplications(ctx context.Context, request 
 func Business_get_extendedcreditapplications(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "extendedcreditapplications"
+	baseURL = FacebookGraphAPIBaseURL + "/extendedcreditapplications"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

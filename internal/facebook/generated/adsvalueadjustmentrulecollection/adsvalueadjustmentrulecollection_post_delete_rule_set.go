@@ -50,7 +50,7 @@ func HandleAdsvalueadjustmentrulecollection_post_delete_rule_set(ctx context.Con
 func Adsvalueadjustmentrulecollection_post_delete_rule_set(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "delete_rule_set"
+	baseURL = FacebookGraphAPIBaseURL + "/delete_rule_set"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

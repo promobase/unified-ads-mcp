@@ -74,7 +74,7 @@ func HandleApplication_get_app_capi_settings(ctx context.Context, request mcp.Ca
 func Application_get_app_capi_settings(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "app_capi_settings"
+	baseURL = FacebookGraphAPIBaseURL + "/app_capi_settings"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

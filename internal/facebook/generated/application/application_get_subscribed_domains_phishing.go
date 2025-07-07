@@ -74,7 +74,7 @@ func HandleApplication_get_subscribed_domains_phishing(ctx context.Context, requ
 func Application_get_subscribed_domains_phishing(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "subscribed_domains_phishing"
+	baseURL = FacebookGraphAPIBaseURL + "/subscribed_domains_phishing"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

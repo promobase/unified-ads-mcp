@@ -109,7 +109,7 @@ func HandleOfflineconversiondataset_get_stats(ctx context.Context, request mcp.C
 func Offlineconversiondataset_get_stats(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "stats"
+	baseURL = FacebookGraphAPIBaseURL + "/stats"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

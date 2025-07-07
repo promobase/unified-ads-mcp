@@ -87,7 +87,7 @@ func HandleUser_get_rich_media_documents(ctx context.Context, request mcp.CallTo
 func User_get_rich_media_documents(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "rich_media_documents"
+	baseURL = FacebookGraphAPIBaseURL + "/rich_media_documents"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -81,7 +81,7 @@ func HandleIgmedia_post_product_tags(ctx context.Context, request mcp.CallToolRe
 func Igmedia_post_product_tags(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "product_tags"
+	baseURL = FacebookGraphAPIBaseURL + "/product_tags"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

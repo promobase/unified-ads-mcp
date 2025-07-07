@@ -80,7 +80,7 @@ func HandleBusiness_post_adspixels(ctx context.Context, request mcp.CallToolRequ
 func Business_post_adspixels(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "adspixels"
+	baseURL = FacebookGraphAPIBaseURL + "/adspixels"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

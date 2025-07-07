@@ -75,7 +75,7 @@ func HandleContentblocklist_get_applied_ad_accounts(ctx context.Context, request
 func Contentblocklist_get_applied_ad_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "applied_ad_accounts"
+	baseURL = FacebookGraphAPIBaseURL + "/applied_ad_accounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

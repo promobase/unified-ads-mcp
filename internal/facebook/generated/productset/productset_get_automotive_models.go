@@ -91,7 +91,7 @@ func HandleProductset_get_automotive_models(ctx context.Context, request mcp.Cal
 func Productset_get_automotive_models(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "automotive_models"
+	baseURL = FacebookGraphAPIBaseURL + "/automotive_models"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

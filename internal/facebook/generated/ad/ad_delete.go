@@ -64,6 +64,7 @@ func Ad_delete(accessToken string, args map[string]interface{}) (interface{}, er
 	if !ok {
 		return nil, fmt.Errorf("ad_id is required for ad_delete")
 	}
+
 	baseURL = fmt.Sprintf("%s/%s", FacebookGraphAPIBaseURL, adId)
 
 	// Build URL parameters, skipping ID parameters that are in the path

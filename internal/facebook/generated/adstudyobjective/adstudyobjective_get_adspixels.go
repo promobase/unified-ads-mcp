@@ -75,7 +75,7 @@ func HandleAdstudyobjective_get_adspixels(ctx context.Context, request mcp.CallT
 func Adstudyobjective_get_adspixels(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "adspixels"
+	baseURL = FacebookGraphAPIBaseURL + "/adspixels"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

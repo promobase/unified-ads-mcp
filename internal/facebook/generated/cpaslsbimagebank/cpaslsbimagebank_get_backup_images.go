@@ -75,7 +75,7 @@ func HandleCpaslsbimagebank_get_backup_images(ctx context.Context, request mcp.C
 func Cpaslsbimagebank_get_backup_images(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "backup_images"
+	baseURL = FacebookGraphAPIBaseURL + "/backup_images"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

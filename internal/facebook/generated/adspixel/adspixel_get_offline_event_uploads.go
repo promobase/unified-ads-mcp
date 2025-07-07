@@ -105,7 +105,7 @@ func HandleAdspixel_get_offline_event_uploads(ctx context.Context, request mcp.C
 func Adspixel_get_offline_event_uploads(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "offline_event_uploads"
+	baseURL = FacebookGraphAPIBaseURL + "/offline_event_uploads"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

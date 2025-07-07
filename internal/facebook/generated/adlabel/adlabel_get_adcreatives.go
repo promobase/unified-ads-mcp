@@ -75,7 +75,7 @@ func HandleAdlabel_get_adcreatives(ctx context.Context, request mcp.CallToolRequ
 func Adlabel_get_adcreatives(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "adcreatives"
+	baseURL = FacebookGraphAPIBaseURL + "/adcreatives"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -105,7 +105,8 @@ func Adaccount_get_video_ads(accessToken string, args map[string]interface{}) (i
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_video_ads")
 	}
-	baseURL = fmt.Sprintf("%s/act_%svideo_ads", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/video_ads", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

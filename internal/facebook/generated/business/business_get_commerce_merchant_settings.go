@@ -75,7 +75,7 @@ func HandleBusiness_get_commerce_merchant_settings(ctx context.Context, request 
 func Business_get_commerce_merchant_settings(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "commerce_merchant_settings"
+	baseURL = FacebookGraphAPIBaseURL + "/commerce_merchant_settings"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -75,7 +75,7 @@ func HandleIgmedia_get_collaborators(ctx context.Context, request mcp.CallToolRe
 func Igmedia_get_collaborators(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "collaborators"
+	baseURL = FacebookGraphAPIBaseURL + "/collaborators"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

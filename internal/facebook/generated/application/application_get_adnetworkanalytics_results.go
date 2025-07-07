@@ -88,7 +88,7 @@ func HandleApplication_get_adnetworkanalytics_results(ctx context.Context, reque
 func Application_get_adnetworkanalytics_results(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "adnetworkanalytics_results"
+	baseURL = FacebookGraphAPIBaseURL + "/adnetworkanalytics_results"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

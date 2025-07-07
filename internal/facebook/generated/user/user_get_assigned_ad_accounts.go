@@ -75,7 +75,7 @@ func HandleUser_get_assigned_ad_accounts(ctx context.Context, request mcp.CallTo
 func User_get_assigned_ad_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "assigned_ad_accounts"
+	baseURL = FacebookGraphAPIBaseURL + "/assigned_ad_accounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

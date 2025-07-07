@@ -76,7 +76,7 @@ func HandleBusiness_post_add_phone_numbers(ctx context.Context, request mcp.Call
 func Business_post_add_phone_numbers(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "add_phone_numbers"
+	baseURL = FacebookGraphAPIBaseURL + "/add_phone_numbers"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -80,7 +80,7 @@ func HandleAdstudy_post_instances(ctx context.Context, request mcp.CallToolReque
 func Adstudy_post_instances(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "instances"
+	baseURL = FacebookGraphAPIBaseURL + "/instances"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

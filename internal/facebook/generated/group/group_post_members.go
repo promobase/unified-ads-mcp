@@ -79,7 +79,7 @@ func HandleGroup_post_members(ctx context.Context, request mcp.CallToolRequest) 
 func Group_post_members(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "members"
+	baseURL = FacebookGraphAPIBaseURL + "/members"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

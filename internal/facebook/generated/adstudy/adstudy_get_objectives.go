@@ -75,7 +75,7 @@ func HandleAdstudy_get_objectives(ctx context.Context, request mcp.CallToolReque
 func Adstudy_get_objectives(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "objectives"
+	baseURL = FacebookGraphAPIBaseURL + "/objectives"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

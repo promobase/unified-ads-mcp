@@ -74,7 +74,7 @@ func HandleWhatsappbusinessaccount_get_activities(ctx context.Context, request m
 func Whatsappbusinessaccount_get_activities(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "activities"
+	baseURL = FacebookGraphAPIBaseURL + "/activities"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

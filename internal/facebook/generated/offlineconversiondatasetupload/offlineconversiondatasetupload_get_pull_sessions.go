@@ -74,7 +74,7 @@ func HandleOfflineconversiondatasetupload_get_pull_sessions(ctx context.Context,
 func Offlineconversiondatasetupload_get_pull_sessions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "pull_sessions"
+	baseURL = FacebookGraphAPIBaseURL + "/pull_sessions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

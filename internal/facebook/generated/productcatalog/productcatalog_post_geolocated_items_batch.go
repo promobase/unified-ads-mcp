@@ -85,7 +85,7 @@ func HandleProductcatalog_post_geolocated_items_batch(ctx context.Context, reque
 func Productcatalog_post_geolocated_items_batch(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "geolocated_items_batch"
+	baseURL = FacebookGraphAPIBaseURL + "/geolocated_items_batch"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -74,7 +74,7 @@ func HandleApplication_get_appassets(ctx context.Context, request mcp.CallToolRe
 func Application_get_appassets(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "appassets"
+	baseURL = FacebookGraphAPIBaseURL + "/appassets"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

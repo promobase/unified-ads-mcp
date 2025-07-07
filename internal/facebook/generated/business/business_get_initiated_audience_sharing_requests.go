@@ -92,7 +92,7 @@ func HandleBusiness_get_initiated_audience_sharing_requests(ctx context.Context,
 func Business_get_initiated_audience_sharing_requests(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "initiated_audience_sharing_requests"
+	baseURL = FacebookGraphAPIBaseURL + "/initiated_audience_sharing_requests"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

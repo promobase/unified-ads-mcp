@@ -75,7 +75,7 @@ func HandleBusiness_get_pending_shared_offsite_signal_container_business_objects
 func Business_get_pending_shared_offsite_signal_container_business_objects(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "pending_shared_offsite_signal_container_business_objects"
+	baseURL = FacebookGraphAPIBaseURL + "/pending_shared_offsite_signal_container_business_objects"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -76,7 +76,7 @@ func HandleBusiness_post_owned_ad_accounts(ctx context.Context, request mcp.Call
 func Business_post_owned_ad_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "owned_ad_accounts"
+	baseURL = FacebookGraphAPIBaseURL + "/owned_ad_accounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

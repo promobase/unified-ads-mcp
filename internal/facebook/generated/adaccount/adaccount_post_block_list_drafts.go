@@ -90,7 +90,8 @@ func Adaccount_post_block_list_drafts(accessToken string, args map[string]interf
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_block_list_drafts")
 	}
-	baseURL = fmt.Sprintf("%s/act_%sblock_list_drafts", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/block_list_drafts", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

@@ -50,7 +50,7 @@ func HandlePageusermessagethreadlabel_delete(ctx context.Context, request mcp.Ca
 func Pageusermessagethreadlabel_delete(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + ""
+	baseURL = FacebookGraphAPIBaseURL
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

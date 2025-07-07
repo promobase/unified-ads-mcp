@@ -89,7 +89,8 @@ func Adaccount_get_adcloudplayables(accessToken string, args map[string]interfac
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_adcloudplayables")
 	}
-	baseURL = fmt.Sprintf("%s/act_%sadcloudplayables", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/adcloudplayables", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

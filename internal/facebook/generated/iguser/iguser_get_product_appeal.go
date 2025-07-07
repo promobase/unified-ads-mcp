@@ -100,7 +100,7 @@ func HandleIguser_get_product_appeal(ctx context.Context, request mcp.CallToolRe
 func Iguser_get_product_appeal(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "product_appeal"
+	baseURL = FacebookGraphAPIBaseURL + "/product_appeal"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

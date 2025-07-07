@@ -77,7 +77,7 @@ func HandleProductfeed_post_supplementary_feed_assocs(ctx context.Context, reque
 func Productfeed_post_supplementary_feed_assocs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "supplementary_feed_assocs"
+	baseURL = FacebookGraphAPIBaseURL + "/supplementary_feed_assocs"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

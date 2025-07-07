@@ -96,7 +96,8 @@ func Adaccount_post_brand_safety_content_filter_levels(accessToken string, args 
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_brand_safety_content_filter_levels")
 	}
-	baseURL = fmt.Sprintf("%s/act_%sbrand_safety_content_filter_levels", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/brand_safety_content_filter_levels", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

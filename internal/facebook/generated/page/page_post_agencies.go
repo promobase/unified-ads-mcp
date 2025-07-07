@@ -82,7 +82,7 @@ func HandlePage_post_agencies(ctx context.Context, request mcp.CallToolRequest) 
 func Page_post_agencies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "agencies"
+	baseURL = FacebookGraphAPIBaseURL + "/agencies"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

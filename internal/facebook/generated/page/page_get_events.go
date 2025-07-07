@@ -103,7 +103,7 @@ func HandlePage_get_events(ctx context.Context, request mcp.CallToolRequest) (*m
 func Page_get_events(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "events"
+	baseURL = FacebookGraphAPIBaseURL + "/events"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -75,7 +75,7 @@ func HandleAdstudyobjective_get_partner_private_studies(ctx context.Context, req
 func Adstudyobjective_get_partner_private_studies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "partner_private_studies"
+	baseURL = FacebookGraphAPIBaseURL + "/partner_private_studies"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

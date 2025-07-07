@@ -91,7 +91,7 @@ func HandlePage_get_roles(ctx context.Context, request mcp.CallToolRequest) (*mc
 func Page_get_roles(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "roles"
+	baseURL = FacebookGraphAPIBaseURL + "/roles"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

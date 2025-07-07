@@ -75,7 +75,7 @@ func HandleBusiness_get_ads_reporting_mmm_schedulers(ctx context.Context, reques
 func Business_get_ads_reporting_mmm_schedulers(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "ads_reporting_mmm_schedulers"
+	baseURL = FacebookGraphAPIBaseURL + "/ads_reporting_mmm_schedulers"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

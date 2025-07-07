@@ -75,7 +75,7 @@ func HandleBusiness_get_pending_client_apps(ctx context.Context, request mcp.Cal
 func Business_get_pending_client_apps(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "pending_client_apps"
+	baseURL = FacebookGraphAPIBaseURL + "/pending_client_apps"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

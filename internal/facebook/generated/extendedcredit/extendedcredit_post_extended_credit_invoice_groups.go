@@ -82,7 +82,7 @@ func HandleExtendedcredit_post_extended_credit_invoice_groups(ctx context.Contex
 func Extendedcredit_post_extended_credit_invoice_groups(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "extended_credit_invoice_groups"
+	baseURL = FacebookGraphAPIBaseURL + "/extended_credit_invoice_groups"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

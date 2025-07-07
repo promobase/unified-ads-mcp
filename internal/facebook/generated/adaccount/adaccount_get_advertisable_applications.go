@@ -105,7 +105,8 @@ func Adaccount_get_advertisable_applications(accessToken string, args map[string
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_advertisable_applications")
 	}
-	baseURL = fmt.Sprintf("%s/act_%sadvertisable_applications", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/advertisable_applications", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

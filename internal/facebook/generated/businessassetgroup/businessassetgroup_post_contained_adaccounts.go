@@ -76,7 +76,7 @@ func HandleBusinessassetgroup_post_contained_adaccounts(ctx context.Context, req
 func Businessassetgroup_post_contained_adaccounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "contained_adaccounts"
+	baseURL = FacebookGraphAPIBaseURL + "/contained_adaccounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

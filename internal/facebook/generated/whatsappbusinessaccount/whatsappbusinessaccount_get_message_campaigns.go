@@ -74,7 +74,7 @@ func HandleWhatsappbusinessaccount_get_message_campaigns(ctx context.Context, re
 func Whatsappbusinessaccount_get_message_campaigns(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "message_campaigns"
+	baseURL = FacebookGraphAPIBaseURL + "/message_campaigns"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

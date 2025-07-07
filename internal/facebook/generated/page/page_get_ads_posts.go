@@ -99,7 +99,7 @@ func HandlePage_get_ads_posts(ctx context.Context, request mcp.CallToolRequest) 
 func Page_get_ads_posts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "ads_posts"
+	baseURL = FacebookGraphAPIBaseURL + "/ads_posts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

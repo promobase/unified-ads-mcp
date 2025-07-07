@@ -88,7 +88,7 @@ func HandleProductcatalog_get_data_sources(ctx context.Context, request mcp.Call
 func Productcatalog_get_data_sources(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "data_sources"
+	baseURL = FacebookGraphAPIBaseURL + "/data_sources"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

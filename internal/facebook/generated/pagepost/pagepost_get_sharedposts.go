@@ -75,7 +75,7 @@ func HandlePagepost_get_sharedposts(ctx context.Context, request mcp.CallToolReq
 func Pagepost_get_sharedposts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "sharedposts"
+	baseURL = FacebookGraphAPIBaseURL + "/sharedposts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

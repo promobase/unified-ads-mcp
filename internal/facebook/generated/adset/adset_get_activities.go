@@ -126,7 +126,8 @@ func Adset_get_activities(accessToken string, args map[string]interface{}) (inte
 	if !ok {
 		return nil, fmt.Errorf("ad_set_id is required for adset_get_activities")
 	}
-	baseURL = fmt.Sprintf("%s/%sactivities", FacebookGraphAPIBaseURL, adSetId)
+
+	baseURL = fmt.Sprintf("%s/%s/activities", FacebookGraphAPIBaseURL, adSetId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

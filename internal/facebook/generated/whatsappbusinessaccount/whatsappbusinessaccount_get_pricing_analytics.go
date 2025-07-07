@@ -150,7 +150,7 @@ func HandleWhatsappbusinessaccount_get_pricing_analytics(ctx context.Context, re
 func Whatsappbusinessaccount_get_pricing_analytics(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "pricing_analytics"
+	baseURL = FacebookGraphAPIBaseURL + "/pricing_analytics"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

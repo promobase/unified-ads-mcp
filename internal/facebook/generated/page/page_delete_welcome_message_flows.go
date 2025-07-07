@@ -76,7 +76,7 @@ func HandlePage_delete_welcome_message_flows(ctx context.Context, request mcp.Ca
 func Page_delete_welcome_message_flows(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "welcome_message_flows"
+	baseURL = FacebookGraphAPIBaseURL + "/welcome_message_flows"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

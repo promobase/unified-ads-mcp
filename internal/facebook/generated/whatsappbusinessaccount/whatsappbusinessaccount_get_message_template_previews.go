@@ -120,7 +120,7 @@ func HandleWhatsappbusinessaccount_get_message_template_previews(ctx context.Con
 func Whatsappbusinessaccount_get_message_template_previews(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "message_template_previews"
+	baseURL = FacebookGraphAPIBaseURL + "/message_template_previews"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

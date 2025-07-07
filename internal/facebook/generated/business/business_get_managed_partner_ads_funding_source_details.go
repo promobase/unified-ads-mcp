@@ -87,7 +87,7 @@ func HandleBusiness_get_managed_partner_ads_funding_source_details(ctx context.C
 func Business_get_managed_partner_ads_funding_source_details(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "managed_partner_ads_funding_source_details"
+	baseURL = FacebookGraphAPIBaseURL + "/managed_partner_ads_funding_source_details"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

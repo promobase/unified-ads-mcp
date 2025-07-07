@@ -75,7 +75,7 @@ func HandleUser_get_fundraisers(ctx context.Context, request mcp.CallToolRequest
 func User_get_fundraisers(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "fundraisers"
+	baseURL = FacebookGraphAPIBaseURL + "/fundraisers"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

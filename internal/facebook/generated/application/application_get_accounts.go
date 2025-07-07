@@ -88,7 +88,7 @@ func HandleApplication_get_accounts(ctx context.Context, request mcp.CallToolReq
 func Application_get_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "accounts"
+	baseURL = FacebookGraphAPIBaseURL + "/accounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -63,7 +63,7 @@ func HandleIgcomment_post_replies(ctx context.Context, request mcp.CallToolReque
 func Igcomment_post_replies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "replies"
+	baseURL = FacebookGraphAPIBaseURL + "/replies"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

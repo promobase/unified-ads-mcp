@@ -91,6 +91,7 @@ func Adcreative_delete(accessToken string, args map[string]interface{}) (interfa
 	if !ok {
 		return nil, fmt.Errorf("ad_creative_id is required for adcreative_delete")
 	}
+
 	baseURL = fmt.Sprintf("%s/%s", FacebookGraphAPIBaseURL, adCreativeId)
 
 	// Build URL parameters, skipping ID parameters that are in the path

@@ -89,7 +89,8 @@ func Adaccount_get_max_bid(accessToken string, args map[string]interface{}) (int
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_max_bid")
 	}
-	baseURL = fmt.Sprintf("%s/act_%smax_bid", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/max_bid", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

@@ -63,7 +63,7 @@ func HandleAdvideo_post_gaming_clip_create(ctx context.Context, request mcp.Call
 func Advideo_post_gaming_clip_create(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "gaming_clip_create"
+	baseURL = FacebookGraphAPIBaseURL + "/gaming_clip_create"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

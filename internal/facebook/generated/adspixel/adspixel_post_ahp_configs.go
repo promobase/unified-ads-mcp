@@ -76,7 +76,7 @@ func HandleAdspixel_post_ahp_configs(ctx context.Context, request mcp.CallToolRe
 func Adspixel_post_ahp_configs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "ahp_configs"
+	baseURL = FacebookGraphAPIBaseURL + "/ahp_configs"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

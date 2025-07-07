@@ -93,7 +93,7 @@ func HandleApplication_get_da_checks(ctx context.Context, request mcp.CallToolRe
 func Application_get_da_checks(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "da_checks"
+	baseURL = FacebookGraphAPIBaseURL + "/da_checks"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

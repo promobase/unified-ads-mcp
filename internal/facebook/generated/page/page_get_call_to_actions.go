@@ -75,7 +75,7 @@ func HandlePage_get_call_to_actions(ctx context.Context, request mcp.CallToolReq
 func Page_get_call_to_actions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "call_to_actions"
+	baseURL = FacebookGraphAPIBaseURL + "/call_to_actions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

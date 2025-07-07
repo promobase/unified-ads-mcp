@@ -74,7 +74,7 @@ func HandleAdvideo_get_boost_ads_list(ctx context.Context, request mcp.CallToolR
 func Advideo_get_boost_ads_list(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "boost_ads_list"
+	baseURL = FacebookGraphAPIBaseURL + "/boost_ads_list"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

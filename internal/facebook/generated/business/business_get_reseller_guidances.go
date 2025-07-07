@@ -75,7 +75,7 @@ func HandleBusiness_get_reseller_guidances(ctx context.Context, request mcp.Call
 func Business_get_reseller_guidances(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "reseller_guidances"
+	baseURL = FacebookGraphAPIBaseURL + "/reseller_guidances"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

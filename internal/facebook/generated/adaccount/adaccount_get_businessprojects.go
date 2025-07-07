@@ -101,7 +101,8 @@ func Adaccount_get_businessprojects(accessToken string, args map[string]interfac
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_businessprojects")
 	}
-	baseURL = fmt.Sprintf("%s/act_%sbusinessprojects", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/businessprojects", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

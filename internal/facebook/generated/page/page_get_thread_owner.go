@@ -100,7 +100,7 @@ func HandlePage_get_thread_owner(ctx context.Context, request mcp.CallToolReques
 func Page_get_thread_owner(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "thread_owner"
+	baseURL = FacebookGraphAPIBaseURL + "/thread_owner"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

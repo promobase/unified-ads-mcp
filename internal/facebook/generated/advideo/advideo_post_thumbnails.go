@@ -80,7 +80,7 @@ func HandleAdvideo_post_thumbnails(ctx context.Context, request mcp.CallToolRequ
 func Advideo_post_thumbnails(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "thumbnails"
+	baseURL = FacebookGraphAPIBaseURL + "/thumbnails"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

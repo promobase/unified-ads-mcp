@@ -74,7 +74,7 @@ func HandleAdsvalueadjustmentrulecollection_get_rules(ctx context.Context, reque
 func Adsvalueadjustmentrulecollection_get_rules(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "rules"
+	baseURL = FacebookGraphAPIBaseURL + "/rules"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

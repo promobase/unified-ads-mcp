@@ -82,7 +82,7 @@ func HandleBusiness_post_event_source_groups(ctx context.Context, request mcp.Ca
 func Business_post_event_source_groups(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "event_source_groups"
+	baseURL = FacebookGraphAPIBaseURL + "/event_source_groups"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

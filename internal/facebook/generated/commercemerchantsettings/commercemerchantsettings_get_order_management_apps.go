@@ -75,7 +75,7 @@ func HandleCommercemerchantsettings_get_order_management_apps(ctx context.Contex
 func Commercemerchantsettings_get_order_management_apps(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "order_management_apps"
+	baseURL = FacebookGraphAPIBaseURL + "/order_management_apps"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

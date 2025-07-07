@@ -75,7 +75,7 @@ func HandleBusiness_get_owned_whatsapp_business_accounts(ctx context.Context, re
 func Business_get_owned_whatsapp_business_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "owned_whatsapp_business_accounts"
+	baseURL = FacebookGraphAPIBaseURL + "/owned_whatsapp_business_accounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

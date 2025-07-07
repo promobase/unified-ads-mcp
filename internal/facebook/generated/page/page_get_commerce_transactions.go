@@ -95,7 +95,7 @@ func HandlePage_get_commerce_transactions(ctx context.Context, request mcp.CallT
 func Page_get_commerce_transactions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "commerce_transactions"
+	baseURL = FacebookGraphAPIBaseURL + "/commerce_transactions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

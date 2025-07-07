@@ -81,7 +81,7 @@ func HandleExtendedcredit_post_whatsapp_credit_sharing_and_attach(ctx context.Co
 func Extendedcredit_post_whatsapp_credit_sharing_and_attach(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "whatsapp_credit_sharing_and_attach"
+	baseURL = FacebookGraphAPIBaseURL + "/whatsapp_credit_sharing_and_attach"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

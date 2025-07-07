@@ -75,7 +75,7 @@ func HandleBusinessassetgroup_get_contained_applications(ctx context.Context, re
 func Businessassetgroup_get_contained_applications(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "contained_applications"
+	baseURL = FacebookGraphAPIBaseURL + "/contained_applications"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -100,7 +100,7 @@ func HandleWhatsappbusinessaccount_get_assigned_users(ctx context.Context, reque
 func Whatsappbusinessaccount_get_assigned_users(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "assigned_users"
+	baseURL = FacebookGraphAPIBaseURL + "/assigned_users"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

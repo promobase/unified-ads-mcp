@@ -75,7 +75,7 @@ func HandlePage_get_settings(ctx context.Context, request mcp.CallToolRequest) (
 func Page_get_settings(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "settings"
+	baseURL = FacebookGraphAPIBaseURL + "/settings"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

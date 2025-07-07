@@ -75,7 +75,7 @@ func HandlePage_get_crosspost_whitelisted_pages(ctx context.Context, request mcp
 func Page_get_crosspost_whitelisted_pages(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "crosspost_whitelisted_pages"
+	baseURL = FacebookGraphAPIBaseURL + "/crosspost_whitelisted_pages"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

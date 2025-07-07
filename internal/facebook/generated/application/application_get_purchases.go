@@ -74,7 +74,7 @@ func HandleApplication_get_purchases(ctx context.Context, request mcp.CallToolRe
 func Application_get_purchases(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "purchases"
+	baseURL = FacebookGraphAPIBaseURL + "/purchases"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -91,7 +91,7 @@ func HandleProductfeed_get_home_listings(ctx context.Context, request mcp.CallTo
 func Productfeed_get_home_listings(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "home_listings"
+	baseURL = FacebookGraphAPIBaseURL + "/home_listings"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

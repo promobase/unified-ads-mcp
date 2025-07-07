@@ -75,7 +75,7 @@ func HandlePagepost_get_sponsor_tags(ctx context.Context, request mcp.CallToolRe
 func Pagepost_get_sponsor_tags(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "sponsor_tags"
+	baseURL = FacebookGraphAPIBaseURL + "/sponsor_tags"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

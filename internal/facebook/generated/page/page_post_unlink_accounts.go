@@ -76,7 +76,7 @@ func HandlePage_post_unlink_accounts(ctx context.Context, request mcp.CallToolRe
 func Page_post_unlink_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "unlink_accounts"
+	baseURL = FacebookGraphAPIBaseURL + "/unlink_accounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

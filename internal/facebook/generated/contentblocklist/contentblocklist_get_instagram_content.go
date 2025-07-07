@@ -75,7 +75,7 @@ func HandleContentblocklist_get_instagram_content(ctx context.Context, request m
 func Contentblocklist_get_instagram_content(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "instagram_content"
+	baseURL = FacebookGraphAPIBaseURL + "/instagram_content"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

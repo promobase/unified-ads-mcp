@@ -67,7 +67,7 @@ func HandleGroup_delete_members(ctx context.Context, request mcp.CallToolRequest
 func Group_delete_members(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "members"
+	baseURL = FacebookGraphAPIBaseURL + "/members"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

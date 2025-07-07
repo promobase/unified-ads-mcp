@@ -75,7 +75,7 @@ func HandleWhatsappbusinessaccount_get_dataset(ctx context.Context, request mcp.
 func Whatsappbusinessaccount_get_dataset(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "dataset"
+	baseURL = FacebookGraphAPIBaseURL + "/dataset"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -75,7 +75,7 @@ func HandleAdspixel_get_openbridge_configurations(ctx context.Context, request m
 func Adspixel_get_openbridge_configurations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "openbridge_configurations"
+	baseURL = FacebookGraphAPIBaseURL + "/openbridge_configurations"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

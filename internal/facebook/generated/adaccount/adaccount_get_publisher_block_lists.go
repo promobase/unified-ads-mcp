@@ -89,7 +89,8 @@ func Adaccount_get_publisher_block_lists(accessToken string, args map[string]int
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_publisher_block_lists")
 	}
-	baseURL = fmt.Sprintf("%s/act_%spublisher_block_lists", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/publisher_block_lists", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

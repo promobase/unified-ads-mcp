@@ -68,7 +68,7 @@ func HandleProductcatalog_post_product_groups(ctx context.Context, request mcp.C
 func Productcatalog_post_product_groups(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "product_groups"
+	baseURL = FacebookGraphAPIBaseURL + "/product_groups"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

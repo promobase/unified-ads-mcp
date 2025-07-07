@@ -74,7 +74,7 @@ func HandleVideopoll_get_poll_options(ctx context.Context, request mcp.CallToolR
 func Videopoll_get_poll_options(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "poll_options"
+	baseURL = FacebookGraphAPIBaseURL + "/poll_options"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

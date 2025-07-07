@@ -74,7 +74,7 @@ func HandleApplication_get_ad_placement_groups(ctx context.Context, request mcp.
 func Application_get_ad_placement_groups(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "ad_placement_groups"
+	baseURL = FacebookGraphAPIBaseURL + "/ad_placement_groups"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

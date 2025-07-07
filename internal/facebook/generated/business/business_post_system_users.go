@@ -85,7 +85,7 @@ func HandleBusiness_post_system_users(ctx context.Context, request mcp.CallToolR
 func Business_post_system_users(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "system_users"
+	baseURL = FacebookGraphAPIBaseURL + "/system_users"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -75,7 +75,7 @@ func HandleBusiness_get_business_asset_groups(ctx context.Context, request mcp.C
 func Business_get_business_asset_groups(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "business_asset_groups"
+	baseURL = FacebookGraphAPIBaseURL + "/business_asset_groups"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

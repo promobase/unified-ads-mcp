@@ -75,7 +75,7 @@ func HandlePlayablecontent_get(ctx context.Context, request mcp.CallToolRequest)
 func Playablecontent_get(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + ""
+	baseURL = FacebookGraphAPIBaseURL
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

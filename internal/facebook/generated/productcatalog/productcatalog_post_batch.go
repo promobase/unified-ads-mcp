@@ -89,7 +89,7 @@ func HandleProductcatalog_post_batch(ctx context.Context, request mcp.CallToolRe
 func Productcatalog_post_batch(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "batch"
+	baseURL = FacebookGraphAPIBaseURL + "/batch"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

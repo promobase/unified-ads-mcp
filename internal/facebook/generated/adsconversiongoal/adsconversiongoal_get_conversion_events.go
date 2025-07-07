@@ -74,7 +74,7 @@ func HandleAdsconversiongoal_get_conversion_events(ctx context.Context, request 
 func Adsconversiongoal_get_conversion_events(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "conversion_events"
+	baseURL = FacebookGraphAPIBaseURL + "/conversion_events"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

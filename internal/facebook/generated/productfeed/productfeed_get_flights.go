@@ -91,7 +91,7 @@ func HandleProductfeed_get_flights(ctx context.Context, request mcp.CallToolRequ
 func Productfeed_get_flights(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "flights"
+	baseURL = FacebookGraphAPIBaseURL + "/flights"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

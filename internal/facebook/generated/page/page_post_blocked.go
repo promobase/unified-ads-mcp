@@ -79,7 +79,7 @@ func HandlePage_post_blocked(ctx context.Context, request mcp.CallToolRequest) (
 func Page_post_blocked(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "blocked"
+	baseURL = FacebookGraphAPIBaseURL + "/blocked"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

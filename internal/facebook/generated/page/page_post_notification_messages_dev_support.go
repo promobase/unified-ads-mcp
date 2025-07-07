@@ -82,7 +82,7 @@ func HandlePage_post_notification_messages_dev_support(ctx context.Context, requ
 func Page_post_notification_messages_dev_support(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "notification_messages_dev_support"
+	baseURL = FacebookGraphAPIBaseURL + "/notification_messages_dev_support"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

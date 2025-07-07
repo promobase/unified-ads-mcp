@@ -92,7 +92,7 @@ func HandlePage_get_video_copyright_rules(ctx context.Context, request mcp.CallT
 func Page_get_video_copyright_rules(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "video_copyright_rules"
+	baseURL = FacebookGraphAPIBaseURL + "/video_copyright_rules"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

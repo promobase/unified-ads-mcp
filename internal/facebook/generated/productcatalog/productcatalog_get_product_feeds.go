@@ -75,7 +75,7 @@ func HandleProductcatalog_get_product_feeds(ctx context.Context, request mcp.Cal
 func Productcatalog_get_product_feeds(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "product_feeds"
+	baseURL = FacebookGraphAPIBaseURL + "/product_feeds"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

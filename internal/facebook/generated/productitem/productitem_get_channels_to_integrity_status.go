@@ -75,7 +75,7 @@ func HandleProductitem_get_channels_to_integrity_status(ctx context.Context, req
 func Productitem_get_channels_to_integrity_status(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "channels_to_integrity_status"
+	baseURL = FacebookGraphAPIBaseURL + "/channels_to_integrity_status"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

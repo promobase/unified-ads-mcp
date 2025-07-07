@@ -75,7 +75,7 @@ func HandleBusinessassetgroup_get_contained_instagram_accounts(ctx context.Conte
 func Businessassetgroup_get_contained_instagram_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "contained_instagram_accounts"
+	baseURL = FacebookGraphAPIBaseURL + "/contained_instagram_accounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

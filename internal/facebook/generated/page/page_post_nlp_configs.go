@@ -88,7 +88,7 @@ func HandlePage_post_nlp_configs(ctx context.Context, request mcp.CallToolReques
 func Page_post_nlp_configs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "nlp_configs"
+	baseURL = FacebookGraphAPIBaseURL + "/nlp_configs"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

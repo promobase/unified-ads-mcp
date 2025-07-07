@@ -91,7 +91,7 @@ func HandleProductset_get_hotels(ctx context.Context, request mcp.CallToolReques
 func Productset_get_hotels(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "hotels"
+	baseURL = FacebookGraphAPIBaseURL + "/hotels"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

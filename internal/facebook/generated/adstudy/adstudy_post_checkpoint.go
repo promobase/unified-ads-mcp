@@ -94,7 +94,7 @@ func HandleAdstudy_post_checkpoint(ctx context.Context, request mcp.CallToolRequ
 func Adstudy_post_checkpoint(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "checkpoint"
+	baseURL = FacebookGraphAPIBaseURL + "/checkpoint"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

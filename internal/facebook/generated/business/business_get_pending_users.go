@@ -87,7 +87,7 @@ func HandleBusiness_get_pending_users(ctx context.Context, request mcp.CallToolR
 func Business_get_pending_users(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "pending_users"
+	baseURL = FacebookGraphAPIBaseURL + "/pending_users"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

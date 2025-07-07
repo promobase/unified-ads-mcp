@@ -114,6 +114,7 @@ func Adset_get(accessToken string, args map[string]interface{}) (interface{}, er
 	if !ok {
 		return nil, fmt.Errorf("ad_set_id is required for adset_get")
 	}
+
 	baseURL = fmt.Sprintf("%s/%s", FacebookGraphAPIBaseURL, adSetId)
 
 	// Build URL parameters, skipping ID parameters that are in the path

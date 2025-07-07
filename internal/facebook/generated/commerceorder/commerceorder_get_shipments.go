@@ -74,7 +74,7 @@ func HandleCommerceorder_get_shipments(ctx context.Context, request mcp.CallTool
 func Commerceorder_get_shipments(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "shipments"
+	baseURL = FacebookGraphAPIBaseURL + "/shipments"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

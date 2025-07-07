@@ -75,7 +75,7 @@ func HandleIguser_get_stories(ctx context.Context, request mcp.CallToolRequest) 
 func Iguser_get_stories(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "stories"
+	baseURL = FacebookGraphAPIBaseURL + "/stories"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

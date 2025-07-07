@@ -87,7 +87,7 @@ func HandleWhatsappbusinessaccount_post_template_groups(ctx context.Context, req
 func Whatsappbusinessaccount_post_template_groups(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "template_groups"
+	baseURL = FacebookGraphAPIBaseURL + "/template_groups"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

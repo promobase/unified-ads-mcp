@@ -100,7 +100,7 @@ func HandleApplication_get_sgw_dataset_status(ctx context.Context, request mcp.C
 func Application_get_sgw_dataset_status(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "sgw_dataset_status"
+	baseURL = FacebookGraphAPIBaseURL + "/sgw_dataset_status"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

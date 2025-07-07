@@ -116,7 +116,8 @@ func Adaccount_get_targetingvalidation(accessToken string, args map[string]inter
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_targetingvalidation")
 	}
-	baseURL = fmt.Sprintf("%s/act_%stargetingvalidation", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/targetingvalidation", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

@@ -63,7 +63,7 @@ func HandleBusiness_post_onboard_partners_to_mm_lite(ctx context.Context, reques
 func Business_post_onboard_partners_to_mm_lite(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "onboard_partners_to_mm_lite"
+	baseURL = FacebookGraphAPIBaseURL + "/onboard_partners_to_mm_lite"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -86,7 +86,7 @@ func HandleProductfeed_post_rules(ctx context.Context, request mcp.CallToolReque
 func Productfeed_post_rules(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "rules"
+	baseURL = FacebookGraphAPIBaseURL + "/rules"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

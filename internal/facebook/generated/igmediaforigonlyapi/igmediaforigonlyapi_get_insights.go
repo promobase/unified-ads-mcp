@@ -114,7 +114,7 @@ func HandleIgmediaforigonlyapi_get_insights(ctx context.Context, request mcp.Cal
 func Igmediaforigonlyapi_get_insights(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "insights"
+	baseURL = FacebookGraphAPIBaseURL + "/insights"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

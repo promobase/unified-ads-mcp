@@ -88,7 +88,7 @@ func HandleCanvas_post(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 func Canvas_post(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + ""
+	baseURL = FacebookGraphAPIBaseURL
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

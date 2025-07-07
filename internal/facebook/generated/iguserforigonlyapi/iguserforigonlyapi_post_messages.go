@@ -89,7 +89,7 @@ func HandleIguserforigonlyapi_post_messages(ctx context.Context, request mcp.Cal
 func Iguserforigonlyapi_post_messages(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "messages"
+	baseURL = FacebookGraphAPIBaseURL + "/messages"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

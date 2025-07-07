@@ -77,7 +77,7 @@ func HandleProductcatalog_post_update_generated_image_config(ctx context.Context
 func Productcatalog_post_update_generated_image_config(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "update_generated_image_config"
+	baseURL = FacebookGraphAPIBaseURL + "/update_generated_image_config"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -115,7 +115,8 @@ func Ad_get_copies(accessToken string, args map[string]interface{}) (interface{}
 	if !ok {
 		return nil, fmt.Errorf("ad_id is required for ad_get_copies")
 	}
-	baseURL = fmt.Sprintf("%s/%scopies", FacebookGraphAPIBaseURL, adId)
+
+	baseURL = fmt.Sprintf("%s/%s/copies", FacebookGraphAPIBaseURL, adId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

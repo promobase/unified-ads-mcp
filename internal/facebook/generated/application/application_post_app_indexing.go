@@ -100,7 +100,7 @@ func HandleApplication_post_app_indexing(ctx context.Context, request mcp.CallTo
 func Application_post_app_indexing(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "app_indexing"
+	baseURL = FacebookGraphAPIBaseURL + "/app_indexing"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

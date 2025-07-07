@@ -94,7 +94,8 @@ func Campaign_post_copies(accessToken string, args map[string]interface{}) (inte
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_post_copies")
 	}
-	baseURL = fmt.Sprintf("%s/%scopies", FacebookGraphAPIBaseURL, campaignId)
+
+	baseURL = fmt.Sprintf("%s/%s/copies", FacebookGraphAPIBaseURL, campaignId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

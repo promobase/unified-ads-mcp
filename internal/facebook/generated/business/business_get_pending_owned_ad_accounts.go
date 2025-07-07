@@ -75,7 +75,7 @@ func HandleBusiness_get_pending_owned_ad_accounts(ctx context.Context, request m
 func Business_get_pending_owned_ad_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "pending_owned_ad_accounts"
+	baseURL = FacebookGraphAPIBaseURL + "/pending_owned_ad_accounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

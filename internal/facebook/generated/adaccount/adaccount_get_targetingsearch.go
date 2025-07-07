@@ -181,7 +181,8 @@ func Adaccount_get_targetingsearch(accessToken string, args map[string]interface
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_targetingsearch")
 	}
-	baseURL = fmt.Sprintf("%s/act_%stargetingsearch", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/targetingsearch", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

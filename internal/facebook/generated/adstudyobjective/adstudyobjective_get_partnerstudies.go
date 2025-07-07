@@ -75,7 +75,7 @@ func HandleAdstudyobjective_get_partnerstudies(ctx context.Context, request mcp.
 func Adstudyobjective_get_partnerstudies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "partnerstudies"
+	baseURL = FacebookGraphAPIBaseURL + "/partnerstudies"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

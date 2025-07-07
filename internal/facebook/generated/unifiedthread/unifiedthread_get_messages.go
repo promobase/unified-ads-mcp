@@ -88,7 +88,7 @@ func HandleUnifiedthread_get_messages(ctx context.Context, request mcp.CallToolR
 func Unifiedthread_get_messages(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "messages"
+	baseURL = FacebookGraphAPIBaseURL + "/messages"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

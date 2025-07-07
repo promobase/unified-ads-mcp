@@ -98,7 +98,7 @@ func HandleCommercemerchantsettings_post_shipping_profiles(ctx context.Context, 
 func Commercemerchantsettings_post_shipping_profiles(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "shipping_profiles"
+	baseURL = FacebookGraphAPIBaseURL + "/shipping_profiles"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

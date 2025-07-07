@@ -86,7 +86,7 @@ func HandlePage_post_business_data(ctx context.Context, request mcp.CallToolRequ
 func Page_post_business_data(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "business_data"
+	baseURL = FacebookGraphAPIBaseURL + "/business_data"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

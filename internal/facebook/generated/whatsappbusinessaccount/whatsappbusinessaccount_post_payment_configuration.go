@@ -101,7 +101,7 @@ func HandleWhatsappbusinessaccount_post_payment_configuration(ctx context.Contex
 func Whatsappbusinessaccount_post_payment_configuration(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "payment_configuration"
+	baseURL = FacebookGraphAPIBaseURL + "/payment_configuration"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -50,7 +50,7 @@ func HandleUser_post_messenger_desktop_performance_traces(ctx context.Context, r
 func User_post_messenger_desktop_performance_traces(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "messenger_desktop_performance_traces"
+	baseURL = FacebookGraphAPIBaseURL + "/messenger_desktop_performance_traces"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -89,7 +89,8 @@ func Adaccount_get_reachfrequencypredictions(accessToken string, args map[string
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_reachfrequencypredictions")
 	}
-	baseURL = fmt.Sprintf("%s/act_%sreachfrequencypredictions", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/reachfrequencypredictions", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

@@ -76,7 +76,7 @@ func HandleIguserforigonlyapi_post_mediapublish(ctx context.Context, request mcp
 func Iguserforigonlyapi_post_mediapublish(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "mediapublish"
+	baseURL = FacebookGraphAPIBaseURL + "/mediapublish"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

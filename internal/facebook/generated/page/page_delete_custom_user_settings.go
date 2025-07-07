@@ -83,7 +83,7 @@ func HandlePage_delete_custom_user_settings(ctx context.Context, request mcp.Cal
 func Page_delete_custom_user_settings(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "custom_user_settings"
+	baseURL = FacebookGraphAPIBaseURL + "/custom_user_settings"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

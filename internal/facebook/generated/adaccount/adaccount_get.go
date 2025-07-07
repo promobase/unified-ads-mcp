@@ -89,6 +89,7 @@ func Adaccount_get(accessToken string, args map[string]interface{}) (interface{}
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get")
 	}
+
 	baseURL = fmt.Sprintf("%s/act_%s", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path

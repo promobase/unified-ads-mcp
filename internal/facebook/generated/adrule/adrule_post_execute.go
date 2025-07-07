@@ -50,7 +50,7 @@ func HandleAdrule_post_execute(ctx context.Context, request mcp.CallToolRequest)
 func Adrule_post_execute(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "execute"
+	baseURL = FacebookGraphAPIBaseURL + "/execute"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

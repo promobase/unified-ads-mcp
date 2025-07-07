@@ -76,7 +76,7 @@ func HandleBusiness_delete_owned_businesses(ctx context.Context, request mcp.Cal
 func Business_delete_owned_businesses(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "owned_businesses"
+	baseURL = FacebookGraphAPIBaseURL + "/owned_businesses"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

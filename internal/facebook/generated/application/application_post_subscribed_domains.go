@@ -69,7 +69,7 @@ func HandleApplication_post_subscribed_domains(ctx context.Context, request mcp.
 func Application_post_subscribed_domains(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "subscribed_domains"
+	baseURL = FacebookGraphAPIBaseURL + "/subscribed_domains"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

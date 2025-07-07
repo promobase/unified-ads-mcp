@@ -100,7 +100,7 @@ func HandleInstagramuser_get_authorized_adaccounts(ctx context.Context, request 
 func Instagramuser_get_authorized_adaccounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "authorized_adaccounts"
+	baseURL = FacebookGraphAPIBaseURL + "/authorized_adaccounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

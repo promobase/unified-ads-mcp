@@ -91,7 +91,7 @@ func HandleApplication_get_aem_conversion_filter(ctx context.Context, request mc
 func Application_get_aem_conversion_filter(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "aem_conversion_filter"
+	baseURL = FacebookGraphAPIBaseURL + "/aem_conversion_filter"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

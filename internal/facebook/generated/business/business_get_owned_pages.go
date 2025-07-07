@@ -75,7 +75,7 @@ func HandleBusiness_get_owned_pages(ctx context.Context, request mcp.CallToolReq
 func Business_get_owned_pages(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "owned_pages"
+	baseURL = FacebookGraphAPIBaseURL + "/owned_pages"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

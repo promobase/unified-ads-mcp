@@ -110,7 +110,7 @@ func HandlePage_post_video_stories(ctx context.Context, request mcp.CallToolRequ
 func Page_post_video_stories(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "video_stories"
+	baseURL = FacebookGraphAPIBaseURL + "/video_stories"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

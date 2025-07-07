@@ -243,7 +243,8 @@ func Adaccount_post_customaudiences(accessToken string, args map[string]interfac
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_customaudiences")
 	}
-	baseURL = fmt.Sprintf("%s/act_%scustomaudiences", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/customaudiences", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

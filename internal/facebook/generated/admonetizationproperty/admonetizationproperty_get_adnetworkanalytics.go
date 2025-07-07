@@ -144,7 +144,7 @@ func HandleAdmonetizationproperty_get_adnetworkanalytics(ctx context.Context, re
 func Admonetizationproperty_get_adnetworkanalytics(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "adnetworkanalytics"
+	baseURL = FacebookGraphAPIBaseURL + "/adnetworkanalytics"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

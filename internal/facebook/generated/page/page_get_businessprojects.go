@@ -87,7 +87,7 @@ func HandlePage_get_businessprojects(ctx context.Context, request mcp.CallToolRe
 func Page_get_businessprojects(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "businessprojects"
+	baseURL = FacebookGraphAPIBaseURL + "/businessprojects"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

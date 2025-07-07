@@ -87,7 +87,7 @@ func HandleOfflineconversiondataset_get_customconversions(ctx context.Context, r
 func Offlineconversiondataset_get_customconversions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "customconversions"
+	baseURL = FacebookGraphAPIBaseURL + "/customconversions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

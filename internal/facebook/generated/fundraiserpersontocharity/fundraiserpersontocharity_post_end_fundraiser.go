@@ -50,7 +50,7 @@ func HandleFundraiserpersontocharity_post_end_fundraiser(ctx context.Context, re
 func Fundraiserpersontocharity_post_end_fundraiser(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "end_fundraiser"
+	baseURL = FacebookGraphAPIBaseURL + "/end_fundraiser"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -202,7 +202,8 @@ func Campaign_get_insights(accessToken string, args map[string]interface{}) (int
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for campaign_get_insights")
 	}
-	baseURL = fmt.Sprintf("%s/%sinsights", FacebookGraphAPIBaseURL, campaignId)
+
+	baseURL = fmt.Sprintf("%s/%s/insights", FacebookGraphAPIBaseURL, campaignId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

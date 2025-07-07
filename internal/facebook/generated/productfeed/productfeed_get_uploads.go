@@ -75,7 +75,7 @@ func HandleProductfeed_get_uploads(ctx context.Context, request mcp.CallToolRequ
 func Productfeed_get_uploads(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "uploads"
+	baseURL = FacebookGraphAPIBaseURL + "/uploads"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

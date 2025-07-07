@@ -68,7 +68,7 @@ func HandleApplication_delete_subscriptions(ctx context.Context, request mcp.Cal
 func Application_delete_subscriptions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "subscriptions"
+	baseURL = FacebookGraphAPIBaseURL + "/subscriptions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

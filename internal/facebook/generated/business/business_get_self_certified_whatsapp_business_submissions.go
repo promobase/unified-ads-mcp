@@ -87,7 +87,7 @@ func HandleBusiness_get_self_certified_whatsapp_business_submissions(ctx context
 func Business_get_self_certified_whatsapp_business_submissions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "self_certified_whatsapp_business_submissions"
+	baseURL = FacebookGraphAPIBaseURL + "/self_certified_whatsapp_business_submissions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

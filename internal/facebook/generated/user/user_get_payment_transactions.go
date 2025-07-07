@@ -75,7 +75,7 @@ func HandleUser_get_payment_transactions(ctx context.Context, request mcp.CallTo
 func User_get_payment_transactions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "payment_transactions"
+	baseURL = FacebookGraphAPIBaseURL + "/payment_transactions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

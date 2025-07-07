@@ -174,7 +174,7 @@ func HandleApplication_post_mmp_auditing(ctx context.Context, request mcp.CallTo
 func Application_post_mmp_auditing(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "mmp_auditing"
+	baseURL = FacebookGraphAPIBaseURL + "/mmp_auditing"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

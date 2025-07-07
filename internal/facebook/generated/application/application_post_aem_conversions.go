@@ -77,7 +77,7 @@ func HandleApplication_post_aem_conversions(ctx context.Context, request mcp.Cal
 func Application_post_aem_conversions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "aem_conversions"
+	baseURL = FacebookGraphAPIBaseURL + "/aem_conversions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

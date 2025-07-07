@@ -69,7 +69,7 @@ func HandleLeadgenform_post_test_leads(ctx context.Context, request mcp.CallTool
 func Leadgenform_post_test_leads(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "test_leads"
+	baseURL = FacebookGraphAPIBaseURL + "/test_leads"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

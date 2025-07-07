@@ -116,7 +116,7 @@ func HandleApplication_post_adnetworkanalytics(ctx context.Context, request mcp.
 func Application_post_adnetworkanalytics(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "adnetworkanalytics"
+	baseURL = FacebookGraphAPIBaseURL + "/adnetworkanalytics"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

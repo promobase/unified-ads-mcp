@@ -50,7 +50,7 @@ func HandleAdrule_post_preview(ctx context.Context, request mcp.CallToolRequest)
 func Adrule_post_preview(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "preview"
+	baseURL = FacebookGraphAPIBaseURL + "/preview"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

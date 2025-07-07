@@ -75,7 +75,7 @@ func HandleBusiness_get_owned_offsite_signal_container_business_objects(ctx cont
 func Business_get_owned_offsite_signal_container_business_objects(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "owned_offsite_signal_container_business_objects"
+	baseURL = FacebookGraphAPIBaseURL + "/owned_offsite_signal_container_business_objects"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

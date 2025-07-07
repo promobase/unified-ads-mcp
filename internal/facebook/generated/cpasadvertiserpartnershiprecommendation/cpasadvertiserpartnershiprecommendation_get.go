@@ -75,7 +75,7 @@ func HandleCpasadvertiserpartnershiprecommendation_get(ctx context.Context, requ
 func Cpasadvertiserpartnershiprecommendation_get(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + ""
+	baseURL = FacebookGraphAPIBaseURL
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

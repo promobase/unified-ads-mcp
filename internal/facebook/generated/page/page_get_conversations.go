@@ -101,7 +101,7 @@ func HandlePage_get_conversations(ctx context.Context, request mcp.CallToolReque
 func Page_get_conversations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "conversations"
+	baseURL = FacebookGraphAPIBaseURL + "/conversations"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

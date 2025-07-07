@@ -130,7 +130,7 @@ func HandleProductcatalog_post_hotels(ctx context.Context, request mcp.CallToolR
 func Productcatalog_post_hotels(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "hotels"
+	baseURL = FacebookGraphAPIBaseURL + "/hotels"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

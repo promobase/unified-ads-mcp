@@ -93,7 +93,7 @@ func HandleOfflineproductitem_get_override_details(ctx context.Context, request 
 func Offlineproductitem_get_override_details(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "override_details"
+	baseURL = FacebookGraphAPIBaseURL + "/override_details"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

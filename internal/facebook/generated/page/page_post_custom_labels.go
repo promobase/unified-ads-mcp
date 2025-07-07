@@ -80,7 +80,7 @@ func HandlePage_post_custom_labels(ctx context.Context, request mcp.CallToolRequ
 func Page_post_custom_labels(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "custom_labels"
+	baseURL = FacebookGraphAPIBaseURL + "/custom_labels"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

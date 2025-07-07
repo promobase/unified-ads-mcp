@@ -74,7 +74,7 @@ func HandleIguserforigonlyapi_get_messenger_profile(ctx context.Context, request
 func Iguserforigonlyapi_get_messenger_profile(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "messenger_profile"
+	baseURL = FacebookGraphAPIBaseURL + "/messenger_profile"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

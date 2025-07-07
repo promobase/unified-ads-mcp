@@ -76,7 +76,7 @@ func HandleIguserforigonlyapi_post_messageattachments(ctx context.Context, reque
 func Iguserforigonlyapi_post_messageattachments(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "messageattachments"
+	baseURL = FacebookGraphAPIBaseURL + "/messageattachments"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

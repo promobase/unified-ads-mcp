@@ -101,7 +101,8 @@ func Adaccount_get_broadtargetingcategories(accessToken string, args map[string]
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_broadtargetingcategories")
 	}
-	baseURL = fmt.Sprintf("%s/act_%sbroadtargetingcategories", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/broadtargetingcategories", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

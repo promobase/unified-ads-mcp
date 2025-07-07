@@ -87,7 +87,7 @@ func HandleExtendedcredit_get_owning_credit_allocation_configs(ctx context.Conte
 func Extendedcredit_get_owning_credit_allocation_configs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "owning_credit_allocation_configs"
+	baseURL = FacebookGraphAPIBaseURL + "/owning_credit_allocation_configs"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

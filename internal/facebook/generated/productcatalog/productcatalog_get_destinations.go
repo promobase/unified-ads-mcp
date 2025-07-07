@@ -91,7 +91,7 @@ func HandleProductcatalog_get_destinations(ctx context.Context, request mcp.Call
 func Productcatalog_get_destinations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "destinations"
+	baseURL = FacebookGraphAPIBaseURL + "/destinations"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

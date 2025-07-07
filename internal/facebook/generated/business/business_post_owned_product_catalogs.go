@@ -122,7 +122,7 @@ func HandleBusiness_post_owned_product_catalogs(ctx context.Context, request mcp
 func Business_post_owned_product_catalogs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "owned_product_catalogs"
+	baseURL = FacebookGraphAPIBaseURL + "/owned_product_catalogs"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

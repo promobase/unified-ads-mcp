@@ -88,7 +88,7 @@ func HandleCanvas_get_previews(ctx context.Context, request mcp.CallToolRequest)
 func Canvas_get_previews(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "previews"
+	baseURL = FacebookGraphAPIBaseURL + "/previews"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

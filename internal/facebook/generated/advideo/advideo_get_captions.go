@@ -74,7 +74,7 @@ func HandleAdvideo_get_captions(ctx context.Context, request mcp.CallToolRequest
 func Advideo_get_captions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "captions"
+	baseURL = FacebookGraphAPIBaseURL + "/captions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

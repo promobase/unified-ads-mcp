@@ -75,7 +75,7 @@ func HandleAdlabel_get_adsets(ctx context.Context, request mcp.CallToolRequest) 
 func Adlabel_get_adsets(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "adsets"
+	baseURL = FacebookGraphAPIBaseURL + "/adsets"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -75,7 +75,7 @@ func HandleIguser_get_dataset(ctx context.Context, request mcp.CallToolRequest) 
 func Iguser_get_dataset(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "dataset"
+	baseURL = FacebookGraphAPIBaseURL + "/dataset"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

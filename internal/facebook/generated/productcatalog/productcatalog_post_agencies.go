@@ -96,7 +96,7 @@ func HandleProductcatalog_post_agencies(ctx context.Context, request mcp.CallToo
 func Productcatalog_post_agencies(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "agencies"
+	baseURL = FacebookGraphAPIBaseURL + "/agencies"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

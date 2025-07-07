@@ -124,7 +124,7 @@ func HandleAvatar_get_models(ctx context.Context, request mcp.CallToolRequest) (
 func Avatar_get_models(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "models"
+	baseURL = FacebookGraphAPIBaseURL + "/models"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

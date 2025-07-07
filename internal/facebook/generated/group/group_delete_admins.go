@@ -76,7 +76,7 @@ func HandleGroup_delete_admins(ctx context.Context, request mcp.CallToolRequest)
 func Group_delete_admins(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "admins"
+	baseURL = FacebookGraphAPIBaseURL + "/admins"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

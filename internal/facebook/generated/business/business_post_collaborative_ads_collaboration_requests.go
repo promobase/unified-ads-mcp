@@ -111,7 +111,7 @@ func HandleBusiness_post_collaborative_ads_collaboration_requests(ctx context.Co
 func Business_post_collaborative_ads_collaboration_requests(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "collaborative_ads_collaboration_requests"
+	baseURL = FacebookGraphAPIBaseURL + "/collaborative_ads_collaboration_requests"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

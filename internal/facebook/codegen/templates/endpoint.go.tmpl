@@ -124,37 +124,61 @@ func {{capitalizeFirst .Tool.Name}}(accessToken string, args map[string]interfac
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for {{.Tool.Name}}")
 	}
-	baseURL = fmt.Sprintf("%s/act_%s{{.Tool.Endpoint}}", FacebookGraphAPIBaseURL, accountId)
+	{{if .Tool.Endpoint}}
+	baseURL = fmt.Sprintf("%s/act_%s/{{.Tool.Endpoint}}", FacebookGraphAPIBaseURL, accountId)
+	{{else}}
+	baseURL = fmt.Sprintf("%s/act_%s", FacebookGraphAPIBaseURL, accountId)
+	{{end}}
 	{{else if eq .NodeName "Ad"}}
 	// Extract ad_id for URL construction
 	adId, ok := args["ad_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_id is required for {{.Tool.Name}}")
 	}
-	baseURL = fmt.Sprintf("%s/%s{{.Tool.Endpoint}}", FacebookGraphAPIBaseURL, adId)
+	{{if .Tool.Endpoint}}
+	baseURL = fmt.Sprintf("%s/%s/{{.Tool.Endpoint}}", FacebookGraphAPIBaseURL, adId)
+	{{else}}
+	baseURL = fmt.Sprintf("%s/%s", FacebookGraphAPIBaseURL, adId)
+	{{end}}
 	{{else if eq .NodeName "AdCreative"}}
 	// Extract ad_creative_id for URL construction
 	adCreativeId, ok := args["ad_creative_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_creative_id is required for {{.Tool.Name}}")
 	}
-	baseURL = fmt.Sprintf("%s/%s{{.Tool.Endpoint}}", FacebookGraphAPIBaseURL, adCreativeId)
+	{{if .Tool.Endpoint}}
+	baseURL = fmt.Sprintf("%s/%s/{{.Tool.Endpoint}}", FacebookGraphAPIBaseURL, adCreativeId)
+	{{else}}
+	baseURL = fmt.Sprintf("%s/%s", FacebookGraphAPIBaseURL, adCreativeId)
+	{{end}}
 	{{else if eq .NodeName "AdSet"}}
 	// Extract ad_set_id for URL construction
 	adSetId, ok := args["ad_set_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("ad_set_id is required for {{.Tool.Name}}")
 	}
-	baseURL = fmt.Sprintf("%s/%s{{.Tool.Endpoint}}", FacebookGraphAPIBaseURL, adSetId)
+	{{if .Tool.Endpoint}}
+	baseURL = fmt.Sprintf("%s/%s/{{.Tool.Endpoint}}", FacebookGraphAPIBaseURL, adSetId)
+	{{else}}
+	baseURL = fmt.Sprintf("%s/%s", FacebookGraphAPIBaseURL, adSetId)
+	{{end}}
 	{{else if eq .NodeName "Campaign"}}
 	// Extract campaign_id for URL construction
 	campaignId, ok := args["campaign_id"].(string)
 	if !ok {
 		return nil, fmt.Errorf("campaign_id is required for {{.Tool.Name}}")
 	}
-	baseURL = fmt.Sprintf("%s/%s{{.Tool.Endpoint}}", FacebookGraphAPIBaseURL, campaignId)
+	{{if .Tool.Endpoint}}
+	baseURL = fmt.Sprintf("%s/%s/{{.Tool.Endpoint}}", FacebookGraphAPIBaseURL, campaignId)
 	{{else}}
-	baseURL = FacebookGraphAPIBaseURL + "{{.Tool.Endpoint}}"
+	baseURL = fmt.Sprintf("%s/%s", FacebookGraphAPIBaseURL, campaignId)
+	{{end}}
+	{{else}}
+	{{if .Tool.Endpoint}}
+	baseURL = FacebookGraphAPIBaseURL + "/{{.Tool.Endpoint}}"
+	{{else}}
+	baseURL = FacebookGraphAPIBaseURL
+	{{end}}
 	{{end}}
 
 	// Build URL parameters, skipping ID parameters that are in the path

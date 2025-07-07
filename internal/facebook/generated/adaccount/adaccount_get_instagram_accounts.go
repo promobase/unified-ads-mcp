@@ -89,7 +89,8 @@ func Adaccount_get_instagram_accounts(accessToken string, args map[string]interf
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_instagram_accounts")
 	}
-	baseURL = fmt.Sprintf("%s/act_%sinstagram_accounts", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/instagram_accounts", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

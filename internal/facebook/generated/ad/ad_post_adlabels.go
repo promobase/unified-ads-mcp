@@ -97,7 +97,8 @@ func Ad_post_adlabels(accessToken string, args map[string]interface{}) (interfac
 	if !ok {
 		return nil, fmt.Errorf("ad_id is required for ad_post_adlabels")
 	}
-	baseURL = fmt.Sprintf("%s/%sadlabels", FacebookGraphAPIBaseURL, adId)
+
+	baseURL = fmt.Sprintf("%s/%s/adlabels", FacebookGraphAPIBaseURL, adId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

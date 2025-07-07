@@ -74,7 +74,7 @@ func HandleGroup_get_docs(ctx context.Context, request mcp.CallToolRequest) (*mc
 func Group_get_docs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "docs"
+	baseURL = FacebookGraphAPIBaseURL + "/docs"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -104,7 +104,7 @@ func HandleApplication_get_sgw_install_deferral_link(ctx context.Context, reques
 func Application_get_sgw_install_deferral_link(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "sgw_install_deferral_link"
+	baseURL = FacebookGraphAPIBaseURL + "/sgw_install_deferral_link"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

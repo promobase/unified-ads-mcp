@@ -75,7 +75,7 @@ func HandleIguser_get_branded_content_ad_permissions(ctx context.Context, reques
 func Iguser_get_branded_content_ad_permissions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "branded_content_ad_permissions"
+	baseURL = FacebookGraphAPIBaseURL + "/branded_content_ad_permissions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

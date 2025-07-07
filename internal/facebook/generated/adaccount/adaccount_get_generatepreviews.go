@@ -175,7 +175,8 @@ func Adaccount_get_generatepreviews(accessToken string, args map[string]interfac
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_generatepreviews")
 	}
-	baseURL = fmt.Sprintf("%s/act_%sgeneratepreviews", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/generatepreviews", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

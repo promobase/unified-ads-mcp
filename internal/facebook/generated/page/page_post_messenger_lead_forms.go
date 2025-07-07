@@ -117,7 +117,7 @@ func HandlePage_post_messenger_lead_forms(ctx context.Context, request mcp.CallT
 func Page_post_messenger_lead_forms(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "messenger_lead_forms"
+	baseURL = FacebookGraphAPIBaseURL + "/messenger_lead_forms"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

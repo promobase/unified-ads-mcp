@@ -96,7 +96,7 @@ func HandleBusiness_get_ads_dataset(ctx context.Context, request mcp.CallToolReq
 func Business_get_ads_dataset(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "ads_dataset"
+	baseURL = FacebookGraphAPIBaseURL + "/ads_dataset"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

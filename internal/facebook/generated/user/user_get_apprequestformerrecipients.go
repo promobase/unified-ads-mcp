@@ -75,7 +75,7 @@ func HandleUser_get_apprequestformerrecipients(ctx context.Context, request mcp.
 func User_get_apprequestformerrecipients(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "apprequestformerrecipients"
+	baseURL = FacebookGraphAPIBaseURL + "/apprequestformerrecipients"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

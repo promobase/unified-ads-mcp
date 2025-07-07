@@ -105,7 +105,7 @@ func HandleProductcatalog_get_categories(ctx context.Context, request mcp.CallTo
 func Productcatalog_get_categories(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "categories"
+	baseURL = FacebookGraphAPIBaseURL + "/categories"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

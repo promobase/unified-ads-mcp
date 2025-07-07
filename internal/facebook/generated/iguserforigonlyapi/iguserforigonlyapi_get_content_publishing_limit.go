@@ -87,7 +87,7 @@ func HandleIguserforigonlyapi_get_content_publishing_limit(ctx context.Context, 
 func Iguserforigonlyapi_get_content_publishing_limit(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "content_publishing_limit"
+	baseURL = FacebookGraphAPIBaseURL + "/content_publishing_limit"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

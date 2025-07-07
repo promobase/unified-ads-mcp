@@ -89,7 +89,8 @@ func Adaccount_get_audience_funnel(accessToken string, args map[string]interface
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_audience_funnel")
 	}
-	baseURL = fmt.Sprintf("%s/act_%saudience_funnel", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/audience_funnel", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

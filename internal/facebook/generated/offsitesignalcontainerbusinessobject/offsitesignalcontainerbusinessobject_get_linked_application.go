@@ -75,7 +75,7 @@ func HandleOffsitesignalcontainerbusinessobject_get_linked_application(ctx conte
 func Offsitesignalcontainerbusinessobject_get_linked_application(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "linked_application"
+	baseURL = FacebookGraphAPIBaseURL + "/linked_application"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

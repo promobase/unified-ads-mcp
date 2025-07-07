@@ -107,7 +107,7 @@ func HandleGroup_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mc
 func Group_get_feed(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "feed"
+	baseURL = FacebookGraphAPIBaseURL + "/feed"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

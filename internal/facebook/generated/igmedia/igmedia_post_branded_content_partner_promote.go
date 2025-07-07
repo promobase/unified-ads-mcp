@@ -81,7 +81,7 @@ func HandleIgmedia_post_branded_content_partner_promote(ctx context.Context, req
 func Igmedia_post_branded_content_partner_promote(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "branded_content_partner_promote"
+	baseURL = FacebookGraphAPIBaseURL + "/branded_content_partner_promote"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

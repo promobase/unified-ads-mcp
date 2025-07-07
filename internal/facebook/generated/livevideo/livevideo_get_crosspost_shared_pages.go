@@ -75,7 +75,7 @@ func HandleLivevideo_get_crosspost_shared_pages(ctx context.Context, request mcp
 func Livevideo_get_crosspost_shared_pages(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "crosspost_shared_pages"
+	baseURL = FacebookGraphAPIBaseURL + "/crosspost_shared_pages"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

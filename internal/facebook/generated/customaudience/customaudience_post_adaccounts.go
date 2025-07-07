@@ -77,7 +77,7 @@ func HandleCustomaudience_post_adaccounts(ctx context.Context, request mcp.CallT
 func Customaudience_post_adaccounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "adaccounts"
+	baseURL = FacebookGraphAPIBaseURL + "/adaccounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

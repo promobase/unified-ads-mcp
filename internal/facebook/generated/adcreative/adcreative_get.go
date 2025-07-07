@@ -105,6 +105,7 @@ func Adcreative_get(accessToken string, args map[string]interface{}) (interface{
 	if !ok {
 		return nil, fmt.Errorf("ad_creative_id is required for adcreative_get")
 	}
+
 	baseURL = fmt.Sprintf("%s/%s", FacebookGraphAPIBaseURL, adCreativeId)
 
 	// Build URL parameters, skipping ID parameters that are in the path

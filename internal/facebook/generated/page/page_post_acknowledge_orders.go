@@ -82,7 +82,7 @@ func HandlePage_post_acknowledge_orders(ctx context.Context, request mcp.CallToo
 func Page_post_acknowledge_orders(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "acknowledge_orders"
+	baseURL = FacebookGraphAPIBaseURL + "/acknowledge_orders"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -89,7 +89,8 @@ func Adaccount_get_tracking(accessToken string, args map[string]interface{}) (in
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_tracking")
 	}
-	baseURL = fmt.Sprintf("%s/act_%stracking", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/tracking", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

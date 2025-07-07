@@ -100,7 +100,7 @@ func HandleShadowighashtag_get_recent_media(ctx context.Context, request mcp.Cal
 func Shadowighashtag_get_recent_media(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "recent_media"
+	baseURL = FacebookGraphAPIBaseURL + "/recent_media"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

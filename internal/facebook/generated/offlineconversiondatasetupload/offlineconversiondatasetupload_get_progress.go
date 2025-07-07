@@ -74,7 +74,7 @@ func HandleOfflineconversiondatasetupload_get_progress(ctx context.Context, requ
 func Offlineconversiondatasetupload_get_progress(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "progress"
+	baseURL = FacebookGraphAPIBaseURL + "/progress"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -358,7 +358,7 @@ func HandleBusiness_post_videos(ctx context.Context, request mcp.CallToolRequest
 func Business_post_videos(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "videos"
+	baseURL = FacebookGraphAPIBaseURL + "/videos"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

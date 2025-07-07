@@ -145,7 +145,7 @@ func HandleGroup_post_live_videos(ctx context.Context, request mcp.CallToolReque
 func Group_post_live_videos(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "live_videos"
+	baseURL = FacebookGraphAPIBaseURL + "/live_videos"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -83,7 +83,7 @@ func HandlePage_delete_locations(ctx context.Context, request mcp.CallToolReques
 func Page_delete_locations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "locations"
+	baseURL = FacebookGraphAPIBaseURL + "/locations"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

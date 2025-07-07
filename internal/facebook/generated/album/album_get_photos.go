@@ -75,7 +75,7 @@ func HandleAlbum_get_photos(ctx context.Context, request mcp.CallToolRequest) (*
 func Album_get_photos(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "photos"
+	baseURL = FacebookGraphAPIBaseURL + "/photos"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

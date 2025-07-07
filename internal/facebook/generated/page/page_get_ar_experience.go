@@ -75,7 +75,7 @@ func HandlePage_get_ar_experience(ctx context.Context, request mcp.CallToolReque
 func Page_get_ar_experience(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "ar_experience"
+	baseURL = FacebookGraphAPIBaseURL + "/ar_experience"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

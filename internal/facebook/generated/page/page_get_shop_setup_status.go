@@ -75,7 +75,7 @@ func HandlePage_get_shop_setup_status(ctx context.Context, request mcp.CallToolR
 func Page_get_shop_setup_status(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "shop_setup_status"
+	baseURL = FacebookGraphAPIBaseURL + "/shop_setup_status"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

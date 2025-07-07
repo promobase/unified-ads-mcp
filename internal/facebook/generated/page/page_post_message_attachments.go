@@ -81,7 +81,7 @@ func HandlePage_post_message_attachments(ctx context.Context, request mcp.CallTo
 func Page_post_message_attachments(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "message_attachments"
+	baseURL = FacebookGraphAPIBaseURL + "/message_attachments"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

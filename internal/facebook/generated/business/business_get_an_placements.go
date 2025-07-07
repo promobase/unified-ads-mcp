@@ -75,7 +75,7 @@ func HandleBusiness_get_an_placements(ctx context.Context, request mcp.CallToolR
 func Business_get_an_placements(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "an_placements"
+	baseURL = FacebookGraphAPIBaseURL + "/an_placements"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

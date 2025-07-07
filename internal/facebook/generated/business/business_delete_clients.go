@@ -76,7 +76,7 @@ func HandleBusiness_delete_clients(ctx context.Context, request mcp.CallToolRequ
 func Business_delete_clients(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "clients"
+	baseURL = FacebookGraphAPIBaseURL + "/clients"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

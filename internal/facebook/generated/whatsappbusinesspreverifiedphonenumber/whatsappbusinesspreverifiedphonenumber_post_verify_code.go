@@ -76,7 +76,7 @@ func HandleWhatsappbusinesspreverifiedphonenumber_post_verify_code(ctx context.C
 func Whatsappbusinesspreverifiedphonenumber_post_verify_code(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "verify_code"
+	baseURL = FacebookGraphAPIBaseURL + "/verify_code"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -80,7 +80,7 @@ func HandleApplication_post_app_indexing_session(ctx context.Context, request mc
 func Application_post_app_indexing_session(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "app_indexing_session"
+	baseURL = FacebookGraphAPIBaseURL + "/app_indexing_session"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

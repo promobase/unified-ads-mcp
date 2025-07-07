@@ -75,7 +75,7 @@ func HandleLivevideo_get_polls(ctx context.Context, request mcp.CallToolRequest)
 func Livevideo_get_polls(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "polls"
+	baseURL = FacebookGraphAPIBaseURL + "/polls"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -102,7 +102,8 @@ func Adaccount_get_adspixels(accessToken string, args map[string]interface{}) (i
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_adspixels")
 	}
-	baseURL = fmt.Sprintf("%s/act_%sadspixels", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/adspixels", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

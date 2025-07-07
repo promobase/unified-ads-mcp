@@ -93,7 +93,7 @@ func HandleCustomaudience_get_ads(ctx context.Context, request mcp.CallToolReque
 func Customaudience_get_ads(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "ads"
+	baseURL = FacebookGraphAPIBaseURL + "/ads"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

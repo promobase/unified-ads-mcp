@@ -85,7 +85,7 @@ func HandleIguser_post_mentions(ctx context.Context, request mcp.CallToolRequest
 func Iguser_post_mentions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "mentions"
+	baseURL = FacebookGraphAPIBaseURL + "/mentions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

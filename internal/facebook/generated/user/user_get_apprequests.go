@@ -75,7 +75,7 @@ func HandleUser_get_apprequests(ctx context.Context, request mcp.CallToolRequest
 func User_get_apprequests(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "apprequests"
+	baseURL = FacebookGraphAPIBaseURL + "/apprequests"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

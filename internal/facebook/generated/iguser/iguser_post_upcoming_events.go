@@ -91,7 +91,7 @@ func HandleIguser_post_upcoming_events(ctx context.Context, request mcp.CallTool
 func Iguser_post_upcoming_events(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "upcoming_events"
+	baseURL = FacebookGraphAPIBaseURL + "/upcoming_events"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

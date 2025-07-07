@@ -84,7 +84,7 @@ func HandleBusiness_post_creative_folders(ctx context.Context, request mcp.CallT
 func Business_post_creative_folders(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "creative_folders"
+	baseURL = FacebookGraphAPIBaseURL + "/creative_folders"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

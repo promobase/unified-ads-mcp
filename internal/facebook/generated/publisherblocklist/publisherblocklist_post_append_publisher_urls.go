@@ -77,7 +77,7 @@ func HandlePublisherblocklist_post_append_publisher_urls(ctx context.Context, re
 func Publisherblocklist_post_append_publisher_urls(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "append_publisher_urls"
+	baseURL = FacebookGraphAPIBaseURL + "/append_publisher_urls"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

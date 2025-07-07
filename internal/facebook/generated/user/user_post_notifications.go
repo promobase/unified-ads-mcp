@@ -115,7 +115,7 @@ func HandleUser_post_notifications(ctx context.Context, request mcp.CallToolRequ
 func User_post_notifications(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "notifications"
+	baseURL = FacebookGraphAPIBaseURL + "/notifications"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

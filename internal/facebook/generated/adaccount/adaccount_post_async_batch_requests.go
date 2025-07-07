@@ -96,7 +96,8 @@ func Adaccount_post_async_batch_requests(accessToken string, args map[string]int
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_async_batch_requests")
 	}
-	baseURL = fmt.Sprintf("%s/act_%sasync_batch_requests", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/async_batch_requests", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

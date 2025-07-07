@@ -89,7 +89,7 @@ func HandleCommerceorder_post_cancellations(ctx context.Context, request mcp.Cal
 func Commerceorder_post_cancellations(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "cancellations"
+	baseURL = FacebookGraphAPIBaseURL + "/cancellations"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -75,7 +75,7 @@ func HandleAlbum_post_likes(ctx context.Context, request mcp.CallToolRequest) (*
 func Album_post_likes(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "likes"
+	baseURL = FacebookGraphAPIBaseURL + "/likes"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

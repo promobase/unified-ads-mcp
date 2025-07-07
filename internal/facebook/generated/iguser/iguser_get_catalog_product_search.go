@@ -104,7 +104,7 @@ func HandleIguser_get_catalog_product_search(ctx context.Context, request mcp.Ca
 func Iguser_get_catalog_product_search(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "catalog_product_search"
+	baseURL = FacebookGraphAPIBaseURL + "/catalog_product_search"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

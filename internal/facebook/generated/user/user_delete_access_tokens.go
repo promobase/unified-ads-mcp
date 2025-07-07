@@ -50,7 +50,7 @@ func HandleUser_delete_access_tokens(ctx context.Context, request mcp.CallToolRe
 func User_delete_access_tokens(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "access_tokens"
+	baseURL = FacebookGraphAPIBaseURL + "/access_tokens"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

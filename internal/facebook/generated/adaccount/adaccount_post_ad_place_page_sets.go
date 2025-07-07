@@ -106,7 +106,8 @@ func Adaccount_post_ad_place_page_sets(accessToken string, args map[string]inter
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_post_ad_place_page_sets")
 	}
-	baseURL = fmt.Sprintf("%s/act_%sad_place_page_sets", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/ad_place_page_sets", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

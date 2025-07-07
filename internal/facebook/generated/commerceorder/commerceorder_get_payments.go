@@ -74,7 +74,7 @@ func HandleCommerceorder_get_payments(ctx context.Context, request mcp.CallToolR
 func Commerceorder_get_payments(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "payments"
+	baseURL = FacebookGraphAPIBaseURL + "/payments"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

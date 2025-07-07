@@ -89,7 +89,8 @@ func Adaccount_get_conversion_goals(accessToken string, args map[string]interfac
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_conversion_goals")
 	}
-	baseURL = fmt.Sprintf("%s/act_%sconversion_goals", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/conversion_goals", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

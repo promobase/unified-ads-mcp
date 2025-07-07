@@ -75,7 +75,7 @@ func HandleCpasbusinesssetupconfig_get_ad_accounts(ctx context.Context, request 
 func Cpasbusinesssetupconfig_get_ad_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "ad_accounts"
+	baseURL = FacebookGraphAPIBaseURL + "/ad_accounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

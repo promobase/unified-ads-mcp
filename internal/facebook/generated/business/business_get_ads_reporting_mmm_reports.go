@@ -88,7 +88,7 @@ func HandleBusiness_get_ads_reporting_mmm_reports(ctx context.Context, request m
 func Business_get_ads_reporting_mmm_reports(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "ads_reporting_mmm_reports"
+	baseURL = FacebookGraphAPIBaseURL + "/ads_reporting_mmm_reports"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

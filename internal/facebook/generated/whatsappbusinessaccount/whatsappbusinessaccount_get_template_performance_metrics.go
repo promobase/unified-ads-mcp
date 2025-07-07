@@ -91,7 +91,7 @@ func HandleWhatsappbusinessaccount_get_template_performance_metrics(ctx context.
 func Whatsappbusinessaccount_get_template_performance_metrics(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "template_performance_metrics"
+	baseURL = FacebookGraphAPIBaseURL + "/template_performance_metrics"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

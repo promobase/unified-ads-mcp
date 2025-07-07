@@ -88,7 +88,7 @@ func HandleApplication_get_aem_conversion_configs(ctx context.Context, request m
 func Application_get_aem_conversion_configs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "aem_conversion_configs"
+	baseURL = FacebookGraphAPIBaseURL + "/aem_conversion_configs"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

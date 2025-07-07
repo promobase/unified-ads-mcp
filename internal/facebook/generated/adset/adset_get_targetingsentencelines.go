@@ -89,7 +89,8 @@ func Adset_get_targetingsentencelines(accessToken string, args map[string]interf
 	if !ok {
 		return nil, fmt.Errorf("ad_set_id is required for adset_get_targetingsentencelines")
 	}
-	baseURL = fmt.Sprintf("%s/%stargetingsentencelines", FacebookGraphAPIBaseURL, adSetId)
+
+	baseURL = fmt.Sprintf("%s/%s/targetingsentencelines", FacebookGraphAPIBaseURL, adSetId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

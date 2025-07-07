@@ -96,7 +96,7 @@ func HandleApplication_post_aem_skan_readiness(ctx context.Context, request mcp.
 func Application_post_aem_skan_readiness(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "aem_skan_readiness"
+	baseURL = FacebookGraphAPIBaseURL + "/aem_skan_readiness"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

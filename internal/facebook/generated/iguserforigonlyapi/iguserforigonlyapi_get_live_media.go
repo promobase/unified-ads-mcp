@@ -74,7 +74,7 @@ func HandleIguserforigonlyapi_get_live_media(ctx context.Context, request mcp.Ca
 func Iguserforigonlyapi_get_live_media(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "live_media"
+	baseURL = FacebookGraphAPIBaseURL + "/live_media"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

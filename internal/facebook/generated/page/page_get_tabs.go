@@ -88,7 +88,7 @@ func HandlePage_get_tabs(ctx context.Context, request mcp.CallToolRequest) (*mcp
 func Page_get_tabs(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "tabs"
+	baseURL = FacebookGraphAPIBaseURL + "/tabs"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

@@ -140,7 +140,8 @@ func Adaccount_get_matched_search_applications(accessToken string, args map[stri
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_matched_search_applications")
 	}
-	baseURL = fmt.Sprintf("%s/act_%smatched_search_applications", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/matched_search_applications", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

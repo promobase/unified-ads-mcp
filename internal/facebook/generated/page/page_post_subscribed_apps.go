@@ -78,7 +78,7 @@ func HandlePage_post_subscribed_apps(ctx context.Context, request mcp.CallToolRe
 func Page_post_subscribed_apps(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "subscribed_apps"
+	baseURL = FacebookGraphAPIBaseURL + "/subscribed_apps"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

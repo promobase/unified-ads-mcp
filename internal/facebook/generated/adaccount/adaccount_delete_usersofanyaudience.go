@@ -85,7 +85,8 @@ func Adaccount_delete_usersofanyaudience(accessToken string, args map[string]int
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_delete_usersofanyaudience")
 	}
-	baseURL = fmt.Sprintf("%s/act_%susersofanyaudience", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/usersofanyaudience", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

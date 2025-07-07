@@ -76,7 +76,7 @@ func HandleBusinessassetgroup_post_contained_custom_conversions(ctx context.Cont
 func Businessassetgroup_post_contained_custom_conversions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "contained_custom_conversions"
+	baseURL = FacebookGraphAPIBaseURL + "/contained_custom_conversions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

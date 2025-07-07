@@ -75,7 +75,7 @@ func HandleBusiness_get_partner_account_linking(ctx context.Context, request mcp
 func Business_get_partner_account_linking(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "partner_account_linking"
+	baseURL = FacebookGraphAPIBaseURL + "/partner_account_linking"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

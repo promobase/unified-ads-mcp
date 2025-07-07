@@ -63,7 +63,7 @@ func HandlePage_post_photo_stories(ctx context.Context, request mcp.CallToolRequ
 func Page_post_photo_stories(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "photo_stories"
+	baseURL = FacebookGraphAPIBaseURL + "/photo_stories"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

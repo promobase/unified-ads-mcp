@@ -127,7 +127,7 @@ func HandleIguserforigonlyapi_post_media(ctx context.Context, request mcp.CallTo
 func Iguserforigonlyapi_post_media(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "media"
+	baseURL = FacebookGraphAPIBaseURL + "/media"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

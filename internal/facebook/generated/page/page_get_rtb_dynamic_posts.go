@@ -75,7 +75,7 @@ func HandlePage_get_rtb_dynamic_posts(ctx context.Context, request mcp.CallToolR
 func Page_get_rtb_dynamic_posts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "rtb_dynamic_posts"
+	baseURL = FacebookGraphAPIBaseURL + "/rtb_dynamic_posts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

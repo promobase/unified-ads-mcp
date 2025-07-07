@@ -107,7 +107,8 @@ func Adaccount_get_value_rule_set(accessToken string, args map[string]interface{
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_value_rule_set")
 	}
-	baseURL = fmt.Sprintf("%s/act_%svalue_rule_set", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/value_rule_set", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

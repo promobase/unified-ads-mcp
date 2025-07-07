@@ -81,7 +81,7 @@ func HandleAdspixel_delete_shared_accounts(ctx context.Context, request mcp.Call
 func Adspixel_delete_shared_accounts(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "shared_accounts"
+	baseURL = FacebookGraphAPIBaseURL + "/shared_accounts"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

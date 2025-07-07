@@ -139,7 +139,8 @@ func Adaccount_get_reachestimate(accessToken string, args map[string]interface{}
 	if !ok {
 		return nil, fmt.Errorf("account_id is required for adaccount_get_reachestimate")
 	}
-	baseURL = fmt.Sprintf("%s/act_%sreachestimate", FacebookGraphAPIBaseURL, accountId)
+
+	baseURL = fmt.Sprintf("%s/act_%s/reachestimate", FacebookGraphAPIBaseURL, accountId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

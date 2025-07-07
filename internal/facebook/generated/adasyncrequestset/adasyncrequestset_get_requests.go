@@ -89,7 +89,7 @@ func HandleAdasyncrequestset_get_requests(ctx context.Context, request mcp.CallT
 func Adasyncrequestset_get_requests(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "requests"
+	baseURL = FacebookGraphAPIBaseURL + "/requests"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

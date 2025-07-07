@@ -92,7 +92,7 @@ func HandleUser_get_permissions(ctx context.Context, request mcp.CallToolRequest
 func User_get_permissions(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "permissions"
+	baseURL = FacebookGraphAPIBaseURL + "/permissions"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

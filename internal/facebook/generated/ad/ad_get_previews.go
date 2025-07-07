@@ -170,7 +170,8 @@ func Ad_get_previews(accessToken string, args map[string]interface{}) (interface
 	if !ok {
 		return nil, fmt.Errorf("ad_id is required for ad_get_previews")
 	}
-	baseURL = fmt.Sprintf("%s/%spreviews", FacebookGraphAPIBaseURL, adId)
+
+	baseURL = fmt.Sprintf("%s/%s/previews", FacebookGraphAPIBaseURL, adId)
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{

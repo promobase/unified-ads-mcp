@@ -74,7 +74,7 @@ func HandleCommerceordertransactiondetail_get_tax_details(ctx context.Context, r
 func Commerceordertransactiondetail_get_tax_details(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "tax_details"
+	baseURL = FacebookGraphAPIBaseURL + "/tax_details"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

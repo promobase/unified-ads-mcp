@@ -75,7 +75,7 @@ func HandleIgmedia_get_children(ctx context.Context, request mcp.CallToolRequest
 func Igmedia_get_children(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "children"
+	baseURL = FacebookGraphAPIBaseURL + "/children"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}

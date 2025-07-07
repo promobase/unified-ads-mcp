@@ -216,7 +216,7 @@ func HandleProductcatalog_post_vehicles(ctx context.Context, request mcp.CallToo
 func Productcatalog_post_vehicles(accessToken string, args map[string]interface{}) (interface{}, error) {
 	var baseURL string
 
-	baseURL = FacebookGraphAPIBaseURL + "vehicles"
+	baseURL = FacebookGraphAPIBaseURL + "/vehicles"
 
 	// Build URL parameters, skipping ID parameters that are in the path
 	skipParams := []string{}
