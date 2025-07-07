@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolRightsmanagerdataexport_get_())
+	tools = append(tools, ToolRightsmanagerdataexport_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["rightsmanagerdataexport_get_"] = HandleRightsmanagerdataexport_get_
+	handlers["rightsmanagerdataexport_get"] = HandleRightsmanagerdataexport_get
 
 	return handlers
 }

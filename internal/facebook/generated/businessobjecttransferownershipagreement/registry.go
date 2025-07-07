@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolBusinessobjecttransferownershipagreement_get_())
+	tools = append(tools, ToolBusinessobjecttransferownershipagreement_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["businessobjecttransferownershipagreement_get_"] = HandleBusinessobjecttransferownershipagreement_get_
+	handlers["businessobjecttransferownershipagreement_get"] = HandleBusinessobjecttransferownershipagreement_get
 
 	return handlers
 }

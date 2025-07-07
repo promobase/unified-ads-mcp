@@ -14,7 +14,7 @@ func GetTools() []mcp.Tool {
 
 	tools = append(tools, ToolLink_post_comments())
 	tools = append(tools, ToolLink_get_likes())
-	tools = append(tools, ToolLink_get_())
+	tools = append(tools, ToolLink_get())
 
 	return tools
 }
@@ -25,7 +25,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["link_post_comments"] = HandleLink_post_comments
 	handlers["link_get_likes"] = HandleLink_get_likes
-	handlers["link_get_"] = HandleLink_get_
+	handlers["link_get"] = HandleLink_get
 
 	return handlers
 }

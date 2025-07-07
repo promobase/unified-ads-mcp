@@ -18,8 +18,8 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolPhoto_get_likes())
 	tools = append(tools, ToolPhoto_post_likes())
 	tools = append(tools, ToolPhoto_get_sponsor_tags())
-	tools = append(tools, ToolPhoto_delete_())
-	tools = append(tools, ToolPhoto_get_())
+	tools = append(tools, ToolPhoto_delete())
+	tools = append(tools, ToolPhoto_get())
 
 	return tools
 }
@@ -34,8 +34,8 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["photo_get_likes"] = HandlePhoto_get_likes
 	handlers["photo_post_likes"] = HandlePhoto_post_likes
 	handlers["photo_get_sponsor_tags"] = HandlePhoto_get_sponsor_tags
-	handlers["photo_delete_"] = HandlePhoto_delete_
-	handlers["photo_get_"] = HandlePhoto_get_
+	handlers["photo_delete"] = HandlePhoto_delete
+	handlers["photo_get"] = HandlePhoto_get
 
 	return handlers
 }

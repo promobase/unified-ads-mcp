@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolDynamiccontentset_get_())
+	tools = append(tools, ToolDynamiccontentset_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["dynamiccontentset_get_"] = HandleDynamiccontentset_get_
+	handlers["dynamiccontentset_get"] = HandleDynamiccontentset_get
 
 	return handlers
 }

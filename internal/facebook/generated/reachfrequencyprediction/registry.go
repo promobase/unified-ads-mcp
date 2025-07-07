@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolReachfrequencyprediction_get_())
+	tools = append(tools, ToolReachfrequencyprediction_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["reachfrequencyprediction_get_"] = HandleReachfrequencyprediction_get_
+	handlers["reachfrequencyprediction_get"] = HandleReachfrequencyprediction_get
 
 	return handlers
 }

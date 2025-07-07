@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolProductfeeduploaderrorsample_get_())
+	tools = append(tools, ToolProductfeeduploaderrorsample_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["productfeeduploaderrorsample_get_"] = HandleProductfeeduploaderrorsample_get_
+	handlers["productfeeduploaderrorsample_get"] = HandleProductfeeduploaderrorsample_get
 
 	return handlers
 }

@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolThirdpartypartnerpanelscheduled_get_())
+	tools = append(tools, ToolThirdpartypartnerpanelscheduled_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["thirdpartypartnerpanelscheduled_get_"] = HandleThirdpartypartnerpanelscheduled_get_
+	handlers["thirdpartypartnerpanelscheduled_get"] = HandleThirdpartypartnerpanelscheduled_get
 
 	return handlers
 }

@@ -15,9 +15,9 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolMediatitle_get_channels_to_integrity_status())
 	tools = append(tools, ToolMediatitle_get_override_details())
 	tools = append(tools, ToolMediatitle_get_videos_metadata())
-	tools = append(tools, ToolMediatitle_delete_())
-	tools = append(tools, ToolMediatitle_get_())
-	tools = append(tools, ToolMediatitle_post_())
+	tools = append(tools, ToolMediatitle_delete())
+	tools = append(tools, ToolMediatitle_get())
+	tools = append(tools, ToolMediatitle_post())
 
 	return tools
 }
@@ -29,9 +29,9 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["mediatitle_get_channels_to_integrity_status"] = HandleMediatitle_get_channels_to_integrity_status
 	handlers["mediatitle_get_override_details"] = HandleMediatitle_get_override_details
 	handlers["mediatitle_get_videos_metadata"] = HandleMediatitle_get_videos_metadata
-	handlers["mediatitle_delete_"] = HandleMediatitle_delete_
-	handlers["mediatitle_get_"] = HandleMediatitle_get_
-	handlers["mediatitle_post_"] = HandleMediatitle_post_
+	handlers["mediatitle_delete"] = HandleMediatitle_delete
+	handlers["mediatitle_get"] = HandleMediatitle_get
+	handlers["mediatitle_post"] = HandleMediatitle_post
 
 	return handlers
 }

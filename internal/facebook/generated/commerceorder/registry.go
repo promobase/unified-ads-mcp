@@ -27,7 +27,7 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolCommerceorder_get_shipments())
 	tools = append(tools, ToolCommerceorder_post_shipments())
 	tools = append(tools, ToolCommerceorder_post_update_shipment())
-	tools = append(tools, ToolCommerceorder_get_())
+	tools = append(tools, ToolCommerceorder_get())
 
 	return tools
 }
@@ -51,7 +51,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["commerceorder_get_shipments"] = HandleCommerceorder_get_shipments
 	handlers["commerceorder_post_shipments"] = HandleCommerceorder_post_shipments
 	handlers["commerceorder_post_update_shipment"] = HandleCommerceorder_post_update_shipment
-	handlers["commerceorder_get_"] = HandleCommerceorder_get_
+	handlers["commerceorder_get"] = HandleCommerceorder_get
 
 	return handlers
 }

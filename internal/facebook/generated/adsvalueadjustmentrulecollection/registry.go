@@ -14,8 +14,8 @@ func GetTools() []mcp.Tool {
 
 	tools = append(tools, ToolAdsvalueadjustmentrulecollection_post_delete_rule_set())
 	tools = append(tools, ToolAdsvalueadjustmentrulecollection_get_rules())
-	tools = append(tools, ToolAdsvalueadjustmentrulecollection_get_())
-	tools = append(tools, ToolAdsvalueadjustmentrulecollection_post_())
+	tools = append(tools, ToolAdsvalueadjustmentrulecollection_get())
+	tools = append(tools, ToolAdsvalueadjustmentrulecollection_post())
 
 	return tools
 }
@@ -26,8 +26,8 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["adsvalueadjustmentrulecollection_post_delete_rule_set"] = HandleAdsvalueadjustmentrulecollection_post_delete_rule_set
 	handlers["adsvalueadjustmentrulecollection_get_rules"] = HandleAdsvalueadjustmentrulecollection_get_rules
-	handlers["adsvalueadjustmentrulecollection_get_"] = HandleAdsvalueadjustmentrulecollection_get_
-	handlers["adsvalueadjustmentrulecollection_post_"] = HandleAdsvalueadjustmentrulecollection_post_
+	handlers["adsvalueadjustmentrulecollection_get"] = HandleAdsvalueadjustmentrulecollection_get
+	handlers["adsvalueadjustmentrulecollection_post"] = HandleAdsvalueadjustmentrulecollection_post
 
 	return handlers
 }

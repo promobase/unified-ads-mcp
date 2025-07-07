@@ -14,7 +14,7 @@ func GetTools() []mcp.Tool {
 
 	tools = append(tools, ToolPaymentenginepayment_post_dispute())
 	tools = append(tools, ToolPaymentenginepayment_post_refunds())
-	tools = append(tools, ToolPaymentenginepayment_get_())
+	tools = append(tools, ToolPaymentenginepayment_get())
 
 	return tools
 }
@@ -25,7 +25,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["paymentenginepayment_post_dispute"] = HandlePaymentenginepayment_post_dispute
 	handlers["paymentenginepayment_post_refunds"] = HandlePaymentenginepayment_post_refunds
-	handlers["paymentenginepayment_get_"] = HandlePaymentenginepayment_get_
+	handlers["paymentenginepayment_get"] = HandlePaymentenginepayment_get
 
 	return handlers
 }

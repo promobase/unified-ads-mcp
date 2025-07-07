@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolInstagrambusinessasset_get_())
+	tools = append(tools, ToolInstagrambusinessasset_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["instagrambusinessasset_get_"] = HandleInstagrambusinessasset_get_
+	handlers["instagrambusinessasset_get"] = HandleInstagrambusinessasset_get
 
 	return handlers
 }

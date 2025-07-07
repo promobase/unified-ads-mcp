@@ -13,7 +13,7 @@ func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	tools = append(tools, ToolAdsconversiongoal_get_conversion_events())
-	tools = append(tools, ToolAdsconversiongoal_get_())
+	tools = append(tools, ToolAdsconversiongoal_get())
 
 	return tools
 }
@@ -23,7 +23,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
 	handlers["adsconversiongoal_get_conversion_events"] = HandleAdsconversiongoal_get_conversion_events
-	handlers["adsconversiongoal_get_"] = HandleAdsconversiongoal_get_
+	handlers["adsconversiongoal_get"] = HandleAdsconversiongoal_get
 
 	return handlers
 }

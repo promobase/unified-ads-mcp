@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolOffsitepixel_get_())
+	tools = append(tools, ToolOffsitepixel_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["offsitepixel_get_"] = HandleOffsitepixel_get_
+	handlers["offsitepixel_get"] = HandleOffsitepixel_get
 
 	return handlers
 }

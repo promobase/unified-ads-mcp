@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolAradsdatacontainer_get_())
+	tools = append(tools, ToolAradsdatacontainer_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["aradsdatacontainer_get_"] = HandleAradsdatacontainer_get_
+	handlers["aradsdatacontainer_get"] = HandleAradsdatacontainer_get
 
 	return handlers
 }

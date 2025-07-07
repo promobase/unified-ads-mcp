@@ -14,7 +14,7 @@ func GetTools() []mcp.Tool {
 
 	tools = append(tools, ToolProductfeedupload_post_error_report())
 	tools = append(tools, ToolProductfeedupload_get_errors())
-	tools = append(tools, ToolProductfeedupload_get_())
+	tools = append(tools, ToolProductfeedupload_get())
 
 	return tools
 }
@@ -25,7 +25,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["productfeedupload_post_error_report"] = HandleProductfeedupload_post_error_report
 	handlers["productfeedupload_get_errors"] = HandleProductfeedupload_get_errors
-	handlers["productfeedupload_get_"] = HandleProductfeedupload_get_
+	handlers["productfeedupload_get"] = HandleProductfeedupload_get
 
 	return handlers
 }

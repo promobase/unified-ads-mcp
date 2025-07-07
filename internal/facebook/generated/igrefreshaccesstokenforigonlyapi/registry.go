@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolIgrefreshaccesstokenforigonlyapi_get_())
+	tools = append(tools, ToolIgrefreshaccesstokenforigonlyapi_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["igrefreshaccesstokenforigonlyapi_get_"] = HandleIgrefreshaccesstokenforigonlyapi_get_
+	handlers["igrefreshaccesstokenforigonlyapi_get"] = HandleIgrefreshaccesstokenforigonlyapi_get
 
 	return handlers
 }

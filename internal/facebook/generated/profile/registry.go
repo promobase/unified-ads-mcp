@@ -13,7 +13,7 @@ func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	tools = append(tools, ToolProfile_get_picture())
-	tools = append(tools, ToolProfile_get_())
+	tools = append(tools, ToolProfile_get())
 
 	return tools
 }
@@ -23,7 +23,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
 	handlers["profile_get_picture"] = HandleProfile_get_picture
-	handlers["profile_get_"] = HandleProfile_get_
+	handlers["profile_get"] = HandleProfile_get
 
 	return handlers
 }

@@ -15,9 +15,9 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolAdrule_post_execute())
 	tools = append(tools, ToolAdrule_get_history())
 	tools = append(tools, ToolAdrule_post_preview())
-	tools = append(tools, ToolAdrule_delete_())
-	tools = append(tools, ToolAdrule_get_())
-	tools = append(tools, ToolAdrule_post_())
+	tools = append(tools, ToolAdrule_delete())
+	tools = append(tools, ToolAdrule_get())
+	tools = append(tools, ToolAdrule_post())
 
 	return tools
 }
@@ -29,9 +29,9 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["adrule_post_execute"] = HandleAdrule_post_execute
 	handlers["adrule_get_history"] = HandleAdrule_get_history
 	handlers["adrule_post_preview"] = HandleAdrule_post_preview
-	handlers["adrule_delete_"] = HandleAdrule_delete_
-	handlers["adrule_get_"] = HandleAdrule_get_
-	handlers["adrule_post_"] = HandleAdrule_post_
+	handlers["adrule_delete"] = HandleAdrule_delete
+	handlers["adrule_get"] = HandleAdrule_get
+	handlers["adrule_post"] = HandleAdrule_post
 
 	return handlers
 }

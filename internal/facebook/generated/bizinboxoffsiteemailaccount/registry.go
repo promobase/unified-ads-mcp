@@ -13,7 +13,7 @@ func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	tools = append(tools, ToolBizinboxoffsiteemailaccount_get_assigned_users())
-	tools = append(tools, ToolBizinboxoffsiteemailaccount_get_())
+	tools = append(tools, ToolBizinboxoffsiteemailaccount_get())
 
 	return tools
 }
@@ -23,7 +23,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
 	handlers["bizinboxoffsiteemailaccount_get_assigned_users"] = HandleBizinboxoffsiteemailaccount_get_assigned_users
-	handlers["bizinboxoffsiteemailaccount_get_"] = HandleBizinboxoffsiteemailaccount_get_
+	handlers["bizinboxoffsiteemailaccount_get"] = HandleBizinboxoffsiteemailaccount_get
 
 	return handlers
 }

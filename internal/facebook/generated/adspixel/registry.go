@@ -29,8 +29,8 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolAdspixel_post_shared_accounts())
 	tools = append(tools, ToolAdspixel_get_shared_agencies())
 	tools = append(tools, ToolAdspixel_get_stats())
-	tools = append(tools, ToolAdspixel_get_())
-	tools = append(tools, ToolAdspixel_post_())
+	tools = append(tools, ToolAdspixel_get())
+	tools = append(tools, ToolAdspixel_post())
 
 	return tools
 }
@@ -56,8 +56,8 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["adspixel_post_shared_accounts"] = HandleAdspixel_post_shared_accounts
 	handlers["adspixel_get_shared_agencies"] = HandleAdspixel_get_shared_agencies
 	handlers["adspixel_get_stats"] = HandleAdspixel_get_stats
-	handlers["adspixel_get_"] = HandleAdspixel_get_
-	handlers["adspixel_post_"] = HandleAdspixel_post_
+	handlers["adspixel_get"] = HandleAdspixel_get
+	handlers["adspixel_post"] = HandleAdspixel_post
 
 	return handlers
 }

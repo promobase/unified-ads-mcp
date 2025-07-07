@@ -21,9 +21,9 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolLivevideo_get_polls())
 	tools = append(tools, ToolLivevideo_post_polls())
 	tools = append(tools, ToolLivevideo_get_reactions())
-	tools = append(tools, ToolLivevideo_delete_())
-	tools = append(tools, ToolLivevideo_get_())
-	tools = append(tools, ToolLivevideo_post_())
+	tools = append(tools, ToolLivevideo_delete())
+	tools = append(tools, ToolLivevideo_get())
+	tools = append(tools, ToolLivevideo_post())
 
 	return tools
 }
@@ -41,9 +41,9 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["livevideo_get_polls"] = HandleLivevideo_get_polls
 	handlers["livevideo_post_polls"] = HandleLivevideo_post_polls
 	handlers["livevideo_get_reactions"] = HandleLivevideo_get_reactions
-	handlers["livevideo_delete_"] = HandleLivevideo_delete_
-	handlers["livevideo_get_"] = HandleLivevideo_get_
-	handlers["livevideo_post_"] = HandleLivevideo_post_
+	handlers["livevideo_delete"] = HandleLivevideo_delete
+	handlers["livevideo_get"] = HandleLivevideo_get
+	handlers["livevideo_post"] = HandleLivevideo_post
 
 	return handlers
 }

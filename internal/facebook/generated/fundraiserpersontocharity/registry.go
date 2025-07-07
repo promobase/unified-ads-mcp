@@ -16,8 +16,8 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolFundraiserpersontocharity_post_end_fundraiser())
 	tools = append(tools, ToolFundraiserpersontocharity_get_external_donations())
 	tools = append(tools, ToolFundraiserpersontocharity_post_external_donations())
-	tools = append(tools, ToolFundraiserpersontocharity_get_())
-	tools = append(tools, ToolFundraiserpersontocharity_post_())
+	tools = append(tools, ToolFundraiserpersontocharity_get())
+	tools = append(tools, ToolFundraiserpersontocharity_post())
 
 	return tools
 }
@@ -30,8 +30,8 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["fundraiserpersontocharity_post_end_fundraiser"] = HandleFundraiserpersontocharity_post_end_fundraiser
 	handlers["fundraiserpersontocharity_get_external_donations"] = HandleFundraiserpersontocharity_get_external_donations
 	handlers["fundraiserpersontocharity_post_external_donations"] = HandleFundraiserpersontocharity_post_external_donations
-	handlers["fundraiserpersontocharity_get_"] = HandleFundraiserpersontocharity_get_
-	handlers["fundraiserpersontocharity_post_"] = HandleFundraiserpersontocharity_post_
+	handlers["fundraiserpersontocharity_get"] = HandleFundraiserpersontocharity_get
+	handlers["fundraiserpersontocharity_post"] = HandleFundraiserpersontocharity_post
 
 	return handlers
 }

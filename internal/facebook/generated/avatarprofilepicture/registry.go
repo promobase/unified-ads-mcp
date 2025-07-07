@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolAvatarprofilepicture_get_())
+	tools = append(tools, ToolAvatarprofilepicture_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["avatarprofilepicture_get_"] = HandleAvatarprofilepicture_get_
+	handlers["avatarprofilepicture_get"] = HandleAvatarprofilepicture_get
 
 	return handlers
 }

@@ -12,8 +12,8 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolMediafingerprint_get_())
-	tools = append(tools, ToolMediafingerprint_post_())
+	tools = append(tools, ToolMediafingerprint_get())
+	tools = append(tools, ToolMediafingerprint_post())
 
 	return tools
 }
@@ -22,8 +22,8 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["mediafingerprint_get_"] = HandleMediafingerprint_get_
-	handlers["mediafingerprint_post_"] = HandleMediafingerprint_post_
+	handlers["mediafingerprint_get"] = HandleMediafingerprint_get
+	handlers["mediafingerprint_post"] = HandleMediafingerprint_post
 
 	return handlers
 }

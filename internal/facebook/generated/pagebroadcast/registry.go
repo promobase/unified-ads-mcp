@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolPagebroadcast_get_())
+	tools = append(tools, ToolPagebroadcast_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["pagebroadcast_get_"] = HandlePagebroadcast_get_
+	handlers["pagebroadcast_get"] = HandlePagebroadcast_get
 
 	return handlers
 }

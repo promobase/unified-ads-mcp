@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolCanvastemplate_get_())
+	tools = append(tools, ToolCanvastemplate_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["canvastemplate_get_"] = HandleCanvastemplate_get_
+	handlers["canvastemplate_get"] = HandleCanvastemplate_get
 
 	return handlers
 }

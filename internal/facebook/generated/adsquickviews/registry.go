@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolAdsquickviews_get_())
+	tools = append(tools, ToolAdsquickviews_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["adsquickviews_get_"] = HandleAdsquickviews_get_
+	handlers["adsquickviews_get"] = HandleAdsquickviews_get
 
 	return handlers
 }

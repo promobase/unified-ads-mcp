@@ -25,7 +25,7 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolCommercemerchantsettings_post_shipping_profiles())
 	tools = append(tools, ToolCommercemerchantsettings_get_shops())
 	tools = append(tools, ToolCommercemerchantsettings_get_tax_settings())
-	tools = append(tools, ToolCommercemerchantsettings_get_())
+	tools = append(tools, ToolCommercemerchantsettings_get())
 
 	return tools
 }
@@ -47,7 +47,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["commercemerchantsettings_post_shipping_profiles"] = HandleCommercemerchantsettings_post_shipping_profiles
 	handlers["commercemerchantsettings_get_shops"] = HandleCommercemerchantsettings_get_shops
 	handlers["commercemerchantsettings_get_tax_settings"] = HandleCommercemerchantsettings_get_tax_settings
-	handlers["commercemerchantsettings_get_"] = HandleCommercemerchantsettings_get_
+	handlers["commercemerchantsettings_get"] = HandleCommercemerchantsettings_get
 
 	return handlers
 }

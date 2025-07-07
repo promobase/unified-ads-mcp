@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolLeadgendatadraft_get_())
+	tools = append(tools, ToolLeadgendatadraft_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["leadgendatadraft_get_"] = HandleLeadgendatadraft_get_
+	handlers["leadgendatadraft_get"] = HandleLeadgendatadraft_get
 
 	return handlers
 }

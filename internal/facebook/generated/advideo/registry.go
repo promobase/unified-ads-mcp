@@ -31,9 +31,9 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolAdvideo_get_thumbnails())
 	tools = append(tools, ToolAdvideo_post_thumbnails())
 	tools = append(tools, ToolAdvideo_get_video_insights())
-	tools = append(tools, ToolAdvideo_delete_())
-	tools = append(tools, ToolAdvideo_get_())
-	tools = append(tools, ToolAdvideo_post_())
+	tools = append(tools, ToolAdvideo_delete())
+	tools = append(tools, ToolAdvideo_get())
+	tools = append(tools, ToolAdvideo_post())
 
 	return tools
 }
@@ -61,9 +61,9 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["advideo_get_thumbnails"] = HandleAdvideo_get_thumbnails
 	handlers["advideo_post_thumbnails"] = HandleAdvideo_post_thumbnails
 	handlers["advideo_get_video_insights"] = HandleAdvideo_get_video_insights
-	handlers["advideo_delete_"] = HandleAdvideo_delete_
-	handlers["advideo_get_"] = HandleAdvideo_get_
-	handlers["advideo_post_"] = HandleAdvideo_post_
+	handlers["advideo_delete"] = HandleAdvideo_delete
+	handlers["advideo_get"] = HandleAdvideo_get
+	handlers["advideo_post"] = HandleAdvideo_post
 
 	return handlers
 }

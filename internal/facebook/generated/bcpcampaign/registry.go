@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolBcpcampaign_get_())
+	tools = append(tools, ToolBcpcampaign_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["bcpcampaign_get_"] = HandleBcpcampaign_get_
+	handlers["bcpcampaign_get"] = HandleBcpcampaign_get
 
 	return handlers
 }

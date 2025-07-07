@@ -16,7 +16,7 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolSystemuser_get_assigned_business_asset_groups())
 	tools = append(tools, ToolSystemuser_get_assigned_pages())
 	tools = append(tools, ToolSystemuser_get_assigned_product_catalogs())
-	tools = append(tools, ToolSystemuser_get_())
+	tools = append(tools, ToolSystemuser_get())
 
 	return tools
 }
@@ -29,7 +29,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["systemuser_get_assigned_business_asset_groups"] = HandleSystemuser_get_assigned_business_asset_groups
 	handlers["systemuser_get_assigned_pages"] = HandleSystemuser_get_assigned_pages
 	handlers["systemuser_get_assigned_product_catalogs"] = HandleSystemuser_get_assigned_product_catalogs
-	handlers["systemuser_get_"] = HandleSystemuser_get_
+	handlers["systemuser_get"] = HandleSystemuser_get
 
 	return handlers
 }

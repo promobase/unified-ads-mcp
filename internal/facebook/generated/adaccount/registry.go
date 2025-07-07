@@ -121,8 +121,8 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolAdaccount_post_value_rule_set())
 	tools = append(tools, ToolAdaccount_get_video_ads())
 	tools = append(tools, ToolAdaccount_post_video_ads())
-	tools = append(tools, ToolAdaccount_get_())
-	tools = append(tools, ToolAdaccount_post_())
+	tools = append(tools, ToolAdaccount_get())
+	tools = append(tools, ToolAdaccount_post())
 
 	return tools
 }
@@ -240,8 +240,8 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["adaccount_post_value_rule_set"] = HandleAdaccount_post_value_rule_set
 	handlers["adaccount_get_video_ads"] = HandleAdaccount_get_video_ads
 	handlers["adaccount_post_video_ads"] = HandleAdaccount_post_video_ads
-	handlers["adaccount_get_"] = HandleAdaccount_get_
-	handlers["adaccount_post_"] = HandleAdaccount_post_
+	handlers["adaccount_get"] = HandleAdaccount_get
+	handlers["adaccount_post"] = HandleAdaccount_post
 
 	return handlers
 }

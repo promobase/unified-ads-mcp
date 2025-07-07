@@ -22,9 +22,9 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolCampaign_post_copies())
 	tools = append(tools, ToolCampaign_get_insights())
 	tools = append(tools, ToolCampaign_post_insights())
-	tools = append(tools, ToolCampaign_delete_())
-	tools = append(tools, ToolCampaign_get_())
-	tools = append(tools, ToolCampaign_post_())
+	tools = append(tools, ToolCampaign_delete())
+	tools = append(tools, ToolCampaign_get())
+	tools = append(tools, ToolCampaign_post())
 
 	return tools
 }
@@ -43,9 +43,9 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["campaign_post_copies"] = HandleCampaign_post_copies
 	handlers["campaign_get_insights"] = HandleCampaign_get_insights
 	handlers["campaign_post_insights"] = HandleCampaign_post_insights
-	handlers["campaign_delete_"] = HandleCampaign_delete_
-	handlers["campaign_get_"] = HandleCampaign_get_
-	handlers["campaign_post_"] = HandleCampaign_post_
+	handlers["campaign_delete"] = HandleCampaign_delete
+	handlers["campaign_get"] = HandleCampaign_get
+	handlers["campaign_post"] = HandleCampaign_post
 
 	return handlers
 }

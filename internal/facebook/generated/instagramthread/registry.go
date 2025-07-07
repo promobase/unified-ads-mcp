@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolInstagramthread_get_())
+	tools = append(tools, ToolInstagramthread_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["instagramthread_get_"] = HandleInstagramthread_get_
+	handlers["instagramthread_get"] = HandleInstagramthread_get
 
 	return handlers
 }

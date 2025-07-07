@@ -15,9 +15,9 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolAdcreative_post_adlabels())
 	tools = append(tools, ToolAdcreative_get_creative_insights())
 	tools = append(tools, ToolAdcreative_get_previews())
-	tools = append(tools, ToolAdcreative_delete_())
-	tools = append(tools, ToolAdcreative_get_())
-	tools = append(tools, ToolAdcreative_post_())
+	tools = append(tools, ToolAdcreative_delete())
+	tools = append(tools, ToolAdcreative_get())
+	tools = append(tools, ToolAdcreative_post())
 
 	return tools
 }
@@ -29,9 +29,9 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["adcreative_post_adlabels"] = HandleAdcreative_post_adlabels
 	handlers["adcreative_get_creative_insights"] = HandleAdcreative_get_creative_insights
 	handlers["adcreative_get_previews"] = HandleAdcreative_get_previews
-	handlers["adcreative_delete_"] = HandleAdcreative_delete_
-	handlers["adcreative_get_"] = HandleAdcreative_get_
-	handlers["adcreative_post_"] = HandleAdcreative_post_
+	handlers["adcreative_delete"] = HandleAdcreative_delete
+	handlers["adcreative_get"] = HandleAdcreative_get
+	handlers["adcreative_post"] = HandleAdcreative_post
 
 	return handlers
 }

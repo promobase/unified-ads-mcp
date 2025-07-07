@@ -24,9 +24,9 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolCustomaudience_delete_users())
 	tools = append(tools, ToolCustomaudience_post_users())
 	tools = append(tools, ToolCustomaudience_post_usersreplace())
-	tools = append(tools, ToolCustomaudience_delete_())
-	tools = append(tools, ToolCustomaudience_get_())
-	tools = append(tools, ToolCustomaudience_post_())
+	tools = append(tools, ToolCustomaudience_delete())
+	tools = append(tools, ToolCustomaudience_get())
+	tools = append(tools, ToolCustomaudience_post())
 
 	return tools
 }
@@ -47,9 +47,9 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["customaudience_delete_users"] = HandleCustomaudience_delete_users
 	handlers["customaudience_post_users"] = HandleCustomaudience_post_users
 	handlers["customaudience_post_usersreplace"] = HandleCustomaudience_post_usersreplace
-	handlers["customaudience_delete_"] = HandleCustomaudience_delete_
-	handlers["customaudience_get_"] = HandleCustomaudience_get_
-	handlers["customaudience_post_"] = HandleCustomaudience_post_
+	handlers["customaudience_delete"] = HandleCustomaudience_delete
+	handlers["customaudience_get"] = HandleCustomaudience_get
+	handlers["customaudience_post"] = HandleCustomaudience_post
 
 	return handlers
 }

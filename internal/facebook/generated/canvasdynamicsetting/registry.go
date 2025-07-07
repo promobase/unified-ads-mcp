@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolCanvasdynamicsetting_get_())
+	tools = append(tools, ToolCanvasdynamicsetting_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["canvasdynamicsetting_get_"] = HandleCanvasdynamicsetting_get_
+	handlers["canvasdynamicsetting_get"] = HandleCanvasdynamicsetting_get
 
 	return handlers
 }

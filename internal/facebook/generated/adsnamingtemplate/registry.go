@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolAdsnamingtemplate_get_())
+	tools = append(tools, ToolAdsnamingtemplate_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["adsnamingtemplate_get_"] = HandleAdsnamingtemplate_get_
+	handlers["adsnamingtemplate_get"] = HandleAdsnamingtemplate_get
 
 	return handlers
 }

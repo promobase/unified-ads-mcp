@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolExtendedcreditapplication_get_())
+	tools = append(tools, ToolExtendedcreditapplication_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["extendedcreditapplication_get_"] = HandleExtendedcreditapplication_get_
+	handlers["extendedcreditapplication_get"] = HandleExtendedcreditapplication_get
 
 	return handlers
 }

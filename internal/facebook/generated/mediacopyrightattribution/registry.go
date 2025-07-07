@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolMediacopyrightattribution_get_())
+	tools = append(tools, ToolMediacopyrightattribution_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["mediacopyrightattribution_get_"] = HandleMediacopyrightattribution_get_
+	handlers["mediacopyrightattribution_get"] = HandleMediacopyrightattribution_get
 
 	return handlers
 }

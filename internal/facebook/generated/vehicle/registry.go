@@ -15,8 +15,8 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolVehicle_get_channels_to_integrity_status())
 	tools = append(tools, ToolVehicle_get_override_details())
 	tools = append(tools, ToolVehicle_get_videos_metadata())
-	tools = append(tools, ToolVehicle_get_())
-	tools = append(tools, ToolVehicle_post_())
+	tools = append(tools, ToolVehicle_get())
+	tools = append(tools, ToolVehicle_post())
 
 	return tools
 }
@@ -28,8 +28,8 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["vehicle_get_channels_to_integrity_status"] = HandleVehicle_get_channels_to_integrity_status
 	handlers["vehicle_get_override_details"] = HandleVehicle_get_override_details
 	handlers["vehicle_get_videos_metadata"] = HandleVehicle_get_videos_metadata
-	handlers["vehicle_get_"] = HandleVehicle_get_
-	handlers["vehicle_post_"] = HandleVehicle_post_
+	handlers["vehicle_get"] = HandleVehicle_get
+	handlers["vehicle_post"] = HandleVehicle_post
 
 	return handlers
 }

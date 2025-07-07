@@ -13,7 +13,7 @@ func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	tools = append(tools, ToolAudiocopyright_get_update_records())
-	tools = append(tools, ToolAudiocopyright_get_())
+	tools = append(tools, ToolAudiocopyright_get())
 
 	return tools
 }
@@ -23,7 +23,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
 	handlers["audiocopyright_get_update_records"] = HandleAudiocopyright_get_update_records
-	handlers["audiocopyright_get_"] = HandleAudiocopyright_get_
+	handlers["audiocopyright_get"] = HandleAudiocopyright_get
 
 	return handlers
 }

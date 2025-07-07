@@ -21,9 +21,9 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolProductset_get_products())
 	tools = append(tools, ToolProductset_get_vehicle_offers())
 	tools = append(tools, ToolProductset_get_vehicles())
-	tools = append(tools, ToolProductset_delete_())
-	tools = append(tools, ToolProductset_get_())
-	tools = append(tools, ToolProductset_post_())
+	tools = append(tools, ToolProductset_delete())
+	tools = append(tools, ToolProductset_get())
+	tools = append(tools, ToolProductset_post())
 
 	return tools
 }
@@ -41,9 +41,9 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["productset_get_products"] = HandleProductset_get_products
 	handlers["productset_get_vehicle_offers"] = HandleProductset_get_vehicle_offers
 	handlers["productset_get_vehicles"] = HandleProductset_get_vehicles
-	handlers["productset_delete_"] = HandleProductset_delete_
-	handlers["productset_get_"] = HandleProductset_get_
-	handlers["productset_post_"] = HandleProductset_post_
+	handlers["productset_delete"] = HandleProductset_delete
+	handlers["productset_get"] = HandleProductset_get
+	handlers["productset_post"] = HandleProductset_post
 
 	return handlers
 }

@@ -72,8 +72,8 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolApplication_post_uploads())
 	tools = append(tools, ToolApplication_post_whatsapp_business_solution())
 	tools = append(tools, ToolApplication_get_whatsapp_business_solutions())
-	tools = append(tools, ToolApplication_get_())
-	tools = append(tools, ToolApplication_post_())
+	tools = append(tools, ToolApplication_get())
+	tools = append(tools, ToolApplication_post())
 
 	return tools
 }
@@ -142,8 +142,8 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["application_post_uploads"] = HandleApplication_post_uploads
 	handlers["application_post_whatsapp_business_solution"] = HandleApplication_post_whatsapp_business_solution
 	handlers["application_get_whatsapp_business_solutions"] = HandleApplication_get_whatsapp_business_solutions
-	handlers["application_get_"] = HandleApplication_get_
-	handlers["application_post_"] = HandleApplication_post_
+	handlers["application_get"] = HandleApplication_get
+	handlers["application_post"] = HandleApplication_post
 
 	return handlers
 }

@@ -14,9 +14,9 @@ func GetTools() []mcp.Tool {
 
 	tools = append(tools, ToolPublisherblocklist_post_append_publisher_urls())
 	tools = append(tools, ToolPublisherblocklist_get_paged_web_publishers())
-	tools = append(tools, ToolPublisherblocklist_delete_())
-	tools = append(tools, ToolPublisherblocklist_get_())
-	tools = append(tools, ToolPublisherblocklist_post_())
+	tools = append(tools, ToolPublisherblocklist_delete())
+	tools = append(tools, ToolPublisherblocklist_get())
+	tools = append(tools, ToolPublisherblocklist_post())
 
 	return tools
 }
@@ -27,9 +27,9 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["publisherblocklist_post_append_publisher_urls"] = HandlePublisherblocklist_post_append_publisher_urls
 	handlers["publisherblocklist_get_paged_web_publishers"] = HandlePublisherblocklist_get_paged_web_publishers
-	handlers["publisherblocklist_delete_"] = HandlePublisherblocklist_delete_
-	handlers["publisherblocklist_get_"] = HandlePublisherblocklist_get_
-	handlers["publisherblocklist_post_"] = HandlePublisherblocklist_post_
+	handlers["publisherblocklist_delete"] = HandlePublisherblocklist_delete
+	handlers["publisherblocklist_get"] = HandlePublisherblocklist_get
+	handlers["publisherblocklist_post"] = HandlePublisherblocklist_post
 
 	return handlers
 }

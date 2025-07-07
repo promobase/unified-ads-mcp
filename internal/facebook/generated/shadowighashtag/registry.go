@@ -14,7 +14,7 @@ func GetTools() []mcp.Tool {
 
 	tools = append(tools, ToolShadowighashtag_get_recent_media())
 	tools = append(tools, ToolShadowighashtag_get_top_media())
-	tools = append(tools, ToolShadowighashtag_get_())
+	tools = append(tools, ToolShadowighashtag_get())
 
 	return tools
 }
@@ -25,7 +25,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["shadowighashtag_get_recent_media"] = HandleShadowighashtag_get_recent_media
 	handlers["shadowighashtag_get_top_media"] = HandleShadowighashtag_get_top_media
-	handlers["shadowighashtag_get_"] = HandleShadowighashtag_get_
+	handlers["shadowighashtag_get"] = HandleShadowighashtag_get
 
 	return handlers
 }

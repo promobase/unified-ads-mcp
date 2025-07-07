@@ -136,8 +136,8 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolPage_delete_welcome_message_flows())
 	tools = append(tools, ToolPage_get_welcome_message_flows())
 	tools = append(tools, ToolPage_post_welcome_message_flows())
-	tools = append(tools, ToolPage_get_())
-	tools = append(tools, ToolPage_post_())
+	tools = append(tools, ToolPage_get())
+	tools = append(tools, ToolPage_post())
 
 	return tools
 }
@@ -270,8 +270,8 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["page_delete_welcome_message_flows"] = HandlePage_delete_welcome_message_flows
 	handlers["page_get_welcome_message_flows"] = HandlePage_get_welcome_message_flows
 	handlers["page_post_welcome_message_flows"] = HandlePage_post_welcome_message_flows
-	handlers["page_get_"] = HandlePage_get_
-	handlers["page_post_"] = HandlePage_post_
+	handlers["page_get"] = HandlePage_get
+	handlers["page_post"] = HandlePage_post
 
 	return handlers
 }

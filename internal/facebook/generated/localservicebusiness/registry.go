@@ -14,7 +14,7 @@ func GetTools() []mcp.Tool {
 
 	tools = append(tools, ToolLocalservicebusiness_get_channels_to_integrity_status())
 	tools = append(tools, ToolLocalservicebusiness_get_override_details())
-	tools = append(tools, ToolLocalservicebusiness_get_())
+	tools = append(tools, ToolLocalservicebusiness_get())
 
 	return tools
 }
@@ -25,7 +25,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["localservicebusiness_get_channels_to_integrity_status"] = HandleLocalservicebusiness_get_channels_to_integrity_status
 	handlers["localservicebusiness_get_override_details"] = HandleLocalservicebusiness_get_override_details
-	handlers["localservicebusiness_get_"] = HandleLocalservicebusiness_get_
+	handlers["localservicebusiness_get"] = HandleLocalservicebusiness_get
 
 	return handlers
 }

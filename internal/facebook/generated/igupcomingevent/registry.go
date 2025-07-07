@@ -12,8 +12,8 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolIgupcomingevent_get_())
-	tools = append(tools, ToolIgupcomingevent_post_())
+	tools = append(tools, ToolIgupcomingevent_get())
+	tools = append(tools, ToolIgupcomingevent_post())
 
 	return tools
 }
@@ -22,8 +22,8 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["igupcomingevent_get_"] = HandleIgupcomingevent_get_
-	handlers["igupcomingevent_post_"] = HandleIgupcomingevent_post_
+	handlers["igupcomingevent_get"] = HandleIgupcomingevent_get
+	handlers["igupcomingevent_post"] = HandleIgupcomingevent_post
 
 	return handlers
 }

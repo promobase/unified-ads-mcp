@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolOpengraphcontext_get_())
+	tools = append(tools, ToolOpengraphcontext_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["opengraphcontext_get_"] = HandleOpengraphcontext_get_
+	handlers["opengraphcontext_get"] = HandleOpengraphcontext_get
 
 	return handlers
 }

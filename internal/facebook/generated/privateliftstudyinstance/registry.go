@@ -12,8 +12,8 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolPrivateliftstudyinstance_get_())
-	tools = append(tools, ToolPrivateliftstudyinstance_post_())
+	tools = append(tools, ToolPrivateliftstudyinstance_get())
+	tools = append(tools, ToolPrivateliftstudyinstance_post())
 
 	return tools
 }
@@ -22,8 +22,8 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["privateliftstudyinstance_get_"] = HandlePrivateliftstudyinstance_get_
-	handlers["privateliftstudyinstance_post_"] = HandlePrivateliftstudyinstance_post_
+	handlers["privateliftstudyinstance_get"] = HandlePrivateliftstudyinstance_get
+	handlers["privateliftstudyinstance_post"] = HandlePrivateliftstudyinstance_post
 
 	return handlers
 }

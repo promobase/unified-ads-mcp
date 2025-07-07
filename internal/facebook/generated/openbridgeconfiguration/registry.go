@@ -12,9 +12,9 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolOpenbridgeconfiguration_delete_())
-	tools = append(tools, ToolOpenbridgeconfiguration_get_())
-	tools = append(tools, ToolOpenbridgeconfiguration_post_())
+	tools = append(tools, ToolOpenbridgeconfiguration_delete())
+	tools = append(tools, ToolOpenbridgeconfiguration_get())
+	tools = append(tools, ToolOpenbridgeconfiguration_post())
 
 	return tools
 }
@@ -23,9 +23,9 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["openbridgeconfiguration_delete_"] = HandleOpenbridgeconfiguration_delete_
-	handlers["openbridgeconfiguration_get_"] = HandleOpenbridgeconfiguration_get_
-	handlers["openbridgeconfiguration_post_"] = HandleOpenbridgeconfiguration_post_
+	handlers["openbridgeconfiguration_delete"] = HandleOpenbridgeconfiguration_delete
+	handlers["openbridgeconfiguration_get"] = HandleOpenbridgeconfiguration_get
+	handlers["openbridgeconfiguration_post"] = HandleOpenbridgeconfiguration_post
 
 	return handlers
 }

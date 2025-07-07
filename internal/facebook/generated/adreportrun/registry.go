@@ -13,7 +13,7 @@ func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	tools = append(tools, ToolAdreportrun_get_insights())
-	tools = append(tools, ToolAdreportrun_get_())
+	tools = append(tools, ToolAdreportrun_get())
 
 	return tools
 }
@@ -23,7 +23,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
 	handlers["adreportrun_get_insights"] = HandleAdreportrun_get_insights
-	handlers["adreportrun_get_"] = HandleAdreportrun_get_
+	handlers["adreportrun_get"] = HandleAdreportrun_get
 
 	return handlers
 }

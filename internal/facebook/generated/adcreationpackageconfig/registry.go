@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolAdcreationpackageconfig_get_())
+	tools = append(tools, ToolAdcreationpackageconfig_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["adcreationpackageconfig_get_"] = HandleAdcreationpackageconfig_get_
+	handlers["adcreationpackageconfig_get"] = HandleAdcreationpackageconfig_get
 
 	return handlers
 }

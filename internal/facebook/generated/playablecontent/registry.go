@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolPlayablecontent_get_())
+	tools = append(tools, ToolPlayablecontent_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["playablecontent_get_"] = HandlePlayablecontent_get_
+	handlers["playablecontent_get"] = HandlePlayablecontent_get
 
 	return handlers
 }

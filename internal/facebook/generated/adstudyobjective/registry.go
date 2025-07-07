@@ -19,8 +19,8 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolAdstudyobjective_get_offline_conversion_data_sets())
 	tools = append(tools, ToolAdstudyobjective_get_partner_private_studies())
 	tools = append(tools, ToolAdstudyobjective_get_partnerstudies())
-	tools = append(tools, ToolAdstudyobjective_get_())
-	tools = append(tools, ToolAdstudyobjective_post_())
+	tools = append(tools, ToolAdstudyobjective_get())
+	tools = append(tools, ToolAdstudyobjective_post())
 
 	return tools
 }
@@ -36,8 +36,8 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["adstudyobjective_get_offline_conversion_data_sets"] = HandleAdstudyobjective_get_offline_conversion_data_sets
 	handlers["adstudyobjective_get_partner_private_studies"] = HandleAdstudyobjective_get_partner_private_studies
 	handlers["adstudyobjective_get_partnerstudies"] = HandleAdstudyobjective_get_partnerstudies
-	handlers["adstudyobjective_get_"] = HandleAdstudyobjective_get_
-	handlers["adstudyobjective_post_"] = HandleAdstudyobjective_post_
+	handlers["adstudyobjective_get"] = HandleAdstudyobjective_get
+	handlers["adstudyobjective_post"] = HandleAdstudyobjective_post
 
 	return handlers
 }

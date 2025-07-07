@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolAudiosublabel_get_())
+	tools = append(tools, ToolAudiosublabel_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["audiosublabel_get_"] = HandleAudiosublabel_get_
+	handlers["audiosublabel_get"] = HandleAudiosublabel_get
 
 	return handlers
 }

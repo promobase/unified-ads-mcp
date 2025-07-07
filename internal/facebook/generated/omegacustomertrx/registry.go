@@ -13,7 +13,7 @@ func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	tools = append(tools, ToolOmegacustomertrx_get_campaigns())
-	tools = append(tools, ToolOmegacustomertrx_get_())
+	tools = append(tools, ToolOmegacustomertrx_get())
 
 	return tools
 }
@@ -23,7 +23,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
 	handlers["omegacustomertrx_get_campaigns"] = HandleOmegacustomertrx_get_campaigns
-	handlers["omegacustomertrx_get_"] = HandleOmegacustomertrx_get_
+	handlers["omegacustomertrx_get"] = HandleOmegacustomertrx_get
 
 	return handlers
 }

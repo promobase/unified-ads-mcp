@@ -15,8 +15,8 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolFlight_get_channels_to_integrity_status())
 	tools = append(tools, ToolFlight_get_override_details())
 	tools = append(tools, ToolFlight_get_videos_metadata())
-	tools = append(tools, ToolFlight_get_())
-	tools = append(tools, ToolFlight_post_())
+	tools = append(tools, ToolFlight_get())
+	tools = append(tools, ToolFlight_post())
 
 	return tools
 }
@@ -28,8 +28,8 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["flight_get_channels_to_integrity_status"] = HandleFlight_get_channels_to_integrity_status
 	handlers["flight_get_override_details"] = HandleFlight_get_override_details
 	handlers["flight_get_videos_metadata"] = HandleFlight_get_videos_metadata
-	handlers["flight_get_"] = HandleFlight_get_
-	handlers["flight_post_"] = HandleFlight_post_
+	handlers["flight_get"] = HandleFlight_get
+	handlers["flight_post"] = HandleFlight_post
 
 	return handlers
 }

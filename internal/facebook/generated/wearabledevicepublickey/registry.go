@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolWearabledevicepublickey_get_())
+	tools = append(tools, ToolWearabledevicepublickey_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["wearabledevicepublickey_get_"] = HandleWearabledevicepublickey_get_
+	handlers["wearabledevicepublickey_get"] = HandleWearabledevicepublickey_get
 
 	return handlers
 }

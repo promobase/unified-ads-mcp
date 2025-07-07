@@ -12,8 +12,8 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolUrl_get_())
-	tools = append(tools, ToolUrl_post_())
+	tools = append(tools, ToolUrl_get())
+	tools = append(tools, ToolUrl_post())
 
 	return tools
 }
@@ -22,8 +22,8 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["url_get_"] = HandleUrl_get_
-	handlers["url_post_"] = HandleUrl_post_
+	handlers["url_get"] = HandleUrl_get
+	handlers["url_post"] = HandleUrl_post
 
 	return handlers
 }

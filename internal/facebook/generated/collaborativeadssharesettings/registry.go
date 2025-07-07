@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolCollaborativeadssharesettings_get_())
+	tools = append(tools, ToolCollaborativeadssharesettings_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["collaborativeadssharesettings_get_"] = HandleCollaborativeadssharesettings_get_
+	handlers["collaborativeadssharesettings_get"] = HandleCollaborativeadssharesettings_get
 
 	return handlers
 }

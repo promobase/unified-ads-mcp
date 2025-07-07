@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolEventtickettier_get_())
+	tools = append(tools, ToolEventtickettier_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["eventtickettier_get_"] = HandleEventtickettier_get_
+	handlers["eventtickettier_get"] = HandleEventtickettier_get
 
 	return handlers
 }

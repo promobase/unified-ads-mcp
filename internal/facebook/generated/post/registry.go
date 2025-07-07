@@ -23,9 +23,9 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolPost_get_sharedposts())
 	tools = append(tools, ToolPost_get_sponsor_tags())
 	tools = append(tools, ToolPost_get_to())
-	tools = append(tools, ToolPost_delete_())
-	tools = append(tools, ToolPost_get_())
-	tools = append(tools, ToolPost_post_())
+	tools = append(tools, ToolPost_delete())
+	tools = append(tools, ToolPost_get())
+	tools = append(tools, ToolPost_post())
 
 	return tools
 }
@@ -45,9 +45,9 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["post_get_sharedposts"] = HandlePost_get_sharedposts
 	handlers["post_get_sponsor_tags"] = HandlePost_get_sponsor_tags
 	handlers["post_get_to"] = HandlePost_get_to
-	handlers["post_delete_"] = HandlePost_delete_
-	handlers["post_get_"] = HandlePost_get_
-	handlers["post_post_"] = HandlePost_post_
+	handlers["post_delete"] = HandlePost_delete
+	handlers["post_get"] = HandlePost_get
+	handlers["post_post"] = HandlePost_post
 
 	return handlers
 }

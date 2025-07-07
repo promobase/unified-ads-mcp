@@ -12,9 +12,9 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolExtendedcreditallocationconfig_delete_())
-	tools = append(tools, ToolExtendedcreditallocationconfig_get_())
-	tools = append(tools, ToolExtendedcreditallocationconfig_post_())
+	tools = append(tools, ToolExtendedcreditallocationconfig_delete())
+	tools = append(tools, ToolExtendedcreditallocationconfig_get())
+	tools = append(tools, ToolExtendedcreditallocationconfig_post())
 
 	return tools
 }
@@ -23,9 +23,9 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["extendedcreditallocationconfig_delete_"] = HandleExtendedcreditallocationconfig_delete_
-	handlers["extendedcreditallocationconfig_get_"] = HandleExtendedcreditallocationconfig_get_
-	handlers["extendedcreditallocationconfig_post_"] = HandleExtendedcreditallocationconfig_post_
+	handlers["extendedcreditallocationconfig_delete"] = HandleExtendedcreditallocationconfig_delete
+	handlers["extendedcreditallocationconfig_get"] = HandleExtendedcreditallocationconfig_get
+	handlers["extendedcreditallocationconfig_post"] = HandleExtendedcreditallocationconfig_post
 
 	return handlers
 }

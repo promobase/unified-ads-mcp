@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolWithasset3d_get_())
+	tools = append(tools, ToolWithasset3d_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["withasset3d_get_"] = HandleWithasset3d_get_
+	handlers["withasset3d_get"] = HandleWithasset3d_get
 
 	return handlers
 }

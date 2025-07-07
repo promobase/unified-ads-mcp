@@ -15,7 +15,7 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolIguserexportforcam_get_branded_content_media())
 	tools = append(tools, ToolIguserexportforcam_get_insights())
 	tools = append(tools, ToolIguserexportforcam_get_recent_media())
-	tools = append(tools, ToolIguserexportforcam_get_())
+	tools = append(tools, ToolIguserexportforcam_get())
 
 	return tools
 }
@@ -27,7 +27,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["iguserexportforcam_get_branded_content_media"] = HandleIguserexportforcam_get_branded_content_media
 	handlers["iguserexportforcam_get_insights"] = HandleIguserexportforcam_get_insights
 	handlers["iguserexportforcam_get_recent_media"] = HandleIguserexportforcam_get_recent_media
-	handlers["iguserexportforcam_get_"] = HandleIguserexportforcam_get_
+	handlers["iguserexportforcam_get"] = HandleIguserexportforcam_get
 
 	return handlers
 }

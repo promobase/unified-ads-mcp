@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolCalladsphonedata_get_())
+	tools = append(tools, ToolCalladsphonedata_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["calladsphonedata_get_"] = HandleCalladsphonedata_get_
+	handlers["calladsphonedata_get"] = HandleCalladsphonedata_get
 
 	return handlers
 }

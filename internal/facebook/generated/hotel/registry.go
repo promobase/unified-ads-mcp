@@ -16,9 +16,9 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolHotel_get_hotel_rooms())
 	tools = append(tools, ToolHotel_get_override_details())
 	tools = append(tools, ToolHotel_get_videos_metadata())
-	tools = append(tools, ToolHotel_delete_())
-	tools = append(tools, ToolHotel_get_())
-	tools = append(tools, ToolHotel_post_())
+	tools = append(tools, ToolHotel_delete())
+	tools = append(tools, ToolHotel_get())
+	tools = append(tools, ToolHotel_post())
 
 	return tools
 }
@@ -31,9 +31,9 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["hotel_get_hotel_rooms"] = HandleHotel_get_hotel_rooms
 	handlers["hotel_get_override_details"] = HandleHotel_get_override_details
 	handlers["hotel_get_videos_metadata"] = HandleHotel_get_videos_metadata
-	handlers["hotel_delete_"] = HandleHotel_delete_
-	handlers["hotel_get_"] = HandleHotel_get_
-	handlers["hotel_post_"] = HandleHotel_post_
+	handlers["hotel_delete"] = HandleHotel_delete
+	handlers["hotel_get"] = HandleHotel_get
+	handlers["hotel_post"] = HandleHotel_post
 
 	return handlers
 }

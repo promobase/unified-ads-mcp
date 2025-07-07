@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolCatalogcontentversionconfig_get_())
+	tools = append(tools, ToolCatalogcontentversionconfig_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["catalogcontentversionconfig_get_"] = HandleCatalogcontentversionconfig_get_
+	handlers["catalogcontentversionconfig_get"] = HandleCatalogcontentversionconfig_get
 
 	return handlers
 }

@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolWoodhengepurchasedpaygreceipt_get_())
+	tools = append(tools, ToolWoodhengepurchasedpaygreceipt_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["woodhengepurchasedpaygreceipt_get_"] = HandleWoodhengepurchasedpaygreceipt_get_
+	handlers["woodhengepurchasedpaygreceipt_get"] = HandleWoodhengepurchasedpaygreceipt_get
 
 	return handlers
 }

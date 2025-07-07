@@ -13,7 +13,7 @@ func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	tools = append(tools, ToolUnifiedthread_get_messages())
-	tools = append(tools, ToolUnifiedthread_get_())
+	tools = append(tools, ToolUnifiedthread_get())
 
 	return tools
 }
@@ -23,7 +23,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
 	handlers["unifiedthread_get_messages"] = HandleUnifiedthread_get_messages
-	handlers["unifiedthread_get_"] = HandleUnifiedthread_get_
+	handlers["unifiedthread_get"] = HandleUnifiedthread_get
 
 	return handlers
 }

@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolCpasadvertiserpartnershiprecommendation_get_())
+	tools = append(tools, ToolCpasadvertiserpartnershiprecommendation_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["cpasadvertiserpartnershiprecommendation_get_"] = HandleCpasadvertiserpartnershiprecommendation_get_
+	handlers["cpasadvertiserpartnershiprecommendation_get"] = HandleCpasadvertiserpartnershiprecommendation_get
 
 	return handlers
 }

@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolDynamicpriceconfigbydate_get_())
+	tools = append(tools, ToolDynamicpriceconfigbydate_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["dynamicpriceconfigbydate_get_"] = HandleDynamicpriceconfigbydate_get_
+	handlers["dynamicpriceconfigbydate_get"] = HandleDynamicpriceconfigbydate_get
 
 	return handlers
 }

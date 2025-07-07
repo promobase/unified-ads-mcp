@@ -12,8 +12,8 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolImagecopyright_get_())
-	tools = append(tools, ToolImagecopyright_post_())
+	tools = append(tools, ToolImagecopyright_get())
+	tools = append(tools, ToolImagecopyright_post())
 
 	return tools
 }
@@ -22,8 +22,8 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["imagecopyright_get_"] = HandleImagecopyright_get_
-	handlers["imagecopyright_post_"] = HandleImagecopyright_post_
+	handlers["imagecopyright_get"] = HandleImagecopyright_get
+	handlers["imagecopyright_post"] = HandleImagecopyright_post
 
 	return handlers
 }

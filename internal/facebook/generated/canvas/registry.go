@@ -14,8 +14,8 @@ func GetTools() []mcp.Tool {
 
 	tools = append(tools, ToolCanvas_get_preview())
 	tools = append(tools, ToolCanvas_get_previews())
-	tools = append(tools, ToolCanvas_get_())
-	tools = append(tools, ToolCanvas_post_())
+	tools = append(tools, ToolCanvas_get())
+	tools = append(tools, ToolCanvas_post())
 
 	return tools
 }
@@ -26,8 +26,8 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["canvas_get_preview"] = HandleCanvas_get_preview
 	handlers["canvas_get_previews"] = HandleCanvas_get_previews
-	handlers["canvas_get_"] = HandleCanvas_get_
-	handlers["canvas_post_"] = HandleCanvas_post_
+	handlers["canvas_get"] = HandleCanvas_get
+	handlers["canvas_post"] = HandleCanvas_post
 
 	return handlers
 }

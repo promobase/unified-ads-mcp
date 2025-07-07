@@ -14,7 +14,7 @@ func GetTools() []mcp.Tool {
 
 	tools = append(tools, ToolOfflineproductitem_get_channels_to_integrity_status())
 	tools = append(tools, ToolOfflineproductitem_get_override_details())
-	tools = append(tools, ToolOfflineproductitem_get_())
+	tools = append(tools, ToolOfflineproductitem_get())
 
 	return tools
 }
@@ -25,7 +25,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["offlineproductitem_get_channels_to_integrity_status"] = HandleOfflineproductitem_get_channels_to_integrity_status
 	handlers["offlineproductitem_get_override_details"] = HandleOfflineproductitem_get_override_details
-	handlers["offlineproductitem_get_"] = HandleOfflineproductitem_get_
+	handlers["offlineproductitem_get"] = HandleOfflineproductitem_get
 
 	return handlers
 }

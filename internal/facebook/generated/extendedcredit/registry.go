@@ -19,7 +19,7 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolExtendedcredit_post_whatsapp_credit_attach())
 	tools = append(tools, ToolExtendedcredit_post_whatsapp_credit_sharing())
 	tools = append(tools, ToolExtendedcredit_post_whatsapp_credit_sharing_and_attach())
-	tools = append(tools, ToolExtendedcredit_get_())
+	tools = append(tools, ToolExtendedcredit_get())
 
 	return tools
 }
@@ -35,7 +35,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["extendedcredit_post_whatsapp_credit_attach"] = HandleExtendedcredit_post_whatsapp_credit_attach
 	handlers["extendedcredit_post_whatsapp_credit_sharing"] = HandleExtendedcredit_post_whatsapp_credit_sharing
 	handlers["extendedcredit_post_whatsapp_credit_sharing_and_attach"] = HandleExtendedcredit_post_whatsapp_credit_sharing_and_attach
-	handlers["extendedcredit_get_"] = HandleExtendedcredit_get_
+	handlers["extendedcredit_get"] = HandleExtendedcredit_get
 
 	return handlers
 }

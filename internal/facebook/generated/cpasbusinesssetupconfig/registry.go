@@ -13,7 +13,7 @@ func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	tools = append(tools, ToolCpasbusinesssetupconfig_get_ad_accounts())
-	tools = append(tools, ToolCpasbusinesssetupconfig_get_())
+	tools = append(tools, ToolCpasbusinesssetupconfig_get())
 
 	return tools
 }
@@ -23,7 +23,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
 	handlers["cpasbusinesssetupconfig_get_ad_accounts"] = HandleCpasbusinesssetupconfig_get_ad_accounts
-	handlers["cpasbusinesssetupconfig_get_"] = HandleCpasbusinesssetupconfig_get_
+	handlers["cpasbusinesssetupconfig_get"] = HandleCpasbusinesssetupconfig_get
 
 	return handlers
 }

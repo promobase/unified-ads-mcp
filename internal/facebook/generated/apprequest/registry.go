@@ -12,8 +12,8 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolApprequest_delete_())
-	tools = append(tools, ToolApprequest_get_())
+	tools = append(tools, ToolApprequest_delete())
+	tools = append(tools, ToolApprequest_get())
 
 	return tools
 }
@@ -22,8 +22,8 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["apprequest_delete_"] = HandleApprequest_delete_
-	handlers["apprequest_get_"] = HandleApprequest_get_
+	handlers["apprequest_delete"] = HandleApprequest_delete
+	handlers["apprequest_get"] = HandleApprequest_get
 
 	return handlers
 }

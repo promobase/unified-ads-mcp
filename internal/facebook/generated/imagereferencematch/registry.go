@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolImagereferencematch_get_())
+	tools = append(tools, ToolImagereferencematch_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["imagereferencematch_get_"] = HandleImagereferencematch_get_
+	handlers["imagereferencematch_get"] = HandleImagereferencematch_get
 
 	return handlers
 }

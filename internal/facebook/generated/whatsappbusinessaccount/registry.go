@@ -55,8 +55,8 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolWhatsappbusinessaccount_get_template_performance_metrics())
 	tools = append(tools, ToolWhatsappbusinessaccount_post_upsert_message_templates())
 	tools = append(tools, ToolWhatsappbusinessaccount_get_welcome_message_sequences())
-	tools = append(tools, ToolWhatsappbusinessaccount_get_())
-	tools = append(tools, ToolWhatsappbusinessaccount_post_())
+	tools = append(tools, ToolWhatsappbusinessaccount_get())
+	tools = append(tools, ToolWhatsappbusinessaccount_post())
 
 	return tools
 }
@@ -108,8 +108,8 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["whatsappbusinessaccount_get_template_performance_metrics"] = HandleWhatsappbusinessaccount_get_template_performance_metrics
 	handlers["whatsappbusinessaccount_post_upsert_message_templates"] = HandleWhatsappbusinessaccount_post_upsert_message_templates
 	handlers["whatsappbusinessaccount_get_welcome_message_sequences"] = HandleWhatsappbusinessaccount_get_welcome_message_sequences
-	handlers["whatsappbusinessaccount_get_"] = HandleWhatsappbusinessaccount_get_
-	handlers["whatsappbusinessaccount_post_"] = HandleWhatsappbusinessaccount_post_
+	handlers["whatsappbusinessaccount_get"] = HandleWhatsappbusinessaccount_get
+	handlers["whatsappbusinessaccount_post"] = HandleWhatsappbusinessaccount_post
 
 	return handlers
 }

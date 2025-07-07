@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolGeogatingpolicy_get_())
+	tools = append(tools, ToolGeogatingpolicy_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["geogatingpolicy_get_"] = HandleGeogatingpolicy_get_
+	handlers["geogatingpolicy_get"] = HandleGeogatingpolicy_get
 
 	return handlers
 }

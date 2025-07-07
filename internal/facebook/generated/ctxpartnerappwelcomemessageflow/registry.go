@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolCtxpartnerappwelcomemessageflow_get_())
+	tools = append(tools, ToolCtxpartnerappwelcomemessageflow_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["ctxpartnerappwelcomemessageflow_get_"] = HandleCtxpartnerappwelcomemessageflow_get_
+	handlers["ctxpartnerappwelcomemessageflow_get"] = HandleCtxpartnerappwelcomemessageflow_get
 
 	return handlers
 }

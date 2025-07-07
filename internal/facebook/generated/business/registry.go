@@ -121,8 +121,8 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolBusiness_post_system_users())
 	tools = append(tools, ToolBusiness_get_third_party_measurement_report_dataset())
 	tools = append(tools, ToolBusiness_post_videos())
-	tools = append(tools, ToolBusiness_get_())
-	tools = append(tools, ToolBusiness_post_())
+	tools = append(tools, ToolBusiness_get())
+	tools = append(tools, ToolBusiness_post())
 
 	return tools
 }
@@ -240,8 +240,8 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["business_post_system_users"] = HandleBusiness_post_system_users
 	handlers["business_get_third_party_measurement_report_dataset"] = HandleBusiness_get_third_party_measurement_report_dataset
 	handlers["business_post_videos"] = HandleBusiness_post_videos
-	handlers["business_get_"] = HandleBusiness_get_
-	handlers["business_post_"] = HandleBusiness_post_
+	handlers["business_get"] = HandleBusiness_get
+	handlers["business_post"] = HandleBusiness_post
 
 	return handlers
 }

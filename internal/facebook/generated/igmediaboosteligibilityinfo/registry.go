@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolIgmediaboosteligibilityinfo_get_())
+	tools = append(tools, ToolIgmediaboosteligibilityinfo_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["igmediaboosteligibilityinfo_get_"] = HandleIgmediaboosteligibilityinfo_get_
+	handlers["igmediaboosteligibilityinfo_get"] = HandleIgmediaboosteligibilityinfo_get
 
 	return handlers
 }

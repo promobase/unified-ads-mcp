@@ -15,9 +15,9 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolHomelisting_get_channels_to_integrity_status())
 	tools = append(tools, ToolHomelisting_get_override_details())
 	tools = append(tools, ToolHomelisting_get_videos_metadata())
-	tools = append(tools, ToolHomelisting_delete_())
-	tools = append(tools, ToolHomelisting_get_())
-	tools = append(tools, ToolHomelisting_post_())
+	tools = append(tools, ToolHomelisting_delete())
+	tools = append(tools, ToolHomelisting_get())
+	tools = append(tools, ToolHomelisting_post())
 
 	return tools
 }
@@ -29,9 +29,9 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["homelisting_get_channels_to_integrity_status"] = HandleHomelisting_get_channels_to_integrity_status
 	handlers["homelisting_get_override_details"] = HandleHomelisting_get_override_details
 	handlers["homelisting_get_videos_metadata"] = HandleHomelisting_get_videos_metadata
-	handlers["homelisting_delete_"] = HandleHomelisting_delete_
-	handlers["homelisting_get_"] = HandleHomelisting_get_
-	handlers["homelisting_post_"] = HandleHomelisting_post_
+	handlers["homelisting_delete"] = HandleHomelisting_delete
+	handlers["homelisting_get"] = HandleHomelisting_get
+	handlers["homelisting_post"] = HandleHomelisting_post
 
 	return handlers
 }

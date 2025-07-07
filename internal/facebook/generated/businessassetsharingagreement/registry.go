@@ -12,8 +12,8 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolBusinessassetsharingagreement_get_())
-	tools = append(tools, ToolBusinessassetsharingagreement_post_())
+	tools = append(tools, ToolBusinessassetsharingagreement_get())
+	tools = append(tools, ToolBusinessassetsharingagreement_post())
 
 	return tools
 }
@@ -22,8 +22,8 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["businessassetsharingagreement_get_"] = HandleBusinessassetsharingagreement_get_
-	handlers["businessassetsharingagreement_post_"] = HandleBusinessassetsharingagreement_post_
+	handlers["businessassetsharingagreement_get"] = HandleBusinessassetsharingagreement_get
+	handlers["businessassetsharingagreement_post"] = HandleBusinessassetsharingagreement_post
 
 	return handlers
 }

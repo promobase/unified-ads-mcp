@@ -16,9 +16,9 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolBusinessuser_get_assigned_business_asset_groups())
 	tools = append(tools, ToolBusinessuser_get_assigned_pages())
 	tools = append(tools, ToolBusinessuser_get_assigned_product_catalogs())
-	tools = append(tools, ToolBusinessuser_delete_())
-	tools = append(tools, ToolBusinessuser_get_())
-	tools = append(tools, ToolBusinessuser_post_())
+	tools = append(tools, ToolBusinessuser_delete())
+	tools = append(tools, ToolBusinessuser_get())
+	tools = append(tools, ToolBusinessuser_post())
 
 	return tools
 }
@@ -31,9 +31,9 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["businessuser_get_assigned_business_asset_groups"] = HandleBusinessuser_get_assigned_business_asset_groups
 	handlers["businessuser_get_assigned_pages"] = HandleBusinessuser_get_assigned_pages
 	handlers["businessuser_get_assigned_product_catalogs"] = HandleBusinessuser_get_assigned_product_catalogs
-	handlers["businessuser_delete_"] = HandleBusinessuser_delete_
-	handlers["businessuser_get_"] = HandleBusinessuser_get_
-	handlers["businessuser_post_"] = HandleBusinessuser_post_
+	handlers["businessuser_delete"] = HandleBusinessuser_delete
+	handlers["businessuser_get"] = HandleBusinessuser_get
+	handlers["businessuser_post"] = HandleBusinessuser_post
 
 	return handlers
 }

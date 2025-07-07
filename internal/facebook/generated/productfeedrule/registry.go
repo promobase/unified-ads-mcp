@@ -12,9 +12,9 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolProductfeedrule_delete_())
-	tools = append(tools, ToolProductfeedrule_get_())
-	tools = append(tools, ToolProductfeedrule_post_())
+	tools = append(tools, ToolProductfeedrule_delete())
+	tools = append(tools, ToolProductfeedrule_get())
+	tools = append(tools, ToolProductfeedrule_post())
 
 	return tools
 }
@@ -23,9 +23,9 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["productfeedrule_delete_"] = HandleProductfeedrule_delete_
-	handlers["productfeedrule_get_"] = HandleProductfeedrule_get_
-	handlers["productfeedrule_post_"] = HandleProductfeedrule_post_
+	handlers["productfeedrule_delete"] = HandleProductfeedrule_delete
+	handlers["productfeedrule_get"] = HandleProductfeedrule_get
+	handlers["productfeedrule_post"] = HandleProductfeedrule_post
 
 	return handlers
 }

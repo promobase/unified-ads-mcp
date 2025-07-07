@@ -8,18 +8,7 @@ We'll start with facebook business api, then expand to tiktok business api & goo
 2. [facebook-business-marketing-api-overview](https://developers.facebook.com/docs/marketing-apis/overview) Marketing api is subset of facebook business sdk, it's dedicated for ads mgmt, insights, campaigns etc. We prioritize supporthing these first.
 3. [api-reference-v23.0](https://developers.facebook.com/docs/marketing-api/reference/v23.0) It's wrapping the underlying graph api, where we have nodes & edges. The JSON api specs are stored in `internal/facebook/api_specs/specs` dir, which has directory of .JSON specs. each one defines "apis" and "fields", apis are the endpoints of different methods, and fields are the object of the entity, e.g. we have Ad.json, AdAccount.json, etc. Fields mapping could be referring to other api specs, so we need to handle them properly. NOTE that there's a special `enum_types.json` in the specs dir, it contains all the ENUM definitions. Which might be used in the field def across repo, so handle it first.
 
-## Current state
-we're trying to implement robust codegen scripts to create MCP server tools from facbeook business api specs. The generated code should be wrapping the REST endpoints for the corresponding fields & operations.
 
-e.g. here's the curl request for getting all campaigns under an adaccount
 
-```bash
-curl -X GET -G \
-  -d 'effective_status=[
-       "ACTIVE",
-       "PAUSED"
-     ]' \
-  -d 'fields="name,objective"' \
-  -d 'access_token=<ACCESS_TOKEN>' \
-  https://graph.facebook.com/v23.0/act_<AD_ACCOUNT_ID>/campaigns
-```
+## Workflow Notes
+- m after changes, run make build to test.

@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolThirdpartypartnerviewabilityrequest_get_())
+	tools = append(tools, ToolThirdpartypartnerviewabilityrequest_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["thirdpartypartnerviewabilityrequest_get_"] = HandleThirdpartypartnerviewabilityrequest_get_
+	handlers["thirdpartypartnerviewabilityrequest_get"] = HandleThirdpartypartnerviewabilityrequest_get
 
 	return handlers
 }

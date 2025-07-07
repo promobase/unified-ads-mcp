@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolImagecopyrightdispute_get_())
+	tools = append(tools, ToolImagecopyrightdispute_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["imagecopyrightdispute_get_"] = HandleImagecopyrightdispute_get_
+	handlers["imagecopyrightdispute_get"] = HandleImagecopyrightdispute_get
 
 	return handlers
 }

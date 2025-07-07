@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolVideocopyrightrule_get_())
+	tools = append(tools, ToolVideocopyrightrule_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["videocopyrightrule_get_"] = HandleVideocopyrightrule_get_
+	handlers["videocopyrightrule_get"] = HandleVideocopyrightrule_get
 
 	return handlers
 }

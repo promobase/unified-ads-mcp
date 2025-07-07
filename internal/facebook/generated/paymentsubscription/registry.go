@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolPaymentsubscription_get_())
+	tools = append(tools, ToolPaymentsubscription_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["paymentsubscription_get_"] = HandlePaymentsubscription_get_
+	handlers["paymentsubscription_get"] = HandlePaymentsubscription_get
 
 	return handlers
 }

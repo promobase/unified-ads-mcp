@@ -14,7 +14,7 @@ func GetTools() []mcp.Tool {
 
 	tools = append(tools, ToolOffsitesignalcontainerbusinessobject_get_linked_application())
 	tools = append(tools, ToolOffsitesignalcontainerbusinessobject_get_linked_page())
-	tools = append(tools, ToolOffsitesignalcontainerbusinessobject_get_())
+	tools = append(tools, ToolOffsitesignalcontainerbusinessobject_get())
 
 	return tools
 }
@@ -25,7 +25,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 
 	handlers["offsitesignalcontainerbusinessobject_get_linked_application"] = HandleOffsitesignalcontainerbusinessobject_get_linked_application
 	handlers["offsitesignalcontainerbusinessobject_get_linked_page"] = HandleOffsitesignalcontainerbusinessobject_get_linked_page
-	handlers["offsitesignalcontainerbusinessobject_get_"] = HandleOffsitesignalcontainerbusinessobject_get_
+	handlers["offsitesignalcontainerbusinessobject_get"] = HandleOffsitesignalcontainerbusinessobject_get
 
 	return handlers
 }

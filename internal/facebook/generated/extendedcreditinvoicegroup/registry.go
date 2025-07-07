@@ -15,9 +15,9 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolExtendedcreditinvoicegroup_delete_ad_accounts())
 	tools = append(tools, ToolExtendedcreditinvoicegroup_get_ad_accounts())
 	tools = append(tools, ToolExtendedcreditinvoicegroup_post_ad_accounts())
-	tools = append(tools, ToolExtendedcreditinvoicegroup_delete_())
-	tools = append(tools, ToolExtendedcreditinvoicegroup_get_())
-	tools = append(tools, ToolExtendedcreditinvoicegroup_post_())
+	tools = append(tools, ToolExtendedcreditinvoicegroup_delete())
+	tools = append(tools, ToolExtendedcreditinvoicegroup_get())
+	tools = append(tools, ToolExtendedcreditinvoicegroup_post())
 
 	return tools
 }
@@ -29,9 +29,9 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["extendedcreditinvoicegroup_delete_ad_accounts"] = HandleExtendedcreditinvoicegroup_delete_ad_accounts
 	handlers["extendedcreditinvoicegroup_get_ad_accounts"] = HandleExtendedcreditinvoicegroup_get_ad_accounts
 	handlers["extendedcreditinvoicegroup_post_ad_accounts"] = HandleExtendedcreditinvoicegroup_post_ad_accounts
-	handlers["extendedcreditinvoicegroup_delete_"] = HandleExtendedcreditinvoicegroup_delete_
-	handlers["extendedcreditinvoicegroup_get_"] = HandleExtendedcreditinvoicegroup_get_
-	handlers["extendedcreditinvoicegroup_post_"] = HandleExtendedcreditinvoicegroup_post_
+	handlers["extendedcreditinvoicegroup_delete"] = HandleExtendedcreditinvoicegroup_delete
+	handlers["extendedcreditinvoicegroup_get"] = HandleExtendedcreditinvoicegroup_get
+	handlers["extendedcreditinvoicegroup_post"] = HandleExtendedcreditinvoicegroup_post
 
 	return handlers
 }

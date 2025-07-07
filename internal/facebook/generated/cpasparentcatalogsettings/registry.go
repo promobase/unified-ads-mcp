@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolCpasparentcatalogsettings_get_())
+	tools = append(tools, ToolCpasparentcatalogsettings_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["cpasparentcatalogsettings_get_"] = HandleCpasparentcatalogsettings_get_
+	handlers["cpasparentcatalogsettings_get"] = HandleCpasparentcatalogsettings_get
 
 	return handlers
 }

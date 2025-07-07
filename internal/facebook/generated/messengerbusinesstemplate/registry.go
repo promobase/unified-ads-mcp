@@ -12,8 +12,8 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolMessengerbusinesstemplate_get_())
-	tools = append(tools, ToolMessengerbusinesstemplate_post_())
+	tools = append(tools, ToolMessengerbusinesstemplate_get())
+	tools = append(tools, ToolMessengerbusinesstemplate_post())
 
 	return tools
 }
@@ -22,8 +22,8 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["messengerbusinesstemplate_get_"] = HandleMessengerbusinesstemplate_get_
-	handlers["messengerbusinesstemplate_post_"] = HandleMessengerbusinesstemplate_post_
+	handlers["messengerbusinesstemplate_get"] = HandleMessengerbusinesstemplate_get
+	handlers["messengerbusinesstemplate_post"] = HandleMessengerbusinesstemplate_post
 
 	return handlers
 }

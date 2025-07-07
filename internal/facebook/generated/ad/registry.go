@@ -22,9 +22,9 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolAd_get_leads())
 	tools = append(tools, ToolAd_get_previews())
 	tools = append(tools, ToolAd_get_targetingsentencelines())
-	tools = append(tools, ToolAd_delete_())
-	tools = append(tools, ToolAd_get_())
-	tools = append(tools, ToolAd_post_())
+	tools = append(tools, ToolAd_delete())
+	tools = append(tools, ToolAd_get())
+	tools = append(tools, ToolAd_post())
 
 	return tools
 }
@@ -43,9 +43,9 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["ad_get_leads"] = HandleAd_get_leads
 	handlers["ad_get_previews"] = HandleAd_get_previews
 	handlers["ad_get_targetingsentencelines"] = HandleAd_get_targetingsentencelines
-	handlers["ad_delete_"] = HandleAd_delete_
-	handlers["ad_get_"] = HandleAd_get_
-	handlers["ad_post_"] = HandleAd_post_
+	handlers["ad_delete"] = HandleAd_delete
+	handlers["ad_get"] = HandleAd_get
+	handlers["ad_post"] = HandleAd_post
 
 	return handlers
 }

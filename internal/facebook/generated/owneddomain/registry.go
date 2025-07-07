@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolOwneddomain_get_())
+	tools = append(tools, ToolOwneddomain_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["owneddomain_get_"] = HandleOwneddomain_get_
+	handlers["owneddomain_get"] = HandleOwneddomain_get
 
 	return handlers
 }

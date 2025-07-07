@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolExternalmerchantsettings_get_())
+	tools = append(tools, ToolExternalmerchantsettings_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["externalmerchantsettings_get_"] = HandleExternalmerchantsettings_get_
+	handlers["externalmerchantsettings_get"] = HandleExternalmerchantsettings_get
 
 	return handlers
 }

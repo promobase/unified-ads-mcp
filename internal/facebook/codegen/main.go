@@ -195,8 +195,15 @@ func loadSpecFile(ctx *CodegenContext, path string) error {
 func generateTools(ctx *CodegenContext) {
 	for nodeName, spec := range ctx.Specs {
 		for _, api := range spec.APIs {
+			// Generate tool name
+			normalizedEndpoint := normalizeEndpoint(api.Endpoint)
+			toolName := fmt.Sprintf("%s_%s", strings.ToLower(nodeName), strings.ToLower(api.Method))
+			if normalizedEndpoint != "" {
+				toolName = fmt.Sprintf("%s_%s", toolName, normalizedEndpoint)
+			}
+
 			tool := MCPTool{
-				Name:        fmt.Sprintf("%s_%s_%s", strings.ToLower(nodeName), strings.ToLower(api.Method), normalizeEndpoint(api.Endpoint)),
+				Name:        toolName,
 				Description: fmt.Sprintf("%s %s for %s", api.Method, api.Endpoint, nodeName),
 				Method:      api.Method,
 				Endpoint:    api.Endpoint,
@@ -721,6 +728,12 @@ func RegisterMCPTools(s *server.MCPServer, accessToken string) error {
 
 // Helper functions (reuse from original)
 func normalizeEndpoint(endpoint string) string {
+	// If endpoint is empty, return empty string without underscore
+	if endpoint == "" {
+		return ""
+	}
+	// Remove leading slash if present
+	endpoint = strings.TrimPrefix(endpoint, "/")
 	return strings.ReplaceAll(endpoint, "/", "_")
 }
 

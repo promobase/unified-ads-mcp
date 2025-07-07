@@ -12,8 +12,8 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolWhatsappbusinessprofile_get_())
-	tools = append(tools, ToolWhatsappbusinessprofile_post_())
+	tools = append(tools, ToolWhatsappbusinessprofile_get())
+	tools = append(tools, ToolWhatsappbusinessprofile_post())
 
 	return tools
 }
@@ -22,8 +22,8 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["whatsappbusinessprofile_get_"] = HandleWhatsappbusinessprofile_get_
-	handlers["whatsappbusinessprofile_post_"] = HandleWhatsappbusinessprofile_post_
+	handlers["whatsappbusinessprofile_get"] = HandleWhatsappbusinessprofile_get
+	handlers["whatsappbusinessprofile_post"] = HandleWhatsappbusinessprofile_post
 
 	return handlers
 }

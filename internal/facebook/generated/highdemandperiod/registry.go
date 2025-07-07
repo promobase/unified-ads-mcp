@@ -12,9 +12,9 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolHighdemandperiod_delete_())
-	tools = append(tools, ToolHighdemandperiod_get_())
-	tools = append(tools, ToolHighdemandperiod_post_())
+	tools = append(tools, ToolHighdemandperiod_delete())
+	tools = append(tools, ToolHighdemandperiod_get())
+	tools = append(tools, ToolHighdemandperiod_post())
 
 	return tools
 }
@@ -23,9 +23,9 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["highdemandperiod_delete_"] = HandleHighdemandperiod_delete_
-	handlers["highdemandperiod_get_"] = HandleHighdemandperiod_get_
-	handlers["highdemandperiod_post_"] = HandleHighdemandperiod_post_
+	handlers["highdemandperiod_delete"] = HandleHighdemandperiod_delete
+	handlers["highdemandperiod_get"] = HandleHighdemandperiod_get
+	handlers["highdemandperiod_post"] = HandleHighdemandperiod_post
 
 	return handlers
 }

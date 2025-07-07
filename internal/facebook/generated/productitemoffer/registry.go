@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolProductitemoffer_get_())
+	tools = append(tools, ToolProductitemoffer_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["productitemoffer_get_"] = HandleProductitemoffer_get_
+	handlers["productitemoffer_get"] = HandleProductitemoffer_get
 
 	return handlers
 }

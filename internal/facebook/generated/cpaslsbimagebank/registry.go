@@ -13,8 +13,8 @@ func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	tools = append(tools, ToolCpaslsbimagebank_get_backup_images())
-	tools = append(tools, ToolCpaslsbimagebank_get_())
-	tools = append(tools, ToolCpaslsbimagebank_post_())
+	tools = append(tools, ToolCpaslsbimagebank_get())
+	tools = append(tools, ToolCpaslsbimagebank_post())
 
 	return tools
 }
@@ -24,8 +24,8 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
 	handlers["cpaslsbimagebank_get_backup_images"] = HandleCpaslsbimagebank_get_backup_images
-	handlers["cpaslsbimagebank_get_"] = HandleCpaslsbimagebank_get_
-	handlers["cpaslsbimagebank_post_"] = HandleCpaslsbimagebank_post_
+	handlers["cpaslsbimagebank_get"] = HandleCpaslsbimagebank_get
+	handlers["cpaslsbimagebank_post"] = HandleCpaslsbimagebank_post
 
 	return handlers
 }

@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolEducationexperience_get_())
+	tools = append(tools, ToolEducationexperience_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["educationexperience_get_"] = HandleEducationexperience_get_
+	handlers["educationexperience_get"] = HandleEducationexperience_get
 
 	return handlers
 }

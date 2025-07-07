@@ -13,8 +13,8 @@ func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	tools = append(tools, ToolPagepostexperiment_get_video_insights())
-	tools = append(tools, ToolPagepostexperiment_delete_())
-	tools = append(tools, ToolPagepostexperiment_get_())
+	tools = append(tools, ToolPagepostexperiment_delete())
+	tools = append(tools, ToolPagepostexperiment_get())
 
 	return tools
 }
@@ -24,8 +24,8 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
 	handlers["pagepostexperiment_get_video_insights"] = HandlePagepostexperiment_get_video_insights
-	handlers["pagepostexperiment_delete_"] = HandlePagepostexperiment_delete_
-	handlers["pagepostexperiment_get_"] = HandlePagepostexperiment_get_
+	handlers["pagepostexperiment_delete"] = HandlePagepostexperiment_delete
+	handlers["pagepostexperiment_get"] = HandlePagepostexperiment_get
 
 	return handlers
 }

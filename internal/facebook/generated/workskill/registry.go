@@ -13,7 +13,7 @@ func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	tools = append(tools, ToolWorkskill_get_users())
-	tools = append(tools, ToolWorkskill_get_())
+	tools = append(tools, ToolWorkskill_get())
 
 	return tools
 }
@@ -23,7 +23,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
 	handlers["workskill_get_users"] = HandleWorkskill_get_users
-	handlers["workskill_get_"] = HandleWorkskill_get_
+	handlers["workskill_get"] = HandleWorkskill_get
 
 	return handlers
 }

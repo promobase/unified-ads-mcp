@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolSlicedeventsourcegroup_get_())
+	tools = append(tools, ToolSlicedeventsourcegroup_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["slicedeventsourcegroup_get_"] = HandleSlicedeventsourcegroup_get_
+	handlers["slicedeventsourcegroup_get"] = HandleSlicedeventsourcegroup_get
 
 	return handlers
 }

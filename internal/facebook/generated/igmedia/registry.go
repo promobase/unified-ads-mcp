@@ -24,8 +24,8 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolIgmedia_post_partnership_ad_code())
 	tools = append(tools, ToolIgmedia_get_product_tags())
 	tools = append(tools, ToolIgmedia_post_product_tags())
-	tools = append(tools, ToolIgmedia_get_())
-	tools = append(tools, ToolIgmedia_post_())
+	tools = append(tools, ToolIgmedia_get())
+	tools = append(tools, ToolIgmedia_post())
 
 	return tools
 }
@@ -46,8 +46,8 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["igmedia_post_partnership_ad_code"] = HandleIgmedia_post_partnership_ad_code
 	handlers["igmedia_get_product_tags"] = HandleIgmedia_get_product_tags
 	handlers["igmedia_post_product_tags"] = HandleIgmedia_post_product_tags
-	handlers["igmedia_get_"] = HandleIgmedia_get_
-	handlers["igmedia_post_"] = HandleIgmedia_post_
+	handlers["igmedia_get"] = HandleIgmedia_get
+	handlers["igmedia_post"] = HandleIgmedia_post
 
 	return handlers
 }

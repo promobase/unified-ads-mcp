@@ -31,8 +31,8 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolGroup_get_picture())
 	tools = append(tools, ToolGroup_get_videos())
 	tools = append(tools, ToolGroup_post_videos())
-	tools = append(tools, ToolGroup_get_())
-	tools = append(tools, ToolGroup_post_())
+	tools = append(tools, ToolGroup_get())
+	tools = append(tools, ToolGroup_post())
 
 	return tools
 }
@@ -60,8 +60,8 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["group_get_picture"] = HandleGroup_get_picture
 	handlers["group_get_videos"] = HandleGroup_get_videos
 	handlers["group_post_videos"] = HandleGroup_post_videos
-	handlers["group_get_"] = HandleGroup_get_
-	handlers["group_post_"] = HandleGroup_post_
+	handlers["group_get"] = HandleGroup_get
+	handlers["group_post"] = HandleGroup_post
 
 	return handlers
 }

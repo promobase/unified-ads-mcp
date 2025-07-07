@@ -13,7 +13,7 @@ func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
 	tools = append(tools, ToolMessengeradspartialautomatedsteplist_get_steps())
-	tools = append(tools, ToolMessengeradspartialautomatedsteplist_get_())
+	tools = append(tools, ToolMessengeradspartialautomatedsteplist_get())
 
 	return tools
 }
@@ -23,7 +23,7 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
 	handlers["messengeradspartialautomatedsteplist_get_steps"] = HandleMessengeradspartialautomatedsteplist_get_steps
-	handlers["messengeradspartialautomatedsteplist_get_"] = HandleMessengeradspartialautomatedsteplist_get_
+	handlers["messengeradspartialautomatedsteplist_get"] = HandleMessengeradspartialautomatedsteplist_get
 
 	return handlers
 }

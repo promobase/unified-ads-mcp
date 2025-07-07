@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolVideotextquestion_get_())
+	tools = append(tools, ToolVideotextquestion_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["videotextquestion_get_"] = HandleVideotextquestion_get_
+	handlers["videotextquestion_get"] = HandleVideotextquestion_get
 
 	return handlers
 }

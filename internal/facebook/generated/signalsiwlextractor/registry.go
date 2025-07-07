@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolSignalsiwlextractor_get_())
+	tools = append(tools, ToolSignalsiwlextractor_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["signalsiwlextractor_get_"] = HandleSignalsiwlextractor_get_
+	handlers["signalsiwlextractor_get"] = HandleSignalsiwlextractor_get
 
 	return handlers
 }

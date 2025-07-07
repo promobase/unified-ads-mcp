@@ -12,7 +12,7 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolWoodhengesupporter_get_())
+	tools = append(tools, ToolWoodhengesupporter_get())
 
 	return tools
 }
@@ -21,7 +21,7 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["woodhengesupporter_get_"] = HandleWoodhengesupporter_get_
+	handlers["woodhengesupporter_get"] = HandleWoodhengesupporter_get
 
 	return handlers
 }

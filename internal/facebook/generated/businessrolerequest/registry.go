@@ -12,9 +12,9 @@ import (
 func GetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
-	tools = append(tools, ToolBusinessrolerequest_delete_())
-	tools = append(tools, ToolBusinessrolerequest_get_())
-	tools = append(tools, ToolBusinessrolerequest_post_())
+	tools = append(tools, ToolBusinessrolerequest_delete())
+	tools = append(tools, ToolBusinessrolerequest_get())
+	tools = append(tools, ToolBusinessrolerequest_post())
 
 	return tools
 }
@@ -23,9 +23,9 @@ func GetTools() []mcp.Tool {
 func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	handlers := make(map[string]func(context.Context, mcp.CallToolRequest) (*mcp.CallToolResult, error))
 
-	handlers["businessrolerequest_delete_"] = HandleBusinessrolerequest_delete_
-	handlers["businessrolerequest_get_"] = HandleBusinessrolerequest_get_
-	handlers["businessrolerequest_post_"] = HandleBusinessrolerequest_post_
+	handlers["businessrolerequest_delete"] = HandleBusinessrolerequest_delete
+	handlers["businessrolerequest_get"] = HandleBusinessrolerequest_get
+	handlers["businessrolerequest_post"] = HandleBusinessrolerequest_post
 
 	return handlers
 }

@@ -64,9 +64,9 @@ func GetTools() []mcp.Tool {
 	tools = append(tools, ToolUser_post_staging_resources())
 	tools = append(tools, ToolUser_get_videos())
 	tools = append(tools, ToolUser_post_videos())
-	tools = append(tools, ToolUser_delete_())
-	tools = append(tools, ToolUser_get_())
-	tools = append(tools, ToolUser_post_())
+	tools = append(tools, ToolUser_delete())
+	tools = append(tools, ToolUser_get())
+	tools = append(tools, ToolUser_post())
 
 	return tools
 }
@@ -127,9 +127,9 @@ func GetHandlers() map[string]func(context.Context, mcp.CallToolRequest) (*mcp.C
 	handlers["user_post_staging_resources"] = HandleUser_post_staging_resources
 	handlers["user_get_videos"] = HandleUser_get_videos
 	handlers["user_post_videos"] = HandleUser_post_videos
-	handlers["user_delete_"] = HandleUser_delete_
-	handlers["user_get_"] = HandleUser_get_
-	handlers["user_post_"] = HandleUser_post_
+	handlers["user_delete"] = HandleUser_delete
+	handlers["user_get"] = HandleUser_get
+	handlers["user_post"] = HandleUser_post
 
 	return handlers
 }
