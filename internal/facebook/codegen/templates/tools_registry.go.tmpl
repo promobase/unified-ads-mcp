@@ -4,6 +4,7 @@ package tools
 
 import (
 	"context"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
@@ -22,7 +23,7 @@ func GetAllTools() []mcp.Tool {
 func GetFilteredTools(enabledObjects map[string]bool) []mcp.Tool {
 	var filteredTools []mcp.Tool
 	
-{{range .NodeTypes}}	if enabled, ok := enabledObjects["{{.}}"]; ok && enabled {
+{{range .NodeTypes}}	if enabled, ok := enabledObjects[strings.ToLower("{{.}}")]; ok && enabled {
 		filteredTools = append(filteredTools, Get{{.}}Tools()...)
 	}
 {{end}}
