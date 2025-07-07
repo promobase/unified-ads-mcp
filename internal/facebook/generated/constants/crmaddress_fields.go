@@ -4,35 +4,35 @@ package constants
 
 // CRMAddressFields contains field name constants for CRMAddress objects
 var CRMAddressFields = struct {
-	City               string
-	CnpjTaxId          string
-	Country            string
-	Id                 string
-	PostalCode         string
-	RegistrationLabel  string
+	City string
+	CnpjTaxId string
+	Country string
+	Id string
+	PostalCode string
+	RegistrationLabel string
 	RegistrationNumber string
-	State              string
-	Street1            string
-	Street2            string
-	Street3            string
-	Street4            string
-	ValidationStatus   string
-	VatTaxId           string
+	State string
+	Street1 string
+	Street2 string
+	Street3 string
+	Street4 string
+	ValidationStatus string
+	VatTaxId string
 }{
-	City:               "city",
-	CnpjTaxId:          "cnpj_tax_id",
-	Country:            "country",
-	Id:                 "id",
-	PostalCode:         "postal_code",
-	RegistrationLabel:  "registration_label",
+	City: "city",
+	CnpjTaxId: "cnpj_tax_id",
+	Country: "country",
+	Id: "id",
+	PostalCode: "postal_code",
+	RegistrationLabel: "registration_label",
 	RegistrationNumber: "registration_number",
-	State:              "state",
-	Street1:            "street1",
-	Street2:            "street2",
-	Street3:            "street3",
-	Street4:            "street4",
-	ValidationStatus:   "validation_status",
-	VatTaxId:           "vat_tax_id",
+	State: "state",
+	Street1: "street1",
+	Street2: "street2",
+	Street3: "street3",
+	Street4: "street4",
+	ValidationStatus: "validation_status",
+	VatTaxId: "vat_tax_id",
 }
 
 // CRMAddressFieldsList contains all available fields for CRMAddress objects

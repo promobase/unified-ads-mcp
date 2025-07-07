@@ -4,8 +4,8 @@ package types
 
 // UserPaymentMobilePricepoints represents a Facebook UserPaymentMobilePricepoints object
 type UserPaymentMobilePricepoints struct {
-	Mobile_country     string                   `json:"mobile_country"`
-	Phone_number_last4 string                   `json:"phone_number_last4"`
-	Pricepoints        []map[string]interface{} `json:"pricepoints"`
-	User_currency      string                   `json:"user_currency"`
+	Mobile_country string `json:"mobile_country"`
+	Phone_number_last4 string `json:"phone_number_last4"`
+	Pricepoints []map[string]interface{} `json:"pricepoints"`
+	User_currency string `json:"user_currency"`
 }

@@ -17,6 +17,7 @@ import (
 func GetBusinessUserTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// businessuser_get_assigned_ad_accounts tool
 	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	businessuser_get_assigned_ad_accountsTool := mcp.NewTool("businessuser_get_assigned_ad_accounts",
@@ -44,7 +45,7 @@ func GetBusinessUserTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"contained_asset_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "contained_asset_id parameter",
 				},
 			}),
@@ -73,9 +74,9 @@ func GetBusinessUserTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"pages": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "pages parameter",
-					"items":       map[string]any{"type": "integer"},
+					"items": map[string]any{"type": "integer"},
 				},
 			}),
 			mcp.Description("Parameters object containing: pages (array<integer>)"),
@@ -146,42 +147,42 @@ func GetBusinessUserTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"clear_pending_email": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "clear_pending_email parameter",
 				},
 				"email": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "email parameter",
 				},
 				"first_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "first_name parameter",
 				},
 				"last_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "last_name parameter",
 				},
 				"pending_email": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "pending_email parameter",
 				},
 				"role": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "role parameter",
-					"enum":        []string{"ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"},
+					"enum": []string{ "ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS" },
 				},
 				"skip_verification_email": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "skip_verification_email parameter",
 				},
 				"tasks": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "tasks parameter",
-					"enum":        []string{"ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS" },
+					"items": map[string]any{"type": "string"},
 				},
 				"title": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "title parameter",
 				},
 			}),
@@ -190,10 +191,12 @@ func GetBusinessUserTools() []mcp.Tool {
 	)
 	tools = append(tools, businessuser_post_Tool)
 
+
 	return tools
 }
 
 // BusinessUser handlers
+
 
 // HandleBusinessuser_get_assigned_ad_accounts handles the businessuser_get_assigned_ad_accounts tool with context-based auth
 func HandleBusinessuser_get_assigned_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -234,6 +237,8 @@ func HandleBusinessuser_get_assigned_ad_accounts(ctx context.Context, request mc
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Businessuser_get_assigned_ad_accounts(args)
 	if err != nil {
@@ -248,6 +253,7 @@ func HandleBusinessuser_get_assigned_ad_accounts(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusinessuser_get_assigned_business_asset_groups handles the businessuser_get_assigned_business_asset_groups tool with context-based auth
 func HandleBusinessuser_get_assigned_business_asset_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -300,6 +306,8 @@ func HandleBusinessuser_get_assigned_business_asset_groups(ctx context.Context, 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Businessuser_get_assigned_business_asset_groups(args)
 	if err != nil {
@@ -314,6 +322,7 @@ func HandleBusinessuser_get_assigned_business_asset_groups(ctx context.Context, 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusinessuser_get_assigned_pages handles the businessuser_get_assigned_pages tool with context-based auth
 func HandleBusinessuser_get_assigned_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -366,6 +375,8 @@ func HandleBusinessuser_get_assigned_pages(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Businessuser_get_assigned_pages(args)
 	if err != nil {
@@ -380,6 +391,7 @@ func HandleBusinessuser_get_assigned_pages(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusinessuser_get_assigned_product_catalogs handles the businessuser_get_assigned_product_catalogs tool with context-based auth
 func HandleBusinessuser_get_assigned_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -420,6 +432,8 @@ func HandleBusinessuser_get_assigned_product_catalogs(ctx context.Context, reque
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Businessuser_get_assigned_product_catalogs(args)
 	if err != nil {
@@ -435,6 +449,7 @@ func HandleBusinessuser_get_assigned_product_catalogs(ctx context.Context, reque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
+
 // HandleBusinessuser_delete_ handles the businessuser_delete_ tool with context-based auth
 func HandleBusinessuser_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -448,6 +463,8 @@ func HandleBusinessuser_delete_(ctx context.Context, request mcp.CallToolRequest
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+
 
 	// Call the client method
 	result, err := client.Businessuser_delete_(args)
@@ -463,6 +480,7 @@ func HandleBusinessuser_delete_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusinessuser_get_ handles the businessuser_get_ tool with context-based auth
 func HandleBusinessuser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -503,6 +521,8 @@ func HandleBusinessuser_get_(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Businessuser_get_(args)
 	if err != nil {
@@ -517,6 +537,7 @@ func HandleBusinessuser_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusinessuser_post_ handles the businessuser_post_ tool with context-based auth
 func HandleBusinessuser_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -544,6 +565,8 @@ func HandleBusinessuser_post_(ctx context.Context, request mcp.CallToolRequest) 
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Businessuser_post_(args)
 	if err != nil {
@@ -558,3 +581,4 @@ func HandleBusinessuser_post_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -17,6 +17,7 @@ import (
 func GetAppEventConfigTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// appeventconfig_get_ tool
 	// Available fields for AppEventConfig: breakdowns_config, builtin_fields_config, deprecated_events_config, events_config, id, ios_purchase_validation_secret, is_any_role_able_to_see_restricted_insights, is_implicit_purchase_logging_on_android_supported, is_implicit_purchase_logging_on_ios_supported, is_track_android_app_uninstall_supported, is_track_ios_app_uninstall_supported, journey_backfill_status, journey_conversion_events, journey_enabled, journey_timeout, latest_sdk_versions, log_android_implicit_purchase_events, log_automatic_analytics_events, log_implicit_purchase_events, prev_journey_conversion_events, query_approximation_accuracy_level, query_currency, query_timezone, recent_events_update_time, session_timeout_interval, track_android_app_uninstall, track_ios_app_uninstall
 	// Params object accepts: event_name (string)
@@ -25,7 +26,7 @@ func GetAppEventConfigTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"event_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "event_name parameter",
 				},
 			}),
@@ -46,10 +47,12 @@ func GetAppEventConfigTools() []mcp.Tool {
 	)
 	tools = append(tools, appeventconfig_get_Tool)
 
+
 	return tools
 }
 
 // AppEventConfig handlers
+
 
 // HandleAppeventconfig_get_ handles the appeventconfig_get_ tool with context-based auth
 func HandleAppeventconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -102,6 +105,8 @@ func HandleAppeventconfig_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Appeventconfig_get_(args)
 	if err != nil {
@@ -116,3 +121,4 @@ func HandleAppeventconfig_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

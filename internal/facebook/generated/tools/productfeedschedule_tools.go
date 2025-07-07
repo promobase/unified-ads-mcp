@@ -17,6 +17,7 @@ import (
 func GetProductFeedScheduleTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// productfeedschedule_get_ tool
 	// Available fields for ProductFeedSchedule: day_of_month, day_of_week, hour, id, interval, interval_count, minute, timezone, url, username
 	productfeedschedule_get_Tool := mcp.NewTool("productfeedschedule_get_",
@@ -36,10 +37,12 @@ func GetProductFeedScheduleTools() []mcp.Tool {
 	)
 	tools = append(tools, productfeedschedule_get_Tool)
 
+
 	return tools
 }
 
 // ProductFeedSchedule handlers
+
 
 // HandleProductfeedschedule_get_ handles the productfeedschedule_get_ tool with context-based auth
 func HandleProductfeedschedule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleProductfeedschedule_get_(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productfeedschedule_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleProductfeedschedule_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

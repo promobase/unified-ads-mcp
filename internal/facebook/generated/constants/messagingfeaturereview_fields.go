@@ -5,10 +5,10 @@ package constants
 // MessagingFeatureReviewFields contains field name constants for MessagingFeatureReview objects
 var MessagingFeatureReviewFields = struct {
 	Feature string
-	Status  string
+	Status string
 }{
 	Feature: "feature",
-	Status:  "status",
+	Status: "status",
 }
 
 // MessagingFeatureReviewFieldsList contains all available fields for MessagingFeatureReview objects

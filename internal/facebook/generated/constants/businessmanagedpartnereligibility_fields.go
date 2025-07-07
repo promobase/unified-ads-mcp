@@ -4,12 +4,12 @@ package constants
 
 // BusinessManagedPartnerEligibilityFields contains field name constants for BusinessManagedPartnerEligibility objects
 var BusinessManagedPartnerEligibilityFields = struct {
-	IsEligible        string
-	ReasonCode        string
+	IsEligible string
+	ReasonCode string
 	ReasonDescription string
 }{
-	IsEligible:        "is_eligible",
-	ReasonCode:        "reason_code",
+	IsEligible: "is_eligible",
+	ReasonCode: "reason_code",
 	ReasonDescription: "reason_description",
 }
 

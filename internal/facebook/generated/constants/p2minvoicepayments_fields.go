@@ -4,10 +4,10 @@ package constants
 
 // P2MInvoicePaymentsFields contains field name constants for P2MInvoicePayments objects
 var P2MInvoicePaymentsFields = struct {
-	PageId   string
+	PageId string
 	Payments string
 }{
-	PageId:   "page_id",
+	PageId: "page_id",
 	Payments: "payments",
 }
 

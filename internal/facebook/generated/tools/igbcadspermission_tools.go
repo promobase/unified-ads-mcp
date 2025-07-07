@@ -17,6 +17,7 @@ import (
 func GetIGBCAdsPermissionTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// igbcadspermission_get_ tool
 	// Available fields for IGBCAdsPermission: id, permission_type, status
 	igbcadspermission_get_Tool := mcp.NewTool("igbcadspermission_get_",
@@ -36,10 +37,12 @@ func GetIGBCAdsPermissionTools() []mcp.Tool {
 	)
 	tools = append(tools, igbcadspermission_get_Tool)
 
+
 	return tools
 }
 
 // IGBCAdsPermission handlers
+
 
 // HandleIgbcadspermission_get_ handles the igbcadspermission_get_ tool with context-based auth
 func HandleIgbcadspermission_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleIgbcadspermission_get_(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Igbcadspermission_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleIgbcadspermission_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

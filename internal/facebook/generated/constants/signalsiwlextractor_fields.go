@@ -4,15 +4,15 @@ package constants
 
 // SignalsIWLExtractorFields contains field name constants for SignalsIWLExtractor objects
 var SignalsIWLExtractorFields = struct {
-	DomainUri     string
-	EventType     string
+	DomainUri string
+	EventType string
 	ExtractorType string
-	Id            string
+	Id string
 }{
-	DomainUri:     "domain_uri",
-	EventType:     "event_type",
+	DomainUri: "domain_uri",
+	EventType: "event_type",
 	ExtractorType: "extractor_type",
-	Id:            "id",
+	Id: "id",
 }
 
 // SignalsIWLExtractorFieldsList contains all available fields for SignalsIWLExtractor objects

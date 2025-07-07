@@ -17,6 +17,7 @@ import (
 func GetCustomAudienceTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// customaudience_delete_adaccounts tool
 	// Params object accepts: adaccounts (list<string>)
 	customaudience_delete_adaccountsTool := mcp.NewTool("customaudience_delete_adaccounts",
@@ -24,9 +25,9 @@ func GetCustomAudienceTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"adaccounts": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "adaccounts parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: adaccounts (array<string>)"),
@@ -42,7 +43,7 @@ func GetCustomAudienceTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"permissions": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "permissions parameter",
 				},
 			}),
@@ -70,21 +71,21 @@ func GetCustomAudienceTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"adaccounts": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "adaccounts parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"permissions": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "permissions parameter",
 				},
 				"relationship_type": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "relationship_type parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"replace": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "replace parameter",
 				},
 			}),
@@ -101,14 +102,14 @@ func GetCustomAudienceTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"effective_status": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "effective_status parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"status": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "status parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: effective_status (array<string>), status (array<string>)"),
@@ -136,27 +137,27 @@ func GetCustomAudienceTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"calculated_date": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "calculated_date parameter",
 				},
 				"processed_date": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "processed_date parameter",
 				},
 				"value_aggregation_duration": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "value_aggregation_duration parameter",
 				},
 				"value_country": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "value_country parameter",
 				},
 				"value_currency": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "value_currency parameter",
 				},
 				"value_version": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "value_version parameter",
 				},
 			}),
@@ -185,9 +186,9 @@ func GetCustomAudienceTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"params": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "params parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: params (array<string>)"),
@@ -215,19 +216,19 @@ func GetCustomAudienceTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"salt": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "salt parameter",
-					"required":    true,
+					"required": true,
 				},
 				"valid_from": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "valid_from parameter",
-					"required":    true,
+					"required": true,
 				},
 				"valid_to": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "valid_to parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: salt (string) [required], valid_from (datetime) [required], valid_to (datetime) [required]"),
@@ -243,7 +244,7 @@ func GetCustomAudienceTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"session_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "session_id parameter",
 				},
 			}),
@@ -290,15 +291,15 @@ func GetCustomAudienceTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"namespace": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "namespace parameter",
 				},
 				"payload": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "payload parameter",
 				},
 				"session": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "session parameter",
 				},
 			}),
@@ -314,15 +315,15 @@ func GetCustomAudienceTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"namespace": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "namespace parameter",
 				},
 				"payload": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "payload parameter",
 				},
 				"session": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "session parameter",
 				},
 			}),
@@ -339,18 +340,18 @@ func GetCustomAudienceTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"namespace": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "namespace parameter",
 				},
 				"payload": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "payload parameter",
-					"required":    true,
+					"required": true,
 				},
 				"session": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "session parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: namespace (string), payload (object) [required], session (object) [required]"),
@@ -372,23 +373,23 @@ func GetCustomAudienceTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ad_account_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ad_account_id parameter",
 				},
 				"special_ad_categories": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "special_ad_categories parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"special_ad_category_countries": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "special_ad_category_countries parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"target_countries": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "target_countries parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: ad_account_id (string), special_ad_categories (array<string>), special_ad_category_countries (array<string>), target_countries (array<string>)"),
@@ -415,99 +416,99 @@ func GetCustomAudienceTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"allowed_domains": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "allowed_domains parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"claim_objective": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "claim_objective parameter",
-					"enum":        []string{"AUTOMOTIVE_MODEL", "COLLABORATIVE_ADS", "HOME_LISTING", "MEDIA_TITLE", "PRODUCT", "TRAVEL", "VEHICLE", "VEHICLE_OFFER"},
+					"enum": []string{ "AUTOMOTIVE_MODEL", "COLLABORATIVE_ADS", "HOME_LISTING", "MEDIA_TITLE", "PRODUCT", "TRAVEL", "VEHICLE", "VEHICLE_OFFER" },
 				},
 				"content_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "content_type parameter",
-					"enum":        []string{"AUTOMOTIVE_MODEL", "DESTINATION", "FLIGHT", "GENERIC", "HOME_LISTING", "HOTEL", "LOCAL_SERVICE_BUSINESS", "MEDIA_TITLE", "OFFLINE_PRODUCT", "PRODUCT", "VEHICLE", "VEHICLE_OFFER"},
+					"enum": []string{ "AUTOMOTIVE_MODEL", "DESTINATION", "FLIGHT", "GENERIC", "HOME_LISTING", "HOTEL", "LOCAL_SERVICE_BUSINESS", "MEDIA_TITLE", "OFFLINE_PRODUCT", "PRODUCT", "VEHICLE", "VEHICLE_OFFER" },
 				},
 				"countries": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "countries parameter",
 				},
 				"customer_file_source": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "customer_file_source parameter",
-					"enum":        []string{"BOTH_USER_AND_PARTNER_PROVIDED", "PARTNER_PROVIDED_ONLY", "USER_PROVIDED_ONLY"},
+					"enum": []string{ "BOTH_USER_AND_PARTNER_PROVIDED", "PARTNER_PROVIDED_ONLY", "USER_PROVIDED_ONLY" },
 				},
 				"description": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "description parameter",
 				},
 				"enable_fetch_or_create": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "enable_fetch_or_create parameter",
 				},
 				"event_source_group": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "event_source_group parameter",
 				},
 				"event_sources": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "event_sources parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"exclusions": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "exclusions parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"inclusions": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "inclusions parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"lookalike_spec": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "lookalike_spec parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
 				},
 				"opt_out_link": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "opt_out_link parameter",
 				},
 				"parent_audience_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "parent_audience_id parameter",
 				},
 				"product_set_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "product_set_id parameter",
 				},
 				"retention_days": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "retention_days parameter",
 				},
 				"rev_share_policy_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "rev_share_policy_id parameter",
 				},
 				"rule": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "rule parameter",
 				},
 				"rule_aggregation": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "rule_aggregation parameter",
 				},
 				"tags": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "tags parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"use_in_campaigns": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "use_in_campaigns parameter",
 				},
 			}),
@@ -516,10 +517,12 @@ func GetCustomAudienceTools() []mcp.Tool {
 	)
 	tools = append(tools, customaudience_post_Tool)
 
+
 	return tools
 }
 
 // CustomAudience handlers
+
 
 // HandleCustomaudience_delete_adaccounts handles the customaudience_delete_adaccounts tool with context-based auth
 func HandleCustomaudience_delete_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -547,6 +550,8 @@ func HandleCustomaudience_delete_adaccounts(ctx context.Context, request mcp.Cal
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Customaudience_delete_adaccounts(args)
 	if err != nil {
@@ -561,6 +566,7 @@ func HandleCustomaudience_delete_adaccounts(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCustomaudience_get_adaccounts handles the customaudience_get_adaccounts tool with context-based auth
 func HandleCustomaudience_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -613,6 +619,8 @@ func HandleCustomaudience_get_adaccounts(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Customaudience_get_adaccounts(args)
 	if err != nil {
@@ -627,6 +635,7 @@ func HandleCustomaudience_get_adaccounts(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCustomaudience_post_adaccounts handles the customaudience_post_adaccounts tool with context-based auth
 func HandleCustomaudience_post_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -654,6 +663,8 @@ func HandleCustomaudience_post_adaccounts(ctx context.Context, request mcp.CallT
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Customaudience_post_adaccounts(args)
 	if err != nil {
@@ -668,6 +679,7 @@ func HandleCustomaudience_post_adaccounts(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCustomaudience_get_ads handles the customaudience_get_ads tool with context-based auth
 func HandleCustomaudience_get_ads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -720,6 +732,8 @@ func HandleCustomaudience_get_ads(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Customaudience_get_ads(args)
 	if err != nil {
@@ -734,6 +748,7 @@ func HandleCustomaudience_get_ads(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCustomaudience_get_health handles the customaudience_get_health tool with context-based auth
 func HandleCustomaudience_get_health(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -786,6 +801,8 @@ func HandleCustomaudience_get_health(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Customaudience_get_health(args)
 	if err != nil {
@@ -800,6 +817,7 @@ func HandleCustomaudience_get_health(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCustomaudience_get_salts handles the customaudience_get_salts tool with context-based auth
 func HandleCustomaudience_get_salts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -852,6 +870,8 @@ func HandleCustomaudience_get_salts(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Customaudience_get_salts(args)
 	if err != nil {
@@ -866,6 +886,7 @@ func HandleCustomaudience_get_salts(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCustomaudience_post_salts handles the customaudience_post_salts tool with context-based auth
 func HandleCustomaudience_post_salts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -895,6 +916,8 @@ func HandleCustomaudience_post_salts(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Customaudience_post_salts(args)
 	if err != nil {
@@ -909,6 +932,7 @@ func HandleCustomaudience_post_salts(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCustomaudience_get_sessions handles the customaudience_get_sessions tool with context-based auth
 func HandleCustomaudience_get_sessions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -961,6 +985,8 @@ func HandleCustomaudience_get_sessions(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Customaudience_get_sessions(args)
 	if err != nil {
@@ -975,6 +1001,7 @@ func HandleCustomaudience_get_sessions(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCustomaudience_get_shared_account_info handles the customaudience_get_shared_account_info tool with context-based auth
 func HandleCustomaudience_get_shared_account_info(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1015,6 +1042,8 @@ func HandleCustomaudience_get_shared_account_info(ctx context.Context, request m
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Customaudience_get_shared_account_info(args)
 	if err != nil {
@@ -1029,6 +1058,7 @@ func HandleCustomaudience_get_shared_account_info(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCustomaudience_delete_users handles the customaudience_delete_users tool with context-based auth
 func HandleCustomaudience_delete_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1056,6 +1086,8 @@ func HandleCustomaudience_delete_users(ctx context.Context, request mcp.CallTool
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Customaudience_delete_users(args)
 	if err != nil {
@@ -1070,6 +1102,7 @@ func HandleCustomaudience_delete_users(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCustomaudience_post_users handles the customaudience_post_users tool with context-based auth
 func HandleCustomaudience_post_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1097,6 +1130,8 @@ func HandleCustomaudience_post_users(ctx context.Context, request mcp.CallToolRe
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Customaudience_post_users(args)
 	if err != nil {
@@ -1111,6 +1146,7 @@ func HandleCustomaudience_post_users(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCustomaudience_post_usersreplace handles the customaudience_post_usersreplace tool with context-based auth
 func HandleCustomaudience_post_usersreplace(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1140,6 +1176,8 @@ func HandleCustomaudience_post_usersreplace(ctx context.Context, request mcp.Cal
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Customaudience_post_usersreplace(args)
 	if err != nil {
@@ -1155,6 +1193,7 @@ func HandleCustomaudience_post_usersreplace(ctx context.Context, request mcp.Cal
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
+
 // HandleCustomaudience_delete_ handles the customaudience_delete_ tool with context-based auth
 func HandleCustomaudience_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -1168,6 +1207,8 @@ func HandleCustomaudience_delete_(ctx context.Context, request mcp.CallToolReque
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+
 
 	// Call the client method
 	result, err := client.Customaudience_delete_(args)
@@ -1183,6 +1224,7 @@ func HandleCustomaudience_delete_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCustomaudience_get_ handles the customaudience_get_ tool with context-based auth
 func HandleCustomaudience_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1235,6 +1277,8 @@ func HandleCustomaudience_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Customaudience_get_(args)
 	if err != nil {
@@ -1249,6 +1293,7 @@ func HandleCustomaudience_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCustomaudience_post_ handles the customaudience_post_ tool with context-based auth
 func HandleCustomaudience_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1276,6 +1321,8 @@ func HandleCustomaudience_post_(ctx context.Context, request mcp.CallToolRequest
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Customaudience_post_(args)
 	if err != nil {
@@ -1290,3 +1337,4 @@ func HandleCustomaudience_post_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

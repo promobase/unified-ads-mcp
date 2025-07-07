@@ -4,17 +4,17 @@ package constants
 
 // CopyrightAttributionInsightsFields contains field name constants for CopyrightAttributionInsights objects
 var CopyrightAttributionInsightsFields = struct {
-	L7AttributionPageView       string
-	L7AttributionPageViewDelta  string
-	L7AttributionVideoView      string
+	L7AttributionPageView string
+	L7AttributionPageViewDelta string
+	L7AttributionVideoView string
 	L7AttributionVideoViewDelta string
-	MetricsEndingDate           string
+	MetricsEndingDate string
 }{
-	L7AttributionPageView:       "l7_attribution_page_view",
-	L7AttributionPageViewDelta:  "l7_attribution_page_view_delta",
-	L7AttributionVideoView:      "l7_attribution_video_view",
+	L7AttributionPageView: "l7_attribution_page_view",
+	L7AttributionPageViewDelta: "l7_attribution_page_view_delta",
+	L7AttributionVideoView: "l7_attribution_video_view",
 	L7AttributionVideoViewDelta: "l7_attribution_video_view_delta",
-	MetricsEndingDate:           "metrics_ending_date",
+	MetricsEndingDate: "metrics_ending_date",
 }
 
 // CopyrightAttributionInsightsFieldsList contains all available fields for CopyrightAttributionInsights objects

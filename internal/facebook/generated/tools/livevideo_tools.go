@@ -17,6 +17,7 @@ import (
 func GetLiveVideoTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// livevideo_get_blocked_users tool
 	// Available fields for User: about, age_range, avatar_2d_profile_picture, birthday, client_business_id, community, cover, currency, education, email, favorite_athletes, favorite_teams, first_name, gender, hometown, id, id_for_avatars, inspirational_people, install_type, installed, is_guest_user, is_work_account, languages, last_name, link, local_news_megaphone_dismiss_status, local_news_subscription_status, locale, location, meeting_for, middle_name, name, name_format, payment_pricepoints, political, profile_pic, quotes, relationship_status, religion, shared_login_upgrade_required_by, short_name, significant_other, sports, supports_donate_button_in_live_video, third_party_id, timezone, token_for_business, updated_time, verified, video_upload_limits, website
 	// Params object accepts: uid (string)
@@ -25,7 +26,7 @@ func GetLiveVideoTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"uid": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "uid parameter",
 				},
 			}),
@@ -54,22 +55,22 @@ func GetLiveVideoTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"filter": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "filter parameter",
-					"enum":        []string{"stream", "toplevel"},
+					"enum": []string{ "stream", "toplevel" },
 				},
 				"live_filter": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "live_filter parameter",
-					"enum":        []string{"filter_low_quality", "no_filter"},
+					"enum": []string{ "filter_low_quality", "no_filter" },
 				},
 				"order": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "order parameter",
-					"enum":        []string{"chronological", "reverse_chronological"},
+					"enum": []string{ "chronological", "reverse_chronological" },
 				},
 				"since": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "since parameter",
 				},
 			}),
@@ -180,34 +181,34 @@ func GetLiveVideoTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"close_after_voting": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "close_after_voting parameter",
 				},
 				"correct_option": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "correct_option parameter",
 				},
 				"default_open": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "default_open parameter",
 				},
 				"options": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "options parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"items": map[string]any{"type": "string"},
 				},
 				"question": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "question parameter",
-					"required":    true,
+					"required": true,
 				},
 				"show_gradient": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "show_gradient parameter",
 				},
 				"show_results": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "show_results parameter",
 				},
 			}),
@@ -224,9 +225,9 @@ func GetLiveVideoTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "type parameter",
-					"enum":        []string{"ANGRY", "CARE", "FIRE", "HAHA", "HUNDRED", "LIKE", "LOVE", "NONE", "PRIDE", "SAD", "THANKFUL", "WOW"},
+					"enum": []string{ "ANGRY", "CARE", "FIRE", "HAHA", "HUNDRED", "LIKE", "LOVE", "NONE", "PRIDE", "SAD", "THANKFUL", "WOW" },
 				},
 			}),
 			mcp.Description("Parameters object containing: type (enum) [ANGRY, CARE, FIRE, HAHA, HUNDRED, ...]"),
@@ -260,7 +261,7 @@ func GetLiveVideoTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"target_token": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "target_token parameter",
 				},
 			}),
@@ -288,133 +289,133 @@ func GetLiveVideoTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"allow_bm_crossposting": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "allow_bm_crossposting parameter",
 				},
 				"content_tags": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "content_tags parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"cross_share_to_group_ids": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "cross_share_to_group_ids parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"crossposting_actions": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "crossposting_actions parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"custom_labels": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "custom_labels parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"description": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "description parameter",
 				},
 				"direct_share_status": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "direct_share_status parameter",
 				},
 				"embeddable": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "embeddable parameter",
 				},
 				"end_live_video": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "end_live_video parameter",
 				},
 				"event_params": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "event_params parameter",
 				},
 				"is_audio_only": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_audio_only parameter",
 				},
 				"is_manual_mode": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_manual_mode parameter",
 				},
 				"live_comment_moderation_setting": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "live_comment_moderation_setting parameter",
-					"enum":        []string{"DEFAULT", "DISCUSSION", "FOLLOWED", "FOLLOWER", "NO_HYPERLINK", "PROTECTED_MODE", "RESTRICTED", "SLOW", "SUPPORTER", "TAGGED"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "DEFAULT", "DISCUSSION", "FOLLOWED", "FOLLOWER", "NO_HYPERLINK", "PROTECTED_MODE", "RESTRICTED", "SLOW", "SUPPORTER", "TAGGED" },
+					"items": map[string]any{"type": "string"},
 				},
 				"master_ingest_stream_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "master_ingest_stream_id parameter",
 				},
 				"og_icon_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "og_icon_id parameter",
 				},
 				"og_phrase": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "og_phrase parameter",
 				},
 				"persistent_stream_key_status": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "persistent_stream_key_status parameter",
-					"enum":        []string{"DISABLE", "ENABLE", "REGENERATE"},
+					"enum": []string{ "DISABLE", "ENABLE", "REGENERATE" },
 				},
 				"place": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "place parameter",
 				},
 				"planned_start_time": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "planned_start_time parameter",
 				},
 				"privacy": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "privacy parameter",
 				},
 				"published": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "published parameter",
 				},
 				"schedule_custom_profile_image": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "schedule_custom_profile_image parameter",
 				},
 				"schedule_feed_background_image": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "schedule_feed_background_image parameter",
 				},
 				"sponsor_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "sponsor_id parameter",
 				},
 				"sponsor_relationship": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "sponsor_relationship parameter",
 				},
 				"status": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "status parameter",
-					"enum":        []string{"LIVE_NOW", "SCHEDULED_CANCELED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED"},
+					"enum": []string{ "LIVE_NOW", "SCHEDULED_CANCELED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED" },
 				},
 				"stream_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "stream_type parameter",
-					"enum":        []string{"AMBIENT", "REGULAR"},
+					"enum": []string{ "AMBIENT", "REGULAR" },
 				},
 				"tags": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "tags parameter",
-					"items":       map[string]any{"type": "integer"},
+					"items": map[string]any{"type": "integer"},
 				},
 				"targeting": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "targeting parameter",
 				},
 				"title": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "title parameter",
 				},
 			}),
@@ -423,10 +424,12 @@ func GetLiveVideoTools() []mcp.Tool {
 	)
 	tools = append(tools, livevideo_post_Tool)
 
+
 	return tools
 }
 
 // LiveVideo handlers
+
 
 // HandleLivevideo_get_blocked_users handles the livevideo_get_blocked_users tool with context-based auth
 func HandleLivevideo_get_blocked_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -479,6 +482,8 @@ func HandleLivevideo_get_blocked_users(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Livevideo_get_blocked_users(args)
 	if err != nil {
@@ -493,6 +498,7 @@ func HandleLivevideo_get_blocked_users(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleLivevideo_get_comments handles the livevideo_get_comments tool with context-based auth
 func HandleLivevideo_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -545,6 +551,8 @@ func HandleLivevideo_get_comments(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Livevideo_get_comments(args)
 	if err != nil {
@@ -559,6 +567,7 @@ func HandleLivevideo_get_comments(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleLivevideo_get_crosspost_shared_pages handles the livevideo_get_crosspost_shared_pages tool with context-based auth
 func HandleLivevideo_get_crosspost_shared_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -599,6 +608,8 @@ func HandleLivevideo_get_crosspost_shared_pages(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Livevideo_get_crosspost_shared_pages(args)
 	if err != nil {
@@ -613,6 +624,7 @@ func HandleLivevideo_get_crosspost_shared_pages(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleLivevideo_get_crossposted_broadcasts handles the livevideo_get_crossposted_broadcasts tool with context-based auth
 func HandleLivevideo_get_crossposted_broadcasts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -653,6 +665,8 @@ func HandleLivevideo_get_crossposted_broadcasts(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Livevideo_get_crossposted_broadcasts(args)
 	if err != nil {
@@ -667,6 +681,7 @@ func HandleLivevideo_get_crossposted_broadcasts(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleLivevideo_get_errors handles the livevideo_get_errors tool with context-based auth
 func HandleLivevideo_get_errors(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -707,6 +722,8 @@ func HandleLivevideo_get_errors(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Livevideo_get_errors(args)
 	if err != nil {
@@ -722,6 +739,7 @@ func HandleLivevideo_get_errors(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
+
 // HandleLivevideo_post_input_streams handles the livevideo_post_input_streams tool with context-based auth
 func HandleLivevideo_post_input_streams(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -735,6 +753,8 @@ func HandleLivevideo_post_input_streams(ctx context.Context, request mcp.CallToo
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+
 
 	// Call the client method
 	result, err := client.Livevideo_post_input_streams(args)
@@ -750,6 +770,7 @@ func HandleLivevideo_post_input_streams(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleLivevideo_get_polls handles the livevideo_get_polls tool with context-based auth
 func HandleLivevideo_get_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -790,6 +811,8 @@ func HandleLivevideo_get_polls(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Livevideo_get_polls(args)
 	if err != nil {
@@ -804,6 +827,7 @@ func HandleLivevideo_get_polls(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleLivevideo_post_polls handles the livevideo_post_polls tool with context-based auth
 func HandleLivevideo_post_polls(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -833,6 +857,8 @@ func HandleLivevideo_post_polls(ctx context.Context, request mcp.CallToolRequest
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Livevideo_post_polls(args)
 	if err != nil {
@@ -847,6 +873,7 @@ func HandleLivevideo_post_polls(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleLivevideo_get_reactions handles the livevideo_get_reactions tool with context-based auth
 func HandleLivevideo_get_reactions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -899,6 +926,8 @@ func HandleLivevideo_get_reactions(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Livevideo_get_reactions(args)
 	if err != nil {
@@ -914,6 +943,7 @@ func HandleLivevideo_get_reactions(ctx context.Context, request mcp.CallToolRequ
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
+
 // HandleLivevideo_delete_ handles the livevideo_delete_ tool with context-based auth
 func HandleLivevideo_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -927,6 +957,8 @@ func HandleLivevideo_delete_(ctx context.Context, request mcp.CallToolRequest) (
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+
 
 	// Call the client method
 	result, err := client.Livevideo_delete_(args)
@@ -942,6 +974,7 @@ func HandleLivevideo_delete_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleLivevideo_get_ handles the livevideo_get_ tool with context-based auth
 func HandleLivevideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -994,6 +1027,8 @@ func HandleLivevideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Livevideo_get_(args)
 	if err != nil {
@@ -1008,6 +1043,7 @@ func HandleLivevideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleLivevideo_post_ handles the livevideo_post_ tool with context-based auth
 func HandleLivevideo_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1035,6 +1071,8 @@ func HandleLivevideo_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Livevideo_post_(args)
 	if err != nil {
@@ -1049,3 +1087,4 @@ func HandleLivevideo_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

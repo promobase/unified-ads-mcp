@@ -17,6 +17,7 @@ import (
 func GetLiveVideoErrorTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// livevideoerror_get_ tool
 	// Available fields for LiveVideoError: creation_time, error_code, error_message, error_type
 	livevideoerror_get_Tool := mcp.NewTool("livevideoerror_get_",
@@ -36,10 +37,12 @@ func GetLiveVideoErrorTools() []mcp.Tool {
 	)
 	tools = append(tools, livevideoerror_get_Tool)
 
+
 	return tools
 }
 
 // LiveVideoError handlers
+
 
 // HandleLivevideoerror_get_ handles the livevideoerror_get_ tool with context-based auth
 func HandleLivevideoerror_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleLivevideoerror_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Livevideoerror_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleLivevideoerror_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

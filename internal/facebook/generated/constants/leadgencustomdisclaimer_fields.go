@@ -4,13 +4,13 @@ package constants
 
 // LeadGenCustomDisclaimerFields contains field name constants for LeadGenCustomDisclaimer objects
 var LeadGenCustomDisclaimerFields = struct {
-	Body       string
+	Body string
 	Checkboxes string
-	Title      string
+	Title string
 }{
-	Body:       "body",
+	Body: "body",
 	Checkboxes: "checkboxes",
-	Title:      "title",
+	Title: "title",
 }
 
 // LeadGenCustomDisclaimerFieldsList contains all available fields for LeadGenCustomDisclaimer objects

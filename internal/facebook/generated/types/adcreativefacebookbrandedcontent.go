@@ -5,6 +5,6 @@ package types
 // AdCreativeFacebookBrandedContent represents a Facebook AdCreativeFacebookBrandedContent object
 type AdCreativeFacebookBrandedContent struct {
 	Shared_to_sponsor_status string `json:"shared_to_sponsor_status"`
-	Sponsor_page_id          string `json:"sponsor_page_id"`
-	Sponsor_relationship     string `json:"sponsor_relationship"`
+	Sponsor_page_id string `json:"sponsor_page_id"`
+	Sponsor_relationship string `json:"sponsor_relationship"`
 }

@@ -17,6 +17,7 @@ import (
 func GetAdAsyncRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// adasyncrequest_delete_ tool
 	adasyncrequest_delete_Tool := mcp.NewTool("adasyncrequest_delete_",
 		mcp.WithDescription("DELETE  for AdAsyncRequest"),
@@ -42,10 +43,12 @@ func GetAdAsyncRequestTools() []mcp.Tool {
 	)
 	tools = append(tools, adasyncrequest_get_Tool)
 
+
 	return tools
 }
 
 // AdAsyncRequest handlers
+
 
 // HandleAdasyncrequest_delete_ handles the adasyncrequest_delete_ tool with context-based auth
 func HandleAdasyncrequest_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -61,6 +64,8 @@ func HandleAdasyncrequest_delete_(ctx context.Context, request mcp.CallToolReque
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
 	result, err := client.Adasyncrequest_delete_(args)
 	if err != nil {
@@ -75,6 +80,7 @@ func HandleAdasyncrequest_delete_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdasyncrequest_get_ handles the adasyncrequest_get_ tool with context-based auth
 func HandleAdasyncrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -115,6 +121,8 @@ func HandleAdasyncrequest_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adasyncrequest_get_(args)
 	if err != nil {
@@ -129,3 +137,4 @@ func HandleAdasyncrequest_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

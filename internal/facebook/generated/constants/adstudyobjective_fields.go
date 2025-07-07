@@ -4,19 +4,19 @@ package constants
 
 // AdStudyObjectiveFields contains field name constants for AdStudyObjective objects
 var AdStudyObjectiveFields = struct {
-	Id                 string
-	IsPrimary          string
+	Id string
+	IsPrimary string
 	LastUpdatedResults string
-	Name               string
-	Results            string
-	FieldType          string
+	Name string
+	Results string
+	FieldType string
 }{
-	Id:                 "id",
-	IsPrimary:          "is_primary",
+	Id: "id",
+	IsPrimary: "is_primary",
 	LastUpdatedResults: "last_updated_results",
-	Name:               "name",
-	Results:            "results",
-	FieldType:          "type",
+	Name: "name",
+	Results: "results",
+	FieldType: "type",
 }
 
 // AdStudyObjectiveFieldsList contains all available fields for AdStudyObjective objects

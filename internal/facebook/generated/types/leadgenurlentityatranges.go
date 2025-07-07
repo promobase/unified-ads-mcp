@@ -4,7 +4,7 @@ package types
 
 // LeadGenURLEntityAtRanges represents a Facebook LeadGenURLEntityAtRanges object
 type LeadGenURLEntityAtRanges struct {
-	Length int    `json:"length"`
-	Offset int    `json:"offset"`
-	Url    string `json:"url"`
+	Length int `json:"length"`
+	Offset int `json:"offset"`
+	Url string `json:"url"`
 }

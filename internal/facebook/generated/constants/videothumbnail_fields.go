@@ -4,21 +4,21 @@ package constants
 
 // VideoThumbnailFields contains field name constants for VideoThumbnail objects
 var VideoThumbnailFields = struct {
-	Height      string
-	Id          string
+	Height string
+	Id string
 	IsPreferred string
-	Name        string
-	Scale       string
-	Uri         string
-	Width       string
+	Name string
+	Scale string
+	Uri string
+	Width string
 }{
-	Height:      "height",
-	Id:          "id",
+	Height: "height",
+	Id: "id",
 	IsPreferred: "is_preferred",
-	Name:        "name",
-	Scale:       "scale",
-	Uri:         "uri",
-	Width:       "width",
+	Name: "name",
+	Scale: "scale",
+	Uri: "uri",
+	Width: "width",
 }
 
 // VideoThumbnailFieldsList contains all available fields for VideoThumbnail objects

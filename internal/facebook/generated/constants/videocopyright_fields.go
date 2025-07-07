@@ -4,39 +4,39 @@ package constants
 
 // VideoCopyrightFields contains field name constants for VideoCopyright objects
 var VideoCopyrightFields = struct {
-	ContentCategory            string
-	CopyrightContentId         string
-	Creator                    string
-	ExcludedOwnershipSegments  string
-	Id                         string
-	InConflict                 string
-	MonitoringStatus           string
-	MonitoringType             string
-	OwnershipCountries         string
-	ReferenceFile              string
-	ReferenceFileDisabled      string
+	ContentCategory string
+	CopyrightContentId string
+	Creator string
+	ExcludedOwnershipSegments string
+	Id string
+	InConflict string
+	MonitoringStatus string
+	MonitoringType string
+	OwnershipCountries string
+	ReferenceFile string
+	ReferenceFileDisabled string
 	ReferenceFileDisabledByOps string
-	ReferenceOwnerId           string
-	RuleIds                    string
-	Tags                       string
-	WhitelistedIds             string
+	ReferenceOwnerId string
+	RuleIds string
+	Tags string
+	WhitelistedIds string
 }{
-	ContentCategory:            "content_category",
-	CopyrightContentId:         "copyright_content_id",
-	Creator:                    "creator",
-	ExcludedOwnershipSegments:  "excluded_ownership_segments",
-	Id:                         "id",
-	InConflict:                 "in_conflict",
-	MonitoringStatus:           "monitoring_status",
-	MonitoringType:             "monitoring_type",
-	OwnershipCountries:         "ownership_countries",
-	ReferenceFile:              "reference_file",
-	ReferenceFileDisabled:      "reference_file_disabled",
+	ContentCategory: "content_category",
+	CopyrightContentId: "copyright_content_id",
+	Creator: "creator",
+	ExcludedOwnershipSegments: "excluded_ownership_segments",
+	Id: "id",
+	InConflict: "in_conflict",
+	MonitoringStatus: "monitoring_status",
+	MonitoringType: "monitoring_type",
+	OwnershipCountries: "ownership_countries",
+	ReferenceFile: "reference_file",
+	ReferenceFileDisabled: "reference_file_disabled",
 	ReferenceFileDisabledByOps: "reference_file_disabled_by_ops",
-	ReferenceOwnerId:           "reference_owner_id",
-	RuleIds:                    "rule_ids",
-	Tags:                       "tags",
-	WhitelistedIds:             "whitelisted_ids",
+	ReferenceOwnerId: "reference_owner_id",
+	RuleIds: "rule_ids",
+	Tags: "tags",
+	WhitelistedIds: "whitelisted_ids",
 }
 
 // VideoCopyrightFieldsList contains all available fields for VideoCopyright objects

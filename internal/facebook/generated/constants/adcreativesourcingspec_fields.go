@@ -4,21 +4,21 @@ package constants
 
 // AdCreativeSourcingSpecFields contains field name constants for AdCreativeSourcingSpec objects
 var AdCreativeSourcingSpecFields = struct {
-	AssociatedProductSetId           string
-	Brand                            string
-	DynamicSiteLinksSpec             string
+	AssociatedProductSetId string
+	Brand string
+	DynamicSiteLinksSpec string
 	EnableSocialFeedbackPreservation string
-	PromotionMetadataSpec            string
-	SiteLinksSpec                    string
-	SourceUrl                        string
+	PromotionMetadataSpec string
+	SiteLinksSpec string
+	SourceUrl string
 }{
-	AssociatedProductSetId:           "associated_product_set_id",
-	Brand:                            "brand",
-	DynamicSiteLinksSpec:             "dynamic_site_links_spec",
+	AssociatedProductSetId: "associated_product_set_id",
+	Brand: "brand",
+	DynamicSiteLinksSpec: "dynamic_site_links_spec",
 	EnableSocialFeedbackPreservation: "enable_social_feedback_preservation",
-	PromotionMetadataSpec:            "promotion_metadata_spec",
-	SiteLinksSpec:                    "site_links_spec",
-	SourceUrl:                        "source_url",
+	PromotionMetadataSpec: "promotion_metadata_spec",
+	SiteLinksSpec: "site_links_spec",
+	SourceUrl: "source_url",
 }
 
 // AdCreativeSourcingSpecFieldsList contains all available fields for AdCreativeSourcingSpec objects

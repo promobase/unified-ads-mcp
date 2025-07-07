@@ -4,10 +4,10 @@ package types
 
 // LeadGenContextCard represents a Facebook LeadGenContextCard object
 type LeadGenContextCard struct {
-	Button_text string   `json:"button_text"`
-	Content     []string `json:"content"`
-	Cover_photo *Photo   `json:"cover_photo"`
-	Id          string   `json:"id"`
-	Style       string   `json:"style"`
-	Title       string   `json:"title"`
+	Button_text string `json:"button_text"`
+	Content []string `json:"content"`
+	Cover_photo *Photo `json:"cover_photo"`
+	Id string `json:"id"`
+	Style string `json:"style"`
+	Title string `json:"title"`
 }

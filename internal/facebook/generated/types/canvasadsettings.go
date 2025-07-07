@@ -4,11 +4,11 @@ package types
 
 // CanvasAdSettings represents a Facebook CanvasAdSettings object
 type CanvasAdSettings struct {
-	Is_canvas_collection_eligible bool   `json:"is_canvas_collection_eligible"`
-	Lead_form_created_time        int    `json:"lead_form_created_time"`
-	Lead_form_name                string `json:"lead_form_name"`
-	Lead_gen_form_id              string `json:"lead_gen_form_id"`
-	Leads_count                   int    `json:"leads_count"`
-	Product_set_id                string `json:"product_set_id"`
-	Use_retailer_item_ids         bool   `json:"use_retailer_item_ids"`
+	Is_canvas_collection_eligible bool `json:"is_canvas_collection_eligible"`
+	Lead_form_created_time int `json:"lead_form_created_time"`
+	Lead_form_name string `json:"lead_form_name"`
+	Lead_gen_form_id string `json:"lead_gen_form_id"`
+	Leads_count int `json:"leads_count"`
+	Product_set_id string `json:"product_set_id"`
+	Use_retailer_item_ids bool `json:"use_retailer_item_ids"`
 }

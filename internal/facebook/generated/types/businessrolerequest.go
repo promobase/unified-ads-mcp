@@ -6,20 +6,20 @@ import "time"
 
 // BusinessRoleRequest represents a Facebook BusinessRoleRequest object
 type BusinessRoleRequest struct {
-	Created_by        map[string]interface{} `json:"created_by"`
-	Created_time      time.Time              `json:"created_time"`
-	Email             string                 `json:"email"`
-	Expiration_time   time.Time              `json:"expiration_time"`
-	Expiry_time       time.Time              `json:"expiry_time"`
-	Finance_role      string                 `json:"finance_role"`
-	Id                string                 `json:"id"`
-	Invite_link       string                 `json:"invite_link"`
-	Invited_user_type []string               `json:"invited_user_type"`
-	Ip_role           string                 `json:"ip_role"`
-	Owner             *Business              `json:"owner"`
-	Role              string                 `json:"role"`
-	Status            string                 `json:"status"`
-	Tasks             []string               `json:"tasks"`
-	Updated_by        map[string]interface{} `json:"updated_by"`
-	Updated_time      time.Time              `json:"updated_time"`
+	Created_by map[string]interface{} `json:"created_by"`
+	Created_time time.Time `json:"created_time"`
+	Email string `json:"email"`
+	Expiration_time time.Time `json:"expiration_time"`
+	Expiry_time time.Time `json:"expiry_time"`
+	Finance_role string `json:"finance_role"`
+	Id string `json:"id"`
+	Invite_link string `json:"invite_link"`
+	Invited_user_type []string `json:"invited_user_type"`
+	Ip_role string `json:"ip_role"`
+	Owner *Business `json:"owner"`
+	Role string `json:"role"`
+	Status string `json:"status"`
+	Tasks []string `json:"tasks"`
+	Updated_by map[string]interface{} `json:"updated_by"`
+	Updated_time time.Time `json:"updated_time"`
 }

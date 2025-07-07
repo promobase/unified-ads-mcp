@@ -17,6 +17,7 @@ import (
 func GetPlaceTopicTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// placetopic_get_ tool
 	// Available fields for PlaceTopic: count, has_children, icon_url, id, name, parent_ids, plural_name, top_subtopic_names
 	// Params object accepts: icon_size (placetopic_icon_size)
@@ -25,9 +26,9 @@ func GetPlaceTopicTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"icon_size": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "icon_size parameter",
-					"enum":        []string{"24", "36", "48", "72"},
+					"enum": []string{ "24", "36", "48", "72" },
 				},
 			}),
 			mcp.Description("Parameters object containing: icon_size (placetopic_icon_size) [24, 36, 48, 72]"),
@@ -47,10 +48,12 @@ func GetPlaceTopicTools() []mcp.Tool {
 	)
 	tools = append(tools, placetopic_get_Tool)
 
+
 	return tools
 }
 
 // PlaceTopic handlers
+
 
 // HandlePlacetopic_get_ handles the placetopic_get_ tool with context-based auth
 func HandlePlacetopic_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -103,6 +106,8 @@ func HandlePlacetopic_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Placetopic_get_(args)
 	if err != nil {
@@ -117,3 +122,4 @@ func HandlePlacetopic_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -17,6 +17,7 @@ import (
 func GetCPASAdvertiserPartnershipRecommendationTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// cpasadvertiserpartnershiprecommendation_get_ tool
 	// Available fields for CPASAdvertiserPartnershipRecommendation: advertiser_business_id, brand_business_id, brands, countries, id, merchant_business_id, merchant_categories, status, status_reason
 	cpasadvertiserpartnershiprecommendation_get_Tool := mcp.NewTool("cpasadvertiserpartnershiprecommendation_get_",
@@ -36,10 +37,12 @@ func GetCPASAdvertiserPartnershipRecommendationTools() []mcp.Tool {
 	)
 	tools = append(tools, cpasadvertiserpartnershiprecommendation_get_Tool)
 
+
 	return tools
 }
 
 // CPASAdvertiserPartnershipRecommendation handlers
+
 
 // HandleCpasadvertiserpartnershiprecommendation_get_ handles the cpasadvertiserpartnershiprecommendation_get_ tool with context-based auth
 func HandleCpasadvertiserpartnershiprecommendation_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleCpasadvertiserpartnershiprecommendation_get_(ctx context.Context, req
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Cpasadvertiserpartnershiprecommendation_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleCpasadvertiserpartnershiprecommendation_get_(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-// OffsiteSignalContainerBusinessObjectClient provides methods for OffsiteSignalContainerBusinessObject operations
+// OffsiteSignalContainerBusinessObjectClient represents a client for OffsiteSignalContainerBusinessObject operations
 type OffsiteSignalContainerBusinessObjectClient struct {
 	accessToken string
 }
@@ -21,42 +21,42 @@ func NewOffsiteSignalContainerBusinessObjectClient(accessToken string) *OffsiteS
 	}
 }
 
-// offsitesignalcontainerbusinessobject_get_linked_application GET linked_application for OffsiteSignalContainerBusinessObject
+
+// Offsitesignalcontainerbusinessobject_get_linked_application performs GET linked_application for OffsiteSignalContainerBusinessObject
 func (c *OffsiteSignalContainerBusinessObjectClient) Offsitesignalcontainerbusinessobject_get_linked_application(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/linked_application")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -88,42 +88,42 @@ func (c *OffsiteSignalContainerBusinessObjectClient) Offsitesignalcontainerbusin
 	return result, nil
 }
 
-// offsitesignalcontainerbusinessobject_get_linked_page GET linked_page for OffsiteSignalContainerBusinessObject
+
+// Offsitesignalcontainerbusinessobject_get_linked_page performs GET linked_page for OffsiteSignalContainerBusinessObject
 func (c *OffsiteSignalContainerBusinessObjectClient) Offsitesignalcontainerbusinessobject_get_linked_page(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/linked_page")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -155,42 +155,42 @@ func (c *OffsiteSignalContainerBusinessObjectClient) Offsitesignalcontainerbusin
 	return result, nil
 }
 
-// offsitesignalcontainerbusinessobject_get_ GET  for OffsiteSignalContainerBusinessObject
+
+// Offsitesignalcontainerbusinessobject_get_ performs GET  for OffsiteSignalContainerBusinessObject
 func (c *OffsiteSignalContainerBusinessObjectClient) Offsitesignalcontainerbusinessobject_get_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -221,3 +221,4 @@ func (c *OffsiteSignalContainerBusinessObjectClient) Offsitesignalcontainerbusin
 
 	return result, nil
 }
+

@@ -17,6 +17,7 @@ import (
 func GetAdsNamingTemplateTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// adsnamingtemplate_get_ tool
 	// Available fields for AdsNamingTemplate: api_fields, api_version, field_order, id, level, separator, template_version, user_defined_fields, value_separator
 	adsnamingtemplate_get_Tool := mcp.NewTool("adsnamingtemplate_get_",
@@ -36,10 +37,12 @@ func GetAdsNamingTemplateTools() []mcp.Tool {
 	)
 	tools = append(tools, adsnamingtemplate_get_Tool)
 
+
 	return tools
 }
 
 // AdsNamingTemplate handlers
+
 
 // HandleAdsnamingtemplate_get_ handles the adsnamingtemplate_get_ tool with context-based auth
 func HandleAdsnamingtemplate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleAdsnamingtemplate_get_(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adsnamingtemplate_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleAdsnamingtemplate_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

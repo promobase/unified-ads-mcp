@@ -4,8 +4,8 @@ package types
 
 // ProductSetMetadata represents a Facebook ProductSetMetadata object
 type ProductSetMetadata struct {
-	Cover_image_url         string `json:"cover_image_url"`
-	Description             string `json:"description"`
-	External_url            string `json:"external_url"`
+	Cover_image_url string `json:"cover_image_url"`
+	Description string `json:"description"`
+	External_url string `json:"external_url"`
 	Integrity_review_status string `json:"integrity_review_status"`
 }

@@ -4,25 +4,25 @@ package constants
 
 // ExtendedCreditInvoiceGroupFields contains field name constants for ExtendedCreditInvoiceGroup objects
 var ExtendedCreditInvoiceGroupFields = struct {
-	AutoEnroll       string
-	BillToAddress    string
+	AutoEnroll string
+	BillToAddress string
 	CustomerPoNumber string
-	Email            string
-	Emails           string
-	Id               string
-	LiableAddress    string
-	Name             string
-	SoldToAddress    string
+	Email string
+	Emails string
+	Id string
+	LiableAddress string
+	Name string
+	SoldToAddress string
 }{
-	AutoEnroll:       "auto_enroll",
-	BillToAddress:    "bill_to_address",
+	AutoEnroll: "auto_enroll",
+	BillToAddress: "bill_to_address",
 	CustomerPoNumber: "customer_po_number",
-	Email:            "email",
-	Emails:           "emails",
-	Id:               "id",
-	LiableAddress:    "liable_address",
-	Name:             "name",
-	SoldToAddress:    "sold_to_address",
+	Email: "email",
+	Emails: "emails",
+	Id: "id",
+	LiableAddress: "liable_address",
+	Name: "name",
+	SoldToAddress: "sold_to_address",
 }
 
 // ExtendedCreditInvoiceGroupFieldsList contains all available fields for ExtendedCreditInvoiceGroup objects

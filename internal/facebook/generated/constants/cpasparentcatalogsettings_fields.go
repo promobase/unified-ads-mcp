@@ -4,15 +4,15 @@ package constants
 
 // CPASParentCatalogSettingsFields contains field name constants for CPASParentCatalogSettings objects
 var CPASParentCatalogSettingsFields = struct {
-	AttributionWindows        string
-	DefaultCurrency           string
+	AttributionWindows string
+	DefaultCurrency string
 	DisableUseAsParentCatalog string
-	Id                        string
+	Id string
 }{
-	AttributionWindows:        "attribution_windows",
-	DefaultCurrency:           "default_currency",
+	AttributionWindows: "attribution_windows",
+	DefaultCurrency: "default_currency",
 	DisableUseAsParentCatalog: "disable_use_as_parent_catalog",
-	Id:                        "id",
+	Id: "id",
 }
 
 // CPASParentCatalogSettingsFieldsList contains all available fields for CPASParentCatalogSettings objects

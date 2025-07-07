@@ -5,26 +5,26 @@ package constants
 // ProductSetFields contains field name constants for ProductSet objects
 var ProductSetFields = struct {
 	AutoCreationUrl string
-	Filter          string
-	Id              string
-	LatestMetadata  string
-	LiveMetadata    string
-	Name            string
-	OrderingInfo    string
-	ProductCatalog  string
-	ProductCount    string
-	RetailerId      string
+	Filter string
+	Id string
+	LatestMetadata string
+	LiveMetadata string
+	Name string
+	OrderingInfo string
+	ProductCatalog string
+	ProductCount string
+	RetailerId string
 }{
 	AutoCreationUrl: "auto_creation_url",
-	Filter:          "filter",
-	Id:              "id",
-	LatestMetadata:  "latest_metadata",
-	LiveMetadata:    "live_metadata",
-	Name:            "name",
-	OrderingInfo:    "ordering_info",
-	ProductCatalog:  "product_catalog",
-	ProductCount:    "product_count",
-	RetailerId:      "retailer_id",
+	Filter: "filter",
+	Id: "id",
+	LatestMetadata: "latest_metadata",
+	LiveMetadata: "live_metadata",
+	Name: "name",
+	OrderingInfo: "ordering_info",
+	ProductCatalog: "product_catalog",
+	ProductCount: "product_count",
+	RetailerId: "retailer_id",
 }
 
 // ProductSetFieldsList contains all available fields for ProductSet objects

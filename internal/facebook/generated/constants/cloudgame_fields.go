@@ -4,25 +4,25 @@ package constants
 
 // CloudGameFields contains field name constants for CloudGame objects
 var CloudGameFields = struct {
-	Id                     string
-	Name                   string
-	Owner                  string
-	PlayableAdFileSize     string
-	PlayableAdOrientation  string
-	PlayableAdPackageName  string
+	Id string
+	Name string
+	Owner string
+	PlayableAdFileSize string
+	PlayableAdOrientation string
+	PlayableAdPackageName string
 	PlayableAdRejectReason string
-	PlayableAdStatus       string
-	PlayableAdUploadTime   string
+	PlayableAdStatus string
+	PlayableAdUploadTime string
 }{
-	Id:                     "id",
-	Name:                   "name",
-	Owner:                  "owner",
-	PlayableAdFileSize:     "playable_ad_file_size",
-	PlayableAdOrientation:  "playable_ad_orientation",
-	PlayableAdPackageName:  "playable_ad_package_name",
+	Id: "id",
+	Name: "name",
+	Owner: "owner",
+	PlayableAdFileSize: "playable_ad_file_size",
+	PlayableAdOrientation: "playable_ad_orientation",
+	PlayableAdPackageName: "playable_ad_package_name",
 	PlayableAdRejectReason: "playable_ad_reject_reason",
-	PlayableAdStatus:       "playable_ad_status",
-	PlayableAdUploadTime:   "playable_ad_upload_time",
+	PlayableAdStatus: "playable_ad_status",
+	PlayableAdUploadTime: "playable_ad_upload_time",
 }
 
 // CloudGameFieldsList contains all available fields for CloudGame objects

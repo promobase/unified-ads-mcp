@@ -4,10 +4,10 @@ package types
 
 // ProductItemImporterAddress represents a Facebook ProductItemImporterAddress object
 type ProductItemImporterAddress struct {
-	City        string `json:"city"`
-	Country     string `json:"country"`
+	City string `json:"city"`
+	Country string `json:"country"`
 	Postal_code string `json:"postal_code"`
-	Region      string `json:"region"`
-	Street1     string `json:"street1"`
-	Street2     string `json:"street2"`
+	Region string `json:"region"`
+	Street1 string `json:"street1"`
+	Street2 string `json:"street2"`
 }

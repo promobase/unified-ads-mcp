@@ -4,17 +4,17 @@ package constants
 
 // MessagingAppsInfoFields contains field name constants for MessagingAppsInfo objects
 var MessagingAppsInfoFields = struct {
-	CtdSupportOnlyForIgApp          string
+	CtdSupportOnlyForIgApp string
 	HasInstagramMessagingPermission string
 	HasMessengerMessagingPermission string
-	Id                              string
-	Name                            string
+	Id string
+	Name string
 }{
-	CtdSupportOnlyForIgApp:          "ctd_support_only_for_ig_app",
+	CtdSupportOnlyForIgApp: "ctd_support_only_for_ig_app",
 	HasInstagramMessagingPermission: "has_instagram_messaging_permission",
 	HasMessengerMessagingPermission: "has_messenger_messaging_permission",
-	Id:                              "id",
-	Name:                            "name",
+	Id: "id",
+	Name: "name",
 }
 
 // MessagingAppsInfoFieldsList contains all available fields for MessagingAppsInfo objects

@@ -4,11 +4,11 @@ package constants
 
 // ReportingAudienceFields contains field name constants for ReportingAudience objects
 var ReportingAudienceFields = struct {
-	CustomAudiences             string
+	CustomAudiences string
 	CustomAudiencesUrlParamName string
 	CustomAudiencesUrlParamType string
 }{
-	CustomAudiences:             "custom_audiences",
+	CustomAudiences: "custom_audiences",
 	CustomAudiencesUrlParamName: "custom_audiences_url_param_name",
 	CustomAudiencesUrlParamType: "custom_audiences_url_param_type",
 }

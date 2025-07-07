@@ -17,6 +17,7 @@ import (
 func GetAREffectTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// areffect_get_ tool
 	// Available fields for AREffect: creation_time, id, last_modified_time, name, status, surfaces
 	areffect_get_Tool := mcp.NewTool("areffect_get_",
@@ -36,10 +37,12 @@ func GetAREffectTools() []mcp.Tool {
 	)
 	tools = append(tools, areffect_get_Tool)
 
+
 	return tools
 }
 
 // AREffect handlers
+
 
 // HandleAreffect_get_ handles the areffect_get_ tool with context-based auth
 func HandleAreffect_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleAreffect_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Areffect_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleAreffect_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

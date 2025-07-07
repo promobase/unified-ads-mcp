@@ -4,25 +4,25 @@ package constants
 
 // OfflineConversionDataSetActivitiesFields contains field name constants for OfflineConversionDataSetActivities objects
 var OfflineConversionDataSetActivitiesFields = struct {
-	ActorId       string
-	ActorName     string
-	AdaccountId   string
+	ActorId string
+	ActorName string
+	AdaccountId string
 	AdaccountName string
-	EventTime     string
-	EventType     string
-	ExtraData     string
-	ObjectId      string
-	ObjectName    string
+	EventTime string
+	EventType string
+	ExtraData string
+	ObjectId string
+	ObjectName string
 }{
-	ActorId:       "actor_id",
-	ActorName:     "actor_name",
-	AdaccountId:   "adaccount_id",
+	ActorId: "actor_id",
+	ActorName: "actor_name",
+	AdaccountId: "adaccount_id",
 	AdaccountName: "adaccount_name",
-	EventTime:     "event_time",
-	EventType:     "event_type",
-	ExtraData:     "extra_data",
-	ObjectId:      "object_id",
-	ObjectName:    "object_name",
+	EventTime: "event_time",
+	EventType: "event_type",
+	ExtraData: "extra_data",
+	ObjectId: "object_id",
+	ObjectName: "object_name",
 }
 
 // OfflineConversionDataSetActivitiesFieldsList contains all available fields for OfflineConversionDataSetActivities objects

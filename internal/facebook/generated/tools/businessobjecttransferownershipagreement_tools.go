@@ -17,6 +17,7 @@ import (
 func GetBusinessObjectTransferOwnershipAgreementTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// businessobjecttransferownershipagreement_get_ tool
 	// Available fields for BusinessObjectTransferOwnershipAgreement: id, receiving_business, requesting_business, status
 	businessobjecttransferownershipagreement_get_Tool := mcp.NewTool("businessobjecttransferownershipagreement_get_",
@@ -36,10 +37,12 @@ func GetBusinessObjectTransferOwnershipAgreementTools() []mcp.Tool {
 	)
 	tools = append(tools, businessobjecttransferownershipagreement_get_Tool)
 
+
 	return tools
 }
 
 // BusinessObjectTransferOwnershipAgreement handlers
+
 
 // HandleBusinessobjecttransferownershipagreement_get_ handles the businessobjecttransferownershipagreement_get_ tool with context-based auth
 func HandleBusinessobjecttransferownershipagreement_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleBusinessobjecttransferownershipagreement_get_(ctx context.Context, re
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Businessobjecttransferownershipagreement_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleBusinessobjecttransferownershipagreement_get_(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

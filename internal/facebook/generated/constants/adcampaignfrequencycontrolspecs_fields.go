@@ -4,11 +4,11 @@ package constants
 
 // AdCampaignFrequencyControlSpecsFields contains field name constants for AdCampaignFrequencyControlSpecs objects
 var AdCampaignFrequencyControlSpecsFields = struct {
-	Event        string
+	Event string
 	IntervalDays string
 	MaxFrequency string
 }{
-	Event:        "event",
+	Event: "event",
 	IntervalDays: "interval_days",
 	MaxFrequency: "max_frequency",
 }

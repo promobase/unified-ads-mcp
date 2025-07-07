@@ -5,10 +5,10 @@ package constants
 // AdCampaignMultiAdsFields contains field name constants for AdCampaignMultiAds objects
 var AdCampaignMultiAdsFields = struct {
 	EnrollStatus string
-	SourceType   string
+	SourceType string
 }{
 	EnrollStatus: "enroll_status",
-	SourceType:   "source_type",
+	SourceType: "source_type",
 }
 
 // AdCampaignMultiAdsFieldsList contains all available fields for AdCampaignMultiAds objects

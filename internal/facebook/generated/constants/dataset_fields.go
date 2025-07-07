@@ -4,10 +4,10 @@ package constants
 
 // DatasetFields contains field name constants for Dataset objects
 var DatasetFields = struct {
-	Id   string
+	Id string
 	Name string
 }{
-	Id:   "id",
+	Id: "id",
 	Name: "name",
 }
 

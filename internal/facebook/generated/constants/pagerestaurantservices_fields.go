@@ -6,25 +6,25 @@ package constants
 var PageRestaurantServicesFields = struct {
 	Catering string
 	Delivery string
-	Groups   string
-	Kids     string
-	Outdoor  string
-	Pickup   string
-	Reserve  string
-	Takeout  string
-	Waiter   string
-	Walkins  string
+	Groups string
+	Kids string
+	Outdoor string
+	Pickup string
+	Reserve string
+	Takeout string
+	Waiter string
+	Walkins string
 }{
 	Catering: "catering",
 	Delivery: "delivery",
-	Groups:   "groups",
-	Kids:     "kids",
-	Outdoor:  "outdoor",
-	Pickup:   "pickup",
-	Reserve:  "reserve",
-	Takeout:  "takeout",
-	Waiter:   "waiter",
-	Walkins:  "walkins",
+	Groups: "groups",
+	Kids: "kids",
+	Outdoor: "outdoor",
+	Pickup: "pickup",
+	Reserve: "reserve",
+	Takeout: "takeout",
+	Waiter: "waiter",
+	Walkins: "walkins",
 }
 
 // PageRestaurantServicesFieldsList contains all available fields for PageRestaurantServices objects

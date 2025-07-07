@@ -4,9 +4,9 @@ package types
 
 // AdCreativeBrandedContentAdsPartners represents a Facebook AdCreativeBrandedContentAdsPartners object
 type AdCreativeBrandedContentAdsPartners struct {
-	Fb_page_id            string `json:"fb_page_id"`
-	Has_create_ads_access bool   `json:"has_create_ads_access"`
-	Identity_type         string `json:"identity_type"`
-	Ig_asset_id           string `json:"ig_asset_id"`
-	Ig_user_id            string `json:"ig_user_id"`
+	Fb_page_id string `json:"fb_page_id"`
+	Has_create_ads_access bool `json:"has_create_ads_access"`
+	Identity_type string `json:"identity_type"`
+	Ig_asset_id string `json:"ig_asset_id"`
+	Ig_user_id string `json:"ig_user_id"`
 }

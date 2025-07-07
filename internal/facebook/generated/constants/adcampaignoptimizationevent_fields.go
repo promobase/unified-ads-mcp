@@ -5,12 +5,12 @@ package constants
 // AdCampaignOptimizationEventFields contains field name constants for AdCampaignOptimizationEvent objects
 var AdCampaignOptimizationEventFields = struct {
 	CustomConversionId string
-	EventSequence      string
-	EventType          string
+	EventSequence string
+	EventType string
 }{
 	CustomConversionId: "custom_conversion_id",
-	EventSequence:      "event_sequence",
-	EventType:          "event_type",
+	EventSequence: "event_sequence",
+	EventType: "event_type",
 }
 
 // AdCampaignOptimizationEventFieldsList contains all available fields for AdCampaignOptimizationEvent objects

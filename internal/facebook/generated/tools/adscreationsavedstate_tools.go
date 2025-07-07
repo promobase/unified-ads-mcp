@@ -17,6 +17,7 @@ import (
 func GetAdsCreationSavedStateTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// adscreationsavedstate_get_ tool
 	// Available fields for AdsCreationSavedState: ad_account, id, serialized_store_data, time_updated, user
 	adscreationsavedstate_get_Tool := mcp.NewTool("adscreationsavedstate_get_",
@@ -36,10 +37,12 @@ func GetAdsCreationSavedStateTools() []mcp.Tool {
 	)
 	tools = append(tools, adscreationsavedstate_get_Tool)
 
+
 	return tools
 }
 
 // AdsCreationSavedState handlers
+
 
 // HandleAdscreationsavedstate_get_ handles the adscreationsavedstate_get_ tool with context-based auth
 func HandleAdscreationsavedstate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleAdscreationsavedstate_get_(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adscreationsavedstate_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleAdscreationsavedstate_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

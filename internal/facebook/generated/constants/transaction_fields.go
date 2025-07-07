@@ -4,51 +4,51 @@ package constants
 
 // TransactionFields contains field name constants for Transaction objects
 var TransactionFields = struct {
-	AccountId               string
-	AppAmount               string
-	BillingEndTime          string
-	BillingReason           string
-	BillingStartTime        string
-	CardChargeMode          string
-	ChargeType              string
+	AccountId string
+	AppAmount string
+	BillingEndTime string
+	BillingReason string
+	BillingStartTime string
+	CardChargeMode string
+	ChargeType string
 	CheckoutCampaignGroupId string
-	CredentialId            string
-	FaturaId                string
-	Id                      string
-	IsBusinessEcCharge      string
-	IsFundingEvent          string
-	PaymentOption           string
-	ProductType             string
-	ProviderAmount          string
-	Status                  string
-	Time                    string
-	TrackingId              string
-	TransactionType         string
-	TxType                  string
-	VatInvoiceId            string
+	CredentialId string
+	FaturaId string
+	Id string
+	IsBusinessEcCharge string
+	IsFundingEvent string
+	PaymentOption string
+	ProductType string
+	ProviderAmount string
+	Status string
+	Time string
+	TrackingId string
+	TransactionType string
+	TxType string
+	VatInvoiceId string
 }{
-	AccountId:               "account_id",
-	AppAmount:               "app_amount",
-	BillingEndTime:          "billing_end_time",
-	BillingReason:           "billing_reason",
-	BillingStartTime:        "billing_start_time",
-	CardChargeMode:          "card_charge_mode",
-	ChargeType:              "charge_type",
+	AccountId: "account_id",
+	AppAmount: "app_amount",
+	BillingEndTime: "billing_end_time",
+	BillingReason: "billing_reason",
+	BillingStartTime: "billing_start_time",
+	CardChargeMode: "card_charge_mode",
+	ChargeType: "charge_type",
 	CheckoutCampaignGroupId: "checkout_campaign_group_id",
-	CredentialId:            "credential_id",
-	FaturaId:                "fatura_id",
-	Id:                      "id",
-	IsBusinessEcCharge:      "is_business_ec_charge",
-	IsFundingEvent:          "is_funding_event",
-	PaymentOption:           "payment_option",
-	ProductType:             "product_type",
-	ProviderAmount:          "provider_amount",
-	Status:                  "status",
-	Time:                    "time",
-	TrackingId:              "tracking_id",
-	TransactionType:         "transaction_type",
-	TxType:                  "tx_type",
-	VatInvoiceId:            "vat_invoice_id",
+	CredentialId: "credential_id",
+	FaturaId: "fatura_id",
+	Id: "id",
+	IsBusinessEcCharge: "is_business_ec_charge",
+	IsFundingEvent: "is_funding_event",
+	PaymentOption: "payment_option",
+	ProductType: "product_type",
+	ProviderAmount: "provider_amount",
+	Status: "status",
+	Time: "time",
+	TrackingId: "tracking_id",
+	TransactionType: "transaction_type",
+	TxType: "tx_type",
+	VatInvoiceId: "vat_invoice_id",
 }
 
 // TransactionFieldsList contains all available fields for Transaction objects

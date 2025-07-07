@@ -4,45 +4,45 @@ package constants
 
 // LeadFields contains field name constants for Lead objects
 var LeadFields = struct {
-	AdId                      string
-	AdName                    string
-	AdsetId                   string
-	AdsetName                 string
-	CampaignId                string
-	CampaignName              string
-	CreatedTime               string
+	AdId string
+	AdName string
+	AdsetId string
+	AdsetName string
+	CampaignId string
+	CampaignName string
+	CreatedTime string
 	CustomDisclaimerResponses string
-	FieldData                 string
-	FormId                    string
-	HomeListing               string
-	Id                        string
-	IsOrganic                 string
-	PartnerName               string
-	Platform                  string
-	Post                      string
+	FieldData string
+	FormId string
+	HomeListing string
+	Id string
+	IsOrganic string
+	PartnerName string
+	Platform string
+	Post string
 	PostSubmissionCheckResult string
-	RetailerItemId            string
-	Vehicle                   string
+	RetailerItemId string
+	Vehicle string
 }{
-	AdId:                      "ad_id",
-	AdName:                    "ad_name",
-	AdsetId:                   "adset_id",
-	AdsetName:                 "adset_name",
-	CampaignId:                "campaign_id",
-	CampaignName:              "campaign_name",
-	CreatedTime:               "created_time",
+	AdId: "ad_id",
+	AdName: "ad_name",
+	AdsetId: "adset_id",
+	AdsetName: "adset_name",
+	CampaignId: "campaign_id",
+	CampaignName: "campaign_name",
+	CreatedTime: "created_time",
 	CustomDisclaimerResponses: "custom_disclaimer_responses",
-	FieldData:                 "field_data",
-	FormId:                    "form_id",
-	HomeListing:               "home_listing",
-	Id:                        "id",
-	IsOrganic:                 "is_organic",
-	PartnerName:               "partner_name",
-	Platform:                  "platform",
-	Post:                      "post",
+	FieldData: "field_data",
+	FormId: "form_id",
+	HomeListing: "home_listing",
+	Id: "id",
+	IsOrganic: "is_organic",
+	PartnerName: "partner_name",
+	Platform: "platform",
+	Post: "post",
 	PostSubmissionCheckResult: "post_submission_check_result",
-	RetailerItemId:            "retailer_item_id",
-	Vehicle:                   "vehicle",
+	RetailerItemId: "retailer_item_id",
+	Vehicle: "vehicle",
 }
 
 // LeadFieldsList contains all available fields for Lead objects

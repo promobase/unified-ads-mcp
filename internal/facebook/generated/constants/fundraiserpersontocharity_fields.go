@@ -4,51 +4,51 @@ package constants
 
 // FundraiserPersonToCharityFields contains field name constants for FundraiserPersonToCharity objects
 var FundraiserPersonToCharityFields = struct {
-	AmountRaised           string
-	CharityId              string
-	Currency               string
-	Description            string
-	DonationsCount         string
-	DonorsCount            string
-	EndTime                string
-	ExternalAmountRaised   string
+	AmountRaised string
+	CharityId string
+	Currency string
+	Description string
+	DonationsCount string
+	DonorsCount string
+	EndTime string
+	ExternalAmountRaised string
 	ExternalDonationsCount string
-	ExternalDonorsCount    string
-	ExternalEventName      string
+	ExternalDonorsCount string
+	ExternalEventName string
 	ExternalEventStartTime string
-	ExternalEventUri       string
-	ExternalFundraiserUri  string
-	ExternalId             string
-	GoalAmount             string
-	Id                     string
-	InternalAmountRaised   string
+	ExternalEventUri string
+	ExternalFundraiserUri string
+	ExternalId string
+	GoalAmount string
+	Id string
+	InternalAmountRaised string
 	InternalDonationsCount string
-	InternalDonorsCount    string
-	Name                   string
-	Uri                    string
+	InternalDonorsCount string
+	Name string
+	Uri string
 }{
-	AmountRaised:           "amount_raised",
-	CharityId:              "charity_id",
-	Currency:               "currency",
-	Description:            "description",
-	DonationsCount:         "donations_count",
-	DonorsCount:            "donors_count",
-	EndTime:                "end_time",
-	ExternalAmountRaised:   "external_amount_raised",
+	AmountRaised: "amount_raised",
+	CharityId: "charity_id",
+	Currency: "currency",
+	Description: "description",
+	DonationsCount: "donations_count",
+	DonorsCount: "donors_count",
+	EndTime: "end_time",
+	ExternalAmountRaised: "external_amount_raised",
 	ExternalDonationsCount: "external_donations_count",
-	ExternalDonorsCount:    "external_donors_count",
-	ExternalEventName:      "external_event_name",
+	ExternalDonorsCount: "external_donors_count",
+	ExternalEventName: "external_event_name",
 	ExternalEventStartTime: "external_event_start_time",
-	ExternalEventUri:       "external_event_uri",
-	ExternalFundraiserUri:  "external_fundraiser_uri",
-	ExternalId:             "external_id",
-	GoalAmount:             "goal_amount",
-	Id:                     "id",
-	InternalAmountRaised:   "internal_amount_raised",
+	ExternalEventUri: "external_event_uri",
+	ExternalFundraiserUri: "external_fundraiser_uri",
+	ExternalId: "external_id",
+	GoalAmount: "goal_amount",
+	Id: "id",
+	InternalAmountRaised: "internal_amount_raised",
 	InternalDonationsCount: "internal_donations_count",
-	InternalDonorsCount:    "internal_donors_count",
-	Name:                   "name",
-	Uri:                    "uri",
+	InternalDonorsCount: "internal_donors_count",
+	Name: "name",
+	Uri: "uri",
 }
 
 // FundraiserPersonToCharityFieldsList contains all available fields for FundraiserPersonToCharity objects

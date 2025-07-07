@@ -5,12 +5,12 @@ package constants
 // CustomConversionStatsResultFields contains field name constants for CustomConversionStatsResult objects
 var CustomConversionStatsResultFields = struct {
 	Aggregation string
-	Data        string
-	Timestamp   string
+	Data string
+	Timestamp string
 }{
 	Aggregation: "aggregation",
-	Data:        "data",
-	Timestamp:   "timestamp",
+	Data: "data",
+	Timestamp: "timestamp",
 }
 
 // CustomConversionStatsResultFieldsList contains all available fields for CustomConversionStatsResult objects

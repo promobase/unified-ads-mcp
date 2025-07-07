@@ -4,43 +4,43 @@ package constants
 
 // CommerceMerchantSettingsFields contains field name constants for CommerceMerchantSettings objects
 var CommerceMerchantSettingsFields = struct {
-	CheckoutConfig          string
-	CheckoutMessage         string
-	ContactEmail            string
-	Cta                     string
-	DisplayName             string
-	FacebookChannel         string
-	Id                      string
-	InstagramChannel        string
-	KoreaFtcListing         string
-	MerchantPage            string
-	MerchantStatus          string
-	OnsiteCommerceMerchant  string
-	PaymentProvider         string
-	PrivacyPolicyLocalized  string
-	ReturnPolicyLocalized   string
+	CheckoutConfig string
+	CheckoutMessage string
+	ContactEmail string
+	Cta string
+	DisplayName string
+	FacebookChannel string
+	Id string
+	InstagramChannel string
+	KoreaFtcListing string
+	MerchantPage string
+	MerchantStatus string
+	OnsiteCommerceMerchant string
+	PaymentProvider string
+	PrivacyPolicyLocalized string
+	ReturnPolicyLocalized string
 	ReviewRejectionMessages string
-	ReviewRejectionReasons  string
-	Terms                   string
+	ReviewRejectionReasons string
+	Terms string
 }{
-	CheckoutConfig:          "checkout_config",
-	CheckoutMessage:         "checkout_message",
-	ContactEmail:            "contact_email",
-	Cta:                     "cta",
-	DisplayName:             "display_name",
-	FacebookChannel:         "facebook_channel",
-	Id:                      "id",
-	InstagramChannel:        "instagram_channel",
-	KoreaFtcListing:         "korea_ftc_listing",
-	MerchantPage:            "merchant_page",
-	MerchantStatus:          "merchant_status",
-	OnsiteCommerceMerchant:  "onsite_commerce_merchant",
-	PaymentProvider:         "payment_provider",
-	PrivacyPolicyLocalized:  "privacy_policy_localized",
-	ReturnPolicyLocalized:   "return_policy_localized",
+	CheckoutConfig: "checkout_config",
+	CheckoutMessage: "checkout_message",
+	ContactEmail: "contact_email",
+	Cta: "cta",
+	DisplayName: "display_name",
+	FacebookChannel: "facebook_channel",
+	Id: "id",
+	InstagramChannel: "instagram_channel",
+	KoreaFtcListing: "korea_ftc_listing",
+	MerchantPage: "merchant_page",
+	MerchantStatus: "merchant_status",
+	OnsiteCommerceMerchant: "onsite_commerce_merchant",
+	PaymentProvider: "payment_provider",
+	PrivacyPolicyLocalized: "privacy_policy_localized",
+	ReturnPolicyLocalized: "return_policy_localized",
 	ReviewRejectionMessages: "review_rejection_messages",
-	ReviewRejectionReasons:  "review_rejection_reasons",
-	Terms:                   "terms",
+	ReviewRejectionReasons: "review_rejection_reasons",
+	Terms: "terms",
 }
 
 // CommerceMerchantSettingsFieldsList contains all available fields for CommerceMerchantSettings objects

@@ -5,22 +5,22 @@ package constants
 // WhitehatFBDLRunFields contains field name constants for WhitehatFBDLRun objects
 var WhitehatFBDLRunFields = struct {
 	CreationTime string
-	Id           string
-	IsPinned     string
-	Note         string
-	Result       string
-	RunCode      string
-	Status       string
-	UserType     string
+	Id string
+	IsPinned string
+	Note string
+	Result string
+	RunCode string
+	Status string
+	UserType string
 }{
 	CreationTime: "creation_time",
-	Id:           "id",
-	IsPinned:     "is_pinned",
-	Note:         "note",
-	Result:       "result",
-	RunCode:      "run_code",
-	Status:       "status",
-	UserType:     "user_type",
+	Id: "id",
+	IsPinned: "is_pinned",
+	Note: "note",
+	Result: "result",
+	RunCode: "run_code",
+	Status: "status",
+	UserType: "user_type",
 }
 
 // WhitehatFBDLRunFieldsList contains all available fields for WhitehatFBDLRun objects

@@ -4,14 +4,14 @@ package constants
 
 // DynamicVideoMetadataFields contains field name constants for DynamicVideoMetadata objects
 var DynamicVideoMetadataFields = struct {
-	Id    string
-	Tags  string
-	Url   string
+	Id string
+	Tags string
+	Url string
 	Video string
 }{
-	Id:    "id",
-	Tags:  "tags",
-	Url:   "url",
+	Id: "id",
+	Tags: "tags",
+	Url: "url",
 	Video: "video",
 }
 

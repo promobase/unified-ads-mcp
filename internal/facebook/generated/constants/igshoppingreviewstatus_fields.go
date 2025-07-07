@@ -5,12 +5,12 @@ package constants
 // IGShoppingReviewStatusFields contains field name constants for IGShoppingReviewStatus objects
 var IGShoppingReviewStatusFields = struct {
 	OnsiteEligibility string
-	Reasons           string
-	Status            string
+	Reasons string
+	Status string
 }{
 	OnsiteEligibility: "onsite_eligibility",
-	Reasons:           "reasons",
-	Status:            "status",
+	Reasons: "reasons",
+	Status: "status",
 }
 
 // IGShoppingReviewStatusFieldsList contains all available fields for IGShoppingReviewStatus objects

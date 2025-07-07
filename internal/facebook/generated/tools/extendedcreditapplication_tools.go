@@ -17,6 +17,7 @@ import (
 func GetExtendedCreditApplicationTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// extendedcreditapplication_get_ tool
 	// Available fields for ExtendedCreditApplication: billing_country, city, cnpj, country, display_currency, duns_number, id, invoice_email_address, is_umi, legal_entity_name, original_online_limit, phone_number, postal_code, product_types, proposed_credit_limit, registration_number, run_id, state, status, street1, street2, submitter, tax_exempt_status, tax_id, terms
 	extendedcreditapplication_get_Tool := mcp.NewTool("extendedcreditapplication_get_",
@@ -36,10 +37,12 @@ func GetExtendedCreditApplicationTools() []mcp.Tool {
 	)
 	tools = append(tools, extendedcreditapplication_get_Tool)
 
+
 	return tools
 }
 
 // ExtendedCreditApplication handlers
+
 
 // HandleExtendedcreditapplication_get_ handles the extendedcreditapplication_get_ tool with context-based auth
 func HandleExtendedcreditapplication_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleExtendedcreditapplication_get_(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Extendedcreditapplication_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleExtendedcreditapplication_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

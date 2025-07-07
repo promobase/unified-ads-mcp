@@ -4,16 +4,16 @@ package constants
 
 // TargetingGeoLocationGeoEntitiesFields contains field name constants for TargetingGeoLocationGeoEntities objects
 var TargetingGeoLocationGeoEntitiesFields = struct {
-	Country  string
-	Key      string
-	Name     string
-	Region   string
+	Country string
+	Key string
+	Name string
+	Region string
 	RegionId string
 }{
-	Country:  "country",
-	Key:      "key",
-	Name:     "name",
-	Region:   "region",
+	Country: "country",
+	Key: "key",
+	Name: "name",
+	Region: "region",
 	RegionId: "region_id",
 }
 

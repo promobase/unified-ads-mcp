@@ -17,6 +17,7 @@ import (
 func GetMessengerBusinessTemplateTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// messengerbusinesstemplate_get_ tool
 	// Available fields for MessengerBusinessTemplate: category, components, creation_time, id, language, language_count, last_updated_time, library_template_name, name, rejected_reason, rejection_reasons, specific_rejection_reasons, status
 	messengerbusinesstemplate_get_Tool := mcp.NewTool("messengerbusinesstemplate_get_",
@@ -43,9 +44,9 @@ func GetMessengerBusinessTemplateTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"components": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "components parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: components (array<object>)"),
@@ -53,10 +54,12 @@ func GetMessengerBusinessTemplateTools() []mcp.Tool {
 	)
 	tools = append(tools, messengerbusinesstemplate_post_Tool)
 
+
 	return tools
 }
 
 // MessengerBusinessTemplate handlers
+
 
 // HandleMessengerbusinesstemplate_get_ handles the messengerbusinesstemplate_get_ tool with context-based auth
 func HandleMessengerbusinesstemplate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -97,6 +100,8 @@ func HandleMessengerbusinesstemplate_get_(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Messengerbusinesstemplate_get_(args)
 	if err != nil {
@@ -111,6 +116,7 @@ func HandleMessengerbusinesstemplate_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleMessengerbusinesstemplate_post_ handles the messengerbusinesstemplate_post_ tool with context-based auth
 func HandleMessengerbusinesstemplate_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -138,6 +144,8 @@ func HandleMessengerbusinesstemplate_post_(ctx context.Context, request mcp.Call
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Messengerbusinesstemplate_post_(args)
 	if err != nil {
@@ -152,3 +160,4 @@ func HandleMessengerbusinesstemplate_post_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

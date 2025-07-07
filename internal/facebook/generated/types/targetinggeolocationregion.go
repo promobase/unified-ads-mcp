@@ -5,6 +5,6 @@ package types
 // TargetingGeoLocationRegion represents a Facebook TargetingGeoLocationRegion object
 type TargetingGeoLocationRegion struct {
 	Country string `json:"country"`
-	Key     string `json:"key"`
-	Name    string `json:"name"`
+	Key string `json:"key"`
+	Name string `json:"name"`
 }

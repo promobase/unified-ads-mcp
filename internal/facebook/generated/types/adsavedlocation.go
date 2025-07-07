@@ -4,14 +4,14 @@ package types
 
 // AdSavedLocation represents a Facebook AdSavedLocation object
 type AdSavedLocation struct {
-	Cities             []TargetingGeoLocationCity           `json:"cities"`
-	Countries          []string                             `json:"countries"`
-	Country_groups     []string                             `json:"country_groups"`
-	Custom_locations   []TargetingGeoLocationCustomLocation `json:"custom_locations"`
-	Geo_markets        []TargetingGeoLocationMarket         `json:"geo_markets"`
-	Id                 string                               `json:"id"`
-	Location_sentences []string                             `json:"location_sentences"`
-	Name               string                               `json:"name"`
-	Regions            []TargetingGeoLocationRegion         `json:"regions"`
-	Zips               []TargetingGeoLocationZip            `json:"zips"`
+	Cities []TargetingGeoLocationCity `json:"cities"`
+	Countries []string `json:"countries"`
+	Country_groups []string `json:"country_groups"`
+	Custom_locations []TargetingGeoLocationCustomLocation `json:"custom_locations"`
+	Geo_markets []TargetingGeoLocationMarket `json:"geo_markets"`
+	Id string `json:"id"`
+	Location_sentences []string `json:"location_sentences"`
+	Name string `json:"name"`
+	Regions []TargetingGeoLocationRegion `json:"regions"`
+	Zips []TargetingGeoLocationZip `json:"zips"`
 }

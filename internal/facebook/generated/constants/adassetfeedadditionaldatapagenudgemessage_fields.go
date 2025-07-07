@@ -4,13 +4,13 @@ package constants
 
 // AdAssetFeedAdditionalDataPageNudgeMessageFields contains field name constants for AdAssetFeedAdditionalDataPageNudgeMessage objects
 var AdAssetFeedAdditionalDataPageNudgeMessageFields = struct {
-	Enabled      string
+	Enabled string
 	QuickReplies string
-	Text         string
+	Text string
 }{
-	Enabled:      "enabled",
+	Enabled: "enabled",
 	QuickReplies: "quick_replies",
-	Text:         "text",
+	Text: "text",
 }
 
 // AdAssetFeedAdditionalDataPageNudgeMessageFieldsList contains all available fields for AdAssetFeedAdditionalDataPageNudgeMessage objects

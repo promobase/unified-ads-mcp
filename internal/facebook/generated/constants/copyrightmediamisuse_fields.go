@@ -4,41 +4,41 @@ package constants
 
 // CopyrightMediaMisuseFields contains field name constants for CopyrightMediaMisuse objects
 var CopyrightMediaMisuseFields = struct {
-	AudioSegments          string
-	CreationTime           string
-	DisabledAudioSegments  string
-	DisabledVideoSegments  string
-	EntireFileIssue        string
+	AudioSegments string
+	CreationTime string
+	DisabledAudioSegments string
+	DisabledVideoSegments string
+	EntireFileIssue string
 	EntireFileIssueReasons string
-	ExpirationTime         string
-	Id                     string
-	MediaAssetId           string
-	Reasons                string
+	ExpirationTime string
+	Id string
+	MediaAssetId string
+	Reasons string
 	RequestedAudioSegments string
 	RequestedVideoSegments string
-	ResolutionType         string
-	Status                 string
-	UpdateTime             string
-	VideoCopyright         string
-	VideoSegments          string
+	ResolutionType string
+	Status string
+	UpdateTime string
+	VideoCopyright string
+	VideoSegments string
 }{
-	AudioSegments:          "audio_segments",
-	CreationTime:           "creation_time",
-	DisabledAudioSegments:  "disabled_audio_segments",
-	DisabledVideoSegments:  "disabled_video_segments",
-	EntireFileIssue:        "entire_file_issue",
+	AudioSegments: "audio_segments",
+	CreationTime: "creation_time",
+	DisabledAudioSegments: "disabled_audio_segments",
+	DisabledVideoSegments: "disabled_video_segments",
+	EntireFileIssue: "entire_file_issue",
 	EntireFileIssueReasons: "entire_file_issue_reasons",
-	ExpirationTime:         "expiration_time",
-	Id:                     "id",
-	MediaAssetId:           "media_asset_id",
-	Reasons:                "reasons",
+	ExpirationTime: "expiration_time",
+	Id: "id",
+	MediaAssetId: "media_asset_id",
+	Reasons: "reasons",
 	RequestedAudioSegments: "requested_audio_segments",
 	RequestedVideoSegments: "requested_video_segments",
-	ResolutionType:         "resolution_type",
-	Status:                 "status",
-	UpdateTime:             "update_time",
-	VideoCopyright:         "video_copyright",
-	VideoSegments:          "video_segments",
+	ResolutionType: "resolution_type",
+	Status: "status",
+	UpdateTime: "update_time",
+	VideoCopyright: "video_copyright",
+	VideoSegments: "video_segments",
 }
 
 // CopyrightMediaMisuseFieldsList contains all available fields for CopyrightMediaMisuse objects

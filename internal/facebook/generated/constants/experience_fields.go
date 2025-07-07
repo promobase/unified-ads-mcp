@@ -5,16 +5,16 @@ package constants
 // ExperienceFields contains field name constants for Experience objects
 var ExperienceFields = struct {
 	Description string
-	From        string
-	Id          string
-	Name        string
-	With        string
+	From string
+	Id string
+	Name string
+	With string
 }{
 	Description: "description",
-	From:        "from",
-	Id:          "id",
-	Name:        "name",
-	With:        "with",
+	From: "from",
+	Id: "id",
+	Name: "name",
+	With: "with",
 }
 
 // ExperienceFieldsList contains all available fields for Experience objects

@@ -4,19 +4,19 @@ package constants
 
 // AdPlacePageSetFields contains field name constants for AdPlacePageSet objects
 var AdPlacePageSetFields = struct {
-	AccountId     string
-	Id            string
+	AccountId string
+	Id string
 	LocationTypes string
-	Name          string
-	PagesCount    string
-	ParentPage    string
+	Name string
+	PagesCount string
+	ParentPage string
 }{
-	AccountId:     "account_id",
-	Id:            "id",
+	AccountId: "account_id",
+	Id: "id",
 	LocationTypes: "location_types",
-	Name:          "name",
-	PagesCount:    "pages_count",
-	ParentPage:    "parent_page",
+	Name: "name",
+	PagesCount: "pages_count",
+	ParentPage: "parent_page",
 }
 
 // AdPlacePageSetFieldsList contains all available fields for AdPlacePageSet objects

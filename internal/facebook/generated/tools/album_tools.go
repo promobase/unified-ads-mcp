@@ -17,6 +17,7 @@ import (
 func GetAlbumTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// album_get_comments tool
 	// Available fields for Comment: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count, live_broadcast_timestamp, message, message_tags, object, parent, permalink_url, private_reply_conversation, user_likes
 	// Params object accepts: filter (albumcomments_filter_enum_param), live_filter (albumcomments_live_filter_enum_param), order (albumcomments_order_enum_param), since (datetime)
@@ -25,22 +26,22 @@ func GetAlbumTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"filter": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "filter parameter",
-					"enum":        []string{"stream", "toplevel"},
+					"enum": []string{ "stream", "toplevel" },
 				},
 				"live_filter": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "live_filter parameter",
-					"enum":        []string{"filter_low_quality", "no_filter"},
+					"enum": []string{ "filter_low_quality", "no_filter" },
 				},
 				"order": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "order parameter",
-					"enum":        []string{"chronological", "reverse_chronological"},
+					"enum": []string{ "chronological", "reverse_chronological" },
 				},
 				"since": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "since parameter",
 				},
 			}),
@@ -68,57 +69,57 @@ func GetAlbumTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"attachment_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "attachment_id parameter",
 				},
 				"attachment_share_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "attachment_share_url parameter",
 				},
 				"attachment_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "attachment_url parameter",
 				},
 				"comment_privacy_value": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "comment_privacy_value parameter",
-					"enum":        []string{"DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"},
+					"enum": []string{ "DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB" },
 				},
 				"facepile_mentioned_ids": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "facepile_mentioned_ids parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"feedback_source": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "feedback_source parameter",
 				},
 				"is_offline": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_offline parameter",
 				},
 				"message": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "message parameter",
 				},
 				"nectar_module": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "nectar_module parameter",
 				},
 				"object_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "object_id parameter",
 				},
 				"parent_comment_id": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "parent_comment_id parameter",
 				},
 				"text": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "text parameter",
 				},
 				"tracking": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "tracking parameter",
 				},
 			}),
@@ -153,19 +154,19 @@ func GetAlbumTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"feedback_source": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "feedback_source parameter",
 				},
 				"nectar_module": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "nectar_module parameter",
 				},
 				"notify": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "notify parameter",
 				},
 				"tracking": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "tracking parameter",
 				},
 			}),
@@ -200,210 +201,210 @@ func GetAlbumTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"aid": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "aid parameter",
 				},
 				"allow_spherical_photo": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "allow_spherical_photo parameter",
 				},
 				"alt_text_custom": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "alt_text_custom parameter",
 				},
 				"android_key_hash": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "android_key_hash parameter",
 				},
 				"application_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "application_id parameter",
 				},
 				"attempt": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "attempt parameter",
 				},
 				"audience_exp": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "audience_exp parameter",
 				},
 				"backdated_time": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "backdated_time parameter",
 				},
 				"backdated_time_granularity": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "backdated_time_granularity parameter",
-					"enum":        []string{"day", "hour", "min", "month", "none", "year"},
+					"enum": []string{ "day", "hour", "min", "month", "none", "year" },
 				},
 				"caption": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "caption parameter",
 				},
 				"composer_session_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "composer_session_id parameter",
 				},
 				"direct_share_status": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "direct_share_status parameter",
 				},
 				"feed_targeting": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "feed_targeting parameter",
 				},
 				"filter_type": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "filter_type parameter",
 				},
 				"full_res_is_coming_later": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "full_res_is_coming_later parameter",
 				},
 				"initial_view_heading_override_degrees": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "initial_view_heading_override_degrees parameter",
 				},
 				"initial_view_pitch_override_degrees": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "initial_view_pitch_override_degrees parameter",
 				},
 				"initial_view_vertical_fov_override_degrees": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "initial_view_vertical_fov_override_degrees parameter",
 				},
 				"ios_bundle_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ios_bundle_id parameter",
 				},
 				"is_explicit_location": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_explicit_location parameter",
 				},
 				"is_explicit_place": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_explicit_place parameter",
 				},
 				"manual_privacy": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "manual_privacy parameter",
 				},
 				"message": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "message parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
 				},
 				"no_story": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "no_story parameter",
 				},
 				"offline_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "offline_id parameter",
 				},
 				"og_action_type_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "og_action_type_id parameter",
 				},
 				"og_icon_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "og_icon_id parameter",
 				},
 				"og_object_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "og_object_id parameter",
 				},
 				"og_phrase": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "og_phrase parameter",
 				},
 				"og_set_profile_badge": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "og_set_profile_badge parameter",
 				},
 				"og_suggestion_mechanism": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "og_suggestion_mechanism parameter",
 				},
 				"place": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "place parameter",
 				},
 				"privacy": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "privacy parameter",
 				},
 				"profile_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "profile_id parameter",
 				},
 				"provenance_info": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "provenance_info parameter",
 				},
 				"proxied_app_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "proxied_app_id parameter",
 				},
 				"published": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "published parameter",
 				},
 				"qn": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "qn parameter",
 				},
 				"spherical_metadata": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "spherical_metadata parameter",
 				},
 				"sponsor_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "sponsor_id parameter",
 				},
 				"sponsor_relationship": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "sponsor_relationship parameter",
 				},
 				"tags": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "tags parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"target_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "target_id parameter",
 				},
 				"targeting": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "targeting parameter",
 				},
 				"time_since_original_post": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "time_since_original_post parameter",
 				},
 				"uid": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "uid parameter",
 				},
 				"unpublished_content_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "unpublished_content_type parameter",
-					"enum":        []string{"ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING"},
+					"enum": []string{ "ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING" },
 				},
 				"url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "url parameter",
 				},
 				"user_selected_tags": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "user_selected_tags parameter",
 				},
 				"vault_image_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "vault_image_id parameter",
 				},
 			}),
@@ -420,13 +421,13 @@ func GetAlbumTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"redirect": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "redirect parameter",
 				},
 				"type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "type parameter",
-					"enum":        []string{"album", "small", "thumbnail"},
+					"enum": []string{ "album", "small", "thumbnail" },
 				},
 			}),
 			mcp.Description("Parameters object containing: redirect (boolean), type (enum) [album, small, thumbnail]"),
@@ -465,10 +466,12 @@ func GetAlbumTools() []mcp.Tool {
 	)
 	tools = append(tools, album_get_Tool)
 
+
 	return tools
 }
 
 // Album handlers
+
 
 // HandleAlbum_get_comments handles the album_get_comments tool with context-based auth
 func HandleAlbum_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -521,6 +524,8 @@ func HandleAlbum_get_comments(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Album_get_comments(args)
 	if err != nil {
@@ -535,6 +540,7 @@ func HandleAlbum_get_comments(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAlbum_post_comments handles the album_post_comments tool with context-based auth
 func HandleAlbum_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -562,6 +568,8 @@ func HandleAlbum_post_comments(ctx context.Context, request mcp.CallToolRequest)
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Album_post_comments(args)
 	if err != nil {
@@ -576,6 +584,7 @@ func HandleAlbum_post_comments(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAlbum_get_likes handles the album_get_likes tool with context-based auth
 func HandleAlbum_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -616,6 +625,8 @@ func HandleAlbum_get_likes(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Album_get_likes(args)
 	if err != nil {
@@ -630,6 +641,7 @@ func HandleAlbum_get_likes(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAlbum_post_likes handles the album_post_likes tool with context-based auth
 func HandleAlbum_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -657,6 +669,8 @@ func HandleAlbum_post_likes(ctx context.Context, request mcp.CallToolRequest) (*
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Album_post_likes(args)
 	if err != nil {
@@ -671,6 +685,7 @@ func HandleAlbum_post_likes(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAlbum_get_photos handles the album_get_photos tool with context-based auth
 func HandleAlbum_get_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -711,6 +726,8 @@ func HandleAlbum_get_photos(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Album_get_photos(args)
 	if err != nil {
@@ -725,6 +742,7 @@ func HandleAlbum_get_photos(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAlbum_post_photos handles the album_post_photos tool with context-based auth
 func HandleAlbum_post_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -752,6 +770,8 @@ func HandleAlbum_post_photos(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Album_post_photos(args)
 	if err != nil {
@@ -766,6 +786,7 @@ func HandleAlbum_post_photos(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAlbum_get_picture handles the album_get_picture tool with context-based auth
 func HandleAlbum_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -818,6 +839,8 @@ func HandleAlbum_get_picture(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Album_get_picture(args)
 	if err != nil {
@@ -832,6 +855,7 @@ func HandleAlbum_get_picture(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAlbum_get_ handles the album_get_ tool with context-based auth
 func HandleAlbum_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -872,6 +896,8 @@ func HandleAlbum_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Album_get_(args)
 	if err != nil {
@@ -886,3 +912,4 @@ func HandleAlbum_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

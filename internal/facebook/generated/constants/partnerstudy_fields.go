@@ -4,43 +4,43 @@ package constants
 
 // PartnerStudyFields contains field name constants for PartnerStudy objects
 var PartnerStudyFields = struct {
-	AdditionalInfo                 string
-	Brand                          string
-	ClientName                     string
-	Emails                         string
-	Id                             string
-	InputIds                       string
-	IsExport                       string
-	LiftStudy                      string
-	Location                       string
-	MatchFileDs                    string
-	Name                           string
-	PartnerDefinedId               string
+	AdditionalInfo string
+	Brand string
+	ClientName string
+	Emails string
+	Id string
+	InputIds string
+	IsExport string
+	LiftStudy string
+	Location string
+	MatchFileDs string
+	Name string
+	PartnerDefinedId string
 	PartnerHouseholdGraphDatasetId string
-	Status                         string
-	StudyEndDate                   string
-	StudyStartDate                 string
-	StudyType                      string
-	SubmitDate                     string
+	Status string
+	StudyEndDate string
+	StudyStartDate string
+	StudyType string
+	SubmitDate string
 }{
-	AdditionalInfo:                 "additional_info",
-	Brand:                          "brand",
-	ClientName:                     "client_name",
-	Emails:                         "emails",
-	Id:                             "id",
-	InputIds:                       "input_ids",
-	IsExport:                       "is_export",
-	LiftStudy:                      "lift_study",
-	Location:                       "location",
-	MatchFileDs:                    "match_file_ds",
-	Name:                           "name",
-	PartnerDefinedId:               "partner_defined_id",
+	AdditionalInfo: "additional_info",
+	Brand: "brand",
+	ClientName: "client_name",
+	Emails: "emails",
+	Id: "id",
+	InputIds: "input_ids",
+	IsExport: "is_export",
+	LiftStudy: "lift_study",
+	Location: "location",
+	MatchFileDs: "match_file_ds",
+	Name: "name",
+	PartnerDefinedId: "partner_defined_id",
 	PartnerHouseholdGraphDatasetId: "partner_household_graph_dataset_id",
-	Status:                         "status",
-	StudyEndDate:                   "study_end_date",
-	StudyStartDate:                 "study_start_date",
-	StudyType:                      "study_type",
-	SubmitDate:                     "submit_date",
+	Status: "status",
+	StudyEndDate: "study_end_date",
+	StudyStartDate: "study_start_date",
+	StudyType: "study_type",
+	SubmitDate: "submit_date",
 }
 
 // PartnerStudyFieldsList contains all available fields for PartnerStudy objects

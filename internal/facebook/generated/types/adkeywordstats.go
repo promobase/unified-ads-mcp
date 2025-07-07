@@ -4,24 +4,24 @@ package types
 
 // AdKeywordStats represents a Facebook AdKeywordStats object
 type AdKeywordStats struct {
-	Actions               []AdsActionStats `json:"actions"`
-	Clicks                int              `json:"clicks"`
-	Cost_per_total_action float64          `json:"cost_per_total_action"`
-	Cost_per_unique_click float64          `json:"cost_per_unique_click"`
-	Cpc                   float64          `json:"cpc"`
-	Cpm                   float64          `json:"cpm"`
-	Cpp                   float64          `json:"cpp"`
-	Ctr                   float64          `json:"ctr"`
-	Frequency             float64          `json:"frequency"`
-	Id                    string           `json:"id"`
-	Impressions           int              `json:"impressions"`
-	Name                  string           `json:"name"`
-	Reach                 int              `json:"reach"`
-	Spend                 float64          `json:"spend"`
-	Total_actions         int              `json:"total_actions"`
-	Total_unique_actions  int              `json:"total_unique_actions"`
-	Unique_actions        []AdsActionStats `json:"unique_actions"`
-	Unique_clicks         int              `json:"unique_clicks"`
-	Unique_ctr            float64          `json:"unique_ctr"`
-	Unique_impressions    int              `json:"unique_impressions"`
+	Actions []AdsActionStats `json:"actions"`
+	Clicks int `json:"clicks"`
+	Cost_per_total_action float64 `json:"cost_per_total_action"`
+	Cost_per_unique_click float64 `json:"cost_per_unique_click"`
+	Cpc float64 `json:"cpc"`
+	Cpm float64 `json:"cpm"`
+	Cpp float64 `json:"cpp"`
+	Ctr float64 `json:"ctr"`
+	Frequency float64 `json:"frequency"`
+	Id string `json:"id"`
+	Impressions int `json:"impressions"`
+	Name string `json:"name"`
+	Reach int `json:"reach"`
+	Spend float64 `json:"spend"`
+	Total_actions int `json:"total_actions"`
+	Total_unique_actions int `json:"total_unique_actions"`
+	Unique_actions []AdsActionStats `json:"unique_actions"`
+	Unique_clicks int `json:"unique_clicks"`
+	Unique_ctr float64 `json:"unique_ctr"`
+	Unique_impressions int `json:"unique_impressions"`
 }

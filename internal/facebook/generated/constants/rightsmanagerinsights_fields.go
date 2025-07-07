@@ -4,16 +4,16 @@ package constants
 
 // RightsManagerInsightsFields contains field name constants for RightsManagerInsights objects
 var RightsManagerInsightsFields = struct {
-	Error          string
-	ErrorMessage   string
-	Metadata       string
-	Totals         string
+	Error string
+	ErrorMessage string
+	Metadata string
+	Totals string
 	XAxisBreakdown string
 }{
-	Error:          "error",
-	ErrorMessage:   "error_message",
-	Metadata:       "metadata",
-	Totals:         "totals",
+	Error: "error",
+	ErrorMessage: "error_message",
+	Metadata: "metadata",
+	Totals: "totals",
 	XAxisBreakdown: "x_axis_breakdown",
 }
 

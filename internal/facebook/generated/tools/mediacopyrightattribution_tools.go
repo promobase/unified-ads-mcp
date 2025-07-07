@@ -17,6 +17,7 @@ import (
 func GetMediaCopyrightAttributionTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// mediacopyrightattribution_get_ tool
 	// Available fields for MediaCopyrightAttribution: attribution_ig_target_id, attribution_target_email_address, attribution_target_id, attribution_target_name, attribution_type, attribution_uri, copyright_count, creation_time, creator, id, is_enabled, link_title, match_count, owner, status, title
 	mediacopyrightattribution_get_Tool := mcp.NewTool("mediacopyrightattribution_get_",
@@ -36,10 +37,12 @@ func GetMediaCopyrightAttributionTools() []mcp.Tool {
 	)
 	tools = append(tools, mediacopyrightattribution_get_Tool)
 
+
 	return tools
 }
 
 // MediaCopyrightAttribution handlers
+
 
 // HandleMediacopyrightattribution_get_ handles the mediacopyrightattribution_get_ tool with context-based auth
 func HandleMediacopyrightattribution_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleMediacopyrightattribution_get_(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Mediacopyrightattribution_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleMediacopyrightattribution_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

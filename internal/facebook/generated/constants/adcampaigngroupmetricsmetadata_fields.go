@@ -4,10 +4,10 @@ package constants
 
 // AdCampaignGroupMetricsMetadataFields contains field name constants for AdCampaignGroupMetricsMetadata objects
 var AdCampaignGroupMetricsMetadataFields = struct {
-	BudgetOptimization  string
+	BudgetOptimization string
 	DuplicationFlowTips string
 }{
-	BudgetOptimization:  "budget_optimization",
+	BudgetOptimization: "budget_optimization",
 	DuplicationFlowTips: "duplication_flow_tips",
 }
 

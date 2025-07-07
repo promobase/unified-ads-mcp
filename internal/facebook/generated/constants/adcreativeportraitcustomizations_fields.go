@@ -5,10 +5,10 @@ package constants
 // AdCreativePortraitCustomizationsFields contains field name constants for AdCreativePortraitCustomizations objects
 var AdCreativePortraitCustomizationsFields = struct {
 	CarouselDeliveryMode string
-	Specifications       string
+	Specifications string
 }{
 	CarouselDeliveryMode: "carousel_delivery_mode",
-	Specifications:       "specifications",
+	Specifications: "specifications",
 }
 
 // AdCreativePortraitCustomizationsFieldsList contains all available fields for AdCreativePortraitCustomizations objects

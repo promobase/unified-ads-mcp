@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-// MessengerBusinessTemplateClient provides methods for MessengerBusinessTemplate operations
+// MessengerBusinessTemplateClient represents a client for MessengerBusinessTemplate operations
 type MessengerBusinessTemplateClient struct {
 	accessToken string
 }
@@ -21,42 +21,42 @@ func NewMessengerBusinessTemplateClient(accessToken string) *MessengerBusinessTe
 	}
 }
 
-// messengerbusinesstemplate_get_ GET  for MessengerBusinessTemplate
+
+// Messengerbusinesstemplate_get_ performs GET  for MessengerBusinessTemplate
 func (c *MessengerBusinessTemplateClient) Messengerbusinesstemplate_get_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -88,24 +88,24 @@ func (c *MessengerBusinessTemplateClient) Messengerbusinesstemplate_get_(args ma
 	return result, nil
 }
 
-// messengerbusinesstemplate_post_ POST  for MessengerBusinessTemplate
+
+// Messengerbusinesstemplate_post_ performs POST  for MessengerBusinessTemplate
 func (c *MessengerBusinessTemplateClient) Messengerbusinesstemplate_post_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -136,3 +136,4 @@ func (c *MessengerBusinessTemplateClient) Messengerbusinesstemplate_post_(args m
 
 	return result, nil
 }
+

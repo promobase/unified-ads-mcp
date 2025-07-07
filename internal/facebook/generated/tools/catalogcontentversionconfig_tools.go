@@ -17,6 +17,7 @@ import (
 func GetCatalogContentVersionConfigTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// catalogcontentversionconfig_get_ tool
 	// Available fields for CatalogContentVersionConfig: id, name, version
 	catalogcontentversionconfig_get_Tool := mcp.NewTool("catalogcontentversionconfig_get_",
@@ -36,10 +37,12 @@ func GetCatalogContentVersionConfigTools() []mcp.Tool {
 	)
 	tools = append(tools, catalogcontentversionconfig_get_Tool)
 
+
 	return tools
 }
 
 // CatalogContentVersionConfig handlers
+
 
 // HandleCatalogcontentversionconfig_get_ handles the catalogcontentversionconfig_get_ tool with context-based auth
 func HandleCatalogcontentversionconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleCatalogcontentversionconfig_get_(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Catalogcontentversionconfig_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleCatalogcontentversionconfig_get_(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -17,6 +17,7 @@ import (
 func GetMusicWorkCopyrightTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// musicworkcopyright_get_ tool
 	// Available fields for MusicWorkCopyright: available_ui_actions, claim_status, creation_time, displayed_fb_matches_count, displayed_ig_matches_count, displayed_matches_count, has_rev_share_eligible_isrcs, id, is_linking_required_to_monetize_for_manual_claim, match_rule, status, tags, update_time
 	musicworkcopyright_get_Tool := mcp.NewTool("musicworkcopyright_get_",
@@ -36,10 +37,12 @@ func GetMusicWorkCopyrightTools() []mcp.Tool {
 	)
 	tools = append(tools, musicworkcopyright_get_Tool)
 
+
 	return tools
 }
 
 // MusicWorkCopyright handlers
+
 
 // HandleMusicworkcopyright_get_ handles the musicworkcopyright_get_ tool with context-based auth
 func HandleMusicworkcopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleMusicworkcopyright_get_(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Musicworkcopyright_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleMusicworkcopyright_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

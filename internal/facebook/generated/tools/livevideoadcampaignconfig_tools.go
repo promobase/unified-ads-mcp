@@ -17,6 +17,7 @@ import (
 func GetLiveVideoAdCampaignConfigTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// livevideoadcampaignconfig_get_ tool
 	// Available fields for LiveVideoAdCampaignConfig: id, live_video_ad_type
 	livevideoadcampaignconfig_get_Tool := mcp.NewTool("livevideoadcampaignconfig_get_",
@@ -36,10 +37,12 @@ func GetLiveVideoAdCampaignConfigTools() []mcp.Tool {
 	)
 	tools = append(tools, livevideoadcampaignconfig_get_Tool)
 
+
 	return tools
 }
 
 // LiveVideoAdCampaignConfig handlers
+
 
 // HandleLivevideoadcampaignconfig_get_ handles the livevideoadcampaignconfig_get_ tool with context-based auth
 func HandleLivevideoadcampaignconfig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleLivevideoadcampaignconfig_get_(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Livevideoadcampaignconfig_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleLivevideoadcampaignconfig_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

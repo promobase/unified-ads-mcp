@@ -17,6 +17,7 @@ import (
 func GetOfflineConversionDataSetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// offlineconversiondataset_get_adaccounts tool
 	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	// Params object accepts: business (string)
@@ -26,9 +27,9 @@ func GetOfflineConversionDataSetTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "business parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required]"),
@@ -75,12 +76,12 @@ func GetOfflineConversionDataSetTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"action_source": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "action_source parameter",
-					"enum":        []string{"PHYSICAL_STORE", "WEBSITE"},
+					"enum": []string{ "PHYSICAL_STORE", "WEBSITE" },
 				},
 				"ad_account": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ad_account parameter",
 				},
 			}),
@@ -109,7 +110,7 @@ func GetOfflineConversionDataSetTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ad_account": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ad_account parameter",
 				},
 			}),
@@ -158,15 +159,15 @@ func GetOfflineConversionDataSetTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"action_source": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "action_source parameter",
-					"required":    true,
-					"enum":        []string{"PHYSICAL_STORE", "WEBSITE"},
+					"required": true,
+					"enum": []string{ "PHYSICAL_STORE", "WEBSITE" },
 				},
 				"business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "business parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: action_source (enum) [PHYSICAL_STORE, WEBSITE] [required], business (string) [required]"),
@@ -195,10 +196,10 @@ func GetOfflineConversionDataSetTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"action_source": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "action_source parameter",
-					"required":    true,
-					"enum":        []string{"PHYSICAL_STORE", "WEBSITE"},
+					"required": true,
+					"enum": []string{ "PHYSICAL_STORE", "WEBSITE" },
 				},
 			}),
 			mcp.Description("Parameters object containing: action_source (enum) [PHYSICAL_STORE, WEBSITE] [required]"),
@@ -225,29 +226,29 @@ func GetOfflineConversionDataSetTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"aggr_time": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "aggr_time parameter",
-					"enum":        []string{"event_time", "upload_time"},
+					"enum": []string{ "event_time", "upload_time" },
 				},
 				"end": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "end parameter",
 				},
 				"granularity": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "granularity parameter",
-					"enum":        []string{"daily", "hourly", "six_hourly"},
+					"enum": []string{ "daily", "hourly", "six_hourly" },
 				},
 				"skip_empty_values": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "skip_empty_values parameter",
 				},
 				"start": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "start parameter",
 				},
 				"user_timezone_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "user_timezone_id parameter",
 				},
 			}),
@@ -276,25 +277,25 @@ func GetOfflineConversionDataSetTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"end_time": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "end_time parameter",
 				},
 				"order": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "order parameter",
-					"enum":        []string{"ASCENDING", "DESCENDING"},
+					"enum": []string{ "ASCENDING", "DESCENDING" },
 				},
 				"sort_by": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "sort_by parameter",
-					"enum":        []string{"API_CALLS", "CREATION_TIME", "EVENT_TIME_MAX", "EVENT_TIME_MIN", "FIRST_UPLOAD_TIME", "IS_EXCLUDED_FOR_LIFT", "LAST_UPLOAD_TIME"},
+					"enum": []string{ "API_CALLS", "CREATION_TIME", "EVENT_TIME_MAX", "EVENT_TIME_MIN", "FIRST_UPLOAD_TIME", "IS_EXCLUDED_FOR_LIFT", "LAST_UPLOAD_TIME" },
 				},
 				"start_time": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "start_time parameter",
 				},
 				"upload_tag": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "upload_tag parameter",
 				},
 			}),
@@ -334,10 +335,12 @@ func GetOfflineConversionDataSetTools() []mcp.Tool {
 	)
 	tools = append(tools, offlineconversiondataset_get_Tool)
 
+
 	return tools
 }
 
 // OfflineConversionDataSet handlers
+
 
 // HandleOfflineconversiondataset_get_adaccounts handles the offlineconversiondataset_get_adaccounts tool with context-based auth
 func HandleOfflineconversiondataset_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -392,6 +395,8 @@ func HandleOfflineconversiondataset_get_adaccounts(ctx context.Context, request 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_adaccounts(args)
 	if err != nil {
@@ -406,6 +411,7 @@ func HandleOfflineconversiondataset_get_adaccounts(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleOfflineconversiondataset_get_agencies handles the offlineconversiondataset_get_agencies tool with context-based auth
 func HandleOfflineconversiondataset_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -446,6 +452,8 @@ func HandleOfflineconversiondataset_get_agencies(ctx context.Context, request mc
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_agencies(args)
 	if err != nil {
@@ -460,6 +468,7 @@ func HandleOfflineconversiondataset_get_agencies(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleOfflineconversiondataset_get_audiences handles the offlineconversiondataset_get_audiences tool with context-based auth
 func HandleOfflineconversiondataset_get_audiences(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -512,6 +521,8 @@ func HandleOfflineconversiondataset_get_audiences(ctx context.Context, request m
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_audiences(args)
 	if err != nil {
@@ -526,6 +537,7 @@ func HandleOfflineconversiondataset_get_audiences(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleOfflineconversiondataset_get_customconversions handles the offlineconversiondataset_get_customconversions tool with context-based auth
 func HandleOfflineconversiondataset_get_customconversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -578,6 +590,8 @@ func HandleOfflineconversiondataset_get_customconversions(ctx context.Context, r
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_customconversions(args)
 	if err != nil {
@@ -592,6 +606,7 @@ func HandleOfflineconversiondataset_get_customconversions(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleOfflineconversiondataset_get_server_events_permitted_business handles the offlineconversiondataset_get_server_events_permitted_business tool with context-based auth
 func HandleOfflineconversiondataset_get_server_events_permitted_business(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -632,6 +647,8 @@ func HandleOfflineconversiondataset_get_server_events_permitted_business(ctx con
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_server_events_permitted_business(args)
 	if err != nil {
@@ -646,6 +663,7 @@ func HandleOfflineconversiondataset_get_server_events_permitted_business(ctx con
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleOfflineconversiondataset_get_shared_accounts handles the offlineconversiondataset_get_shared_accounts tool with context-based auth
 func HandleOfflineconversiondataset_get_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -700,6 +718,8 @@ func HandleOfflineconversiondataset_get_shared_accounts(ctx context.Context, req
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_shared_accounts(args)
 	if err != nil {
@@ -714,6 +734,7 @@ func HandleOfflineconversiondataset_get_shared_accounts(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleOfflineconversiondataset_get_shared_agencies handles the offlineconversiondataset_get_shared_agencies tool with context-based auth
 func HandleOfflineconversiondataset_get_shared_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -768,6 +789,8 @@ func HandleOfflineconversiondataset_get_shared_agencies(ctx context.Context, req
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_shared_agencies(args)
 	if err != nil {
@@ -782,6 +805,7 @@ func HandleOfflineconversiondataset_get_shared_agencies(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleOfflineconversiondataset_get_stats handles the offlineconversiondataset_get_stats tool with context-based auth
 func HandleOfflineconversiondataset_get_stats(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -834,6 +858,8 @@ func HandleOfflineconversiondataset_get_stats(ctx context.Context, request mcp.C
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_stats(args)
 	if err != nil {
@@ -848,6 +874,7 @@ func HandleOfflineconversiondataset_get_stats(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleOfflineconversiondataset_get_uploads handles the offlineconversiondataset_get_uploads tool with context-based auth
 func HandleOfflineconversiondataset_get_uploads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -900,6 +927,8 @@ func HandleOfflineconversiondataset_get_uploads(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_uploads(args)
 	if err != nil {
@@ -914,6 +943,7 @@ func HandleOfflineconversiondataset_get_uploads(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleOfflineconversiondataset_get_ handles the offlineconversiondataset_get_ tool with context-based auth
 func HandleOfflineconversiondataset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -954,6 +984,8 @@ func HandleOfflineconversiondataset_get_(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Offlineconversiondataset_get_(args)
 	if err != nil {
@@ -968,3 +1000,4 @@ func HandleOfflineconversiondataset_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

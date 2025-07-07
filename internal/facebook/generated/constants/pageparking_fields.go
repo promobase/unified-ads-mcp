@@ -4,13 +4,13 @@ package constants
 
 // PageParkingFields contains field name constants for PageParking objects
 var PageParkingFields = struct {
-	Lot    string
+	Lot string
 	Street string
-	Valet  string
+	Valet string
 }{
-	Lot:    "lot",
+	Lot: "lot",
 	Street: "street",
-	Valet:  "valet",
+	Valet: "valet",
 }
 
 // PageParkingFieldsList contains all available fields for PageParking objects

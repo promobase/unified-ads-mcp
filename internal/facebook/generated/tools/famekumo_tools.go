@@ -17,6 +17,7 @@ import (
 func GetFAMEKumoTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// famekumo_get_ tool
 	// Available fields for FAMEKumo: id
 	famekumo_get_Tool := mcp.NewTool("famekumo_get_",
@@ -36,10 +37,12 @@ func GetFAMEKumoTools() []mcp.Tool {
 	)
 	tools = append(tools, famekumo_get_Tool)
 
+
 	return tools
 }
 
 // FAMEKumo handlers
+
 
 // HandleFamekumo_get_ handles the famekumo_get_ tool with context-based auth
 func HandleFamekumo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleFamekumo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Famekumo_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleFamekumo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

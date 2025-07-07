@@ -4,11 +4,11 @@ package types
 
 // VoipInfo represents a Facebook VoipInfo object
 type VoipInfo struct {
-	Has_mobile_app     bool   `json:"has_mobile_app"`
-	Has_permission     bool   `json:"has_permission"`
-	Is_callable        bool   `json:"is_callable"`
-	Is_callable_webrtc bool   `json:"is_callable_webrtc"`
-	Is_pushable        bool   `json:"is_pushable"`
-	Reason_code        int    `json:"reason_code"`
+	Has_mobile_app bool `json:"has_mobile_app"`
+	Has_permission bool `json:"has_permission"`
+	Is_callable bool `json:"is_callable"`
+	Is_callable_webrtc bool `json:"is_callable_webrtc"`
+	Is_pushable bool `json:"is_pushable"`
+	Reason_code int `json:"reason_code"`
 	Reason_description string `json:"reason_description"`
 }

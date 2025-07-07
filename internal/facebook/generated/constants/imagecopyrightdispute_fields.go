@@ -4,25 +4,25 @@ package constants
 
 // ImageCopyrightDisputeFields contains field name constants for ImageCopyrightDispute objects
 var ImageCopyrightDisputeFields = struct {
-	AppealFormData  string
+	AppealFormData string
 	DisputeFormData string
-	ExpirationTime  string
-	Id              string
-	MatchId         string
-	Status          string
-	TimeAppealed    string
-	TimeCreated     string
-	TimeUpdated     string
+	ExpirationTime string
+	Id string
+	MatchId string
+	Status string
+	TimeAppealed string
+	TimeCreated string
+	TimeUpdated string
 }{
-	AppealFormData:  "appeal_form_data",
+	AppealFormData: "appeal_form_data",
 	DisputeFormData: "dispute_form_data",
-	ExpirationTime:  "expiration_time",
-	Id:              "id",
-	MatchId:         "match_id",
-	Status:          "status",
-	TimeAppealed:    "time_appealed",
-	TimeCreated:     "time_created",
-	TimeUpdated:     "time_updated",
+	ExpirationTime: "expiration_time",
+	Id: "id",
+	MatchId: "match_id",
+	Status: "status",
+	TimeAppealed: "time_appealed",
+	TimeCreated: "time_created",
+	TimeUpdated: "time_updated",
 }
 
 // ImageCopyrightDisputeFieldsList contains all available fields for ImageCopyrightDispute objects

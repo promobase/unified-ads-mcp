@@ -4,25 +4,25 @@ package constants
 
 // BusinessRequestFields contains field name constants for BusinessRequest objects
 var BusinessRequestFields = struct {
-	Accessor       string
-	CreationTime   string
-	Id             string
-	ObjectId       string
-	ObjectType     string
+	Accessor string
+	CreationTime string
+	Id string
+	ObjectId string
+	ObjectType string
 	PermittedTasks string
-	RequestStatus  string
-	RequestType    string
-	Requestor      string
+	RequestStatus string
+	RequestType string
+	Requestor string
 }{
-	Accessor:       "accessor",
-	CreationTime:   "creation_time",
-	Id:             "id",
-	ObjectId:       "object_id",
-	ObjectType:     "object_type",
+	Accessor: "accessor",
+	CreationTime: "creation_time",
+	Id: "id",
+	ObjectId: "object_id",
+	ObjectType: "object_type",
 	PermittedTasks: "permitted_tasks",
-	RequestStatus:  "request_status",
-	RequestType:    "request_type",
-	Requestor:      "requestor",
+	RequestStatus: "request_status",
+	RequestType: "request_type",
+	Requestor: "requestor",
 }
 
 // BusinessRequestFieldsList contains all available fields for BusinessRequest objects

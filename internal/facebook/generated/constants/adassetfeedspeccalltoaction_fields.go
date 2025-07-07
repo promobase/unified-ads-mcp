@@ -4,13 +4,13 @@ package constants
 
 // AdAssetFeedSpecCallToActionFields contains field name constants for AdAssetFeedSpecCallToAction objects
 var AdAssetFeedSpecCallToActionFields = struct {
-	Adlabels  string
+	Adlabels string
 	FieldType string
-	Value     string
+	Value string
 }{
-	Adlabels:  "adlabels",
+	Adlabels: "adlabels",
 	FieldType: "type",
-	Value:     "value",
+	Value: "value",
 }
 
 // AdAssetFeedSpecCallToActionFieldsList contains all available fields for AdAssetFeedSpecCallToAction objects

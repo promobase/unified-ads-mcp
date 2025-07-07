@@ -4,8 +4,8 @@ package types
 
 // ProductFeedRule represents a Facebook ProductFeedRule object
 type ProductFeedRule struct {
-	Attribute string        `json:"attribute"`
-	Id        string        `json:"id"`
-	Params    []interface{} `json:"params"`
-	Rule_type string        `json:"rule_type"`
+	Attribute string `json:"attribute"`
+	Id string `json:"id"`
+	Params []interface{} `json:"params"`
+	Rule_type string `json:"rule_type"`
 }

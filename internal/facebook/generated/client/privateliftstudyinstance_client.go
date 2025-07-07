@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-// PrivateLiftStudyInstanceClient provides methods for PrivateLiftStudyInstance operations
+// PrivateLiftStudyInstanceClient represents a client for PrivateLiftStudyInstance operations
 type PrivateLiftStudyInstanceClient struct {
 	accessToken string
 }
@@ -21,42 +21,42 @@ func NewPrivateLiftStudyInstanceClient(accessToken string) *PrivateLiftStudyInst
 	}
 }
 
-// privateliftstudyinstance_get_ GET  for PrivateLiftStudyInstance
+
+// Privateliftstudyinstance_get_ performs GET  for PrivateLiftStudyInstance
 func (c *PrivateLiftStudyInstanceClient) Privateliftstudyinstance_get_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -88,24 +88,24 @@ func (c *PrivateLiftStudyInstanceClient) Privateliftstudyinstance_get_(args map[
 	return result, nil
 }
 
-// privateliftstudyinstance_post_ POST  for PrivateLiftStudyInstance
+
+// Privateliftstudyinstance_post_ performs POST  for PrivateLiftStudyInstance
 func (c *PrivateLiftStudyInstanceClient) Privateliftstudyinstance_post_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -136,3 +136,4 @@ func (c *PrivateLiftStudyInstanceClient) Privateliftstudyinstance_post_(args map
 
 	return result, nil
 }
+

@@ -5,12 +5,12 @@ package constants
 // AdRuleEvaluationSpecFields contains field name constants for AdRuleEvaluationSpec objects
 var AdRuleEvaluationSpecFields = struct {
 	EvaluationType string
-	Filters        string
-	Trigger        string
+	Filters string
+	Trigger string
 }{
 	EvaluationType: "evaluation_type",
-	Filters:        "filters",
-	Trigger:        "trigger",
+	Filters: "filters",
+	Trigger: "trigger",
 }
 
 // AdRuleEvaluationSpecFieldsList contains all available fields for AdRuleEvaluationSpec objects

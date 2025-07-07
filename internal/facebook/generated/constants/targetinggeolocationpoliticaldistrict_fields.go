@@ -4,14 +4,14 @@ package constants
 
 // TargetingGeoLocationPoliticalDistrictFields contains field name constants for TargetingGeoLocationPoliticalDistrict objects
 var TargetingGeoLocationPoliticalDistrictFields = struct {
-	Country           string
-	Key               string
-	Name              string
+	Country string
+	Key string
+	Name string
 	PoliticalDistrict string
 }{
-	Country:           "country",
-	Key:               "key",
-	Name:              "name",
+	Country: "country",
+	Key: "key",
+	Name: "name",
 	PoliticalDistrict: "political_district",
 }
 

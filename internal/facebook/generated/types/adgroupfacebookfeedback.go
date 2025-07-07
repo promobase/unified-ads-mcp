@@ -4,6 +4,6 @@ package types
 
 // AdgroupFacebookFeedback represents a Facebook AdgroupFacebookFeedback object
 type AdgroupFacebookFeedback struct {
-	Id      string `json:"id"`
+	Id string `json:"id"`
 	Preview string `json:"preview"`
 }

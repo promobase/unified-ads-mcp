@@ -4,22 +4,22 @@ package types
 
 // AdSavedReport represents a Facebook AdSavedReport object
 type AdSavedReport struct {
-	App_owner                *Application             `json:"app_owner"`
-	Breakdowns               []string                 `json:"breakdowns"`
-	Builtin_column_set       string                   `json:"builtin_column_set"`
-	Creation_source          string                   `json:"creation_source"`
-	Date_interval            map[string]interface{}   `json:"date_interval"`
-	Date_preset              string                   `json:"date_preset"`
-	Format_version           int                      `json:"format_version"`
-	Id                       string                   `json:"id"`
-	Insights_section         map[string]interface{}   `json:"insights_section"`
-	Is_shared_unread         bool                     `json:"is_shared_unread"`
-	Level                    string                   `json:"level"`
-	Name                     string                   `json:"name"`
-	Normalized_filter        []interface{}            `json:"normalized_filter"`
-	Sort                     []map[string]interface{} `json:"sort"`
-	User_attribution_windows []string                 `json:"user_attribution_windows"`
-	User_columns             []string                 `json:"user_columns"`
-	User_filter              []interface{}            `json:"user_filter"`
-	User_owner               *User                    `json:"user_owner"`
+	App_owner *Application `json:"app_owner"`
+	Breakdowns []string `json:"breakdowns"`
+	Builtin_column_set string `json:"builtin_column_set"`
+	Creation_source string `json:"creation_source"`
+	Date_interval map[string]interface{} `json:"date_interval"`
+	Date_preset string `json:"date_preset"`
+	Format_version int `json:"format_version"`
+	Id string `json:"id"`
+	Insights_section map[string]interface{} `json:"insights_section"`
+	Is_shared_unread bool `json:"is_shared_unread"`
+	Level string `json:"level"`
+	Name string `json:"name"`
+	Normalized_filter []interface{} `json:"normalized_filter"`
+	Sort []map[string]interface{} `json:"sort"`
+	User_attribution_windows []string `json:"user_attribution_windows"`
+	User_columns []string `json:"user_columns"`
+	User_filter []interface{} `json:"user_filter"`
+	User_owner *User `json:"user_owner"`
 }

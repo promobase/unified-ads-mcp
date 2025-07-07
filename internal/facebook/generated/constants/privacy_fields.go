@@ -4,19 +4,19 @@ package constants
 
 // PrivacyFields contains field name constants for Privacy objects
 var PrivacyFields = struct {
-	Allow       string
-	Deny        string
+	Allow string
+	Deny string
 	Description string
-	Friends     string
-	Networks    string
-	Value       string
+	Friends string
+	Networks string
+	Value string
 }{
-	Allow:       "allow",
-	Deny:        "deny",
+	Allow: "allow",
+	Deny: "deny",
 	Description: "description",
-	Friends:     "friends",
-	Networks:    "networks",
-	Value:       "value",
+	Friends: "friends",
+	Networks: "networks",
+	Value: "value",
 }
 
 // PrivacyFieldsList contains all available fields for Privacy objects

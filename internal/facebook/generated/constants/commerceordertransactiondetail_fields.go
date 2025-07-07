@@ -4,33 +4,33 @@ package constants
 
 // CommerceOrderTransactionDetailFields contains field name constants for CommerceOrderTransactionDetail objects
 var CommerceOrderTransactionDetailFields = struct {
-	MerchantOrderId   string
-	NetPaymentAmount  string
-	OrderCreated      string
-	OrderDetails      string
-	OrderId           string
+	MerchantOrderId string
+	NetPaymentAmount string
+	OrderCreated string
+	OrderDetails string
+	OrderId string
 	PayoutReferenceId string
-	PostalCode        string
-	ProcessingFee     string
-	State             string
-	TaxRate           string
-	TransactionDate   string
-	TransactionType   string
-	TransferId        string
+	PostalCode string
+	ProcessingFee string
+	State string
+	TaxRate string
+	TransactionDate string
+	TransactionType string
+	TransferId string
 }{
-	MerchantOrderId:   "merchant_order_id",
-	NetPaymentAmount:  "net_payment_amount",
-	OrderCreated:      "order_created",
-	OrderDetails:      "order_details",
-	OrderId:           "order_id",
+	MerchantOrderId: "merchant_order_id",
+	NetPaymentAmount: "net_payment_amount",
+	OrderCreated: "order_created",
+	OrderDetails: "order_details",
+	OrderId: "order_id",
 	PayoutReferenceId: "payout_reference_id",
-	PostalCode:        "postal_code",
-	ProcessingFee:     "processing_fee",
-	State:             "state",
-	TaxRate:           "tax_rate",
-	TransactionDate:   "transaction_date",
-	TransactionType:   "transaction_type",
-	TransferId:        "transfer_id",
+	PostalCode: "postal_code",
+	ProcessingFee: "processing_fee",
+	State: "state",
+	TaxRate: "tax_rate",
+	TransactionDate: "transaction_date",
+	TransactionType: "transaction_type",
+	TransferId: "transfer_id",
 }
 
 // CommerceOrderTransactionDetailFieldsList contains all available fields for CommerceOrderTransactionDetail objects

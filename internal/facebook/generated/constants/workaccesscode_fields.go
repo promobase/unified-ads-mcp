@@ -4,10 +4,10 @@ package constants
 
 // WorkAccessCodeFields contains field name constants for WorkAccessCode objects
 var WorkAccessCodeFields = struct {
-	Code           string
+	Code string
 	ExpirationTime string
 }{
-	Code:           "code",
+	Code: "code",
 	ExpirationTime: "expiration_time",
 }
 

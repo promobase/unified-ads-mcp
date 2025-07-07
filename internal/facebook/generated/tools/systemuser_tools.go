@@ -17,6 +17,7 @@ import (
 func GetSystemUserTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// systemuser_get_assigned_ad_accounts tool
 	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	systemuser_get_assigned_ad_accountsTool := mcp.NewTool("systemuser_get_assigned_ad_accounts",
@@ -44,7 +45,7 @@ func GetSystemUserTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"contained_asset_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "contained_asset_id parameter",
 				},
 			}),
@@ -73,9 +74,9 @@ func GetSystemUserTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"pages": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "pages parameter",
-					"items":       map[string]any{"type": "integer"},
+					"items": map[string]any{"type": "integer"},
 				},
 			}),
 			mcp.Description("Parameters object containing: pages (array<integer>)"),
@@ -133,10 +134,12 @@ func GetSystemUserTools() []mcp.Tool {
 	)
 	tools = append(tools, systemuser_get_Tool)
 
+
 	return tools
 }
 
 // SystemUser handlers
+
 
 // HandleSystemuser_get_assigned_ad_accounts handles the systemuser_get_assigned_ad_accounts tool with context-based auth
 func HandleSystemuser_get_assigned_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -177,6 +180,8 @@ func HandleSystemuser_get_assigned_ad_accounts(ctx context.Context, request mcp.
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Systemuser_get_assigned_ad_accounts(args)
 	if err != nil {
@@ -191,6 +196,7 @@ func HandleSystemuser_get_assigned_ad_accounts(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleSystemuser_get_assigned_business_asset_groups handles the systemuser_get_assigned_business_asset_groups tool with context-based auth
 func HandleSystemuser_get_assigned_business_asset_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -243,6 +249,8 @@ func HandleSystemuser_get_assigned_business_asset_groups(ctx context.Context, re
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Systemuser_get_assigned_business_asset_groups(args)
 	if err != nil {
@@ -257,6 +265,7 @@ func HandleSystemuser_get_assigned_business_asset_groups(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleSystemuser_get_assigned_pages handles the systemuser_get_assigned_pages tool with context-based auth
 func HandleSystemuser_get_assigned_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -309,6 +318,8 @@ func HandleSystemuser_get_assigned_pages(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Systemuser_get_assigned_pages(args)
 	if err != nil {
@@ -323,6 +334,7 @@ func HandleSystemuser_get_assigned_pages(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleSystemuser_get_assigned_product_catalogs handles the systemuser_get_assigned_product_catalogs tool with context-based auth
 func HandleSystemuser_get_assigned_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -363,6 +375,8 @@ func HandleSystemuser_get_assigned_product_catalogs(ctx context.Context, request
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Systemuser_get_assigned_product_catalogs(args)
 	if err != nil {
@@ -377,6 +391,7 @@ func HandleSystemuser_get_assigned_product_catalogs(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleSystemuser_get_ handles the systemuser_get_ tool with context-based auth
 func HandleSystemuser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -417,6 +432,8 @@ func HandleSystemuser_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Systemuser_get_(args)
 	if err != nil {
@@ -431,3 +448,4 @@ func HandleSystemuser_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

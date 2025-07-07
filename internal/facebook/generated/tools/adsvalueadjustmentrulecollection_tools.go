@@ -17,6 +17,7 @@ import (
 func GetAdsValueAdjustmentRuleCollectionTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// adsvalueadjustmentrulecollection_post_delete_rule_set tool
 	adsvalueadjustmentrulecollection_post_delete_rule_setTool := mcp.NewTool("adsvalueadjustmentrulecollection_post_delete_rule_set",
 		mcp.WithDescription("POST delete_rule_set for AdsValueAdjustmentRuleCollection"),
@@ -68,19 +69,19 @@ func GetAdsValueAdjustmentRuleCollectionTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"is_default_setting": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_default_setting parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
-					"required":    true,
+					"required": true,
 				},
 				"rules": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "rules parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "object"},
+					"required": true,
+					"items": map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: is_default_setting (boolean), name (string) [required], rules (array<object>) [required]"),
@@ -88,10 +89,12 @@ func GetAdsValueAdjustmentRuleCollectionTools() []mcp.Tool {
 	)
 	tools = append(tools, adsvalueadjustmentrulecollection_post_Tool)
 
+
 	return tools
 }
 
 // AdsValueAdjustmentRuleCollection handlers
+
 
 // HandleAdsvalueadjustmentrulecollection_post_delete_rule_set handles the adsvalueadjustmentrulecollection_post_delete_rule_set tool with context-based auth
 func HandleAdsvalueadjustmentrulecollection_post_delete_rule_set(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -107,6 +110,8 @@ func HandleAdsvalueadjustmentrulecollection_post_delete_rule_set(ctx context.Con
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
 	result, err := client.Adsvalueadjustmentrulecollection_post_delete_rule_set(args)
 	if err != nil {
@@ -121,6 +126,7 @@ func HandleAdsvalueadjustmentrulecollection_post_delete_rule_set(ctx context.Con
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdsvalueadjustmentrulecollection_get_rules handles the adsvalueadjustmentrulecollection_get_rules tool with context-based auth
 func HandleAdsvalueadjustmentrulecollection_get_rules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -161,6 +167,8 @@ func HandleAdsvalueadjustmentrulecollection_get_rules(ctx context.Context, reque
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adsvalueadjustmentrulecollection_get_rules(args)
 	if err != nil {
@@ -175,6 +183,7 @@ func HandleAdsvalueadjustmentrulecollection_get_rules(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdsvalueadjustmentrulecollection_get_ handles the adsvalueadjustmentrulecollection_get_ tool with context-based auth
 func HandleAdsvalueadjustmentrulecollection_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -215,6 +224,8 @@ func HandleAdsvalueadjustmentrulecollection_get_(ctx context.Context, request mc
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adsvalueadjustmentrulecollection_get_(args)
 	if err != nil {
@@ -229,6 +240,7 @@ func HandleAdsvalueadjustmentrulecollection_get_(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdsvalueadjustmentrulecollection_post_ handles the adsvalueadjustmentrulecollection_post_ tool with context-based auth
 func HandleAdsvalueadjustmentrulecollection_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -258,6 +270,8 @@ func HandleAdsvalueadjustmentrulecollection_post_(ctx context.Context, request m
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adsvalueadjustmentrulecollection_post_(args)
 	if err != nil {
@@ -272,3 +286,4 @@ func HandleAdsvalueadjustmentrulecollection_post_(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -6,23 +6,23 @@ package constants
 var AdAssetLinkURLFields = struct {
 	AndroidDeeplinkUrl string
 	CarouselSeeMoreUrl string
-	DeeplinkUrl        string
-	DisplayUrl         string
-	Id                 string
-	IpadDeeplinkUrl    string
-	IphoneDeeplinkUrl  string
-	UrlTags            string
-	WebsiteUrl         string
+	DeeplinkUrl string
+	DisplayUrl string
+	Id string
+	IpadDeeplinkUrl string
+	IphoneDeeplinkUrl string
+	UrlTags string
+	WebsiteUrl string
 }{
 	AndroidDeeplinkUrl: "android_deeplink_url",
 	CarouselSeeMoreUrl: "carousel_see_more_url",
-	DeeplinkUrl:        "deeplink_url",
-	DisplayUrl:         "display_url",
-	Id:                 "id",
-	IpadDeeplinkUrl:    "ipad_deeplink_url",
-	IphoneDeeplinkUrl:  "iphone_deeplink_url",
-	UrlTags:            "url_tags",
-	WebsiteUrl:         "website_url",
+	DeeplinkUrl: "deeplink_url",
+	DisplayUrl: "display_url",
+	Id: "id",
+	IpadDeeplinkUrl: "ipad_deeplink_url",
+	IphoneDeeplinkUrl: "iphone_deeplink_url",
+	UrlTags: "url_tags",
+	WebsiteUrl: "website_url",
 }
 
 // AdAssetLinkURLFieldsList contains all available fields for AdAssetLinkURL objects

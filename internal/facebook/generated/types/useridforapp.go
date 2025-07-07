@@ -5,5 +5,5 @@ package types
 // UserIDForApp represents a Facebook UserIDForApp object
 type UserIDForApp struct {
 	App *Application `json:"app"`
-	Id  string       `json:"id"`
+	Id string `json:"id"`
 }

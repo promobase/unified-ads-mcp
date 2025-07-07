@@ -4,16 +4,16 @@ package constants
 
 // AudiencePermissionForActionsFields contains field name constants for AudiencePermissionForActions objects
 var AudiencePermissionForActionsFields = struct {
-	CanEdit                    string
-	CanSeeInsight              string
-	CanShare                   string
-	SubtypeSupportsLookalike   string
+	CanEdit string
+	CanSeeInsight string
+	CanShare string
+	SubtypeSupportsLookalike string
 	SupportsRecipientLookalike string
 }{
-	CanEdit:                    "can_edit",
-	CanSeeInsight:              "can_see_insight",
-	CanShare:                   "can_share",
-	SubtypeSupportsLookalike:   "subtype_supports_lookalike",
+	CanEdit: "can_edit",
+	CanSeeInsight: "can_see_insight",
+	CanShare: "can_share",
+	SubtypeSupportsLookalike: "subtype_supports_lookalike",
 	SupportsRecipientLookalike: "supports_recipient_lookalike",
 }
 

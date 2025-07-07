@@ -5,5 +5,5 @@ package types
 // ReachFrequencyAdFormat represents a Facebook ReachFrequencyAdFormat object
 type ReachFrequencyAdFormat struct {
 	Details map[string]interface{} `json:"details"`
-	Type_   string                 `json:"type"`
+	Type_ string `json:"type"`
 }

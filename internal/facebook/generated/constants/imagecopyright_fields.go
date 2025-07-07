@@ -4,37 +4,37 @@ package constants
 
 // ImageCopyrightFields contains field name constants for ImageCopyright objects
 var ImageCopyrightFields = struct {
-	Artist                      string
-	CopyrightMonitoringStatus   string
-	CreationTime                string
-	Creator                     string
-	CustomId                    string
-	Description                 string
-	Filename                    string
-	Id                          string
-	Image                       string
-	MatchesCount                string
+	Artist string
+	CopyrightMonitoringStatus string
+	CreationTime string
+	Creator string
+	CustomId string
+	Description string
+	Filename string
+	Id string
+	Image string
+	MatchesCount string
 	OriginalContentCreationDate string
-	OwnershipCountries          string
-	Tags                        string
-	Title                       string
-	UpdateTime                  string
+	OwnershipCountries string
+	Tags string
+	Title string
+	UpdateTime string
 }{
-	Artist:                      "artist",
-	CopyrightMonitoringStatus:   "copyright_monitoring_status",
-	CreationTime:                "creation_time",
-	Creator:                     "creator",
-	CustomId:                    "custom_id",
-	Description:                 "description",
-	Filename:                    "filename",
-	Id:                          "id",
-	Image:                       "image",
-	MatchesCount:                "matches_count",
+	Artist: "artist",
+	CopyrightMonitoringStatus: "copyright_monitoring_status",
+	CreationTime: "creation_time",
+	Creator: "creator",
+	CustomId: "custom_id",
+	Description: "description",
+	Filename: "filename",
+	Id: "id",
+	Image: "image",
+	MatchesCount: "matches_count",
 	OriginalContentCreationDate: "original_content_creation_date",
-	OwnershipCountries:          "ownership_countries",
-	Tags:                        "tags",
-	Title:                       "title",
-	UpdateTime:                  "update_time",
+	OwnershipCountries: "ownership_countries",
+	Tags: "tags",
+	Title: "title",
+	UpdateTime: "update_time",
 }
 
 // ImageCopyrightFieldsList contains all available fields for ImageCopyright objects

@@ -4,37 +4,37 @@ package constants
 
 // AdCampaignGroupStatsFields contains field name constants for AdCampaignGroupStats objects
 var AdCampaignGroupStatsFields = struct {
-	Actions                 string
-	CampaignGroupId         string
-	Clicks                  string
-	EndTime                 string
-	Impressions             string
-	InlineActions           string
-	SocialClicks            string
-	SocialImpressions       string
-	SocialSpent             string
-	SocialUniqueClicks      string
+	Actions string
+	CampaignGroupId string
+	Clicks string
+	EndTime string
+	Impressions string
+	InlineActions string
+	SocialClicks string
+	SocialImpressions string
+	SocialSpent string
+	SocialUniqueClicks string
 	SocialUniqueImpressions string
-	Spent                   string
-	StartTime               string
-	UniqueClicks            string
-	UniqueImpressions       string
+	Spent string
+	StartTime string
+	UniqueClicks string
+	UniqueImpressions string
 }{
-	Actions:                 "actions",
-	CampaignGroupId:         "campaign_group_id",
-	Clicks:                  "clicks",
-	EndTime:                 "end_time",
-	Impressions:             "impressions",
-	InlineActions:           "inline_actions",
-	SocialClicks:            "social_clicks",
-	SocialImpressions:       "social_impressions",
-	SocialSpent:             "social_spent",
-	SocialUniqueClicks:      "social_unique_clicks",
+	Actions: "actions",
+	CampaignGroupId: "campaign_group_id",
+	Clicks: "clicks",
+	EndTime: "end_time",
+	Impressions: "impressions",
+	InlineActions: "inline_actions",
+	SocialClicks: "social_clicks",
+	SocialImpressions: "social_impressions",
+	SocialSpent: "social_spent",
+	SocialUniqueClicks: "social_unique_clicks",
 	SocialUniqueImpressions: "social_unique_impressions",
-	Spent:                   "spent",
-	StartTime:               "start_time",
-	UniqueClicks:            "unique_clicks",
-	UniqueImpressions:       "unique_impressions",
+	Spent: "spent",
+	StartTime: "start_time",
+	UniqueClicks: "unique_clicks",
+	UniqueImpressions: "unique_impressions",
 }
 
 // AdCampaignGroupStatsFieldsList contains all available fields for AdCampaignGroupStats objects

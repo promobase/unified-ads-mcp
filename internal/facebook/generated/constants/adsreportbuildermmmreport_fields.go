@@ -4,23 +4,23 @@ package constants
 
 // AdsReportBuilderMMMReportFields contains field name constants for AdsReportBuilderMMMReport objects
 var AdsReportBuilderMMMReportFields = struct {
-	AsyncStatus  string
+	AsyncStatus string
 	ExportFormat string
-	ExportName   string
-	ExportType   string
-	HasSeen      string
-	Id           string
-	MmmStatus    string
-	TimeStart    string
+	ExportName string
+	ExportType string
+	HasSeen string
+	Id string
+	MmmStatus string
+	TimeStart string
 }{
-	AsyncStatus:  "async_status",
+	AsyncStatus: "async_status",
 	ExportFormat: "export_format",
-	ExportName:   "export_name",
-	ExportType:   "export_type",
-	HasSeen:      "has_seen",
-	Id:           "id",
-	MmmStatus:    "mmm_status",
-	TimeStart:    "time_start",
+	ExportName: "export_name",
+	ExportType: "export_type",
+	HasSeen: "has_seen",
+	Id: "id",
+	MmmStatus: "mmm_status",
+	TimeStart: "time_start",
 }
 
 // AdsReportBuilderMMMReportFieldsList contains all available fields for AdsReportBuilderMMMReport objects

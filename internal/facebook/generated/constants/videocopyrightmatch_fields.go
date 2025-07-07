@@ -4,22 +4,22 @@ package constants
 
 // VideoCopyrightMatchFields contains field name constants for VideoCopyrightMatch objects
 var VideoCopyrightMatchFields = struct {
-	CreatedDate      string
-	Id               string
+	CreatedDate string
+	Id string
 	LastModifiedUser string
-	MatchData        string
-	MatchStatus      string
-	Notes            string
-	Permalink        string
+	MatchData string
+	MatchStatus string
+	Notes string
+	Permalink string
 	UgcContentFormat string
 }{
-	CreatedDate:      "created_date",
-	Id:               "id",
+	CreatedDate: "created_date",
+	Id: "id",
 	LastModifiedUser: "last_modified_user",
-	MatchData:        "match_data",
-	MatchStatus:      "match_status",
-	Notes:            "notes",
-	Permalink:        "permalink",
+	MatchData: "match_data",
+	MatchStatus: "match_status",
+	Notes: "notes",
+	Permalink: "permalink",
 	UgcContentFormat: "ugc_content_format",
 }
 

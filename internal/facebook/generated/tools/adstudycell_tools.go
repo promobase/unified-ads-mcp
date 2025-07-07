@@ -17,6 +17,7 @@ import (
 func GetAdStudyCellTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// adstudycell_get_adaccounts tool
 	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	adstudycell_get_adaccountsTool := mcp.NewTool("adstudycell_get_adaccounts",
@@ -100,31 +101,31 @@ func GetAdStudyCellTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"adaccounts": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "adaccounts parameter",
-					"items":       map[string]any{"type": "integer"},
+					"items": map[string]any{"type": "integer"},
 				},
 				"adsets": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "adsets parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"campaigns": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "campaigns parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"creation_template": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "creation_template parameter",
-					"enum":        []string{"AUTOMATIC_PLACEMENTS", "BRAND_AWARENESS", "FACEBOOK", "FACEBOOK_AUDIENCE_NETWORK", "FACEBOOK_INSTAGRAM", "FACEBOOK_NEWS_FEED", "FACEBOOK_NEWS_FEED_IN_STREAM_VIDEO", "HIGH_FREQUENCY", "INSTAGRAM", "IN_STREAM_VIDEO", "LOW_FREQUENCY", "MEDIUM_FREQUENCY", "MOBILE_OPTIMIZED_VIDEO", "PAGE_POST_ENGAGEMENT", "REACH", "TV_COMMERCIAL", "TV_FACEBOOK", "VIDEO_VIEW_OPTIMIZATION"},
+					"enum": []string{ "AUTOMATIC_PLACEMENTS", "BRAND_AWARENESS", "FACEBOOK", "FACEBOOK_AUDIENCE_NETWORK", "FACEBOOK_INSTAGRAM", "FACEBOOK_NEWS_FEED", "FACEBOOK_NEWS_FEED_IN_STREAM_VIDEO", "HIGH_FREQUENCY", "INSTAGRAM", "IN_STREAM_VIDEO", "LOW_FREQUENCY", "MEDIUM_FREQUENCY", "MOBILE_OPTIMIZED_VIDEO", "PAGE_POST_ENGAGEMENT", "REACH", "TV_COMMERCIAL", "TV_FACEBOOK", "VIDEO_VIEW_OPTIMIZATION" },
 				},
 				"description": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "description parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
 				},
 			}),
@@ -133,10 +134,12 @@ func GetAdStudyCellTools() []mcp.Tool {
 	)
 	tools = append(tools, adstudycell_post_Tool)
 
+
 	return tools
 }
 
 // AdStudyCell handlers
+
 
 // HandleAdstudycell_get_adaccounts handles the adstudycell_get_adaccounts tool with context-based auth
 func HandleAdstudycell_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -177,6 +180,8 @@ func HandleAdstudycell_get_adaccounts(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudycell_get_adaccounts(args)
 	if err != nil {
@@ -191,6 +196,7 @@ func HandleAdstudycell_get_adaccounts(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdstudycell_get_adsets handles the adstudycell_get_adsets tool with context-based auth
 func HandleAdstudycell_get_adsets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -231,6 +237,8 @@ func HandleAdstudycell_get_adsets(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudycell_get_adsets(args)
 	if err != nil {
@@ -245,6 +253,7 @@ func HandleAdstudycell_get_adsets(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdstudycell_get_campaigns handles the adstudycell_get_campaigns tool with context-based auth
 func HandleAdstudycell_get_campaigns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -285,6 +294,8 @@ func HandleAdstudycell_get_campaigns(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudycell_get_campaigns(args)
 	if err != nil {
@@ -299,6 +310,7 @@ func HandleAdstudycell_get_campaigns(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdstudycell_get_ handles the adstudycell_get_ tool with context-based auth
 func HandleAdstudycell_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -339,6 +351,8 @@ func HandleAdstudycell_get_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudycell_get_(args)
 	if err != nil {
@@ -353,6 +367,7 @@ func HandleAdstudycell_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdstudycell_post_ handles the adstudycell_post_ tool with context-based auth
 func HandleAdstudycell_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -380,6 +395,8 @@ func HandleAdstudycell_post_(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudycell_post_(args)
 	if err != nil {
@@ -394,3 +411,4 @@ func HandleAdstudycell_post_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

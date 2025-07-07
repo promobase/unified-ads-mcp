@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-// BusinessUserClient provides methods for BusinessUser operations
+// BusinessUserClient represents a client for BusinessUser operations
 type BusinessUserClient struct {
 	accessToken string
 }
@@ -21,42 +21,42 @@ func NewBusinessUserClient(accessToken string) *BusinessUserClient {
 	}
 }
 
-// businessuser_get_assigned_ad_accounts GET assigned_ad_accounts for BusinessUser
+
+// Businessuser_get_assigned_ad_accounts performs GET assigned_ad_accounts for BusinessUser
 func (c *BusinessUserClient) Businessuser_get_assigned_ad_accounts(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_ad_accounts")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -88,48 +88,48 @@ func (c *BusinessUserClient) Businessuser_get_assigned_ad_accounts(args map[stri
 	return result, nil
 }
 
-// businessuser_get_assigned_business_asset_groups GET assigned_business_asset_groups for BusinessUser
+
+// Businessuser_get_assigned_business_asset_groups performs GET assigned_business_asset_groups for BusinessUser
 func (c *BusinessUserClient) Businessuser_get_assigned_business_asset_groups(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_business_asset_groups")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -161,48 +161,48 @@ func (c *BusinessUserClient) Businessuser_get_assigned_business_asset_groups(arg
 	return result, nil
 }
 
-// businessuser_get_assigned_pages GET assigned_pages for BusinessUser
+
+// Businessuser_get_assigned_pages performs GET assigned_pages for BusinessUser
 func (c *BusinessUserClient) Businessuser_get_assigned_pages(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_pages")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -234,42 +234,42 @@ func (c *BusinessUserClient) Businessuser_get_assigned_pages(args map[string]int
 	return result, nil
 }
 
-// businessuser_get_assigned_product_catalogs GET assigned_product_catalogs for BusinessUser
+
+// Businessuser_get_assigned_product_catalogs performs GET assigned_product_catalogs for BusinessUser
 func (c *BusinessUserClient) Businessuser_get_assigned_product_catalogs(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/assigned_product_catalogs")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -301,17 +301,18 @@ func (c *BusinessUserClient) Businessuser_get_assigned_product_catalogs(args map
 	return result, nil
 }
 
-// businessuser_delete_ DELETE  for BusinessUser
+
+// Businessuser_delete_ performs DELETE  for BusinessUser
 func (c *BusinessUserClient) Businessuser_delete_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -343,42 +344,42 @@ func (c *BusinessUserClient) Businessuser_delete_(args map[string]interface{}) (
 	return result, nil
 }
 
-// businessuser_get_ GET  for BusinessUser
+
+// Businessuser_get_ performs GET  for BusinessUser
 func (c *BusinessUserClient) Businessuser_get_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -410,24 +411,24 @@ func (c *BusinessUserClient) Businessuser_get_(args map[string]interface{}) (int
 	return result, nil
 }
 
-// businessuser_post_ POST  for BusinessUser
+
+// Businessuser_post_ performs POST  for BusinessUser
 func (c *BusinessUserClient) Businessuser_post_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -458,3 +459,4 @@ func (c *BusinessUserClient) Businessuser_post_(args map[string]interface{}) (in
 
 	return result, nil
 }
+

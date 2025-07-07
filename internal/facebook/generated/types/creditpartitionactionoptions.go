@@ -6,5 +6,5 @@ package types
 type CreditPartitionActionOptions struct {
 	Liability_type map[string]interface{} `json:"liability_type"`
 	Partition_type map[string]interface{} `json:"partition_type"`
-	Send_bill_to   map[string]interface{} `json:"send_bill_to"`
+	Send_bill_to map[string]interface{} `json:"send_bill_to"`
 }

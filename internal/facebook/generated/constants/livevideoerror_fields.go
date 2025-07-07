@@ -5,14 +5,14 @@ package constants
 // LiveVideoErrorFields contains field name constants for LiveVideoError objects
 var LiveVideoErrorFields = struct {
 	CreationTime string
-	ErrorCode    string
+	ErrorCode string
 	ErrorMessage string
-	ErrorType    string
+	ErrorType string
 }{
 	CreationTime: "creation_time",
-	ErrorCode:    "error_code",
+	ErrorCode: "error_code",
 	ErrorMessage: "error_message",
-	ErrorType:    "error_type",
+	ErrorType: "error_type",
 }
 
 // LiveVideoErrorFieldsList contains all available fields for LiveVideoError objects

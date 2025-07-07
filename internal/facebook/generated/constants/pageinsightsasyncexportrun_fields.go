@@ -4,25 +4,25 @@ package constants
 
 // PageInsightsAsyncExportRunFields contains field name constants for PageInsightsAsyncExportRun objects
 var PageInsightsAsyncExportRunFields = struct {
-	DataLevel       string
-	Filters         string
-	Format          string
-	GenReportDate   string
-	Id              string
-	ReportEndDate   string
+	DataLevel string
+	Filters string
+	Format string
+	GenReportDate string
+	Id string
+	ReportEndDate string
 	ReportStartDate string
-	Sorters         string
-	Status          string
+	Sorters string
+	Status string
 }{
-	DataLevel:       "data_level",
-	Filters:         "filters",
-	Format:          "format",
-	GenReportDate:   "gen_report_date",
-	Id:              "id",
-	ReportEndDate:   "report_end_date",
+	DataLevel: "data_level",
+	Filters: "filters",
+	Format: "format",
+	GenReportDate: "gen_report_date",
+	Id: "id",
+	ReportEndDate: "report_end_date",
 	ReportStartDate: "report_start_date",
-	Sorters:         "sorters",
-	Status:          "status",
+	Sorters: "sorters",
+	Status: "status",
 }
 
 // PageInsightsAsyncExportRunFieldsList contains all available fields for PageInsightsAsyncExportRun objects

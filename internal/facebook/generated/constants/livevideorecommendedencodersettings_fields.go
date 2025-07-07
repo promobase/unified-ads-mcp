@@ -5,11 +5,11 @@ package constants
 // LiveVideoRecommendedEncoderSettingsFields contains field name constants for LiveVideoRecommendedEncoderSettings objects
 var LiveVideoRecommendedEncoderSettingsFields = struct {
 	AudioCodecSettings string
-	StreamingProtocol  string
+	StreamingProtocol string
 	VideoCodecSettings string
 }{
 	AudioCodecSettings: "audio_codec_settings",
-	StreamingProtocol:  "streaming_protocol",
+	StreamingProtocol: "streaming_protocol",
 	VideoCodecSettings: "video_codec_settings",
 }
 

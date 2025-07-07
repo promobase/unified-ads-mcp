@@ -4,25 +4,25 @@ package constants
 
 // ProductItemLocalInfoFields contains field name constants for ProductItemLocalInfo objects
 var ProductItemLocalInfoFields = struct {
-	AvailabilityCircleOrigin       string
-	AvailabilityCircleRadius       string
-	AvailabilityCircleRadiusUnit   string
+	AvailabilityCircleOrigin string
+	AvailabilityCircleRadius string
+	AvailabilityCircleRadiusUnit string
 	AvailabilityPolygonCoordinates string
-	AvailabilityPostalCodes        string
-	AvailabilitySource             string
-	Id                             string
-	InferredCircleOrigin           string
-	InferredCircleRadius           string
+	AvailabilityPostalCodes string
+	AvailabilitySource string
+	Id string
+	InferredCircleOrigin string
+	InferredCircleRadius string
 }{
-	AvailabilityCircleOrigin:       "availability_circle_origin",
-	AvailabilityCircleRadius:       "availability_circle_radius",
-	AvailabilityCircleRadiusUnit:   "availability_circle_radius_unit",
+	AvailabilityCircleOrigin: "availability_circle_origin",
+	AvailabilityCircleRadius: "availability_circle_radius",
+	AvailabilityCircleRadiusUnit: "availability_circle_radius_unit",
 	AvailabilityPolygonCoordinates: "availability_polygon_coordinates",
-	AvailabilityPostalCodes:        "availability_postal_codes",
-	AvailabilitySource:             "availability_source",
-	Id:                             "id",
-	InferredCircleOrigin:           "inferred_circle_origin",
-	InferredCircleRadius:           "inferred_circle_radius",
+	AvailabilityPostalCodes: "availability_postal_codes",
+	AvailabilitySource: "availability_source",
+	Id: "id",
+	InferredCircleOrigin: "inferred_circle_origin",
+	InferredCircleRadius: "inferred_circle_radius",
 }
 
 // ProductItemLocalInfoFieldsList contains all available fields for ProductItemLocalInfo objects

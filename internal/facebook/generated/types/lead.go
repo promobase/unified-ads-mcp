@@ -6,23 +6,23 @@ import "time"
 
 // Lead represents a Facebook Lead object
 type Lead struct {
-	Ad_id                        string                            `json:"ad_id"`
-	Ad_name                      string                            `json:"ad_name"`
-	Adset_id                     string                            `json:"adset_id"`
-	Adset_name                   string                            `json:"adset_name"`
-	Campaign_id                  string                            `json:"campaign_id"`
-	Campaign_name                string                            `json:"campaign_name"`
-	Created_time                 time.Time                         `json:"created_time"`
-	Custom_disclaimer_responses  []UserLeadGenDisclaimerResponse   `json:"custom_disclaimer_responses"`
-	Field_data                   []UserLeadGenFieldData            `json:"field_data"`
-	Form_id                      string                            `json:"form_id"`
-	Home_listing                 *HomeListing                      `json:"home_listing"`
-	Id                           string                            `json:"id"`
-	Is_organic                   bool                              `json:"is_organic"`
-	Partner_name                 string                            `json:"partner_name"`
-	Platform                     string                            `json:"platform"`
-	Post                         *Link                             `json:"post"`
+	Ad_id string `json:"ad_id"`
+	Ad_name string `json:"ad_name"`
+	Adset_id string `json:"adset_id"`
+	Adset_name string `json:"adset_name"`
+	Campaign_id string `json:"campaign_id"`
+	Campaign_name string `json:"campaign_name"`
+	Created_time time.Time `json:"created_time"`
+	Custom_disclaimer_responses []UserLeadGenDisclaimerResponse `json:"custom_disclaimer_responses"`
+	Field_data []UserLeadGenFieldData `json:"field_data"`
+	Form_id string `json:"form_id"`
+	Home_listing *HomeListing `json:"home_listing"`
+	Id string `json:"id"`
+	Is_organic bool `json:"is_organic"`
+	Partner_name string `json:"partner_name"`
+	Platform string `json:"platform"`
+	Post *Link `json:"post"`
 	Post_submission_check_result *LeadGenPostSubmissionCheckResult `json:"post_submission_check_result"`
-	Retailer_item_id             string                            `json:"retailer_item_id"`
-	Vehicle                      *Vehicle                          `json:"vehicle"`
+	Retailer_item_id string `json:"retailer_item_id"`
+	Vehicle *Vehicle `json:"vehicle"`
 }

@@ -5,18 +5,18 @@ package constants
 // CallAdsPhoneDataFields contains field name constants for CallAdsPhoneData objects
 var CallAdsPhoneDataFields = struct {
 	CallAdsPhoneDataUseCase string
-	CallbackVariant         string
-	DestinationWebsiteUrl   string
-	Id                      string
-	Page                    string
-	PhoneNumber             string
+	CallbackVariant string
+	DestinationWebsiteUrl string
+	Id string
+	Page string
+	PhoneNumber string
 }{
 	CallAdsPhoneDataUseCase: "call_ads_phone_data_use_case",
-	CallbackVariant:         "callback_variant",
-	DestinationWebsiteUrl:   "destination_website_url",
-	Id:                      "id",
-	Page:                    "page",
-	PhoneNumber:             "phone_number",
+	CallbackVariant: "callback_variant",
+	DestinationWebsiteUrl: "destination_website_url",
+	Id: "id",
+	Page: "page",
+	PhoneNumber: "phone_number",
 }
 
 // CallAdsPhoneDataFieldsList contains all available fields for CallAdsPhoneData objects

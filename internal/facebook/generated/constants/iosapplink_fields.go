@@ -4,13 +4,13 @@ package constants
 
 // IosAppLinkFields contains field name constants for IosAppLink objects
 var IosAppLinkFields = struct {
-	AppName    string
+	AppName string
 	AppStoreId string
-	Url        string
+	Url string
 }{
-	AppName:    "app_name",
+	AppName: "app_name",
 	AppStoreId: "app_store_id",
-	Url:        "url",
+	Url: "url",
 }
 
 // IosAppLinkFieldsList contains all available fields for IosAppLink objects

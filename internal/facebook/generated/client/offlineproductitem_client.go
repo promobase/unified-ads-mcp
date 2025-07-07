@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-// OfflineProductItemClient provides methods for OfflineProductItem operations
+// OfflineProductItemClient represents a client for OfflineProductItem operations
 type OfflineProductItemClient struct {
 	accessToken string
 }
@@ -21,42 +21,42 @@ func NewOfflineProductItemClient(accessToken string) *OfflineProductItemClient {
 	}
 }
 
-// offlineproductitem_get_channels_to_integrity_status GET channels_to_integrity_status for OfflineProductItem
+
+// Offlineproductitem_get_channels_to_integrity_status performs GET channels_to_integrity_status for OfflineProductItem
 func (c *OfflineProductItemClient) Offlineproductitem_get_channels_to_integrity_status(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/channels_to_integrity_status")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -88,48 +88,48 @@ func (c *OfflineProductItemClient) Offlineproductitem_get_channels_to_integrity_
 	return result, nil
 }
 
-// offlineproductitem_get_override_details GET override_details for OfflineProductItem
+
+// Offlineproductitem_get_override_details performs GET override_details for OfflineProductItem
 func (c *OfflineProductItemClient) Offlineproductitem_get_override_details(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/override_details")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -161,42 +161,42 @@ func (c *OfflineProductItemClient) Offlineproductitem_get_override_details(args 
 	return result, nil
 }
 
-// offlineproductitem_get_ GET  for OfflineProductItem
+
+// Offlineproductitem_get_ performs GET  for OfflineProductItem
 func (c *OfflineProductItemClient) Offlineproductitem_get_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -227,3 +227,4 @@ func (c *OfflineProductItemClient) Offlineproductitem_get_(args map[string]inter
 
 	return result, nil
 }
+

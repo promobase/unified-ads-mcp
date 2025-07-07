@@ -4,6 +4,6 @@ package types
 
 // BusinessProductCatalogTOS represents a Facebook BusinessProductCatalogTOS object
 type BusinessProductCatalogTOS struct {
-	Accepted bool   `json:"accepted"`
-	Content  string `json:"content"`
+	Accepted bool `json:"accepted"`
+	Content string `json:"content"`
 }

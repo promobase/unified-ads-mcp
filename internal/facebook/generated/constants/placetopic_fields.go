@@ -4,22 +4,22 @@ package constants
 
 // PlaceTopicFields contains field name constants for PlaceTopic objects
 var PlaceTopicFields = struct {
-	Count            string
-	HasChildren      string
-	IconUrl          string
-	Id               string
-	Name             string
-	ParentIds        string
-	PluralName       string
+	Count string
+	HasChildren string
+	IconUrl string
+	Id string
+	Name string
+	ParentIds string
+	PluralName string
 	TopSubtopicNames string
 }{
-	Count:            "count",
-	HasChildren:      "has_children",
-	IconUrl:          "icon_url",
-	Id:               "id",
-	Name:             "name",
-	ParentIds:        "parent_ids",
-	PluralName:       "plural_name",
+	Count: "count",
+	HasChildren: "has_children",
+	IconUrl: "icon_url",
+	Id: "id",
+	Name: "name",
+	ParentIds: "parent_ids",
+	PluralName: "plural_name",
 	TopSubtopicNames: "top_subtopic_names",
 }
 

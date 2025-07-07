@@ -17,6 +17,7 @@ import (
 func GetAdStudyObjectiveTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// adstudyobjective_get_adspixels tool
 	// Available fields for AdsPixel: automatic_matching_fields, can_proxy, code, config, creation_time, creator, data_use_setting, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_matching, event_stats, event_time_max, event_time_min, first_party_cookie_status, has_1p_pixel_event, id, is_consolidated_container, is_created_by_business, is_crm, is_mta_use, is_restricted_use, is_unavailable, last_fired_time, last_upload_app, last_upload_app_changed_time, match_rate_approx, matched_entries, name, owner_ad_account, owner_business, usage, user_access_expire_time, valid_entries
 	adstudyobjective_get_adspixelsTool := mcp.NewTool("adstudyobjective_get_adspixels",
@@ -158,13 +159,13 @@ func GetAdStudyObjectiveTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"breakdowns": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "breakdowns parameter",
-					"enum":        []string{"age", "cell_id", "country", "gender"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "age", "cell_id", "country", "gender" },
+					"items": map[string]any{"type": "string"},
 				},
 				"ds": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ds parameter",
 				},
 			}),
@@ -192,52 +193,52 @@ func GetAdStudyObjectiveTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"adspixels": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "adspixels parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"applications": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "applications parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"customconversions": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "customconversions parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"is_primary": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_primary parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
 				},
 				"offline_conversion_data_sets": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "offline_conversion_data_sets parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"offsite_datasets": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "offsite_datasets parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"product_catalogs": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "product_catalogs parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"product_sets": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "product_sets parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "type parameter",
-					"enum":        []string{"BRAND", "BRANDLIFT", "CONVERSIONS", "FTL", "MAE", "MAI", "MPC_CONVERSION", "NONSALES", "PARTNER", "SALES", "TELCO"},
+					"enum": []string{ "BRAND", "BRANDLIFT", "CONVERSIONS", "FTL", "MAE", "MAI", "MPC_CONVERSION", "NONSALES", "PARTNER", "SALES", "TELCO" },
 				},
 			}),
 			mcp.Description("Parameters object containing: adspixels (array<object>), applications (array<object>), customconversions (array<object>), is_primary (boolean), name (string), offline_conversion_data_sets (array<object>), offsite_datasets (array<object>), product_catalogs (array<object>), product_sets (array<object>), type (adstudyobjective_type) [BRAND, BRANDLIFT, CONVERSIONS, FTL, MAE, ...]"),
@@ -245,10 +246,12 @@ func GetAdStudyObjectiveTools() []mcp.Tool {
 	)
 	tools = append(tools, adstudyobjective_post_Tool)
 
+
 	return tools
 }
 
 // AdStudyObjective handlers
+
 
 // HandleAdstudyobjective_get_adspixels handles the adstudyobjective_get_adspixels tool with context-based auth
 func HandleAdstudyobjective_get_adspixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -289,6 +292,8 @@ func HandleAdstudyobjective_get_adspixels(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudyobjective_get_adspixels(args)
 	if err != nil {
@@ -303,6 +308,7 @@ func HandleAdstudyobjective_get_adspixels(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdstudyobjective_get_applications handles the adstudyobjective_get_applications tool with context-based auth
 func HandleAdstudyobjective_get_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -343,6 +349,8 @@ func HandleAdstudyobjective_get_applications(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudyobjective_get_applications(args)
 	if err != nil {
@@ -357,6 +365,7 @@ func HandleAdstudyobjective_get_applications(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdstudyobjective_get_brand_requests handles the adstudyobjective_get_brand_requests tool with context-based auth
 func HandleAdstudyobjective_get_brand_requests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -397,6 +406,8 @@ func HandleAdstudyobjective_get_brand_requests(ctx context.Context, request mcp.
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudyobjective_get_brand_requests(args)
 	if err != nil {
@@ -411,6 +422,7 @@ func HandleAdstudyobjective_get_brand_requests(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdstudyobjective_get_customconversions handles the adstudyobjective_get_customconversions tool with context-based auth
 func HandleAdstudyobjective_get_customconversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -451,6 +463,8 @@ func HandleAdstudyobjective_get_customconversions(ctx context.Context, request m
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudyobjective_get_customconversions(args)
 	if err != nil {
@@ -465,6 +479,7 @@ func HandleAdstudyobjective_get_customconversions(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdstudyobjective_get_offline_conversion_data_sets handles the adstudyobjective_get_offline_conversion_data_sets tool with context-based auth
 func HandleAdstudyobjective_get_offline_conversion_data_sets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -505,6 +520,8 @@ func HandleAdstudyobjective_get_offline_conversion_data_sets(ctx context.Context
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudyobjective_get_offline_conversion_data_sets(args)
 	if err != nil {
@@ -519,6 +536,7 @@ func HandleAdstudyobjective_get_offline_conversion_data_sets(ctx context.Context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdstudyobjective_get_partner_private_studies handles the adstudyobjective_get_partner_private_studies tool with context-based auth
 func HandleAdstudyobjective_get_partner_private_studies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -559,6 +577,8 @@ func HandleAdstudyobjective_get_partner_private_studies(ctx context.Context, req
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudyobjective_get_partner_private_studies(args)
 	if err != nil {
@@ -573,6 +593,7 @@ func HandleAdstudyobjective_get_partner_private_studies(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdstudyobjective_get_partnerstudies handles the adstudyobjective_get_partnerstudies tool with context-based auth
 func HandleAdstudyobjective_get_partnerstudies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -613,6 +634,8 @@ func HandleAdstudyobjective_get_partnerstudies(ctx context.Context, request mcp.
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudyobjective_get_partnerstudies(args)
 	if err != nil {
@@ -627,6 +650,7 @@ func HandleAdstudyobjective_get_partnerstudies(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdstudyobjective_get_ handles the adstudyobjective_get_ tool with context-based auth
 func HandleAdstudyobjective_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -679,6 +703,8 @@ func HandleAdstudyobjective_get_(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudyobjective_get_(args)
 	if err != nil {
@@ -693,6 +719,7 @@ func HandleAdstudyobjective_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdstudyobjective_post_ handles the adstudyobjective_post_ tool with context-based auth
 func HandleAdstudyobjective_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -720,6 +747,8 @@ func HandleAdstudyobjective_post_(ctx context.Context, request mcp.CallToolReque
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudyobjective_post_(args)
 	if err != nil {
@@ -734,3 +763,4 @@ func HandleAdstudyobjective_post_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -4,22 +4,22 @@ package constants
 
 // TargetingDynamicRuleFields contains field name constants for TargetingDynamicRule objects
 var TargetingDynamicRuleFields = struct {
-	ActionType       string
-	AdGroupId        string
-	CampaignGroupId  string
-	CampaignId       string
-	ImpressionCount  string
-	PageId           string
-	Post             string
+	ActionType string
+	AdGroupId string
+	CampaignGroupId string
+	CampaignId string
+	ImpressionCount string
+	PageId string
+	Post string
 	RetentionSeconds string
 }{
-	ActionType:       "action.type",
-	AdGroupId:        "ad_group_id",
-	CampaignGroupId:  "campaign_group_id",
-	CampaignId:       "campaign_id",
-	ImpressionCount:  "impression_count",
-	PageId:           "page_id",
-	Post:             "post",
+	ActionType: "action.type",
+	AdGroupId: "ad_group_id",
+	CampaignGroupId: "campaign_group_id",
+	CampaignId: "campaign_id",
+	ImpressionCount: "impression_count",
+	PageId: "page_id",
+	Post: "post",
 	RetentionSeconds: "retention_seconds",
 }
 

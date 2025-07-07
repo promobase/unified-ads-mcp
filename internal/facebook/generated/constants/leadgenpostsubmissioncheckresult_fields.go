@@ -4,12 +4,12 @@ package constants
 
 // LeadGenPostSubmissionCheckResultFields contains field name constants for LeadGenPostSubmissionCheckResult objects
 var LeadGenPostSubmissionCheckResultFields = struct {
-	ApiCallResult     string
-	ApiErrorMessage   string
+	ApiCallResult string
+	ApiErrorMessage string
 	ShownThankYouPage string
 }{
-	ApiCallResult:     "api_call_result",
-	ApiErrorMessage:   "api_error_message",
+	ApiCallResult: "api_call_result",
+	ApiErrorMessage: "api_error_message",
 	ShownThankYouPage: "shown_thank_you_page",
 }
 

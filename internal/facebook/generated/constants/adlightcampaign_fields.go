@@ -5,10 +5,10 @@ package constants
 // AdLightCampaignFields contains field name constants for AdLightCampaign objects
 var AdLightCampaignFields = struct {
 	CampaignId string
-	Id         string
+	Id string
 }{
 	CampaignId: "campaign_id",
-	Id:         "id",
+	Id: "id",
 }
 
 // AdLightCampaignFieldsList contains all available fields for AdLightCampaign objects

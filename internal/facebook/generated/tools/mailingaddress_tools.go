@@ -17,6 +17,7 @@ import (
 func GetMailingAddressTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// mailingaddress_get_ tool
 	// Available fields for MailingAddress: city, city_page, country, id, postal_code, region, street1, street2
 	mailingaddress_get_Tool := mcp.NewTool("mailingaddress_get_",
@@ -36,10 +37,12 @@ func GetMailingAddressTools() []mcp.Tool {
 	)
 	tools = append(tools, mailingaddress_get_Tool)
 
+
 	return tools
 }
 
 // MailingAddress handlers
+
 
 // HandleMailingaddress_get_ handles the mailingaddress_get_ tool with context-based auth
 func HandleMailingaddress_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleMailingaddress_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Mailingaddress_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleMailingaddress_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

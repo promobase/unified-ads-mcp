@@ -5,10 +5,10 @@ package constants
 // AdCreativePostClickConfigurationFields contains field name constants for AdCreativePostClickConfiguration objects
 var AdCreativePostClickConfigurationFields = struct {
 	PostClickItemDescription string
-	PostClickItemHeadline    string
+	PostClickItemHeadline string
 }{
 	PostClickItemDescription: "post_click_item_description",
-	PostClickItemHeadline:    "post_click_item_headline",
+	PostClickItemHeadline: "post_click_item_headline",
 }
 
 // AdCreativePostClickConfigurationFieldsList contains all available fields for AdCreativePostClickConfiguration objects

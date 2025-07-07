@@ -4,10 +4,10 @@ package constants
 
 // AdsPixelDomainLastFiredTimeFields contains field name constants for AdsPixelDomainLastFiredTime objects
 var AdsPixelDomainLastFiredTimeFields = struct {
-	DomainName    string
+	DomainName string
 	LastFiredTime string
 }{
-	DomainName:    "domain_name",
+	DomainName: "domain_name",
 	LastFiredTime: "last_fired_time",
 }
 

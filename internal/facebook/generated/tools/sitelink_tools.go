@@ -17,6 +17,7 @@ import (
 func GetSiteLinkTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// sitelink_get_ tool
 	// Available fields for SiteLink: id, link_image_hash, link_title, link_type, link_url
 	sitelink_get_Tool := mcp.NewTool("sitelink_get_",
@@ -36,10 +37,12 @@ func GetSiteLinkTools() []mcp.Tool {
 	)
 	tools = append(tools, sitelink_get_Tool)
 
+
 	return tools
 }
 
 // SiteLink handlers
+
 
 // HandleSitelink_get_ handles the sitelink_get_ tool with context-based auth
 func HandleSitelink_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleSitelink_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Sitelink_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleSitelink_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

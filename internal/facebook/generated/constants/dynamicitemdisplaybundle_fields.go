@@ -5,20 +5,20 @@ package constants
 // DynamicItemDisplayBundleFields contains field name constants for DynamicItemDisplayBundle objects
 var DynamicItemDisplayBundleFields = struct {
 	AdditionalUrls string
-	Description    string
-	Id             string
-	Name           string
-	ProductSet     string
-	TextTokens     string
-	Url            string
+	Description string
+	Id string
+	Name string
+	ProductSet string
+	TextTokens string
+	Url string
 }{
 	AdditionalUrls: "additional_urls",
-	Description:    "description",
-	Id:             "id",
-	Name:           "name",
-	ProductSet:     "product_set",
-	TextTokens:     "text_tokens",
-	Url:            "url",
+	Description: "description",
+	Id: "id",
+	Name: "name",
+	ProductSet: "product_set",
+	TextTokens: "text_tokens",
+	Url: "url",
 }
 
 // DynamicItemDisplayBundleFieldsList contains all available fields for DynamicItemDisplayBundle objects

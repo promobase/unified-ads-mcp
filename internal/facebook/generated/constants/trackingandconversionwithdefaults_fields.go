@@ -4,15 +4,15 @@ package constants
 
 // TrackingAndConversionWithDefaultsFields contains field name constants for TrackingAndConversionWithDefaults objects
 var TrackingAndConversionWithDefaultsFields = struct {
-	CustomConversion  string
-	CustomTracking    string
+	CustomConversion string
+	CustomTracking string
 	DefaultConversion string
-	DefaultTracking   string
+	DefaultTracking string
 }{
-	CustomConversion:  "custom_conversion",
-	CustomTracking:    "custom_tracking",
+	CustomConversion: "custom_conversion",
+	CustomTracking: "custom_tracking",
 	DefaultConversion: "default_conversion",
-	DefaultTracking:   "default_tracking",
+	DefaultTracking: "default_tracking",
 }
 
 // TrackingAndConversionWithDefaultsFieldsList contains all available fields for TrackingAndConversionWithDefaults objects

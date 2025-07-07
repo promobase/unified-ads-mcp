@@ -4,22 +4,22 @@ package constants
 
 // CatalogItemAppLinksFields contains field name constants for CatalogItemAppLinks objects
 var CatalogItemAppLinksFields = struct {
-	Android          string
-	Ios              string
-	Ipad             string
-	Iphone           string
-	Web              string
-	Windows          string
-	WindowsPhone     string
+	Android string
+	Ios string
+	Ipad string
+	Iphone string
+	Web string
+	Windows string
+	WindowsPhone string
 	WindowsUniversal string
 }{
-	Android:          "android",
-	Ios:              "ios",
-	Ipad:             "ipad",
-	Iphone:           "iphone",
-	Web:              "web",
-	Windows:          "windows",
-	WindowsPhone:     "windows_phone",
+	Android: "android",
+	Ios: "ios",
+	Ipad: "ipad",
+	Iphone: "iphone",
+	Web: "web",
+	Windows: "windows",
+	WindowsPhone: "windows_phone",
 	WindowsUniversal: "windows_universal",
 }
 

@@ -4,29 +4,29 @@ package constants
 
 // ProductCatalogDiagnosticGroupFields contains field name constants for ProductCatalogDiagnosticGroup objects
 var ProductCatalogDiagnosticGroupFields = struct {
-	AffectedChannels         string
-	AffectedEntity           string
-	AffectedFeatures         string
-	Diagnostics              string
-	ErrorCode                string
+	AffectedChannels string
+	AffectedEntity string
+	AffectedFeatures string
+	Diagnostics string
+	ErrorCode string
 	NumberOfAffectedEntities string
-	NumberOfAffectedItems    string
-	Severity                 string
-	Subtitle                 string
-	Title                    string
-	FieldType                string
+	NumberOfAffectedItems string
+	Severity string
+	Subtitle string
+	Title string
+	FieldType string
 }{
-	AffectedChannels:         "affected_channels",
-	AffectedEntity:           "affected_entity",
-	AffectedFeatures:         "affected_features",
-	Diagnostics:              "diagnostics",
-	ErrorCode:                "error_code",
+	AffectedChannels: "affected_channels",
+	AffectedEntity: "affected_entity",
+	AffectedFeatures: "affected_features",
+	Diagnostics: "diagnostics",
+	ErrorCode: "error_code",
 	NumberOfAffectedEntities: "number_of_affected_entities",
-	NumberOfAffectedItems:    "number_of_affected_items",
-	Severity:                 "severity",
-	Subtitle:                 "subtitle",
-	Title:                    "title",
-	FieldType:                "type",
+	NumberOfAffectedItems: "number_of_affected_items",
+	Severity: "severity",
+	Subtitle: "subtitle",
+	Title: "title",
+	FieldType: "type",
 }
 
 // ProductCatalogDiagnosticGroupFieldsList contains all available fields for ProductCatalogDiagnosticGroup objects

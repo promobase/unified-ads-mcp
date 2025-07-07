@@ -4,33 +4,33 @@ package constants
 
 // LocationFields contains field name constants for Location objects
 var LocationFields = struct {
-	City        string
-	CityId      string
-	Country     string
+	City string
+	CityId string
+	Country string
 	CountryCode string
-	Latitude    string
-	LocatedIn   string
-	Longitude   string
-	Name        string
-	Region      string
-	RegionId    string
-	State       string
-	Street      string
-	Zip         string
+	Latitude string
+	LocatedIn string
+	Longitude string
+	Name string
+	Region string
+	RegionId string
+	State string
+	Street string
+	Zip string
 }{
-	City:        "city",
-	CityId:      "city_id",
-	Country:     "country",
+	City: "city",
+	CityId: "city_id",
+	Country: "country",
 	CountryCode: "country_code",
-	Latitude:    "latitude",
-	LocatedIn:   "located_in",
-	Longitude:   "longitude",
-	Name:        "name",
-	Region:      "region",
-	RegionId:    "region_id",
-	State:       "state",
-	Street:      "street",
-	Zip:         "zip",
+	Latitude: "latitude",
+	LocatedIn: "located_in",
+	Longitude: "longitude",
+	Name: "name",
+	Region: "region",
+	RegionId: "region_id",
+	State: "state",
+	Street: "street",
+	Zip: "zip",
 }
 
 // LocationFieldsList contains all available fields for Location objects

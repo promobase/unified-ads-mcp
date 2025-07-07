@@ -4,8 +4,8 @@ package types
 
 // CPASParentCatalogSettings represents a Facebook CPASParentCatalogSettings object
 type CPASParentCatalogSettings struct {
-	Attribution_windows           []string `json:"attribution_windows"`
-	Default_currency              string   `json:"default_currency"`
-	Disable_use_as_parent_catalog bool     `json:"disable_use_as_parent_catalog"`
-	Id                            string   `json:"id"`
+	Attribution_windows []string `json:"attribution_windows"`
+	Default_currency string `json:"default_currency"`
+	Disable_use_as_parent_catalog bool `json:"disable_use_as_parent_catalog"`
+	Id string `json:"id"`
 }

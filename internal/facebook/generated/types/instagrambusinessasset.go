@@ -4,7 +4,7 @@ package types
 
 // InstagramBusinessAsset represents a Facebook InstagramBusinessAsset object
 type InstagramBusinessAsset struct {
-	Id          string `json:"id"`
-	Ig_user_id  string `json:"ig_user_id"`
+	Id string `json:"id"`
+	Ig_user_id string `json:"ig_user_id"`
 	Ig_username string `json:"ig_username"`
 }

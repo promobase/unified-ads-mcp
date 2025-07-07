@@ -4,6 +4,6 @@ package types
 
 // CreativeHistory represents a Facebook CreativeHistory object
 type CreativeHistory struct {
-	Creative_fingerprint int                      `json:"creative_fingerprint"`
-	Time_ranges          []map[string]interface{} `json:"time_ranges"`
+	Creative_fingerprint int `json:"creative_fingerprint"`
+	Time_ranges []map[string]interface{} `json:"time_ranges"`
 }

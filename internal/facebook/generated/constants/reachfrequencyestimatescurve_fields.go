@@ -4,23 +4,23 @@ package constants
 
 // ReachFrequencyEstimatesCurveFields contains field name constants for ReachFrequencyEstimatesCurve objects
 var ReachFrequencyEstimatesCurveFields = struct {
-	Budget            string
-	Conversion        string
-	Impression        string
+	Budget string
+	Conversion string
+	Impression string
 	InterpolatedReach string
-	NumPoints         string
-	RawImpression     string
-	RawReach          string
-	Reach             string
+	NumPoints string
+	RawImpression string
+	RawReach string
+	Reach string
 }{
-	Budget:            "budget",
-	Conversion:        "conversion",
-	Impression:        "impression",
+	Budget: "budget",
+	Conversion: "conversion",
+	Impression: "impression",
 	InterpolatedReach: "interpolated_reach",
-	NumPoints:         "num_points",
-	RawImpression:     "raw_impression",
-	RawReach:          "raw_reach",
-	Reach:             "reach",
+	NumPoints: "num_points",
+	RawImpression: "raw_impression",
+	RawReach: "raw_reach",
+	Reach: "reach",
 }
 
 // ReachFrequencyEstimatesCurveFieldsList contains all available fields for ReachFrequencyEstimatesCurve objects

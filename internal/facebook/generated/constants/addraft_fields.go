@@ -4,37 +4,37 @@ package constants
 
 // AdDraftFields contains field name constants for AdDraft objects
 var AdDraftFields = struct {
-	AccountId       string
-	ApiVersion      string
+	AccountId string
+	ApiVersion string
 	AsyncRequestSet string
-	AuthorId        string
-	CreatedBy       string
-	DraftVersion    string
-	Id              string
-	IsActive        string
-	Name            string
-	OwnershipType   string
-	PublishStatus   string
-	State           string
-	Summary         string
-	TimeCreated     string
-	TimeUpdated     string
+	AuthorId string
+	CreatedBy string
+	DraftVersion string
+	Id string
+	IsActive string
+	Name string
+	OwnershipType string
+	PublishStatus string
+	State string
+	Summary string
+	TimeCreated string
+	TimeUpdated string
 }{
-	AccountId:       "account_id",
-	ApiVersion:      "api_version",
+	AccountId: "account_id",
+	ApiVersion: "api_version",
 	AsyncRequestSet: "async_request_set",
-	AuthorId:        "author_id",
-	CreatedBy:       "created_by",
-	DraftVersion:    "draft_version",
-	Id:              "id",
-	IsActive:        "is_active",
-	Name:            "name",
-	OwnershipType:   "ownership_type",
-	PublishStatus:   "publish_status",
-	State:           "state",
-	Summary:         "summary",
-	TimeCreated:     "time_created",
-	TimeUpdated:     "time_updated",
+	AuthorId: "author_id",
+	CreatedBy: "created_by",
+	DraftVersion: "draft_version",
+	Id: "id",
+	IsActive: "is_active",
+	Name: "name",
+	OwnershipType: "ownership_type",
+	PublishStatus: "publish_status",
+	State: "state",
+	Summary: "summary",
+	TimeCreated: "time_created",
+	TimeUpdated: "time_updated",
 }
 
 // AdDraftFieldsList contains all available fields for AdDraft objects

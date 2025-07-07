@@ -4,35 +4,35 @@ package constants
 
 // AudioCopyrightFields contains field name constants for AudioCopyright objects
 var AudioCopyrightFields = struct {
-	CreationTime          string
+	CreationTime string
 	DisplayedMatchesCount string
-	Id                    string
-	InConflict            string
-	Isrc                  string
-	MatchRule             string
-	OwnershipCountries    string
-	OwnershipDetails      string
-	ReferenceFileStatus   string
+	Id string
+	InConflict string
+	Isrc string
+	MatchRule string
+	OwnershipCountries string
+	OwnershipDetails string
+	ReferenceFileStatus string
 	RidgeMonitoringStatus string
-	Tags                  string
-	UpdateTime            string
-	WhitelistedFbUsers    string
-	WhitelistedIgUsers    string
+	Tags string
+	UpdateTime string
+	WhitelistedFbUsers string
+	WhitelistedIgUsers string
 }{
-	CreationTime:          "creation_time",
+	CreationTime: "creation_time",
 	DisplayedMatchesCount: "displayed_matches_count",
-	Id:                    "id",
-	InConflict:            "in_conflict",
-	Isrc:                  "isrc",
-	MatchRule:             "match_rule",
-	OwnershipCountries:    "ownership_countries",
-	OwnershipDetails:      "ownership_details",
-	ReferenceFileStatus:   "reference_file_status",
+	Id: "id",
+	InConflict: "in_conflict",
+	Isrc: "isrc",
+	MatchRule: "match_rule",
+	OwnershipCountries: "ownership_countries",
+	OwnershipDetails: "ownership_details",
+	ReferenceFileStatus: "reference_file_status",
 	RidgeMonitoringStatus: "ridge_monitoring_status",
-	Tags:                  "tags",
-	UpdateTime:            "update_time",
-	WhitelistedFbUsers:    "whitelisted_fb_users",
-	WhitelistedIgUsers:    "whitelisted_ig_users",
+	Tags: "tags",
+	UpdateTime: "update_time",
+	WhitelistedFbUsers: "whitelisted_fb_users",
+	WhitelistedIgUsers: "whitelisted_ig_users",
 }
 
 // AudioCopyrightFieldsList contains all available fields for AudioCopyright objects

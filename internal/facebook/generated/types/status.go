@@ -6,10 +6,10 @@ import "time"
 
 // Status represents a Facebook Status object
 type Status struct {
-	Event        *Event                 `json:"event"`
-	From         map[string]interface{} `json:"from"`
-	Id           string                 `json:"id"`
-	Message      string                 `json:"message"`
-	Place        *Place                 `json:"place"`
-	Updated_time time.Time              `json:"updated_time"`
+	Event *Event `json:"event"`
+	From map[string]interface{} `json:"from"`
+	Id string `json:"id"`
+	Message string `json:"message"`
+	Place *Place `json:"place"`
+	Updated_time time.Time `json:"updated_time"`
 }

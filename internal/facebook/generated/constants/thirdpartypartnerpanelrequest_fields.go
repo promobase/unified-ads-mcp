@@ -4,33 +4,33 @@ package constants
 
 // ThirdPartyPartnerPanelRequestFields contains field name constants for ThirdPartyPartnerPanelRequest objects
 var ThirdPartyPartnerPanelRequestFields = struct {
-	AdentitiesIds   string
-	Country         string
-	CreatedTime     string
-	Description     string
-	Id              string
-	ModifiedTime    string
+	AdentitiesIds string
+	Country string
+	CreatedTime string
+	Description string
+	Id string
+	ModifiedTime string
 	OwnerInstanceId string
-	OwnerPanelId    string
-	OwnerPanelName  string
-	Status          string
-	StudyEndTime    string
-	StudyStartTime  string
-	StudyType       string
+	OwnerPanelId string
+	OwnerPanelName string
+	Status string
+	StudyEndTime string
+	StudyStartTime string
+	StudyType string
 }{
-	AdentitiesIds:   "adentities_ids",
-	Country:         "country",
-	CreatedTime:     "created_time",
-	Description:     "description",
-	Id:              "id",
-	ModifiedTime:    "modified_time",
+	AdentitiesIds: "adentities_ids",
+	Country: "country",
+	CreatedTime: "created_time",
+	Description: "description",
+	Id: "id",
+	ModifiedTime: "modified_time",
 	OwnerInstanceId: "owner_instance_id",
-	OwnerPanelId:    "owner_panel_id",
-	OwnerPanelName:  "owner_panel_name",
-	Status:          "status",
-	StudyEndTime:    "study_end_time",
-	StudyStartTime:  "study_start_time",
-	StudyType:       "study_type",
+	OwnerPanelId: "owner_panel_id",
+	OwnerPanelName: "owner_panel_name",
+	Status: "status",
+	StudyEndTime: "study_end_time",
+	StudyStartTime: "study_start_time",
+	StudyType: "study_type",
 }
 
 // ThirdPartyPartnerPanelRequestFieldsList contains all available fields for ThirdPartyPartnerPanelRequest objects

@@ -5,9 +5,9 @@ package types
 // DynamicPostChildAttachment represents a Facebook DynamicPostChildAttachment object
 type DynamicPostChildAttachment struct {
 	Description string `json:"description"`
-	Image_url   string `json:"image_url"`
-	Link        string `json:"link"`
-	Place_id    string `json:"place_id"`
-	Product_id  string `json:"product_id"`
-	Title       string `json:"title"`
+	Image_url string `json:"image_url"`
+	Link string `json:"link"`
+	Place_id string `json:"place_id"`
+	Product_id string `json:"product_id"`
+	Title string `json:"title"`
 }

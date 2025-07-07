@@ -5,18 +5,18 @@ package constants
 // AdCreativeStaticFallbackSpecFields contains field name constants for AdCreativeStaticFallbackSpec objects
 var AdCreativeStaticFallbackSpecFields = struct {
 	CallToAction string
-	Description  string
-	ImageHash    string
-	Link         string
-	Message      string
-	Name         string
+	Description string
+	ImageHash string
+	Link string
+	Message string
+	Name string
 }{
 	CallToAction: "call_to_action",
-	Description:  "description",
-	ImageHash:    "image_hash",
-	Link:         "link",
-	Message:      "message",
-	Name:         "name",
+	Description: "description",
+	ImageHash: "image_hash",
+	Link: "link",
+	Message: "message",
+	Name: "name",
 }
 
 // AdCreativeStaticFallbackSpecFieldsList contains all available fields for AdCreativeStaticFallbackSpec objects

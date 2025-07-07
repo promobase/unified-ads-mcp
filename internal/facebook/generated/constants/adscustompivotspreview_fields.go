@@ -4,24 +4,24 @@ package constants
 
 // AdsCustomPivotsPreviewFields contains field name constants for AdsCustomPivotsPreview objects
 var AdsCustomPivotsPreviewFields = struct {
-	AccountId       string
-	AccountName     string
-	AdId            string
-	AdName          string
-	AdsetId         string
-	AdsetName       string
-	CampaignId      string
-	CampaignName    string
+	AccountId string
+	AccountName string
+	AdId string
+	AdName string
+	AdsetId string
+	AdsetName string
+	CampaignId string
+	CampaignName string
 	CustomBreakdown string
 }{
-	AccountId:       "account_id",
-	AccountName:     "account_name",
-	AdId:            "ad_id",
-	AdName:          "ad_name",
-	AdsetId:         "adset_id",
-	AdsetName:       "adset_name",
-	CampaignId:      "campaign_id",
-	CampaignName:    "campaign_name",
+	AccountId: "account_id",
+	AccountName: "account_name",
+	AdId: "ad_id",
+	AdName: "ad_name",
+	AdsetId: "adset_id",
+	AdsetName: "adset_name",
+	CampaignId: "campaign_id",
+	CampaignName: "campaign_name",
 	CustomBreakdown: "custom_breakdown",
 }
 

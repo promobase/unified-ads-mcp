@@ -6,19 +6,19 @@ import "time"
 
 // ImageCopyright represents a Facebook ImageCopyright object
 type ImageCopyright struct {
-	Artist                         string                 `json:"artist"`
-	Copyright_monitoring_status    string                 `json:"copyright_monitoring_status"`
-	Creation_time                  time.Time              `json:"creation_time"`
-	Creator                        string                 `json:"creator"`
-	Custom_id                      string                 `json:"custom_id"`
-	Description                    string                 `json:"description"`
-	Filename                       string                 `json:"filename"`
-	Id                             string                 `json:"id"`
-	Image                          *Photo                 `json:"image"`
-	Matches_count                  int                    `json:"matches_count"`
-	Original_content_creation_date time.Time              `json:"original_content_creation_date"`
-	Ownership_countries            *VideoCopyrightGeoGate `json:"ownership_countries"`
-	Tags                           []string               `json:"tags"`
-	Title                          string                 `json:"title"`
-	Update_time                    time.Time              `json:"update_time"`
+	Artist string `json:"artist"`
+	Copyright_monitoring_status string `json:"copyright_monitoring_status"`
+	Creation_time time.Time `json:"creation_time"`
+	Creator string `json:"creator"`
+	Custom_id string `json:"custom_id"`
+	Description string `json:"description"`
+	Filename string `json:"filename"`
+	Id string `json:"id"`
+	Image *Photo `json:"image"`
+	Matches_count int `json:"matches_count"`
+	Original_content_creation_date time.Time `json:"original_content_creation_date"`
+	Ownership_countries *VideoCopyrightGeoGate `json:"ownership_countries"`
+	Tags []string `json:"tags"`
+	Title string `json:"title"`
+	Update_time time.Time `json:"update_time"`
 }

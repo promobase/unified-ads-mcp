@@ -4,21 +4,21 @@ package constants
 
 // CPASMerchantConfigFields contains field name constants for CPASMerchantConfig objects
 var CPASMerchantConfigFields = struct {
-	AcceptedTos              string
-	BetaFeatures             string
-	BusinessOutcomesStatus   string
-	Id                       string
-	IsTestMerchant           string
+	AcceptedTos string
+	BetaFeatures string
+	BusinessOutcomesStatus string
+	Id string
+	IsTestMerchant string
 	OutcomesComplianceStatus string
-	QualifiedToOnboard       string
+	QualifiedToOnboard string
 }{
-	AcceptedTos:              "accepted_tos",
-	BetaFeatures:             "beta_features",
-	BusinessOutcomesStatus:   "business_outcomes_status",
-	Id:                       "id",
-	IsTestMerchant:           "is_test_merchant",
+	AcceptedTos: "accepted_tos",
+	BetaFeatures: "beta_features",
+	BusinessOutcomesStatus: "business_outcomes_status",
+	Id: "id",
+	IsTestMerchant: "is_test_merchant",
 	OutcomesComplianceStatus: "outcomes_compliance_status",
-	QualifiedToOnboard:       "qualified_to_onboard",
+	QualifiedToOnboard: "qualified_to_onboard",
 }
 
 // CPASMerchantConfigFieldsList contains all available fields for CPASMerchantConfig objects

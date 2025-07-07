@@ -4,12 +4,12 @@ package constants
 
 // BusinessTrafficAnalysisReportFields contains field name constants for BusinessTrafficAnalysisReport objects
 var BusinessTrafficAnalysisReportFields = struct {
-	AudienceLocation           string
-	EventCategory              string
+	AudienceLocation string
+	EventCategory string
 	TrafficAnalysisImpressions string
 }{
-	AudienceLocation:           "audience_location",
-	EventCategory:              "event_category",
+	AudienceLocation: "audience_location",
+	EventCategory: "event_category",
 	TrafficAnalysisImpressions: "traffic_analysis_impressions",
 }
 

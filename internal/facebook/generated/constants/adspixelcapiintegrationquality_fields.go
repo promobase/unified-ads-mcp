@@ -4,20 +4,20 @@ package constants
 
 // AdsPixelCAPIIntegrationQualityFields contains field name constants for AdsPixelCAPIIntegrationQuality objects
 var AdsPixelCAPIIntegrationQualityFields = struct {
-	Acr                          string
-	DataFreshness                string
-	DedupeKeyFeedback            string
-	EventCoverage                string
-	EventMatchQuality            string
-	EventName                    string
+	Acr string
+	DataFreshness string
+	DedupeKeyFeedback string
+	EventCoverage string
+	EventMatchQuality string
+	EventName string
 	EventPotentialAlyAcrIncrease string
 }{
-	Acr:                          "acr",
-	DataFreshness:                "data_freshness",
-	DedupeKeyFeedback:            "dedupe_key_feedback",
-	EventCoverage:                "event_coverage",
-	EventMatchQuality:            "event_match_quality",
-	EventName:                    "event_name",
+	Acr: "acr",
+	DataFreshness: "data_freshness",
+	DedupeKeyFeedback: "dedupe_key_feedback",
+	EventCoverage: "event_coverage",
+	EventMatchQuality: "event_match_quality",
+	EventName: "event_name",
 	EventPotentialAlyAcrIncrease: "event_potential_aly_acr_increase",
 }
 

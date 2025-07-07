@@ -4,25 +4,25 @@ package constants
 
 // CTWAWhatsAppNumbersInfoFields contains field name constants for CTWAWhatsAppNumbersInfo objects
 var CTWAWhatsAppNumbersInfoFields = struct {
-	CanManageWaFlows        string
+	CanManageWaFlows string
 	FormattedWhatsappNumber string
-	IsBusinessNumber        string
-	IsCallingEnabled        string
-	NumberCountryPrefix     string
-	PageWhatsappNumberId    string
-	WabaId                  string
-	WhatsappNumber          string
-	WhatsappSmbDevice       string
+	IsBusinessNumber string
+	IsCallingEnabled string
+	NumberCountryPrefix string
+	PageWhatsappNumberId string
+	WabaId string
+	WhatsappNumber string
+	WhatsappSmbDevice string
 }{
-	CanManageWaFlows:        "can_manage_wa_flows",
+	CanManageWaFlows: "can_manage_wa_flows",
 	FormattedWhatsappNumber: "formatted_whatsapp_number",
-	IsBusinessNumber:        "is_business_number",
-	IsCallingEnabled:        "is_calling_enabled",
-	NumberCountryPrefix:     "number_country_prefix",
-	PageWhatsappNumberId:    "page_whatsapp_number_id",
-	WabaId:                  "waba_id",
-	WhatsappNumber:          "whatsapp_number",
-	WhatsappSmbDevice:       "whatsapp_smb_device",
+	IsBusinessNumber: "is_business_number",
+	IsCallingEnabled: "is_calling_enabled",
+	NumberCountryPrefix: "number_country_prefix",
+	PageWhatsappNumberId: "page_whatsapp_number_id",
+	WabaId: "waba_id",
+	WhatsappNumber: "whatsapp_number",
+	WhatsappSmbDevice: "whatsapp_smb_device",
 }
 
 // CTWAWhatsAppNumbersInfoFieldsList contains all available fields for CTWAWhatsAppNumbersInfo objects

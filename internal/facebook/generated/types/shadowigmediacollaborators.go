@@ -4,7 +4,7 @@ package types
 
 // ShadowIGMediaCollaborators represents a Facebook ShadowIGMediaCollaborators object
 type ShadowIGMediaCollaborators struct {
-	Id            string `json:"id"`
+	Id string `json:"id"`
 	Invite_status string `json:"invite_status"`
-	Username      string `json:"username"`
+	Username string `json:"username"`
 }

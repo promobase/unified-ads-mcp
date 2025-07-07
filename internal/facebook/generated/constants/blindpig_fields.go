@@ -4,10 +4,10 @@ package constants
 
 // BlindPigFields contains field name constants for BlindPig objects
 var BlindPigFields = struct {
-	Id   string
+	Id string
 	Name string
 }{
-	Id:   "id",
+	Id: "id",
 	Name: "name",
 }
 

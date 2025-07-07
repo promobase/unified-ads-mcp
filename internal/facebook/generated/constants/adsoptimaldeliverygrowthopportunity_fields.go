@@ -4,12 +4,12 @@ package constants
 
 // AdsOptimalDeliveryGrowthOpportunityFields contains field name constants for AdsOptimalDeliveryGrowthOpportunity objects
 var AdsOptimalDeliveryGrowthOpportunityFields = struct {
-	ChildMetadata    string
-	Metadata         string
+	ChildMetadata string
+	Metadata string
 	OptimizationType string
 }{
-	ChildMetadata:    "child_metadata",
-	Metadata:         "metadata",
+	ChildMetadata: "child_metadata",
+	Metadata: "metadata",
 	OptimizationType: "optimization_type",
 }
 

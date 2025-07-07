@@ -4,13 +4,13 @@ package constants
 
 // AdCampaignGroupAgencyFeeConfigForApiFields contains field name constants for AdCampaignGroupAgencyFeeConfigForApi objects
 var AdCampaignGroupAgencyFeeConfigForApiFields = struct {
-	AgencyFeePct        string
+	AgencyFeePct string
 	IsAgencyFeeDisabled string
-	IsDefaultAgencyFee  string
+	IsDefaultAgencyFee string
 }{
-	AgencyFeePct:        "agency_fee_pct",
+	AgencyFeePct: "agency_fee_pct",
 	IsAgencyFeeDisabled: "is_agency_fee_disabled",
-	IsDefaultAgencyFee:  "is_default_agency_fee",
+	IsDefaultAgencyFee: "is_default_agency_fee",
 }
 
 // AdCampaignGroupAgencyFeeConfigForApiFieldsList contains all available fields for AdCampaignGroupAgencyFeeConfigForApi objects

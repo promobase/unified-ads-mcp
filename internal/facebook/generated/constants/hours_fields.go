@@ -4,10 +4,10 @@ package constants
 
 // HoursFields contains field name constants for Hours objects
 var HoursFields = struct {
-	Id              string
+	Id string
 	PermanentStatus string
 }{
-	Id:              "id",
+	Id: "id",
 	PermanentStatus: "permanent_status",
 }
 

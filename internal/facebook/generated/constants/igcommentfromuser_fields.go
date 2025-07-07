@@ -4,13 +4,13 @@ package constants
 
 // IGCommentFromUserFields contains field name constants for IGCommentFromUser objects
 var IGCommentFromUserFields = struct {
-	Id             string
+	Id string
 	SelfIgScopedId string
-	Username       string
+	Username string
 }{
-	Id:             "id",
+	Id: "id",
 	SelfIgScopedId: "self_ig_scoped_id",
-	Username:       "username",
+	Username: "username",
 }
 
 // IGCommentFromUserFieldsList contains all available fields for IGCommentFromUser objects

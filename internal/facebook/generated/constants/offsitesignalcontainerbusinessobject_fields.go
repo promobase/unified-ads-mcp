@@ -4,21 +4,21 @@ package constants
 
 // OffsiteSignalContainerBusinessObjectFields contains field name constants for OffsiteSignalContainerBusinessObject objects
 var OffsiteSignalContainerBusinessObjectFields = struct {
-	Business                        string
-	Id                              string
+	Business string
+	Id string
 	IsEligibleForSharingToAdAccount string
-	IsEligibleForSharingToBusiness  string
-	IsUnavailable                   string
-	Name                            string
-	PrimaryContainerId              string
+	IsEligibleForSharingToBusiness string
+	IsUnavailable string
+	Name string
+	PrimaryContainerId string
 }{
-	Business:                        "business",
-	Id:                              "id",
+	Business: "business",
+	Id: "id",
 	IsEligibleForSharingToAdAccount: "is_eligible_for_sharing_to_ad_account",
-	IsEligibleForSharingToBusiness:  "is_eligible_for_sharing_to_business",
-	IsUnavailable:                   "is_unavailable",
-	Name:                            "name",
-	PrimaryContainerId:              "primary_container_id",
+	IsEligibleForSharingToBusiness: "is_eligible_for_sharing_to_business",
+	IsUnavailable: "is_unavailable",
+	Name: "name",
+	PrimaryContainerId: "primary_container_id",
 }
 
 // OffsiteSignalContainerBusinessObjectFieldsList contains all available fields for OffsiteSignalContainerBusinessObject objects

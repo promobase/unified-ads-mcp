@@ -5,18 +5,18 @@ package constants
 // PublisherWhiteListFields contains field name constants for PublisherWhiteList objects
 var PublisherWhiteListFields = struct {
 	BusinessOwnerId string
-	Id              string
+	Id string
 	LastUpdatedTime string
 	LastUpdatedUser string
-	Name            string
-	PlacementType   string
+	Name string
+	PlacementType string
 }{
 	BusinessOwnerId: "business_owner_id",
-	Id:              "id",
+	Id: "id",
 	LastUpdatedTime: "last_updated_time",
 	LastUpdatedUser: "last_updated_user",
-	Name:            "name",
-	PlacementType:   "placement_type",
+	Name: "name",
+	PlacementType: "placement_type",
 }
 
 // PublisherWhiteListFieldsList contains all available fields for PublisherWhiteList objects

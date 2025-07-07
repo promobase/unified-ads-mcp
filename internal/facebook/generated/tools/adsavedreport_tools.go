@@ -17,6 +17,7 @@ import (
 func GetAdSavedReportTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// adsavedreport_get_ tool
 	// Available fields for AdSavedReport: app_owner, breakdowns, builtin_column_set, creation_source, date_interval, date_preset, format_version, id, insights_section, is_shared_unread, level, name, normalized_filter, sort, user_attribution_windows, user_columns, user_filter, user_owner
 	adsavedreport_get_Tool := mcp.NewTool("adsavedreport_get_",
@@ -36,10 +37,12 @@ func GetAdSavedReportTools() []mcp.Tool {
 	)
 	tools = append(tools, adsavedreport_get_Tool)
 
+
 	return tools
 }
 
 // AdSavedReport handlers
+
 
 // HandleAdsavedreport_get_ handles the adsavedreport_get_ tool with context-based auth
 func HandleAdsavedreport_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleAdsavedreport_get_(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adsavedreport_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleAdsavedreport_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

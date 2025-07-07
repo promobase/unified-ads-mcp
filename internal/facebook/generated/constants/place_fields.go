@@ -4,14 +4,14 @@ package constants
 
 // PlaceFields contains field name constants for Place objects
 var PlaceFields = struct {
-	Id            string
-	Location      string
-	Name          string
+	Id string
+	Location string
+	Name string
 	OverallRating string
 }{
-	Id:            "id",
-	Location:      "location",
-	Name:          "name",
+	Id: "id",
+	Location: "location",
+	Name: "name",
 	OverallRating: "overall_rating",
 }
 

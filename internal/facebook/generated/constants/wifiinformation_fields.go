@@ -4,12 +4,12 @@ package constants
 
 // WifiInformationFields contains field name constants for WifiInformation objects
 var WifiInformationFields = struct {
-	Id                string
-	Name              string
+	Id string
+	Name string
 	NetworkAccessType string
 }{
-	Id:                "id",
-	Name:              "name",
+	Id: "id",
+	Name: "name",
 	NetworkAccessType: "network_access_type",
 }
 

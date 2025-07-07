@@ -4,23 +4,23 @@ package constants
 
 // AdAccountPromotionProgressBarFields contains field name constants for AdAccountPromotionProgressBar objects
 var AdAccountPromotionProgressBarFields = struct {
-	AdaccountPermission    string
-	CouponCurrency         string
-	CouponValue            string
-	ExpirationTime         string
-	ProgressCompleted      string
-	PromotionType          string
+	AdaccountPermission string
+	CouponCurrency string
+	CouponValue string
+	ExpirationTime string
+	ProgressCompleted string
+	PromotionType string
 	SpendRequirementInCent string
-	SpendSinceEnrollment   string
+	SpendSinceEnrollment string
 }{
-	AdaccountPermission:    "adaccount_permission",
-	CouponCurrency:         "coupon_currency",
-	CouponValue:            "coupon_value",
-	ExpirationTime:         "expiration_time",
-	ProgressCompleted:      "progress_completed",
-	PromotionType:          "promotion_type",
+	AdaccountPermission: "adaccount_permission",
+	CouponCurrency: "coupon_currency",
+	CouponValue: "coupon_value",
+	ExpirationTime: "expiration_time",
+	ProgressCompleted: "progress_completed",
+	PromotionType: "promotion_type",
 	SpendRequirementInCent: "spend_requirement_in_cent",
-	SpendSinceEnrollment:   "spend_since_enrollment",
+	SpendSinceEnrollment: "spend_since_enrollment",
 }
 
 // AdAccountPromotionProgressBarFieldsList contains all available fields for AdAccountPromotionProgressBar objects

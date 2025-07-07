@@ -17,6 +17,7 @@ import (
 func GetStatusTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// status_post_likes tool
 	// Params object accepts: feedback_source (string), nectar_module (string), notify (bool), tracking (string)
 	status_post_likesTool := mcp.NewTool("status_post_likes",
@@ -24,19 +25,19 @@ func GetStatusTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"feedback_source": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "feedback_source parameter",
 				},
 				"nectar_module": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "nectar_module parameter",
 				},
 				"notify": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "notify parameter",
 				},
 				"tracking": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "tracking parameter",
 				},
 			}),
@@ -64,10 +65,12 @@ func GetStatusTools() []mcp.Tool {
 	)
 	tools = append(tools, status_get_Tool)
 
+
 	return tools
 }
 
 // Status handlers
+
 
 // HandleStatus_post_likes handles the status_post_likes tool with context-based auth
 func HandleStatus_post_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -95,6 +98,8 @@ func HandleStatus_post_likes(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Status_post_likes(args)
 	if err != nil {
@@ -109,6 +114,7 @@ func HandleStatus_post_likes(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleStatus_get_ handles the status_get_ tool with context-based auth
 func HandleStatus_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -149,6 +155,8 @@ func HandleStatus_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Status_get_(args)
 	if err != nil {
@@ -163,3 +171,4 @@ func HandleStatus_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -5,14 +5,14 @@ package constants
 // InstantArticleInsightsQueryResultFields contains field name constants for InstantArticleInsightsQueryResult objects
 var InstantArticleInsightsQueryResultFields = struct {
 	Breakdowns string
-	Name       string
-	Time       string
-	Value      string
+	Name string
+	Time string
+	Value string
 }{
 	Breakdowns: "breakdowns",
-	Name:       "name",
-	Time:       "time",
-	Value:      "value",
+	Name: "name",
+	Time: "time",
+	Value: "value",
 }
 
 // InstantArticleInsightsQueryResultFieldsList contains all available fields for InstantArticleInsightsQueryResult objects

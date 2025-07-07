@@ -17,6 +17,7 @@ import (
 func GetCollaborativeAdsShareSettingsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// collaborativeadssharesettings_get_ tool
 	// Available fields for CollaborativeAdsShareSettings: agency_business, id, product_catalog_proxy_id, utm_campaign, utm_medium, utm_source
 	collaborativeadssharesettings_get_Tool := mcp.NewTool("collaborativeadssharesettings_get_",
@@ -36,10 +37,12 @@ func GetCollaborativeAdsShareSettingsTools() []mcp.Tool {
 	)
 	tools = append(tools, collaborativeadssharesettings_get_Tool)
 
+
 	return tools
 }
 
 // CollaborativeAdsShareSettings handlers
+
 
 // HandleCollaborativeadssharesettings_get_ handles the collaborativeadssharesettings_get_ tool with context-based auth
 func HandleCollaborativeadssharesettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleCollaborativeadssharesettings_get_(ctx context.Context, request mcp.C
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Collaborativeadssharesettings_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleCollaborativeadssharesettings_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

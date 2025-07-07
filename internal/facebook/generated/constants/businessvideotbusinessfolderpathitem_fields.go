@@ -4,13 +4,13 @@ package constants
 
 // BusinessVideoTBusinessFolderPathItemFields contains field name constants for BusinessVideoTBusinessFolderPathItem objects
 var BusinessVideoTBusinessFolderPathItemFields = struct {
-	Id             string
+	Id string
 	ParentFolderId string
-	FieldType      string
+	FieldType string
 }{
-	Id:             "id",
+	Id: "id",
 	ParentFolderId: "parent_folder_id",
-	FieldType:      "type",
+	FieldType: "type",
 }
 
 // BusinessVideoTBusinessFolderPathItemFieldsList contains all available fields for BusinessVideoTBusinessFolderPathItem objects

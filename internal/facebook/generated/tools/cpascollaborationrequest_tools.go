@@ -17,6 +17,7 @@ import (
 func GetCPASCollaborationRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// cpascollaborationrequest_get_ tool
 	// Available fields for CPASCollaborationRequest: brands, contact_email, contact_first_name, contact_last_name, id, phone_number, receiver_business, requester_agency_or_brand, sender_client_business, status
 	cpascollaborationrequest_get_Tool := mcp.NewTool("cpascollaborationrequest_get_",
@@ -36,10 +37,12 @@ func GetCPASCollaborationRequestTools() []mcp.Tool {
 	)
 	tools = append(tools, cpascollaborationrequest_get_Tool)
 
+
 	return tools
 }
 
 // CPASCollaborationRequest handlers
+
 
 // HandleCpascollaborationrequest_get_ handles the cpascollaborationrequest_get_ tool with context-based auth
 func HandleCpascollaborationrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleCpascollaborationrequest_get_(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Cpascollaborationrequest_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleCpascollaborationrequest_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

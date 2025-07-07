@@ -17,6 +17,7 @@ import (
 func GetLeadGenDataDraftTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// leadgendatadraft_get_ tool
 	// Available fields for LeadGenDataDraft: block_display_for_non_targeted_viewer, created_time, disqualified_end_component, follow_up_action_url, id, is_optimized_for_quality, legal_content, locale, name, page, question_page_custom_headline, questions, status, thank_you_page, tracking_parameters
 	leadgendatadraft_get_Tool := mcp.NewTool("leadgendatadraft_get_",
@@ -36,10 +37,12 @@ func GetLeadGenDataDraftTools() []mcp.Tool {
 	)
 	tools = append(tools, leadgendatadraft_get_Tool)
 
+
 	return tools
 }
 
 // LeadGenDataDraft handlers
+
 
 // HandleLeadgendatadraft_get_ handles the leadgendatadraft_get_ tool with context-based auth
 func HandleLeadgendatadraft_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleLeadgendatadraft_get_(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Leadgendatadraft_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleLeadgendatadraft_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -4,41 +4,41 @@ package constants
 
 // ScheduledPostFields contains field name constants for ScheduledPost objects
 var ScheduledPostFields = struct {
-	AdminCreator            string
-	CreationTime            string
+	AdminCreator string
+	CreationTime string
 	FeedAudienceDescription string
-	FeedTargeting           string
-	Id                      string
-	IsPostInGoodState       string
-	Message                 string
-	ModifiedTime            string
-	OgActionSummary         string
-	PermalinkUrl            string
-	Place                   string
-	PrivacyDescription      string
-	ScheduledFailureNotice  string
-	ScheduledPublishTime    string
-	StoryToken              string
-	Thumbnail               string
-	VideoId                 string
+	FeedTargeting string
+	Id string
+	IsPostInGoodState string
+	Message string
+	ModifiedTime string
+	OgActionSummary string
+	PermalinkUrl string
+	Place string
+	PrivacyDescription string
+	ScheduledFailureNotice string
+	ScheduledPublishTime string
+	StoryToken string
+	Thumbnail string
+	VideoId string
 }{
-	AdminCreator:            "admin_creator",
-	CreationTime:            "creation_time",
+	AdminCreator: "admin_creator",
+	CreationTime: "creation_time",
 	FeedAudienceDescription: "feed_audience_description",
-	FeedTargeting:           "feed_targeting",
-	Id:                      "id",
-	IsPostInGoodState:       "is_post_in_good_state",
-	Message:                 "message",
-	ModifiedTime:            "modified_time",
-	OgActionSummary:         "og_action_summary",
-	PermalinkUrl:            "permalink_url",
-	Place:                   "place",
-	PrivacyDescription:      "privacy_description",
-	ScheduledFailureNotice:  "scheduled_failure_notice",
-	ScheduledPublishTime:    "scheduled_publish_time",
-	StoryToken:              "story_token",
-	Thumbnail:               "thumbnail",
-	VideoId:                 "video_id",
+	FeedTargeting: "feed_targeting",
+	Id: "id",
+	IsPostInGoodState: "is_post_in_good_state",
+	Message: "message",
+	ModifiedTime: "modified_time",
+	OgActionSummary: "og_action_summary",
+	PermalinkUrl: "permalink_url",
+	Place: "place",
+	PrivacyDescription: "privacy_description",
+	ScheduledFailureNotice: "scheduled_failure_notice",
+	ScheduledPublishTime: "scheduled_publish_time",
+	StoryToken: "story_token",
+	Thumbnail: "thumbnail",
+	VideoId: "video_id",
 }
 
 // ScheduledPostFieldsList contains all available fields for ScheduledPost objects

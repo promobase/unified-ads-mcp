@@ -4,9 +4,9 @@ package types
 
 // Experience represents a Facebook Experience object
 type Experience struct {
-	Description string                 `json:"description"`
-	From        map[string]interface{} `json:"from"`
-	Id          string                 `json:"id"`
-	Name        string                 `json:"name"`
-	With        []User                 `json:"with"`
+	Description string `json:"description"`
+	From map[string]interface{} `json:"from"`
+	Id string `json:"id"`
+	Name string `json:"name"`
+	With []User `json:"with"`
 }

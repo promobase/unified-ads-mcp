@@ -5,10 +5,10 @@ package constants
 // AdAccountURLForAssetExtractionFields contains field name constants for AdAccountURLForAssetExtraction objects
 var AdAccountURLForAssetExtractionFields = struct {
 	SourceType string
-	SourceUrl  string
+	SourceUrl string
 }{
 	SourceType: "source_type",
-	SourceUrl:  "source_url",
+	SourceUrl: "source_url",
 }
 
 // AdAccountURLForAssetExtractionFieldsList contains all available fields for AdAccountURLForAssetExtraction objects

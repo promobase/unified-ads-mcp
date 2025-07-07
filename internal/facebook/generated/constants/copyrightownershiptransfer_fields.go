@@ -4,19 +4,19 @@ package constants
 
 // CopyrightOwnershipTransferFields contains field name constants for CopyrightOwnershipTransfer objects
 var CopyrightOwnershipTransferFields = struct {
-	Id                    string
+	Id string
 	ReceivingRightsHolder string
-	SendingRightsHolder   string
-	Status                string
-	TransferTerritories   string
-	TransferTime          string
+	SendingRightsHolder string
+	Status string
+	TransferTerritories string
+	TransferTime string
 }{
-	Id:                    "id",
+	Id: "id",
 	ReceivingRightsHolder: "receiving_rights_holder",
-	SendingRightsHolder:   "sending_rights_holder",
-	Status:                "status",
-	TransferTerritories:   "transfer_territories",
-	TransferTime:          "transfer_time",
+	SendingRightsHolder: "sending_rights_holder",
+	Status: "status",
+	TransferTerritories: "transfer_territories",
+	TransferTime: "transfer_time",
 }
 
 // CopyrightOwnershipTransferFieldsList contains all available fields for CopyrightOwnershipTransfer objects

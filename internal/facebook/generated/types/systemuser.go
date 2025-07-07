@@ -6,10 +6,10 @@ import "time"
 
 // SystemUser represents a Facebook SystemUser object
 type SystemUser struct {
-	Created_by         *User     `json:"created_by"`
-	Created_time       time.Time `json:"created_time"`
-	Finance_permission string    `json:"finance_permission"`
-	Id                 string    `json:"id"`
-	Ip_permission      string    `json:"ip_permission"`
-	Name               string    `json:"name"`
+	Created_by *User `json:"created_by"`
+	Created_time time.Time `json:"created_time"`
+	Finance_permission string `json:"finance_permission"`
+	Id string `json:"id"`
+	Ip_permission string `json:"ip_permission"`
+	Name string `json:"name"`
 }

@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-// LiveVideoClient provides methods for LiveVideo operations
+// LiveVideoClient represents a client for LiveVideo operations
 type LiveVideoClient struct {
 	accessToken string
 }
@@ -21,48 +21,48 @@ func NewLiveVideoClient(accessToken string) *LiveVideoClient {
 	}
 }
 
-// livevideo_get_blocked_users GET blocked_users for LiveVideo
+
+// Livevideo_get_blocked_users performs GET blocked_users for LiveVideo
 func (c *LiveVideoClient) Livevideo_get_blocked_users(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/blocked_users")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -94,48 +94,48 @@ func (c *LiveVideoClient) Livevideo_get_blocked_users(args map[string]interface{
 	return result, nil
 }
 
-// livevideo_get_comments GET comments for LiveVideo
+
+// Livevideo_get_comments performs GET comments for LiveVideo
 func (c *LiveVideoClient) Livevideo_get_comments(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/comments")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -167,42 +167,42 @@ func (c *LiveVideoClient) Livevideo_get_comments(args map[string]interface{}) (i
 	return result, nil
 }
 
-// livevideo_get_crosspost_shared_pages GET crosspost_shared_pages for LiveVideo
+
+// Livevideo_get_crosspost_shared_pages performs GET crosspost_shared_pages for LiveVideo
 func (c *LiveVideoClient) Livevideo_get_crosspost_shared_pages(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/crosspost_shared_pages")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -234,42 +234,42 @@ func (c *LiveVideoClient) Livevideo_get_crosspost_shared_pages(args map[string]i
 	return result, nil
 }
 
-// livevideo_get_crossposted_broadcasts GET crossposted_broadcasts for LiveVideo
+
+// Livevideo_get_crossposted_broadcasts performs GET crossposted_broadcasts for LiveVideo
 func (c *LiveVideoClient) Livevideo_get_crossposted_broadcasts(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/crossposted_broadcasts")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -301,42 +301,42 @@ func (c *LiveVideoClient) Livevideo_get_crossposted_broadcasts(args map[string]i
 	return result, nil
 }
 
-// livevideo_get_errors GET errors for LiveVideo
+
+// Livevideo_get_errors performs GET errors for LiveVideo
 func (c *LiveVideoClient) Livevideo_get_errors(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/errors")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -368,17 +368,18 @@ func (c *LiveVideoClient) Livevideo_get_errors(args map[string]interface{}) (int
 	return result, nil
 }
 
-// livevideo_post_input_streams POST input_streams for LiveVideo
+
+// Livevideo_post_input_streams performs POST input_streams for LiveVideo
 func (c *LiveVideoClient) Livevideo_post_input_streams(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/input_streams")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -410,42 +411,42 @@ func (c *LiveVideoClient) Livevideo_post_input_streams(args map[string]interface
 	return result, nil
 }
 
-// livevideo_get_polls GET polls for LiveVideo
+
+// Livevideo_get_polls performs GET polls for LiveVideo
 func (c *LiveVideoClient) Livevideo_get_polls(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/polls")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -477,29 +478,24 @@ func (c *LiveVideoClient) Livevideo_get_polls(args map[string]interface{}) (inte
 	return result, nil
 }
 
-// livevideo_post_polls POST polls for LiveVideo
+
+// Livevideo_post_polls performs POST polls for LiveVideo
 func (c *LiveVideoClient) Livevideo_post_polls(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/polls")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -531,48 +527,48 @@ func (c *LiveVideoClient) Livevideo_post_polls(args map[string]interface{}) (int
 	return result, nil
 }
 
-// livevideo_get_reactions GET reactions for LiveVideo
+
+// Livevideo_get_reactions performs GET reactions for LiveVideo
 func (c *LiveVideoClient) Livevideo_get_reactions(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/reactions")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -604,17 +600,18 @@ func (c *LiveVideoClient) Livevideo_get_reactions(args map[string]interface{}) (
 	return result, nil
 }
 
-// livevideo_delete_ DELETE  for LiveVideo
+
+// Livevideo_delete_ performs DELETE  for LiveVideo
 func (c *LiveVideoClient) Livevideo_delete_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -646,48 +643,48 @@ func (c *LiveVideoClient) Livevideo_delete_(args map[string]interface{}) (interf
 	return result, nil
 }
 
-// livevideo_get_ GET  for LiveVideo
+
+// Livevideo_get_ performs GET  for LiveVideo
 func (c *LiveVideoClient) Livevideo_get_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -719,24 +716,24 @@ func (c *LiveVideoClient) Livevideo_get_(args map[string]interface{}) (interface
 	return result, nil
 }
 
-// livevideo_post_ POST  for LiveVideo
+
+// Livevideo_post_ performs POST  for LiveVideo
 func (c *LiveVideoClient) Livevideo_post_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -767,3 +764,4 @@ func (c *LiveVideoClient) Livevideo_post_(args map[string]interface{}) (interfac
 
 	return result, nil
 }
+

@@ -5,6 +5,6 @@ package types
 // CustomAudienceGroup represents a Facebook CustomAudienceGroup object
 type CustomAudienceGroup struct {
 	Audience_type_param_name string `json:"audience_type_param_name"`
-	Existing_customer_tag    string `json:"existing_customer_tag"`
-	New_customer_tag         string `json:"new_customer_tag"`
+	Existing_customer_tag string `json:"existing_customer_tag"`
+	New_customer_tag string `json:"new_customer_tag"`
 }

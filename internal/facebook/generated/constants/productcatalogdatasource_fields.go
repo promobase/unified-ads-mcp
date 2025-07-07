@@ -4,17 +4,17 @@ package constants
 
 // ProductCatalogDataSourceFields contains field name constants for ProductCatalogDataSource objects
 var ProductCatalogDataSourceFields = struct {
-	AppId               string
-	Id                  string
+	AppId string
+	Id string
 	IngestionSourceType string
-	Name                string
-	UploadType          string
+	Name string
+	UploadType string
 }{
-	AppId:               "app_id",
-	Id:                  "id",
+	AppId: "app_id",
+	Id: "id",
 	IngestionSourceType: "ingestion_source_type",
-	Name:                "name",
-	UploadType:          "upload_type",
+	Name: "name",
+	UploadType: "upload_type",
 }
 
 // ProductCatalogDataSourceFieldsList contains all available fields for ProductCatalogDataSource objects

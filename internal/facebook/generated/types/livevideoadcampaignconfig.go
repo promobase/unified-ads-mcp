@@ -4,6 +4,6 @@ package types
 
 // LiveVideoAdCampaignConfig represents a Facebook LiveVideoAdCampaignConfig object
 type LiveVideoAdCampaignConfig struct {
-	Id                 string `json:"id"`
+	Id string `json:"id"`
 	Live_video_ad_type string `json:"live_video_ad_type"`
 }

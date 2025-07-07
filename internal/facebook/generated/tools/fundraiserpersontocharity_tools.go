@@ -17,6 +17,7 @@ import (
 func GetFundraiserPersonToCharityTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// fundraiserpersontocharity_get_donations tool
 	fundraiserpersontocharity_get_donationsTool := mcp.NewTool("fundraiserpersontocharity_get_donations",
 		mcp.WithDescription("GET donations for FundraiserPersonToCharity"),
@@ -67,29 +68,29 @@ func GetFundraiserPersonToCharityTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"amount_received": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "amount_received parameter",
-					"required":    true,
+					"required": true,
 				},
 				"currency": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "currency parameter",
-					"required":    true,
+					"required": true,
 				},
 				"donation_id_hash": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "donation_id_hash parameter",
-					"required":    true,
+					"required": true,
 				},
 				"donation_time": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "donation_time parameter",
-					"required":    true,
+					"required": true,
 				},
 				"donor_id_hash": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "donor_id_hash parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: amount_received (integer) [required], currency (string) [required], donation_id_hash (string) [required], donation_time (integer) [required], donor_id_hash (string) [required]"),
@@ -123,39 +124,39 @@ func GetFundraiserPersonToCharityTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"description": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "description parameter",
 				},
 				"end_time": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "end_time parameter",
 				},
 				"external_event_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "external_event_name parameter",
 				},
 				"external_event_start_time": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "external_event_start_time parameter",
 				},
 				"external_event_uri": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "external_event_uri parameter",
 				},
 				"external_fundraiser_uri": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "external_fundraiser_uri parameter",
 				},
 				"external_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "external_id parameter",
 				},
 				"goal_amount": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "goal_amount parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
 				},
 			}),
@@ -164,10 +165,12 @@ func GetFundraiserPersonToCharityTools() []mcp.Tool {
 	)
 	tools = append(tools, fundraiserpersontocharity_post_Tool)
 
+
 	return tools
 }
 
 // FundraiserPersonToCharity handlers
+
 
 // HandleFundraiserpersontocharity_get_donations handles the fundraiserpersontocharity_get_donations tool with context-based auth
 func HandleFundraiserpersontocharity_get_donations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -208,6 +211,8 @@ func HandleFundraiserpersontocharity_get_donations(ctx context.Context, request 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Fundraiserpersontocharity_get_donations(args)
 	if err != nil {
@@ -223,6 +228,7 @@ func HandleFundraiserpersontocharity_get_donations(ctx context.Context, request 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
+
 // HandleFundraiserpersontocharity_post_end_fundraiser handles the fundraiserpersontocharity_post_end_fundraiser tool with context-based auth
 func HandleFundraiserpersontocharity_post_end_fundraiser(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -236,6 +242,8 @@ func HandleFundraiserpersontocharity_post_end_fundraiser(ctx context.Context, re
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+
 
 	// Call the client method
 	result, err := client.Fundraiserpersontocharity_post_end_fundraiser(args)
@@ -251,6 +259,7 @@ func HandleFundraiserpersontocharity_post_end_fundraiser(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleFundraiserpersontocharity_get_external_donations handles the fundraiserpersontocharity_get_external_donations tool with context-based auth
 func HandleFundraiserpersontocharity_get_external_donations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -291,6 +300,8 @@ func HandleFundraiserpersontocharity_get_external_donations(ctx context.Context,
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Fundraiserpersontocharity_get_external_donations(args)
 	if err != nil {
@@ -305,6 +316,7 @@ func HandleFundraiserpersontocharity_get_external_donations(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleFundraiserpersontocharity_post_external_donations handles the fundraiserpersontocharity_post_external_donations tool with context-based auth
 func HandleFundraiserpersontocharity_post_external_donations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -334,6 +346,8 @@ func HandleFundraiserpersontocharity_post_external_donations(ctx context.Context
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Fundraiserpersontocharity_post_external_donations(args)
 	if err != nil {
@@ -348,6 +362,7 @@ func HandleFundraiserpersontocharity_post_external_donations(ctx context.Context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleFundraiserpersontocharity_get_ handles the fundraiserpersontocharity_get_ tool with context-based auth
 func HandleFundraiserpersontocharity_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -388,6 +403,8 @@ func HandleFundraiserpersontocharity_get_(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Fundraiserpersontocharity_get_(args)
 	if err != nil {
@@ -402,6 +419,7 @@ func HandleFundraiserpersontocharity_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleFundraiserpersontocharity_post_ handles the fundraiserpersontocharity_post_ tool with context-based auth
 func HandleFundraiserpersontocharity_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -429,6 +447,8 @@ func HandleFundraiserpersontocharity_post_(ctx context.Context, request mcp.Call
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Fundraiserpersontocharity_post_(args)
 	if err != nil {
@@ -443,3 +463,4 @@ func HandleFundraiserpersontocharity_post_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -4,7 +4,7 @@ package types
 
 // PageCTXMessagingFeatureLimit represents a Facebook PageCTXMessagingFeatureLimit object
 type PageCTXMessagingFeatureLimit struct {
-	Messaging_feature_limit_duration int    `json:"messaging_feature_limit_duration"`
-	Messaging_feature_limit_type     string `json:"messaging_feature_limit_type"`
-	Messaging_violation_type         string `json:"messaging_violation_type"`
+	Messaging_feature_limit_duration int `json:"messaging_feature_limit_duration"`
+	Messaging_feature_limit_type string `json:"messaging_feature_limit_type"`
+	Messaging_violation_type string `json:"messaging_violation_type"`
 }

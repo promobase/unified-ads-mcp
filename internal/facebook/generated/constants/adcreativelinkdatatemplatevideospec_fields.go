@@ -5,12 +5,12 @@ package constants
 // AdCreativeLinkDataTemplateVideoSpecFields contains field name constants for AdCreativeLinkDataTemplateVideoSpec objects
 var AdCreativeLinkDataTemplateVideoSpecFields = struct {
 	CategorizationCriteria string
-	Customization          string
-	TemplateId             string
+	Customization string
+	TemplateId string
 }{
 	CategorizationCriteria: "categorization_criteria",
-	Customization:          "customization",
-	TemplateId:             "template_id",
+	Customization: "customization",
+	TemplateId: "template_id",
 }
 
 // AdCreativeLinkDataTemplateVideoSpecFieldsList contains all available fields for AdCreativeLinkDataTemplateVideoSpec objects

@@ -17,6 +17,7 @@ import (
 func GetIGUpcomingEventTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// igupcomingevent_get_ tool
 	// Available fields for IGUpcomingEvent: end_time, id, notification_subtypes, notification_target_time, start_time, title
 	igupcomingevent_get_Tool := mcp.NewTool("igupcomingevent_get_",
@@ -44,29 +45,29 @@ func GetIGUpcomingEventTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"end_time": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "end_time parameter",
 				},
 				"notification_subtypes": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "notification_subtypes parameter",
-					"enum":        []string{"AFTER_EVENT_1DAY", "AFTER_EVENT_2DAY", "AFTER_EVENT_3DAY", "AFTER_EVENT_4DAY", "AFTER_EVENT_5DAY", "AFTER_EVENT_6DAY", "AFTER_EVENT_7DAY", "BEFORE_EVENT_15MIN", "BEFORE_EVENT_1DAY", "BEFORE_EVENT_1HOUR", "BEFORE_EVENT_2DAY", "EVENT_START", "RESCHEDULED"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "AFTER_EVENT_1DAY", "AFTER_EVENT_2DAY", "AFTER_EVENT_3DAY", "AFTER_EVENT_4DAY", "AFTER_EVENT_5DAY", "AFTER_EVENT_6DAY", "AFTER_EVENT_7DAY", "BEFORE_EVENT_15MIN", "BEFORE_EVENT_1DAY", "BEFORE_EVENT_1HOUR", "BEFORE_EVENT_2DAY", "EVENT_START", "RESCHEDULED" },
+					"items": map[string]any{"type": "string"},
 				},
 				"notification_target_time": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "notification_target_time parameter",
-					"enum":        []string{"EVENT_END", "EVENT_START"},
+					"enum": []string{ "EVENT_END", "EVENT_START" },
 				},
 				"start_time": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "start_time parameter",
-					"required":    true,
+					"required": true,
 				},
 				"title": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "title parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: end_time (datetime), notification_subtypes (array<igupcomingevent_notification_subtypes>) [AFTER_EVENT_1DAY, AFTER_EVENT_2DAY, AFTER_EVENT_3DAY, AFTER_EVENT_4DAY, AFTER_EVENT_5DAY, ...], notification_target_time (igupcomingevent_notification_target_time) [EVENT_END, EVENT_START], start_time (datetime) [required], title (string) [required]"),
@@ -74,10 +75,12 @@ func GetIGUpcomingEventTools() []mcp.Tool {
 	)
 	tools = append(tools, igupcomingevent_post_Tool)
 
+
 	return tools
 }
 
 // IGUpcomingEvent handlers
+
 
 // HandleIgupcomingevent_get_ handles the igupcomingevent_get_ tool with context-based auth
 func HandleIgupcomingevent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -118,6 +121,8 @@ func HandleIgupcomingevent_get_(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Igupcomingevent_get_(args)
 	if err != nil {
@@ -132,6 +137,7 @@ func HandleIgupcomingevent_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIgupcomingevent_post_ handles the igupcomingevent_post_ tool with context-based auth
 func HandleIgupcomingevent_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -161,6 +167,8 @@ func HandleIgupcomingevent_post_(ctx context.Context, request mcp.CallToolReques
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Igupcomingevent_post_(args)
 	if err != nil {
@@ -175,3 +183,4 @@ func HandleIgupcomingevent_post_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

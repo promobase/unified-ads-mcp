@@ -6,11 +6,11 @@ import "time"
 
 // GeoGatingPolicy represents a Facebook GeoGatingPolicy object
 type GeoGatingPolicy struct {
-	After_schedule  string    `json:"after_schedule"`
-	Exclude_country []string  `json:"exclude_country"`
-	Id              string    `json:"id"`
-	Include_country []string  `json:"include_country"`
-	Name            string    `json:"name"`
-	Valid_from      time.Time `json:"valid_from"`
-	Valid_until     time.Time `json:"valid_until"`
+	After_schedule string `json:"after_schedule"`
+	Exclude_country []string `json:"exclude_country"`
+	Id string `json:"id"`
+	Include_country []string `json:"include_country"`
+	Name string `json:"name"`
+	Valid_from time.Time `json:"valid_from"`
+	Valid_until time.Time `json:"valid_until"`
 }

@@ -17,6 +17,7 @@ import (
 func GetAudioCopyrightTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// audiocopyright_get_update_records tool
 	// Available fields for MediaCopyrightUpdateRecord: action_types, actor, actor_type, creation_time, id, ownership_countries, whitelisted_accounts
 	audiocopyright_get_update_recordsTool := mcp.NewTool("audiocopyright_get_update_records",
@@ -55,10 +56,12 @@ func GetAudioCopyrightTools() []mcp.Tool {
 	)
 	tools = append(tools, audiocopyright_get_Tool)
 
+
 	return tools
 }
 
 // AudioCopyright handlers
+
 
 // HandleAudiocopyright_get_update_records handles the audiocopyright_get_update_records tool with context-based auth
 func HandleAudiocopyright_get_update_records(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -99,6 +102,8 @@ func HandleAudiocopyright_get_update_records(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Audiocopyright_get_update_records(args)
 	if err != nil {
@@ -113,6 +118,7 @@ func HandleAudiocopyright_get_update_records(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAudiocopyright_get_ handles the audiocopyright_get_ tool with context-based auth
 func HandleAudiocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -153,6 +159,8 @@ func HandleAudiocopyright_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Audiocopyright_get_(args)
 	if err != nil {
@@ -167,3 +175,4 @@ func HandleAudiocopyright_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

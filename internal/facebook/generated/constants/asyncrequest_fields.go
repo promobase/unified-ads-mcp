@@ -4,14 +4,14 @@ package constants
 
 // AsyncRequestFields contains field name constants for AsyncRequest objects
 var AsyncRequestFields = struct {
-	Id        string
-	Result    string
-	Status    string
+	Id string
+	Result string
+	Status string
 	FieldType string
 }{
-	Id:        "id",
-	Result:    "result",
-	Status:    "status",
+	Id: "id",
+	Result: "result",
+	Status: "status",
 	FieldType: "type",
 }
 

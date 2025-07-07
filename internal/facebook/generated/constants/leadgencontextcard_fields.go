@@ -5,18 +5,18 @@ package constants
 // LeadGenContextCardFields contains field name constants for LeadGenContextCard objects
 var LeadGenContextCardFields = struct {
 	ButtonText string
-	Content    string
+	Content string
 	CoverPhoto string
-	Id         string
-	Style      string
-	Title      string
+	Id string
+	Style string
+	Title string
 }{
 	ButtonText: "button_text",
-	Content:    "content",
+	Content: "content",
 	CoverPhoto: "cover_photo",
-	Id:         "id",
-	Style:      "style",
-	Title:      "title",
+	Id: "id",
+	Style: "style",
+	Title: "title",
 }
 
 // LeadGenContextCardFieldsList contains all available fields for LeadGenContextCard objects

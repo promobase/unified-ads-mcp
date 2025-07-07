@@ -17,6 +17,7 @@ import (
 func GetBrandRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// brandrequest_get_ tool
 	// Available fields for BrandRequest: ad_countries, additional_contacts, approval_level, cells, countries, deny_reason, end_time, estimated_reach, id, is_multicell, locale, max_age, min_age, questions, region, request_status, review_date, start_time, status, submit_date, total_budget
 	brandrequest_get_Tool := mcp.NewTool("brandrequest_get_",
@@ -36,10 +37,12 @@ func GetBrandRequestTools() []mcp.Tool {
 	)
 	tools = append(tools, brandrequest_get_Tool)
 
+
 	return tools
 }
 
 // BrandRequest handlers
+
 
 // HandleBrandrequest_get_ handles the brandrequest_get_ tool with context-based auth
 func HandleBrandrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleBrandrequest_get_(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Brandrequest_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleBrandrequest_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

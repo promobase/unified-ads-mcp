@@ -4,29 +4,29 @@ package constants
 
 // HotelRoomFields contains field name constants for HotelRoom objects
 var HotelRoomFields = struct {
-	Applinks    string
-	BasePrice   string
-	Currency    string
+	Applinks string
+	BasePrice string
+	Currency string
 	Description string
-	Id          string
-	Images      string
+	Id string
+	Images string
 	MarginLevel string
-	Name        string
-	RoomId      string
-	SalePrice   string
-	Url         string
+	Name string
+	RoomId string
+	SalePrice string
+	Url string
 }{
-	Applinks:    "applinks",
-	BasePrice:   "base_price",
-	Currency:    "currency",
+	Applinks: "applinks",
+	BasePrice: "base_price",
+	Currency: "currency",
 	Description: "description",
-	Id:          "id",
-	Images:      "images",
+	Id: "id",
+	Images: "images",
 	MarginLevel: "margin_level",
-	Name:        "name",
-	RoomId:      "room_id",
-	SalePrice:   "sale_price",
-	Url:         "url",
+	Name: "name",
+	RoomId: "room_id",
+	SalePrice: "sale_price",
+	Url: "url",
 }
 
 // HotelRoomFieldsList contains all available fields for HotelRoom objects

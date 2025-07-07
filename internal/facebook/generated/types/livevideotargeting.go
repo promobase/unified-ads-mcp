@@ -4,8 +4,8 @@ package types
 
 // LiveVideoTargeting represents a Facebook LiveVideoTargeting object
 type LiveVideoTargeting struct {
-	Age_max            int                   `json:"age_max"`
-	Age_min            int                   `json:"age_min"`
-	Excluded_countries []string              `json:"excluded_countries"`
-	Geo_locations      *TargetingGeoLocation `json:"geo_locations"`
+	Age_max int `json:"age_max"`
+	Age_min int `json:"age_min"`
+	Excluded_countries []string `json:"excluded_countries"`
+	Geo_locations *TargetingGeoLocation `json:"geo_locations"`
 }

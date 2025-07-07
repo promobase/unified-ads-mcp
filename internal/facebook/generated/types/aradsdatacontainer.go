@@ -6,11 +6,11 @@ import "time"
 
 // ArAdsDataContainer represents a Facebook ArAdsDataContainer object
 type ArAdsDataContainer struct {
-	Camera_facing_override string                   `json:"camera_facing_override"`
-	Creation_time          time.Time                `json:"creation_time"`
-	Effect                 []map[string]interface{} `json:"effect"`
-	Id                     string                   `json:"id"`
-	Is_published           bool                     `json:"is_published"`
-	Last_modified_time     time.Time                `json:"last_modified_time"`
-	Name                   string                   `json:"name"`
+	Camera_facing_override string `json:"camera_facing_override"`
+	Creation_time time.Time `json:"creation_time"`
+	Effect []map[string]interface{} `json:"effect"`
+	Id string `json:"id"`
+	Is_published bool `json:"is_published"`
+	Last_modified_time time.Time `json:"last_modified_time"`
+	Name string `json:"name"`
 }

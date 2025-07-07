@@ -17,6 +17,7 @@ import (
 func GetThirdPartyPartnerLiftRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// thirdpartypartnerliftrequest_get_ tool
 	// Available fields for ThirdPartyPartnerLiftRequest: ad_entities, country, created_time, description, holdout_size, id, legacy_ads_data_partner_id, legacy_ads_data_partner_name, modified_time, owner_instance_id, partner_household_graph_dataset_id, region, status, study_cells, study_end_time, study_start_time
 	thirdpartypartnerliftrequest_get_Tool := mcp.NewTool("thirdpartypartnerliftrequest_get_",
@@ -36,10 +37,12 @@ func GetThirdPartyPartnerLiftRequestTools() []mcp.Tool {
 	)
 	tools = append(tools, thirdpartypartnerliftrequest_get_Tool)
 
+
 	return tools
 }
 
 // ThirdPartyPartnerLiftRequest handlers
+
 
 // HandleThirdpartypartnerliftrequest_get_ handles the thirdpartypartnerliftrequest_get_ tool with context-based auth
 func HandleThirdpartypartnerliftrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleThirdpartypartnerliftrequest_get_(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Thirdpartypartnerliftrequest_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleThirdpartypartnerliftrequest_get_(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

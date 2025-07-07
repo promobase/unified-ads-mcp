@@ -4,41 +4,41 @@ package constants
 
 // AdImageFields contains field name constants for AdImage objects
 var AdImageFields = struct {
-	AccountId                       string
-	CreatedTime                     string
-	Creatives                       string
-	Hash                            string
-	Height                          string
-	Id                              string
+	AccountId string
+	CreatedTime string
+	Creatives string
+	Hash string
+	Height string
+	Id string
 	IsAssociatedCreativesInAdgroups string
-	Name                            string
-	OriginalHeight                  string
-	OriginalWidth                   string
-	OwnerBusiness                   string
-	PermalinkUrl                    string
-	Status                          string
-	UpdatedTime                     string
-	Url                             string
-	Url128                          string
-	Width                           string
+	Name string
+	OriginalHeight string
+	OriginalWidth string
+	OwnerBusiness string
+	PermalinkUrl string
+	Status string
+	UpdatedTime string
+	Url string
+	Url128 string
+	Width string
 }{
-	AccountId:                       "account_id",
-	CreatedTime:                     "created_time",
-	Creatives:                       "creatives",
-	Hash:                            "hash",
-	Height:                          "height",
-	Id:                              "id",
+	AccountId: "account_id",
+	CreatedTime: "created_time",
+	Creatives: "creatives",
+	Hash: "hash",
+	Height: "height",
+	Id: "id",
 	IsAssociatedCreativesInAdgroups: "is_associated_creatives_in_adgroups",
-	Name:                            "name",
-	OriginalHeight:                  "original_height",
-	OriginalWidth:                   "original_width",
-	OwnerBusiness:                   "owner_business",
-	PermalinkUrl:                    "permalink_url",
-	Status:                          "status",
-	UpdatedTime:                     "updated_time",
-	Url:                             "url",
-	Url128:                          "url_128",
-	Width:                           "width",
+	Name: "name",
+	OriginalHeight: "original_height",
+	OriginalWidth: "original_width",
+	OwnerBusiness: "owner_business",
+	PermalinkUrl: "permalink_url",
+	Status: "status",
+	UpdatedTime: "updated_time",
+	Url: "url",
+	Url128: "url_128",
+	Width: "width",
 }
 
 // AdImageFieldsList contains all available fields for AdImage objects

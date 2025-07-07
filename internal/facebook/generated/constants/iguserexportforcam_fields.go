@@ -4,31 +4,31 @@ package constants
 
 // IGUserExportForCAMFields contains field name constants for IGUserExportForCAM objects
 var IGUserExportForCAMFields = struct {
-	AgeBucket                        string
-	Biography                        string
-	Country                          string
-	Email                            string
-	Gender                           string
-	Id                               string
-	IsAccountVerified                string
+	AgeBucket string
+	Biography string
+	Country string
+	Email string
+	Gender string
+	Id string
+	IsAccountVerified string
 	IsPaidPartnershipMessagesEnabled string
-	MessagingId                      string
-	OnboardedStatus                  string
-	PortfolioUrl                     string
-	Username                         string
+	MessagingId string
+	OnboardedStatus string
+	PortfolioUrl string
+	Username string
 }{
-	AgeBucket:                        "age_bucket",
-	Biography:                        "biography",
-	Country:                          "country",
-	Email:                            "email",
-	Gender:                           "gender",
-	Id:                               "id",
-	IsAccountVerified:                "is_account_verified",
+	AgeBucket: "age_bucket",
+	Biography: "biography",
+	Country: "country",
+	Email: "email",
+	Gender: "gender",
+	Id: "id",
+	IsAccountVerified: "is_account_verified",
 	IsPaidPartnershipMessagesEnabled: "is_paid_partnership_messages_enabled",
-	MessagingId:                      "messaging_id",
-	OnboardedStatus:                  "onboarded_status",
-	PortfolioUrl:                     "portfolio_url",
-	Username:                         "username",
+	MessagingId: "messaging_id",
+	OnboardedStatus: "onboarded_status",
+	PortfolioUrl: "portfolio_url",
+	Username: "username",
 }
 
 // IGUserExportForCAMFieldsList contains all available fields for IGUserExportForCAM objects

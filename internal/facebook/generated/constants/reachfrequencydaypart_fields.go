@@ -4,12 +4,12 @@ package constants
 
 // ReachFrequencyDayPartFields contains field name constants for ReachFrequencyDayPart objects
 var ReachFrequencyDayPartFields = struct {
-	Days        string
-	EndMinute   string
+	Days string
+	EndMinute string
 	StartMinute string
 }{
-	Days:        "days",
-	EndMinute:   "end_minute",
+	Days: "days",
+	EndMinute: "end_minute",
 	StartMinute: "start_minute",
 }
 

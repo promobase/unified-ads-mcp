@@ -4,8 +4,8 @@ package types
 
 // UserPaymentModulesOptions represents a Facebook UserPaymentModulesOptions object
 type UserPaymentModulesOptions struct {
-	Account_id                string                   `json:"account_id"`
+	Account_id string `json:"account_id"`
 	Available_payment_options []map[string]interface{} `json:"available_payment_options"`
-	Country                   string                   `json:"country"`
-	Currency                  string                   `json:"currency"`
+	Country string `json:"country"`
+	Currency string `json:"currency"`
 }

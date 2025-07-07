@@ -4,10 +4,10 @@ package constants
 
 // AdAccountSubscribedAppsFields contains field name constants for AdAccountSubscribedApps objects
 var AdAccountSubscribedAppsFields = struct {
-	AppId   string
+	AppId string
 	AppName string
 }{
-	AppId:   "app_id",
+	AppId: "app_id",
 	AppName: "app_name",
 }
 

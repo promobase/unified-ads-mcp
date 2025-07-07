@@ -17,6 +17,7 @@ import (
 func GetBCPCampaignTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// bcpcampaign_get_ tool
 	// Available fields for BCPCampaign: ads_permission_required, application_deadline, campaign_goal, campaign_goal_other, content_delivery_deadline, content_delivery_start_date, content_requirements, content_requirements_description, currency, deal_negotiation_type, description, has_free_product, id, name, payment_amount_for_ads, payment_amount_for_content, payment_description
 	bcpcampaign_get_Tool := mcp.NewTool("bcpcampaign_get_",
@@ -36,10 +37,12 @@ func GetBCPCampaignTools() []mcp.Tool {
 	)
 	tools = append(tools, bcpcampaign_get_Tool)
 
+
 	return tools
 }
 
 // BCPCampaign handlers
+
 
 // HandleBcpcampaign_get_ handles the bcpcampaign_get_ tool with context-based auth
 func HandleBcpcampaign_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleBcpcampaign_get_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Bcpcampaign_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleBcpcampaign_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

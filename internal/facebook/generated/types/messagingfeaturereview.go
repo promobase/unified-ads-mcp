@@ -5,5 +5,5 @@ package types
 // MessagingFeatureReview represents a Facebook MessagingFeatureReview object
 type MessagingFeatureReview struct {
 	Feature string `json:"feature"`
-	Status  string `json:"status"`
+	Status string `json:"status"`
 }

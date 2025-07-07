@@ -4,27 +4,27 @@ package constants
 
 // UserPageOneTimeOptInTokenSettingsFields contains field name constants for UserPageOneTimeOptInTokenSettings objects
 var UserPageOneTimeOptInTokenSettingsFields = struct {
-	CreationTimestamp             string
-	NextEligibleTime              string
+	CreationTimestamp string
+	NextEligibleTime string
 	NotificationMessagesFrequency string
-	NotificationMessagesReoptin   string
-	NotificationMessagesTimezone  string
-	NotificationMessagesToken     string
-	RecipientId                   string
-	TokenExpiryTimestamp          string
-	TopicTitle                    string
-	UserTokenStatus               string
+	NotificationMessagesReoptin string
+	NotificationMessagesTimezone string
+	NotificationMessagesToken string
+	RecipientId string
+	TokenExpiryTimestamp string
+	TopicTitle string
+	UserTokenStatus string
 }{
-	CreationTimestamp:             "creation_timestamp",
-	NextEligibleTime:              "next_eligible_time",
+	CreationTimestamp: "creation_timestamp",
+	NextEligibleTime: "next_eligible_time",
 	NotificationMessagesFrequency: "notification_messages_frequency",
-	NotificationMessagesReoptin:   "notification_messages_reoptin",
-	NotificationMessagesTimezone:  "notification_messages_timezone",
-	NotificationMessagesToken:     "notification_messages_token",
-	RecipientId:                   "recipient_id",
-	TokenExpiryTimestamp:          "token_expiry_timestamp",
-	TopicTitle:                    "topic_title",
-	UserTokenStatus:               "user_token_status",
+	NotificationMessagesReoptin: "notification_messages_reoptin",
+	NotificationMessagesTimezone: "notification_messages_timezone",
+	NotificationMessagesToken: "notification_messages_token",
+	RecipientId: "recipient_id",
+	TokenExpiryTimestamp: "token_expiry_timestamp",
+	TopicTitle: "topic_title",
+	UserTokenStatus: "user_token_status",
 }
 
 // UserPageOneTimeOptInTokenSettingsFieldsList contains all available fields for UserPageOneTimeOptInTokenSettings objects

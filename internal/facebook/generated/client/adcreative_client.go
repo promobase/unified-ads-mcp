@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-// AdCreativeClient provides methods for AdCreative operations
+// AdCreativeClient represents a client for AdCreative operations
 type AdCreativeClient struct {
 	accessToken string
 }
@@ -21,49 +21,39 @@ func NewAdCreativeClient(accessToken string) *AdCreativeClient {
 	}
 }
 
-// adcreative_post_adlabels POST adlabels for AdCreative
+
+// Adcreative_post_adlabels performs POST adlabels for AdCreative
 func (c *AdCreativeClient) Adcreative_post_adlabels(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	ad_creative_id, ok := args["ad_creative_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: ad_creative_id")
-	}
-	_ = ad_creative_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdCreative endpoints, include ad_creative_id in the URL path
-	adCreativeId, ok := args["ad_creative_id"]
+	
+	
+	// Extract ad_creative_id for URL construction
+	adCreativeId, ok := args["ad_creative_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: ad_creative_id")
+		return nil, fmt.Errorf("ad_creative_id is required for adcreative_post_adlabels")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/adlabels", adCreativeId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/adlabels", adCreativeId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["ad_creative_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "ad_creative_id" != "ad_creative_id" {
 			urlParams.Set("ad_creative_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "ad_creative_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -95,68 +85,63 @@ func (c *AdCreativeClient) Adcreative_post_adlabels(args map[string]interface{})
 	return result, nil
 }
 
-// adcreative_get_creative_insights GET creative_insights for AdCreative
+
+// Adcreative_get_creative_insights performs GET creative_insights for AdCreative
 func (c *AdCreativeClient) Adcreative_get_creative_insights(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	ad_creative_id, ok := args["ad_creative_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: ad_creative_id")
-	}
-	_ = ad_creative_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdCreative endpoints, include ad_creative_id in the URL path
-	adCreativeId, ok := args["ad_creative_id"]
+	
+	
+	// Extract ad_creative_id for URL construction
+	adCreativeId, ok := args["ad_creative_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: ad_creative_id")
+		return nil, fmt.Errorf("ad_creative_id is required for adcreative_get_creative_insights")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/creative_insights", adCreativeId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/creative_insights", adCreativeId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["ad_creative_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "ad_creative_id" != "ad_creative_id" {
 			urlParams.Set("ad_creative_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "ad_creative_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "ad_creative_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "ad_creative_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "ad_creative_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -188,81 +173,71 @@ func (c *AdCreativeClient) Adcreative_get_creative_insights(args map[string]inte
 	return result, nil
 }
 
-// adcreative_get_previews GET previews for AdCreative
+
+// Adcreative_get_previews performs GET previews for AdCreative
 func (c *AdCreativeClient) Adcreative_get_previews(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	ad_creative_id, ok := args["ad_creative_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: ad_creative_id")
-	}
-	_ = ad_creative_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdCreative endpoints, include ad_creative_id in the URL path
-	adCreativeId, ok := args["ad_creative_id"]
+	
+	
+	// Extract ad_creative_id for URL construction
+	adCreativeId, ok := args["ad_creative_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: ad_creative_id")
+		return nil, fmt.Errorf("ad_creative_id is required for adcreative_get_previews")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/previews", adCreativeId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/previews", adCreativeId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["ad_creative_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "ad_creative_id" != "ad_creative_id" {
 			urlParams.Set("ad_creative_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "ad_creative_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "ad_creative_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "ad_creative_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "ad_creative_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "ad_creative_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -294,44 +269,39 @@ func (c *AdCreativeClient) Adcreative_get_previews(args map[string]interface{}) 
 	return result, nil
 }
 
-// adcreative_delete_ DELETE  for AdCreative
+
+// Adcreative_delete_ performs DELETE  for AdCreative
 func (c *AdCreativeClient) Adcreative_delete_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	ad_creative_id, ok := args["ad_creative_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: ad_creative_id")
-	}
-	_ = ad_creative_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdCreative endpoints, include ad_creative_id in the URL path
-	adCreativeId, ok := args["ad_creative_id"]
+	
+	
+	// Extract ad_creative_id for URL construction
+	adCreativeId, ok := args["ad_creative_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: ad_creative_id")
+		return nil, fmt.Errorf("ad_creative_id is required for adcreative_delete_")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/", adCreativeId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/", adCreativeId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["ad_creative_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "ad_creative_id" != "ad_creative_id" {
 			urlParams.Set("ad_creative_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "ad_creative_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -363,76 +333,71 @@ func (c *AdCreativeClient) Adcreative_delete_(args map[string]interface{}) (inte
 	return result, nil
 }
 
-// adcreative_get_ GET  for AdCreative
+
+// Adcreative_get_ performs GET  for AdCreative
 func (c *AdCreativeClient) Adcreative_get_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	ad_creative_id, ok := args["ad_creative_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: ad_creative_id")
-	}
-	_ = ad_creative_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdCreative endpoints, include ad_creative_id in the URL path
-	adCreativeId, ok := args["ad_creative_id"]
+	
+	
+	// Extract ad_creative_id for URL construction
+	adCreativeId, ok := args["ad_creative_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: ad_creative_id")
+		return nil, fmt.Errorf("ad_creative_id is required for adcreative_get_")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/", adCreativeId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/", adCreativeId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["ad_creative_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "ad_creative_id" != "ad_creative_id" {
 			urlParams.Set("ad_creative_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "ad_creative_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "ad_creative_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "ad_creative_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "ad_creative_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "ad_creative_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -464,44 +429,39 @@ func (c *AdCreativeClient) Adcreative_get_(args map[string]interface{}) (interfa
 	return result, nil
 }
 
-// adcreative_post_ POST  for AdCreative
+
+// Adcreative_post_ performs POST  for AdCreative
 func (c *AdCreativeClient) Adcreative_post_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	ad_creative_id, ok := args["ad_creative_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: ad_creative_id")
-	}
-	_ = ad_creative_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdCreative endpoints, include ad_creative_id in the URL path
-	adCreativeId, ok := args["ad_creative_id"]
+	
+	
+	// Extract ad_creative_id for URL construction
+	adCreativeId, ok := args["ad_creative_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: ad_creative_id")
+		return nil, fmt.Errorf("ad_creative_id is required for adcreative_post_")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%v/", adCreativeId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/%s/", adCreativeId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["ad_creative_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "ad_creative_id" != "ad_creative_id" {
 			urlParams.Set("ad_creative_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "ad_creative_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -532,3 +492,4 @@ func (c *AdCreativeClient) Adcreative_post_(args map[string]interface{}) (interf
 
 	return result, nil
 }
+

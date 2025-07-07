@@ -4,15 +4,15 @@ package constants
 
 // AdAccountPaymentOptionsFields contains field name constants for AdAccountPaymentOptions objects
 var AdAccountPaymentOptionsFields = struct {
-	AvailableAltpayOptions  string
-	AvailableCardTypes      string
+	AvailableAltpayOptions string
+	AvailableCardTypes string
 	AvailablePaymentOptions string
-	ExistingPaymentMethods  string
+	ExistingPaymentMethods string
 }{
-	AvailableAltpayOptions:  "available_altpay_options",
-	AvailableCardTypes:      "available_card_types",
+	AvailableAltpayOptions: "available_altpay_options",
+	AvailableCardTypes: "available_card_types",
 	AvailablePaymentOptions: "available_payment_options",
-	ExistingPaymentMethods:  "existing_payment_methods",
+	ExistingPaymentMethods: "existing_payment_methods",
 }
 
 // AdAccountPaymentOptionsFieldsList contains all available fields for AdAccountPaymentOptions objects

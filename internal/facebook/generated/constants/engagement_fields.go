@@ -4,20 +4,20 @@ package constants
 
 // EngagementFields contains field name constants for Engagement objects
 var EngagementFields = struct {
-	Count                     string
-	CountString               string
-	CountStringWithLike       string
-	CountStringWithoutLike    string
-	SocialSentence            string
-	SocialSentenceWithLike    string
+	Count string
+	CountString string
+	CountStringWithLike string
+	CountStringWithoutLike string
+	SocialSentence string
+	SocialSentenceWithLike string
 	SocialSentenceWithoutLike string
 }{
-	Count:                     "count",
-	CountString:               "count_string",
-	CountStringWithLike:       "count_string_with_like",
-	CountStringWithoutLike:    "count_string_without_like",
-	SocialSentence:            "social_sentence",
-	SocialSentenceWithLike:    "social_sentence_with_like",
+	Count: "count",
+	CountString: "count_string",
+	CountStringWithLike: "count_string_with_like",
+	CountStringWithoutLike: "count_string_without_like",
+	SocialSentence: "social_sentence",
+	SocialSentenceWithLike: "social_sentence_with_like",
 	SocialSentenceWithoutLike: "social_sentence_without_like",
 }
 

@@ -5,17 +5,17 @@ package constants
 // AdExportPresetFields contains field name constants for AdExportPreset objects
 var AdExportPresetFields = struct {
 	CreatedTime string
-	Fields      string
-	Id          string
-	Name        string
-	Owner       string
+	Fields string
+	Id string
+	Name string
+	Owner string
 	UpdatedTime string
 }{
 	CreatedTime: "created_time",
-	Fields:      "fields",
-	Id:          "id",
-	Name:        "name",
-	Owner:       "owner",
+	Fields: "fields",
+	Id: "id",
+	Name: "name",
+	Owner: "owner",
 	UpdatedTime: "updated_time",
 }
 

@@ -5,10 +5,10 @@ package constants
 // AdAsyncRequestSetNotificationResultFields contains field name constants for AdAsyncRequestSetNotificationResult objects
 var AdAsyncRequestSetNotificationResultFields = struct {
 	Response string
-	Status   string
+	Status string
 }{
 	Response: "response",
-	Status:   "status",
+	Status: "status",
 }
 
 // AdAsyncRequestSetNotificationResultFieldsList contains all available fields for AdAsyncRequestSetNotificationResult objects

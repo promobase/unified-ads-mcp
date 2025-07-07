@@ -4,23 +4,23 @@ package constants
 
 // AdAccountMatchedSearchApplicationsEdgeDataFields contains field name constants for AdAccountMatchedSearchApplicationsEdgeData objects
 var AdAccountMatchedSearchApplicationsEdgeDataFields = struct {
-	AppId                   string
+	AppId string
 	AreAppEventsUnavailable string
-	IconUrl                 string
-	Name                    string
-	SearchSourceStore       string
-	Store                   string
-	UniqueId                string
-	Url                     string
+	IconUrl string
+	Name string
+	SearchSourceStore string
+	Store string
+	UniqueId string
+	Url string
 }{
-	AppId:                   "app_id",
+	AppId: "app_id",
 	AreAppEventsUnavailable: "are_app_events_unavailable",
-	IconUrl:                 "icon_url",
-	Name:                    "name",
-	SearchSourceStore:       "search_source_store",
-	Store:                   "store",
-	UniqueId:                "unique_id",
-	Url:                     "url",
+	IconUrl: "icon_url",
+	Name: "name",
+	SearchSourceStore: "search_source_store",
+	Store: "store",
+	UniqueId: "unique_id",
+	Url: "url",
 }
 
 // AdAccountMatchedSearchApplicationsEdgeDataFieldsList contains all available fields for AdAccountMatchedSearchApplicationsEdgeData objects

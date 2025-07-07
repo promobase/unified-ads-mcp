@@ -5,10 +5,10 @@ package constants
 // UserLeadGenDisclaimerResponseFields contains field name constants for UserLeadGenDisclaimerResponse objects
 var UserLeadGenDisclaimerResponseFields = struct {
 	CheckboxKey string
-	IsChecked   string
+	IsChecked string
 }{
 	CheckboxKey: "checkbox_key",
-	IsChecked:   "is_checked",
+	IsChecked: "is_checked",
 }
 
 // UserLeadGenDisclaimerResponseFieldsList contains all available fields for UserLeadGenDisclaimerResponse objects

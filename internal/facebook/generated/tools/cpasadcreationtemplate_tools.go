@@ -17,6 +17,7 @@ import (
 func GetCPASAdCreationTemplateTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// cpasadcreationtemplate_get_ tool
 	// Available fields for CPASAdCreationTemplate: description, id, is_unused_template, name, optimization_goal, targeting_type, template_type
 	cpasadcreationtemplate_get_Tool := mcp.NewTool("cpasadcreationtemplate_get_",
@@ -36,10 +37,12 @@ func GetCPASAdCreationTemplateTools() []mcp.Tool {
 	)
 	tools = append(tools, cpasadcreationtemplate_get_Tool)
 
+
 	return tools
 }
 
 // CPASAdCreationTemplate handlers
+
 
 // HandleCpasadcreationtemplate_get_ handles the cpasadcreationtemplate_get_ tool with context-based auth
 func HandleCpasadcreationtemplate_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleCpasadcreationtemplate_get_(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Cpasadcreationtemplate_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleCpasadcreationtemplate_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

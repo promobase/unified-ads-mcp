@@ -6,31 +6,31 @@ import "time"
 
 // LiveVideo represents a Facebook LiveVideo object
 type LiveVideo struct {
-	Ad_break_config              *LiveVideoAdBreakConfig              `json:"ad_break_config"`
-	Ad_break_failure_reason      string                               `json:"ad_break_failure_reason"`
-	Broadcast_start_time         time.Time                            `json:"broadcast_start_time"`
-	Copyright                    *VideoCopyright                      `json:"copyright"`
-	Creation_time                time.Time                            `json:"creation_time"`
-	Dash_ingest_url              string                               `json:"dash_ingest_url"`
-	Dash_preview_url             string                               `json:"dash_preview_url"`
-	Description                  string                               `json:"description"`
-	Embed_html                   map[string]interface{}               `json:"embed_html"`
-	From                         map[string]interface{}               `json:"from"`
-	Id                           string                               `json:"id"`
-	Ingest_streams               []LiveVideoInputStream               `json:"ingest_streams"`
-	Is_manual_mode               bool                                 `json:"is_manual_mode"`
-	Is_reference_only            bool                                 `json:"is_reference_only"`
-	Live_views                   int                                  `json:"live_views"`
-	Overlay_url                  string                               `json:"overlay_url"`
-	Permalink_url                string                               `json:"permalink_url"`
-	Planned_start_time           time.Time                            `json:"planned_start_time"`
+	Ad_break_config *LiveVideoAdBreakConfig `json:"ad_break_config"`
+	Ad_break_failure_reason string `json:"ad_break_failure_reason"`
+	Broadcast_start_time time.Time `json:"broadcast_start_time"`
+	Copyright *VideoCopyright `json:"copyright"`
+	Creation_time time.Time `json:"creation_time"`
+	Dash_ingest_url string `json:"dash_ingest_url"`
+	Dash_preview_url string `json:"dash_preview_url"`
+	Description string `json:"description"`
+	Embed_html map[string]interface{} `json:"embed_html"`
+	From map[string]interface{} `json:"from"`
+	Id string `json:"id"`
+	Ingest_streams []LiveVideoInputStream `json:"ingest_streams"`
+	Is_manual_mode bool `json:"is_manual_mode"`
+	Is_reference_only bool `json:"is_reference_only"`
+	Live_views int `json:"live_views"`
+	Overlay_url string `json:"overlay_url"`
+	Permalink_url string `json:"permalink_url"`
+	Planned_start_time time.Time `json:"planned_start_time"`
 	Recommended_encoder_settings *LiveVideoRecommendedEncoderSettings `json:"recommended_encoder_settings"`
-	Seconds_left                 int                                  `json:"seconds_left"`
-	Secure_stream_url            string                               `json:"secure_stream_url"`
-	Status                       string                               `json:"status"`
-	Stream_url                   string                               `json:"stream_url"`
-	Targeting                    *LiveVideoTargeting                  `json:"targeting"`
-	Title                        string                               `json:"title"`
-	Total_views                  string                               `json:"total_views"`
-	Video                        *AdVideo                             `json:"video"`
+	Seconds_left int `json:"seconds_left"`
+	Secure_stream_url string `json:"secure_stream_url"`
+	Status string `json:"status"`
+	Stream_url string `json:"stream_url"`
+	Targeting *LiveVideoTargeting `json:"targeting"`
+	Title string `json:"title"`
+	Total_views string `json:"total_views"`
+	Video *AdVideo `json:"video"`
 }

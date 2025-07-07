@@ -4,33 +4,33 @@ package constants
 
 // ProductFeedUploadFields contains field name constants for ProductFeedUpload objects
 var ProductFeedUploadFields = struct {
-	EndTime           string
-	ErrorCount        string
-	ErrorReport       string
-	Filename          string
-	Id                string
-	InputMethod       string
-	NumDeletedItems   string
-	NumDetectedItems  string
-	NumInvalidItems   string
+	EndTime string
+	ErrorCount string
+	ErrorReport string
+	Filename string
+	Id string
+	InputMethod string
+	NumDeletedItems string
+	NumDetectedItems string
+	NumInvalidItems string
 	NumPersistedItems string
-	StartTime         string
-	Url               string
-	WarningCount      string
+	StartTime string
+	Url string
+	WarningCount string
 }{
-	EndTime:           "end_time",
-	ErrorCount:        "error_count",
-	ErrorReport:       "error_report",
-	Filename:          "filename",
-	Id:                "id",
-	InputMethod:       "input_method",
-	NumDeletedItems:   "num_deleted_items",
-	NumDetectedItems:  "num_detected_items",
-	NumInvalidItems:   "num_invalid_items",
+	EndTime: "end_time",
+	ErrorCount: "error_count",
+	ErrorReport: "error_report",
+	Filename: "filename",
+	Id: "id",
+	InputMethod: "input_method",
+	NumDeletedItems: "num_deleted_items",
+	NumDetectedItems: "num_detected_items",
+	NumInvalidItems: "num_invalid_items",
 	NumPersistedItems: "num_persisted_items",
-	StartTime:         "start_time",
-	Url:               "url",
-	WarningCount:      "warning_count",
+	StartTime: "start_time",
+	Url: "url",
+	WarningCount: "warning_count",
 }
 
 // ProductFeedUploadFieldsList contains all available fields for ProductFeedUpload objects

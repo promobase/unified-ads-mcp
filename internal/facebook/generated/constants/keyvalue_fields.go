@@ -4,10 +4,10 @@ package constants
 
 // KeyValueFields contains field name constants for KeyValue objects
 var KeyValueFields = struct {
-	Key   string
+	Key string
 	Value string
 }{
-	Key:   "key",
+	Key: "key",
 	Value: "value",
 }
 

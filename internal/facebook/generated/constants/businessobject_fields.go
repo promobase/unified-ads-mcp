@@ -4,17 +4,17 @@ package constants
 
 // BusinessObjectFields contains field name constants for BusinessObject objects
 var BusinessObjectFields = struct {
-	Asset     string
+	Asset string
 	AssetType string
-	Id        string
-	Name      string
-	Picture   string
+	Id string
+	Name string
+	Picture string
 }{
-	Asset:     "asset",
+	Asset: "asset",
 	AssetType: "asset_type",
-	Id:        "id",
-	Name:      "name",
-	Picture:   "picture",
+	Id: "id",
+	Name: "name",
+	Picture: "picture",
 }
 
 // BusinessObjectFieldsList contains all available fields for BusinessObject objects

@@ -4,18 +4,18 @@ package constants
 
 // VideoStatsFields contains field name constants for VideoStats objects
 var VideoStatsFields = struct {
-	Aggregate      string
-	Error          string
-	Metadata       string
-	TimeSeries     string
-	Totals         string
+	Aggregate string
+	Error string
+	Metadata string
+	TimeSeries string
+	Totals string
 	XAxisBreakdown string
 }{
-	Aggregate:      "aggregate",
-	Error:          "error",
-	Metadata:       "metadata",
-	TimeSeries:     "time_series",
-	Totals:         "totals",
+	Aggregate: "aggregate",
+	Error: "error",
+	Metadata: "metadata",
+	TimeSeries: "time_series",
+	Totals: "totals",
 	XAxisBreakdown: "x_axis_breakdown",
 }
 

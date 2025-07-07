@@ -4,24 +4,24 @@ package constants
 
 // AudioIsrcFields contains field name constants for AudioIsrc objects
 var AudioIsrcFields = struct {
-	AllKgFeaturedArtists             string
-	AllKgMainArtists                 string
-	ArtistProfilePictureUrl          string
-	Id                               string
-	Isrc                             string
-	PublishingRightsData             string
-	TopSearchableArtistId            string
-	TopSearchableArtistName          string
+	AllKgFeaturedArtists string
+	AllKgMainArtists string
+	ArtistProfilePictureUrl string
+	Id string
+	Isrc string
+	PublishingRightsData string
+	TopSearchableArtistId string
+	TopSearchableArtistName string
 	TopSearchableArtistProfilePicUrl string
 }{
-	AllKgFeaturedArtists:             "all_kg_featured_artists",
-	AllKgMainArtists:                 "all_kg_main_artists",
-	ArtistProfilePictureUrl:          "artist_profile_picture_url",
-	Id:                               "id",
-	Isrc:                             "isrc",
-	PublishingRightsData:             "publishing_rights_data",
-	TopSearchableArtistId:            "top_searchable_artist_id",
-	TopSearchableArtistName:          "top_searchable_artist_name",
+	AllKgFeaturedArtists: "all_kg_featured_artists",
+	AllKgMainArtists: "all_kg_main_artists",
+	ArtistProfilePictureUrl: "artist_profile_picture_url",
+	Id: "id",
+	Isrc: "isrc",
+	PublishingRightsData: "publishing_rights_data",
+	TopSearchableArtistId: "top_searchable_artist_id",
+	TopSearchableArtistName: "top_searchable_artist_name",
 	TopSearchableArtistProfilePicUrl: "top_searchable_artist_profile_pic_url",
 }
 

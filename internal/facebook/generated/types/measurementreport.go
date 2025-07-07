@@ -4,9 +4,9 @@ package types
 
 // MeasurementReport represents a Facebook MeasurementReport object
 type MeasurementReport struct {
-	Download_urls []string               `json:"download_urls"`
-	Id            string                 `json:"id"`
-	Metadata      map[string]interface{} `json:"metadata"`
-	Report_type   string                 `json:"report_type"`
-	Status        string                 `json:"status"`
+	Download_urls []string `json:"download_urls"`
+	Id string `json:"id"`
+	Metadata map[string]interface{} `json:"metadata"`
+	Report_type string `json:"report_type"`
+	Status string `json:"status"`
 }

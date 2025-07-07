@@ -4,18 +4,18 @@ package types
 
 // CRMAddress represents a Facebook CRMAddress object
 type CRMAddress struct {
-	City                string `json:"city"`
-	Cnpj_tax_id         string `json:"cnpj_tax_id"`
-	Country             string `json:"country"`
-	Id                  string `json:"id"`
-	Postal_code         string `json:"postal_code"`
-	Registration_label  string `json:"registration_label"`
+	City string `json:"city"`
+	Cnpj_tax_id string `json:"cnpj_tax_id"`
+	Country string `json:"country"`
+	Id string `json:"id"`
+	Postal_code string `json:"postal_code"`
+	Registration_label string `json:"registration_label"`
 	Registration_number string `json:"registration_number"`
-	State               string `json:"state"`
-	Street1             string `json:"street1"`
-	Street2             string `json:"street2"`
-	Street3             string `json:"street3"`
-	Street4             string `json:"street4"`
-	Validation_status   string `json:"validation_status"`
-	Vat_tax_id          string `json:"vat_tax_id"`
+	State string `json:"state"`
+	Street1 string `json:"street1"`
+	Street2 string `json:"street2"`
+	Street3 string `json:"street3"`
+	Street4 string `json:"street4"`
+	Validation_status string `json:"validation_status"`
+	Vat_tax_id string `json:"vat_tax_id"`
 }

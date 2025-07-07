@@ -4,6 +4,6 @@ package types
 
 // ContentPublishingLimitResponse represents a Facebook ContentPublishingLimitResponse object
 type ContentPublishingLimitResponse struct {
-	Config      map[string]interface{} `json:"config"`
-	Quota_usage int                    `json:"quota_usage"`
+	Config map[string]interface{} `json:"config"`
+	Quota_usage int `json:"quota_usage"`
 }

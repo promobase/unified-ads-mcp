@@ -17,6 +17,7 @@ import (
 func GetIGUserExportForCAMTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// iguserexportforcam_get_branded_content_media tool
 	iguserexportforcam_get_branded_content_mediaTool := mcp.NewTool("iguserexportforcam_get_branded_content_media",
 		mcp.WithDescription("GET branded_content_media for IGUserExportForCAM"),
@@ -42,25 +43,25 @@ func GetIGUserExportForCAMTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"breakdown": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "breakdown parameter",
-					"enum":        []string{"AGE", "FOLLOW_TYPE", "GENDER", "MEDIA_TYPE", "TOP_CITIES", "TOP_COUNTRIES"},
+					"enum": []string{ "AGE", "FOLLOW_TYPE", "GENDER", "MEDIA_TYPE", "TOP_CITIES", "TOP_COUNTRIES" },
 				},
 				"metrics": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "metrics parameter",
-					"enum":        []string{"CREATOR_ENGAGED_ACCOUNTS", "CREATOR_REACH", "REELS_HOOK_RATE", "REELS_INTERACTION_RATE", "TOTAL_FOLLOWERS"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "CREATOR_ENGAGED_ACCOUNTS", "CREATOR_REACH", "REELS_HOOK_RATE", "REELS_INTERACTION_RATE", "TOTAL_FOLLOWERS" },
+					"items": map[string]any{"type": "string"},
 				},
 				"period": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "period parameter",
-					"enum":        []string{"DAY", "OVERALL"},
+					"enum": []string{ "DAY", "OVERALL" },
 				},
 				"time_range": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "time_range parameter",
-					"enum":        []string{"LAST_14_DAYS", "LAST_90_DAYS", "LIFETIME", "THIS_MONTH", "THIS_WEEK"},
+					"enum": []string{ "LAST_14_DAYS", "LAST_90_DAYS", "LIFETIME", "THIS_MONTH", "THIS_WEEK" },
 				},
 			}),
 			mcp.Description("Parameters object containing: breakdown (enum) [AGE, FOLLOW_TYPE, GENDER, MEDIA_TYPE, TOP_CITIES, ...], metrics (array<enum>) [CREATOR_ENGAGED_ACCOUNTS, CREATOR_REACH, REELS_HOOK_RATE, REELS_INTERACTION_RATE, TOTAL_FOLLOWERS], period (enum) [DAY, OVERALL], time_range (enum) [LAST_14_DAYS, LAST_90_DAYS, LIFETIME, THIS_MONTH, THIS_WEEK]"),
@@ -117,10 +118,12 @@ func GetIGUserExportForCAMTools() []mcp.Tool {
 	)
 	tools = append(tools, iguserexportforcam_get_Tool)
 
+
 	return tools
 }
 
 // IGUserExportForCAM handlers
+
 
 // HandleIguserexportforcam_get_branded_content_media handles the iguserexportforcam_get_branded_content_media tool with context-based auth
 func HandleIguserexportforcam_get_branded_content_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -161,6 +164,8 @@ func HandleIguserexportforcam_get_branded_content_media(ctx context.Context, req
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguserexportforcam_get_branded_content_media(args)
 	if err != nil {
@@ -175,6 +180,7 @@ func HandleIguserexportforcam_get_branded_content_media(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguserexportforcam_get_insights handles the iguserexportforcam_get_insights tool with context-based auth
 func HandleIguserexportforcam_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -227,6 +233,8 @@ func HandleIguserexportforcam_get_insights(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguserexportforcam_get_insights(args)
 	if err != nil {
@@ -241,6 +249,7 @@ func HandleIguserexportforcam_get_insights(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguserexportforcam_get_recent_media handles the iguserexportforcam_get_recent_media tool with context-based auth
 func HandleIguserexportforcam_get_recent_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -281,6 +290,8 @@ func HandleIguserexportforcam_get_recent_media(ctx context.Context, request mcp.
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguserexportforcam_get_recent_media(args)
 	if err != nil {
@@ -295,6 +306,7 @@ func HandleIguserexportforcam_get_recent_media(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguserexportforcam_get_ handles the iguserexportforcam_get_ tool with context-based auth
 func HandleIguserexportforcam_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -335,6 +347,8 @@ func HandleIguserexportforcam_get_(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguserexportforcam_get_(args)
 	if err != nil {
@@ -349,3 +363,4 @@ func HandleIguserexportforcam_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

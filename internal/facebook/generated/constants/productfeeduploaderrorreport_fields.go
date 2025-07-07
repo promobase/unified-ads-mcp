@@ -4,10 +4,10 @@ package constants
 
 // ProductFeedUploadErrorReportFields contains field name constants for ProductFeedUploadErrorReport objects
 var ProductFeedUploadErrorReportFields = struct {
-	FileHandle   string
+	FileHandle string
 	ReportStatus string
 }{
-	FileHandle:   "file_handle",
+	FileHandle: "file_handle",
 	ReportStatus: "report_status",
 }
 

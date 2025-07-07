@@ -4,7 +4,7 @@ package types
 
 // Persona represents a Facebook Persona object
 type Persona struct {
-	Id                  string `json:"id"`
-	Name                string `json:"name"`
+	Id string `json:"id"`
+	Name string `json:"name"`
 	Profile_picture_url string `json:"profile_picture_url"`
 }

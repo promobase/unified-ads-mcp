@@ -17,6 +17,7 @@ import (
 func GetAdToplineDetailTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// adtoplinedetail_get_ tool
 	// Available fields for AdToplineDetail: active_status, ad_account_id, flight_end_date, flight_start_date, id, io_number, line_number, price, quantity, sf_detail_line_id, subline_id, targets, time_created, time_updated
 	adtoplinedetail_get_Tool := mcp.NewTool("adtoplinedetail_get_",
@@ -36,10 +37,12 @@ func GetAdToplineDetailTools() []mcp.Tool {
 	)
 	tools = append(tools, adtoplinedetail_get_Tool)
 
+
 	return tools
 }
 
 // AdToplineDetail handlers
+
 
 // HandleAdtoplinedetail_get_ handles the adtoplinedetail_get_ tool with context-based auth
 func HandleAdtoplinedetail_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleAdtoplinedetail_get_(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adtoplinedetail_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleAdtoplinedetail_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

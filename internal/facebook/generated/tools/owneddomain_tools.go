@@ -17,6 +17,7 @@ import (
 func GetOwnedDomainTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// owneddomain_get_ tool
 	// Available fields for OwnedDomain: domain_name, id, owner_business, status, verification_code
 	owneddomain_get_Tool := mcp.NewTool("owneddomain_get_",
@@ -36,10 +37,12 @@ func GetOwnedDomainTools() []mcp.Tool {
 	)
 	tools = append(tools, owneddomain_get_Tool)
 
+
 	return tools
 }
 
 // OwnedDomain handlers
+
 
 // HandleOwneddomain_get_ handles the owneddomain_get_ tool with context-based auth
 func HandleOwneddomain_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleOwneddomain_get_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Owneddomain_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleOwneddomain_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

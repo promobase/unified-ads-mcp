@@ -4,29 +4,29 @@ package constants
 
 // CalibratorExistingRuleFields contains field name constants for CalibratorExistingRule objects
 var CalibratorExistingRuleFields = struct {
-	Field7dVolume  string
+	Field7dVolume string
 	CreationSource string
-	CreationTime   string
-	Creator        string
-	EventType      string
-	Id             string
-	Rule           string
-	RuleType       string
-	SampleUrls     string
-	Status         string
-	Transforms     string
+	CreationTime string
+	Creator string
+	EventType string
+	Id string
+	Rule string
+	RuleType string
+	SampleUrls string
+	Status string
+	Transforms string
 }{
-	Field7dVolume:  "7d_volume",
+	Field7dVolume: "7d_volume",
 	CreationSource: "creation_source",
-	CreationTime:   "creation_time",
-	Creator:        "creator",
-	EventType:      "event_type",
-	Id:             "id",
-	Rule:           "rule",
-	RuleType:       "rule_type",
-	SampleUrls:     "sample_urls",
-	Status:         "status",
-	Transforms:     "transforms",
+	CreationTime: "creation_time",
+	Creator: "creator",
+	EventType: "event_type",
+	Id: "id",
+	Rule: "rule",
+	RuleType: "rule_type",
+	SampleUrls: "sample_urls",
+	Status: "status",
+	Transforms: "transforms",
 }
 
 // CalibratorExistingRuleFieldsList contains all available fields for CalibratorExistingRule objects

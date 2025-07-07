@@ -4,25 +4,25 @@ package constants
 
 // ProfilePictureSourceFields contains field name constants for ProfilePictureSource objects
 var ProfilePictureSourceFields = struct {
-	Bottom       string
-	CacheKey     string
-	Height       string
+	Bottom string
+	CacheKey string
+	Height string
 	IsSilhouette string
-	Left         string
-	Right        string
-	Top          string
-	Url          string
-	Width        string
+	Left string
+	Right string
+	Top string
+	Url string
+	Width string
 }{
-	Bottom:       "bottom",
-	CacheKey:     "cache_key",
-	Height:       "height",
+	Bottom: "bottom",
+	CacheKey: "cache_key",
+	Height: "height",
 	IsSilhouette: "is_silhouette",
-	Left:         "left",
-	Right:        "right",
-	Top:          "top",
-	Url:          "url",
-	Width:        "width",
+	Left: "left",
+	Right: "right",
+	Top: "top",
+	Url: "url",
+	Width: "width",
 }
 
 // ProfilePictureSourceFieldsList contains all available fields for ProfilePictureSource objects

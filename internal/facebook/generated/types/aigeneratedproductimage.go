@@ -4,6 +4,6 @@ package types
 
 // AIGeneratedProductImage represents a Facebook AIGeneratedProductImage object
 type AIGeneratedProductImage struct {
-	Flagged_for_manual_review bool   `json:"flagged_for_manual_review"`
-	Transformed_image_url     string `json:"transformed_image_url"`
+	Flagged_for_manual_review bool `json:"flagged_for_manual_review"`
+	Transformed_image_url string `json:"transformed_image_url"`
 }

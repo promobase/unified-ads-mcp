@@ -6,10 +6,10 @@ import "time"
 
 // IGUpcomingEvent represents a Facebook IGUpcomingEvent object
 type IGUpcomingEvent struct {
-	End_time                 time.Time `json:"end_time"`
-	Id                       string    `json:"id"`
-	Notification_subtypes    []string  `json:"notification_subtypes"`
-	Notification_target_time string    `json:"notification_target_time"`
-	Start_time               time.Time `json:"start_time"`
-	Title                    string    `json:"title"`
+	End_time time.Time `json:"end_time"`
+	Id string `json:"id"`
+	Notification_subtypes []string `json:"notification_subtypes"`
+	Notification_target_time string `json:"notification_target_time"`
+	Start_time time.Time `json:"start_time"`
+	Title string `json:"title"`
 }

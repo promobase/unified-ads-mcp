@@ -4,21 +4,21 @@ package constants
 
 // AudienceSharingRecipientAccountsFields contains field name constants for AudienceSharingRecipientAccounts objects
 var AudienceSharingRecipientAccountsFields = struct {
-	AccountId                         string
-	AccountName                       string
-	AccountType                       string
-	BusinessId                        string
-	BusinessName                      string
+	AccountId string
+	AccountName string
+	AccountType string
+	BusinessId string
+	BusinessName string
 	CanAdAccountUseLookalikeContainer string
-	SharingAgreementStatus            string
+	SharingAgreementStatus string
 }{
-	AccountId:                         "account_id",
-	AccountName:                       "account_name",
-	AccountType:                       "account_type",
-	BusinessId:                        "business_id",
-	BusinessName:                      "business_name",
+	AccountId: "account_id",
+	AccountName: "account_name",
+	AccountType: "account_type",
+	BusinessId: "business_id",
+	BusinessName: "business_name",
 	CanAdAccountUseLookalikeContainer: "can_ad_account_use_lookalike_container",
-	SharingAgreementStatus:            "sharing_agreement_status",
+	SharingAgreementStatus: "sharing_agreement_status",
 }
 
 // AudienceSharingRecipientAccountsFieldsList contains all available fields for AudienceSharingRecipientAccounts objects

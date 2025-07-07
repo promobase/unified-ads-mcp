@@ -4,27 +4,27 @@ package constants
 
 // PageUserPermissionsFields contains field name constants for PageUserPermissions objects
 var PageUserPermissionsFields = struct {
-	Business        string
+	Business string
 	BusinessPersona string
-	CreatedBy       string
-	CreatedTime     string
-	Email           string
-	Status          string
-	Tasks           string
-	UpdatedBy       string
-	UpdatedTime     string
-	User            string
+	CreatedBy string
+	CreatedTime string
+	Email string
+	Status string
+	Tasks string
+	UpdatedBy string
+	UpdatedTime string
+	User string
 }{
-	Business:        "business",
+	Business: "business",
 	BusinessPersona: "business_persona",
-	CreatedBy:       "created_by",
-	CreatedTime:     "created_time",
-	Email:           "email",
-	Status:          "status",
-	Tasks:           "tasks",
-	UpdatedBy:       "updated_by",
-	UpdatedTime:     "updated_time",
-	User:            "user",
+	CreatedBy: "created_by",
+	CreatedTime: "created_time",
+	Email: "email",
+	Status: "status",
+	Tasks: "tasks",
+	UpdatedBy: "updated_by",
+	UpdatedTime: "updated_time",
+	User: "user",
 }
 
 // PageUserPermissionsFieldsList contains all available fields for PageUserPermissions objects

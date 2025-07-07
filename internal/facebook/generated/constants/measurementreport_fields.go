@@ -5,16 +5,16 @@ package constants
 // MeasurementReportFields contains field name constants for MeasurementReport objects
 var MeasurementReportFields = struct {
 	DownloadUrls string
-	Id           string
-	Metadata     string
-	ReportType   string
-	Status       string
+	Id string
+	Metadata string
+	ReportType string
+	Status string
 }{
 	DownloadUrls: "download_urls",
-	Id:           "id",
-	Metadata:     "metadata",
-	ReportType:   "report_type",
-	Status:       "status",
+	Id: "id",
+	Metadata: "metadata",
+	ReportType: "report_type",
+	Status: "status",
 }
 
 // MeasurementReportFieldsList contains all available fields for MeasurementReport objects

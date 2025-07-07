@@ -4,6 +4,6 @@ package types
 
 // FinanceObject represents a Facebook FinanceObject object
 type FinanceObject struct {
-	Finance_permission string                 `json:"finance_permission"`
-	User               map[string]interface{} `json:"user"`
+	Finance_permission string `json:"finance_permission"`
+	User map[string]interface{} `json:"user"`
 }

@@ -17,6 +17,7 @@ import (
 func GetAdSavedLocationTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// adsavedlocation_get_ tool
 	// Available fields for AdSavedLocation: cities, countries, country_groups, custom_locations, geo_markets, id, location_sentences, name, regions, zips
 	adsavedlocation_get_Tool := mcp.NewTool("adsavedlocation_get_",
@@ -36,10 +37,12 @@ func GetAdSavedLocationTools() []mcp.Tool {
 	)
 	tools = append(tools, adsavedlocation_get_Tool)
 
+
 	return tools
 }
 
 // AdSavedLocation handlers
+
 
 // HandleAdsavedlocation_get_ handles the adsavedlocation_get_ tool with context-based auth
 func HandleAdsavedlocation_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleAdsavedlocation_get_(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adsavedlocation_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleAdsavedlocation_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

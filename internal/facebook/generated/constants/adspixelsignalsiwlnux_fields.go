@@ -5,16 +5,16 @@ package constants
 // AdsPixelSignalsIWLNuxFields contains field name constants for AdsPixelSignalsIWLNux objects
 var AdsPixelSignalsIWLNuxFields = struct {
 	BackgroundColor string
-	Content         string
-	ContentColor    string
-	ContentSize     string
-	ImgUrl          string
+	Content string
+	ContentColor string
+	ContentSize string
+	ImgUrl string
 }{
 	BackgroundColor: "background_color",
-	Content:         "content",
-	ContentColor:    "content_color",
-	ContentSize:     "content_size",
-	ImgUrl:          "img_url",
+	Content: "content",
+	ContentColor: "content_color",
+	ContentSize: "content_size",
+	ImgUrl: "img_url",
 }
 
 // AdsPixelSignalsIWLNuxFieldsList contains all available fields for AdsPixelSignalsIWLNux objects

@@ -4,10 +4,10 @@ package types
 
 // AdAssetFeedSpecVideo represents a Facebook AdAssetFeedSpecVideo object
 type AdAssetFeedSpecVideo struct {
-	Adlabels       []AdAssetFeedSpecAssetLabel `json:"adlabels"`
-	Caption_ids    []string                    `json:"caption_ids"`
-	Thumbnail_hash string                      `json:"thumbnail_hash"`
-	Thumbnail_url  string                      `json:"thumbnail_url"`
-	Url_tags       string                      `json:"url_tags"`
-	Video_id       string                      `json:"video_id"`
+	Adlabels []AdAssetFeedSpecAssetLabel `json:"adlabels"`
+	Caption_ids []string `json:"caption_ids"`
+	Thumbnail_hash string `json:"thumbnail_hash"`
+	Thumbnail_url string `json:"thumbnail_url"`
+	Url_tags string `json:"url_tags"`
+	Video_id string `json:"video_id"`
 }

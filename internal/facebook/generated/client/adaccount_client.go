@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-// AdAccountClient provides methods for AdAccount operations
+// AdAccountClient represents a client for AdAccount operations
 type AdAccountClient struct {
 	accessToken string
 }
@@ -21,68 +21,63 @@ func NewAdAccountClient(accessToken string) *AdAccountClient {
 	}
 }
 
-// adaccount_get_account_controls GET account_controls for AdAccount
+
+// Adaccount_get_account_controls performs GET account_controls for AdAccount
 func (c *AdAccountClient) Adaccount_get_account_controls(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_account_controls")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/account_controls", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/account_controls", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -114,49 +109,39 @@ func (c *AdAccountClient) Adaccount_get_account_controls(args map[string]interfa
 	return result, nil
 }
 
-// adaccount_post_account_controls POST account_controls for AdAccount
+
+// Adaccount_post_account_controls performs POST account_controls for AdAccount
 func (c *AdAccountClient) Adaccount_post_account_controls(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_account_controls")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/account_controls", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/account_controls", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -188,76 +173,71 @@ func (c *AdAccountClient) Adaccount_post_account_controls(args map[string]interf
 	return result, nil
 }
 
-// adaccount_get_activities GET activities for AdAccount
+
+// Adaccount_get_activities performs GET activities for AdAccount
 func (c *AdAccountClient) Adaccount_get_activities(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_activities")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/activities", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/activities", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -289,68 +269,63 @@ func (c *AdAccountClient) Adaccount_get_activities(args map[string]interface{}) 
 	return result, nil
 }
 
-// adaccount_get_ad_place_page_sets GET ad_place_page_sets for AdAccount
+
+// Adaccount_get_ad_place_page_sets performs GET ad_place_page_sets for AdAccount
 func (c *AdAccountClient) Adaccount_get_ad_place_page_sets(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_ad_place_page_sets")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/ad_place_page_sets", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/ad_place_page_sets", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -382,49 +357,39 @@ func (c *AdAccountClient) Adaccount_get_ad_place_page_sets(args map[string]inter
 	return result, nil
 }
 
-// adaccount_post_ad_place_page_sets POST ad_place_page_sets for AdAccount
+
+// Adaccount_post_ad_place_page_sets performs POST ad_place_page_sets for AdAccount
 func (c *AdAccountClient) Adaccount_post_ad_place_page_sets(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_ad_place_page_sets")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/ad_place_page_sets", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/ad_place_page_sets", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -456,49 +421,39 @@ func (c *AdAccountClient) Adaccount_post_ad_place_page_sets(args map[string]inte
 	return result, nil
 }
 
-// adaccount_post_ad_place_page_sets_async POST ad_place_page_sets_async for AdAccount
+
+// Adaccount_post_ad_place_page_sets_async performs POST ad_place_page_sets_async for AdAccount
 func (c *AdAccountClient) Adaccount_post_ad_place_page_sets_async(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_ad_place_page_sets_async")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/ad_place_page_sets_async", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/ad_place_page_sets_async", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -530,76 +485,71 @@ func (c *AdAccountClient) Adaccount_post_ad_place_page_sets_async(args map[strin
 	return result, nil
 }
 
-// adaccount_get_ad_saved_keywords GET ad_saved_keywords for AdAccount
+
+// Adaccount_get_ad_saved_keywords performs GET ad_saved_keywords for AdAccount
 func (c *AdAccountClient) Adaccount_get_ad_saved_keywords(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_ad_saved_keywords")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/ad_saved_keywords", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/ad_saved_keywords", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -631,68 +581,63 @@ func (c *AdAccountClient) Adaccount_get_ad_saved_keywords(args map[string]interf
 	return result, nil
 }
 
-// adaccount_get_ad_studies GET ad_studies for AdAccount
+
+// Adaccount_get_ad_studies performs GET ad_studies for AdAccount
 func (c *AdAccountClient) Adaccount_get_ad_studies(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_ad_studies")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/ad_studies", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/ad_studies", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -724,68 +669,63 @@ func (c *AdAccountClient) Adaccount_get_ad_studies(args map[string]interface{}) 
 	return result, nil
 }
 
-// adaccount_get_adcloudplayables GET adcloudplayables for AdAccount
+
+// Adaccount_get_adcloudplayables performs GET adcloudplayables for AdAccount
 func (c *AdAccountClient) Adaccount_get_adcloudplayables(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_adcloudplayables")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adcloudplayables", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adcloudplayables", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -817,68 +757,63 @@ func (c *AdAccountClient) Adaccount_get_adcloudplayables(args map[string]interfa
 	return result, nil
 }
 
-// adaccount_get_adcreatives GET adcreatives for AdAccount
+
+// Adaccount_get_adcreatives performs GET adcreatives for AdAccount
 func (c *AdAccountClient) Adaccount_get_adcreatives(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_adcreatives")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adcreatives", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adcreatives", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -910,44 +845,39 @@ func (c *AdAccountClient) Adaccount_get_adcreatives(args map[string]interface{})
 	return result, nil
 }
 
-// adaccount_post_adcreatives POST adcreatives for AdAccount
+
+// Adaccount_post_adcreatives performs POST adcreatives for AdAccount
 func (c *AdAccountClient) Adaccount_post_adcreatives(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_adcreatives")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adcreatives", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adcreatives", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -979,81 +909,71 @@ func (c *AdAccountClient) Adaccount_post_adcreatives(args map[string]interface{}
 	return result, nil
 }
 
-// adaccount_get_adcreativesbylabels GET adcreativesbylabels for AdAccount
+
+// Adaccount_get_adcreativesbylabels performs GET adcreativesbylabels for AdAccount
 func (c *AdAccountClient) Adaccount_get_adcreativesbylabels(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_adcreativesbylabels")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adcreativesbylabels", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adcreativesbylabels", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1085,49 +1005,39 @@ func (c *AdAccountClient) Adaccount_get_adcreativesbylabels(args map[string]inte
 	return result, nil
 }
 
-// adaccount_delete_adimages DELETE adimages for AdAccount
+
+// Adaccount_delete_adimages performs DELETE adimages for AdAccount
 func (c *AdAccountClient) Adaccount_delete_adimages(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_delete_adimages")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adimages", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adimages", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1159,76 +1069,71 @@ func (c *AdAccountClient) Adaccount_delete_adimages(args map[string]interface{})
 	return result, nil
 }
 
-// adaccount_get_adimages GET adimages for AdAccount
+
+// Adaccount_get_adimages performs GET adimages for AdAccount
 func (c *AdAccountClient) Adaccount_get_adimages(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_adimages")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adimages", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adimages", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1260,44 +1165,39 @@ func (c *AdAccountClient) Adaccount_get_adimages(args map[string]interface{}) (i
 	return result, nil
 }
 
-// adaccount_post_adimages POST adimages for AdAccount
+
+// Adaccount_post_adimages performs POST adimages for AdAccount
 func (c *AdAccountClient) Adaccount_post_adimages(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_adimages")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adimages", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adimages", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1329,68 +1229,63 @@ func (c *AdAccountClient) Adaccount_post_adimages(args map[string]interface{}) (
 	return result, nil
 }
 
-// adaccount_get_adlabels GET adlabels for AdAccount
+
+// Adaccount_get_adlabels performs GET adlabels for AdAccount
 func (c *AdAccountClient) Adaccount_get_adlabels(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_adlabels")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adlabels", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adlabels", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1422,49 +1317,39 @@ func (c *AdAccountClient) Adaccount_get_adlabels(args map[string]interface{}) (i
 	return result, nil
 }
 
-// adaccount_post_adlabels POST adlabels for AdAccount
+
+// Adaccount_post_adlabels performs POST adlabels for AdAccount
 func (c *AdAccountClient) Adaccount_post_adlabels(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_adlabels")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adlabels", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adlabels", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1496,68 +1381,63 @@ func (c *AdAccountClient) Adaccount_post_adlabels(args map[string]interface{}) (
 	return result, nil
 }
 
-// adaccount_get_adplayables GET adplayables for AdAccount
+
+// Adaccount_get_adplayables performs GET adplayables for AdAccount
 func (c *AdAccountClient) Adaccount_get_adplayables(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_adplayables")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adplayables", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adplayables", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1589,49 +1469,39 @@ func (c *AdAccountClient) Adaccount_get_adplayables(args map[string]interface{})
 	return result, nil
 }
 
-// adaccount_post_adplayables POST adplayables for AdAccount
+
+// Adaccount_post_adplayables performs POST adplayables for AdAccount
 func (c *AdAccountClient) Adaccount_post_adplayables(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_adplayables")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adplayables", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adplayables", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1663,76 +1533,71 @@ func (c *AdAccountClient) Adaccount_post_adplayables(args map[string]interface{}
 	return result, nil
 }
 
-// adaccount_get_adrules_history GET adrules_history for AdAccount
+
+// Adaccount_get_adrules_history performs GET adrules_history for AdAccount
 func (c *AdAccountClient) Adaccount_get_adrules_history(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_adrules_history")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adrules_history", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adrules_history", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1764,68 +1629,63 @@ func (c *AdAccountClient) Adaccount_get_adrules_history(args map[string]interfac
 	return result, nil
 }
 
-// adaccount_get_adrules_library GET adrules_library for AdAccount
+
+// Adaccount_get_adrules_library performs GET adrules_library for AdAccount
 func (c *AdAccountClient) Adaccount_get_adrules_library(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_adrules_library")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adrules_library", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adrules_library", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1857,49 +1717,39 @@ func (c *AdAccountClient) Adaccount_get_adrules_library(args map[string]interfac
 	return result, nil
 }
 
-// adaccount_post_adrules_library POST adrules_library for AdAccount
+
+// Adaccount_post_adrules_library performs POST adrules_library for AdAccount
 func (c *AdAccountClient) Adaccount_post_adrules_library(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_adrules_library")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adrules_library", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adrules_library", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -1931,76 +1781,71 @@ func (c *AdAccountClient) Adaccount_post_adrules_library(args map[string]interfa
 	return result, nil
 }
 
-// adaccount_get_ads GET ads for AdAccount
+
+// Adaccount_get_ads performs GET ads for AdAccount
 func (c *AdAccountClient) Adaccount_get_ads(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_ads")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/ads", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/ads", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2032,49 +1877,39 @@ func (c *AdAccountClient) Adaccount_get_ads(args map[string]interface{}) (interf
 	return result, nil
 }
 
-// adaccount_post_ads POST ads for AdAccount
+
+// Adaccount_post_ads performs POST ads for AdAccount
 func (c *AdAccountClient) Adaccount_post_ads(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_ads")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/ads", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/ads", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2106,76 +1941,71 @@ func (c *AdAccountClient) Adaccount_post_ads(args map[string]interface{}) (inter
 	return result, nil
 }
 
-// adaccount_get_ads_reporting_mmm_reports GET ads_reporting_mmm_reports for AdAccount
+
+// Adaccount_get_ads_reporting_mmm_reports performs GET ads_reporting_mmm_reports for AdAccount
 func (c *AdAccountClient) Adaccount_get_ads_reporting_mmm_reports(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_ads_reporting_mmm_reports")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/ads_reporting_mmm_reports", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/ads_reporting_mmm_reports", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2207,68 +2037,63 @@ func (c *AdAccountClient) Adaccount_get_ads_reporting_mmm_reports(args map[strin
 	return result, nil
 }
 
-// adaccount_get_ads_reporting_mmm_schedulers GET ads_reporting_mmm_schedulers for AdAccount
+
+// Adaccount_get_ads_reporting_mmm_schedulers performs GET ads_reporting_mmm_schedulers for AdAccount
 func (c *AdAccountClient) Adaccount_get_ads_reporting_mmm_schedulers(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_ads_reporting_mmm_schedulers")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/ads_reporting_mmm_schedulers", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/ads_reporting_mmm_schedulers", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2300,76 +2125,71 @@ func (c *AdAccountClient) Adaccount_get_ads_reporting_mmm_schedulers(args map[st
 	return result, nil
 }
 
-// adaccount_get_ads_volume GET ads_volume for AdAccount
+
+// Adaccount_get_ads_volume performs GET ads_volume for AdAccount
 func (c *AdAccountClient) Adaccount_get_ads_volume(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_ads_volume")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/ads_volume", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/ads_volume", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2401,81 +2221,71 @@ func (c *AdAccountClient) Adaccount_get_ads_volume(args map[string]interface{}) 
 	return result, nil
 }
 
-// adaccount_get_adsbylabels GET adsbylabels for AdAccount
+
+// Adaccount_get_adsbylabels performs GET adsbylabels for AdAccount
 func (c *AdAccountClient) Adaccount_get_adsbylabels(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_adsbylabels")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adsbylabels", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adsbylabels", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2507,76 +2317,71 @@ func (c *AdAccountClient) Adaccount_get_adsbylabels(args map[string]interface{})
 	return result, nil
 }
 
-// adaccount_get_adsets GET adsets for AdAccount
+
+// Adaccount_get_adsets performs GET adsets for AdAccount
 func (c *AdAccountClient) Adaccount_get_adsets(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_adsets")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adsets", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adsets", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2608,49 +2413,39 @@ func (c *AdAccountClient) Adaccount_get_adsets(args map[string]interface{}) (int
 	return result, nil
 }
 
-// adaccount_post_adsets POST adsets for AdAccount
+
+// Adaccount_post_adsets performs POST adsets for AdAccount
 func (c *AdAccountClient) Adaccount_post_adsets(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_adsets")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adsets", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adsets", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2682,81 +2477,71 @@ func (c *AdAccountClient) Adaccount_post_adsets(args map[string]interface{}) (in
 	return result, nil
 }
 
-// adaccount_get_adsetsbylabels GET adsetsbylabels for AdAccount
+
+// Adaccount_get_adsetsbylabels performs GET adsetsbylabels for AdAccount
 func (c *AdAccountClient) Adaccount_get_adsetsbylabels(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_adsetsbylabels")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adsetsbylabels", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adsetsbylabels", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2788,76 +2573,71 @@ func (c *AdAccountClient) Adaccount_get_adsetsbylabels(args map[string]interface
 	return result, nil
 }
 
-// adaccount_get_adspixels GET adspixels for AdAccount
+
+// Adaccount_get_adspixels performs GET adspixels for AdAccount
 func (c *AdAccountClient) Adaccount_get_adspixels(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_adspixels")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adspixels", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adspixels", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2889,44 +2669,39 @@ func (c *AdAccountClient) Adaccount_get_adspixels(args map[string]interface{}) (
 	return result, nil
 }
 
-// adaccount_post_adspixels POST adspixels for AdAccount
+
+// Adaccount_post_adspixels performs POST adspixels for AdAccount
 func (c *AdAccountClient) Adaccount_post_adspixels(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_adspixels")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/adspixels", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/adspixels", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -2958,76 +2733,71 @@ func (c *AdAccountClient) Adaccount_post_adspixels(args map[string]interface{}) 
 	return result, nil
 }
 
-// adaccount_get_advertisable_applications GET advertisable_applications for AdAccount
+
+// Adaccount_get_advertisable_applications performs GET advertisable_applications for AdAccount
 func (c *AdAccountClient) Adaccount_get_advertisable_applications(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_advertisable_applications")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/advertisable_applications", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/advertisable_applications", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3059,49 +2829,39 @@ func (c *AdAccountClient) Adaccount_get_advertisable_applications(args map[strin
 	return result, nil
 }
 
-// adaccount_delete_advideos DELETE advideos for AdAccount
+
+// Adaccount_delete_advideos performs DELETE advideos for AdAccount
 func (c *AdAccountClient) Adaccount_delete_advideos(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_delete_advideos")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/advideos", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/advideos", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3133,76 +2893,71 @@ func (c *AdAccountClient) Adaccount_delete_advideos(args map[string]interface{})
 	return result, nil
 }
 
-// adaccount_get_advideos GET advideos for AdAccount
+
+// Adaccount_get_advideos performs GET advideos for AdAccount
 func (c *AdAccountClient) Adaccount_get_advideos(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_advideos")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/advideos", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/advideos", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3234,44 +2989,39 @@ func (c *AdAccountClient) Adaccount_get_advideos(args map[string]interface{}) (i
 	return result, nil
 }
 
-// adaccount_post_advideos POST advideos for AdAccount
+
+// Adaccount_post_advideos performs POST advideos for AdAccount
 func (c *AdAccountClient) Adaccount_post_advideos(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_advideos")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/advideos", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/advideos", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3303,68 +3053,63 @@ func (c *AdAccountClient) Adaccount_post_advideos(args map[string]interface{}) (
 	return result, nil
 }
 
-// adaccount_get_affectedadsets GET affectedadsets for AdAccount
+
+// Adaccount_get_affectedadsets performs GET affectedadsets for AdAccount
 func (c *AdAccountClient) Adaccount_get_affectedadsets(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_affectedadsets")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/affectedadsets", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/affectedadsets", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3396,49 +3141,39 @@ func (c *AdAccountClient) Adaccount_get_affectedadsets(args map[string]interface
 	return result, nil
 }
 
-// adaccount_delete_agencies DELETE agencies for AdAccount
+
+// Adaccount_delete_agencies performs DELETE agencies for AdAccount
 func (c *AdAccountClient) Adaccount_delete_agencies(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_delete_agencies")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/agencies", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/agencies", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3470,68 +3205,63 @@ func (c *AdAccountClient) Adaccount_delete_agencies(args map[string]interface{})
 	return result, nil
 }
 
-// adaccount_get_agencies GET agencies for AdAccount
+
+// Adaccount_get_agencies performs GET agencies for AdAccount
 func (c *AdAccountClient) Adaccount_get_agencies(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_agencies")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/agencies", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/agencies", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3563,49 +3293,39 @@ func (c *AdAccountClient) Adaccount_get_agencies(args map[string]interface{}) (i
 	return result, nil
 }
 
-// adaccount_post_agencies POST agencies for AdAccount
+
+// Adaccount_post_agencies performs POST agencies for AdAccount
 func (c *AdAccountClient) Adaccount_post_agencies(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_agencies")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/agencies", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/agencies", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3637,68 +3357,63 @@ func (c *AdAccountClient) Adaccount_post_agencies(args map[string]interface{}) (
 	return result, nil
 }
 
-// adaccount_get_applications GET applications for AdAccount
+
+// Adaccount_get_applications performs GET applications for AdAccount
 func (c *AdAccountClient) Adaccount_get_applications(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_applications")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/applications", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/applications", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3730,49 +3445,39 @@ func (c *AdAccountClient) Adaccount_get_applications(args map[string]interface{}
 	return result, nil
 }
 
-// adaccount_delete_assigned_users DELETE assigned_users for AdAccount
+
+// Adaccount_delete_assigned_users performs DELETE assigned_users for AdAccount
 func (c *AdAccountClient) Adaccount_delete_assigned_users(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_delete_assigned_users")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/assigned_users", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/assigned_users", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3804,81 +3509,71 @@ func (c *AdAccountClient) Adaccount_delete_assigned_users(args map[string]interf
 	return result, nil
 }
 
-// adaccount_get_assigned_users GET assigned_users for AdAccount
+
+// Adaccount_get_assigned_users performs GET assigned_users for AdAccount
 func (c *AdAccountClient) Adaccount_get_assigned_users(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_assigned_users")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/assigned_users", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/assigned_users", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3910,49 +3605,39 @@ func (c *AdAccountClient) Adaccount_get_assigned_users(args map[string]interface
 	return result, nil
 }
 
-// adaccount_post_assigned_users POST assigned_users for AdAccount
+
+// Adaccount_post_assigned_users performs POST assigned_users for AdAccount
 func (c *AdAccountClient) Adaccount_post_assigned_users(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_assigned_users")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/assigned_users", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/assigned_users", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -3984,49 +3669,39 @@ func (c *AdAccountClient) Adaccount_post_assigned_users(args map[string]interfac
 	return result, nil
 }
 
-// adaccount_post_async_batch_requests POST async_batch_requests for AdAccount
+
+// Adaccount_post_async_batch_requests performs POST async_batch_requests for AdAccount
 func (c *AdAccountClient) Adaccount_post_async_batch_requests(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_async_batch_requests")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/async_batch_requests", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/async_batch_requests", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -4058,76 +3733,71 @@ func (c *AdAccountClient) Adaccount_post_async_batch_requests(args map[string]in
 	return result, nil
 }
 
-// adaccount_get_async_requests GET async_requests for AdAccount
+
+// Adaccount_get_async_requests performs GET async_requests for AdAccount
 func (c *AdAccountClient) Adaccount_get_async_requests(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_async_requests")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/async_requests", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/async_requests", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -4159,76 +3829,71 @@ func (c *AdAccountClient) Adaccount_get_async_requests(args map[string]interface
 	return result, nil
 }
 
-// adaccount_get_asyncadcreatives GET asyncadcreatives for AdAccount
+
+// Adaccount_get_asyncadcreatives performs GET asyncadcreatives for AdAccount
 func (c *AdAccountClient) Adaccount_get_asyncadcreatives(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_asyncadcreatives")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/asyncadcreatives", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/asyncadcreatives", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -4260,49 +3925,39 @@ func (c *AdAccountClient) Adaccount_get_asyncadcreatives(args map[string]interfa
 	return result, nil
 }
 
-// adaccount_post_asyncadcreatives POST asyncadcreatives for AdAccount
+
+// Adaccount_post_asyncadcreatives performs POST asyncadcreatives for AdAccount
 func (c *AdAccountClient) Adaccount_post_asyncadcreatives(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_asyncadcreatives")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/asyncadcreatives", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/asyncadcreatives", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -4334,76 +3989,71 @@ func (c *AdAccountClient) Adaccount_post_asyncadcreatives(args map[string]interf
 	return result, nil
 }
 
-// adaccount_get_asyncadrequestsets GET asyncadrequestsets for AdAccount
+
+// Adaccount_get_asyncadrequestsets performs GET asyncadrequestsets for AdAccount
 func (c *AdAccountClient) Adaccount_get_asyncadrequestsets(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_asyncadrequestsets")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/asyncadrequestsets", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/asyncadrequestsets", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -4435,49 +4085,39 @@ func (c *AdAccountClient) Adaccount_get_asyncadrequestsets(args map[string]inter
 	return result, nil
 }
 
-// adaccount_post_asyncadrequestsets POST asyncadrequestsets for AdAccount
+
+// Adaccount_post_asyncadrequestsets performs POST asyncadrequestsets for AdAccount
 func (c *AdAccountClient) Adaccount_post_asyncadrequestsets(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_asyncadrequestsets")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/asyncadrequestsets", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/asyncadrequestsets", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -4509,68 +4149,63 @@ func (c *AdAccountClient) Adaccount_post_asyncadrequestsets(args map[string]inte
 	return result, nil
 }
 
-// adaccount_get_audience_funnel GET audience_funnel for AdAccount
+
+// Adaccount_get_audience_funnel performs GET audience_funnel for AdAccount
 func (c *AdAccountClient) Adaccount_get_audience_funnel(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_audience_funnel")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/audience_funnel", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/audience_funnel", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -4602,49 +4237,39 @@ func (c *AdAccountClient) Adaccount_get_audience_funnel(args map[string]interfac
 	return result, nil
 }
 
-// adaccount_post_block_list_drafts POST block_list_drafts for AdAccount
+
+// Adaccount_post_block_list_drafts performs POST block_list_drafts for AdAccount
 func (c *AdAccountClient) Adaccount_post_block_list_drafts(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_block_list_drafts")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/block_list_drafts", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/block_list_drafts", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -4676,49 +4301,39 @@ func (c *AdAccountClient) Adaccount_post_block_list_drafts(args map[string]inter
 	return result, nil
 }
 
-// adaccount_post_brand_safety_content_filter_levels POST brand_safety_content_filter_levels for AdAccount
+
+// Adaccount_post_brand_safety_content_filter_levels performs POST brand_safety_content_filter_levels for AdAccount
 func (c *AdAccountClient) Adaccount_post_brand_safety_content_filter_levels(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_brand_safety_content_filter_levels")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/brand_safety_content_filter_levels", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/brand_safety_content_filter_levels", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -4750,76 +4365,71 @@ func (c *AdAccountClient) Adaccount_post_brand_safety_content_filter_levels(args
 	return result, nil
 }
 
-// adaccount_get_broadtargetingcategories GET broadtargetingcategories for AdAccount
+
+// Adaccount_get_broadtargetingcategories performs GET broadtargetingcategories for AdAccount
 func (c *AdAccountClient) Adaccount_get_broadtargetingcategories(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_broadtargetingcategories")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/broadtargetingcategories", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/broadtargetingcategories", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -4851,76 +4461,71 @@ func (c *AdAccountClient) Adaccount_get_broadtargetingcategories(args map[string
 	return result, nil
 }
 
-// adaccount_get_businessprojects GET businessprojects for AdAccount
+
+// Adaccount_get_businessprojects performs GET businessprojects for AdAccount
 func (c *AdAccountClient) Adaccount_get_businessprojects(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_businessprojects")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/businessprojects", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/businessprojects", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -4952,49 +4557,39 @@ func (c *AdAccountClient) Adaccount_get_businessprojects(args map[string]interfa
 	return result, nil
 }
 
-// adaccount_delete_campaigns DELETE campaigns for AdAccount
+
+// Adaccount_delete_campaigns performs DELETE campaigns for AdAccount
 func (c *AdAccountClient) Adaccount_delete_campaigns(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_delete_campaigns")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/campaigns", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/campaigns", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5026,76 +4621,71 @@ func (c *AdAccountClient) Adaccount_delete_campaigns(args map[string]interface{}
 	return result, nil
 }
 
-// adaccount_get_campaigns GET campaigns for AdAccount
+
+// Adaccount_get_campaigns performs GET campaigns for AdAccount
 func (c *AdAccountClient) Adaccount_get_campaigns(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_campaigns")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/campaigns", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/campaigns", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5127,49 +4717,39 @@ func (c *AdAccountClient) Adaccount_get_campaigns(args map[string]interface{}) (
 	return result, nil
 }
 
-// adaccount_post_campaigns POST campaigns for AdAccount
+
+// Adaccount_post_campaigns performs POST campaigns for AdAccount
 func (c *AdAccountClient) Adaccount_post_campaigns(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_campaigns")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/campaigns", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/campaigns", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5201,81 +4781,71 @@ func (c *AdAccountClient) Adaccount_post_campaigns(args map[string]interface{}) 
 	return result, nil
 }
 
-// adaccount_get_campaignsbylabels GET campaignsbylabels for AdAccount
+
+// Adaccount_get_campaignsbylabels performs GET campaignsbylabels for AdAccount
 func (c *AdAccountClient) Adaccount_get_campaignsbylabels(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_campaignsbylabels")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/campaignsbylabels", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/campaignsbylabels", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5307,68 +4877,63 @@ func (c *AdAccountClient) Adaccount_get_campaignsbylabels(args map[string]interf
 	return result, nil
 }
 
-// adaccount_get_connected_instagram_accounts GET connected_instagram_accounts for AdAccount
+
+// Adaccount_get_connected_instagram_accounts performs GET connected_instagram_accounts for AdAccount
 func (c *AdAccountClient) Adaccount_get_connected_instagram_accounts(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_connected_instagram_accounts")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/connected_instagram_accounts", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/connected_instagram_accounts", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5400,76 +4965,71 @@ func (c *AdAccountClient) Adaccount_get_connected_instagram_accounts(args map[st
 	return result, nil
 }
 
-// adaccount_get_connected_instagram_accounts_with_iabp GET connected_instagram_accounts_with_iabp for AdAccount
+
+// Adaccount_get_connected_instagram_accounts_with_iabp performs GET connected_instagram_accounts_with_iabp for AdAccount
 func (c *AdAccountClient) Adaccount_get_connected_instagram_accounts_with_iabp(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_connected_instagram_accounts_with_iabp")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/connected_instagram_accounts_with_iabp", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/connected_instagram_accounts_with_iabp", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5501,68 +5061,63 @@ func (c *AdAccountClient) Adaccount_get_connected_instagram_accounts_with_iabp(a
 	return result, nil
 }
 
-// adaccount_get_conversion_goals GET conversion_goals for AdAccount
+
+// Adaccount_get_conversion_goals performs GET conversion_goals for AdAccount
 func (c *AdAccountClient) Adaccount_get_conversion_goals(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_conversion_goals")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/conversion_goals", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/conversion_goals", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5594,76 +5149,71 @@ func (c *AdAccountClient) Adaccount_get_conversion_goals(args map[string]interfa
 	return result, nil
 }
 
-// adaccount_get_customaudiences GET customaudiences for AdAccount
+
+// Adaccount_get_customaudiences performs GET customaudiences for AdAccount
 func (c *AdAccountClient) Adaccount_get_customaudiences(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_customaudiences")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/customaudiences", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/customaudiences", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5695,44 +5245,39 @@ func (c *AdAccountClient) Adaccount_get_customaudiences(args map[string]interfac
 	return result, nil
 }
 
-// adaccount_post_customaudiences POST customaudiences for AdAccount
+
+// Adaccount_post_customaudiences performs POST customaudiences for AdAccount
 func (c *AdAccountClient) Adaccount_post_customaudiences(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_customaudiences")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/customaudiences", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/customaudiences", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5764,68 +5309,63 @@ func (c *AdAccountClient) Adaccount_post_customaudiences(args map[string]interfa
 	return result, nil
 }
 
-// adaccount_get_customaudiencestos GET customaudiencestos for AdAccount
+
+// Adaccount_get_customaudiencestos performs GET customaudiencestos for AdAccount
 func (c *AdAccountClient) Adaccount_get_customaudiencestos(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_customaudiencestos")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/customaudiencestos", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/customaudiencestos", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5857,49 +5397,39 @@ func (c *AdAccountClient) Adaccount_get_customaudiencestos(args map[string]inter
 	return result, nil
 }
 
-// adaccount_post_customaudiencestos POST customaudiencestos for AdAccount
+
+// Adaccount_post_customaudiencestos performs POST customaudiencestos for AdAccount
 func (c *AdAccountClient) Adaccount_post_customaudiencestos(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_customaudiencestos")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/customaudiencestos", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/customaudiencestos", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -5931,68 +5461,63 @@ func (c *AdAccountClient) Adaccount_post_customaudiencestos(args map[string]inte
 	return result, nil
 }
 
-// adaccount_get_customconversions GET customconversions for AdAccount
+
+// Adaccount_get_customconversions performs GET customconversions for AdAccount
 func (c *AdAccountClient) Adaccount_get_customconversions(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_customconversions")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/customconversions", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/customconversions", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -6024,49 +5549,39 @@ func (c *AdAccountClient) Adaccount_get_customconversions(args map[string]interf
 	return result, nil
 }
 
-// adaccount_post_customconversions POST customconversions for AdAccount
+
+// Adaccount_post_customconversions performs POST customconversions for AdAccount
 func (c *AdAccountClient) Adaccount_post_customconversions(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_customconversions")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/customconversions", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/customconversions", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -6098,81 +5613,71 @@ func (c *AdAccountClient) Adaccount_post_customconversions(args map[string]inter
 	return result, nil
 }
 
-// adaccount_get_delivery_estimate GET delivery_estimate for AdAccount
+
+// Adaccount_get_delivery_estimate performs GET delivery_estimate for AdAccount
 func (c *AdAccountClient) Adaccount_get_delivery_estimate(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_delivery_estimate")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/delivery_estimate", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/delivery_estimate", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -6204,76 +5709,71 @@ func (c *AdAccountClient) Adaccount_get_delivery_estimate(args map[string]interf
 	return result, nil
 }
 
-// adaccount_get_deprecatedtargetingadsets GET deprecatedtargetingadsets for AdAccount
+
+// Adaccount_get_deprecatedtargetingadsets performs GET deprecatedtargetingadsets for AdAccount
 func (c *AdAccountClient) Adaccount_get_deprecatedtargetingadsets(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_deprecatedtargetingadsets")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/deprecatedtargetingadsets", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/deprecatedtargetingadsets", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -6305,68 +5805,63 @@ func (c *AdAccountClient) Adaccount_get_deprecatedtargetingadsets(args map[strin
 	return result, nil
 }
 
-// adaccount_get_dsa_recommendations GET dsa_recommendations for AdAccount
+
+// Adaccount_get_dsa_recommendations performs GET dsa_recommendations for AdAccount
 func (c *AdAccountClient) Adaccount_get_dsa_recommendations(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_dsa_recommendations")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/dsa_recommendations", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/dsa_recommendations", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -6398,81 +5893,71 @@ func (c *AdAccountClient) Adaccount_get_dsa_recommendations(args map[string]inte
 	return result, nil
 }
 
-// adaccount_get_generatepreviews GET generatepreviews for AdAccount
+
+// Adaccount_get_generatepreviews performs GET generatepreviews for AdAccount
 func (c *AdAccountClient) Adaccount_get_generatepreviews(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_generatepreviews")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/generatepreviews", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/generatepreviews", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -6504,68 +5989,63 @@ func (c *AdAccountClient) Adaccount_get_generatepreviews(args map[string]interfa
 	return result, nil
 }
 
-// adaccount_get_impacting_ad_studies GET impacting_ad_studies for AdAccount
+
+// Adaccount_get_impacting_ad_studies performs GET impacting_ad_studies for AdAccount
 func (c *AdAccountClient) Adaccount_get_impacting_ad_studies(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_impacting_ad_studies")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/impacting_ad_studies", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/impacting_ad_studies", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -6597,76 +6077,71 @@ func (c *AdAccountClient) Adaccount_get_impacting_ad_studies(args map[string]int
 	return result, nil
 }
 
-// adaccount_get_insights GET insights for AdAccount
+
+// Adaccount_get_insights performs GET insights for AdAccount
 func (c *AdAccountClient) Adaccount_get_insights(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_insights")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/insights", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/insights", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -6698,44 +6173,39 @@ func (c *AdAccountClient) Adaccount_get_insights(args map[string]interface{}) (i
 	return result, nil
 }
 
-// adaccount_post_insights POST insights for AdAccount
+
+// Adaccount_post_insights performs POST insights for AdAccount
 func (c *AdAccountClient) Adaccount_post_insights(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_insights")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/insights", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/insights", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -6767,68 +6237,63 @@ func (c *AdAccountClient) Adaccount_post_insights(args map[string]interface{}) (
 	return result, nil
 }
 
-// adaccount_get_instagram_accounts GET instagram_accounts for AdAccount
+
+// Adaccount_get_instagram_accounts performs GET instagram_accounts for AdAccount
 func (c *AdAccountClient) Adaccount_get_instagram_accounts(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_instagram_accounts")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/instagram_accounts", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/instagram_accounts", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -6860,81 +6325,71 @@ func (c *AdAccountClient) Adaccount_get_instagram_accounts(args map[string]inter
 	return result, nil
 }
 
-// adaccount_get_ios_fourteen_campaign_limits GET ios_fourteen_campaign_limits for AdAccount
+
+// Adaccount_get_ios_fourteen_campaign_limits performs GET ios_fourteen_campaign_limits for AdAccount
 func (c *AdAccountClient) Adaccount_get_ios_fourteen_campaign_limits(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_ios_fourteen_campaign_limits")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/ios_fourteen_campaign_limits", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/ios_fourteen_campaign_limits", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -6966,81 +6421,71 @@ func (c *AdAccountClient) Adaccount_get_ios_fourteen_campaign_limits(args map[st
 	return result, nil
 }
 
-// adaccount_get_matched_search_applications GET matched_search_applications for AdAccount
+
+// Adaccount_get_matched_search_applications performs GET matched_search_applications for AdAccount
 func (c *AdAccountClient) Adaccount_get_matched_search_applications(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_matched_search_applications")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/matched_search_applications", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/matched_search_applications", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -7072,68 +6517,63 @@ func (c *AdAccountClient) Adaccount_get_matched_search_applications(args map[str
 	return result, nil
 }
 
-// adaccount_get_max_bid GET max_bid for AdAccount
+
+// Adaccount_get_max_bid performs GET max_bid for AdAccount
 func (c *AdAccountClient) Adaccount_get_max_bid(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_max_bid")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/max_bid", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/max_bid", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -7165,68 +6605,63 @@ func (c *AdAccountClient) Adaccount_get_max_bid(args map[string]interface{}) (in
 	return result, nil
 }
 
-// adaccount_get_mcmeconversions GET mcmeconversions for AdAccount
+
+// Adaccount_get_mcmeconversions performs GET mcmeconversions for AdAccount
 func (c *AdAccountClient) Adaccount_get_mcmeconversions(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_mcmeconversions")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/mcmeconversions", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/mcmeconversions", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -7258,76 +6693,71 @@ func (c *AdAccountClient) Adaccount_get_mcmeconversions(args map[string]interfac
 	return result, nil
 }
 
-// adaccount_get_minimum_budgets GET minimum_budgets for AdAccount
+
+// Adaccount_get_minimum_budgets performs GET minimum_budgets for AdAccount
 func (c *AdAccountClient) Adaccount_get_minimum_budgets(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_minimum_budgets")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/minimum_budgets", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/minimum_budgets", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -7359,76 +6789,71 @@ func (c *AdAccountClient) Adaccount_get_minimum_budgets(args map[string]interfac
 	return result, nil
 }
 
-// adaccount_get_onbehalf_requests GET onbehalf_requests for AdAccount
+
+// Adaccount_get_onbehalf_requests performs GET onbehalf_requests for AdAccount
 func (c *AdAccountClient) Adaccount_get_onbehalf_requests(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_onbehalf_requests")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/onbehalf_requests", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/onbehalf_requests", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -7460,49 +6885,39 @@ func (c *AdAccountClient) Adaccount_get_onbehalf_requests(args map[string]interf
 	return result, nil
 }
 
-// adaccount_post_product_audiences POST product_audiences for AdAccount
+
+// Adaccount_post_product_audiences performs POST product_audiences for AdAccount
 func (c *AdAccountClient) Adaccount_post_product_audiences(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_product_audiences")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/product_audiences", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/product_audiences", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -7534,68 +6949,63 @@ func (c *AdAccountClient) Adaccount_post_product_audiences(args map[string]inter
 	return result, nil
 }
 
-// adaccount_get_promote_pages GET promote_pages for AdAccount
+
+// Adaccount_get_promote_pages performs GET promote_pages for AdAccount
 func (c *AdAccountClient) Adaccount_get_promote_pages(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_promote_pages")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/promote_pages", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/promote_pages", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -7627,68 +7037,63 @@ func (c *AdAccountClient) Adaccount_get_promote_pages(args map[string]interface{
 	return result, nil
 }
 
-// adaccount_get_publisher_block_lists GET publisher_block_lists for AdAccount
+
+// Adaccount_get_publisher_block_lists performs GET publisher_block_lists for AdAccount
 func (c *AdAccountClient) Adaccount_get_publisher_block_lists(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_publisher_block_lists")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/publisher_block_lists", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/publisher_block_lists", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -7720,44 +7125,39 @@ func (c *AdAccountClient) Adaccount_get_publisher_block_lists(args map[string]in
 	return result, nil
 }
 
-// adaccount_post_publisher_block_lists POST publisher_block_lists for AdAccount
+
+// Adaccount_post_publisher_block_lists performs POST publisher_block_lists for AdAccount
 func (c *AdAccountClient) Adaccount_post_publisher_block_lists(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_publisher_block_lists")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/publisher_block_lists", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/publisher_block_lists", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -7789,81 +7189,71 @@ func (c *AdAccountClient) Adaccount_post_publisher_block_lists(args map[string]i
 	return result, nil
 }
 
-// adaccount_get_reachestimate GET reachestimate for AdAccount
+
+// Adaccount_get_reachestimate performs GET reachestimate for AdAccount
 func (c *AdAccountClient) Adaccount_get_reachestimate(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_reachestimate")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/reachestimate", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/reachestimate", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -7895,68 +7285,63 @@ func (c *AdAccountClient) Adaccount_get_reachestimate(args map[string]interface{
 	return result, nil
 }
 
-// adaccount_get_reachfrequencypredictions GET reachfrequencypredictions for AdAccount
+
+// Adaccount_get_reachfrequencypredictions performs GET reachfrequencypredictions for AdAccount
 func (c *AdAccountClient) Adaccount_get_reachfrequencypredictions(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_reachfrequencypredictions")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/reachfrequencypredictions", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/reachfrequencypredictions", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -7988,44 +7373,39 @@ func (c *AdAccountClient) Adaccount_get_reachfrequencypredictions(args map[strin
 	return result, nil
 }
 
-// adaccount_post_reachfrequencypredictions POST reachfrequencypredictions for AdAccount
+
+// Adaccount_post_reachfrequencypredictions performs POST reachfrequencypredictions for AdAccount
 func (c *AdAccountClient) Adaccount_post_reachfrequencypredictions(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_reachfrequencypredictions")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/reachfrequencypredictions", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/reachfrequencypredictions", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -8057,68 +7437,63 @@ func (c *AdAccountClient) Adaccount_post_reachfrequencypredictions(args map[stri
 	return result, nil
 }
 
-// adaccount_get_recommendations GET recommendations for AdAccount
+
+// Adaccount_get_recommendations performs GET recommendations for AdAccount
 func (c *AdAccountClient) Adaccount_get_recommendations(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_recommendations")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/recommendations", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/recommendations", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -8150,49 +7525,39 @@ func (c *AdAccountClient) Adaccount_get_recommendations(args map[string]interfac
 	return result, nil
 }
 
-// adaccount_post_recommendations POST recommendations for AdAccount
+
+// Adaccount_post_recommendations performs POST recommendations for AdAccount
 func (c *AdAccountClient) Adaccount_post_recommendations(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_recommendations")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/recommendations", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/recommendations", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -8224,76 +7589,71 @@ func (c *AdAccountClient) Adaccount_post_recommendations(args map[string]interfa
 	return result, nil
 }
 
-// adaccount_get_saved_audiences GET saved_audiences for AdAccount
+
+// Adaccount_get_saved_audiences performs GET saved_audiences for AdAccount
 func (c *AdAccountClient) Adaccount_get_saved_audiences(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_saved_audiences")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/saved_audiences", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/saved_audiences", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -8325,44 +7685,39 @@ func (c *AdAccountClient) Adaccount_get_saved_audiences(args map[string]interfac
 	return result, nil
 }
 
-// adaccount_delete_subscribed_apps DELETE subscribed_apps for AdAccount
+
+// Adaccount_delete_subscribed_apps performs DELETE subscribed_apps for AdAccount
 func (c *AdAccountClient) Adaccount_delete_subscribed_apps(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_delete_subscribed_apps")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/subscribed_apps", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/subscribed_apps", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -8394,68 +7749,63 @@ func (c *AdAccountClient) Adaccount_delete_subscribed_apps(args map[string]inter
 	return result, nil
 }
 
-// adaccount_get_subscribed_apps GET subscribed_apps for AdAccount
+
+// Adaccount_get_subscribed_apps performs GET subscribed_apps for AdAccount
 func (c *AdAccountClient) Adaccount_get_subscribed_apps(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_subscribed_apps")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/subscribed_apps", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/subscribed_apps", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -8487,44 +7837,39 @@ func (c *AdAccountClient) Adaccount_get_subscribed_apps(args map[string]interfac
 	return result, nil
 }
 
-// adaccount_post_subscribed_apps POST subscribed_apps for AdAccount
+
+// Adaccount_post_subscribed_apps performs POST subscribed_apps for AdAccount
 func (c *AdAccountClient) Adaccount_post_subscribed_apps(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_subscribed_apps")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/subscribed_apps", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/subscribed_apps", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -8556,76 +7901,71 @@ func (c *AdAccountClient) Adaccount_post_subscribed_apps(args map[string]interfa
 	return result, nil
 }
 
-// adaccount_get_targetingbrowse GET targetingbrowse for AdAccount
+
+// Adaccount_get_targetingbrowse performs GET targetingbrowse for AdAccount
 func (c *AdAccountClient) Adaccount_get_targetingbrowse(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_targetingbrowse")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/targetingbrowse", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/targetingbrowse", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -8657,81 +7997,71 @@ func (c *AdAccountClient) Adaccount_get_targetingbrowse(args map[string]interfac
 	return result, nil
 }
 
-// adaccount_get_targetingsearch GET targetingsearch for AdAccount
+
+// Adaccount_get_targetingsearch performs GET targetingsearch for AdAccount
 func (c *AdAccountClient) Adaccount_get_targetingsearch(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_targetingsearch")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/targetingsearch", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/targetingsearch", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -8763,81 +8093,71 @@ func (c *AdAccountClient) Adaccount_get_targetingsearch(args map[string]interfac
 	return result, nil
 }
 
-// adaccount_get_targetingsentencelines GET targetingsentencelines for AdAccount
+
+// Adaccount_get_targetingsentencelines performs GET targetingsentencelines for AdAccount
 func (c *AdAccountClient) Adaccount_get_targetingsentencelines(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_targetingsentencelines")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/targetingsentencelines", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/targetingsentencelines", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -8869,76 +8189,71 @@ func (c *AdAccountClient) Adaccount_get_targetingsentencelines(args map[string]i
 	return result, nil
 }
 
-// adaccount_get_targetingsuggestions GET targetingsuggestions for AdAccount
+
+// Adaccount_get_targetingsuggestions performs GET targetingsuggestions for AdAccount
 func (c *AdAccountClient) Adaccount_get_targetingsuggestions(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_targetingsuggestions")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/targetingsuggestions", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/targetingsuggestions", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -8970,76 +8285,71 @@ func (c *AdAccountClient) Adaccount_get_targetingsuggestions(args map[string]int
 	return result, nil
 }
 
-// adaccount_get_targetingvalidation GET targetingvalidation for AdAccount
+
+// Adaccount_get_targetingvalidation performs GET targetingvalidation for AdAccount
 func (c *AdAccountClient) Adaccount_get_targetingvalidation(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_targetingvalidation")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/targetingvalidation", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/targetingvalidation", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -9071,68 +8381,63 @@ func (c *AdAccountClient) Adaccount_get_targetingvalidation(args map[string]inte
 	return result, nil
 }
 
-// adaccount_get_tracking GET tracking for AdAccount
+
+// Adaccount_get_tracking performs GET tracking for AdAccount
 func (c *AdAccountClient) Adaccount_get_tracking(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_tracking")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/tracking", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/tracking", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -9164,49 +8469,39 @@ func (c *AdAccountClient) Adaccount_get_tracking(args map[string]interface{}) (i
 	return result, nil
 }
 
-// adaccount_post_tracking POST tracking for AdAccount
+
+// Adaccount_post_tracking performs POST tracking for AdAccount
 func (c *AdAccountClient) Adaccount_post_tracking(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_tracking")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/tracking", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/tracking", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -9238,68 +8533,63 @@ func (c *AdAccountClient) Adaccount_post_tracking(args map[string]interface{}) (
 	return result, nil
 }
 
-// adaccount_get_users GET users for AdAccount
+
+// Adaccount_get_users performs GET users for AdAccount
 func (c *AdAccountClient) Adaccount_get_users(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_users")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/users", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/users", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -9331,44 +8621,39 @@ func (c *AdAccountClient) Adaccount_get_users(args map[string]interface{}) (inte
 	return result, nil
 }
 
-// adaccount_delete_usersofanyaudience DELETE usersofanyaudience for AdAccount
+
+// Adaccount_delete_usersofanyaudience performs DELETE usersofanyaudience for AdAccount
 func (c *AdAccountClient) Adaccount_delete_usersofanyaudience(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_delete_usersofanyaudience")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/usersofanyaudience", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/usersofanyaudience", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -9400,76 +8685,71 @@ func (c *AdAccountClient) Adaccount_delete_usersofanyaudience(args map[string]in
 	return result, nil
 }
 
-// adaccount_get_value_rule_set GET value_rule_set for AdAccount
+
+// Adaccount_get_value_rule_set performs GET value_rule_set for AdAccount
 func (c *AdAccountClient) Adaccount_get_value_rule_set(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_value_rule_set")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/value_rule_set", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/value_rule_set", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -9501,49 +8781,39 @@ func (c *AdAccountClient) Adaccount_get_value_rule_set(args map[string]interface
 	return result, nil
 }
 
-// adaccount_post_value_rule_set POST value_rule_set for AdAccount
+
+// Adaccount_post_value_rule_set performs POST value_rule_set for AdAccount
 func (c *AdAccountClient) Adaccount_post_value_rule_set(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_value_rule_set")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/value_rule_set", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/value_rule_set", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -9575,76 +8845,71 @@ func (c *AdAccountClient) Adaccount_post_value_rule_set(args map[string]interfac
 	return result, nil
 }
 
-// adaccount_get_video_ads GET video_ads for AdAccount
+
+// Adaccount_get_video_ads performs GET video_ads for AdAccount
 func (c *AdAccountClient) Adaccount_get_video_ads(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_video_ads")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/video_ads", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/video_ads", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -9676,49 +8941,39 @@ func (c *AdAccountClient) Adaccount_get_video_ads(args map[string]interface{}) (
 	return result, nil
 }
 
-// adaccount_post_video_ads POST video_ads for AdAccount
+
+// Adaccount_post_video_ads performs POST video_ads for AdAccount
 func (c *AdAccountClient) Adaccount_post_video_ads(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_video_ads")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/video_ads", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/video_ads", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -9750,68 +9005,63 @@ func (c *AdAccountClient) Adaccount_post_video_ads(args map[string]interface{}) 
 	return result, nil
 }
 
-// adaccount_get_ GET  for AdAccount
+
+// Adaccount_get_ performs GET  for AdAccount
 func (c *AdAccountClient) Adaccount_get_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_get_")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "fields" != "account_id" {
 			urlParams.Set("fields", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "limit" != "account_id" {
 			urlParams.Set("limit", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "after" != "account_id" {
 			urlParams.Set("after", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "before" != "account_id" {
 			urlParams.Set("before", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -9843,44 +9093,39 @@ func (c *AdAccountClient) Adaccount_get_(args map[string]interface{}) (interface
 	return result, nil
 }
 
-// adaccount_post_ POST  for AdAccount
+
+// Adaccount_post_ performs POST  for AdAccount
 func (c *AdAccountClient) Adaccount_post_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	account_id, ok := args["account_id"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
-	}
-	_ = account_id // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
-	// For AdAccount endpoints, include account_id in the URL path
-	accountId, ok := args["account_id"]
+	
+	
+	// Extract account_id for URL construction
+	accountId, ok := args["account_id"].(string)
 	if !ok {
-		return nil, fmt.Errorf("missing required parameter: account_id")
+		return nil, fmt.Errorf("account_id is required for adaccount_post_")
 	}
-	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%v/", accountId)
-
+	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/act_%s/", accountId)
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["account_id"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "account_id" != "account_id" {
 			urlParams.Set("account_id", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		if "params" != "account_id" {
 			urlParams.Set("params", fmt.Sprintf("%v", val))
 		}
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -9911,3 +9156,4 @@ func (c *AdAccountClient) Adaccount_post_(args map[string]interface{}) (interfac
 
 	return result, nil
 }
+

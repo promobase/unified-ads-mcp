@@ -4,10 +4,10 @@ package constants
 
 // ThreadsUserFields contains field name constants for ThreadsUser objects
 var ThreadsUserFields = struct {
-	ThreadsUserId         string
+	ThreadsUserId string
 	ThreadsUserProfilePic string
 }{
-	ThreadsUserId:         "threads_user_id",
+	ThreadsUserId: "threads_user_id",
 	ThreadsUserProfilePic: "threads_user_profile_pic",
 }
 

@@ -5,10 +5,10 @@ package constants
 // CatalogAdvertiserInsightFields contains field name constants for CatalogAdvertiserInsight objects
 var CatalogAdvertiserInsightFields = struct {
 	Category string
-	Country  string
+	Country string
 }{
 	Category: "category",
-	Country:  "country",
+	Country: "country",
 }
 
 // CatalogAdvertiserInsightFieldsList contains all available fields for CatalogAdvertiserInsight objects

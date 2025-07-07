@@ -4,6 +4,6 @@ package types
 
 // FantasyGame represents a Facebook FantasyGame object
 type FantasyGame struct {
-	Id   string `json:"id"`
+	Id string `json:"id"`
 	Name string `json:"name"`
 }

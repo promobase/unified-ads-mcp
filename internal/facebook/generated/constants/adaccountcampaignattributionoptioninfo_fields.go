@@ -5,10 +5,10 @@ package constants
 // AdAccountCampaignAttributionOptionInfoFields contains field name constants for AdAccountCampaignAttributionOptionInfo objects
 var AdAccountCampaignAttributionOptionInfoFields = struct {
 	IsEligible string
-	Value      string
+	Value string
 }{
 	IsEligible: "is_eligible",
-	Value:      "value",
+	Value: "value",
 }
 
 // AdAccountCampaignAttributionOptionInfoFieldsList contains all available fields for AdAccountCampaignAttributionOptionInfo objects

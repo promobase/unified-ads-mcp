@@ -4,11 +4,11 @@ package types
 
 // InstagramInsightsResult represents a Facebook InstagramInsightsResult object
 type InstagramInsightsResult struct {
-	Description string                   `json:"description"`
-	Id          string                   `json:"id"`
-	Name        string                   `json:"name"`
-	Period      string                   `json:"period"`
-	Title       string                   `json:"title"`
-	Total_value map[string]interface{}   `json:"total_value"`
-	Values      []InstagramInsightsValue `json:"values"`
+	Description string `json:"description"`
+	Id string `json:"id"`
+	Name string `json:"name"`
+	Period string `json:"period"`
+	Title string `json:"title"`
+	Total_value map[string]interface{} `json:"total_value"`
+	Values []InstagramInsightsValue `json:"values"`
 }

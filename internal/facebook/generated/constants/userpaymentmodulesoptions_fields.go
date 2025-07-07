@@ -4,15 +4,15 @@ package constants
 
 // UserPaymentModulesOptionsFields contains field name constants for UserPaymentModulesOptions objects
 var UserPaymentModulesOptionsFields = struct {
-	AccountId               string
+	AccountId string
 	AvailablePaymentOptions string
-	Country                 string
-	Currency                string
+	Country string
+	Currency string
 }{
-	AccountId:               "account_id",
+	AccountId: "account_id",
 	AvailablePaymentOptions: "available_payment_options",
-	Country:                 "country",
-	Currency:                "currency",
+	Country: "country",
+	Currency: "currency",
 }
 
 // UserPaymentModulesOptionsFieldsList contains all available fields for UserPaymentModulesOptions objects

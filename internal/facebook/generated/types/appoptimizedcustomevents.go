@@ -4,7 +4,7 @@ package types
 
 // AppOptimizedCustomEvents represents a Facebook AppOptimizedCustomEvents object
 type AppOptimizedCustomEvents struct {
-	App_id      int      `json:"app_id"`
-	App_name    string   `json:"app_name"`
+	App_id int `json:"app_id"`
+	App_name string `json:"app_name"`
 	Event_names []string `json:"event_names"`
 }

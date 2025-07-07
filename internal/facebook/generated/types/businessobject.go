@@ -4,9 +4,9 @@ package types
 
 // BusinessObject represents a Facebook BusinessObject object
 type BusinessObject struct {
-	Asset      map[string]interface{} `json:"asset"`
-	Asset_type string                 `json:"asset_type"`
-	Id         string                 `json:"id"`
-	Name       string                 `json:"name"`
-	Picture    string                 `json:"picture"`
+	Asset map[string]interface{} `json:"asset"`
+	Asset_type string `json:"asset_type"`
+	Id string `json:"id"`
+	Name string `json:"name"`
+	Picture string `json:"picture"`
 }

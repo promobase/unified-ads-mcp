@@ -17,6 +17,7 @@ import (
 func GetAdExportPresetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// adexportpreset_get_ tool
 	// Available fields for AdExportPreset: created_time, fields, id, name, owner, updated_time
 	adexportpreset_get_Tool := mcp.NewTool("adexportpreset_get_",
@@ -36,10 +37,12 @@ func GetAdExportPresetTools() []mcp.Tool {
 	)
 	tools = append(tools, adexportpreset_get_Tool)
 
+
 	return tools
 }
 
 // AdExportPreset handlers
+
 
 // HandleAdexportpreset_get_ handles the adexportpreset_get_ tool with context-based auth
 func HandleAdexportpreset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleAdexportpreset_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adexportpreset_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleAdexportpreset_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

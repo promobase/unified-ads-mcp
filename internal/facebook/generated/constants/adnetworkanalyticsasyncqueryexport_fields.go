@@ -5,12 +5,12 @@ package constants
 // AdNetworkAnalyticsAsyncQueryExportFields contains field name constants for AdNetworkAnalyticsAsyncQueryExport objects
 var AdNetworkAnalyticsAsyncQueryExportFields = struct {
 	ExportLink string
-	QueryId    string
-	Status     string
+	QueryId string
+	Status string
 }{
 	ExportLink: "export_link",
-	QueryId:    "query_id",
-	Status:     "status",
+	QueryId: "query_id",
+	Status: "status",
 }
 
 // AdNetworkAnalyticsAsyncQueryExportFieldsList contains all available fields for AdNetworkAnalyticsAsyncQueryExport objects

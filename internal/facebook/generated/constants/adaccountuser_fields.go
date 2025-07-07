@@ -4,12 +4,12 @@ package constants
 
 // AdAccountUserFields contains field name constants for AdAccountUser objects
 var AdAccountUserFields = struct {
-	Id    string
-	Name  string
+	Id string
+	Name string
 	Tasks string
 }{
-	Id:    "id",
-	Name:  "name",
+	Id: "id",
+	Name: "name",
 	Tasks: "tasks",
 }
 

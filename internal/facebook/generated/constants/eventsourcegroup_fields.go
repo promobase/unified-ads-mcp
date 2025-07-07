@@ -4,16 +4,16 @@ package constants
 
 // EventSourceGroupFields contains field name constants for EventSourceGroup objects
 var EventSourceGroupFields = struct {
-	Business      string
-	EventSources  string
-	Id            string
-	Name          string
+	Business string
+	EventSources string
+	Id string
+	Name string
 	OwnerBusiness string
 }{
-	Business:      "business",
-	EventSources:  "event_sources",
-	Id:            "id",
-	Name:          "name",
+	Business: "business",
+	EventSources: "event_sources",
+	Id: "id",
+	Name: "name",
 	OwnerBusiness: "owner_business",
 }
 

@@ -4,21 +4,21 @@ package constants
 
 // CPASAdCreationTemplateFields contains field name constants for CPASAdCreationTemplate objects
 var CPASAdCreationTemplateFields = struct {
-	Description      string
-	Id               string
+	Description string
+	Id string
 	IsUnusedTemplate string
-	Name             string
+	Name string
 	OptimizationGoal string
-	TargetingType    string
-	TemplateType     string
+	TargetingType string
+	TemplateType string
 }{
-	Description:      "description",
-	Id:               "id",
+	Description: "description",
+	Id: "id",
 	IsUnusedTemplate: "is_unused_template",
-	Name:             "name",
+	Name: "name",
 	OptimizationGoal: "optimization_goal",
-	TargetingType:    "targeting_type",
-	TemplateType:     "template_type",
+	TargetingType: "targeting_type",
+	TemplateType: "template_type",
 }
 
 // CPASAdCreationTemplateFieldsList contains all available fields for CPASAdCreationTemplate objects

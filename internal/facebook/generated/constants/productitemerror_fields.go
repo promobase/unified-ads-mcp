@@ -4,15 +4,15 @@ package constants
 
 // ProductItemErrorFields contains field name constants for ProductItemError objects
 var ProductItemErrorFields = struct {
-	Description   string
+	Description string
 	ErrorPriority string
-	ErrorType     string
-	Title         string
+	ErrorType string
+	Title string
 }{
-	Description:   "description",
+	Description: "description",
 	ErrorPriority: "error_priority",
-	ErrorType:     "error_type",
-	Title:         "title",
+	ErrorType: "error_type",
+	Title: "title",
 }
 
 // ProductItemErrorFieldsList contains all available fields for ProductItemError objects

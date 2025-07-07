@@ -17,6 +17,7 @@ import (
 func GetAsyncSessionTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// asyncsession_get_ tool
 	// Available fields for AsyncSession: app, complete_time, error_code, exception, id, method, name, page, percent_completed, platform_version, result, start_time, status, uri, user
 	asyncsession_get_Tool := mcp.NewTool("asyncsession_get_",
@@ -36,10 +37,12 @@ func GetAsyncSessionTools() []mcp.Tool {
 	)
 	tools = append(tools, asyncsession_get_Tool)
 
+
 	return tools
 }
 
 // AsyncSession handlers
+
 
 // HandleAsyncsession_get_ handles the asyncsession_get_ tool with context-based auth
 func HandleAsyncsession_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleAsyncsession_get_(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Asyncsession_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleAsyncsession_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

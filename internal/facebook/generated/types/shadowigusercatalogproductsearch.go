@@ -4,12 +4,12 @@ package types
 
 // ShadowIGUserCatalogProductSearch represents a Facebook ShadowIGUserCatalogProductSearch object
 type ShadowIGUserCatalogProductSearch struct {
-	Image_url        string                              `json:"image_url"`
-	Is_checkout_flow bool                                `json:"is_checkout_flow"`
-	Merchant_id      int                                 `json:"merchant_id"`
-	Product_id       int                                 `json:"product_id"`
-	Product_name     string                              `json:"product_name"`
+	Image_url string `json:"image_url"`
+	Is_checkout_flow bool `json:"is_checkout_flow"`
+	Merchant_id int `json:"merchant_id"`
+	Product_id int `json:"product_id"`
+	Product_name string `json:"product_name"`
 	Product_variants []ShadowIGUserCatalogProductVariant `json:"product_variants"`
-	Retailer_id      string                              `json:"retailer_id"`
-	Review_status    string                              `json:"review_status"`
+	Retailer_id string `json:"retailer_id"`
+	Review_status string `json:"review_status"`
 }

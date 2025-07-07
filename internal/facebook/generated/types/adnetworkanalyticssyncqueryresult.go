@@ -5,6 +5,6 @@ package types
 // AdNetworkAnalyticsSyncQueryResult represents a Facebook AdNetworkAnalyticsSyncQueryResult object
 type AdNetworkAnalyticsSyncQueryResult struct {
 	Omitted_results []map[string]interface{} `json:"omitted_results"`
-	Query_id        string                   `json:"query_id"`
-	Results         []map[string]interface{} `json:"results"`
+	Query_id string `json:"query_id"`
+	Results []map[string]interface{} `json:"results"`
 }

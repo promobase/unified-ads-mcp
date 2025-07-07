@@ -4,19 +4,19 @@ package constants
 
 // PageCTSTopicFields contains field name constants for PageCTSTopic objects
 var PageCTSTopicFields = struct {
-	AppId      string
-	Frequency  string
-	ImageHash  string
-	ImageUrl   string
+	AppId string
+	Frequency string
+	ImageHash string
+	ImageUrl string
 	Subscriber string
-	Title      string
+	Title string
 }{
-	AppId:      "app_id",
-	Frequency:  "frequency",
-	ImageHash:  "image_hash",
-	ImageUrl:   "image_url",
+	AppId: "app_id",
+	Frequency: "frequency",
+	ImageHash: "image_hash",
+	ImageUrl: "image_url",
 	Subscriber: "subscriber",
-	Title:      "title",
+	Title: "title",
 }
 
 // PageCTSTopicFieldsList contains all available fields for PageCTSTopic objects

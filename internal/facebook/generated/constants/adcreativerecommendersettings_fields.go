@@ -4,10 +4,10 @@ package constants
 
 // AdCreativeRecommenderSettingsFields contains field name constants for AdCreativeRecommenderSettings objects
 var AdCreativeRecommenderSettingsFields = struct {
-	PreferredEvents     string
+	PreferredEvents string
 	ProductSalesChannel string
 }{
-	PreferredEvents:     "preferred_events",
+	PreferredEvents: "preferred_events",
 	ProductSalesChannel: "product_sales_channel",
 }
 

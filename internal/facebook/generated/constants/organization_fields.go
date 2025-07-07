@@ -4,13 +4,13 @@ package constants
 
 // OrganizationFields contains field name constants for Organization objects
 var OrganizationFields = struct {
-	Id              string
+	Id string
 	LegalEntityName string
-	OwnerBusiness   string
+	OwnerBusiness string
 }{
-	Id:              "id",
+	Id: "id",
 	LegalEntityName: "legal_entity_name",
-	OwnerBusiness:   "owner_business",
+	OwnerBusiness: "owner_business",
 }
 
 // OrganizationFieldsList contains all available fields for Organization objects

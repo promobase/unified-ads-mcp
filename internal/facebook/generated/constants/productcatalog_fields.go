@@ -5,44 +5,44 @@ package constants
 // ProductCatalogFields contains field name constants for ProductCatalog objects
 var ProductCatalogFields = struct {
 	AdAccountToCollaborativeAdsShareSettings string
-	AgencyCollaborativeAdsShareSettings      string
-	Business                                 string
-	CatalogStore                             string
-	CommerceMerchantSettings                 string
-	CreatorUser                              string
-	DaDisplaySettings                        string
-	DefaultImageUrl                          string
-	FallbackImageUrl                         string
-	FeedCount                                string
-	Id                                       string
-	IsCatalogSegment                         string
-	IsLocalCatalog                           string
-	Name                                     string
-	OwnerBusiness                            string
-	ProductCount                             string
-	StoreCatalogSettings                     string
-	UserAccessExpireTime                     string
-	Vertical                                 string
+	AgencyCollaborativeAdsShareSettings string
+	Business string
+	CatalogStore string
+	CommerceMerchantSettings string
+	CreatorUser string
+	DaDisplaySettings string
+	DefaultImageUrl string
+	FallbackImageUrl string
+	FeedCount string
+	Id string
+	IsCatalogSegment string
+	IsLocalCatalog string
+	Name string
+	OwnerBusiness string
+	ProductCount string
+	StoreCatalogSettings string
+	UserAccessExpireTime string
+	Vertical string
 }{
 	AdAccountToCollaborativeAdsShareSettings: "ad_account_to_collaborative_ads_share_settings",
-	AgencyCollaborativeAdsShareSettings:      "agency_collaborative_ads_share_settings",
-	Business:                                 "business",
-	CatalogStore:                             "catalog_store",
-	CommerceMerchantSettings:                 "commerce_merchant_settings",
-	CreatorUser:                              "creator_user",
-	DaDisplaySettings:                        "da_display_settings",
-	DefaultImageUrl:                          "default_image_url",
-	FallbackImageUrl:                         "fallback_image_url",
-	FeedCount:                                "feed_count",
-	Id:                                       "id",
-	IsCatalogSegment:                         "is_catalog_segment",
-	IsLocalCatalog:                           "is_local_catalog",
-	Name:                                     "name",
-	OwnerBusiness:                            "owner_business",
-	ProductCount:                             "product_count",
-	StoreCatalogSettings:                     "store_catalog_settings",
-	UserAccessExpireTime:                     "user_access_expire_time",
-	Vertical:                                 "vertical",
+	AgencyCollaborativeAdsShareSettings: "agency_collaborative_ads_share_settings",
+	Business: "business",
+	CatalogStore: "catalog_store",
+	CommerceMerchantSettings: "commerce_merchant_settings",
+	CreatorUser: "creator_user",
+	DaDisplaySettings: "da_display_settings",
+	DefaultImageUrl: "default_image_url",
+	FallbackImageUrl: "fallback_image_url",
+	FeedCount: "feed_count",
+	Id: "id",
+	IsCatalogSegment: "is_catalog_segment",
+	IsLocalCatalog: "is_local_catalog",
+	Name: "name",
+	OwnerBusiness: "owner_business",
+	ProductCount: "product_count",
+	StoreCatalogSettings: "store_catalog_settings",
+	UserAccessExpireTime: "user_access_expire_time",
+	Vertical: "vertical",
 }
 
 // ProductCatalogFieldsList contains all available fields for ProductCatalog objects

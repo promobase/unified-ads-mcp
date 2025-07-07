@@ -17,6 +17,7 @@ import (
 func GetAudioAssetTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// audioasset_get_ tool
 	// Available fields for AudioAsset: all_ddex_featured_artists, all_ddex_main_artists, audio_cluster_id, cover_image_source, display_artist, download_hd_url, download_sd_url, duration_in_ms, freeform_genre, grid, id, is_test, original_release_date, owner, parental_warning_type, subtitle, title, title_with_featured_artists, upc
 	audioasset_get_Tool := mcp.NewTool("audioasset_get_",
@@ -36,10 +37,12 @@ func GetAudioAssetTools() []mcp.Tool {
 	)
 	tools = append(tools, audioasset_get_Tool)
 
+
 	return tools
 }
 
 // AudioAsset handlers
+
 
 // HandleAudioasset_get_ handles the audioasset_get_ tool with context-based auth
 func HandleAudioasset_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleAudioasset_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Audioasset_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleAudioasset_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -6,13 +6,13 @@ package constants
 var TargetingAutomationFields = struct {
 	AdvantageAudience string
 	IndividualSetting string
-	SharedAudiences   string
-	ValueExpression   string
+	SharedAudiences string
+	ValueExpression string
 }{
 	AdvantageAudience: "advantage_audience",
 	IndividualSetting: "individual_setting",
-	SharedAudiences:   "shared_audiences",
-	ValueExpression:   "value_expression",
+	SharedAudiences: "shared_audiences",
+	ValueExpression: "value_expression",
 }
 
 // TargetingAutomationFieldsList contains all available fields for TargetingAutomation objects

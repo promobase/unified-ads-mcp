@@ -4,9 +4,9 @@ package types
 
 // BusinessSettingLogsData represents a Facebook BusinessSettingLogsData object
 type BusinessSettingLogsData struct {
-	Actor        map[string]interface{} `json:"actor"`
+	Actor map[string]interface{} `json:"actor"`
 	Event_object map[string]interface{} `json:"event_object"`
-	Event_time   string                 `json:"event_time"`
-	Event_type   string                 `json:"event_type"`
-	Extra_data   map[string]interface{} `json:"extra_data"`
+	Event_time string `json:"event_time"`
+	Event_type string `json:"event_type"`
+	Extra_data map[string]interface{} `json:"extra_data"`
 }

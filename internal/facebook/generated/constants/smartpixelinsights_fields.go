@@ -5,10 +5,10 @@ package constants
 // SmartPixelInsightsFields contains field name constants for SmartPixelInsights objects
 var SmartPixelInsightsFields = struct {
 	Source string
-	Stats  string
+	Stats string
 }{
 	Source: "source",
-	Stats:  "stats",
+	Stats: "stats",
 }
 
 // SmartPixelInsightsFieldsList contains all available fields for SmartPixelInsights objects

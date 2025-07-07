@@ -5,34 +5,34 @@ package constants
 // FBImageCopyrightMatchFields contains field name constants for FBImageCopyrightMatch objects
 var FBImageCopyrightMatchFields = struct {
 	AddedToDashboardTime string
-	AppliedActions       string
-	AuditLog             string
-	AvailableUiActions   string
-	ExpirationDays       string
-	GenericMatchData     string
-	Id                   string
-	IsBusinessPageMatch  string
-	LastModifiedTime     string
-	MatchData            string
-	MatchStatus          string
-	OwnershipCountries   string
-	ReferenceOwner       string
-	TimeToAppeal         string
+	AppliedActions string
+	AuditLog string
+	AvailableUiActions string
+	ExpirationDays string
+	GenericMatchData string
+	Id string
+	IsBusinessPageMatch string
+	LastModifiedTime string
+	MatchData string
+	MatchStatus string
+	OwnershipCountries string
+	ReferenceOwner string
+	TimeToAppeal string
 }{
 	AddedToDashboardTime: "added_to_dashboard_time",
-	AppliedActions:       "applied_actions",
-	AuditLog:             "audit_log",
-	AvailableUiActions:   "available_ui_actions",
-	ExpirationDays:       "expiration_days",
-	GenericMatchData:     "generic_match_data",
-	Id:                   "id",
-	IsBusinessPageMatch:  "is_business_page_match",
-	LastModifiedTime:     "last_modified_time",
-	MatchData:            "match_data",
-	MatchStatus:          "match_status",
-	OwnershipCountries:   "ownership_countries",
-	ReferenceOwner:       "reference_owner",
-	TimeToAppeal:         "time_to_appeal",
+	AppliedActions: "applied_actions",
+	AuditLog: "audit_log",
+	AvailableUiActions: "available_ui_actions",
+	ExpirationDays: "expiration_days",
+	GenericMatchData: "generic_match_data",
+	Id: "id",
+	IsBusinessPageMatch: "is_business_page_match",
+	LastModifiedTime: "last_modified_time",
+	MatchData: "match_data",
+	MatchStatus: "match_status",
+	OwnershipCountries: "ownership_countries",
+	ReferenceOwner: "reference_owner",
+	TimeToAppeal: "time_to_appeal",
 }
 
 // FBImageCopyrightMatchFieldsList contains all available fields for FBImageCopyrightMatch objects

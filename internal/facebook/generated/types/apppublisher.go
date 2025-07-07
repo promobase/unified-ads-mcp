@@ -5,10 +5,10 @@ package types
 // AppPublisher represents a Facebook AppPublisher object
 type AppPublisher struct {
 	Content_id string `json:"content_id"`
-	Icon_url   string `json:"icon_url"`
-	Id         string `json:"id"`
-	Name       string `json:"name"`
-	Platform   string `json:"platform"`
+	Icon_url string `json:"icon_url"`
+	Id string `json:"id"`
+	Name string `json:"name"`
+	Platform string `json:"platform"`
 	Store_name string `json:"store_name"`
-	Store_url  string `json:"store_url"`
+	Store_url string `json:"store_url"`
 }

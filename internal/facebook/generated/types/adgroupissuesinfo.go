@@ -4,10 +4,10 @@ package types
 
 // AdgroupIssuesInfo represents a Facebook AdgroupIssuesInfo object
 type AdgroupIssuesInfo struct {
-	Error_code    int    `json:"error_code"`
+	Error_code int `json:"error_code"`
 	Error_message string `json:"error_message"`
 	Error_summary string `json:"error_summary"`
-	Error_type    string `json:"error_type"`
-	Level         string `json:"level"`
-	Mid           string `json:"mid"`
+	Error_type string `json:"error_type"`
+	Level string `json:"level"`
+	Mid string `json:"mid"`
 }

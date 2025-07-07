@@ -17,6 +17,7 @@ import (
 func GetBusinessVideoTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// businessvideo_get_ tool
 	// Available fields for BusinessVideo: business, id, media_library_url, name, video
 	businessvideo_get_Tool := mcp.NewTool("businessvideo_get_",
@@ -36,10 +37,12 @@ func GetBusinessVideoTools() []mcp.Tool {
 	)
 	tools = append(tools, businessvideo_get_Tool)
 
+
 	return tools
 }
 
 // BusinessVideo handlers
+
 
 // HandleBusinessvideo_get_ handles the businessvideo_get_ tool with context-based auth
 func HandleBusinessvideo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleBusinessvideo_get_(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Businessvideo_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleBusinessvideo_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

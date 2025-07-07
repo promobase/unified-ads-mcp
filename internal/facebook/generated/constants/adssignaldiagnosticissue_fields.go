@@ -4,19 +4,19 @@ package constants
 
 // AdsSignalDiagnosticIssueFields contains field name constants for AdsSignalDiagnosticIssue objects
 var AdsSignalDiagnosticIssueFields = struct {
-	DataSourceId                 string
-	DataSourceType               string
-	DiagnosticType               string
-	EventName                    string
+	DataSourceId string
+	DataSourceType string
+	DiagnosticType string
+	EventName string
 	TrafficAnomalyDropPercentage string
-	TrafficAnomalyDropTimestamp  string
+	TrafficAnomalyDropTimestamp string
 }{
-	DataSourceId:                 "data_source_id",
-	DataSourceType:               "data_source_type",
-	DiagnosticType:               "diagnostic_type",
-	EventName:                    "event_name",
+	DataSourceId: "data_source_id",
+	DataSourceType: "data_source_type",
+	DiagnosticType: "diagnostic_type",
+	EventName: "event_name",
 	TrafficAnomalyDropPercentage: "traffic_anomaly_drop_percentage",
-	TrafficAnomalyDropTimestamp:  "traffic_anomaly_drop_timestamp",
+	TrafficAnomalyDropTimestamp: "traffic_anomaly_drop_timestamp",
 }
 
 // AdsSignalDiagnosticIssueFieldsList contains all available fields for AdsSignalDiagnosticIssue objects

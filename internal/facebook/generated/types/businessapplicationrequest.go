@@ -5,5 +5,5 @@ package types
 // BusinessApplicationRequest represents a Facebook BusinessApplicationRequest object
 type BusinessApplicationRequest struct {
 	Application *Application `json:"application"`
-	Id          string       `json:"id"`
+	Id string `json:"id"`
 }

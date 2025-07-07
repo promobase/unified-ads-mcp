@@ -5,5 +5,5 @@ package types
 // AdCampaignDeliveryStatsUnsupportedReasons represents a Facebook AdCampaignDeliveryStatsUnsupportedReasons object
 type AdCampaignDeliveryStatsUnsupportedReasons struct {
 	Reason_data []interface{} `json:"reason_data"`
-	Reason_type string        `json:"reason_type"`
+	Reason_type string `json:"reason_type"`
 }

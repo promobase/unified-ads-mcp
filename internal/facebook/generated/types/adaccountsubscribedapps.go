@@ -4,6 +4,6 @@ package types
 
 // AdAccountSubscribedApps represents a Facebook AdAccountSubscribedApps object
 type AdAccountSubscribedApps struct {
-	App_id   string `json:"app_id"`
+	App_id string `json:"app_id"`
 	App_name string `json:"app_name"`
 }

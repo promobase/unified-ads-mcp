@@ -4,49 +4,49 @@ package constants
 
 // IGMediaFields contains field name constants for IGMedia objects
 var IGMediaFields = struct {
-	AltText                   string
-	BoostEligibilityInfo      string
-	Caption                   string
-	CommentsCount             string
+	AltText string
+	BoostEligibilityInfo string
+	Caption string
+	CommentsCount string
 	CopyrightCheckInformation string
-	Id                        string
-	IgId                      string
-	IsCommentEnabled          string
-	IsSharedToFeed            string
-	LegacyInstagramMediaId    string
-	LikeCount                 string
-	MediaProductType          string
-	MediaType                 string
-	MediaUrl                  string
-	Owner                     string
-	Permalink                 string
-	Shortcode                 string
-	ThumbnailUrl              string
-	Timestamp                 string
-	Username                  string
-	ViewCount                 string
+	Id string
+	IgId string
+	IsCommentEnabled string
+	IsSharedToFeed string
+	LegacyInstagramMediaId string
+	LikeCount string
+	MediaProductType string
+	MediaType string
+	MediaUrl string
+	Owner string
+	Permalink string
+	Shortcode string
+	ThumbnailUrl string
+	Timestamp string
+	Username string
+	ViewCount string
 }{
-	AltText:                   "alt_text",
-	BoostEligibilityInfo:      "boost_eligibility_info",
-	Caption:                   "caption",
-	CommentsCount:             "comments_count",
+	AltText: "alt_text",
+	BoostEligibilityInfo: "boost_eligibility_info",
+	Caption: "caption",
+	CommentsCount: "comments_count",
 	CopyrightCheckInformation: "copyright_check_information",
-	Id:                        "id",
-	IgId:                      "ig_id",
-	IsCommentEnabled:          "is_comment_enabled",
-	IsSharedToFeed:            "is_shared_to_feed",
-	LegacyInstagramMediaId:    "legacy_instagram_media_id",
-	LikeCount:                 "like_count",
-	MediaProductType:          "media_product_type",
-	MediaType:                 "media_type",
-	MediaUrl:                  "media_url",
-	Owner:                     "owner",
-	Permalink:                 "permalink",
-	Shortcode:                 "shortcode",
-	ThumbnailUrl:              "thumbnail_url",
-	Timestamp:                 "timestamp",
-	Username:                  "username",
-	ViewCount:                 "view_count",
+	Id: "id",
+	IgId: "ig_id",
+	IsCommentEnabled: "is_comment_enabled",
+	IsSharedToFeed: "is_shared_to_feed",
+	LegacyInstagramMediaId: "legacy_instagram_media_id",
+	LikeCount: "like_count",
+	MediaProductType: "media_product_type",
+	MediaType: "media_type",
+	MediaUrl: "media_url",
+	Owner: "owner",
+	Permalink: "permalink",
+	Shortcode: "shortcode",
+	ThumbnailUrl: "thumbnail_url",
+	Timestamp: "timestamp",
+	Username: "username",
+	ViewCount: "view_count",
 }
 
 // IGMediaFieldsList contains all available fields for IGMedia objects

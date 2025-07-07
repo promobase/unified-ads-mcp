@@ -17,6 +17,7 @@ import (
 func GetAdPlacementTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// adplacement_get_ tool
 	// Available fields for AdPlacement: bundle_id, display_format, external_placement_id, google_display_format, id, name, placement_group, platform, status
 	adplacement_get_Tool := mcp.NewTool("adplacement_get_",
@@ -36,10 +37,12 @@ func GetAdPlacementTools() []mcp.Tool {
 	)
 	tools = append(tools, adplacement_get_Tool)
 
+
 	return tools
 }
 
 // AdPlacement handlers
+
 
 // HandleAdplacement_get_ handles the adplacement_get_ tool with context-based auth
 func HandleAdplacement_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleAdplacement_get_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adplacement_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleAdplacement_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

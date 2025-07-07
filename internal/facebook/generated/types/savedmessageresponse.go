@@ -4,9 +4,9 @@ package types
 
 // SavedMessageResponse represents a Facebook SavedMessageResponse object
 type SavedMessageResponse struct {
-	Id         string `json:"id"`
-	Image      string `json:"image"`
-	Is_enabled bool   `json:"is_enabled"`
-	Message    string `json:"message"`
-	Title      string `json:"title"`
+	Id string `json:"id"`
+	Image string `json:"image"`
+	Is_enabled bool `json:"is_enabled"`
+	Message string `json:"message"`
+	Title string `json:"title"`
 }

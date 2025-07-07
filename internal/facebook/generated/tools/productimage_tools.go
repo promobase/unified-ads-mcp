@@ -17,6 +17,7 @@ import (
 func GetProductImageTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// productimage_get_ tool
 	// Available fields for ProductImage: height, id, image_url, width
 	productimage_get_Tool := mcp.NewTool("productimage_get_",
@@ -36,10 +37,12 @@ func GetProductImageTools() []mcp.Tool {
 	)
 	tools = append(tools, productimage_get_Tool)
 
+
 	return tools
 }
 
 // ProductImage handlers
+
 
 // HandleProductimage_get_ handles the productimage_get_ tool with context-based auth
 func HandleProductimage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleProductimage_get_(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productimage_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleProductimage_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

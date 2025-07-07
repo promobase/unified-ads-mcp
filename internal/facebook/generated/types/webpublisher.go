@@ -4,7 +4,7 @@ package types
 
 // WebPublisher represents a Facebook WebPublisher object
 type WebPublisher struct {
-	Domain_url     string `json:"domain_url"`
-	Id             string `json:"id"`
+	Domain_url string `json:"domain_url"`
+	Id string `json:"id"`
 	Publisher_name string `json:"publisher_name"`
 }

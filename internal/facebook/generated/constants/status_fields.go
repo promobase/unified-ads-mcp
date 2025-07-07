@@ -4,18 +4,18 @@ package constants
 
 // StatusFields contains field name constants for Status objects
 var StatusFields = struct {
-	Event       string
-	From        string
-	Id          string
-	Message     string
-	Place       string
+	Event string
+	From string
+	Id string
+	Message string
+	Place string
 	UpdatedTime string
 }{
-	Event:       "event",
-	From:        "from",
-	Id:          "id",
-	Message:     "message",
-	Place:       "place",
+	Event: "event",
+	From: "from",
+	Id: "id",
+	Message: "message",
+	Place: "place",
 	UpdatedTime: "updated_time",
 }
 

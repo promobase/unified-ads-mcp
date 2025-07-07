@@ -6,12 +6,12 @@ import "time"
 
 // Recommendation represents a Facebook Recommendation object
 type Recommendation struct {
-	Created_time        time.Time              `json:"created_time"`
-	Has_rating          bool                   `json:"has_rating"`
-	Has_review          bool                   `json:"has_review"`
-	Open_graph_story    map[string]interface{} `json:"open_graph_story"`
-	Rating              int                    `json:"rating"`
-	Recommendation_type string                 `json:"recommendation_type"`
-	Review_text         string                 `json:"review_text"`
-	Reviewer            *User                  `json:"reviewer"`
+	Created_time time.Time `json:"created_time"`
+	Has_rating bool `json:"has_rating"`
+	Has_review bool `json:"has_review"`
+	Open_graph_story map[string]interface{} `json:"open_graph_story"`
+	Rating int `json:"rating"`
+	Recommendation_type string `json:"recommendation_type"`
+	Review_text string `json:"review_text"`
+	Reviewer *User `json:"reviewer"`
 }

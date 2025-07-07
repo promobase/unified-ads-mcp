@@ -4,7 +4,7 @@ package types
 
 // AdRuleEvaluationSpec represents a Facebook AdRuleEvaluationSpec object
 type AdRuleEvaluationSpec struct {
-	Evaluation_type string          `json:"evaluation_type"`
-	Filters         []AdRuleFilters `json:"filters"`
-	Trigger         *AdRuleTrigger  `json:"trigger"`
+	Evaluation_type string `json:"evaluation_type"`
+	Filters []AdRuleFilters `json:"filters"`
+	Trigger *AdRuleTrigger `json:"trigger"`
 }

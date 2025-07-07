@@ -5,12 +5,12 @@ package constants
 // AdCreativeFacebookBrandedContentFields contains field name constants for AdCreativeFacebookBrandedContent objects
 var AdCreativeFacebookBrandedContentFields = struct {
 	SharedToSponsorStatus string
-	SponsorPageId         string
-	SponsorRelationship   string
+	SponsorPageId string
+	SponsorRelationship string
 }{
 	SharedToSponsorStatus: "shared_to_sponsor_status",
-	SponsorPageId:         "sponsor_page_id",
-	SponsorRelationship:   "sponsor_relationship",
+	SponsorPageId: "sponsor_page_id",
+	SponsorRelationship: "sponsor_relationship",
 }
 
 // AdCreativeFacebookBrandedContentFieldsList contains all available fields for AdCreativeFacebookBrandedContent objects

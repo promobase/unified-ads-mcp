@@ -5,5 +5,5 @@ package types
 // AdsAnomalyDetection represents a Facebook AdsAnomalyDetection object
 type AdsAnomalyDetection struct {
 	Anomaly_data []map[string]interface{} `json:"anomaly_data"`
-	Day          int                      `json:"day"`
+	Day int `json:"day"`
 }

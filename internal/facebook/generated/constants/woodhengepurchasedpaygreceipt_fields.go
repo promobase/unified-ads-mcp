@@ -4,15 +4,15 @@ package constants
 
 // WoodhengePurchasedPAYGReceiptFields contains field name constants for WoodhengePurchasedPAYGReceipt objects
 var WoodhengePurchasedPAYGReceiptFields = struct {
-	Id                             string
+	Id string
 	NumberOfSubscriptionsPurchased string
-	PurchaseTime                   string
-	User                           string
+	PurchaseTime string
+	User string
 }{
-	Id:                             "id",
+	Id: "id",
 	NumberOfSubscriptionsPurchased: "number_of_subscriptions_purchased",
-	PurchaseTime:                   "purchase_time",
-	User:                           "user",
+	PurchaseTime: "purchase_time",
+	User: "user",
 }
 
 // WoodhengePurchasedPAYGReceiptFieldsList contains all available fields for WoodhengePurchasedPAYGReceipt objects

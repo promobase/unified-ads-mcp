@@ -5,26 +5,26 @@ package constants
 // AdsPivotRulesFields contains field name constants for AdsPivotRules objects
 var AdsPivotRulesFields = struct {
 	CreationTime string
-	Creator      string
-	Description  string
-	Id           string
-	Name         string
-	Permission   string
-	Rules        string
-	Scope        string
-	UpdateBy     string
-	UpdateTime   string
+	Creator string
+	Description string
+	Id string
+	Name string
+	Permission string
+	Rules string
+	Scope string
+	UpdateBy string
+	UpdateTime string
 }{
 	CreationTime: "creation_time",
-	Creator:      "creator",
-	Description:  "description",
-	Id:           "id",
-	Name:         "name",
-	Permission:   "permission",
-	Rules:        "rules",
-	Scope:        "scope",
-	UpdateBy:     "update_by",
-	UpdateTime:   "update_time",
+	Creator: "creator",
+	Description: "description",
+	Id: "id",
+	Name: "name",
+	Permission: "permission",
+	Rules: "rules",
+	Scope: "scope",
+	UpdateBy: "update_by",
+	UpdateTime: "update_time",
 }
 
 // AdsPivotRulesFieldsList contains all available fields for AdsPivotRules objects

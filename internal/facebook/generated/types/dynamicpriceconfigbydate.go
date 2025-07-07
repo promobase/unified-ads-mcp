@@ -4,7 +4,7 @@ package types
 
 // DynamicPriceConfigByDate represents a Facebook DynamicPriceConfigByDate object
 type DynamicPriceConfigByDate struct {
-	Checkin_date  string                   `json:"checkin_date"`
-	Prices        string                   `json:"prices"`
+	Checkin_date string `json:"checkin_date"`
+	Prices string `json:"prices"`
 	Prices_pretty []map[string]interface{} `json:"prices_pretty"`
 }

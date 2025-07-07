@@ -17,6 +17,7 @@ import (
 func GetFantasyGameTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// fantasygame_get_ tool
 	// Available fields for FantasyGame: id, name
 	fantasygame_get_Tool := mcp.NewTool("fantasygame_get_",
@@ -36,10 +37,12 @@ func GetFantasyGameTools() []mcp.Tool {
 	)
 	tools = append(tools, fantasygame_get_Tool)
 
+
 	return tools
 }
 
 // FantasyGame handlers
+
 
 // HandleFantasygame_get_ handles the fantasygame_get_ tool with context-based auth
 func HandleFantasygame_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleFantasygame_get_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Fantasygame_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleFantasygame_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

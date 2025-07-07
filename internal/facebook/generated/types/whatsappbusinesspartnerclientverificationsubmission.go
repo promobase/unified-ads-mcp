@@ -6,11 +6,11 @@ import "time"
 
 // WhatsAppBusinessPartnerClientVerificationSubmission represents a Facebook WhatsAppBusinessPartnerClientVerificationSubmission object
 type WhatsAppBusinessPartnerClientVerificationSubmission struct {
-	Client_business_id  string                 `json:"client_business_id"`
-	Id                  string                 `json:"id"`
-	Rejection_reasons   []string               `json:"rejection_reasons"`
-	Submitted_info      map[string]interface{} `json:"submitted_info"`
-	Submitted_time      time.Time              `json:"submitted_time"`
-	Update_time         time.Time              `json:"update_time"`
-	Verification_status string                 `json:"verification_status"`
+	Client_business_id string `json:"client_business_id"`
+	Id string `json:"id"`
+	Rejection_reasons []string `json:"rejection_reasons"`
+	Submitted_info map[string]interface{} `json:"submitted_info"`
+	Submitted_time time.Time `json:"submitted_time"`
+	Update_time time.Time `json:"update_time"`
+	Verification_status string `json:"verification_status"`
 }

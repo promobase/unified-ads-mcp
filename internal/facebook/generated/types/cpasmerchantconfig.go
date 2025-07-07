@@ -4,11 +4,11 @@ package types
 
 // CPASMerchantConfig represents a Facebook CPASMerchantConfig object
 type CPASMerchantConfig struct {
-	Accepted_tos               bool          `json:"accepted_tos"`
-	Beta_features              []string      `json:"beta_features"`
-	Business_outcomes_status   []interface{} `json:"business_outcomes_status"`
-	Id                         string        `json:"id"`
-	Is_test_merchant           bool          `json:"is_test_merchant"`
+	Accepted_tos bool `json:"accepted_tos"`
+	Beta_features []string `json:"beta_features"`
+	Business_outcomes_status []interface{} `json:"business_outcomes_status"`
+	Id string `json:"id"`
+	Is_test_merchant bool `json:"is_test_merchant"`
 	Outcomes_compliance_status []interface{} `json:"outcomes_compliance_status"`
-	Qualified_to_onboard       bool          `json:"qualified_to_onboard"`
+	Qualified_to_onboard bool `json:"qualified_to_onboard"`
 }

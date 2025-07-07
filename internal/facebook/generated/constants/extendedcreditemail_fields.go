@@ -5,10 +5,10 @@ package constants
 // ExtendedCreditEmailFields contains field name constants for ExtendedCreditEmail objects
 var ExtendedCreditEmailFields = struct {
 	Email string
-	Id    string
+	Id string
 }{
 	Email: "email",
-	Id:    "id",
+	Id: "id",
 }
 
 // ExtendedCreditEmailFieldsList contains all available fields for ExtendedCreditEmail objects

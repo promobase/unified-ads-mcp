@@ -4,15 +4,15 @@ package constants
 
 // ProductImageFields contains field name constants for ProductImage objects
 var ProductImageFields = struct {
-	Height   string
-	Id       string
+	Height string
+	Id string
 	ImageUrl string
-	Width    string
+	Width string
 }{
-	Height:   "height",
-	Id:       "id",
+	Height: "height",
+	Id: "id",
 	ImageUrl: "image_url",
-	Width:    "width",
+	Width: "width",
 }
 
 // ProductImageFieldsList contains all available fields for ProductImage objects

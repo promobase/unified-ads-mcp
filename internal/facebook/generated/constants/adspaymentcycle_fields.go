@@ -4,19 +4,19 @@ package constants
 
 // AdsPaymentCycleFields contains field name constants for AdsPaymentCycle objects
 var AdsPaymentCycleFields = struct {
-	AccountId                string
-	CreatedTime              string
-	Multiplier               string
+	AccountId string
+	CreatedTime string
+	Multiplier string
 	RequestedThresholdAmount string
-	ThresholdAmount          string
-	UpdatedTime              string
+	ThresholdAmount string
+	UpdatedTime string
 }{
-	AccountId:                "account_id",
-	CreatedTime:              "created_time",
-	Multiplier:               "multiplier",
+	AccountId: "account_id",
+	CreatedTime: "created_time",
+	Multiplier: "multiplier",
 	RequestedThresholdAmount: "requested_threshold_amount",
-	ThresholdAmount:          "threshold_amount",
-	UpdatedTime:              "updated_time",
+	ThresholdAmount: "threshold_amount",
+	UpdatedTime: "updated_time",
 }
 
 // AdsPaymentCycleFieldsList contains all available fields for AdsPaymentCycle objects

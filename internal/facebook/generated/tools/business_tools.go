@@ -17,6 +17,7 @@ import (
 func GetBusinessTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// business_post_access_token tool
 	// Params object accepts: app_id (string), fbe_external_business_id (string), scope (list<Permission>), system_user_name (string)
 	business_post_access_tokenTool := mcp.NewTool("business_post_access_token",
@@ -25,22 +26,22 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"app_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "app_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"fbe_external_business_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "fbe_external_business_id parameter",
 				},
 				"scope": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "scope parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"items": map[string]any{"type": "string"},
 				},
 				"system_user_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "system_user_name parameter",
 				},
 			}),
@@ -57,15 +58,15 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ad_account_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ad_account_id parameter",
 				},
 				"parent_advertiser_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "parent_advertiser_id parameter",
 				},
 				"user_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "user_id parameter",
 				},
 			}),
@@ -94,9 +95,9 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"adaccount_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "adaccount_id parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: adaccount_id (string) [required]"),
@@ -111,9 +112,9 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ad_account_ids": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "ad_account_ids parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: ad_account_ids (array<string>)"),
@@ -148,60 +149,60 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"cells": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "cells parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "object"},
+					"required": true,
+					"items": map[string]any{"type": "object"},
 				},
 				"client_business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "client_business parameter",
 				},
 				"confidence_level": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "confidence_level parameter",
 				},
 				"cooldown_start_time": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "cooldown_start_time parameter",
 				},
 				"description": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "description parameter",
 				},
 				"end_time": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "end_time parameter",
-					"required":    true,
+					"required": true,
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
-					"required":    true,
+					"required": true,
 				},
 				"objectives": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "objectives parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"observation_end_time": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "observation_end_time parameter",
 				},
 				"start_time": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "start_time parameter",
-					"required":    true,
+					"required": true,
 				},
 				"type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "type parameter",
-					"enum":        []string{"BACKEND_AB_TESTING", "CONTINUOUS_LIFT_CONFIG", "GEO_LIFT", "LIFT", "SPLIT_TEST"},
+					"enum": []string{ "BACKEND_AB_TESTING", "CONTINUOUS_LIFT_CONFIG", "GEO_LIFT", "LIFT", "SPLIT_TEST" },
 				},
 				"viewers": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "viewers parameter",
-					"items":       map[string]any{"type": "integer"},
+					"items": map[string]any{"type": "integer"},
 				},
 			}),
 			mcp.Description("Parameters object containing: cells (array<object>) [required], client_business (string), confidence_level (number), cooldown_start_time (integer), description (string), end_time (integer) [required], name (string) [required], objectives (array<object>), observation_end_time (integer), start_time (integer) [required], type (enum) [BACKEND_AB_TESTING, CONTINUOUS_LIFT_CONFIG, GEO_LIFT, LIFT, SPLIT_TEST], viewers (array<integer>)"),
@@ -217,63 +218,63 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ad_account_created_from_bm_flag": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "ad_account_created_from_bm_flag parameter",
 				},
 				"currency": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "currency parameter",
-					"required":    true,
+					"required": true,
 				},
 				"end_advertiser": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "end_advertiser parameter",
-					"required":    true,
+					"required": true,
 				},
 				"funding_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "funding_id parameter",
 				},
 				"invoice": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "invoice parameter",
 				},
 				"invoice_group_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "invoice_group_id parameter",
 				},
 				"invoicing_emails": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "invoicing_emails parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"io": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "io parameter",
 				},
 				"media_agency": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "media_agency parameter",
-					"required":    true,
+					"required": true,
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
-					"required":    true,
+					"required": true,
 				},
 				"partner": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "partner parameter",
-					"required":    true,
+					"required": true,
 				},
 				"po_number": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "po_number parameter",
 				},
 				"timezone_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "timezone_id parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: ad_account_created_from_bm_flag (boolean), currency (string) [required], end_advertiser (object) [required], funding_id (string), invoice (boolean), invoice_group_id (string), invoicing_emails (array<string>), io (boolean), media_agency (string) [required], name (string) [required], partner (string) [required], po_number (string), timezone_id (integer) [required]"),
@@ -289,9 +290,9 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"phone_number": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "phone_number parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: phone_number (string) [required]"),
@@ -307,9 +308,9 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: name (string) [required]"),
@@ -326,52 +327,52 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"aggregation_period": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "aggregation_period parameter",
-					"enum":        []string{"DAY", "TOTAL"},
+					"enum": []string{ "DAY", "TOTAL" },
 				},
 				"breakdowns": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "breakdowns parameter",
-					"enum":        []string{"AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION" },
+					"items": map[string]any{"type": "string"},
 				},
 				"filters": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "filters parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"limit": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "limit parameter",
 				},
 				"metrics": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "metrics parameter",
-					"required":    true,
-					"enum":        []string{"FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE"},
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"enum": []string{ "FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE" },
+					"items": map[string]any{"type": "string"},
 				},
 				"ordering_column": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ordering_column parameter",
-					"enum":        []string{"METRIC", "TIME", "VALUE"},
+					"enum": []string{ "METRIC", "TIME", "VALUE" },
 				},
 				"ordering_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ordering_type parameter",
-					"enum":        []string{"ASCENDING", "DESCENDING"},
+					"enum": []string{ "ASCENDING", "DESCENDING" },
 				},
 				"should_include_until": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "should_include_until parameter",
 				},
 				"since": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "since parameter",
 				},
 				"until": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "until parameter",
 				},
 			}),
@@ -400,48 +401,48 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"aggregation_period": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "aggregation_period parameter",
-					"enum":        []string{"DAY", "TOTAL"},
+					"enum": []string{ "DAY", "TOTAL" },
 				},
 				"breakdowns": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "breakdowns parameter",
-					"enum":        []string{"AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION" },
+					"items": map[string]any{"type": "string"},
 				},
 				"filters": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "filters parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"limit": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "limit parameter",
 				},
 				"metrics": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "metrics parameter",
-					"required":    true,
-					"enum":        []string{"FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE"},
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"enum": []string{ "FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE" },
+					"items": map[string]any{"type": "string"},
 				},
 				"ordering_column": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ordering_column parameter",
-					"enum":        []string{"METRIC", "TIME", "VALUE"},
+					"enum": []string{ "METRIC", "TIME", "VALUE" },
 				},
 				"ordering_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ordering_type parameter",
-					"enum":        []string{"ASCENDING", "DESCENDING"},
+					"enum": []string{ "ASCENDING", "DESCENDING" },
 				},
 				"since": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "since parameter",
 				},
 				"until": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "until parameter",
 				},
 			}),
@@ -458,9 +459,9 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"query_ids": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "query_ids parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: query_ids (array<string>)"),
@@ -488,17 +489,17 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"id_filter": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "id_filter parameter",
 				},
 				"name_filter": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name_filter parameter",
 				},
 				"sort_by": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "sort_by parameter",
-					"enum":        []string{"LAST_FIRED_TIME", "NAME"},
+					"enum": []string{ "LAST_FIRED_TIME", "NAME" },
 				},
 			}),
 			mcp.Description("Parameters object containing: id_filter (string), name_filter (string), sort_by (enum) [LAST_FIRED_TIME, NAME]"),
@@ -526,21 +527,21 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ad_account_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ad_account_id parameter",
 				},
 				"app_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "app_id parameter",
 				},
 				"is_crm": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_crm parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: ad_account_id (string), app_id (string), is_crm (boolean), name (string) [required]"),
@@ -556,9 +557,9 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"filtering": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "filtering parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: filtering (array<object>)"),
@@ -605,17 +606,17 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"id_filter": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "id_filter parameter",
 				},
 				"name_filter": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name_filter parameter",
 				},
 				"sort_by": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "sort_by parameter",
-					"enum":        []string{"LAST_FIRED_TIME", "NAME"},
+					"enum": []string{ "LAST_FIRED_TIME", "NAME" },
 				},
 			}),
 			mcp.Description("Parameters object containing: id_filter (string), name_filter (string), sort_by (enum) [LAST_FIRED_TIME, NAME]"),
@@ -643,13 +644,13 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"is_crm": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_crm parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: is_crm (boolean), name (string) [required]"),
@@ -665,9 +666,9 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "business parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required]"),
@@ -721,9 +722,9 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"publisher_urls_file": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "publisher_urls_file parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: publisher_urls_file (file) [required]"),
@@ -739,10 +740,10 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business_manager_ids": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "business_manager_ids parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: business_manager_ids (array<string>) [required]"),
@@ -777,33 +778,33 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"end_date": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "end_date parameter",
 				},
 				"invoice_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "invoice_id parameter",
 				},
 				"issue_end_date": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "issue_end_date parameter",
 				},
 				"issue_start_date": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "issue_start_date parameter",
 				},
 				"root_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "root_id parameter",
 				},
 				"start_date": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "start_date parameter",
 				},
 				"type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "type parameter",
-					"enum":        []string{"CM", "DM", "INV", "PRO_FORMA"},
+					"enum": []string{ "CM", "DM", "INV", "PRO_FORMA" },
 				},
 			}),
 			mcp.Description("Parameters object containing: end_date (string), invoice_id (string), issue_end_date (string), issue_start_date (string), root_id (integer), start_date (string), type (enum) [CM, DM, INV, PRO_FORMA]"),
@@ -850,26 +851,26 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"email": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "email parameter",
-					"required":    true,
+					"required": true,
 				},
 				"invited_user_type": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "invited_user_type parameter",
-					"enum":        []string{"FB", "MWA"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "FB", "MWA" },
+					"items": map[string]any{"type": "string"},
 				},
 				"role": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "role parameter",
-					"enum":        []string{"ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"},
+					"enum": []string{ "ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS" },
 				},
 				"tasks": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "tasks parameter",
-					"enum":        []string{"ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS" },
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: email (string) [required], invited_user_type (array<enum>) [FB, MWA], role (enum) [ADMIN, ADS_RIGHTS_REVIEWER, DEFAULT, DEVELOPER, EMPLOYEE, ...], tasks (array<enum>) [ADMIN, ADS_RIGHTS_REVIEWER, DEFAULT, DEVELOPER, EMPLOYEE, ...]"),
@@ -904,9 +905,9 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"custom_conversion_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "custom_conversion_id parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: custom_conversion_id (string) [required]"),
@@ -922,7 +923,7 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"search_query": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "search_query parameter",
 				},
 			}),
@@ -970,9 +971,9 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"app_id": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "app_id parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: app_id (object) [required]"),
@@ -1026,15 +1027,15 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"page_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "page_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"permitted_tasks": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "permitted_tasks parameter",
-					"enum":        []string{"ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS" },
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: page_id (integer) [required], permitted_tasks (array<enum>) [ADVERTISE, ANALYZE, CASHIER_ROLE, CREATE_CONTENT, GLOBAL_STRUCTURE_MANAGEMENT, ...]"),
@@ -1107,9 +1108,9 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "business parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required]"),
@@ -1144,7 +1145,7 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"status": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "status parameter",
 				},
 			}),
@@ -1173,43 +1174,43 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"brands": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "brands parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"items": map[string]any{"type": "string"},
 				},
 				"contact_email": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "contact_email parameter",
-					"required":    true,
+					"required": true,
 				},
 				"contact_first_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "contact_first_name parameter",
-					"required":    true,
+					"required": true,
 				},
 				"contact_last_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "contact_last_name parameter",
-					"required":    true,
+					"required": true,
 				},
 				"phone_number": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "phone_number parameter",
 				},
 				"receiver_business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "receiver_business parameter",
-					"required":    true,
+					"required": true,
 				},
 				"requester_agency_or_brand": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "requester_agency_or_brand parameter",
-					"required":    true,
-					"enum":        []string{"AGENCY", "BRAND", "MERCHANT"},
+					"required": true,
+					"enum": []string{ "AGENCY", "BRAND", "MERCHANT" },
 				},
 				"sender_client_business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "sender_client_business parameter",
 				},
 			}),
@@ -1282,20 +1283,20 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"accepted_collab_ads_tos": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "accepted_collab_ads_tos parameter",
 				},
 				"ad_accounts": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "ad_accounts parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"business_capabilities_status": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "business_capabilities_status parameter",
 				},
 				"capabilities_compliance_status": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "capabilities_compliance_status parameter",
 				},
 			}),
@@ -1331,16 +1332,16 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"description": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "description parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
-					"required":    true,
+					"required": true,
 				},
 				"parent_folder_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "parent_folder_id parameter",
 				},
 			}),
@@ -1376,39 +1377,39 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"action_source_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "action_source_type parameter",
-					"enum":        []string{"app", "business_messaging", "chat", "email", "other", "phone_call", "physical_store", "system_generated", "website"},
+					"enum": []string{ "app", "business_messaging", "chat", "email", "other", "phone_call", "physical_store", "system_generated", "website" },
 				},
 				"advanced_rule": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "advanced_rule parameter",
 				},
 				"custom_event_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "custom_event_type parameter",
-					"required":    true,
-					"enum":        []string{"ADD_PAYMENT_INFO", "ADD_TO_CART", "ADD_TO_WISHLIST", "COMPLETE_REGISTRATION", "CONTACT", "CONTENT_VIEW", "CUSTOMIZE_PRODUCT", "DONATE", "FACEBOOK_SELECTED", "FIND_LOCATION", "INITIATED_CHECKOUT", "LEAD", "LISTING_INTERACTION", "OTHER", "PURCHASE", "SCHEDULE", "SEARCH", "START_TRIAL", "SUBMIT_APPLICATION", "SUBSCRIBE"},
+					"required": true,
+					"enum": []string{ "ADD_PAYMENT_INFO", "ADD_TO_CART", "ADD_TO_WISHLIST", "COMPLETE_REGISTRATION", "CONTACT", "CONTENT_VIEW", "CUSTOMIZE_PRODUCT", "DONATE", "FACEBOOK_SELECTED", "FIND_LOCATION", "INITIATED_CHECKOUT", "LEAD", "LISTING_INTERACTION", "OTHER", "PURCHASE", "SCHEDULE", "SEARCH", "START_TRIAL", "SUBMIT_APPLICATION", "SUBSCRIBE" },
 				},
 				"default_conversion_value": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "default_conversion_value parameter",
 				},
 				"description": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "description parameter",
 				},
 				"event_source_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "event_source_id parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
-					"required":    true,
+					"required": true,
 				},
 				"rule": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "rule parameter",
 				},
 			}),
@@ -1444,15 +1445,15 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"event_sources": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "event_sources parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"items": map[string]any{"type": "string"},
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: event_sources (array<string>) [required], name (string) [required]"),
@@ -1468,7 +1469,7 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"only_show_pending": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "only_show_pending parameter",
 				},
 			}),
@@ -1497,7 +1498,7 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"order_by_is_owned_credential": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "order_by_is_owned_credential parameter",
 				},
 			}),
@@ -1526,27 +1527,27 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ad_placements_validation_only": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "ad_placements_validation_only parameter",
 				},
 				"bytes": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "bytes parameter",
 				},
 				"creative_folder_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "creative_folder_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
 				},
 				"validation_ad_placements": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "validation_ad_placements parameter",
-					"enum":        []string{"AUDIENCE_NETWORK_INSTREAM_VIDEO", "AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE", "AUDIENCE_NETWORK_REWARDED_VIDEO", "DESKTOP_FEED_STANDARD", "FACEBOOK_STORY_MOBILE", "FACEBOOK_STORY_STICKER_MOBILE", "INSTAGRAM_STANDARD", "INSTAGRAM_STORY", "INSTANT_ARTICLE_STANDARD", "INSTREAM_BANNER_DESKTOP", "INSTREAM_BANNER_MOBILE", "INSTREAM_VIDEO_DESKTOP", "INSTREAM_VIDEO_IMAGE", "INSTREAM_VIDEO_MOBILE", "MESSENGER_MOBILE_INBOX_MEDIA", "MESSENGER_MOBILE_STORY_MEDIA", "MOBILE_FEED_STANDARD", "MOBILE_FULLWIDTH", "MOBILE_INTERSTITIAL", "MOBILE_MEDIUM_RECTANGLE", "MOBILE_NATIVE", "RIGHT_COLUMN_STANDARD", "SUGGESTED_VIDEO_MOBILE"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "AUDIENCE_NETWORK_INSTREAM_VIDEO", "AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE", "AUDIENCE_NETWORK_REWARDED_VIDEO", "DESKTOP_FEED_STANDARD", "FACEBOOK_STORY_MOBILE", "FACEBOOK_STORY_STICKER_MOBILE", "INSTAGRAM_STANDARD", "INSTAGRAM_STORY", "INSTANT_ARTICLE_STANDARD", "INSTREAM_BANNER_DESKTOP", "INSTREAM_BANNER_MOBILE", "INSTREAM_VIDEO_DESKTOP", "INSTREAM_VIDEO_IMAGE", "INSTREAM_VIDEO_MOBILE", "MESSENGER_MOBILE_INBOX_MEDIA", "MESSENGER_MOBILE_STORY_MEDIA", "MOBILE_FEED_STANDARD", "MOBILE_FULLWIDTH", "MOBILE_INTERSTITIAL", "MOBILE_MEDIUM_RECTANGLE", "MOBILE_NATIVE", "RIGHT_COLUMN_STANDARD", "SUGGESTED_VIDEO_MOBILE" },
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: ad_placements_validation_only (boolean), bytes (string), creative_folder_id (string) [required], name (string), validation_ad_placements (array<enum>) [AUDIENCE_NETWORK_INSTREAM_VIDEO, AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE, AUDIENCE_NETWORK_REWARDED_VIDEO, DESKTOP_FEED_STANDARD, FACEBOOK_STORY_MOBILE, ...]"),
@@ -1562,13 +1563,13 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"recipient_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "recipient_id parameter",
 				},
 				"request_status": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "request_status parameter",
-					"enum":        []string{"APPROVE", "CANCELED", "DECLINE", "EXPIRED", "IN_PROGRESS", "PENDING", "PENDING_EMAIL_VERIFICATION", "PENDING_INTEGRITY_REVIEW"},
+					"enum": []string{ "APPROVE", "CANCELED", "DECLINE", "EXPIRED", "IN_PROGRESS", "PENDING", "PENDING_EMAIL_VERIFICATION", "PENDING_INTEGRITY_REVIEW" },
 				},
 			}),
 			mcp.Description("Parameters object containing: recipient_id (string), request_status (enum) [APPROVE, CANCELED, DECLINE, EXPIRED, IN_PROGRESS, ...]"),
@@ -1596,9 +1597,9 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"instagram_account": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "instagram_account parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: instagram_account (string) [required]"),
@@ -1652,9 +1653,9 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"existing_client_business_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "existing_client_business_id parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: existing_client_business_id (string) [required]"),
@@ -1669,43 +1670,43 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"child_business_external_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "child_business_external_id parameter",
 				},
 				"existing_client_business_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "existing_client_business_id parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
 				},
 				"sales_rep_email": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "sales_rep_email parameter",
 				},
 				"survey_business_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "survey_business_type parameter",
-					"enum":        []string{"ADVERTISER", "AGENCY", "APP_DEVELOPER", "PUBLISHER"},
+					"enum": []string{ "ADVERTISER", "AGENCY", "APP_DEVELOPER", "PUBLISHER" },
 				},
 				"survey_num_assets": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "survey_num_assets parameter",
 				},
 				"survey_num_people": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "survey_num_people parameter",
 				},
 				"timezone_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "timezone_id parameter",
-					"enum":        []string{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129", "130", "131", "132", "133", "134", "135", "136", "137", "138", "139", "140", "141", "142", "143", "144", "145", "146", "147", "148", "149", "150", "151", "152", "153", "154", "155", "156", "157", "158", "159", "160", "161", "162", "163", "164", "165", "166", "167", "168", "169", "170", "171", "172", "173", "174", "175", "176", "177", "178", "179", "180", "181", "182", "183", "184", "185", "186", "187", "188", "189", "190", "191", "192", "193", "194", "195", "196", "197", "198", "199", "200", "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "215", "216", "217", "218", "219", "220", "221", "222", "223", "224", "225", "226", "227", "228", "229", "230", "231", "232", "233", "234", "235", "236", "237", "238", "239", "240", "241", "242", "243", "244", "245", "246", "247", "248", "249", "250", "251", "252", "253", "254", "255", "256", "257", "258", "259", "260", "261", "262", "263", "264", "265", "266", "267", "268", "269", "270", "271", "272", "273", "274", "275", "276", "277", "278", "279", "280", "281", "282", "283", "284", "285", "286", "287", "288", "289", "290", "291", "292", "293", "294", "295", "296", "297", "298", "299", "300", "301", "302", "303", "304", "305", "306", "307", "308", "309", "310", "311", "312", "313", "314", "315", "316", "317", "318", "319", "320", "321", "322", "323", "324", "325", "326", "327", "328", "329", "330", "331", "332", "333", "334", "335", "336", "337", "338", "339", "340", "341", "342", "343", "344", "345", "346", "347", "348", "349", "350", "351", "352", "353", "354", "355", "356", "357", "358", "359", "360", "361", "362", "363", "364", "365", "366", "367", "368", "369", "370", "371", "372", "373", "374", "375", "376", "377", "378", "379", "380", "381", "382", "383", "384", "385", "386", "387", "388", "389", "390", "391", "392", "393", "394", "395", "396", "397", "398", "399", "400", "401", "402", "403", "404", "405", "406", "407", "408", "409", "410", "411", "412", "413", "414", "415", "416", "417", "418", "419", "420", "421", "422", "423", "424", "425", "426", "427", "428", "429", "430", "431", "432", "433", "434", "435", "436", "437", "438", "439", "440", "441", "442", "443", "444", "445", "446", "447", "448", "449", "450", "451", "452", "453", "454", "455", "456", "457", "458", "459", "460", "461", "462", "463", "464", "465", "466", "467", "468", "469", "470", "471", "472", "473", "474", "475", "476", "477", "478", "479", "480"},
+					"enum": []string{ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129", "130", "131", "132", "133", "134", "135", "136", "137", "138", "139", "140", "141", "142", "143", "144", "145", "146", "147", "148", "149", "150", "151", "152", "153", "154", "155", "156", "157", "158", "159", "160", "161", "162", "163", "164", "165", "166", "167", "168", "169", "170", "171", "172", "173", "174", "175", "176", "177", "178", "179", "180", "181", "182", "183", "184", "185", "186", "187", "188", "189", "190", "191", "192", "193", "194", "195", "196", "197", "198", "199", "200", "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "215", "216", "217", "218", "219", "220", "221", "222", "223", "224", "225", "226", "227", "228", "229", "230", "231", "232", "233", "234", "235", "236", "237", "238", "239", "240", "241", "242", "243", "244", "245", "246", "247", "248", "249", "250", "251", "252", "253", "254", "255", "256", "257", "258", "259", "260", "261", "262", "263", "264", "265", "266", "267", "268", "269", "270", "271", "272", "273", "274", "275", "276", "277", "278", "279", "280", "281", "282", "283", "284", "285", "286", "287", "288", "289", "290", "291", "292", "293", "294", "295", "296", "297", "298", "299", "300", "301", "302", "303", "304", "305", "306", "307", "308", "309", "310", "311", "312", "313", "314", "315", "316", "317", "318", "319", "320", "321", "322", "323", "324", "325", "326", "327", "328", "329", "330", "331", "332", "333", "334", "335", "336", "337", "338", "339", "340", "341", "342", "343", "344", "345", "346", "347", "348", "349", "350", "351", "352", "353", "354", "355", "356", "357", "358", "359", "360", "361", "362", "363", "364", "365", "366", "367", "368", "369", "370", "371", "372", "373", "374", "375", "376", "377", "378", "379", "380", "381", "382", "383", "384", "385", "386", "387", "388", "389", "390", "391", "392", "393", "394", "395", "396", "397", "398", "399", "400", "401", "402", "403", "404", "405", "406", "407", "408", "409", "410", "411", "412", "413", "414", "415", "416", "417", "418", "419", "420", "421", "422", "423", "424", "425", "426", "427", "428", "429", "430", "431", "432", "433", "434", "435", "436", "437", "438", "439", "440", "441", "442", "443", "444", "445", "446", "447", "448", "449", "450", "451", "452", "453", "454", "455", "456", "457", "458", "459", "460", "461", "462", "463", "464", "465", "466", "467", "468", "469", "470", "471", "472", "473", "474", "475", "476", "477", "478", "479", "480" },
 				},
 				"vertical": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "vertical parameter",
-					"enum":        []string{"ADVERTISING", "AUTOMOTIVE", "CONSUMER_PACKAGED_GOODS", "ECOMMERCE", "EDUCATION", "ENERGY_AND_UTILITIES", "ENTERTAINMENT_AND_MEDIA", "FINANCIAL_SERVICES", "GAMING", "GOVERNMENT_AND_POLITICS", "HEALTH", "LUXURY", "MARKETING", "NON_PROFIT", "NOT_SET", "ORGANIZATIONS_AND_ASSOCIATIONS", "OTHER", "PROFESSIONAL_SERVICES", "RESTAURANT", "RETAIL", "TECHNOLOGY", "TELECOM", "TRAVEL"},
+					"enum": []string{ "ADVERTISING", "AUTOMOTIVE", "CONSUMER_PACKAGED_GOODS", "ECOMMERCE", "EDUCATION", "ENERGY_AND_UTILITIES", "ENTERTAINMENT_AND_MEDIA", "FINANCIAL_SERVICES", "GAMING", "GOVERNMENT_AND_POLITICS", "HEALTH", "LUXURY", "MARKETING", "NON_PROFIT", "NOT_SET", "ORGANIZATIONS_AND_ASSOCIATIONS", "OTHER", "PROFESSIONAL_SERVICES", "RESTAURANT", "RETAIL", "TECHNOLOGY", "TELECOM", "TRAVEL" },
 				},
 			}),
 			mcp.Description("Parameters object containing: child_business_external_id (string), existing_client_business_id (string), name (string), sales_rep_email (string), survey_business_type (enum) [ADVERTISER, AGENCY, APP_DEVELOPER, PUBLISHER], survey_num_assets (integer), survey_num_people (integer), timezone_id (enum) [0, 1, 2, 3, 4, ...], vertical (enum) [ADVERTISING, AUTOMOTIVE, CONSUMER_PACKAGED_GOODS, ECOMMERCE, EDUCATION, ...]"),
@@ -1721,7 +1722,7 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"year_quarter": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "year_quarter parameter",
 				},
 			}),
@@ -1749,34 +1750,34 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"active_ad_account_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "active_ad_account_id parameter",
 				},
 				"active_page_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "active_page_id parameter",
 				},
 				"partner_facebook_page_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "partner_facebook_page_url parameter",
 				},
 				"partner_registration_countries": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "partner_registration_countries parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"seller_email_address": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "seller_email_address parameter",
 				},
 				"seller_external_website_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "seller_external_website_url parameter",
 				},
 				"template": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "template parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: active_ad_account_id (string), active_page_id (integer), partner_facebook_page_url (string), partner_registration_countries (array<string>), seller_email_address (string), seller_external_website_url (string), template (array<object>)"),
@@ -1791,11 +1792,11 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"child_business_external_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "child_business_external_id parameter",
 				},
 				"child_business_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "child_business_id parameter",
 				},
 			}),
@@ -1812,99 +1813,99 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ad_account_currency": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ad_account_currency parameter",
 				},
 				"catalog_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "catalog_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"child_business_external_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "child_business_external_id parameter",
 				},
 				"credit_limit": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "credit_limit parameter",
 				},
 				"line_of_credit_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "line_of_credit_id parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
-					"required":    true,
+					"required": true,
 				},
 				"no_ad_account": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "no_ad_account parameter",
 				},
 				"page_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "page_name parameter",
 				},
 				"page_profile_image_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "page_profile_image_url parameter",
 				},
 				"partition_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "partition_type parameter",
-					"enum":        []string{"AUTH", "FIXED", "FIXED_WITHOUT_PARTITION"},
+					"enum": []string{ "AUTH", "FIXED", "FIXED_WITHOUT_PARTITION" },
 				},
 				"partner_facebook_page_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "partner_facebook_page_url parameter",
 				},
 				"partner_registration_countries": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "partner_registration_countries parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"sales_rep_email": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "sales_rep_email parameter",
 				},
 				"seller_external_website_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "seller_external_website_url parameter",
-					"required":    true,
+					"required": true,
 				},
 				"seller_targeting_countries": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "seller_targeting_countries parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"items": map[string]any{"type": "string"},
 				},
 				"skip_partner_page_creation": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "skip_partner_page_creation parameter",
 				},
 				"survey_business_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "survey_business_type parameter",
-					"enum":        []string{"ADVERTISER", "AGENCY", "APP_DEVELOPER", "PUBLISHER"},
+					"enum": []string{ "ADVERTISER", "AGENCY", "APP_DEVELOPER", "PUBLISHER" },
 				},
 				"survey_num_assets": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "survey_num_assets parameter",
 				},
 				"survey_num_people": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "survey_num_people parameter",
 				},
 				"timezone_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "timezone_id parameter",
-					"enum":        []string{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129", "130", "131", "132", "133", "134", "135", "136", "137", "138", "139", "140", "141", "142", "143", "144", "145", "146", "147", "148", "149", "150", "151", "152", "153", "154", "155", "156", "157", "158", "159", "160", "161", "162", "163", "164", "165", "166", "167", "168", "169", "170", "171", "172", "173", "174", "175", "176", "177", "178", "179", "180", "181", "182", "183", "184", "185", "186", "187", "188", "189", "190", "191", "192", "193", "194", "195", "196", "197", "198", "199", "200", "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "215", "216", "217", "218", "219", "220", "221", "222", "223", "224", "225", "226", "227", "228", "229", "230", "231", "232", "233", "234", "235", "236", "237", "238", "239", "240", "241", "242", "243", "244", "245", "246", "247", "248", "249", "250", "251", "252", "253", "254", "255", "256", "257", "258", "259", "260", "261", "262", "263", "264", "265", "266", "267", "268", "269", "270", "271", "272", "273", "274", "275", "276", "277", "278", "279", "280", "281", "282", "283", "284", "285", "286", "287", "288", "289", "290", "291", "292", "293", "294", "295", "296", "297", "298", "299", "300", "301", "302", "303", "304", "305", "306", "307", "308", "309", "310", "311", "312", "313", "314", "315", "316", "317", "318", "319", "320", "321", "322", "323", "324", "325", "326", "327", "328", "329", "330", "331", "332", "333", "334", "335", "336", "337", "338", "339", "340", "341", "342", "343", "344", "345", "346", "347", "348", "349", "350", "351", "352", "353", "354", "355", "356", "357", "358", "359", "360", "361", "362", "363", "364", "365", "366", "367", "368", "369", "370", "371", "372", "373", "374", "375", "376", "377", "378", "379", "380", "381", "382", "383", "384", "385", "386", "387", "388", "389", "390", "391", "392", "393", "394", "395", "396", "397", "398", "399", "400", "401", "402", "403", "404", "405", "406", "407", "408", "409", "410", "411", "412", "413", "414", "415", "416", "417", "418", "419", "420", "421", "422", "423", "424", "425", "426", "427", "428", "429", "430", "431", "432", "433", "434", "435", "436", "437", "438", "439", "440", "441", "442", "443", "444", "445", "446", "447", "448", "449", "450", "451", "452", "453", "454", "455", "456", "457", "458", "459", "460", "461", "462", "463", "464", "465", "466", "467", "468", "469", "470", "471", "472", "473", "474", "475", "476", "477", "478", "479", "480"},
+					"enum": []string{ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129", "130", "131", "132", "133", "134", "135", "136", "137", "138", "139", "140", "141", "142", "143", "144", "145", "146", "147", "148", "149", "150", "151", "152", "153", "154", "155", "156", "157", "158", "159", "160", "161", "162", "163", "164", "165", "166", "167", "168", "169", "170", "171", "172", "173", "174", "175", "176", "177", "178", "179", "180", "181", "182", "183", "184", "185", "186", "187", "188", "189", "190", "191", "192", "193", "194", "195", "196", "197", "198", "199", "200", "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "215", "216", "217", "218", "219", "220", "221", "222", "223", "224", "225", "226", "227", "228", "229", "230", "231", "232", "233", "234", "235", "236", "237", "238", "239", "240", "241", "242", "243", "244", "245", "246", "247", "248", "249", "250", "251", "252", "253", "254", "255", "256", "257", "258", "259", "260", "261", "262", "263", "264", "265", "266", "267", "268", "269", "270", "271", "272", "273", "274", "275", "276", "277", "278", "279", "280", "281", "282", "283", "284", "285", "286", "287", "288", "289", "290", "291", "292", "293", "294", "295", "296", "297", "298", "299", "300", "301", "302", "303", "304", "305", "306", "307", "308", "309", "310", "311", "312", "313", "314", "315", "316", "317", "318", "319", "320", "321", "322", "323", "324", "325", "326", "327", "328", "329", "330", "331", "332", "333", "334", "335", "336", "337", "338", "339", "340", "341", "342", "343", "344", "345", "346", "347", "348", "349", "350", "351", "352", "353", "354", "355", "356", "357", "358", "359", "360", "361", "362", "363", "364", "365", "366", "367", "368", "369", "370", "371", "372", "373", "374", "375", "376", "377", "378", "379", "380", "381", "382", "383", "384", "385", "386", "387", "388", "389", "390", "391", "392", "393", "394", "395", "396", "397", "398", "399", "400", "401", "402", "403", "404", "405", "406", "407", "408", "409", "410", "411", "412", "413", "414", "415", "416", "417", "418", "419", "420", "421", "422", "423", "424", "425", "426", "427", "428", "429", "430", "431", "432", "433", "434", "435", "436", "437", "438", "439", "440", "441", "442", "443", "444", "445", "446", "447", "448", "449", "450", "451", "452", "453", "454", "455", "456", "457", "458", "459", "460", "461", "462", "463", "464", "465", "466", "467", "468", "469", "470", "471", "472", "473", "474", "475", "476", "477", "478", "479", "480" },
 				},
 				"vertical": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "vertical parameter",
-					"required":    true,
-					"enum":        []string{"ADVERTISING", "AUTOMOTIVE", "CONSUMER_PACKAGED_GOODS", "ECOMMERCE", "EDUCATION", "ENERGY_AND_UTILITIES", "ENTERTAINMENT_AND_MEDIA", "FINANCIAL_SERVICES", "GAMING", "GOVERNMENT_AND_POLITICS", "HEALTH", "LUXURY", "MARKETING", "NON_PROFIT", "NOT_SET", "ORGANIZATIONS_AND_ASSOCIATIONS", "OTHER", "PROFESSIONAL_SERVICES", "RESTAURANT", "RETAIL", "TECHNOLOGY", "TELECOM", "TRAVEL"},
+					"required": true,
+					"enum": []string{ "ADVERTISING", "AUTOMOTIVE", "CONSUMER_PACKAGED_GOODS", "ECOMMERCE", "EDUCATION", "ENERGY_AND_UTILITIES", "ENTERTAINMENT_AND_MEDIA", "FINANCIAL_SERVICES", "GAMING", "GOVERNMENT_AND_POLITICS", "HEALTH", "LUXURY", "MARKETING", "NON_PROFIT", "NOT_SET", "ORGANIZATIONS_AND_ASSOCIATIONS", "OTHER", "PROFESSIONAL_SERVICES", "RESTAURANT", "RETAIL", "TECHNOLOGY", "TELECOM", "TRAVEL" },
 				},
 			}),
 			mcp.Description("Parameters object containing: ad_account_currency (string), catalog_id (string) [required], child_business_external_id (string), credit_limit (integer), line_of_credit_id (string), name (string) [required], no_ad_account (boolean), page_name (string), page_profile_image_url (string), partition_type (enum) [AUTH, FIXED, FIXED_WITHOUT_PARTITION], partner_facebook_page_url (string), partner_registration_countries (array<string>), sales_rep_email (string), seller_external_website_url (string) [required], seller_targeting_countries (array<string>) [required], skip_partner_page_creation (boolean), survey_business_type (enum) [ADVERTISER, AGENCY, APP_DEVELOPER, PUBLISHER], survey_num_assets (integer), survey_num_people (integer), timezone_id (enum) [0, 1, 2, 3, 4, ...], vertical (enum) [ADVERTISING, AUTOMOTIVE, CONSUMER_PACKAGED_GOODS, ECOMMERCE, EDUCATION, ...] [required]"),
@@ -1919,7 +1920,7 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"solution_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "solution_id parameter",
 				},
 			}),
@@ -1955,72 +1956,72 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"active": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "active parameter",
 				},
 				"cloud_provider": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "cloud_provider parameter",
 				},
 				"cloud_region": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "cloud_region parameter",
 				},
 				"destination_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "destination_id parameter",
 				},
 				"endpoint": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "endpoint parameter",
 				},
 				"fallback_domain": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "fallback_domain parameter",
 				},
 				"first_party_domain": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "first_party_domain parameter",
 				},
 				"host_business_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "host_business_id parameter",
 				},
 				"instance_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "instance_id parameter",
 				},
 				"instance_version": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "instance_version parameter",
 				},
 				"is_sgw_instance": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_sgw_instance parameter",
 				},
 				"is_sgw_pixel_from_meta_pixel": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_sgw_pixel_from_meta_pixel parameter",
 				},
 				"partner_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "partner_name parameter",
 				},
 				"pixel_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "pixel_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"sgw_account_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "sgw_account_id parameter",
 				},
 				"sgw_instance_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "sgw_instance_url parameter",
 				},
 				"sgw_pixel_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "sgw_pixel_id parameter",
 				},
 			}),
@@ -2037,7 +2038,7 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"search_query": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "search_query parameter",
 				},
 			}),
@@ -2066,9 +2067,9 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"adaccount_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "adaccount_id parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: adaccount_id (string) [required]"),
@@ -2103,9 +2104,9 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"app_id": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "app_id parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: app_id (object) [required]"),
@@ -2121,9 +2122,9 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"client_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "client_id parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: client_id (string) [required]"),
@@ -2139,11 +2140,11 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"child_business_external_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "child_business_external_id parameter",
 				},
 				"client_user_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "client_user_id parameter",
 				},
 			}),
@@ -2172,55 +2173,55 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"child_business_external_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "child_business_external_id parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
-					"required":    true,
+					"required": true,
 				},
 				"page_permitted_tasks": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "page_permitted_tasks parameter",
-					"enum":        []string{"ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "ADVERTISE", "ANALYZE", "CASHIER_ROLE", "CREATE_CONTENT", "GLOBAL_STRUCTURE_MANAGEMENT", "MANAGE", "MANAGE_JOBS", "MANAGE_LEADS", "MESSAGING", "MODERATE", "MODERATE_COMMUNITY", "PAGES_MESSAGING", "PAGES_MESSAGING_SUBSCRIPTIONS", "PROFILE_PLUS_ADVERTISE", "PROFILE_PLUS_ANALYZE", "PROFILE_PLUS_CREATE_CONTENT", "PROFILE_PLUS_FACEBOOK_ACCESS", "PROFILE_PLUS_FULL_CONTROL", "PROFILE_PLUS_MANAGE", "PROFILE_PLUS_MANAGE_LEADS", "PROFILE_PLUS_MESSAGING", "PROFILE_PLUS_MODERATE", "PROFILE_PLUS_MODERATE_DELEGATE_COMMUNITY", "PROFILE_PLUS_REVENUE", "READ_PAGE_MAILBOXES", "VIEW_MONETIZATION_INSIGHTS" },
+					"items": map[string]any{"type": "string"},
 				},
 				"sales_rep_email": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "sales_rep_email parameter",
 				},
 				"shared_page_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "shared_page_id parameter",
 				},
 				"should_generate_name": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "should_generate_name parameter",
 				},
 				"survey_business_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "survey_business_type parameter",
-					"enum":        []string{"ADVERTISER", "AGENCY", "APP_DEVELOPER", "PUBLISHER"},
+					"enum": []string{ "ADVERTISER", "AGENCY", "APP_DEVELOPER", "PUBLISHER" },
 				},
 				"survey_num_assets": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "survey_num_assets parameter",
 				},
 				"survey_num_people": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "survey_num_people parameter",
 				},
 				"timezone_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "timezone_id parameter",
-					"enum":        []string{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129", "130", "131", "132", "133", "134", "135", "136", "137", "138", "139", "140", "141", "142", "143", "144", "145", "146", "147", "148", "149", "150", "151", "152", "153", "154", "155", "156", "157", "158", "159", "160", "161", "162", "163", "164", "165", "166", "167", "168", "169", "170", "171", "172", "173", "174", "175", "176", "177", "178", "179", "180", "181", "182", "183", "184", "185", "186", "187", "188", "189", "190", "191", "192", "193", "194", "195", "196", "197", "198", "199", "200", "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "215", "216", "217", "218", "219", "220", "221", "222", "223", "224", "225", "226", "227", "228", "229", "230", "231", "232", "233", "234", "235", "236", "237", "238", "239", "240", "241", "242", "243", "244", "245", "246", "247", "248", "249", "250", "251", "252", "253", "254", "255", "256", "257", "258", "259", "260", "261", "262", "263", "264", "265", "266", "267", "268", "269", "270", "271", "272", "273", "274", "275", "276", "277", "278", "279", "280", "281", "282", "283", "284", "285", "286", "287", "288", "289", "290", "291", "292", "293", "294", "295", "296", "297", "298", "299", "300", "301", "302", "303", "304", "305", "306", "307", "308", "309", "310", "311", "312", "313", "314", "315", "316", "317", "318", "319", "320", "321", "322", "323", "324", "325", "326", "327", "328", "329", "330", "331", "332", "333", "334", "335", "336", "337", "338", "339", "340", "341", "342", "343", "344", "345", "346", "347", "348", "349", "350", "351", "352", "353", "354", "355", "356", "357", "358", "359", "360", "361", "362", "363", "364", "365", "366", "367", "368", "369", "370", "371", "372", "373", "374", "375", "376", "377", "378", "379", "380", "381", "382", "383", "384", "385", "386", "387", "388", "389", "390", "391", "392", "393", "394", "395", "396", "397", "398", "399", "400", "401", "402", "403", "404", "405", "406", "407", "408", "409", "410", "411", "412", "413", "414", "415", "416", "417", "418", "419", "420", "421", "422", "423", "424", "425", "426", "427", "428", "429", "430", "431", "432", "433", "434", "435", "436", "437", "438", "439", "440", "441", "442", "443", "444", "445", "446", "447", "448", "449", "450", "451", "452", "453", "454", "455", "456", "457", "458", "459", "460", "461", "462", "463", "464", "465", "466", "467", "468", "469", "470", "471", "472", "473", "474", "475", "476", "477", "478", "479", "480"},
+					"enum": []string{ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "123", "124", "125", "126", "127", "128", "129", "130", "131", "132", "133", "134", "135", "136", "137", "138", "139", "140", "141", "142", "143", "144", "145", "146", "147", "148", "149", "150", "151", "152", "153", "154", "155", "156", "157", "158", "159", "160", "161", "162", "163", "164", "165", "166", "167", "168", "169", "170", "171", "172", "173", "174", "175", "176", "177", "178", "179", "180", "181", "182", "183", "184", "185", "186", "187", "188", "189", "190", "191", "192", "193", "194", "195", "196", "197", "198", "199", "200", "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "215", "216", "217", "218", "219", "220", "221", "222", "223", "224", "225", "226", "227", "228", "229", "230", "231", "232", "233", "234", "235", "236", "237", "238", "239", "240", "241", "242", "243", "244", "245", "246", "247", "248", "249", "250", "251", "252", "253", "254", "255", "256", "257", "258", "259", "260", "261", "262", "263", "264", "265", "266", "267", "268", "269", "270", "271", "272", "273", "274", "275", "276", "277", "278", "279", "280", "281", "282", "283", "284", "285", "286", "287", "288", "289", "290", "291", "292", "293", "294", "295", "296", "297", "298", "299", "300", "301", "302", "303", "304", "305", "306", "307", "308", "309", "310", "311", "312", "313", "314", "315", "316", "317", "318", "319", "320", "321", "322", "323", "324", "325", "326", "327", "328", "329", "330", "331", "332", "333", "334", "335", "336", "337", "338", "339", "340", "341", "342", "343", "344", "345", "346", "347", "348", "349", "350", "351", "352", "353", "354", "355", "356", "357", "358", "359", "360", "361", "362", "363", "364", "365", "366", "367", "368", "369", "370", "371", "372", "373", "374", "375", "376", "377", "378", "379", "380", "381", "382", "383", "384", "385", "386", "387", "388", "389", "390", "391", "392", "393", "394", "395", "396", "397", "398", "399", "400", "401", "402", "403", "404", "405", "406", "407", "408", "409", "410", "411", "412", "413", "414", "415", "416", "417", "418", "419", "420", "421", "422", "423", "424", "425", "426", "427", "428", "429", "430", "431", "432", "433", "434", "435", "436", "437", "438", "439", "440", "441", "442", "443", "444", "445", "446", "447", "448", "449", "450", "451", "452", "453", "454", "455", "456", "457", "458", "459", "460", "461", "462", "463", "464", "465", "466", "467", "468", "469", "470", "471", "472", "473", "474", "475", "476", "477", "478", "479", "480" },
 				},
 				"vertical": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "vertical parameter",
-					"required":    true,
-					"enum":        []string{"ADVERTISING", "AUTOMOTIVE", "CONSUMER_PACKAGED_GOODS", "ECOMMERCE", "EDUCATION", "ENERGY_AND_UTILITIES", "ENTERTAINMENT_AND_MEDIA", "FINANCIAL_SERVICES", "GAMING", "GOVERNMENT_AND_POLITICS", "HEALTH", "LUXURY", "MARKETING", "NON_PROFIT", "NOT_SET", "ORGANIZATIONS_AND_ASSOCIATIONS", "OTHER", "PROFESSIONAL_SERVICES", "RESTAURANT", "RETAIL", "TECHNOLOGY", "TELECOM", "TRAVEL"},
+					"required": true,
+					"enum": []string{ "ADVERTISING", "AUTOMOTIVE", "CONSUMER_PACKAGED_GOODS", "ECOMMERCE", "EDUCATION", "ENERGY_AND_UTILITIES", "ENTERTAINMENT_AND_MEDIA", "FINANCIAL_SERVICES", "GAMING", "GOVERNMENT_AND_POLITICS", "HEALTH", "LUXURY", "MARKETING", "NON_PROFIT", "NOT_SET", "ORGANIZATIONS_AND_ASSOCIATIONS", "OTHER", "PROFESSIONAL_SERVICES", "RESTAURANT", "RETAIL", "TECHNOLOGY", "TELECOM", "TRAVEL" },
 				},
 			}),
 			mcp.Description("Parameters object containing: child_business_external_id (string), name (string) [required], page_permitted_tasks (array<enum>) [ADVERTISE, ANALYZE, CASHIER_ROLE, CREATE_CONTENT, GLOBAL_STRUCTURE_MANAGEMENT, ...], sales_rep_email (string), shared_page_id (string), should_generate_name (boolean), survey_business_type (enum) [ADVERTISER, AGENCY, APP_DEVELOPER, PUBLISHER], survey_num_assets (integer), survey_num_people (integer), timezone_id (enum) [0, 1, 2, 3, 4, ...], vertical (enum) [ADVERTISING, AUTOMOTIVE, CONSUMER_PACKAGED_GOODS, ECOMMERCE, EDUCATION, ...] [required]"),
@@ -2293,17 +2294,17 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"code": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "code parameter",
 				},
 				"entry_point": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "entry_point parameter",
 				},
 				"page_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "page_id parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: code (string), entry_point (string), page_id (integer) [required]"),
@@ -2357,55 +2358,55 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"additional_vertical_option": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "additional_vertical_option parameter",
-					"enum":        []string{"LOCAL_DA_CATALOG", "LOCAL_PRODUCTS"},
+					"enum": []string{ "LOCAL_DA_CATALOG", "LOCAL_PRODUCTS" },
 				},
 				"business_metadata": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "business_metadata parameter",
 				},
 				"catalog_segment_filter": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "catalog_segment_filter parameter",
 				},
 				"catalog_segment_product_set_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "catalog_segment_product_set_id parameter",
 				},
 				"da_display_settings": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "da_display_settings parameter",
 				},
 				"destination_catalog_settings": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "destination_catalog_settings parameter",
 				},
 				"flight_catalog_settings": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "flight_catalog_settings parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
-					"required":    true,
+					"required": true,
 				},
 				"parent_catalog_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "parent_catalog_id parameter",
 				},
 				"partner_integration": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "partner_integration parameter",
 				},
 				"store_catalog_settings": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "store_catalog_settings parameter",
 				},
 				"vertical": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "vertical parameter",
-					"enum":        []string{"adoptable_pets", "commerce", "destinations", "flights", "generic", "home_listings", "hotels", "local_service_businesses", "offer_items", "offline_commerce", "transactable_items", "vehicles"},
+					"enum": []string{ "adoptable_pets", "commerce", "destinations", "flights", "generic", "home_listings", "hotels", "local_service_businesses", "offer_items", "offline_commerce", "transactable_items", "vehicles" },
 				},
 			}),
 			mcp.Description("Parameters object containing: additional_vertical_option (enum) [LOCAL_DA_CATALOG, LOCAL_PRODUCTS], business_metadata (object), catalog_segment_filter (object), catalog_segment_product_set_id (string), da_display_settings (object), destination_catalog_settings (object), flight_catalog_settings (object), name (string) [required], parent_catalog_id (string), partner_integration (object), store_catalog_settings (object), vertical (enum) [adoptable_pets, commerce, destinations, flights, generic, ...]"),
@@ -2440,9 +2441,9 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"page_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "page_id parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: page_id (integer) [required]"),
@@ -2477,31 +2478,31 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"catalog_segment_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "catalog_segment_id parameter",
 				},
 				"enable_basket_insight": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "enable_basket_insight parameter",
-					"required":    true,
+					"required": true,
 				},
 				"enable_extended_audience_retargeting": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "enable_extended_audience_retargeting parameter",
-					"required":    true,
+					"required": true,
 				},
 				"partner_business_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "partner_business_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"retailer_custom_audience_config": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "retailer_custom_audience_config parameter",
-					"required":    true,
+					"required": true,
 				},
 				"vendor_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "vendor_id parameter",
 				},
 			}),
@@ -2650,7 +2651,7 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"email": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "email parameter",
 				},
 			}),
@@ -2679,20 +2680,20 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"height": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "height parameter",
 				},
 				"redirect": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "redirect parameter",
 				},
 				"type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "type parameter",
-					"enum":        []string{"album", "large", "normal", "small", "square"},
+					"enum": []string{ "album", "large", "normal", "small", "square" },
 				},
 				"width": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "width parameter",
 				},
 			}),
@@ -2727,12 +2728,12 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"code_verification_status": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "code_verification_status parameter",
-					"enum":        []string{"EXPIRED", "NOT_VERIFIED", "VERIFIED"},
+					"enum": []string{ "EXPIRED", "NOT_VERIFIED", "VERIFIED" },
 				},
 				"phone_number": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "phone_number parameter",
 				},
 			}),
@@ -2761,13 +2762,13 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"initiator_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "initiator_id parameter",
 				},
 				"request_status": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "request_status parameter",
-					"enum":        []string{"APPROVE", "CANCELED", "DECLINE", "EXPIRED", "IN_PROGRESS", "PENDING", "PENDING_EMAIL_VERIFICATION", "PENDING_INTEGRITY_REVIEW"},
+					"enum": []string{ "APPROVE", "CANCELED", "DECLINE", "EXPIRED", "IN_PROGRESS", "PENDING", "PENDING_EMAIL_VERIFICATION", "PENDING_INTEGRITY_REVIEW" },
 				},
 			}),
 			mcp.Description("Parameters object containing: initiator_id (string), request_status (enum) [APPROVE, CANCELED, DECLINE, EXPIRED, IN_PROGRESS, ...]"),
@@ -2814,7 +2815,7 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"end_business_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "end_business_id parameter",
 				},
 			}),
@@ -2843,44 +2844,44 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"average_monthly_revenue_spend_with_partner": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "average_monthly_revenue_spend_with_partner parameter",
 				},
 				"business_documents": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "business_documents parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"items": map[string]any{"type": "string"},
 				},
 				"business_vertical": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "business_vertical parameter",
-					"enum":        []string{"ADVERTISING", "AUTOMOTIVE", "CONSUMER_PACKAGED_GOODS", "ECOMMERCE", "EDUCATION", "ENERGY_AND_UTILITIES", "ENTERTAINMENT_AND_MEDIA", "FINANCIAL_SERVICES", "GAMING", "GOVERNMENT_AND_POLITICS", "HEALTH", "LUXURY", "MARKETING", "NON_PROFIT", "NOT_SET", "ORGANIZATIONS_AND_ASSOCIATIONS", "OTHER", "PROFESSIONAL_SERVICES", "RESTAURANT", "RETAIL", "TECHNOLOGY", "TELECOM", "TRAVEL"},
+					"enum": []string{ "ADVERTISING", "AUTOMOTIVE", "CONSUMER_PACKAGED_GOODS", "ECOMMERCE", "EDUCATION", "ENERGY_AND_UTILITIES", "ENTERTAINMENT_AND_MEDIA", "FINANCIAL_SERVICES", "GAMING", "GOVERNMENT_AND_POLITICS", "HEALTH", "LUXURY", "MARKETING", "NON_PROFIT", "NOT_SET", "ORGANIZATIONS_AND_ASSOCIATIONS", "OTHER", "PROFESSIONAL_SERVICES", "RESTAURANT", "RETAIL", "TECHNOLOGY", "TELECOM", "TRAVEL" },
 				},
 				"end_business_address": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "end_business_address parameter",
 				},
 				"end_business_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "end_business_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"end_business_legal_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "end_business_legal_name parameter",
 				},
 				"end_business_trade_names": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "end_business_trade_names parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"end_business_website": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "end_business_website parameter",
 				},
 				"num_billing_cycles_with_partner": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "num_billing_cycles_with_partner parameter",
 				},
 			}),
@@ -2897,31 +2898,31 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"credit_line_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "credit_line_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"marketplace_business_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "marketplace_business_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"subvertical_v2": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "subvertical_v2 parameter",
-					"required":    true,
-					"enum":        []string{"ACCOUNTING_AND_TAX", "ACTIVITIES_AND_LEISURE", "AIR", "APPAREL_AND_ACCESSORIES", "ARTS_AND_HERITAGE_AND_EDUCATION", "AR_OR_VR_GAMING", "AUDIO_STREAMING", "AUTO", "AUTO_INSURANCE", "AUTO_RENTAL", "BABY", "BALLOT_INITIATIVE_OR_REFERENDUM", "BEAUTY", "BEAUTY_AND_FASHION", "BEER_AND_WINE_AND_LIQUOR_AND_MALT_BEVERAGES", "BOOKSTORES", "BROADCAST_TELEVISION", "BUSINESS_CONSULTANTS", "BUYING_AGENCY", "CABLE_AND_SATELLITE", "CABLE_TELEVISION", "CALL_CENTER_AND_MESSAGING_SERVICES", "CANDIDATE_OR_POLITICIAN", "CAREER", "CAREER_AND_TECH", "CASUAL_DINING", "CHRONIC_CONDITIONS_AND_MEDICAL_CAUSES", "CIVIC_INFLUENCERS", "CLINICAL_TRIALS", "COFFEE", "COMPUTER_AND_SOFTWARE_AND_HARDWARE", "CONSOLE_AND_CROSS_PLATFORM_GAMING", "CONSULTING", "CONSUMER_ELECTRONICS", "COUNSELING_AND_PSYCHOTHERAPY", "CREATIVE_AGENCY", "CREDIT_AND_FINANCING_AND_MORTAGES", "CRUISES_AND_MARINE", "CULTURE_AND_LIFESTYLE", "DATA_ANALYTICS_AND_DATA_MANAGEMENT", "DATING_AND_TECHNOLOGY_APPS", "DEPARTMENT_STORE", "DESKTOP_SOFTWARE", "DIETING_AND_FITNESS_PROGRAMS", "DIGITAL_NATIVE_EDUCATION_OR_TRAINING", "DRINKING_PLACES", "EDUCATION_RESOURCES", "ED_TECH", "ELEARNING_AND_MASSIVE_ONLINE_OPEN_COURSES", "ELECTION_COMMISSION", "ELECTRONICS_AND_APPLIANCES", "ENGINEERING_AND_DESIGN", "ENVIRONMENT_AND_ANIMAL_WELFARE", "ESPORTS", "EVENTS", "FARMING_AND_RANCHING", "FILE_STORAGE_AND_CLOUD_AND_DATA_SERVICES", "FINANCE", "FIN_TECH", "FISHING_AND_HUNTING_AND_FORESTRY_AND_LOGGING", "FITNESS", "FOOD", "FOOTWEAR", "FOR_PROFIT_COLLEGES_AND_UNIVERSITIES", "FULL_SERVICE_AGENCY", "GOVERNMENT_CONTROLLED_ENTITY", "GOVERNMENT_DEPARTMENT_OR_AGENCY", "GOVERNMENT_OFFICIAL", "GOVERNMENT_OWNED_MEDIA", "GROCERY_AND_DRUG_AND_CONVENIENCE", "HEAD_OF_STATE", "HEALTH_INSURANCE", "HEALTH_SYSTEMS_AND_PRACTITIONERS", "HEALTH_TECH", "HOME_AND_FURNITURE_AND_OFFICE", "HOME_IMPROVEMENT", "HOME_INSURANCE", "HOME_TECH", "HOTEL_AND_ACCOMODATION", "HOUSEHOLD_GOODS_DURABLE", "HOUSEHOLD_GOODS_NON_DURABLE", "HR_AND_FINANCIAL_MANAGEMENT", "HUMANITARIAN_OR_DISASTER_RELIEF", "INDEPENDENT_EXPENDITURE_GROUP", "INSURANCE_TECH", "INTERNATIONAL_ORGANIZATON", "INVESTMENT_BANK_AND_BROKERAGE", "ISSUE_ADVOCACY", "LEGAL", "LIFE_INSURANCE", "LOGISTICS_AND_TRANSPORTATION_AND_FLEET_MANAGEMENT", "MANUFACTURING", "MEDICAL_DEVICES_AND_SUPPLIES_AND_EQUIPMENT", "MEDSPA_AND_ELECTIVE_SURGERIES_AND_ALTERNATIVE_MEDICINE", "MINING_AND_QUARRYING", "MOBILE_GAMING", "MOVIES", "MUSEUMS_AND_PARKS_AND_LIBRARIES", "MUSIC", "NETWORK_SECURITY_PRODUCTS", "NEWS_AND_CURRENT_EVENTS", "NON_PRESCRIPTION", "NOT_FOR_PROFIT_COLLEGES_AND_UNIVERSITIES", "OFFICE", "OFFICE_OR_BUSINESS_SUPPLIES", "OIL_AND_GAS_AND_CONSUMABLE_FUEL", "ONLINE_ONLY_PUBLICATIONS", "PACKAGE_OR_FREIGHT_DELIVERY", "PARTY_INDEPENDENT_EXPENDITURE_GROUP_US", "PAYMENT_PROCESSING_AND_GATEWAY_SOLUTIONS", "PC_GAMING", "PEOPLE", "PERSONAL_CARE", "PET", "PHOTOGRAPHY_AND_FILMING_SERVICES", "PIZZA", "PLANNING_AGENCY", "POLITICAL_PARTY_OR_COMMITTEE", "PRESCRIPTION", "PROFESSIONAL_ASSOCIATIONS", "PROPERTY_AND_CASUALTY", "QUICK_SERVICE", "RADIO", "RAILROADS", "REAL_ESTATE", "REAL_MONEY_GAMING", "RECREATIONAL", "RELIGIOUS", "RESELLER", "RESIDENTIAL_AND_LONG_TERM_CARE_FACILITIES_AND_OUTPATIENT_CARE_CENTERS", "RETAIL_AND_CREDIT_UNION_AND_COMMERCIAL_BANK", "RIDE_SHARING_OR_TAXI_SERVICES", "SAFETY_SERVICES", "SCHOLARLY", "SCHOOL_AND_EARLY_CHILDREN_EDCATION", "SOCIAL_MEDIA", "SOFTWARE_AS_A_SERVICE", "SPORTING", "SPORTING_AND_OUTDOOR", "SPORTS", "SUPERSTORES", "T1_AUTOMOTIVE_MANUFACTURER", "T1_MOTORCYCLE", "T2_DEALER_ASSOCIATIONS", "T3_AUTO_AGENCY", "T3_AUTO_RESELLERS", "T3_DEALER_GROUPS", "T3_FRANCHISE_DEALER", "T3_INDEPENDENT_DEALER", "T3_PARTS_AND_SERVICES", "T3_PORTALS", "TELECOMMUNICATIONS_EQUIPMENT_AND_ACCESSORIES", "TELEPHONE_SERVICE_PROVIDERS_AND_CARRIERS", "TICKETING", "TOBACCO", "TOURISM_AND_TRAVEL_SERVICES", "TOURISM_BOARD", "TOY_AND_HOBBY", "TRADE_SCHOOL", "TRAVEL_AGENCIES_AND_GUIDES_AND_OTAS", "UTILITIES_AND_ENERGY_EQUIPMENT_AND_SERVICES", "VETERINARY_CLINICS_AND_SERVICES", "VIDEO_STREAMING", "VIRTUAL_SERVICES", "VITAMINS_OR_WELLNESS", "WAREHOUSING_AND_STORAGE", "WATER_AND_SOFT_DRINK_AND_BAVERAGE", "WEBSITE_DESIGNERS_OR_GRAPHIC_DESIGNERS", "WHOLESALE", "WIRELESS_SERVICES"},
+					"required": true,
+					"enum": []string{ "ACCOUNTING_AND_TAX", "ACTIVITIES_AND_LEISURE", "AIR", "APPAREL_AND_ACCESSORIES", "ARTS_AND_HERITAGE_AND_EDUCATION", "AR_OR_VR_GAMING", "AUDIO_STREAMING", "AUTO", "AUTO_INSURANCE", "AUTO_RENTAL", "BABY", "BALLOT_INITIATIVE_OR_REFERENDUM", "BEAUTY", "BEAUTY_AND_FASHION", "BEER_AND_WINE_AND_LIQUOR_AND_MALT_BEVERAGES", "BOOKSTORES", "BROADCAST_TELEVISION", "BUSINESS_CONSULTANTS", "BUYING_AGENCY", "CABLE_AND_SATELLITE", "CABLE_TELEVISION", "CALL_CENTER_AND_MESSAGING_SERVICES", "CANDIDATE_OR_POLITICIAN", "CAREER", "CAREER_AND_TECH", "CASUAL_DINING", "CHRONIC_CONDITIONS_AND_MEDICAL_CAUSES", "CIVIC_INFLUENCERS", "CLINICAL_TRIALS", "COFFEE", "COMPUTER_AND_SOFTWARE_AND_HARDWARE", "CONSOLE_AND_CROSS_PLATFORM_GAMING", "CONSULTING", "CONSUMER_ELECTRONICS", "COUNSELING_AND_PSYCHOTHERAPY", "CREATIVE_AGENCY", "CREDIT_AND_FINANCING_AND_MORTAGES", "CRUISES_AND_MARINE", "CULTURE_AND_LIFESTYLE", "DATA_ANALYTICS_AND_DATA_MANAGEMENT", "DATING_AND_TECHNOLOGY_APPS", "DEPARTMENT_STORE", "DESKTOP_SOFTWARE", "DIETING_AND_FITNESS_PROGRAMS", "DIGITAL_NATIVE_EDUCATION_OR_TRAINING", "DRINKING_PLACES", "EDUCATION_RESOURCES", "ED_TECH", "ELEARNING_AND_MASSIVE_ONLINE_OPEN_COURSES", "ELECTION_COMMISSION", "ELECTRONICS_AND_APPLIANCES", "ENGINEERING_AND_DESIGN", "ENVIRONMENT_AND_ANIMAL_WELFARE", "ESPORTS", "EVENTS", "FARMING_AND_RANCHING", "FILE_STORAGE_AND_CLOUD_AND_DATA_SERVICES", "FINANCE", "FIN_TECH", "FISHING_AND_HUNTING_AND_FORESTRY_AND_LOGGING", "FITNESS", "FOOD", "FOOTWEAR", "FOR_PROFIT_COLLEGES_AND_UNIVERSITIES", "FULL_SERVICE_AGENCY", "GOVERNMENT_CONTROLLED_ENTITY", "GOVERNMENT_DEPARTMENT_OR_AGENCY", "GOVERNMENT_OFFICIAL", "GOVERNMENT_OWNED_MEDIA", "GROCERY_AND_DRUG_AND_CONVENIENCE", "HEAD_OF_STATE", "HEALTH_INSURANCE", "HEALTH_SYSTEMS_AND_PRACTITIONERS", "HEALTH_TECH", "HOME_AND_FURNITURE_AND_OFFICE", "HOME_IMPROVEMENT", "HOME_INSURANCE", "HOME_TECH", "HOTEL_AND_ACCOMODATION", "HOUSEHOLD_GOODS_DURABLE", "HOUSEHOLD_GOODS_NON_DURABLE", "HR_AND_FINANCIAL_MANAGEMENT", "HUMANITARIAN_OR_DISASTER_RELIEF", "INDEPENDENT_EXPENDITURE_GROUP", "INSURANCE_TECH", "INTERNATIONAL_ORGANIZATON", "INVESTMENT_BANK_AND_BROKERAGE", "ISSUE_ADVOCACY", "LEGAL", "LIFE_INSURANCE", "LOGISTICS_AND_TRANSPORTATION_AND_FLEET_MANAGEMENT", "MANUFACTURING", "MEDICAL_DEVICES_AND_SUPPLIES_AND_EQUIPMENT", "MEDSPA_AND_ELECTIVE_SURGERIES_AND_ALTERNATIVE_MEDICINE", "MINING_AND_QUARRYING", "MOBILE_GAMING", "MOVIES", "MUSEUMS_AND_PARKS_AND_LIBRARIES", "MUSIC", "NETWORK_SECURITY_PRODUCTS", "NEWS_AND_CURRENT_EVENTS", "NON_PRESCRIPTION", "NOT_FOR_PROFIT_COLLEGES_AND_UNIVERSITIES", "OFFICE", "OFFICE_OR_BUSINESS_SUPPLIES", "OIL_AND_GAS_AND_CONSUMABLE_FUEL", "ONLINE_ONLY_PUBLICATIONS", "PACKAGE_OR_FREIGHT_DELIVERY", "PARTY_INDEPENDENT_EXPENDITURE_GROUP_US", "PAYMENT_PROCESSING_AND_GATEWAY_SOLUTIONS", "PC_GAMING", "PEOPLE", "PERSONAL_CARE", "PET", "PHOTOGRAPHY_AND_FILMING_SERVICES", "PIZZA", "PLANNING_AGENCY", "POLITICAL_PARTY_OR_COMMITTEE", "PRESCRIPTION", "PROFESSIONAL_ASSOCIATIONS", "PROPERTY_AND_CASUALTY", "QUICK_SERVICE", "RADIO", "RAILROADS", "REAL_ESTATE", "REAL_MONEY_GAMING", "RECREATIONAL", "RELIGIOUS", "RESELLER", "RESIDENTIAL_AND_LONG_TERM_CARE_FACILITIES_AND_OUTPATIENT_CARE_CENTERS", "RETAIL_AND_CREDIT_UNION_AND_COMMERCIAL_BANK", "RIDE_SHARING_OR_TAXI_SERVICES", "SAFETY_SERVICES", "SCHOLARLY", "SCHOOL_AND_EARLY_CHILDREN_EDCATION", "SOCIAL_MEDIA", "SOFTWARE_AS_A_SERVICE", "SPORTING", "SPORTING_AND_OUTDOOR", "SPORTS", "SUPERSTORES", "T1_AUTOMOTIVE_MANUFACTURER", "T1_MOTORCYCLE", "T2_DEALER_ASSOCIATIONS", "T3_AUTO_AGENCY", "T3_AUTO_RESELLERS", "T3_DEALER_GROUPS", "T3_FRANCHISE_DEALER", "T3_INDEPENDENT_DEALER", "T3_PARTS_AND_SERVICES", "T3_PORTALS", "TELECOMMUNICATIONS_EQUIPMENT_AND_ACCESSORIES", "TELEPHONE_SERVICE_PROVIDERS_AND_CARRIERS", "TICKETING", "TOBACCO", "TOURISM_AND_TRAVEL_SERVICES", "TOURISM_BOARD", "TOY_AND_HOBBY", "TRADE_SCHOOL", "TRAVEL_AGENCIES_AND_GUIDES_AND_OTAS", "UTILITIES_AND_ENERGY_EQUIPMENT_AND_SERVICES", "VETERINARY_CLINICS_AND_SERVICES", "VIDEO_STREAMING", "VIRTUAL_SERVICES", "VITAMINS_OR_WELLNESS", "WAREHOUSING_AND_STORAGE", "WATER_AND_SOFT_DRINK_AND_BAVERAGE", "WEBSITE_DESIGNERS_OR_GRAPHIC_DESIGNERS", "WHOLESALE", "WIRELESS_SERVICES" },
 				},
 				"vendor_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "vendor_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"vertical_v2": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "vertical_v2 parameter",
-					"required":    true,
-					"enum":        []string{"ADVERTISING_AND_MARKETING", "AGRICULTURE", "AUTOMOTIVE", "BANKING_AND_CREDIT_CARDS", "BUSINESS_TO_BUSINESS", "CONSUMER_PACKAGED_GOODS", "ECOMMERCE", "EDUCATION", "ENERGY_AND_NATURAL_RESOURCES_AND_UTILITIES", "ENTERTAINMENT_AND_MEDIA", "GAMING", "GOVERNMENT", "HEALTHCARE_AND_PHARMACEUTICALS_AND_BIOTECH", "INSURANCE", "NON_PROFIT", "ORGANIZATIONS_AND_ASSOCIATIONS", "POLITICS", "PROFESSIONAL_SERVICES", "PUBLISHING", "RESTAURANTS", "RETAIL", "TECHNOLOGY", "TELECOM", "TRAVEL"},
+					"required": true,
+					"enum": []string{ "ADVERTISING_AND_MARKETING", "AGRICULTURE", "AUTOMOTIVE", "BANKING_AND_CREDIT_CARDS", "BUSINESS_TO_BUSINESS", "CONSUMER_PACKAGED_GOODS", "ECOMMERCE", "EDUCATION", "ENERGY_AND_NATURAL_RESOURCES_AND_UTILITIES", "ENTERTAINMENT_AND_MEDIA", "GAMING", "GOVERNMENT", "HEALTHCARE_AND_PHARMACEUTICALS_AND_BIOTECH", "INSURANCE", "NON_PROFIT", "ORGANIZATIONS_AND_ASSOCIATIONS", "POLITICS", "PROFESSIONAL_SERVICES", "PUBLISHING", "RESTAURANTS", "RETAIL", "TECHNOLOGY", "TELECOM", "TRAVEL" },
 				},
 			}),
 			mcp.Description("Parameters object containing: credit_line_id (string) [required], marketplace_business_id (string) [required], subvertical_v2 (enum) [ACCOUNTING_AND_TAX, ACTIVITIES_AND_LEISURE, AIR, APPAREL_AND_ACCESSORIES, ARTS_AND_HERITAGE_AND_EDUCATION, ...] [required], vendor_id (string) [required], vertical_v2 (enum) [ADVERTISING_AND_MARKETING, AGRICULTURE, AUTOMOTIVE, BANKING_AND_CREDIT_CARDS, BUSINESS_TO_BUSINESS, ...] [required]"),
@@ -2937,14 +2938,14 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"partner_business_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "partner_business_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"preverified_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "preverified_id parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: partner_business_id (string) [required], preverified_id (string) [required]"),
@@ -2960,14 +2961,14 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"partner_business_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "partner_business_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"preverified_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "preverified_id parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: partner_business_id (string) [required], preverified_id (string) [required]"),
@@ -2982,25 +2983,25 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"asset": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "asset parameter",
-					"items":       map[string]any{"type": "integer"},
+					"items": map[string]any{"type": "integer"},
 				},
 				"fetch_only": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "fetch_only parameter",
 				},
 				"scope": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "scope parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"set_token_expires_in_60_days": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "set_token_expires_in_60_days parameter",
 				},
 				"system_user_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "system_user_id parameter",
 				},
 			}),
@@ -3036,17 +3037,17 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
-					"required":    true,
+					"required": true,
 				},
 				"role": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "role parameter",
-					"enum":        []string{"ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"},
+					"enum": []string{ "ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS" },
 				},
 				"system_user_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "system_user_id parameter",
 				},
 			}),
@@ -3082,290 +3083,290 @@ func GetBusinessTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ad_placements_validation_only": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "ad_placements_validation_only parameter",
 				},
 				"application_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "application_id parameter",
 				},
 				"asked_fun_fact_prompt_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "asked_fun_fact_prompt_id parameter",
 				},
 				"audio_story_wave_animation_handle": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "audio_story_wave_animation_handle parameter",
 				},
 				"chunk_session_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "chunk_session_id parameter",
 				},
 				"composer_entry_picker": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "composer_entry_picker parameter",
 				},
 				"composer_entry_point": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "composer_entry_point parameter",
 				},
 				"composer_entry_time": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "composer_entry_time parameter",
 				},
 				"composer_session_events_log": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "composer_session_events_log parameter",
 				},
 				"composer_session_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "composer_session_id parameter",
 				},
 				"composer_source_surface": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "composer_source_surface parameter",
 				},
 				"composer_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "composer_type parameter",
 				},
 				"container_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "container_type parameter",
-					"enum":        []string{"ACO_VIDEO_VARIATION", "ADS_AI_GENERATED", "AD_BREAK_PREVIEW", "AD_DERIVATIVE", "AD_LIBRARY_WATERMARK", "ALBUM_MULTIMEDIA_POST", "ALOHA_SUPERFRAME", "APP_REREVIEW_SCREENCAST", "APP_REVIEW_SCREENCAST", "ASSET_MANAGER", "ATLAS_VIDEO", "AUDIO_BROADCAST", "AUDIO_COMMENT", "BROADCAST", "CANVAS", "CMS_MEDIA_MANAGER", "CONTAINED_POST_ATTACHMENT", "CONTAINED_POST_AUDIO_BROADCAST", "CONTAINED_POST_COPYRIGHT_REFERENCE_BROADCAST", "COPYRIGHT_REFERENCE_BROADCAST", "COPYRIGHT_REFERENCE_IG_XPOST_VIDEO", "COPYRIGHT_REFERENCE_VIDEO", "CREATION_ML_PRECREATION", "CREATOR_FAN_CHALLENGE", "CREATOR_STOREFRONT_PERSONALIZED_VIDEO", "DATAGENIX_VIDEO", "DCO_AD_ASSET_FEED", "DCO_AUTOGEN_VIDEO", "DCO_TRIMMED_VIDEO", "DIM_SUM", "DIRECTED_POST_ATTACHMENT", "DIRECT_INBOX", "DROPS_SHOPPING_EVENT_PAGE", "DYNAMIC_ITEM_VIDEO", "DYNAMIC_TEMPLATE_VIDEO", "EVENT_COVER_VIDEO", "EVENT_TOUR", "FACECAST_DVR", "FB_AVATAR_ANIMATED_SATP", "FB_COLLECTIBLE_VIDEO", "FB_SHORTS", "FB_SHORTS_CONTENT_REMIXABLE", "FB_SHORTS_GROUP_POST", "FB_SHORTS_LINKED_PRODUCT", "FB_SHORTS_PMV_POST", "FB_SHORTS_POST", "FB_SHORTS_REMIX_POST", "FUNDRAISER_COVER_VIDEO", "GAME_CLIP", "GIF_TO_VIDEO", "GOODWILL_ANNIVERSARY_DEPRECATED", "GOODWILL_ANNIVERSARY_PROMOTION_DEPRECATED", "GOODWILL_VIDEO_CONTAINED_SHARE", "GOODWILL_VIDEO_PROMOTION", "GOODWILL_VIDEO_SHARE", "GOODWILL_VIDEO_TOKEN_REQUIRED", "GROUP_POST", "HEURISTIC_CLUSTER_VIDEO", "HIGHLIGHT_CLIP_VIDEO", "HORIZON_WORLDS_TV", "HUDDLE_BROADCAST", "IG_REELS_XPV", "IG_STORIES_READER", "INJECTABLE", "INSPIRATION_VIDEO", "INSTAGRAM_VIDEO_COPY", "INSTANT_APPLICATION_PREVIEW", "INSTANT_ARTICLE", "ISSUE_MODULE", "LEARN", "LEGACY", "LEGACY_CONTAINED_POST_BROADCAST", "LIVE_AUDIO_ROOM_BROADCAST", "LIVE_CLIP_PREVIEW", "LIVE_CLIP_WORKCHAT", "LIVE_CREATIVE_KIT_VIDEO", "LIVE_PHOTO", "LOOK_NOW_DEPRECATED", "MARKETPLACE_LISTING_VIDEO", "MARKETPLACE_PRE_RECORDED_VIDEO", "MOMENTS_VIDEO", "MUSIC_CLIP", "MUSIC_CLIP_IN_COMMENT", "MUSIC_CLIP_IN_LIGHTWEIGHT_STATUS", "MUSIC_CLIP_IN_MSGR_NOTE", "MUSIC_CLIP_IN_POLL_OPTION", "MUSIC_CLIP_ON_DATING_PROFILE", "NEO_ASYNC_GAME_VIDEO", "NEW_CONTAINED_POST_BROADCAST", "NO_STORY", "OCULUS_CREATOR_PORTAL", "OCULUS_VENUES_BROADCAST", "ORIGINALITY_SELF_ADVOCACY", "PAGES_COVER_VIDEO", "PAGE_REVIEW_SCREENCAST", "PAGE_SLIDESHOW_VIDEO", "PAID_CONTENT_PREVIEW", "PAID_CONTENT_VIDEO", "PAID_CONTENT_VIDEO__POST", "PIXELCLOUD", "PODCAST_HIGHLIGHT", "PODCAST_ML_PREVIEW", "PODCAST_ML_PREVIEW_NO_NEWSFEED_STORY", "PODCAST_RSS", "PODCAST_RSS_EPHEMERAL", "PODCAST_RSS_NO_NEWSFEED_STORY", "PODCAST_VOICES", "PODCAST_VOICES_NO_NEWSFEED_STORY", "PREMIERE_SOURCE", "PREMIUM_MUSIC_VIDEO_CLIP", "PREMIUM_MUSIC_VIDEO_CROPPED_CLIP", "PREMIUM_MUSIC_VIDEO_NO_NEWSFEED_STORY", "PREMIUM_MUSIC_VIDEO_WITH_NEWSFEED_STORY", "PRIVATE_GALLERY_VIDEO", "PRODUCT_VIDEO", "PROFILE_COVER_VIDEO", "PROFILE_INTRO_CARD", "PROFILE_VIDEO", "PROTON", "QUICK_CLIP_WORKPLACE_POST", "QUICK_PROMOTION", "REPLACE_VIDEO", "SALES_CLIENT_INTERACTION", "SHOWREEL_NATIVE_DUMMY_VIDEO", "SLIDESHOW_ANIMOTO", "SLIDESHOW_SHAKR", "SLIDESHOW_VARIATION_VIDEO", "SOUND_PLATFORM_STREAM", "SRT_ATTACHMENT", "STORIES_VIDEO", "STORYLINE", "STORYLINE_WITH_EXTERNAL_MUSIC", "STORY_ARCHIVE_VIDEO", "STORY_CARD_TEMPLATE", "STREAM_HIGHLIGHTS_VIDEO", "TAROT_DIGEST", "TEMPORARY_UNLISTED", "TEMP_VIDEO_COPYRIGHT_SCAN", "UNLISTED", "UNLISTED_OCULUS", "VIDEO_COMMENT", "VIDEO_COMPOSITION_VARIATION", "VIDEO_CREATIVE_EDITOR_AUTOGEN_AD_VIDEO", "VIDEO_SUPERRES", "VOICES_ARTICLE_VIDEO", "VU_GENERATED_VIDEO", "WOODHENGE", "WORK_KNOWLEDGE_VIDEO", "YOUR_DAY"},
+					"enum": []string{ "ACO_VIDEO_VARIATION", "ADS_AI_GENERATED", "AD_BREAK_PREVIEW", "AD_DERIVATIVE", "AD_LIBRARY_WATERMARK", "ALBUM_MULTIMEDIA_POST", "ALOHA_SUPERFRAME", "APP_REREVIEW_SCREENCAST", "APP_REVIEW_SCREENCAST", "ASSET_MANAGER", "ATLAS_VIDEO", "AUDIO_BROADCAST", "AUDIO_COMMENT", "BROADCAST", "CANVAS", "CMS_MEDIA_MANAGER", "CONTAINED_POST_ATTACHMENT", "CONTAINED_POST_AUDIO_BROADCAST", "CONTAINED_POST_COPYRIGHT_REFERENCE_BROADCAST", "COPYRIGHT_REFERENCE_BROADCAST", "COPYRIGHT_REFERENCE_IG_XPOST_VIDEO", "COPYRIGHT_REFERENCE_VIDEO", "CREATION_ML_PRECREATION", "CREATOR_FAN_CHALLENGE", "CREATOR_STOREFRONT_PERSONALIZED_VIDEO", "DATAGENIX_VIDEO", "DCO_AD_ASSET_FEED", "DCO_AUTOGEN_VIDEO", "DCO_TRIMMED_VIDEO", "DIM_SUM", "DIRECTED_POST_ATTACHMENT", "DIRECT_INBOX", "DROPS_SHOPPING_EVENT_PAGE", "DYNAMIC_ITEM_VIDEO", "DYNAMIC_TEMPLATE_VIDEO", "EVENT_COVER_VIDEO", "EVENT_TOUR", "FACECAST_DVR", "FB_AVATAR_ANIMATED_SATP", "FB_COLLECTIBLE_VIDEO", "FB_SHORTS", "FB_SHORTS_CONTENT_REMIXABLE", "FB_SHORTS_GROUP_POST", "FB_SHORTS_LINKED_PRODUCT", "FB_SHORTS_PMV_POST", "FB_SHORTS_POST", "FB_SHORTS_REMIX_POST", "FUNDRAISER_COVER_VIDEO", "GAME_CLIP", "GIF_TO_VIDEO", "GOODWILL_ANNIVERSARY_DEPRECATED", "GOODWILL_ANNIVERSARY_PROMOTION_DEPRECATED", "GOODWILL_VIDEO_CONTAINED_SHARE", "GOODWILL_VIDEO_PROMOTION", "GOODWILL_VIDEO_SHARE", "GOODWILL_VIDEO_TOKEN_REQUIRED", "GROUP_POST", "HEURISTIC_CLUSTER_VIDEO", "HIGHLIGHT_CLIP_VIDEO", "HORIZON_WORLDS_TV", "HUDDLE_BROADCAST", "IG_REELS_XPV", "IG_STORIES_READER", "INJECTABLE", "INSPIRATION_VIDEO", "INSTAGRAM_VIDEO_COPY", "INSTANT_APPLICATION_PREVIEW", "INSTANT_ARTICLE", "ISSUE_MODULE", "LEARN", "LEGACY", "LEGACY_CONTAINED_POST_BROADCAST", "LIVE_AUDIO_ROOM_BROADCAST", "LIVE_CLIP_PREVIEW", "LIVE_CLIP_WORKCHAT", "LIVE_CREATIVE_KIT_VIDEO", "LIVE_PHOTO", "LOOK_NOW_DEPRECATED", "MARKETPLACE_LISTING_VIDEO", "MARKETPLACE_PRE_RECORDED_VIDEO", "MOMENTS_VIDEO", "MUSIC_CLIP", "MUSIC_CLIP_IN_COMMENT", "MUSIC_CLIP_IN_LIGHTWEIGHT_STATUS", "MUSIC_CLIP_IN_MSGR_NOTE", "MUSIC_CLIP_IN_POLL_OPTION", "MUSIC_CLIP_ON_DATING_PROFILE", "NEO_ASYNC_GAME_VIDEO", "NEW_CONTAINED_POST_BROADCAST", "NO_STORY", "OCULUS_CREATOR_PORTAL", "OCULUS_VENUES_BROADCAST", "ORIGINALITY_SELF_ADVOCACY", "PAGES_COVER_VIDEO", "PAGE_REVIEW_SCREENCAST", "PAGE_SLIDESHOW_VIDEO", "PAID_CONTENT_PREVIEW", "PAID_CONTENT_VIDEO", "PAID_CONTENT_VIDEO__POST", "PIXELCLOUD", "PODCAST_HIGHLIGHT", "PODCAST_ML_PREVIEW", "PODCAST_ML_PREVIEW_NO_NEWSFEED_STORY", "PODCAST_RSS", "PODCAST_RSS_EPHEMERAL", "PODCAST_RSS_NO_NEWSFEED_STORY", "PODCAST_VOICES", "PODCAST_VOICES_NO_NEWSFEED_STORY", "PREMIERE_SOURCE", "PREMIUM_MUSIC_VIDEO_CLIP", "PREMIUM_MUSIC_VIDEO_CROPPED_CLIP", "PREMIUM_MUSIC_VIDEO_NO_NEWSFEED_STORY", "PREMIUM_MUSIC_VIDEO_WITH_NEWSFEED_STORY", "PRIVATE_GALLERY_VIDEO", "PRODUCT_VIDEO", "PROFILE_COVER_VIDEO", "PROFILE_INTRO_CARD", "PROFILE_VIDEO", "PROTON", "QUICK_CLIP_WORKPLACE_POST", "QUICK_PROMOTION", "REPLACE_VIDEO", "SALES_CLIENT_INTERACTION", "SHOWREEL_NATIVE_DUMMY_VIDEO", "SLIDESHOW_ANIMOTO", "SLIDESHOW_SHAKR", "SLIDESHOW_VARIATION_VIDEO", "SOUND_PLATFORM_STREAM", "SRT_ATTACHMENT", "STORIES_VIDEO", "STORYLINE", "STORYLINE_WITH_EXTERNAL_MUSIC", "STORY_ARCHIVE_VIDEO", "STORY_CARD_TEMPLATE", "STREAM_HIGHLIGHTS_VIDEO", "TAROT_DIGEST", "TEMPORARY_UNLISTED", "TEMP_VIDEO_COPYRIGHT_SCAN", "UNLISTED", "UNLISTED_OCULUS", "VIDEO_COMMENT", "VIDEO_COMPOSITION_VARIATION", "VIDEO_CREATIVE_EDITOR_AUTOGEN_AD_VIDEO", "VIDEO_SUPERRES", "VOICES_ARTICLE_VIDEO", "VU_GENERATED_VIDEO", "WOODHENGE", "WORK_KNOWLEDGE_VIDEO", "YOUR_DAY" },
 				},
 				"content_category": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "content_category parameter",
-					"enum":        []string{"BEAUTY_FASHION", "BUSINESS", "CARS_TRUCKS", "COMEDY", "CUTE_ANIMALS", "ENTERTAINMENT", "FAMILY", "FOOD_HEALTH", "HOME", "LIFESTYLE", "MUSIC", "NEWS", "OTHER", "POLITICS", "SCIENCE", "SPORTS", "TECHNOLOGY", "VIDEO_GAMING"},
+					"enum": []string{ "BEAUTY_FASHION", "BUSINESS", "CARS_TRUCKS", "COMEDY", "CUTE_ANIMALS", "ENTERTAINMENT", "FAMILY", "FOOD_HEALTH", "HOME", "LIFESTYLE", "MUSIC", "NEWS", "OTHER", "POLITICS", "SCIENCE", "SPORTS", "TECHNOLOGY", "VIDEO_GAMING" },
 				},
 				"creative_folder_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "creative_folder_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"creative_tools": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "creative_tools parameter",
 				},
 				"description": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "description parameter",
 				},
 				"embeddable": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "embeddable parameter",
 				},
 				"end_offset": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "end_offset parameter",
 				},
 				"fbuploader_video_file_chunk": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "fbuploader_video_file_chunk parameter",
 				},
 				"file_size": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "file_size parameter",
 				},
 				"file_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "file_url parameter",
 				},
 				"fisheye_video_cropped": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "fisheye_video_cropped parameter",
 				},
 				"formatting": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "formatting parameter",
-					"enum":        []string{"MARKDOWN", "PLAINTEXT"},
+					"enum": []string{ "MARKDOWN", "PLAINTEXT" },
 				},
 				"fov": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "fov parameter",
 				},
 				"front_z_rotation": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "front_z_rotation parameter",
 				},
 				"fun_fact_prompt_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "fun_fact_prompt_id parameter",
 				},
 				"fun_fact_toastee_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "fun_fact_toastee_id parameter",
 				},
 				"guide": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "guide parameter",
-					"items":       map[string]any{"type": "array"},
+					"items": map[string]any{"type": "array"},
 				},
 				"guide_enabled": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "guide_enabled parameter",
 				},
 				"initial_heading": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "initial_heading parameter",
 				},
 				"initial_pitch": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "initial_pitch parameter",
 				},
 				"instant_game_entry_point_data": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "instant_game_entry_point_data parameter",
 				},
 				"is_boost_intended": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_boost_intended parameter",
 				},
 				"is_group_linking_post": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_group_linking_post parameter",
 				},
 				"is_partnership_ad": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_partnership_ad parameter",
 				},
 				"is_voice_clip": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_voice_clip parameter",
 				},
 				"location_source_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "location_source_id parameter",
 				},
 				"og_action_type_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "og_action_type_id parameter",
 				},
 				"og_icon_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "og_icon_id parameter",
 				},
 				"og_object_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "og_object_id parameter",
 				},
 				"og_phrase": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "og_phrase parameter",
 				},
 				"og_suggestion_mechanism": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "og_suggestion_mechanism parameter",
 				},
 				"original_fov": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "original_fov parameter",
 				},
 				"original_projection_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "original_projection_type parameter",
-					"enum":        []string{"cubemap", "equirectangular", "half_equirectangular"},
+					"enum": []string{ "cubemap", "equirectangular", "half_equirectangular" },
 				},
 				"partnership_ad_ad_code": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "partnership_ad_ad_code parameter",
 				},
 				"publish_event_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "publish_event_id parameter",
 				},
 				"referenced_sticker_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "referenced_sticker_id parameter",
 				},
 				"replace_video_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "replace_video_id parameter",
 				},
 				"slideshow_spec": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "slideshow_spec parameter",
 				},
 				"source": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "source parameter",
 				},
 				"source_instagram_media_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "source_instagram_media_id parameter",
 				},
 				"spherical": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "spherical parameter",
 				},
 				"start_offset": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "start_offset parameter",
 				},
 				"swap_mode": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "swap_mode parameter",
-					"enum":        []string{"replace"},
+					"enum": []string{ "replace" },
 				},
 				"text_format_metadata": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "text_format_metadata parameter",
 				},
 				"thumb": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "thumb parameter",
 				},
 				"time_since_original_post": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "time_since_original_post parameter",
 				},
 				"title": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "title parameter",
 				},
 				"transcode_setting_properties": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "transcode_setting_properties parameter",
 				},
 				"unpublished_content_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "unpublished_content_type parameter",
-					"enum":        []string{"ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING"},
+					"enum": []string{ "ADS_POST", "DRAFT", "INLINE_CREATED", "PUBLISHED", "REVIEWABLE_BRANDED_CONTENT", "SCHEDULED", "SCHEDULED_RECURRING" },
 				},
 				"upload_phase": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "upload_phase parameter",
-					"enum":        []string{"cancel", "finish", "start", "transfer"},
+					"enum": []string{ "cancel", "finish", "start", "transfer" },
 				},
 				"upload_session_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "upload_session_id parameter",
 				},
 				"upload_setting_properties": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "upload_setting_properties parameter",
 				},
 				"validation_ad_placements": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "validation_ad_placements parameter",
-					"enum":        []string{"AUDIENCE_NETWORK_INSTREAM_VIDEO", "AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE", "AUDIENCE_NETWORK_REWARDED_VIDEO", "DESKTOP_FEED_STANDARD", "FACEBOOK_STORY_MOBILE", "FACEBOOK_STORY_STICKER_MOBILE", "INSTAGRAM_STANDARD", "INSTAGRAM_STORY", "INSTANT_ARTICLE_STANDARD", "INSTREAM_BANNER_DESKTOP", "INSTREAM_BANNER_MOBILE", "INSTREAM_VIDEO_DESKTOP", "INSTREAM_VIDEO_IMAGE", "INSTREAM_VIDEO_MOBILE", "MESSENGER_MOBILE_INBOX_MEDIA", "MESSENGER_MOBILE_STORY_MEDIA", "MOBILE_FEED_STANDARD", "MOBILE_FULLWIDTH", "MOBILE_INTERSTITIAL", "MOBILE_MEDIUM_RECTANGLE", "MOBILE_NATIVE", "RIGHT_COLUMN_STANDARD", "SUGGESTED_VIDEO_MOBILE"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "AUDIENCE_NETWORK_INSTREAM_VIDEO", "AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE", "AUDIENCE_NETWORK_REWARDED_VIDEO", "DESKTOP_FEED_STANDARD", "FACEBOOK_STORY_MOBILE", "FACEBOOK_STORY_STICKER_MOBILE", "INSTAGRAM_STANDARD", "INSTAGRAM_STORY", "INSTANT_ARTICLE_STANDARD", "INSTREAM_BANNER_DESKTOP", "INSTREAM_BANNER_MOBILE", "INSTREAM_VIDEO_DESKTOP", "INSTREAM_VIDEO_IMAGE", "INSTREAM_VIDEO_MOBILE", "MESSENGER_MOBILE_INBOX_MEDIA", "MESSENGER_MOBILE_STORY_MEDIA", "MOBILE_FEED_STANDARD", "MOBILE_FULLWIDTH", "MOBILE_INTERSTITIAL", "MOBILE_MEDIUM_RECTANGLE", "MOBILE_NATIVE", "RIGHT_COLUMN_STANDARD", "SUGGESTED_VIDEO_MOBILE" },
+					"items": map[string]any{"type": "string"},
 				},
 				"video_file_chunk": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "video_file_chunk parameter",
 				},
 				"video_id_original": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "video_id_original parameter",
 				},
 				"video_start_time_ms": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "video_start_time_ms parameter",
 				},
 				"waterfall_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "waterfall_id parameter",
 				},
 			}),
@@ -3400,30 +3401,30 @@ func GetBusinessTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"entry_point": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "entry_point parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
 				},
 				"primary_page": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "primary_page parameter",
 				},
 				"timezone_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "timezone_id parameter",
 				},
 				"two_factor_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "two_factor_type parameter",
-					"enum":        []string{"admin_required", "all_required", "none"},
+					"enum": []string{ "admin_required", "all_required", "none" },
 				},
 				"vertical": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "vertical parameter",
-					"enum":        []string{"ADVERTISING", "AUTOMOTIVE", "CONSUMER_PACKAGED_GOODS", "ECOMMERCE", "EDUCATION", "ENERGY_AND_UTILITIES", "ENTERTAINMENT_AND_MEDIA", "FINANCIAL_SERVICES", "GAMING", "GOVERNMENT_AND_POLITICS", "HEALTH", "LUXURY", "MARKETING", "NON_PROFIT", "NOT_SET", "ORGANIZATIONS_AND_ASSOCIATIONS", "OTHER", "PROFESSIONAL_SERVICES", "RESTAURANT", "RETAIL", "TECHNOLOGY", "TELECOM", "TRAVEL"},
+					"enum": []string{ "ADVERTISING", "AUTOMOTIVE", "CONSUMER_PACKAGED_GOODS", "ECOMMERCE", "EDUCATION", "ENERGY_AND_UTILITIES", "ENTERTAINMENT_AND_MEDIA", "FINANCIAL_SERVICES", "GAMING", "GOVERNMENT_AND_POLITICS", "HEALTH", "LUXURY", "MARKETING", "NON_PROFIT", "NOT_SET", "ORGANIZATIONS_AND_ASSOCIATIONS", "OTHER", "PROFESSIONAL_SERVICES", "RESTAURANT", "RETAIL", "TECHNOLOGY", "TELECOM", "TRAVEL" },
 				},
 			}),
 			mcp.Description("Parameters object containing: entry_point (string), name (string), primary_page (string), timezone_id (integer), two_factor_type (business_two_factor_type) [admin_required, all_required, none], vertical (business_vertical) [ADVERTISING, AUTOMOTIVE, CONSUMER_PACKAGED_GOODS, ECOMMERCE, EDUCATION, ...]"),
@@ -3431,10 +3432,12 @@ func GetBusinessTools() []mcp.Tool {
 	)
 	tools = append(tools, business_post_Tool)
 
+
 	return tools
 }
 
 // Business handlers
+
 
 // HandleBusiness_post_access_token handles the business_post_access_token tool with context-based auth
 func HandleBusiness_post_access_token(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3464,6 +3467,8 @@ func HandleBusiness_post_access_token(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_access_token(args)
 	if err != nil {
@@ -3478,6 +3483,7 @@ func HandleBusiness_post_access_token(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_ad_account_infos handles the business_get_ad_account_infos tool with context-based auth
 func HandleBusiness_get_ad_account_infos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3530,6 +3536,8 @@ func HandleBusiness_get_ad_account_infos(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_ad_account_infos(args)
 	if err != nil {
@@ -3544,6 +3552,7 @@ func HandleBusiness_get_ad_account_infos(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_delete_ad_accounts handles the business_delete_ad_accounts tool with context-based auth
 func HandleBusiness_delete_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3573,6 +3582,8 @@ func HandleBusiness_delete_ad_accounts(ctx context.Context, request mcp.CallTool
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_delete_ad_accounts(args)
 	if err != nil {
@@ -3587,6 +3598,7 @@ func HandleBusiness_delete_ad_accounts(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_ad_review_requests handles the business_post_ad_review_requests tool with context-based auth
 func HandleBusiness_post_ad_review_requests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3614,6 +3626,8 @@ func HandleBusiness_post_ad_review_requests(ctx context.Context, request mcp.Cal
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_ad_review_requests(args)
 	if err != nil {
@@ -3628,6 +3642,7 @@ func HandleBusiness_post_ad_review_requests(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_ad_studies handles the business_get_ad_studies tool with context-based auth
 func HandleBusiness_get_ad_studies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3668,6 +3683,8 @@ func HandleBusiness_get_ad_studies(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_ad_studies(args)
 	if err != nil {
@@ -3682,6 +3699,7 @@ func HandleBusiness_get_ad_studies(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_ad_studies handles the business_post_ad_studies tool with context-based auth
 func HandleBusiness_post_ad_studies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3711,6 +3729,8 @@ func HandleBusiness_post_ad_studies(ctx context.Context, request mcp.CallToolReq
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_ad_studies(args)
 	if err != nil {
@@ -3725,6 +3745,7 @@ func HandleBusiness_post_ad_studies(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_adaccount handles the business_post_adaccount tool with context-based auth
 func HandleBusiness_post_adaccount(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3754,6 +3775,8 @@ func HandleBusiness_post_adaccount(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_adaccount(args)
 	if err != nil {
@@ -3768,6 +3791,7 @@ func HandleBusiness_post_adaccount(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_add_phone_numbers handles the business_post_add_phone_numbers tool with context-based auth
 func HandleBusiness_post_add_phone_numbers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3797,6 +3821,8 @@ func HandleBusiness_post_add_phone_numbers(ctx context.Context, request mcp.Call
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_add_phone_numbers(args)
 	if err != nil {
@@ -3811,6 +3837,7 @@ func HandleBusiness_post_add_phone_numbers(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_adnetwork_applications handles the business_post_adnetwork_applications tool with context-based auth
 func HandleBusiness_post_adnetwork_applications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3840,6 +3867,8 @@ func HandleBusiness_post_adnetwork_applications(ctx context.Context, request mcp
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_adnetwork_applications(args)
 	if err != nil {
@@ -3854,6 +3883,7 @@ func HandleBusiness_post_adnetwork_applications(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_adnetworkanalytics handles the business_get_adnetworkanalytics tool with context-based auth
 func HandleBusiness_get_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3908,6 +3938,8 @@ func HandleBusiness_get_adnetworkanalytics(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_adnetworkanalytics(args)
 	if err != nil {
@@ -3922,6 +3954,7 @@ func HandleBusiness_get_adnetworkanalytics(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_adnetworkanalytics handles the business_post_adnetworkanalytics tool with context-based auth
 func HandleBusiness_post_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3951,6 +3984,8 @@ func HandleBusiness_post_adnetworkanalytics(ctx context.Context, request mcp.Cal
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_adnetworkanalytics(args)
 	if err != nil {
@@ -3965,6 +4000,7 @@ func HandleBusiness_post_adnetworkanalytics(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_adnetworkanalytics_results handles the business_get_adnetworkanalytics_results tool with context-based auth
 func HandleBusiness_get_adnetworkanalytics_results(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4017,6 +4053,8 @@ func HandleBusiness_get_adnetworkanalytics_results(ctx context.Context, request 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_adnetworkanalytics_results(args)
 	if err != nil {
@@ -4031,6 +4069,7 @@ func HandleBusiness_get_adnetworkanalytics_results(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_ads_dataset handles the business_get_ads_dataset tool with context-based auth
 func HandleBusiness_get_ads_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4083,6 +4122,8 @@ func HandleBusiness_get_ads_dataset(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_ads_dataset(args)
 	if err != nil {
@@ -4097,6 +4138,7 @@ func HandleBusiness_get_ads_dataset(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_ads_dataset handles the business_post_ads_dataset tool with context-based auth
 func HandleBusiness_post_ads_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4126,6 +4168,8 @@ func HandleBusiness_post_ads_dataset(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_ads_dataset(args)
 	if err != nil {
@@ -4140,6 +4184,7 @@ func HandleBusiness_post_ads_dataset(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_ads_reporting_mmm_reports handles the business_get_ads_reporting_mmm_reports tool with context-based auth
 func HandleBusiness_get_ads_reporting_mmm_reports(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4192,6 +4237,8 @@ func HandleBusiness_get_ads_reporting_mmm_reports(ctx context.Context, request m
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_ads_reporting_mmm_reports(args)
 	if err != nil {
@@ -4206,6 +4253,7 @@ func HandleBusiness_get_ads_reporting_mmm_reports(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_ads_reporting_mmm_schedulers handles the business_get_ads_reporting_mmm_schedulers tool with context-based auth
 func HandleBusiness_get_ads_reporting_mmm_schedulers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4246,6 +4294,8 @@ func HandleBusiness_get_ads_reporting_mmm_schedulers(ctx context.Context, reques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_ads_reporting_mmm_schedulers(args)
 	if err != nil {
@@ -4260,6 +4310,7 @@ func HandleBusiness_get_ads_reporting_mmm_schedulers(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_adspixels handles the business_get_adspixels tool with context-based auth
 func HandleBusiness_get_adspixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4312,6 +4363,8 @@ func HandleBusiness_get_adspixels(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_adspixels(args)
 	if err != nil {
@@ -4326,6 +4379,7 @@ func HandleBusiness_get_adspixels(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_adspixels handles the business_post_adspixels tool with context-based auth
 func HandleBusiness_post_adspixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4355,6 +4409,8 @@ func HandleBusiness_post_adspixels(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_adspixels(args)
 	if err != nil {
@@ -4369,6 +4425,7 @@ func HandleBusiness_post_adspixels(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_delete_agencies handles the business_delete_agencies tool with context-based auth
 func HandleBusiness_delete_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4398,6 +4455,8 @@ func HandleBusiness_delete_agencies(ctx context.Context, request mcp.CallToolReq
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_delete_agencies(args)
 	if err != nil {
@@ -4412,6 +4471,7 @@ func HandleBusiness_delete_agencies(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_agencies handles the business_get_agencies tool with context-based auth
 func HandleBusiness_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4452,6 +4512,8 @@ func HandleBusiness_get_agencies(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_agencies(args)
 	if err != nil {
@@ -4466,6 +4528,7 @@ func HandleBusiness_get_agencies(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_an_placements handles the business_get_an_placements tool with context-based auth
 func HandleBusiness_get_an_placements(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4506,6 +4569,8 @@ func HandleBusiness_get_an_placements(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_an_placements(args)
 	if err != nil {
@@ -4520,6 +4585,7 @@ func HandleBusiness_get_an_placements(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_block_list_drafts handles the business_post_block_list_drafts tool with context-based auth
 func HandleBusiness_post_block_list_drafts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4549,6 +4615,8 @@ func HandleBusiness_post_block_list_drafts(ctx context.Context, request mcp.Call
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_block_list_drafts(args)
 	if err != nil {
@@ -4563,6 +4631,7 @@ func HandleBusiness_post_block_list_drafts(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_bm_review_requests handles the business_post_bm_review_requests tool with context-based auth
 func HandleBusiness_post_bm_review_requests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4592,6 +4661,8 @@ func HandleBusiness_post_bm_review_requests(ctx context.Context, request mcp.Cal
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_bm_review_requests(args)
 	if err != nil {
@@ -4606,6 +4677,7 @@ func HandleBusiness_post_bm_review_requests(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_business_asset_groups handles the business_get_business_asset_groups tool with context-based auth
 func HandleBusiness_get_business_asset_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4646,6 +4718,8 @@ func HandleBusiness_get_business_asset_groups(ctx context.Context, request mcp.C
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_business_asset_groups(args)
 	if err != nil {
@@ -4660,6 +4734,7 @@ func HandleBusiness_get_business_asset_groups(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_business_invoices handles the business_get_business_invoices tool with context-based auth
 func HandleBusiness_get_business_invoices(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4712,6 +4787,8 @@ func HandleBusiness_get_business_invoices(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_business_invoices(args)
 	if err != nil {
@@ -4726,6 +4803,7 @@ func HandleBusiness_get_business_invoices(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_business_users handles the business_get_business_users tool with context-based auth
 func HandleBusiness_get_business_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4766,6 +4844,8 @@ func HandleBusiness_get_business_users(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_business_users(args)
 	if err != nil {
@@ -4780,6 +4860,7 @@ func HandleBusiness_get_business_users(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_business_users handles the business_post_business_users tool with context-based auth
 func HandleBusiness_post_business_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4809,6 +4890,8 @@ func HandleBusiness_post_business_users(ctx context.Context, request mcp.CallToo
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_business_users(args)
 	if err != nil {
@@ -4823,6 +4906,7 @@ func HandleBusiness_post_business_users(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_businessprojects handles the business_get_businessprojects tool with context-based auth
 func HandleBusiness_get_businessprojects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4863,6 +4947,8 @@ func HandleBusiness_get_businessprojects(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_businessprojects(args)
 	if err != nil {
@@ -4877,6 +4963,7 @@ func HandleBusiness_get_businessprojects(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_claim_custom_conversions handles the business_post_claim_custom_conversions tool with context-based auth
 func HandleBusiness_post_claim_custom_conversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4906,6 +4993,8 @@ func HandleBusiness_post_claim_custom_conversions(ctx context.Context, request m
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_claim_custom_conversions(args)
 	if err != nil {
@@ -4920,6 +5009,7 @@ func HandleBusiness_post_claim_custom_conversions(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_client_ad_accounts handles the business_get_client_ad_accounts tool with context-based auth
 func HandleBusiness_get_client_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4972,6 +5062,8 @@ func HandleBusiness_get_client_ad_accounts(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_client_ad_accounts(args)
 	if err != nil {
@@ -4986,6 +5078,7 @@ func HandleBusiness_get_client_ad_accounts(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_client_apps handles the business_get_client_apps tool with context-based auth
 func HandleBusiness_get_client_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5026,6 +5119,8 @@ func HandleBusiness_get_client_apps(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_client_apps(args)
 	if err != nil {
@@ -5040,6 +5135,7 @@ func HandleBusiness_get_client_apps(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_client_apps handles the business_post_client_apps tool with context-based auth
 func HandleBusiness_post_client_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5069,6 +5165,8 @@ func HandleBusiness_post_client_apps(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_client_apps(args)
 	if err != nil {
@@ -5083,6 +5181,7 @@ func HandleBusiness_post_client_apps(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_client_offsite_signal_container_business_objects handles the business_get_client_offsite_signal_container_business_objects tool with context-based auth
 func HandleBusiness_get_client_offsite_signal_container_business_objects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5123,6 +5222,8 @@ func HandleBusiness_get_client_offsite_signal_container_business_objects(ctx con
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_client_offsite_signal_container_business_objects(args)
 	if err != nil {
@@ -5137,6 +5238,7 @@ func HandleBusiness_get_client_offsite_signal_container_business_objects(ctx con
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_client_pages handles the business_get_client_pages tool with context-based auth
 func HandleBusiness_get_client_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5177,6 +5279,8 @@ func HandleBusiness_get_client_pages(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_client_pages(args)
 	if err != nil {
@@ -5191,6 +5295,7 @@ func HandleBusiness_get_client_pages(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_client_pages handles the business_post_client_pages tool with context-based auth
 func HandleBusiness_post_client_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5220,6 +5325,8 @@ func HandleBusiness_post_client_pages(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_client_pages(args)
 	if err != nil {
@@ -5234,6 +5341,7 @@ func HandleBusiness_post_client_pages(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_client_pixels handles the business_get_client_pixels tool with context-based auth
 func HandleBusiness_get_client_pixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5274,6 +5382,8 @@ func HandleBusiness_get_client_pixels(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_client_pixels(args)
 	if err != nil {
@@ -5288,6 +5398,7 @@ func HandleBusiness_get_client_pixels(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_client_product_catalogs handles the business_get_client_product_catalogs tool with context-based auth
 func HandleBusiness_get_client_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5328,6 +5439,8 @@ func HandleBusiness_get_client_product_catalogs(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_client_product_catalogs(args)
 	if err != nil {
@@ -5342,6 +5455,7 @@ func HandleBusiness_get_client_product_catalogs(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_client_whatsapp_business_accounts handles the business_get_client_whatsapp_business_accounts tool with context-based auth
 func HandleBusiness_get_client_whatsapp_business_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5382,6 +5496,8 @@ func HandleBusiness_get_client_whatsapp_business_accounts(ctx context.Context, r
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_client_whatsapp_business_accounts(args)
 	if err != nil {
@@ -5396,6 +5512,7 @@ func HandleBusiness_get_client_whatsapp_business_accounts(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_delete_clients handles the business_delete_clients tool with context-based auth
 func HandleBusiness_delete_clients(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5425,6 +5542,8 @@ func HandleBusiness_delete_clients(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_delete_clients(args)
 	if err != nil {
@@ -5439,6 +5558,7 @@ func HandleBusiness_delete_clients(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_clients handles the business_get_clients tool with context-based auth
 func HandleBusiness_get_clients(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5479,6 +5599,8 @@ func HandleBusiness_get_clients(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_clients(args)
 	if err != nil {
@@ -5493,6 +5615,7 @@ func HandleBusiness_get_clients(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_collaborative_ads_collaboration_requests handles the business_get_collaborative_ads_collaboration_requests tool with context-based auth
 func HandleBusiness_get_collaborative_ads_collaboration_requests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5545,6 +5668,8 @@ func HandleBusiness_get_collaborative_ads_collaboration_requests(ctx context.Con
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_collaborative_ads_collaboration_requests(args)
 	if err != nil {
@@ -5559,6 +5684,7 @@ func HandleBusiness_get_collaborative_ads_collaboration_requests(ctx context.Con
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_collaborative_ads_collaboration_requests handles the business_post_collaborative_ads_collaboration_requests tool with context-based auth
 func HandleBusiness_post_collaborative_ads_collaboration_requests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5588,6 +5714,8 @@ func HandleBusiness_post_collaborative_ads_collaboration_requests(ctx context.Co
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_collaborative_ads_collaboration_requests(args)
 	if err != nil {
@@ -5602,6 +5730,7 @@ func HandleBusiness_post_collaborative_ads_collaboration_requests(ctx context.Co
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_collaborative_ads_suggested_partners handles the business_get_collaborative_ads_suggested_partners tool with context-based auth
 func HandleBusiness_get_collaborative_ads_suggested_partners(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5642,6 +5771,8 @@ func HandleBusiness_get_collaborative_ads_suggested_partners(ctx context.Context
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_collaborative_ads_suggested_partners(args)
 	if err != nil {
@@ -5656,6 +5787,7 @@ func HandleBusiness_get_collaborative_ads_suggested_partners(ctx context.Context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_commerce_merchant_settings handles the business_get_commerce_merchant_settings tool with context-based auth
 func HandleBusiness_get_commerce_merchant_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5696,6 +5828,8 @@ func HandleBusiness_get_commerce_merchant_settings(ctx context.Context, request 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_commerce_merchant_settings(args)
 	if err != nil {
@@ -5710,6 +5844,7 @@ func HandleBusiness_get_commerce_merchant_settings(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_cpas_business_setup_config handles the business_get_cpas_business_setup_config tool with context-based auth
 func HandleBusiness_get_cpas_business_setup_config(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5750,6 +5885,8 @@ func HandleBusiness_get_cpas_business_setup_config(ctx context.Context, request 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_cpas_business_setup_config(args)
 	if err != nil {
@@ -5764,6 +5901,7 @@ func HandleBusiness_get_cpas_business_setup_config(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_cpas_business_setup_config handles the business_post_cpas_business_setup_config tool with context-based auth
 func HandleBusiness_post_cpas_business_setup_config(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5791,6 +5929,8 @@ func HandleBusiness_post_cpas_business_setup_config(ctx context.Context, request
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_cpas_business_setup_config(args)
 	if err != nil {
@@ -5805,6 +5945,7 @@ func HandleBusiness_post_cpas_business_setup_config(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_cpas_merchant_config handles the business_get_cpas_merchant_config tool with context-based auth
 func HandleBusiness_get_cpas_merchant_config(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5845,6 +5986,8 @@ func HandleBusiness_get_cpas_merchant_config(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_cpas_merchant_config(args)
 	if err != nil {
@@ -5859,6 +6002,7 @@ func HandleBusiness_get_cpas_merchant_config(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_creative_folders handles the business_post_creative_folders tool with context-based auth
 func HandleBusiness_post_creative_folders(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5888,6 +6032,8 @@ func HandleBusiness_post_creative_folders(ctx context.Context, request mcp.CallT
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_creative_folders(args)
 	if err != nil {
@@ -5902,6 +6048,7 @@ func HandleBusiness_post_creative_folders(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_creditcards handles the business_get_creditcards tool with context-based auth
 func HandleBusiness_get_creditcards(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5942,6 +6089,8 @@ func HandleBusiness_get_creditcards(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_creditcards(args)
 	if err != nil {
@@ -5956,6 +6105,7 @@ func HandleBusiness_get_creditcards(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_customconversions handles the business_post_customconversions tool with context-based auth
 func HandleBusiness_post_customconversions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5985,6 +6135,8 @@ func HandleBusiness_post_customconversions(ctx context.Context, request mcp.Call
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_customconversions(args)
 	if err != nil {
@@ -5999,6 +6151,7 @@ func HandleBusiness_post_customconversions(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_event_source_groups handles the business_get_event_source_groups tool with context-based auth
 func HandleBusiness_get_event_source_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6039,6 +6192,8 @@ func HandleBusiness_get_event_source_groups(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_event_source_groups(args)
 	if err != nil {
@@ -6053,6 +6208,7 @@ func HandleBusiness_get_event_source_groups(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_event_source_groups handles the business_post_event_source_groups tool with context-based auth
 func HandleBusiness_post_event_source_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6082,6 +6238,8 @@ func HandleBusiness_post_event_source_groups(ctx context.Context, request mcp.Ca
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_event_source_groups(args)
 	if err != nil {
@@ -6096,6 +6254,7 @@ func HandleBusiness_post_event_source_groups(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_extendedcreditapplications handles the business_get_extendedcreditapplications tool with context-based auth
 func HandleBusiness_get_extendedcreditapplications(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6148,6 +6307,8 @@ func HandleBusiness_get_extendedcreditapplications(ctx context.Context, request 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_extendedcreditapplications(args)
 	if err != nil {
@@ -6162,6 +6323,7 @@ func HandleBusiness_get_extendedcreditapplications(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_extendedcredits handles the business_get_extendedcredits tool with context-based auth
 func HandleBusiness_get_extendedcredits(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6214,6 +6376,8 @@ func HandleBusiness_get_extendedcredits(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_extendedcredits(args)
 	if err != nil {
@@ -6228,6 +6392,7 @@ func HandleBusiness_get_extendedcredits(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_images handles the business_post_images tool with context-based auth
 func HandleBusiness_post_images(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6257,6 +6422,8 @@ func HandleBusiness_post_images(ctx context.Context, request mcp.CallToolRequest
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_images(args)
 	if err != nil {
@@ -6271,6 +6438,7 @@ func HandleBusiness_post_images(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_initiated_audience_sharing_requests handles the business_get_initiated_audience_sharing_requests tool with context-based auth
 func HandleBusiness_get_initiated_audience_sharing_requests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6323,6 +6491,8 @@ func HandleBusiness_get_initiated_audience_sharing_requests(ctx context.Context,
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_initiated_audience_sharing_requests(args)
 	if err != nil {
@@ -6337,6 +6507,7 @@ func HandleBusiness_get_initiated_audience_sharing_requests(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_delete_instagram_accounts handles the business_delete_instagram_accounts tool with context-based auth
 func HandleBusiness_delete_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6366,6 +6537,8 @@ func HandleBusiness_delete_instagram_accounts(ctx context.Context, request mcp.C
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_delete_instagram_accounts(args)
 	if err != nil {
@@ -6380,6 +6553,7 @@ func HandleBusiness_delete_instagram_accounts(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_instagram_accounts handles the business_get_instagram_accounts tool with context-based auth
 func HandleBusiness_get_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6420,6 +6594,8 @@ func HandleBusiness_get_instagram_accounts(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_instagram_accounts(args)
 	if err != nil {
@@ -6434,6 +6610,7 @@ func HandleBusiness_get_instagram_accounts(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_instagram_business_accounts handles the business_get_instagram_business_accounts tool with context-based auth
 func HandleBusiness_get_instagram_business_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6474,6 +6651,8 @@ func HandleBusiness_get_instagram_business_accounts(ctx context.Context, request
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_instagram_business_accounts(args)
 	if err != nil {
@@ -6488,6 +6667,7 @@ func HandleBusiness_get_instagram_business_accounts(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_delete_managed_businesses handles the business_delete_managed_businesses tool with context-based auth
 func HandleBusiness_delete_managed_businesses(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6517,6 +6697,8 @@ func HandleBusiness_delete_managed_businesses(ctx context.Context, request mcp.C
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_delete_managed_businesses(args)
 	if err != nil {
@@ -6531,6 +6713,7 @@ func HandleBusiness_delete_managed_businesses(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_managed_businesses handles the business_post_managed_businesses tool with context-based auth
 func HandleBusiness_post_managed_businesses(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6558,6 +6741,8 @@ func HandleBusiness_post_managed_businesses(ctx context.Context, request mcp.Cal
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_managed_businesses(args)
 	if err != nil {
@@ -6572,6 +6757,7 @@ func HandleBusiness_post_managed_businesses(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_managed_partner_ads_funding_source_details handles the business_get_managed_partner_ads_funding_source_details tool with context-based auth
 func HandleBusiness_get_managed_partner_ads_funding_source_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6624,6 +6810,8 @@ func HandleBusiness_get_managed_partner_ads_funding_source_details(ctx context.C
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_managed_partner_ads_funding_source_details(args)
 	if err != nil {
@@ -6638,6 +6826,7 @@ func HandleBusiness_get_managed_partner_ads_funding_source_details(ctx context.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_managed_partner_business_setup handles the business_post_managed_partner_business_setup tool with context-based auth
 func HandleBusiness_post_managed_partner_business_setup(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6665,6 +6854,8 @@ func HandleBusiness_post_managed_partner_business_setup(ctx context.Context, req
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_managed_partner_business_setup(args)
 	if err != nil {
@@ -6679,6 +6870,7 @@ func HandleBusiness_post_managed_partner_business_setup(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_delete_managed_partner_businesses handles the business_delete_managed_partner_businesses tool with context-based auth
 func HandleBusiness_delete_managed_partner_businesses(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6706,6 +6898,8 @@ func HandleBusiness_delete_managed_partner_businesses(ctx context.Context, reque
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_delete_managed_partner_businesses(args)
 	if err != nil {
@@ -6720,6 +6914,7 @@ func HandleBusiness_delete_managed_partner_businesses(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_managed_partner_businesses handles the business_post_managed_partner_businesses tool with context-based auth
 func HandleBusiness_post_managed_partner_businesses(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6749,6 +6944,8 @@ func HandleBusiness_post_managed_partner_businesses(ctx context.Context, request
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_managed_partner_businesses(args)
 	if err != nil {
@@ -6763,6 +6960,7 @@ func HandleBusiness_post_managed_partner_businesses(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_onboard_partners_to_mm_lite handles the business_post_onboard_partners_to_mm_lite tool with context-based auth
 func HandleBusiness_post_onboard_partners_to_mm_lite(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6790,6 +6988,8 @@ func HandleBusiness_post_onboard_partners_to_mm_lite(ctx context.Context, reques
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_onboard_partners_to_mm_lite(args)
 	if err != nil {
@@ -6804,6 +7004,7 @@ func HandleBusiness_post_onboard_partners_to_mm_lite(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_openbridge_configurations handles the business_get_openbridge_configurations tool with context-based auth
 func HandleBusiness_get_openbridge_configurations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6844,6 +7045,8 @@ func HandleBusiness_get_openbridge_configurations(ctx context.Context, request m
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_openbridge_configurations(args)
 	if err != nil {
@@ -6858,6 +7061,7 @@ func HandleBusiness_get_openbridge_configurations(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_openbridge_configurations handles the business_post_openbridge_configurations tool with context-based auth
 func HandleBusiness_post_openbridge_configurations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6887,6 +7091,8 @@ func HandleBusiness_post_openbridge_configurations(ctx context.Context, request 
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_openbridge_configurations(args)
 	if err != nil {
@@ -6901,6 +7107,7 @@ func HandleBusiness_post_openbridge_configurations(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_owned_ad_accounts handles the business_get_owned_ad_accounts tool with context-based auth
 func HandleBusiness_get_owned_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6953,6 +7160,8 @@ func HandleBusiness_get_owned_ad_accounts(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_owned_ad_accounts(args)
 	if err != nil {
@@ -6967,6 +7176,7 @@ func HandleBusiness_get_owned_ad_accounts(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_owned_ad_accounts handles the business_post_owned_ad_accounts tool with context-based auth
 func HandleBusiness_post_owned_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -6996,6 +7206,8 @@ func HandleBusiness_post_owned_ad_accounts(ctx context.Context, request mcp.Call
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_owned_ad_accounts(args)
 	if err != nil {
@@ -7010,6 +7222,7 @@ func HandleBusiness_post_owned_ad_accounts(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_owned_apps handles the business_get_owned_apps tool with context-based auth
 func HandleBusiness_get_owned_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7050,6 +7263,8 @@ func HandleBusiness_get_owned_apps(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_owned_apps(args)
 	if err != nil {
@@ -7064,6 +7279,7 @@ func HandleBusiness_get_owned_apps(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_owned_apps handles the business_post_owned_apps tool with context-based auth
 func HandleBusiness_post_owned_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7093,6 +7309,8 @@ func HandleBusiness_post_owned_apps(ctx context.Context, request mcp.CallToolReq
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_owned_apps(args)
 	if err != nil {
@@ -7107,6 +7325,7 @@ func HandleBusiness_post_owned_apps(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_delete_owned_businesses handles the business_delete_owned_businesses tool with context-based auth
 func HandleBusiness_delete_owned_businesses(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7136,6 +7355,8 @@ func HandleBusiness_delete_owned_businesses(ctx context.Context, request mcp.Cal
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_delete_owned_businesses(args)
 	if err != nil {
@@ -7150,6 +7371,7 @@ func HandleBusiness_delete_owned_businesses(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_owned_businesses handles the business_get_owned_businesses tool with context-based auth
 func HandleBusiness_get_owned_businesses(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7202,6 +7424,8 @@ func HandleBusiness_get_owned_businesses(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_owned_businesses(args)
 	if err != nil {
@@ -7216,6 +7440,7 @@ func HandleBusiness_get_owned_businesses(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_owned_businesses handles the business_post_owned_businesses tool with context-based auth
 func HandleBusiness_post_owned_businesses(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7245,6 +7470,8 @@ func HandleBusiness_post_owned_businesses(ctx context.Context, request mcp.CallT
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_owned_businesses(args)
 	if err != nil {
@@ -7259,6 +7486,7 @@ func HandleBusiness_post_owned_businesses(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_owned_instagram_accounts handles the business_get_owned_instagram_accounts tool with context-based auth
 func HandleBusiness_get_owned_instagram_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7299,6 +7527,8 @@ func HandleBusiness_get_owned_instagram_accounts(ctx context.Context, request mc
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_owned_instagram_accounts(args)
 	if err != nil {
@@ -7313,6 +7543,7 @@ func HandleBusiness_get_owned_instagram_accounts(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_owned_offsite_signal_container_business_objects handles the business_get_owned_offsite_signal_container_business_objects tool with context-based auth
 func HandleBusiness_get_owned_offsite_signal_container_business_objects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7353,6 +7584,8 @@ func HandleBusiness_get_owned_offsite_signal_container_business_objects(ctx cont
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_owned_offsite_signal_container_business_objects(args)
 	if err != nil {
@@ -7367,6 +7600,7 @@ func HandleBusiness_get_owned_offsite_signal_container_business_objects(ctx cont
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_owned_pages handles the business_get_owned_pages tool with context-based auth
 func HandleBusiness_get_owned_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7407,6 +7641,8 @@ func HandleBusiness_get_owned_pages(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_owned_pages(args)
 	if err != nil {
@@ -7421,6 +7657,7 @@ func HandleBusiness_get_owned_pages(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_owned_pages handles the business_post_owned_pages tool with context-based auth
 func HandleBusiness_post_owned_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7450,6 +7687,8 @@ func HandleBusiness_post_owned_pages(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_owned_pages(args)
 	if err != nil {
@@ -7464,6 +7703,7 @@ func HandleBusiness_post_owned_pages(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_owned_pixels handles the business_get_owned_pixels tool with context-based auth
 func HandleBusiness_get_owned_pixels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7504,6 +7744,8 @@ func HandleBusiness_get_owned_pixels(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_owned_pixels(args)
 	if err != nil {
@@ -7518,6 +7760,7 @@ func HandleBusiness_get_owned_pixels(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_owned_product_catalogs handles the business_get_owned_product_catalogs tool with context-based auth
 func HandleBusiness_get_owned_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7558,6 +7801,8 @@ func HandleBusiness_get_owned_product_catalogs(ctx context.Context, request mcp.
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_owned_product_catalogs(args)
 	if err != nil {
@@ -7572,6 +7817,7 @@ func HandleBusiness_get_owned_product_catalogs(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_owned_product_catalogs handles the business_post_owned_product_catalogs tool with context-based auth
 func HandleBusiness_post_owned_product_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7601,6 +7847,8 @@ func HandleBusiness_post_owned_product_catalogs(ctx context.Context, request mcp
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_owned_product_catalogs(args)
 	if err != nil {
@@ -7615,6 +7863,7 @@ func HandleBusiness_post_owned_product_catalogs(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_owned_whatsapp_business_accounts handles the business_get_owned_whatsapp_business_accounts tool with context-based auth
 func HandleBusiness_get_owned_whatsapp_business_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7655,6 +7904,8 @@ func HandleBusiness_get_owned_whatsapp_business_accounts(ctx context.Context, re
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_owned_whatsapp_business_accounts(args)
 	if err != nil {
@@ -7669,6 +7920,7 @@ func HandleBusiness_get_owned_whatsapp_business_accounts(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_delete_pages handles the business_delete_pages tool with context-based auth
 func HandleBusiness_delete_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7698,6 +7950,8 @@ func HandleBusiness_delete_pages(ctx context.Context, request mcp.CallToolReques
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_delete_pages(args)
 	if err != nil {
@@ -7712,6 +7966,7 @@ func HandleBusiness_delete_pages(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_partner_account_linking handles the business_get_partner_account_linking tool with context-based auth
 func HandleBusiness_get_partner_account_linking(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7752,6 +8007,8 @@ func HandleBusiness_get_partner_account_linking(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_partner_account_linking(args)
 	if err != nil {
@@ -7766,6 +8023,7 @@ func HandleBusiness_get_partner_account_linking(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_partner_premium_options handles the business_post_partner_premium_options tool with context-based auth
 func HandleBusiness_post_partner_premium_options(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7795,6 +8053,8 @@ func HandleBusiness_post_partner_premium_options(ctx context.Context, request mc
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_partner_premium_options(args)
 	if err != nil {
@@ -7809,6 +8069,7 @@ func HandleBusiness_post_partner_premium_options(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_passback_attribution_metadata_configs handles the business_get_passback_attribution_metadata_configs tool with context-based auth
 func HandleBusiness_get_passback_attribution_metadata_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7849,6 +8110,8 @@ func HandleBusiness_get_passback_attribution_metadata_configs(ctx context.Contex
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_passback_attribution_metadata_configs(args)
 	if err != nil {
@@ -7863,6 +8126,7 @@ func HandleBusiness_get_passback_attribution_metadata_configs(ctx context.Contex
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_pending_client_ad_accounts handles the business_get_pending_client_ad_accounts tool with context-based auth
 func HandleBusiness_get_pending_client_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7903,6 +8167,8 @@ func HandleBusiness_get_pending_client_ad_accounts(ctx context.Context, request 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_pending_client_ad_accounts(args)
 	if err != nil {
@@ -7917,6 +8183,7 @@ func HandleBusiness_get_pending_client_ad_accounts(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_pending_client_apps handles the business_get_pending_client_apps tool with context-based auth
 func HandleBusiness_get_pending_client_apps(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -7957,6 +8224,8 @@ func HandleBusiness_get_pending_client_apps(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_pending_client_apps(args)
 	if err != nil {
@@ -7971,6 +8240,7 @@ func HandleBusiness_get_pending_client_apps(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_pending_client_pages handles the business_get_pending_client_pages tool with context-based auth
 func HandleBusiness_get_pending_client_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8011,6 +8281,8 @@ func HandleBusiness_get_pending_client_pages(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_pending_client_pages(args)
 	if err != nil {
@@ -8025,6 +8297,7 @@ func HandleBusiness_get_pending_client_pages(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_pending_owned_ad_accounts handles the business_get_pending_owned_ad_accounts tool with context-based auth
 func HandleBusiness_get_pending_owned_ad_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8065,6 +8338,8 @@ func HandleBusiness_get_pending_owned_ad_accounts(ctx context.Context, request m
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_pending_owned_ad_accounts(args)
 	if err != nil {
@@ -8079,6 +8354,7 @@ func HandleBusiness_get_pending_owned_ad_accounts(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_pending_owned_pages handles the business_get_pending_owned_pages tool with context-based auth
 func HandleBusiness_get_pending_owned_pages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8119,6 +8395,8 @@ func HandleBusiness_get_pending_owned_pages(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_pending_owned_pages(args)
 	if err != nil {
@@ -8133,6 +8411,7 @@ func HandleBusiness_get_pending_owned_pages(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_pending_shared_offsite_signal_container_business_objects handles the business_get_pending_shared_offsite_signal_container_business_objects tool with context-based auth
 func HandleBusiness_get_pending_shared_offsite_signal_container_business_objects(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8173,6 +8452,8 @@ func HandleBusiness_get_pending_shared_offsite_signal_container_business_objects
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_pending_shared_offsite_signal_container_business_objects(args)
 	if err != nil {
@@ -8187,6 +8468,7 @@ func HandleBusiness_get_pending_shared_offsite_signal_container_business_objects
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_pending_users handles the business_get_pending_users tool with context-based auth
 func HandleBusiness_get_pending_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8239,6 +8521,8 @@ func HandleBusiness_get_pending_users(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_pending_users(args)
 	if err != nil {
@@ -8253,6 +8537,7 @@ func HandleBusiness_get_pending_users(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_picture handles the business_get_picture tool with context-based auth
 func HandleBusiness_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8305,6 +8590,8 @@ func HandleBusiness_get_picture(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_picture(args)
 	if err != nil {
@@ -8320,6 +8607,7 @@ func HandleBusiness_get_picture(ctx context.Context, request mcp.CallToolRequest
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
+
 // HandleBusiness_post_pixel_tos handles the business_post_pixel_tos tool with context-based auth
 func HandleBusiness_post_pixel_tos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -8333,6 +8621,8 @@ func HandleBusiness_post_pixel_tos(ctx context.Context, request mcp.CallToolRequ
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+
 
 	// Call the client method
 	result, err := client.Business_post_pixel_tos(args)
@@ -8348,6 +8638,7 @@ func HandleBusiness_post_pixel_tos(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_preverified_numbers handles the business_get_preverified_numbers tool with context-based auth
 func HandleBusiness_get_preverified_numbers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8400,6 +8691,8 @@ func HandleBusiness_get_preverified_numbers(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_preverified_numbers(args)
 	if err != nil {
@@ -8414,6 +8707,7 @@ func HandleBusiness_get_preverified_numbers(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_received_audience_sharing_requests handles the business_get_received_audience_sharing_requests tool with context-based auth
 func HandleBusiness_get_received_audience_sharing_requests(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8466,6 +8760,8 @@ func HandleBusiness_get_received_audience_sharing_requests(ctx context.Context, 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_received_audience_sharing_requests(args)
 	if err != nil {
@@ -8480,6 +8776,7 @@ func HandleBusiness_get_received_audience_sharing_requests(ctx context.Context, 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_reseller_guidances handles the business_get_reseller_guidances tool with context-based auth
 func HandleBusiness_get_reseller_guidances(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8520,6 +8817,8 @@ func HandleBusiness_get_reseller_guidances(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_reseller_guidances(args)
 	if err != nil {
@@ -8534,6 +8833,7 @@ func HandleBusiness_get_reseller_guidances(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_self_certified_whatsapp_business_submissions handles the business_get_self_certified_whatsapp_business_submissions tool with context-based auth
 func HandleBusiness_get_self_certified_whatsapp_business_submissions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8586,6 +8886,8 @@ func HandleBusiness_get_self_certified_whatsapp_business_submissions(ctx context
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_self_certified_whatsapp_business_submissions(args)
 	if err != nil {
@@ -8600,6 +8902,7 @@ func HandleBusiness_get_self_certified_whatsapp_business_submissions(ctx context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_self_certify_whatsapp_business handles the business_post_self_certify_whatsapp_business tool with context-based auth
 func HandleBusiness_post_self_certify_whatsapp_business(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8629,6 +8932,8 @@ func HandleBusiness_post_self_certify_whatsapp_business(ctx context.Context, req
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_self_certify_whatsapp_business(args)
 	if err != nil {
@@ -8643,6 +8948,7 @@ func HandleBusiness_post_self_certify_whatsapp_business(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_setup_managed_partner_adaccounts handles the business_post_setup_managed_partner_adaccounts tool with context-based auth
 func HandleBusiness_post_setup_managed_partner_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8672,6 +8978,8 @@ func HandleBusiness_post_setup_managed_partner_adaccounts(ctx context.Context, r
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_setup_managed_partner_adaccounts(args)
 	if err != nil {
@@ -8686,6 +8994,7 @@ func HandleBusiness_post_setup_managed_partner_adaccounts(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_delete_share_preverified_numbers handles the business_delete_share_preverified_numbers tool with context-based auth
 func HandleBusiness_delete_share_preverified_numbers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8715,6 +9024,8 @@ func HandleBusiness_delete_share_preverified_numbers(ctx context.Context, reques
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_delete_share_preverified_numbers(args)
 	if err != nil {
@@ -8729,6 +9040,7 @@ func HandleBusiness_delete_share_preverified_numbers(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_share_preverified_numbers handles the business_post_share_preverified_numbers tool with context-based auth
 func HandleBusiness_post_share_preverified_numbers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8758,6 +9070,8 @@ func HandleBusiness_post_share_preverified_numbers(ctx context.Context, request 
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_share_preverified_numbers(args)
 	if err != nil {
@@ -8772,6 +9086,7 @@ func HandleBusiness_post_share_preverified_numbers(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_system_user_access_tokens handles the business_post_system_user_access_tokens tool with context-based auth
 func HandleBusiness_post_system_user_access_tokens(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8799,6 +9114,8 @@ func HandleBusiness_post_system_user_access_tokens(ctx context.Context, request 
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_system_user_access_tokens(args)
 	if err != nil {
@@ -8813,6 +9130,7 @@ func HandleBusiness_post_system_user_access_tokens(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_system_users handles the business_get_system_users tool with context-based auth
 func HandleBusiness_get_system_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8853,6 +9171,8 @@ func HandleBusiness_get_system_users(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_system_users(args)
 	if err != nil {
@@ -8867,6 +9187,7 @@ func HandleBusiness_get_system_users(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_system_users handles the business_post_system_users tool with context-based auth
 func HandleBusiness_post_system_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8896,6 +9217,8 @@ func HandleBusiness_post_system_users(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_system_users(args)
 	if err != nil {
@@ -8910,6 +9233,7 @@ func HandleBusiness_post_system_users(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_third_party_measurement_report_dataset handles the business_get_third_party_measurement_report_dataset tool with context-based auth
 func HandleBusiness_get_third_party_measurement_report_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8950,6 +9274,8 @@ func HandleBusiness_get_third_party_measurement_report_dataset(ctx context.Conte
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_third_party_measurement_report_dataset(args)
 	if err != nil {
@@ -8964,6 +9290,7 @@ func HandleBusiness_get_third_party_measurement_report_dataset(ctx context.Conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_videos handles the business_post_videos tool with context-based auth
 func HandleBusiness_post_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -8993,6 +9320,8 @@ func HandleBusiness_post_videos(ctx context.Context, request mcp.CallToolRequest
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_videos(args)
 	if err != nil {
@@ -9007,6 +9336,7 @@ func HandleBusiness_post_videos(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_get_ handles the business_get_ tool with context-based auth
 func HandleBusiness_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9047,6 +9377,8 @@ func HandleBusiness_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_get_(args)
 	if err != nil {
@@ -9061,6 +9393,7 @@ func HandleBusiness_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusiness_post_ handles the business_post_ tool with context-based auth
 func HandleBusiness_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -9088,6 +9421,8 @@ func HandleBusiness_post_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Business_post_(args)
 	if err != nil {
@@ -9102,3 +9437,4 @@ func HandleBusiness_post_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

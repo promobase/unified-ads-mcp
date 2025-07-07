@@ -5,20 +5,20 @@ package constants
 // AdsImageCropsFields contains field name constants for AdsImageCrops objects
 var AdsImageCropsFields = struct {
 	Field100x100 string
-	Field100x72  string
+	Field100x72 string
 	Field191x100 string
 	Field400x150 string
 	Field400x500 string
 	Field600x360 string
-	Field90x160  string
+	Field90x160 string
 }{
 	Field100x100: "100x100",
-	Field100x72:  "100x72",
+	Field100x72: "100x72",
 	Field191x100: "191x100",
 	Field400x150: "400x150",
 	Field400x500: "400x500",
 	Field600x360: "600x360",
-	Field90x160:  "90x160",
+	Field90x160: "90x160",
 }
 
 // AdsImageCropsFieldsList contains all available fields for AdsImageCrops objects

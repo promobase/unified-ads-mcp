@@ -4,18 +4,18 @@ package constants
 
 // BrandedContentShadowIGMediaIDFields contains field name constants for BrandedContentShadowIGMediaID objects
 var BrandedContentShadowIGMediaIDFields = struct {
-	EligibilityErrors             string
+	EligibilityErrors string
 	HasPermissionForPartnershipAd string
-	Id                            string
-	OwnerId                       string
-	Permalink                     string
+	Id string
+	OwnerId string
+	Permalink string
 	RecommendedCampaignObjectives string
 }{
-	EligibilityErrors:             "eligibility_errors",
+	EligibilityErrors: "eligibility_errors",
 	HasPermissionForPartnershipAd: "has_permission_for_partnership_ad",
-	Id:                            "id",
-	OwnerId:                       "owner_id",
-	Permalink:                     "permalink",
+	Id: "id",
+	OwnerId: "owner_id",
+	Permalink: "permalink",
 	RecommendedCampaignObjectives: "recommended_campaign_objectives",
 }
 

@@ -4,27 +4,27 @@ package constants
 
 // AdCreativeVideoDataCustomOverlaySpecFields contains field name constants for AdCreativeVideoDataCustomOverlaySpec objects
 var AdCreativeVideoDataCustomOverlaySpecFields = struct {
-	BackgroundColor   string
+	BackgroundColor string
 	BackgroundOpacity string
-	Duration          string
-	FloatWithMargin   string
-	FullWidth         string
-	Option            string
-	Position          string
-	Start             string
-	Template          string
-	TextColor         string
+	Duration string
+	FloatWithMargin string
+	FullWidth string
+	Option string
+	Position string
+	Start string
+	Template string
+	TextColor string
 }{
-	BackgroundColor:   "background_color",
+	BackgroundColor: "background_color",
 	BackgroundOpacity: "background_opacity",
-	Duration:          "duration",
-	FloatWithMargin:   "float_with_margin",
-	FullWidth:         "full_width",
-	Option:            "option",
-	Position:          "position",
-	Start:             "start",
-	Template:          "template",
-	TextColor:         "text_color",
+	Duration: "duration",
+	FloatWithMargin: "float_with_margin",
+	FullWidth: "full_width",
+	Option: "option",
+	Position: "position",
+	Start: "start",
+	Template: "template",
+	TextColor: "text_color",
 }
 
 // AdCreativeVideoDataCustomOverlaySpecFieldsList contains all available fields for AdCreativeVideoDataCustomOverlaySpec objects

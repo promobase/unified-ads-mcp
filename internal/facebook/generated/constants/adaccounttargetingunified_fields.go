@@ -6,51 +6,51 @@ package constants
 var AdAccountTargetingUnifiedFields = struct {
 	AudienceSizeLowerBound string
 	AudienceSizeUpperBound string
-	ConversionLift         string
-	Description            string
-	Id                     string
-	Img                    string
-	Info                   string
-	InfoTitle              string
-	IsRecommendation       string
-	Key                    string
-	Link                   string
-	Name                   string
-	Parent                 string
-	Partner                string
-	Path                   string
-	PerformanceRating      string
-	RawName                string
-	RecommendationModel    string
-	SearchInterestId       string
-	Source                 string
-	Spend                  string
-	FieldType              string
-	Valid                  string
+	ConversionLift string
+	Description string
+	Id string
+	Img string
+	Info string
+	InfoTitle string
+	IsRecommendation string
+	Key string
+	Link string
+	Name string
+	Parent string
+	Partner string
+	Path string
+	PerformanceRating string
+	RawName string
+	RecommendationModel string
+	SearchInterestId string
+	Source string
+	Spend string
+	FieldType string
+	Valid string
 }{
 	AudienceSizeLowerBound: "audience_size_lower_bound",
 	AudienceSizeUpperBound: "audience_size_upper_bound",
-	ConversionLift:         "conversion_lift",
-	Description:            "description",
-	Id:                     "id",
-	Img:                    "img",
-	Info:                   "info",
-	InfoTitle:              "info_title",
-	IsRecommendation:       "is_recommendation",
-	Key:                    "key",
-	Link:                   "link",
-	Name:                   "name",
-	Parent:                 "parent",
-	Partner:                "partner",
-	Path:                   "path",
-	PerformanceRating:      "performance_rating",
-	RawName:                "raw_name",
-	RecommendationModel:    "recommendation_model",
-	SearchInterestId:       "search_interest_id",
-	Source:                 "source",
-	Spend:                  "spend",
-	FieldType:              "type",
-	Valid:                  "valid",
+	ConversionLift: "conversion_lift",
+	Description: "description",
+	Id: "id",
+	Img: "img",
+	Info: "info",
+	InfoTitle: "info_title",
+	IsRecommendation: "is_recommendation",
+	Key: "key",
+	Link: "link",
+	Name: "name",
+	Parent: "parent",
+	Partner: "partner",
+	Path: "path",
+	PerformanceRating: "performance_rating",
+	RawName: "raw_name",
+	RecommendationModel: "recommendation_model",
+	SearchInterestId: "search_interest_id",
+	Source: "source",
+	Spend: "spend",
+	FieldType: "type",
+	Valid: "valid",
 }
 
 // AdAccountTargetingUnifiedFieldsList contains all available fields for AdAccountTargetingUnified objects

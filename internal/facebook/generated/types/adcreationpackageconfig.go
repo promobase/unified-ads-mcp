@@ -4,10 +4,10 @@ package types
 
 // AdCreationPackageConfig represents a Facebook AdCreationPackageConfig object
 type AdCreationPackageConfig struct {
-	Api_version                    string `json:"api_version"`
-	Id                             string `json:"id"`
-	Is_eligible_for_default_opt_in bool   `json:"is_eligible_for_default_opt_in"`
-	Objective                      string `json:"objective"`
-	Package_id                     string `json:"package_id"`
-	Status                         string `json:"status"`
+	Api_version string `json:"api_version"`
+	Id string `json:"id"`
+	Is_eligible_for_default_opt_in bool `json:"is_eligible_for_default_opt_in"`
+	Objective string `json:"objective"`
+	Package_id string `json:"package_id"`
+	Status string `json:"status"`
 }

@@ -5,5 +5,5 @@ package types
 // InstagramShoppingMerchantReviewMessage represents a Facebook InstagramShoppingMerchantReviewMessage object
 type InstagramShoppingMerchantReviewMessage struct {
 	Help_url string `json:"help_url"`
-	Message  string `json:"message"`
+	Message string `json:"message"`
 }

@@ -4,32 +4,32 @@ package constants
 
 // MusicWorkCopyrightFields contains field name constants for MusicWorkCopyright objects
 var MusicWorkCopyrightFields = struct {
-	AvailableUiActions                        string
-	ClaimStatus                               string
-	CreationTime                              string
-	DisplayedFbMatchesCount                   string
-	DisplayedIgMatchesCount                   string
-	DisplayedMatchesCount                     string
-	HasRevShareEligibleIsrcs                  string
-	Id                                        string
+	AvailableUiActions string
+	ClaimStatus string
+	CreationTime string
+	DisplayedFbMatchesCount string
+	DisplayedIgMatchesCount string
+	DisplayedMatchesCount string
+	HasRevShareEligibleIsrcs string
+	Id string
 	IsLinkingRequiredToMonetizeForManualClaim string
-	MatchRule                                 string
-	Status                                    string
-	Tags                                      string
-	UpdateTime                                string
+	MatchRule string
+	Status string
+	Tags string
+	UpdateTime string
 }{
-	AvailableUiActions:       "available_ui_actions",
-	ClaimStatus:              "claim_status",
-	CreationTime:             "creation_time",
-	DisplayedFbMatchesCount:  "displayed_fb_matches_count",
-	DisplayedIgMatchesCount:  "displayed_ig_matches_count",
-	DisplayedMatchesCount:    "displayed_matches_count",
+	AvailableUiActions: "available_ui_actions",
+	ClaimStatus: "claim_status",
+	CreationTime: "creation_time",
+	DisplayedFbMatchesCount: "displayed_fb_matches_count",
+	DisplayedIgMatchesCount: "displayed_ig_matches_count",
+	DisplayedMatchesCount: "displayed_matches_count",
 	HasRevShareEligibleIsrcs: "has_rev_share_eligible_isrcs",
-	Id:                       "id",
+	Id: "id",
 	IsLinkingRequiredToMonetizeForManualClaim: "is_linking_required_to_monetize_for_manual_claim",
-	MatchRule:  "match_rule",
-	Status:     "status",
-	Tags:       "tags",
+	MatchRule: "match_rule",
+	Status: "status",
+	Tags: "tags",
 	UpdateTime: "update_time",
 }
 

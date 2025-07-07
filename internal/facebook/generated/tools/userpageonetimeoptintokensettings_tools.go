@@ -17,6 +17,7 @@ import (
 func GetUserPageOneTimeOptInTokenSettingsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// userpageonetimeoptintokensettings_get_ tool
 	// Available fields for UserPageOneTimeOptInTokenSettings: creation_timestamp, next_eligible_time, notification_messages_frequency, notification_messages_reoptin, notification_messages_timezone, notification_messages_token, recipient_id, token_expiry_timestamp, topic_title, user_token_status
 	userpageonetimeoptintokensettings_get_Tool := mcp.NewTool("userpageonetimeoptintokensettings_get_",
@@ -36,10 +37,12 @@ func GetUserPageOneTimeOptInTokenSettingsTools() []mcp.Tool {
 	)
 	tools = append(tools, userpageonetimeoptintokensettings_get_Tool)
 
+
 	return tools
 }
 
 // UserPageOneTimeOptInTokenSettings handlers
+
 
 // HandleUserpageonetimeoptintokensettings_get_ handles the userpageonetimeoptintokensettings_get_ tool with context-based auth
 func HandleUserpageonetimeoptintokensettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleUserpageonetimeoptintokensettings_get_(ctx context.Context, request m
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Userpageonetimeoptintokensettings_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleUserpageonetimeoptintokensettings_get_(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

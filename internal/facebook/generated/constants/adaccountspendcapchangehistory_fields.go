@@ -4,15 +4,15 @@ package constants
 
 // AdAccountSpendCapChangeHistoryFields contains field name constants for AdAccountSpendCapChangeHistory objects
 var AdAccountSpendCapChangeHistoryFields = struct {
-	Action    string
-	SpendCap  string
+	Action string
+	SpendCap string
 	TimeStart string
-	TimeStop  string
+	TimeStop string
 }{
-	Action:    "action",
-	SpendCap:  "spend_cap",
+	Action: "action",
+	SpendCap: "spend_cap",
 	TimeStart: "time_start",
-	TimeStop:  "time_stop",
+	TimeStop: "time_stop",
 }
 
 // AdAccountSpendCapChangeHistoryFieldsList contains all available fields for AdAccountSpendCapChangeHistory objects

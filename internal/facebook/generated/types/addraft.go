@@ -6,19 +6,19 @@ import "time"
 
 // AdDraft represents a Facebook AdDraft object
 type AdDraft struct {
-	Account_id        string                 `json:"account_id"`
-	Api_version       string                 `json:"api_version"`
-	Async_request_set *AdAsyncRequestSet     `json:"async_request_set"`
-	Author_id         string                 `json:"author_id"`
-	Created_by        string                 `json:"created_by"`
-	Draft_version     string                 `json:"draft_version"`
-	Id                string                 `json:"id"`
-	Is_active         bool                   `json:"is_active"`
-	Name              string                 `json:"name"`
-	Ownership_type    string                 `json:"ownership_type"`
-	Publish_status    map[string]interface{} `json:"publish_status"`
-	State             string                 `json:"state"`
-	Summary           string                 `json:"summary"`
-	Time_created      time.Time              `json:"time_created"`
-	Time_updated      time.Time              `json:"time_updated"`
+	Account_id string `json:"account_id"`
+	Api_version string `json:"api_version"`
+	Async_request_set *AdAsyncRequestSet `json:"async_request_set"`
+	Author_id string `json:"author_id"`
+	Created_by string `json:"created_by"`
+	Draft_version string `json:"draft_version"`
+	Id string `json:"id"`
+	Is_active bool `json:"is_active"`
+	Name string `json:"name"`
+	Ownership_type string `json:"ownership_type"`
+	Publish_status map[string]interface{} `json:"publish_status"`
+	State string `json:"state"`
+	Summary string `json:"summary"`
+	Time_created time.Time `json:"time_created"`
+	Time_updated time.Time `json:"time_updated"`
 }

@@ -5,16 +5,16 @@ package constants
 // ShadowIGMediaBuilderFields contains field name constants for ShadowIGMediaBuilder objects
 var ShadowIGMediaBuilderFields = struct {
 	CopyrightCheckStatus string
-	Id                   string
-	Status               string
-	StatusCode           string
-	VideoStatus          string
+	Id string
+	Status string
+	StatusCode string
+	VideoStatus string
 }{
 	CopyrightCheckStatus: "copyright_check_status",
-	Id:                   "id",
-	Status:               "status",
-	StatusCode:           "status_code",
-	VideoStatus:          "video_status",
+	Id: "id",
+	Status: "status",
+	StatusCode: "status_code",
+	VideoStatus: "video_status",
 }
 
 // ShadowIGMediaBuilderFieldsList contains all available fields for ShadowIGMediaBuilder objects

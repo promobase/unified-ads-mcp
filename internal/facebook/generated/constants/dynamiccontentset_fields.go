@@ -5,12 +5,12 @@ package constants
 // DynamicContentSetFields contains field name constants for DynamicContentSet objects
 var DynamicContentSetFields = struct {
 	BusinessId string
-	Id         string
-	Name       string
+	Id string
+	Name string
 }{
 	BusinessId: "business_id",
-	Id:         "id",
-	Name:       "name",
+	Id: "id",
+	Name: "name",
 }
 
 // DynamicContentSetFieldsList contains all available fields for DynamicContentSet objects

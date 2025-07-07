@@ -4,29 +4,29 @@ package constants
 
 // ShadowIGMediaProductTagsFields contains field name constants for ShadowIGMediaProductTags objects
 var ShadowIGMediaProductTagsFields = struct {
-	ImageUrl                string
-	IsCheckout              string
-	MerchantId              string
-	Name                    string
-	PriceString             string
-	ProductId               string
-	ReviewStatus            string
-	StrippedPriceString     string
+	ImageUrl string
+	IsCheckout string
+	MerchantId string
+	Name string
+	PriceString string
+	ProductId string
+	ReviewStatus string
+	StrippedPriceString string
 	StrippedSalePriceString string
-	X                       string
-	Y                       string
+	X string
+	Y string
 }{
-	ImageUrl:                "image_url",
-	IsCheckout:              "is_checkout",
-	MerchantId:              "merchant_id",
-	Name:                    "name",
-	PriceString:             "price_string",
-	ProductId:               "product_id",
-	ReviewStatus:            "review_status",
-	StrippedPriceString:     "stripped_price_string",
+	ImageUrl: "image_url",
+	IsCheckout: "is_checkout",
+	MerchantId: "merchant_id",
+	Name: "name",
+	PriceString: "price_string",
+	ProductId: "product_id",
+	ReviewStatus: "review_status",
+	StrippedPriceString: "stripped_price_string",
 	StrippedSalePriceString: "stripped_sale_price_string",
-	X:                       "x",
-	Y:                       "y",
+	X: "x",
+	Y: "y",
 }
 
 // ShadowIGMediaProductTagsFieldsList contains all available fields for ShadowIGMediaProductTags objects

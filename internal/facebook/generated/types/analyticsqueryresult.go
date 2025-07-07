@@ -5,5 +5,5 @@ package types
 // AnalyticsQueryResult represents a Facebook AnalyticsQueryResult object
 type AnalyticsQueryResult struct {
 	Query_id string `json:"query_id"`
-	Status   string `json:"status"`
+	Status string `json:"status"`
 }

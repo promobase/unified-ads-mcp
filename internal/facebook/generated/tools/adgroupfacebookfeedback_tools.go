@@ -17,6 +17,7 @@ import (
 func GetAdgroupFacebookFeedbackTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// adgroupfacebookfeedback_get_comments tool
 	// Available fields for Comment: admin_creator, application, attachment, can_comment, can_hide, can_like, can_remove, can_reply_privately, comment_count, created_time, from, id, is_hidden, is_private, like_count, live_broadcast_timestamp, message, message_tags, object, parent, permalink_url, private_reply_conversation, user_likes
 	// Params object accepts: order (adgroupfacebookfeedbackcomments_order_enum_param)
@@ -25,9 +26,9 @@ func GetAdgroupFacebookFeedbackTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"order": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "order parameter",
-					"enum":        []string{"chronological", "reverse_chronological"},
+					"enum": []string{ "chronological", "reverse_chronological" },
 				},
 			}),
 			mcp.Description("Parameters object containing: order (enum) [chronological, reverse_chronological]"),
@@ -47,10 +48,12 @@ func GetAdgroupFacebookFeedbackTools() []mcp.Tool {
 	)
 	tools = append(tools, adgroupfacebookfeedback_get_commentsTool)
 
+
 	return tools
 }
 
 // AdgroupFacebookFeedback handlers
+
 
 // HandleAdgroupfacebookfeedback_get_comments handles the adgroupfacebookfeedback_get_comments tool with context-based auth
 func HandleAdgroupfacebookfeedback_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -103,6 +106,8 @@ func HandleAdgroupfacebookfeedback_get_comments(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adgroupfacebookfeedback_get_comments(args)
 	if err != nil {
@@ -117,3 +122,4 @@ func HandleAdgroupfacebookfeedback_get_comments(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

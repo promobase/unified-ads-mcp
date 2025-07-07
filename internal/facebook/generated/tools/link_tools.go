@@ -17,6 +17,7 @@ import (
 func GetLinkTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// link_post_comments tool
 	// Params object accepts: attachment_id (string), attachment_share_url (string), attachment_url (string), comment_privacy_value (linkcomments_comment_privacy_value_enum_param), facepile_mentioned_ids (list<string>), feedback_source (string), is_offline (bool), message (string), nectar_module (string), object_id (string), parent_comment_id (Object), text (string), tracking (string)
 	link_post_commentsTool := mcp.NewTool("link_post_comments",
@@ -24,57 +25,57 @@ func GetLinkTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"attachment_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "attachment_id parameter",
 				},
 				"attachment_share_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "attachment_share_url parameter",
 				},
 				"attachment_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "attachment_url parameter",
 				},
 				"comment_privacy_value": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "comment_privacy_value parameter",
-					"enum":        []string{"DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB"},
+					"enum": []string{ "DECLINED_BY_ADMIN_ASSISTANT", "DEFAULT_PRIVACY", "FRIENDS_AND_POST_OWNER", "FRIENDS_ONLY", "GRAPHQL_MULTIPLE_VALUE_HACK_DO_NOT_USE", "OWNER_OR_COMMENTER", "PENDING_APPROVAL", "REMOVED_BY_ADMIN_ASSISTANT", "SIDE_CONVERSATION", "SIDE_CONVERSATION_AND_POST_OWNER", "SPOTLIGHT_TAB" },
 				},
 				"facepile_mentioned_ids": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "facepile_mentioned_ids parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"feedback_source": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "feedback_source parameter",
 				},
 				"is_offline": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_offline parameter",
 				},
 				"message": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "message parameter",
 				},
 				"nectar_module": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "nectar_module parameter",
 				},
 				"object_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "object_id parameter",
 				},
 				"parent_comment_id": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "parent_comment_id parameter",
 				},
 				"text": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "text parameter",
 				},
 				"tracking": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "tracking parameter",
 				},
 			}),
@@ -121,10 +122,12 @@ func GetLinkTools() []mcp.Tool {
 	)
 	tools = append(tools, link_get_Tool)
 
+
 	return tools
 }
 
 // Link handlers
+
 
 // HandleLink_post_comments handles the link_post_comments tool with context-based auth
 func HandleLink_post_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -152,6 +155,8 @@ func HandleLink_post_comments(ctx context.Context, request mcp.CallToolRequest) 
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Link_post_comments(args)
 	if err != nil {
@@ -166,6 +171,7 @@ func HandleLink_post_comments(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleLink_get_likes handles the link_get_likes tool with context-based auth
 func HandleLink_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -206,6 +212,8 @@ func HandleLink_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Link_get_likes(args)
 	if err != nil {
@@ -220,6 +228,7 @@ func HandleLink_get_likes(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleLink_get_ handles the link_get_ tool with context-based auth
 func HandleLink_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -260,6 +269,8 @@ func HandleLink_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Link_get_(args)
 	if err != nil {
@@ -274,3 +285,4 @@ func HandleLink_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

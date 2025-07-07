@@ -4,15 +4,15 @@ package constants
 
 // AdAccountBusinessConstraintsFields contains field name constants for AdAccountBusinessConstraints objects
 var AdAccountBusinessConstraintsFields = struct {
-	AudienceControls   string
+	AudienceControls string
 	CampaignsWithError string
-	PlacementControls  string
-	Status             string
+	PlacementControls string
+	Status string
 }{
-	AudienceControls:   "audience_controls",
+	AudienceControls: "audience_controls",
 	CampaignsWithError: "campaigns_with_error",
-	PlacementControls:  "placement_controls",
-	Status:             "status",
+	PlacementControls: "placement_controls",
+	Status: "status",
 }
 
 // AdAccountBusinessConstraintsFieldsList contains all available fields for AdAccountBusinessConstraints objects

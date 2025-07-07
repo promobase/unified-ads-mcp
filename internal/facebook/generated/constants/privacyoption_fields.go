@@ -4,19 +4,19 @@ package constants
 
 // PrivacyOptionFields contains field name constants for PrivacyOption objects
 var PrivacyOptionFields = struct {
-	Description         string
-	IconSrc             string
-	Id                  string
+	Description string
+	IconSrc string
+	Id string
 	IsCurrentlySelected string
-	FieldType           string
-	UserId              string
+	FieldType string
+	UserId string
 }{
-	Description:         "description",
-	IconSrc:             "icon_src",
-	Id:                  "id",
+	Description: "description",
+	IconSrc: "icon_src",
+	Id: "id",
 	IsCurrentlySelected: "is_currently_selected",
-	FieldType:           "type",
-	UserId:              "user_id",
+	FieldType: "type",
+	UserId: "user_id",
 }
 
 // PrivacyOptionFieldsList contains all available fields for PrivacyOption objects

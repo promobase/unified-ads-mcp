@@ -4,21 +4,21 @@ package constants
 
 // MediaFingerprintFields contains field name constants for MediaFingerprint objects
 var MediaFingerprintFields = struct {
-	DurationInSec          string
+	DurationInSec string
 	FingerprintContentType string
-	FingerprintType        string
-	Id                     string
-	Metadata               string
-	Title                  string
-	UniversalContentId     string
+	FingerprintType string
+	Id string
+	Metadata string
+	Title string
+	UniversalContentId string
 }{
-	DurationInSec:          "duration_in_sec",
+	DurationInSec: "duration_in_sec",
 	FingerprintContentType: "fingerprint_content_type",
-	FingerprintType:        "fingerprint_type",
-	Id:                     "id",
-	Metadata:               "metadata",
-	Title:                  "title",
-	UniversalContentId:     "universal_content_id",
+	FingerprintType: "fingerprint_type",
+	Id: "id",
+	Metadata: "metadata",
+	Title: "title",
+	UniversalContentId: "universal_content_id",
 }
 
 // MediaFingerprintFieldsList contains all available fields for MediaFingerprint objects

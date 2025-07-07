@@ -5,12 +5,12 @@ package constants
 // CustomAudienceDataSourceFields contains field name constants for CustomAudienceDataSource objects
 var CustomAudienceDataSourceFields = struct {
 	CreationParams string
-	SubType        string
-	FieldType      string
+	SubType string
+	FieldType string
 }{
 	CreationParams: "creation_params",
-	SubType:        "sub_type",
-	FieldType:      "type",
+	SubType: "sub_type",
+	FieldType: "type",
 }
 
 // CustomAudienceDataSourceFieldsList contains all available fields for CustomAudienceDataSource objects

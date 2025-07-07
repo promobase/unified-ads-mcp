@@ -5,10 +5,10 @@ package constants
 // UniqueAdCreativeFields contains field name constants for UniqueAdCreative objects
 var UniqueAdCreativeFields = struct {
 	SampleCreative string
-	VisualHash     string
+	VisualHash string
 }{
 	SampleCreative: "sample_creative",
-	VisualHash:     "visual_hash",
+	VisualHash: "visual_hash",
 }
 
 // UniqueAdCreativeFieldsList contains all available fields for UniqueAdCreative objects

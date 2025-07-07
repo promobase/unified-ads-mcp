@@ -4,16 +4,16 @@ package constants
 
 // MerchantComplianceFields contains field name constants for MerchantCompliance objects
 var MerchantComplianceFields = struct {
-	ActiveCampaigns         string
-	ComplianceStatus        string
-	CountDownStartTime      string
-	Purchase                string
+	ActiveCampaigns string
+	ComplianceStatus string
+	CountDownStartTime string
+	Purchase string
 	PurchaseConversionValue string
 }{
-	ActiveCampaigns:         "active_campaigns",
-	ComplianceStatus:        "compliance_status",
-	CountDownStartTime:      "count_down_start_time",
-	Purchase:                "purchase",
+	ActiveCampaigns: "active_campaigns",
+	ComplianceStatus: "compliance_status",
+	CountDownStartTime: "count_down_start_time",
+	Purchase: "purchase",
 	PurchaseConversionValue: "purchase_conversion_value",
 }
 

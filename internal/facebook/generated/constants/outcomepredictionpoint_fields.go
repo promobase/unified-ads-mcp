@@ -4,15 +4,15 @@ package constants
 
 // OutcomePredictionPointFields contains field name constants for OutcomePredictionPoint objects
 var OutcomePredictionPointFields = struct {
-	Actions     string
+	Actions string
 	Impressions string
-	Reach       string
-	Spend       string
+	Reach string
+	Spend string
 }{
-	Actions:     "actions",
+	Actions: "actions",
 	Impressions: "impressions",
-	Reach:       "reach",
-	Spend:       "spend",
+	Reach: "reach",
+	Spend: "spend",
 }
 
 // OutcomePredictionPointFieldsList contains all available fields for OutcomePredictionPoint objects

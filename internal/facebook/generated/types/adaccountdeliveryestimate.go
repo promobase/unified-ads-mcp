@@ -4,10 +4,10 @@ package types
 
 // AdAccountDeliveryEstimate represents a Facebook AdAccountDeliveryEstimate object
 type AdAccountDeliveryEstimate struct {
-	Daily_outcomes_curve         []OutcomePredictionPoint `json:"daily_outcomes_curve"`
-	Estimate_dau                 int                      `json:"estimate_dau"`
-	Estimate_mau_lower_bound     int                      `json:"estimate_mau_lower_bound"`
-	Estimate_mau_upper_bound     int                      `json:"estimate_mau_upper_bound"`
-	Estimate_ready               bool                     `json:"estimate_ready"`
-	Targeting_optimization_types []interface{}            `json:"targeting_optimization_types"`
+	Daily_outcomes_curve []OutcomePredictionPoint `json:"daily_outcomes_curve"`
+	Estimate_dau int `json:"estimate_dau"`
+	Estimate_mau_lower_bound int `json:"estimate_mau_lower_bound"`
+	Estimate_mau_upper_bound int `json:"estimate_mau_upper_bound"`
+	Estimate_ready bool `json:"estimate_ready"`
+	Targeting_optimization_types []interface{} `json:"targeting_optimization_types"`
 }

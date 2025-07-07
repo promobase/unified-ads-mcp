@@ -4,27 +4,27 @@ package constants
 
 // AdAssetCustomizationRuleCustomizationSpecFields contains field name constants for AdAssetCustomizationRuleCustomizationSpec objects
 var AdAssetCustomizationRuleCustomizationSpecFields = struct {
-	AgeMax                   string
-	AgeMin                   string
+	AgeMax string
+	AgeMin string
 	AudienceNetworkPositions string
-	DevicePlatforms          string
-	FacebookPositions        string
-	GeoLocations             string
-	InstagramPositions       string
-	Locales                  string
-	MessengerPositions       string
-	PublisherPlatforms       string
+	DevicePlatforms string
+	FacebookPositions string
+	GeoLocations string
+	InstagramPositions string
+	Locales string
+	MessengerPositions string
+	PublisherPlatforms string
 }{
-	AgeMax:                   "age_max",
-	AgeMin:                   "age_min",
+	AgeMax: "age_max",
+	AgeMin: "age_min",
 	AudienceNetworkPositions: "audience_network_positions",
-	DevicePlatforms:          "device_platforms",
-	FacebookPositions:        "facebook_positions",
-	GeoLocations:             "geo_locations",
-	InstagramPositions:       "instagram_positions",
-	Locales:                  "locales",
-	MessengerPositions:       "messenger_positions",
-	PublisherPlatforms:       "publisher_platforms",
+	DevicePlatforms: "device_platforms",
+	FacebookPositions: "facebook_positions",
+	GeoLocations: "geo_locations",
+	InstagramPositions: "instagram_positions",
+	Locales: "locales",
+	MessengerPositions: "messenger_positions",
+	PublisherPlatforms: "publisher_platforms",
 }
 
 // AdAssetCustomizationRuleCustomizationSpecFieldsList contains all available fields for AdAssetCustomizationRuleCustomizationSpec objects

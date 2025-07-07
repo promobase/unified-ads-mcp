@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-// SavedAudienceClient provides methods for SavedAudience operations
+// SavedAudienceClient represents a client for SavedAudience operations
 type SavedAudienceClient struct {
 	accessToken string
 }
@@ -21,42 +21,42 @@ func NewSavedAudienceClient(accessToken string) *SavedAudienceClient {
 	}
 }
 
-// savedaudience_get_ GET  for SavedAudience
+
+// Savedaudience_get_ performs GET  for SavedAudience
 func (c *SavedAudienceClient) Savedaudience_get_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -87,3 +87,4 @@ func (c *SavedAudienceClient) Savedaudience_get_(args map[string]interface{}) (i
 
 	return result, nil
 }
+

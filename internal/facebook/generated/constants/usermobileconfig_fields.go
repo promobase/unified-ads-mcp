@@ -5,10 +5,10 @@ package constants
 // UserMobileConfigFields contains field name constants for UserMobileConfig objects
 var UserMobileConfigFields = struct {
 	SectionName string
-	Value       string
+	Value string
 }{
 	SectionName: "section_name",
-	Value:       "value",
+	Value: "value",
 }
 
 // UserMobileConfigFieldsList contains all available fields for UserMobileConfig objects

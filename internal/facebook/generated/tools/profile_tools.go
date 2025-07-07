@@ -17,6 +17,7 @@ import (
 func GetProfileTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// profile_get_picture tool
 	// Available fields for ProfilePictureSource: bottom, cache_key, height, is_silhouette, left, right, top, url, width
 	// Params object accepts: height (int), redirect (bool), type (profilepicture_type_enum_param), width (int)
@@ -25,20 +26,20 @@ func GetProfileTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"height": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "height parameter",
 				},
 				"redirect": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "redirect parameter",
 				},
 				"type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "type parameter",
-					"enum":        []string{"album", "large", "normal", "small", "square"},
+					"enum": []string{ "album", "large", "normal", "small", "square" },
 				},
 				"width": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "width parameter",
 				},
 			}),
@@ -78,10 +79,12 @@ func GetProfileTools() []mcp.Tool {
 	)
 	tools = append(tools, profile_get_Tool)
 
+
 	return tools
 }
 
 // Profile handlers
+
 
 // HandleProfile_get_picture handles the profile_get_picture tool with context-based auth
 func HandleProfile_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -134,6 +137,8 @@ func HandleProfile_get_picture(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Profile_get_picture(args)
 	if err != nil {
@@ -148,6 +153,7 @@ func HandleProfile_get_picture(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProfile_get_ handles the profile_get_ tool with context-based auth
 func HandleProfile_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -188,6 +194,8 @@ func HandleProfile_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Profile_get_(args)
 	if err != nil {
@@ -202,3 +210,4 @@ func HandleProfile_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

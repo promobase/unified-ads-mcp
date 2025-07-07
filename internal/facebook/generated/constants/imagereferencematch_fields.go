@@ -4,41 +4,41 @@ package constants
 
 // ImageReferenceMatchFields contains field name constants for ImageReferenceMatch objects
 var ImageReferenceMatchFields = struct {
-	ConflictingCountries                     string
-	CountryResolutionHistory                 string
-	CreationTime                             string
-	CurrentConflictResolvedCountries         string
-	DisplayedMatchState                      string
-	DisputeFormDataEntriesWithTranslations   string
-	ExpirationTime                           string
-	Id                                       string
-	MatchState                               string
-	MatchedReferenceCopyright                string
-	MatchedReferenceOwner                    string
-	ModificationHistory                      string
-	ReferenceCopyright                       string
-	ReferenceOwner                           string
+	ConflictingCountries string
+	CountryResolutionHistory string
+	CreationTime string
+	CurrentConflictResolvedCountries string
+	DisplayedMatchState string
+	DisputeFormDataEntriesWithTranslations string
+	ExpirationTime string
+	Id string
+	MatchState string
+	MatchedReferenceCopyright string
+	MatchedReferenceOwner string
+	ModificationHistory string
+	ReferenceCopyright string
+	ReferenceOwner string
 	RejectionFormDataEntriesWithTranslations string
-	ResolutionReason                         string
-	UpdateTime                               string
+	ResolutionReason string
+	UpdateTime string
 }{
-	ConflictingCountries:                     "conflicting_countries",
-	CountryResolutionHistory:                 "country_resolution_history",
-	CreationTime:                             "creation_time",
-	CurrentConflictResolvedCountries:         "current_conflict_resolved_countries",
-	DisplayedMatchState:                      "displayed_match_state",
-	DisputeFormDataEntriesWithTranslations:   "dispute_form_data_entries_with_translations",
-	ExpirationTime:                           "expiration_time",
-	Id:                                       "id",
-	MatchState:                               "match_state",
-	MatchedReferenceCopyright:                "matched_reference_copyright",
-	MatchedReferenceOwner:                    "matched_reference_owner",
-	ModificationHistory:                      "modification_history",
-	ReferenceCopyright:                       "reference_copyright",
-	ReferenceOwner:                           "reference_owner",
+	ConflictingCountries: "conflicting_countries",
+	CountryResolutionHistory: "country_resolution_history",
+	CreationTime: "creation_time",
+	CurrentConflictResolvedCountries: "current_conflict_resolved_countries",
+	DisplayedMatchState: "displayed_match_state",
+	DisputeFormDataEntriesWithTranslations: "dispute_form_data_entries_with_translations",
+	ExpirationTime: "expiration_time",
+	Id: "id",
+	MatchState: "match_state",
+	MatchedReferenceCopyright: "matched_reference_copyright",
+	MatchedReferenceOwner: "matched_reference_owner",
+	ModificationHistory: "modification_history",
+	ReferenceCopyright: "reference_copyright",
+	ReferenceOwner: "reference_owner",
 	RejectionFormDataEntriesWithTranslations: "rejection_form_data_entries_with_translations",
-	ResolutionReason:                         "resolution_reason",
-	UpdateTime:                               "update_time",
+	ResolutionReason: "resolution_reason",
+	UpdateTime: "update_time",
 }
 
 // ImageReferenceMatchFieldsList contains all available fields for ImageReferenceMatch objects

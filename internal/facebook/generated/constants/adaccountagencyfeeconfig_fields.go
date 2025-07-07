@@ -5,16 +5,16 @@ package constants
 // AdAccountAgencyFeeConfigFields contains field name constants for AdAccountAgencyFeeConfig objects
 var AdAccountAgencyFeeConfigFields = struct {
 	CanAddAgencyFeeToInvoice string
-	DefaultAgencyFeePct      string
-	Id                       string
-	IsAgencyFeeDisabled      string
-	Status                   string
+	DefaultAgencyFeePct string
+	Id string
+	IsAgencyFeeDisabled string
+	Status string
 }{
 	CanAddAgencyFeeToInvoice: "can_add_agency_fee_to_invoice",
-	DefaultAgencyFeePct:      "default_agency_fee_pct",
-	Id:                       "id",
-	IsAgencyFeeDisabled:      "is_agency_fee_disabled",
-	Status:                   "status",
+	DefaultAgencyFeePct: "default_agency_fee_pct",
+	Id: "id",
+	IsAgencyFeeDisabled: "is_agency_fee_disabled",
+	Status: "status",
 }
 
 // AdAccountAgencyFeeConfigFieldsList contains all available fields for AdAccountAgencyFeeConfig objects

@@ -4,12 +4,12 @@ package constants
 
 // SingleOwnerAdditionalProfileFields contains field name constants for SingleOwnerAdditionalProfile objects
 var SingleOwnerAdditionalProfileFields = struct {
-	Id       string
-	Name     string
+	Id string
+	Name string
 	UserName string
 }{
-	Id:       "id",
-	Name:     "name",
+	Id: "id",
+	Name: "name",
 	UserName: "user_name",
 }
 

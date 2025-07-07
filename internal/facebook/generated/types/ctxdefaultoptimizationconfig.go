@@ -4,7 +4,7 @@ package types
 
 // CTXDefaultOptimizationConfig represents a Facebook CTXDefaultOptimizationConfig object
 type CTXDefaultOptimizationConfig struct {
-	Destination_type  string `json:"destination_type"`
-	Objective         string `json:"objective"`
+	Destination_type string `json:"destination_type"`
+	Objective string `json:"objective"`
 	Optimization_goal string `json:"optimization_goal"`
 }

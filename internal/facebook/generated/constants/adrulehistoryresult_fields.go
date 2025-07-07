@@ -4,12 +4,12 @@ package constants
 
 // AdRuleHistoryResultFields contains field name constants for AdRuleHistoryResult objects
 var AdRuleHistoryResultFields = struct {
-	Actions    string
-	ObjectId   string
+	Actions string
+	ObjectId string
 	ObjectType string
 }{
-	Actions:    "actions",
-	ObjectId:   "object_id",
+	Actions: "actions",
+	ObjectId: "object_id",
 	ObjectType: "object_type",
 }
 

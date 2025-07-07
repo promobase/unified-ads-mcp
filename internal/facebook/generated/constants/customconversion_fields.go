@@ -4,45 +4,45 @@ package constants
 
 // CustomConversionFields contains field name constants for CustomConversion objects
 var CustomConversionFields = struct {
-	AccountId                string
-	AggregationRule          string
-	Business                 string
-	CreationTime             string
-	CustomEventType          string
-	DataSources              string
-	DefaultConversionValue   string
-	Description              string
-	EventSourceType          string
-	FirstFiredTime           string
-	Id                       string
-	IsArchived               string
-	IsUnavailable            string
-	LastFiredTime            string
-	Name                     string
+	AccountId string
+	AggregationRule string
+	Business string
+	CreationTime string
+	CustomEventType string
+	DataSources string
+	DefaultConversionValue string
+	Description string
+	EventSourceType string
+	FirstFiredTime string
+	Id string
+	IsArchived string
+	IsUnavailable string
+	LastFiredTime string
+	Name string
 	OfflineConversionDataSet string
-	Pixel                    string
-	RetentionDays            string
-	Rule                     string
+	Pixel string
+	RetentionDays string
+	Rule string
 }{
-	AccountId:                "account_id",
-	AggregationRule:          "aggregation_rule",
-	Business:                 "business",
-	CreationTime:             "creation_time",
-	CustomEventType:          "custom_event_type",
-	DataSources:              "data_sources",
-	DefaultConversionValue:   "default_conversion_value",
-	Description:              "description",
-	EventSourceType:          "event_source_type",
-	FirstFiredTime:           "first_fired_time",
-	Id:                       "id",
-	IsArchived:               "is_archived",
-	IsUnavailable:            "is_unavailable",
-	LastFiredTime:            "last_fired_time",
-	Name:                     "name",
+	AccountId: "account_id",
+	AggregationRule: "aggregation_rule",
+	Business: "business",
+	CreationTime: "creation_time",
+	CustomEventType: "custom_event_type",
+	DataSources: "data_sources",
+	DefaultConversionValue: "default_conversion_value",
+	Description: "description",
+	EventSourceType: "event_source_type",
+	FirstFiredTime: "first_fired_time",
+	Id: "id",
+	IsArchived: "is_archived",
+	IsUnavailable: "is_unavailable",
+	LastFiredTime: "last_fired_time",
+	Name: "name",
 	OfflineConversionDataSet: "offline_conversion_data_set",
-	Pixel:                    "pixel",
-	RetentionDays:            "retention_days",
-	Rule:                     "rule",
+	Pixel: "pixel",
+	RetentionDays: "retention_days",
+	Rule: "rule",
 }
 
 // CustomConversionFieldsList contains all available fields for CustomConversion objects

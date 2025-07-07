@@ -4,15 +4,15 @@ package constants
 
 // CurrencyAmountFields contains field name constants for CurrencyAmount objects
 var CurrencyAmountFields = struct {
-	Amount             string
+	Amount string
 	AmountInHundredths string
-	Currency           string
-	OffsettedAmount    string
+	Currency string
+	OffsettedAmount string
 }{
-	Amount:             "amount",
+	Amount: "amount",
 	AmountInHundredths: "amount_in_hundredths",
-	Currency:           "currency",
-	OffsettedAmount:    "offsetted_amount",
+	Currency: "currency",
+	OffsettedAmount: "offsetted_amount",
 }
 
 // CurrencyAmountFieldsList contains all available fields for CurrencyAmount objects

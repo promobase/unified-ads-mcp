@@ -6,20 +6,20 @@ import "time"
 
 // IGMediaForIGOnlyAPI represents a Facebook IGMediaForIGOnlyAPI object
 type IGMediaForIGOnlyAPI struct {
-	Alt_text           string    `json:"alt_text"`
-	Caption            string    `json:"caption"`
-	Comments_count     int       `json:"comments_count"`
-	Id                 string    `json:"id"`
-	Is_comment_enabled bool      `json:"is_comment_enabled"`
-	Is_shared_to_feed  bool      `json:"is_shared_to_feed"`
-	Like_count         int       `json:"like_count"`
-	Media_product_type string    `json:"media_product_type"`
-	Media_type         string    `json:"media_type"`
-	Media_url          string    `json:"media_url"`
-	Owner              *User     `json:"owner"`
-	Permalink          string    `json:"permalink"`
-	Shortcode          string    `json:"shortcode"`
-	Thumbnail_url      string    `json:"thumbnail_url"`
-	Timestamp          time.Time `json:"timestamp"`
-	Username           string    `json:"username"`
+	Alt_text string `json:"alt_text"`
+	Caption string `json:"caption"`
+	Comments_count int `json:"comments_count"`
+	Id string `json:"id"`
+	Is_comment_enabled bool `json:"is_comment_enabled"`
+	Is_shared_to_feed bool `json:"is_shared_to_feed"`
+	Like_count int `json:"like_count"`
+	Media_product_type string `json:"media_product_type"`
+	Media_type string `json:"media_type"`
+	Media_url string `json:"media_url"`
+	Owner *User `json:"owner"`
+	Permalink string `json:"permalink"`
+	Shortcode string `json:"shortcode"`
+	Thumbnail_url string `json:"thumbnail_url"`
+	Timestamp time.Time `json:"timestamp"`
+	Username string `json:"username"`
 }

@@ -5,20 +5,20 @@ package constants
 // AudioSubLabelFields contains field name constants for AudioSubLabel objects
 var AudioSubLabelFields = struct {
 	ExpirationTimestamp string
-	FlaggedTimestamp    string
-	Id                  string
-	LabelName           string
+	FlaggedTimestamp string
+	Id string
+	LabelName string
 	LastUpdateTimestamp string
-	NumAudioTracks      string
-	State               string
+	NumAudioTracks string
+	State string
 }{
 	ExpirationTimestamp: "expiration_timestamp",
-	FlaggedTimestamp:    "flagged_timestamp",
-	Id:                  "id",
-	LabelName:           "label_name",
+	FlaggedTimestamp: "flagged_timestamp",
+	Id: "id",
+	LabelName: "label_name",
 	LastUpdateTimestamp: "last_update_timestamp",
-	NumAudioTracks:      "num_audio_tracks",
-	State:               "state",
+	NumAudioTracks: "num_audio_tracks",
+	State: "state",
 }
 
 // AudioSubLabelFieldsList contains all available fields for AudioSubLabel objects

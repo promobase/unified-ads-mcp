@@ -5,10 +5,10 @@ package constants
 // AIGeneratedProductImageFields contains field name constants for AIGeneratedProductImage objects
 var AIGeneratedProductImageFields = struct {
 	FlaggedForManualReview string
-	TransformedImageUrl    string
+	TransformedImageUrl string
 }{
 	FlaggedForManualReview: "flagged_for_manual_review",
-	TransformedImageUrl:    "transformed_image_url",
+	TransformedImageUrl: "transformed_image_url",
 }
 
 // AIGeneratedProductImageFieldsList contains all available fields for AIGeneratedProductImage objects

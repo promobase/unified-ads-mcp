@@ -4,14 +4,14 @@ package constants
 
 // AdPlacePageSetMetadataFields contains field name constants for AdPlacePageSetMetadata objects
 var AdPlacePageSetMetadataFields = struct {
-	Audience    string
-	Custom      string
-	ExtraData   string
+	Audience string
+	Custom string
+	ExtraData string
 	FixedRadius string
 }{
-	Audience:    "audience",
-	Custom:      "custom",
-	ExtraData:   "extra_data",
+	Audience: "audience",
+	Custom: "custom",
+	ExtraData: "extra_data",
 	FixedRadius: "fixed_radius",
 }
 

@@ -4,47 +4,47 @@ package constants
 
 // TransactableItemFields contains field name constants for TransactableItem objects
 var TransactableItemFields = struct {
-	ActionTitle            string
-	Applinks               string
+	ActionTitle string
+	Applinks string
 	CategorySpecificFields string
-	Currency               string
-	Description            string
-	DurationTime           string
-	DurationType           string
-	Id                     string
-	ImageFetchStatus       string
-	Images                 string
-	OrderIndex             string
-	Price                  string
-	PriceType              string
-	SanitizedImages        string
-	SessionType            string
-	TimePaddingAfterEnd    string
-	Title                  string
-	TransactableItemId     string
-	Url                    string
-	Visibility             string
+	Currency string
+	Description string
+	DurationTime string
+	DurationType string
+	Id string
+	ImageFetchStatus string
+	Images string
+	OrderIndex string
+	Price string
+	PriceType string
+	SanitizedImages string
+	SessionType string
+	TimePaddingAfterEnd string
+	Title string
+	TransactableItemId string
+	Url string
+	Visibility string
 }{
-	ActionTitle:            "action_title",
-	Applinks:               "applinks",
+	ActionTitle: "action_title",
+	Applinks: "applinks",
 	CategorySpecificFields: "category_specific_fields",
-	Currency:               "currency",
-	Description:            "description",
-	DurationTime:           "duration_time",
-	DurationType:           "duration_type",
-	Id:                     "id",
-	ImageFetchStatus:       "image_fetch_status",
-	Images:                 "images",
-	OrderIndex:             "order_index",
-	Price:                  "price",
-	PriceType:              "price_type",
-	SanitizedImages:        "sanitized_images",
-	SessionType:            "session_type",
-	TimePaddingAfterEnd:    "time_padding_after_end",
-	Title:                  "title",
-	TransactableItemId:     "transactable_item_id",
-	Url:                    "url",
-	Visibility:             "visibility",
+	Currency: "currency",
+	Description: "description",
+	DurationTime: "duration_time",
+	DurationType: "duration_type",
+	Id: "id",
+	ImageFetchStatus: "image_fetch_status",
+	Images: "images",
+	OrderIndex: "order_index",
+	Price: "price",
+	PriceType: "price_type",
+	SanitizedImages: "sanitized_images",
+	SessionType: "session_type",
+	TimePaddingAfterEnd: "time_padding_after_end",
+	Title: "title",
+	TransactableItemId: "transactable_item_id",
+	Url: "url",
+	Visibility: "visibility",
 }
 
 // TransactableItemFieldsList contains all available fields for TransactableItem objects

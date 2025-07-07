@@ -4,10 +4,10 @@ package constants
 
 // RevSharePolicyFields contains field name constants for RevSharePolicy objects
 var RevSharePolicyFields = struct {
-	PolicyId   string
+	PolicyId string
 	PolicyName string
 }{
-	PolicyId:   "policy_id",
+	PolicyId: "policy_id",
 	PolicyName: "policy_name",
 }
 

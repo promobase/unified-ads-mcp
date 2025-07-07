@@ -5,10 +5,10 @@ package constants
 // UserDeviceFields contains field name constants for UserDevice objects
 var UserDeviceFields = struct {
 	Hardware string
-	Os       string
+	Os string
 }{
 	Hardware: "hardware",
-	Os:       "os",
+	Os: "os",
 }
 
 // UserDeviceFieldsList contains all available fields for UserDevice objects

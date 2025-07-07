@@ -4,12 +4,12 @@ package constants
 
 // AdBidAdjustmentsFields contains field name constants for AdBidAdjustments objects
 var AdBidAdjustmentsFields = struct {
-	AgeRange   string
-	PageTypes  string
+	AgeRange string
+	PageTypes string
 	UserGroups string
 }{
-	AgeRange:   "age_range",
-	PageTypes:  "page_types",
+	AgeRange: "age_range",
+	PageTypes: "page_types",
 	UserGroups: "user_groups",
 }
 

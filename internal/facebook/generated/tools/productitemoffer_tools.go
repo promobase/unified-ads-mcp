@@ -17,6 +17,7 @@ import (
 func GetProductItemOfferTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// productitemoffer_get_ tool
 	// Available fields for ProductItemOffer: availability_area, availability_radius, id
 	productitemoffer_get_Tool := mcp.NewTool("productitemoffer_get_",
@@ -36,10 +37,12 @@ func GetProductItemOfferTools() []mcp.Tool {
 	)
 	tools = append(tools, productitemoffer_get_Tool)
 
+
 	return tools
 }
 
 // ProductItemOffer handlers
+
 
 // HandleProductitemoffer_get_ handles the productitemoffer_get_ tool with context-based auth
 func HandleProductitemoffer_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleProductitemoffer_get_(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productitemoffer_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleProductitemoffer_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -17,6 +17,7 @@ import (
 func GetWhatsAppBusinessPreVerifiedPhoneNumberTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// whatsappbusinesspreverifiedphonenumber_get_partners tool
 	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	whatsappbusinesspreverifiedphonenumber_get_partnersTool := mcp.NewTool("whatsappbusinesspreverifiedphonenumber_get_partners",
@@ -44,15 +45,15 @@ func GetWhatsAppBusinessPreVerifiedPhoneNumberTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"code_method": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "code_method parameter",
-					"required":    true,
-					"enum":        []string{"SMS", "VOICE"},
+					"required": true,
+					"enum": []string{ "SMS", "VOICE" },
 				},
 				"language": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "language parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: code_method (enum) [SMS, VOICE] [required], language (string) [required]"),
@@ -68,9 +69,9 @@ func GetWhatsAppBusinessPreVerifiedPhoneNumberTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"code": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "code parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: code (string) [required]"),
@@ -103,10 +104,12 @@ func GetWhatsAppBusinessPreVerifiedPhoneNumberTools() []mcp.Tool {
 	)
 	tools = append(tools, whatsappbusinesspreverifiedphonenumber_get_Tool)
 
+
 	return tools
 }
 
 // WhatsAppBusinessPreVerifiedPhoneNumber handlers
+
 
 // HandleWhatsappbusinesspreverifiedphonenumber_get_partners handles the whatsappbusinesspreverifiedphonenumber_get_partners tool with context-based auth
 func HandleWhatsappbusinesspreverifiedphonenumber_get_partners(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -147,6 +150,8 @@ func HandleWhatsappbusinesspreverifiedphonenumber_get_partners(ctx context.Conte
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Whatsappbusinesspreverifiedphonenumber_get_partners(args)
 	if err != nil {
@@ -161,6 +166,7 @@ func HandleWhatsappbusinesspreverifiedphonenumber_get_partners(ctx context.Conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleWhatsappbusinesspreverifiedphonenumber_post_request_code handles the whatsappbusinesspreverifiedphonenumber_post_request_code tool with context-based auth
 func HandleWhatsappbusinesspreverifiedphonenumber_post_request_code(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -190,6 +196,8 @@ func HandleWhatsappbusinesspreverifiedphonenumber_post_request_code(ctx context.
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Whatsappbusinesspreverifiedphonenumber_post_request_code(args)
 	if err != nil {
@@ -204,6 +212,7 @@ func HandleWhatsappbusinesspreverifiedphonenumber_post_request_code(ctx context.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleWhatsappbusinesspreverifiedphonenumber_post_verify_code handles the whatsappbusinesspreverifiedphonenumber_post_verify_code tool with context-based auth
 func HandleWhatsappbusinesspreverifiedphonenumber_post_verify_code(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -233,6 +242,8 @@ func HandleWhatsappbusinesspreverifiedphonenumber_post_verify_code(ctx context.C
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Whatsappbusinesspreverifiedphonenumber_post_verify_code(args)
 	if err != nil {
@@ -248,6 +259,7 @@ func HandleWhatsappbusinesspreverifiedphonenumber_post_verify_code(ctx context.C
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
+
 // HandleWhatsappbusinesspreverifiedphonenumber_delete_ handles the whatsappbusinesspreverifiedphonenumber_delete_ tool with context-based auth
 func HandleWhatsappbusinesspreverifiedphonenumber_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -261,6 +273,8 @@ func HandleWhatsappbusinesspreverifiedphonenumber_delete_(ctx context.Context, r
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+
 
 	// Call the client method
 	result, err := client.Whatsappbusinesspreverifiedphonenumber_delete_(args)
@@ -276,6 +290,7 @@ func HandleWhatsappbusinesspreverifiedphonenumber_delete_(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleWhatsappbusinesspreverifiedphonenumber_get_ handles the whatsappbusinesspreverifiedphonenumber_get_ tool with context-based auth
 func HandleWhatsappbusinesspreverifiedphonenumber_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -316,6 +331,8 @@ func HandleWhatsappbusinesspreverifiedphonenumber_get_(ctx context.Context, requ
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Whatsappbusinesspreverifiedphonenumber_get_(args)
 	if err != nil {
@@ -330,3 +347,4 @@ func HandleWhatsappbusinesspreverifiedphonenumber_get_(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

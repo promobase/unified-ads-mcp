@@ -4,23 +4,23 @@ package constants
 
 // AdCreativeSiteLinksSpecFields contains field name constants for AdCreativeSiteLinksSpec objects
 var AdCreativeSiteLinksSpecFields = struct {
-	IsSiteLinkSticky           string
-	SiteLinkHash               string
-	SiteLinkId                 string
-	SiteLinkImageHash          string
-	SiteLinkImageUrl           string
+	IsSiteLinkSticky string
+	SiteLinkHash string
+	SiteLinkId string
+	SiteLinkImageHash string
+	SiteLinkImageUrl string
 	SiteLinkRecommendationType string
-	SiteLinkTitle              string
-	SiteLinkUrl                string
+	SiteLinkTitle string
+	SiteLinkUrl string
 }{
-	IsSiteLinkSticky:           "is_site_link_sticky",
-	SiteLinkHash:               "site_link_hash",
-	SiteLinkId:                 "site_link_id",
-	SiteLinkImageHash:          "site_link_image_hash",
-	SiteLinkImageUrl:           "site_link_image_url",
+	IsSiteLinkSticky: "is_site_link_sticky",
+	SiteLinkHash: "site_link_hash",
+	SiteLinkId: "site_link_id",
+	SiteLinkImageHash: "site_link_image_hash",
+	SiteLinkImageUrl: "site_link_image_url",
 	SiteLinkRecommendationType: "site_link_recommendation_type",
-	SiteLinkTitle:              "site_link_title",
-	SiteLinkUrl:                "site_link_url",
+	SiteLinkTitle: "site_link_title",
+	SiteLinkUrl: "site_link_url",
 }
 
 // AdCreativeSiteLinksSpecFieldsList contains all available fields for AdCreativeSiteLinksSpec objects

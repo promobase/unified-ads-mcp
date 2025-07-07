@@ -4,13 +4,13 @@ package constants
 
 // IGProductTaggingInvalidationErrorFields contains field name constants for IGProductTaggingInvalidationError objects
 var IGProductTaggingInvalidationErrorFields = struct {
-	Description      string
+	Description string
 	TaggabilityState string
-	Title            string
+	Title string
 }{
-	Description:      "description",
+	Description: "description",
 	TaggabilityState: "taggability_state",
-	Title:            "title",
+	Title: "title",
 }
 
 // IGProductTaggingInvalidationErrorFieldsList contains all available fields for IGProductTaggingInvalidationError objects

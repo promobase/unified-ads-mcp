@@ -4,10 +4,10 @@ package constants
 
 // IDNameFields contains field name constants for IDName objects
 var IDNameFields = struct {
-	Id   string
+	Id string
 	Name string
 }{
-	Id:   "id",
+	Id: "id",
 	Name: "name",
 }
 

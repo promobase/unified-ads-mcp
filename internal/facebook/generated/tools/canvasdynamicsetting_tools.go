@@ -17,6 +17,7 @@ import (
 func GetCanvasDynamicSettingTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// canvasdynamicsetting_get_ tool
 	// Available fields for CanvasDynamicSetting: child_documents, product_set_id
 	canvasdynamicsetting_get_Tool := mcp.NewTool("canvasdynamicsetting_get_",
@@ -36,10 +37,12 @@ func GetCanvasDynamicSettingTools() []mcp.Tool {
 	)
 	tools = append(tools, canvasdynamicsetting_get_Tool)
 
+
 	return tools
 }
 
 // CanvasDynamicSetting handlers
+
 
 // HandleCanvasdynamicsetting_get_ handles the canvasdynamicsetting_get_ tool with context-based auth
 func HandleCanvasdynamicsetting_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleCanvasdynamicsetting_get_(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Canvasdynamicsetting_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleCanvasdynamicsetting_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

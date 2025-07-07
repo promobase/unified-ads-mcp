@@ -5,20 +5,20 @@ package constants
 // ShopFields contains field name constants for Shop objects
 var ShopFields = struct {
 	CommerceMerchantSettings string
-	FbSalesChannel           string
-	Id                       string
-	IgSalesChannel           string
-	IsOnsiteEnabled          string
-	ShopStatus               string
-	Workspace                string
+	FbSalesChannel string
+	Id string
+	IgSalesChannel string
+	IsOnsiteEnabled string
+	ShopStatus string
+	Workspace string
 }{
 	CommerceMerchantSettings: "commerce_merchant_settings",
-	FbSalesChannel:           "fb_sales_channel",
-	Id:                       "id",
-	IgSalesChannel:           "ig_sales_channel",
-	IsOnsiteEnabled:          "is_onsite_enabled",
-	ShopStatus:               "shop_status",
-	Workspace:                "workspace",
+	FbSalesChannel: "fb_sales_channel",
+	Id: "id",
+	IgSalesChannel: "ig_sales_channel",
+	IsOnsiteEnabled: "is_onsite_enabled",
+	ShopStatus: "shop_status",
+	Workspace: "workspace",
 }
 
 // ShopFieldsList contains all available fields for Shop objects

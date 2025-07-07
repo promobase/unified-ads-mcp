@@ -4,12 +4,12 @@ package constants
 
 // WhatsAppBusinessProfileFields contains field name constants for WhatsAppBusinessProfile objects
 var WhatsAppBusinessProfileFields = struct {
-	Id                      string
-	NameVerification        string
+	Id string
+	NameVerification string
 	WhatsappBusinessApiData string
 }{
-	Id:                      "id",
-	NameVerification:        "name_verification",
+	Id: "id",
+	NameVerification: "name_verification",
 	WhatsappBusinessApiData: "whatsapp_business_api_data",
 }
 

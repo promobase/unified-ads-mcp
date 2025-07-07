@@ -4,8 +4,8 @@ package types
 
 // EventExternalTicketInfo represents a Facebook EventExternalTicketInfo object
 type EventExternalTicketInfo struct {
-	Id              string          `json:"id"`
+	Id string `json:"id"`
 	Max_sales_price *CurrencyAmount `json:"max_sales_price"`
 	Min_sales_price *CurrencyAmount `json:"min_sales_price"`
-	Sales_status    string          `json:"sales_status"`
+	Sales_status string `json:"sales_status"`
 }

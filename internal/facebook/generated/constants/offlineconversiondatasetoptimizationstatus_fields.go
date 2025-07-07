@@ -4,15 +4,15 @@ package constants
 
 // OfflineConversionDataSetOptimizationStatusFields contains field name constants for OfflineConversionDataSetOptimizationStatus objects
 var OfflineConversionDataSetOptimizationStatusFields = struct {
-	Event            string
-	LastChangedTime  string
+	Event string
+	LastChangedTime string
 	LastDetectedTime string
-	Status           string
+	Status string
 }{
-	Event:            "event",
-	LastChangedTime:  "last_changed_time",
+	Event: "event",
+	LastChangedTime: "last_changed_time",
 	LastDetectedTime: "last_detected_time",
-	Status:           "status",
+	Status: "status",
 }
 
 // OfflineConversionDataSetOptimizationStatusFieldsList contains all available fields for OfflineConversionDataSetOptimizationStatus objects

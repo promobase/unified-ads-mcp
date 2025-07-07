@@ -17,6 +17,7 @@ import (
 func GetHotelRoomTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// hotelroom_get_pricing_variables tool
 	// Available fields for DynamicPriceConfigByDate: checkin_date, prices, prices_pretty
 	hotelroom_get_pricing_variablesTool := mcp.NewTool("hotelroom_get_pricing_variables",
@@ -55,10 +56,12 @@ func GetHotelRoomTools() []mcp.Tool {
 	)
 	tools = append(tools, hotelroom_get_Tool)
 
+
 	return tools
 }
 
 // HotelRoom handlers
+
 
 // HandleHotelroom_get_pricing_variables handles the hotelroom_get_pricing_variables tool with context-based auth
 func HandleHotelroom_get_pricing_variables(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -99,6 +102,8 @@ func HandleHotelroom_get_pricing_variables(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Hotelroom_get_pricing_variables(args)
 	if err != nil {
@@ -113,6 +118,7 @@ func HandleHotelroom_get_pricing_variables(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleHotelroom_get_ handles the hotelroom_get_ tool with context-based auth
 func HandleHotelroom_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -153,6 +159,8 @@ func HandleHotelroom_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Hotelroom_get_(args)
 	if err != nil {
@@ -167,3 +175,4 @@ func HandleHotelroom_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

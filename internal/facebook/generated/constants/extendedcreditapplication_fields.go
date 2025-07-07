@@ -4,57 +4,57 @@ package constants
 
 // ExtendedCreditApplicationFields contains field name constants for ExtendedCreditApplication objects
 var ExtendedCreditApplicationFields = struct {
-	BillingCountry      string
-	City                string
-	Cnpj                string
-	Country             string
-	DisplayCurrency     string
-	DunsNumber          string
-	Id                  string
+	BillingCountry string
+	City string
+	Cnpj string
+	Country string
+	DisplayCurrency string
+	DunsNumber string
+	Id string
 	InvoiceEmailAddress string
-	IsUmi               string
-	LegalEntityName     string
+	IsUmi string
+	LegalEntityName string
 	OriginalOnlineLimit string
-	PhoneNumber         string
-	PostalCode          string
-	ProductTypes        string
+	PhoneNumber string
+	PostalCode string
+	ProductTypes string
 	ProposedCreditLimit string
-	RegistrationNumber  string
-	RunId               string
-	State               string
-	Status              string
-	Street1             string
-	Street2             string
-	Submitter           string
-	TaxExemptStatus     string
-	TaxId               string
-	Terms               string
+	RegistrationNumber string
+	RunId string
+	State string
+	Status string
+	Street1 string
+	Street2 string
+	Submitter string
+	TaxExemptStatus string
+	TaxId string
+	Terms string
 }{
-	BillingCountry:      "billing_country",
-	City:                "city",
-	Cnpj:                "cnpj",
-	Country:             "country",
-	DisplayCurrency:     "display_currency",
-	DunsNumber:          "duns_number",
-	Id:                  "id",
+	BillingCountry: "billing_country",
+	City: "city",
+	Cnpj: "cnpj",
+	Country: "country",
+	DisplayCurrency: "display_currency",
+	DunsNumber: "duns_number",
+	Id: "id",
 	InvoiceEmailAddress: "invoice_email_address",
-	IsUmi:               "is_umi",
-	LegalEntityName:     "legal_entity_name",
+	IsUmi: "is_umi",
+	LegalEntityName: "legal_entity_name",
 	OriginalOnlineLimit: "original_online_limit",
-	PhoneNumber:         "phone_number",
-	PostalCode:          "postal_code",
-	ProductTypes:        "product_types",
+	PhoneNumber: "phone_number",
+	PostalCode: "postal_code",
+	ProductTypes: "product_types",
 	ProposedCreditLimit: "proposed_credit_limit",
-	RegistrationNumber:  "registration_number",
-	RunId:               "run_id",
-	State:               "state",
-	Status:              "status",
-	Street1:             "street1",
-	Street2:             "street2",
-	Submitter:           "submitter",
-	TaxExemptStatus:     "tax_exempt_status",
-	TaxId:               "tax_id",
-	Terms:               "terms",
+	RegistrationNumber: "registration_number",
+	RunId: "run_id",
+	State: "state",
+	Status: "status",
+	Street1: "street1",
+	Street2: "street2",
+	Submitter: "submitter",
+	TaxExemptStatus: "tax_exempt_status",
+	TaxId: "tax_id",
+	Terms: "terms",
 }
 
 // ExtendedCreditApplicationFieldsList contains all available fields for ExtendedCreditApplication objects

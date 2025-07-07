@@ -4,14 +4,14 @@ package constants
 
 // AdvertiserVerificationStatusFields contains field name constants for AdvertiserVerificationStatus objects
 var AdvertiserVerificationStatusFields = struct {
-	BannerType         string
-	GracePeriodEndsAt  string
-	UfacRedirectUri    string
+	BannerType string
+	GracePeriodEndsAt string
+	UfacRedirectUri string
 	VerificationStatus string
 }{
-	BannerType:         "banner_type",
-	GracePeriodEndsAt:  "grace_period_ends_at",
-	UfacRedirectUri:    "ufac_redirect_uri",
+	BannerType: "banner_type",
+	GracePeriodEndsAt: "grace_period_ends_at",
+	UfacRedirectUri: "ufac_redirect_uri",
 	VerificationStatus: "verification_status",
 }
 

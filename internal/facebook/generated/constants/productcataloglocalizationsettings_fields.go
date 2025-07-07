@@ -4,13 +4,13 @@ package constants
 
 // ProductCatalogLocalizationSettingsFields contains field name constants for ProductCatalogLocalizationSettings objects
 var ProductCatalogLocalizationSettingsFields = struct {
-	DefaultCountry  string
+	DefaultCountry string
 	DefaultLanguage string
-	Id              string
+	Id string
 }{
-	DefaultCountry:  "default_country",
+	DefaultCountry: "default_country",
 	DefaultLanguage: "default_language",
-	Id:              "id",
+	Id: "id",
 }
 
 // ProductCatalogLocalizationSettingsFieldsList contains all available fields for ProductCatalogLocalizationSettings objects

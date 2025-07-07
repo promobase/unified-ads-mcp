@@ -4,9 +4,9 @@ package types
 
 // AdsReportBuilderMMMReportScheduler represents a Facebook AdsReportBuilderMMMReportScheduler object
 type AdsReportBuilderMMMReportScheduler struct {
-	Ad_account_ids     []string                 `json:"ad_account_ids"`
-	Filtering          []map[string]interface{} `json:"filtering"`
-	Id                 string                   `json:"id"`
-	Report_name        string                   `json:"report_name"`
-	Schedule_frequency string                   `json:"schedule_frequency"`
+	Ad_account_ids []string `json:"ad_account_ids"`
+	Filtering []map[string]interface{} `json:"filtering"`
+	Id string `json:"id"`
+	Report_name string `json:"report_name"`
+	Schedule_frequency string `json:"schedule_frequency"`
 }

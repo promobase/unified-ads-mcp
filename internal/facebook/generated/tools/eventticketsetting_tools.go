@@ -17,6 +17,7 @@ import (
 func GetEventTicketSettingTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// eventticketsetting_get_ tool
 	// Available fields for EventTicketSetting: id, ticket_delivery_type
 	eventticketsetting_get_Tool := mcp.NewTool("eventticketsetting_get_",
@@ -36,10 +37,12 @@ func GetEventTicketSettingTools() []mcp.Tool {
 	)
 	tools = append(tools, eventticketsetting_get_Tool)
 
+
 	return tools
 }
 
 // EventTicketSetting handlers
+
 
 // HandleEventticketsetting_get_ handles the eventticketsetting_get_ tool with context-based auth
 func HandleEventticketsetting_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleEventticketsetting_get_(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Eventticketsetting_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleEventticketsetting_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

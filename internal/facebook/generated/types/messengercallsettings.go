@@ -4,8 +4,8 @@ package types
 
 // MessengerCallSettings represents a Facebook MessengerCallSettings object
 type MessengerCallSettings struct {
-	Audio_enabled bool                   `json:"audio_enabled"`
-	Call_hours    map[string]interface{} `json:"call_hours"`
-	Call_routing  string                 `json:"call_routing"`
-	Icon_enabled  bool                   `json:"icon_enabled"`
+	Audio_enabled bool `json:"audio_enabled"`
+	Call_hours map[string]interface{} `json:"call_hours"`
+	Call_routing string `json:"call_routing"`
+	Icon_enabled bool `json:"icon_enabled"`
 }

@@ -4,12 +4,12 @@ package constants
 
 // LeadGenThankYouPageGatedPromoFields contains field name constants for LeadGenThankYouPageGatedPromo objects
 var LeadGenThankYouPageGatedPromoFields = struct {
-	Id              string
-	OnlineOfferUrl  string
+	Id string
+	OnlineOfferUrl string
 	OnlinePromoCode string
 }{
-	Id:              "id",
-	OnlineOfferUrl:  "online_offer_url",
+	Id: "id",
+	OnlineOfferUrl: "online_offer_url",
 	OnlinePromoCode: "online_promo_code",
 }
 

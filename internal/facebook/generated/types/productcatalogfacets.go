@@ -4,6 +4,6 @@ package types
 
 // ProductCatalogFacets represents a Facebook ProductCatalogFacets object
 type ProductCatalogFacets struct {
-	Facets     []interface{} `json:"facets"`
-	Item_count int           `json:"item_count"`
+	Facets []interface{} `json:"facets"`
+	Item_count int `json:"item_count"`
 }

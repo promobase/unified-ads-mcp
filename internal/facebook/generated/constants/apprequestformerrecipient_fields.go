@@ -4,10 +4,10 @@ package constants
 
 // AppRequestFormerRecipientFields contains field name constants for AppRequestFormerRecipient objects
 var AppRequestFormerRecipientFields = struct {
-	Id          string
+	Id string
 	RecipientId string
 }{
-	Id:          "id",
+	Id: "id",
 	RecipientId: "recipient_id",
 }
 

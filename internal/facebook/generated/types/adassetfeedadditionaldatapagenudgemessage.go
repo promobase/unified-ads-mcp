@@ -4,7 +4,7 @@ package types
 
 // AdAssetFeedAdditionalDataPageNudgeMessage represents a Facebook AdAssetFeedAdditionalDataPageNudgeMessage object
 type AdAssetFeedAdditionalDataPageNudgeMessage struct {
-	Enabled       bool                     `json:"enabled"`
+	Enabled bool `json:"enabled"`
 	Quick_replies []map[string]interface{} `json:"quick_replies"`
-	Text          string                   `json:"text"`
+	Text string `json:"text"`
 }

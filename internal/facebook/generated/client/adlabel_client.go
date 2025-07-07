@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-// AdLabelClient provides methods for AdLabel operations
+// AdLabelClient represents a client for AdLabel operations
 type AdLabelClient struct {
 	accessToken string
 }
@@ -21,42 +21,42 @@ func NewAdLabelClient(accessToken string) *AdLabelClient {
 	}
 }
 
-// adlabel_get_adcreatives GET adcreatives for AdLabel
+
+// Adlabel_get_adcreatives performs GET adcreatives for AdLabel
 func (c *AdLabelClient) Adlabel_get_adcreatives(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adcreatives")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -88,42 +88,42 @@ func (c *AdLabelClient) Adlabel_get_adcreatives(args map[string]interface{}) (in
 	return result, nil
 }
 
-// adlabel_get_ads GET ads for AdLabel
+
+// Adlabel_get_ads performs GET ads for AdLabel
 func (c *AdLabelClient) Adlabel_get_ads(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ads")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -155,42 +155,42 @@ func (c *AdLabelClient) Adlabel_get_ads(args map[string]interface{}) (interface{
 	return result, nil
 }
 
-// adlabel_get_adsets GET adsets for AdLabel
+
+// Adlabel_get_adsets performs GET adsets for AdLabel
 func (c *AdLabelClient) Adlabel_get_adsets(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/adsets")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -222,42 +222,42 @@ func (c *AdLabelClient) Adlabel_get_adsets(args map[string]interface{}) (interfa
 	return result, nil
 }
 
-// adlabel_get_campaigns GET campaigns for AdLabel
+
+// Adlabel_get_campaigns performs GET campaigns for AdLabel
 func (c *AdLabelClient) Adlabel_get_campaigns(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/campaigns")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -289,17 +289,18 @@ func (c *AdLabelClient) Adlabel_get_campaigns(args map[string]interface{}) (inte
 	return result, nil
 }
 
-// adlabel_delete_ DELETE  for AdLabel
+
+// Adlabel_delete_ performs DELETE  for AdLabel
 func (c *AdLabelClient) Adlabel_delete_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -331,42 +332,42 @@ func (c *AdLabelClient) Adlabel_delete_(args map[string]interface{}) (interface{
 	return result, nil
 }
 
-// adlabel_get_ GET  for AdLabel
+
+// Adlabel_get_ performs GET  for AdLabel
 func (c *AdLabelClient) Adlabel_get_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -398,29 +399,24 @@ func (c *AdLabelClient) Adlabel_get_(args map[string]interface{}) (interface{}, 
 	return result, nil
 }
 
-// adlabel_post_ POST  for AdLabel
+
+// Adlabel_post_ performs POST  for AdLabel
 func (c *AdLabelClient) Adlabel_post_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -451,3 +447,4 @@ func (c *AdLabelClient) Adlabel_post_(args map[string]interface{}) (interface{},
 
 	return result, nil
 }
+

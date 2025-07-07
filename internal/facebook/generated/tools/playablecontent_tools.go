@@ -17,6 +17,7 @@ import (
 func GetPlayableContentTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// playablecontent_get_ tool
 	// Available fields for PlayableContent: id, name, owner
 	playablecontent_get_Tool := mcp.NewTool("playablecontent_get_",
@@ -36,10 +37,12 @@ func GetPlayableContentTools() []mcp.Tool {
 	)
 	tools = append(tools, playablecontent_get_Tool)
 
+
 	return tools
 }
 
 // PlayableContent handlers
+
 
 // HandlePlayablecontent_get_ handles the playablecontent_get_ tool with context-based auth
 func HandlePlayablecontent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandlePlayablecontent_get_(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Playablecontent_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandlePlayablecontent_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

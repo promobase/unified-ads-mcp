@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-// AdgroupFacebookFeedbackClient provides methods for AdgroupFacebookFeedback operations
+// AdgroupFacebookFeedbackClient represents a client for AdgroupFacebookFeedback operations
 type AdgroupFacebookFeedbackClient struct {
 	accessToken string
 }
@@ -21,48 +21,48 @@ func NewAdgroupFacebookFeedbackClient(accessToken string) *AdgroupFacebookFeedba
 	}
 }
 
-// adgroupfacebookfeedback_get_comments GET comments for AdgroupFacebookFeedback
+
+// Adgroupfacebookfeedback_get_comments performs GET comments for AdgroupFacebookFeedback
 func (c *AdgroupFacebookFeedbackClient) Adgroupfacebookfeedback_get_comments(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/comments")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -93,3 +93,4 @@ func (c *AdgroupFacebookFeedbackClient) Adgroupfacebookfeedback_get_comments(arg
 
 	return result, nil
 }
+

@@ -4,12 +4,12 @@ package constants
 
 // BrandedContentEligibleSponsorIDsFields contains field name constants for BrandedContentEligibleSponsorIDs objects
 var BrandedContentEligibleSponsorIDsFields = struct {
-	FbPage           string
-	IgAccountV2      string
+	FbPage string
+	IgAccountV2 string
 	IgApprovalNeeded string
 }{
-	FbPage:           "fb_page",
-	IgAccountV2:      "ig_account_v2",
+	FbPage: "fb_page",
+	IgAccountV2: "ig_account_v2",
 	IgApprovalNeeded: "ig_approval_needed",
 }
 

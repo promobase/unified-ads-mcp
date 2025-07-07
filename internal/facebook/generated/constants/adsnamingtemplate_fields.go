@@ -4,25 +4,25 @@ package constants
 
 // AdsNamingTemplateFields contains field name constants for AdsNamingTemplate objects
 var AdsNamingTemplateFields = struct {
-	ApiFields         string
-	ApiVersion        string
-	FieldOrder        string
-	Id                string
-	Level             string
-	Separator         string
-	TemplateVersion   string
+	ApiFields string
+	ApiVersion string
+	FieldOrder string
+	Id string
+	Level string
+	Separator string
+	TemplateVersion string
 	UserDefinedFields string
-	ValueSeparator    string
+	ValueSeparator string
 }{
-	ApiFields:         "api_fields",
-	ApiVersion:        "api_version",
-	FieldOrder:        "field_order",
-	Id:                "id",
-	Level:             "level",
-	Separator:         "separator",
-	TemplateVersion:   "template_version",
+	ApiFields: "api_fields",
+	ApiVersion: "api_version",
+	FieldOrder: "field_order",
+	Id: "id",
+	Level: "level",
+	Separator: "separator",
+	TemplateVersion: "template_version",
 	UserDefinedFields: "user_defined_fields",
-	ValueSeparator:    "value_separator",
+	ValueSeparator: "value_separator",
 }
 
 // AdsNamingTemplateFieldsList contains all available fields for AdsNamingTemplate objects

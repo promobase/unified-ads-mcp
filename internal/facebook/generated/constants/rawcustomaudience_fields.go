@@ -4,10 +4,10 @@ package constants
 
 // RawCustomAudienceFields contains field name constants for RawCustomAudience objects
 var RawCustomAudienceFields = struct {
-	Id   string
+	Id string
 	Name string
 }{
-	Id:   "id",
+	Id: "id",
 	Name: "name",
 }
 

@@ -4,10 +4,10 @@ package types
 
 // EntityAtTextRange represents a Facebook EntityAtTextRange object
 type EntityAtTextRange struct {
-	Id     string   `json:"id"`
-	Length int      `json:"length"`
-	Name   string   `json:"name"`
+	Id string `json:"id"`
+	Length int `json:"length"`
+	Name string `json:"name"`
 	Object *Profile `json:"object"`
-	Offset int      `json:"offset"`
-	Type_  string   `json:"type"`
+	Offset int `json:"offset"`
+	Type_ string `json:"type"`
 }

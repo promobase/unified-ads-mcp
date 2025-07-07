@@ -4,13 +4,13 @@ package types
 
 // AdColumnSizes represents a Facebook AdColumnSizes object
 type AdColumnSizes struct {
-	Admarket_account *AdAccount    `json:"admarket_account"`
-	App_id           string        `json:"app_id"`
-	Columns          []interface{} `json:"columns"`
-	Id               string        `json:"id"`
-	Owner            *User         `json:"owner"`
-	Page             string        `json:"page"`
-	Report           string        `json:"report"`
-	Tab              string        `json:"tab"`
-	View             string        `json:"view"`
+	Admarket_account *AdAccount `json:"admarket_account"`
+	App_id string `json:"app_id"`
+	Columns []interface{} `json:"columns"`
+	Id string `json:"id"`
+	Owner *User `json:"owner"`
+	Page string `json:"page"`
+	Report string `json:"report"`
+	Tab string `json:"tab"`
+	View string `json:"view"`
 }

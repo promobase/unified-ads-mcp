@@ -17,6 +17,7 @@ import (
 func GetPageBroadcastTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// pagebroadcast_get_ tool
 	// Available fields for PageBroadcast: id, scheduled_time, status
 	pagebroadcast_get_Tool := mcp.NewTool("pagebroadcast_get_",
@@ -36,10 +37,12 @@ func GetPageBroadcastTools() []mcp.Tool {
 	)
 	tools = append(tools, pagebroadcast_get_Tool)
 
+
 	return tools
 }
 
 // PageBroadcast handlers
+
 
 // HandlePagebroadcast_get_ handles the pagebroadcast_get_ tool with context-based auth
 func HandlePagebroadcast_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandlePagebroadcast_get_(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Pagebroadcast_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandlePagebroadcast_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

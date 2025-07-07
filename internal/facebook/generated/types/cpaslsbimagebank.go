@@ -4,7 +4,7 @@ package types
 
 // CPASLsbImageBank represents a Facebook CPASLsbImageBank object
 type CPASLsbImageBank struct {
-	Ad_group_id              string `json:"ad_group_id"`
+	Ad_group_id string `json:"ad_group_id"`
 	Catalog_segment_proxy_id string `json:"catalog_segment_proxy_id"`
-	Id                       string `json:"id"`
+	Id string `json:"id"`
 }

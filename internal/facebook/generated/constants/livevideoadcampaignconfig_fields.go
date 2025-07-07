@@ -4,10 +4,10 @@ package constants
 
 // LiveVideoAdCampaignConfigFields contains field name constants for LiveVideoAdCampaignConfig objects
 var LiveVideoAdCampaignConfigFields = struct {
-	Id              string
+	Id string
 	LiveVideoAdType string
 }{
-	Id:              "id",
+	Id: "id",
 	LiveVideoAdType: "live_video_ad_type",
 }
 

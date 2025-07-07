@@ -17,6 +17,7 @@ import (
 func GetPageCallToActionTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// pagecalltoaction_delete_ tool
 	pagecalltoaction_delete_Tool := mcp.NewTool("pagecalltoaction_delete_",
 		mcp.WithDescription("DELETE  for PageCallToAction"),
@@ -49,55 +50,55 @@ func GetPageCallToActionTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"android_app_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "android_app_id parameter",
 				},
 				"android_destination_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "android_destination_type parameter",
-					"enum":        []string{"APP_DEEPLINK", "BECOME_A_VOLUNTEER", "EMAIL", "FACEBOOK_APP", "FOLLOW", "MARKETPLACE_INVENTORY_PAGE", "MENU_ON_FACEBOOK", "MESSENGER", "MINI_SHOP", "MOBILE_CENTER", "NONE", "PHONE_CALL", "SHOP_ON_FACEBOOK", "WEBSITE"},
+					"enum": []string{ "APP_DEEPLINK", "BECOME_A_VOLUNTEER", "EMAIL", "FACEBOOK_APP", "FOLLOW", "MARKETPLACE_INVENTORY_PAGE", "MENU_ON_FACEBOOK", "MESSENGER", "MINI_SHOP", "MOBILE_CENTER", "NONE", "PHONE_CALL", "SHOP_ON_FACEBOOK", "WEBSITE" },
 				},
 				"android_package_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "android_package_name parameter",
 				},
 				"android_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "android_url parameter",
 				},
 				"email_address": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "email_address parameter",
 				},
 				"intl_number_with_plus": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "intl_number_with_plus parameter",
 				},
 				"iphone_app_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "iphone_app_id parameter",
 				},
 				"iphone_destination_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "iphone_destination_type parameter",
-					"enum":        []string{"APP_DEEPLINK", "BECOME_A_VOLUNTEER", "EMAIL", "FACEBOOK_APP", "FOLLOW", "MARKETPLACE_INVENTORY_PAGE", "MENU_ON_FACEBOOK", "MESSENGER", "MINI_SHOP", "NONE", "PHONE_CALL", "SHOP_ON_FACEBOOK", "WEBSITE"},
+					"enum": []string{ "APP_DEEPLINK", "BECOME_A_VOLUNTEER", "EMAIL", "FACEBOOK_APP", "FOLLOW", "MARKETPLACE_INVENTORY_PAGE", "MENU_ON_FACEBOOK", "MESSENGER", "MINI_SHOP", "NONE", "PHONE_CALL", "SHOP_ON_FACEBOOK", "WEBSITE" },
 				},
 				"iphone_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "iphone_url parameter",
 				},
 				"type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "type parameter",
-					"enum":        []string{"BECOME_A_VOLUNTEER", "BOOK_APPOINTMENT", "BOOK_NOW", "BUY_TICKETS", "CALL_NOW", "CHARITY_DONATE", "CHECK_IN", "CONTACT_US", "CREATOR_STOREFRONT", "DONATE_NOW", "EMAIL", "FOLLOW_PAGE", "GET_DIRECTIONS", "GET_OFFER", "GET_OFFER_VIEW", "INTERESTED", "LEARN_MORE", "LISTEN", "LOCAL_DEV_PLATFORM", "MESSAGE", "MOBILE_CENTER", "OPEN_APP", "ORDER_FOOD", "PLAY_MUSIC", "PLAY_NOW", "PURCHASE_GIFT_CARDS", "REQUEST_APPOINTMENT", "REQUEST_QUOTE", "SHOP_NOW", "SHOP_ON_FACEBOOK", "SIGN_UP", "VIEW_INVENTORY", "VIEW_MENU", "VIEW_SHOP", "VISIT_GROUP", "WATCH_NOW", "WOODHENGE_SUPPORT"},
+					"enum": []string{ "BECOME_A_VOLUNTEER", "BOOK_APPOINTMENT", "BOOK_NOW", "BUY_TICKETS", "CALL_NOW", "CHARITY_DONATE", "CHECK_IN", "CONTACT_US", "CREATOR_STOREFRONT", "DONATE_NOW", "EMAIL", "FOLLOW_PAGE", "GET_DIRECTIONS", "GET_OFFER", "GET_OFFER_VIEW", "INTERESTED", "LEARN_MORE", "LISTEN", "LOCAL_DEV_PLATFORM", "MESSAGE", "MOBILE_CENTER", "OPEN_APP", "ORDER_FOOD", "PLAY_MUSIC", "PLAY_NOW", "PURCHASE_GIFT_CARDS", "REQUEST_APPOINTMENT", "REQUEST_QUOTE", "SHOP_NOW", "SHOP_ON_FACEBOOK", "SIGN_UP", "VIEW_INVENTORY", "VIEW_MENU", "VIEW_SHOP", "VISIT_GROUP", "WATCH_NOW", "WOODHENGE_SUPPORT" },
 				},
 				"web_destination_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "web_destination_type parameter",
-					"enum":        []string{"BECOME_A_VOLUNTEER", "BECOME_SUPPORTER", "EMAIL", "FOLLOW", "MESSENGER", "MOBILE_CENTER", "NONE", "SHOP_ON_FACEBOOK", "WEBSITE"},
+					"enum": []string{ "BECOME_A_VOLUNTEER", "BECOME_SUPPORTER", "EMAIL", "FOLLOW", "MESSENGER", "MOBILE_CENTER", "NONE", "SHOP_ON_FACEBOOK", "WEBSITE" },
 				},
 				"web_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "web_url parameter",
 				},
 			}),
@@ -106,10 +107,12 @@ func GetPageCallToActionTools() []mcp.Tool {
 	)
 	tools = append(tools, pagecalltoaction_post_Tool)
 
+
 	return tools
 }
 
 // PageCallToAction handlers
+
 
 // HandlePagecalltoaction_delete_ handles the pagecalltoaction_delete_ tool with context-based auth
 func HandlePagecalltoaction_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -125,6 +128,8 @@ func HandlePagecalltoaction_delete_(ctx context.Context, request mcp.CallToolReq
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
 	result, err := client.Pagecalltoaction_delete_(args)
 	if err != nil {
@@ -139,6 +144,7 @@ func HandlePagecalltoaction_delete_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandlePagecalltoaction_get_ handles the pagecalltoaction_get_ tool with context-based auth
 func HandlePagecalltoaction_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -179,6 +185,8 @@ func HandlePagecalltoaction_get_(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Pagecalltoaction_get_(args)
 	if err != nil {
@@ -193,6 +201,7 @@ func HandlePagecalltoaction_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandlePagecalltoaction_post_ handles the pagecalltoaction_post_ tool with context-based auth
 func HandlePagecalltoaction_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -220,6 +229,8 @@ func HandlePagecalltoaction_post_(ctx context.Context, request mcp.CallToolReque
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Pagecalltoaction_post_(args)
 	if err != nil {
@@ -234,3 +245,4 @@ func HandlePagecalltoaction_post_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

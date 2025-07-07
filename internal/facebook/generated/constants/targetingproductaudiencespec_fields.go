@@ -4,12 +4,12 @@ package constants
 
 // TargetingProductAudienceSpecFields contains field name constants for TargetingProductAudienceSpec objects
 var TargetingProductAudienceSpecFields = struct {
-	Exclusions   string
-	Inclusions   string
+	Exclusions string
+	Inclusions string
 	ProductSetId string
 }{
-	Exclusions:   "exclusions",
-	Inclusions:   "inclusions",
+	Exclusions: "exclusions",
+	Inclusions: "inclusions",
 	ProductSetId: "product_set_id",
 }
 

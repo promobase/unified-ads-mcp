@@ -17,6 +17,7 @@ import (
 func GetAvatarTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// avatar_get_models tool
 	// Params object accepts: client_name (string), client_version (string), config_id (string), force_generate (bool), platform (string), profile (string), sdk_version (string)
 	avatar_get_modelsTool := mcp.NewTool("avatar_get_models",
@@ -25,32 +26,32 @@ func GetAvatarTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"client_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "client_name parameter",
 				},
 				"client_version": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "client_version parameter",
 				},
 				"config_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "config_id parameter",
 				},
 				"force_generate": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "force_generate parameter",
 				},
 				"platform": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "platform parameter",
 				},
 				"profile": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "profile parameter",
-					"required":    true,
+					"required": true,
 				},
 				"sdk_version": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "sdk_version parameter",
 				},
 			}),
@@ -90,10 +91,12 @@ func GetAvatarTools() []mcp.Tool {
 	)
 	tools = append(tools, avatar_get_Tool)
 
+
 	return tools
 }
 
 // Avatar handlers
+
 
 // HandleAvatar_get_models handles the avatar_get_models tool with context-based auth
 func HandleAvatar_get_models(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -148,6 +151,8 @@ func HandleAvatar_get_models(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Avatar_get_models(args)
 	if err != nil {
@@ -162,6 +167,7 @@ func HandleAvatar_get_models(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAvatar_get_ handles the avatar_get_ tool with context-based auth
 func HandleAvatar_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -202,6 +208,8 @@ func HandleAvatar_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Avatar_get_(args)
 	if err != nil {
@@ -216,3 +224,4 @@ func HandleAvatar_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

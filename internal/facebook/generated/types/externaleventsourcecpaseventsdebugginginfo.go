@@ -4,7 +4,7 @@ package types
 
 // ExternalEventSourceCPASEventsDebuggingInfo represents a Facebook ExternalEventSourceCPASEventsDebuggingInfo object
 type ExternalEventSourceCPASEventsDebuggingInfo struct {
-	Counts     int    `json:"counts"`
+	Counts int `json:"counts"`
 	Diagnostic string `json:"diagnostic"`
 	Event_name string `json:"event_name"`
 }

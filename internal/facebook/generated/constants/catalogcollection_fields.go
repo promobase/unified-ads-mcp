@@ -5,12 +5,12 @@ package constants
 // CatalogCollectionFields contains field name constants for CatalogCollection objects
 var CatalogCollectionFields = struct {
 	Description string
-	Title       string
-	Url         string
+	Title string
+	Url string
 }{
 	Description: "description",
-	Title:       "title",
-	Url:         "url",
+	Title: "title",
+	Url: "url",
 }
 
 // CatalogCollectionFieldsList contains all available fields for CatalogCollection objects

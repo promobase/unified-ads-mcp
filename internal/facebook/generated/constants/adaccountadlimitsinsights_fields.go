@@ -5,10 +5,10 @@ package constants
 // AdAccountAdLimitsInsightsFields contains field name constants for AdAccountAdLimitsInsights objects
 var AdAccountAdLimitsInsightsFields = struct {
 	DateStart string
-	DateStop  string
+	DateStop string
 }{
 	DateStart: "date_start",
-	DateStop:  "date_stop",
+	DateStop: "date_stop",
 }
 
 // AdAccountAdLimitsInsightsFieldsList contains all available fields for AdAccountAdLimitsInsights objects

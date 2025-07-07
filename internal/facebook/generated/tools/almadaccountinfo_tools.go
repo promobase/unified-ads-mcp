@@ -17,6 +17,7 @@ import (
 func GetALMAdAccountInfoTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// almadaccountinfo_get_ tool
 	// Available fields for ALMAdAccountInfo: ad_account_id, id, managed_by, owned_by, parent_advertiser_id, sub_vertical, tag, user_ids, vertical
 	almadaccountinfo_get_Tool := mcp.NewTool("almadaccountinfo_get_",
@@ -36,10 +37,12 @@ func GetALMAdAccountInfoTools() []mcp.Tool {
 	)
 	tools = append(tools, almadaccountinfo_get_Tool)
 
+
 	return tools
 }
 
 // ALMAdAccountInfo handlers
+
 
 // HandleAlmadaccountinfo_get_ handles the almadaccountinfo_get_ tool with context-based auth
 func HandleAlmadaccountinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleAlmadaccountinfo_get_(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Almadaccountinfo_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleAlmadaccountinfo_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

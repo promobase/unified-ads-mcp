@@ -17,6 +17,7 @@ import (
 func GetAdStudyTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// adstudy_get_cells tool
 	// Available fields for AdStudyCell: ad_entities_count, control_percentage, id, name, treatment_percentage
 	adstudy_get_cellsTool := mcp.NewTool("adstudy_get_cells",
@@ -44,26 +45,26 @@ func GetAdStudyTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"checkpoint_data": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "checkpoint_data parameter",
-					"required":    true,
+					"required": true,
 				},
 				"checkpoint_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "checkpoint_name parameter",
-					"required":    true,
+					"required": true,
 				},
 				"component": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "component parameter",
-					"required":    true,
+					"required": true,
 				},
 				"instance_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "instance_id parameter",
 				},
 				"run_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "run_id parameter",
 				},
 			}),
@@ -99,12 +100,12 @@ func GetAdStudyTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"breakdown_key": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "breakdown_key parameter",
-					"required":    true,
+					"required": true,
 				},
 				"run_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "run_id parameter",
 				},
 			}),
@@ -164,56 +165,56 @@ func GetAdStudyTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"cells": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "cells parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"client_business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "client_business parameter",
 				},
 				"confidence_level": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "confidence_level parameter",
 				},
 				"cooldown_start_time": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "cooldown_start_time parameter",
 				},
 				"description": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "description parameter",
 				},
 				"end_time": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "end_time parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
 				},
 				"objectives": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "objectives parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"observation_end_time": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "observation_end_time parameter",
 				},
 				"start_time": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "start_time parameter",
 				},
 				"type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "type parameter",
-					"enum":        []string{"BACKEND_AB_TESTING", "CONTINUOUS_LIFT_CONFIG", "GEO_LIFT", "LIFT", "SPLIT_TEST"},
+					"enum": []string{ "BACKEND_AB_TESTING", "CONTINUOUS_LIFT_CONFIG", "GEO_LIFT", "LIFT", "SPLIT_TEST" },
 				},
 				"viewers": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "viewers parameter",
-					"items":       map[string]any{"type": "integer"},
+					"items": map[string]any{"type": "integer"},
 				},
 			}),
 			mcp.Description("Parameters object containing: cells (array<object>), client_business (string), confidence_level (number), cooldown_start_time (integer), description (string), end_time (integer), name (string), objectives (array<object>), observation_end_time (integer), start_time (integer), type (adstudy_type) [BACKEND_AB_TESTING, CONTINUOUS_LIFT_CONFIG, GEO_LIFT, LIFT, SPLIT_TEST], viewers (array<integer>)"),
@@ -221,10 +222,12 @@ func GetAdStudyTools() []mcp.Tool {
 	)
 	tools = append(tools, adstudy_post_Tool)
 
+
 	return tools
 }
 
 // AdStudy handlers
+
 
 // HandleAdstudy_get_cells handles the adstudy_get_cells tool with context-based auth
 func HandleAdstudy_get_cells(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -265,6 +268,8 @@ func HandleAdstudy_get_cells(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudy_get_cells(args)
 	if err != nil {
@@ -279,6 +284,7 @@ func HandleAdstudy_get_cells(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdstudy_post_checkpoint handles the adstudy_post_checkpoint tool with context-based auth
 func HandleAdstudy_post_checkpoint(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -308,6 +314,8 @@ func HandleAdstudy_post_checkpoint(ctx context.Context, request mcp.CallToolRequ
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudy_post_checkpoint(args)
 	if err != nil {
@@ -322,6 +330,7 @@ func HandleAdstudy_post_checkpoint(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdstudy_get_instances handles the adstudy_get_instances tool with context-based auth
 func HandleAdstudy_get_instances(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -362,6 +371,8 @@ func HandleAdstudy_get_instances(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudy_get_instances(args)
 	if err != nil {
@@ -376,6 +387,7 @@ func HandleAdstudy_get_instances(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdstudy_post_instances handles the adstudy_post_instances tool with context-based auth
 func HandleAdstudy_post_instances(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -405,6 +417,8 @@ func HandleAdstudy_post_instances(ctx context.Context, request mcp.CallToolReque
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudy_post_instances(args)
 	if err != nil {
@@ -419,6 +433,7 @@ func HandleAdstudy_post_instances(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdstudy_get_objectives handles the adstudy_get_objectives tool with context-based auth
 func HandleAdstudy_get_objectives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -459,6 +474,8 @@ func HandleAdstudy_get_objectives(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudy_get_objectives(args)
 	if err != nil {
@@ -474,6 +491,7 @@ func HandleAdstudy_get_objectives(ctx context.Context, request mcp.CallToolReque
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
+
 // HandleAdstudy_delete_ handles the adstudy_delete_ tool with context-based auth
 func HandleAdstudy_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -487,6 +505,8 @@ func HandleAdstudy_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+
 
 	// Call the client method
 	result, err := client.Adstudy_delete_(args)
@@ -502,6 +522,7 @@ func HandleAdstudy_delete_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdstudy_get_ handles the adstudy_get_ tool with context-based auth
 func HandleAdstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -542,6 +563,8 @@ func HandleAdstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudy_get_(args)
 	if err != nil {
@@ -556,6 +579,7 @@ func HandleAdstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdstudy_post_ handles the adstudy_post_ tool with context-based auth
 func HandleAdstudy_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -583,6 +607,8 @@ func HandleAdstudy_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adstudy_post_(args)
 	if err != nil {
@@ -597,3 +623,4 @@ func HandleAdstudy_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

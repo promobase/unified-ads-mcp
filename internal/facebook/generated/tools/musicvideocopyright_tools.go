@@ -17,6 +17,7 @@ import (
 func GetMusicVideoCopyrightTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// musicvideocopyright_get_ tool
 	// Available fields for MusicVideoCopyright: creation_time, displayed_matches_count, id, in_conflict, isrc, match_rule, ownership_countries, reference_file_status, ridge_monitoring_status, tags, update_time, video_asset, whitelisted_fb_users, whitelisted_ig_users
 	musicvideocopyright_get_Tool := mcp.NewTool("musicvideocopyright_get_",
@@ -36,10 +37,12 @@ func GetMusicVideoCopyrightTools() []mcp.Tool {
 	)
 	tools = append(tools, musicvideocopyright_get_Tool)
 
+
 	return tools
 }
 
 // MusicVideoCopyright handlers
+
 
 // HandleMusicvideocopyright_get_ handles the musicvideocopyright_get_ tool with context-based auth
 func HandleMusicvideocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleMusicvideocopyright_get_(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Musicvideocopyright_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleMusicvideocopyright_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

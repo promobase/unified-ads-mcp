@@ -4,7 +4,7 @@ package types
 
 // ProductFeedRuleSuggestion represents a Facebook ProductFeedRuleSuggestion object
 type ProductFeedRuleSuggestion struct {
-	Attribute string        `json:"attribute"`
-	Params    []interface{} `json:"params"`
-	Type_     string        `json:"type"`
+	Attribute string `json:"attribute"`
+	Params []interface{} `json:"params"`
+	Type_ string `json:"type"`
 }

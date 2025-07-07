@@ -6,13 +6,13 @@ import "time"
 
 // CTXPartnerAppWelcomeMessageFlow represents a Facebook CTXPartnerAppWelcomeMessageFlow object
 type CTXPartnerAppWelcomeMessageFlow struct {
-	Compatible_platforms     []string  `json:"compatible_platforms"`
-	Eligible_platforms       []string  `json:"eligible_platforms"`
-	Id                       string    `json:"id"`
-	Is_ig_only_flow          bool      `json:"is_ig_only_flow"`
-	Is_used_in_ad            bool      `json:"is_used_in_ad"`
-	Last_update_time         time.Time `json:"last_update_time"`
-	Name                     string    `json:"name"`
-	Welcome_message_flow     string    `json:"welcome_message_flow"`
-	Welcome_message_sequence string    `json:"welcome_message_sequence"`
+	Compatible_platforms []string `json:"compatible_platforms"`
+	Eligible_platforms []string `json:"eligible_platforms"`
+	Id string `json:"id"`
+	Is_ig_only_flow bool `json:"is_ig_only_flow"`
+	Is_used_in_ad bool `json:"is_used_in_ad"`
+	Last_update_time time.Time `json:"last_update_time"`
+	Name string `json:"name"`
+	Welcome_message_flow string `json:"welcome_message_flow"`
+	Welcome_message_sequence string `json:"welcome_message_sequence"`
 }

@@ -4,14 +4,14 @@ package types
 
 // AdAssetFeedSpecCarouselChildAttachment represents a Facebook AdAssetFeedSpecCarouselChildAttachment object
 type AdAssetFeedSpecCarouselChildAttachment struct {
-	Body_label                *AdAssetFeedSpecAssetLabel `json:"body_label"`
+	Body_label *AdAssetFeedSpecAssetLabel `json:"body_label"`
 	Call_to_action_type_label *AdAssetFeedSpecAssetLabel `json:"call_to_action_type_label"`
-	Caption_label             *AdAssetFeedSpecAssetLabel `json:"caption_label"`
-	Description_label         *AdAssetFeedSpecAssetLabel `json:"description_label"`
-	Image_label               *AdAssetFeedSpecAssetLabel `json:"image_label"`
-	Link_url_label            *AdAssetFeedSpecAssetLabel `json:"link_url_label"`
-	Phone_data_ids_label      *AdAssetFeedSpecAssetLabel `json:"phone_data_ids_label"`
-	Static_card               bool                       `json:"static_card"`
-	Title_label               *AdAssetFeedSpecAssetLabel `json:"title_label"`
-	Video_label               *AdAssetFeedSpecAssetLabel `json:"video_label"`
+	Caption_label *AdAssetFeedSpecAssetLabel `json:"caption_label"`
+	Description_label *AdAssetFeedSpecAssetLabel `json:"description_label"`
+	Image_label *AdAssetFeedSpecAssetLabel `json:"image_label"`
+	Link_url_label *AdAssetFeedSpecAssetLabel `json:"link_url_label"`
+	Phone_data_ids_label *AdAssetFeedSpecAssetLabel `json:"phone_data_ids_label"`
+	Static_card bool `json:"static_card"`
+	Title_label *AdAssetFeedSpecAssetLabel `json:"title_label"`
+	Video_label *AdAssetFeedSpecAssetLabel `json:"video_label"`
 }

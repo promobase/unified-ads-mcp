@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-// ProductFeedUploadClient provides methods for ProductFeedUpload operations
+// ProductFeedUploadClient represents a client for ProductFeedUpload operations
 type ProductFeedUploadClient struct {
 	accessToken string
 }
@@ -21,17 +21,18 @@ func NewProductFeedUploadClient(accessToken string) *ProductFeedUploadClient {
 	}
 }
 
-// productfeedupload_post_error_report POST error_report for ProductFeedUpload
+
+// Productfeedupload_post_error_report performs POST error_report for ProductFeedUpload
 func (c *ProductFeedUploadClient) Productfeedupload_post_error_report(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/error_report")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -63,48 +64,48 @@ func (c *ProductFeedUploadClient) Productfeedupload_post_error_report(args map[s
 	return result, nil
 }
 
-// productfeedupload_get_errors GET errors for ProductFeedUpload
+
+// Productfeedupload_get_errors performs GET errors for ProductFeedUpload
 func (c *ProductFeedUploadClient) Productfeedupload_get_errors(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/errors")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -136,42 +137,42 @@ func (c *ProductFeedUploadClient) Productfeedupload_get_errors(args map[string]i
 	return result, nil
 }
 
-// productfeedupload_get_ GET  for ProductFeedUpload
+
+// Productfeedupload_get_ performs GET  for ProductFeedUpload
 func (c *ProductFeedUploadClient) Productfeedupload_get_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -202,3 +203,4 @@ func (c *ProductFeedUploadClient) Productfeedupload_get_(args map[string]interfa
 
 	return result, nil
 }
+

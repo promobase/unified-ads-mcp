@@ -4,12 +4,12 @@ package constants
 
 // ScimCompanyUserPhoneNumberFields contains field name constants for ScimCompanyUserPhoneNumber objects
 var ScimCompanyUserPhoneNumberFields = struct {
-	Number    string
-	Primary   string
+	Number string
+	Primary string
 	FieldType string
 }{
-	Number:    "number",
-	Primary:   "primary",
+	Number: "number",
+	Primary: "primary",
 	FieldType: "type",
 }
 

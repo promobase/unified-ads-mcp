@@ -4,21 +4,21 @@ package constants
 
 // TargetingGeoLocationCityFields contains field name constants for TargetingGeoLocationCity objects
 var TargetingGeoLocationCityFields = struct {
-	Country      string
+	Country string
 	DistanceUnit string
-	Key          string
-	Name         string
-	Radius       string
-	Region       string
-	RegionId     string
+	Key string
+	Name string
+	Radius string
+	Region string
+	RegionId string
 }{
-	Country:      "country",
+	Country: "country",
 	DistanceUnit: "distance_unit",
-	Key:          "key",
-	Name:         "name",
-	Radius:       "radius",
-	Region:       "region",
-	RegionId:     "region_id",
+	Key: "key",
+	Name: "name",
+	Radius: "radius",
+	Region: "region",
+	RegionId: "region_id",
 }
 
 // TargetingGeoLocationCityFieldsList contains all available fields for TargetingGeoLocationCity objects

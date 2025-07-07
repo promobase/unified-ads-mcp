@@ -4,18 +4,18 @@ package constants
 
 // DACheckFields contains field name constants for DACheck objects
 var DACheckFields = struct {
-	ActionUri   string
+	ActionUri string
 	Description string
-	Key         string
-	Result      string
-	Title       string
+	Key string
+	Result string
+	Title string
 	UserMessage string
 }{
-	ActionUri:   "action_uri",
+	ActionUri: "action_uri",
 	Description: "description",
-	Key:         "key",
-	Result:      "result",
-	Title:       "title",
+	Key: "key",
+	Result: "result",
+	Title: "title",
 	UserMessage: "user_message",
 }
 

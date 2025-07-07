@@ -5,10 +5,10 @@ package constants
 // PermissionFields contains field name constants for Permission objects
 var PermissionFields = struct {
 	Permission string
-	Status     string
+	Status string
 }{
 	Permission: "permission",
-	Status:     "status",
+	Status: "status",
 }
 
 // PermissionFieldsList contains all available fields for Permission objects

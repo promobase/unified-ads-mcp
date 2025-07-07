@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-// LeadgenFormClient provides methods for LeadgenForm operations
+// LeadgenFormClient represents a client for LeadgenForm operations
 type LeadgenFormClient struct {
 	accessToken string
 }
@@ -21,42 +21,42 @@ func NewLeadgenFormClient(accessToken string) *LeadgenFormClient {
 	}
 }
 
-// leadgenform_get_leads GET leads for LeadgenForm
+
+// Leadgenform_get_leads performs GET leads for LeadgenForm
 func (c *LeadgenFormClient) Leadgenform_get_leads(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/leads")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -88,42 +88,42 @@ func (c *LeadgenFormClient) Leadgenform_get_leads(args map[string]interface{}) (
 	return result, nil
 }
 
-// leadgenform_get_test_leads GET test_leads for LeadgenForm
+
+// Leadgenform_get_test_leads performs GET test_leads for LeadgenForm
 func (c *LeadgenFormClient) Leadgenform_get_test_leads(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/test_leads")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -155,24 +155,24 @@ func (c *LeadgenFormClient) Leadgenform_get_test_leads(args map[string]interface
 	return result, nil
 }
 
-// leadgenform_post_test_leads POST test_leads for LeadgenForm
+
+// Leadgenform_post_test_leads performs POST test_leads for LeadgenForm
 func (c *LeadgenFormClient) Leadgenform_post_test_leads(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/test_leads")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -204,42 +204,42 @@ func (c *LeadgenFormClient) Leadgenform_post_test_leads(args map[string]interfac
 	return result, nil
 }
 
-// leadgenform_get_ GET  for LeadgenForm
+
+// Leadgenform_get_ performs GET  for LeadgenForm
 func (c *LeadgenFormClient) Leadgenform_get_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -271,24 +271,24 @@ func (c *LeadgenFormClient) Leadgenform_get_(args map[string]interface{}) (inter
 	return result, nil
 }
 
-// leadgenform_post_ POST  for LeadgenForm
+
+// Leadgenform_post_ performs POST  for LeadgenForm
 func (c *LeadgenFormClient) Leadgenform_post_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -319,3 +319,4 @@ func (c *LeadgenFormClient) Leadgenform_post_(args map[string]interface{}) (inte
 
 	return result, nil
 }
+

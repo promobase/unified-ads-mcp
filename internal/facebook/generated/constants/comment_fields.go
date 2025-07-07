@@ -4,53 +4,53 @@ package constants
 
 // CommentFields contains field name constants for Comment objects
 var CommentFields = struct {
-	AdminCreator             string
-	Application              string
-	Attachment               string
-	CanComment               string
-	CanHide                  string
-	CanLike                  string
-	CanRemove                string
-	CanReplyPrivately        string
-	CommentCount             string
-	CreatedTime              string
-	From                     string
-	Id                       string
-	IsHidden                 string
-	IsPrivate                string
-	LikeCount                string
-	LiveBroadcastTimestamp   string
-	Message                  string
-	MessageTags              string
-	Object                   string
-	Parent                   string
-	PermalinkUrl             string
+	AdminCreator string
+	Application string
+	Attachment string
+	CanComment string
+	CanHide string
+	CanLike string
+	CanRemove string
+	CanReplyPrivately string
+	CommentCount string
+	CreatedTime string
+	From string
+	Id string
+	IsHidden string
+	IsPrivate string
+	LikeCount string
+	LiveBroadcastTimestamp string
+	Message string
+	MessageTags string
+	Object string
+	Parent string
+	PermalinkUrl string
 	PrivateReplyConversation string
-	UserLikes                string
+	UserLikes string
 }{
-	AdminCreator:             "admin_creator",
-	Application:              "application",
-	Attachment:               "attachment",
-	CanComment:               "can_comment",
-	CanHide:                  "can_hide",
-	CanLike:                  "can_like",
-	CanRemove:                "can_remove",
-	CanReplyPrivately:        "can_reply_privately",
-	CommentCount:             "comment_count",
-	CreatedTime:              "created_time",
-	From:                     "from",
-	Id:                       "id",
-	IsHidden:                 "is_hidden",
-	IsPrivate:                "is_private",
-	LikeCount:                "like_count",
-	LiveBroadcastTimestamp:   "live_broadcast_timestamp",
-	Message:                  "message",
-	MessageTags:              "message_tags",
-	Object:                   "object",
-	Parent:                   "parent",
-	PermalinkUrl:             "permalink_url",
+	AdminCreator: "admin_creator",
+	Application: "application",
+	Attachment: "attachment",
+	CanComment: "can_comment",
+	CanHide: "can_hide",
+	CanLike: "can_like",
+	CanRemove: "can_remove",
+	CanReplyPrivately: "can_reply_privately",
+	CommentCount: "comment_count",
+	CreatedTime: "created_time",
+	From: "from",
+	Id: "id",
+	IsHidden: "is_hidden",
+	IsPrivate: "is_private",
+	LikeCount: "like_count",
+	LiveBroadcastTimestamp: "live_broadcast_timestamp",
+	Message: "message",
+	MessageTags: "message_tags",
+	Object: "object",
+	Parent: "parent",
+	PermalinkUrl: "permalink_url",
 	PrivateReplyConversation: "private_reply_conversation",
-	UserLikes:                "user_likes",
+	UserLikes: "user_likes",
 }
 
 // CommentFieldsList contains all available fields for Comment objects

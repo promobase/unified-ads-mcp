@@ -5,12 +5,12 @@ package constants
 // LeadGenLegalContentFields contains field name constants for LeadGenLegalContent objects
 var LeadGenLegalContentFields = struct {
 	CustomDisclaimer string
-	Id               string
-	PrivacyPolicy    string
+	Id string
+	PrivacyPolicy string
 }{
 	CustomDisclaimer: "custom_disclaimer",
-	Id:               "id",
-	PrivacyPolicy:    "privacy_policy",
+	Id: "id",
+	PrivacyPolicy: "privacy_policy",
 }
 
 // LeadGenLegalContentFieldsList contains all available fields for LeadGenLegalContent objects

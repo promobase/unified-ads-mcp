@@ -5,10 +5,10 @@ package constants
 // WhatsappSubscribedAppsInfoFields contains field name constants for WhatsappSubscribedAppsInfo objects
 var WhatsappSubscribedAppsInfoFields = struct {
 	PageWhatsappNumber string
-	SubscribedApps     string
+	SubscribedApps string
 }{
 	PageWhatsappNumber: "page_whatsapp_number",
-	SubscribedApps:     "subscribed_apps",
+	SubscribedApps: "subscribed_apps",
 }
 
 // WhatsappSubscribedAppsInfoFieldsList contains all available fields for WhatsappSubscribedAppsInfo objects

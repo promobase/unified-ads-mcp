@@ -5,16 +5,16 @@ package constants
 // PagePublisherFields contains field name constants for PagePublisher objects
 var PagePublisherFields = struct {
 	GlobalParentId string
-	Icon           string
-	Id             string
-	Name           string
-	Url            string
+	Icon string
+	Id string
+	Name string
+	Url string
 }{
 	GlobalParentId: "global_parent_id",
-	Icon:           "icon",
-	Id:             "id",
-	Name:           "name",
-	Url:            "url",
+	Icon: "icon",
+	Id: "id",
+	Name: "name",
+	Url: "url",
 }
 
 // PagePublisherFieldsList contains all available fields for PagePublisher objects

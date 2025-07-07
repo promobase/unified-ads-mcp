@@ -4,17 +4,17 @@ package constants
 
 // FundingSourceDetailsFields contains field name constants for FundingSourceDetails objects
 var FundingSourceDetailsFields = struct {
-	Coupon        string
-	Coupons       string
+	Coupon string
+	Coupons string
 	DisplayString string
-	Id            string
-	FieldType     string
+	Id string
+	FieldType string
 }{
-	Coupon:        "coupon",
-	Coupons:       "coupons",
+	Coupon: "coupon",
+	Coupons: "coupons",
 	DisplayString: "display_string",
-	Id:            "id",
-	FieldType:     "type",
+	Id: "id",
+	FieldType: "type",
 }
 
 // FundingSourceDetailsFieldsList contains all available fields for FundingSourceDetails objects

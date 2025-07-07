@@ -17,6 +17,7 @@ import (
 func GetAudioReleaseTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// audiorelease_get_ tool
 	// Available fields for AudioRelease: album_title, asset_availability_status, audio_availability_status, audio_release_image_uri, created_time, displayed_artist, ean, genre, grid, id, isrc, label_name, original_release_date, parental_warning_type, proprietary_id, upc
 	audiorelease_get_Tool := mcp.NewTool("audiorelease_get_",
@@ -36,10 +37,12 @@ func GetAudioReleaseTools() []mcp.Tool {
 	)
 	tools = append(tools, audiorelease_get_Tool)
 
+
 	return tools
 }
 
 // AudioRelease handlers
+
 
 // HandleAudiorelease_get_ handles the audiorelease_get_ tool with context-based auth
 func HandleAudiorelease_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleAudiorelease_get_(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Audiorelease_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleAudiorelease_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

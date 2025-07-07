@@ -4,10 +4,10 @@ package constants
 
 // AttributionSpecFields contains field name constants for AttributionSpec objects
 var AttributionSpecFields = struct {
-	EventType  string
+	EventType string
 	WindowDays string
 }{
-	EventType:  "event_type",
+	EventType: "event_type",
 	WindowDays: "window_days",
 }
 

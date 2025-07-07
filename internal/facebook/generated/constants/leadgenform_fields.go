@@ -4,53 +4,53 @@ package constants
 
 // LeadgenFormFields contains field name constants for LeadgenForm objects
 var LeadgenFormFields = struct {
-	AllowOrganicLead                 string
+	AllowOrganicLead string
 	BlockDisplayForNonTargetedViewer string
-	ContextCard                      string
-	CreatedTime                      string
-	Creator                          string
-	ExpiredLeadsCount                string
-	FollowUpActionText               string
-	FollowUpActionUrl                string
-	Id                               string
-	IsOptimizedForQuality            string
-	LeadsCount                       string
-	LegalContent                     string
-	Locale                           string
-	Name                             string
-	OrganicLeadsCount                string
-	Page                             string
-	PageId                           string
-	PrivacyPolicyUrl                 string
-	QuestionPageCustomHeadline       string
-	Questions                        string
-	Status                           string
-	ThankYouPage                     string
-	TrackingParameters               string
+	ContextCard string
+	CreatedTime string
+	Creator string
+	ExpiredLeadsCount string
+	FollowUpActionText string
+	FollowUpActionUrl string
+	Id string
+	IsOptimizedForQuality string
+	LeadsCount string
+	LegalContent string
+	Locale string
+	Name string
+	OrganicLeadsCount string
+	Page string
+	PageId string
+	PrivacyPolicyUrl string
+	QuestionPageCustomHeadline string
+	Questions string
+	Status string
+	ThankYouPage string
+	TrackingParameters string
 }{
-	AllowOrganicLead:                 "allow_organic_lead",
+	AllowOrganicLead: "allow_organic_lead",
 	BlockDisplayForNonTargetedViewer: "block_display_for_non_targeted_viewer",
-	ContextCard:                      "context_card",
-	CreatedTime:                      "created_time",
-	Creator:                          "creator",
-	ExpiredLeadsCount:                "expired_leads_count",
-	FollowUpActionText:               "follow_up_action_text",
-	FollowUpActionUrl:                "follow_up_action_url",
-	Id:                               "id",
-	IsOptimizedForQuality:            "is_optimized_for_quality",
-	LeadsCount:                       "leads_count",
-	LegalContent:                     "legal_content",
-	Locale:                           "locale",
-	Name:                             "name",
-	OrganicLeadsCount:                "organic_leads_count",
-	Page:                             "page",
-	PageId:                           "page_id",
-	PrivacyPolicyUrl:                 "privacy_policy_url",
-	QuestionPageCustomHeadline:       "question_page_custom_headline",
-	Questions:                        "questions",
-	Status:                           "status",
-	ThankYouPage:                     "thank_you_page",
-	TrackingParameters:               "tracking_parameters",
+	ContextCard: "context_card",
+	CreatedTime: "created_time",
+	Creator: "creator",
+	ExpiredLeadsCount: "expired_leads_count",
+	FollowUpActionText: "follow_up_action_text",
+	FollowUpActionUrl: "follow_up_action_url",
+	Id: "id",
+	IsOptimizedForQuality: "is_optimized_for_quality",
+	LeadsCount: "leads_count",
+	LegalContent: "legal_content",
+	Locale: "locale",
+	Name: "name",
+	OrganicLeadsCount: "organic_leads_count",
+	Page: "page",
+	PageId: "page_id",
+	PrivacyPolicyUrl: "privacy_policy_url",
+	QuestionPageCustomHeadline: "question_page_custom_headline",
+	Questions: "questions",
+	Status: "status",
+	ThankYouPage: "thank_you_page",
+	TrackingParameters: "tracking_parameters",
 }
 
 // LeadgenFormFieldsList contains all available fields for LeadgenForm objects

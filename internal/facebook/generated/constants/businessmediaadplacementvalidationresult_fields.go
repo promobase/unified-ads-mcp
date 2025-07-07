@@ -4,15 +4,15 @@ package constants
 
 // BusinessMediaAdPlacementValidationResultFields contains field name constants for BusinessMediaAdPlacementValidationResult objects
 var BusinessMediaAdPlacementValidationResultFields = struct {
-	AdPlacement      string
+	AdPlacement string
 	AdPlacementLabel string
-	ErrorMessages    string
-	IsValid          string
+	ErrorMessages string
+	IsValid string
 }{
-	AdPlacement:      "ad_placement",
+	AdPlacement: "ad_placement",
 	AdPlacementLabel: "ad_placement_label",
-	ErrorMessages:    "error_messages",
-	IsValid:          "is_valid",
+	ErrorMessages: "error_messages",
+	IsValid: "is_valid",
 }
 
 // BusinessMediaAdPlacementValidationResultFieldsList contains all available fields for BusinessMediaAdPlacementValidationResult objects

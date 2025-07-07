@@ -4,9 +4,9 @@ package types
 
 // EntWithSponsor represents a Facebook EntWithSponsor object
 type EntWithSponsor struct {
-	Id                                string `json:"id"`
+	Id string `json:"id"`
 	Owner_linked_instagram_user_v1_id string `json:"owner_linked_instagram_user_v1_id"`
-	Owner_picture                     string `json:"owner_picture"`
-	Post_id                           string `json:"post_id"`
-	Post_info                         *Post  `json:"post_info"`
+	Owner_picture string `json:"owner_picture"`
+	Post_id string `json:"post_id"`
+	Post_info *Post `json:"post_info"`
 }

@@ -4,23 +4,23 @@ package constants
 
 // StoreLocationFields contains field name constants for StoreLocation objects
 var StoreLocationFields = struct {
-	FullAddress   string
-	Hours         string
-	Id            string
-	PhoneNumber   string
+	FullAddress string
+	Hours string
+	Id string
+	PhoneNumber string
 	PickupOptions string
-	PriceRange    string
-	StoreCode     string
-	ZipCode       string
+	PriceRange string
+	StoreCode string
+	ZipCode string
 }{
-	FullAddress:   "full_address",
-	Hours:         "hours",
-	Id:            "id",
-	PhoneNumber:   "phone_number",
+	FullAddress: "full_address",
+	Hours: "hours",
+	Id: "id",
+	PhoneNumber: "phone_number",
 	PickupOptions: "pickup_options",
-	PriceRange:    "price_range",
-	StoreCode:     "store_code",
-	ZipCode:       "zip_code",
+	PriceRange: "price_range",
+	StoreCode: "store_code",
+	ZipCode: "zip_code",
 }
 
 // StoreLocationFieldsList contains all available fields for StoreLocation objects

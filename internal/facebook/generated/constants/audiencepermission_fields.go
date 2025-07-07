@@ -4,12 +4,12 @@ package constants
 
 // AudiencePermissionFields contains field name constants for AudiencePermission objects
 var AudiencePermissionFields = struct {
-	Audience         string
-	ShareAccountId   string
+	Audience string
+	ShareAccountId string
 	ShareAccountName string
 }{
-	Audience:         "audience",
-	ShareAccountId:   "share_account_id",
+	Audience: "audience",
+	ShareAccountId: "share_account_id",
 	ShareAccountName: "share_account_name",
 }
 

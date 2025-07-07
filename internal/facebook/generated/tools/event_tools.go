@@ -17,6 +17,7 @@ import (
 func GetEventTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// event_get_comments tool
 	event_get_commentsTool := mcp.NewTool("event_get_comments",
 		mcp.WithDescription("GET comments for Event"),
@@ -78,89 +79,89 @@ func GetEventTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"content_tags": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "content_tags parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"description": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "description parameter",
 				},
 				"enable_backup_ingest": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "enable_backup_ingest parameter",
 				},
 				"encoding_settings": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "encoding_settings parameter",
 				},
 				"event_params": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "event_params parameter",
 				},
 				"fisheye_video_cropped": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "fisheye_video_cropped parameter",
 				},
 				"front_z_rotation": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "front_z_rotation parameter",
 				},
 				"is_audio_only": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_audio_only parameter",
 				},
 				"is_spherical": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_spherical parameter",
 				},
 				"original_fov": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "original_fov parameter",
 				},
 				"privacy": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "privacy parameter",
 				},
 				"projection": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "projection parameter",
-					"enum":        []string{"CUBEMAP", "EQUIRECTANGULAR", "HALF_EQUIRECTANGULAR"},
+					"enum": []string{ "CUBEMAP", "EQUIRECTANGULAR", "HALF_EQUIRECTANGULAR" },
 				},
 				"published": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "published parameter",
 				},
 				"schedule_custom_profile_image": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "schedule_custom_profile_image parameter",
 				},
 				"spatial_audio_format": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "spatial_audio_format parameter",
-					"enum":        []string{"ambiX_4"},
+					"enum": []string{ "ambiX_4" },
 				},
 				"status": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "status parameter",
-					"enum":        []string{"LIVE_NOW", "SCHEDULED_CANCELED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED"},
+					"enum": []string{ "LIVE_NOW", "SCHEDULED_CANCELED", "SCHEDULED_LIVE", "SCHEDULED_UNPUBLISHED", "UNPUBLISHED" },
 				},
 				"stereoscopic_mode": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "stereoscopic_mode parameter",
-					"enum":        []string{"LEFT_RIGHT", "MONO", "TOP_BOTTOM"},
+					"enum": []string{ "LEFT_RIGHT", "MONO", "TOP_BOTTOM" },
 				},
 				"stop_on_delete_stream": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "stop_on_delete_stream parameter",
 				},
 				"stream_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "stream_type parameter",
-					"enum":        []string{"AMBIENT", "REGULAR"},
+					"enum": []string{ "AMBIENT", "REGULAR" },
 				},
 				"title": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "title parameter",
 				},
 			}),
@@ -298,10 +299,12 @@ func GetEventTools() []mcp.Tool {
 	)
 	tools = append(tools, event_get_Tool)
 
+
 	return tools
 }
 
 // Event handlers
+
 
 // HandleEvent_get_comments handles the event_get_comments tool with context-based auth
 func HandleEvent_get_comments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -342,6 +345,8 @@ func HandleEvent_get_comments(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Event_get_comments(args)
 	if err != nil {
@@ -356,6 +361,7 @@ func HandleEvent_get_comments(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleEvent_get_feed handles the event_get_feed tool with context-based auth
 func HandleEvent_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -396,6 +402,8 @@ func HandleEvent_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Event_get_feed(args)
 	if err != nil {
@@ -410,6 +418,7 @@ func HandleEvent_get_feed(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleEvent_get_live_videos handles the event_get_live_videos tool with context-based auth
 func HandleEvent_get_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -450,6 +459,8 @@ func HandleEvent_get_live_videos(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Event_get_live_videos(args)
 	if err != nil {
@@ -464,6 +475,7 @@ func HandleEvent_get_live_videos(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleEvent_post_live_videos handles the event_post_live_videos tool with context-based auth
 func HandleEvent_post_live_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -491,6 +503,8 @@ func HandleEvent_post_live_videos(ctx context.Context, request mcp.CallToolReque
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Event_post_live_videos(args)
 	if err != nil {
@@ -505,6 +519,7 @@ func HandleEvent_post_live_videos(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleEvent_get_photos handles the event_get_photos tool with context-based auth
 func HandleEvent_get_photos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -545,6 +560,8 @@ func HandleEvent_get_photos(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Event_get_photos(args)
 	if err != nil {
@@ -559,6 +576,7 @@ func HandleEvent_get_photos(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleEvent_get_picture handles the event_get_picture tool with context-based auth
 func HandleEvent_get_picture(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -599,6 +617,8 @@ func HandleEvent_get_picture(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Event_get_picture(args)
 	if err != nil {
@@ -613,6 +633,7 @@ func HandleEvent_get_picture(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleEvent_get_posts handles the event_get_posts tool with context-based auth
 func HandleEvent_get_posts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -653,6 +674,8 @@ func HandleEvent_get_posts(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Event_get_posts(args)
 	if err != nil {
@@ -667,6 +690,7 @@ func HandleEvent_get_posts(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleEvent_get_roles handles the event_get_roles tool with context-based auth
 func HandleEvent_get_roles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -707,6 +731,8 @@ func HandleEvent_get_roles(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Event_get_roles(args)
 	if err != nil {
@@ -721,6 +747,7 @@ func HandleEvent_get_roles(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleEvent_get_ticket_tiers handles the event_get_ticket_tiers tool with context-based auth
 func HandleEvent_get_ticket_tiers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -761,6 +788,8 @@ func HandleEvent_get_ticket_tiers(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Event_get_ticket_tiers(args)
 	if err != nil {
@@ -775,6 +804,7 @@ func HandleEvent_get_ticket_tiers(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleEvent_get_videos handles the event_get_videos tool with context-based auth
 func HandleEvent_get_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -815,6 +845,8 @@ func HandleEvent_get_videos(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Event_get_videos(args)
 	if err != nil {
@@ -829,6 +861,7 @@ func HandleEvent_get_videos(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleEvent_get_ handles the event_get_ tool with context-based auth
 func HandleEvent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -869,6 +902,8 @@ func HandleEvent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Event_get_(args)
 	if err != nil {
@@ -883,3 +918,4 @@ func HandleEvent_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

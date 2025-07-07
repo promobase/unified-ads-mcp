@@ -4,17 +4,17 @@ package types
 
 // AdAssetFeedSpecAssetCustomizationRule represents a Facebook AdAssetFeedSpecAssetCustomizationRule object
 type AdAssetFeedSpecAssetCustomizationRule struct {
-	Body_label                *AdAssetFeedSpecAssetLabel                 `json:"body_label"`
-	Call_to_action_label      *AdAssetFeedSpecAssetLabel                 `json:"call_to_action_label"`
-	Call_to_action_type_label *AdAssetFeedSpecAssetLabel                 `json:"call_to_action_type_label"`
-	Caption_label             *AdAssetFeedSpecAssetLabel                 `json:"caption_label"`
-	Carousel_label            *AdAssetFeedSpecAssetLabel                 `json:"carousel_label"`
-	Customization_spec        *AdAssetCustomizationRuleCustomizationSpec `json:"customization_spec"`
-	Description_label         *AdAssetFeedSpecAssetLabel                 `json:"description_label"`
-	Image_label               *AdAssetFeedSpecAssetLabel                 `json:"image_label"`
-	Is_default                bool                                       `json:"is_default"`
-	Link_url_label            *AdAssetFeedSpecAssetLabel                 `json:"link_url_label"`
-	Priority                  int                                        `json:"priority"`
-	Title_label               *AdAssetFeedSpecAssetLabel                 `json:"title_label"`
-	Video_label               *AdAssetFeedSpecAssetLabel                 `json:"video_label"`
+	Body_label *AdAssetFeedSpecAssetLabel `json:"body_label"`
+	Call_to_action_label *AdAssetFeedSpecAssetLabel `json:"call_to_action_label"`
+	Call_to_action_type_label *AdAssetFeedSpecAssetLabel `json:"call_to_action_type_label"`
+	Caption_label *AdAssetFeedSpecAssetLabel `json:"caption_label"`
+	Carousel_label *AdAssetFeedSpecAssetLabel `json:"carousel_label"`
+	Customization_spec *AdAssetCustomizationRuleCustomizationSpec `json:"customization_spec"`
+	Description_label *AdAssetFeedSpecAssetLabel `json:"description_label"`
+	Image_label *AdAssetFeedSpecAssetLabel `json:"image_label"`
+	Is_default bool `json:"is_default"`
+	Link_url_label *AdAssetFeedSpecAssetLabel `json:"link_url_label"`
+	Priority int `json:"priority"`
+	Title_label *AdAssetFeedSpecAssetLabel `json:"title_label"`
+	Video_label *AdAssetFeedSpecAssetLabel `json:"video_label"`
 }

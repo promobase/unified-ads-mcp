@@ -4,6 +4,6 @@ package types
 
 // DeliveryStatus represents a Facebook DeliveryStatus object
 type DeliveryStatus struct {
-	Status      string   `json:"status"`
+	Status string `json:"status"`
 	Substatuses []string `json:"substatuses"`
 }

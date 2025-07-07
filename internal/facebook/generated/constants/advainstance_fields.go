@@ -4,14 +4,14 @@ package constants
 
 // AdvAInstanceFields contains field name constants for AdvAInstance objects
 var AdvAInstanceFields = struct {
-	Id            string
-	InstanceType  string
-	Name          string
+	Id string
+	InstanceType string
+	Name string
 	OwnerBusiness string
 }{
-	Id:            "id",
-	InstanceType:  "instance_type",
-	Name:          "name",
+	Id: "id",
+	InstanceType: "instance_type",
+	Name: "name",
 	OwnerBusiness: "owner_business",
 }
 

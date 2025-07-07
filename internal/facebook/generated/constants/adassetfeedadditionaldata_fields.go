@@ -4,18 +4,18 @@ package constants
 
 // AdAssetFeedAdditionalDataFields contains field name constants for AdAssetFeedAdditionalData objects
 var AdAssetFeedAdditionalDataFields = struct {
-	AutomatedProductTags           string
-	BrandPageId                    string
-	IsClickToMessage               string
-	MultiShareEndCard              string
-	PageWelcomeMessage             string
+	AutomatedProductTags string
+	BrandPageId string
+	IsClickToMessage string
+	MultiShareEndCard string
+	PageWelcomeMessage string
 	PartnerAppWelcomeMessageFlowId string
 }{
-	AutomatedProductTags:           "automated_product_tags",
-	BrandPageId:                    "brand_page_id",
-	IsClickToMessage:               "is_click_to_message",
-	MultiShareEndCard:              "multi_share_end_card",
-	PageWelcomeMessage:             "page_welcome_message",
+	AutomatedProductTags: "automated_product_tags",
+	BrandPageId: "brand_page_id",
+	IsClickToMessage: "is_click_to_message",
+	MultiShareEndCard: "multi_share_end_card",
+	PageWelcomeMessage: "page_welcome_message",
 	PartnerAppWelcomeMessageFlowId: "partner_app_welcome_message_flow_id",
 }
 

@@ -4,12 +4,12 @@ package types
 
 // PartnerAccountLinking represents a Facebook PartnerAccountLinking object
 type PartnerAccountLinking struct {
-	Adaccount             *AdAccount   `json:"adaccount"`
-	App                   *Application `json:"app"`
-	Business              *Business    `json:"business"`
-	Externalidentifier    string       `json:"externalidentifier"`
-	Externalidentifieruri string       `json:"externalidentifieruri"`
-	Id                    string       `json:"id"`
-	Partnername           string       `json:"partnername"`
-	Pixel                 string       `json:"pixel"`
+	Adaccount *AdAccount `json:"adaccount"`
+	App *Application `json:"app"`
+	Business *Business `json:"business"`
+	Externalidentifier string `json:"externalidentifier"`
+	Externalidentifieruri string `json:"externalidentifieruri"`
+	Id string `json:"id"`
+	Partnername string `json:"partnername"`
+	Pixel string `json:"pixel"`
 }

@@ -17,6 +17,7 @@ import (
 func GetWearableDevicePublicKeyTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// wearabledevicepublickey_get_ tool
 	// Available fields for WearableDevicePublicKey: base64_encoded_public_key, creation_time_on_device, device_uuid, id, key_type, owner_id, product_use_case, version
 	wearabledevicepublickey_get_Tool := mcp.NewTool("wearabledevicepublickey_get_",
@@ -36,10 +37,12 @@ func GetWearableDevicePublicKeyTools() []mcp.Tool {
 	)
 	tools = append(tools, wearabledevicepublickey_get_Tool)
 
+
 	return tools
 }
 
 // WearableDevicePublicKey handlers
+
 
 // HandleWearabledevicepublickey_get_ handles the wearabledevicepublickey_get_ tool with context-based auth
 func HandleWearabledevicepublickey_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleWearabledevicepublickey_get_(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Wearabledevicepublickey_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleWearabledevicepublickey_get_(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

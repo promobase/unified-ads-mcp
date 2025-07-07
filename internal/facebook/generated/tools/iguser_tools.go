@@ -17,6 +17,7 @@ import (
 func GetIGUserTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// iguser_get_agencies tool
 	// Available fields for Business: block_offline_analytics, collaborative_ads_managed_partner_business_info, collaborative_ads_managed_partner_eligibility, collaborative_ads_partner_premium_options, created_by, created_time, extended_updated_time, id, is_hidden, link, name, payment_account_id, primary_page, profile_picture_uri, timezone_id, two_factor_type, updated_by, updated_time, user_access_expire_time, verification_status, vertical, vertical_id
 	iguser_get_agenciesTool := mcp.NewTool("iguser_get_agencies",
@@ -45,9 +46,9 @@ func GetIGUserTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "business parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required]"),
@@ -75,14 +76,14 @@ func GetIGUserTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"account_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "account_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "business parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: account_id (string) [required], business (string) [required]"),
@@ -135,15 +136,15 @@ func GetIGUserTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"creator_instagram_account": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "creator_instagram_account parameter",
 				},
 				"creator_instagram_username": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "creator_instagram_username parameter",
 				},
 				"revoke": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "revoke parameter",
 				},
 			}),
@@ -160,25 +161,25 @@ func GetIGUserTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ad_code": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ad_code parameter",
 				},
 				"creator_username": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "creator_username parameter",
 				},
 				"only_fetch_allowlisted": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "only_fetch_allowlisted parameter",
 				},
 				"only_fetch_recommended_content": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "only_fetch_recommended_content parameter",
 				},
 				"permalinks": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "permalinks parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: ad_code (string), creator_username (string), only_fetch_allowlisted (boolean), only_fetch_recommended_content (boolean), permalinks (array<string>)"),
@@ -206,10 +207,10 @@ func GetIGUserTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"user_ids": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "user_ids parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "integer"},
+					"required": true,
+					"items": map[string]any{"type": "integer"},
 				},
 			}),
 			mcp.Description("Parameters object containing: user_ids (array<integer>) [required]"),
@@ -226,10 +227,10 @@ func GetIGUserTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"user_ids": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "user_ids parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "integer"},
+					"required": true,
+					"items": map[string]any{"type": "integer"},
 				},
 			}),
 			mcp.Description("Parameters object containing: user_ids (array<integer>) [required]"),
@@ -257,10 +258,10 @@ func GetIGUserTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"user_ids": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "user_ids parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "integer"},
+					"required": true,
+					"items": map[string]any{"type": "integer"},
 				},
 			}),
 			mcp.Description("Parameters object containing: user_ids (array<integer>) [required]"),
@@ -277,12 +278,12 @@ func GetIGUserTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"catalog_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "catalog_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"q": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "q parameter",
 				},
 			}),
@@ -330,7 +331,7 @@ func GetIGUserTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"since": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "since parameter",
 				},
 			}),
@@ -377,7 +378,7 @@ func GetIGUserTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"dataset_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "dataset_name parameter",
 				},
 			}),
@@ -395,41 +396,41 @@ func GetIGUserTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"breakdown": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "breakdown parameter",
-					"enum":        []string{"age", "city", "contact_button_type", "country", "follow_type", "gender", "media_product_type"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "age", "city", "contact_button_type", "country", "follow_type", "gender", "media_product_type" },
+					"items": map[string]any{"type": "string"},
 				},
 				"metric": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "metric parameter",
-					"required":    true,
-					"enum":        []string{"accounts_engaged", "comments", "content_views", "engaged_audience_demographics", "follower_count", "follower_demographics", "follows_and_unfollows", "impressions", "likes", "online_followers", "profile_links_taps", "profile_views", "quotes", "reach", "reached_audience_demographics", "replies", "reposts", "saves", "shares", "threads_follower_demographics", "threads_followers", "threads_likes", "threads_replies", "threads_views", "total_interactions", "views", "website_clicks"},
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"enum": []string{ "accounts_engaged", "comments", "content_views", "engaged_audience_demographics", "follower_count", "follower_demographics", "follows_and_unfollows", "impressions", "likes", "online_followers", "profile_links_taps", "profile_views", "quotes", "reach", "reached_audience_demographics", "replies", "reposts", "saves", "shares", "threads_follower_demographics", "threads_followers", "threads_likes", "threads_replies", "threads_views", "total_interactions", "views", "website_clicks" },
+					"items": map[string]any{"type": "string"},
 				},
 				"metric_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "metric_type parameter",
-					"enum":        []string{"default", "time_series", "total_value"},
+					"enum": []string{ "default", "time_series", "total_value" },
 				},
 				"period": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "period parameter",
-					"required":    true,
-					"enum":        []string{"day", "days_28", "lifetime", "month", "total_over_range", "week"},
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"enum": []string{ "day", "days_28", "lifetime", "month", "total_over_range", "week" },
+					"items": map[string]any{"type": "string"},
 				},
 				"since": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "since parameter",
 				},
 				"timeframe": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "timeframe parameter",
-					"enum":        []string{"last_14_days", "last_30_days", "last_90_days", "prev_month", "this_month", "this_week"},
+					"enum": []string{ "last_14_days", "last_30_days", "last_90_days", "prev_month", "this_month", "this_week" },
 				},
 				"until": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "until parameter",
 				},
 			}),
@@ -477,11 +478,11 @@ func GetIGUserTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"since": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "since parameter",
 				},
 				"until": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "until parameter",
 				},
 			}),
@@ -510,11 +511,11 @@ func GetIGUserTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"since": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "since parameter",
 				},
 				"until": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "until parameter",
 				},
 			}),
@@ -542,71 +543,71 @@ func GetIGUserTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"alt_text": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "alt_text parameter",
 				},
 				"audio_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "audio_name parameter",
 				},
 				"caption": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "caption parameter",
 				},
 				"children": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "children parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"collaborators": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "collaborators parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"cover_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "cover_url parameter",
 				},
 				"image_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "image_url parameter",
 				},
 				"is_carousel_item": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_carousel_item parameter",
 				},
 				"location_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "location_id parameter",
 				},
 				"media_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "media_type parameter",
 				},
 				"product_tags": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "product_tags parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"share_to_feed": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "share_to_feed parameter",
 				},
 				"thumb_offset": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "thumb_offset parameter",
 				},
 				"upload_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "upload_type parameter",
 				},
 				"user_tags": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "user_tags parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"video_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "video_url parameter",
 				},
 			}),
@@ -623,9 +624,9 @@ func GetIGUserTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"creation_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "creation_id parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: creation_id (integer) [required]"),
@@ -641,18 +642,18 @@ func GetIGUserTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"comment_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "comment_id parameter",
 				},
 				"media_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "media_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"message": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "message parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: comment_id (string), media_id (string) [required], message (string) [required]"),
@@ -688,9 +689,9 @@ func GetIGUserTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"product_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "product_id parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: product_id (string) [required]"),
@@ -718,14 +719,14 @@ func GetIGUserTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"appeal_reason": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "appeal_reason parameter",
-					"required":    true,
+					"required": true,
 				},
 				"product_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "product_id parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: appeal_reason (string) [required], product_id (string) [required]"),
@@ -817,24 +818,24 @@ func GetIGUserTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"end_time": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "end_time parameter",
 				},
 				"notification_subtypes": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "notification_subtypes parameter",
-					"enum":        []string{"AFTER_EVENT_1DAY", "AFTER_EVENT_2DAY", "AFTER_EVENT_3DAY", "AFTER_EVENT_4DAY", "AFTER_EVENT_5DAY", "AFTER_EVENT_6DAY", "AFTER_EVENT_7DAY", "BEFORE_EVENT_15MIN", "BEFORE_EVENT_1DAY", "BEFORE_EVENT_1HOUR", "BEFORE_EVENT_2DAY", "EVENT_START", "RESCHEDULED"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "AFTER_EVENT_1DAY", "AFTER_EVENT_2DAY", "AFTER_EVENT_3DAY", "AFTER_EVENT_4DAY", "AFTER_EVENT_5DAY", "AFTER_EVENT_6DAY", "AFTER_EVENT_7DAY", "BEFORE_EVENT_15MIN", "BEFORE_EVENT_1DAY", "BEFORE_EVENT_1HOUR", "BEFORE_EVENT_2DAY", "EVENT_START", "RESCHEDULED" },
+					"items": map[string]any{"type": "string"},
 				},
 				"start_time": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "start_time parameter",
-					"required":    true,
+					"required": true,
 				},
 				"title": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "title parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: end_time (datetime), notification_subtypes (array<enum>) [AFTER_EVENT_1DAY, AFTER_EVENT_2DAY, AFTER_EVENT_3DAY, AFTER_EVENT_4DAY, AFTER_EVENT_5DAY, ...], start_time (datetime) [required], title (string) [required]"),
@@ -850,11 +851,11 @@ func GetIGUserTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"app_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "app_id parameter",
 				},
 				"flow_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "flow_id parameter",
 				},
 			}),
@@ -883,7 +884,7 @@ func GetIGUserTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"adgroup_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "adgroup_id parameter",
 				},
 			}),
@@ -904,10 +905,12 @@ func GetIGUserTools() []mcp.Tool {
 	)
 	tools = append(tools, iguser_get_Tool)
 
+
 	return tools
 }
 
 // IGUser handlers
+
 
 // HandleIguser_get_agencies handles the iguser_get_agencies tool with context-based auth
 func HandleIguser_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -948,6 +951,8 @@ func HandleIguser_get_agencies(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_agencies(args)
 	if err != nil {
@@ -962,6 +967,7 @@ func HandleIguser_get_agencies(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_authorized_adaccounts handles the iguser_get_authorized_adaccounts tool with context-based auth
 func HandleIguser_get_authorized_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1016,6 +1022,8 @@ func HandleIguser_get_authorized_adaccounts(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_authorized_adaccounts(args)
 	if err != nil {
@@ -1030,6 +1038,7 @@ func HandleIguser_get_authorized_adaccounts(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_post_authorized_adaccounts handles the iguser_post_authorized_adaccounts tool with context-based auth
 func HandleIguser_post_authorized_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1059,6 +1068,8 @@ func HandleIguser_post_authorized_adaccounts(ctx context.Context, request mcp.Ca
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_post_authorized_adaccounts(args)
 	if err != nil {
@@ -1073,6 +1084,7 @@ func HandleIguser_post_authorized_adaccounts(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_available_catalogs handles the iguser_get_available_catalogs tool with context-based auth
 func HandleIguser_get_available_catalogs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1113,6 +1125,8 @@ func HandleIguser_get_available_catalogs(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_available_catalogs(args)
 	if err != nil {
@@ -1127,6 +1141,7 @@ func HandleIguser_get_available_catalogs(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_branded_content_ad_permissions handles the iguser_get_branded_content_ad_permissions tool with context-based auth
 func HandleIguser_get_branded_content_ad_permissions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1167,6 +1182,8 @@ func HandleIguser_get_branded_content_ad_permissions(ctx context.Context, reques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_branded_content_ad_permissions(args)
 	if err != nil {
@@ -1181,6 +1198,7 @@ func HandleIguser_get_branded_content_ad_permissions(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_post_branded_content_ad_permissions handles the iguser_post_branded_content_ad_permissions tool with context-based auth
 func HandleIguser_post_branded_content_ad_permissions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1208,6 +1226,8 @@ func HandleIguser_post_branded_content_ad_permissions(ctx context.Context, reque
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_post_branded_content_ad_permissions(args)
 	if err != nil {
@@ -1222,6 +1242,7 @@ func HandleIguser_post_branded_content_ad_permissions(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_branded_content_advertisable_medias handles the iguser_get_branded_content_advertisable_medias tool with context-based auth
 func HandleIguser_get_branded_content_advertisable_medias(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1274,6 +1295,8 @@ func HandleIguser_get_branded_content_advertisable_medias(ctx context.Context, r
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_branded_content_advertisable_medias(args)
 	if err != nil {
@@ -1288,6 +1311,7 @@ func HandleIguser_get_branded_content_advertisable_medias(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_delete_branded_content_tag_approval handles the iguser_delete_branded_content_tag_approval tool with context-based auth
 func HandleIguser_delete_branded_content_tag_approval(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1317,6 +1341,8 @@ func HandleIguser_delete_branded_content_tag_approval(ctx context.Context, reque
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_delete_branded_content_tag_approval(args)
 	if err != nil {
@@ -1331,6 +1357,7 @@ func HandleIguser_delete_branded_content_tag_approval(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_branded_content_tag_approval handles the iguser_get_branded_content_tag_approval tool with context-based auth
 func HandleIguser_get_branded_content_tag_approval(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1385,6 +1412,8 @@ func HandleIguser_get_branded_content_tag_approval(ctx context.Context, request 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_branded_content_tag_approval(args)
 	if err != nil {
@@ -1399,6 +1428,7 @@ func HandleIguser_get_branded_content_tag_approval(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_post_branded_content_tag_approval handles the iguser_post_branded_content_tag_approval tool with context-based auth
 func HandleIguser_post_branded_content_tag_approval(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1428,6 +1458,8 @@ func HandleIguser_post_branded_content_tag_approval(ctx context.Context, request
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_post_branded_content_tag_approval(args)
 	if err != nil {
@@ -1442,6 +1474,7 @@ func HandleIguser_post_branded_content_tag_approval(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_catalog_product_search handles the iguser_get_catalog_product_search tool with context-based auth
 func HandleIguser_get_catalog_product_search(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1496,6 +1529,8 @@ func HandleIguser_get_catalog_product_search(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_catalog_product_search(args)
 	if err != nil {
@@ -1510,6 +1545,7 @@ func HandleIguser_get_catalog_product_search(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_connected_threads_user handles the iguser_get_connected_threads_user tool with context-based auth
 func HandleIguser_get_connected_threads_user(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1550,6 +1586,8 @@ func HandleIguser_get_connected_threads_user(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_connected_threads_user(args)
 	if err != nil {
@@ -1564,6 +1602,7 @@ func HandleIguser_get_connected_threads_user(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_content_publishing_limit handles the iguser_get_content_publishing_limit tool with context-based auth
 func HandleIguser_get_content_publishing_limit(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1616,6 +1655,8 @@ func HandleIguser_get_content_publishing_limit(ctx context.Context, request mcp.
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_content_publishing_limit(args)
 	if err != nil {
@@ -1630,6 +1671,7 @@ func HandleIguser_get_content_publishing_limit(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_dataset handles the iguser_get_dataset tool with context-based auth
 func HandleIguser_get_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1670,6 +1712,8 @@ func HandleIguser_get_dataset(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_dataset(args)
 	if err != nil {
@@ -1684,6 +1728,7 @@ func HandleIguser_get_dataset(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_post_dataset handles the iguser_post_dataset tool with context-based auth
 func HandleIguser_post_dataset(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1711,6 +1756,8 @@ func HandleIguser_post_dataset(ctx context.Context, request mcp.CallToolRequest)
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_post_dataset(args)
 	if err != nil {
@@ -1725,6 +1772,7 @@ func HandleIguser_post_dataset(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_insights handles the iguser_get_insights tool with context-based auth
 func HandleIguser_get_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1779,6 +1827,8 @@ func HandleIguser_get_insights(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_insights(args)
 	if err != nil {
@@ -1793,6 +1843,7 @@ func HandleIguser_get_insights(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_instagram_backed_threads_user handles the iguser_get_instagram_backed_threads_user tool with context-based auth
 func HandleIguser_get_instagram_backed_threads_user(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1833,6 +1884,8 @@ func HandleIguser_get_instagram_backed_threads_user(ctx context.Context, request
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_instagram_backed_threads_user(args)
 	if err != nil {
@@ -1847,6 +1900,7 @@ func HandleIguser_get_instagram_backed_threads_user(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_live_media handles the iguser_get_live_media tool with context-based auth
 func HandleIguser_get_live_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1899,6 +1953,8 @@ func HandleIguser_get_live_media(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_live_media(args)
 	if err != nil {
@@ -1913,6 +1969,7 @@ func HandleIguser_get_live_media(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_media handles the iguser_get_media tool with context-based auth
 func HandleIguser_get_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1965,6 +2022,8 @@ func HandleIguser_get_media(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_media(args)
 	if err != nil {
@@ -1979,6 +2038,7 @@ func HandleIguser_get_media(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_post_media handles the iguser_post_media tool with context-based auth
 func HandleIguser_post_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2006,6 +2066,8 @@ func HandleIguser_post_media(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_post_media(args)
 	if err != nil {
@@ -2020,6 +2082,7 @@ func HandleIguser_post_media(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_post_media_publish handles the iguser_post_media_publish tool with context-based auth
 func HandleIguser_post_media_publish(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2049,6 +2112,8 @@ func HandleIguser_post_media_publish(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_post_media_publish(args)
 	if err != nil {
@@ -2063,6 +2128,7 @@ func HandleIguser_post_media_publish(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_post_mentions handles the iguser_post_mentions tool with context-based auth
 func HandleIguser_post_mentions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2092,6 +2158,8 @@ func HandleIguser_post_mentions(ctx context.Context, request mcp.CallToolRequest
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_post_mentions(args)
 	if err != nil {
@@ -2106,6 +2174,7 @@ func HandleIguser_post_mentions(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_notification_message_tokens handles the iguser_get_notification_message_tokens tool with context-based auth
 func HandleIguser_get_notification_message_tokens(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2146,6 +2215,8 @@ func HandleIguser_get_notification_message_tokens(ctx context.Context, request m
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_notification_message_tokens(args)
 	if err != nil {
@@ -2160,6 +2231,7 @@ func HandleIguser_get_notification_message_tokens(ctx context.Context, request m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_product_appeal handles the iguser_get_product_appeal tool with context-based auth
 func HandleIguser_get_product_appeal(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2214,6 +2286,8 @@ func HandleIguser_get_product_appeal(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_product_appeal(args)
 	if err != nil {
@@ -2228,6 +2302,7 @@ func HandleIguser_get_product_appeal(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_post_product_appeal handles the iguser_post_product_appeal tool with context-based auth
 func HandleIguser_post_product_appeal(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2257,6 +2332,8 @@ func HandleIguser_post_product_appeal(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_post_product_appeal(args)
 	if err != nil {
@@ -2271,6 +2348,7 @@ func HandleIguser_post_product_appeal(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_recently_searched_hashtags handles the iguser_get_recently_searched_hashtags tool with context-based auth
 func HandleIguser_get_recently_searched_hashtags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2311,6 +2389,8 @@ func HandleIguser_get_recently_searched_hashtags(ctx context.Context, request mc
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_recently_searched_hashtags(args)
 	if err != nil {
@@ -2325,6 +2405,7 @@ func HandleIguser_get_recently_searched_hashtags(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_stories handles the iguser_get_stories tool with context-based auth
 func HandleIguser_get_stories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2365,6 +2446,8 @@ func HandleIguser_get_stories(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_stories(args)
 	if err != nil {
@@ -2379,6 +2462,7 @@ func HandleIguser_get_stories(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_tags handles the iguser_get_tags tool with context-based auth
 func HandleIguser_get_tags(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2419,6 +2503,8 @@ func HandleIguser_get_tags(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_tags(args)
 	if err != nil {
@@ -2433,6 +2519,7 @@ func HandleIguser_get_tags(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_upcoming_events handles the iguser_get_upcoming_events tool with context-based auth
 func HandleIguser_get_upcoming_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2473,6 +2560,8 @@ func HandleIguser_get_upcoming_events(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_upcoming_events(args)
 	if err != nil {
@@ -2487,6 +2576,7 @@ func HandleIguser_get_upcoming_events(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_post_upcoming_events handles the iguser_post_upcoming_events tool with context-based auth
 func HandleIguser_post_upcoming_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2516,6 +2606,8 @@ func HandleIguser_post_upcoming_events(ctx context.Context, request mcp.CallTool
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_post_upcoming_events(args)
 	if err != nil {
@@ -2530,6 +2622,7 @@ func HandleIguser_post_upcoming_events(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_welcome_message_flows handles the iguser_get_welcome_message_flows tool with context-based auth
 func HandleIguser_get_welcome_message_flows(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2582,6 +2675,8 @@ func HandleIguser_get_welcome_message_flows(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_welcome_message_flows(args)
 	if err != nil {
@@ -2596,6 +2691,7 @@ func HandleIguser_get_welcome_message_flows(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIguser_get_ handles the iguser_get_ tool with context-based auth
 func HandleIguser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2648,6 +2744,8 @@ func HandleIguser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Iguser_get_(args)
 	if err != nil {
@@ -2662,3 +2760,4 @@ func HandleIguser_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

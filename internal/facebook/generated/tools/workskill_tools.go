@@ -17,6 +17,7 @@ import (
 func GetWorkSkillTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// workskill_get_users tool
 	// Available fields for User: about, age_range, avatar_2d_profile_picture, birthday, client_business_id, community, cover, currency, education, email, favorite_athletes, favorite_teams, first_name, gender, hometown, id, id_for_avatars, inspirational_people, install_type, installed, is_guest_user, is_work_account, languages, last_name, link, local_news_megaphone_dismiss_status, local_news_subscription_status, locale, location, meeting_for, middle_name, name, name_format, payment_pricepoints, political, profile_pic, quotes, relationship_status, religion, shared_login_upgrade_required_by, short_name, significant_other, sports, supports_donate_button_in_live_video, third_party_id, timezone, token_for_business, updated_time, verified, video_upload_limits, website
 	workskill_get_usersTool := mcp.NewTool("workskill_get_users",
@@ -55,10 +56,12 @@ func GetWorkSkillTools() []mcp.Tool {
 	)
 	tools = append(tools, workskill_get_Tool)
 
+
 	return tools
 }
 
 // WorkSkill handlers
+
 
 // HandleWorkskill_get_users handles the workskill_get_users tool with context-based auth
 func HandleWorkskill_get_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -99,6 +102,8 @@ func HandleWorkskill_get_users(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Workskill_get_users(args)
 	if err != nil {
@@ -113,6 +118,7 @@ func HandleWorkskill_get_users(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleWorkskill_get_ handles the workskill_get_ tool with context-based auth
 func HandleWorkskill_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -153,6 +159,8 @@ func HandleWorkskill_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Workskill_get_(args)
 	if err != nil {
@@ -167,3 +175,4 @@ func HandleWorkskill_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

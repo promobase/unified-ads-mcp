@@ -17,6 +17,7 @@ import (
 func GetWebsiteCreativeInfoTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// websitecreativeinfo_get_ tool
 	// Available fields for WebsiteCreativeInfo: id, image_urls, link_url
 	websitecreativeinfo_get_Tool := mcp.NewTool("websitecreativeinfo_get_",
@@ -36,10 +37,12 @@ func GetWebsiteCreativeInfoTools() []mcp.Tool {
 	)
 	tools = append(tools, websitecreativeinfo_get_Tool)
 
+
 	return tools
 }
 
 // WebsiteCreativeInfo handlers
+
 
 // HandleWebsitecreativeinfo_get_ handles the websitecreativeinfo_get_ tool with context-based auth
 func HandleWebsitecreativeinfo_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleWebsitecreativeinfo_get_(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Websitecreativeinfo_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleWebsitecreativeinfo_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

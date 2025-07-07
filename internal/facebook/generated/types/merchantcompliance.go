@@ -4,9 +4,9 @@ package types
 
 // MerchantCompliance represents a Facebook MerchantCompliance object
 type MerchantCompliance struct {
-	Active_campaigns          int     `json:"active_campaigns"`
-	Compliance_status         string  `json:"compliance_status"`
-	Count_down_start_time     int     `json:"count_down_start_time"`
-	Purchase                  int     `json:"purchase"`
+	Active_campaigns int `json:"active_campaigns"`
+	Compliance_status string `json:"compliance_status"`
+	Count_down_start_time int `json:"count_down_start_time"`
+	Purchase int `json:"purchase"`
 	Purchase_conversion_value float64 `json:"purchase_conversion_value"`
 }

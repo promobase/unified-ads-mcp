@@ -17,6 +17,7 @@ import (
 func GetPaymentSubscriptionTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// paymentsubscription_get_ tool
 	// Available fields for PaymentSubscription: amount, app_param_data, application, billing_period, canceled_reason, created_time, currency, id, last_payment, next_bill_time, next_period_amount, next_period_currency, next_period_product, payment_status, pending_cancel, period_start_time, product, status, test, trial_amount, trial_currency, trial_expiry_time, updated_time, user
 	paymentsubscription_get_Tool := mcp.NewTool("paymentsubscription_get_",
@@ -36,10 +37,12 @@ func GetPaymentSubscriptionTools() []mcp.Tool {
 	)
 	tools = append(tools, paymentsubscription_get_Tool)
 
+
 	return tools
 }
 
 // PaymentSubscription handlers
+
 
 // HandlePaymentsubscription_get_ handles the paymentsubscription_get_ tool with context-based auth
 func HandlePaymentsubscription_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandlePaymentsubscription_get_(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Paymentsubscription_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandlePaymentsubscription_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

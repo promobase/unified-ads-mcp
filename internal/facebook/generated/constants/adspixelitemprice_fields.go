@@ -4,10 +4,10 @@ package constants
 
 // AdsPixelItemPriceFields contains field name constants for AdsPixelItemPrice objects
 var AdsPixelItemPriceFields = struct {
-	Date              string
+	Date string
 	ItemPriceCoverage string
 }{
-	Date:              "date",
+	Date: "date",
 	ItemPriceCoverage: "item_price_coverage",
 }
 

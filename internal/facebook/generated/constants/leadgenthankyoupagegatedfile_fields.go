@@ -4,15 +4,15 @@ package constants
 
 // LeadGenThankYouPageGatedFileFields contains field name constants for LeadGenThankYouPageGatedFile objects
 var LeadGenThankYouPageGatedFileFields = struct {
-	FileCdnUrl    string
-	FileName      string
+	FileCdnUrl string
+	FileName string
 	FileSizeBytes string
-	Id            string
+	Id string
 }{
-	FileCdnUrl:    "file_cdn_url",
-	FileName:      "file_name",
+	FileCdnUrl: "file_cdn_url",
+	FileName: "file_name",
 	FileSizeBytes: "file_size_bytes",
-	Id:            "id",
+	Id: "id",
 }
 
 // LeadGenThankYouPageGatedFileFieldsList contains all available fields for LeadGenThankYouPageGatedFile objects

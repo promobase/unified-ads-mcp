@@ -5,10 +5,10 @@ package constants
 // McomOnboardingStatusFields contains field name constants for McomOnboardingStatus objects
 var McomOnboardingStatusFields = struct {
 	OnboardingStatus string
-	PageId           string
+	PageId string
 }{
 	OnboardingStatus: "onboarding_status",
-	PageId:           "page_id",
+	PageId: "page_id",
 }
 
 // McomOnboardingStatusFieldsList contains all available fields for McomOnboardingStatus objects

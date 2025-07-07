@@ -5,11 +5,11 @@ package constants
 // StreamFilterFields contains field name constants for StreamFilter objects
 var StreamFilterFields = struct {
 	FilterKey string
-	Name      string
+	Name string
 	FieldType string
 }{
 	FilterKey: "filter_key",
-	Name:      "name",
+	Name: "name",
 	FieldType: "type",
 }
 

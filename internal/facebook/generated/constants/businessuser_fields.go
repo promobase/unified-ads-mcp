@@ -4,37 +4,37 @@ package constants
 
 // BusinessUserFields contains field name constants for BusinessUser objects
 var BusinessUserFields = struct {
-	Business            string
+	Business string
 	BusinessRoleRequest string
-	Email               string
-	FinancePermission   string
-	FirstName           string
-	Id                  string
-	IpPermission        string
-	LastName            string
-	MarkedForRemoval    string
-	Name                string
-	PendingEmail        string
-	Role                string
-	Tasks               string
-	Title               string
-	TwoFacStatus        string
+	Email string
+	FinancePermission string
+	FirstName string
+	Id string
+	IpPermission string
+	LastName string
+	MarkedForRemoval string
+	Name string
+	PendingEmail string
+	Role string
+	Tasks string
+	Title string
+	TwoFacStatus string
 }{
-	Business:            "business",
+	Business: "business",
 	BusinessRoleRequest: "business_role_request",
-	Email:               "email",
-	FinancePermission:   "finance_permission",
-	FirstName:           "first_name",
-	Id:                  "id",
-	IpPermission:        "ip_permission",
-	LastName:            "last_name",
-	MarkedForRemoval:    "marked_for_removal",
-	Name:                "name",
-	PendingEmail:        "pending_email",
-	Role:                "role",
-	Tasks:               "tasks",
-	Title:               "title",
-	TwoFacStatus:        "two_fac_status",
+	Email: "email",
+	FinancePermission: "finance_permission",
+	FirstName: "first_name",
+	Id: "id",
+	IpPermission: "ip_permission",
+	LastName: "last_name",
+	MarkedForRemoval: "marked_for_removal",
+	Name: "name",
+	PendingEmail: "pending_email",
+	Role: "role",
+	Tasks: "tasks",
+	Title: "title",
+	TwoFacStatus: "two_fac_status",
 }
 
 // BusinessUserFieldsList contains all available fields for BusinessUser objects

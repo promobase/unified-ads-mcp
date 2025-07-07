@@ -4,15 +4,15 @@ package constants
 
 // CurrencyFields contains field name constants for Currency objects
 var CurrencyFields = struct {
-	CurrencyOffset     string
-	UsdExchange        string
+	CurrencyOffset string
+	UsdExchange string
 	UsdExchangeInverse string
-	UserCurrency       string
+	UserCurrency string
 }{
-	CurrencyOffset:     "currency_offset",
-	UsdExchange:        "usd_exchange",
+	CurrencyOffset: "currency_offset",
+	UsdExchange: "usd_exchange",
 	UsdExchangeInverse: "usd_exchange_inverse",
-	UserCurrency:       "user_currency",
+	UserCurrency: "user_currency",
 }
 
 // CurrencyFieldsList contains all available fields for Currency objects

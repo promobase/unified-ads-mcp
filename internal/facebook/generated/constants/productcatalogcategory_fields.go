@@ -4,21 +4,21 @@ package constants
 
 // ProductCatalogCategoryFields contains field name constants for ProductCatalogCategory objects
 var ProductCatalogCategoryFields = struct {
-	CriteriaValue  string
-	Description    string
+	CriteriaValue string
+	Description string
 	DestinationUri string
-	ImageUrl       string
-	Name           string
-	NumItems       string
-	Tokens         string
+	ImageUrl string
+	Name string
+	NumItems string
+	Tokens string
 }{
-	CriteriaValue:  "criteria_value",
-	Description:    "description",
+	CriteriaValue: "criteria_value",
+	Description: "description",
 	DestinationUri: "destination_uri",
-	ImageUrl:       "image_url",
-	Name:           "name",
-	NumItems:       "num_items",
-	Tokens:         "tokens",
+	ImageUrl: "image_url",
+	Name: "name",
+	NumItems: "num_items",
+	Tokens: "tokens",
 }
 
 // ProductCatalogCategoryFieldsList contains all available fields for ProductCatalogCategory objects

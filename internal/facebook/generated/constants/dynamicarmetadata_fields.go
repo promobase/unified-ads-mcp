@@ -4,31 +4,31 @@ package constants
 
 // DynamicARMetadataFields contains field name constants for DynamicARMetadata objects
 var DynamicARMetadataFields = struct {
-	AnchorPoint         string
+	AnchorPoint string
 	ContainerEffectEnum string
-	EffectIconUrl       string
-	EffectId            string
-	Id                  string
-	Platforms           string
-	ScaleFactor         string
-	ShadowTextureUrl    string
-	SourceUrl           string
-	State               string
-	Tags                string
-	VariantPickerUrl    string
+	EffectIconUrl string
+	EffectId string
+	Id string
+	Platforms string
+	ScaleFactor string
+	ShadowTextureUrl string
+	SourceUrl string
+	State string
+	Tags string
+	VariantPickerUrl string
 }{
-	AnchorPoint:         "anchor_point",
+	AnchorPoint: "anchor_point",
 	ContainerEffectEnum: "container_effect_enum",
-	EffectIconUrl:       "effect_icon_url",
-	EffectId:            "effect_id",
-	Id:                  "id",
-	Platforms:           "platforms",
-	ScaleFactor:         "scale_factor",
-	ShadowTextureUrl:    "shadow_texture_url",
-	SourceUrl:           "source_url",
-	State:               "state",
-	Tags:                "tags",
-	VariantPickerUrl:    "variant_picker_url",
+	EffectIconUrl: "effect_icon_url",
+	EffectId: "effect_id",
+	Id: "id",
+	Platforms: "platforms",
+	ScaleFactor: "scale_factor",
+	ShadowTextureUrl: "shadow_texture_url",
+	SourceUrl: "source_url",
+	State: "state",
+	Tags: "tags",
+	VariantPickerUrl: "variant_picker_url",
 }
 
 // DynamicARMetadataFieldsList contains all available fields for DynamicARMetadata objects

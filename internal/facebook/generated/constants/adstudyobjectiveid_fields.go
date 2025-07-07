@@ -5,12 +5,12 @@ package constants
 // AdStudyObjectiveIDFields contains field name constants for AdStudyObjectiveID objects
 var AdStudyObjectiveIDFields = struct {
 	EventNames string
-	Id         string
-	FieldType  string
+	Id string
+	FieldType string
 }{
 	EventNames: "event_names",
-	Id:         "id",
-	FieldType:  "type",
+	Id: "id",
+	FieldType: "type",
 }
 
 // AdStudyObjectiveIDFieldsList contains all available fields for AdStudyObjectiveID objects

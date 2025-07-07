@@ -4,19 +4,19 @@ package constants
 
 // AdLimitsEnforcementDataFields contains field name constants for AdLimitsEnforcementData objects
 var AdLimitsEnforcementDataFields = struct {
-	AdLimitOnPage   string
-	AdLimitOnScope  string
-	AdVolumeOnPage  string
+	AdLimitOnPage string
+	AdLimitOnScope string
+	AdVolumeOnPage string
 	AdVolumeOnScope string
-	IsAdmin         string
-	PageName        string
+	IsAdmin string
+	PageName string
 }{
-	AdLimitOnPage:   "ad_limit_on_page",
-	AdLimitOnScope:  "ad_limit_on_scope",
-	AdVolumeOnPage:  "ad_volume_on_page",
+	AdLimitOnPage: "ad_limit_on_page",
+	AdLimitOnScope: "ad_limit_on_scope",
+	AdVolumeOnPage: "ad_volume_on_page",
 	AdVolumeOnScope: "ad_volume_on_scope",
-	IsAdmin:         "is_admin",
-	PageName:        "page_name",
+	IsAdmin: "is_admin",
+	PageName: "page_name",
 }
 
 // AdLimitsEnforcementDataFieldsList contains all available fields for AdLimitsEnforcementData objects

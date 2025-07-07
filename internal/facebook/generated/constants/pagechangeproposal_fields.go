@@ -4,14 +4,14 @@ package constants
 
 // PageChangeProposalFields contains field name constants for PageChangeProposal objects
 var PageChangeProposalFields = struct {
-	AcceptanceStatus   string
-	Category           string
-	Id                 string
+	AcceptanceStatus string
+	Category string
+	Id string
 	UpcomingChangeInfo string
 }{
-	AcceptanceStatus:   "acceptance_status",
-	Category:           "category",
-	Id:                 "id",
+	AcceptanceStatus: "acceptance_status",
+	Category: "category",
+	Id: "id",
 	UpcomingChangeInfo: "upcoming_change_info",
 }
 

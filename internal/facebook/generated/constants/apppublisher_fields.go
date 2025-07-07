@@ -5,20 +5,20 @@ package constants
 // AppPublisherFields contains field name constants for AppPublisher objects
 var AppPublisherFields = struct {
 	ContentId string
-	IconUrl   string
-	Id        string
-	Name      string
-	Platform  string
+	IconUrl string
+	Id string
+	Name string
+	Platform string
 	StoreName string
-	StoreUrl  string
+	StoreUrl string
 }{
 	ContentId: "content_id",
-	IconUrl:   "icon_url",
-	Id:        "id",
-	Name:      "name",
-	Platform:  "platform",
+	IconUrl: "icon_url",
+	Id: "id",
+	Name: "name",
+	Platform: "platform",
 	StoreName: "store_name",
-	StoreUrl:  "store_url",
+	StoreUrl: "store_url",
 }
 
 // AppPublisherFieldsList contains all available fields for AppPublisher objects

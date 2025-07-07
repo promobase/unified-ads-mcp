@@ -4,16 +4,16 @@ package constants
 
 // AdsReportBuilderMMMReportSchedulerFields contains field name constants for AdsReportBuilderMMMReportScheduler objects
 var AdsReportBuilderMMMReportSchedulerFields = struct {
-	AdAccountIds      string
-	Filtering         string
-	Id                string
-	ReportName        string
+	AdAccountIds string
+	Filtering string
+	Id string
+	ReportName string
 	ScheduleFrequency string
 }{
-	AdAccountIds:      "ad_account_ids",
-	Filtering:         "filtering",
-	Id:                "id",
-	ReportName:        "report_name",
+	AdAccountIds: "ad_account_ids",
+	Filtering: "filtering",
+	Id: "id",
+	ReportName: "report_name",
 	ScheduleFrequency: "schedule_frequency",
 }
 

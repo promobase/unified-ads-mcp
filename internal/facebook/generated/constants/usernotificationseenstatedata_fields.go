@@ -4,10 +4,10 @@ package constants
 
 // UserNotificationSeenStateDataFields contains field name constants for UserNotificationSeenStateData objects
 var UserNotificationSeenStateDataFields = struct {
-	Id        string
+	Id string
 	SeenState string
 }{
-	Id:        "id",
+	Id: "id",
 	SeenState: "seen_state",
 }
 

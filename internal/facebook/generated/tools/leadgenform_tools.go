@@ -17,6 +17,7 @@ import (
 func GetLeadgenFormTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// leadgenform_get_leads tool
 	// Available fields for Lead: ad_id, ad_name, adset_id, adset_name, campaign_id, campaign_name, created_time, custom_disclaimer_responses, field_data, form_id, home_listing, id, is_organic, partner_name, platform, post, post_submission_check_result, retailer_item_id, vehicle
 	leadgenform_get_leadsTool := mcp.NewTool("leadgenform_get_leads",
@@ -62,14 +63,14 @@ func GetLeadgenFormTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"custom_disclaimer_responses": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "custom_disclaimer_responses parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"field_data": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "field_data parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: custom_disclaimer_responses (array<object>), field_data (array<object>)"),
@@ -103,9 +104,9 @@ func GetLeadgenFormTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"status": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "status parameter",
-					"enum":        []string{"ACTIVE", "ARCHIVED", "DELETED", "DRAFT"},
+					"enum": []string{ "ACTIVE", "ARCHIVED", "DELETED", "DRAFT" },
 				},
 			}),
 			mcp.Description("Parameters object containing: status (leadgendata_status) [ACTIVE, ARCHIVED, DELETED, DRAFT]"),
@@ -113,10 +114,12 @@ func GetLeadgenFormTools() []mcp.Tool {
 	)
 	tools = append(tools, leadgenform_post_Tool)
 
+
 	return tools
 }
 
 // LeadgenForm handlers
+
 
 // HandleLeadgenform_get_leads handles the leadgenform_get_leads tool with context-based auth
 func HandleLeadgenform_get_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -157,6 +160,8 @@ func HandleLeadgenform_get_leads(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Leadgenform_get_leads(args)
 	if err != nil {
@@ -171,6 +176,7 @@ func HandleLeadgenform_get_leads(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleLeadgenform_get_test_leads handles the leadgenform_get_test_leads tool with context-based auth
 func HandleLeadgenform_get_test_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -211,6 +217,8 @@ func HandleLeadgenform_get_test_leads(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Leadgenform_get_test_leads(args)
 	if err != nil {
@@ -225,6 +233,7 @@ func HandleLeadgenform_get_test_leads(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleLeadgenform_post_test_leads handles the leadgenform_post_test_leads tool with context-based auth
 func HandleLeadgenform_post_test_leads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -252,6 +261,8 @@ func HandleLeadgenform_post_test_leads(ctx context.Context, request mcp.CallTool
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Leadgenform_post_test_leads(args)
 	if err != nil {
@@ -266,6 +277,7 @@ func HandleLeadgenform_post_test_leads(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleLeadgenform_get_ handles the leadgenform_get_ tool with context-based auth
 func HandleLeadgenform_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -306,6 +318,8 @@ func HandleLeadgenform_get_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Leadgenform_get_(args)
 	if err != nil {
@@ -320,6 +334,7 @@ func HandleLeadgenform_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleLeadgenform_post_ handles the leadgenform_post_ tool with context-based auth
 func HandleLeadgenform_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -347,6 +362,8 @@ func HandleLeadgenform_post_(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Leadgenform_post_(args)
 	if err != nil {
@@ -361,3 +378,4 @@ func HandleLeadgenform_post_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -4,8 +4,8 @@ package types
 
 // DayPart represents a Facebook DayPart object
 type DayPart struct {
-	Days          []int  `json:"days"`
-	End_minute    int    `json:"end_minute"`
-	Start_minute  int    `json:"start_minute"`
+	Days []int `json:"days"`
+	End_minute int `json:"end_minute"`
+	Start_minute int `json:"start_minute"`
 	Timezone_type string `json:"timezone_type"`
 }

@@ -17,6 +17,7 @@ import (
 func GetHomeListingTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// homelisting_get_channels_to_integrity_status tool
 	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	homelisting_get_channels_to_integrity_statusTool := mcp.NewTool("homelisting_get_channels_to_integrity_status",
@@ -44,14 +45,14 @@ func GetHomeListingTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"keys": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "keys parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "type parameter",
-					"enum":        []string{"COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"},
+					"enum": []string{ "COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY" },
 				},
 			}),
 			mcp.Description("Parameters object containing: keys (array<string>), type (enum) [COUNTRY, LANGUAGE, LANGUAGE_AND_COUNTRY]"),
@@ -122,60 +123,60 @@ func GetHomeListingTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"address": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "address parameter",
 				},
 				"availability": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "availability parameter",
 				},
 				"currency": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "currency parameter",
 				},
 				"description": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "description parameter",
 				},
 				"images": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "images parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"listing_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "listing_type parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
 				},
 				"num_baths": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "num_baths parameter",
 				},
 				"num_beds": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "num_beds parameter",
 				},
 				"num_units": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "num_units parameter",
 				},
 				"price": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "price parameter",
 				},
 				"property_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "property_type parameter",
 				},
 				"url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "url parameter",
 				},
 				"year_built": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "year_built parameter",
 				},
 			}),
@@ -184,10 +185,12 @@ func GetHomeListingTools() []mcp.Tool {
 	)
 	tools = append(tools, homelisting_post_Tool)
 
+
 	return tools
 }
 
 // HomeListing handlers
+
 
 // HandleHomelisting_get_channels_to_integrity_status handles the homelisting_get_channels_to_integrity_status tool with context-based auth
 func HandleHomelisting_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -228,6 +231,8 @@ func HandleHomelisting_get_channels_to_integrity_status(ctx context.Context, req
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Homelisting_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -242,6 +247,7 @@ func HandleHomelisting_get_channels_to_integrity_status(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleHomelisting_get_override_details handles the homelisting_get_override_details tool with context-based auth
 func HandleHomelisting_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -294,6 +300,8 @@ func HandleHomelisting_get_override_details(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Homelisting_get_override_details(args)
 	if err != nil {
@@ -308,6 +316,7 @@ func HandleHomelisting_get_override_details(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleHomelisting_get_videos_metadata handles the homelisting_get_videos_metadata tool with context-based auth
 func HandleHomelisting_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -348,6 +357,8 @@ func HandleHomelisting_get_videos_metadata(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Homelisting_get_videos_metadata(args)
 	if err != nil {
@@ -363,6 +374,7 @@ func HandleHomelisting_get_videos_metadata(ctx context.Context, request mcp.Call
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
+
 // HandleHomelisting_delete_ handles the homelisting_delete_ tool with context-based auth
 func HandleHomelisting_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -376,6 +388,8 @@ func HandleHomelisting_delete_(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+
 
 	// Call the client method
 	result, err := client.Homelisting_delete_(args)
@@ -391,6 +405,7 @@ func HandleHomelisting_delete_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleHomelisting_get_ handles the homelisting_get_ tool with context-based auth
 func HandleHomelisting_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -431,6 +446,8 @@ func HandleHomelisting_get_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Homelisting_get_(args)
 	if err != nil {
@@ -445,6 +462,7 @@ func HandleHomelisting_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleHomelisting_post_ handles the homelisting_post_ tool with context-based auth
 func HandleHomelisting_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -472,6 +490,8 @@ func HandleHomelisting_post_(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Homelisting_post_(args)
 	if err != nil {
@@ -486,3 +506,4 @@ func HandleHomelisting_post_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

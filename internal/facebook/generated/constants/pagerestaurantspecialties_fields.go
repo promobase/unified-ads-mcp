@@ -5,16 +5,16 @@ package constants
 // PageRestaurantSpecialtiesFields contains field name constants for PageRestaurantSpecialties objects
 var PageRestaurantSpecialtiesFields = struct {
 	Breakfast string
-	Coffee    string
-	Dinner    string
-	Drinks    string
-	Lunch     string
+	Coffee string
+	Dinner string
+	Drinks string
+	Lunch string
 }{
 	Breakfast: "breakfast",
-	Coffee:    "coffee",
-	Dinner:    "dinner",
-	Drinks:    "drinks",
-	Lunch:     "lunch",
+	Coffee: "coffee",
+	Dinner: "dinner",
+	Drinks: "drinks",
+	Lunch: "lunch",
 }
 
 // PageRestaurantSpecialtiesFieldsList contains all available fields for PageRestaurantSpecialties objects

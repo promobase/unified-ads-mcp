@@ -4,47 +4,47 @@ package constants
 
 // AdKeywordStatsFields contains field name constants for AdKeywordStats objects
 var AdKeywordStatsFields = struct {
-	Actions            string
-	Clicks             string
+	Actions string
+	Clicks string
 	CostPerTotalAction string
 	CostPerUniqueClick string
-	Cpc                string
-	Cpm                string
-	Cpp                string
-	Ctr                string
-	Frequency          string
-	Id                 string
-	Impressions        string
-	Name               string
-	Reach              string
-	Spend              string
-	TotalActions       string
+	Cpc string
+	Cpm string
+	Cpp string
+	Ctr string
+	Frequency string
+	Id string
+	Impressions string
+	Name string
+	Reach string
+	Spend string
+	TotalActions string
 	TotalUniqueActions string
-	UniqueActions      string
-	UniqueClicks       string
-	UniqueCtr          string
-	UniqueImpressions  string
+	UniqueActions string
+	UniqueClicks string
+	UniqueCtr string
+	UniqueImpressions string
 }{
-	Actions:            "actions",
-	Clicks:             "clicks",
+	Actions: "actions",
+	Clicks: "clicks",
 	CostPerTotalAction: "cost_per_total_action",
 	CostPerUniqueClick: "cost_per_unique_click",
-	Cpc:                "cpc",
-	Cpm:                "cpm",
-	Cpp:                "cpp",
-	Ctr:                "ctr",
-	Frequency:          "frequency",
-	Id:                 "id",
-	Impressions:        "impressions",
-	Name:               "name",
-	Reach:              "reach",
-	Spend:              "spend",
-	TotalActions:       "total_actions",
+	Cpc: "cpc",
+	Cpm: "cpm",
+	Cpp: "cpp",
+	Ctr: "ctr",
+	Frequency: "frequency",
+	Id: "id",
+	Impressions: "impressions",
+	Name: "name",
+	Reach: "reach",
+	Spend: "spend",
+	TotalActions: "total_actions",
 	TotalUniqueActions: "total_unique_actions",
-	UniqueActions:      "unique_actions",
-	UniqueClicks:       "unique_clicks",
-	UniqueCtr:          "unique_ctr",
-	UniqueImpressions:  "unique_impressions",
+	UniqueActions: "unique_actions",
+	UniqueClicks: "unique_clicks",
+	UniqueCtr: "unique_ctr",
+	UniqueImpressions: "unique_impressions",
 }
 
 // AdKeywordStatsFieldsList contains all available fields for AdKeywordStats objects

@@ -17,6 +17,7 @@ import (
 func GetAnalyticsSegmentTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// analyticssegment_get_ tool
 	// Available fields for AnalyticsSegment: custom_audience_ineligiblity_reasons, description, estimated_custom_audience_size, event_info_rules, event_rules, filter_set, has_demographic_rules, id, is_all_user, is_eligible_for_push_campaign, is_internal, name, percentile_rules, time_last_seen, time_last_updated, user_property_rules, web_param_rules
 	// Params object accepts: async_task_id (string), end_date (int), start_date (int)
@@ -25,15 +26,15 @@ func GetAnalyticsSegmentTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"async_task_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "async_task_id parameter",
 				},
 				"end_date": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "end_date parameter",
 				},
 				"start_date": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "start_date parameter",
 				},
 			}),
@@ -54,10 +55,12 @@ func GetAnalyticsSegmentTools() []mcp.Tool {
 	)
 	tools = append(tools, analyticssegment_get_Tool)
 
+
 	return tools
 }
 
 // AnalyticsSegment handlers
+
 
 // HandleAnalyticssegment_get_ handles the analyticssegment_get_ tool with context-based auth
 func HandleAnalyticssegment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -110,6 +113,8 @@ func HandleAnalyticssegment_get_(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Analyticssegment_get_(args)
 	if err != nil {
@@ -124,3 +129,4 @@ func HandleAnalyticssegment_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

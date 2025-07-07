@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-// CustomConversionClient provides methods for CustomConversion operations
+// CustomConversionClient represents a client for CustomConversion operations
 type CustomConversionClient struct {
 	accessToken string
 }
@@ -21,48 +21,48 @@ func NewCustomConversionClient(accessToken string) *CustomConversionClient {
 	}
 }
 
-// customconversion_get_stats GET stats for CustomConversion
+
+// Customconversion_get_stats performs GET stats for CustomConversion
 func (c *CustomConversionClient) Customconversion_get_stats(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/stats")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -94,17 +94,18 @@ func (c *CustomConversionClient) Customconversion_get_stats(args map[string]inte
 	return result, nil
 }
 
-// customconversion_delete_ DELETE  for CustomConversion
+
+// Customconversion_delete_ performs DELETE  for CustomConversion
 func (c *CustomConversionClient) Customconversion_delete_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -136,42 +137,42 @@ func (c *CustomConversionClient) Customconversion_delete_(args map[string]interf
 	return result, nil
 }
 
-// customconversion_get_ GET  for CustomConversion
+
+// Customconversion_get_ performs GET  for CustomConversion
 func (c *CustomConversionClient) Customconversion_get_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -203,24 +204,24 @@ func (c *CustomConversionClient) Customconversion_get_(args map[string]interface
 	return result, nil
 }
 
-// customconversion_post_ POST  for CustomConversion
+
+// Customconversion_post_ performs POST  for CustomConversion
 func (c *CustomConversionClient) Customconversion_post_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -251,3 +252,4 @@ func (c *CustomConversionClient) Customconversion_post_(args map[string]interfac
 
 	return result, nil
 }
+

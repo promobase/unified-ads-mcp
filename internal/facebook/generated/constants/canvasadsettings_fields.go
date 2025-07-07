@@ -5,20 +5,20 @@ package constants
 // CanvasAdSettingsFields contains field name constants for CanvasAdSettings objects
 var CanvasAdSettingsFields = struct {
 	IsCanvasCollectionEligible string
-	LeadFormCreatedTime        string
-	LeadFormName               string
-	LeadGenFormId              string
-	LeadsCount                 string
-	ProductSetId               string
-	UseRetailerItemIds         string
+	LeadFormCreatedTime string
+	LeadFormName string
+	LeadGenFormId string
+	LeadsCount string
+	ProductSetId string
+	UseRetailerItemIds string
 }{
 	IsCanvasCollectionEligible: "is_canvas_collection_eligible",
-	LeadFormCreatedTime:        "lead_form_created_time",
-	LeadFormName:               "lead_form_name",
-	LeadGenFormId:              "lead_gen_form_id",
-	LeadsCount:                 "leads_count",
-	ProductSetId:               "product_set_id",
-	UseRetailerItemIds:         "use_retailer_item_ids",
+	LeadFormCreatedTime: "lead_form_created_time",
+	LeadFormName: "lead_form_name",
+	LeadGenFormId: "lead_gen_form_id",
+	LeadsCount: "leads_count",
+	ProductSetId: "product_set_id",
+	UseRetailerItemIds: "use_retailer_item_ids",
 }
 
 // CanvasAdSettingsFieldsList contains all available fields for CanvasAdSettings objects

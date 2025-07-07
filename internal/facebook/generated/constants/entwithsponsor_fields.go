@@ -4,17 +4,17 @@ package constants
 
 // EntWithSponsorFields contains field name constants for EntWithSponsor objects
 var EntWithSponsorFields = struct {
-	Id                           string
+	Id string
 	OwnerLinkedInstagramUserV1Id string
-	OwnerPicture                 string
-	PostId                       string
-	PostInfo                     string
+	OwnerPicture string
+	PostId string
+	PostInfo string
 }{
-	Id:                           "id",
+	Id: "id",
 	OwnerLinkedInstagramUserV1Id: "owner_linked_instagram_user_v1_id",
-	OwnerPicture:                 "owner_picture",
-	PostId:                       "post_id",
-	PostInfo:                     "post_info",
+	OwnerPicture: "owner_picture",
+	PostId: "post_id",
+	PostInfo: "post_info",
 }
 
 // EntWithSponsorFieldsList contains all available fields for EntWithSponsor objects

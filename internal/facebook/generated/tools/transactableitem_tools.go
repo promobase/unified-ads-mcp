@@ -17,6 +17,7 @@ import (
 func GetTransactableItemTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// transactableitem_get_channels_to_integrity_status tool
 	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	transactableitem_get_channels_to_integrity_statusTool := mcp.NewTool("transactableitem_get_channels_to_integrity_status",
@@ -44,14 +45,14 @@ func GetTransactableItemTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"keys": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "keys parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "type parameter",
-					"enum":        []string{"COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"},
+					"enum": []string{ "COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY" },
 				},
 			}),
 			mcp.Description("Parameters object containing: keys (array<string>), type (enum) [COUNTRY, LANGUAGE, LANGUAGE_AND_COUNTRY]"),
@@ -90,10 +91,12 @@ func GetTransactableItemTools() []mcp.Tool {
 	)
 	tools = append(tools, transactableitem_get_Tool)
 
+
 	return tools
 }
 
 // TransactableItem handlers
+
 
 // HandleTransactableitem_get_channels_to_integrity_status handles the transactableitem_get_channels_to_integrity_status tool with context-based auth
 func HandleTransactableitem_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -134,6 +137,8 @@ func HandleTransactableitem_get_channels_to_integrity_status(ctx context.Context
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Transactableitem_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -148,6 +153,7 @@ func HandleTransactableitem_get_channels_to_integrity_status(ctx context.Context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleTransactableitem_get_override_details handles the transactableitem_get_override_details tool with context-based auth
 func HandleTransactableitem_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -200,6 +206,8 @@ func HandleTransactableitem_get_override_details(ctx context.Context, request mc
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Transactableitem_get_override_details(args)
 	if err != nil {
@@ -214,6 +222,7 @@ func HandleTransactableitem_get_override_details(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleTransactableitem_get_ handles the transactableitem_get_ tool with context-based auth
 func HandleTransactableitem_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -254,6 +263,8 @@ func HandleTransactableitem_get_(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Transactableitem_get_(args)
 	if err != nil {
@@ -268,3 +279,4 @@ func HandleTransactableitem_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -6,12 +6,12 @@ import "time"
 
 // AdsPixelEventSuggestionRule represents a Facebook AdsPixelEventSuggestionRule object
 type AdsPixelEventSuggestionRule struct {
-	Field_7d_volume int       `json:"7d_volume"`
-	Dismissed       bool      `json:"dismissed"`
-	End_time        time.Time `json:"end_time"`
-	Event_type      string    `json:"event_type"`
-	Rank            int       `json:"rank"`
-	Rule            string    `json:"rule"`
-	Sample_urls     []string  `json:"sample_urls"`
-	Start_time      time.Time `json:"start_time"`
+	Field_7d_volume int `json:"7d_volume"`
+	Dismissed bool `json:"dismissed"`
+	End_time time.Time `json:"end_time"`
+	Event_type string `json:"event_type"`
+	Rank int `json:"rank"`
+	Rule string `json:"rule"`
+	Sample_urls []string `json:"sample_urls"`
+	Start_time time.Time `json:"start_time"`
 }

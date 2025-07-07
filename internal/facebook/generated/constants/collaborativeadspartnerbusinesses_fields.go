@@ -5,10 +5,10 @@ package constants
 // CollaborativeAdsPartnerBusinessesFields contains field name constants for CollaborativeAdsPartnerBusinesses objects
 var CollaborativeAdsPartnerBusinessesFields = struct {
 	CollaborativeAdsPartnerBusinessesInfo string
-	DedicatedPartnerBusinessInfo          string
+	DedicatedPartnerBusinessInfo string
 }{
 	CollaborativeAdsPartnerBusinessesInfo: "collaborative_ads_partner_businesses_info",
-	DedicatedPartnerBusinessInfo:          "dedicated_partner_business_info",
+	DedicatedPartnerBusinessInfo: "dedicated_partner_business_info",
 }
 
 // CollaborativeAdsPartnerBusinessesFieldsList contains all available fields for CollaborativeAdsPartnerBusinesses objects

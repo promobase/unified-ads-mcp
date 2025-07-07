@@ -17,6 +17,7 @@ import (
 func GetAdsReportBuilderSavedReportTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// adsreportbuildersavedreport_get_ tool
 	// Available fields for AdsReportBuilderSavedReport: action_report_time, ad_account_id, attribution_windows, comparison_date_interval, creation_source, creation_time, currency, date_interval, date_preset, default_attribution_windows, dimension_groups, dimensions, filtering, formatting, id, last_access_by, last_access_time, last_report_snapshot_id, last_report_snapshot_time, last_shared_report_expiration, limit, locked_dimensions, metrics, report_name, report_snapshot_async_percent_completion, report_snapshot_async_status, schedule_frequency, scope, show_deprecate_aw_banner, sorting, start_date, status, subscribers, update_by, update_time, user, user_dimensions, user_metrics, view_type
 	adsreportbuildersavedreport_get_Tool := mcp.NewTool("adsreportbuildersavedreport_get_",
@@ -36,10 +37,12 @@ func GetAdsReportBuilderSavedReportTools() []mcp.Tool {
 	)
 	tools = append(tools, adsreportbuildersavedreport_get_Tool)
 
+
 	return tools
 }
 
 // AdsReportBuilderSavedReport handlers
+
 
 // HandleAdsreportbuildersavedreport_get_ handles the adsreportbuildersavedreport_get_ tool with context-based auth
 func HandleAdsreportbuildersavedreport_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleAdsreportbuildersavedreport_get_(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adsreportbuildersavedreport_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleAdsreportbuildersavedreport_get_(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

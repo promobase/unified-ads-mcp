@@ -4,29 +4,29 @@ package constants
 
 // PrivateLiftStudyInstanceFields contains field name constants for PrivateLiftStudyInstance objects
 var PrivateLiftStudyInstanceFields = struct {
-	BreakdownKey           string
-	CreatedTime            string
-	FeatureList            string
-	Id                     string
-	IssuerCertificate      string
+	BreakdownKey string
+	CreatedTime string
+	FeatureList string
+	Id string
+	IssuerCertificate string
 	LatestStatusUpdateTime string
-	RunId                  string
-	ServerHostnames        string
-	ServerIps              string
-	Status                 string
-	Tier                   string
+	RunId string
+	ServerHostnames string
+	ServerIps string
+	Status string
+	Tier string
 }{
-	BreakdownKey:           "breakdown_key",
-	CreatedTime:            "created_time",
-	FeatureList:            "feature_list",
-	Id:                     "id",
-	IssuerCertificate:      "issuer_certificate",
+	BreakdownKey: "breakdown_key",
+	CreatedTime: "created_time",
+	FeatureList: "feature_list",
+	Id: "id",
+	IssuerCertificate: "issuer_certificate",
 	LatestStatusUpdateTime: "latest_status_update_time",
-	RunId:                  "run_id",
-	ServerHostnames:        "server_hostnames",
-	ServerIps:              "server_ips",
-	Status:                 "status",
-	Tier:                   "tier",
+	RunId: "run_id",
+	ServerHostnames: "server_hostnames",
+	ServerIps: "server_ips",
+	Status: "status",
+	Tier: "tier",
 }
 
 // PrivateLiftStudyInstanceFieldsList contains all available fields for PrivateLiftStudyInstance objects

@@ -17,6 +17,7 @@ import (
 func GetAudioIsrcTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// audioisrc_get_ tool
 	// Available fields for AudioIsrc: all_kg_featured_artists, all_kg_main_artists, artist_profile_picture_url, id, isrc, publishing_rights_data, top_searchable_artist_id, top_searchable_artist_name, top_searchable_artist_profile_pic_url
 	audioisrc_get_Tool := mcp.NewTool("audioisrc_get_",
@@ -36,10 +37,12 @@ func GetAudioIsrcTools() []mcp.Tool {
 	)
 	tools = append(tools, audioisrc_get_Tool)
 
+
 	return tools
 }
 
 // AudioIsrc handlers
+
 
 // HandleAudioisrc_get_ handles the audioisrc_get_ tool with context-based auth
 func HandleAudioisrc_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleAudioisrc_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Audioisrc_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleAudioisrc_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

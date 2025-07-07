@@ -4,15 +4,15 @@ package constants
 
 // AdsPixelCapabilityOverrideFields contains field name constants for AdsPixelCapabilityOverride objects
 var AdsPixelCapabilityOverrideFields = struct {
-	Capability    string
-	Id            string
+	Capability string
+	Id string
 	OverrideValue string
-	Reason        string
+	Reason string
 }{
-	Capability:    "capability",
-	Id:            "id",
+	Capability: "capability",
+	Id: "id",
 	OverrideValue: "override_value",
-	Reason:        "reason",
+	Reason: "reason",
 }
 
 // AdsPixelCapabilityOverrideFieldsList contains all available fields for AdsPixelCapabilityOverride objects

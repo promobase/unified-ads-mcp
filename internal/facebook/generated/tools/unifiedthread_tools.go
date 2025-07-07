@@ -17,6 +17,7 @@ import (
 func GetUnifiedThreadTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// unifiedthread_get_messages tool
 	// Params object accepts: source (unifiedthreadmessages_source_enum_param)
 	unifiedthread_get_messagesTool := mcp.NewTool("unifiedthread_get_messages",
@@ -24,9 +25,9 @@ func GetUnifiedThreadTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"source": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "source parameter",
-					"enum":        []string{"ALL", "PARTICIPANTS"},
+					"enum": []string{ "ALL", "PARTICIPANTS" },
 				},
 			}),
 			mcp.Description("Parameters object containing: source (enum) [ALL, PARTICIPANTS]"),
@@ -65,10 +66,12 @@ func GetUnifiedThreadTools() []mcp.Tool {
 	)
 	tools = append(tools, unifiedthread_get_Tool)
 
+
 	return tools
 }
 
 // UnifiedThread handlers
+
 
 // HandleUnifiedthread_get_messages handles the unifiedthread_get_messages tool with context-based auth
 func HandleUnifiedthread_get_messages(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -121,6 +124,8 @@ func HandleUnifiedthread_get_messages(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Unifiedthread_get_messages(args)
 	if err != nil {
@@ -135,6 +140,7 @@ func HandleUnifiedthread_get_messages(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleUnifiedthread_get_ handles the unifiedthread_get_ tool with context-based auth
 func HandleUnifiedthread_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -175,6 +181,8 @@ func HandleUnifiedthread_get_(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Unifiedthread_get_(args)
 	if err != nil {
@@ -189,3 +197,4 @@ func HandleUnifiedthread_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

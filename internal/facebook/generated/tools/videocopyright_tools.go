@@ -17,6 +17,7 @@ import (
 func GetVideoCopyrightTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// videocopyright_get_update_records tool
 	// Available fields for MediaCopyrightUpdateRecord: action_types, actor, actor_type, creation_time, id, ownership_countries, whitelisted_accounts
 	videocopyright_get_update_recordsTool := mcp.NewTool("videocopyright_get_update_records",
@@ -62,55 +63,55 @@ func GetVideoCopyrightTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"append_excluded_ownership_segments": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "append_excluded_ownership_segments parameter",
 				},
 				"attribution_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "attribution_id parameter",
 				},
 				"content_category": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "content_category parameter",
-					"enum":        []string{"episode", "movie", "web"},
+					"enum": []string{ "episode", "movie", "web" },
 				},
 				"excluded_ownership_countries": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "excluded_ownership_countries parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"excluded_ownership_segments": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "excluded_ownership_segments parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"is_reference_disabled": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "is_reference_disabled parameter",
 				},
 				"monitoring_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "monitoring_type parameter",
-					"enum":        []string{"AUDIO_ONLY", "VIDEO_AND_AUDIO", "VIDEO_ONLY"},
+					"enum": []string{ "AUDIO_ONLY", "VIDEO_AND_AUDIO", "VIDEO_ONLY" },
 				},
 				"ownership_countries": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "ownership_countries parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"rule_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "rule_id parameter",
 				},
 				"whitelisted_ids": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "whitelisted_ids parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"whitelisted_ig_user_ids": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "whitelisted_ig_user_ids parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: append_excluded_ownership_segments (boolean), attribution_id (string), content_category (videocopyright_content_category) [episode, movie, web], excluded_ownership_countries (array<string>), excluded_ownership_segments (array<object>), is_reference_disabled (boolean), monitoring_type (videocopyright_monitoring_type) [AUDIO_ONLY, VIDEO_AND_AUDIO, VIDEO_ONLY], ownership_countries (array<string>), rule_id (string), whitelisted_ids (array<string>), whitelisted_ig_user_ids (array<string>)"),
@@ -118,10 +119,12 @@ func GetVideoCopyrightTools() []mcp.Tool {
 	)
 	tools = append(tools, videocopyright_post_Tool)
 
+
 	return tools
 }
 
 // VideoCopyright handlers
+
 
 // HandleVideocopyright_get_update_records handles the videocopyright_get_update_records tool with context-based auth
 func HandleVideocopyright_get_update_records(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -162,6 +165,8 @@ func HandleVideocopyright_get_update_records(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Videocopyright_get_update_records(args)
 	if err != nil {
@@ -176,6 +181,7 @@ func HandleVideocopyright_get_update_records(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleVideocopyright_get_ handles the videocopyright_get_ tool with context-based auth
 func HandleVideocopyright_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -216,6 +222,8 @@ func HandleVideocopyright_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Videocopyright_get_(args)
 	if err != nil {
@@ -230,6 +238,7 @@ func HandleVideocopyright_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleVideocopyright_post_ handles the videocopyright_post_ tool with context-based auth
 func HandleVideocopyright_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -257,6 +266,8 @@ func HandleVideocopyright_post_(ctx context.Context, request mcp.CallToolRequest
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Videocopyright_post_(args)
 	if err != nil {
@@ -271,3 +282,4 @@ func HandleVideocopyright_post_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

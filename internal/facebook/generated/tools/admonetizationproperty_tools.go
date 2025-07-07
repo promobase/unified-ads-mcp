@@ -17,6 +17,7 @@ import (
 func GetAdMonetizationPropertyTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// admonetizationproperty_get_adnetworkanalytics tool
 	// Available fields for AdNetworkAnalyticsSyncQueryResult: omitted_results, query_id, results
 	// Params object accepts: aggregation_period (admonetizationpropertyadnetworkanalytics_aggregation_period_enum_param), breakdowns (list<admonetizationpropertyadnetworkanalytics_breakdowns_enum_param>), filters (list<map>), limit (unsigned int), metrics (list<admonetizationpropertyadnetworkanalytics_metrics_enum_param>), ordering_column (admonetizationpropertyadnetworkanalytics_ordering_column_enum_param), ordering_type (admonetizationpropertyadnetworkanalytics_ordering_type_enum_param), should_include_until (bool), since (datetime), until (datetime)
@@ -26,52 +27,52 @@ func GetAdMonetizationPropertyTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"aggregation_period": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "aggregation_period parameter",
-					"enum":        []string{"DAY", "TOTAL"},
+					"enum": []string{ "DAY", "TOTAL" },
 				},
 				"breakdowns": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "breakdowns parameter",
-					"enum":        []string{"AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION" },
+					"items": map[string]any{"type": "string"},
 				},
 				"filters": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "filters parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"limit": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "limit parameter",
 				},
 				"metrics": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "metrics parameter",
-					"required":    true,
-					"enum":        []string{"FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE"},
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"enum": []string{ "FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE" },
+					"items": map[string]any{"type": "string"},
 				},
 				"ordering_column": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ordering_column parameter",
-					"enum":        []string{"METRIC", "TIME", "VALUE"},
+					"enum": []string{ "METRIC", "TIME", "VALUE" },
 				},
 				"ordering_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ordering_type parameter",
-					"enum":        []string{"ASCENDING", "DESCENDING"},
+					"enum": []string{ "ASCENDING", "DESCENDING" },
 				},
 				"should_include_until": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "should_include_until parameter",
 				},
 				"since": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "since parameter",
 				},
 				"until": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "until parameter",
 				},
 			}),
@@ -100,48 +101,48 @@ func GetAdMonetizationPropertyTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"aggregation_period": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "aggregation_period parameter",
-					"enum":        []string{"DAY", "TOTAL"},
+					"enum": []string{ "DAY", "TOTAL" },
 				},
 				"breakdowns": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "breakdowns parameter",
-					"enum":        []string{"AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "AD_SERVER_CAMPAIGN_ID", "AD_SPACE", "AGE", "APP", "CLICKED_VIEW_TAG", "COUNTRY", "DEAL", "DEAL_AD", "DEAL_PAGE", "DELIVERY_METHOD", "DISPLAY_FORMAT", "FAIL_REASON", "GENDER", "INSTANT_ARTICLE_ID", "INSTANT_ARTICLE_PAGE_ID", "IS_DEAL_BACKFILL", "PLACEMENT", "PLACEMENT_NAME", "PLATFORM", "PROPERTY", "SDK_VERSION" },
+					"items": map[string]any{"type": "string"},
 				},
 				"filters": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "filters parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"limit": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "limit parameter",
 				},
 				"metrics": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "metrics parameter",
-					"required":    true,
-					"enum":        []string{"FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE"},
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"enum": []string{ "FB_AD_NETWORK_BIDDING_BID_RATE", "FB_AD_NETWORK_BIDDING_REQUEST", "FB_AD_NETWORK_BIDDING_RESPONSE", "FB_AD_NETWORK_BIDDING_REVENUE", "FB_AD_NETWORK_BIDDING_WIN_RATE", "FB_AD_NETWORK_CLICK", "FB_AD_NETWORK_CPM", "FB_AD_NETWORK_CTR", "FB_AD_NETWORK_FILLED_REQUEST", "FB_AD_NETWORK_FILL_RATE", "FB_AD_NETWORK_IMP", "FB_AD_NETWORK_IMPRESSION_RATE", "FB_AD_NETWORK_REQUEST", "FB_AD_NETWORK_REVENUE", "FB_AD_NETWORK_SHOW_RATE", "FB_AD_NETWORK_VIDEO_GUARANTEE_REVENUE", "FB_AD_NETWORK_VIDEO_MRC", "FB_AD_NETWORK_VIDEO_MRC_RATE", "FB_AD_NETWORK_VIDEO_VIEW", "FB_AD_NETWORK_VIDEO_VIEW_RATE" },
+					"items": map[string]any{"type": "string"},
 				},
 				"ordering_column": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ordering_column parameter",
-					"enum":        []string{"METRIC", "TIME", "VALUE"},
+					"enum": []string{ "METRIC", "TIME", "VALUE" },
 				},
 				"ordering_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ordering_type parameter",
-					"enum":        []string{"ASCENDING", "DESCENDING"},
+					"enum": []string{ "ASCENDING", "DESCENDING" },
 				},
 				"since": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "since parameter",
 				},
 				"until": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "until parameter",
 				},
 			}),
@@ -158,9 +159,9 @@ func GetAdMonetizationPropertyTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"query_ids": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "query_ids parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: query_ids (array<string>)"),
@@ -199,10 +200,12 @@ func GetAdMonetizationPropertyTools() []mcp.Tool {
 	)
 	tools = append(tools, admonetizationproperty_get_Tool)
 
+
 	return tools
 }
 
 // AdMonetizationProperty handlers
+
 
 // HandleAdmonetizationproperty_get_adnetworkanalytics handles the admonetizationproperty_get_adnetworkanalytics tool with context-based auth
 func HandleAdmonetizationproperty_get_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -257,6 +260,8 @@ func HandleAdmonetizationproperty_get_adnetworkanalytics(ctx context.Context, re
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Admonetizationproperty_get_adnetworkanalytics(args)
 	if err != nil {
@@ -271,6 +276,7 @@ func HandleAdmonetizationproperty_get_adnetworkanalytics(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdmonetizationproperty_post_adnetworkanalytics handles the admonetizationproperty_post_adnetworkanalytics tool with context-based auth
 func HandleAdmonetizationproperty_post_adnetworkanalytics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -300,6 +306,8 @@ func HandleAdmonetizationproperty_post_adnetworkanalytics(ctx context.Context, r
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Admonetizationproperty_post_adnetworkanalytics(args)
 	if err != nil {
@@ -314,6 +322,7 @@ func HandleAdmonetizationproperty_post_adnetworkanalytics(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdmonetizationproperty_get_adnetworkanalytics_results handles the admonetizationproperty_get_adnetworkanalytics_results tool with context-based auth
 func HandleAdmonetizationproperty_get_adnetworkanalytics_results(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -366,6 +375,8 @@ func HandleAdmonetizationproperty_get_adnetworkanalytics_results(ctx context.Con
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Admonetizationproperty_get_adnetworkanalytics_results(args)
 	if err != nil {
@@ -380,6 +391,7 @@ func HandleAdmonetizationproperty_get_adnetworkanalytics_results(ctx context.Con
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdmonetizationproperty_get_ handles the admonetizationproperty_get_ tool with context-based auth
 func HandleAdmonetizationproperty_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -420,6 +432,8 @@ func HandleAdmonetizationproperty_get_(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Admonetizationproperty_get_(args)
 	if err != nil {
@@ -434,3 +448,4 @@ func HandleAdmonetizationproperty_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

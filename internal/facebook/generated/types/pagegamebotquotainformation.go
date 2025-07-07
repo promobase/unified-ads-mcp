@@ -4,6 +4,6 @@ package types
 
 // PageGameBotQuotaInformation represents a Facebook PageGameBotQuotaInformation object
 type PageGameBotQuotaInformation struct {
-	Count       int `json:"count"`
+	Count int `json:"count"`
 	Time_window int `json:"time_window"`
 }

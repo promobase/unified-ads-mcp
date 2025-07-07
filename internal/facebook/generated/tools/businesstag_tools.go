@@ -17,6 +17,7 @@ import (
 func GetBusinessTagTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// businesstag_get_ tool
 	// Available fields for BusinessTag: id, name
 	businesstag_get_Tool := mcp.NewTool("businesstag_get_",
@@ -36,10 +37,12 @@ func GetBusinessTagTools() []mcp.Tool {
 	)
 	tools = append(tools, businesstag_get_Tool)
 
+
 	return tools
 }
 
 // BusinessTag handlers
+
 
 // HandleBusinesstag_get_ handles the businesstag_get_ tool with context-based auth
 func HandleBusinesstag_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleBusinesstag_get_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Businesstag_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleBusinesstag_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -17,6 +17,7 @@ import (
 func GetOmegaCustomerTrxTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// omegacustomertrx_get_campaigns tool
 	omegacustomertrx_get_campaignsTool := mcp.NewTool("omegacustomertrx_get_campaigns",
 		mcp.WithDescription("GET campaigns for OmegaCustomerTrx"),
@@ -54,10 +55,12 @@ func GetOmegaCustomerTrxTools() []mcp.Tool {
 	)
 	tools = append(tools, omegacustomertrx_get_Tool)
 
+
 	return tools
 }
 
 // OmegaCustomerTrx handlers
+
 
 // HandleOmegacustomertrx_get_campaigns handles the omegacustomertrx_get_campaigns tool with context-based auth
 func HandleOmegacustomertrx_get_campaigns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -98,6 +101,8 @@ func HandleOmegacustomertrx_get_campaigns(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Omegacustomertrx_get_campaigns(args)
 	if err != nil {
@@ -112,6 +117,7 @@ func HandleOmegacustomertrx_get_campaigns(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleOmegacustomertrx_get_ handles the omegacustomertrx_get_ tool with context-based auth
 func HandleOmegacustomertrx_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -152,6 +158,8 @@ func HandleOmegacustomertrx_get_(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Omegacustomertrx_get_(args)
 	if err != nil {
@@ -166,3 +174,4 @@ func HandleOmegacustomertrx_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

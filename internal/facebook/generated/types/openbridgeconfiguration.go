@@ -4,22 +4,22 @@ package types
 
 // OpenBridgeConfiguration represents a Facebook OpenBridgeConfiguration object
 type OpenBridgeConfiguration struct {
-	Active                       bool   `json:"active"`
-	Cloud_provider               string `json:"cloud_provider"`
-	Cloud_region                 string `json:"cloud_region"`
-	Destination_id               string `json:"destination_id"`
-	Endpoint                     string `json:"endpoint"`
-	Fallback_domain              string `json:"fallback_domain"`
-	First_party_domain           string `json:"first_party_domain"`
-	Host_business_id             string `json:"host_business_id"`
-	Id                           string `json:"id"`
-	Instance_id                  string `json:"instance_id"`
-	Instance_version             string `json:"instance_version"`
-	Is_sgw_instance              bool   `json:"is_sgw_instance"`
-	Is_sgw_pixel_from_meta_pixel bool   `json:"is_sgw_pixel_from_meta_pixel"`
-	Partner_name                 string `json:"partner_name"`
-	Pixel_id                     string `json:"pixel_id"`
-	Sgw_account_id               string `json:"sgw_account_id"`
-	Sgw_instance_url             string `json:"sgw_instance_url"`
-	Sgw_pixel_id                 string `json:"sgw_pixel_id"`
+	Active bool `json:"active"`
+	Cloud_provider string `json:"cloud_provider"`
+	Cloud_region string `json:"cloud_region"`
+	Destination_id string `json:"destination_id"`
+	Endpoint string `json:"endpoint"`
+	Fallback_domain string `json:"fallback_domain"`
+	First_party_domain string `json:"first_party_domain"`
+	Host_business_id string `json:"host_business_id"`
+	Id string `json:"id"`
+	Instance_id string `json:"instance_id"`
+	Instance_version string `json:"instance_version"`
+	Is_sgw_instance bool `json:"is_sgw_instance"`
+	Is_sgw_pixel_from_meta_pixel bool `json:"is_sgw_pixel_from_meta_pixel"`
+	Partner_name string `json:"partner_name"`
+	Pixel_id string `json:"pixel_id"`
+	Sgw_account_id string `json:"sgw_account_id"`
+	Sgw_instance_url string `json:"sgw_instance_url"`
+	Sgw_pixel_id string `json:"sgw_pixel_id"`
 }

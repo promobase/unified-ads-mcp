@@ -4,11 +4,11 @@ package types
 
 // MediaFingerprint represents a Facebook MediaFingerprint object
 type MediaFingerprint struct {
-	Duration_in_sec          float64                `json:"duration_in_sec"`
-	Fingerprint_content_type string                 `json:"fingerprint_content_type"`
-	Fingerprint_type         string                 `json:"fingerprint_type"`
-	Id                       string                 `json:"id"`
-	Metadata                 map[string]interface{} `json:"metadata"`
-	Title                    string                 `json:"title"`
-	Universal_content_id     string                 `json:"universal_content_id"`
+	Duration_in_sec float64 `json:"duration_in_sec"`
+	Fingerprint_content_type string `json:"fingerprint_content_type"`
+	Fingerprint_type string `json:"fingerprint_type"`
+	Id string `json:"id"`
+	Metadata map[string]interface{} `json:"metadata"`
+	Title string `json:"title"`
+	Universal_content_id string `json:"universal_content_id"`
 }

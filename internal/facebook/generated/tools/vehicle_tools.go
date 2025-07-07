@@ -17,6 +17,7 @@ import (
 func GetVehicleTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// vehicle_get_channels_to_integrity_status tool
 	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	vehicle_get_channels_to_integrity_statusTool := mcp.NewTool("vehicle_get_channels_to_integrity_status",
@@ -44,14 +45,14 @@ func GetVehicleTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"keys": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "keys parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "type parameter",
-					"enum":        []string{"COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"},
+					"enum": []string{ "COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY" },
 				},
 			}),
 			mcp.Description("Parameters object containing: keys (array<string>), type (enum) [COUNTRY, LANGUAGE, LANGUAGE_AND_COUNTRY]"),
@@ -116,128 +117,128 @@ func GetVehicleTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"address": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "address parameter",
 				},
 				"applinks": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "applinks parameter",
 				},
 				"availability": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "availability parameter",
-					"enum":        []string{"AVAILABLE", "NOT_AVAILABLE", "PENDING", "UNKNOWN"},
+					"enum": []string{ "AVAILABLE", "NOT_AVAILABLE", "PENDING", "UNKNOWN" },
 				},
 				"body_style": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "body_style parameter",
-					"enum":        []string{"CONVERTIBLE", "COUPE", "CROSSOVER", "ESTATE", "GRANDTOURER", "HATCHBACK", "MINIBUS", "MINIVAN", "MPV", "NONE", "OTHER", "PICKUP", "ROADSTER", "SALOON", "SEDAN", "SMALL_CAR", "SPORTSCAR", "SUPERCAR", "SUPERMINI", "SUV", "TRUCK", "VAN", "WAGON"},
+					"enum": []string{ "CONVERTIBLE", "COUPE", "CROSSOVER", "ESTATE", "GRANDTOURER", "HATCHBACK", "MINIBUS", "MINIVAN", "MPV", "NONE", "OTHER", "PICKUP", "ROADSTER", "SALOON", "SEDAN", "SMALL_CAR", "SPORTSCAR", "SUPERCAR", "SUPERMINI", "SUV", "TRUCK", "VAN", "WAGON" },
 				},
 				"condition": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "condition parameter",
-					"enum":        []string{"EXCELLENT", "FAIR", "GOOD", "NONE", "OTHER", "POOR", "VERY_GOOD"},
+					"enum": []string{ "EXCELLENT", "FAIR", "GOOD", "NONE", "OTHER", "POOR", "VERY_GOOD" },
 				},
 				"currency": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "currency parameter",
 				},
 				"date_first_on_lot": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "date_first_on_lot parameter",
 				},
 				"dealer_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "dealer_id parameter",
 				},
 				"dealer_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "dealer_name parameter",
 				},
 				"dealer_phone": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "dealer_phone parameter",
 				},
 				"description": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "description parameter",
 				},
 				"drivetrain": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "drivetrain parameter",
-					"enum":        []string{"AWD", "FOUR_WD", "FWD", "NONE", "OTHER", "RWD", "TWO_WD"},
+					"enum": []string{ "AWD", "FOUR_WD", "FWD", "NONE", "OTHER", "RWD", "TWO_WD" },
 				},
 				"exterior_color": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "exterior_color parameter",
 				},
 				"fb_page_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "fb_page_id parameter",
 				},
 				"fuel_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "fuel_type parameter",
-					"enum":        []string{"DIESEL", "ELECTRIC", "FLEX", "GASOLINE", "HYBRID", "NONE", "OTHER", "PETROL", "PLUGIN_HYBRID"},
+					"enum": []string{ "DIESEL", "ELECTRIC", "FLEX", "GASOLINE", "HYBRID", "NONE", "OTHER", "PETROL", "PLUGIN_HYBRID" },
 				},
 				"images": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "images parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"interior_color": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "interior_color parameter",
 				},
 				"make": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "make parameter",
 				},
 				"mileage": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "mileage parameter",
 				},
 				"model": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "model parameter",
 				},
 				"price": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "price parameter",
 				},
 				"state_of_vehicle": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "state_of_vehicle parameter",
-					"enum":        []string{"CPO", "NEW", "USED"},
+					"enum": []string{ "CPO", "NEW", "USED" },
 				},
 				"title": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "title parameter",
 				},
 				"transmission": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "transmission parameter",
-					"enum":        []string{"AUTOMATIC", "MANUAL", "NONE", "OTHER"},
+					"enum": []string{ "AUTOMATIC", "MANUAL", "NONE", "OTHER" },
 				},
 				"trim": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "trim parameter",
 				},
 				"url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "url parameter",
 				},
 				"vehicle_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "vehicle_type parameter",
-					"enum":        []string{"BOAT", "CAR_TRUCK", "COMMERCIAL", "MOTORCYCLE", "OTHER", "POWERSPORT", "RV_CAMPER", "TRAILER"},
+					"enum": []string{ "BOAT", "CAR_TRUCK", "COMMERCIAL", "MOTORCYCLE", "OTHER", "POWERSPORT", "RV_CAMPER", "TRAILER" },
 				},
 				"vin": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "vin parameter",
 				},
 				"year": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "year parameter",
 				},
 			}),
@@ -246,10 +247,12 @@ func GetVehicleTools() []mcp.Tool {
 	)
 	tools = append(tools, vehicle_post_Tool)
 
+
 	return tools
 }
 
 // Vehicle handlers
+
 
 // HandleVehicle_get_channels_to_integrity_status handles the vehicle_get_channels_to_integrity_status tool with context-based auth
 func HandleVehicle_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -290,6 +293,8 @@ func HandleVehicle_get_channels_to_integrity_status(ctx context.Context, request
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Vehicle_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -304,6 +309,7 @@ func HandleVehicle_get_channels_to_integrity_status(ctx context.Context, request
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleVehicle_get_override_details handles the vehicle_get_override_details tool with context-based auth
 func HandleVehicle_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -356,6 +362,8 @@ func HandleVehicle_get_override_details(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Vehicle_get_override_details(args)
 	if err != nil {
@@ -370,6 +378,7 @@ func HandleVehicle_get_override_details(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleVehicle_get_videos_metadata handles the vehicle_get_videos_metadata tool with context-based auth
 func HandleVehicle_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -410,6 +419,8 @@ func HandleVehicle_get_videos_metadata(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Vehicle_get_videos_metadata(args)
 	if err != nil {
@@ -424,6 +435,7 @@ func HandleVehicle_get_videos_metadata(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleVehicle_get_ handles the vehicle_get_ tool with context-based auth
 func HandleVehicle_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -464,6 +476,8 @@ func HandleVehicle_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Vehicle_get_(args)
 	if err != nil {
@@ -478,6 +492,7 @@ func HandleVehicle_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleVehicle_post_ handles the vehicle_post_ tool with context-based auth
 func HandleVehicle_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -505,6 +520,8 @@ func HandleVehicle_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Vehicle_post_(args)
 	if err != nil {
@@ -519,3 +536,4 @@ func HandleVehicle_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

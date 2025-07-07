@@ -4,49 +4,49 @@ package constants
 
 // CreditCardFields contains field name constants for CreditCard objects
 var CreditCardFields = struct {
-	BillingAddress                 string
-	CardCobadging                  string
-	CardHolderName                 string
-	CardType                       string
-	CredentialId                   string
+	BillingAddress string
+	CardCobadging string
+	CardHolderName string
+	CardType string
+	CredentialId string
 	DefaultReceivingMethodProducts string
-	ExpiryMonth                    string
-	ExpiryYear                     string
-	Id                             string
-	IsCvvTrickyBin                 string
-	IsEnabled                      string
-	IsLastUsed                     string
-	IsNetworkTokenizedInIndia      string
-	IsSoftDisabled                 string
-	IsUserVerified                 string
-	IsZipVerified                  string
-	Last4                          string
-	ReadableCardType               string
-	TimeCreated                    string
-	TimeCreatedTs                  string
-	FieldType                      string
+	ExpiryMonth string
+	ExpiryYear string
+	Id string
+	IsCvvTrickyBin string
+	IsEnabled string
+	IsLastUsed string
+	IsNetworkTokenizedInIndia string
+	IsSoftDisabled string
+	IsUserVerified string
+	IsZipVerified string
+	Last4 string
+	ReadableCardType string
+	TimeCreated string
+	TimeCreatedTs string
+	FieldType string
 }{
-	BillingAddress:                 "billing_address",
-	CardCobadging:                  "card_cobadging",
-	CardHolderName:                 "card_holder_name",
-	CardType:                       "card_type",
-	CredentialId:                   "credential_id",
+	BillingAddress: "billing_address",
+	CardCobadging: "card_cobadging",
+	CardHolderName: "card_holder_name",
+	CardType: "card_type",
+	CredentialId: "credential_id",
 	DefaultReceivingMethodProducts: "default_receiving_method_products",
-	ExpiryMonth:                    "expiry_month",
-	ExpiryYear:                     "expiry_year",
-	Id:                             "id",
-	IsCvvTrickyBin:                 "is_cvv_tricky_bin",
-	IsEnabled:                      "is_enabled",
-	IsLastUsed:                     "is_last_used",
-	IsNetworkTokenizedInIndia:      "is_network_tokenized_in_india",
-	IsSoftDisabled:                 "is_soft_disabled",
-	IsUserVerified:                 "is_user_verified",
-	IsZipVerified:                  "is_zip_verified",
-	Last4:                          "last4",
-	ReadableCardType:               "readable_card_type",
-	TimeCreated:                    "time_created",
-	TimeCreatedTs:                  "time_created_ts",
-	FieldType:                      "type",
+	ExpiryMonth: "expiry_month",
+	ExpiryYear: "expiry_year",
+	Id: "id",
+	IsCvvTrickyBin: "is_cvv_tricky_bin",
+	IsEnabled: "is_enabled",
+	IsLastUsed: "is_last_used",
+	IsNetworkTokenizedInIndia: "is_network_tokenized_in_india",
+	IsSoftDisabled: "is_soft_disabled",
+	IsUserVerified: "is_user_verified",
+	IsZipVerified: "is_zip_verified",
+	Last4: "last4",
+	ReadableCardType: "readable_card_type",
+	TimeCreated: "time_created",
+	TimeCreatedTs: "time_created_ts",
+	FieldType: "type",
 }
 
 // CreditCardFieldsList contains all available fields for CreditCard objects

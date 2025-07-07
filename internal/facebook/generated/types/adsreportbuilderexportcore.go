@@ -6,20 +6,20 @@ import "time"
 
 // AdsReportBuilderExportCore represents a Facebook AdsReportBuilderExportCore object
 type AdsReportBuilderExportCore struct {
-	Async_percent_completion     int       `json:"async_percent_completion"`
-	Async_report_url             string    `json:"async_report_url"`
-	Async_status                 string    `json:"async_status"`
-	Client_creation_value        string    `json:"client_creation_value"`
-	Expiry_time                  time.Time `json:"expiry_time"`
-	Export_download_time         time.Time `json:"export_download_time"`
-	Export_format                string    `json:"export_format"`
-	Export_name                  string    `json:"export_name"`
-	Export_type                  string    `json:"export_type"`
-	Has_seen                     bool      `json:"has_seen"`
-	Id                           string    `json:"id"`
-	Is_sharing                   bool      `json:"is_sharing"`
+	Async_percent_completion int `json:"async_percent_completion"`
+	Async_report_url string `json:"async_report_url"`
+	Async_status string `json:"async_status"`
+	Client_creation_value string `json:"client_creation_value"`
+	Expiry_time time.Time `json:"expiry_time"`
+	Export_download_time time.Time `json:"export_download_time"`
+	Export_format string `json:"export_format"`
+	Export_name string `json:"export_name"`
+	Export_type string `json:"export_type"`
+	Has_seen bool `json:"has_seen"`
+	Id string `json:"id"`
+	Is_sharing bool `json:"is_sharing"`
 	Link_sharing_expiration_time time.Time `json:"link_sharing_expiration_time"`
-	Link_sharing_uri             string    `json:"link_sharing_uri"`
-	Time_completed               time.Time `json:"time_completed"`
-	Time_start                   time.Time `json:"time_start"`
+	Link_sharing_uri string `json:"link_sharing_uri"`
+	Time_completed time.Time `json:"time_completed"`
+	Time_start time.Time `json:"time_start"`
 }

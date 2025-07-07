@@ -4,7 +4,7 @@ package types
 
 // LeadGenAppointmentBookingInfo represents a Facebook LeadGenAppointmentBookingInfo object
 type LeadGenAppointmentBookingInfo struct {
-	Advertiser_timezone_offset string                         `json:"advertiser_timezone_offset"`
-	Appointment_durations      []string                       `json:"appointment_durations"`
-	Appointment_slots_by_day   []LeadGenAppointmentSlotsByDay `json:"appointment_slots_by_day"`
+	Advertiser_timezone_offset string `json:"advertiser_timezone_offset"`
+	Appointment_durations []string `json:"appointment_durations"`
+	Appointment_slots_by_day []LeadGenAppointmentSlotsByDay `json:"appointment_slots_by_day"`
 }

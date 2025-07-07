@@ -4,23 +4,23 @@ package constants
 
 // PartnerAccountLinkingFields contains field name constants for PartnerAccountLinking objects
 var PartnerAccountLinkingFields = struct {
-	Adaccount             string
-	App                   string
-	Business              string
-	Externalidentifier    string
+	Adaccount string
+	App string
+	Business string
+	Externalidentifier string
 	Externalidentifieruri string
-	Id                    string
-	Partnername           string
-	Pixel                 string
+	Id string
+	Partnername string
+	Pixel string
 }{
-	Adaccount:             "adaccount",
-	App:                   "app",
-	Business:              "business",
-	Externalidentifier:    "externalidentifier",
+	Adaccount: "adaccount",
+	App: "app",
+	Business: "business",
+	Externalidentifier: "externalidentifier",
 	Externalidentifieruri: "externalidentifieruri",
-	Id:                    "id",
-	Partnername:           "partnername",
-	Pixel:                 "pixel",
+	Id: "id",
+	Partnername: "partnername",
+	Pixel: "pixel",
 }
 
 // PartnerAccountLinkingFieldsList contains all available fields for PartnerAccountLinking objects

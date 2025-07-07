@@ -6,10 +6,10 @@ import "time"
 
 // PageUpcomingChange represents a Facebook PageUpcomingChange object
 type PageUpcomingChange struct {
-	Change_type    string              `json:"change_type"`
-	Effective_time time.Time           `json:"effective_time"`
-	Id             string              `json:"id"`
-	Page           *Page               `json:"page"`
-	Proposal       *PageChangeProposal `json:"proposal"`
-	Timer_status   string              `json:"timer_status"`
+	Change_type string `json:"change_type"`
+	Effective_time time.Time `json:"effective_time"`
+	Id string `json:"id"`
+	Page *Page `json:"page"`
+	Proposal *PageChangeProposal `json:"proposal"`
+	Timer_status string `json:"timer_status"`
 }

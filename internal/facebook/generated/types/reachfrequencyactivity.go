@@ -4,10 +4,10 @@ package types
 
 // ReachFrequencyActivity represents a Facebook ReachFrequencyActivity object
 type ReachFrequencyActivity struct {
-	Account_id        string `json:"account_id"`
-	Campaign_active   bool   `json:"campaign_active"`
-	Campaign_started  bool   `json:"campaign_started"`
-	Creative_uploaded bool   `json:"creative_uploaded"`
-	Io_approved       bool   `json:"io_approved"`
-	Sf_link           string `json:"sf_link"`
+	Account_id string `json:"account_id"`
+	Campaign_active bool `json:"campaign_active"`
+	Campaign_started bool `json:"campaign_started"`
+	Creative_uploaded bool `json:"creative_uploaded"`
+	Io_approved bool `json:"io_approved"`
+	Sf_link string `json:"sf_link"`
 }

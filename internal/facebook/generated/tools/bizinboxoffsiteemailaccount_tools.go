@@ -17,6 +17,7 @@ import (
 func GetBizInboxOffsiteEmailAccountTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// bizinboxoffsiteemailaccount_get_assigned_users tool
 	// Available fields for AssignedUser: business, id, name, user_type
 	bizinboxoffsiteemailaccount_get_assigned_usersTool := mcp.NewTool("bizinboxoffsiteemailaccount_get_assigned_users",
@@ -55,10 +56,12 @@ func GetBizInboxOffsiteEmailAccountTools() []mcp.Tool {
 	)
 	tools = append(tools, bizinboxoffsiteemailaccount_get_Tool)
 
+
 	return tools
 }
 
 // BizInboxOffsiteEmailAccount handlers
+
 
 // HandleBizinboxoffsiteemailaccount_get_assigned_users handles the bizinboxoffsiteemailaccount_get_assigned_users tool with context-based auth
 func HandleBizinboxoffsiteemailaccount_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -99,6 +102,8 @@ func HandleBizinboxoffsiteemailaccount_get_assigned_users(ctx context.Context, r
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Bizinboxoffsiteemailaccount_get_assigned_users(args)
 	if err != nil {
@@ -113,6 +118,7 @@ func HandleBizinboxoffsiteemailaccount_get_assigned_users(ctx context.Context, r
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBizinboxoffsiteemailaccount_get_ handles the bizinboxoffsiteemailaccount_get_ tool with context-based auth
 func HandleBizinboxoffsiteemailaccount_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -153,6 +159,8 @@ func HandleBizinboxoffsiteemailaccount_get_(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Bizinboxoffsiteemailaccount_get_(args)
 	if err != nil {
@@ -167,3 +175,4 @@ func HandleBizinboxoffsiteemailaccount_get_(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

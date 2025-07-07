@@ -4,12 +4,12 @@ package constants
 
 // ProductVariantFields contains field name constants for ProductVariant objects
 var ProductVariantFields = struct {
-	Label        string
-	Options      string
+	Label string
+	Options string
 	ProductField string
 }{
-	Label:        "label",
-	Options:      "options",
+	Label: "label",
+	Options: "options",
 	ProductField: "product_field",
 }
 

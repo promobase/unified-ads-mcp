@@ -17,6 +17,7 @@ import (
 func GetCPASLsbImageBankTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// cpaslsbimagebank_get_backup_images tool
 	// Available fields for ProductImage: height, id, image_url, width
 	cpaslsbimagebank_get_backup_imagesTool := mcp.NewTool("cpaslsbimagebank_get_backup_images",
@@ -63,10 +64,10 @@ func GetCPASLsbImageBankTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"backup_image_urls": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "backup_image_urls parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: backup_image_urls (array<string>) [required]"),
@@ -74,10 +75,12 @@ func GetCPASLsbImageBankTools() []mcp.Tool {
 	)
 	tools = append(tools, cpaslsbimagebank_post_Tool)
 
+
 	return tools
 }
 
 // CPASLsbImageBank handlers
+
 
 // HandleCpaslsbimagebank_get_backup_images handles the cpaslsbimagebank_get_backup_images tool with context-based auth
 func HandleCpaslsbimagebank_get_backup_images(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -118,6 +121,8 @@ func HandleCpaslsbimagebank_get_backup_images(ctx context.Context, request mcp.C
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Cpaslsbimagebank_get_backup_images(args)
 	if err != nil {
@@ -132,6 +137,7 @@ func HandleCpaslsbimagebank_get_backup_images(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCpaslsbimagebank_get_ handles the cpaslsbimagebank_get_ tool with context-based auth
 func HandleCpaslsbimagebank_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -172,6 +178,8 @@ func HandleCpaslsbimagebank_get_(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Cpaslsbimagebank_get_(args)
 	if err != nil {
@@ -186,6 +194,7 @@ func HandleCpaslsbimagebank_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCpaslsbimagebank_post_ handles the cpaslsbimagebank_post_ tool with context-based auth
 func HandleCpaslsbimagebank_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -215,6 +224,8 @@ func HandleCpaslsbimagebank_post_(ctx context.Context, request mcp.CallToolReque
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Cpaslsbimagebank_post_(args)
 	if err != nil {
@@ -229,3 +240,4 @@ func HandleCpaslsbimagebank_post_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

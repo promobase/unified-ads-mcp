@@ -17,6 +17,7 @@ import (
 func GetEducationExperienceTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// educationexperience_get_ tool
 	// Available fields for EducationExperience: classes, concentration, degree, id, school, type, with, year
 	educationexperience_get_Tool := mcp.NewTool("educationexperience_get_",
@@ -36,10 +37,12 @@ func GetEducationExperienceTools() []mcp.Tool {
 	)
 	tools = append(tools, educationexperience_get_Tool)
 
+
 	return tools
 }
 
 // EducationExperience handlers
+
 
 // HandleEducationexperience_get_ handles the educationexperience_get_ tool with context-based auth
 func HandleEducationexperience_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleEducationexperience_get_(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Educationexperience_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleEducationexperience_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

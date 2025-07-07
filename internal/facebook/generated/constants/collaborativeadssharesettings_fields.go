@@ -4,19 +4,19 @@ package constants
 
 // CollaborativeAdsShareSettingsFields contains field name constants for CollaborativeAdsShareSettings objects
 var CollaborativeAdsShareSettingsFields = struct {
-	AgencyBusiness        string
-	Id                    string
+	AgencyBusiness string
+	Id string
 	ProductCatalogProxyId string
-	UtmCampaign           string
-	UtmMedium             string
-	UtmSource             string
+	UtmCampaign string
+	UtmMedium string
+	UtmSource string
 }{
-	AgencyBusiness:        "agency_business",
-	Id:                    "id",
+	AgencyBusiness: "agency_business",
+	Id: "id",
 	ProductCatalogProxyId: "product_catalog_proxy_id",
-	UtmCampaign:           "utm_campaign",
-	UtmMedium:             "utm_medium",
-	UtmSource:             "utm_source",
+	UtmCampaign: "utm_campaign",
+	UtmMedium: "utm_medium",
+	UtmSource: "utm_source",
 }
 
 // CollaborativeAdsShareSettingsFieldsList contains all available fields for CollaborativeAdsShareSettings objects

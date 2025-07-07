@@ -4,41 +4,41 @@ package constants
 
 // AdCreativeVideoDataFields contains field name constants for AdCreativeVideoData objects
 var AdCreativeVideoDataFields = struct {
-	AdditionalImageIndex                string
+	AdditionalImageIndex string
 	BrandedContentSharedToSponsorStatus string
-	BrandedContentSponsorPageId         string
-	CallToAction                        string
-	CollectionThumbnails                string
-	CustomizationRulesSpec              string
-	ImageHash                           string
-	ImageUrl                            string
-	LinkDescription                     string
-	Message                             string
-	OfferId                             string
-	PageWelcomeMessage                  string
-	PostClickConfiguration              string
-	RetailerItemIds                     string
-	Targeting                           string
-	Title                               string
-	VideoId                             string
+	BrandedContentSponsorPageId string
+	CallToAction string
+	CollectionThumbnails string
+	CustomizationRulesSpec string
+	ImageHash string
+	ImageUrl string
+	LinkDescription string
+	Message string
+	OfferId string
+	PageWelcomeMessage string
+	PostClickConfiguration string
+	RetailerItemIds string
+	Targeting string
+	Title string
+	VideoId string
 }{
-	AdditionalImageIndex:                "additional_image_index",
+	AdditionalImageIndex: "additional_image_index",
 	BrandedContentSharedToSponsorStatus: "branded_content_shared_to_sponsor_status",
-	BrandedContentSponsorPageId:         "branded_content_sponsor_page_id",
-	CallToAction:                        "call_to_action",
-	CollectionThumbnails:                "collection_thumbnails",
-	CustomizationRulesSpec:              "customization_rules_spec",
-	ImageHash:                           "image_hash",
-	ImageUrl:                            "image_url",
-	LinkDescription:                     "link_description",
-	Message:                             "message",
-	OfferId:                             "offer_id",
-	PageWelcomeMessage:                  "page_welcome_message",
-	PostClickConfiguration:              "post_click_configuration",
-	RetailerItemIds:                     "retailer_item_ids",
-	Targeting:                           "targeting",
-	Title:                               "title",
-	VideoId:                             "video_id",
+	BrandedContentSponsorPageId: "branded_content_sponsor_page_id",
+	CallToAction: "call_to_action",
+	CollectionThumbnails: "collection_thumbnails",
+	CustomizationRulesSpec: "customization_rules_spec",
+	ImageHash: "image_hash",
+	ImageUrl: "image_url",
+	LinkDescription: "link_description",
+	Message: "message",
+	OfferId: "offer_id",
+	PageWelcomeMessage: "page_welcome_message",
+	PostClickConfiguration: "post_click_configuration",
+	RetailerItemIds: "retailer_item_ids",
+	Targeting: "targeting",
+	Title: "title",
+	VideoId: "video_id",
 }
 
 // AdCreativeVideoDataFieldsList contains all available fields for AdCreativeVideoData objects

@@ -4,7 +4,7 @@ package types
 
 // LeadGenThankYouPageGatedPromo represents a Facebook LeadGenThankYouPageGatedPromo object
 type LeadGenThankYouPageGatedPromo struct {
-	Id                string `json:"id"`
-	Online_offer_url  string `json:"online_offer_url"`
+	Id string `json:"id"`
+	Online_offer_url string `json:"online_offer_url"`
 	Online_promo_code string `json:"online_promo_code"`
 }

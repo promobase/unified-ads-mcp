@@ -4,13 +4,13 @@ package constants
 
 // DeliveryCheckExtraInfoFields contains field name constants for DeliveryCheckExtraInfo objects
 var DeliveryCheckExtraInfoFields = struct {
-	AdgroupIds  string
+	AdgroupIds string
 	CampaignIds string
-	Countries   string
+	Countries string
 }{
-	AdgroupIds:  "adgroup_ids",
+	AdgroupIds: "adgroup_ids",
 	CampaignIds: "campaign_ids",
-	Countries:   "countries",
+	Countries: "countries",
 }
 
 // DeliveryCheckExtraInfoFieldsList contains all available fields for DeliveryCheckExtraInfo objects

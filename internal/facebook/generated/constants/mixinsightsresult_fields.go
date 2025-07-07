@@ -4,49 +4,49 @@ package constants
 
 // MIXInsightsResultFields contains field name constants for MIXInsightsResult objects
 var MIXInsightsResultFields = struct {
-	DailyAgeGenderBreakdown   string
-	DailyAudioLibraryValues   string
-	DailyUgcValues            string
-	DailyValues               string
-	Metric                    string
+	DailyAgeGenderBreakdown string
+	DailyAudioLibraryValues string
+	DailyUgcValues string
+	DailyValues string
+	Metric string
 	MonthlyAudioLibraryValues string
-	MonthlyUgcValues          string
-	MonthlyValues             string
-	PercentGrowth             string
-	ShieldedFields            string
-	TotalAgeGenderBreakdown   string
-	TotalAudioLibraryValue    string
-	TotalCountryBreakdown     string
-	TotalLocaleBreakdown      string
-	TotalProductBreakdown     string
-	TotalUgcValue             string
-	TotalValue                string
-	TrendingAge               string
-	TrendingGender            string
-	TrendingInterest          string
-	TrendingTerritory         string
+	MonthlyUgcValues string
+	MonthlyValues string
+	PercentGrowth string
+	ShieldedFields string
+	TotalAgeGenderBreakdown string
+	TotalAudioLibraryValue string
+	TotalCountryBreakdown string
+	TotalLocaleBreakdown string
+	TotalProductBreakdown string
+	TotalUgcValue string
+	TotalValue string
+	TrendingAge string
+	TrendingGender string
+	TrendingInterest string
+	TrendingTerritory string
 }{
-	DailyAgeGenderBreakdown:   "daily_age_gender_breakdown",
-	DailyAudioLibraryValues:   "daily_audio_library_values",
-	DailyUgcValues:            "daily_ugc_values",
-	DailyValues:               "daily_values",
-	Metric:                    "metric",
+	DailyAgeGenderBreakdown: "daily_age_gender_breakdown",
+	DailyAudioLibraryValues: "daily_audio_library_values",
+	DailyUgcValues: "daily_ugc_values",
+	DailyValues: "daily_values",
+	Metric: "metric",
 	MonthlyAudioLibraryValues: "monthly_audio_library_values",
-	MonthlyUgcValues:          "monthly_ugc_values",
-	MonthlyValues:             "monthly_values",
-	PercentGrowth:             "percent_growth",
-	ShieldedFields:            "shielded_fields",
-	TotalAgeGenderBreakdown:   "total_age_gender_breakdown",
-	TotalAudioLibraryValue:    "total_audio_library_value",
-	TotalCountryBreakdown:     "total_country_breakdown",
-	TotalLocaleBreakdown:      "total_locale_breakdown",
-	TotalProductBreakdown:     "total_product_breakdown",
-	TotalUgcValue:             "total_ugc_value",
-	TotalValue:                "total_value",
-	TrendingAge:               "trending_age",
-	TrendingGender:            "trending_gender",
-	TrendingInterest:          "trending_interest",
-	TrendingTerritory:         "trending_territory",
+	MonthlyUgcValues: "monthly_ugc_values",
+	MonthlyValues: "monthly_values",
+	PercentGrowth: "percent_growth",
+	ShieldedFields: "shielded_fields",
+	TotalAgeGenderBreakdown: "total_age_gender_breakdown",
+	TotalAudioLibraryValue: "total_audio_library_value",
+	TotalCountryBreakdown: "total_country_breakdown",
+	TotalLocaleBreakdown: "total_locale_breakdown",
+	TotalProductBreakdown: "total_product_breakdown",
+	TotalUgcValue: "total_ugc_value",
+	TotalValue: "total_value",
+	TrendingAge: "trending_age",
+	TrendingGender: "trending_gender",
+	TrendingInterest: "trending_interest",
+	TrendingTerritory: "trending_territory",
 }
 
 // MIXInsightsResultFieldsList contains all available fields for MIXInsightsResult objects

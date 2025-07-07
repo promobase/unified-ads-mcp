@@ -17,6 +17,7 @@ import (
 func GetPageUserMessageThreadLabelTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// pageusermessagethreadlabel_delete_label tool
 	// Params object accepts: user (int)
 	pageusermessagethreadlabel_delete_labelTool := mcp.NewTool("pageusermessagethreadlabel_delete_label",
@@ -25,9 +26,9 @@ func GetPageUserMessageThreadLabelTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"user": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "user parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: user (integer) [required]"),
@@ -43,9 +44,9 @@ func GetPageUserMessageThreadLabelTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"user": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "user parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: user (integer) [required]"),
@@ -78,10 +79,12 @@ func GetPageUserMessageThreadLabelTools() []mcp.Tool {
 	)
 	tools = append(tools, pageusermessagethreadlabel_get_Tool)
 
+
 	return tools
 }
 
 // PageUserMessageThreadLabel handlers
+
 
 // HandlePageusermessagethreadlabel_delete_label handles the pageusermessagethreadlabel_delete_label tool with context-based auth
 func HandlePageusermessagethreadlabel_delete_label(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -111,6 +114,8 @@ func HandlePageusermessagethreadlabel_delete_label(ctx context.Context, request 
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Pageusermessagethreadlabel_delete_label(args)
 	if err != nil {
@@ -125,6 +130,7 @@ func HandlePageusermessagethreadlabel_delete_label(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandlePageusermessagethreadlabel_post_label handles the pageusermessagethreadlabel_post_label tool with context-based auth
 func HandlePageusermessagethreadlabel_post_label(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -154,6 +160,8 @@ func HandlePageusermessagethreadlabel_post_label(ctx context.Context, request mc
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Pageusermessagethreadlabel_post_label(args)
 	if err != nil {
@@ -169,6 +177,7 @@ func HandlePageusermessagethreadlabel_post_label(ctx context.Context, request mc
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
+
 // HandlePageusermessagethreadlabel_delete_ handles the pageusermessagethreadlabel_delete_ tool with context-based auth
 func HandlePageusermessagethreadlabel_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -182,6 +191,8 @@ func HandlePageusermessagethreadlabel_delete_(ctx context.Context, request mcp.C
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+
 
 	// Call the client method
 	result, err := client.Pageusermessagethreadlabel_delete_(args)
@@ -197,6 +208,7 @@ func HandlePageusermessagethreadlabel_delete_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandlePageusermessagethreadlabel_get_ handles the pageusermessagethreadlabel_get_ tool with context-based auth
 func HandlePageusermessagethreadlabel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -237,6 +249,8 @@ func HandlePageusermessagethreadlabel_get_(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Pageusermessagethreadlabel_get_(args)
 	if err != nil {
@@ -251,3 +265,4 @@ func HandlePageusermessagethreadlabel_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

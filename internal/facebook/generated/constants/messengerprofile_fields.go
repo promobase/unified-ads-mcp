@@ -4,23 +4,23 @@ package constants
 
 // MessengerProfileFields contains field name constants for MessengerProfile objects
 var MessengerProfileFields = struct {
-	AccountLinkingUrl          string
-	Commands                   string
-	GetStarted                 string
-	Greeting                   string
-	IceBreakers                string
-	PersistentMenu             string
+	AccountLinkingUrl string
+	Commands string
+	GetStarted string
+	Greeting string
+	IceBreakers string
+	PersistentMenu string
 	SubjectToNewEuPrivacyRules string
-	WhitelistedDomains         string
+	WhitelistedDomains string
 }{
-	AccountLinkingUrl:          "account_linking_url",
-	Commands:                   "commands",
-	GetStarted:                 "get_started",
-	Greeting:                   "greeting",
-	IceBreakers:                "ice_breakers",
-	PersistentMenu:             "persistent_menu",
+	AccountLinkingUrl: "account_linking_url",
+	Commands: "commands",
+	GetStarted: "get_started",
+	Greeting: "greeting",
+	IceBreakers: "ice_breakers",
+	PersistentMenu: "persistent_menu",
 	SubjectToNewEuPrivacyRules: "subject_to_new_eu_privacy_rules",
-	WhitelistedDomains:         "whitelisted_domains",
+	WhitelistedDomains: "whitelisted_domains",
 }
 
 // MessengerProfileFieldsList contains all available fields for MessengerProfile objects

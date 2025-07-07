@@ -5,12 +5,12 @@ package constants
 // ResearchPollStudyFields contains field name constants for ResearchPollStudy objects
 var ResearchPollStudyFields = struct {
 	Account string
-	Id      string
-	Name    string
+	Id string
+	Name string
 }{
 	Account: "account",
-	Id:      "id",
-	Name:    "name",
+	Id: "id",
+	Name: "name",
 }
 
 // ResearchPollStudyFieldsList contains all available fields for ResearchPollStudy objects

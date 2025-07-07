@@ -17,6 +17,7 @@ import (
 func GetCTXPartnerAppWelcomeMessageFlowTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// ctxpartnerappwelcomemessageflow_get_ tool
 	// Available fields for CTXPartnerAppWelcomeMessageFlow: compatible_platforms, eligible_platforms, id, is_ig_only_flow, is_used_in_ad, last_update_time, name, welcome_message_flow, welcome_message_sequence
 	ctxpartnerappwelcomemessageflow_get_Tool := mcp.NewTool("ctxpartnerappwelcomemessageflow_get_",
@@ -36,10 +37,12 @@ func GetCTXPartnerAppWelcomeMessageFlowTools() []mcp.Tool {
 	)
 	tools = append(tools, ctxpartnerappwelcomemessageflow_get_Tool)
 
+
 	return tools
 }
 
 // CTXPartnerAppWelcomeMessageFlow handlers
+
 
 // HandleCtxpartnerappwelcomemessageflow_get_ handles the ctxpartnerappwelcomemessageflow_get_ tool with context-based auth
 func HandleCtxpartnerappwelcomemessageflow_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleCtxpartnerappwelcomemessageflow_get_(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Ctxpartnerappwelcomemessageflow_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleCtxpartnerappwelcomemessageflow_get_(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

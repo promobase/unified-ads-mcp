@@ -4,18 +4,18 @@ package constants
 
 // EntityAtTextRangeFields contains field name constants for EntityAtTextRange objects
 var EntityAtTextRangeFields = struct {
-	Id        string
-	Length    string
-	Name      string
-	Object    string
-	Offset    string
+	Id string
+	Length string
+	Name string
+	Object string
+	Offset string
 	FieldType string
 }{
-	Id:        "id",
-	Length:    "length",
-	Name:      "name",
-	Object:    "object",
-	Offset:    "offset",
+	Id: "id",
+	Length: "length",
+	Name: "name",
+	Object: "object",
+	Offset: "offset",
 	FieldType: "type",
 }
 

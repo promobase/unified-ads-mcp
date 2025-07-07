@@ -6,8 +6,8 @@ import "time"
 
 // CustomConversionActivities represents a Facebook CustomConversionActivities object
 type CustomConversionActivities struct {
-	App_id     int       `json:"app_id"`
-	Data       string    `json:"data"`
-	Event_type string    `json:"event_type"`
-	Timestamp  time.Time `json:"timestamp"`
+	App_id int `json:"app_id"`
+	Data string `json:"data"`
+	Event_type string `json:"event_type"`
+	Timestamp time.Time `json:"timestamp"`
 }

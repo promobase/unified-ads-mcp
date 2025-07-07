@@ -17,6 +17,7 @@ import (
 func GetPageInsightsAsyncExportRunTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// pageinsightsasyncexportrun_get_ tool
 	// Available fields for PageInsightsAsyncExportRun: data_level, filters, format, gen_report_date, id, report_end_date, report_start_date, sorters, status
 	pageinsightsasyncexportrun_get_Tool := mcp.NewTool("pageinsightsasyncexportrun_get_",
@@ -36,10 +37,12 @@ func GetPageInsightsAsyncExportRunTools() []mcp.Tool {
 	)
 	tools = append(tools, pageinsightsasyncexportrun_get_Tool)
 
+
 	return tools
 }
 
 // PageInsightsAsyncExportRun handlers
+
 
 // HandlePageinsightsasyncexportrun_get_ handles the pageinsightsasyncexportrun_get_ tool with context-based auth
 func HandlePageinsightsasyncexportrun_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandlePageinsightsasyncexportrun_get_(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Pageinsightsasyncexportrun_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandlePageinsightsasyncexportrun_get_(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

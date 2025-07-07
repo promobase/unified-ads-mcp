@@ -4,25 +4,25 @@ package constants
 
 // ALMAdAccountInfoFields contains field name constants for ALMAdAccountInfo objects
 var ALMAdAccountInfoFields = struct {
-	AdAccountId        string
-	Id                 string
-	ManagedBy          string
-	OwnedBy            string
+	AdAccountId string
+	Id string
+	ManagedBy string
+	OwnedBy string
 	ParentAdvertiserId string
-	SubVertical        string
-	Tag                string
-	UserIds            string
-	Vertical           string
+	SubVertical string
+	Tag string
+	UserIds string
+	Vertical string
 }{
-	AdAccountId:        "ad_account_id",
-	Id:                 "id",
-	ManagedBy:          "managed_by",
-	OwnedBy:            "owned_by",
+	AdAccountId: "ad_account_id",
+	Id: "id",
+	ManagedBy: "managed_by",
+	OwnedBy: "owned_by",
 	ParentAdvertiserId: "parent_advertiser_id",
-	SubVertical:        "sub_vertical",
-	Tag:                "tag",
-	UserIds:            "user_ids",
-	Vertical:           "vertical",
+	SubVertical: "sub_vertical",
+	Tag: "tag",
+	UserIds: "user_ids",
+	Vertical: "vertical",
 }
 
 // ALMAdAccountInfoFieldsList contains all available fields for ALMAdAccountInfo objects

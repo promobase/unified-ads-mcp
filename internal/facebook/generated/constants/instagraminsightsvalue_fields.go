@@ -5,10 +5,10 @@ package constants
 // InstagramInsightsValueFields contains field name constants for InstagramInsightsValue objects
 var InstagramInsightsValueFields = struct {
 	EndTime string
-	Value   string
+	Value string
 }{
 	EndTime: "end_time",
-	Value:   "value",
+	Value: "value",
 }
 
 // InstagramInsightsValueFieldsList contains all available fields for InstagramInsightsValue objects

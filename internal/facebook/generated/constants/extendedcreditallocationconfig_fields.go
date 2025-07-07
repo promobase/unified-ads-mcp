@@ -4,27 +4,27 @@ package constants
 
 // ExtendedCreditAllocationConfigFields contains field name constants for ExtendedCreditAllocationConfig objects
 var ExtendedCreditAllocationConfigFields = struct {
-	CurrencyAmount      string
-	Id                  string
-	LiabilityType       string
-	OwningBusiness      string
-	OwningCredential    string
-	PartitionType       string
-	ReceivingBusiness   string
+	CurrencyAmount string
+	Id string
+	LiabilityType string
+	OwningBusiness string
+	OwningCredential string
+	PartitionType string
+	ReceivingBusiness string
 	ReceivingCredential string
-	RequestStatus       string
-	SendBillTo          string
+	RequestStatus string
+	SendBillTo string
 }{
-	CurrencyAmount:      "currency_amount",
-	Id:                  "id",
-	LiabilityType:       "liability_type",
-	OwningBusiness:      "owning_business",
-	OwningCredential:    "owning_credential",
-	PartitionType:       "partition_type",
-	ReceivingBusiness:   "receiving_business",
+	CurrencyAmount: "currency_amount",
+	Id: "id",
+	LiabilityType: "liability_type",
+	OwningBusiness: "owning_business",
+	OwningCredential: "owning_credential",
+	PartitionType: "partition_type",
+	ReceivingBusiness: "receiving_business",
 	ReceivingCredential: "receiving_credential",
-	RequestStatus:       "request_status",
-	SendBillTo:          "send_bill_to",
+	RequestStatus: "request_status",
+	SendBillTo: "send_bill_to",
 }
 
 // ExtendedCreditAllocationConfigFieldsList contains all available fields for ExtendedCreditAllocationConfig objects

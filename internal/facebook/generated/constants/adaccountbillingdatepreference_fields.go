@@ -4,18 +4,18 @@ package constants
 
 // AdAccountBillingDatePreferenceFields contains field name constants for AdAccountBillingDatePreference objects
 var AdAccountBillingDatePreferenceFields = struct {
-	AdAccount     string
-	DayOfMonth    string
-	Id            string
-	NextBillDate  string
-	TimeCreated   string
+	AdAccount string
+	DayOfMonth string
+	Id string
+	NextBillDate string
+	TimeCreated string
 	TimeEffective string
 }{
-	AdAccount:     "ad_account",
-	DayOfMonth:    "day_of_month",
-	Id:            "id",
-	NextBillDate:  "next_bill_date",
-	TimeCreated:   "time_created",
+	AdAccount: "ad_account",
+	DayOfMonth: "day_of_month",
+	Id: "id",
+	NextBillDate: "next_bill_date",
+	TimeCreated: "time_created",
 	TimeEffective: "time_effective",
 }
 

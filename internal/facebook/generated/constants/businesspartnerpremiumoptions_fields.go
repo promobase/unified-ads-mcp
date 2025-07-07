@@ -4,13 +4,13 @@ package constants
 
 // BusinessPartnerPremiumOptionsFields contains field name constants for BusinessPartnerPremiumOptions objects
 var BusinessPartnerPremiumOptionsFields = struct {
-	EnableBasketInsight               string
+	EnableBasketInsight string
 	EnableExtendedAudienceRetargeting string
-	RetailerCustomAudienceConfig      string
+	RetailerCustomAudienceConfig string
 }{
-	EnableBasketInsight:               "enable_basket_insight",
+	EnableBasketInsight: "enable_basket_insight",
 	EnableExtendedAudienceRetargeting: "enable_extended_audience_retargeting",
-	RetailerCustomAudienceConfig:      "retailer_custom_audience_config",
+	RetailerCustomAudienceConfig: "retailer_custom_audience_config",
 }
 
 // BusinessPartnerPremiumOptionsFieldsList contains all available fields for BusinessPartnerPremiumOptions objects

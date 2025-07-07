@@ -4,11 +4,11 @@ package types
 
 // CreatorAssetCreative represents a Facebook CreatorAssetCreative object
 type CreatorAssetCreative struct {
-	Id                       string `json:"id"`
-	Image_url                string `json:"image_url"`
-	Moderation_status        string `json:"moderation_status"`
+	Id string `json:"id"`
+	Image_url string `json:"image_url"`
+	Moderation_status string `json:"moderation_status"`
 	Product_item_retailer_id string `json:"product_item_retailer_id"`
-	Product_url              string `json:"product_url"`
-	Retailer_id              string `json:"retailer_id"`
-	Video_url                string `json:"video_url"`
+	Product_url string `json:"product_url"`
+	Retailer_id string `json:"retailer_id"`
+	Video_url string `json:"video_url"`
 }

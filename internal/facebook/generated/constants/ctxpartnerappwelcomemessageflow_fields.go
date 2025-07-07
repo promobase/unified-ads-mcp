@@ -4,24 +4,24 @@ package constants
 
 // CTXPartnerAppWelcomeMessageFlowFields contains field name constants for CTXPartnerAppWelcomeMessageFlow objects
 var CTXPartnerAppWelcomeMessageFlowFields = struct {
-	CompatiblePlatforms    string
-	EligiblePlatforms      string
-	Id                     string
-	IsIgOnlyFlow           string
-	IsUsedInAd             string
-	LastUpdateTime         string
-	Name                   string
-	WelcomeMessageFlow     string
+	CompatiblePlatforms string
+	EligiblePlatforms string
+	Id string
+	IsIgOnlyFlow string
+	IsUsedInAd string
+	LastUpdateTime string
+	Name string
+	WelcomeMessageFlow string
 	WelcomeMessageSequence string
 }{
-	CompatiblePlatforms:    "compatible_platforms",
-	EligiblePlatforms:      "eligible_platforms",
-	Id:                     "id",
-	IsIgOnlyFlow:           "is_ig_only_flow",
-	IsUsedInAd:             "is_used_in_ad",
-	LastUpdateTime:         "last_update_time",
-	Name:                   "name",
-	WelcomeMessageFlow:     "welcome_message_flow",
+	CompatiblePlatforms: "compatible_platforms",
+	EligiblePlatforms: "eligible_platforms",
+	Id: "id",
+	IsIgOnlyFlow: "is_ig_only_flow",
+	IsUsedInAd: "is_used_in_ad",
+	LastUpdateTime: "last_update_time",
+	Name: "name",
+	WelcomeMessageFlow: "welcome_message_flow",
 	WelcomeMessageSequence: "welcome_message_sequence",
 }
 

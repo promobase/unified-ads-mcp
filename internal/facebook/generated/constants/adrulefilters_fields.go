@@ -4,13 +4,13 @@ package constants
 
 // AdRuleFiltersFields contains field name constants for AdRuleFilters objects
 var AdRuleFiltersFields = struct {
-	Field    string
+	Field string
 	Operator string
-	Value    string
+	Value string
 }{
-	Field:    "field",
+	Field: "field",
 	Operator: "operator",
-	Value:    "value",
+	Value: "value",
 }
 
 // AdRuleFiltersFieldsList contains all available fields for AdRuleFilters objects

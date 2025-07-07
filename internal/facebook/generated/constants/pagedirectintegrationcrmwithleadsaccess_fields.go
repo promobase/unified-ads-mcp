@@ -5,12 +5,12 @@ package constants
 // PageDirectIntegrationCrmWithLeadsAccessFields contains field name constants for PageDirectIntegrationCrmWithLeadsAccess objects
 var PageDirectIntegrationCrmWithLeadsAccessFields = struct {
 	CanAccessLeads string
-	Id             string
-	Name           string
+	Id string
+	Name string
 }{
 	CanAccessLeads: "can_access_leads",
-	Id:             "id",
-	Name:           "name",
+	Id: "id",
+	Name: "name",
 }
 
 // PageDirectIntegrationCrmWithLeadsAccessFieldsList contains all available fields for PageDirectIntegrationCrmWithLeadsAccess objects

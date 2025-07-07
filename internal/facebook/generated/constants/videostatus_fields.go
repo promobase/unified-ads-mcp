@@ -5,18 +5,18 @@ package constants
 // VideoStatusFields contains field name constants for VideoStatus objects
 var VideoStatusFields = struct {
 	CopyrightCheckStatus string
-	ProcessingPhase      string
-	ProcessingProgress   string
-	PublishingPhase      string
-	UploadingPhase       string
-	VideoStatus          string
+	ProcessingPhase string
+	ProcessingProgress string
+	PublishingPhase string
+	UploadingPhase string
+	VideoStatus string
 }{
 	CopyrightCheckStatus: "copyright_check_status",
-	ProcessingPhase:      "processing_phase",
-	ProcessingProgress:   "processing_progress",
-	PublishingPhase:      "publishing_phase",
-	UploadingPhase:       "uploading_phase",
-	VideoStatus:          "video_status",
+	ProcessingPhase: "processing_phase",
+	ProcessingProgress: "processing_progress",
+	PublishingPhase: "publishing_phase",
+	UploadingPhase: "uploading_phase",
+	VideoStatus: "video_status",
 }
 
 // VideoStatusFieldsList contains all available fields for VideoStatus objects

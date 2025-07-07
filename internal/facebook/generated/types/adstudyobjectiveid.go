@@ -5,6 +5,6 @@ package types
 // AdStudyObjectiveID represents a Facebook AdStudyObjectiveID object
 type AdStudyObjectiveID struct {
 	Event_names []string `json:"event_names"`
-	Id          string   `json:"id"`
-	Type_       string   `json:"type"`
+	Id string `json:"id"`
+	Type_ string `json:"type"`
 }

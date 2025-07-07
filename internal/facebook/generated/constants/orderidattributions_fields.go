@@ -4,25 +4,25 @@ package constants
 
 // OrderIDAttributionsFields contains field name constants for OrderIDAttributions objects
 var OrderIDAttributionsFields = struct {
-	AppId            string
-	AttributionType  string
-	Attributions     string
+	AppId string
+	AttributionType string
+	Attributions string
 	ConversionDevice string
-	DatasetId        string
-	HoldoutStatus    string
-	OrderId          string
-	OrderTimestamp   string
-	PixelId          string
+	DatasetId string
+	HoldoutStatus string
+	OrderId string
+	OrderTimestamp string
+	PixelId string
 }{
-	AppId:            "app_id",
-	AttributionType:  "attribution_type",
-	Attributions:     "attributions",
+	AppId: "app_id",
+	AttributionType: "attribution_type",
+	Attributions: "attributions",
 	ConversionDevice: "conversion_device",
-	DatasetId:        "dataset_id",
-	HoldoutStatus:    "holdout_status",
-	OrderId:          "order_id",
-	OrderTimestamp:   "order_timestamp",
-	PixelId:          "pixel_id",
+	DatasetId: "dataset_id",
+	HoldoutStatus: "holdout_status",
+	OrderId: "order_id",
+	OrderTimestamp: "order_timestamp",
+	PixelId: "pixel_id",
 }
 
 // OrderIDAttributionsFieldsList contains all available fields for OrderIDAttributions objects

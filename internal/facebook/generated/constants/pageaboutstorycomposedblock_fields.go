@@ -4,17 +4,17 @@ package constants
 
 // PageAboutStoryComposedBlockFields contains field name constants for PageAboutStoryComposedBlock objects
 var PageAboutStoryComposedBlockFields = struct {
-	Depth             string
-	EntityRanges      string
+	Depth string
+	EntityRanges string
 	InlineStyleRanges string
-	Text              string
-	FieldType         string
+	Text string
+	FieldType string
 }{
-	Depth:             "depth",
-	EntityRanges:      "entity_ranges",
+	Depth: "depth",
+	EntityRanges: "entity_ranges",
 	InlineStyleRanges: "inline_style_ranges",
-	Text:              "text",
-	FieldType:         "type",
+	Text: "text",
+	FieldType: "type",
 }
 
 // PageAboutStoryComposedBlockFieldsList contains all available fields for PageAboutStoryComposedBlock objects

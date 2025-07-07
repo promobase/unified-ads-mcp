@@ -4,41 +4,41 @@ package constants
 
 // AdCustomDerivedMetricsFields contains field name constants for AdCustomDerivedMetrics objects
 var AdCustomDerivedMetricsFields = struct {
-	AdAccountId                string
-	Business                   string
-	CreationTime               string
-	Creator                    string
-	CustomDerivedMetricType    string
-	DeletionTime               string
-	Deletor                    string
-	Description                string
-	FormatType                 string
-	Formula                    string
-	HasAttributionWindows      string
+	AdAccountId string
+	Business string
+	CreationTime string
+	Creator string
+	CustomDerivedMetricType string
+	DeletionTime string
+	Deletor string
+	Description string
+	FormatType string
+	Formula string
+	HasAttributionWindows string
 	HasInlineAttributionWindow string
-	Id                         string
-	Name                       string
-	Permission                 string
-	SavedReportId              string
-	Scope                      string
+	Id string
+	Name string
+	Permission string
+	SavedReportId string
+	Scope string
 }{
-	AdAccountId:                "ad_account_id",
-	Business:                   "business",
-	CreationTime:               "creation_time",
-	Creator:                    "creator",
-	CustomDerivedMetricType:    "custom_derived_metric_type",
-	DeletionTime:               "deletion_time",
-	Deletor:                    "deletor",
-	Description:                "description",
-	FormatType:                 "format_type",
-	Formula:                    "formula",
-	HasAttributionWindows:      "has_attribution_windows",
+	AdAccountId: "ad_account_id",
+	Business: "business",
+	CreationTime: "creation_time",
+	Creator: "creator",
+	CustomDerivedMetricType: "custom_derived_metric_type",
+	DeletionTime: "deletion_time",
+	Deletor: "deletor",
+	Description: "description",
+	FormatType: "format_type",
+	Formula: "formula",
+	HasAttributionWindows: "has_attribution_windows",
 	HasInlineAttributionWindow: "has_inline_attribution_window",
-	Id:                         "id",
-	Name:                       "name",
-	Permission:                 "permission",
-	SavedReportId:              "saved_report_id",
-	Scope:                      "scope",
+	Id: "id",
+	Name: "name",
+	Permission: "permission",
+	SavedReportId: "saved_report_id",
+	Scope: "scope",
 }
 
 // AdCustomDerivedMetricsFieldsList contains all available fields for AdCustomDerivedMetrics objects

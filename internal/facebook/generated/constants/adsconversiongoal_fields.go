@@ -4,23 +4,23 @@ package constants
 
 // AdsConversionGoalFields contains field name constants for AdsConversionGoal objects
 var AdsConversionGoalFields = struct {
-	AdAccountId                string
+	AdAccountId string
 	ConversionEventValueSource string
-	Description                string
-	GoalCreationMethod         string
-	Id                         string
-	Name                       string
-	PerformanceGoal            string
-	UpdateStatus               string
+	Description string
+	GoalCreationMethod string
+	Id string
+	Name string
+	PerformanceGoal string
+	UpdateStatus string
 }{
-	AdAccountId:                "ad_account_id",
+	AdAccountId: "ad_account_id",
 	ConversionEventValueSource: "conversion_event_value_source",
-	Description:                "description",
-	GoalCreationMethod:         "goal_creation_method",
-	Id:                         "id",
-	Name:                       "name",
-	PerformanceGoal:            "performance_goal",
-	UpdateStatus:               "update_status",
+	Description: "description",
+	GoalCreationMethod: "goal_creation_method",
+	Id: "id",
+	Name: "name",
+	PerformanceGoal: "performance_goal",
+	UpdateStatus: "update_status",
 }
 
 // AdsConversionGoalFieldsList contains all available fields for AdsConversionGoal objects

@@ -4,41 +4,41 @@ package constants
 
 // BCPCampaignFields contains field name constants for BCPCampaign objects
 var BCPCampaignFields = struct {
-	AdsPermissionRequired          string
-	ApplicationDeadline            string
-	CampaignGoal                   string
-	CampaignGoalOther              string
-	ContentDeliveryDeadline        string
-	ContentDeliveryStartDate       string
-	ContentRequirements            string
+	AdsPermissionRequired string
+	ApplicationDeadline string
+	CampaignGoal string
+	CampaignGoalOther string
+	ContentDeliveryDeadline string
+	ContentDeliveryStartDate string
+	ContentRequirements string
 	ContentRequirementsDescription string
-	Currency                       string
-	DealNegotiationType            string
-	Description                    string
-	HasFreeProduct                 string
-	Id                             string
-	Name                           string
-	PaymentAmountForAds            string
-	PaymentAmountForContent        string
-	PaymentDescription             string
+	Currency string
+	DealNegotiationType string
+	Description string
+	HasFreeProduct string
+	Id string
+	Name string
+	PaymentAmountForAds string
+	PaymentAmountForContent string
+	PaymentDescription string
 }{
-	AdsPermissionRequired:          "ads_permission_required",
-	ApplicationDeadline:            "application_deadline",
-	CampaignGoal:                   "campaign_goal",
-	CampaignGoalOther:              "campaign_goal_other",
-	ContentDeliveryDeadline:        "content_delivery_deadline",
-	ContentDeliveryStartDate:       "content_delivery_start_date",
-	ContentRequirements:            "content_requirements",
+	AdsPermissionRequired: "ads_permission_required",
+	ApplicationDeadline: "application_deadline",
+	CampaignGoal: "campaign_goal",
+	CampaignGoalOther: "campaign_goal_other",
+	ContentDeliveryDeadline: "content_delivery_deadline",
+	ContentDeliveryStartDate: "content_delivery_start_date",
+	ContentRequirements: "content_requirements",
 	ContentRequirementsDescription: "content_requirements_description",
-	Currency:                       "currency",
-	DealNegotiationType:            "deal_negotiation_type",
-	Description:                    "description",
-	HasFreeProduct:                 "has_free_product",
-	Id:                             "id",
-	Name:                           "name",
-	PaymentAmountForAds:            "payment_amount_for_ads",
-	PaymentAmountForContent:        "payment_amount_for_content",
-	PaymentDescription:             "payment_description",
+	Currency: "currency",
+	DealNegotiationType: "deal_negotiation_type",
+	Description: "description",
+	HasFreeProduct: "has_free_product",
+	Id: "id",
+	Name: "name",
+	PaymentAmountForAds: "payment_amount_for_ads",
+	PaymentAmountForContent: "payment_amount_for_content",
+	PaymentDescription: "payment_description",
 }
 
 // BCPCampaignFieldsList contains all available fields for BCPCampaign objects

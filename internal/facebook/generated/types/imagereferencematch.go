@@ -6,21 +6,21 @@ import "time"
 
 // ImageReferenceMatch represents a Facebook ImageReferenceMatch object
 type ImageReferenceMatch struct {
-	Conflicting_countries                         []string                 `json:"conflicting_countries"`
-	Country_resolution_history                    []interface{}            `json:"country_resolution_history"`
-	Creation_time                                 time.Time                `json:"creation_time"`
-	Current_conflict_resolved_countries           []interface{}            `json:"current_conflict_resolved_countries"`
-	Displayed_match_state                         string                   `json:"displayed_match_state"`
-	Dispute_form_data_entries_with_translations   []map[string]interface{} `json:"dispute_form_data_entries_with_translations"`
-	Expiration_time                               time.Time                `json:"expiration_time"`
-	Id                                            string                   `json:"id"`
-	Match_state                                   string                   `json:"match_state"`
-	Matched_reference_copyright                   *ImageCopyright          `json:"matched_reference_copyright"`
-	Matched_reference_owner                       *Profile                 `json:"matched_reference_owner"`
-	Modification_history                          []map[string]interface{} `json:"modification_history"`
-	Reference_copyright                           *ImageCopyright          `json:"reference_copyright"`
-	Reference_owner                               *Profile                 `json:"reference_owner"`
+	Conflicting_countries []string `json:"conflicting_countries"`
+	Country_resolution_history []interface{} `json:"country_resolution_history"`
+	Creation_time time.Time `json:"creation_time"`
+	Current_conflict_resolved_countries []interface{} `json:"current_conflict_resolved_countries"`
+	Displayed_match_state string `json:"displayed_match_state"`
+	Dispute_form_data_entries_with_translations []map[string]interface{} `json:"dispute_form_data_entries_with_translations"`
+	Expiration_time time.Time `json:"expiration_time"`
+	Id string `json:"id"`
+	Match_state string `json:"match_state"`
+	Matched_reference_copyright *ImageCopyright `json:"matched_reference_copyright"`
+	Matched_reference_owner *Profile `json:"matched_reference_owner"`
+	Modification_history []map[string]interface{} `json:"modification_history"`
+	Reference_copyright *ImageCopyright `json:"reference_copyright"`
+	Reference_owner *Profile `json:"reference_owner"`
 	Rejection_form_data_entries_with_translations []map[string]interface{} `json:"rejection_form_data_entries_with_translations"`
-	Resolution_reason                             string                   `json:"resolution_reason"`
-	Update_time                                   time.Time                `json:"update_time"`
+	Resolution_reason string `json:"resolution_reason"`
+	Update_time time.Time `json:"update_time"`
 }

@@ -5,10 +5,10 @@ package constants
 // IGResumableVideoUploadStatusFields contains field name constants for IGResumableVideoUploadStatus objects
 var IGResumableVideoUploadStatusFields = struct {
 	ProcessingPhase string
-	UploadingPhase  string
+	UploadingPhase string
 }{
 	ProcessingPhase: "processing_phase",
-	UploadingPhase:  "uploading_phase",
+	UploadingPhase: "uploading_phase",
 }
 
 // IGResumableVideoUploadStatusFieldsList contains all available fields for IGResumableVideoUploadStatus objects

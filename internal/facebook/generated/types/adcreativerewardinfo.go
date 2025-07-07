@@ -4,6 +4,6 @@ package types
 
 // AdCreativeRewardInfo represents a Facebook AdCreativeRewardInfo object
 type AdCreativeRewardInfo struct {
-	Reward_offer_id   string `json:"reward_offer_id"`
+	Reward_offer_id string `json:"reward_offer_id"`
 	Reward_program_id string `json:"reward_program_id"`
 }

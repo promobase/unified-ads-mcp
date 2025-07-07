@@ -5,12 +5,12 @@ package constants
 // LeadGenClientValidationRulesFields contains field name constants for LeadGenClientValidationRules objects
 var LeadGenClientValidationRulesFields = struct {
 	ExcludeEmojiAndSpecialCharsEnabled string
-	MaxLengthValue                     string
-	MinLengthValue                     string
+	MaxLengthValue string
+	MinLengthValue string
 }{
 	ExcludeEmojiAndSpecialCharsEnabled: "exclude_emoji_and_special_chars_enabled",
-	MaxLengthValue:                     "max_length_value",
-	MinLengthValue:                     "min_length_value",
+	MaxLengthValue: "max_length_value",
+	MinLengthValue: "min_length_value",
 }
 
 // LeadGenClientValidationRulesFieldsList contains all available fields for LeadGenClientValidationRules objects

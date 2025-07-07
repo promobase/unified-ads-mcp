@@ -4,17 +4,17 @@ package constants
 
 // PagePaymentOptionsFields contains field name constants for PagePaymentOptions objects
 var PagePaymentOptionsFields = struct {
-	Amex       string
-	CashOnly   string
-	Discover   string
+	Amex string
+	CashOnly string
+	Discover string
 	Mastercard string
-	Visa       string
+	Visa string
 }{
-	Amex:       "amex",
-	CashOnly:   "cash_only",
-	Discover:   "discover",
+	Amex: "amex",
+	CashOnly: "cash_only",
+	Discover: "discover",
 	Mastercard: "mastercard",
-	Visa:       "visa",
+	Visa: "visa",
 }
 
 // PagePaymentOptionsFieldsList contains all available fields for PagePaymentOptions objects

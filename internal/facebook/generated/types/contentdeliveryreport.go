@@ -4,11 +4,11 @@ package types
 
 // ContentDeliveryReport represents a Facebook ContentDeliveryReport object
 type ContentDeliveryReport struct {
-	Content_id            string `json:"content_id"`
-	Content_name          string `json:"content_name"`
-	Content_url           string `json:"content_url"`
-	Creator_id            string `json:"creator_id"`
-	Creator_name          string `json:"creator_name"`
-	Creator_url           string `json:"creator_url"`
-	Estimated_impressions int    `json:"estimated_impressions"`
+	Content_id string `json:"content_id"`
+	Content_name string `json:"content_name"`
+	Content_url string `json:"content_url"`
+	Creator_id string `json:"creator_id"`
+	Creator_name string `json:"creator_name"`
+	Creator_url string `json:"creator_url"`
+	Estimated_impressions int `json:"estimated_impressions"`
 }

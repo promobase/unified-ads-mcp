@@ -6,8 +6,8 @@ import "time"
 
 // AdvertiserVerificationStatus represents a Facebook AdvertiserVerificationStatus object
 type AdvertiserVerificationStatus struct {
-	Banner_type          string    `json:"banner_type"`
+	Banner_type string `json:"banner_type"`
 	Grace_period_ends_at time.Time `json:"grace_period_ends_at"`
-	Ufac_redirect_uri    string    `json:"ufac_redirect_uri"`
-	Verification_status  string    `json:"verification_status"`
+	Ufac_redirect_uri string `json:"ufac_redirect_uri"`
+	Verification_status string `json:"verification_status"`
 }

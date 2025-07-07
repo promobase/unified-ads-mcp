@@ -4,33 +4,33 @@ package constants
 
 // CopyrightReferenceContainerFields contains field name constants for CopyrightReferenceContainer objects
 var CopyrightReferenceContainerFields = struct {
-	ContentType           string
+	ContentType string
 	CopyrightCreationTime string
-	DownloadHdUrl         string
-	DurationInSec         string
-	Id                    string
-	Iswc                  string
-	Metadata              string
-	PlayableVideoUri      string
-	PublishedTime         string
-	ThumbnailUrl          string
-	Title                 string
-	UniversalContentId    string
-	WriterNames           string
+	DownloadHdUrl string
+	DurationInSec string
+	Id string
+	Iswc string
+	Metadata string
+	PlayableVideoUri string
+	PublishedTime string
+	ThumbnailUrl string
+	Title string
+	UniversalContentId string
+	WriterNames string
 }{
-	ContentType:           "content_type",
+	ContentType: "content_type",
 	CopyrightCreationTime: "copyright_creation_time",
-	DownloadHdUrl:         "download_hd_url",
-	DurationInSec:         "duration_in_sec",
-	Id:                    "id",
-	Iswc:                  "iswc",
-	Metadata:              "metadata",
-	PlayableVideoUri:      "playable_video_uri",
-	PublishedTime:         "published_time",
-	ThumbnailUrl:          "thumbnail_url",
-	Title:                 "title",
-	UniversalContentId:    "universal_content_id",
-	WriterNames:           "writer_names",
+	DownloadHdUrl: "download_hd_url",
+	DurationInSec: "duration_in_sec",
+	Id: "id",
+	Iswc: "iswc",
+	Metadata: "metadata",
+	PlayableVideoUri: "playable_video_uri",
+	PublishedTime: "published_time",
+	ThumbnailUrl: "thumbnail_url",
+	Title: "title",
+	UniversalContentId: "universal_content_id",
+	WriterNames: "writer_names",
 }
 
 // CopyrightReferenceContainerFieldsList contains all available fields for CopyrightReferenceContainer objects

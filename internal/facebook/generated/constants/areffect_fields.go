@@ -4,19 +4,19 @@ package constants
 
 // AREffectFields contains field name constants for AREffect objects
 var AREffectFields = struct {
-	CreationTime     string
-	Id               string
+	CreationTime string
+	Id string
 	LastModifiedTime string
-	Name             string
-	Status           string
-	Surfaces         string
+	Name string
+	Status string
+	Surfaces string
 }{
-	CreationTime:     "creation_time",
-	Id:               "id",
+	CreationTime: "creation_time",
+	Id: "id",
 	LastModifiedTime: "last_modified_time",
-	Name:             "name",
-	Status:           "status",
-	Surfaces:         "surfaces",
+	Name: "name",
+	Status: "status",
+	Surfaces: "surfaces",
 }
 
 // AREffectFieldsList contains all available fields for AREffect objects

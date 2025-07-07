@@ -4,12 +4,12 @@ package constants
 
 // AdAccountRecommendedCamapaignBudgetFields contains field name constants for AdAccountRecommendedCamapaignBudget objects
 var AdAccountRecommendedCamapaignBudgetFields = struct {
-	Daily     string
-	Lifetime  string
+	Daily string
+	Lifetime string
 	Objective string
 }{
-	Daily:     "daily",
-	Lifetime:  "lifetime",
+	Daily: "daily",
+	Lifetime: "lifetime",
 	Objective: "objective",
 }
 

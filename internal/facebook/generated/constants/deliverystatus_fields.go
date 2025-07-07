@@ -4,10 +4,10 @@ package constants
 
 // DeliveryStatusFields contains field name constants for DeliveryStatus objects
 var DeliveryStatusFields = struct {
-	Status      string
+	Status string
 	Substatuses string
 }{
-	Status:      "status",
+	Status: "status",
 	Substatuses: "substatuses",
 }
 

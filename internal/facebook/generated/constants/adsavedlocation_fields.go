@@ -4,27 +4,27 @@ package constants
 
 // AdSavedLocationFields contains field name constants for AdSavedLocation objects
 var AdSavedLocationFields = struct {
-	Cities            string
-	Countries         string
-	CountryGroups     string
-	CustomLocations   string
-	GeoMarkets        string
-	Id                string
+	Cities string
+	Countries string
+	CountryGroups string
+	CustomLocations string
+	GeoMarkets string
+	Id string
 	LocationSentences string
-	Name              string
-	Regions           string
-	Zips              string
+	Name string
+	Regions string
+	Zips string
 }{
-	Cities:            "cities",
-	Countries:         "countries",
-	CountryGroups:     "country_groups",
-	CustomLocations:   "custom_locations",
-	GeoMarkets:        "geo_markets",
-	Id:                "id",
+	Cities: "cities",
+	Countries: "countries",
+	CountryGroups: "country_groups",
+	CustomLocations: "custom_locations",
+	GeoMarkets: "geo_markets",
+	Id: "id",
 	LocationSentences: "location_sentences",
-	Name:              "name",
-	Regions:           "regions",
-	Zips:              "zips",
+	Name: "name",
+	Regions: "regions",
+	Zips: "zips",
 }
 
 // AdSavedLocationFieldsList contains all available fields for AdSavedLocation objects

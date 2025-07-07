@@ -17,6 +17,7 @@ import (
 func GetPrivateLiftStudyInstanceTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// privateliftstudyinstance_get_ tool
 	// Available fields for PrivateLiftStudyInstance: breakdown_key, created_time, feature_list, id, issuer_certificate, latest_status_update_time, run_id, server_hostnames, server_ips, status, tier
 	privateliftstudyinstance_get_Tool := mcp.NewTool("privateliftstudyinstance_get_",
@@ -43,12 +44,12 @@ func GetPrivateLiftStudyInstanceTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"operation": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "operation parameter",
-					"enum":        []string{"AGGREGATE", "CANCEL", "COMPUTE", "ID_MATCH", "NEXT", "NONE"},
+					"enum": []string{ "AGGREGATE", "CANCEL", "COMPUTE", "ID_MATCH", "NEXT", "NONE" },
 				},
 				"run_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "run_id parameter",
 				},
 			}),
@@ -57,10 +58,12 @@ func GetPrivateLiftStudyInstanceTools() []mcp.Tool {
 	)
 	tools = append(tools, privateliftstudyinstance_post_Tool)
 
+
 	return tools
 }
 
 // PrivateLiftStudyInstance handlers
+
 
 // HandlePrivateliftstudyinstance_get_ handles the privateliftstudyinstance_get_ tool with context-based auth
 func HandlePrivateliftstudyinstance_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -101,6 +104,8 @@ func HandlePrivateliftstudyinstance_get_(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Privateliftstudyinstance_get_(args)
 	if err != nil {
@@ -115,6 +120,7 @@ func HandlePrivateliftstudyinstance_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandlePrivateliftstudyinstance_post_ handles the privateliftstudyinstance_post_ tool with context-based auth
 func HandlePrivateliftstudyinstance_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -142,6 +148,8 @@ func HandlePrivateliftstudyinstance_post_(ctx context.Context, request mcp.CallT
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Privateliftstudyinstance_post_(args)
 	if err != nil {
@@ -156,3 +164,4 @@ func HandlePrivateliftstudyinstance_post_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -5,36 +5,36 @@ package constants
 // LeadGenDataDraftFields contains field name constants for LeadGenDataDraft objects
 var LeadGenDataDraftFields = struct {
 	BlockDisplayForNonTargetedViewer string
-	CreatedTime                      string
-	DisqualifiedEndComponent         string
-	FollowUpActionUrl                string
-	Id                               string
-	IsOptimizedForQuality            string
-	LegalContent                     string
-	Locale                           string
-	Name                             string
-	Page                             string
-	QuestionPageCustomHeadline       string
-	Questions                        string
-	Status                           string
-	ThankYouPage                     string
-	TrackingParameters               string
+	CreatedTime string
+	DisqualifiedEndComponent string
+	FollowUpActionUrl string
+	Id string
+	IsOptimizedForQuality string
+	LegalContent string
+	Locale string
+	Name string
+	Page string
+	QuestionPageCustomHeadline string
+	Questions string
+	Status string
+	ThankYouPage string
+	TrackingParameters string
 }{
 	BlockDisplayForNonTargetedViewer: "block_display_for_non_targeted_viewer",
-	CreatedTime:                      "created_time",
-	DisqualifiedEndComponent:         "disqualified_end_component",
-	FollowUpActionUrl:                "follow_up_action_url",
-	Id:                               "id",
-	IsOptimizedForQuality:            "is_optimized_for_quality",
-	LegalContent:                     "legal_content",
-	Locale:                           "locale",
-	Name:                             "name",
-	Page:                             "page",
-	QuestionPageCustomHeadline:       "question_page_custom_headline",
-	Questions:                        "questions",
-	Status:                           "status",
-	ThankYouPage:                     "thank_you_page",
-	TrackingParameters:               "tracking_parameters",
+	CreatedTime: "created_time",
+	DisqualifiedEndComponent: "disqualified_end_component",
+	FollowUpActionUrl: "follow_up_action_url",
+	Id: "id",
+	IsOptimizedForQuality: "is_optimized_for_quality",
+	LegalContent: "legal_content",
+	Locale: "locale",
+	Name: "name",
+	Page: "page",
+	QuestionPageCustomHeadline: "question_page_custom_headline",
+	Questions: "questions",
+	Status: "status",
+	ThankYouPage: "thank_you_page",
+	TrackingParameters: "tracking_parameters",
 }
 
 // LeadGenDataDraftFieldsList contains all available fields for LeadGenDataDraft objects

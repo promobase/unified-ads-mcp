@@ -4,19 +4,19 @@ package constants
 
 // AdAssetFeedSpecVideoFields contains field name constants for AdAssetFeedSpecVideo objects
 var AdAssetFeedSpecVideoFields = struct {
-	Adlabels      string
-	CaptionIds    string
+	Adlabels string
+	CaptionIds string
 	ThumbnailHash string
-	ThumbnailUrl  string
-	UrlTags       string
-	VideoId       string
+	ThumbnailUrl string
+	UrlTags string
+	VideoId string
 }{
-	Adlabels:      "adlabels",
-	CaptionIds:    "caption_ids",
+	Adlabels: "adlabels",
+	CaptionIds: "caption_ids",
 	ThumbnailHash: "thumbnail_hash",
-	ThumbnailUrl:  "thumbnail_url",
-	UrlTags:       "url_tags",
-	VideoId:       "video_id",
+	ThumbnailUrl: "thumbnail_url",
+	UrlTags: "url_tags",
+	VideoId: "video_id",
 }
 
 // AdAssetFeedSpecVideoFieldsList contains all available fields for AdAssetFeedSpecVideo objects

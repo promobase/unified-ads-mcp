@@ -4,39 +4,39 @@ package constants
 
 // MediaCopyrightAttributionFields contains field name constants for MediaCopyrightAttribution objects
 var MediaCopyrightAttributionFields = struct {
-	AttributionIgTargetId         string
+	AttributionIgTargetId string
 	AttributionTargetEmailAddress string
-	AttributionTargetId           string
-	AttributionTargetName         string
-	AttributionType               string
-	AttributionUri                string
-	CopyrightCount                string
-	CreationTime                  string
-	Creator                       string
-	Id                            string
-	IsEnabled                     string
-	LinkTitle                     string
-	MatchCount                    string
-	Owner                         string
-	Status                        string
-	Title                         string
+	AttributionTargetId string
+	AttributionTargetName string
+	AttributionType string
+	AttributionUri string
+	CopyrightCount string
+	CreationTime string
+	Creator string
+	Id string
+	IsEnabled string
+	LinkTitle string
+	MatchCount string
+	Owner string
+	Status string
+	Title string
 }{
-	AttributionIgTargetId:         "attribution_ig_target_id",
+	AttributionIgTargetId: "attribution_ig_target_id",
 	AttributionTargetEmailAddress: "attribution_target_email_address",
-	AttributionTargetId:           "attribution_target_id",
-	AttributionTargetName:         "attribution_target_name",
-	AttributionType:               "attribution_type",
-	AttributionUri:                "attribution_uri",
-	CopyrightCount:                "copyright_count",
-	CreationTime:                  "creation_time",
-	Creator:                       "creator",
-	Id:                            "id",
-	IsEnabled:                     "is_enabled",
-	LinkTitle:                     "link_title",
-	MatchCount:                    "match_count",
-	Owner:                         "owner",
-	Status:                        "status",
-	Title:                         "title",
+	AttributionTargetId: "attribution_target_id",
+	AttributionTargetName: "attribution_target_name",
+	AttributionType: "attribution_type",
+	AttributionUri: "attribution_uri",
+	CopyrightCount: "copyright_count",
+	CreationTime: "creation_time",
+	Creator: "creator",
+	Id: "id",
+	IsEnabled: "is_enabled",
+	LinkTitle: "link_title",
+	MatchCount: "match_count",
+	Owner: "owner",
+	Status: "status",
+	Title: "title",
 }
 
 // MediaCopyrightAttributionFieldsList contains all available fields for MediaCopyrightAttribution objects

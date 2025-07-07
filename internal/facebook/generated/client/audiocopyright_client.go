@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-// AudioCopyrightClient provides methods for AudioCopyright operations
+// AudioCopyrightClient represents a client for AudioCopyright operations
 type AudioCopyrightClient struct {
 	accessToken string
 }
@@ -21,42 +21,42 @@ func NewAudioCopyrightClient(accessToken string) *AudioCopyrightClient {
 	}
 }
 
-// audiocopyright_get_update_records GET update_records for AudioCopyright
+
+// Audiocopyright_get_update_records performs GET update_records for AudioCopyright
 func (c *AudioCopyrightClient) Audiocopyright_get_update_records(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/update_records")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -88,42 +88,42 @@ func (c *AudioCopyrightClient) Audiocopyright_get_update_records(args map[string
 	return result, nil
 }
 
-// audiocopyright_get_ GET  for AudioCopyright
+
+// Audiocopyright_get_ performs GET  for AudioCopyright
 func (c *AudioCopyrightClient) Audiocopyright_get_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -154,3 +154,4 @@ func (c *AudioCopyrightClient) Audiocopyright_get_(args map[string]interface{}) 
 
 	return result, nil
 }
+

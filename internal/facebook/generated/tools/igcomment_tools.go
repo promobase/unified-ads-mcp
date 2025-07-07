@@ -17,6 +17,7 @@ import (
 func GetIGCommentTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// igcomment_get_replies tool
 	// Available fields for IGComment: from, hidden, id, legacy_instagram_comment_id, like_count, media, parent_id, text, timestamp, user, username
 	igcomment_get_repliesTool := mcp.NewTool("igcomment_get_replies",
@@ -43,7 +44,7 @@ func GetIGCommentTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"message": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "message parameter",
 				},
 			}),
@@ -59,7 +60,7 @@ func GetIGCommentTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ad_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ad_id parameter",
 				},
 			}),
@@ -95,13 +96,13 @@ func GetIGCommentTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ad_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ad_id parameter",
 				},
 				"hide": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "hide parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: ad_id (string), hide (boolean) [required]"),
@@ -109,10 +110,12 @@ func GetIGCommentTools() []mcp.Tool {
 	)
 	tools = append(tools, igcomment_post_Tool)
 
+
 	return tools
 }
 
 // IGComment handlers
+
 
 // HandleIgcomment_get_replies handles the igcomment_get_replies tool with context-based auth
 func HandleIgcomment_get_replies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -153,6 +156,8 @@ func HandleIgcomment_get_replies(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Igcomment_get_replies(args)
 	if err != nil {
@@ -167,6 +172,7 @@ func HandleIgcomment_get_replies(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIgcomment_post_replies handles the igcomment_post_replies tool with context-based auth
 func HandleIgcomment_post_replies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -194,6 +200,8 @@ func HandleIgcomment_post_replies(ctx context.Context, request mcp.CallToolReque
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Igcomment_post_replies(args)
 	if err != nil {
@@ -208,6 +216,7 @@ func HandleIgcomment_post_replies(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIgcomment_delete_ handles the igcomment_delete_ tool with context-based auth
 func HandleIgcomment_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -235,6 +244,8 @@ func HandleIgcomment_delete_(ctx context.Context, request mcp.CallToolRequest) (
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Igcomment_delete_(args)
 	if err != nil {
@@ -249,6 +260,7 @@ func HandleIgcomment_delete_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIgcomment_get_ handles the igcomment_get_ tool with context-based auth
 func HandleIgcomment_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -289,6 +301,8 @@ func HandleIgcomment_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Igcomment_get_(args)
 	if err != nil {
@@ -303,6 +317,7 @@ func HandleIgcomment_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleIgcomment_post_ handles the igcomment_post_ tool with context-based auth
 func HandleIgcomment_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -332,6 +347,8 @@ func HandleIgcomment_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Igcomment_post_(args)
 	if err != nil {
@@ -346,3 +363,4 @@ func HandleIgcomment_post_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

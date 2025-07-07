@@ -17,6 +17,7 @@ import (
 func GetProductCatalogTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// productcatalog_delete_agencies tool
 	// Params object accepts: business (string)
 	productcatalog_delete_agenciesTool := mcp.NewTool("productcatalog_delete_agencies",
@@ -25,9 +26,9 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "business parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required]"),
@@ -62,28 +63,28 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "business parameter",
-					"required":    true,
+					"required": true,
 				},
 				"permitted_roles": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "permitted_roles parameter",
-					"enum":        []string{"ADMIN", "ADVERTISER"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "ADMIN", "ADVERTISER" },
+					"items": map[string]any{"type": "string"},
 				},
 				"permitted_tasks": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "permitted_tasks parameter",
-					"enum":        []string{"AA_ANALYZE", "ADVERTISE", "MANAGE", "MANAGE_AR"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "AA_ANALYZE", "ADVERTISE", "MANAGE", "MANAGE_AR" },
+					"items": map[string]any{"type": "string"},
 				},
 				"skip_defaults": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "skip_defaults parameter",
 				},
 				"utm_settings": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "utm_settings parameter",
 				},
 			}),
@@ -100,9 +101,9 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"user": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "user parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: user (integer) [required]"),
@@ -119,9 +120,9 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "business parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required]"),
@@ -149,16 +150,16 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"tasks": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "tasks parameter",
-					"required":    true,
-					"enum":        []string{"AA_ANALYZE", "ADVERTISE", "MANAGE", "MANAGE_AR"},
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"enum": []string{ "AA_ANALYZE", "ADVERTISE", "MANAGE", "MANAGE_AR" },
+					"items": map[string]any{"type": "string"},
 				},
 				"user": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "user parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: tasks (array<enum>) [AA_ANALYZE, ADVERTISE, MANAGE, MANAGE_AR] [required], user (integer) [required]"),
@@ -174,11 +175,11 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"bulk_pagination": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "bulk_pagination parameter",
 				},
 				"filter": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "filter parameter",
 				},
 			}),
@@ -207,21 +208,21 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"allow_upsert": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "allow_upsert parameter",
 				},
 				"fbe_external_business_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "fbe_external_business_id parameter",
 				},
 				"requests": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "requests parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "object"},
+					"required": true,
+					"items": map[string]any{"type": "object"},
 				},
 				"version": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "version parameter",
 				},
 			}),
@@ -238,9 +239,9 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"page": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "page parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: page (string) [required]"),
@@ -257,13 +258,13 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"categorization_criteria": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "categorization_criteria parameter",
-					"required":    true,
-					"enum":        []string{"BRAND", "CATEGORY", "PRODUCT_TYPE"},
+					"required": true,
+					"enum": []string{ "BRAND", "CATEGORY", "PRODUCT_TYPE" },
 				},
 				"filter": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "filter parameter",
 				},
 			}),
@@ -292,10 +293,10 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"data": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "data parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "object"},
+					"required": true,
+					"items": map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: data (array<object>) [required]"),
@@ -312,17 +313,17 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"error_priority": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "error_priority parameter",
-					"enum":        []string{"HIGH", "LOW", "MEDIUM"},
+					"enum": []string{ "HIGH", "LOW", "MEDIUM" },
 				},
 				"handle": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "handle parameter",
-					"required":    true,
+					"required": true,
 				},
 				"load_ids_of_invalid_requests": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "load_ids_of_invalid_requests parameter",
 				},
 			}),
@@ -352,9 +353,9 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"session_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "session_id parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: session_id (string) [required]"),
@@ -420,18 +421,18 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ad_group_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "ad_group_id parameter",
 				},
 				"agency_business_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "agency_business_id parameter",
 				},
 				"backup_image_urls": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "backup_image_urls parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: ad_group_id (integer), agency_business_id (integer), backup_image_urls (array<string>) [required]"),
@@ -447,9 +448,9 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"moderation_status": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "moderation_status parameter",
-					"enum":        []string{"ARCHIVED", "ELIGIBLE", "EXPIRED", "INELIGIBLE", "IN_REVIEW", "PAUSED", "UNKNOWN"},
+					"enum": []string{ "ARCHIVED", "ELIGIBLE", "EXPIRED", "INELIGIBLE", "IN_REVIEW", "PAUSED", "UNKNOWN" },
 				},
 			}),
 			mcp.Description("Parameters object containing: moderation_status (enum) [ARCHIVED, ELIGIBLE, EXPIRED, INELIGIBLE, IN_REVIEW, ...]"),
@@ -477,9 +478,9 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ingestion_source_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ingestion_source_type parameter",
-					"enum":        []string{"ALL", "PRIMARY", "SUPPLEMENTARY"},
+					"enum": []string{ "ALL", "PRIMARY", "SUPPLEMENTARY" },
 				},
 			}),
 			mcp.Description("Parameters object containing: ingestion_source_type (enum) [ALL, PRIMARY, SUPPLEMENTARY]"),
@@ -507,11 +508,11 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"bulk_pagination": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "bulk_pagination parameter",
 				},
 				"filter": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "filter parameter",
 				},
 			}),
@@ -540,34 +541,34 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"affected_channels": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "affected_channels parameter",
-					"enum":        []string{"b2c_marketplace", "c2c_marketplace", "da", "daily_deals", "daily_deals_legacy", "ig_product_tagging", "marketplace", "marketplace_ads_deprecated", "marketplace_shops", "mini_shops", "offline_conversions", "shops", "universal_checkout", "whatsapp"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "b2c_marketplace", "c2c_marketplace", "da", "daily_deals", "daily_deals_legacy", "ig_product_tagging", "marketplace", "marketplace_ads_deprecated", "marketplace_shops", "mini_shops", "offline_conversions", "shops", "universal_checkout", "whatsapp" },
+					"items": map[string]any{"type": "string"},
 				},
 				"affected_entities": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "affected_entities parameter",
-					"enum":        []string{"product_catalog", "product_event", "product_item", "product_set"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "product_catalog", "product_event", "product_item", "product_set" },
+					"items": map[string]any{"type": "string"},
 				},
 				"affected_features": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "affected_features parameter",
-					"enum":        []string{"augmented_reality", "checkout"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "augmented_reality", "checkout" },
+					"items": map[string]any{"type": "string"},
 				},
 				"severities": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "severities parameter",
-					"enum":        []string{"MUST_FIX", "OPPORTUNITY"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "MUST_FIX", "OPPORTUNITY" },
+					"items": map[string]any{"type": "string"},
 				},
 				"types": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "types parameter",
-					"enum":        []string{"AR_VISIBILITY_ISSUES", "ATTRIBUTES_INVALID", "ATTRIBUTES_MISSING", "CATEGORY", "CHECKOUT", "DA_VISIBILITY_ISSUES", "EVENT_SOURCE_ISSUES", "IMAGE_QUALITY", "LOW_QUALITY_TITLE_AND_DESCRIPTION", "POLICY_VIOLATION", "SHOPS_VISIBILITY_ISSUES"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "AR_VISIBILITY_ISSUES", "ATTRIBUTES_INVALID", "ATTRIBUTES_MISSING", "CATEGORY", "CHECKOUT", "DA_VISIBILITY_ISSUES", "EVENT_SOURCE_ISSUES", "IMAGE_QUALITY", "LOW_QUALITY_TITLE_AND_DESCRIPTION", "POLICY_VIOLATION", "SHOPS_VISIBILITY_ISSUES" },
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: affected_channels (array<enum>) [b2c_marketplace, c2c_marketplace, da, daily_deals, daily_deals_legacy, ...], affected_entities (array<enum>) [product_catalog, product_event, product_item, product_set], affected_features (array<enum>) [augmented_reality, checkout], severities (array<enum>) [MUST_FIX, OPPORTUNITY], types (array<enum>) [AR_VISIBILITY_ISSUES, ATTRIBUTES_INVALID, ATTRIBUTES_MISSING, CATEGORY, CHECKOUT, ...]"),
@@ -595,10 +596,10 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"breakdowns": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "breakdowns parameter",
-					"enum":        []string{"DEVICE_TYPE"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "DEVICE_TYPE" },
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: breakdowns (array<enum>) [DEVICE_TYPE]"),
@@ -625,7 +626,7 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"external_event_sources": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "external_event_sources parameter",
 				},
 			}),
@@ -660,7 +661,7 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"external_event_sources": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "external_event_sources parameter",
 				},
 			}),
@@ -677,11 +678,11 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"bulk_pagination": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "bulk_pagination parameter",
 				},
 				"filter": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "filter parameter",
 				},
 			}),
@@ -710,18 +711,18 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"allow_upsert": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "allow_upsert parameter",
 				},
 				"item_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "item_type parameter",
-					"required":    true,
+					"required": true,
 				},
 				"requests": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "requests parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: allow_upsert (boolean), item_type (string) [required], requests (object) [required]"),
@@ -737,11 +738,11 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"bulk_pagination": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "bulk_pagination parameter",
 				},
 				"filter": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "filter parameter",
 				},
 			}),
@@ -770,74 +771,74 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"address": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "address parameter",
-					"required":    true,
+					"required": true,
 				},
 				"availability": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "availability parameter",
-					"required":    true,
+					"required": true,
 				},
 				"currency": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "currency parameter",
-					"required":    true,
+					"required": true,
 				},
 				"description": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "description parameter",
 				},
 				"home_listing_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "home_listing_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"images": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "images parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "object"},
+					"required": true,
+					"items": map[string]any{"type": "object"},
 				},
 				"listing_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "listing_type parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
-					"required":    true,
+					"required": true,
 				},
 				"num_baths": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "num_baths parameter",
 				},
 				"num_beds": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "num_beds parameter",
 				},
 				"num_units": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "num_units parameter",
 				},
 				"price": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "price parameter",
-					"required":    true,
+					"required": true,
 				},
 				"property_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "property_type parameter",
 				},
 				"url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "url parameter",
-					"required":    true,
+					"required": true,
 				},
 				"year_built": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "year_built parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: address (object) [required], availability (string) [required], currency (string) [required], description (string), home_listing_id (string) [required], images (array<object>) [required], listing_type (string), name (string) [required], num_baths (number), num_beds (number), num_units (number), price (number) [required], property_type (string), url (string) [required], year_built (integer) [required]"),
@@ -854,9 +855,9 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"handle": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "handle parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: handle (string) [required]"),
@@ -884,29 +885,29 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"file": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "file parameter",
 				},
 				"password": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "password parameter",
 				},
 				"standard": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "standard parameter",
-					"required":    true,
-					"enum":        []string{"google"},
+					"required": true,
+					"enum": []string{ "google" },
 				},
 				"update_only": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "update_only parameter",
 				},
 				"url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "url parameter",
 				},
 				"username": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "username parameter",
 				},
 			}),
@@ -923,11 +924,11 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"bulk_pagination": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "bulk_pagination parameter",
 				},
 				"filter": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "filter parameter",
 				},
 			}),
@@ -956,63 +957,63 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"address": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "address parameter",
-					"required":    true,
+					"required": true,
 				},
 				"applinks": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "applinks parameter",
 				},
 				"base_price": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "base_price parameter",
 				},
 				"brand": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "brand parameter",
 				},
 				"currency": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "currency parameter",
 				},
 				"description": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "description parameter",
-					"required":    true,
+					"required": true,
 				},
 				"guest_ratings": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "guest_ratings parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"hotel_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "hotel_id parameter",
 				},
 				"images": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "images parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "object"},
+					"required": true,
+					"items": map[string]any{"type": "object"},
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
-					"required":    true,
+					"required": true,
 				},
 				"phone": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "phone parameter",
 				},
 				"star_rating": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "star_rating parameter",
 				},
 				"url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "url parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: address (object) [required], applinks (object), base_price (integer), brand (string), currency (string), description (string) [required], guest_ratings (array<object>), hotel_id (string), images (array<object>) [required], name (string) [required], phone (string), star_rating (number), url (string) [required]"),
@@ -1028,26 +1029,26 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"allow_upsert": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "allow_upsert parameter",
 				},
 				"item_sub_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "item_sub_type parameter",
-					"enum":        []string{"APPLIANCES", "BABY_FEEDING", "BABY_TRANSPORT", "BEAUTY", "BEDDING", "CAMERAS", "CELL_PHONES_AND_SMART_WATCHES", "CLEANING_SUPPLIES", "CLOTHING", "CLOTHING_ACCESSORIES", "COMPUTERS_AND_TABLETS", "DIAPERING_AND_POTTY_TRAINING", "ELECTRONICS_ACCESSORIES", "FURNITURE", "HEALTH", "HOME_GOODS", "JEWELRY", "NURSERY", "PRINTERS_AND_SCANNERS", "PROJECTORS", "SHOES_AND_FOOTWEAR", "SOFTWARE", "TOYS", "TVS_AND_MONITORS", "VIDEO_GAME_CONSOLES_AND_VIDEO_GAMES", "WATCHES"},
+					"enum": []string{ "APPLIANCES", "BABY_FEEDING", "BABY_TRANSPORT", "BEAUTY", "BEDDING", "CAMERAS", "CELL_PHONES_AND_SMART_WATCHES", "CLEANING_SUPPLIES", "CLOTHING", "CLOTHING_ACCESSORIES", "COMPUTERS_AND_TABLETS", "DIAPERING_AND_POTTY_TRAINING", "ELECTRONICS_ACCESSORIES", "FURNITURE", "HEALTH", "HOME_GOODS", "JEWELRY", "NURSERY", "PRINTERS_AND_SCANNERS", "PROJECTORS", "SHOES_AND_FOOTWEAR", "SOFTWARE", "TOYS", "TVS_AND_MONITORS", "VIDEO_GAME_CONSOLES_AND_VIDEO_GAMES", "WATCHES" },
 				},
 				"item_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "item_type parameter",
-					"required":    true,
+					"required": true,
 				},
 				"requests": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "requests parameter",
-					"required":    true,
+					"required": true,
 				},
 				"version": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "version parameter",
 				},
 			}),
@@ -1064,21 +1065,21 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"allow_upsert": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "allow_upsert parameter",
 				},
 				"item_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "item_type parameter",
-					"required":    true,
+					"required": true,
 				},
 				"requests": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "requests parameter",
-					"required":    true,
+					"required": true,
 				},
 				"version": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "version parameter",
 				},
 			}),
@@ -1095,9 +1096,9 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"requests": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "requests parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: requests (object) [required]"),
@@ -1113,28 +1114,28 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"event_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "event_name parameter",
-					"required":    true,
-					"enum":        []string{"ADD_TO_CART", "PURCHASE", "TEST", "VIEW_ITEM"},
+					"required": true,
+					"enum": []string{ "ADD_TO_CART", "PURCHASE", "TEST", "VIEW_ITEM" },
 				},
 				"event_source_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "event_source_url parameter",
 				},
 				"event_time": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "event_time parameter",
-					"required":    true,
+					"required": true,
 				},
 				"order_data": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "order_data parameter",
 				},
 				"user_data": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "user_data parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: event_name (enum) [ADD_TO_CART, PURCHASE, TEST, VIEW_ITEM] [required], event_source_url (string), event_time (datetime) [required], order_data (object), user_data (object) [required]"),
@@ -1151,9 +1152,9 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"handle": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "handle parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: handle (string) [required]"),
@@ -1181,29 +1182,29 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"file": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "file parameter",
 				},
 				"password": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "password parameter",
 				},
 				"standard": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "standard parameter",
-					"required":    true,
-					"enum":        []string{"google"},
+					"required": true,
+					"enum": []string{ "google" },
 				},
 				"update_only": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "update_only parameter",
 				},
 				"url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "url parameter",
 				},
 				"username": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "username parameter",
 				},
 			}),
@@ -1238,89 +1239,89 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"country": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "country parameter",
 				},
 				"default_currency": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "default_currency parameter",
 				},
 				"deletion_enabled": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "deletion_enabled parameter",
 				},
 				"delimiter": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "delimiter parameter",
-					"enum":        []string{"AUTODETECT", "BAR", "COMMA", "SEMICOLON", "TAB", "TILDE"},
+					"enum": []string{ "AUTODETECT", "BAR", "COMMA", "SEMICOLON", "TAB", "TILDE" },
 				},
 				"encoding": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "encoding parameter",
-					"enum":        []string{"AUTODETECT", "LATIN1", "UTF16BE", "UTF16LE", "UTF32BE", "UTF32LE", "UTF8"},
+					"enum": []string{ "AUTODETECT", "LATIN1", "UTF16BE", "UTF16LE", "UTF32BE", "UTF32LE", "UTF8" },
 				},
 				"feed_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "feed_type parameter",
-					"enum":        []string{"AUTOMOTIVE_MODEL", "COLLECTION", "DESTINATION", "FLIGHT", "HOME_LISTING", "HOTEL", "HOTEL_ROOM", "LOCAL_INVENTORY", "MEDIA_TITLE", "OFFER", "PRODUCTS", "PRODUCT_RATINGS_AND_REVIEWS", "TRANSACTABLE_ITEMS", "VEHICLES", "VEHICLE_OFFER"},
+					"enum": []string{ "AUTOMOTIVE_MODEL", "COLLECTION", "DESTINATION", "FLIGHT", "HOME_LISTING", "HOTEL", "HOTEL_ROOM", "LOCAL_INVENTORY", "MEDIA_TITLE", "OFFER", "PRODUCTS", "PRODUCT_RATINGS_AND_REVIEWS", "TRANSACTABLE_ITEMS", "VEHICLES", "VEHICLE_OFFER" },
 				},
 				"file_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "file_name parameter",
 				},
 				"ingestion_source_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ingestion_source_type parameter",
-					"enum":        []string{"PRIMARY_FEED", "SUPPLEMENTARY_FEED"},
+					"enum": []string{ "PRIMARY_FEED", "SUPPLEMENTARY_FEED" },
 				},
 				"item_sub_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "item_sub_type parameter",
-					"enum":        []string{"APPLIANCES", "BABY_FEEDING", "BABY_TRANSPORT", "BEAUTY", "BEDDING", "CAMERAS", "CELL_PHONES_AND_SMART_WATCHES", "CLEANING_SUPPLIES", "CLOTHING", "CLOTHING_ACCESSORIES", "COMPUTERS_AND_TABLETS", "DIAPERING_AND_POTTY_TRAINING", "ELECTRONICS_ACCESSORIES", "FURNITURE", "HEALTH", "HOME_GOODS", "JEWELRY", "NURSERY", "PRINTERS_AND_SCANNERS", "PROJECTORS", "SHOES_AND_FOOTWEAR", "SOFTWARE", "TOYS", "TVS_AND_MONITORS", "VIDEO_GAME_CONSOLES_AND_VIDEO_GAMES", "WATCHES"},
+					"enum": []string{ "APPLIANCES", "BABY_FEEDING", "BABY_TRANSPORT", "BEAUTY", "BEDDING", "CAMERAS", "CELL_PHONES_AND_SMART_WATCHES", "CLEANING_SUPPLIES", "CLOTHING", "CLOTHING_ACCESSORIES", "COMPUTERS_AND_TABLETS", "DIAPERING_AND_POTTY_TRAINING", "ELECTRONICS_ACCESSORIES", "FURNITURE", "HEALTH", "HOME_GOODS", "JEWELRY", "NURSERY", "PRINTERS_AND_SCANNERS", "PROJECTORS", "SHOES_AND_FOOTWEAR", "SOFTWARE", "TOYS", "TVS_AND_MONITORS", "VIDEO_GAME_CONSOLES_AND_VIDEO_GAMES", "WATCHES" },
 				},
 				"migrated_from_feed_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "migrated_from_feed_id parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
 				},
 				"override_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "override_type parameter",
-					"enum":        []string{"BATCH_API_LANGUAGE_OR_COUNTRY", "CATALOG_SEGMENT_CUSTOMIZE_DEFAULT", "COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY", "LOCAL", "SMART_PIXEL_LANGUAGE_OR_COUNTRY", "VERSION"},
+					"enum": []string{ "BATCH_API_LANGUAGE_OR_COUNTRY", "CATALOG_SEGMENT_CUSTOMIZE_DEFAULT", "COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY", "LOCAL", "SMART_PIXEL_LANGUAGE_OR_COUNTRY", "VERSION" },
 				},
 				"override_value": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "override_value parameter",
 				},
 				"primary_feed_ids": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "primary_feed_ids parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"quoted_fields_mode": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "quoted_fields_mode parameter",
-					"enum":        []string{"autodetect", "off", "on"},
+					"enum": []string{ "autodetect", "off", "on" },
 				},
 				"rules": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "rules parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"schedule": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "schedule parameter",
 				},
 				"selected_override_fields": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "selected_override_fields parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"update_schedule": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "update_schedule parameter",
 				},
 			}),
@@ -1355,13 +1356,13 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"retailer_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "retailer_id parameter",
 				},
 				"variants": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "variants parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: retailer_id (string), variants (array<object>)"),
@@ -1377,19 +1378,19 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"ancestor_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ancestor_id parameter",
 				},
 				"has_children": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "has_children parameter",
 				},
 				"parent_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "parent_id parameter",
 				},
 				"retailer_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "retailer_id parameter",
 				},
 			}),
@@ -1418,30 +1419,30 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"filter": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "filter parameter",
 				},
 				"metadata": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "metadata parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
-					"required":    true,
+					"required": true,
 				},
 				"ordering_info": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "ordering_info parameter",
-					"items":       map[string]any{"type": "integer"},
+					"items": map[string]any{"type": "integer"},
 				},
 				"publish_to_shops": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "publish_to_shops parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"retailer_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "retailer_id parameter",
 				},
 			}),
@@ -1459,9 +1460,9 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"handle": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "handle parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: handle (string) [required]"),
@@ -1489,25 +1490,25 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"bulk_pagination": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "bulk_pagination parameter",
 				},
 				"error_priority": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "error_priority parameter",
-					"enum":        []string{"HIGH", "LOW", "MEDIUM"},
+					"enum": []string{ "HIGH", "LOW", "MEDIUM" },
 				},
 				"error_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "error_type parameter",
-					"enum":        []string{"ADDRESS_BLOCKLISTED_IN_MARKET", "AGGREGATED_LOCALIZATION_ISSUES", "APP_HAS_NO_AEM_SETUP", "AR_DELETED_DUE_TO_UPDATE", "AR_POLICY_VIOLATED", "AVAILABLE", "BAD_QUALITY_IMAGE", "BIG_CATALOG_WITH_ALL_ITEMS_IN_STOCK", "BIZ_MSG_AI_AGENT_DISABLED_BY_USER", "BIZ_MSG_GEN_AI_POLICY_VIOLATED", "CANNOT_EDIT_SUBSCRIPTION_PRODUCTS", "CATALOG_NOT_CONNECTED_TO_EVENT_SOURCE", "CHECKOUT_DISABLED_BY_USER", "COMMERCE_ACCOUNT_LEGAL_ADDRESS_INVALID", "COMMERCE_ACCOUNT_NOT_LEGALLY_COMPLIANT", "CRAWLED_AVAILABILITY_MISMATCH", "DA_DISABLED_BY_USER", "DA_POLICY_UNFIT_FOR_AUDIENCE", "DA_POLICY_VIOLATION", "DELETED_ITEM", "DIGITAL_GOODS_NOT_AVAILABLE_FOR_CHECKOUT", "DUPLICATE_IMAGES", "DUPLICATE_TITLE_AND_DESCRIPTION", "EMPTY_AVAILABILITY", "EMPTY_CONDITION", "EMPTY_DESCRIPTION", "EMPTY_IMAGE_URL", "EMPTY_PRICE", "EMPTY_PRODUCT_URL", "EMPTY_SELLER_DESCRIPTION", "EMPTY_TITLE", "EXTERNAL_MERCHANT_ID_MISMATCH", "GENERIC_INVALID_FIELD", "GROUPS_DISABLED_BY_USER", "HIDDEN_UNTIL_PRODUCT_LAUNCH", "ILLEGAL_PRODUCT_CATEGORY", "IMAGE_FETCH_FAILED", "IMAGE_FETCH_FAILED_BAD_GATEWAY", "IMAGE_FETCH_FAILED_FILE_SIZE_EXCEEDED", "IMAGE_FETCH_FAILED_FORBIDDEN", "IMAGE_FETCH_FAILED_LINK_BROKEN", "IMAGE_FETCH_FAILED_TIMED_OUT", "IMAGE_RESOLUTION_LOW", "INACTIVE_SHOPIFY_PRODUCT", "INVALID_COMMERCE_TAX_CATEGORY", "INVALID_CONSOLIDATED_LOCALITY_INFORMATION", "INVALID_CONTENT_ID", "INVALID_DEALER_COMMUNICATION_PARAMETERS", "INVALID_DMA_CODES", "INVALID_FB_PAGE_ID", "INVALID_IMAGES", "INVALID_MONETIZER_RETURN_POLICY", "INVALID_OFFER_DISCLAIMER_URL", "INVALID_OFFER_END_DATE", "INVALID_PRE_ORDER_PARAMS", "INVALID_RANGE_FOR_AREA_SIZE", "INVALID_RANGE_FOR_BUILT_UP_AREA_SIZE", "INVALID_RANGE_FOR_NUM_OF_BATHS", "INVALID_RANGE_FOR_NUM_OF_BEDS", "INVALID_RANGE_FOR_NUM_OF_ROOMS", "INVALID_RANGE_FOR_PARKING_SPACES", "INVALID_SHELTER_PAGE_ID", "INVALID_SHIPPING_PROFILE_PARAMS", "INVALID_SUBSCRIPTION_DISABLE_PARAMS", "INVALID_SUBSCRIPTION_ENABLE_PARAMS", "INVALID_SUBSCRIPTION_PARAMS", "INVALID_TAX_EXTENSION_STATE", "INVALID_VEHICLE_STATE", "INVALID_VIRTUAL_TOUR_URL_DOMAIN", "INVENTORY_ZERO_AVAILABILITY_IN_STOCK", "IN_ANOTHER_PRODUCT_LAUNCH", "ITEM_GROUP_NOT_SPECIFIED", "ITEM_NOT_SHIPPABLE_FOR_SCA_SHOP", "ITEM_OVERRIDE_EMPTY_AVAILABILITY", "ITEM_OVERRIDE_EMPTY_PRICE", "ITEM_OVERRIDE_NOT_VISIBLE", "ITEM_PRICE_NOT_POSITIVE", "ITEM_STALE_OUT_OF_STOCK", "MARKETPLACE_DISABLED_BY_USER", "MARKETPLACE_PARTNER_AUCTION_NO_BID_CLOSE_TIME", "MARKETPLACE_PARTNER_CURRENCY_NOT_VALID", "MARKETPLACE_PARTNER_LISTING_COUNTRY_NOT_MATCH_CATALOG", "MARKETPLACE_PARTNER_LISTING_LIMIT_EXCEEDED", "MARKETPLACE_PARTNER_MISSING_LATLONG", "MARKETPLACE_PARTNER_MISSING_SHIPPING_COST", "MARKETPLACE_PARTNER_NOT_LOCAL_ITEM", "MARKETPLACE_PARTNER_NOT_SHIPPED_ITEM", "MARKETPLACE_PARTNER_POLICY_VIOLATION", "MARKETPLACE_PARTNER_RULE_LISTING_LIMIT_EXCEEDED", "MARKETPLACE_PARTNER_SELLER_BANNED", "MARKETPLACE_PARTNER_SELLER_NOT_VALID", "MINI_SHOPS_DISABLED_BY_USER", "MISSING_CHECKOUT", "MISSING_CHECKOUT_CURRENCY", "MISSING_COLOR", "MISSING_COUNTRY_OVERRIDE_IN_SHIPPING_PROFILE", "MISSING_EVENT", "MISSING_INDIA_COMPLIANCE_FIELDS", "MISSING_SHIPPING_PROFILE", "MISSING_SIZE", "MISSING_TAX_CATEGORY", "NEGATIVE_COMMUNITY_FEEDBACK", "NEGATIVE_PRICE", "NOT_ENOUGH_IMAGES", "NOT_ENOUGH_UNIQUE_PRODUCTS", "NO_CONTENT_ID", "OVERLAY_DISCLAIMER_EXCEEDED_MAX_LENGTH", "PART_OF_PRODUCT_LAUNCH", "PASSING_MULTIPLE_CONTENT_IDS", "PRODUCT_DOMINANT_CURRENCY_MISMATCH", "PRODUCT_EXPIRED", "PRODUCT_ITEM_HIDDEN_FROM_ALL_SHOPS", "PRODUCT_ITEM_INVALID_PARTNER_TOKENS", "PRODUCT_ITEM_NOT_INCLUDED_IN_ANY_SHOP", "PRODUCT_ITEM_NOT_VISIBLE", "PRODUCT_NOT_APPROVED", "PRODUCT_NOT_DOMINANT_CURRENCY", "PRODUCT_OUT_OF_STOCK", "PRODUCT_URL_EQUALS_DOMAIN", "PROPERTY_PRICE_CURRENCY_NOT_SUPPORTED", "PROPERTY_PRICE_TOO_HIGH", "PROPERTY_PRICE_TOO_LOW", "PROPERTY_UNIT_PRICE_CURRENCY_MISMATCH_ITEM_PRICE_CURRENCY", "PROPERTY_VALUE_CONTAINS_HTML_TAGS", "PROPERTY_VALUE_DESCRIPTION_CONTAINS_OFF_PLATFORM_LINK", "PROPERTY_VALUE_FORMAT", "PROPERTY_VALUE_MISSING", "PROPERTY_VALUE_MISSING_WARNING", "PROPERTY_VALUE_NON_POSITIVE", "PROPERTY_VALUE_STRING_EXCEEDS_LENGTH", "PROPERTY_VALUE_STRING_TOO_SHORT", "PROPERTY_VALUE_UPPERCASE", "PROPERTY_VALUE_UPPERCASE_WARNING", "PURCHASE_RATE_BELOW_ADDTOCART", "PURCHASE_RATE_BELOW_VIEWCONTENT", "QUALITY_DUPLICATED_DESCRIPTION", "QUALITY_ITEM_LINK_BROKEN", "QUALITY_ITEM_LINK_REDIRECTING", "RETAILER_ID_NOT_PROVIDED", "SHOPIFY_INVALID_RETAILER_ID", "SHOPIFY_ITEM_MISSING_SHIPPING_PROFILE", "SHOPS_POLICY_VIOLATION", "SUBSCRIPTION_INFO_NOT_ENABLED_FOR_FEED", "TAX_CATEGORY_NOT_SUPPORTED_IN_UK", "UNIQUE_PRODUCT_IDENTIFIER_MISSING", "UNMATCHED_EVENTS", "UNSUPPORTED_PRODUCT_CATEGORY", "VARIANT_ATTRIBUTE_ISSUE", "VIDEO_FETCH_FAILED", "VIDEO_FETCH_FAILED_BAD_GATEWAY", "VIDEO_FETCH_FAILED_FILE_SIZE_EXCEEDED", "VIDEO_FETCH_FAILED_FORBIDDEN", "VIDEO_FETCH_FAILED_LINK_BROKEN", "VIDEO_FETCH_FAILED_TIMED_OUT", "VIDEO_NOT_DOWNLOADABLE", "WHATSAPP_DISABLED_BY_USER", "WHATSAPP_MARKETING_MESSAGE_DISABLED_BY_USER", "WHATSAPP_MARKETING_MESSAGE_POLICY_VIOLATION", "WHATSAPP_POLICY_VIOLATION"},
+					"enum": []string{ "ADDRESS_BLOCKLISTED_IN_MARKET", "AGGREGATED_LOCALIZATION_ISSUES", "APP_HAS_NO_AEM_SETUP", "AR_DELETED_DUE_TO_UPDATE", "AR_POLICY_VIOLATED", "AVAILABLE", "BAD_QUALITY_IMAGE", "BIG_CATALOG_WITH_ALL_ITEMS_IN_STOCK", "BIZ_MSG_AI_AGENT_DISABLED_BY_USER", "BIZ_MSG_GEN_AI_POLICY_VIOLATED", "CANNOT_EDIT_SUBSCRIPTION_PRODUCTS", "CATALOG_NOT_CONNECTED_TO_EVENT_SOURCE", "CHECKOUT_DISABLED_BY_USER", "COMMERCE_ACCOUNT_LEGAL_ADDRESS_INVALID", "COMMERCE_ACCOUNT_NOT_LEGALLY_COMPLIANT", "CRAWLED_AVAILABILITY_MISMATCH", "DA_DISABLED_BY_USER", "DA_POLICY_UNFIT_FOR_AUDIENCE", "DA_POLICY_VIOLATION", "DELETED_ITEM", "DIGITAL_GOODS_NOT_AVAILABLE_FOR_CHECKOUT", "DUPLICATE_IMAGES", "DUPLICATE_TITLE_AND_DESCRIPTION", "EMPTY_AVAILABILITY", "EMPTY_CONDITION", "EMPTY_DESCRIPTION", "EMPTY_IMAGE_URL", "EMPTY_PRICE", "EMPTY_PRODUCT_URL", "EMPTY_SELLER_DESCRIPTION", "EMPTY_TITLE", "EXTERNAL_MERCHANT_ID_MISMATCH", "GENERIC_INVALID_FIELD", "GROUPS_DISABLED_BY_USER", "HIDDEN_UNTIL_PRODUCT_LAUNCH", "ILLEGAL_PRODUCT_CATEGORY", "IMAGE_FETCH_FAILED", "IMAGE_FETCH_FAILED_BAD_GATEWAY", "IMAGE_FETCH_FAILED_FILE_SIZE_EXCEEDED", "IMAGE_FETCH_FAILED_FORBIDDEN", "IMAGE_FETCH_FAILED_LINK_BROKEN", "IMAGE_FETCH_FAILED_TIMED_OUT", "IMAGE_RESOLUTION_LOW", "INACTIVE_SHOPIFY_PRODUCT", "INVALID_COMMERCE_TAX_CATEGORY", "INVALID_CONSOLIDATED_LOCALITY_INFORMATION", "INVALID_CONTENT_ID", "INVALID_DEALER_COMMUNICATION_PARAMETERS", "INVALID_DMA_CODES", "INVALID_FB_PAGE_ID", "INVALID_IMAGES", "INVALID_MONETIZER_RETURN_POLICY", "INVALID_OFFER_DISCLAIMER_URL", "INVALID_OFFER_END_DATE", "INVALID_PRE_ORDER_PARAMS", "INVALID_RANGE_FOR_AREA_SIZE", "INVALID_RANGE_FOR_BUILT_UP_AREA_SIZE", "INVALID_RANGE_FOR_NUM_OF_BATHS", "INVALID_RANGE_FOR_NUM_OF_BEDS", "INVALID_RANGE_FOR_NUM_OF_ROOMS", "INVALID_RANGE_FOR_PARKING_SPACES", "INVALID_SHELTER_PAGE_ID", "INVALID_SHIPPING_PROFILE_PARAMS", "INVALID_SUBSCRIPTION_DISABLE_PARAMS", "INVALID_SUBSCRIPTION_ENABLE_PARAMS", "INVALID_SUBSCRIPTION_PARAMS", "INVALID_TAX_EXTENSION_STATE", "INVALID_VEHICLE_STATE", "INVALID_VIRTUAL_TOUR_URL_DOMAIN", "INVENTORY_ZERO_AVAILABILITY_IN_STOCK", "IN_ANOTHER_PRODUCT_LAUNCH", "ITEM_GROUP_NOT_SPECIFIED", "ITEM_NOT_SHIPPABLE_FOR_SCA_SHOP", "ITEM_OVERRIDE_EMPTY_AVAILABILITY", "ITEM_OVERRIDE_EMPTY_PRICE", "ITEM_OVERRIDE_NOT_VISIBLE", "ITEM_PRICE_NOT_POSITIVE", "ITEM_STALE_OUT_OF_STOCK", "MARKETPLACE_DISABLED_BY_USER", "MARKETPLACE_PARTNER_AUCTION_NO_BID_CLOSE_TIME", "MARKETPLACE_PARTNER_CURRENCY_NOT_VALID", "MARKETPLACE_PARTNER_LISTING_COUNTRY_NOT_MATCH_CATALOG", "MARKETPLACE_PARTNER_LISTING_LIMIT_EXCEEDED", "MARKETPLACE_PARTNER_MISSING_LATLONG", "MARKETPLACE_PARTNER_MISSING_SHIPPING_COST", "MARKETPLACE_PARTNER_NOT_LOCAL_ITEM", "MARKETPLACE_PARTNER_NOT_SHIPPED_ITEM", "MARKETPLACE_PARTNER_POLICY_VIOLATION", "MARKETPLACE_PARTNER_RULE_LISTING_LIMIT_EXCEEDED", "MARKETPLACE_PARTNER_SELLER_BANNED", "MARKETPLACE_PARTNER_SELLER_NOT_VALID", "MINI_SHOPS_DISABLED_BY_USER", "MISSING_CHECKOUT", "MISSING_CHECKOUT_CURRENCY", "MISSING_COLOR", "MISSING_COUNTRY_OVERRIDE_IN_SHIPPING_PROFILE", "MISSING_EVENT", "MISSING_INDIA_COMPLIANCE_FIELDS", "MISSING_SHIPPING_PROFILE", "MISSING_SIZE", "MISSING_TAX_CATEGORY", "NEGATIVE_COMMUNITY_FEEDBACK", "NEGATIVE_PRICE", "NOT_ENOUGH_IMAGES", "NOT_ENOUGH_UNIQUE_PRODUCTS", "NO_CONTENT_ID", "OVERLAY_DISCLAIMER_EXCEEDED_MAX_LENGTH", "PART_OF_PRODUCT_LAUNCH", "PASSING_MULTIPLE_CONTENT_IDS", "PRODUCT_DOMINANT_CURRENCY_MISMATCH", "PRODUCT_EXPIRED", "PRODUCT_ITEM_HIDDEN_FROM_ALL_SHOPS", "PRODUCT_ITEM_INVALID_PARTNER_TOKENS", "PRODUCT_ITEM_NOT_INCLUDED_IN_ANY_SHOP", "PRODUCT_ITEM_NOT_VISIBLE", "PRODUCT_NOT_APPROVED", "PRODUCT_NOT_DOMINANT_CURRENCY", "PRODUCT_OUT_OF_STOCK", "PRODUCT_URL_EQUALS_DOMAIN", "PROPERTY_PRICE_CURRENCY_NOT_SUPPORTED", "PROPERTY_PRICE_TOO_HIGH", "PROPERTY_PRICE_TOO_LOW", "PROPERTY_UNIT_PRICE_CURRENCY_MISMATCH_ITEM_PRICE_CURRENCY", "PROPERTY_VALUE_CONTAINS_HTML_TAGS", "PROPERTY_VALUE_DESCRIPTION_CONTAINS_OFF_PLATFORM_LINK", "PROPERTY_VALUE_FORMAT", "PROPERTY_VALUE_MISSING", "PROPERTY_VALUE_MISSING_WARNING", "PROPERTY_VALUE_NON_POSITIVE", "PROPERTY_VALUE_STRING_EXCEEDS_LENGTH", "PROPERTY_VALUE_STRING_TOO_SHORT", "PROPERTY_VALUE_UPPERCASE", "PROPERTY_VALUE_UPPERCASE_WARNING", "PURCHASE_RATE_BELOW_ADDTOCART", "PURCHASE_RATE_BELOW_VIEWCONTENT", "QUALITY_DUPLICATED_DESCRIPTION", "QUALITY_ITEM_LINK_BROKEN", "QUALITY_ITEM_LINK_REDIRECTING", "RETAILER_ID_NOT_PROVIDED", "SHOPIFY_INVALID_RETAILER_ID", "SHOPIFY_ITEM_MISSING_SHIPPING_PROFILE", "SHOPS_POLICY_VIOLATION", "SUBSCRIPTION_INFO_NOT_ENABLED_FOR_FEED", "TAX_CATEGORY_NOT_SUPPORTED_IN_UK", "UNIQUE_PRODUCT_IDENTIFIER_MISSING", "UNMATCHED_EVENTS", "UNSUPPORTED_PRODUCT_CATEGORY", "VARIANT_ATTRIBUTE_ISSUE", "VIDEO_FETCH_FAILED", "VIDEO_FETCH_FAILED_BAD_GATEWAY", "VIDEO_FETCH_FAILED_FILE_SIZE_EXCEEDED", "VIDEO_FETCH_FAILED_FORBIDDEN", "VIDEO_FETCH_FAILED_LINK_BROKEN", "VIDEO_FETCH_FAILED_TIMED_OUT", "VIDEO_NOT_DOWNLOADABLE", "WHATSAPP_DISABLED_BY_USER", "WHATSAPP_MARKETING_MESSAGE_DISABLED_BY_USER", "WHATSAPP_MARKETING_MESSAGE_POLICY_VIOLATION", "WHATSAPP_POLICY_VIOLATION" },
 				},
 				"filter": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "filter parameter",
 				},
 				"return_only_approved_products": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "return_only_approved_products parameter",
 				},
 			}),
@@ -1536,328 +1537,328 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"additional_image_urls": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "additional_image_urls parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"additional_variant_attributes": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "additional_variant_attributes parameter",
 				},
 				"age_group": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "age_group parameter",
-					"enum":        []string{"adult", "all ages", "infant", "kids", "newborn", "teen", "toddler"},
+					"enum": []string{ "adult", "all ages", "infant", "kids", "newborn", "teen", "toddler" },
 				},
 				"android_app_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "android_app_name parameter",
 				},
 				"android_class": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "android_class parameter",
 				},
 				"android_package": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "android_package parameter",
 				},
 				"android_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "android_url parameter",
 				},
 				"availability": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "availability parameter",
-					"enum":        []string{"available for order", "discontinued", "in stock", "mark_as_sold", "out of stock", "pending", "preorder"},
+					"enum": []string{ "available for order", "discontinued", "in stock", "mark_as_sold", "out of stock", "pending", "preorder" },
 				},
 				"brand": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "brand parameter",
 				},
 				"category": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "category parameter",
 				},
 				"category_specific_fields": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "category_specific_fields parameter",
 				},
 				"checkout_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "checkout_url parameter",
 				},
 				"color": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "color parameter",
 				},
 				"commerce_tax_category": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "commerce_tax_category parameter",
-					"enum":        []string{"FB_ANIMAL", "FB_ANIMAL_SUPP", "FB_APRL", "FB_APRL_ACCESSORIES", "FB_APRL_ATHL_UNIF", "FB_APRL_CASES", "FB_APRL_CLOTHING", "FB_APRL_COSTUME", "FB_APRL_CSTM", "FB_APRL_FORMAL", "FB_APRL_HANDBAG", "FB_APRL_JEWELRY", "FB_APRL_SHOE", "FB_APRL_SHOE_ACC", "FB_APRL_SWIM", "FB_APRL_SWIM_CHIL", "FB_APRL_SWIM_CVR", "FB_ARTS", "FB_ARTS_HOBBY", "FB_ARTS_PARTY", "FB_ARTS_PARTY_GIFT_CARD", "FB_ARTS_TICKET", "FB_BABY", "FB_BABY_BATH", "FB_BABY_BLANKET", "FB_BABY_DIAPER", "FB_BABY_GIFT_SET", "FB_BABY_HEALTH", "FB_BABY_NURSING", "FB_BABY_POTTY_TRN", "FB_BABY_SAFE", "FB_BABY_TOYS", "FB_BABY_TRANSPORT", "FB_BABY_TRANSPORT_ACC", "FB_BAGS", "FB_BAGS_BKPK", "FB_BAGS_BOXES", "FB_BAGS_BRFCS", "FB_BAGS_CSMT_BAG", "FB_BAGS_DFFL", "FB_BAGS_DIPR", "FB_BAGS_FNNY", "FB_BAGS_GRMT", "FB_BAGS_LUGG", "FB_BAGS_LUG_ACC", "FB_BAGS_MSGR", "FB_BAGS_TOTE", "FB_BAGS_TRN_CAS", "FB_BLDG", "FB_BLDG_ACC", "FB_BLDG_CNSMB", "FB_BLDG_FENCE", "FB_BLDG_FUEL_TNK", "FB_BLDG_HT_VNT", "FB_BLDG_LOCK", "FB_BLDG_MATRL", "FB_BLDG_PLMB", "FB_BLDG_PUMP", "FB_BLDG_PWRS", "FB_BLDG_STR_TANK", "FB_BLDG_S_ENG", "FB_BLDG_TL_ACC", "FB_BLDG_TOOL", "FB_BUSIND", "FB_BUSIND_ADVERTISING", "FB_BUSIND_AGRICULTURE", "FB_BUSIND_AUTOMATION", "FB_BUSIND_HEAVY_MACH", "FB_BUSIND_LAB", "FB_BUSIND_MEDICAL", "FB_BUSIND_RETAIL", "FB_BUSIND_SANITARY_CT", "FB_BUSIND_SIGN", "FB_BUSIND_STORAGE", "FB_BUSIND_STORAGE_ACC", "FB_BUSIND_WORK_GEAR", "FB_CAMERA_ACC", "FB_CAMERA_CAMERA", "FB_CAMERA_OPTIC", "FB_CAMERA_OPTICS", "FB_CAMERA_PHOTO", "FB_ELEC", "FB_ELEC_ACC", "FB_ELEC_ARCDADE", "FB_ELEC_AUDIO", "FB_ELEC_CIRCUIT", "FB_ELEC_COMM", "FB_ELEC_COMPUTER", "FB_ELEC_GPS_ACC", "FB_ELEC_GPS_NAV", "FB_ELEC_GPS_TRK", "FB_ELEC_MARINE", "FB_ELEC_NETWORK", "FB_ELEC_PART", "FB_ELEC_PRINT", "FB_ELEC_RADAR", "FB_ELEC_SFTWR", "FB_ELEC_SPEED_RDR", "FB_ELEC_TELEVISION", "FB_ELEC_TOLL", "FB_ELEC_VIDEO", "FB_ELEC_VID_GM_ACC", "FB_ELEC_VID_GM_CNSL", "FB_FOOD", "FB_FURN", "FB_FURN_BABY", "FB_FURN_BENCH", "FB_FURN_CART", "FB_FURN_CHAIR", "FB_FURN_CHAIR_ACC", "FB_FURN_DIVIDE", "FB_FURN_DIVIDE_ACC", "FB_FURN_ENT_CTR", "FB_FURN_FUTN", "FB_FURN_FUTN_PAD", "FB_FURN_OFFICE", "FB_FURN_OFFICE_ACC", "FB_FURN_OTTO", "FB_FURN_OUTDOOR", "FB_FURN_OUTDOOR_ACC", "FB_FURN_SETS", "FB_FURN_SHELVE_ACC", "FB_FURN_SHLF", "FB_FURN_SOFA", "FB_FURN_SOFA_ACC", "FB_FURN_STORAGE", "FB_FURN_TABL", "FB_FURN_TABL_ACC", "FB_GENERIC_TAXABLE", "FB_HLTH", "FB_HLTH_HLTH", "FB_HLTH_JWL_CR", "FB_HLTH_LILP_BLM", "FB_HLTH_LTN_SPF", "FB_HLTH_PRSL_CR", "FB_HLTH_SKN_CR", "FB_HMGN", "FB_HMGN_BATH", "FB_HMGN_DCOR", "FB_HMGN_EMGY", "FB_HMGN_FPLC", "FB_HMGN_FPLC_ACC", "FB_HMGN_GS_SFT", "FB_HMGN_HS_ACC", "FB_HMGN_HS_APP", "FB_HMGN_HS_SPL", "FB_HMGN_KTCN", "FB_HMGN_LAWN", "FB_HMGN_LGHT", "FB_HMGN_LINN", "FB_HMGN_LT_ACC", "FB_HMGN_OTDR", "FB_HMGN_POOL", "FB_HMGN_SCTY", "FB_HMGN_SMK_ACC", "FB_HMGN_UMBR", "FB_HMGN_UMBR_ACC", "FB_MDIA", "FB_MDIA_BOOK", "FB_MDIA_DVDS", "FB_MDIA_MAG", "FB_MDIA_MANL", "FB_MDIA_MUSC", "FB_MDIA_PRJ_PLN", "FB_MDIA_SHT_MUS", "FB_OFFC", "FB_OFFC_BKAC", "FB_OFFC_CRTS", "FB_OFFC_DSKP", "FB_OFFC_EQIP", "FB_OFFC_FLNG", "FB_OFFC_GNRL", "FB_OFFC_INSTM", "FB_OFFC_LP_DSK", "FB_OFFC_MATS", "FB_OFFC_NM_PLT", "FB_OFFC_PPR_HNDL", "FB_OFFC_PRSNT_SPL", "FB_OFFC_SEALR", "FB_OFFC_SHIP_SPL", "FB_RLGN", "FB_RLGN_CMNY", "FB_RLGN_ITEM", "FB_RLGN_WEDD", "FB_SFTWR", "FB_SFWR_CMPTR", "FB_SFWR_DGTL_GD", "FB_SFWR_GAME", "FB_SHIPPING", "FB_SPOR", "FB_SPORT_ATHL", "FB_SPORT_ATHL_CLTH", "FB_SPORT_ATHL_SHOE", "FB_SPORT_ATHL_SPRT", "FB_SPORT_EXRCS", "FB_SPORT_INDR_GM", "FB_SPORT_OTDR_GM", "FB_TOYS", "FB_TOYS_EQIP", "FB_TOYS_GAME", "FB_TOYS_PZZL", "FB_TOYS_TMRS", "FB_TOYS_TOYS", "FB_VEHI", "FB_VEHI_PART"},
+					"enum": []string{ "FB_ANIMAL", "FB_ANIMAL_SUPP", "FB_APRL", "FB_APRL_ACCESSORIES", "FB_APRL_ATHL_UNIF", "FB_APRL_CASES", "FB_APRL_CLOTHING", "FB_APRL_COSTUME", "FB_APRL_CSTM", "FB_APRL_FORMAL", "FB_APRL_HANDBAG", "FB_APRL_JEWELRY", "FB_APRL_SHOE", "FB_APRL_SHOE_ACC", "FB_APRL_SWIM", "FB_APRL_SWIM_CHIL", "FB_APRL_SWIM_CVR", "FB_ARTS", "FB_ARTS_HOBBY", "FB_ARTS_PARTY", "FB_ARTS_PARTY_GIFT_CARD", "FB_ARTS_TICKET", "FB_BABY", "FB_BABY_BATH", "FB_BABY_BLANKET", "FB_BABY_DIAPER", "FB_BABY_GIFT_SET", "FB_BABY_HEALTH", "FB_BABY_NURSING", "FB_BABY_POTTY_TRN", "FB_BABY_SAFE", "FB_BABY_TOYS", "FB_BABY_TRANSPORT", "FB_BABY_TRANSPORT_ACC", "FB_BAGS", "FB_BAGS_BKPK", "FB_BAGS_BOXES", "FB_BAGS_BRFCS", "FB_BAGS_CSMT_BAG", "FB_BAGS_DFFL", "FB_BAGS_DIPR", "FB_BAGS_FNNY", "FB_BAGS_GRMT", "FB_BAGS_LUGG", "FB_BAGS_LUG_ACC", "FB_BAGS_MSGR", "FB_BAGS_TOTE", "FB_BAGS_TRN_CAS", "FB_BLDG", "FB_BLDG_ACC", "FB_BLDG_CNSMB", "FB_BLDG_FENCE", "FB_BLDG_FUEL_TNK", "FB_BLDG_HT_VNT", "FB_BLDG_LOCK", "FB_BLDG_MATRL", "FB_BLDG_PLMB", "FB_BLDG_PUMP", "FB_BLDG_PWRS", "FB_BLDG_STR_TANK", "FB_BLDG_S_ENG", "FB_BLDG_TL_ACC", "FB_BLDG_TOOL", "FB_BUSIND", "FB_BUSIND_ADVERTISING", "FB_BUSIND_AGRICULTURE", "FB_BUSIND_AUTOMATION", "FB_BUSIND_HEAVY_MACH", "FB_BUSIND_LAB", "FB_BUSIND_MEDICAL", "FB_BUSIND_RETAIL", "FB_BUSIND_SANITARY_CT", "FB_BUSIND_SIGN", "FB_BUSIND_STORAGE", "FB_BUSIND_STORAGE_ACC", "FB_BUSIND_WORK_GEAR", "FB_CAMERA_ACC", "FB_CAMERA_CAMERA", "FB_CAMERA_OPTIC", "FB_CAMERA_OPTICS", "FB_CAMERA_PHOTO", "FB_ELEC", "FB_ELEC_ACC", "FB_ELEC_ARCDADE", "FB_ELEC_AUDIO", "FB_ELEC_CIRCUIT", "FB_ELEC_COMM", "FB_ELEC_COMPUTER", "FB_ELEC_GPS_ACC", "FB_ELEC_GPS_NAV", "FB_ELEC_GPS_TRK", "FB_ELEC_MARINE", "FB_ELEC_NETWORK", "FB_ELEC_PART", "FB_ELEC_PRINT", "FB_ELEC_RADAR", "FB_ELEC_SFTWR", "FB_ELEC_SPEED_RDR", "FB_ELEC_TELEVISION", "FB_ELEC_TOLL", "FB_ELEC_VIDEO", "FB_ELEC_VID_GM_ACC", "FB_ELEC_VID_GM_CNSL", "FB_FOOD", "FB_FURN", "FB_FURN_BABY", "FB_FURN_BENCH", "FB_FURN_CART", "FB_FURN_CHAIR", "FB_FURN_CHAIR_ACC", "FB_FURN_DIVIDE", "FB_FURN_DIVIDE_ACC", "FB_FURN_ENT_CTR", "FB_FURN_FUTN", "FB_FURN_FUTN_PAD", "FB_FURN_OFFICE", "FB_FURN_OFFICE_ACC", "FB_FURN_OTTO", "FB_FURN_OUTDOOR", "FB_FURN_OUTDOOR_ACC", "FB_FURN_SETS", "FB_FURN_SHELVE_ACC", "FB_FURN_SHLF", "FB_FURN_SOFA", "FB_FURN_SOFA_ACC", "FB_FURN_STORAGE", "FB_FURN_TABL", "FB_FURN_TABL_ACC", "FB_GENERIC_TAXABLE", "FB_HLTH", "FB_HLTH_HLTH", "FB_HLTH_JWL_CR", "FB_HLTH_LILP_BLM", "FB_HLTH_LTN_SPF", "FB_HLTH_PRSL_CR", "FB_HLTH_SKN_CR", "FB_HMGN", "FB_HMGN_BATH", "FB_HMGN_DCOR", "FB_HMGN_EMGY", "FB_HMGN_FPLC", "FB_HMGN_FPLC_ACC", "FB_HMGN_GS_SFT", "FB_HMGN_HS_ACC", "FB_HMGN_HS_APP", "FB_HMGN_HS_SPL", "FB_HMGN_KTCN", "FB_HMGN_LAWN", "FB_HMGN_LGHT", "FB_HMGN_LINN", "FB_HMGN_LT_ACC", "FB_HMGN_OTDR", "FB_HMGN_POOL", "FB_HMGN_SCTY", "FB_HMGN_SMK_ACC", "FB_HMGN_UMBR", "FB_HMGN_UMBR_ACC", "FB_MDIA", "FB_MDIA_BOOK", "FB_MDIA_DVDS", "FB_MDIA_MAG", "FB_MDIA_MANL", "FB_MDIA_MUSC", "FB_MDIA_PRJ_PLN", "FB_MDIA_SHT_MUS", "FB_OFFC", "FB_OFFC_BKAC", "FB_OFFC_CRTS", "FB_OFFC_DSKP", "FB_OFFC_EQIP", "FB_OFFC_FLNG", "FB_OFFC_GNRL", "FB_OFFC_INSTM", "FB_OFFC_LP_DSK", "FB_OFFC_MATS", "FB_OFFC_NM_PLT", "FB_OFFC_PPR_HNDL", "FB_OFFC_PRSNT_SPL", "FB_OFFC_SEALR", "FB_OFFC_SHIP_SPL", "FB_RLGN", "FB_RLGN_CMNY", "FB_RLGN_ITEM", "FB_RLGN_WEDD", "FB_SFTWR", "FB_SFWR_CMPTR", "FB_SFWR_DGTL_GD", "FB_SFWR_GAME", "FB_SHIPPING", "FB_SPOR", "FB_SPORT_ATHL", "FB_SPORT_ATHL_CLTH", "FB_SPORT_ATHL_SHOE", "FB_SPORT_ATHL_SPRT", "FB_SPORT_EXRCS", "FB_SPORT_INDR_GM", "FB_SPORT_OTDR_GM", "FB_TOYS", "FB_TOYS_EQIP", "FB_TOYS_GAME", "FB_TOYS_PZZL", "FB_TOYS_TMRS", "FB_TOYS_TOYS", "FB_VEHI", "FB_VEHI_PART" },
 				},
 				"condition": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "condition parameter",
-					"enum":        []string{"cpo", "new", "open_box_new", "refurbished", "used", "used_fair", "used_good", "used_like_new"},
+					"enum": []string{ "cpo", "new", "open_box_new", "refurbished", "used", "used_fair", "used_good", "used_like_new" },
 				},
 				"currency": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "currency parameter",
-					"required":    true,
+					"required": true,
 				},
 				"custom_data": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "custom_data parameter",
 				},
 				"custom_label_0": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "custom_label_0 parameter",
 				},
 				"custom_label_1": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "custom_label_1 parameter",
 				},
 				"custom_label_2": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "custom_label_2 parameter",
 				},
 				"custom_label_3": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "custom_label_3 parameter",
 				},
 				"custom_label_4": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "custom_label_4 parameter",
 				},
 				"custom_number_0": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "custom_number_0 parameter",
 				},
 				"custom_number_1": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "custom_number_1 parameter",
 				},
 				"custom_number_2": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "custom_number_2 parameter",
 				},
 				"custom_number_3": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "custom_number_3 parameter",
 				},
 				"custom_number_4": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "custom_number_4 parameter",
 				},
 				"description": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "description parameter",
 				},
 				"expiration_date": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "expiration_date parameter",
 				},
 				"fb_product_category": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "fb_product_category parameter",
 				},
 				"gender": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "gender parameter",
-					"enum":        []string{"female", "male", "unisex"},
+					"enum": []string{ "female", "male", "unisex" },
 				},
 				"gtin": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "gtin parameter",
 				},
 				"image_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "image_url parameter",
 				},
 				"importer_address": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "importer_address parameter",
 				},
 				"importer_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "importer_name parameter",
 				},
 				"inventory": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "inventory parameter",
 				},
 				"ios_app_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ios_app_name parameter",
 				},
 				"ios_app_store_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "ios_app_store_id parameter",
 				},
 				"ios_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ios_url parameter",
 				},
 				"ipad_app_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ipad_app_name parameter",
 				},
 				"ipad_app_store_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "ipad_app_store_id parameter",
 				},
 				"ipad_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ipad_url parameter",
 				},
 				"iphone_app_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "iphone_app_name parameter",
 				},
 				"iphone_app_store_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "iphone_app_store_id parameter",
 				},
 				"iphone_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "iphone_url parameter",
 				},
 				"launch_date": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "launch_date parameter",
 				},
 				"manufacturer_info": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "manufacturer_info parameter",
 				},
 				"manufacturer_part_number": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "manufacturer_part_number parameter",
 				},
 				"marked_for_product_launch": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "marked_for_product_launch parameter",
-					"enum":        []string{"default", "marked", "not_marked"},
+					"enum": []string{ "default", "marked", "not_marked" },
 				},
 				"material": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "material parameter",
 				},
 				"mobile_link": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "mobile_link parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
-					"required":    true,
+					"required": true,
 				},
 				"ordering_index": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "ordering_index parameter",
 				},
 				"origin_country": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "origin_country parameter",
-					"enum":        []string{"AD", "AE", "AF", "AG", "AI", "AL", "AM", "AN", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "XK", "YE", "YT", "ZA", "ZM", "ZW"},
+					"enum": []string{ "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AN", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "XK", "YE", "YT", "ZA", "ZM", "ZW" },
 				},
 				"pattern": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "pattern parameter",
 				},
 				"price": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "price parameter",
-					"required":    true,
+					"required": true,
 				},
 				"product_priority_0": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "product_priority_0 parameter",
 				},
 				"product_priority_1": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "product_priority_1 parameter",
 				},
 				"product_priority_2": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "product_priority_2 parameter",
 				},
 				"product_priority_3": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "product_priority_3 parameter",
 				},
 				"product_priority_4": map[string]any{
-					"type":        "number",
+					"type": "number",
 					"description": "product_priority_4 parameter",
 				},
 				"product_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "product_type parameter",
 				},
 				"quantity_to_sell_on_facebook": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "quantity_to_sell_on_facebook parameter",
 				},
 				"retailer_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "retailer_id parameter",
 				},
 				"retailer_product_group_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "retailer_product_group_id parameter",
 				},
 				"return_policy_days": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "return_policy_days parameter",
 				},
 				"sale_price": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "sale_price parameter",
 				},
 				"sale_price_end_date": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "sale_price_end_date parameter",
 				},
 				"sale_price_start_date": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "sale_price_start_date parameter",
 				},
 				"short_description": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "short_description parameter",
 				},
 				"size": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "size parameter",
 				},
 				"start_date": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "start_date parameter",
 				},
 				"url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "url parameter",
 				},
 				"visibility": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "visibility parameter",
-					"enum":        []string{"published", "staging"},
+					"enum": []string{ "published", "staging" },
 				},
 				"wa_compliance_category": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "wa_compliance_category parameter",
-					"enum":        []string{"COUNTRY_ORIGIN_EXEMPT", "DEFAULT"},
+					"enum": []string{ "COUNTRY_ORIGIN_EXEMPT", "DEFAULT" },
 				},
 				"windows_phone_app_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "windows_phone_app_id parameter",
 				},
 				"windows_phone_app_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "windows_phone_app_name parameter",
 				},
 				"windows_phone_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "windows_phone_url parameter",
 				},
 			}),
@@ -1874,10 +1875,10 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"data": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "data parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "object"},
+					"required": true,
+					"items": map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: data (array<object>) [required]"),
@@ -1893,11 +1894,11 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"bulk_pagination": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "bulk_pagination parameter",
 				},
 				"filter": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "filter parameter",
 				},
 			}),
@@ -1926,11 +1927,11 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"bulk_pagination": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "bulk_pagination parameter",
 				},
 				"filter": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "filter parameter",
 				},
 			}),
@@ -1959,149 +1960,149 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"address": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "address parameter",
-					"required":    true,
+					"required": true,
 				},
 				"applinks": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "applinks parameter",
 				},
 				"availability": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "availability parameter",
-					"enum":        []string{"AVAILABLE", "NOT_AVAILABLE", "PENDING", "UNKNOWN"},
+					"enum": []string{ "AVAILABLE", "NOT_AVAILABLE", "PENDING", "UNKNOWN" },
 				},
 				"body_style": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "body_style parameter",
-					"required":    true,
-					"enum":        []string{"CONVERTIBLE", "COUPE", "CROSSOVER", "ESTATE", "GRANDTOURER", "HATCHBACK", "MINIBUS", "MINIVAN", "MPV", "NONE", "OTHER", "PICKUP", "ROADSTER", "SALOON", "SEDAN", "SMALL_CAR", "SPORTSCAR", "SUPERCAR", "SUPERMINI", "SUV", "TRUCK", "VAN", "WAGON"},
+					"required": true,
+					"enum": []string{ "CONVERTIBLE", "COUPE", "CROSSOVER", "ESTATE", "GRANDTOURER", "HATCHBACK", "MINIBUS", "MINIVAN", "MPV", "NONE", "OTHER", "PICKUP", "ROADSTER", "SALOON", "SEDAN", "SMALL_CAR", "SPORTSCAR", "SUPERCAR", "SUPERMINI", "SUV", "TRUCK", "VAN", "WAGON" },
 				},
 				"condition": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "condition parameter",
-					"enum":        []string{"EXCELLENT", "FAIR", "GOOD", "NONE", "OTHER", "POOR", "VERY_GOOD"},
+					"enum": []string{ "EXCELLENT", "FAIR", "GOOD", "NONE", "OTHER", "POOR", "VERY_GOOD" },
 				},
 				"currency": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "currency parameter",
-					"required":    true,
+					"required": true,
 				},
 				"date_first_on_lot": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "date_first_on_lot parameter",
 				},
 				"dealer_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "dealer_id parameter",
 				},
 				"dealer_name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "dealer_name parameter",
 				},
 				"dealer_phone": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "dealer_phone parameter",
 				},
 				"description": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "description parameter",
-					"required":    true,
+					"required": true,
 				},
 				"drivetrain": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "drivetrain parameter",
-					"enum":        []string{"AWD", "FOUR_WD", "FWD", "NONE", "OTHER", "RWD", "TWO_WD"},
+					"enum": []string{ "AWD", "FOUR_WD", "FWD", "NONE", "OTHER", "RWD", "TWO_WD" },
 				},
 				"exterior_color": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "exterior_color parameter",
-					"required":    true,
+					"required": true,
 				},
 				"fb_page_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "fb_page_id parameter",
 				},
 				"fuel_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "fuel_type parameter",
-					"enum":        []string{"DIESEL", "ELECTRIC", "FLEX", "GASOLINE", "HYBRID", "NONE", "OTHER", "PETROL", "PLUGIN_HYBRID"},
+					"enum": []string{ "DIESEL", "ELECTRIC", "FLEX", "GASOLINE", "HYBRID", "NONE", "OTHER", "PETROL", "PLUGIN_HYBRID" },
 				},
 				"images": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "images parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "object"},
+					"required": true,
+					"items": map[string]any{"type": "object"},
 				},
 				"interior_color": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "interior_color parameter",
 				},
 				"make": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "make parameter",
-					"required":    true,
+					"required": true,
 				},
 				"mileage": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "mileage parameter",
-					"required":    true,
+					"required": true,
 				},
 				"model": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "model parameter",
-					"required":    true,
+					"required": true,
 				},
 				"price": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "price parameter",
-					"required":    true,
+					"required": true,
 				},
 				"state_of_vehicle": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "state_of_vehicle parameter",
-					"required":    true,
-					"enum":        []string{"CPO", "NEW", "USED"},
+					"required": true,
+					"enum": []string{ "CPO", "NEW", "USED" },
 				},
 				"title": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "title parameter",
-					"required":    true,
+					"required": true,
 				},
 				"transmission": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "transmission parameter",
-					"enum":        []string{"AUTOMATIC", "MANUAL", "NONE", "OTHER"},
+					"enum": []string{ "AUTOMATIC", "MANUAL", "NONE", "OTHER" },
 				},
 				"trim": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "trim parameter",
 				},
 				"url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "url parameter",
-					"required":    true,
+					"required": true,
 				},
 				"vehicle_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "vehicle_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"vehicle_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "vehicle_type parameter",
-					"enum":        []string{"BOAT", "CAR_TRUCK", "COMMERCIAL", "MOTORCYCLE", "OTHER", "POWERSPORT", "RV_CAMPER", "TRAILER"},
+					"enum": []string{ "BOAT", "CAR_TRUCK", "COMMERCIAL", "MOTORCYCLE", "OTHER", "POWERSPORT", "RV_CAMPER", "TRAILER" },
 				},
 				"vin": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "vin parameter",
-					"required":    true,
+					"required": true,
 				},
 				"year": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "year parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: address (object) [required], applinks (object), availability (enum) [AVAILABLE, NOT_AVAILABLE, PENDING, UNKNOWN], body_style (enum) [CONVERTIBLE, COUPE, CROSSOVER, ESTATE, GRANDTOURER, ...] [required], condition (enum) [EXCELLENT, FAIR, GOOD, NONE, OTHER, ...], currency (string) [required], date_first_on_lot (string), dealer_id (string), dealer_name (string), dealer_phone (string), description (string) [required], drivetrain (enum) [AWD, FOUR_WD, FWD, NONE, OTHER, ...], exterior_color (string) [required], fb_page_id (string), fuel_type (enum) [DIESEL, ELECTRIC, FLEX, GASOLINE, HYBRID, ...], images (array<object>) [required], interior_color (string), make (string) [required], mileage (object) [required], model (string) [required], price (integer) [required], state_of_vehicle (enum) [CPO, NEW, USED] [required], title (string) [required], transmission (enum) [AUTOMATIC, MANUAL, NONE, OTHER], trim (string), url (string) [required], vehicle_id (string) [required], vehicle_type (enum) [BOAT, CAR_TRUCK, COMMERCIAL, MOTORCYCLE, OTHER, ...], vin (string) [required], year (integer) [required]"),
@@ -2136,26 +2137,26 @@ func GetProductCatalogTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"allow_upsert": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "allow_upsert parameter",
 				},
 				"item_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "item_type parameter",
-					"required":    true,
+					"required": true,
 				},
 				"item_version": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "item_version parameter",
-					"required":    true,
+					"required": true,
 				},
 				"requests": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "requests parameter",
-					"required":    true,
+					"required": true,
 				},
 				"version": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "version parameter",
 				},
 			}),
@@ -2171,7 +2172,7 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"allow_delete_catalog_with_live_product_set": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "allow_delete_catalog_with_live_product_set parameter",
 				},
 			}),
@@ -2188,10 +2189,10 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"segment_use_cases": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "segment_use_cases parameter",
-					"enum":        []string{"AFFILIATE_SELLER_STOREFRONT", "AFFILIATE_TAGGED_ONLY_DEPRECATED", "COLLAB_ADS", "COLLAB_ADS_FOR_MARKETPLACE_PARTNER", "COLLAB_ADS_SEGMENT_WITHOUT_SEGMENT_SYNCING", "DIGITAL_CIRCULARS", "FB_LIVE_SHOPPING", "IG_SHOPPING", "IG_SHOPPING_SUGGESTED_PRODUCTS", "MARKETPLACE_SHOPS", "TEST"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "AFFILIATE_SELLER_STOREFRONT", "AFFILIATE_TAGGED_ONLY_DEPRECATED", "COLLAB_ADS", "COLLAB_ADS_FOR_MARKETPLACE_PARTNER", "COLLAB_ADS_SEGMENT_WITHOUT_SEGMENT_SYNCING", "DIGITAL_CIRCULARS", "FB_LIVE_SHOPPING", "IG_SHOPPING", "IG_SHOPPING_SUGGESTED_PRODUCTS", "MARKETPLACE_SHOPS", "TEST" },
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: segment_use_cases (array<productcatalog_segment_use_cases>) [AFFILIATE_SELLER_STOREFRONT, AFFILIATE_TAGGED_ONLY_DEPRECATED, COLLAB_ADS, COLLAB_ADS_FOR_MARKETPLACE_PARTNER, COLLAB_ADS_SEGMENT_WITHOUT_SEGMENT_SYNCING, ...]"),
@@ -2218,40 +2219,40 @@ func GetProductCatalogTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"additional_vertical_option": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "additional_vertical_option parameter",
-					"enum":        []string{"LOCAL_DA_CATALOG", "LOCAL_PRODUCTS"},
+					"enum": []string{ "LOCAL_DA_CATALOG", "LOCAL_PRODUCTS" },
 				},
 				"da_display_settings": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "da_display_settings parameter",
 				},
 				"default_image_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "default_image_url parameter",
 				},
 				"destination_catalog_settings": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "destination_catalog_settings parameter",
 				},
 				"fallback_image_url": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "fallback_image_url parameter",
 				},
 				"flight_catalog_settings": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "flight_catalog_settings parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
 				},
 				"partner_integration": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "partner_integration parameter",
 				},
 				"store_catalog_settings": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "store_catalog_settings parameter",
 				},
 			}),
@@ -2260,10 +2261,12 @@ func GetProductCatalogTools() []mcp.Tool {
 	)
 	tools = append(tools, productcatalog_post_Tool)
 
+
 	return tools
 }
 
 // ProductCatalog handlers
+
 
 // HandleProductcatalog_delete_agencies handles the productcatalog_delete_agencies tool with context-based auth
 func HandleProductcatalog_delete_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2293,6 +2296,8 @@ func HandleProductcatalog_delete_agencies(ctx context.Context, request mcp.CallT
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_delete_agencies(args)
 	if err != nil {
@@ -2307,6 +2312,7 @@ func HandleProductcatalog_delete_agencies(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_agencies handles the productcatalog_get_agencies tool with context-based auth
 func HandleProductcatalog_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2347,6 +2353,8 @@ func HandleProductcatalog_get_agencies(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_agencies(args)
 	if err != nil {
@@ -2361,6 +2369,7 @@ func HandleProductcatalog_get_agencies(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_agencies handles the productcatalog_post_agencies tool with context-based auth
 func HandleProductcatalog_post_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2390,6 +2399,8 @@ func HandleProductcatalog_post_agencies(ctx context.Context, request mcp.CallToo
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_agencies(args)
 	if err != nil {
@@ -2404,6 +2415,7 @@ func HandleProductcatalog_post_agencies(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_delete_assigned_users handles the productcatalog_delete_assigned_users tool with context-based auth
 func HandleProductcatalog_delete_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2433,6 +2445,8 @@ func HandleProductcatalog_delete_assigned_users(ctx context.Context, request mcp
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_delete_assigned_users(args)
 	if err != nil {
@@ -2447,6 +2461,7 @@ func HandleProductcatalog_delete_assigned_users(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_assigned_users handles the productcatalog_get_assigned_users tool with context-based auth
 func HandleProductcatalog_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2501,6 +2516,8 @@ func HandleProductcatalog_get_assigned_users(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_assigned_users(args)
 	if err != nil {
@@ -2515,6 +2532,7 @@ func HandleProductcatalog_get_assigned_users(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_assigned_users handles the productcatalog_post_assigned_users tool with context-based auth
 func HandleProductcatalog_post_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2544,6 +2562,8 @@ func HandleProductcatalog_post_assigned_users(ctx context.Context, request mcp.C
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_assigned_users(args)
 	if err != nil {
@@ -2558,6 +2578,7 @@ func HandleProductcatalog_post_assigned_users(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_automotive_models handles the productcatalog_get_automotive_models tool with context-based auth
 func HandleProductcatalog_get_automotive_models(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2610,6 +2631,8 @@ func HandleProductcatalog_get_automotive_models(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_automotive_models(args)
 	if err != nil {
@@ -2624,6 +2647,7 @@ func HandleProductcatalog_get_automotive_models(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_batch handles the productcatalog_post_batch tool with context-based auth
 func HandleProductcatalog_post_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2653,6 +2677,8 @@ func HandleProductcatalog_post_batch(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_batch(args)
 	if err != nil {
@@ -2667,6 +2693,7 @@ func HandleProductcatalog_post_batch(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_catalog_store handles the productcatalog_post_catalog_store tool with context-based auth
 func HandleProductcatalog_post_catalog_store(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2696,6 +2723,8 @@ func HandleProductcatalog_post_catalog_store(ctx context.Context, request mcp.Ca
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_catalog_store(args)
 	if err != nil {
@@ -2710,6 +2739,7 @@ func HandleProductcatalog_post_catalog_store(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_categories handles the productcatalog_get_categories tool with context-based auth
 func HandleProductcatalog_get_categories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2764,6 +2794,8 @@ func HandleProductcatalog_get_categories(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_categories(args)
 	if err != nil {
@@ -2778,6 +2810,7 @@ func HandleProductcatalog_get_categories(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_categories handles the productcatalog_post_categories tool with context-based auth
 func HandleProductcatalog_post_categories(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2807,6 +2840,8 @@ func HandleProductcatalog_post_categories(ctx context.Context, request mcp.CallT
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_categories(args)
 	if err != nil {
@@ -2821,6 +2856,7 @@ func HandleProductcatalog_post_categories(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_check_batch_request_status handles the productcatalog_get_check_batch_request_status tool with context-based auth
 func HandleProductcatalog_get_check_batch_request_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2875,6 +2911,8 @@ func HandleProductcatalog_get_check_batch_request_status(ctx context.Context, re
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_check_batch_request_status(args)
 	if err != nil {
@@ -2889,6 +2927,7 @@ func HandleProductcatalog_get_check_batch_request_status(ctx context.Context, re
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_check_marketplace_partner_sellers_status handles the productcatalog_get_check_marketplace_partner_sellers_status tool with context-based auth
 func HandleProductcatalog_get_check_marketplace_partner_sellers_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2943,6 +2982,8 @@ func HandleProductcatalog_get_check_marketplace_partner_sellers_status(ctx conte
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_check_marketplace_partner_sellers_status(args)
 	if err != nil {
@@ -2957,6 +2998,7 @@ func HandleProductcatalog_get_check_marketplace_partner_sellers_status(ctx conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_collaborative_ads_lsb_image_bank handles the productcatalog_get_collaborative_ads_lsb_image_bank tool with context-based auth
 func HandleProductcatalog_get_collaborative_ads_lsb_image_bank(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -2997,6 +3039,8 @@ func HandleProductcatalog_get_collaborative_ads_lsb_image_bank(ctx context.Conte
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_collaborative_ads_lsb_image_bank(args)
 	if err != nil {
@@ -3011,6 +3055,7 @@ func HandleProductcatalog_get_collaborative_ads_lsb_image_bank(ctx context.Conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_collaborative_ads_share_settings handles the productcatalog_get_collaborative_ads_share_settings tool with context-based auth
 func HandleProductcatalog_get_collaborative_ads_share_settings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3051,6 +3096,8 @@ func HandleProductcatalog_get_collaborative_ads_share_settings(ctx context.Conte
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_collaborative_ads_share_settings(args)
 	if err != nil {
@@ -3065,6 +3112,7 @@ func HandleProductcatalog_get_collaborative_ads_share_settings(ctx context.Conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_cpas_lsb_image_bank handles the productcatalog_post_cpas_lsb_image_bank tool with context-based auth
 func HandleProductcatalog_post_cpas_lsb_image_bank(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3094,6 +3142,8 @@ func HandleProductcatalog_post_cpas_lsb_image_bank(ctx context.Context, request 
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_cpas_lsb_image_bank(args)
 	if err != nil {
@@ -3108,6 +3158,7 @@ func HandleProductcatalog_post_cpas_lsb_image_bank(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_creator_asset_creatives handles the productcatalog_get_creator_asset_creatives tool with context-based auth
 func HandleProductcatalog_get_creator_asset_creatives(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3160,6 +3211,8 @@ func HandleProductcatalog_get_creator_asset_creatives(ctx context.Context, reque
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_creator_asset_creatives(args)
 	if err != nil {
@@ -3174,6 +3227,7 @@ func HandleProductcatalog_get_creator_asset_creatives(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_data_sources handles the productcatalog_get_data_sources tool with context-based auth
 func HandleProductcatalog_get_data_sources(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3226,6 +3280,8 @@ func HandleProductcatalog_get_data_sources(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_data_sources(args)
 	if err != nil {
@@ -3240,6 +3296,7 @@ func HandleProductcatalog_get_data_sources(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_destinations handles the productcatalog_get_destinations tool with context-based auth
 func HandleProductcatalog_get_destinations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3292,6 +3349,8 @@ func HandleProductcatalog_get_destinations(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_destinations(args)
 	if err != nil {
@@ -3306,6 +3365,7 @@ func HandleProductcatalog_get_destinations(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_diagnostics handles the productcatalog_get_diagnostics tool with context-based auth
 func HandleProductcatalog_get_diagnostics(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3358,6 +3418,8 @@ func HandleProductcatalog_get_diagnostics(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_diagnostics(args)
 	if err != nil {
@@ -3372,6 +3434,7 @@ func HandleProductcatalog_get_diagnostics(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_event_stats handles the productcatalog_get_event_stats tool with context-based auth
 func HandleProductcatalog_get_event_stats(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3424,6 +3487,8 @@ func HandleProductcatalog_get_event_stats(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_event_stats(args)
 	if err != nil {
@@ -3438,6 +3503,7 @@ func HandleProductcatalog_get_event_stats(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_delete_external_event_sources handles the productcatalog_delete_external_event_sources tool with context-based auth
 func HandleProductcatalog_delete_external_event_sources(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3465,6 +3531,8 @@ func HandleProductcatalog_delete_external_event_sources(ctx context.Context, req
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_delete_external_event_sources(args)
 	if err != nil {
@@ -3479,6 +3547,7 @@ func HandleProductcatalog_delete_external_event_sources(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_external_event_sources handles the productcatalog_get_external_event_sources tool with context-based auth
 func HandleProductcatalog_get_external_event_sources(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3519,6 +3588,8 @@ func HandleProductcatalog_get_external_event_sources(ctx context.Context, reques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_external_event_sources(args)
 	if err != nil {
@@ -3533,6 +3604,7 @@ func HandleProductcatalog_get_external_event_sources(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_external_event_sources handles the productcatalog_post_external_event_sources tool with context-based auth
 func HandleProductcatalog_post_external_event_sources(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3560,6 +3632,8 @@ func HandleProductcatalog_post_external_event_sources(ctx context.Context, reque
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_external_event_sources(args)
 	if err != nil {
@@ -3574,6 +3648,7 @@ func HandleProductcatalog_post_external_event_sources(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_flights handles the productcatalog_get_flights tool with context-based auth
 func HandleProductcatalog_get_flights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3626,6 +3701,8 @@ func HandleProductcatalog_get_flights(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_flights(args)
 	if err != nil {
@@ -3640,6 +3717,7 @@ func HandleProductcatalog_get_flights(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_geolocated_items_batch handles the productcatalog_post_geolocated_items_batch tool with context-based auth
 func HandleProductcatalog_post_geolocated_items_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3669,6 +3747,8 @@ func HandleProductcatalog_post_geolocated_items_batch(ctx context.Context, reque
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_geolocated_items_batch(args)
 	if err != nil {
@@ -3683,6 +3763,7 @@ func HandleProductcatalog_post_geolocated_items_batch(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_home_listings handles the productcatalog_get_home_listings tool with context-based auth
 func HandleProductcatalog_get_home_listings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3735,6 +3816,8 @@ func HandleProductcatalog_get_home_listings(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_home_listings(args)
 	if err != nil {
@@ -3749,6 +3832,7 @@ func HandleProductcatalog_get_home_listings(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_home_listings handles the productcatalog_post_home_listings tool with context-based auth
 func HandleProductcatalog_post_home_listings(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3778,6 +3862,8 @@ func HandleProductcatalog_post_home_listings(ctx context.Context, request mcp.Ca
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_home_listings(args)
 	if err != nil {
@@ -3792,6 +3878,7 @@ func HandleProductcatalog_post_home_listings(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_hotel_rooms_batch handles the productcatalog_get_hotel_rooms_batch tool with context-based auth
 func HandleProductcatalog_get_hotel_rooms_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3846,6 +3933,8 @@ func HandleProductcatalog_get_hotel_rooms_batch(ctx context.Context, request mcp
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_hotel_rooms_batch(args)
 	if err != nil {
@@ -3860,6 +3949,7 @@ func HandleProductcatalog_get_hotel_rooms_batch(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_hotel_rooms_batch handles the productcatalog_post_hotel_rooms_batch tool with context-based auth
 func HandleProductcatalog_post_hotel_rooms_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3889,6 +3979,8 @@ func HandleProductcatalog_post_hotel_rooms_batch(ctx context.Context, request mc
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_hotel_rooms_batch(args)
 	if err != nil {
@@ -3903,6 +3995,7 @@ func HandleProductcatalog_post_hotel_rooms_batch(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_hotels handles the productcatalog_get_hotels tool with context-based auth
 func HandleProductcatalog_get_hotels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3955,6 +4048,8 @@ func HandleProductcatalog_get_hotels(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_hotels(args)
 	if err != nil {
@@ -3969,6 +4064,7 @@ func HandleProductcatalog_get_hotels(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_hotels handles the productcatalog_post_hotels tool with context-based auth
 func HandleProductcatalog_post_hotels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -3998,6 +4094,8 @@ func HandleProductcatalog_post_hotels(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_hotels(args)
 	if err != nil {
@@ -4012,6 +4110,7 @@ func HandleProductcatalog_post_hotels(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_items_batch handles the productcatalog_post_items_batch tool with context-based auth
 func HandleProductcatalog_post_items_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4041,6 +4140,8 @@ func HandleProductcatalog_post_items_batch(ctx context.Context, request mcp.Call
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_items_batch(args)
 	if err != nil {
@@ -4055,6 +4156,7 @@ func HandleProductcatalog_post_items_batch(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_localized_items_batch handles the productcatalog_post_localized_items_batch tool with context-based auth
 func HandleProductcatalog_post_localized_items_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4084,6 +4186,8 @@ func HandleProductcatalog_post_localized_items_batch(ctx context.Context, reques
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_localized_items_batch(args)
 	if err != nil {
@@ -4098,6 +4202,7 @@ func HandleProductcatalog_post_localized_items_batch(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_marketplace_partner_sellers_details handles the productcatalog_post_marketplace_partner_sellers_details tool with context-based auth
 func HandleProductcatalog_post_marketplace_partner_sellers_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4127,6 +4232,8 @@ func HandleProductcatalog_post_marketplace_partner_sellers_details(ctx context.C
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_marketplace_partner_sellers_details(args)
 	if err != nil {
@@ -4141,6 +4248,7 @@ func HandleProductcatalog_post_marketplace_partner_sellers_details(ctx context.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_marketplace_partner_signals handles the productcatalog_post_marketplace_partner_signals tool with context-based auth
 func HandleProductcatalog_post_marketplace_partner_signals(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4170,6 +4278,8 @@ func HandleProductcatalog_post_marketplace_partner_signals(ctx context.Context, 
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_marketplace_partner_signals(args)
 	if err != nil {
@@ -4184,6 +4294,7 @@ func HandleProductcatalog_post_marketplace_partner_signals(ctx context.Context, 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_pricing_variables_batch handles the productcatalog_get_pricing_variables_batch tool with context-based auth
 func HandleProductcatalog_get_pricing_variables_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4238,6 +4349,8 @@ func HandleProductcatalog_get_pricing_variables_batch(ctx context.Context, reque
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_pricing_variables_batch(args)
 	if err != nil {
@@ -4252,6 +4365,7 @@ func HandleProductcatalog_get_pricing_variables_batch(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_pricing_variables_batch handles the productcatalog_post_pricing_variables_batch tool with context-based auth
 func HandleProductcatalog_post_pricing_variables_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4281,6 +4395,8 @@ func HandleProductcatalog_post_pricing_variables_batch(ctx context.Context, requ
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_pricing_variables_batch(args)
 	if err != nil {
@@ -4295,6 +4411,7 @@ func HandleProductcatalog_post_pricing_variables_batch(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_product_feeds handles the productcatalog_get_product_feeds tool with context-based auth
 func HandleProductcatalog_get_product_feeds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4335,6 +4452,8 @@ func HandleProductcatalog_get_product_feeds(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_product_feeds(args)
 	if err != nil {
@@ -4349,6 +4468,7 @@ func HandleProductcatalog_get_product_feeds(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_product_feeds handles the productcatalog_post_product_feeds tool with context-based auth
 func HandleProductcatalog_post_product_feeds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4376,6 +4496,8 @@ func HandleProductcatalog_post_product_feeds(ctx context.Context, request mcp.Ca
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_product_feeds(args)
 	if err != nil {
@@ -4390,6 +4512,7 @@ func HandleProductcatalog_post_product_feeds(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_product_groups handles the productcatalog_get_product_groups tool with context-based auth
 func HandleProductcatalog_get_product_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4430,6 +4553,8 @@ func HandleProductcatalog_get_product_groups(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_product_groups(args)
 	if err != nil {
@@ -4444,6 +4569,7 @@ func HandleProductcatalog_get_product_groups(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_product_groups handles the productcatalog_post_product_groups tool with context-based auth
 func HandleProductcatalog_post_product_groups(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4471,6 +4597,8 @@ func HandleProductcatalog_post_product_groups(ctx context.Context, request mcp.C
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_product_groups(args)
 	if err != nil {
@@ -4485,6 +4613,7 @@ func HandleProductcatalog_post_product_groups(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_product_sets handles the productcatalog_get_product_sets tool with context-based auth
 func HandleProductcatalog_get_product_sets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4537,6 +4666,8 @@ func HandleProductcatalog_get_product_sets(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_product_sets(args)
 	if err != nil {
@@ -4551,6 +4682,7 @@ func HandleProductcatalog_get_product_sets(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_product_sets handles the productcatalog_post_product_sets tool with context-based auth
 func HandleProductcatalog_post_product_sets(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4580,6 +4712,8 @@ func HandleProductcatalog_post_product_sets(ctx context.Context, request mcp.Cal
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_product_sets(args)
 	if err != nil {
@@ -4594,6 +4728,7 @@ func HandleProductcatalog_post_product_sets(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_product_sets_batch handles the productcatalog_get_product_sets_batch tool with context-based auth
 func HandleProductcatalog_get_product_sets_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4648,6 +4783,8 @@ func HandleProductcatalog_get_product_sets_batch(ctx context.Context, request mc
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_product_sets_batch(args)
 	if err != nil {
@@ -4662,6 +4799,7 @@ func HandleProductcatalog_get_product_sets_batch(ctx context.Context, request mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_products handles the productcatalog_get_products tool with context-based auth
 func HandleProductcatalog_get_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4714,6 +4852,8 @@ func HandleProductcatalog_get_products(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_products(args)
 	if err != nil {
@@ -4728,6 +4868,7 @@ func HandleProductcatalog_get_products(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_products handles the productcatalog_post_products tool with context-based auth
 func HandleProductcatalog_post_products(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4757,6 +4898,8 @@ func HandleProductcatalog_post_products(ctx context.Context, request mcp.CallToo
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_products(args)
 	if err != nil {
@@ -4771,6 +4914,7 @@ func HandleProductcatalog_post_products(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_update_generated_image_config handles the productcatalog_post_update_generated_image_config tool with context-based auth
 func HandleProductcatalog_post_update_generated_image_config(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4800,6 +4944,8 @@ func HandleProductcatalog_post_update_generated_image_config(ctx context.Context
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_update_generated_image_config(args)
 	if err != nil {
@@ -4814,6 +4960,7 @@ func HandleProductcatalog_post_update_generated_image_config(ctx context.Context
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_vehicle_offers handles the productcatalog_get_vehicle_offers tool with context-based auth
 func HandleProductcatalog_get_vehicle_offers(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4866,6 +5013,8 @@ func HandleProductcatalog_get_vehicle_offers(ctx context.Context, request mcp.Ca
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_vehicle_offers(args)
 	if err != nil {
@@ -4880,6 +5029,7 @@ func HandleProductcatalog_get_vehicle_offers(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_vehicles handles the productcatalog_get_vehicles tool with context-based auth
 func HandleProductcatalog_get_vehicles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4932,6 +5082,8 @@ func HandleProductcatalog_get_vehicles(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_vehicles(args)
 	if err != nil {
@@ -4946,6 +5098,7 @@ func HandleProductcatalog_get_vehicles(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_vehicles handles the productcatalog_post_vehicles tool with context-based auth
 func HandleProductcatalog_post_vehicles(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -4975,6 +5128,8 @@ func HandleProductcatalog_post_vehicles(ctx context.Context, request mcp.CallToo
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_vehicles(args)
 	if err != nil {
@@ -4989,6 +5144,7 @@ func HandleProductcatalog_post_vehicles(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_version_configs handles the productcatalog_get_version_configs tool with context-based auth
 func HandleProductcatalog_get_version_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5029,6 +5185,8 @@ func HandleProductcatalog_get_version_configs(ctx context.Context, request mcp.C
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_version_configs(args)
 	if err != nil {
@@ -5043,6 +5201,7 @@ func HandleProductcatalog_get_version_configs(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_version_items_batch handles the productcatalog_post_version_items_batch tool with context-based auth
 func HandleProductcatalog_post_version_items_batch(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5072,6 +5231,8 @@ func HandleProductcatalog_post_version_items_batch(ctx context.Context, request 
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_version_items_batch(args)
 	if err != nil {
@@ -5086,6 +5247,7 @@ func HandleProductcatalog_post_version_items_batch(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_delete_ handles the productcatalog_delete_ tool with context-based auth
 func HandleProductcatalog_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5113,6 +5275,8 @@ func HandleProductcatalog_delete_(ctx context.Context, request mcp.CallToolReque
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_delete_(args)
 	if err != nil {
@@ -5127,6 +5291,7 @@ func HandleProductcatalog_delete_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_get_ handles the productcatalog_get_ tool with context-based auth
 func HandleProductcatalog_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5179,6 +5344,8 @@ func HandleProductcatalog_get_(ctx context.Context, request mcp.CallToolRequest)
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_get_(args)
 	if err != nil {
@@ -5193,6 +5360,7 @@ func HandleProductcatalog_get_(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductcatalog_post_ handles the productcatalog_post_ tool with context-based auth
 func HandleProductcatalog_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -5220,6 +5388,8 @@ func HandleProductcatalog_post_(ctx context.Context, request mcp.CallToolRequest
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcatalog_post_(args)
 	if err != nil {
@@ -5234,3 +5404,4 @@ func HandleProductcatalog_post_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

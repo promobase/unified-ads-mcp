@@ -4,12 +4,12 @@ package constants
 
 // OfflineTermsOfServiceFields contains field name constants for OfflineTermsOfService objects
 var OfflineTermsOfServiceFields = struct {
-	AcceptTime   string
-	Id           string
+	AcceptTime string
+	Id string
 	SignedByUser string
 }{
-	AcceptTime:   "accept_time",
-	Id:           "id",
+	AcceptTime: "accept_time",
+	Id: "id",
 	SignedByUser: "signed_by_user",
 }
 

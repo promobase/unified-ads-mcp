@@ -4,13 +4,13 @@ package constants
 
 // ProductItemCommerceInsightsFields contains field name constants for ProductItemCommerceInsights objects
 var ProductItemCommerceInsightsFields = struct {
-	MessageSends       string
+	MessageSends string
 	OrganicImpressions string
-	PaidImpressions    string
+	PaidImpressions string
 }{
-	MessageSends:       "message_sends",
+	MessageSends: "message_sends",
 	OrganicImpressions: "organic_impressions",
-	PaidImpressions:    "paid_impressions",
+	PaidImpressions: "paid_impressions",
 }
 
 // ProductItemCommerceInsightsFieldsList contains all available fields for ProductItemCommerceInsights objects

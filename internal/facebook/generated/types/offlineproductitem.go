@@ -4,20 +4,20 @@ package types
 
 // OfflineProductItem represents a Facebook OfflineProductItem object
 type OfflineProductItem struct {
-	Applinks                 *CatalogItemAppLinks    `json:"applinks"`
-	Brand                    string                  `json:"brand"`
-	Category                 string                  `json:"category"`
+	Applinks *CatalogItemAppLinks `json:"applinks"`
+	Brand string `json:"brand"`
+	Category string `json:"category"`
 	Category_specific_fields *CatalogSubVerticalList `json:"category_specific_fields"`
-	Currency                 string                  `json:"currency"`
-	Description              string                  `json:"description"`
-	Id                       string                  `json:"id"`
-	Image_fetch_status       string                  `json:"image_fetch_status"`
-	Image_url                string                  `json:"image_url"`
-	Images                   []string                `json:"images"`
-	Name                     string                  `json:"name"`
-	Offline_product_item_id  string                  `json:"offline_product_item_id"`
-	Price                    string                  `json:"price"`
-	Sanitized_images         []string                `json:"sanitized_images"`
-	Url                      string                  `json:"url"`
-	Visibility               string                  `json:"visibility"`
+	Currency string `json:"currency"`
+	Description string `json:"description"`
+	Id string `json:"id"`
+	Image_fetch_status string `json:"image_fetch_status"`
+	Image_url string `json:"image_url"`
+	Images []string `json:"images"`
+	Name string `json:"name"`
+	Offline_product_item_id string `json:"offline_product_item_id"`
+	Price string `json:"price"`
+	Sanitized_images []string `json:"sanitized_images"`
+	Url string `json:"url"`
+	Visibility string `json:"visibility"`
 }

@@ -4,21 +4,21 @@ package constants
 
 // InsightsResultFields contains field name constants for InsightsResult objects
 var InsightsResultFields = struct {
-	Description           string
+	Description string
 	DescriptionFromApiDoc string
-	Id                    string
-	Name                  string
-	Period                string
-	Title                 string
-	Values                string
+	Id string
+	Name string
+	Period string
+	Title string
+	Values string
 }{
-	Description:           "description",
+	Description: "description",
 	DescriptionFromApiDoc: "description_from_api_doc",
-	Id:                    "id",
-	Name:                  "name",
-	Period:                "period",
-	Title:                 "title",
-	Values:                "values",
+	Id: "id",
+	Name: "name",
+	Period: "period",
+	Title: "title",
+	Values: "values",
 }
 
 // InsightsResultFieldsList contains all available fields for InsightsResult objects

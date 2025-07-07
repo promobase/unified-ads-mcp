@@ -17,6 +17,7 @@ import (
 func GetEventTourTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// eventtour_get_ tool
 	// Available fields for EventTour: description, dominant_color, end_time, id, is_past, last_event_timestamp, name, num_events, photo, scheduled_publish_timestamp, start_time, ticketing_uri, video
 	eventtour_get_Tool := mcp.NewTool("eventtour_get_",
@@ -36,10 +37,12 @@ func GetEventTourTools() []mcp.Tool {
 	)
 	tools = append(tools, eventtour_get_Tool)
 
+
 	return tools
 }
 
 // EventTour handlers
+
 
 // HandleEventtour_get_ handles the eventtour_get_ tool with context-based auth
 func HandleEventtour_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleEventtour_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Eventtour_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleEventtour_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

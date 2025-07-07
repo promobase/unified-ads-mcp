@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-// ProductGroupClient provides methods for ProductGroup operations
+// ProductGroupClient represents a client for ProductGroup operations
 type ProductGroupClient struct {
 	accessToken string
 }
@@ -21,42 +21,42 @@ func NewProductGroupClient(accessToken string) *ProductGroupClient {
 	}
 }
 
-// productgroup_get_products GET products for ProductGroup
+
+// Productgroup_get_products performs GET products for ProductGroup
 func (c *ProductGroupClient) Productgroup_get_products(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/products")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -88,29 +88,24 @@ func (c *ProductGroupClient) Productgroup_get_products(args map[string]interface
 	return result, nil
 }
 
-// productgroup_post_products POST products for ProductGroup
+
+// Productgroup_post_products performs POST products for ProductGroup
 func (c *ProductGroupClient) Productgroup_post_products(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/products")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -142,24 +137,24 @@ func (c *ProductGroupClient) Productgroup_post_products(args map[string]interfac
 	return result, nil
 }
 
-// productgroup_delete_ DELETE  for ProductGroup
+
+// Productgroup_delete_ performs DELETE  for ProductGroup
 func (c *ProductGroupClient) Productgroup_delete_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -191,42 +186,42 @@ func (c *ProductGroupClient) Productgroup_delete_(args map[string]interface{}) (
 	return result, nil
 }
 
-// productgroup_get_ GET  for ProductGroup
+
+// Productgroup_get_ performs GET  for ProductGroup
 func (c *ProductGroupClient) Productgroup_get_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -258,24 +253,24 @@ func (c *ProductGroupClient) Productgroup_get_(args map[string]interface{}) (int
 	return result, nil
 }
 
-// productgroup_post_ POST  for ProductGroup
+
+// Productgroup_post_ performs POST  for ProductGroup
 func (c *ProductGroupClient) Productgroup_post_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -306,3 +301,4 @@ func (c *ProductGroupClient) Productgroup_post_(args map[string]interface{}) (in
 
 	return result, nil
 }
+

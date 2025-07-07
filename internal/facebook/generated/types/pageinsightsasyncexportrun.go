@@ -4,13 +4,13 @@ package types
 
 // PageInsightsAsyncExportRun represents a Facebook PageInsightsAsyncExportRun object
 type PageInsightsAsyncExportRun struct {
-	Data_level        string                   `json:"data_level"`
-	Filters           []map[string]interface{} `json:"filters"`
-	Format            string                   `json:"format"`
-	Gen_report_date   int                      `json:"gen_report_date"`
-	Id                string                   `json:"id"`
-	Report_end_date   int                      `json:"report_end_date"`
-	Report_start_date int                      `json:"report_start_date"`
-	Sorters           []map[string]interface{} `json:"sorters"`
-	Status            string                   `json:"status"`
+	Data_level string `json:"data_level"`
+	Filters []map[string]interface{} `json:"filters"`
+	Format string `json:"format"`
+	Gen_report_date int `json:"gen_report_date"`
+	Id string `json:"id"`
+	Report_end_date int `json:"report_end_date"`
+	Report_start_date int `json:"report_start_date"`
+	Sorters []map[string]interface{} `json:"sorters"`
+	Status string `json:"status"`
 }

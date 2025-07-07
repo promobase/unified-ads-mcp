@@ -17,6 +17,7 @@ import (
 func GetBusinessImageTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// businessimage_get_ tool
 	// Available fields for BusinessImage: business, creation_time, hash, height, id, media_library_url, name, url, url_128, width
 	businessimage_get_Tool := mcp.NewTool("businessimage_get_",
@@ -36,10 +37,12 @@ func GetBusinessImageTools() []mcp.Tool {
 	)
 	tools = append(tools, businessimage_get_Tool)
 
+
 	return tools
 }
 
 // BusinessImage handlers
+
 
 // HandleBusinessimage_get_ handles the businessimage_get_ tool with context-based auth
 func HandleBusinessimage_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleBusinessimage_get_(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Businessimage_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleBusinessimage_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

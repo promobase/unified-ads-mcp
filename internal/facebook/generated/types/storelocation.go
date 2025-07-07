@@ -4,12 +4,12 @@ package types
 
 // StoreLocation represents a Facebook StoreLocation object
 type StoreLocation struct {
-	Full_address   string                 `json:"full_address"`
-	Hours          map[string]interface{} `json:"hours"`
-	Id             string                 `json:"id"`
-	Phone_number   string                 `json:"phone_number"`
-	Pickup_options []string               `json:"pickup_options"`
-	Price_range    string                 `json:"price_range"`
-	Store_code     string                 `json:"store_code"`
-	Zip_code       string                 `json:"zip_code"`
+	Full_address string `json:"full_address"`
+	Hours map[string]interface{} `json:"hours"`
+	Id string `json:"id"`
+	Phone_number string `json:"phone_number"`
+	Pickup_options []string `json:"pickup_options"`
+	Price_range string `json:"price_range"`
+	Store_code string `json:"store_code"`
+	Zip_code string `json:"zip_code"`
 }

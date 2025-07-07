@@ -4,10 +4,10 @@ package constants
 
 // UserLeadGenFieldDataFields contains field name constants for UserLeadGenFieldData objects
 var UserLeadGenFieldDataFields = struct {
-	Name   string
+	Name string
 	Values string
 }{
-	Name:   "name",
+	Name: "name",
 	Values: "values",
 }
 

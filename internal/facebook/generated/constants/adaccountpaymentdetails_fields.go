@@ -4,18 +4,18 @@ package constants
 
 // AdAccountPaymentDetailsFields contains field name constants for AdAccountPaymentDetails objects
 var AdAccountPaymentDetailsFields = struct {
-	Amount           string
-	CreateDate       string
-	Id               string
+	Amount string
+	CreateDate string
+	Id string
 	LastActionStatus string
-	Metadata         string
+	Metadata string
 	PaymentDetailsId string
 }{
-	Amount:           "amount",
-	CreateDate:       "create_date",
-	Id:               "id",
+	Amount: "amount",
+	CreateDate: "create_date",
+	Id: "id",
 	LastActionStatus: "last_action_status",
-	Metadata:         "metadata",
+	Metadata: "metadata",
 	PaymentDetailsId: "payment_details_id",
 }
 

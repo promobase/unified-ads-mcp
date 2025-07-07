@@ -17,6 +17,7 @@ import (
 func GetFBImageCopyrightMatchTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// fbimagecopyrightmatch_get_ tool
 	// Available fields for FBImageCopyrightMatch: added_to_dashboard_time, applied_actions, audit_log, available_ui_actions, expiration_days, generic_match_data, id, is_business_page_match, last_modified_time, match_data, match_status, ownership_countries, reference_owner, time_to_appeal
 	fbimagecopyrightmatch_get_Tool := mcp.NewTool("fbimagecopyrightmatch_get_",
@@ -36,10 +37,12 @@ func GetFBImageCopyrightMatchTools() []mcp.Tool {
 	)
 	tools = append(tools, fbimagecopyrightmatch_get_Tool)
 
+
 	return tools
 }
 
 // FBImageCopyrightMatch handlers
+
 
 // HandleFbimagecopyrightmatch_get_ handles the fbimagecopyrightmatch_get_ tool with context-based auth
 func HandleFbimagecopyrightmatch_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleFbimagecopyrightmatch_get_(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Fbimagecopyrightmatch_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleFbimagecopyrightmatch_get_(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

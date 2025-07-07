@@ -4,39 +4,39 @@ package constants
 
 // SavedAudienceFields contains field name constants for SavedAudience objects
 var SavedAudienceFields = struct {
-	Account                      string
-	ApproximateCountLowerBound   string
-	ApproximateCountUpperBound   string
-	DeleteTime                   string
-	Description                  string
-	Id                           string
-	Name                         string
-	OperationStatus              string
-	OwnerBusiness                string
+	Account string
+	ApproximateCountLowerBound string
+	ApproximateCountUpperBound string
+	DeleteTime string
+	Description string
+	Id string
+	Name string
+	OperationStatus string
+	OwnerBusiness string
 	PageDeletionMarkedDeleteTime string
-	PermissionForActions         string
-	RunStatus                    string
-	SentenceLines                string
-	Targeting                    string
-	TimeCreated                  string
-	TimeUpdated                  string
+	PermissionForActions string
+	RunStatus string
+	SentenceLines string
+	Targeting string
+	TimeCreated string
+	TimeUpdated string
 }{
-	Account:                      "account",
-	ApproximateCountLowerBound:   "approximate_count_lower_bound",
-	ApproximateCountUpperBound:   "approximate_count_upper_bound",
-	DeleteTime:                   "delete_time",
-	Description:                  "description",
-	Id:                           "id",
-	Name:                         "name",
-	OperationStatus:              "operation_status",
-	OwnerBusiness:                "owner_business",
+	Account: "account",
+	ApproximateCountLowerBound: "approximate_count_lower_bound",
+	ApproximateCountUpperBound: "approximate_count_upper_bound",
+	DeleteTime: "delete_time",
+	Description: "description",
+	Id: "id",
+	Name: "name",
+	OperationStatus: "operation_status",
+	OwnerBusiness: "owner_business",
 	PageDeletionMarkedDeleteTime: "page_deletion_marked_delete_time",
-	PermissionForActions:         "permission_for_actions",
-	RunStatus:                    "run_status",
-	SentenceLines:                "sentence_lines",
-	Targeting:                    "targeting",
-	TimeCreated:                  "time_created",
-	TimeUpdated:                  "time_updated",
+	PermissionForActions: "permission_for_actions",
+	RunStatus: "run_status",
+	SentenceLines: "sentence_lines",
+	Targeting: "targeting",
+	TimeCreated: "time_created",
+	TimeUpdated: "time_updated",
 }
 
 // SavedAudienceFieldsList contains all available fields for SavedAudience objects

@@ -17,6 +17,7 @@ import (
 func GetShadowIGHashtagTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// shadowighashtag_get_recent_media tool
 	// Available fields for IGMedia: alt_text, boost_eligibility_info, caption, comments_count, copyright_check_information, id, ig_id, is_comment_enabled, is_shared_to_feed, legacy_instagram_media_id, like_count, media_product_type, media_type, media_url, owner, permalink, shortcode, thumbnail_url, timestamp, username, view_count
 	// Params object accepts: user_id (string)
@@ -26,9 +27,9 @@ func GetShadowIGHashtagTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"user_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "user_id parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: user_id (string) [required]"),
@@ -57,9 +58,9 @@ func GetShadowIGHashtagTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"user_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "user_id parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: user_id (string) [required]"),
@@ -98,10 +99,12 @@ func GetShadowIGHashtagTools() []mcp.Tool {
 	)
 	tools = append(tools, shadowighashtag_get_Tool)
 
+
 	return tools
 }
 
 // ShadowIGHashtag handlers
+
 
 // HandleShadowighashtag_get_recent_media handles the shadowighashtag_get_recent_media tool with context-based auth
 func HandleShadowighashtag_get_recent_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -156,6 +159,8 @@ func HandleShadowighashtag_get_recent_media(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Shadowighashtag_get_recent_media(args)
 	if err != nil {
@@ -170,6 +175,7 @@ func HandleShadowighashtag_get_recent_media(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleShadowighashtag_get_top_media handles the shadowighashtag_get_top_media tool with context-based auth
 func HandleShadowighashtag_get_top_media(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -224,6 +230,8 @@ func HandleShadowighashtag_get_top_media(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Shadowighashtag_get_top_media(args)
 	if err != nil {
@@ -238,6 +246,7 @@ func HandleShadowighashtag_get_top_media(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleShadowighashtag_get_ handles the shadowighashtag_get_ tool with context-based auth
 func HandleShadowighashtag_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -278,6 +287,8 @@ func HandleShadowighashtag_get_(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Shadowighashtag_get_(args)
 	if err != nil {
@@ -292,3 +303,4 @@ func HandleShadowighashtag_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

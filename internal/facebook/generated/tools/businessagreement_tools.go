@@ -17,6 +17,7 @@ import (
 func GetBusinessAgreementTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// businessagreement_get_ tool
 	// Available fields for BusinessAgreement: id, request_status
 	businessagreement_get_Tool := mcp.NewTool("businessagreement_get_",
@@ -43,13 +44,13 @@ func GetBusinessAgreementTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"asset_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "asset_id parameter",
 				},
 				"request_status": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "request_status parameter",
-					"enum":        []string{"APPROVE", "CANCELED", "DECLINE", "EXPIRED", "IN_PROGRESS", "PENDING", "PENDING_EMAIL_VERIFICATION", "PENDING_INTEGRITY_REVIEW"},
+					"enum": []string{ "APPROVE", "CANCELED", "DECLINE", "EXPIRED", "IN_PROGRESS", "PENDING", "PENDING_EMAIL_VERIFICATION", "PENDING_INTEGRITY_REVIEW" },
 				},
 			}),
 			mcp.Description("Parameters object containing: asset_id (integer), request_status (businessagreement_request_status) [APPROVE, CANCELED, DECLINE, EXPIRED, IN_PROGRESS, ...]"),
@@ -57,10 +58,12 @@ func GetBusinessAgreementTools() []mcp.Tool {
 	)
 	tools = append(tools, businessagreement_post_Tool)
 
+
 	return tools
 }
 
 // BusinessAgreement handlers
+
 
 // HandleBusinessagreement_get_ handles the businessagreement_get_ tool with context-based auth
 func HandleBusinessagreement_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -101,6 +104,8 @@ func HandleBusinessagreement_get_(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Businessagreement_get_(args)
 	if err != nil {
@@ -115,6 +120,7 @@ func HandleBusinessagreement_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusinessagreement_post_ handles the businessagreement_post_ tool with context-based auth
 func HandleBusinessagreement_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -142,6 +148,8 @@ func HandleBusinessagreement_post_(ctx context.Context, request mcp.CallToolRequ
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Businessagreement_post_(args)
 	if err != nil {
@@ -156,3 +164,4 @@ func HandleBusinessagreement_post_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

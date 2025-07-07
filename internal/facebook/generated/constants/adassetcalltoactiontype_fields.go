@@ -4,10 +4,10 @@ package constants
 
 // AdAssetCallToActionTypeFields contains field name constants for AdAssetCallToActionType objects
 var AdAssetCallToActionTypeFields = struct {
-	Id   string
+	Id string
 	Name string
 }{
-	Id:   "id",
+	Id: "id",
 	Name: "name",
 }
 

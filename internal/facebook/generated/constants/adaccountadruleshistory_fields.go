@@ -4,25 +4,25 @@ package constants
 
 // AdAccountAdRulesHistoryFields contains field name constants for AdAccountAdRulesHistory objects
 var AdAccountAdRulesHistoryFields = struct {
-	EvaluationSpec   string
-	ExceptionCode    string
+	EvaluationSpec string
+	ExceptionCode string
 	ExceptionMessage string
-	ExecutionSpec    string
-	IsManual         string
-	Results          string
-	RuleId           string
-	ScheduleSpec     string
-	Timestamp        string
+	ExecutionSpec string
+	IsManual string
+	Results string
+	RuleId string
+	ScheduleSpec string
+	Timestamp string
 }{
-	EvaluationSpec:   "evaluation_spec",
-	ExceptionCode:    "exception_code",
+	EvaluationSpec: "evaluation_spec",
+	ExceptionCode: "exception_code",
 	ExceptionMessage: "exception_message",
-	ExecutionSpec:    "execution_spec",
-	IsManual:         "is_manual",
-	Results:          "results",
-	RuleId:           "rule_id",
-	ScheduleSpec:     "schedule_spec",
-	Timestamp:        "timestamp",
+	ExecutionSpec: "execution_spec",
+	IsManual: "is_manual",
+	Results: "results",
+	RuleId: "rule_id",
+	ScheduleSpec: "schedule_spec",
+	Timestamp: "timestamp",
 }
 
 // AdAccountAdRulesHistoryFieldsList contains all available fields for AdAccountAdRulesHistory objects

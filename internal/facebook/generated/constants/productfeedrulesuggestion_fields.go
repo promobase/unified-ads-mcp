@@ -5,11 +5,11 @@ package constants
 // ProductFeedRuleSuggestionFields contains field name constants for ProductFeedRuleSuggestion objects
 var ProductFeedRuleSuggestionFields = struct {
 	Attribute string
-	Params    string
+	Params string
 	FieldType string
 }{
 	Attribute: "attribute",
-	Params:    "params",
+	Params: "params",
 	FieldType: "type",
 }
 

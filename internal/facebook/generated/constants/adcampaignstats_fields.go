@@ -4,55 +4,55 @@ package constants
 
 // AdCampaignStatsFields contains field name constants for AdCampaignStats objects
 var AdCampaignStatsFields = struct {
-	AccountId               string
-	Actions                 string
-	AdgroupId               string
-	CampaignId              string
-	CampaignIds             string
-	Clicks                  string
-	EndTime                 string
-	Id                      string
-	Impressions             string
-	InlineActions           string
-	IoNumber                string
-	IsCompleted             string
-	LineNumber              string
-	NewsfeedPosition        string
-	SocialClicks            string
-	SocialImpressions       string
-	SocialSpent             string
-	SocialUniqueClicks      string
+	AccountId string
+	Actions string
+	AdgroupId string
+	CampaignId string
+	CampaignIds string
+	Clicks string
+	EndTime string
+	Id string
+	Impressions string
+	InlineActions string
+	IoNumber string
+	IsCompleted string
+	LineNumber string
+	NewsfeedPosition string
+	SocialClicks string
+	SocialImpressions string
+	SocialSpent string
+	SocialUniqueClicks string
 	SocialUniqueImpressions string
-	Spent                   string
-	StartTime               string
-	ToplineId               string
-	UniqueClicks            string
-	UniqueImpressions       string
+	Spent string
+	StartTime string
+	ToplineId string
+	UniqueClicks string
+	UniqueImpressions string
 }{
-	AccountId:               "account_id",
-	Actions:                 "actions",
-	AdgroupId:               "adgroup_id",
-	CampaignId:              "campaign_id",
-	CampaignIds:             "campaign_ids",
-	Clicks:                  "clicks",
-	EndTime:                 "end_time",
-	Id:                      "id",
-	Impressions:             "impressions",
-	InlineActions:           "inline_actions",
-	IoNumber:                "io_number",
-	IsCompleted:             "is_completed",
-	LineNumber:              "line_number",
-	NewsfeedPosition:        "newsfeed_position",
-	SocialClicks:            "social_clicks",
-	SocialImpressions:       "social_impressions",
-	SocialSpent:             "social_spent",
-	SocialUniqueClicks:      "social_unique_clicks",
+	AccountId: "account_id",
+	Actions: "actions",
+	AdgroupId: "adgroup_id",
+	CampaignId: "campaign_id",
+	CampaignIds: "campaign_ids",
+	Clicks: "clicks",
+	EndTime: "end_time",
+	Id: "id",
+	Impressions: "impressions",
+	InlineActions: "inline_actions",
+	IoNumber: "io_number",
+	IsCompleted: "is_completed",
+	LineNumber: "line_number",
+	NewsfeedPosition: "newsfeed_position",
+	SocialClicks: "social_clicks",
+	SocialImpressions: "social_impressions",
+	SocialSpent: "social_spent",
+	SocialUniqueClicks: "social_unique_clicks",
 	SocialUniqueImpressions: "social_unique_impressions",
-	Spent:                   "spent",
-	StartTime:               "start_time",
-	ToplineId:               "topline_id",
-	UniqueClicks:            "unique_clicks",
-	UniqueImpressions:       "unique_impressions",
+	Spent: "spent",
+	StartTime: "start_time",
+	ToplineId: "topline_id",
+	UniqueClicks: "unique_clicks",
+	UniqueImpressions: "unique_impressions",
 }
 
 // AdCampaignStatsFieldsList contains all available fields for AdCampaignStats objects

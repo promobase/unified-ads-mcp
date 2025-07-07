@@ -4,10 +4,10 @@ package constants
 
 // FundingSourceDetailsCouponTieringFields contains field name constants for FundingSourceDetailsCouponTiering objects
 var FundingSourceDetailsCouponTieringFields = struct {
-	CouponTieringNew          string
+	CouponTieringNew string
 	CouponTieringReactivation string
 }{
-	CouponTieringNew:          "coupon_tiering_new",
+	CouponTieringNew: "coupon_tiering_new",
 	CouponTieringReactivation: "coupon_tiering_reactivation",
 }
 

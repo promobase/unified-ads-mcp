@@ -4,7 +4,7 @@ package types
 
 // IGShoppingReviewStatusReasonWithHelpMessage represents a Facebook IGShoppingReviewStatusReasonWithHelpMessage object
 type IGShoppingReviewStatusReasonWithHelpMessage struct {
-	Code     string `json:"code"`
+	Code string `json:"code"`
 	Help_url string `json:"help_url"`
-	Message  string `json:"message"`
+	Message string `json:"message"`
 }

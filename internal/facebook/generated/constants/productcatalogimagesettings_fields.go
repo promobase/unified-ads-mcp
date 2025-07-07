@@ -5,10 +5,10 @@ package constants
 // ProductCatalogImageSettingsFields contains field name constants for ProductCatalogImageSettings objects
 var ProductCatalogImageSettingsFields = struct {
 	CarouselAd string
-	SingleAd   string
+	SingleAd string
 }{
 	CarouselAd: "carousel_ad",
-	SingleAd:   "single_ad",
+	SingleAd: "single_ad",
 }
 
 // ProductCatalogImageSettingsFieldsList contains all available fields for ProductCatalogImageSettings objects

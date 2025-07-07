@@ -17,6 +17,7 @@ import (
 func GetPageUpcomingChangeTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// pageupcomingchange_get_ tool
 	// Available fields for PageUpcomingChange: change_type, effective_time, id, page, proposal, timer_status
 	pageupcomingchange_get_Tool := mcp.NewTool("pageupcomingchange_get_",
@@ -36,10 +37,12 @@ func GetPageUpcomingChangeTools() []mcp.Tool {
 	)
 	tools = append(tools, pageupcomingchange_get_Tool)
 
+
 	return tools
 }
 
 // PageUpcomingChange handlers
+
 
 // HandlePageupcomingchange_get_ handles the pageupcomingchange_get_ tool with context-based auth
 func HandlePageupcomingchange_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandlePageupcomingchange_get_(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Pageupcomingchange_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandlePageupcomingchange_get_(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

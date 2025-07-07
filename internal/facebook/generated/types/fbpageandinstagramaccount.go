@@ -4,9 +4,9 @@ package types
 
 // FBPageAndInstagramAccount represents a Facebook FBPageAndInstagramAccount object
 type FBPageAndInstagramAccount struct {
-	Ad_permissions       []string      `json:"ad_permissions"`
-	Bc_permission_status string        `json:"bc_permission_status"`
-	Bc_permissions       []interface{} `json:"bc_permissions"`
-	Is_managed           bool          `json:"is_managed"`
-	Matched_by           string        `json:"matched_by"`
+	Ad_permissions []string `json:"ad_permissions"`
+	Bc_permission_status string `json:"bc_permission_status"`
+	Bc_permissions []interface{} `json:"bc_permissions"`
+	Is_managed bool `json:"is_managed"`
+	Matched_by string `json:"matched_by"`
 }

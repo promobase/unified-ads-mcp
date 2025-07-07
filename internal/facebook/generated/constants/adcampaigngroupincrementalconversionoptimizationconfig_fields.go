@@ -4,27 +4,27 @@ package constants
 
 // AdCampaignGroupIncrementalConversionOptimizationConfigFields contains field name constants for AdCampaignGroupIncrementalConversionOptimizationConfig objects
 var AdCampaignGroupIncrementalConversionOptimizationConfigFields = struct {
-	ActionType       string
-	AdStudyEndTime   string
-	AdStudyId        string
-	AdStudyName      string
+	ActionType string
+	AdStudyEndTime string
+	AdStudyId string
+	AdStudyName string
 	AdStudyStartTime string
-	CellId           string
-	CellName         string
-	HoldoutSize      string
-	IcoType          string
-	Objectives       string
+	CellId string
+	CellName string
+	HoldoutSize string
+	IcoType string
+	Objectives string
 }{
-	ActionType:       "action_type",
-	AdStudyEndTime:   "ad_study_end_time",
-	AdStudyId:        "ad_study_id",
-	AdStudyName:      "ad_study_name",
+	ActionType: "action_type",
+	AdStudyEndTime: "ad_study_end_time",
+	AdStudyId: "ad_study_id",
+	AdStudyName: "ad_study_name",
 	AdStudyStartTime: "ad_study_start_time",
-	CellId:           "cell_id",
-	CellName:         "cell_name",
-	HoldoutSize:      "holdout_size",
-	IcoType:          "ico_type",
-	Objectives:       "objectives",
+	CellId: "cell_id",
+	CellName: "cell_name",
+	HoldoutSize: "holdout_size",
+	IcoType: "ico_type",
+	Objectives: "objectives",
 }
 
 // AdCampaignGroupIncrementalConversionOptimizationConfigFieldsList contains all available fields for AdCampaignGroupIncrementalConversionOptimizationConfig objects

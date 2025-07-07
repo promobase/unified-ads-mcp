@@ -4,10 +4,10 @@ package constants
 
 // VideoStatusErrorFields contains field name constants for VideoStatusError objects
 var VideoStatusErrorFields = struct {
-	Code    string
+	Code string
 	Message string
 }{
-	Code:    "code",
+	Code: "code",
 	Message: "message",
 }
 

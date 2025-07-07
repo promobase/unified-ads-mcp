@@ -5,13 +5,13 @@ package constants
 // AssignedUserFields contains field name constants for AssignedUser objects
 var AssignedUserFields = struct {
 	Business string
-	Id       string
-	Name     string
+	Id string
+	Name string
 	UserType string
 }{
 	Business: "business",
-	Id:       "id",
-	Name:     "name",
+	Id: "id",
+	Name: "name",
 	UserType: "user_type",
 }
 

@@ -4,19 +4,19 @@ package constants
 
 // CommerceMerchantSettingsSetupStatusFields contains field name constants for CommerceMerchantSettingsSetupStatus objects
 var CommerceMerchantSettingsSetupStatusFields = struct {
-	DealsSetup                       string
-	MarketplaceApprovalStatus        string
+	DealsSetup string
+	MarketplaceApprovalStatus string
 	MarketplaceApprovalStatusDetails string
-	PaymentSetup                     string
-	ReviewStatus                     string
-	ShopSetup                        string
+	PaymentSetup string
+	ReviewStatus string
+	ShopSetup string
 }{
-	DealsSetup:                       "deals_setup",
-	MarketplaceApprovalStatus:        "marketplace_approval_status",
+	DealsSetup: "deals_setup",
+	MarketplaceApprovalStatus: "marketplace_approval_status",
 	MarketplaceApprovalStatusDetails: "marketplace_approval_status_details",
-	PaymentSetup:                     "payment_setup",
-	ReviewStatus:                     "review_status",
-	ShopSetup:                        "shop_setup",
+	PaymentSetup: "payment_setup",
+	ReviewStatus: "review_status",
+	ShopSetup: "shop_setup",
 }
 
 // CommerceMerchantSettingsSetupStatusFieldsList contains all available fields for CommerceMerchantSettingsSetupStatus objects

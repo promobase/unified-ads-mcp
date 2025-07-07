@@ -4,31 +4,31 @@ package constants
 
 // ALMEventFields contains field name constants for ALMEvent objects
 var ALMEventFields = struct {
-	AdAccountIds        string
-	CampaignIds         string
-	Channel             string
-	Event               string
-	EventTime           string
-	Guidance            string
-	GuidanceDetail      string
-	Id                  string
+	AdAccountIds string
+	CampaignIds string
+	Channel string
+	Event string
+	EventTime string
+	Guidance string
+	GuidanceDetail string
+	Id string
 	ParentAdvertiserIds string
-	ResellerBusinessId  string
-	SubChannel          string
-	UserId              string
+	ResellerBusinessId string
+	SubChannel string
+	UserId string
 }{
-	AdAccountIds:        "ad_account_ids",
-	CampaignIds:         "campaign_ids",
-	Channel:             "channel",
-	Event:               "event",
-	EventTime:           "event_time",
-	Guidance:            "guidance",
-	GuidanceDetail:      "guidance_detail",
-	Id:                  "id",
+	AdAccountIds: "ad_account_ids",
+	CampaignIds: "campaign_ids",
+	Channel: "channel",
+	Event: "event",
+	EventTime: "event_time",
+	Guidance: "guidance",
+	GuidanceDetail: "guidance_detail",
+	Id: "id",
 	ParentAdvertiserIds: "parent_advertiser_ids",
-	ResellerBusinessId:  "reseller_business_id",
-	SubChannel:          "sub_channel",
-	UserId:              "user_id",
+	ResellerBusinessId: "reseller_business_id",
+	SubChannel: "sub_channel",
+	UserId: "user_id",
 }
 
 // ALMEventFieldsList contains all available fields for ALMEvent objects

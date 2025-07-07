@@ -4,10 +4,10 @@ package constants
 
 // StoreCatalogSettingsFields contains field name constants for StoreCatalogSettings objects
 var StoreCatalogSettingsFields = struct {
-	Id   string
+	Id string
 	Page string
 }{
-	Id:   "id",
+	Id: "id",
 	Page: "page",
 }
 

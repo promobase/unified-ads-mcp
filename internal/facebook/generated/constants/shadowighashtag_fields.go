@@ -4,10 +4,10 @@ package constants
 
 // ShadowIGHashtagFields contains field name constants for ShadowIGHashtag objects
 var ShadowIGHashtagFields = struct {
-	Id   string
+	Id string
 	Name string
 }{
-	Id:   "id",
+	Id: "id",
 	Name: "name",
 }
 

@@ -4,15 +4,15 @@ package constants
 
 // VideoStatusPublishingPhaseFields contains field name constants for VideoStatusPublishingPhase objects
 var VideoStatusPublishingPhaseFields = struct {
-	Errors        string
+	Errors string
 	PublishStatus string
-	PublishTime   string
-	Status        string
+	PublishTime string
+	Status string
 }{
-	Errors:        "errors",
+	Errors: "errors",
 	PublishStatus: "publish_status",
-	PublishTime:   "publish_time",
-	Status:        "status",
+	PublishTime: "publish_time",
+	Status: "status",
 }
 
 // VideoStatusPublishingPhaseFieldsList contains all available fields for VideoStatusPublishingPhase objects

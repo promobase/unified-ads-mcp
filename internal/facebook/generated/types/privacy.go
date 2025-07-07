@@ -4,10 +4,10 @@ package types
 
 // Privacy represents a Facebook Privacy object
 type Privacy struct {
-	Allow       string `json:"allow"`
-	Deny        string `json:"deny"`
+	Allow string `json:"allow"`
+	Deny string `json:"deny"`
 	Description string `json:"description"`
-	Friends     string `json:"friends"`
-	Networks    string `json:"networks"`
-	Value       string `json:"value"`
+	Friends string `json:"friends"`
+	Networks string `json:"networks"`
+	Value string `json:"value"`
 }

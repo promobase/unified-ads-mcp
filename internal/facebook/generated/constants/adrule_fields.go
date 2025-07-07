@@ -4,29 +4,29 @@ package constants
 
 // AdRuleFields contains field name constants for AdRule objects
 var AdRuleFields = struct {
-	AccountId        string
-	CreatedBy        string
-	CreatedTime      string
+	AccountId string
+	CreatedBy string
+	CreatedTime string
 	DisableErrorCode string
-	EvaluationSpec   string
-	ExecutionSpec    string
-	Id               string
-	Name             string
-	ScheduleSpec     string
-	Status           string
-	UpdatedTime      string
+	EvaluationSpec string
+	ExecutionSpec string
+	Id string
+	Name string
+	ScheduleSpec string
+	Status string
+	UpdatedTime string
 }{
-	AccountId:        "account_id",
-	CreatedBy:        "created_by",
-	CreatedTime:      "created_time",
+	AccountId: "account_id",
+	CreatedBy: "created_by",
+	CreatedTime: "created_time",
 	DisableErrorCode: "disable_error_code",
-	EvaluationSpec:   "evaluation_spec",
-	ExecutionSpec:    "execution_spec",
-	Id:               "id",
-	Name:             "name",
-	ScheduleSpec:     "schedule_spec",
-	Status:           "status",
-	UpdatedTime:      "updated_time",
+	EvaluationSpec: "evaluation_spec",
+	ExecutionSpec: "execution_spec",
+	Id: "id",
+	Name: "name",
+	ScheduleSpec: "schedule_spec",
+	Status: "status",
+	UpdatedTime: "updated_time",
 }
 
 // AdRuleFieldsList contains all available fields for AdRule objects

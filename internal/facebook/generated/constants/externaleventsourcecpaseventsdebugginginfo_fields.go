@@ -4,13 +4,13 @@ package constants
 
 // ExternalEventSourceCPASEventsDebuggingInfoFields contains field name constants for ExternalEventSourceCPASEventsDebuggingInfo objects
 var ExternalEventSourceCPASEventsDebuggingInfoFields = struct {
-	Counts     string
+	Counts string
 	Diagnostic string
-	EventName  string
+	EventName string
 }{
-	Counts:     "counts",
+	Counts: "counts",
 	Diagnostic: "diagnostic",
-	EventName:  "event_name",
+	EventName: "event_name",
 }
 
 // ExternalEventSourceCPASEventsDebuggingInfoFieldsList contains all available fields for ExternalEventSourceCPASEventsDebuggingInfo objects

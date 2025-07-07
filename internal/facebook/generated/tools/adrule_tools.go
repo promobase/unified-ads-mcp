@@ -17,6 +17,7 @@ import (
 func GetAdRuleTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// adrule_post_execute tool
 	adrule_post_executeTool := mcp.NewTool("adrule_post_execute",
 		mcp.WithDescription("POST execute for AdRule"),
@@ -31,16 +32,16 @@ func GetAdRuleTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"action": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "action parameter",
-					"enum":        []string{"BUDGET_NOT_REDISTRIBUTED", "CHANGED_BID", "CHANGED_BUDGET", "CONSOLIDATE_ASC_FRAGMENTATION", "CONSOLIDATE_FRAGMENTATION", "CONVERT_ASC_CP_SINGLE_INSTANCE", "EMAIL", "ENABLE_ADVANTAGE_CAMPAIGN_BUDGET", "ENABLE_ADVANTAGE_PLUS_AUDIENCE", "ENABLE_ADVANTAGE_PLUS_CREATIVE", "ENABLE_ADVANTAGE_PLUS_PLACEMENTS", "ENABLE_AUTOFLOW", "ENABLE_GEN_UNCROP", "ENABLE_LANDING_PAGE_VIEWS", "ENABLE_MUSIC", "ENABLE_REELS_PLACEMENTS", "ENABLE_SEMANTIC_BASED_AUDIENCE_EXPANSION", "ENABLE_SHOPS_ADS", "ENDPOINT_PINGED", "ERROR", "FACEBOOK_NOTIFICATION_SENT", "MESSAGE_SENT", "NOT_CHANGED", "PAUSED", "UNPAUSED"},
+					"enum": []string{ "BUDGET_NOT_REDISTRIBUTED", "CHANGED_BID", "CHANGED_BUDGET", "CONSOLIDATE_ASC_FRAGMENTATION", "CONSOLIDATE_FRAGMENTATION", "CONVERT_ASC_CP_SINGLE_INSTANCE", "EMAIL", "ENABLE_ADVANTAGE_CAMPAIGN_BUDGET", "ENABLE_ADVANTAGE_PLUS_AUDIENCE", "ENABLE_ADVANTAGE_PLUS_CREATIVE", "ENABLE_ADVANTAGE_PLUS_PLACEMENTS", "ENABLE_AUTOFLOW", "ENABLE_GEN_UNCROP", "ENABLE_LANDING_PAGE_VIEWS", "ENABLE_MUSIC", "ENABLE_REELS_PLACEMENTS", "ENABLE_SEMANTIC_BASED_AUDIENCE_EXPANSION", "ENABLE_SHOPS_ADS", "ENDPOINT_PINGED", "ERROR", "FACEBOOK_NOTIFICATION_SENT", "MESSAGE_SENT", "NOT_CHANGED", "PAUSED", "UNPAUSED" },
 				},
 				"hide_no_changes": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "hide_no_changes parameter",
 				},
 				"object_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "object_id parameter",
 				},
 			}),
@@ -99,25 +100,25 @@ func GetAdRuleTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"evaluation_spec": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "evaluation_spec parameter",
 				},
 				"execution_spec": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "execution_spec parameter",
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
 				},
 				"schedule_spec": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "schedule_spec parameter",
 				},
 				"status": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "status parameter",
-					"enum":        []string{"DELETED", "DISABLED", "ENABLED", "HAS_ISSUES"},
+					"enum": []string{ "DELETED", "DISABLED", "ENABLED", "HAS_ISSUES" },
 				},
 			}),
 			mcp.Description("Parameters object containing: evaluation_spec (object), execution_spec (object), name (string), schedule_spec (object), status (adrule_status) [DELETED, DISABLED, ENABLED, HAS_ISSUES]"),
@@ -125,10 +126,12 @@ func GetAdRuleTools() []mcp.Tool {
 	)
 	tools = append(tools, adrule_post_Tool)
 
+
 	return tools
 }
 
 // AdRule handlers
+
 
 // HandleAdrule_post_execute handles the adrule_post_execute tool with context-based auth
 func HandleAdrule_post_execute(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -144,6 +147,8 @@ func HandleAdrule_post_execute(ctx context.Context, request mcp.CallToolRequest)
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
 	result, err := client.Adrule_post_execute(args)
 	if err != nil {
@@ -158,6 +163,7 @@ func HandleAdrule_post_execute(ctx context.Context, request mcp.CallToolRequest)
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdrule_get_history handles the adrule_get_history tool with context-based auth
 func HandleAdrule_get_history(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -210,6 +216,8 @@ func HandleAdrule_get_history(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adrule_get_history(args)
 	if err != nil {
@@ -225,6 +233,7 @@ func HandleAdrule_get_history(ctx context.Context, request mcp.CallToolRequest) 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
+
 // HandleAdrule_post_preview handles the adrule_post_preview tool with context-based auth
 func HandleAdrule_post_preview(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -238,6 +247,8 @@ func HandleAdrule_post_preview(ctx context.Context, request mcp.CallToolRequest)
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+
 
 	// Call the client method
 	result, err := client.Adrule_post_preview(args)
@@ -254,6 +265,7 @@ func HandleAdrule_post_preview(ctx context.Context, request mcp.CallToolRequest)
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
+
 // HandleAdrule_delete_ handles the adrule_delete_ tool with context-based auth
 func HandleAdrule_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -267,6 +279,8 @@ func HandleAdrule_delete_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+
 
 	// Call the client method
 	result, err := client.Adrule_delete_(args)
@@ -282,6 +296,7 @@ func HandleAdrule_delete_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdrule_get_ handles the adrule_get_ tool with context-based auth
 func HandleAdrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -322,6 +337,8 @@ func HandleAdrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adrule_get_(args)
 	if err != nil {
@@ -336,6 +353,7 @@ func HandleAdrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdrule_post_ handles the adrule_post_ tool with context-based auth
 func HandleAdrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -363,6 +381,8 @@ func HandleAdrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adrule_post_(args)
 	if err != nil {
@@ -377,3 +397,4 @@ func HandleAdrule_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

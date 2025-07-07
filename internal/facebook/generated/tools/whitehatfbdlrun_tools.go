@@ -17,6 +17,7 @@ import (
 func GetWhitehatFBDLRunTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// whitehatfbdlrun_get_ tool
 	// Available fields for WhitehatFBDLRun: creation_time, id, is_pinned, note, result, run_code, status, user_type
 	whitehatfbdlrun_get_Tool := mcp.NewTool("whitehatfbdlrun_get_",
@@ -36,10 +37,12 @@ func GetWhitehatFBDLRunTools() []mcp.Tool {
 	)
 	tools = append(tools, whitehatfbdlrun_get_Tool)
 
+
 	return tools
 }
 
 // WhitehatFBDLRun handlers
+
 
 // HandleWhitehatfbdlrun_get_ handles the whitehatfbdlrun_get_ tool with context-based auth
 func HandleWhitehatfbdlrun_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleWhitehatfbdlrun_get_(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Whitehatfbdlrun_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleWhitehatfbdlrun_get_(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

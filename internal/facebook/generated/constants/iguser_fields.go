@@ -4,45 +4,45 @@ package constants
 
 // IGUserFields contains field name constants for IGUser objects
 var IGUserFields = struct {
-	Biography                     string
-	BusinessDiscovery             string
-	FollowersCount                string
-	FollowsCount                  string
-	HasProfilePic                 string
-	Id                            string
-	IgId                          string
-	IsPublished                   string
-	LegacyInstagramUserId         string
-	MediaCount                    string
-	MentionedComment              string
-	MentionedMedia                string
-	Name                          string
-	OwnerBusiness                 string
-	ProfilePictureUrl             string
+	Biography string
+	BusinessDiscovery string
+	FollowersCount string
+	FollowsCount string
+	HasProfilePic string
+	Id string
+	IgId string
+	IsPublished string
+	LegacyInstagramUserId string
+	MediaCount string
+	MentionedComment string
+	MentionedMedia string
+	Name string
+	OwnerBusiness string
+	ProfilePictureUrl string
 	ShoppingProductTagEligibility string
-	ShoppingReviewStatus          string
-	Username                      string
-	Website                       string
+	ShoppingReviewStatus string
+	Username string
+	Website string
 }{
-	Biography:                     "biography",
-	BusinessDiscovery:             "business_discovery",
-	FollowersCount:                "followers_count",
-	FollowsCount:                  "follows_count",
-	HasProfilePic:                 "has_profile_pic",
-	Id:                            "id",
-	IgId:                          "ig_id",
-	IsPublished:                   "is_published",
-	LegacyInstagramUserId:         "legacy_instagram_user_id",
-	MediaCount:                    "media_count",
-	MentionedComment:              "mentioned_comment",
-	MentionedMedia:                "mentioned_media",
-	Name:                          "name",
-	OwnerBusiness:                 "owner_business",
-	ProfilePictureUrl:             "profile_picture_url",
+	Biography: "biography",
+	BusinessDiscovery: "business_discovery",
+	FollowersCount: "followers_count",
+	FollowsCount: "follows_count",
+	HasProfilePic: "has_profile_pic",
+	Id: "id",
+	IgId: "ig_id",
+	IsPublished: "is_published",
+	LegacyInstagramUserId: "legacy_instagram_user_id",
+	MediaCount: "media_count",
+	MentionedComment: "mentioned_comment",
+	MentionedMedia: "mentioned_media",
+	Name: "name",
+	OwnerBusiness: "owner_business",
+	ProfilePictureUrl: "profile_picture_url",
 	ShoppingProductTagEligibility: "shopping_product_tag_eligibility",
-	ShoppingReviewStatus:          "shopping_review_status",
-	Username:                      "username",
-	Website:                       "website",
+	ShoppingReviewStatus: "shopping_review_status",
+	Username: "username",
+	Website: "website",
 }
 
 // IGUserFieldsList contains all available fields for IGUser objects

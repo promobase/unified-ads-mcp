@@ -5,10 +5,10 @@ package constants
 // FinanceObjectFields contains field name constants for FinanceObject objects
 var FinanceObjectFields = struct {
 	FinancePermission string
-	User              string
+	User string
 }{
 	FinancePermission: "finance_permission",
-	User:              "user",
+	User: "user",
 }
 
 // FinanceObjectFieldsList contains all available fields for FinanceObject objects

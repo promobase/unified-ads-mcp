@@ -4,7 +4,7 @@ package types
 
 // Organization represents a Facebook Organization object
 type Organization struct {
-	Id                string    `json:"id"`
-	Legal_entity_name string    `json:"legal_entity_name"`
-	Owner_business    *Business `json:"owner_business"`
+	Id string `json:"id"`
+	Legal_entity_name string `json:"legal_entity_name"`
+	Owner_business *Business `json:"owner_business"`
 }

@@ -4,6 +4,6 @@ package types
 
 // RevSharePolicy represents a Facebook RevSharePolicy object
 type RevSharePolicy struct {
-	Policy_id   string `json:"policy_id"`
+	Policy_id string `json:"policy_id"`
 	Policy_name string `json:"policy_name"`
 }

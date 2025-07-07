@@ -4,6 +4,6 @@ package types
 
 // CustomAudienceSharingStatus represents a Facebook CustomAudienceSharingStatus object
 type CustomAudienceSharingStatus struct {
-	Sharing_relationship_id int    `json:"sharing_relationship_id"`
-	Status                  string `json:"status"`
+	Sharing_relationship_id int `json:"sharing_relationship_id"`
+	Status string `json:"status"`
 }

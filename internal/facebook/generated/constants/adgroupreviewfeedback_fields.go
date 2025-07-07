@@ -4,10 +4,10 @@ package constants
 
 // AdgroupReviewFeedbackFields contains field name constants for AdgroupReviewFeedback objects
 var AdgroupReviewFeedbackFields = struct {
-	Global            string
+	Global string
 	PlacementSpecific string
 }{
-	Global:            "global",
+	Global: "global",
 	PlacementSpecific: "placement_specific",
 }
 

@@ -5,12 +5,12 @@ package constants
 // ProductCatalogImageSettingsInternalFields contains field name constants for ProductCatalogImageSettingsInternal objects
 var ProductCatalogImageSettingsInternalFields = struct {
 	CarouselAd string
-	ShopsPdp   string
-	SingleAd   string
+	ShopsPdp string
+	SingleAd string
 }{
 	CarouselAd: "carousel_ad",
-	ShopsPdp:   "shops_pdp",
-	SingleAd:   "single_ad",
+	ShopsPdp: "shops_pdp",
+	SingleAd: "single_ad",
 }
 
 // ProductCatalogImageSettingsInternalFieldsList contains all available fields for ProductCatalogImageSettingsInternal objects

@@ -4,15 +4,15 @@ package constants
 
 // UserAvailableCatalogsFields contains field name constants for UserAvailableCatalogs objects
 var UserAvailableCatalogsFields = struct {
-	CatalogId    string
-	CatalogName  string
+	CatalogId string
+	CatalogName string
 	ProductCount string
-	ShopName     string
+	ShopName string
 }{
-	CatalogId:    "catalog_id",
-	CatalogName:  "catalog_name",
+	CatalogId: "catalog_id",
+	CatalogName: "catalog_name",
 	ProductCount: "product_count",
-	ShopName:     "shop_name",
+	ShopName: "shop_name",
 }
 
 // UserAvailableCatalogsFieldsList contains all available fields for UserAvailableCatalogs objects

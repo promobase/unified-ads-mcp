@@ -5,28 +5,28 @@ package constants
 // BusinessCreativeFields contains field name constants for BusinessCreative objects
 var BusinessCreativeFields = struct {
 	CreationTime string
-	Duration     string
-	Hash         string
-	Height       string
-	Id           string
-	Name         string
-	Thumbnail    string
-	FieldType    string
-	Url          string
-	VideoId      string
-	Width        string
+	Duration string
+	Hash string
+	Height string
+	Id string
+	Name string
+	Thumbnail string
+	FieldType string
+	Url string
+	VideoId string
+	Width string
 }{
 	CreationTime: "creation_time",
-	Duration:     "duration",
-	Hash:         "hash",
-	Height:       "height",
-	Id:           "id",
-	Name:         "name",
-	Thumbnail:    "thumbnail",
-	FieldType:    "type",
-	Url:          "url",
-	VideoId:      "video_id",
-	Width:        "width",
+	Duration: "duration",
+	Hash: "hash",
+	Height: "height",
+	Id: "id",
+	Name: "name",
+	Thumbnail: "thumbnail",
+	FieldType: "type",
+	Url: "url",
+	VideoId: "video_id",
+	Width: "width",
 }
 
 // BusinessCreativeFieldsList contains all available fields for BusinessCreative objects

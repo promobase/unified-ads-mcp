@@ -4,9 +4,9 @@ package types
 
 // PageAboutStoryComposedBlock represents a Facebook PageAboutStoryComposedBlock object
 type PageAboutStoryComposedBlock struct {
-	Depth               int                                       `json:"depth"`
-	Entity_ranges       []PageAboutStoryComposedBlockEntityRanges `json:"entity_ranges"`
-	Inline_style_ranges []PageAboutStoryComposedBlockInlineStyle  `json:"inline_style_ranges"`
-	Text                string                                    `json:"text"`
-	Type_               string                                    `json:"type"`
+	Depth int `json:"depth"`
+	Entity_ranges []PageAboutStoryComposedBlockEntityRanges `json:"entity_ranges"`
+	Inline_style_ranges []PageAboutStoryComposedBlockInlineStyle `json:"inline_style_ranges"`
+	Text string `json:"text"`
+	Type_ string `json:"type"`
 }

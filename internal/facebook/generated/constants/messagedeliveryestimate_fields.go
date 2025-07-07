@@ -4,25 +4,25 @@ package constants
 
 // MessageDeliveryEstimateFields contains field name constants for MessageDeliveryEstimate objects
 var MessageDeliveryEstimateFields = struct {
-	EstimateCost               string
-	EstimateCostLowerBound     string
-	EstimateCostUpperBound     string
+	EstimateCost string
+	EstimateCostLowerBound string
+	EstimateCostUpperBound string
 	EstimateCoverageLowerBound string
 	EstimateCoverageUpperBound string
-	EstimateDelivery           string
+	EstimateDelivery string
 	EstimateDeliveryLowerBound string
 	EstimateDeliveryUpperBound string
-	EstimateStatus             string
+	EstimateStatus string
 }{
-	EstimateCost:               "estimate_cost",
-	EstimateCostLowerBound:     "estimate_cost_lower_bound",
-	EstimateCostUpperBound:     "estimate_cost_upper_bound",
+	EstimateCost: "estimate_cost",
+	EstimateCostLowerBound: "estimate_cost_lower_bound",
+	EstimateCostUpperBound: "estimate_cost_upper_bound",
 	EstimateCoverageLowerBound: "estimate_coverage_lower_bound",
 	EstimateCoverageUpperBound: "estimate_coverage_upper_bound",
-	EstimateDelivery:           "estimate_delivery",
+	EstimateDelivery: "estimate_delivery",
 	EstimateDeliveryLowerBound: "estimate_delivery_lower_bound",
 	EstimateDeliveryUpperBound: "estimate_delivery_upper_bound",
-	EstimateStatus:             "estimate_status",
+	EstimateStatus: "estimate_status",
 }
 
 // MessageDeliveryEstimateFieldsList contains all available fields for MessageDeliveryEstimate objects

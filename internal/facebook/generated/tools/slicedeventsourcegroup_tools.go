@@ -17,6 +17,7 @@ import (
 func GetSlicedEventSourceGroupTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// slicedeventsourcegroup_get_ tool
 	// Available fields for SlicedEventSourceGroup: event_source_group, filter, id, name
 	slicedeventsourcegroup_get_Tool := mcp.NewTool("slicedeventsourcegroup_get_",
@@ -36,10 +37,12 @@ func GetSlicedEventSourceGroupTools() []mcp.Tool {
 	)
 	tools = append(tools, slicedeventsourcegroup_get_Tool)
 
+
 	return tools
 }
 
 // SlicedEventSourceGroup handlers
+
 
 // HandleSlicedeventsourcegroup_get_ handles the slicedeventsourcegroup_get_ tool with context-based auth
 func HandleSlicedeventsourcegroup_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleSlicedeventsourcegroup_get_(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Slicedeventsourcegroup_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleSlicedeventsourcegroup_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -17,6 +17,7 @@ import (
 func GetVideoListTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// videolist_get_videos tool
 	// Available fields for AdVideo: ad_breaks, admin_creator, audio_isrc, backdated_time, backdated_time_granularity, boost_eligibility_info, content_category, content_tags, copyright, copyright_check_information, copyright_monitoring_status, created_time, custom_labels, description, embed_html, embeddable, event, expiration, format, from, icon, id, is_crosspost_video, is_crossposting_eligible, is_episode, is_instagram_eligible, is_reference_only, length, live_audience_count, live_status, music_video_copyright, permalink_url, picture, place, post_id, post_views, premiere_living_room_status, privacy, published, scheduled_publish_time, source, spherical, status, title, universal_video_id, updated_time, views
 	videolist_get_videosTool := mcp.NewTool("videolist_get_videos",
@@ -55,10 +56,12 @@ func GetVideoListTools() []mcp.Tool {
 	)
 	tools = append(tools, videolist_get_Tool)
 
+
 	return tools
 }
 
 // VideoList handlers
+
 
 // HandleVideolist_get_videos handles the videolist_get_videos tool with context-based auth
 func HandleVideolist_get_videos(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -99,6 +102,8 @@ func HandleVideolist_get_videos(ctx context.Context, request mcp.CallToolRequest
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Videolist_get_videos(args)
 	if err != nil {
@@ -113,6 +118,7 @@ func HandleVideolist_get_videos(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleVideolist_get_ handles the videolist_get_ tool with context-based auth
 func HandleVideolist_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -153,6 +159,8 @@ func HandleVideolist_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Videolist_get_(args)
 	if err != nil {
@@ -167,3 +175,4 @@ func HandleVideolist_get_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -4,13 +4,13 @@ package constants
 
 // RichMediaElementFields contains field name constants for RichMediaElement objects
 var RichMediaElementFields = struct {
-	Element     string
+	Element string
 	ElementType string
-	Name        string
+	Name string
 }{
-	Element:     "element",
+	Element: "element",
 	ElementType: "element_type",
-	Name:        "name",
+	Name: "name",
 }
 
 // RichMediaElementFieldsList contains all available fields for RichMediaElement objects

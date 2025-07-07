@@ -17,6 +17,7 @@ import (
 func GetProductCatalogLocalizationSettingsTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// productcataloglocalizationsettings_get_ tool
 	// Available fields for ProductCatalogLocalizationSettings: default_country, default_language, id
 	productcataloglocalizationsettings_get_Tool := mcp.NewTool("productcataloglocalizationsettings_get_",
@@ -36,10 +37,12 @@ func GetProductCatalogLocalizationSettingsTools() []mcp.Tool {
 	)
 	tools = append(tools, productcataloglocalizationsettings_get_Tool)
 
+
 	return tools
 }
 
 // ProductCatalogLocalizationSettings handlers
+
 
 // HandleProductcataloglocalizationsettings_get_ handles the productcataloglocalizationsettings_get_ tool with context-based auth
 func HandleProductcataloglocalizationsettings_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleProductcataloglocalizationsettings_get_(ctx context.Context, request 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productcataloglocalizationsettings_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleProductcataloglocalizationsettings_get_(ctx context.Context, request 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

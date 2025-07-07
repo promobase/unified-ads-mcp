@@ -4,14 +4,14 @@ package constants
 
 // CatalogItemOverrideFields contains field name constants for CatalogItemOverride objects
 var CatalogItemOverrideFields = struct {
-	Id            string
-	LocalInfo     string
-	OverrideType  string
+	Id string
+	LocalInfo string
+	OverrideType string
 	OverrideValue string
 }{
-	Id:            "id",
-	LocalInfo:     "local_info",
-	OverrideType:  "override_type",
+	Id: "id",
+	LocalInfo: "local_info",
+	OverrideType: "override_type",
 	OverrideValue: "override_value",
 }
 

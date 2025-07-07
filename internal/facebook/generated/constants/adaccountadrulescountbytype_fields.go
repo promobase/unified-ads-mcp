@@ -4,10 +4,10 @@ package constants
 
 // AdAccountAdRulesCountByTypeFields contains field name constants for AdAccountAdRulesCountByType objects
 var AdAccountAdRulesCountByTypeFields = struct {
-	Count          string
+	Count string
 	EvaluationType string
 }{
-	Count:          "count",
+	Count: "count",
 	EvaluationType: "evaluation_type",
 }
 

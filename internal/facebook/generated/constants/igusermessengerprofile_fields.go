@@ -4,10 +4,10 @@ package constants
 
 // IGUserMessengerProfileFields contains field name constants for IGUserMessengerProfile objects
 var IGUserMessengerProfileFields = struct {
-	IceBreakers    string
+	IceBreakers string
 	PersistentMenu string
 }{
-	IceBreakers:    "ice_breakers",
+	IceBreakers: "ice_breakers",
 	PersistentMenu: "persistent_menu",
 }
 

@@ -4,9 +4,9 @@ package types
 
 // FundingSourceDetails represents a Facebook FundingSourceDetails object
 type FundingSourceDetails struct {
-	Coupon         *FundingSourceDetailsCoupon  `json:"coupon"`
-	Coupons        []FundingSourceDetailsCoupon `json:"coupons"`
-	Display_string string                       `json:"display_string"`
-	Id             string                       `json:"id"`
-	Type_          int                          `json:"type"`
+	Coupon *FundingSourceDetailsCoupon `json:"coupon"`
+	Coupons []FundingSourceDetailsCoupon `json:"coupons"`
+	Display_string string `json:"display_string"`
+	Id string `json:"id"`
+	Type_ int `json:"type"`
 }

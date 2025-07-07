@@ -4,6 +4,6 @@ package types
 
 // AdAccountOptimizationGoalsAEMv2Eligibility represents a Facebook AdAccountOptimizationGoalsAEMv2Eligibility object
 type AdAccountOptimizationGoalsAEMv2Eligibility struct {
-	Is_disabled       bool   `json:"is_disabled"`
+	Is_disabled bool `json:"is_disabled"`
 	Optimization_goal string `json:"optimization_goal"`
 }

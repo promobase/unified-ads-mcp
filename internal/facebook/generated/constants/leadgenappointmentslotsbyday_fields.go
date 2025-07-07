@@ -5,10 +5,10 @@ package constants
 // LeadGenAppointmentSlotsByDayFields contains field name constants for LeadGenAppointmentSlotsByDay objects
 var LeadGenAppointmentSlotsByDayFields = struct {
 	AppointmentSlots string
-	Day              string
+	Day string
 }{
 	AppointmentSlots: "appointment_slots",
-	Day:              "day",
+	Day: "day",
 }
 
 // LeadGenAppointmentSlotsByDayFieldsList contains all available fields for LeadGenAppointmentSlotsByDay objects

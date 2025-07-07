@@ -4,29 +4,29 @@ package constants
 
 // IGUserForIGOnlyAPIFields contains field name constants for IGUserForIGOnlyAPI objects
 var IGUserForIGOnlyAPIFields = struct {
-	AccountType       string
-	Biography         string
-	FollowersCount    string
-	FollowsCount      string
-	Id                string
-	MediaCount        string
-	Name              string
+	AccountType string
+	Biography string
+	FollowersCount string
+	FollowsCount string
+	Id string
+	MediaCount string
+	Name string
 	ProfilePictureUrl string
-	UserId            string
-	Username          string
-	Website           string
+	UserId string
+	Username string
+	Website string
 }{
-	AccountType:       "account_type",
-	Biography:         "biography",
-	FollowersCount:    "followers_count",
-	FollowsCount:      "follows_count",
-	Id:                "id",
-	MediaCount:        "media_count",
-	Name:              "name",
+	AccountType: "account_type",
+	Biography: "biography",
+	FollowersCount: "followers_count",
+	FollowsCount: "follows_count",
+	Id: "id",
+	MediaCount: "media_count",
+	Name: "name",
 	ProfilePictureUrl: "profile_picture_url",
-	UserId:            "user_id",
-	Username:          "username",
-	Website:           "website",
+	UserId: "user_id",
+	Username: "username",
+	Website: "website",
 }
 
 // IGUserForIGOnlyAPIFieldsList contains all available fields for IGUserForIGOnlyAPI objects

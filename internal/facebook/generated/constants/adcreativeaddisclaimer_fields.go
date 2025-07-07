@@ -4,13 +4,13 @@ package constants
 
 // AdCreativeAdDisclaimerFields contains field name constants for AdCreativeAdDisclaimer objects
 var AdCreativeAdDisclaimerFields = struct {
-	Text  string
+	Text string
 	Title string
-	Url   string
+	Url string
 }{
-	Text:  "text",
+	Text: "text",
 	Title: "title",
-	Url:   "url",
+	Url: "url",
 }
 
 // AdCreativeAdDisclaimerFieldsList contains all available fields for AdCreativeAdDisclaimer objects

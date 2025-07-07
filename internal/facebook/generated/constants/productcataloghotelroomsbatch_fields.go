@@ -4,15 +4,15 @@ package constants
 
 // ProductCatalogHotelRoomsBatchFields contains field name constants for ProductCatalogHotelRoomsBatch objects
 var ProductCatalogHotelRoomsBatchFields = struct {
-	Errors           string
+	Errors string
 	ErrorsTotalCount string
-	Handle           string
-	Status           string
+	Handle string
+	Status string
 }{
-	Errors:           "errors",
+	Errors: "errors",
 	ErrorsTotalCount: "errors_total_count",
-	Handle:           "handle",
-	Status:           "status",
+	Handle: "handle",
+	Status: "status",
 }
 
 // ProductCatalogHotelRoomsBatchFieldsList contains all available fields for ProductCatalogHotelRoomsBatch objects

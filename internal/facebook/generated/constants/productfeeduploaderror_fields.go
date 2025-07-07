@@ -5,20 +5,20 @@ package constants
 // ProductFeedUploadErrorFields contains field name constants for ProductFeedUploadError objects
 var ProductFeedUploadErrorFields = struct {
 	AffectedSurfaces string
-	Description      string
-	ErrorType        string
-	Id               string
-	Severity         string
-	Summary          string
-	TotalCount       string
+	Description string
+	ErrorType string
+	Id string
+	Severity string
+	Summary string
+	TotalCount string
 }{
 	AffectedSurfaces: "affected_surfaces",
-	Description:      "description",
-	ErrorType:        "error_type",
-	Id:               "id",
-	Severity:         "severity",
-	Summary:          "summary",
-	TotalCount:       "total_count",
+	Description: "description",
+	ErrorType: "error_type",
+	Id: "id",
+	Severity: "severity",
+	Summary: "summary",
+	TotalCount: "total_count",
 }
 
 // ProductFeedUploadErrorFieldsList contains all available fields for ProductFeedUploadError objects

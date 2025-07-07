@@ -6,11 +6,11 @@ import "time"
 
 // RightsManagerDataExport represents a Facebook RightsManagerDataExport object
 type RightsManagerDataExport struct {
-	Download_uri     string    `json:"download_uri"`
-	Export_scope     string    `json:"export_scope"`
-	Id               string    `json:"id"`
-	Name             string    `json:"name"`
-	Record_type      string    `json:"record_type"`
-	Time_range_end   time.Time `json:"time_range_end"`
+	Download_uri string `json:"download_uri"`
+	Export_scope string `json:"export_scope"`
+	Id string `json:"id"`
+	Name string `json:"name"`
+	Record_type string `json:"record_type"`
+	Time_range_end time.Time `json:"time_range_end"`
 	Time_range_start time.Time `json:"time_range_start"`
 }

@@ -4,43 +4,43 @@ package constants
 
 // EventTicketTierFields contains field name constants for EventTicketTier objects
 var EventTicketTierFields = struct {
-	Currency           string
-	Description        string
-	EndSalesTime       string
-	EndShowTime        string
-	FeeSettings        string
-	Id                 string
-	MaximumQuantity    string
-	Metadata           string
-	MinimumQuantity    string
-	Name               string
-	Price              string
-	Priority           string
-	RetailerId         string
+	Currency string
+	Description string
+	EndSalesTime string
+	EndShowTime string
+	FeeSettings string
+	Id string
+	MaximumQuantity string
+	Metadata string
+	MinimumQuantity string
+	Name string
+	Price string
+	Priority string
+	RetailerId string
 	SeatingMapImageUrl string
-	StartSalesTime     string
-	StartShowTime      string
-	Status             string
-	TotalQuantity      string
+	StartSalesTime string
+	StartShowTime string
+	Status string
+	TotalQuantity string
 }{
-	Currency:           "currency",
-	Description:        "description",
-	EndSalesTime:       "end_sales_time",
-	EndShowTime:        "end_show_time",
-	FeeSettings:        "fee_settings",
-	Id:                 "id",
-	MaximumQuantity:    "maximum_quantity",
-	Metadata:           "metadata",
-	MinimumQuantity:    "minimum_quantity",
-	Name:               "name",
-	Price:              "price",
-	Priority:           "priority",
-	RetailerId:         "retailer_id",
+	Currency: "currency",
+	Description: "description",
+	EndSalesTime: "end_sales_time",
+	EndShowTime: "end_show_time",
+	FeeSettings: "fee_settings",
+	Id: "id",
+	MaximumQuantity: "maximum_quantity",
+	Metadata: "metadata",
+	MinimumQuantity: "minimum_quantity",
+	Name: "name",
+	Price: "price",
+	Priority: "priority",
+	RetailerId: "retailer_id",
 	SeatingMapImageUrl: "seating_map_image_url",
-	StartSalesTime:     "start_sales_time",
-	StartShowTime:      "start_show_time",
-	Status:             "status",
-	TotalQuantity:      "total_quantity",
+	StartSalesTime: "start_sales_time",
+	StartShowTime: "start_show_time",
+	Status: "status",
+	TotalQuantity: "total_quantity",
 }
 
 // EventTicketTierFieldsList contains all available fields for EventTicketTier objects

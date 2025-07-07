@@ -4,13 +4,13 @@ package constants
 
 // AdConversionValuesFields contains field name constants for AdConversionValues objects
 var AdConversionValuesFields = struct {
-	AdgroupId  string
+	AdgroupId string
 	CampaignId string
-	Values     string
+	Values string
 }{
-	AdgroupId:  "adgroup_id",
+	AdgroupId: "adgroup_id",
 	CampaignId: "campaign_id",
-	Values:     "values",
+	Values: "values",
 }
 
 // AdConversionValuesFieldsList contains all available fields for AdConversionValues objects

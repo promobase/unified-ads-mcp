@@ -4,27 +4,27 @@ package constants
 
 // RegionalRegulationIdentitiesFields contains field name constants for RegionalRegulationIdentities objects
 var RegionalRegulationIdentitiesFields = struct {
-	AustraliaFinservBeneficiary   string
-	AustraliaFinservPayer         string
-	IndiaFinservBeneficiary       string
-	IndiaFinservPayer             string
+	AustraliaFinservBeneficiary string
+	AustraliaFinservPayer string
+	IndiaFinservBeneficiary string
+	IndiaFinservPayer string
 	SingaporeUniversalBeneficiary string
-	SingaporeUniversalPayer       string
-	TaiwanFinservBeneficiary      string
-	TaiwanFinservPayer            string
-	TaiwanUniversalBeneficiary    string
-	TaiwanUniversalPayer          string
+	SingaporeUniversalPayer string
+	TaiwanFinservBeneficiary string
+	TaiwanFinservPayer string
+	TaiwanUniversalBeneficiary string
+	TaiwanUniversalPayer string
 }{
-	AustraliaFinservBeneficiary:   "australia_finserv_beneficiary",
-	AustraliaFinservPayer:         "australia_finserv_payer",
-	IndiaFinservBeneficiary:       "india_finserv_beneficiary",
-	IndiaFinservPayer:             "india_finserv_payer",
+	AustraliaFinservBeneficiary: "australia_finserv_beneficiary",
+	AustraliaFinservPayer: "australia_finserv_payer",
+	IndiaFinservBeneficiary: "india_finserv_beneficiary",
+	IndiaFinservPayer: "india_finserv_payer",
 	SingaporeUniversalBeneficiary: "singapore_universal_beneficiary",
-	SingaporeUniversalPayer:       "singapore_universal_payer",
-	TaiwanFinservBeneficiary:      "taiwan_finserv_beneficiary",
-	TaiwanFinservPayer:            "taiwan_finserv_payer",
-	TaiwanUniversalBeneficiary:    "taiwan_universal_beneficiary",
-	TaiwanUniversalPayer:          "taiwan_universal_payer",
+	SingaporeUniversalPayer: "singapore_universal_payer",
+	TaiwanFinservBeneficiary: "taiwan_finserv_beneficiary",
+	TaiwanFinservPayer: "taiwan_finserv_payer",
+	TaiwanUniversalBeneficiary: "taiwan_universal_beneficiary",
+	TaiwanUniversalPayer: "taiwan_universal_payer",
 }
 
 // RegionalRegulationIdentitiesFieldsList contains all available fields for RegionalRegulationIdentities objects

@@ -4,7 +4,7 @@ package types
 
 // PlatformImageSource represents a Facebook PlatformImageSource object
 type PlatformImageSource struct {
-	Height int    `json:"height"`
+	Height int `json:"height"`
 	Source string `json:"source"`
-	Width  int    `json:"width"`
+	Width int `json:"width"`
 }

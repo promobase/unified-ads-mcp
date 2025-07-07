@@ -4,12 +4,12 @@ package constants
 
 // CTXDefaultOptimizationConfigFields contains field name constants for CTXDefaultOptimizationConfig objects
 var CTXDefaultOptimizationConfigFields = struct {
-	DestinationType  string
-	Objective        string
+	DestinationType string
+	Objective string
 	OptimizationGoal string
 }{
-	DestinationType:  "destination_type",
-	Objective:        "objective",
+	DestinationType: "destination_type",
+	Objective: "objective",
 	OptimizationGoal: "optimization_goal",
 }
 

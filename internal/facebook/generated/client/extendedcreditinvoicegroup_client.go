@@ -9,7 +9,7 @@ import (
 	"net/url"
 )
 
-// ExtendedCreditInvoiceGroupClient provides methods for ExtendedCreditInvoiceGroup operations
+// ExtendedCreditInvoiceGroupClient represents a client for ExtendedCreditInvoiceGroup operations
 type ExtendedCreditInvoiceGroupClient struct {
 	accessToken string
 }
@@ -21,29 +21,24 @@ func NewExtendedCreditInvoiceGroupClient(accessToken string) *ExtendedCreditInvo
 	}
 }
 
-// extendedcreditinvoicegroup_delete_ad_accounts DELETE ad_accounts for ExtendedCreditInvoiceGroup
+
+// Extendedcreditinvoicegroup_delete_ad_accounts performs DELETE ad_accounts for ExtendedCreditInvoiceGroup
 func (c *ExtendedCreditInvoiceGroupClient) Extendedcreditinvoicegroup_delete_ad_accounts(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ad_accounts")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -75,42 +70,42 @@ func (c *ExtendedCreditInvoiceGroupClient) Extendedcreditinvoicegroup_delete_ad_
 	return result, nil
 }
 
-// extendedcreditinvoicegroup_get_ad_accounts GET ad_accounts for ExtendedCreditInvoiceGroup
+
+// Extendedcreditinvoicegroup_get_ad_accounts performs GET ad_accounts for ExtendedCreditInvoiceGroup
 func (c *ExtendedCreditInvoiceGroupClient) Extendedcreditinvoicegroup_get_ad_accounts(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ad_accounts")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -142,29 +137,24 @@ func (c *ExtendedCreditInvoiceGroupClient) Extendedcreditinvoicegroup_get_ad_acc
 	return result, nil
 }
 
-// extendedcreditinvoicegroup_post_ad_accounts POST ad_accounts for ExtendedCreditInvoiceGroup
+
+// Extendedcreditinvoicegroup_post_ad_accounts performs POST ad_accounts for ExtendedCreditInvoiceGroup
 func (c *ExtendedCreditInvoiceGroupClient) Extendedcreditinvoicegroup_post_ad_accounts(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-	params, ok := args["params"]
-	if !ok {
-		return nil, fmt.Errorf("missing required parameter: params")
-	}
-	_ = params // Suppress unused variable warning
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/ad_accounts")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -196,17 +186,18 @@ func (c *ExtendedCreditInvoiceGroupClient) Extendedcreditinvoicegroup_post_ad_ac
 	return result, nil
 }
 
-// extendedcreditinvoicegroup_delete_ DELETE  for ExtendedCreditInvoiceGroup
+
+// Extendedcreditinvoicegroup_delete_ performs DELETE  for ExtendedCreditInvoiceGroup
 func (c *ExtendedCreditInvoiceGroupClient) Extendedcreditinvoicegroup_delete_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
+
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -238,42 +229,42 @@ func (c *ExtendedCreditInvoiceGroupClient) Extendedcreditinvoicegroup_delete_(ar
 	return result, nil
 }
 
-// extendedcreditinvoicegroup_get_ GET  for ExtendedCreditInvoiceGroup
+
+// Extendedcreditinvoicegroup_get_ performs GET  for ExtendedCreditInvoiceGroup
 func (c *ExtendedCreditInvoiceGroupClient) Extendedcreditinvoicegroup_get_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["fields"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("fields", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["limit"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("limit", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["after"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("after", fmt.Sprintf("%v", val))
-
+		
 	}
 	if val, ok := args["before"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("before", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -305,24 +296,24 @@ func (c *ExtendedCreditInvoiceGroupClient) Extendedcreditinvoicegroup_get_(args 
 	return result, nil
 }
 
-// extendedcreditinvoicegroup_post_ POST  for ExtendedCreditInvoiceGroup
+
+// Extendedcreditinvoicegroup_post_ performs POST  for ExtendedCreditInvoiceGroup
 func (c *ExtendedCreditInvoiceGroupClient) Extendedcreditinvoicegroup_post_(args map[string]interface{}) (interface{}, error) {
-	// Extract parameters
-
-	// Build request URL and parameters
 	var baseURL string
-
+	
+	
 	baseURL = fmt.Sprintf("https://graph.facebook.com/v23.0/")
-
+	
 	urlParams := url.Values{}
 	urlParams.Set("access_token", c.accessToken)
 
 	if val, ok := args["params"]; ok {
 		// Skip ID parameters as they're already in the URL path
-
+		
 		urlParams.Set("params", fmt.Sprintf("%v", val))
-
+		
 	}
+
 
 	// Make HTTP request
 	var resp *http.Response
@@ -353,3 +344,4 @@ func (c *ExtendedCreditInvoiceGroupClient) Extendedcreditinvoicegroup_post_(args
 
 	return result, nil
 }
+

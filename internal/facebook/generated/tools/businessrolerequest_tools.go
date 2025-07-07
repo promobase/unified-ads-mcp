@@ -17,6 +17,7 @@ import (
 func GetBusinessRoleRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// businessrolerequest_delete_ tool
 	businessrolerequest_delete_Tool := mcp.NewTool("businessrolerequest_delete_",
 		mcp.WithDescription("DELETE  for BusinessRoleRequest"),
@@ -49,15 +50,15 @@ func GetBusinessRoleRequestTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"role": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "role parameter",
-					"enum":        []string{"ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"},
+					"enum": []string{ "ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS" },
 				},
 				"tasks": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "tasks parameter",
-					"enum":        []string{"ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "ADMIN", "ADS_RIGHTS_REVIEWER", "DEFAULT", "DEVELOPER", "EMPLOYEE", "FINANCE_ANALYST", "FINANCE_EDIT", "FINANCE_EDITOR", "FINANCE_VIEW", "MANAGE", "PARTNER_CENTER_ADMIN", "PARTNER_CENTER_ANALYST", "PARTNER_CENTER_EDUCATION", "PARTNER_CENTER_MARKETING", "PARTNER_CENTER_OPERATIONS" },
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: role (businessrolerequest_role) [ADMIN, ADS_RIGHTS_REVIEWER, DEFAULT, DEVELOPER, EMPLOYEE, ...], tasks (array<businessrolerequest_tasks>) [ADMIN, ADS_RIGHTS_REVIEWER, DEFAULT, DEVELOPER, EMPLOYEE, ...]"),
@@ -65,10 +66,12 @@ func GetBusinessRoleRequestTools() []mcp.Tool {
 	)
 	tools = append(tools, businessrolerequest_post_Tool)
 
+
 	return tools
 }
 
 // BusinessRoleRequest handlers
+
 
 // HandleBusinessrolerequest_delete_ handles the businessrolerequest_delete_ tool with context-based auth
 func HandleBusinessrolerequest_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -84,6 +87,8 @@ func HandleBusinessrolerequest_delete_(ctx context.Context, request mcp.CallTool
 	// Build arguments map
 	args := make(map[string]interface{})
 
+
+
 	// Call the client method
 	result, err := client.Businessrolerequest_delete_(args)
 	if err != nil {
@@ -98,6 +103,7 @@ func HandleBusinessrolerequest_delete_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusinessrolerequest_get_ handles the businessrolerequest_get_ tool with context-based auth
 func HandleBusinessrolerequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -138,6 +144,8 @@ func HandleBusinessrolerequest_get_(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Businessrolerequest_get_(args)
 	if err != nil {
@@ -152,6 +160,7 @@ func HandleBusinessrolerequest_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleBusinessrolerequest_post_ handles the businessrolerequest_post_ tool with context-based auth
 func HandleBusinessrolerequest_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -179,6 +188,8 @@ func HandleBusinessrolerequest_post_(ctx context.Context, request mcp.CallToolRe
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Businessrolerequest_post_(args)
 	if err != nil {
@@ -193,3 +204,4 @@ func HandleBusinessrolerequest_post_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

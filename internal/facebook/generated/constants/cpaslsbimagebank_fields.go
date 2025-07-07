@@ -4,13 +4,13 @@ package constants
 
 // CPASLsbImageBankFields contains field name constants for CPASLsbImageBank objects
 var CPASLsbImageBankFields = struct {
-	AdGroupId             string
+	AdGroupId string
 	CatalogSegmentProxyId string
-	Id                    string
+	Id string
 }{
-	AdGroupId:             "ad_group_id",
+	AdGroupId: "ad_group_id",
 	CatalogSegmentProxyId: "catalog_segment_proxy_id",
-	Id:                    "id",
+	Id: "id",
 }
 
 // CPASLsbImageBankFieldsList contains all available fields for CPASLsbImageBank objects

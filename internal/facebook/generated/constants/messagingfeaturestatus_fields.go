@@ -4,12 +4,12 @@ package constants
 
 // MessagingFeatureStatusFields contains field name constants for MessagingFeatureStatus objects
 var MessagingFeatureStatusFields = struct {
-	HopV2        string
-	IgMultiApp   string
+	HopV2 string
+	IgMultiApp string
 	MsgrMultiApp string
 }{
-	HopV2:        "hop_v2",
-	IgMultiApp:   "ig_multi_app",
+	HopV2: "hop_v2",
+	IgMultiApp: "ig_multi_app",
 	MsgrMultiApp: "msgr_multi_app",
 }
 

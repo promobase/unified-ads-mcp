@@ -4,6 +4,6 @@ package types
 
 // UserIDForPage represents a Facebook UserIDForPage object
 type UserIDForPage struct {
-	Id   string `json:"id"`
-	Page *Page  `json:"page"`
+	Id string `json:"id"`
+	Page *Page `json:"page"`
 }

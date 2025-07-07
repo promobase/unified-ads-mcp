@@ -5,10 +5,10 @@ package types
 // DynamicItemDisplayBundle represents a Facebook DynamicItemDisplayBundle object
 type DynamicItemDisplayBundle struct {
 	Additional_urls []interface{} `json:"additional_urls"`
-	Description     string        `json:"description"`
-	Id              string        `json:"id"`
-	Name            string        `json:"name"`
-	Product_set     *ProductSet   `json:"product_set"`
-	Text_tokens     []interface{} `json:"text_tokens"`
-	Url             string        `json:"url"`
+	Description string `json:"description"`
+	Id string `json:"id"`
+	Name string `json:"name"`
+	Product_set *ProductSet `json:"product_set"`
+	Text_tokens []interface{} `json:"text_tokens"`
+	Url string `json:"url"`
 }

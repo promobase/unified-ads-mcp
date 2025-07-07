@@ -4,14 +4,14 @@ package types
 
 // DirectDebit represents a Facebook DirectDebit object
 type DirectDebit struct {
-	Bank_account_last_4               string   `json:"bank_account_last_4"`
-	Bank_code_last_4                  string   `json:"bank_code_last_4"`
-	Bank_name                         string   `json:"bank_name"`
+	Bank_account_last_4 string `json:"bank_account_last_4"`
+	Bank_code_last_4 string `json:"bank_code_last_4"`
+	Bank_name string `json:"bank_name"`
 	Default_receiving_method_products []string `json:"default_receiving_method_products"`
-	Display_string                    string   `json:"display_string"`
-	Id                                string   `json:"id"`
-	Last_four_digits                  string   `json:"last_four_digits"`
-	Onboarding_url                    string   `json:"onboarding_url"`
-	Owner_name                        string   `json:"owner_name"`
-	Status                            int      `json:"status"`
+	Display_string string `json:"display_string"`
+	Id string `json:"id"`
+	Last_four_digits string `json:"last_four_digits"`
+	Onboarding_url string `json:"onboarding_url"`
+	Owner_name string `json:"owner_name"`
+	Status int `json:"status"`
 }

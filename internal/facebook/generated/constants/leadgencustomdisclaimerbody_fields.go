@@ -4,10 +4,10 @@ package constants
 
 // LeadGenCustomDisclaimerBodyFields contains field name constants for LeadGenCustomDisclaimerBody objects
 var LeadGenCustomDisclaimerBodyFields = struct {
-	Text        string
+	Text string
 	UrlEntities string
 }{
-	Text:        "text",
+	Text: "text",
 	UrlEntities: "url_entities",
 }
 

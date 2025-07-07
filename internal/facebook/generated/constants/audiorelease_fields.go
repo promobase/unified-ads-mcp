@@ -4,39 +4,39 @@ package constants
 
 // AudioReleaseFields contains field name constants for AudioRelease objects
 var AudioReleaseFields = struct {
-	AlbumTitle              string
+	AlbumTitle string
 	AssetAvailabilityStatus string
 	AudioAvailabilityStatus string
-	AudioReleaseImageUri    string
-	CreatedTime             string
-	DisplayedArtist         string
-	Ean                     string
-	Genre                   string
-	Grid                    string
-	Id                      string
-	Isrc                    string
-	LabelName               string
-	OriginalReleaseDate     string
-	ParentalWarningType     string
-	ProprietaryId           string
-	Upc                     string
+	AudioReleaseImageUri string
+	CreatedTime string
+	DisplayedArtist string
+	Ean string
+	Genre string
+	Grid string
+	Id string
+	Isrc string
+	LabelName string
+	OriginalReleaseDate string
+	ParentalWarningType string
+	ProprietaryId string
+	Upc string
 }{
-	AlbumTitle:              "album_title",
+	AlbumTitle: "album_title",
 	AssetAvailabilityStatus: "asset_availability_status",
 	AudioAvailabilityStatus: "audio_availability_status",
-	AudioReleaseImageUri:    "audio_release_image_uri",
-	CreatedTime:             "created_time",
-	DisplayedArtist:         "displayed_artist",
-	Ean:                     "ean",
-	Genre:                   "genre",
-	Grid:                    "grid",
-	Id:                      "id",
-	Isrc:                    "isrc",
-	LabelName:               "label_name",
-	OriginalReleaseDate:     "original_release_date",
-	ParentalWarningType:     "parental_warning_type",
-	ProprietaryId:           "proprietary_id",
-	Upc:                     "upc",
+	AudioReleaseImageUri: "audio_release_image_uri",
+	CreatedTime: "created_time",
+	DisplayedArtist: "displayed_artist",
+	Ean: "ean",
+	Genre: "genre",
+	Grid: "grid",
+	Id: "id",
+	Isrc: "isrc",
+	LabelName: "label_name",
+	OriginalReleaseDate: "original_release_date",
+	ParentalWarningType: "parental_warning_type",
+	ProprietaryId: "proprietary_id",
+	Upc: "upc",
 }
 
 // AudioReleaseFieldsList contains all available fields for AudioRelease objects

@@ -4,10 +4,10 @@ package types
 
 // CloudbridgeDatasetStatus represents a Facebook CloudbridgeDatasetStatus object
 type CloudbridgeDatasetStatus struct {
-	App_redacted_event   []string      `json:"app_redacted_event"`
+	App_redacted_event []string `json:"app_redacted_event"`
 	App_sensitive_params []interface{} `json:"app_sensitive_params"`
-	App_unverified_event []string      `json:"app_unverified_event"`
-	Has_app_associated   bool          `json:"has_app_associated"`
-	Is_app_prohibited    bool          `json:"is_app_prohibited"`
-	Is_dataset           bool          `json:"is_dataset"`
+	App_unverified_event []string `json:"app_unverified_event"`
+	Has_app_associated bool `json:"has_app_associated"`
+	Is_app_prohibited bool `json:"is_app_prohibited"`
+	Is_dataset bool `json:"is_dataset"`
 }

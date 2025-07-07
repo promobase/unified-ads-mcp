@@ -17,6 +17,7 @@ import (
 func GetOffsiteSignalContainerBusinessObjectTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// offsitesignalcontainerbusinessobject_get_linked_application tool
 	// Available fields for AdsDataset: can_proxy, collection_rate, config, creation_time, creator, dataset_id, description, duplicate_entries, enable_auto_assign_to_accounts, enable_automatic_events, enable_automatic_matching, enable_real_time_event_log, event_stats, event_time_max, event_time_min, first_party_cookie_status, has_bapi_domains, has_catalog_microdata_activity, has_ofa_redacted_keys, has_sent_pii, id, is_consolidated_container, is_created_by_business, is_crm, is_eligible_for_sharing_to_ad_account, is_eligible_for_sharing_to_business, is_eligible_for_value_optimization, is_mta_use, is_restricted_use, is_unavailable, last_fired_time, last_upload_app, last_upload_app_changed_time, last_upload_time, late_upload_reminder_eligibility, match_rate_approx, matched_entries, name, no_ads_tracked_for_weekly_uploaded_events_reminder_eligibility, num_active_ad_set_tracked, num_recent_offline_conversions_uploaded, num_uploads, owner_ad_account, owner_business, percentage_of_late_uploads_in_external_suboptimal_window, permissions, server_last_fired_time, show_automatic_events, upload_rate, upload_reminder_eligibility, usage, valid_entries
 	offsitesignalcontainerbusinessobject_get_linked_applicationTool := mcp.NewTool("offsitesignalcontainerbusinessobject_get_linked_application",
@@ -74,10 +75,12 @@ func GetOffsiteSignalContainerBusinessObjectTools() []mcp.Tool {
 	)
 	tools = append(tools, offsitesignalcontainerbusinessobject_get_Tool)
 
+
 	return tools
 }
 
 // OffsiteSignalContainerBusinessObject handlers
+
 
 // HandleOffsitesignalcontainerbusinessobject_get_linked_application handles the offsitesignalcontainerbusinessobject_get_linked_application tool with context-based auth
 func HandleOffsitesignalcontainerbusinessobject_get_linked_application(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -118,6 +121,8 @@ func HandleOffsitesignalcontainerbusinessobject_get_linked_application(ctx conte
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Offsitesignalcontainerbusinessobject_get_linked_application(args)
 	if err != nil {
@@ -132,6 +137,7 @@ func HandleOffsitesignalcontainerbusinessobject_get_linked_application(ctx conte
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleOffsitesignalcontainerbusinessobject_get_linked_page handles the offsitesignalcontainerbusinessobject_get_linked_page tool with context-based auth
 func HandleOffsitesignalcontainerbusinessobject_get_linked_page(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -172,6 +178,8 @@ func HandleOffsitesignalcontainerbusinessobject_get_linked_page(ctx context.Cont
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Offsitesignalcontainerbusinessobject_get_linked_page(args)
 	if err != nil {
@@ -186,6 +194,7 @@ func HandleOffsitesignalcontainerbusinessobject_get_linked_page(ctx context.Cont
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleOffsitesignalcontainerbusinessobject_get_ handles the offsitesignalcontainerbusinessobject_get_ tool with context-based auth
 func HandleOffsitesignalcontainerbusinessobject_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -226,6 +235,8 @@ func HandleOffsitesignalcontainerbusinessobject_get_(ctx context.Context, reques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Offsitesignalcontainerbusinessobject_get_(args)
 	if err != nil {
@@ -240,3 +251,4 @@ func HandleOffsitesignalcontainerbusinessobject_get_(ctx context.Context, reques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

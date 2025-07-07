@@ -5,12 +5,12 @@ package constants
 // AdAssetFeedSpecBodyFields contains field name constants for AdAssetFeedSpecBody objects
 var AdAssetFeedSpecBodyFields = struct {
 	Adlabels string
-	Text     string
-	UrlTags  string
+	Text string
+	UrlTags string
 }{
 	Adlabels: "adlabels",
-	Text:     "text",
-	UrlTags:  "url_tags",
+	Text: "text",
+	UrlTags: "url_tags",
 }
 
 // AdAssetFeedSpecBodyFieldsList contains all available fields for AdAssetFeedSpecBody objects

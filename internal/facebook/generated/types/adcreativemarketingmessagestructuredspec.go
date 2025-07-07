@@ -4,11 +4,11 @@ package types
 
 // AdCreativeMarketingMessageStructuredSpec represents a Facebook AdCreativeMarketingMessageStructuredSpec object
 type AdCreativeMarketingMessageStructuredSpec struct {
-	Buttons                            []map[string]interface{} `json:"buttons"`
-	Footer                             string                   `json:"footer"`
-	Greeting                           string                   `json:"greeting"`
-	Is_optimized_text                  bool                     `json:"is_optimized_text"`
-	Language                           string                   `json:"language"`
-	Referenced_adgroup_id              string                   `json:"referenced_adgroup_id"`
-	Whats_app_business_phone_number_id string                   `json:"whats_app_business_phone_number_id"`
+	Buttons []map[string]interface{} `json:"buttons"`
+	Footer string `json:"footer"`
+	Greeting string `json:"greeting"`
+	Is_optimized_text bool `json:"is_optimized_text"`
+	Language string `json:"language"`
+	Referenced_adgroup_id string `json:"referenced_adgroup_id"`
+	Whats_app_business_phone_number_id string `json:"whats_app_business_phone_number_id"`
 }

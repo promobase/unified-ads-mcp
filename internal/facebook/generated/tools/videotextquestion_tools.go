@@ -17,6 +17,7 @@ import (
 func GetVideoTextQuestionTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// videotextquestion_get_ tool
 	// Available fields for VideoTextQuestion: id, question_target_id, question_text, status
 	videotextquestion_get_Tool := mcp.NewTool("videotextquestion_get_",
@@ -36,10 +37,12 @@ func GetVideoTextQuestionTools() []mcp.Tool {
 	)
 	tools = append(tools, videotextquestion_get_Tool)
 
+
 	return tools
 }
 
 // VideoTextQuestion handlers
+
 
 // HandleVideotextquestion_get_ handles the videotextquestion_get_ tool with context-based auth
 func HandleVideotextquestion_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleVideotextquestion_get_(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Videotextquestion_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleVideotextquestion_get_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -17,6 +17,7 @@ import (
 func GetSignalsIWLExtractorTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// signalsiwlextractor_get_ tool
 	// Available fields for SignalsIWLExtractor: domain_uri, event_type, extractor_type, id
 	signalsiwlextractor_get_Tool := mcp.NewTool("signalsiwlextractor_get_",
@@ -36,10 +37,12 @@ func GetSignalsIWLExtractorTools() []mcp.Tool {
 	)
 	tools = append(tools, signalsiwlextractor_get_Tool)
 
+
 	return tools
 }
 
 // SignalsIWLExtractor handlers
+
 
 // HandleSignalsiwlextractor_get_ handles the signalsiwlextractor_get_ tool with context-based auth
 func HandleSignalsiwlextractor_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleSignalsiwlextractor_get_(ctx context.Context, request mcp.CallToolReq
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Signalsiwlextractor_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleSignalsiwlextractor_get_(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

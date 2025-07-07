@@ -17,6 +17,7 @@ import (
 func GetMediaFingerprintTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// mediafingerprint_get_ tool
 	// Available fields for MediaFingerprint: duration_in_sec, fingerprint_content_type, fingerprint_type, id, metadata, title, universal_content_id
 	mediafingerprint_get_Tool := mcp.NewTool("mediafingerprint_get_",
@@ -43,19 +44,19 @@ func GetMediaFingerprintTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"metadata": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "metadata parameter",
 				},
 				"source": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "source parameter",
 				},
 				"title": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "title parameter",
 				},
 				"universal_content_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "universal_content_id parameter",
 				},
 			}),
@@ -64,10 +65,12 @@ func GetMediaFingerprintTools() []mcp.Tool {
 	)
 	tools = append(tools, mediafingerprint_post_Tool)
 
+
 	return tools
 }
 
 // MediaFingerprint handlers
+
 
 // HandleMediafingerprint_get_ handles the mediafingerprint_get_ tool with context-based auth
 func HandleMediafingerprint_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -108,6 +111,8 @@ func HandleMediafingerprint_get_(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Mediafingerprint_get_(args)
 	if err != nil {
@@ -122,6 +127,7 @@ func HandleMediafingerprint_get_(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleMediafingerprint_post_ handles the mediafingerprint_post_ tool with context-based auth
 func HandleMediafingerprint_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -149,6 +155,8 @@ func HandleMediafingerprint_post_(ctx context.Context, request mcp.CallToolReque
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Mediafingerprint_post_(args)
 	if err != nil {
@@ -163,3 +171,4 @@ func HandleMediafingerprint_post_(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

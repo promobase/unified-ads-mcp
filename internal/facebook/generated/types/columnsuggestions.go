@@ -4,8 +4,8 @@ package types
 
 // ColumnSuggestions represents a Facebook ColumnSuggestions object
 type ColumnSuggestions struct {
-	Explanations       map[string]interface{} `json:"explanations"`
-	Format             []string               `json:"format"`
-	Objective          []string               `json:"objective"`
-	Optimization_goals []string               `json:"optimization_goals"`
+	Explanations map[string]interface{} `json:"explanations"`
+	Format []string `json:"format"`
+	Objective []string `json:"objective"`
+	Optimization_goals []string `json:"optimization_goals"`
 }

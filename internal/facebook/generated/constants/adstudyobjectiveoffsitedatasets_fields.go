@@ -5,10 +5,10 @@ package constants
 // AdStudyObjectiveOffsiteDatasetsFields contains field name constants for AdStudyObjectiveOffsiteDatasets objects
 var AdStudyObjectiveOffsiteDatasetsFields = struct {
 	EventNames string
-	Id         string
+	Id string
 }{
 	EventNames: "event_names",
-	Id:         "id",
+	Id: "id",
 }
 
 // AdStudyObjectiveOffsiteDatasetsFieldsList contains all available fields for AdStudyObjectiveOffsiteDatasets objects

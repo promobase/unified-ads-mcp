@@ -5,6 +5,6 @@ package types
 // TargetingSubscriberUniverse represents a Facebook TargetingSubscriberUniverse object
 type TargetingSubscriberUniverse struct {
 	Messenger_subscriber_source *IDName `json:"messenger_subscriber_source"`
-	Whatsapp_subscriber_pool    *IDName `json:"whatsapp_subscriber_pool"`
-	Whatsapp_subscriber_source  *IDName `json:"whatsapp_subscriber_source"`
+	Whatsapp_subscriber_pool *IDName `json:"whatsapp_subscriber_pool"`
+	Whatsapp_subscriber_source *IDName `json:"whatsapp_subscriber_source"`
 }

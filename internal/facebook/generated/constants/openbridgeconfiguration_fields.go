@@ -4,43 +4,43 @@ package constants
 
 // OpenBridgeConfigurationFields contains field name constants for OpenBridgeConfiguration objects
 var OpenBridgeConfigurationFields = struct {
-	Active                  string
-	CloudProvider           string
-	CloudRegion             string
-	DestinationId           string
-	Endpoint                string
-	FallbackDomain          string
-	FirstPartyDomain        string
-	HostBusinessId          string
-	Id                      string
-	InstanceId              string
-	InstanceVersion         string
-	IsSgwInstance           string
+	Active string
+	CloudProvider string
+	CloudRegion string
+	DestinationId string
+	Endpoint string
+	FallbackDomain string
+	FirstPartyDomain string
+	HostBusinessId string
+	Id string
+	InstanceId string
+	InstanceVersion string
+	IsSgwInstance string
 	IsSgwPixelFromMetaPixel string
-	PartnerName             string
-	PixelId                 string
-	SgwAccountId            string
-	SgwInstanceUrl          string
-	SgwPixelId              string
+	PartnerName string
+	PixelId string
+	SgwAccountId string
+	SgwInstanceUrl string
+	SgwPixelId string
 }{
-	Active:                  "active",
-	CloudProvider:           "cloud_provider",
-	CloudRegion:             "cloud_region",
-	DestinationId:           "destination_id",
-	Endpoint:                "endpoint",
-	FallbackDomain:          "fallback_domain",
-	FirstPartyDomain:        "first_party_domain",
-	HostBusinessId:          "host_business_id",
-	Id:                      "id",
-	InstanceId:              "instance_id",
-	InstanceVersion:         "instance_version",
-	IsSgwInstance:           "is_sgw_instance",
+	Active: "active",
+	CloudProvider: "cloud_provider",
+	CloudRegion: "cloud_region",
+	DestinationId: "destination_id",
+	Endpoint: "endpoint",
+	FallbackDomain: "fallback_domain",
+	FirstPartyDomain: "first_party_domain",
+	HostBusinessId: "host_business_id",
+	Id: "id",
+	InstanceId: "instance_id",
+	InstanceVersion: "instance_version",
+	IsSgwInstance: "is_sgw_instance",
 	IsSgwPixelFromMetaPixel: "is_sgw_pixel_from_meta_pixel",
-	PartnerName:             "partner_name",
-	PixelId:                 "pixel_id",
-	SgwAccountId:            "sgw_account_id",
-	SgwInstanceUrl:          "sgw_instance_url",
-	SgwPixelId:              "sgw_pixel_id",
+	PartnerName: "partner_name",
+	PixelId: "pixel_id",
+	SgwAccountId: "sgw_account_id",
+	SgwInstanceUrl: "sgw_instance_url",
+	SgwPixelId: "sgw_pixel_id",
 }
 
 // OpenBridgeConfigurationFieldsList contains all available fields for OpenBridgeConfiguration objects

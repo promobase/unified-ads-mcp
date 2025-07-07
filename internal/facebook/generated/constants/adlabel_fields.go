@@ -4,16 +4,16 @@ package constants
 
 // AdLabelFields contains field name constants for AdLabel objects
 var AdLabelFields = struct {
-	Account     string
+	Account string
 	CreatedTime string
-	Id          string
-	Name        string
+	Id string
+	Name string
 	UpdatedTime string
 }{
-	Account:     "account",
+	Account: "account",
 	CreatedTime: "created_time",
-	Id:          "id",
-	Name:        "name",
+	Id: "id",
+	Name: "name",
 	UpdatedTime: "updated_time",
 }
 

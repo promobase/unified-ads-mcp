@@ -4,8 +4,8 @@ package types
 
 // AdvAInstance represents a Facebook AdvAInstance object
 type AdvAInstance struct {
-	Id             string    `json:"id"`
-	Instance_type  string    `json:"instance_type"`
-	Name           string    `json:"name"`
+	Id string `json:"id"`
+	Instance_type string `json:"instance_type"`
+	Name string `json:"name"`
 	Owner_business *Business `json:"owner_business"`
 }

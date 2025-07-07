@@ -4,7 +4,7 @@ package types
 
 // AdAccountReachEstimate represents a Facebook AdAccountReachEstimate object
 type AdAccountReachEstimate struct {
-	Estimate_ready    bool `json:"estimate_ready"`
-	Users_lower_bound int  `json:"users_lower_bound"`
-	Users_upper_bound int  `json:"users_upper_bound"`
+	Estimate_ready bool `json:"estimate_ready"`
+	Users_lower_bound int `json:"users_lower_bound"`
+	Users_upper_bound int `json:"users_upper_bound"`
 }

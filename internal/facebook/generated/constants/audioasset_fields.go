@@ -4,45 +4,45 @@ package constants
 
 // AudioAssetFields contains field name constants for AudioAsset objects
 var AudioAssetFields = struct {
-	AllDdexFeaturedArtists   string
-	AllDdexMainArtists       string
-	AudioClusterId           string
-	CoverImageSource         string
-	DisplayArtist            string
-	DownloadHdUrl            string
-	DownloadSdUrl            string
-	DurationInMs             string
-	FreeformGenre            string
-	Grid                     string
-	Id                       string
-	IsTest                   string
-	OriginalReleaseDate      string
-	Owner                    string
-	ParentalWarningType      string
-	Subtitle                 string
-	Title                    string
+	AllDdexFeaturedArtists string
+	AllDdexMainArtists string
+	AudioClusterId string
+	CoverImageSource string
+	DisplayArtist string
+	DownloadHdUrl string
+	DownloadSdUrl string
+	DurationInMs string
+	FreeformGenre string
+	Grid string
+	Id string
+	IsTest string
+	OriginalReleaseDate string
+	Owner string
+	ParentalWarningType string
+	Subtitle string
+	Title string
 	TitleWithFeaturedArtists string
-	Upc                      string
+	Upc string
 }{
-	AllDdexFeaturedArtists:   "all_ddex_featured_artists",
-	AllDdexMainArtists:       "all_ddex_main_artists",
-	AudioClusterId:           "audio_cluster_id",
-	CoverImageSource:         "cover_image_source",
-	DisplayArtist:            "display_artist",
-	DownloadHdUrl:            "download_hd_url",
-	DownloadSdUrl:            "download_sd_url",
-	DurationInMs:             "duration_in_ms",
-	FreeformGenre:            "freeform_genre",
-	Grid:                     "grid",
-	Id:                       "id",
-	IsTest:                   "is_test",
-	OriginalReleaseDate:      "original_release_date",
-	Owner:                    "owner",
-	ParentalWarningType:      "parental_warning_type",
-	Subtitle:                 "subtitle",
-	Title:                    "title",
+	AllDdexFeaturedArtists: "all_ddex_featured_artists",
+	AllDdexMainArtists: "all_ddex_main_artists",
+	AudioClusterId: "audio_cluster_id",
+	CoverImageSource: "cover_image_source",
+	DisplayArtist: "display_artist",
+	DownloadHdUrl: "download_hd_url",
+	DownloadSdUrl: "download_sd_url",
+	DurationInMs: "duration_in_ms",
+	FreeformGenre: "freeform_genre",
+	Grid: "grid",
+	Id: "id",
+	IsTest: "is_test",
+	OriginalReleaseDate: "original_release_date",
+	Owner: "owner",
+	ParentalWarningType: "parental_warning_type",
+	Subtitle: "subtitle",
+	Title: "title",
 	TitleWithFeaturedArtists: "title_with_featured_artists",
-	Upc:                      "upc",
+	Upc: "upc",
 }
 
 // AudioAssetFieldsList contains all available fields for AudioAsset objects

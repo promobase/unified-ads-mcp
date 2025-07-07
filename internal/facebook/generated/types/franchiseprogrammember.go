@@ -6,12 +6,12 @@ import "time"
 
 // FranchiseProgramMember represents a Facebook FranchiseProgramMember object
 type FranchiseProgramMember struct {
-	Business          *Business  `json:"business"`
-	End_date          time.Time  `json:"end_date"`
-	Id                string     `json:"id"`
-	Join_date         time.Time  `json:"join_date"`
+	Business *Business `json:"business"`
+	End_date time.Time `json:"end_date"`
+	Id string `json:"id"`
+	Join_date time.Time `json:"join_date"`
 	Member_ad_account *AdAccount `json:"member_ad_account"`
-	Member_user       *User      `json:"member_user"`
-	Membership_status string     `json:"membership_status"`
-	Page              *Page      `json:"page"`
+	Member_user *User `json:"member_user"`
+	Membership_status string `json:"membership_status"`
+	Page *Page `json:"page"`
 }

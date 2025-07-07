@@ -4,31 +4,31 @@ package constants
 
 // RobotFields contains field name constants for Robot objects
 var RobotFields = struct {
-	BringupVars       string
-	Configurations    string
-	DataCenter        string
-	Id                string
-	InitPos           string
-	LastPos           string
-	MeetupLinkHash    string
-	Suite             string
+	BringupVars string
+	Configurations string
+	DataCenter string
+	Id string
+	InitPos string
+	LastPos string
+	MeetupLinkHash string
+	Suite string
 	TargetMapImageUri string
-	TargetOsImageUri  string
-	TargetSwImageUri  string
-	User              string
+	TargetOsImageUri string
+	TargetSwImageUri string
+	User string
 }{
-	BringupVars:       "bringup_vars",
-	Configurations:    "configurations",
-	DataCenter:        "data_center",
-	Id:                "id",
-	InitPos:           "init_pos",
-	LastPos:           "last_pos",
-	MeetupLinkHash:    "meetup_link_hash",
-	Suite:             "suite",
+	BringupVars: "bringup_vars",
+	Configurations: "configurations",
+	DataCenter: "data_center",
+	Id: "id",
+	InitPos: "init_pos",
+	LastPos: "last_pos",
+	MeetupLinkHash: "meetup_link_hash",
+	Suite: "suite",
 	TargetMapImageUri: "target_map_image_uri",
-	TargetOsImageUri:  "target_os_image_uri",
-	TargetSwImageUri:  "target_sw_image_uri",
-	User:              "user",
+	TargetOsImageUri: "target_os_image_uri",
+	TargetSwImageUri: "target_sw_image_uri",
+	User: "user",
 }
 
 // RobotFieldsList contains all available fields for Robot objects

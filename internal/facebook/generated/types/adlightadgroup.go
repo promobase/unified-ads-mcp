@@ -5,5 +5,5 @@ package types
 // AdLightAdgroup represents a Facebook AdLightAdgroup object
 type AdLightAdgroup struct {
 	Adset_id string `json:"adset_id"`
-	Id       string `json:"id"`
+	Id string `json:"id"`
 }

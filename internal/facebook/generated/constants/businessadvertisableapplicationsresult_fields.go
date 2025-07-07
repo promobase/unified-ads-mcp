@@ -5,18 +5,18 @@ package constants
 // BusinessAdvertisableApplicationsResultFields contains field name constants for BusinessAdvertisableApplicationsResult objects
 var BusinessAdvertisableApplicationsResultFields = struct {
 	AreAppEventsUnavailable string
-	Business                string
-	HasInsightPermission    string
-	Id                      string
-	Name                    string
-	PhotoUrl                string
+	Business string
+	HasInsightPermission string
+	Id string
+	Name string
+	PhotoUrl string
 }{
 	AreAppEventsUnavailable: "are_app_events_unavailable",
-	Business:                "business",
-	HasInsightPermission:    "has_insight_permission",
-	Id:                      "id",
-	Name:                    "name",
-	PhotoUrl:                "photo_url",
+	Business: "business",
+	HasInsightPermission: "has_insight_permission",
+	Id: "id",
+	Name: "name",
+	PhotoUrl: "photo_url",
 }
 
 // BusinessAdvertisableApplicationsResultFieldsList contains all available fields for BusinessAdvertisableApplicationsResult objects

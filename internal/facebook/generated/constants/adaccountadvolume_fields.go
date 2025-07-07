@@ -4,31 +4,31 @@ package constants
 
 // AdAccountAdVolumeFields contains field name constants for AdAccountAdVolume objects
 var AdAccountAdVolumeFields = struct {
-	ActorId                                          string
-	ActorName                                        string
-	AdLimitScopeBusiness                             string
-	AdLimitScopeBusinessManagerId                    string
-	AdLimitSetByPageAdmin                            string
-	AdsRunningOrInReviewCount                        string
+	ActorId string
+	ActorName string
+	AdLimitScopeBusiness string
+	AdLimitScopeBusinessManagerId string
+	AdLimitSetByPageAdmin string
+	AdsRunningOrInReviewCount string
 	AdsRunningOrInReviewCountSubjectToLimitSetByPage string
-	CurrentAccountAdsRunningOrInReviewCount          string
-	FutureLimitActivationDate                        string
-	FutureLimitOnAdsRunningOrInReview                string
-	LimitOnAdsRunningOrInReview                      string
-	Recommendations                                  string
+	CurrentAccountAdsRunningOrInReviewCount string
+	FutureLimitActivationDate string
+	FutureLimitOnAdsRunningOrInReview string
+	LimitOnAdsRunningOrInReview string
+	Recommendations string
 }{
-	ActorId:                       "actor_id",
-	ActorName:                     "actor_name",
-	AdLimitScopeBusiness:          "ad_limit_scope_business",
+	ActorId: "actor_id",
+	ActorName: "actor_name",
+	AdLimitScopeBusiness: "ad_limit_scope_business",
 	AdLimitScopeBusinessManagerId: "ad_limit_scope_business_manager_id",
-	AdLimitSetByPageAdmin:         "ad_limit_set_by_page_admin",
-	AdsRunningOrInReviewCount:     "ads_running_or_in_review_count",
+	AdLimitSetByPageAdmin: "ad_limit_set_by_page_admin",
+	AdsRunningOrInReviewCount: "ads_running_or_in_review_count",
 	AdsRunningOrInReviewCountSubjectToLimitSetByPage: "ads_running_or_in_review_count_subject_to_limit_set_by_page",
-	CurrentAccountAdsRunningOrInReviewCount:          "current_account_ads_running_or_in_review_count",
-	FutureLimitActivationDate:                        "future_limit_activation_date",
-	FutureLimitOnAdsRunningOrInReview:                "future_limit_on_ads_running_or_in_review",
-	LimitOnAdsRunningOrInReview:                      "limit_on_ads_running_or_in_review",
-	Recommendations:                                  "recommendations",
+	CurrentAccountAdsRunningOrInReviewCount: "current_account_ads_running_or_in_review_count",
+	FutureLimitActivationDate: "future_limit_activation_date",
+	FutureLimitOnAdsRunningOrInReview: "future_limit_on_ads_running_or_in_review",
+	LimitOnAdsRunningOrInReview: "limit_on_ads_running_or_in_review",
+	Recommendations: "recommendations",
 }
 
 // AdAccountAdVolumeFieldsList contains all available fields for AdAccountAdVolume objects

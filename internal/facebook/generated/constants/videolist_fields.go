@@ -5,24 +5,24 @@ package constants
 // VideoListFields contains field name constants for VideoList objects
 var VideoListFields = struct {
 	CreationTime string
-	Description  string
-	Id           string
+	Description string
+	Id string
 	LastModified string
-	Owner        string
+	Owner string
 	SeasonNumber string
-	Thumbnail    string
-	Title        string
-	VideosCount  string
+	Thumbnail string
+	Title string
+	VideosCount string
 }{
 	CreationTime: "creation_time",
-	Description:  "description",
-	Id:           "id",
+	Description: "description",
+	Id: "id",
 	LastModified: "last_modified",
-	Owner:        "owner",
+	Owner: "owner",
 	SeasonNumber: "season_number",
-	Thumbnail:    "thumbnail",
-	Title:        "title",
-	VideosCount:  "videos_count",
+	Thumbnail: "thumbnail",
+	Title: "title",
+	VideosCount: "videos_count",
 }
 
 // VideoListFieldsList contains all available fields for VideoList objects

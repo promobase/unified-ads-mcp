@@ -5,6 +5,6 @@ package types
 // CustomAudienceDataSource represents a Facebook CustomAudienceDataSource object
 type CustomAudienceDataSource struct {
 	Creation_params string `json:"creation_params"`
-	Sub_type        string `json:"sub_type"`
-	Type_           string `json:"type"`
+	Sub_type string `json:"sub_type"`
+	Type_ string `json:"type"`
 }

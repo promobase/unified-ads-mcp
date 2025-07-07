@@ -17,6 +17,7 @@ import (
 func GetAdsPixelTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// adspixel_get_adaccounts tool
 	// Available fields for AdAccount: account_id, account_status, ad_account_promotable_objects, age, agency_client_declaration, all_capabilities, amount_spent, attribution_spec, balance, brand_safety_content_filter_levels, business, business_city, business_country_code, business_name, business_state, business_street, business_street2, business_zip, can_create_brand_lift_study, capabilities, created_time, currency, custom_audience_info, default_dsa_beneficiary, default_dsa_payor, disable_reason, end_advertiser, end_advertiser_name, existing_customers, expired_funding_source_details, extended_credit_invoice_group, failed_delivery_checks, fb_entity, funding_source, funding_source_details, has_migrated_permissions, has_page_authorized_adaccount, id, io_number, is_attribution_spec_system_default, is_ba_skip_delayed_eligible, is_direct_deals_enabled, is_in_3ds_authorization_enabled_market, is_notifications_enabled, is_personal, is_prepay_account, is_tax_id_required, liable_address, line_numbers, media_agency, min_campaign_group_spend_cap, min_daily_budget, name, offsite_pixels_tos_accepted, owner, owner_business, partner, rf_spec, send_bill_to_address, show_checkout_experience, sold_to_address, spend_cap, tax_id, tax_id_status, tax_id_type, timezone_id, timezone_name, timezone_offset_hours_utc, tos_accepted, user_access_expire_time, user_tasks, user_tos_accepted, viewable_business
 	// Params object accepts: business (string)
@@ -26,9 +27,9 @@ func GetAdsPixelTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "business parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required]"),
@@ -56,9 +57,9 @@ func GetAdsPixelTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "business parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required]"),
@@ -93,16 +94,16 @@ func GetAdsPixelTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "business parameter",
-					"required":    true,
+					"required": true,
 				},
 				"permitted_tasks": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "permitted_tasks parameter",
-					"required":    true,
-					"enum":        []string{"ADVERTISE", "ANALYZE", "EDIT", "UPLOAD"},
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"enum": []string{ "ADVERTISE", "ANALYZE", "EDIT", "UPLOAD" },
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required], permitted_tasks (array<enum>) [ADVERTISE, ANALYZE, EDIT, UPLOAD] [required]"),
@@ -118,9 +119,9 @@ func GetAdsPixelTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"applink_autosetup": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "applink_autosetup parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: applink_autosetup (boolean) [required]"),
@@ -137,9 +138,9 @@ func GetAdsPixelTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "business parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required]"),
@@ -167,16 +168,16 @@ func GetAdsPixelTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"tasks": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "tasks parameter",
-					"required":    true,
-					"enum":        []string{"AA_ANALYZE", "ADVERTISE", "ANALYZE", "EDIT", "UPLOAD"},
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"enum": []string{ "AA_ANALYZE", "ADVERTISE", "ANALYZE", "EDIT", "UPLOAD" },
+					"items": map[string]any{"type": "string"},
 				},
 				"user": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "user parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: tasks (array<enum>) [AA_ANALYZE, ADVERTISE, ANALYZE, EDIT, UPLOAD] [required], user (integer) [required]"),
@@ -192,14 +193,14 @@ func GetAdsPixelTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"checks": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "checks parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"connection_method": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "connection_method parameter",
-					"enum":        []string{"ALL", "APP", "BROWSER", "SERVER"},
+					"enum": []string{ "ALL", "APP", "BROWSER", "SERVER" },
 				},
 			}),
 			mcp.Description("Parameters object containing: checks (array<string>), connection_method (enum) [ALL, APP, BROWSER, SERVER]"),
@@ -227,46 +228,46 @@ func GetAdsPixelTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"data": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "data parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "string"},
+					"required": true,
+					"items": map[string]any{"type": "string"},
 				},
 				"namespace_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "namespace_id parameter",
 				},
 				"partner_agent": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "partner_agent parameter",
 				},
 				"platforms": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "platforms parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"progress": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "progress parameter",
 				},
 				"test_event_code": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "test_event_code parameter",
 				},
 				"trace": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "trace parameter",
 				},
 				"upload_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "upload_id parameter",
 				},
 				"upload_source": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "upload_source parameter",
 				},
 				"upload_tag": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "upload_tag parameter",
 				},
 			}),
@@ -283,25 +284,25 @@ func GetAdsPixelTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"end_time": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "end_time parameter",
 				},
 				"order": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "order parameter",
-					"enum":        []string{"ASCENDING", "DESCENDING"},
+					"enum": []string{ "ASCENDING", "DESCENDING" },
 				},
 				"sort_by": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "sort_by parameter",
-					"enum":        []string{"API_CALLS", "CREATION_TIME", "EVENT_TIME_MAX", "EVENT_TIME_MIN", "FIRST_UPLOAD_TIME", "IS_EXCLUDED_FOR_LIFT", "LAST_UPLOAD_TIME"},
+					"enum": []string{ "API_CALLS", "CREATION_TIME", "EVENT_TIME_MAX", "EVENT_TIME_MIN", "FIRST_UPLOAD_TIME", "IS_EXCLUDED_FOR_LIFT", "LAST_UPLOAD_TIME" },
 				},
 				"start_time": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "start_time parameter",
 				},
 				"upload_tag": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "upload_tag parameter",
 				},
 			}),
@@ -355,14 +356,14 @@ func GetAdsPixelTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"account_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "account_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "business parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: account_id (string) [required], business (string) [required]"),
@@ -379,9 +380,9 @@ func GetAdsPixelTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "business parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: business (string) [required]"),
@@ -409,14 +410,14 @@ func GetAdsPixelTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"account_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "account_id parameter",
-					"required":    true,
+					"required": true,
 				},
 				"business": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "business parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: account_id (string) [required], business (string) [required]"),
@@ -451,24 +452,24 @@ func GetAdsPixelTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"aggregation": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "aggregation parameter",
-					"enum":        []string{"browser_type", "custom_data_field", "device_os", "device_type", "event", "event_detection_method", "event_processing_results", "event_source", "event_total_counts", "event_value_count", "had_pii", "host", "match_keys", "pixel_fire", "url", "url_by_rule"},
+					"enum": []string{ "browser_type", "custom_data_field", "device_os", "device_type", "event", "event_detection_method", "event_processing_results", "event_source", "event_total_counts", "event_value_count", "had_pii", "host", "match_keys", "pixel_fire", "url", "url_by_rule" },
 				},
 				"end_time": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "end_time parameter",
 				},
 				"event": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "event parameter",
 				},
 				"event_source": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "event_source parameter",
 				},
 				"start_time": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "start_time parameter",
 				},
 			}),
@@ -515,33 +516,33 @@ func GetAdsPixelTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"automatic_matching_fields": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "automatic_matching_fields parameter",
-					"enum":        []string{"country", "ct", "db", "em", "external_id", "fn", "ge", "ln", "ph", "st", "zp"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "country", "ct", "db", "em", "external_id", "fn", "ge", "ln", "ph", "st", "zp" },
+					"items": map[string]any{"type": "string"},
 				},
 				"data_use_setting": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "data_use_setting parameter",
-					"enum":        []string{"ADVERTISING_AND_ANALYTICS", "ANALYTICS_ONLY", "EMPTY"},
+					"enum": []string{ "ADVERTISING_AND_ANALYTICS", "ANALYTICS_ONLY", "EMPTY" },
 				},
 				"enable_automatic_matching": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "enable_automatic_matching parameter",
 				},
 				"first_party_cookie_status": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "first_party_cookie_status parameter",
-					"enum":        []string{"EMPTY", "FIRST_PARTY_COOKIE_DISABLED", "FIRST_PARTY_COOKIE_ENABLED"},
+					"enum": []string{ "EMPTY", "FIRST_PARTY_COOKIE_DISABLED", "FIRST_PARTY_COOKIE_ENABLED" },
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
 				},
 				"server_events_business_ids": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "server_events_business_ids parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: automatic_matching_fields (array<adspixel_automatic_matching_fields>) [country, ct, db, em, external_id, ...], data_use_setting (adspixel_data_use_setting) [ADVERTISING_AND_ANALYTICS, ANALYTICS_ONLY, EMPTY], enable_automatic_matching (boolean), first_party_cookie_status (adspixel_first_party_cookie_status) [EMPTY, FIRST_PARTY_COOKIE_DISABLED, FIRST_PARTY_COOKIE_ENABLED], name (string), server_events_business_ids (array<string>)"),
@@ -549,10 +550,12 @@ func GetAdsPixelTools() []mcp.Tool {
 	)
 	tools = append(tools, adspixel_post_Tool)
 
+
 	return tools
 }
 
 // AdsPixel handlers
+
 
 // HandleAdspixel_get_adaccounts handles the adspixel_get_adaccounts tool with context-based auth
 func HandleAdspixel_get_adaccounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -607,6 +610,8 @@ func HandleAdspixel_get_adaccounts(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adspixel_get_adaccounts(args)
 	if err != nil {
@@ -621,6 +626,7 @@ func HandleAdspixel_get_adaccounts(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdspixel_delete_agencies handles the adspixel_delete_agencies tool with context-based auth
 func HandleAdspixel_delete_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -650,6 +656,8 @@ func HandleAdspixel_delete_agencies(ctx context.Context, request mcp.CallToolReq
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adspixel_delete_agencies(args)
 	if err != nil {
@@ -664,6 +672,7 @@ func HandleAdspixel_delete_agencies(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdspixel_get_agencies handles the adspixel_get_agencies tool with context-based auth
 func HandleAdspixel_get_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -704,6 +713,8 @@ func HandleAdspixel_get_agencies(ctx context.Context, request mcp.CallToolReques
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adspixel_get_agencies(args)
 	if err != nil {
@@ -718,6 +729,7 @@ func HandleAdspixel_get_agencies(ctx context.Context, request mcp.CallToolReques
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdspixel_post_agencies handles the adspixel_post_agencies tool with context-based auth
 func HandleAdspixel_post_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -747,6 +759,8 @@ func HandleAdspixel_post_agencies(ctx context.Context, request mcp.CallToolReque
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adspixel_post_agencies(args)
 	if err != nil {
@@ -761,6 +775,7 @@ func HandleAdspixel_post_agencies(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdspixel_post_ahp_configs handles the adspixel_post_ahp_configs tool with context-based auth
 func HandleAdspixel_post_ahp_configs(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -790,6 +805,8 @@ func HandleAdspixel_post_ahp_configs(ctx context.Context, request mcp.CallToolRe
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adspixel_post_ahp_configs(args)
 	if err != nil {
@@ -804,6 +821,7 @@ func HandleAdspixel_post_ahp_configs(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdspixel_get_assigned_users handles the adspixel_get_assigned_users tool with context-based auth
 func HandleAdspixel_get_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -858,6 +876,8 @@ func HandleAdspixel_get_assigned_users(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adspixel_get_assigned_users(args)
 	if err != nil {
@@ -872,6 +892,7 @@ func HandleAdspixel_get_assigned_users(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdspixel_post_assigned_users handles the adspixel_post_assigned_users tool with context-based auth
 func HandleAdspixel_post_assigned_users(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -901,6 +922,8 @@ func HandleAdspixel_post_assigned_users(ctx context.Context, request mcp.CallToo
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adspixel_post_assigned_users(args)
 	if err != nil {
@@ -915,6 +938,7 @@ func HandleAdspixel_post_assigned_users(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdspixel_get_da_checks handles the adspixel_get_da_checks tool with context-based auth
 func HandleAdspixel_get_da_checks(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -967,6 +991,8 @@ func HandleAdspixel_get_da_checks(ctx context.Context, request mcp.CallToolReque
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adspixel_get_da_checks(args)
 	if err != nil {
@@ -981,6 +1007,7 @@ func HandleAdspixel_get_da_checks(ctx context.Context, request mcp.CallToolReque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdspixel_post_events handles the adspixel_post_events tool with context-based auth
 func HandleAdspixel_post_events(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1010,6 +1037,8 @@ func HandleAdspixel_post_events(ctx context.Context, request mcp.CallToolRequest
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adspixel_post_events(args)
 	if err != nil {
@@ -1024,6 +1053,7 @@ func HandleAdspixel_post_events(ctx context.Context, request mcp.CallToolRequest
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdspixel_get_offline_event_uploads handles the adspixel_get_offline_event_uploads tool with context-based auth
 func HandleAdspixel_get_offline_event_uploads(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1076,6 +1106,8 @@ func HandleAdspixel_get_offline_event_uploads(ctx context.Context, request mcp.C
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adspixel_get_offline_event_uploads(args)
 	if err != nil {
@@ -1090,6 +1122,7 @@ func HandleAdspixel_get_offline_event_uploads(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdspixel_get_openbridge_configurations handles the adspixel_get_openbridge_configurations tool with context-based auth
 func HandleAdspixel_get_openbridge_configurations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1130,6 +1163,8 @@ func HandleAdspixel_get_openbridge_configurations(ctx context.Context, request m
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adspixel_get_openbridge_configurations(args)
 	if err != nil {
@@ -1145,6 +1180,7 @@ func HandleAdspixel_get_openbridge_configurations(ctx context.Context, request m
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
 
+
 // HandleAdspixel_post_shadowtraffichelper handles the adspixel_post_shadowtraffichelper tool with context-based auth
 func HandleAdspixel_post_shadowtraffichelper(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	// Get access token from context
@@ -1158,6 +1194,8 @@ func HandleAdspixel_post_shadowtraffichelper(ctx context.Context, request mcp.Ca
 
 	// Build arguments map
 	args := make(map[string]interface{})
+
+
 
 	// Call the client method
 	result, err := client.Adspixel_post_shadowtraffichelper(args)
@@ -1173,6 +1211,7 @@ func HandleAdspixel_post_shadowtraffichelper(ctx context.Context, request mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdspixel_delete_shared_accounts handles the adspixel_delete_shared_accounts tool with context-based auth
 func HandleAdspixel_delete_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1202,6 +1241,8 @@ func HandleAdspixel_delete_shared_accounts(ctx context.Context, request mcp.Call
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adspixel_delete_shared_accounts(args)
 	if err != nil {
@@ -1216,6 +1257,7 @@ func HandleAdspixel_delete_shared_accounts(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdspixel_get_shared_accounts handles the adspixel_get_shared_accounts tool with context-based auth
 func HandleAdspixel_get_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1270,6 +1312,8 @@ func HandleAdspixel_get_shared_accounts(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adspixel_get_shared_accounts(args)
 	if err != nil {
@@ -1284,6 +1328,7 @@ func HandleAdspixel_get_shared_accounts(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdspixel_post_shared_accounts handles the adspixel_post_shared_accounts tool with context-based auth
 func HandleAdspixel_post_shared_accounts(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1313,6 +1358,8 @@ func HandleAdspixel_post_shared_accounts(ctx context.Context, request mcp.CallTo
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adspixel_post_shared_accounts(args)
 	if err != nil {
@@ -1327,6 +1374,7 @@ func HandleAdspixel_post_shared_accounts(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdspixel_get_shared_agencies handles the adspixel_get_shared_agencies tool with context-based auth
 func HandleAdspixel_get_shared_agencies(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1367,6 +1415,8 @@ func HandleAdspixel_get_shared_agencies(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adspixel_get_shared_agencies(args)
 	if err != nil {
@@ -1381,6 +1431,7 @@ func HandleAdspixel_get_shared_agencies(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdspixel_get_stats handles the adspixel_get_stats tool with context-based auth
 func HandleAdspixel_get_stats(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1433,6 +1484,8 @@ func HandleAdspixel_get_stats(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adspixel_get_stats(args)
 	if err != nil {
@@ -1447,6 +1500,7 @@ func HandleAdspixel_get_stats(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdspixel_get_ handles the adspixel_get_ tool with context-based auth
 func HandleAdspixel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1487,6 +1541,8 @@ func HandleAdspixel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adspixel_get_(args)
 	if err != nil {
@@ -1501,6 +1557,7 @@ func HandleAdspixel_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdspixel_post_ handles the adspixel_post_ tool with context-based auth
 func HandleAdspixel_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1528,6 +1585,8 @@ func HandleAdspixel_post_(ctx context.Context, request mcp.CallToolRequest) (*mc
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adspixel_post_(args)
 	if err != nil {
@@ -1542,3 +1601,4 @@ func HandleAdspixel_post_(ctx context.Context, request mcp.CallToolRequest) (*mc
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

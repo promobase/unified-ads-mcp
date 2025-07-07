@@ -4,10 +4,10 @@ package constants
 
 // ShadowIGUserCatalogProductVariantFields contains field name constants for ShadowIGUserCatalogProductVariant objects
 var ShadowIGUserCatalogProductVariantFields = struct {
-	ProductId   string
+	ProductId string
 	VariantName string
 }{
-	ProductId:   "product_id",
+	ProductId: "product_id",
 	VariantName: "variant_name",
 }
 

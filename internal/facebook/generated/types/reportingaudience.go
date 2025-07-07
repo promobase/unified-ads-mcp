@@ -4,7 +4,7 @@ package types
 
 // ReportingAudience represents a Facebook ReportingAudience object
 type ReportingAudience struct {
-	Custom_audiences                []RawCustomAudience `json:"custom_audiences"`
-	Custom_audiences_url_param_name string              `json:"custom_audiences_url_param_name"`
-	Custom_audiences_url_param_type string              `json:"custom_audiences_url_param_type"`
+	Custom_audiences []RawCustomAudience `json:"custom_audiences"`
+	Custom_audiences_url_param_name string `json:"custom_audiences_url_param_name"`
+	Custom_audiences_url_param_type string `json:"custom_audiences_url_param_type"`
 }

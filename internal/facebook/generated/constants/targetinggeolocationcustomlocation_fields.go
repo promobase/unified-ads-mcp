@@ -5,34 +5,34 @@ package constants
 // TargetingGeoLocationCustomLocationFields contains field name constants for TargetingGeoLocationCustomLocation objects
 var TargetingGeoLocationCustomLocationFields = struct {
 	AddressString string
-	Country       string
-	CountryGroup  string
-	CustomType    string
-	DistanceUnit  string
-	Key           string
-	Latitude      string
-	Longitude     string
+	Country string
+	CountryGroup string
+	CustomType string
+	DistanceUnit string
+	Key string
+	Latitude string
+	Longitude string
 	MaxPopulation string
 	MinPopulation string
-	Name          string
+	Name string
 	PrimaryCityId string
-	Radius        string
-	RegionId      string
+	Radius string
+	RegionId string
 }{
 	AddressString: "address_string",
-	Country:       "country",
-	CountryGroup:  "country_group",
-	CustomType:    "custom_type",
-	DistanceUnit:  "distance_unit",
-	Key:           "key",
-	Latitude:      "latitude",
-	Longitude:     "longitude",
+	Country: "country",
+	CountryGroup: "country_group",
+	CustomType: "custom_type",
+	DistanceUnit: "distance_unit",
+	Key: "key",
+	Latitude: "latitude",
+	Longitude: "longitude",
 	MaxPopulation: "max_population",
 	MinPopulation: "min_population",
-	Name:          "name",
+	Name: "name",
 	PrimaryCityId: "primary_city_id",
-	Radius:        "radius",
-	RegionId:      "region_id",
+	Radius: "radius",
+	RegionId: "region_id",
 }
 
 // TargetingGeoLocationCustomLocationFieldsList contains all available fields for TargetingGeoLocationCustomLocation objects

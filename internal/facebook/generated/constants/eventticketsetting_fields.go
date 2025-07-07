@@ -4,10 +4,10 @@ package constants
 
 // EventTicketSettingFields contains field name constants for EventTicketSetting objects
 var EventTicketSettingFields = struct {
-	Id                 string
+	Id string
 	TicketDeliveryType string
 }{
-	Id:                 "id",
+	Id: "id",
 	TicketDeliveryType: "ticket_delivery_type",
 }
 

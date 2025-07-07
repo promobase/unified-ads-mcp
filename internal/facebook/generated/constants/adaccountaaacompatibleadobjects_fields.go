@@ -4,13 +4,13 @@ package constants
 
 // AdAccountAAACompatibleAdObjectsFields contains field name constants for AdAccountAAACompatibleAdObjects objects
 var AdAccountAAACompatibleAdObjectsFields = struct {
-	AdgroupIds       string
+	AdgroupIds string
 	CampaignGroupIds string
-	CampaignIds      string
+	CampaignIds string
 }{
-	AdgroupIds:       "adgroup_ids",
+	AdgroupIds: "adgroup_ids",
 	CampaignGroupIds: "campaign_group_ids",
-	CampaignIds:      "campaign_ids",
+	CampaignIds: "campaign_ids",
 }
 
 // AdAccountAAACompatibleAdObjectsFieldsList contains all available fields for AdAccountAAACompatibleAdObjects objects

@@ -4,13 +4,13 @@ package constants
 
 // LeadGenConditionalQuestionsGroupQuestionsFields contains field name constants for LeadGenConditionalQuestionsGroupQuestions objects
 var LeadGenConditionalQuestionsGroupQuestionsFields = struct {
-	FieldKey  string
+	FieldKey string
 	InputType string
-	Name      string
+	Name string
 }{
-	FieldKey:  "field_key",
+	FieldKey: "field_key",
 	InputType: "input_type",
-	Name:      "name",
+	Name: "name",
 }
 
 // LeadGenConditionalQuestionsGroupQuestionsFieldsList contains all available fields for LeadGenConditionalQuestionsGroupQuestions objects

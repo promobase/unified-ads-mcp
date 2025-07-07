@@ -4,12 +4,12 @@ package constants
 
 // TargetingSentenceLineFields contains field name constants for TargetingSentenceLine objects
 var TargetingSentenceLineFields = struct {
-	Id                     string
-	Params                 string
+	Id string
+	Params string
 	Targetingsentencelines string
 }{
-	Id:                     "id",
-	Params:                 "params",
+	Id: "id",
+	Params: "params",
 	Targetingsentencelines: "targetingsentencelines",
 }
 

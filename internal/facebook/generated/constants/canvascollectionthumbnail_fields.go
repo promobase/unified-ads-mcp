@@ -5,12 +5,12 @@ package constants
 // CanvasCollectionThumbnailFields contains field name constants for CanvasCollectionThumbnail objects
 var CanvasCollectionThumbnailFields = struct {
 	ElementChildIndex string
-	ElementId         string
-	Photo             string
+	ElementId string
+	Photo string
 }{
 	ElementChildIndex: "element_child_index",
-	ElementId:         "element_id",
-	Photo:             "photo",
+	ElementId: "element_id",
+	Photo: "photo",
 }
 
 // CanvasCollectionThumbnailFieldsList contains all available fields for CanvasCollectionThumbnail objects

@@ -4,7 +4,7 @@ package types
 
 // BusinessAssetGroup represents a Facebook BusinessAssetGroup object
 type BusinessAssetGroup struct {
-	Id             string    `json:"id"`
-	Name           string    `json:"name"`
+	Id string `json:"id"`
+	Name string `json:"name"`
 	Owner_business *Business `json:"owner_business"`
 }

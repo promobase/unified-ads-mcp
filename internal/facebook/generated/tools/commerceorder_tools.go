@@ -17,6 +17,7 @@ import (
 func GetCommerceOrderTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// commerceorder_post_acknowledge_order tool
 	// Params object accepts: idempotency_key (string), merchant_order_reference (string)
 	commerceorder_post_acknowledge_orderTool := mcp.NewTool("commerceorder_post_acknowledge_order",
@@ -25,12 +26,12 @@ func GetCommerceOrderTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"idempotency_key": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "idempotency_key parameter",
-					"required":    true,
+					"required": true,
 				},
 				"merchant_order_reference": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "merchant_order_reference parameter",
 				},
 			}),
@@ -65,21 +66,21 @@ func GetCommerceOrderTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"cancel_reason": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "cancel_reason parameter",
 				},
 				"idempotency_key": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "idempotency_key parameter",
-					"required":    true,
+					"required": true,
 				},
 				"items": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "items parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"restock_items": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "restock_items parameter",
 				},
 			}),
@@ -96,15 +97,15 @@ func GetCommerceOrderTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"items": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "items parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "object"},
+					"required": true,
+					"items": map[string]any{"type": "object"},
 				},
 				"merchant_order_reference": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "merchant_order_reference parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: items (array<object>) [required], merchant_order_reference (string) [required]"),
@@ -210,40 +211,40 @@ func GetCommerceOrderTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"adjustment_amount": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "adjustment_amount parameter",
 				},
 				"deductions": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "deductions parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"idempotency_key": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "idempotency_key parameter",
-					"required":    true,
+					"required": true,
 				},
 				"items": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "items parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"reason_code": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "reason_code parameter",
-					"required":    true,
-					"enum":        []string{"BUYERS_REMORSE", "DAMAGED_GOODS", "FACEBOOK_INITIATED", "NOT_AS_DESCRIBED", "QUALITY_ISSUE", "REFUND_COMPROMISED", "REFUND_FOR_RETURN", "REFUND_REASON_OTHER", "REFUND_SFI_FAKE", "REFUND_SFI_REAL", "WRONG_ITEM"},
+					"required": true,
+					"enum": []string{ "BUYERS_REMORSE", "DAMAGED_GOODS", "FACEBOOK_INITIATED", "NOT_AS_DESCRIBED", "QUALITY_ISSUE", "REFUND_COMPROMISED", "REFUND_FOR_RETURN", "REFUND_REASON_OTHER", "REFUND_SFI_FAKE", "REFUND_SFI_REAL", "WRONG_ITEM" },
 				},
 				"reason_text": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "reason_text parameter",
 				},
 				"return_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "return_id parameter",
 				},
 				"shipping": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "shipping parameter",
 				},
 			}),
@@ -259,14 +260,14 @@ func GetCommerceOrderTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"merchant_return_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "merchant_return_id parameter",
 				},
 				"statuses": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "statuses parameter",
-					"enum":        []string{"APPROVED", "DISAPPROVED", "MERCHANT_MARKED_COMPLETED", "REFUNDED", "REQUESTED"},
-					"items":       map[string]any{"type": "string"},
+					"enum": []string{ "APPROVED", "DISAPPROVED", "MERCHANT_MARKED_COMPLETED", "REFUNDED", "REQUESTED" },
+					"items": map[string]any{"type": "string"},
 				},
 			}),
 			mcp.Description("Parameters object containing: merchant_return_id (string), statuses (array<enum>) [APPROVED, DISAPPROVED, MERCHANT_MARKED_COMPLETED, REFUNDED, REQUESTED]"),
@@ -294,21 +295,21 @@ func GetCommerceOrderTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"items": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "items parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "object"},
+					"required": true,
+					"items": map[string]any{"type": "object"},
 				},
 				"merchant_return_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "merchant_return_id parameter",
 				},
 				"return_message": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "return_message parameter",
 				},
 				"update": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "update parameter",
 				},
 			}),
@@ -343,45 +344,45 @@ func GetCommerceOrderTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"external_redemption_link": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "external_redemption_link parameter",
 				},
 				"external_shipment_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "external_shipment_id parameter",
 				},
 				"fulfillment": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "fulfillment parameter",
 				},
 				"idempotency_key": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "idempotency_key parameter",
-					"required":    true,
+					"required": true,
 				},
 				"items": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "items parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"merchant_order_reference": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "merchant_order_reference parameter",
 				},
 				"shipment_origin_postal_code": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "shipment_origin_postal_code parameter",
 				},
 				"shipping_tax_details": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "shipping_tax_details parameter",
 				},
 				"should_use_default_fulfillment_location": map[string]any{
-					"type":        "boolean",
+					"type": "boolean",
 					"description": "should_use_default_fulfillment_location parameter",
 				},
 				"tracking_info": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "tracking_info parameter",
 				},
 			}),
@@ -398,26 +399,26 @@ func GetCommerceOrderTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"external_shipment_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "external_shipment_id parameter",
 				},
 				"fulfillment_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "fulfillment_id parameter",
 				},
 				"idempotency_key": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "idempotency_key parameter",
-					"required":    true,
+					"required": true,
 				},
 				"shipment_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "shipment_id parameter",
 				},
 				"tracking_info": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "tracking_info parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: external_shipment_id (string), fulfillment_id (string), idempotency_key (string) [required], shipment_id (string), tracking_info (object) [required]"),
@@ -444,10 +445,12 @@ func GetCommerceOrderTools() []mcp.Tool {
 	)
 	tools = append(tools, commerceorder_get_Tool)
 
+
 	return tools
 }
 
 // CommerceOrder handlers
+
 
 // HandleCommerceorder_post_acknowledge_order handles the commerceorder_post_acknowledge_order tool with context-based auth
 func HandleCommerceorder_post_acknowledge_order(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -477,6 +480,8 @@ func HandleCommerceorder_post_acknowledge_order(ctx context.Context, request mcp
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Commerceorder_post_acknowledge_order(args)
 	if err != nil {
@@ -491,6 +496,7 @@ func HandleCommerceorder_post_acknowledge_order(ctx context.Context, request mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCommerceorder_get_cancellations handles the commerceorder_get_cancellations tool with context-based auth
 func HandleCommerceorder_get_cancellations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -531,6 +537,8 @@ func HandleCommerceorder_get_cancellations(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Commerceorder_get_cancellations(args)
 	if err != nil {
@@ -545,6 +553,7 @@ func HandleCommerceorder_get_cancellations(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCommerceorder_post_cancellations handles the commerceorder_post_cancellations tool with context-based auth
 func HandleCommerceorder_post_cancellations(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -574,6 +583,8 @@ func HandleCommerceorder_post_cancellations(ctx context.Context, request mcp.Cal
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Commerceorder_post_cancellations(args)
 	if err != nil {
@@ -588,6 +599,7 @@ func HandleCommerceorder_post_cancellations(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCommerceorder_post_item_updates handles the commerceorder_post_item_updates tool with context-based auth
 func HandleCommerceorder_post_item_updates(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -617,6 +629,8 @@ func HandleCommerceorder_post_item_updates(ctx context.Context, request mcp.Call
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Commerceorder_post_item_updates(args)
 	if err != nil {
@@ -631,6 +645,7 @@ func HandleCommerceorder_post_item_updates(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCommerceorder_get_items handles the commerceorder_get_items tool with context-based auth
 func HandleCommerceorder_get_items(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -671,6 +686,8 @@ func HandleCommerceorder_get_items(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Commerceorder_get_items(args)
 	if err != nil {
@@ -685,6 +702,7 @@ func HandleCommerceorder_get_items(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCommerceorder_get_payments handles the commerceorder_get_payments tool with context-based auth
 func HandleCommerceorder_get_payments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -725,6 +743,8 @@ func HandleCommerceorder_get_payments(ctx context.Context, request mcp.CallToolR
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Commerceorder_get_payments(args)
 	if err != nil {
@@ -739,6 +759,7 @@ func HandleCommerceorder_get_payments(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCommerceorder_get_promotion_details handles the commerceorder_get_promotion_details tool with context-based auth
 func HandleCommerceorder_get_promotion_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -779,6 +800,8 @@ func HandleCommerceorder_get_promotion_details(ctx context.Context, request mcp.
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Commerceorder_get_promotion_details(args)
 	if err != nil {
@@ -793,6 +816,7 @@ func HandleCommerceorder_get_promotion_details(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCommerceorder_get_promotions handles the commerceorder_get_promotions tool with context-based auth
 func HandleCommerceorder_get_promotions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -833,6 +857,8 @@ func HandleCommerceorder_get_promotions(ctx context.Context, request mcp.CallToo
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Commerceorder_get_promotions(args)
 	if err != nil {
@@ -847,6 +873,7 @@ func HandleCommerceorder_get_promotions(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCommerceorder_get_refunds handles the commerceorder_get_refunds tool with context-based auth
 func HandleCommerceorder_get_refunds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -887,6 +914,8 @@ func HandleCommerceorder_get_refunds(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Commerceorder_get_refunds(args)
 	if err != nil {
@@ -901,6 +930,7 @@ func HandleCommerceorder_get_refunds(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCommerceorder_post_refunds handles the commerceorder_post_refunds tool with context-based auth
 func HandleCommerceorder_post_refunds(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -930,6 +960,8 @@ func HandleCommerceorder_post_refunds(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Commerceorder_post_refunds(args)
 	if err != nil {
@@ -944,6 +976,7 @@ func HandleCommerceorder_post_refunds(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCommerceorder_get_returns handles the commerceorder_get_returns tool with context-based auth
 func HandleCommerceorder_get_returns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -996,6 +1029,8 @@ func HandleCommerceorder_get_returns(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Commerceorder_get_returns(args)
 	if err != nil {
@@ -1010,6 +1045,7 @@ func HandleCommerceorder_get_returns(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCommerceorder_post_returns handles the commerceorder_post_returns tool with context-based auth
 func HandleCommerceorder_post_returns(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1039,6 +1075,8 @@ func HandleCommerceorder_post_returns(ctx context.Context, request mcp.CallToolR
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Commerceorder_post_returns(args)
 	if err != nil {
@@ -1053,6 +1091,7 @@ func HandleCommerceorder_post_returns(ctx context.Context, request mcp.CallToolR
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCommerceorder_get_shipments handles the commerceorder_get_shipments tool with context-based auth
 func HandleCommerceorder_get_shipments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1093,6 +1132,8 @@ func HandleCommerceorder_get_shipments(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Commerceorder_get_shipments(args)
 	if err != nil {
@@ -1107,6 +1148,7 @@ func HandleCommerceorder_get_shipments(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCommerceorder_post_shipments handles the commerceorder_post_shipments tool with context-based auth
 func HandleCommerceorder_post_shipments(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1136,6 +1178,8 @@ func HandleCommerceorder_post_shipments(ctx context.Context, request mcp.CallToo
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Commerceorder_post_shipments(args)
 	if err != nil {
@@ -1150,6 +1194,7 @@ func HandleCommerceorder_post_shipments(ctx context.Context, request mcp.CallToo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCommerceorder_post_update_shipment handles the commerceorder_post_update_shipment tool with context-based auth
 func HandleCommerceorder_post_update_shipment(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1179,6 +1224,8 @@ func HandleCommerceorder_post_update_shipment(ctx context.Context, request mcp.C
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Commerceorder_post_update_shipment(args)
 	if err != nil {
@@ -1193,6 +1240,7 @@ func HandleCommerceorder_post_update_shipment(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleCommerceorder_get_ handles the commerceorder_get_ tool with context-based auth
 func HandleCommerceorder_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -1233,6 +1281,8 @@ func HandleCommerceorder_get_(ctx context.Context, request mcp.CallToolRequest) 
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Commerceorder_get_(args)
 	if err != nil {
@@ -1247,3 +1297,4 @@ func HandleCommerceorder_get_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -5,7 +5,7 @@ package types
 // AdCampaignLearningStageInfo represents a Facebook AdCampaignLearningStageInfo object
 type AdCampaignLearningStageInfo struct {
 	Attribution_windows []string `json:"attribution_windows"`
-	Conversions         int      `json:"conversions"`
-	Last_sig_edit_ts    int      `json:"last_sig_edit_ts"`
-	Status              string   `json:"status"`
+	Conversions int `json:"conversions"`
+	Last_sig_edit_ts int `json:"last_sig_edit_ts"`
+	Status string `json:"status"`
 }

@@ -4,12 +4,12 @@ package constants
 
 // AdRuleScheduleFields contains field name constants for AdRuleSchedule objects
 var AdRuleScheduleFields = struct {
-	Days        string
-	EndMinute   string
+	Days string
+	EndMinute string
 	StartMinute string
 }{
-	Days:        "days",
-	EndMinute:   "end_minute",
+	Days: "days",
+	EndMinute: "end_minute",
 	StartMinute: "start_minute",
 }
 

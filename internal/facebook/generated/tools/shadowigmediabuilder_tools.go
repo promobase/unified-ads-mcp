@@ -17,6 +17,7 @@ import (
 func GetShadowIGMediaBuilderTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// shadowigmediabuilder_get_ tool
 	// Available fields for ShadowIGMediaBuilder: copyright_check_status, id, status, status_code, video_status
 	shadowigmediabuilder_get_Tool := mcp.NewTool("shadowigmediabuilder_get_",
@@ -36,10 +37,12 @@ func GetShadowIGMediaBuilderTools() []mcp.Tool {
 	)
 	tools = append(tools, shadowigmediabuilder_get_Tool)
 
+
 	return tools
 }
 
 // ShadowIGMediaBuilder handlers
+
 
 // HandleShadowigmediabuilder_get_ handles the shadowigmediabuilder_get_ tool with context-based auth
 func HandleShadowigmediabuilder_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleShadowigmediabuilder_get_(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Shadowigmediabuilder_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleShadowigmediabuilder_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

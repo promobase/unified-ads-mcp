@@ -4,12 +4,12 @@ package constants
 
 // InstagramBusinessAssetFields contains field name constants for InstagramBusinessAsset objects
 var InstagramBusinessAssetFields = struct {
-	Id         string
-	IgUserId   string
+	Id string
+	IgUserId string
 	IgUsername string
 }{
-	Id:         "id",
-	IgUserId:   "ig_user_id",
+	Id: "id",
+	IgUserId: "ig_user_id",
 	IgUsername: "ig_username",
 }
 

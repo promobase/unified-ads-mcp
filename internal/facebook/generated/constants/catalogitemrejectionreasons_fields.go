@@ -4,10 +4,10 @@ package constants
 
 // CatalogItemRejectionReasonsFields contains field name constants for CatalogItemRejectionReasons objects
 var CatalogItemRejectionReasonsFields = struct {
-	Capability           string
+	Capability string
 	RejectionInformation string
 }{
-	Capability:           "capability",
+	Capability: "capability",
 	RejectionInformation: "rejection_information",
 }
 

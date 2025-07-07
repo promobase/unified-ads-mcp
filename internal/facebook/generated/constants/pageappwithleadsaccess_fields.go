@@ -5,10 +5,10 @@ package constants
 // PageAppWithLeadsAccessFields contains field name constants for PageAppWithLeadsAccess objects
 var PageAppWithLeadsAccessFields = struct {
 	CanAccessLeads string
-	FieldType      string
+	FieldType string
 }{
 	CanAccessLeads: "can_access_leads",
-	FieldType:      "type",
+	FieldType: "type",
 }
 
 // PageAppWithLeadsAccessFieldsList contains all available fields for PageAppWithLeadsAccess objects

@@ -17,6 +17,7 @@ import (
 func GetDynamicItemDisplayBundleTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// dynamicitemdisplaybundle_get_ tool
 	// Available fields for DynamicItemDisplayBundle: additional_urls, description, id, name, product_set, text_tokens, url
 	dynamicitemdisplaybundle_get_Tool := mcp.NewTool("dynamicitemdisplaybundle_get_",
@@ -36,10 +37,12 @@ func GetDynamicItemDisplayBundleTools() []mcp.Tool {
 	)
 	tools = append(tools, dynamicitemdisplaybundle_get_Tool)
 
+
 	return tools
 }
 
 // DynamicItemDisplayBundle handlers
+
 
 // HandleDynamicitemdisplaybundle_get_ handles the dynamicitemdisplaybundle_get_ tool with context-based auth
 func HandleDynamicitemdisplaybundle_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleDynamicitemdisplaybundle_get_(ctx context.Context, request mcp.CallTo
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Dynamicitemdisplaybundle_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleDynamicitemdisplaybundle_get_(ctx context.Context, request mcp.CallTo
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

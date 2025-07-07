@@ -6,15 +6,15 @@ import "time"
 
 // CalibratorExistingRule represents a Facebook CalibratorExistingRule object
 type CalibratorExistingRule struct {
-	Field_7d_volume int       `json:"7d_volume"`
-	Creation_source string    `json:"creation_source"`
-	Creation_time   time.Time `json:"creation_time"`
-	Creator         string    `json:"creator"`
-	Event_type      string    `json:"event_type"`
-	Id              string    `json:"id"`
-	Rule            string    `json:"rule"`
-	Rule_type       string    `json:"rule_type"`
-	Sample_urls     []string  `json:"sample_urls"`
-	Status          string    `json:"status"`
-	Transforms      []string  `json:"transforms"`
+	Field_7d_volume int `json:"7d_volume"`
+	Creation_source string `json:"creation_source"`
+	Creation_time time.Time `json:"creation_time"`
+	Creator string `json:"creator"`
+	Event_type string `json:"event_type"`
+	Id string `json:"id"`
+	Rule string `json:"rule"`
+	Rule_type string `json:"rule_type"`
+	Sample_urls []string `json:"sample_urls"`
+	Status string `json:"status"`
+	Transforms []string `json:"transforms"`
 }

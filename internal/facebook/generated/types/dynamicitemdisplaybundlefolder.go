@@ -4,10 +4,10 @@ package types
 
 // DynamicItemDisplayBundleFolder represents a Facebook DynamicItemDisplayBundleFolder object
 type DynamicItemDisplayBundleFolder struct {
-	Categorization_criteria string          `json:"categorization_criteria"`
-	Id                      string          `json:"id"`
-	Name                    string          `json:"name"`
-	Product_catalog         *ProductCatalog `json:"product_catalog"`
-	Product_set             *ProductSet     `json:"product_set"`
-	Valid_labels            []interface{}   `json:"valid_labels"`
+	Categorization_criteria string `json:"categorization_criteria"`
+	Id string `json:"id"`
+	Name string `json:"name"`
+	Product_catalog *ProductCatalog `json:"product_catalog"`
+	Product_set *ProductSet `json:"product_set"`
+	Valid_labels []interface{} `json:"valid_labels"`
 }

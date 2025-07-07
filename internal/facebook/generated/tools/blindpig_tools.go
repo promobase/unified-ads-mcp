@@ -17,6 +17,7 @@ import (
 func GetBlindPigTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// blindpig_get_ tool
 	// Available fields for BlindPig: id, name
 	blindpig_get_Tool := mcp.NewTool("blindpig_get_",
@@ -36,10 +37,12 @@ func GetBlindPigTools() []mcp.Tool {
 	)
 	tools = append(tools, blindpig_get_Tool)
 
+
 	return tools
 }
 
 // BlindPig handlers
+
 
 // HandleBlindpig_get_ handles the blindpig_get_ tool with context-based auth
 func HandleBlindpig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleBlindpig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Blindpig_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleBlindpig_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

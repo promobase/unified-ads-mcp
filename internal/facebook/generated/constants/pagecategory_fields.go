@@ -4,15 +4,15 @@ package constants
 
 // PageCategoryFields contains field name constants for PageCategory objects
 var PageCategoryFields = struct {
-	ApiEnum          string
+	ApiEnum string
 	FbPageCategories string
-	Id               string
-	Name             string
+	Id string
+	Name string
 }{
-	ApiEnum:          "api_enum",
+	ApiEnum: "api_enum",
 	FbPageCategories: "fb_page_categories",
-	Id:               "id",
-	Name:             "name",
+	Id: "id",
+	Name: "name",
 }
 
 // PageCategoryFieldsList contains all available fields for PageCategory objects

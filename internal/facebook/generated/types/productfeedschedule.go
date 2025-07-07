@@ -4,14 +4,14 @@ package types
 
 // ProductFeedSchedule represents a Facebook ProductFeedSchedule object
 type ProductFeedSchedule struct {
-	Day_of_month   int    `json:"day_of_month"`
-	Day_of_week    string `json:"day_of_week"`
-	Hour           int    `json:"hour"`
-	Id             string `json:"id"`
-	Interval       string `json:"interval"`
-	Interval_count int    `json:"interval_count"`
-	Minute         int    `json:"minute"`
-	Timezone       string `json:"timezone"`
-	Url            string `json:"url"`
-	Username       string `json:"username"`
+	Day_of_month int `json:"day_of_month"`
+	Day_of_week string `json:"day_of_week"`
+	Hour int `json:"hour"`
+	Id string `json:"id"`
+	Interval string `json:"interval"`
+	Interval_count int `json:"interval_count"`
+	Minute int `json:"minute"`
+	Timezone string `json:"timezone"`
+	Url string `json:"url"`
+	Username string `json:"username"`
 }

@@ -4,31 +4,31 @@ package constants
 
 // PhotoMetadataFields contains field name constants for PhotoMetadata objects
 var PhotoMetadataFields = struct {
-	CameraMake       string
-	CameraModel      string
+	CameraMake string
+	CameraModel string
 	DatetimeModified string
-	DatetimeTaken    string
-	Exposure         string
-	FocalLength      string
-	Fstop            string
-	IsoSpeed         string
-	OfflineId        string
-	Orientation      string
-	OriginalHeight   string
-	OriginalWidth    string
+	DatetimeTaken string
+	Exposure string
+	FocalLength string
+	Fstop string
+	IsoSpeed string
+	OfflineId string
+	Orientation string
+	OriginalHeight string
+	OriginalWidth string
 }{
-	CameraMake:       "camera_make",
-	CameraModel:      "camera_model",
+	CameraMake: "camera_make",
+	CameraModel: "camera_model",
 	DatetimeModified: "datetime_modified",
-	DatetimeTaken:    "datetime_taken",
-	Exposure:         "exposure",
-	FocalLength:      "focal_length",
-	Fstop:            "fstop",
-	IsoSpeed:         "iso_speed",
-	OfflineId:        "offline_id",
-	Orientation:      "orientation",
-	OriginalHeight:   "original_height",
-	OriginalWidth:    "original_width",
+	DatetimeTaken: "datetime_taken",
+	Exposure: "exposure",
+	FocalLength: "focal_length",
+	Fstop: "fstop",
+	IsoSpeed: "iso_speed",
+	OfflineId: "offline_id",
+	Orientation: "orientation",
+	OriginalHeight: "original_height",
+	OriginalWidth: "original_width",
 }
 
 // PhotoMetadataFieldsList contains all available fields for PhotoMetadata objects

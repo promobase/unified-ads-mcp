@@ -6,13 +6,13 @@ import "time"
 
 // AppRequest represents a Facebook AppRequest object
 type AppRequest struct {
-	Action_type  string                 `json:"action_type"`
-	Application  *Application           `json:"application"`
-	Created_time time.Time              `json:"created_time"`
-	Data         string                 `json:"data"`
-	From         map[string]interface{} `json:"from"`
-	Id           string                 `json:"id"`
-	Message      string                 `json:"message"`
-	Object       map[string]interface{} `json:"object"`
-	To           map[string]interface{} `json:"to"`
+	Action_type string `json:"action_type"`
+	Application *Application `json:"application"`
+	Created_time time.Time `json:"created_time"`
+	Data string `json:"data"`
+	From map[string]interface{} `json:"from"`
+	Id string `json:"id"`
+	Message string `json:"message"`
+	Object map[string]interface{} `json:"object"`
+	To map[string]interface{} `json:"to"`
 }

@@ -4,10 +4,10 @@ package types
 
 // BusinessAssetSharingAgreement represents a Facebook BusinessAssetSharingAgreement object
 type BusinessAssetSharingAgreement struct {
-	Id                string    `json:"id"`
-	Initiator         *Business `json:"initiator"`
-	Recipient         *Business `json:"recipient"`
-	Relationship_type []string  `json:"relationship_type"`
-	Request_status    string    `json:"request_status"`
-	Request_type      string    `json:"request_type"`
+	Id string `json:"id"`
+	Initiator *Business `json:"initiator"`
+	Recipient *Business `json:"recipient"`
+	Relationship_type []string `json:"relationship_type"`
+	Request_status string `json:"request_status"`
+	Request_type string `json:"request_type"`
 }

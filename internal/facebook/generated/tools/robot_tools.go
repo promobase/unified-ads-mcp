@@ -17,6 +17,7 @@ import (
 func GetRobotTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// robot_get_ tool
 	// Available fields for Robot: bringup_vars, configurations, data_center, id, init_pos, last_pos, meetup_link_hash, suite, target_map_image_uri, target_os_image_uri, target_sw_image_uri, user
 	robot_get_Tool := mcp.NewTool("robot_get_",
@@ -36,10 +37,12 @@ func GetRobotTools() []mcp.Tool {
 	)
 	tools = append(tools, robot_get_Tool)
 
+
 	return tools
 }
 
 // Robot handlers
+
 
 // HandleRobot_get_ handles the robot_get_ tool with context-based auth
 func HandleRobot_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleRobot_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Robot_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleRobot_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.Ca
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

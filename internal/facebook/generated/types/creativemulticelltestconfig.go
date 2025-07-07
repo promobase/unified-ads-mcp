@@ -4,10 +4,10 @@ package types
 
 // CreativeMulticellTestConfig represents a Facebook CreativeMulticellTestConfig object
 type CreativeMulticellTestConfig struct {
-	Budget_percentage         int    `json:"budget_percentage"`
-	Configured_cell_count     int    `json:"configured_cell_count"`
-	Daily_budget              int    `json:"daily_budget"`
-	Entry_source              string `json:"entry_source"`
-	Lifetime_budget           int    `json:"lifetime_budget"`
-	Use_existing_daily_budget bool   `json:"use_existing_daily_budget"`
+	Budget_percentage int `json:"budget_percentage"`
+	Configured_cell_count int `json:"configured_cell_count"`
+	Daily_budget int `json:"daily_budget"`
+	Entry_source string `json:"entry_source"`
+	Lifetime_budget int `json:"lifetime_budget"`
+	Use_existing_daily_budget bool `json:"use_existing_daily_budget"`
 }

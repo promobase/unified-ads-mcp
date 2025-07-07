@@ -4,9 +4,9 @@ package types
 
 // WhatsAppBusinessHealthStatus represents a Facebook WhatsAppBusinessHealthStatus object
 type WhatsAppBusinessHealthStatus struct {
-	Additional_info  []string                 `json:"additional_info"`
-	Can_send_message string                   `json:"can_send_message"`
-	Entity_type      string                   `json:"entity_type"`
-	Errors           []map[string]interface{} `json:"errors"`
-	Id               string                   `json:"id"`
+	Additional_info []string `json:"additional_info"`
+	Can_send_message string `json:"can_send_message"`
+	Entity_type string `json:"entity_type"`
+	Errors []map[string]interface{} `json:"errors"`
+	Id string `json:"id"`
 }

@@ -5,10 +5,10 @@ package constants
 // IGMediaBoostEligibilityInfoFields contains field name constants for IGMediaBoostEligibilityInfo objects
 var IGMediaBoostEligibilityInfoFields = struct {
 	BoostIneligibleReason string
-	EligibleToBoost       string
+	EligibleToBoost string
 }{
 	BoostIneligibleReason: "boost_ineligible_reason",
-	EligibleToBoost:       "eligible_to_boost",
+	EligibleToBoost: "eligible_to_boost",
 }
 
 // IGMediaBoostEligibilityInfoFieldsList contains all available fields for IGMediaBoostEligibilityInfo objects

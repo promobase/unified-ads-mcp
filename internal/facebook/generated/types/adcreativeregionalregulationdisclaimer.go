@@ -4,9 +4,9 @@ package types
 
 // AdCreativeRegionalRegulationDisclaimer represents a Facebook AdCreativeRegionalRegulationDisclaimer object
 type AdCreativeRegionalRegulationDisclaimer struct {
-	Australia_finserv   map[string]interface{} `json:"australia_finserv"`
-	India_finserv       map[string]interface{} `json:"india_finserv"`
+	Australia_finserv map[string]interface{} `json:"australia_finserv"`
+	India_finserv map[string]interface{} `json:"india_finserv"`
 	Singapore_universal map[string]interface{} `json:"singapore_universal"`
-	Taiwan_finserv      map[string]interface{} `json:"taiwan_finserv"`
-	Taiwan_universal    map[string]interface{} `json:"taiwan_universal"`
+	Taiwan_finserv map[string]interface{} `json:"taiwan_finserv"`
+	Taiwan_universal map[string]interface{} `json:"taiwan_universal"`
 }

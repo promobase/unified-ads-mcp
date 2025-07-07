@@ -4,11 +4,11 @@ package types
 
 // UserPaymentMethodsInfo represents a Facebook UserPaymentMethodsInfo object
 type UserPaymentMethodsInfo struct {
-	Account_id                        string                   `json:"account_id"`
-	Available_card_types              []string                 `json:"available_card_types"`
-	Available_payment_methods         []string                 `json:"available_payment_methods"`
+	Account_id string `json:"account_id"`
+	Available_card_types []string `json:"available_card_types"`
+	Available_payment_methods []string `json:"available_payment_methods"`
 	Available_payment_methods_details []map[string]interface{} `json:"available_payment_methods_details"`
-	Country                           string                   `json:"country"`
-	Currency                          string                   `json:"currency"`
-	Existing_payment_methods          []map[string]interface{} `json:"existing_payment_methods"`
+	Country string `json:"country"`
+	Currency string `json:"currency"`
+	Existing_payment_methods []map[string]interface{} `json:"existing_payment_methods"`
 }

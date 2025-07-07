@@ -4,17 +4,17 @@ package constants
 
 // TimezoneOffsetFields contains field name constants for TimezoneOffset objects
 var TimezoneOffsetFields = struct {
-	Abbr   string
-	Isdst  string
+	Abbr string
+	Isdst string
 	Offset string
-	Time   string
-	Ts     string
+	Time string
+	Ts string
 }{
-	Abbr:   "abbr",
-	Isdst:  "isdst",
+	Abbr: "abbr",
+	Isdst: "isdst",
 	Offset: "offset",
-	Time:   "time",
-	Ts:     "ts",
+	Time: "time",
+	Ts: "ts",
 }
 
 // TimezoneOffsetFieldsList contains all available fields for TimezoneOffset objects

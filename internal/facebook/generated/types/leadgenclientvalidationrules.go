@@ -5,6 +5,6 @@ package types
 // LeadGenClientValidationRules represents a Facebook LeadGenClientValidationRules object
 type LeadGenClientValidationRules struct {
 	Exclude_emoji_and_special_chars_enabled bool `json:"exclude_emoji_and_special_chars_enabled"`
-	Max_length_value                        int  `json:"max_length_value"`
-	Min_length_value                        int  `json:"min_length_value"`
+	Max_length_value int `json:"max_length_value"`
+	Min_length_value int `json:"min_length_value"`
 }

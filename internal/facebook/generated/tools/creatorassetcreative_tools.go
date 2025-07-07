@@ -17,6 +17,7 @@ import (
 func GetCreatorAssetCreativeTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// creatorassetcreative_get_ tool
 	// Available fields for CreatorAssetCreative: id, image_url, moderation_status, product_item_retailer_id, product_url, retailer_id, video_url
 	creatorassetcreative_get_Tool := mcp.NewTool("creatorassetcreative_get_",
@@ -36,10 +37,12 @@ func GetCreatorAssetCreativeTools() []mcp.Tool {
 	)
 	tools = append(tools, creatorassetcreative_get_Tool)
 
+
 	return tools
 }
 
 // CreatorAssetCreative handlers
+
 
 // HandleCreatorassetcreative_get_ handles the creatorassetcreative_get_ tool with context-based auth
 func HandleCreatorassetcreative_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleCreatorassetcreative_get_(ctx context.Context, request mcp.CallToolRe
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Creatorassetcreative_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleCreatorassetcreative_get_(ctx context.Context, request mcp.CallToolRe
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

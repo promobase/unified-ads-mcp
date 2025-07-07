@@ -17,6 +17,7 @@ import (
 func GetThirdPartyPartnerPanelRequestTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// thirdpartypartnerpanelrequest_get_ tool
 	// Available fields for ThirdPartyPartnerPanelRequest: adentities_ids, country, created_time, description, id, modified_time, owner_instance_id, owner_panel_id, owner_panel_name, status, study_end_time, study_start_time, study_type
 	thirdpartypartnerpanelrequest_get_Tool := mcp.NewTool("thirdpartypartnerpanelrequest_get_",
@@ -36,10 +37,12 @@ func GetThirdPartyPartnerPanelRequestTools() []mcp.Tool {
 	)
 	tools = append(tools, thirdpartypartnerpanelrequest_get_Tool)
 
+
 	return tools
 }
 
 // ThirdPartyPartnerPanelRequest handlers
+
 
 // HandleThirdpartypartnerpanelrequest_get_ handles the thirdpartypartnerpanelrequest_get_ tool with context-based auth
 func HandleThirdpartypartnerpanelrequest_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleThirdpartypartnerpanelrequest_get_(ctx context.Context, request mcp.C
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Thirdpartypartnerpanelrequest_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleThirdpartypartnerpanelrequest_get_(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

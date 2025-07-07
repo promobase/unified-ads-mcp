@@ -17,6 +17,7 @@ import (
 func GetDestinationTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// destination_get_channels_to_integrity_status tool
 	// Available fields for CatalogItemChannelsToIntegrityStatus: channels, rejection_information
 	destination_get_channels_to_integrity_statusTool := mcp.NewTool("destination_get_channels_to_integrity_status",
@@ -44,14 +45,14 @@ func GetDestinationTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"keys": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "keys parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "type parameter",
-					"enum":        []string{"COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY"},
+					"enum": []string{ "COUNTRY", "LANGUAGE", "LANGUAGE_AND_COUNTRY" },
 				},
 			}),
 			mcp.Description("Parameters object containing: keys (array<string>), type (enum) [COUNTRY, LANGUAGE, LANGUAGE_AND_COUNTRY]"),
@@ -109,10 +110,12 @@ func GetDestinationTools() []mcp.Tool {
 	)
 	tools = append(tools, destination_get_Tool)
 
+
 	return tools
 }
 
 // Destination handlers
+
 
 // HandleDestination_get_channels_to_integrity_status handles the destination_get_channels_to_integrity_status tool with context-based auth
 func HandleDestination_get_channels_to_integrity_status(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -153,6 +156,8 @@ func HandleDestination_get_channels_to_integrity_status(ctx context.Context, req
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Destination_get_channels_to_integrity_status(args)
 	if err != nil {
@@ -167,6 +172,7 @@ func HandleDestination_get_channels_to_integrity_status(ctx context.Context, req
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleDestination_get_override_details handles the destination_get_override_details tool with context-based auth
 func HandleDestination_get_override_details(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -219,6 +225,8 @@ func HandleDestination_get_override_details(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Destination_get_override_details(args)
 	if err != nil {
@@ -233,6 +241,7 @@ func HandleDestination_get_override_details(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleDestination_get_videos_metadata handles the destination_get_videos_metadata tool with context-based auth
 func HandleDestination_get_videos_metadata(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -273,6 +282,8 @@ func HandleDestination_get_videos_metadata(ctx context.Context, request mcp.Call
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Destination_get_videos_metadata(args)
 	if err != nil {
@@ -287,6 +298,7 @@ func HandleDestination_get_videos_metadata(ctx context.Context, request mcp.Call
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleDestination_get_ handles the destination_get_ tool with context-based auth
 func HandleDestination_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -327,6 +339,8 @@ func HandleDestination_get_(ctx context.Context, request mcp.CallToolRequest) (*
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Destination_get_(args)
 	if err != nil {
@@ -341,3 +355,4 @@ func HandleDestination_get_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

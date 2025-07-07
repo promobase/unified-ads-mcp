@@ -17,6 +17,7 @@ import (
 func GetCalibratorExistingRuleTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// calibratorexistingrule_get_ tool
 	// Available fields for CalibratorExistingRule: 7d_volume, creation_source, creation_time, creator, event_type, id, rule, rule_type, sample_urls, status, transforms
 	calibratorexistingrule_get_Tool := mcp.NewTool("calibratorexistingrule_get_",
@@ -36,10 +37,12 @@ func GetCalibratorExistingRuleTools() []mcp.Tool {
 	)
 	tools = append(tools, calibratorexistingrule_get_Tool)
 
+
 	return tools
 }
 
 // CalibratorExistingRule handlers
+
 
 // HandleCalibratorexistingrule_get_ handles the calibratorexistingrule_get_ tool with context-based auth
 func HandleCalibratorexistingrule_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandleCalibratorexistingrule_get_(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Calibratorexistingrule_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandleCalibratorexistingrule_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

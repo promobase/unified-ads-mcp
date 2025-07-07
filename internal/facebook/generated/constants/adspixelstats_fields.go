@@ -4,15 +4,15 @@ package constants
 
 // AdsPixelStatsFields contains field name constants for AdsPixelStats objects
 var AdsPixelStatsFields = struct {
-	Count                          string
+	Count string
 	DiagnosticsHourlyLastTimestamp string
-	Event                          string
-	Value                          string
+	Event string
+	Value string
 }{
-	Count:                          "count",
+	Count: "count",
 	DiagnosticsHourlyLastTimestamp: "diagnostics_hourly_last_timestamp",
-	Event:                          "event",
-	Value:                          "value",
+	Event: "event",
+	Value: "value",
 }
 
 // AdsPixelStatsFieldsList contains all available fields for AdsPixelStats objects

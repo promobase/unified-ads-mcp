@@ -4,6 +4,6 @@ package types
 
 // IGBoostMediaAd represents a Facebook IGBoostMediaAd object
 type IGBoostMediaAd struct {
-	Ad_id     string `json:"ad_id"`
+	Ad_id string `json:"ad_id"`
 	Ad_status string `json:"ad_status"`
 }

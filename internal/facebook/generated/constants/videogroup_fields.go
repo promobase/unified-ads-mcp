@@ -4,41 +4,41 @@ package constants
 
 // VideoGroupFields contains field name constants for VideoGroup objects
 var VideoGroupFields = struct {
-	CreatedTime     string
-	Description     string
-	DisableReason   string
-	Id              string
-	IgProfileIds    string
-	IsDisabled      string
-	IsFbVideoGroup  string
-	LastUsedTime    string
-	Length          string
-	Name            string
-	PageId          string
-	PageIds         string
-	Picture         string
-	Placements      string
+	CreatedTime string
+	Description string
+	DisableReason string
+	Id string
+	IgProfileIds string
+	IsDisabled string
+	IsFbVideoGroup string
+	LastUsedTime string
+	Length string
+	Name string
+	PageId string
+	PageIds string
+	Picture string
+	Placements string
 	VideoGroupTypes string
-	Videos          string
-	Views           string
+	Videos string
+	Views string
 }{
-	CreatedTime:     "created_time",
-	Description:     "description",
-	DisableReason:   "disable_reason",
-	Id:              "id",
-	IgProfileIds:    "ig_profile_ids",
-	IsDisabled:      "is_disabled",
-	IsFbVideoGroup:  "is_fb_video_group",
-	LastUsedTime:    "last_used_time",
-	Length:          "length",
-	Name:            "name",
-	PageId:          "page_id",
-	PageIds:         "page_ids",
-	Picture:         "picture",
-	Placements:      "placements",
+	CreatedTime: "created_time",
+	Description: "description",
+	DisableReason: "disable_reason",
+	Id: "id",
+	IgProfileIds: "ig_profile_ids",
+	IsDisabled: "is_disabled",
+	IsFbVideoGroup: "is_fb_video_group",
+	LastUsedTime: "last_used_time",
+	Length: "length",
+	Name: "name",
+	PageId: "page_id",
+	PageIds: "page_ids",
+	Picture: "picture",
+	Placements: "placements",
 	VideoGroupTypes: "video_group_types",
-	Videos:          "videos",
-	Views:           "views",
+	Videos: "videos",
+	Views: "views",
 }
 
 // VideoGroupFieldsList contains all available fields for VideoGroup objects

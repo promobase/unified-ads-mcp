@@ -17,6 +17,7 @@ import (
 func GetProductFeedUploadErrorTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// productfeeduploaderror_get_samples tool
 	// Available fields for ProductFeedUploadErrorSample: id, retailer_id, row_number
 	productfeeduploaderror_get_samplesTool := mcp.NewTool("productfeeduploaderror_get_samples",
@@ -74,10 +75,12 @@ func GetProductFeedUploadErrorTools() []mcp.Tool {
 	)
 	tools = append(tools, productfeeduploaderror_get_Tool)
 
+
 	return tools
 }
 
 // ProductFeedUploadError handlers
+
 
 // HandleProductfeeduploaderror_get_samples handles the productfeeduploaderror_get_samples tool with context-based auth
 func HandleProductfeeduploaderror_get_samples(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -118,6 +121,8 @@ func HandleProductfeeduploaderror_get_samples(ctx context.Context, request mcp.C
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productfeeduploaderror_get_samples(args)
 	if err != nil {
@@ -132,6 +137,7 @@ func HandleProductfeeduploaderror_get_samples(ctx context.Context, request mcp.C
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductfeeduploaderror_get_suggested_rules handles the productfeeduploaderror_get_suggested_rules tool with context-based auth
 func HandleProductfeeduploaderror_get_suggested_rules(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -172,6 +178,8 @@ func HandleProductfeeduploaderror_get_suggested_rules(ctx context.Context, reque
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productfeeduploaderror_get_suggested_rules(args)
 	if err != nil {
@@ -186,6 +194,7 @@ func HandleProductfeeduploaderror_get_suggested_rules(ctx context.Context, reque
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleProductfeeduploaderror_get_ handles the productfeeduploaderror_get_ tool with context-based auth
 func HandleProductfeeduploaderror_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -226,6 +235,8 @@ func HandleProductfeeduploaderror_get_(ctx context.Context, request mcp.CallTool
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Productfeeduploaderror_get_(args)
 	if err != nil {
@@ -240,3 +251,4 @@ func HandleProductfeeduploaderror_get_(ctx context.Context, request mcp.CallTool
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

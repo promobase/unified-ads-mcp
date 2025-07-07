@@ -4,45 +4,45 @@ package constants
 
 // AdProposalFields contains field name constants for AdProposal objects
 var AdProposalFields = struct {
-	AdProposalTypeName   string
-	Adaccount            string
-	CreationTime         string
-	Creator              string
-	DeliveryInterface    string
-	ExpirationTime       string
-	HasConflict          string
-	Id                   string
-	KpiMetric            string
-	Message              string
-	Name                 string
-	ProposalDtsTemplate  string
+	AdProposalTypeName string
+	Adaccount string
+	CreationTime string
+	Creator string
+	DeliveryInterface string
+	ExpirationTime string
+	HasConflict string
+	Id string
+	KpiMetric string
+	Message string
+	Name string
+	ProposalDtsTemplate string
 	ProposalTemplateName string
-	Recommendation       string
-	ReviewTime           string
-	ReviewedBy           string
-	SendTime             string
-	Status               string
-	UseTesting           string
+	Recommendation string
+	ReviewTime string
+	ReviewedBy string
+	SendTime string
+	Status string
+	UseTesting string
 }{
-	AdProposalTypeName:   "ad_proposal_type_name",
-	Adaccount:            "adaccount",
-	CreationTime:         "creation_time",
-	Creator:              "creator",
-	DeliveryInterface:    "delivery_interface",
-	ExpirationTime:       "expiration_time",
-	HasConflict:          "has_conflict",
-	Id:                   "id",
-	KpiMetric:            "kpi_metric",
-	Message:              "message",
-	Name:                 "name",
-	ProposalDtsTemplate:  "proposal_dts_template",
+	AdProposalTypeName: "ad_proposal_type_name",
+	Adaccount: "adaccount",
+	CreationTime: "creation_time",
+	Creator: "creator",
+	DeliveryInterface: "delivery_interface",
+	ExpirationTime: "expiration_time",
+	HasConflict: "has_conflict",
+	Id: "id",
+	KpiMetric: "kpi_metric",
+	Message: "message",
+	Name: "name",
+	ProposalDtsTemplate: "proposal_dts_template",
 	ProposalTemplateName: "proposal_template_name",
-	Recommendation:       "recommendation",
-	ReviewTime:           "review_time",
-	ReviewedBy:           "reviewed_by",
-	SendTime:             "send_time",
-	Status:               "status",
-	UseTesting:           "use_testing",
+	Recommendation: "recommendation",
+	ReviewTime: "review_time",
+	ReviewedBy: "reviewed_by",
+	SendTime: "send_time",
+	Status: "status",
+	UseTesting: "use_testing",
 }
 
 // AdProposalFieldsList contains all available fields for AdProposal objects

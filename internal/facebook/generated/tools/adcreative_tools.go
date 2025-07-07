@@ -17,6 +17,7 @@ import (
 func GetAdCreativeTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// adcreative_post_adlabels tool
 	// Params object accepts: adlabels (list<Object>)
 	adcreative_post_adlabelsTool := mcp.NewTool("adcreative_post_adlabels",
@@ -29,10 +30,10 @@ func GetAdCreativeTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"adlabels": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "adlabels parameter",
-					"required":    true,
-					"items":       map[string]any{"type": "object"},
+					"required": true,
+					"items": map[string]any{"type": "object"},
 				},
 			}),
 			mcp.Description("Parameters object containing: adlabels (array<object>) [required]"),
@@ -76,64 +77,64 @@ func GetAdCreativeTools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"ad_format": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "ad_format parameter",
-					"required":    true,
-					"enum":        []string{"AUDIENCE_NETWORK_INSTREAM_VIDEO", "AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE", "AUDIENCE_NETWORK_OUTSTREAM_VIDEO", "AUDIENCE_NETWORK_REWARDED_VIDEO", "BIZ_DISCO_FEED_MOBILE", "DESKTOP_FEED_STANDARD", "FACEBOOK_PROFILE_FEED_DESKTOP", "FACEBOOK_PROFILE_FEED_MOBILE", "FACEBOOK_PROFILE_REELS_MOBILE", "FACEBOOK_REELS_BANNER", "FACEBOOK_REELS_BANNER_DESKTOP", "FACEBOOK_REELS_BANNER_FULLSCREEN_IOS", "FACEBOOK_REELS_BANNER_FULLSCREEN_MOBILE", "FACEBOOK_REELS_MOBILE", "FACEBOOK_REELS_POSTLOOP", "FACEBOOK_REELS_STICKER", "FACEBOOK_STORY_MOBILE", "FACEBOOK_STORY_STICKER_MOBILE", "INSTAGRAM_EXPLORE_CONTEXTUAL", "INSTAGRAM_EXPLORE_GRID_HOME", "INSTAGRAM_EXPLORE_IMMERSIVE", "INSTAGRAM_FEED_WEB", "INSTAGRAM_FEED_WEB_M_SITE", "INSTAGRAM_LEAD_GEN_MULTI_SUBMIT_ADS", "INSTAGRAM_PROFILE_FEED", "INSTAGRAM_PROFILE_REELS", "INSTAGRAM_REELS", "INSTAGRAM_REELS_OVERLAY", "INSTAGRAM_SEARCH_CHAIN", "INSTAGRAM_SEARCH_GRID", "INSTAGRAM_STANDARD", "INSTAGRAM_STORY", "INSTAGRAM_STORY_EFFECT_TRAY", "INSTAGRAM_STORY_WEB", "INSTAGRAM_STORY_WEB_M_SITE", "INSTANT_ARTICLE_RECIRCULATION_AD", "INSTANT_ARTICLE_STANDARD", "INSTREAM_BANNER_DESKTOP", "INSTREAM_BANNER_FULLSCREEN_IOS", "INSTREAM_BANNER_FULLSCREEN_MOBILE", "INSTREAM_BANNER_IMMERSIVE_MOBILE", "INSTREAM_BANNER_MOBILE", "INSTREAM_VIDEO_DESKTOP", "INSTREAM_VIDEO_FULLSCREEN_IOS", "INSTREAM_VIDEO_FULLSCREEN_MOBILE", "INSTREAM_VIDEO_IMAGE", "INSTREAM_VIDEO_IMMERSIVE_MOBILE", "INSTREAM_VIDEO_MOBILE", "JOB_BROWSER_DESKTOP", "JOB_BROWSER_MOBILE", "MARKETPLACE_MOBILE", "MESSENGER_MOBILE_INBOX_MEDIA", "MESSENGER_MOBILE_STORY_MEDIA", "MOBILE_BANNER", "MOBILE_FEED_BASIC", "MOBILE_FEED_STANDARD", "MOBILE_FULLWIDTH", "MOBILE_INTERSTITIAL", "MOBILE_MEDIUM_RECTANGLE", "MOBILE_NATIVE", "RIGHT_COLUMN_STANDARD", "SUGGESTED_VIDEO_DESKTOP", "SUGGESTED_VIDEO_FULLSCREEN_MOBILE", "SUGGESTED_VIDEO_IMMERSIVE_MOBILE", "SUGGESTED_VIDEO_MOBILE", "WATCH_FEED_HOME", "WATCH_FEED_MOBILE"},
+					"required": true,
+					"enum": []string{ "AUDIENCE_NETWORK_INSTREAM_VIDEO", "AUDIENCE_NETWORK_INSTREAM_VIDEO_MOBILE", "AUDIENCE_NETWORK_OUTSTREAM_VIDEO", "AUDIENCE_NETWORK_REWARDED_VIDEO", "BIZ_DISCO_FEED_MOBILE", "DESKTOP_FEED_STANDARD", "FACEBOOK_PROFILE_FEED_DESKTOP", "FACEBOOK_PROFILE_FEED_MOBILE", "FACEBOOK_PROFILE_REELS_MOBILE", "FACEBOOK_REELS_BANNER", "FACEBOOK_REELS_BANNER_DESKTOP", "FACEBOOK_REELS_BANNER_FULLSCREEN_IOS", "FACEBOOK_REELS_BANNER_FULLSCREEN_MOBILE", "FACEBOOK_REELS_MOBILE", "FACEBOOK_REELS_POSTLOOP", "FACEBOOK_REELS_STICKER", "FACEBOOK_STORY_MOBILE", "FACEBOOK_STORY_STICKER_MOBILE", "INSTAGRAM_EXPLORE_CONTEXTUAL", "INSTAGRAM_EXPLORE_GRID_HOME", "INSTAGRAM_EXPLORE_IMMERSIVE", "INSTAGRAM_FEED_WEB", "INSTAGRAM_FEED_WEB_M_SITE", "INSTAGRAM_LEAD_GEN_MULTI_SUBMIT_ADS", "INSTAGRAM_PROFILE_FEED", "INSTAGRAM_PROFILE_REELS", "INSTAGRAM_REELS", "INSTAGRAM_REELS_OVERLAY", "INSTAGRAM_SEARCH_CHAIN", "INSTAGRAM_SEARCH_GRID", "INSTAGRAM_STANDARD", "INSTAGRAM_STORY", "INSTAGRAM_STORY_EFFECT_TRAY", "INSTAGRAM_STORY_WEB", "INSTAGRAM_STORY_WEB_M_SITE", "INSTANT_ARTICLE_RECIRCULATION_AD", "INSTANT_ARTICLE_STANDARD", "INSTREAM_BANNER_DESKTOP", "INSTREAM_BANNER_FULLSCREEN_IOS", "INSTREAM_BANNER_FULLSCREEN_MOBILE", "INSTREAM_BANNER_IMMERSIVE_MOBILE", "INSTREAM_BANNER_MOBILE", "INSTREAM_VIDEO_DESKTOP", "INSTREAM_VIDEO_FULLSCREEN_IOS", "INSTREAM_VIDEO_FULLSCREEN_MOBILE", "INSTREAM_VIDEO_IMAGE", "INSTREAM_VIDEO_IMMERSIVE_MOBILE", "INSTREAM_VIDEO_MOBILE", "JOB_BROWSER_DESKTOP", "JOB_BROWSER_MOBILE", "MARKETPLACE_MOBILE", "MESSENGER_MOBILE_INBOX_MEDIA", "MESSENGER_MOBILE_STORY_MEDIA", "MOBILE_BANNER", "MOBILE_FEED_BASIC", "MOBILE_FEED_STANDARD", "MOBILE_FULLWIDTH", "MOBILE_INTERSTITIAL", "MOBILE_MEDIUM_RECTANGLE", "MOBILE_NATIVE", "RIGHT_COLUMN_STANDARD", "SUGGESTED_VIDEO_DESKTOP", "SUGGESTED_VIDEO_FULLSCREEN_MOBILE", "SUGGESTED_VIDEO_IMMERSIVE_MOBILE", "SUGGESTED_VIDEO_MOBILE", "WATCH_FEED_HOME", "WATCH_FEED_MOBILE" },
 				},
 				"creative_feature": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "creative_feature parameter",
-					"enum":        []string{"product_metadata_automation", "profile_card", "standard_enhancements_catalog", "video_to_image"},
+					"enum": []string{ "product_metadata_automation", "profile_card", "standard_enhancements_catalog", "video_to_image" },
 				},
 				"dynamic_asset_label": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "dynamic_asset_label parameter",
 				},
 				"dynamic_creative_spec": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "dynamic_creative_spec parameter",
 				},
 				"dynamic_customization": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "dynamic_customization parameter",
 				},
 				"end_date": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "end_date parameter",
 				},
 				"height": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "height parameter",
 				},
 				"locale": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "locale parameter",
 				},
 				"place_page_id": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "place_page_id parameter",
 				},
 				"post": map[string]any{
-					"type":        "object",
+					"type": "object",
 					"description": "post parameter",
 				},
 				"product_item_ids": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "product_item_ids parameter",
-					"items":       map[string]any{"type": "string"},
+					"items": map[string]any{"type": "string"},
 				},
 				"render_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "render_type parameter",
-					"enum":        []string{"FALLBACK"},
+					"enum": []string{ "FALLBACK" },
 				},
 				"start_date": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "start_date parameter",
 				},
 				"width": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "width parameter",
 				},
 			}),
@@ -165,22 +166,22 @@ func GetAdCreativeTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"account_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "account_id parameter",
 				},
 				"adlabels": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "adlabels parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
 				},
 				"status": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "status parameter",
-					"enum":        []string{"ACTIVE", "DELETED", "IN_PROCESS", "WITH_ISSUES"},
+					"enum": []string{ "ACTIVE", "DELETED", "IN_PROCESS", "WITH_ISSUES" },
 				},
 			}),
 			mcp.Description("Parameters object containing: account_id (string), adlabels (array<object>), name (string), status (adcreative_status) [ACTIVE, DELETED, IN_PROCESS, WITH_ISSUES]"),
@@ -200,11 +201,11 @@ func GetAdCreativeTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"thumbnail_height": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "thumbnail_height parameter",
 				},
 				"thumbnail_width": map[string]any{
-					"type":        "integer",
+					"type": "integer",
 					"description": "thumbnail_width parameter",
 				},
 			}),
@@ -236,22 +237,22 @@ func GetAdCreativeTools() []mcp.Tool {
 		mcp.WithObject("params",
 			mcp.Properties(map[string]any{
 				"account_id": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "account_id parameter",
 				},
 				"adlabels": map[string]any{
-					"type":        "array",
+					"type": "array",
 					"description": "adlabels parameter",
-					"items":       map[string]any{"type": "object"},
+					"items": map[string]any{"type": "object"},
 				},
 				"name": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "name parameter",
 				},
 				"status": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "status parameter",
-					"enum":        []string{"ACTIVE", "DELETED", "IN_PROCESS", "WITH_ISSUES"},
+					"enum": []string{ "ACTIVE", "DELETED", "IN_PROCESS", "WITH_ISSUES" },
 				},
 			}),
 			mcp.Description("Parameters object containing: account_id (string), adlabels (array<object>), name (string), status (adcreative_status) [ACTIVE, DELETED, IN_PROCESS, WITH_ISSUES]"),
@@ -259,10 +260,12 @@ func GetAdCreativeTools() []mcp.Tool {
 	)
 	tools = append(tools, adcreative_post_Tool)
 
+
 	return tools
 }
 
 // AdCreative handlers
+
 
 // HandleAdcreative_post_adlabels handles the adcreative_post_adlabels tool with context-based auth
 func HandleAdcreative_post_adlabels(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -299,6 +302,8 @@ func HandleAdcreative_post_adlabels(ctx context.Context, request mcp.CallToolReq
 		args[key] = value
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adcreative_post_adlabels(args)
 	if err != nil {
@@ -313,6 +318,7 @@ func HandleAdcreative_post_adlabels(ctx context.Context, request mcp.CallToolReq
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdcreative_get_creative_insights handles the adcreative_get_creative_insights tool with context-based auth
 func HandleAdcreative_get_creative_insights(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -360,6 +366,8 @@ func HandleAdcreative_get_creative_insights(ctx context.Context, request mcp.Cal
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adcreative_get_creative_insights(args)
 	if err != nil {
@@ -374,6 +382,7 @@ func HandleAdcreative_get_creative_insights(ctx context.Context, request mcp.Cal
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdcreative_get_previews handles the adcreative_get_previews tool with context-based auth
 func HandleAdcreative_get_previews(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -435,6 +444,8 @@ func HandleAdcreative_get_previews(ctx context.Context, request mcp.CallToolRequ
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adcreative_get_previews(args)
 	if err != nil {
@@ -449,6 +460,7 @@ func HandleAdcreative_get_previews(ctx context.Context, request mcp.CallToolRequ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdcreative_delete_ handles the adcreative_delete_ tool with context-based auth
 func HandleAdcreative_delete_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -483,6 +495,8 @@ func HandleAdcreative_delete_(ctx context.Context, request mcp.CallToolRequest) 
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adcreative_delete_(args)
 	if err != nil {
@@ -497,6 +511,7 @@ func HandleAdcreative_delete_(ctx context.Context, request mcp.CallToolRequest) 
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdcreative_get_ handles the adcreative_get_ tool with context-based auth
 func HandleAdcreative_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -556,6 +571,8 @@ func HandleAdcreative_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adcreative_get_(args)
 	if err != nil {
@@ -570,6 +587,7 @@ func HandleAdcreative_get_(ctx context.Context, request mcp.CallToolRequest) (*m
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleAdcreative_post_ handles the adcreative_post_ tool with context-based auth
 func HandleAdcreative_post_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -604,6 +622,8 @@ func HandleAdcreative_post_(ctx context.Context, request mcp.CallToolRequest) (*
 		}
 	}
 
+
+
 	// Call the client method
 	result, err := client.Adcreative_post_(args)
 	if err != nil {
@@ -618,3 +638,4 @@ func HandleAdcreative_post_(ctx context.Context, request mcp.CallToolRequest) (*
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

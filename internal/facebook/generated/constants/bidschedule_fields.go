@@ -4,23 +4,23 @@ package constants
 
 // BidScheduleFields contains field name constants for BidSchedule objects
 var BidScheduleFields = struct {
-	AdObjectId        string
+	AdObjectId string
 	BidRecurrenceType string
-	BidTimezone       string
-	BidValue          string
-	Id                string
-	Status            string
-	TimeEnd           string
-	TimeStart         string
+	BidTimezone string
+	BidValue string
+	Id string
+	Status string
+	TimeEnd string
+	TimeStart string
 }{
-	AdObjectId:        "ad_object_id",
+	AdObjectId: "ad_object_id",
 	BidRecurrenceType: "bid_recurrence_type",
-	BidTimezone:       "bid_timezone",
-	BidValue:          "bid_value",
-	Id:                "id",
-	Status:            "status",
-	TimeEnd:           "time_end",
-	TimeStart:         "time_start",
+	BidTimezone: "bid_timezone",
+	BidValue: "bid_value",
+	Id: "id",
+	Status: "status",
+	TimeEnd: "time_end",
+	TimeStart: "time_start",
 }
 
 // BidScheduleFieldsList contains all available fields for BidSchedule objects

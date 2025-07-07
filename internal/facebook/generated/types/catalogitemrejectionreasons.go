@@ -4,6 +4,6 @@ package types
 
 // CatalogItemRejectionReasons represents a Facebook CatalogItemRejectionReasons object
 type CatalogItemRejectionReasons struct {
-	Capability            string                   `json:"capability"`
+	Capability string `json:"capability"`
 	Rejection_information []map[string]interface{} `json:"rejection_information"`
 }

@@ -5,26 +5,26 @@ package constants
 // WorkExperienceFields contains field name constants for WorkExperience objects
 var WorkExperienceFields = struct {
 	Description string
-	Employer    string
-	EndDate     string
-	From        string
-	Id          string
-	Location    string
-	Position    string
-	Projects    string
-	StartDate   string
-	With        string
+	Employer string
+	EndDate string
+	From string
+	Id string
+	Location string
+	Position string
+	Projects string
+	StartDate string
+	With string
 }{
 	Description: "description",
-	Employer:    "employer",
-	EndDate:     "end_date",
-	From:        "from",
-	Id:          "id",
-	Location:    "location",
-	Position:    "position",
-	Projects:    "projects",
-	StartDate:   "start_date",
-	With:        "with",
+	Employer: "employer",
+	EndDate: "end_date",
+	From: "from",
+	Id: "id",
+	Location: "location",
+	Position: "position",
+	Projects: "projects",
+	StartDate: "start_date",
+	With: "with",
 }
 
 // WorkExperienceFieldsList contains all available fields for WorkExperience objects

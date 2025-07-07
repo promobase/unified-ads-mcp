@@ -5,10 +5,10 @@ package constants
 // BusinessAdAccountRequestFields contains field name constants for BusinessAdAccountRequest objects
 var BusinessAdAccountRequestFields = struct {
 	AdAccount string
-	Id        string
+	Id string
 }{
 	AdAccount: "ad_account",
-	Id:        "id",
+	Id: "id",
 }
 
 // BusinessAdAccountRequestFieldsList contains all available fields for BusinessAdAccountRequest objects

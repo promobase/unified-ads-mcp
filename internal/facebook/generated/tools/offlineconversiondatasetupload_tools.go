@@ -17,6 +17,7 @@ import (
 func GetOfflineConversionDataSetUploadTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// offlineconversiondatasetupload_get_progress tool
 	offlineconversiondatasetupload_get_progressTool := mcp.NewTool("offlineconversiondatasetupload_get_progress",
 		mcp.WithDescription("GET progress for OfflineConversionDataSetUpload"),
@@ -72,10 +73,12 @@ func GetOfflineConversionDataSetUploadTools() []mcp.Tool {
 	)
 	tools = append(tools, offlineconversiondatasetupload_get_Tool)
 
+
 	return tools
 }
 
 // OfflineConversionDataSetUpload handlers
+
 
 // HandleOfflineconversiondatasetupload_get_progress handles the offlineconversiondatasetupload_get_progress tool with context-based auth
 func HandleOfflineconversiondatasetupload_get_progress(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -116,6 +119,8 @@ func HandleOfflineconversiondatasetupload_get_progress(ctx context.Context, requ
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Offlineconversiondatasetupload_get_progress(args)
 	if err != nil {
@@ -130,6 +135,7 @@ func HandleOfflineconversiondatasetupload_get_progress(ctx context.Context, requ
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleOfflineconversiondatasetupload_get_pull_sessions handles the offlineconversiondatasetupload_get_pull_sessions tool with context-based auth
 func HandleOfflineconversiondatasetupload_get_pull_sessions(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -170,6 +176,8 @@ func HandleOfflineconversiondatasetupload_get_pull_sessions(ctx context.Context,
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Offlineconversiondatasetupload_get_pull_sessions(args)
 	if err != nil {
@@ -184,6 +192,7 @@ func HandleOfflineconversiondatasetupload_get_pull_sessions(ctx context.Context,
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+
 
 // HandleOfflineconversiondatasetupload_get_ handles the offlineconversiondatasetupload_get_ tool with context-based auth
 func HandleOfflineconversiondatasetupload_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -224,6 +233,8 @@ func HandleOfflineconversiondatasetupload_get_(ctx context.Context, request mcp.
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Offlineconversiondatasetupload_get_(args)
 	if err != nil {
@@ -238,3 +249,4 @@ func HandleOfflineconversiondatasetupload_get_(ctx context.Context, request mcp.
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

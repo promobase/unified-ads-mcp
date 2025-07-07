@@ -4,13 +4,13 @@ package types
 
 // ProfilePictureSource represents a Facebook ProfilePictureSource object
 type ProfilePictureSource struct {
-	Bottom        int    `json:"bottom"`
-	Cache_key     string `json:"cache_key"`
-	Height        int    `json:"height"`
-	Is_silhouette bool   `json:"is_silhouette"`
-	Left          int    `json:"left"`
-	Right         int    `json:"right"`
-	Top           int    `json:"top"`
-	Url           string `json:"url"`
-	Width         int    `json:"width"`
+	Bottom int `json:"bottom"`
+	Cache_key string `json:"cache_key"`
+	Height int `json:"height"`
+	Is_silhouette bool `json:"is_silhouette"`
+	Left int `json:"left"`
+	Right int `json:"right"`
+	Top int `json:"top"`
+	Url string `json:"url"`
+	Width int `json:"width"`
 }

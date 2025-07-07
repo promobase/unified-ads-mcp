@@ -4,33 +4,33 @@ package constants
 
 // MessengerBusinessTemplateFields contains field name constants for MessengerBusinessTemplate objects
 var MessengerBusinessTemplateFields = struct {
-	Category                 string
-	Components               string
-	CreationTime             string
-	Id                       string
-	Language                 string
-	LanguageCount            string
-	LastUpdatedTime          string
-	LibraryTemplateName      string
-	Name                     string
-	RejectedReason           string
-	RejectionReasons         string
+	Category string
+	Components string
+	CreationTime string
+	Id string
+	Language string
+	LanguageCount string
+	LastUpdatedTime string
+	LibraryTemplateName string
+	Name string
+	RejectedReason string
+	RejectionReasons string
 	SpecificRejectionReasons string
-	Status                   string
+	Status string
 }{
-	Category:                 "category",
-	Components:               "components",
-	CreationTime:             "creation_time",
-	Id:                       "id",
-	Language:                 "language",
-	LanguageCount:            "language_count",
-	LastUpdatedTime:          "last_updated_time",
-	LibraryTemplateName:      "library_template_name",
-	Name:                     "name",
-	RejectedReason:           "rejected_reason",
-	RejectionReasons:         "rejection_reasons",
+	Category: "category",
+	Components: "components",
+	CreationTime: "creation_time",
+	Id: "id",
+	Language: "language",
+	LanguageCount: "language_count",
+	LastUpdatedTime: "last_updated_time",
+	LibraryTemplateName: "library_template_name",
+	Name: "name",
+	RejectedReason: "rejected_reason",
+	RejectionReasons: "rejection_reasons",
 	SpecificRejectionReasons: "specific_rejection_reasons",
-	Status:                   "status",
+	Status: "status",
 }
 
 // MessengerBusinessTemplateFieldsList contains all available fields for MessengerBusinessTemplate objects

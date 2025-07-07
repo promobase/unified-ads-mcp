@@ -6,6 +6,6 @@ import "time"
 
 // InstagramInsightsValue represents a Facebook InstagramInsightsValue object
 type InstagramInsightsValue struct {
-	End_time time.Time              `json:"end_time"`
-	Value    map[string]interface{} `json:"value"`
+	End_time time.Time `json:"end_time"`
+	Value map[string]interface{} `json:"value"`
 }

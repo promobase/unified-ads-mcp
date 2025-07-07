@@ -4,14 +4,14 @@ package constants
 
 // DayPartFields contains field name constants for DayPart objects
 var DayPartFields = struct {
-	Days         string
-	EndMinute    string
-	StartMinute  string
+	Days string
+	EndMinute string
+	StartMinute string
 	TimezoneType string
 }{
-	Days:         "days",
-	EndMinute:    "end_minute",
-	StartMinute:  "start_minute",
+	Days: "days",
+	EndMinute: "end_minute",
+	StartMinute: "start_minute",
 	TimezoneType: "timezone_type",
 }
 

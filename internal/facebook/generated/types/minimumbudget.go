@@ -4,9 +4,9 @@ package types
 
 // MinimumBudget represents a Facebook MinimumBudget object
 type MinimumBudget struct {
-	Currency                     string `json:"currency"`
-	Min_daily_budget_high_freq   int    `json:"min_daily_budget_high_freq"`
-	Min_daily_budget_imp         int    `json:"min_daily_budget_imp"`
-	Min_daily_budget_low_freq    int    `json:"min_daily_budget_low_freq"`
-	Min_daily_budget_video_views int    `json:"min_daily_budget_video_views"`
+	Currency string `json:"currency"`
+	Min_daily_budget_high_freq int `json:"min_daily_budget_high_freq"`
+	Min_daily_budget_imp int `json:"min_daily_budget_imp"`
+	Min_daily_budget_low_freq int `json:"min_daily_budget_low_freq"`
+	Min_daily_budget_video_views int `json:"min_daily_budget_video_views"`
 }

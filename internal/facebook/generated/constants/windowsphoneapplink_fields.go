@@ -4,13 +4,13 @@ package constants
 
 // WindowsPhoneAppLinkFields contains field name constants for WindowsPhoneAppLink objects
 var WindowsPhoneAppLinkFields = struct {
-	AppId   string
+	AppId string
 	AppName string
-	Url     string
+	Url string
 }{
-	AppId:   "app_id",
+	AppId: "app_id",
 	AppName: "app_name",
-	Url:     "url",
+	Url: "url",
 }
 
 // WindowsPhoneAppLinkFieldsList contains all available fields for WindowsPhoneAppLink objects

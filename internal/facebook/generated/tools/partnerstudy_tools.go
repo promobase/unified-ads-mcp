@@ -17,6 +17,7 @@ import (
 func GetPartnerStudyTools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// partnerstudy_get_ tool
 	// Available fields for PartnerStudy: additional_info, brand, client_name, emails, id, input_ids, is_export, lift_study, location, match_file_ds, name, partner_defined_id, partner_household_graph_dataset_id, status, study_end_date, study_start_date, study_type, submit_date
 	partnerstudy_get_Tool := mcp.NewTool("partnerstudy_get_",
@@ -36,10 +37,12 @@ func GetPartnerStudyTools() []mcp.Tool {
 	)
 	tools = append(tools, partnerstudy_get_Tool)
 
+
 	return tools
 }
 
 // PartnerStudy handlers
+
 
 // HandlePartnerstudy_get_ handles the partnerstudy_get_ tool with context-based auth
 func HandlePartnerstudy_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -80,6 +83,8 @@ func HandlePartnerstudy_get_(ctx context.Context, request mcp.CallToolRequest) (
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Partnerstudy_get_(args)
 	if err != nil {
@@ -94,3 +99,4 @@ func HandlePartnerstudy_get_(ctx context.Context, request mcp.CallToolRequest) (
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

@@ -4,15 +4,15 @@ package constants
 
 // ExtendedCreditInfoFields contains field name constants for ExtendedCreditInfo objects
 var ExtendedCreditInfoFields = struct {
-	CreditLeft    string
+	CreditLeft string
 	CreditRevoked string
-	CreditUsed    string
-	UsingBizEc    string
+	CreditUsed string
+	UsingBizEc string
 }{
-	CreditLeft:    "credit_left",
+	CreditLeft: "credit_left",
 	CreditRevoked: "credit_revoked",
-	CreditUsed:    "credit_used",
-	UsingBizEc:    "using_biz_ec",
+	CreditUsed: "credit_used",
+	UsingBizEc: "using_biz_ec",
 }
 
 // ExtendedCreditInfoFieldsList contains all available fields for ExtendedCreditInfo objects

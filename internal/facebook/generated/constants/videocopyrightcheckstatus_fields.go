@@ -5,10 +5,10 @@ package constants
 // VideoCopyrightCheckStatusFields contains field name constants for VideoCopyrightCheckStatus objects
 var VideoCopyrightCheckStatusFields = struct {
 	MatchesFound string
-	Status       string
+	Status string
 }{
 	MatchesFound: "matches_found",
-	Status:       "status",
+	Status: "status",
 }
 
 // VideoCopyrightCheckStatusFieldsList contains all available fields for VideoCopyrightCheckStatus objects

@@ -4,7 +4,7 @@ package types
 
 // AdCampaignFrequencyControlSpecs represents a Facebook AdCampaignFrequencyControlSpecs object
 type AdCampaignFrequencyControlSpecs struct {
-	Event         string `json:"event"`
-	Interval_days int    `json:"interval_days"`
-	Max_frequency int    `json:"max_frequency"`
+	Event string `json:"event"`
+	Interval_days int `json:"interval_days"`
+	Max_frequency int `json:"max_frequency"`
 }

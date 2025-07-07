@@ -4,23 +4,23 @@ package constants
 
 // AdCreativeLinkDataImageOverlaySpecFields contains field name constants for AdCreativeLinkDataImageOverlaySpec objects
 var AdCreativeLinkDataImageOverlaySpecFields = struct {
-	CustomTextType   string
-	FloatWithMargin  string
-	OverlayTemplate  string
-	Position         string
-	TextFont         string
+	CustomTextType string
+	FloatWithMargin string
+	OverlayTemplate string
+	Position string
+	TextFont string
 	TextTemplateTags string
-	TextType         string
-	ThemeColor       string
+	TextType string
+	ThemeColor string
 }{
-	CustomTextType:   "custom_text_type",
-	FloatWithMargin:  "float_with_margin",
-	OverlayTemplate:  "overlay_template",
-	Position:         "position",
-	TextFont:         "text_font",
+	CustomTextType: "custom_text_type",
+	FloatWithMargin: "float_with_margin",
+	OverlayTemplate: "overlay_template",
+	Position: "position",
+	TextFont: "text_font",
 	TextTemplateTags: "text_template_tags",
-	TextType:         "text_type",
-	ThemeColor:       "theme_color",
+	TextType: "text_type",
+	ThemeColor: "theme_color",
 }
 
 // AdCreativeLinkDataImageOverlaySpecFieldsList contains all available fields for AdCreativeLinkDataImageOverlaySpec objects

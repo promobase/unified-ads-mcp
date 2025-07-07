@@ -6,11 +6,11 @@ import "time"
 
 // CopyrightAudioAsset represents a Facebook CopyrightAudioAsset object
 type CopyrightAudioAsset struct {
-	Audio_availability_status string                   `json:"audio_availability_status"`
-	Audio_library_policy      []interface{}            `json:"audio_library_policy"`
-	Creation_time             time.Time                `json:"creation_time"`
-	Id                        string                   `json:"id"`
-	Reference_files           []map[string]interface{} `json:"reference_files"`
-	Title                     string                   `json:"title"`
-	Update_time               time.Time                `json:"update_time"`
+	Audio_availability_status string `json:"audio_availability_status"`
+	Audio_library_policy []interface{} `json:"audio_library_policy"`
+	Creation_time time.Time `json:"creation_time"`
+	Id string `json:"id"`
+	Reference_files []map[string]interface{} `json:"reference_files"`
+	Title string `json:"title"`
+	Update_time time.Time `json:"update_time"`
 }

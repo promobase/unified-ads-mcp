@@ -4,10 +4,10 @@ package constants
 
 // LeadGenQuestionOptionFields contains field name constants for LeadGenQuestionOption objects
 var LeadGenQuestionOptionFields = struct {
-	Key   string
+	Key string
 	Value string
 }{
-	Key:   "key",
+	Key: "key",
 	Value: "value",
 }
 

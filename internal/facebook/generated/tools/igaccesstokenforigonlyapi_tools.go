@@ -17,6 +17,7 @@ import (
 func GetIGAccessTokenForIGOnlyAPITools() []mcp.Tool {
 	var tools []mcp.Tool
 
+
 	// igaccesstokenforigonlyapi_get_ tool
 	// Params object accepts: access_token (string), client_secret (string), grant_type (string)
 	igaccesstokenforigonlyapi_get_Tool := mcp.NewTool("igaccesstokenforigonlyapi_get_",
@@ -25,19 +26,19 @@ func GetIGAccessTokenForIGOnlyAPITools() []mcp.Tool {
 			mcp.Required(),
 			mcp.Properties(map[string]any{
 				"access_token": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "access_token parameter",
-					"required":    true,
+					"required": true,
 				},
 				"client_secret": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "client_secret parameter",
-					"required":    true,
+					"required": true,
 				},
 				"grant_type": map[string]any{
-					"type":        "string",
+					"type": "string",
 					"description": "grant_type parameter",
-					"required":    true,
+					"required": true,
 				},
 			}),
 			mcp.Description("Parameters object containing: access_token (string) [required], client_secret (string) [required], grant_type (string) [required]"),
@@ -57,10 +58,12 @@ func GetIGAccessTokenForIGOnlyAPITools() []mcp.Tool {
 	)
 	tools = append(tools, igaccesstokenforigonlyapi_get_Tool)
 
+
 	return tools
 }
 
 // IGAccessTokenForIGOnlyAPI handlers
+
 
 // HandleIgaccesstokenforigonlyapi_get_ handles the igaccesstokenforigonlyapi_get_ tool with context-based auth
 func HandleIgaccesstokenforigonlyapi_get_(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
@@ -115,6 +118,8 @@ func HandleIgaccesstokenforigonlyapi_get_(ctx context.Context, request mcp.CallT
 		args["before"] = val
 	}
 
+
+
 	// Call the client method
 	result, err := client.Igaccesstokenforigonlyapi_get_(args)
 	if err != nil {
@@ -129,3 +134,4 @@ func HandleIgaccesstokenforigonlyapi_get_(ctx context.Context, request mcp.CallT
 
 	return mcp.NewToolResultText(string(resultJSON)), nil
 }
+

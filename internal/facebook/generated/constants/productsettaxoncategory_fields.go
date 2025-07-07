@@ -4,13 +4,13 @@ package constants
 
 // ProductSetTaxonCategoryFields contains field name constants for ProductSetTaxonCategory objects
 var ProductSetTaxonCategoryFields = struct {
-	CategoryId   string
+	CategoryId string
 	CategoryName string
-	ImageUrl     string
+	ImageUrl string
 }{
-	CategoryId:   "category_id",
+	CategoryId: "category_id",
 	CategoryName: "category_name",
-	ImageUrl:     "image_url",
+	ImageUrl: "image_url",
 }
 
 // ProductSetTaxonCategoryFieldsList contains all available fields for ProductSetTaxonCategory objects

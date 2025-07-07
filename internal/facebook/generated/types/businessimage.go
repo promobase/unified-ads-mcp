@@ -6,14 +6,14 @@ import "time"
 
 // BusinessImage represents a Facebook BusinessImage object
 type BusinessImage struct {
-	Business          *Business `json:"business"`
-	Creation_time     time.Time `json:"creation_time"`
-	Hash              string    `json:"hash"`
-	Height            int       `json:"height"`
-	Id                string    `json:"id"`
-	Media_library_url string    `json:"media_library_url"`
-	Name              string    `json:"name"`
-	Url               string    `json:"url"`
-	Url_128           string    `json:"url_128"`
-	Width             int       `json:"width"`
+	Business *Business `json:"business"`
+	Creation_time time.Time `json:"creation_time"`
+	Hash string `json:"hash"`
+	Height int `json:"height"`
+	Id string `json:"id"`
+	Media_library_url string `json:"media_library_url"`
+	Name string `json:"name"`
+	Url string `json:"url"`
+	Url_128 string `json:"url_128"`
+	Width int `json:"width"`
 }

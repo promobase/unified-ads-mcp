@@ -5,10 +5,10 @@ package constants
 // AdCreativeInteractiveComponentsSpecFields contains field name constants for AdCreativeInteractiveComponentsSpec objects
 var AdCreativeInteractiveComponentsSpecFields = struct {
 	ChildAttachments string
-	Components       string
+	Components string
 }{
 	ChildAttachments: "child_attachments",
-	Components:       "components",
+	Components: "components",
 }
 
 // AdCreativeInteractiveComponentsSpecFieldsList contains all available fields for AdCreativeInteractiveComponentsSpec objects

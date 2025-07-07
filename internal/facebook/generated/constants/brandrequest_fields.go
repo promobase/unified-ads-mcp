@@ -4,49 +4,49 @@ package constants
 
 // BrandRequestFields contains field name constants for BrandRequest objects
 var BrandRequestFields = struct {
-	AdCountries        string
+	AdCountries string
 	AdditionalContacts string
-	ApprovalLevel      string
-	Cells              string
-	Countries          string
-	DenyReason         string
-	EndTime            string
-	EstimatedReach     string
-	Id                 string
-	IsMulticell        string
-	Locale             string
-	MaxAge             string
-	MinAge             string
-	Questions          string
-	Region             string
-	RequestStatus      string
-	ReviewDate         string
-	StartTime          string
-	Status             string
-	SubmitDate         string
-	TotalBudget        string
+	ApprovalLevel string
+	Cells string
+	Countries string
+	DenyReason string
+	EndTime string
+	EstimatedReach string
+	Id string
+	IsMulticell string
+	Locale string
+	MaxAge string
+	MinAge string
+	Questions string
+	Region string
+	RequestStatus string
+	ReviewDate string
+	StartTime string
+	Status string
+	SubmitDate string
+	TotalBudget string
 }{
-	AdCountries:        "ad_countries",
+	AdCountries: "ad_countries",
 	AdditionalContacts: "additional_contacts",
-	ApprovalLevel:      "approval_level",
-	Cells:              "cells",
-	Countries:          "countries",
-	DenyReason:         "deny_reason",
-	EndTime:            "end_time",
-	EstimatedReach:     "estimated_reach",
-	Id:                 "id",
-	IsMulticell:        "is_multicell",
-	Locale:             "locale",
-	MaxAge:             "max_age",
-	MinAge:             "min_age",
-	Questions:          "questions",
-	Region:             "region",
-	RequestStatus:      "request_status",
-	ReviewDate:         "review_date",
-	StartTime:          "start_time",
-	Status:             "status",
-	SubmitDate:         "submit_date",
-	TotalBudget:        "total_budget",
+	ApprovalLevel: "approval_level",
+	Cells: "cells",
+	Countries: "countries",
+	DenyReason: "deny_reason",
+	EndTime: "end_time",
+	EstimatedReach: "estimated_reach",
+	Id: "id",
+	IsMulticell: "is_multicell",
+	Locale: "locale",
+	MaxAge: "max_age",
+	MinAge: "min_age",
+	Questions: "questions",
+	Region: "region",
+	RequestStatus: "request_status",
+	ReviewDate: "review_date",
+	StartTime: "start_time",
+	Status: "status",
+	SubmitDate: "submit_date",
+	TotalBudget: "total_budget",
 }
 
 // BrandRequestFieldsList contains all available fields for BrandRequest objects

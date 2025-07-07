@@ -5,12 +5,12 @@ package constants
 // RecommendedPagePostFields contains field name constants for RecommendedPagePost objects
 var RecommendedPagePostFields = struct {
 	IntentScore string
-	IsIgMedia   string
-	PostId      string
+	IsIgMedia string
+	PostId string
 }{
 	IntentScore: "intent_score",
-	IsIgMedia:   "is_ig_media",
-	PostId:      "post_id",
+	IsIgMedia: "is_ig_media",
+	PostId: "post_id",
 }
 
 // RecommendedPagePostFieldsList contains all available fields for RecommendedPagePost objects

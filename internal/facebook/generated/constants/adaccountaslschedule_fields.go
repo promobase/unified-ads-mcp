@@ -4,13 +4,13 @@ package constants
 
 // AdAccountASLScheduleFields contains field name constants for AdAccountASLSchedule objects
 var AdAccountASLScheduleFields = struct {
-	AdAccount   string
-	Id          string
+	AdAccount string
+	Id string
 	TimeCreated string
 	TimeUpdated string
 }{
-	AdAccount:   "ad_account",
-	Id:          "id",
+	AdAccount: "ad_account",
+	Id: "id",
 	TimeCreated: "time_created",
 	TimeUpdated: "time_updated",
 }
